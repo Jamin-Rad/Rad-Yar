@@ -1,0 +1,463 @@
+{
+  "date": "2026-10-25",
+  "reviewer": "design_inventory independent read-only review of root/other author changes",
+  "scope": "48DErepair fields,8semantic change records,fullDivertikulitisFAobject",
+  "status": "PASS_LANGUAGE_EQUIVALENCE_WITH_MINOR_PREEXISTING_PARALLEL_OMISSION",
+  "checks": [
+    {
+      "index": 0,
+      "file": "data/arterialAnatomyLowerLimb.js",
+      "line": 63,
+      "sourceContainsAfter": true,
+      "exportedRuntimeContainsAfter": true,
+      "independentLanguageComparison": "DEafter reviewed against supplied existing EN/FA; semantic meaning retained; no source recertification"
+    },
+    {
+      "index": 1,
+      "file": "data/atrtLesson.js",
+      "line": 21,
+      "sourceContainsAfter": true,
+      "exportedRuntimeContainsAfter": true,
+      "independentLanguageComparison": "DEafter reviewed against supplied existing EN/FA; semantic meaning retained; no source recertification"
+    },
+    {
+      "index": 2,
+      "file": "data/atrtLesson.js",
+      "line": 22,
+      "sourceContainsAfter": true,
+      "exportedRuntimeContainsAfter": true,
+      "independentLanguageComparison": "DEafter reviewed against supplied existing EN/FA; semantic meaning retained; no source recertification"
+    },
+    {
+      "index": 3,
+      "file": "data/atrtLesson.js",
+      "line": 23,
+      "sourceContainsAfter": true,
+      "exportedRuntimeContainsAfter": true,
+      "independentLanguageComparison": "DEafter reviewed against supplied existing EN/FA; semantic meaning retained; no source recertification"
+    },
+    {
+      "index": 4,
+      "file": "data/atrtLesson.js",
+      "line": 23,
+      "sourceContainsAfter": true,
+      "exportedRuntimeContainsAfter": true,
+      "independentLanguageComparison": "DEafter reviewed against supplied existing EN/FA; semantic meaning retained; no source recertification"
+    },
+    {
+      "index": 5,
+      "file": "data/atrtLesson.js",
+      "line": 23,
+      "sourceContainsAfter": true,
+      "exportedRuntimeContainsAfter": true,
+      "independentLanguageComparison": "DEafter reviewed against supplied existing EN/FA; semantic meaning retained; no source recertification"
+    },
+    {
+      "index": 6,
+      "file": "data/atrtLesson.js",
+      "line": 23,
+      "sourceContainsAfter": true,
+      "exportedRuntimeContainsAfter": true,
+      "independentLanguageComparison": "DEafter reviewed against supplied existing EN/FA; semantic meaning retained; no source recertification"
+    },
+    {
+      "index": 7,
+      "file": "data/atrtLesson.js",
+      "line": 25,
+      "sourceContainsAfter": true,
+      "exportedRuntimeContainsAfter": true,
+      "independentLanguageComparison": "DEafter reviewed against supplied existing EN/FA; semantic meaning retained; no source recertification"
+    },
+    {
+      "index": 8,
+      "file": "data/atrtLesson.js",
+      "line": 25,
+      "sourceContainsAfter": true,
+      "exportedRuntimeContainsAfter": true,
+      "independentLanguageComparison": "DEafter reviewed against supplied existing EN/FA; semantic meaning retained; no source recertification"
+    },
+    {
+      "index": 9,
+      "file": "data/atrtLesson.js",
+      "line": 25,
+      "sourceContainsAfter": true,
+      "exportedRuntimeContainsAfter": true,
+      "independentLanguageComparison": "DEafter reviewed against supplied existing EN/FA; semantic meaning retained; no source recertification"
+    },
+    {
+      "index": 10,
+      "file": "data/atrtLesson.js",
+      "line": 25,
+      "sourceContainsAfter": true,
+      "exportedRuntimeContainsAfter": true,
+      "independentLanguageComparison": "DEafter reviewed against supplied existing EN/FA; semantic meaning retained; no source recertification"
+    },
+    {
+      "index": 11,
+      "file": "data/sinusvenenthrombose.js",
+      "line": 189,
+      "sourceContainsAfter": true,
+      "exportedRuntimeContainsAfter": true,
+      "independentLanguageComparison": "DEafter reviewed against supplied existing EN/FA; semantic meaning retained; no source recertification"
+    },
+    {
+      "index": 12,
+      "file": "data/wristExtensorCompartments.js",
+      "line": 32,
+      "sourceContainsAfter": true,
+      "exportedRuntimeContainsAfter": true,
+      "independentLanguageComparison": "DEafter reviewed against supplied existing EN/FA; semantic meaning retained; no source recertification"
+    },
+    {
+      "index": 13,
+      "file": "data/wristExtensorCompartments.js",
+      "line": 74,
+      "sourceContainsAfter": true,
+      "exportedRuntimeContainsAfter": true,
+      "independentLanguageComparison": "DEafter reviewed against supplied existing EN/FA; semantic meaning retained; no source recertification"
+    },
+    {
+      "index": 14,
+      "file": "data/osteosynthesePostop.js",
+      "line": 12,
+      "sourceContainsAfter": true,
+      "exportedRuntimeContainsAfter": true,
+      "independentLanguageComparison": "DEafter reviewed against supplied existing EN/FA; semantic meaning retained; no source recertification"
+    },
+    {
+      "index": 15,
+      "file": "data/osteosynthesePostop.js",
+      "line": 13,
+      "sourceContainsAfter": true,
+      "exportedRuntimeContainsAfter": true,
+      "independentLanguageComparison": "DEafter reviewed against supplied existing EN/FA; semantic meaning retained; no source recertification"
+    },
+    {
+      "index": 16,
+      "file": "data/osteosynthesePostop.js",
+      "line": 14,
+      "sourceContainsAfter": true,
+      "exportedRuntimeContainsAfter": true,
+      "independentLanguageComparison": "DEafter reviewed against supplied existing EN/FA; semantic meaning retained; no source recertification"
+    },
+    {
+      "index": 17,
+      "file": "data/osteosynthesePostop.js",
+      "line": 15,
+      "sourceContainsAfter": true,
+      "exportedRuntimeContainsAfter": true,
+      "independentLanguageComparison": "DEafter reviewed against supplied existing EN/FA; semantic meaning retained; no source recertification"
+    },
+    {
+      "index": 18,
+      "file": "data/mskSimpleBoneCystLesson.js",
+      "line": 86,
+      "sourceContainsAfter": true,
+      "exportedRuntimeContainsAfter": true,
+      "independentLanguageComparison": "DEafter reviewed against supplied existing EN/FA; semantic meaning retained; no source recertification"
+    },
+    {
+      "index": 19,
+      "file": "data/mskSimpleBoneCystLesson.js",
+      "line": 86,
+      "sourceContainsAfter": true,
+      "exportedRuntimeContainsAfter": true,
+      "independentLanguageComparison": "DEafter reviewed against supplied existing EN/FA; semantic meaning retained; no source recertification"
+    },
+    {
+      "index": 20,
+      "file": "data/mskSimpleBoneCystLesson.js",
+      "line": 87,
+      "sourceContainsAfter": true,
+      "exportedRuntimeContainsAfter": true,
+      "independentLanguageComparison": "DEafter reviewed against supplied existing EN/FA; semantic meaning retained; no source recertification"
+    },
+    {
+      "index": 21,
+      "file": "data/mskSimpleBoneCystLesson.js",
+      "line": 87,
+      "sourceContainsAfter": true,
+      "exportedRuntimeContainsAfter": true,
+      "independentLanguageComparison": "DEafter reviewed against supplied existing EN/FA; semantic meaning retained; no source recertification"
+    },
+    {
+      "index": 22,
+      "file": "data/mskSimpleBoneCystLesson.js",
+      "line": 88,
+      "sourceContainsAfter": true,
+      "exportedRuntimeContainsAfter": true,
+      "independentLanguageComparison": "DEafter reviewed against supplied existing EN/FA; semantic meaning retained; no source recertification"
+    },
+    {
+      "index": 23,
+      "file": "data/mskSimpleBoneCystLesson.js",
+      "line": 88,
+      "sourceContainsAfter": true,
+      "exportedRuntimeContainsAfter": true,
+      "independentLanguageComparison": "DEafter reviewed against supplied existing EN/FA; semantic meaning retained; no source recertification"
+    },
+    {
+      "index": 24,
+      "file": "data/mskEnchondromLesson.js",
+      "line": 16,
+      "sourceContainsAfter": true,
+      "exportedRuntimeContainsAfter": true,
+      "independentLanguageComparison": "DEafter reviewed against supplied existing EN/FA; semantic meaning retained; no source recertification"
+    },
+    {
+      "index": 25,
+      "file": "data/mskEnchondromLesson.js",
+      "line": 26,
+      "sourceContainsAfter": true,
+      "exportedRuntimeContainsAfter": true,
+      "independentLanguageComparison": "DEafter reviewed against supplied existing EN/FA; semantic meaning retained; no source recertification"
+    },
+    {
+      "index": 26,
+      "file": "data/mskEnchondromLesson.js",
+      "line": 27,
+      "sourceContainsAfter": true,
+      "exportedRuntimeContainsAfter": true,
+      "independentLanguageComparison": "DEafter reviewed against supplied existing EN/FA; semantic meaning retained; no source recertification"
+    },
+    {
+      "index": 27,
+      "file": "data/mskEnchondromLesson.js",
+      "line": 38,
+      "sourceContainsAfter": true,
+      "exportedRuntimeContainsAfter": true,
+      "independentLanguageComparison": "DEafter reviewed against supplied existing EN/FA; semantic meaning retained; no source recertification"
+    },
+    {
+      "index": 28,
+      "file": "data/mskEnchondromLesson.js",
+      "line": 39,
+      "sourceContainsAfter": true,
+      "exportedRuntimeContainsAfter": true,
+      "independentLanguageComparison": "DEafter reviewed against supplied existing EN/FA; semantic meaning retained; no source recertification"
+    },
+    {
+      "index": 29,
+      "file": "data/mskEnchondromLesson.js",
+      "line": 40,
+      "sourceContainsAfter": true,
+      "exportedRuntimeContainsAfter": true,
+      "independentLanguageComparison": "DEafter reviewed against supplied existing EN/FA; semantic meaning retained; no source recertification"
+    },
+    {
+      "index": 30,
+      "file": "data/mskEnchondromLesson.js",
+      "line": 41,
+      "sourceContainsAfter": true,
+      "exportedRuntimeContainsAfter": true,
+      "independentLanguageComparison": "DEafter reviewed against supplied existing EN/FA; semantic meaning retained; no source recertification"
+    },
+    {
+      "index": 31,
+      "file": "data/mskEnchondromLesson.js",
+      "line": 42,
+      "sourceContainsAfter": true,
+      "exportedRuntimeContainsAfter": true,
+      "independentLanguageComparison": "DEafter reviewed against supplied existing EN/FA; semantic meaning retained; no source recertification"
+    },
+    {
+      "index": 32,
+      "file": "data/mskEnchondromLesson.js",
+      "line": 76,
+      "sourceContainsAfter": true,
+      "exportedRuntimeContainsAfter": true,
+      "independentLanguageComparison": "DEafter reviewed against supplied existing EN/FA; semantic meaning retained; no source recertification"
+    },
+    {
+      "index": 33,
+      "file": "data/mskEnchondromLesson.js",
+      "line": 76,
+      "sourceContainsAfter": true,
+      "exportedRuntimeContainsAfter": true,
+      "independentLanguageComparison": "DEafter reviewed against supplied existing EN/FA; semantic meaning retained; no source recertification"
+    },
+    {
+      "index": 34,
+      "file": "data/mskFibroeseDysplasieLesson.js",
+      "line": 43,
+      "sourceContainsAfter": true,
+      "exportedRuntimeContainsAfter": true,
+      "independentLanguageComparison": "DEafter reviewed against supplied existing EN/FA; semantic meaning retained; no source recertification"
+    },
+    {
+      "index": 35,
+      "file": "data/mskFibroeseDysplasieLesson.js",
+      "line": 56,
+      "sourceContainsAfter": true,
+      "exportedRuntimeContainsAfter": true,
+      "independentLanguageComparison": "DEafter reviewed against supplied existing EN/FA; semantic meaning retained; no source recertification"
+    },
+    {
+      "index": 36,
+      "file": "data/mskFibroeseDysplasieLesson.js",
+      "line": 76,
+      "sourceContainsAfter": true,
+      "exportedRuntimeContainsAfter": true,
+      "independentLanguageComparison": "DEafter reviewed against supplied existing EN/FA; semantic meaning retained; no source recertification",
+      "actualAfter": "Einen bildgebenden Fallstrick erkennen",
+      "note": "Later idiomatic author refinement replaces earlier manifest Fallgrube wording; same instructional intent."
+    },
+    {
+      "index": 37,
+      "file": "data/mskFibroeseDysplasieLesson.js",
+      "line": 94,
+      "sourceContainsAfter": true,
+      "exportedRuntimeContainsAfter": true,
+      "independentLanguageComparison": "DEafter reviewed against supplied existing EN/FA; semantic meaning retained; no source recertification"
+    },
+    {
+      "index": 38,
+      "file": "data/mskFibroeseDysplasieLesson.js",
+      "line": 95,
+      "sourceContainsAfter": true,
+      "exportedRuntimeContainsAfter": true,
+      "independentLanguageComparison": "DEafter reviewed against supplied existing EN/FA; semantic meaning retained; no source recertification"
+    },
+    {
+      "index": 39,
+      "file": "data/mskFibroeseDysplasieLesson.js",
+      "line": 96,
+      "sourceContainsAfter": true,
+      "exportedRuntimeContainsAfter": true,
+      "independentLanguageComparison": "DEafter reviewed against supplied existing EN/FA; semantic meaning retained; no source recertification"
+    },
+    {
+      "index": 40,
+      "file": "data/mskNofLesson.js",
+      "line": 78,
+      "sourceContainsAfter": true,
+      "exportedRuntimeContainsAfter": true,
+      "independentLanguageComparison": "DEafter reviewed against supplied existing EN/FA; semantic meaning retained; no source recertification"
+    },
+    {
+      "index": 41,
+      "file": "data/mskNofLesson.js",
+      "line": 78,
+      "sourceContainsAfter": true,
+      "exportedRuntimeContainsAfter": true,
+      "independentLanguageComparison": "DEafter reviewed against supplied existing EN/FA; semantic meaning retained; no source recertification"
+    },
+    {
+      "index": 42,
+      "file": "data/mskNofLesson.js",
+      "line": 79,
+      "sourceContainsAfter": true,
+      "exportedRuntimeContainsAfter": true,
+      "independentLanguageComparison": "DEafter reviewed against supplied existing EN/FA; semantic meaning retained; no source recertification"
+    },
+    {
+      "index": 43,
+      "file": "data/mskNofLesson.js",
+      "line": 80,
+      "sourceContainsAfter": true,
+      "exportedRuntimeContainsAfter": true,
+      "independentLanguageComparison": "DEafter reviewed against supplied existing EN/FA; semantic meaning retained; no source recertification"
+    },
+    {
+      "index": 44,
+      "file": "data/mskNofLesson.js",
+      "line": 81,
+      "sourceContainsAfter": true,
+      "exportedRuntimeContainsAfter": true,
+      "independentLanguageComparison": "DEafter reviewed against supplied existing EN/FA; semantic meaning retained; no source recertification"
+    },
+    {
+      "index": 45,
+      "file": "data/mskOsteoidOsteomLesson.js",
+      "line": 41,
+      "sourceContainsAfter": true,
+      "exportedRuntimeContainsAfter": true,
+      "independentLanguageComparison": "DEafter reviewed against supplied existing EN/FA; semantic meaning retained; no source recertification"
+    },
+    {
+      "index": 46,
+      "file": "data/mskOsteoidOsteomLesson.js",
+      "line": 42,
+      "sourceContainsAfter": true,
+      "exportedRuntimeContainsAfter": true,
+      "independentLanguageComparison": "DEafter reviewed against supplied existing EN/FA; semantic meaning retained; no source recertification"
+    },
+    {
+      "index": 47,
+      "file": "data/mskOsteoidOsteomLesson.js",
+      "line": 43,
+      "sourceContainsAfter": true,
+      "exportedRuntimeContainsAfter": true,
+      "independentLanguageComparison": "DEafter reviewed against supplied existing EN/FA; semantic meaning retained; no source recertification"
+    }
+  ],
+  "semantic": [
+    {
+      "index": 0,
+      "file": "data/avm.js",
+      "afterPresent": true,
+      "review": "Ages match DE20–40/40–60years, loss-of-reduction kept distinct from irreducible, FAeGFRunit restored, GISTlangprop forwards actual language; no clinical recertification"
+    },
+    {
+      "index": 1,
+      "file": "data/avm.js",
+      "afterPresent": true,
+      "review": "Ages match DE20–40/40–60years, loss-of-reduction kept distinct from irreducible, FAeGFRunit restored, GISTlangprop forwards actual language; no clinical recertification"
+    },
+    {
+      "index": 2,
+      "file": "data/davf.js",
+      "afterPresent": true,
+      "review": "Ages match DE20–40/40–60years, loss-of-reduction kept distinct from irreducible, FAeGFRunit restored, GISTlangprop forwards actual language; no clinical recertification"
+    },
+    {
+      "index": 3,
+      "file": "data/davf.js",
+      "afterPresent": true,
+      "review": "Ages match DE20–40/40–60years, loss-of-reduction kept distinct from irreducible, FAeGFRunit restored, GISTlangprop forwards actual language; no clinical recertification"
+    },
+    {
+      "index": 4,
+      "file": "data/unterarmschaftfrakturen.js",
+      "afterPresent": true,
+      "review": "Ages match DE20–40/40–60years, loss-of-reduction kept distinct from irreducible, FAeGFRunit restored, GISTlangprop forwards actual language; no clinical recertification"
+    },
+    {
+      "index": 5,
+      "file": "data/distale-radiusfraktur.js",
+      "afterPresent": true,
+      "review": "Ages match DE20–40/40–60years, loss-of-reduction kept distinct from irreducible, FAeGFRunit restored, GISTlangprop forwards actual language; no clinical recertification"
+    },
+    {
+      "index": 6,
+      "file": "app/thorax/kardio/kardio-mrt-indikationen/page.js",
+      "afterPresent": true,
+      "review": "Ages match DE20–40/40–60years, loss-of-reduction kept distinct from irreducible, FAeGFRunit restored, GISTlangprop forwards actual language; no clinical recertification"
+    },
+    {
+      "index": 7,
+      "file": "app/abdomen/gi/gist/page.js",
+      "afterPresent": true,
+      "review": "Ages match DE20–40/40–60years, loss-of-reduction kept distinct from irreducible, FAeGFRunit restored, GISTlangprop forwards actual language; no clinical recertification"
+    }
+  ],
+  "divertikulitis": {
+    "currentFaEqualsManifestAfter": false,
+    "stringLeaves": 158,
+    "review": "AllFAmainobject text read and compared to actual DE/ENCONTENT: clinical categories0/1a/1b/2a/2b/2c/3a/3b/3c/4,3cmthreshold, negation, complication clues, CTprotocol and finalrules preserved.",
+    "minor": "DEbasics.predilection additionally explains narrower lumen/higherpressure; existingENandnewFAgive only westernsigmoidpredominance. PreexistingENsimplification mirrored; no newincorrectclaim. FACDDlead uses shortclinicalassessmentlimit in place ofDEENradiologicaldistinction sentence; distinction is retained inFAfinalsummary.",
+    "notVerified": "No sourcePDF/Radiopaediaimage/clinicalguideline recertification or renderedRTLvisualtest by thisreviewer.",
+    "manifestDifference": {
+      "path": "ct.rows[2][2]",
+      "manifest": "اغلب بیش از حد متناسب با ضخیم‌شدگی دیواره",
+      "actual": "شدت التهاب چربی اغلب در مقایسه با ضخیم‌شدگی دیواره بیشتر است",
+      "verdict": "PASS: later idiomatic clarification retains disproportionately pronounced fat inflammation meaning"
+    },
+    "currentFaEqualsReviewedManifestWithDocumentedRefinement": true
+  },
+  "limitations": [
+    "Language/source-text equivalence only; not allclinicalPASS.",
+    "Broadcurrentappmutations byotherauthors excluded.",
+    "Author48manifest lineindiceshistorical; runtimeexportstringpresence checked independently."
+  ]
+}

@@ -1,0 +1,1146 @@
+{
+  "scope": "Manual comparative reading of active DE/EN/FA SSR lesson prose, headings, captions and image alt text. Shared UI boilerplate read once. Does not cover hidden interaction states, independent scientific/image approval, or assessment-bank completeness.",
+  "status": "REVISE",
+  "independence": "Earlier author language repairs were independently reviewed by another agent; this audit does not independently approve its own prior changes.",
+  "routes": [
+    {
+      "route": "/msk/gefaesse/pavk-stenosen",
+      "entry": "app/msk/gefaesse/pavk-stenosen/page.jsx",
+      "group": "msk",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\104-msk--gefaesse--pavk-stenosen.txt",
+      "chars": 14155,
+      "status": "REVISE",
+      "readScope": [
+        "Complete DE/EN/FA exported text, including all four chapters, Fontaine/TASC rows, visible self-check, take-home, source notes and alt text."
+      ],
+      "findings": [
+        {
+          "severity": "minor",
+          "kind": "terminology",
+          "evidence": {
+            "de": "mehrere, weniger ausgeprägte Läsionen",
+            "en": "multiple, less extensive lesions",
+            "fa": "چند ضایعه با شدت کمتر"
+          },
+          "description": "EN describes extent whereas FA describes severity. Faithful localisation should use less extensive/limited extent consistently, without altering the source-era TASC caveat.",
+          "suggestedFa": "چند ضایعه با گستردگی کمتر",
+          "source": "app/msk/gefaesse/pavk-stenosen/page.jsx (TASC B row)",
+          "medicalAdjudication": "Not adjudicated; language difference only."
+        }
+      ]
+    },
+    {
+      "route": "/msk/hand/de-quervain",
+      "entry": "app/msk/hand/de-quervain/page.js",
+      "group": "msk",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\105-msk--hand--de-quervain.txt",
+      "chars": 14671,
+      "status": "REVISE",
+      "readScope": [
+        "Complete DE/EN/FA exported text: five chapters, all three visible self-check options, every image alt/caption, source-scope paragraphs and four take-home points."
+      ],
+      "findings": [
+        {
+          "severity": "major",
+          "kind": "semantic reversal",
+          "evidence": {
+            "en": "thumb-in-fist variant ... often distinguished ... as the Eichhoff manoeuvre",
+            "fa": "... در بسیاری از منابع از مانور آیکهوف تفکیک می‌شود"
+          },
+          "description": "FA says the thumb-in-fist variant is distinguished FROM Eichhoff, whereas DE/EN identify it AS Eichhoff, differentiated from Finkelstein.",
+          "suggestedFa": "مانورِ شست داخل مشت که در PDF «تست فینکلشتاین» نامیده شده، در بسیاری از منابع به‌عنوان مانور آیکهوف از تست فینکلشتاین تفکیک می‌شود.",
+          "source": "data/deQuervainLesson.js / terminology note",
+          "followup": "Parent reports bounded FA polarity repaired in data/deQuervainLesson.js after this export was read; fresh export delta review pending."
+        }
+      ]
+    },
+    {
+      "route": "/msk/hand/strecksehnenfaecher",
+      "entry": "app/msk/hand/strecksehnenfaecher/page.jsx",
+      "group": "msk",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\106-msk--hand--strecksehnenfaecher.txt",
+      "chars": 13420,
+      "status": "NO_MEANING_DIFFERENCE_FOUND",
+      "readScope": [
+        "Complete DE/EN/FA text: carpal rows/joint labels, six compartment rows and landmark details, two visible self-checks, all alt/captions, sources, five take-home points. German figure labels are intentionally paired with translations; source nomenclature not independently medically adjudicated. Earlier author DE repairs reviewed independently elsewhere."
+      ],
+      "findings": []
+    },
+    {
+      "route": "/msk/infektionen/osteomyelitis",
+      "entry": "app/msk/infektionen/osteomyelitis/page.jsx",
+      "group": "msk",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\107-msk--infektionen--osteomyelitis.txt",
+      "chars": 12830,
+      "status": "NO_MEANING_DIFFERENCE_FOUND",
+      "readScope": [
+        "Complete DE/EN/FA text: four chapters, all table rows, visible self-check, four take-home points, source and limitation notes including pediatric restriction and very-low-certainty evidence."
+      ],
+      "findings": []
+    },
+    {
+      "route": "/msk/knie/chondrokalzinose",
+      "entry": "app/msk/knie/chondrokalzinose/page.js",
+      "group": "msk",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\108-msk--knie--chondrokalzinose.txt",
+      "chars": 13068,
+      "status": "REVISE",
+      "readScope": [
+        "Complete DE/EN/FA text: goals, radiograph/MRI prose, four image alt/caption entries, self-check and options, take-home, references and scope."
+      ],
+      "findings": [
+        {
+          "severity": "minor",
+          "kind": "untranslated term",
+          "evidence": {
+            "fa": "Chondrokalzinose نام یافتهٔ تصویری است"
+          },
+          "description": "Isolated German disease spelling remains in FA body although the Persian term is used elsewhere. Meaning is preserved; editorial localisation only.",
+          "source": "data/chondrokalzinoseLesson.js / radiograph paragraph"
+        }
+      ]
+    },
+    {
+      "route": "/msk/knie/kreuzbaender",
+      "entry": "app/msk/knie/kreuzbaender/page.js",
+      "group": "msk",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\109-msk--knie--kreuzbaender.txt",
+      "chars": 36154,
+      "status": "REVISE",
+      "readScope": [
+        "Complete DE/EN/FA text read; EN separately re-read after combined output truncation. Five clinical chapters, grading details, all image alt/captions including timelines, visible biceps check/options, six take-home statements. Units/3-6-24month and2/6/12week timelines,7mm threshold and management qualifiers compared."
+      ],
+      "findings": [
+        {
+          "severity": "minor",
+          "kind": "signal qualification narrowed",
+          "evidence": {
+            "de": "signalverändert",
+            "en": "signal-altered",
+            "fa": "پرسیگنال"
+          },
+          "description": "PCL body, caption and take-home render changed signal as specifically increased signal. Retain the broader original meaning unless independently authored as a scientific revision.",
+          "suggestedFa": "با تغییر سیگنال",
+          "source": "app/msk/knie/kreuzbaender/page.js / PCL MRI, caption and take-home"
+        },
+        {
+          "severity": "minor",
+          "kind": "direction terminology",
+          "evidence": {
+            "de": "flacher oder welliger Verlauf",
+            "en": "flattened or wavy course",
+            "fa": "مسیر صاف یا موج‌دار"
+          },
+          "description": "FA صاف usually means straight/smooth rather than flatter orientation. Prefer a phrase explicitly referring to reduced slope/orientation, avoiding confusion with normal straight fibres.",
+          "suggestedFa": "مسیر با شیب کمتر یا موج‌دار",
+          "source": "app/msk/knie/kreuzbaender/page.js / ACL direct signs and take-home"
+        }
+      ]
+    },
+    {
+      "route": "/msk/knie/meniskus",
+      "entry": "app/msk/knie/meniskus/page.js",
+      "group": "msk",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\110-msk--knie--meniskus.txt",
+      "chars": 59838,
+      "status": "REVISE",
+      "readScope": [
+        "Complete DE, EN and FA texts read separately (no output truncation). Seven chapters, all anatomy/vascular/tear classifications and criteria tables, each MRI example caption/alt, two visible image-series captions, treatment table, full take-home and source list. All 3mm/2.5–4mm/>3mm/≥15mm/>20%/≥3×5mm numbers and negative caveats compared."
+      ],
+      "findings": [
+        {
+          "severity": "minor",
+          "kind": "untranslated image alt",
+          "evidence": {
+            "de": "AI-generated MRI-like educational reconstruction of a discoid lateral meniscus: coronal body-width measurement and three sagittal slices. Not patient data.",
+            "fa": "AI-generated MRI-like educational reconstruction of a discoid lateral meniscus: coronal body-width measurement and three sagittal slices. Not patient data."
+          },
+          "description": "Discoid MRI-like reconstruction has English-only alt in DE and FA. Adjacent visible captions are translated and preserve AI/non-patient disclaimer.",
+          "source": "app/msk/knie/meniskus/DiscoidSchematics.jsx / discoid reconstruction alt"
+        },
+        {
+          "severity": "minor",
+          "kind": "epidemiologic label mismatch",
+          "evidence": {
+            "de": "3–5 % Inzidenz",
+            "en": "3–5% incidence",
+            "fa": "۳–۵٪ شیوع"
+          },
+          "description": "FA describes prevalence while DE/EN label incidence. Which epidemiologic measure the cited source supports requires source adjudication; do not mechanically replace with an unsupported claim.",
+          "source": "app/msk/knie/meniskus/page.js / discoid stats",
+          "medicalAdjudication": "OPEN"
+        }
+      ]
+    },
+    {
+      "route": "/msk/knie/patella-streckapparat",
+      "entry": "app/msk/knie/patella-streckapparat/page.jsx",
+      "group": "msk",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\111-msk--knie--patella-streckapparat.txt",
+      "chars": 31434,
+      "status": "REVISE",
+      "readScope": [
+        "Complete DE/EN/FA text: five chapters, Wiberg rows and bipartite/fracture comparison, all fracture mechanism/stability caveats, both self-checks, every image alt/caption, tendinopathy qualifiers, take-home and all nine annotated sources."
+      ],
+      "findings": [
+        {
+          "severity": "major",
+          "kind": "wrong-language image alt",
+          "evidence": {
+            "de": "سه نمونهٔ تصویری شکل فاست کشکک در تیپ‌های ویبرگ I تا III ...; شماتیک غیرتشخیصی سه جهت خط شکستگی ...; شماتیک غیرتشخیصی از کشکک ..."
+          },
+          "description": "Three German active image alt strings are Persian (Wiberg, fracture schematic, dislocation schematic). Visible captions are German, but accessible image descriptions are not.",
+          "source": "data/patellaStreckapparatLesson.js / three DE alt values"
+        },
+        {
+          "severity": "minor",
+          "kind": "untranslated source appraisal prose",
+          "evidence": {
+            "de": "Narrative review; used for the passive restraint role ...",
+            "fa": "Narrative review; used for the passive restraint role ..."
+          },
+          "description": "Source appraisal sentences for references2–9 remain English in both DE and FA. These are authored scope/evidence explanations, not bibliographic titles, and should be translated faithfully.",
+          "source": "data/patellaStreckapparatLesson.js / references descriptions"
+        }
+      ]
+    },
+    {
+      "route": "/msk/knochennekrosen/avn-huefte",
+      "entry": "app/msk/knochennekrosen/avn-huefte/page.jsx",
+      "group": "msk",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\112-msk--knochennekrosen--avn-huefte.txt",
+      "chars": 18348,
+      "status": "NO_MEANING_DIFFERENCE_FOUND",
+      "readScope": [
+        "Complete DE/EN/FA export including both unversioned and revised2019 ARCO tables, diagram descriptions, modality/differential tables, self-check, sources and take-home. FA tail re-read separately after combined output truncation. All ≤2/>2mm, stage0 removal and oedema-alone negations compared."
+      ],
+      "findings": []
+    },
+    {
+      "route": "/msk/knochennekrosen/knocheninfarkt",
+      "entry": "app/msk/knochennekrosen/knocheninfarkt/page.js",
+      "group": "msk",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\113-msk--knochennekrosen--knocheninfarkt.txt",
+      "chars": 14580,
+      "status": "NO_MEANING_DIFFERENCE_FOUND",
+      "readScope": [
+        "Complete DE/EN/FA export: four chapters, location/modality/DDx tables, both image alt/captions, caveats on early normal films and absent double-line sign, self-check, four take-home statements and references. No image identity or scientific source claims independently approved."
+      ],
+      "findings": []
+    },
+    {
+      "route": "/msk/knochenstoffwechsel/melorheostose",
+      "entry": "app/msk/knochenstoffwechsel/melorheostose/page.jsx",
+      "group": "msk",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\114-msk--knochenstoffwechsel--melorheostose.txt",
+      "chars": 16171,
+      "status": "REVISE",
+      "readScope": [
+        "Complete DE/EN/FA text: all four chapters, MRI oedema/enhancement qualification and40case/4lesion figures, source image caption/alt, self-check, take-home and five annotated references."
+      ],
+      "findings": [
+        {
+          "severity": "minor",
+          "kind": "untranslated source appraisal prose",
+          "evidence": {
+            "de": "Forty-case imaging series; used to qualify ...; Small MRI series ...; Used only to note ...",
+            "fa": "Forty-case imaging series; used to qualify ...; Small MRI series ...; Used only to note ..."
+          },
+          "description": "Authored evidence-scope explanations in references3–5 remain English in both DE/FA.",
+          "source": "data/melorheostoseLesson.js / sources3–5"
+        }
+      ]
+    },
+    {
+      "route": "/msk/knochenstoffwechsel/morbus-paget",
+      "entry": "app/msk/knochenstoffwechsel/morbus-paget/page.jsx",
+      "group": "msk",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\115-msk--knochenstoffwechsel--morbus-paget.txt",
+      "chars": 16167,
+      "status": "REVISE",
+      "readScope": [
+        "Complete DE/EN/FA text: continuum caveat/diagram labels, all regional patterns and associated-finding tables, warning signs, self-check, take-home and annotated references."
+      ],
+      "findings": [
+        {
+          "severity": "minor",
+          "kind": "qualifier omission",
+          "evidence": {
+            "de": "die Kombination im klinischen und anatomischen Kontext zählt",
+            "en": "the combination and anatomic context matter",
+            "fa": "ترکیب یافته‌ها و زمینهٔ آناتومیک اهمیت دارد"
+          },
+          "description": "The local sentence drops clinical context in EN/FA, retaining only anatomy. Other clinical cautions remain elsewhere; no reversal.",
+          "source": "app/msk/knochenstoffwechsel/morbus-paget/page.jsx / imaging-pattern intro"
+        }
+      ]
+    },
+    {
+      "route": "/msk/osteochondrosen/morbus-perthes",
+      "entry": "app/msk/osteochondrosen/morbus-perthes/page.jsx",
+      "group": "msk",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\116-msk--osteochondrosen--morbus-perthes.txt",
+      "chars": 20670,
+      "status": "REVISE",
+      "readScope": [
+        "Complete DE/EN/FA text: clinical age/range/sex ratio, five-part PDF versus four-group classification caveats, all three timed image alt/captions, MRI paragraph, self-check, DDx table, take-home and source-scope notes."
+      ],
+      "findings": [
+        {
+          "severity": "major",
+          "kind": "projection disagreement",
+          "evidence": {
+            "de": "Beckenübersicht PA und Lauenstein",
+            "en": "AP pelvic and Lauenstein views",
+            "fa": "نمای کلی لگن و نمای لائونشتاین"
+          },
+          "description": "Three German captions specify PA while EN captions/alt specify AP. These are different projection directions; verify actual source image and use one faithful label across locales. FA omits direction.",
+          "source": "app/msk/osteochondrosen/morbus-perthes/page.jsx / three radiograph captions",
+          "medicalAdjudication": "Actual projection OPEN; language inconsistency confirmed."
+        },
+        {
+          "severity": "minor",
+          "kind": "untranslated source appraisal prose",
+          "evidence": {
+            "de": "Used to verify stage roles and the significance of synchronous bilateral involvement.",
+            "fa": "Used to verify stage roles and the significance of synchronous bilateral involvement."
+          },
+          "description": "POSNA evidence-role explanation remains English in DE/FA.",
+          "source": "app/msk/osteochondrosen/morbus-perthes/page.jsx / source3"
+        }
+      ]
+    },
+    {
+      "route": "/msk/osteochondrosen/osgood-schlatter",
+      "entry": "app/msk/osteochondrosen/osgood-schlatter/page.jsx",
+      "group": "msk",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\117-msk--osteochondrosen--osgood-schlatter.txt",
+      "chars": 14849,
+      "status": "REVISE",
+      "readScope": [
+        "Complete DE/EN/FA text: all four chapters, 30%bilateral statement, sex-difference uncertainty, X-ray and MRI qualifiers, source-case alt/caption, visible check/options, take-home and five source annotations."
+      ],
+      "findings": [
+        {
+          "severity": "minor",
+          "kind": "untranslated source appraisal prose",
+          "evidence": {
+            "de": "Used for the caution ... / The review notes ... / Retrospective imaging series ...",
+            "fa": "Same English authored scope explanations"
+          },
+          "description": "Authored evidence appraisal, rather than publication title, remains English in DE/FA.",
+          "source": "app/msk/osteochondrosen/osgood-schlatter/page.jsx / sources3–5"
+        }
+      ]
+    },
+    {
+      "route": "/msk/osteochondrosen/osteochondrosis-dissecans",
+      "entry": "app/msk/osteochondrosen/osteochondrosis-dissecans/page.jsx",
+      "group": "msk",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\118-msk--osteochondrosen--osteochondrosis-dissecans.txt",
+      "chars": 18553,
+      "status": "REVISE",
+      "readScope": [
+        "Complete DE/EN/FA text: five chapters, every staging/modality/DDx row, all juvenile specificity caveats and source versus treatment limitations, 1:200 dilution, image alt/caption, visible self-check/options and take-home."
+      ],
+      "findings": [
+        {
+          "severity": "minor",
+          "kind": "meaning omitted",
+          "evidence": {
+            "de": "Kontrastmittel, das unter das Fragment läuft, zeigt eine Verbindung an der Grenzfläche",
+            "en": "contrast tracking under the fragment shows an interface",
+            "fa": "ورود مادهٔ حاجب به زیر قطعه سطح مرزی را نمایان می‌کند"
+          },
+          "description": "EN/FA omit the concept of communication/connection at the interface, replacing it with simple visibility of an interface. Preserve the authored statement without adding a new stability claim.",
+          "source": "data/osteochondrosisDissecansLesson.js / MR arthrography technique"
+        }
+      ]
+    },
+    {
+      "route": "/msk/osteochondrosen/weitere-osteochondrosen",
+      "entry": "app/msk/osteochondrosen/weitere-osteochondrosen/page.jsx",
+      "group": "msk",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\119-msk--osteochondrosen--weitere-osteochondrosen.txt",
+      "chars": 8970,
+      "status": "NO_MEANING_DIFFERENCE_FOUND",
+      "readScope": [
+        "Complete DE/EN/FA text: umbrella definition with source-attribution/uncertainty, three terminology rows, four route-link labels, self-check/options, take-home and source scope. German osteochondrosis-intervertebralis term intentionally retained as subject of terminology comparison."
+      ],
+      "findings": []
+    },
+    {
+      "route": "/msk/postop/osteosynthese",
+      "entry": "app/msk/postop/osteosynthese/page.jsx",
+      "group": "msk",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\120-msk--postop--osteosynthese.txt",
+      "chars": 8358,
+      "status": "NO_MEANING_DIFFERENCE_FOUND",
+      "readScope": [
+        "Complete DE/EN/FA text: checklist, diagram labels, DHS/PFN screw-position/cut-out statements, minimum5mm source caveat, self-check/options and take-home. Earlier own author DE repair independently reviewed elsewhere; this is not independent acceptance of that edit."
+      ],
+      "findings": []
+    },
+    {
+      "route": "/msk/schulter/arthrose",
+      "entry": "app/msk/schulter/arthrose/page.js",
+      "group": "msk",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\121-msk--schulter--arthrose.txt",
+      "chars": 12356,
+      "status": "REVISE",
+      "readScope": [
+        "Complete DE/EN/FA text: four chapters, cartilage-loss and pain qualification, all source-image captions/alt, two visible self-checks/options, AP/axillary and CT/MRI purposes, take-home and sources."
+      ],
+      "findings": [
+        {
+          "severity": "minor",
+          "kind": "untranslated source appraisal prose",
+          "evidence": {
+            "de": "AAOS OrthoInfo; joint localisation, radiographic signs and cuff-tear arthropathy.",
+            "fa": "AAOS OrthoInfo; joint localisation, radiographic signs and cuff-tear arthropathy."
+          },
+          "description": "Reference descriptions remain English in DE/FA, including source purposes and original figure credit description; publication titles can remain original.",
+          "source": "data/mskGlenohumeralOaLesson.js / sources1–4"
+        }
+      ]
+    },
+    {
+      "route": "/msk/schulter/impingement-kalkschulter",
+      "entry": "app/msk/schulter/impingement-kalkschulter/page.js",
+      "group": "msk",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\122-msk--schulter--impingement-kalkschulter.txt",
+      "chars": 14962,
+      "status": "NO_MEANING_DIFFERENCE_FOUND",
+      "readScope": [
+        "Complete DE/EN/FA text: learning goals, projection/Bigliani morphology, subacromial/internal/subcoracoid patterns, <7mm non-threshold caveat, visible self-check/options, four take-home points, sources and calcific-tendinopathy scope exclusion."
+      ],
+      "findings": []
+    },
+    {
+      "route": "/msk/schulter/instabilitaet",
+      "entry": "app/msk/schulter/instabilitaet/page.jsx",
+      "group": "msk",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\123-msk--schulter--instabilitaet.txt",
+      "chars": 15310,
+      "status": "REVISE",
+      "readScope": [
+        "Complete DE/EN/FA text: goals, Bankart/bonyBankart/Hill-Sachs location definitions, complete conceptual diagram text, report checklist, ACR imaging-context paragraph, self-check/options, take-home and all source notes."
+      ],
+      "findings": [
+        {
+          "severity": "minor",
+          "kind": "scope qualifier omission",
+          "evidence": {
+            "de": "Nach akutem Trauma",
+            "en": "After acute trauma",
+            "fa": "پس از تروما"
+          },
+          "description": "FA drops acute qualifier for initial-radiograph recommendation. Preserve حاد to avoid broadening the authored imaging context.",
+          "suggestedFa": "پس از ترومای حاد",
+          "source": "data/shoulderInstabilityLesson.js / imaging context"
+        }
+      ]
+    },
+    {
+      "route": "/msk/schulter/rotatorenmanschette",
+      "entry": "app/msk/schulter/rotatorenmanschette/page.js",
+      "group": "msk",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\124-msk--schulter--rotatorenmanschette.txt",
+      "chars": 22092,
+      "status": "NO_MEANING_DIFFERENCE_FOUND",
+      "readScope": [
+        "Complete DE/EN/FA text: all five chapters, every anatomy/sequence/tear/classification/associated-finding row, figure alt/caption, tangent-sign self-check, four take-home units. All1–2cm/55deg/>50/<50/Patte1–3/Goutallier0–4/<7mm and inequalities compared. No blanket source-science acceptance."
+      ],
+      "findings": []
+    },
+    {
+      "route": "/msk/trauma/ak-luxation",
+      "entry": "app/msk/trauma/ak-luxation/page.js",
+      "group": "msk",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\125-msk--trauma--ak-luxation.txt",
+      "chars": 24606,
+      "status": "REVISE",
+      "readScope": [
+        "Complete DE/EN/FA text: five chapters, anatomy/force-direction definitions, epidemiology, full weighted-view evidence paragraph and all Rockwood rows, image alt/captions, individualised therapy and five detailed take-home units. All4:1/20–40y/11–13mm/10–15kgper-side/<25%/25–100%/>100%/100–300% compared."
+      ],
+      "findings": [
+        {
+          "severity": "minor",
+          "kind": "projection precision broadened",
+          "evidence": {
+            "de": "Schulter axial",
+            "en": "Shoulder axial/lateral",
+            "fa": "شانه محوری/جانبی"
+          },
+          "description": "EN/FA add general lateral view as an alternative to axial. Other caution text correctly requires axial/axillary for posterior displacement. Prefer consistent explicit axial/axillary wording after source confirmation.",
+          "source": "app/msk/trauma/ak-luxation/page.js / imaging table"
+        }
+      ]
+    },
+    {
+      "route": "/msk/trauma/beckenringfraktur",
+      "entry": "app/msk/trauma/beckenringfraktur/page.jsx",
+      "group": "msk",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\126-msk--trauma--beckenringfraktur.txt",
+      "chars": 15543,
+      "status": "NO_MEANING_DIFFERENCE_FOUND",
+      "readScope": [
+        "Complete DE/EN/FA text: posterior/anterior ring definitions, Tile versus AO2018 B1/B2 distinction, diagram alt/caption, L5 meta-analysis qualification, visible self-check/options, take-home and all sources. Five-study/278fracture numbers preserved."
+      ],
+      "findings": []
+    },
+    {
+      "route": "/msk/trauma/distale-femurfraktur",
+      "entry": "app/msk/trauma/distale-femurfraktur/page.jsx",
+      "group": "msk",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\127-msk--trauma--distale-femurfraktur.txt",
+      "chars": 9285,
+      "status": "NO_MEANING_DIFFERENCE_FOUND",
+      "readScope": [
+        "Complete DE/EN/FA text: AO33A/B/C rows, Hoffa coronal orientation, diagram and radiograph alt/captions, AP/lateral caveat, self-check/options, take-home and both source notes."
+      ],
+      "findings": []
+    },
+    {
+      "route": "/msk/trauma/distale-radiusfraktur",
+      "entry": "app/msk/trauma/distale-radiusfraktur/page.js",
+      "group": "msk",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\128-msk--trauma--distale-radiusfraktur.txt",
+      "chars": 24789,
+      "status": "REVISE",
+      "readScope": [
+        "Complete DE/EN/FA text: seven chapters and all tables/captions, classic eponyms/Fernandez, carpal dislocations, report checklist and complete numeric sample report, therapy/urgency/complications and take-home. All2mm/22–23deg/10–12deg/>20deg/>3mm/18deg and uncertainty compared. Prior own EN reduction repair independently reviewed elsewhere."
+      ],
+      "findings": [
+        {
+          "severity": "minor",
+          "kind": "term omission/unclear referent",
+          "evidence": {
+            "de": "nicht haltbar reponierbare Fraktur",
+            "en": "fractures in which reduction cannot be maintained",
+            "fa": "شکستگی ... غیرقابل حفظ"
+          },
+          "description": "FA leaves out reduction as the object that cannot be maintained, literally calling the fracture non-preservable. Specify جااندازی to preserve the authored meaning.",
+          "suggestedFa": "شکستگی‌ای که جااندازی آن قابل‌حفظ نیست",
+          "source": "data/distale-radiusfraktur.js / operative lesson paragraph"
+        },
+        {
+          "severity": "minor",
+          "kind": "named signs omitted",
+          "evidence": {
+            "de": "spilled teacup; piece of pie",
+            "en": "spilled teacup; piece of pie",
+            "fa": "در نمای لترال لونیت به ولار می‌چرخد و در PA ممکن است مثلثی دیده شود."
+          },
+          "description": "FA preserves morphology but omits both conventional named signs included in DE/EN; retain them parenthetically for exam vocabulary parity.",
+          "source": "data/distale-radiusfraktur.js / lunate-dislocation lesson paragraph"
+        }
+      ]
+    },
+    {
+      "route": "/msk/trauma/femurschaftfraktur",
+      "entry": "app/msk/trauma/femurschaftfraktur/page.jsx",
+      "group": "msk",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\129-msk--trauma--femurschaftfraktur.txt",
+      "chars": 10356,
+      "status": "NO_MEANING_DIFFERENCE_FOUND",
+      "readScope": [
+        "Complete DE/EN/FA text: AO32A/B/C morphology versus fragment-count qualifications, A1/A2/A3 thresholds, image alt/caption,35degree self-check/options, three take-home statements and sources."
+      ],
+      "findings": []
+    },
+    {
+      "route": "/msk/trauma/frakturbeschreibung",
+      "entry": "app/msk/trauma/frakturbeschreibung/page.js",
+      "group": "msk",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\130-msk--trauma--frakturbeschreibung.txt",
+      "chars": 29376,
+      "status": "REVISE",
+      "readScope": [
+        "Complete DE/EN/FA text: eight chapters, all eight reporting questions, full load/morphology and additional-PDF-label tables, all diagram/caption/alt text, attachment self-check, displacement values, open-fracture caveat, modality table, full report template/example, errors and take-home."
+      ],
+      "findings": [
+        {
+          "severity": "major",
+          "kind": "wrong-language table headings",
+          "evidence": {
+            "en": "Zusätzliche Beschriftung in der Quelle Was die Abbildung zeigt Für die Beschreibung",
+            "fa": "Zusätzliche Beschriftung in der Quelle Was die Abbildung zeigt Für die Beschreibung"
+          },
+          "description": "All three additional-PDF-term table column headings remain German in EN/FA; clinical rows themselves translated.",
+          "source": "app/msk/trauma/frakturbeschreibung/page.js / additional morphology table headings"
+        },
+        {
+          "severity": "major",
+          "kind": "negative limitation omitted",
+          "evidence": {
+            "de": "schließen Offenheit aber weder sicher ein noch aus",
+            "en": "neither prove nor exclude it reliably",
+            "fa": "گاز یا جسم خارجی نشانه است اما قطعی نیست"
+          },
+          "description": "FA keeps uncertainty but omits explicit inability to rule OUT open injury, weakening a safety-relevant negative limitation.",
+          "suggestedFa": "گاز یا جسم خارجی نشانهٔ هشدارند، اما بازبودن شکستگی را نه با اطمینان اثبات و نه رد می‌کنند.",
+          "source": "app/msk/trauma/frakturbeschreibung/page.js / open fracture paragraph"
+        },
+        {
+          "severity": "minor",
+          "kind": "literal anatomic term",
+          "evidence": {
+            "de": "proximalen Phalanx des ersten Strahls",
+            "en": "proximal phalanx of the first ray",
+            "fa": "فالانکس پروگزیمال شعاع اول"
+          },
+          "description": "شعاع is a literal geometric ray, not natural anatomical first-digit/ray wording. Use an anatomically understood label while retaining the source’s uncertainty about the attachment and whether hand/foot is intended.",
+          "source": "app/msk/trauma/frakturbeschreibung/page.js / attachment fragments"
+        }
+      ]
+    },
+    {
+      "route": "/msk/trauma/frakturen-kindesalter",
+      "entry": "app/msk/trauma/frakturen-kindesalter/page.js",
+      "group": "msk",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\131-msk--trauma--frakturen-kindesalter.txt",
+      "chars": 29783,
+      "status": "REVISE",
+      "readScope": [
+        "Complete DE/EN/FA text: five chapters, anatomy/biomechanics, every Salter-Harris and torus/greenstick row, all image captions/alt, toddler age/follow-up and safeguarding caveats, Tillaux/triplane planes and age ranges, source lists and five take-home units."
+      ],
+      "findings": [
+        {
+          "severity": "major",
+          "kind": "displacement confused with dislocation",
+          "evidence": {
+            "de": "schützt vor vollständiger Dislokation",
+            "en": "protects against complete dislocation",
+            "fa": "از دررفتگی کامل محافظت می‌کند"
+          },
+          "description": "In fracture/periosteal context German Dislokation refers to fracture-fragment displacement. EN/FA translate it as joint dislocation, changing the anatomical event.",
+          "suggestedEn": "helps prevent complete displacement of the fracture fragments",
+          "suggestedFa": "به جلوگیری از جابه‌جایی کامل قطعات شکستگی کمک می‌کند",
+          "source": "data/frakturen-kindesalter.js / periosteum lesson paragraph"
+        },
+        {
+          "severity": "minor",
+          "kind": "avulsion term",
+          "evidence": {
+            "de": "Abriss des anterolateralen Epiphysenfragments",
+            "en": "Avulsion of the anterolateral epiphyseal fragment",
+            "fa": "پارگی قطعه اپی‌فیزی قدامی-جانبی"
+          },
+          "description": "A bone fragment is avulsed/کنده, whereas پارگی describes soft-tissue tearing. Use کندگی for terminology parity.",
+          "source": "data/frakturen-kindesalter.js / Tillaux paragraph"
+        }
+      ]
+    },
+    {
+      "route": "/msk/trauma/metakarpale-frakturen",
+      "entry": "app/msk/trauma/metakarpale-frakturen/page.jsx",
+      "group": "msk",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\132-msk--trauma--metakarpale-frakturen.txt",
+      "chars": 19309,
+      "status": "NO_MEANING_DIFFERENCE_FOUND",
+      "readScope": [
+        "Complete DE/EN/FA four-chapter text: first-metacarpal muscle forces and three named patterns, all comparison rows, fifth-metacarpal head-tilt versus apex distinction, projections, both checks/options, captions/alt, take-home and source appraisal."
+      ],
+      "findings": []
+    },
+    {
+      "route": "/msk/trauma/periprothetische-femurfraktur",
+      "entry": "app/msk/trauma/periprothetische-femurfraktur/page.jsx",
+      "group": "msk",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\133-msk--trauma--periprothetische-femurfraktur.txt",
+      "chars": 11888,
+      "status": "NO_MEANING_DIFFERENCE_FOUND",
+      "readScope": [
+        "Complete DE/EN/FA three-chapter text: AG/AL/B/C locations, B1/B2/B3 fixed-versus-loose/bone-stock rows, treatment-framework limitations, specimen alt/caption, self-check and take-home."
+      ],
+      "findings": []
+    },
+    {
+      "route": "/msk/trauma/proximale-femurfraktur",
+      "entry": "app/msk/trauma/proximale-femurfraktur/page.jsx",
+      "group": "msk",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\134-msk--trauma--proximale-femurfraktur.txt",
+      "chars": 24748,
+      "status": "NO_MEANING_DIFFERENCE_FOUND",
+      "readScope": [
+        "Complete DE/EN/FA three-chapter text: six locations and fracture directions, full positioning safety table and cross-table check, both Pauwels/Garden tables and diagram captions/alt, complete source correction paragraph and perfusion caveat, self-check, take-home and nine sources. All5cm/30/50/70degree boundaries compared."
+      ],
+      "findings": []
+    },
+    {
+      "route": "/msk/trauma/proximale-humerusfraktur",
+      "entry": "app/msk/trauma/proximale-humerusfraktur/page.jsx",
+      "group": "msk",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\135-msk--trauma--proximale-humerusfraktur.txt",
+      "chars": 11870,
+      "status": "NO_MEANING_DIFFERENCE_FOUND",
+      "readScope": [
+        "Complete DE/EN/FA two-chapter text: four anatomical segments, Neer >1cm OR >45degree definition, one-part versus fracture-line distinction, reliability caution, check/options, report checklist, captions/alt, take-home and sources."
+      ],
+      "findings": []
+    },
+    {
+      "route": "/msk/trauma/radiuskoepfchenfraktur",
+      "entry": "app/msk/trauma/radiuskoepfchenfraktur/page.js",
+      "group": "msk",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\136-msk--trauma--radiuskoepfchenfraktur.txt",
+      "chars": 25125,
+      "status": "REVISE",
+      "readScope": [
+        "Complete DE/EN/FA five-chapter text: anatomy/mechanism, all projection/fatpad paragraphs and alt/captions, every Mason row and exact2mm caveat, therapy and associated-injury units, five take-home statements. Medical statements shared across locales not approved by this language audit."
+      ],
+      "findings": [
+        {
+          "severity": "major",
+          "kind": "wrong technical translation",
+          "evidence": {
+            "de": "Mason IV – Reposition zuerst",
+            "en": "Mason IV – Reduction first",
+            "fa": "ماسون IV – ابتدا کاهش"
+          },
+          "description": "FA heading translates reduction literally as decrease. In this context it means closed joint reduction/جااندازی; the following FA sentence correctly uses جااندازی.",
+          "suggestedFa": "ماسون IV – ابتدا جااندازی",
+          "source": "data/radiuskopf.js / MasonIV treatment heading",
+          "followup": "Bounded author mirror now recorded separately in msk-lesson-mirror-author-manifest.json; independent parent review pending."
+        },
+        {
+          "severity": "major",
+          "kind": "cross-component semantic consistency OPEN",
+          "evidence": {
+            "lesson": "Every projection/flexion RCL; posterior fat pad = fracture/treatMasonI; PIN wrist+finger paresis",
+            "bank": "Independent bank reviewer has bounded qualifications for these same topics."
+          },
+          "description": "Lesson retains stronger or conflicting formulations compared with current assessment-bank repairs. Not a new medical adjudication by this reviewer; requires coordinator/source review before whole-topic approval.",
+          "source": "data/radiuskopf.js / RCL body+alt+take-home, posterior fat pad take-home, PIN body",
+          "medicalAdjudication": "OPEN; parent and bank author notified.",
+          "followup": "Bounded author mirror now recorded separately in msk-lesson-mirror-author-manifest.json; independent parent review pending."
+        }
+      ]
+    },
+    {
+      "route": "/msk/trauma/skaphoidfraktur",
+      "entry": "app/msk/trauma/skaphoidfraktur/page.jsx",
+      "group": "msk",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\137-msk--trauma--skaphoidfraktur.txt",
+      "chars": 17817,
+      "status": "REVISE",
+      "readScope": [
+        "Complete DE/EN/FA three-chapter text: acute Herbert subtypes and source-versus-AO wording, blood-flow risk caveat, source diagram/caption/alt, B4 check, SNAC joint-sequence table, bipartite versus nonunion comparison, take-home and sources."
+      ],
+      "findings": [
+        {
+          "severity": "minor",
+          "kind": "untranslated source explanation",
+          "evidence": {
+            "de": "Proximal-pole fractures rely mainly on distal-to-proximal intraosseous blood flow ..."
+          },
+          "description": "DE reference4 description remains English. FA translation is present and body meaning matches.",
+          "source": "data/skaphoidfraktur.js / source4"
+        }
+      ]
+    },
+    {
+      "route": "/msk/trauma/sprunggelenk",
+      "entry": "app/msk/trauma/sprunggelenk/page.js",
+      "group": "msk",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\138-msk--trauma--sprunggelenk.txt",
+      "chars": 22987,
+      "status": "REVISE",
+      "readScope": [
+        "Complete DE/EN/FA seven-chapter text: imaging series and15–20deg technique, all systematic/Weber/stability/special-pattern rows and diagram text, pilon check, CT indications, complete case and captions/alt, four take-home statements."
+      ],
+      "findings": [
+        {
+          "severity": "minor",
+          "kind": "technique wording not equivalent",
+          "evidence": {
+            "de": "Talus und distale Tibia überlagert",
+            "en": "talus and distal tibia aligned",
+            "fa": "تالوس و انتهای دیستال تیبیا در وضعیت جانبی مناسب"
+          },
+          "description": "The lateral-view technique phrase changes superposition into alignment/generic proper positioning. Clarify the intended acquisition description from source rather than treating these as exact translations.",
+          "source": "app/msk/trauma/sprunggelenk/page.js / lateral technique row",
+          "medicalAdjudication": "Acquisition wording OPEN"
+        }
+      ]
+    },
+    {
+      "route": "/msk/trauma/sternum-rippen",
+      "entry": "app/msk/trauma/sternum-rippen/page.jsx",
+      "group": "msk",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\139-msk--trauma--sternum-rippen.txt",
+      "chars": 14341,
+      "status": "NO_MEANING_DIFFERENCE_FOUND",
+      "readScope": [
+        "Complete DE/EN/FA three-chapter text: adult minor/high-energy trauma imaging distinction, all two self-check stems/options, both CT captions/alt and figure letters, motion/variant caveats, full search table, take-home and source scope."
+      ],
+      "findings": []
+    },
+    {
+      "route": "/msk/trauma/tibiakopffraktur",
+      "entry": "app/msk/trauma/tibiakopffraktur/page.jsx",
+      "group": "msk",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\140-msk--trauma--tibiakopffraktur.txt",
+      "chars": 16602,
+      "status": "NO_MEANING_DIFFERENCE_FOUND",
+      "readScope": [
+        "Complete DE/EN/FA two-chapter text: SchatzkerI–VI rows and<4mm source-not-threshold qualification, all Segond/reverse-Segond association caveats, two figure alt/captions, check/options, take-home and five references."
+      ],
+      "findings": []
+    },
+    {
+      "route": "/msk/trauma/ulnares-kollateralband-daumen",
+      "entry": "app/msk/trauma/ulnares-kollateralband-daumen/page.jsx",
+      "group": "msk",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\141-msk--trauma--ulnares-kollateralband-daumen.txt",
+      "chars": 14937,
+      "status": "NO_MEANING_DIFFERENCE_FOUND",
+      "readScope": [
+        "Complete DE/EN/FA three-chapter text: mechanism, all schematic labels, adult ACR specific scenarios, Stener relation/pseudo-yoyo description, every MRI caption/alt and yellow/red arrows, check/options, four take-home points and sources. Shared distal-base phrasing not medically re-adjudicated."
+      ],
+      "findings": []
+    },
+    {
+      "route": "/msk/trauma/unterarmschaftfrakturen",
+      "entry": "app/msk/trauma/unterarmschaftfrakturen/page.js",
+      "group": "msk",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\142-msk--trauma--unterarmschaftfrakturen.txt",
+      "chars": 25253,
+      "status": "REVISE",
+      "readScope": [
+        "Complete DE/EN/FA six-chapter text: anatomy, full imaging checklist, all Bado rows, Galeazzi findings/captions/alt, full report template and sample, treatment/acute/late risks, five take-home points. Prior own displacement-term and EN-reduction edits not independently approved by this self-pass."
+      ],
+      "findings": [
+        {
+          "severity": "minor",
+          "kind": "term omission/unclear referent",
+          "evidence": {
+            "de": "nicht haltbaren Frakturen",
+            "en": "fractures in which reduction cannot be maintained",
+            "fa": "شکستگی ... غیرقابل حفظ"
+          },
+          "description": "FA omits reduction as the object to be maintained, leaving fracture non-preservable. Clarify حفظ جااندازی.",
+          "source": "data/unterarmschaftfrakturen.js / children therapy lesson paragraph"
+        },
+        {
+          "severity": "major",
+          "kind": "certainty strengthened",
+          "evidence": {
+            "de": "sonst droht dauerhafter Verlust",
+            "en": "or permanent loss ... may result",
+            "fa": "در غیر این صورت ... رخ می‌دهد"
+          },
+          "description": "FA take-home makes permanent pronosupination loss certain, where DE/EN state a risk/possible result.",
+          "suggestedFa": "در غیر این صورت خطر از دست‌رفتن دائمی پروناسیون/سوپیناسیون وجود دارد.",
+          "source": "data/unterarmschaftfrakturen.js / final take-home point"
+        }
+      ]
+    },
+    {
+      "route": "/msk/tumoren/aneurysmal-bone-cyst",
+      "entry": "app/msk/tumoren/aneurysmal-bone-cyst/page.js",
+      "group": "msk",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\143-msk--tumoren--aneurysmal-bone-cyst.txt",
+      "chars": 18484,
+      "status": "NO_MEANING_DIFFERENCE_FOUND",
+      "readScope": [
+        "Complete DE/EN/FA four-chapter text: age80%<20 and sites, all sequence/enhancement/extent rows, four image labels/alt and provenance caption, secondary-lesion/malignant-mimic caveats, self-check/options, three take-home statements and all source/molecular numbers36of52/69%/65–70%."
+      ],
+      "findings": []
+    },
+    {
+      "route": "/msk/tumoren/chondrosarkom",
+      "entry": "app/msk/tumoren/chondrosarkom/page.jsx",
+      "group": "msk",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\144-msk--tumoren--chondrosarkom.txt",
+      "chars": 12732,
+      "status": "REVISE",
+      "readScope": [
+        "Complete DE/EN/FA three-chapter text: imaging warning signs and >two-thirds normal-cortex thickness qualification, all modality rows, image alt/case observation distinction, check/options, take-home and comparative-study92/95 counts."
+      ],
+      "findings": [
+        {
+          "severity": "minor",
+          "kind": "untranslated source explanation",
+          "evidence": {
+            "de": "Radiograph and MRI sequence labels follow the source figure. The displayed caption is limited to this case."
+          },
+          "description": "DE source2 evidence-scope explanation remains English; FA version is translated.",
+          "source": "data/chondrosarkomLesson.js / source2"
+        }
+      ]
+    },
+    {
+      "route": "/msk/tumoren/einfache-knochenzyste",
+      "entry": "app/msk/tumoren/einfache-knochenzyste/page.jsx",
+      "group": "msk",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\145-msk--tumoren--einfache-knochenzyste.txt",
+      "chars": 22263,
+      "status": "REVISE",
+      "readScope": [
+        "Complete DE/EN/FA five-chapter text: epidemiology5–15y/2:1/50–60%/25–30%, active/latent source-association versus prognosis, full morphology/DDx/management rows, two image alts and provenance caption, multi-option check, take-home and sources. Own prior DE author repairs independently reviewed elsewhere."
+      ],
+      "findings": [
+        {
+          "severity": "minor",
+          "kind": "literal spatial translation",
+          "evidence": {
+            "de": "nach unten sinken; liegt abhängig in der Läsion",
+            "en": "settle dependently; lies dependently",
+            "fa": "به بخش وابسته سقوط کند; در بخش وابستهٔ ضایعه"
+          },
+          "description": "Gravity-dependent is rendered literally as وابسته, which does not communicate lower/dependent position naturally in Persian. Clarify dependent under gravity.",
+          "source": "data/mskSimpleBoneCystLesson.js / fallen-fragment row and self-check"
+        }
+      ]
+    },
+    {
+      "route": "/msk/tumoren/enchondrom",
+      "entry": "app/msk/tumoren/enchondrom/page.jsx",
+      "group": "msk",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\146-msk--tumoren--enchondrom.txt",
+      "chars": 17981,
+      "status": "REVISE",
+      "readScope": [
+        "Complete DE/EN/FA four-chapter text: all modality/matrix/DDx rows, ACT definition and >two-thirds cortical-depth/>5cm qualifiers, three source cases with sequence-unknown captions/alt, self-check, take-home and references. Own prior DE repairs not independently accepted by self."
+      ],
+      "findings": [
+        {
+          "severity": "minor",
+          "kind": "untranslated source appraisal prose",
+          "evidence": {
+            "de": "Guidance for incidental solitary bone lesions ...; Review of clinical and radiological criteria ...; Cropped from MSK.pdf ...",
+            "fa": "Same English authored source descriptions in sources2–4"
+          },
+          "description": "English evidence-scope/usage descriptions remain in DE/FA sources2–4, including adult solitary scope and imaging warning-feature list.",
+          "source": "data/mskEnchondromLesson.js / source descriptions2–4"
+        }
+      ]
+    },
+    {
+      "route": "/msk/tumoren/enostose",
+      "entry": "app/msk/tumoren/enostose/page.jsx",
+      "group": "msk",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\147-msk--tumoren--enostose.txt",
+      "chars": 12896,
+      "status": "NO_MEANING_DIFFERENCE_FOUND",
+      "readScope": [
+        "Complete DE/EN/FA three-chapter text: all modality/size rows and<1cm/>2cm qualifiers, image alt/caption, known-malignancy and885HU context caveat, written check/options, three take-home statements and all source notes. No independent licensing/diagnostic approval."
+      ],
+      "findings": []
+    },
+    {
+      "route": "/msk/tumoren/eosinophiles-granulom",
+      "entry": "app/msk/tumoren/eosinophiles-granulom/page.jsx",
+      "group": "msk",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\148-msk--tumoren--eosinophiles-granulom.txt",
+      "chars": 19932,
+      "status": "REVISE",
+      "readScope": [
+        "Complete DE/EN/FA four-chapter text: all location/modality patterns, full2yo right-coronal case, all diagram labels/alt, source-versus-supplement distinctions, diagnostic/pathology boundaries, check/options, take-home and sources."
+      ],
+      "findings": [
+        {
+          "severity": "minor",
+          "kind": "untranslated source appraisal prose",
+          "evidence": {
+            "de": "Case report describes ...; retrospective cohort of82 ...; The NCI states ...",
+            "fa": "Same English authored evidence explanations"
+          },
+          "description": "Sources2–4 preserve lengthy English case/cohort/evidence-boundary explanations in DE/FA. These are not only publication titles.",
+          "source": "data/eosinophilesGranulomLesson.js / sources2–4"
+        }
+      ]
+    },
+    {
+      "route": "/msk/tumoren/ewing-sarkom",
+      "entry": "app/msk/tumoren/ewing-sarkom/page.jsx",
+      "group": "msk",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\149-msk--tumoren--ewing-sarkom.txt",
+      "chars": 18171,
+      "status": "NO_MEANING_DIFFERENCE_FOUND",
+      "readScope": [
+        "Complete DE/EN/FA six-chapter text: historical-versus-current classification,10–20y and LodwickII–III clues, full radiograph/MRI/DDx/staging descriptions and limitations, diagram labels, source-image alt/caption, self-check/options, take-home and sources."
+      ],
+      "findings": []
+    },
+    {
+      "route": "/msk/tumoren/fibroese-dysplasie",
+      "entry": "app/msk/tumoren/fibroese-dysplasie/page.jsx",
+      "group": "msk",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\150-msk--tumoren--fibroese-dysplasie.txt",
+      "chars": 19912,
+      "status": "REVISE",
+      "readScope": [
+        "Complete DE/EN/FA five-chapter text:70–80%/20–30% source-not-verified caveat, MAS association, all matrix/cortex/region-DDx rows, both image alt/captions, variable-signal/enhancement pitfall, malignant-warning overlap caveat, self-check/options, take-home and sources. Prior own DE repairs not independently approved by this self-pass."
+      ],
+      "findings": [
+        {
+          "severity": "minor",
+          "kind": "untranslated source appraisal prose",
+          "evidence": {
+            "de": "Consensus guidance; cross-check ...; Review. Describes rapid expansion/new pain ...",
+            "fa": "Same English evidence descriptions"
+          },
+          "description": "Sources2–3 authored evidence/limitations remain English in DE/FA.",
+          "source": "data/mskFibroeseDysplasieLesson.js / sources2–3"
+        }
+      ]
+    },
+    {
+      "route": "/msk/tumoren/intraossaeres-ganglion",
+      "entry": "app/msk/tumoren/intraossaeres-ganglion/page.js",
+      "group": "msk",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\151-msk--tumoren--intraossaeres-ganglion.txt",
+      "chars": 13382,
+      "status": "NO_MEANING_DIFFERENCE_FOUND",
+      "readScope": [
+        "Complete DE/EN/FA four-chapter text: definition/histology and location/symptom rows, possible-not-required joint connection, all sequence/contrast rows and schematic alt/captions, three DDx rows, check/options, take-home and source-limited scope."
+      ],
+      "findings": []
+    },
+    {
+      "route": "/msk/tumoren/intraossaeres-lipom",
+      "entry": "app/msk/tumoren/intraossaeres-lipom/page.js",
+      "group": "msk",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\152-msk--tumoren--intraossaeres-lipom.txt",
+      "chars": 16493,
+      "status": "REVISE",
+      "readScope": [
+        "Complete DE/EN/FA four-chapter text: all Milgram and modality/DDx rows, −60to−100HU qualification, complete source image view task and all five MRI annotation alts, discordance caveats, self-check/options, take-home and sources."
+      ],
+      "findings": [
+        {
+          "severity": "minor",
+          "kind": "untranslated instructional image annotations",
+          "evidence": {
+            "de": "MRT-Panel ... Quellenannotation fatty component / well defined lesion / fibrofatty peripheral rim / signal suppression / central fluid filled cavity",
+            "fa": "پنل MRI ... برچسب اصلی fatty component / well defined lesion / fibrofatty peripheral rim / signal suppression / central fluid filled cavity"
+          },
+          "description": "Original embedded English annotations are intentionally retained, but the accessible DE/FA alt strings repeat them without translating their instructional meaning. Add localised equivalents alongside the original annotation.",
+          "source": "data/mskIntraosseousLipomaLesson.js / five MRI alt values"
+        }
+      ]
+    },
+    {
+      "route": "/msk/tumoren/knochenlymphom",
+      "entry": "app/msk/tumoren/knochenlymphom/page.js",
+      "group": "msk",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\153-msk--tumoren--knochenlymphom.txt",
+      "chars": 21708,
+      "status": "NO_MEANING_DIFFERENCE_FOUND",
+      "readScope": [
+        "Complete DE/EN/FA six-chapter text: variable radiographic patterns, all finding/sequence/staging/DDx bullets, two figure alt/captions and three sequence labels, primary-versus-secondary/6month/WHO2020 qualification, full visible check, four take-home units and source-scope explanations."
+      ],
+      "findings": []
+    },
+    {
+      "route": "/msk/tumoren/knochenmetastasen",
+      "entry": "app/msk/tumoren/knochenmetastasen/page.jsx",
+      "group": "msk",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\154-msk--tumoren--knochenmetastasen.txt",
+      "chars": 17457,
+      "status": "NOT_YET_READ",
+      "readScope": [],
+      "findings": []
+    },
+    {
+      "route": "/msk/tumoren/knochenzeichen",
+      "entry": "app/msk/tumoren/knochenzeichen/page.js",
+      "group": "msk",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\155-msk--tumoren--knochenzeichen.txt",
+      "chars": 18662,
+      "status": "NOT_YET_READ",
+      "readScope": [],
+      "findings": []
+    },
+    {
+      "route": "/msk/tumoren/nicht-ossifizierendes-fibrom",
+      "entry": "app/msk/tumoren/nicht-ossifizierendes-fibrom/page.jsx",
+      "group": "msk",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\156-msk--tumoren--nicht-ossifizierendes-fibrom.txt",
+      "chars": 16230,
+      "status": "NOT_YET_READ",
+      "readScope": [],
+      "findings": []
+    },
+    {
+      "route": "/msk/tumoren/osteoblastom",
+      "entry": "app/msk/tumoren/osteoblastom/page.jsx",
+      "group": "msk",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\157-msk--tumoren--osteoblastom.txt",
+      "chars": 14230,
+      "status": "NOT_YET_READ",
+      "readScope": [],
+      "findings": []
+    },
+    {
+      "route": "/msk/tumoren/osteochondrom",
+      "entry": "app/msk/tumoren/osteochondrom/page.jsx",
+      "group": "msk",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\158-msk--tumoren--osteochondrom.txt",
+      "chars": 15103,
+      "status": "NOT_YET_READ",
+      "readScope": [],
+      "findings": []
+    },
+    {
+      "route": "/msk/tumoren/osteoid-osteom",
+      "entry": "app/msk/tumoren/osteoid-osteom/page.jsx",
+      "group": "msk",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\159-msk--tumoren--osteoid-osteom.txt",
+      "chars": 17557,
+      "status": "NOT_YET_READ",
+      "readScope": [],
+      "findings": []
+    },
+    {
+      "route": "/msk/tumoren/osteom",
+      "entry": "app/msk/tumoren/osteom/page.jsx",
+      "group": "msk",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\160-msk--tumoren--osteom.txt",
+      "chars": 16451,
+      "status": "NOT_YET_READ",
+      "readScope": [],
+      "findings": []
+    },
+    {
+      "route": "/msk/tumoren/osteosarkom",
+      "entry": "app/msk/tumoren/osteosarkom/page.jsx",
+      "group": "msk",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\161-msk--tumoren--osteosarkom.txt",
+      "chars": 20707,
+      "status": "NOT_YET_READ",
+      "readScope": [],
+      "findings": []
+    },
+    {
+      "route": "/msk/tumoren/plasmozytom-myelom",
+      "entry": "app/msk/tumoren/plasmozytom-myelom/page.jsx",
+      "group": "msk",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\162-msk--tumoren--plasmozytom-myelom.txt",
+      "chars": 24913,
+      "status": "NOT_YET_READ",
+      "readScope": [],
+      "findings": []
+    },
+    {
+      "route": "/msk/tumoren/tgct",
+      "entry": "app/msk/tumoren/tgct/page.jsx",
+      "group": "msk",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\163-msk--tumoren--tgct.txt",
+      "chars": 19179,
+      "status": "NOT_YET_READ",
+      "readScope": [],
+      "findings": []
+    }
+  ],
+  "reviewedRouteCount": 50,
+  "assignment": {
+    "author": "This agent manually reads partition indices0–49 only",
+    "parent": "Root reads indices50–59 separately; merge pending"
+  },
+  "ownedScopeComplete": true,
+  "pendingParentMerge": "Root independently read final10 routes in lesson-full-language-msk-root.json; those are deliberately NOT_YET_READ in this child ledger."
+}

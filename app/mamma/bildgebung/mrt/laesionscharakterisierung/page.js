@@ -187,7 +187,7 @@ export default function LesionscharakterisierungPage() {
               <div className={styles.t2Body}>
                 <h3>{tx({ de: 'T2-hyperintens:', en: 'T2 hyperintense:', fa: 'پرسیگنال در T2:' })}<br />{tx({ de: 'häufig wasserreich oder benign', en: 'often water-rich or benign', fa: 'اغلب حاوی آب بیشتر یا خوش‌خیم' })}</h3>
                 <ul><li>{tx({ de: 'Zyste', en: 'Cyst', fa: 'کیست' })}</li><li>{tx({ de: 'viele Fibroadenome', en: 'many fibroadenomas', fa: 'بسیاری از فیبروآدنوم‌ها' })}</li><li>{tx({ de: 'Lymphknoten', en: 'lymph nodes', fa: 'گره‌های لنفاوی' })}</li></ul>
-                <strong className={styles.t2Caveat}>T2 hell ≠ automatisch benign</strong>
+                <strong className={styles.t2Caveat}>{pick({de:'T2 hell ≠ automatisch benign',en:'T2 bright ≠ automatically benign',fa:'پرسیگنالی T2 ≠ الزاماً خوش‌خیم'},lang)}</strong>
                 <p>{tx({ de: 'Auch maligne Tumoren können T2-hyperintens sein, zum Beispiel das muzinöse Karzinom.', en: 'Malignant tumours can also be T2 hyperintense, for example mucinous carcinoma.', fa: 'تومورهای بدخیم نیز می‌توانند در T2 پرسیگنال باشند؛ برای مثال کارسینوم موسینوس.' })}</p>
               </div>
             </article>
@@ -197,7 +197,7 @@ export default function LesionscharakterisierungPage() {
               <div className={styles.t2Body}>
                 <h3>DWI ↑ + ADC ↓</h3>
                 <p>{tx({ de: 'Viele maligne Tumoren besitzen eine hohe Zelldichte und zeigen eine eingeschränkte Diffusion. Das unterstützt den Malignitätsverdacht.', en: 'Many malignant tumours have high cellularity and restricted diffusion, supporting suspicion of malignancy.', fa: 'بسیاری از تومورهای بدخیم به‌دلیل سلولاریته بالا محدودیت دیفیوژن نشان می‌دهند و این یافته از احتمال بدخیمی حمایت می‌کند.' })}</p>
-                <strong className={styles.t2Caveat}>ADC = Zusatzkriterium</strong>
+                <strong className={styles.t2Caveat}>{pick({de:'ADC = Zusatzkriterium',en:'ADC = an additional criterion',fa:'ADC = معیار تکمیلی'},lang)}</strong>
                 <p>{tx({ de: 'Es bestehen deutliche Überschneidungen zwischen benignen und malignen Läsionen. ADC ist kein alleiniger Entscheidungsparameter.', en: 'There is considerable overlap between benign and malignant lesions. ADC is not a standalone decision parameter.', fa: 'هم‌پوشانی قابل‌توجهی میان ضایعات خوش‌خیم و بدخیم وجود دارد؛ بنابراین ADC معیار تصمیم‌گیری مستقل نیست.' })}</p>
               </div>
             </article>

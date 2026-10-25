@@ -1,0 +1,49 @@
+{
+  "scope": "Independent DE/EN/FA semantic review of actual current translation dictionaries and consumer paths; no app/source edits; local checkout only, not live verification.",
+  "counts": {
+    "arvcCopyUnits": 310,
+    "cardiacMriBasicsCopyUnits": 433,
+    "allPairsManuallyRead": 743,
+    "arvcComponentLocaleStatesIndependentlyRerun": 75
+  },
+  "reviewedFields": [
+    "All German source keys with full EN and FA translation values, including prose, captions, alt labels, threshold units, negation and exclusions",
+    "ARVC actual CriteriaExample SSR text in EN/FA for inline fragment composition",
+    "Actual ARVC localizeArvcTree/arvcText consumers and five component boundaries",
+    "Actual CMR cardiacText/translateCardiacMarkdown and MarkdownBlock/TakeHome consumers"
+  ],
+  "sourceHashes": {
+    "app/thorax/kardio/arvc/lessonTranslations.js": "899647c41211221fe27b0db2043f65feb752ef7e9fc591e0edcf33245a7d4c13",
+    "data/cardiacMriBasicsTranslations.js": "f78d1226a5ee5ec66724f9caefd9e2e5e9782f91c123b1141d9193de85a7f052",
+    "app/thorax/kardio/arvc/CriteriaLab.jsx": "856d7b3ccd0428e182e36d4ac23a2c79bb546b607b5030e08d6e24bb9c3523ed"
+  },
+  "findings": [
+    {
+      "id": "LNG-ARVC-FA-COMPOSITION-01",
+      "severity": "minor",
+      "file": "app/thorax/kardio/arvc/lessonTranslations.js",
+      "keys": [
+        "Das Cine aus dem Bildkapitel gehört zu einem",
+        ", untersucht nach einer RVOT-Ablation. Die Originalbeschreibung nennt dyskinetische, aneurysmatische RV-Ausbuchtungen, einen RVEDVi von",
+        "und eine RVEF von"
+      ],
+      "observed": "Actual CriteriaExample FA SSR joins related-to-a-man with duplicate copula است and leaves report measurements without a final Persian verb. Numeric values115mL/m²/41% and clinical interpretation remain correct.",
+      "impact": "Awkward incomplete Persian sentence reduces readability.",
+      "requiredCorrection": "Make sentence coherent in final assembled order; full paragraph localization or coordinated fragments.",
+      "retest": "CLOSED: actual current CriteriaExample FA now complete coherent whole paragraph, no duplicatecopula/missingverb; numeric115mL/m²/41% intact. Independent fresh75states fixture rerun PASS and final FA SSR text personally read. DE branch unchanged; EN retains existing localizer."
+    }
+  ],
+  "gates": {
+    "SRC": "BLOCKED",
+    "EDU": "NOT_APPLICABLE",
+    "VIS": "BLOCKED",
+    "LNG": "PASS",
+    "ASM": "NOT_APPLICABLE",
+    "UX": "BLOCKED",
+    "REV": "PASS"
+  },
+  "boundedAcceptance": "No material semantic inversion or loss identified in743 manually read pairs. ARVC adult regional+global requirement, no doublecount, PaduaLVgenetics, pediatric caution and noLGEexclusion guards preserved. CMR sequence meanings, nativeT1,17segments, artifact exclusions, uncertain/optional protocol statements and nonischemic patterns preserved. Minor rendered FA composition correction now independently closed. Source clinical claims not newly recertified; no browser/RTL visual pass inferred from SSR.",
+  "additionalNarrowRetest": {
+    "thorakolumbalFaTitle": "PASS: both SpineTraumaLesson.jsx and data/spineTrauma.js use شکستگی‌های ستون فقرات سینه‌ای و کمری, accurately covers thoracic and lumbar spine fractures; no German acronym left in title."
+  }
+}

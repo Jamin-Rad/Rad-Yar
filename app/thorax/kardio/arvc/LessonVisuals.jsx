@@ -1,5 +1,8 @@
 'use client'
 
+import { useLanguage } from '@/providers/LanguageProvider'
+import { localizeArvcTree } from './lessonTranslations'
+
 import { useId, useState } from 'react'
 import MriTeaching from './MriTeaching'
 import styles from './page.module.css'
@@ -22,15 +25,21 @@ export function Icon({ name, className }) {
 }
 
 export function Note({ title = 'Merke', children, caution = false }) {
-  return <aside className={`${styles.note} ${caution ? styles.caution : ''}`}><strong>{title}</strong><div>{children}</div></aside>
+  const { lang: _arvcLang } = useLanguage()
+
+  return localizeArvcTree(<aside className={`${styles.note} ${caution ? styles.caution : ''}`}><strong>{title}</strong><div>{children}</div></aside>, _arvcLang)
 }
 
 export function TeachingTable({ caption, headers, rows }) {
-  return <div className={styles.tableScroll} tabIndex={0} role="region" aria-label={caption}><table className={styles.table}><caption>{caption}</caption><thead><tr>{headers.map(label => <th scope="col" key={label}>{label}</th>)}</tr></thead><tbody>{rows.map((row, index) => <tr key={index}>{row.map((cell, col) => col === 0 ? <th scope="row" key={col}>{cell}</th> : <td key={col}>{cell}</td>)}</tr>)}</tbody></table></div>
+  const { lang: _arvcLang } = useLanguage()
+
+  return localizeArvcTree(<div className={styles.tableScroll} tabIndex={0} role="region" aria-label={caption}><table className={styles.table}><caption>{caption}</caption><thead><tr>{headers.map(label => <th scope="col" key={label}>{label}</th>)}</tr></thead><tbody>{rows.map((row, index) => <tr key={index}>{row.map((cell, col) => col === 0 ? <th scope="row" key={col}>{cell}</th> : <td key={col}>{cell}</td>)}</tr>)}</tbody></table></div>, _arvcLang)
 }
 
 // Tabs share a labelled panel and support keyboard navigation.
 export function Tabs({ label, items, selected, onChange, idPrefix }) {
+  const { lang: _arvcLang } = useLanguage()
+
   const uid = useId().replaceAll(':', '')
   const prefix = idPrefix || uid
   const keyDown = (event, index) => {
@@ -38,7 +47,7 @@ export function Tabs({ label, items, selected, onChange, idPrefix }) {
     if (next === null) return
     event.preventDefault(); onChange(next); event.currentTarget.parentElement.children[next].focus()
   }
-  return <div className={styles.tabs} role="tablist" aria-label={label}>{items.map((item, index) => <button type="button" role="tab" key={item.id || item.label} id={`${prefix}-tab-${index}`} aria-controls={`${prefix}-panel`} aria-selected={selected === index} tabIndex={selected === index ? 0 : -1} onClick={() => onChange(index)} onKeyDown={event => keyDown(event, index)}>{item.label}</button>)}</div>
+  return localizeArvcTree(<div className={styles.tabs} role="tablist" aria-label={label}>{items.map((item, index) => <button type="button" role="tab" key={item.id || item.label} id={`${prefix}-tab-${index}`} aria-controls={`${prefix}-panel`} aria-selected={selected === index} tabIndex={selected === index ? 0 : -1} onClick={() => onChange(index)} onKeyDown={event => keyDown(event, index)}>{item.label}</button>)}</div>, _arvcLang)
 }
 
 const PROTOCOL_STEPS = [
@@ -48,13 +57,15 @@ const PROTOCOL_STEPS = [
 ]
 
 export function ProtocolOverview() {
+  const { lang: _arvcLang } = useLanguage()
+
   const [selected, setSelected] = useState(0)
   const step = PROTOCOL_STEPS[selected]
-  return <>
+  return localizeArvcTree(<>
     <ol className={styles.workflow}>{PROTOCOL_STEPS.map((item, index) => <li key={item.id}><button type="button" aria-pressed={selected === index} aria-controls="protocol-reading" onClick={() => setSelected(index)}><span>{index + 1}</span><strong>{item.label}</strong><small>{item.question}</small></button></li>)}</ol>
     <div className={styles.protocolDetail} id="protocol-reading" aria-live="polite"><Icon name="layers"/><div><h3>{step.question}</h3><dl className={styles.details}><div><dt>Welche Aufnahmen?</dt><dd>{step.sequence}</dd></div><div><dt>Worauf achten?</dt><dd>{step.look}</dd></div><div><dt>Häufiger Fehler</dt><dd>{step.trap}</dd></div></dl></div></div>
     <p className={styles.caption}>T1-/T2-Mapping kann bei einer zusätzlichen Gewebefrage ergänzen. Für den ersten Überblick bleiben Cine, Kammerfunktion und LGE die drei Grundbausteine.</p>
-  </>
+  </>, _arvcLang)
 }
 
 const MRI_VIEWS = [
@@ -64,8 +75,10 @@ const MRI_VIEWS = [
 ]
 
 export function MrtOverview() {
+  const { lang: _arvcLang } = useLanguage()
+
   const [selected, setSelected] = useState(0)
-  return <>
+  return localizeArvcTree(<>
     <div className={styles.explorer}>
       <Tabs label="MRT-Beispiele auswählen" items={MRI_VIEWS} selected={selected} onChange={setSelected} idPrefix="mri-overview"/>
       <div id="mri-overview-panel" role="tabpanel" aria-labelledby={`mri-overview-tab-${selected}`}><MriTeaching key={MRI_VIEWS[selected].id} scene={MRI_VIEWS[selected].scene}/></div>
@@ -84,5 +97,5 @@ export function MrtOverview() {
       ['Nur an septalen RV-Insertionspunkten', 'Dieses isolierte Muster zählt nach Padua nicht als LV-LGE-Kriterium.'],
     ]}/>
     <Note title="Was die Originalbilder zeigen">Die beiden PSIR-Ansichten gehören zum selben Patienten. Die Orientierungspunkte zeigen die Kammerhöhlen, nicht die Ausdehnung einer Narbe. Das vollständige Muster in den Originalserien beurteilen.</Note>
-  </>
+  </>, _arvcLang)
 }

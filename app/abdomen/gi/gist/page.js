@@ -76,7 +76,7 @@ export default function GistLessonPage() {
     ['/educational/gist/pdf-p68-axial-2.png', c.labels[1], c.alts[1]],
     ['/educational/gist/pdf-p68-coronal.png', c.labels[2], c.alts[2]],
   ]
-  return <LessonReferenceShell lessonId="abdomen-gist" title={c.title} diagram="gist" goals={c.goals} check={check} lessonCopy={{ contentTitle: c.contentTitle }} summary={c.takeHome} quizHref="/ueben/quiz?fach=abdomen&n=10&themen=gist" flashcardsHref="/flashcards/gist?topic=gist">
+  return <LessonReferenceShell lang={lang} lessonId="abdomen-gist" title={c.title} diagram="gist" goals={c.goals} check={check} lessonCopy={{ contentTitle: c.contentTitle }} summary={c.takeHome} quizHref="/ueben/quiz?fach=abdomen&n=10&themen=gist" flashcardsHref="/flashcards/gist?topic=gist">
     <div className={styles.lesson}>
       <p className={styles.lead}>{c.lead}</p>
       <section className={styles.section}><h3>{c.patternTitle}</h3><ul>{c.bullets.map(x => <li key={x}>{x}</li>)}</ul></section>

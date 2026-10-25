@@ -1,0 +1,144 @@
+{
+  "date": "2026-10-25",
+  "reviewer": "/root/remove_lesson_notice",
+  "role": "Independent read-only reviewer of root-authored bounded deltas; not author of reviewed changes",
+  "status": "PASS_BOUNDED",
+  "blockingFindings": [],
+  "productionEdits": [],
+  "manifests": [
+    "root-fulltext-author-manifest.json",
+    "root-clinical-renderer-manifest.json",
+    "root-followup-language-manifest.json"
+  ],
+  "scope": [
+    {
+      "group": "Mamma exact translation repairs",
+      "files": [
+        "app/mamma/bildgebung/mammographie/grundlagen/page.js",
+        "app/mamma/bildgebung/mammographie/grundlagen/content.js",
+        "app/mamma/bildgebung/mrt/besondere-mammakarzinome/content.js",
+        "app/mamma/bildgebung/mrt/kaiser-score/page.js",
+        "app/mamma/bildgebung/mrt/basics/content.js",
+        "app/mamma/bildgebung/mrt/laesionscharakterisierung/page.js"
+      ],
+      "result": "PASS",
+      "evidence": "Read changed DE/EN/FA literal units and immediate context. Calcification terminology, uncertain-vs-positive distinction, thick rim enhancement, ADC restriction, redundant postcontrast phrase and localized T2/ADC headings preserve intended meanings. No new cutoff, polarity inversion or omitted constraint in these deltas."
+    },
+    {
+      "group": "Calcification MRI/biopsy table",
+      "files": [
+        "app/mamma/bildgebung/mammographie/verkalkungen/page.js",
+        "app/mamma/bildgebung/mammographie/verkalkungen/translations.js"
+      ],
+      "result": "PASS",
+      "evidence": "Read actual active table and explanatory paragraph, DE source and complete EN/FA mappings. Confirmed 4A/4B/4C/5 tissue-diagnosis recommendation retained despite negative MRI; selected pure microcalcifications/no associated findings and <=22% pretest research qualification preserved, with no blanket 12-month or 4B biopsy exemption. Older CALC_META.mri copy remains unused by renderer; current result card uses label/risk/action, not mri. This is not independent validation of calculator algorithm."
+    },
+    {
+      "group": "Current LessonHero text normalization",
+      "files": [
+        "components/LessonHero.jsx"
+      ],
+      "result": "PASS",
+      "evidence": "Reviewed latest source after manifest: textContent(title) used for designed illustration, textContent(imageAlt||title) for original source. Actual function recursively extracts React children without mutating h1. Six actual-component SSR fixture cases (nested JSX title, separate original source alt, DE/EN/FA) pass and preserve strong markup. No [object Object]."
+    },
+    {
+      "group": "Dosimetry missing prompt",
+      "files": [
+        "app/technik/dosimetrie/page.jsx",
+        "data/technikDosimetrieLesson.js"
+      ],
+      "result": "PASS",
+      "evidence": "Exact stable decision ID exists with all3 task translations. Current renderer resolves that ID rather than wrong positional chapter. Read all3 question/options; DLP-doubling answer and organ-dose limitation unchanged. Actual 3 locale SSR contains scan-length prompt."
+    },
+    {
+      "group": "ADPKD DE alt",
+      "files": [
+        "data/adpkdImagingLesson.js"
+      ],
+      "result": "PASS",
+      "evidence": "Read complete visualAlt triad: schematic enlarged kidneys/multiple cysts/possible liver cyst/non-diagnostic qualification match."
+    },
+    {
+      "group": "Pancreatic direction and pseudocyst cave",
+      "files": [
+        "data/questions.js",
+        "app/abdomen/pankreas/pankreatitis/page.js",
+        "app/abdomen/pankreas/zystische-tumoren/page.js"
+      ],
+      "result": "PASS",
+      "evidence": "Read changed option/row with DE/EN/FA context. Upstream tail atrophy corrects English directional inversion; DE/FA tail-atrophy statements preserved. Complete pseudocyst cave triad now allows duct communication and says it alone cannot distinguish IPMN, preserving inflammatory-context and morphology assessment. Primary pseudocyst cohorts independently confirm communication may be present. No inferred management protocol."
+    },
+    {
+      "group": "Five follow-up language repairs",
+      "files": [
+        "data/mskOsteoidOsteomLesson.js",
+        "data/mskOsteochondromLesson.js",
+        "data/osteoblastomLesson.js",
+        "data/sab.js",
+        "data/hypertensive-mikroangiopathie.js"
+      ],
+      "result": "PASS",
+      "evidence": "Read current changed clause triads: spine rather than spinal cord; florid meaning prominent rather than colour; long bones also rather than all remainder; SAB Fisher highest-category/clinical-monitoring limitation aligns DEEN and removes isolated40% FA prediction; posterior internal-capsule limb and pure motor/no sensory-loss preserved. No independent revalidation of whole SAB scale or source40% osteoblastoma distribution."
+    },
+    {
+      "group": "Earlier root spine deltas",
+      "files": [
+        "data/spinaleArachnoiditisLesson.js",
+        "app/wirbelsaeule/trauma/SpineTraumaLesson.jsx",
+        "data/spineDegenerativeCompletion.js",
+        "data/neuroforamenstenoseLesson.js"
+      ],
+      "result": "PASS",
+      "evidence": "Read Arachnoiditis complete intro triad and changed leads; FA cervical/thoracolumbar labels versus DE/EN and actual region-map conditional; DISH flowing ossification clause complete triad; neutral Lee chapter and selfcheck title with actual prompt/options. Root changes localize copy without changing grading answer, region, IDs or physical meaning."
+    }
+  ],
+  "runtime": {
+    "routeCount": 9,
+    "localeCount": 3,
+    "actualRouteGraphSSRPassed": 27,
+    "report": "root-delta-independent-ssr.json",
+    "heroCasesPassed": 6,
+    "heroReport": "root-hero-text-independent-test.json",
+    "dosimetryPromptAssertions": 3,
+    "fixtures": "Only browser/session/CSS and dependency boundaries supplied; authored components and shared shells execute."
+  },
+  "sources": [
+    {
+      "url": "https://www.acr.org/-/media/ACR/Files/RADS/BI-RADS/Mammography-Reporting.pdf",
+      "type": "Official ACR reporting table",
+      "access": "Indexed PDF excerpt read; direct URL redirects.",
+      "supports": "Category4 and5 tissue diagnosis, not automatic negative-MRI exemption."
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7907894/",
+      "type": "Published original systematic review/meta-analysis",
+      "access": "Indexed section3.5 and abstract read; direct PMC endpoint intermittent recaptcha.",
+      "supports": "Pure microcalcifications without associated findings subgroup <=22% pretest gives <=2% posttest probability; research estimate not blanket practice recommendation."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/2919583/",
+      "type": "Primary retrospective cohort",
+      "access": "Complete indexed abstract read.",
+      "supports": "Duct communication observed in proven pseudocysts; no standalone exclusion."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/1913122/",
+      "type": "Primary clinical/radiographic cohort",
+      "access": "Complete abstract read.",
+      "supports": "Pseudocyst duct communication variable between patient groups, may be frequent/present."
+    },
+    {
+      "url": "https://link.springer.com/article/10.1186/s40644-020-00324-z",
+      "type": "Narrative imaging review, NOT primary cohort",
+      "access": "Publisher source read with upstream-direction context.",
+      "supports": "Directional terminology only; not primary validation of all differential-diagnosis claims."
+    }
+  ],
+  "limits": [
+    "Exact deltas and immediate context reviewed, not all words/hidden interactions of these entire lessons.",
+    "Actual SSR proves rendered content/structure in fixtures, not browser styling, loaded media, client interactions, authorization or release readiness.",
+    "No new review of all clinical statements, numerical thresholds, calculator scoring or management pathways.",
+    "No global234-lesson language/scientific PASS. Existing broad review findings and bank ambiguities remain open in their separate ledgers.",
+    "Reviewer made no production edits. Own earlier MSK and neuro author changes excluded from independent acceptance here."
+  ]
+}

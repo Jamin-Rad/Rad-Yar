@@ -54,8 +54,8 @@ export const FRAKTUR_KINDER_LESSON = {
         title: L('Periost', 'Periosteum', 'پریوست'),
         text: L(
           'Dicker, gefäßreicher Periostmantel → schützt vor vollständiger Dislokation, beschleunigt Heilung und fördert Kallusbildung.',
-          'Thick, vascular periosteal sleeve → protects against complete dislocation, accelerates healing, and promotes callus formation.',
-          'پوشش پریوست ضخیم و عروقی → از دررفتگی کامل محافظت می‌کند، ترمیم را تسریع می‌کند و تشکیل کالوس را تقویت می‌نماید.'
+          'Thick, vascular periosteal sleeve → helps prevent complete displacement of the fracture fragments, accelerates healing, and promotes callus formation.',
+          'پوشش پریوست ضخیم و عروقی → به جلوگیری از جابه‌جایی کامل قطعات شکستگی کمک می‌کند، ترمیم را تسریع می‌کند و تشکیل کالوس را تقویت می‌نماید.'
         ),
       },
       {
@@ -441,7 +441,7 @@ export const FRAKTUR_KINDER_QUESTIONS = Object.fromEntries(['de', 'en', 'fa'].ma
     [
       L('Typ I', 'Type I', 'نوع I')[lang],
       L('Typ II', 'Type II', 'نوع II')[lang],
-      L('Typ IV (und V)', 'Type IV (and V)', 'نوع IV (و V)')[lang],
+      L('Typ IV', 'Type IV', 'نوع IV')[lang],
       L('Typ III', 'Type III', 'نوع III')[lang],
     ],
     2,
@@ -638,7 +638,7 @@ export const FRAKTUR_KINDER_FLASHCARDS = [
 
   F('fk-fc-periost', L('Grundlagen', 'Basics', 'مبانی'),
     L('Warum hat der kindliche Periostmantel protektive Funktion bei Frakturen?', 'Why does the paediatric periosteal sleeve have a protective function in fractures?', 'چرا پوشش پریوست کودکانه نقش محافظتی در شکستگی‌ها دارد؟'),
-    L('Dicker, gefäßreicher Periostmantel: 1) verhindert vollständige Dislokation (wirkt wie Scharnier), 2) liefert Osteoprogenitorzellen für schnelle Kallusbildung, 3) bewirkt rasche Heilung.', 'Thick, vascular periosteal sleeve: 1) prevents complete dislocation (acts as a hinge), 2) supplies osteoprogenitor cells for rapid callus formation, 3) results in rapid healing.', 'پوشش پریوست ضخیم و عروقی: ۱) از دررفتگی کامل جلوگیری می‌کند (مثل لولا عمل می‌کند)، ۲) سلول‌های استئوپروژنیتور برای تشکیل سریع کالوس تأمین می‌کند، ۳) ترمیم سریع را موجب می‌شود.'),
+    L('Dicker, gefäßreicher Periostmantel: 1) verhindert vollständige Dislokation (wirkt wie Scharnier), 2) liefert Osteoprogenitorzellen für schnelle Kallusbildung, 3) bewirkt rasche Heilung.', 'Thick, vascular periosteal sleeve: 1) helps prevent complete displacement of the fracture fragments (acts as a hinge), 2) supplies osteoprogenitor cells for rapid callus formation, 3) results in rapid healing.', 'پوشش پریوست ضخیم و عروقی: ۱) به جلوگیری از جابه‌جایی کامل قطعات شکستگی کمک می‌کند (مثل لولا عمل می‌کند)، ۲) سلول‌های استئوپروژنیتور برای تشکیل سریع کالوس تأمین می‌کند، ۳) ترمیم سریع را موجب می‌شود.'),
     L('Periost bei Kindern = protektiver, regenerativer Mantel.', 'Periosteum in children = protective, regenerative sleeve.', 'پریوست در کودکان = پوشش محافظ و بازسازنده.')
   ),
 

@@ -1,0 +1,46 @@
+{
+  "date": "2026-10-25",
+  "changes": [
+    {
+      "file": "app/technik/dosimetrie/page.jsx",
+      "before": "pick(lesson.chapters[3].task, lang)",
+      "after": "pick(lesson.chapters.find(chapter => chapter.id === 'decision')?.task, lang)"
+    },
+    {
+      "file": "data/adpkdImagingLesson.js",
+      "before": "visualAlt: L('شماتیک دو کلیهٔ بزرگ‌شده با کیست‌های متعدد و یک کیست کبدی احتمالی؛ تصویر تشخیصی نیست.'",
+      "after": "visualAlt: L('Konzeptuelle Skizze vergrößerter Nieren mit mehreren Zysten und einer möglichen Leberzyste; keine diagnostische Bildgebung.'"
+    },
+    {
+      "file": "data/questions.js",
+      "before": "downstream tail atrophy",
+      "after": "upstream tail atrophy"
+    },
+    {
+      "file": "app/abdomen/pankreas/pankreatitis/page.js",
+      "before": "downstream tail atrophy",
+      "after": "upstream tail atrophy"
+    },
+    {
+      "file": "app/abdomen/pankreas/zystische-tumoren/page.js",
+      "before": "Die Anamnese allein schließt eine zystische Neoplasie nicht aus. Bei fehlendem passenden Kontext oder Gangbezug die Läsion nicht vorschnell als Pseudozyste etikettieren.",
+      "after": "Die Anamnese allein schließt eine zystische Neoplasie nicht aus. Eine Gangkommunikation kann auch bei Pseudozysten vorkommen und trennt sie allein nicht sicher von einer IPMN. Entzündungskontext und gesamte Morphologie gemeinsam beurteilen."
+    },
+    {
+      "file": "app/abdomen/pankreas/zystische-tumoren/page.js",
+      "before": "History alone does not exclude a cystic neoplasm. Without a fitting context or when duct communication is present, do not label the lesion a pseudocyst prematurely.",
+      "after": "History alone does not exclude a cystic neoplasm. Pseudocysts may also communicate with the pancreatic duct, so communication alone does not reliably distinguish them from IPMN. Assess the inflammatory context and the full morphology together."
+    },
+    {
+      "file": "app/abdomen/pankreas/zystische-tumoren/page.js",
+      "before": "شرح‌حال به‌تنهایی نئوپلاسم کیستیک را رد نمی‌کند. اگر زمینه مناسب نیست یا ارتباط مجرایی وجود دارد، زودهنگام ضایعه را پسودوسیست ننامید.",
+      "after": "شرح‌حال به‌تنهایی نئوپلاسم کیستیک را رد نمی‌کند. پسودوسیست نیز ممکن است با مجرای پانکراس ارتباط داشته باشد؛ بنابراین ارتباط مجرایی به‌تنهایی آن را با اطمینان از IPMN جدا نمی‌کند. زمینهٔ التهاب و مجموعهٔ ویژگی‌های مورفولوژیک را با هم ارزیابی کنید."
+    }
+  ],
+  "sources": [
+    "https://pubmed.ncbi.nlm.nih.gov/32630180/",
+    "https://pubmed.ncbi.nlm.nih.gov/2919583/",
+    "https://pubmed.ncbi.nlm.nih.gov/1913122/"
+  ],
+  "scope": "Restore missing dosimetry question via stable chapterID; localize ADPKD alt; correct upstream direction; remove inverted cystic-lesion cave and clarify communication does not alone distinguish pseudocyst/IPMN. Existing broader assessment ambiguity still requires separately reviewed rewrite."
+}

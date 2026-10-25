@@ -30,7 +30,7 @@ export const WRIST_EXTENSOR_COMPARTMENTS_LESSON = {
         'نمای شماتیک پشتی کارپ از MSK.pdf: استخوان‌های کارپ برچسب‌گذاری شده‌اند و خطوط رنگی مفاصل بین‌متاکارپی، کارپومتاکارپی، بین‌کارپی، میدکارپی و رادیوکارپی و نیز مفصل کارپومتاکارپی شست را نشان می‌دهند.'
       ),
       imageCaption: L(
-        'MSK.pdf، PDF-S. 40 (Druck-S. 39)، dorsale Ansicht. Die farbigen Linien markieren Gelenkspalten; sie sind keine MRT-Ebenen.',
+        "MSK.pdf, PDF-S. 40 (Druck-S. 39), dorsale Ansicht. Farbige Linien markieren Gelenkspalten; sie sind keine MRT-Ebenen.",
         'MSK.pdf, PDF p. 40 (printed p. 39), dorsal view. Coloured lines mark joint spaces; they are not MRI planes.',
         'MSK.pdf، صفحهٔ ۴۰ PDF (چاپی ۳۹)، نمای پشتی. خطوط رنگی فواصل مفصلی را مشخص می‌کنند و صفحه‌های MRI نیستند.'
       ),
@@ -72,7 +72,7 @@ export const WRIST_EXTENSOR_COMPARTMENTS_LESSON = {
         'برش MRI محوریِ برچسب‌گذاری‌شده از مچ دست: کمپارتمان‌های I تا VI و تاندون‌های APL، EPB، ECRL، ECRB، EPL، EDC، EIP، EDM و ECU پیرامون رادیوس و اولنا مشخص شده‌اند.'
       ),
       imageCaption: L(
-        'MSK.pdf، صفحهٔ PDF ۴۱ (چاپی ۴۰)، نمای محوری MRI برای جهت‌یابی کمپارتمان‌ها. این تصویر نقشهٔ آناتومیک است، نه کیس پاتولوژی.',
+        "MSK.pdf, PDF-S. 41 (Druck-S. 40), axiale MRT zur Orientierung der Sehnenfächer. Dies ist eine anatomische Übersicht, kein pathologischer Fall.",
         'MSK.pdf, PDF p.41 (printed p.40), axial MRI for compartment orientation. This is an anatomic map, not a pathology case.',
         'MSK.pdf، صفحهٔ PDF ۴۱ (چاپی ۴۰)، MRI محوری برای جهت‌یابی کمپارتمان‌ها. این تصویر نقشهٔ آناتومیک است، نه کیس پاتولوژیک.'
       ),

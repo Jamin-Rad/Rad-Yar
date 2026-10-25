@@ -471,7 +471,7 @@ export const SAB_LESSON = {
         text: L(
           'Blutdicke (<1 mm vs. ≥1 mm) + IVH (ja/nein) → Grad 0–4. Grad 4 = dick + IVH und höchste Kategorie der Skala; die Skala ersetzt keine klinische Überwachung.',
           'Blood thickness (<1 mm vs. ≥1 mm) + IVH (yes/no) → grades 0–4. Grade 4 = thick blood + IVH and the scale’s highest category; the scale does not replace clinical monitoring.',
-          'ضخامت خون (<۱ mm در مقابل ≥۱ mm) + IVH (بله/خیر) → درجه ۰ تا ۴. درجه ۴ = خون ضخیم + IVH و در اعتبارسنجی اولیه بیشترین خطر را داشت (حدود ۴۰٪).'
+          'ضخامت خون (<۱ mm در مقابل ≥۱ mm) + IVH (بله/خیر) → درجه ۰ تا ۴. درجه ۴ = خون ضخیم + IVH و بالاترین دستهٔ این مقیاس است؛ مقیاس جایگزین پایش بالینی نمی‌شود.'
         ),
       },
       {

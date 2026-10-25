@@ -1,0 +1,269 @@
+{
+  "scope": "Bounded mirrors of independently source-verified assessment corrections only. No complete clinical approval.",
+  "files": [
+    "data/radiuskopf.js",
+    "app/msk/schulter/rotatorenmanschette/page.js"
+  ],
+  "changes": [
+    {
+      "file": "data/radiuskopf.js",
+      "key": "anatomie.items.2.text.de",
+      "before": "Der N. interosseus posterior (Ast des N. radialis) verläuft in direkter Nachbarschaft zum Radiusköpfchen. Verletzungs- und Operationsrisiko beachten – Verletzung → Extensionsparesen der Hand.",
+      "after": "Der N. interosseus posterior verläuft nahe dem Radiusköpfchen und kann bei der Operation verletzt werden. Eine isolierte Läsion schwächt die Finger- und Daumenextension ohne kutanen Sensibilitätsausfall. Die Handgelenkextension bleibt durch den erhaltenen M. extensor carpi radialis longus typischerweise möglich, gegebenenfalls mit Radialabweichung.",
+      "reason": "Mirror independently verified PIN deficit qualification; isolated finger/thumb extension weakness, wrist extension usually preserved."
+    },
+    {
+      "file": "data/radiuskopf.js",
+      "key": "anatomie.items.2.text.en",
+      "before": "The posterior interosseous nerve (branch of the radial nerve) runs in close proximity to the radial head. Consider injury and surgical risk – damage leads to wrist and finger extension paresis.",
+      "after": "The posterior interosseous nerve runs near the radial head and may be injured during surgery. An isolated lesion weakens finger and thumb extension without cutaneous sensory loss. Wrist extension is typically preserved by the spared extensor carpi radialis longus, sometimes with radial deviation.",
+      "reason": "Mirror independently verified PIN deficit qualification; isolated finger/thumb extension weakness, wrist extension usually preserved."
+    },
+    {
+      "file": "data/radiuskopf.js",
+      "key": "anatomie.items.2.text.fa",
+      "before": "عصب بین‌استخوانی خلفی (شاخه عصب رادیال) در مجاورت مستقیم سر رادیوس قرار دارد. خطر آسیب و جراحی را در نظر بگیرید – آسیب → فلج اکستانسوری مچ و انگشتان.",
+      "after": "عصب بین‌استخوانی خلفی نزدیک سر رادیوس می‌گذرد و ممکن است هنگام جراحی آسیب ببیند. آسیب منفرد آن اکستنشن انگشتان و شست را بدون نقص حسی پوستی ضعیف می‌کند. اکستنشن مچ معمولاً به‌واسطهٔ حفظ عضلهٔ اکستانسور کارپی رادیالیس لونگوس باقی می‌ماند و ممکن است با انحراف رادیال همراه باشد.",
+      "reason": "Mirror independently verified PIN deficit qualification; isolated finger/thumb extension weakness, wrist extension usually preserved."
+    },
+    {
+      "file": "data/radiuskopf.js",
+      "key": "anatomie.items.3.text.de",
+      "before": "Eine Linie durch die Längsachse des Radius muss in allen Projektionen und Flexionsgraden durch den Mittelpunkt des Capitulum humeri verlaufen. Abweichung → Radiusköpfchenluxation (Mason IV oder Monteggia).",
+      "after": "Eine entlang des Radiushalses gezogene Linie ist im echten Seitenbild die verlässlichere Orientierung. Bei Kindern beeinflussen Alter, Ossifikation und Projektion die Beziehung zum Capitulum; selbst eine normale Linie trifft nicht immer dessen Zentrum. Fehlende Deckung erfordert eine Prüfung der Technik und der gesamten Gelenkstellung, beweist allein aber keine Luxation.",
+      "reason": "Mirror approved RCL neck-axis/lateral/age/projection qualification."
+    },
+    {
+      "file": "data/radiuskopf.js",
+      "key": "anatomie.items.3.text.en",
+      "before": "A line along the long axis of the radius must pass through the centre of the capitellum on all projections and at all degrees of flexion. Deviation → radial head dislocation (Mason IV or Monteggia).",
+      "after": "A line along the radial neck on a true lateral view is the more reliable reference. In children, age, ossification and projection affect its relationship to the capitellum; a normal line does not invariably cross its centre. Nonintersection warrants checking technique and overall joint alignment but does not alone prove dislocation.",
+      "reason": "Mirror approved RCL neck-axis/lateral/age/projection qualification."
+    },
+    {
+      "file": "data/radiuskopf.js",
+      "key": "anatomie.items.3.text.fa",
+      "before": "خطی در امتداد محور طولی رادیوس باید در تمام نماها و درجات خم شدن از مرکز کاپیتولوم هومروس عبور کند. انحراف → لوکساسیون سر رادیوس (ماسون IV یا مونتگیا).",
+      "after": "خط در امتداد گردن رادیوس در نمای لترال واقعی مرجع قابل‌اتکاتری است. در کودکان، سن، استخوانی‌شدن و نما بر رابطهٔ خط با کاپیتولوم اثر دارند؛ خط طبیعی نیز همیشه از مرکز آن عبور نمی‌کند. عبور نکردن خط نیازمند بررسی تکنیک و هم‌راستایی کلی مفصل است، اما به‌تنهایی دررفتگی را ثابت نمی‌کند.",
+      "reason": "Mirror approved RCL neck-axis/lateral/age/projection qualification."
+    },
+    {
+      "file": "data/radiuskopf.js",
+      "key": "bildgebung.rcLine.images.0.caption.de",
+      "before": "Radiocapitellar Line: Linie durch Radiusschaft-Mitte muss durch Capitulum-Mitte verlaufen – in jeder Projektion und jedem Flexionsgrad",
+      "after": "Radiocapitellar Line zur Orientierung prüfen. Eine Linie entlang des Radiushalses ist im echten Seitenbild verlässlicher; bei Kindern Alter, Ossifikation und Projektion beachten. Fehlende Deckung beweist allein keine Luxation.",
+      "reason": "Remove universal rule from instructional caption/alt."
+    },
+    {
+      "file": "data/radiuskopf.js",
+      "key": "bildgebung.rcLine.images.0.caption.en",
+      "before": "Radiocapitellar line: line through the centre of the radial shaft must pass through the centre of the capitellum – in every projection and degree of flexion",
+      "after": "Check the radiocapitellar line for orientation. A radial-neck line on a true lateral view is more reliable; in children consider age, ossification and projection. Nonintersection alone does not prove dislocation.",
+      "reason": "Remove universal rule from instructional caption/alt."
+    },
+    {
+      "file": "data/radiuskopf.js",
+      "key": "bildgebung.rcLine.images.0.caption.fa",
+      "before": "خط رادیوکاپیتلار: خط از مرکز تنه رادیوس باید از مرکز کاپیتولوم عبور کند – در هر نما و هر درجه خم شدن",
+      "after": "خط رادیوکاپیتلار را برای جهت‌یابی بررسی کنید. خط در امتداد گردن رادیوس در نمای لترال واقعی قابل‌اتکاتر است؛ در کودکان سن، استخوانی‌شدن و نما را لحاظ کنید. عبور نکردن خط به‌تنهایی دررفتگی را ثابت نمی‌کند.",
+      "reason": "Remove universal rule from instructional caption/alt."
+    },
+    {
+      "file": "data/radiuskopf.js",
+      "key": "bildgebung.fettkissen.items.1.title.de",
+      "before": "Posteriores Fettkissen – immer pathologisch",
+      "after": "Posteriores Fettkissen – Ergusszeichen",
+      "reason": "Effusion sign is not automatic fracture classification."
+    },
+    {
+      "file": "data/radiuskopf.js",
+      "key": "bildgebung.fettkissen.items.1.title.en",
+      "before": "Posterior fat pad – always pathological",
+      "after": "Posterior fat pad – effusion sign",
+      "reason": "Effusion sign is not automatic fracture classification."
+    },
+    {
+      "file": "data/radiuskopf.js",
+      "key": "bildgebung.fettkissen.items.1.title.fa",
+      "before": "بالشتک چربی خلفی – همیشه پاتولوژیک",
+      "after": "بالشتک چربی خلفی – نشانهٔ افیوژن",
+      "reason": "Effusion sign is not automatic fracture classification."
+    },
+    {
+      "file": "data/radiuskopf.js",
+      "key": "bildgebung.fettkissen.items.1.text.de",
+      "before": "Im Normal-Röntgen NICHT sichtbar. Jedes sichtbare posteriore Fettkissen = Gelenkerguss → Fraktur ausschließen, auch wenn knöcherner Befund unauffällig.",
+      "after": "Ein sichtbares posteriores Fettkissen im echten Seitenbild spricht für einen Gelenkerguss. Nach Trauma ist eine okkulte Fraktur möglich; das Zeichen legt weder Frakturort noch Mason-Typ fest.",
+      "reason": "Mirror approved fatpad qualification."
+    },
+    {
+      "file": "data/radiuskopf.js",
+      "key": "bildgebung.fettkissen.items.1.text.en",
+      "before": "NOT visible on normal X-ray. Any visible posterior fat pad = joint effusion → exclude fracture, even if bony finding is unremarkable.",
+      "after": "A visible posterior fat pad on a true lateral view supports joint effusion. After trauma an occult fracture is possible; the sign establishes neither fracture location nor Mason type.",
+      "reason": "Mirror approved fatpad qualification."
+    },
+    {
+      "file": "data/radiuskopf.js",
+      "key": "bildgebung.fettkissen.items.1.text.fa",
+      "before": "در رادیوگرافی طبیعی قابل مشاهده نیست. هر بالشتک چربی خلفی قابل مشاهده = افیوژن مفصلی → شکستگی را رد کنید، حتی اگر یافته استخوانی طبیعی باشد.",
+      "after": "دیده‌شدن بالشتک چربی خلفی در نمای لترال واقعی به نفع افیوژن مفصل است. پس از تروما شکستگی پنهان ممکن است؛ این علامت نه محل شکستگی و نه نوع ماسون را تعیین می‌کند.",
+      "reason": "Mirror approved fatpad qualification."
+    },
+    {
+      "file": "data/radiuskopf.js",
+      "key": "bildgebung.cave.de",
+      "before": "Okkulte Frakturen (Mason I): Röntgen kann normal sein – nur das posteriore Fettkissenzeichen gibt den Hinweis. Bei klinischem Verdacht und isoliertem Fettkissenzeichen → Radiusköpfchenfraktur bis zum Beweis des Gegenteils.",
+      "after": "Bei Erwachsenen mit akutem Trauma, fortbestehendem Frakturverdacht und normalem oder unklarem Röntgen kommen je nach klinischer Frage eine Röntgenkontrolle nach 10–14 Tagen oder CT ohne Kontrastmittel infrage. Ein isoliertes Fettkissenzeichen beweist keine Radiusköpfchenfraktur und ordnet keine Mason-I-Behandlung an.",
+      "reason": "Mirror ACR adult Variant2 already verified bank qualification."
+    },
+    {
+      "file": "data/radiuskopf.js",
+      "key": "bildgebung.cave.en",
+      "before": "Occult fractures (Mason I): X-ray may appear normal – only the posterior fat pad sign gives the clue. With clinical suspicion and isolated fat pad sign → radial head fracture until proven otherwise.",
+      "after": "In adults after acute trauma with persistent fracture suspicion and normal or indeterminate radiographs, repeat radiographs after 10–14 days or noncontrast CT may be appropriate for the clinical question. An isolated fat pad sign does not prove a radial-head fracture or prescribe Mason I treatment.",
+      "reason": "Mirror ACR adult Variant2 already verified bank qualification."
+    },
+    {
+      "file": "data/radiuskopf.js",
+      "key": "bildgebung.cave.fa",
+      "before": "شکستگی‌های پنهان (ماسون I): رادیوگرافی ممکن است طبیعی به نظر برسد – فقط نشانه بالشتک چربی خلفی راهنما است. با ظن بالینی و نشانه بالشتک چربی به‌تنهایی → شکستگی سر رادیوس تا زمانی که خلاف آن ثابت نشود.",
+      "after": "در بزرگسالان پس از ترومای حاد با تداوم شک به شکستگی و رادیوگرافی طبیعی یا نامشخص، بر اساس پرسش بالینی می‌توان رادیوگرافی پیگیری پس از ۱۰ تا ۱۴ روز یا CT بدون کنتراست را در نظر گرفت. علامت منفرد بالشتک چربی شکستگی سر رادیوس را ثابت نمی‌کند و درمان ماسون I را تجویز نمی‌کند.",
+      "reason": "Mirror ACR adult Variant2 already verified bank qualification."
+    },
+    {
+      "file": "data/radiuskopf.js",
+      "key": "takehome.items.0.title.de",
+      "before": "Posteriores Fettkissen = Fraktur",
+      "after": "Posteriores Fettkissen: Erguss und Frakturverdacht",
+      "reason": "Remove fatpad=fracture title."
+    },
+    {
+      "file": "data/radiuskopf.js",
+      "key": "takehome.items.0.title.en",
+      "before": "Posterior fat pad = fracture",
+      "after": "Posterior fat pad: effusion and fracture suspicion",
+      "reason": "Remove fatpad=fracture title."
+    },
+    {
+      "file": "data/radiuskopf.js",
+      "key": "takehome.items.0.title.fa",
+      "before": "بالشتک چربی خلفی = شکستگی",
+      "after": "بالشتک چربی خلفی: افیوژن و شک به شکستگی",
+      "reason": "Remove fatpad=fracture title."
+    },
+    {
+      "file": "data/radiuskopf.js",
+      "key": "takehome.items.0.text.de",
+      "before": "Im Seitenbild des Ellenbogens ist ein sichtbares posteriores Fettkissen immer pathologisch. Bei unauffälligem Röntgen + posteriorem Fettkissenzeichen → Mason-I-Fraktur behandeln.",
+      "after": "Ein sichtbares posteriores Fettkissen im echten Seitenbild spricht für einen Gelenkerguss. Nach Trauma ist eine okkulte Fraktur möglich; das Zeichen legt weder Frakturort noch Mason-Typ fest.",
+      "reason": "Preserve distinction in final summary."
+    },
+    {
+      "file": "data/radiuskopf.js",
+      "key": "takehome.items.0.text.en",
+      "before": "A visible posterior fat pad on the lateral elbow view is always pathological. With normal X-ray + posterior fat pad sign → treat as Mason I fracture.",
+      "after": "A visible posterior fat pad on a true lateral view supports joint effusion. After trauma an occult fracture is possible; the sign establishes neither fracture location nor Mason type.",
+      "reason": "Preserve distinction in final summary."
+    },
+    {
+      "file": "data/radiuskopf.js",
+      "key": "takehome.items.0.text.fa",
+      "before": "بالشتک چربی خلفی قابل مشاهده در نمای جانبی آرنج همیشه پاتولوژیک است. با رادیوگرافی طبیعی + نشانه بالشتک چربی خلفی → به عنوان ماسون I درمان کنید.",
+      "after": "دیده‌شدن بالشتک چربی خلفی در نمای لترال واقعی به نفع افیوژن مفصل است. پس از تروما شکستگی پنهان ممکن است؛ این علامت نه محل شکستگی و نه نوع ماسون را تعیین می‌کند.",
+      "reason": "Preserve distinction in final summary."
+    },
+    {
+      "file": "data/radiuskopf.js",
+      "key": "takehome.items.1.text.de",
+      "before": "In jeder Ellenbogenaufnahme die Linie durch den Radius-Schaft auf das Capitulum prüfen. Abweichung = Luxation → Mason IV oder Monteggia.",
+      "after": "Radiokapitellare Stellung in beiden Ebenen prüfen; im echten Seitenbild bevorzugt am Radiushals orientieren. Bei Kindern technische und altersabhängige Abweichungen beachten: Eine auffällige Linie beweist allein keine Luxation.",
+      "reason": "Remove deviation=dislocation summary rule."
+    },
+    {
+      "file": "data/radiuskopf.js",
+      "key": "takehome.items.1.text.en",
+      "before": "On every elbow X-ray, check the line through the radial shaft to the capitellum. Deviation = dislocation → Mason IV or Monteggia.",
+      "after": "Assess radiocapitellar alignment in both planes, using the radial neck as the preferred lateral reference. In children consider technical and age-related variation: an abnormal line alone does not prove dislocation.",
+      "reason": "Remove deviation=dislocation summary rule."
+    },
+    {
+      "file": "data/radiuskopf.js",
+      "key": "takehome.items.1.text.fa",
+      "before": "در هر رادیوگرافی آرنج، خط از تنه رادیوس به کاپیتولوم را بررسی کنید. انحراف = لوکساسیون → ماسون IV یا مونتگیا.",
+      "after": "هم‌راستایی رادیوکاپیتلار را در هر دو نما بررسی کنید و در لترال واقعی گردن رادیوس را مرجع قرار دهید. در کودکان تغییرات تکنیکی و وابسته به سن را لحاظ کنید؛ خط غیرطبیعی به‌تنهایی دررفتگی را ثابت نمی‌کند.",
+      "reason": "Remove deviation=dislocation summary rule."
+    },
+    {
+      "file": "data/radiuskopf.js",
+      "key": "therapie.items.3.title.fa",
+      "before": "ماسون IV – ابتدا کاهش",
+      "after": "ماسون IV – ابتدا جااندازی",
+      "reason": "Faithful reduction terminology, no treatment change."
+    },
+    {
+      "file": "app/msk/schulter/rotatorenmanschette/page.js",
+      "key": "de.partial.tableRows.0.2",
+      "before": "fokaler Flüssigkeitssaum zwischen Sehne und Bursa subacromialis in T2 fs",
+      "after": "Flüssigkeitssignalreicher Defekt der oberflächlichen Sehnenfasern bis zur bursalen Oberfläche, bei erhaltenen artikulären Fasern; Bursaflüssigkeit allein beweist keinen Riss.",
+      "reason": "Mirror verified bursal-surface tendon defect; do not confuse isolated bursal fluid with tear."
+    },
+    {
+      "file": "app/msk/schulter/rotatorenmanschette/page.js",
+      "key": "de.full.dwiText",
+      "before": "Grad 0: keine Fettinfiltration. Grad 1: vereinzelte Fettstreifen. Grad 2: Fett < Muskel. Grad 3: Fett = Muskel. Grad 4: Fett > Muskel. Ab Grad 3-4 gilt eine Rekonstruktion meist als nicht mehr erfolgsversprechend.",
+      "after": "Grad 0: keine Fettinfiltration. Grad 1: vereinzelte Fettstreifen. Grad 2: Fett < Muskel. Grad 3: Fett = Muskel. Grad 4: Fett > Muskel. Ein hoher Fettinfiltrationsgrad erschwert die Planung, schließt eine funktionelle Besserung nach Rekonstruktion aber nicht pauschal aus. Ausgewählte Patientinnen und Patienten mit Grad 3–4 profitierten in einer klinischen Serie; Rekonstruierbarkeit und Behandlung bleiben individuell.",
+      "reason": "Keep all Goutallier0–4 definitions; replace blanket outcome verdict with verified selected-series/individual qualification."
+    },
+    {
+      "file": "app/msk/schulter/rotatorenmanschette/page.js",
+      "key": "en.partial.tableRows.0.2",
+      "before": "focal fluid rim between the tendon and subacromial bursa on T2 fs",
+      "after": "Fluid-signal defect of superficial tendon fibres reaching the bursal surface, with preserved articular fibres; bursal fluid alone does not establish a tear.",
+      "reason": "Mirror verified bursal-surface tendon defect; do not confuse isolated bursal fluid with tear."
+    },
+    {
+      "file": "app/msk/schulter/rotatorenmanschette/page.js",
+      "key": "en.full.dwiText",
+      "before": "Grade 0: no fatty infiltration. Grade 1: scattered fatty streaks. Grade 2: fat < muscle. Grade 3: fat = muscle. Grade 4: fat > muscle. From grade 3-4 onwards, repair is generally considered unlikely to succeed.",
+      "after": "Grade 0: no fatty infiltration. Grade 1: scattered fatty streaks. Grade 2: fat < muscle. Grade 3: fat = muscle. Grade 4: fat > muscle. High-grade fatty infiltration complicates planning but does not categorically exclude functional improvement after repair. Selected patients with grades 3–4 improved in a clinical series; repairability and treatment remain individual.",
+      "reason": "Keep all Goutallier0–4 definitions; replace blanket outcome verdict with verified selected-series/individual qualification."
+    },
+    {
+      "file": "app/msk/schulter/rotatorenmanschette/page.js",
+      "key": "fa.partial.tableRows.0.2",
+      "before": "حاشیه کانونی مایع بین تاندون و بورس ساب‌آکرومیال در T2 fs",
+      "after": "نقص با سیگنال مایع در الیاف سطحی تاندون تا سطح بورسال، با حفظ الیاف مفصلی؛ مایع بورس به‌تنهایی پارگی را ثابت نمی‌کند.",
+      "reason": "Mirror verified bursal-surface tendon defect; do not confuse isolated bursal fluid with tear."
+    },
+    {
+      "file": "app/msk/schulter/rotatorenmanschette/page.js",
+      "key": "fa.full.dwiText",
+      "before": "درجه ۰: بدون نفوذ چربی. درجه ۱: رگه‌های پراکنده چربی. درجه ۲: چربی < عضله. درجه ۳: چربی = عضله. درجه ۴: چربی > عضله. از درجه ۳ تا ۴ به بعد، ترمیم معمولاً کم‌احتمال در نظر گرفته می‌شود.",
+      "after": "درجه ۰: بدون نفوذ چربی. درجه ۱: رگه‌های پراکنده چربی. درجه ۲: چربی < عضله. درجه ۳: چربی = عضله. درجه ۴: چربی > عضله. نفوذ چربی با درجهٔ بالا برنامه‌ریزی را دشوار می‌کند، اما بهبود عملکرد پس از ترمیم را به‌طور کلی منتفی نمی‌کند. در یک مجموعهٔ بالینی، بیماران منتخب با درجات ۳ تا ۴ بهبود یافتند؛ قابلیت ترمیم و درمان باید فردی ارزیابی شوند.",
+      "reason": "Keep all Goutallier0–4 definitions; replace blanket outcome verdict with verified selected-series/individual qualification."
+    }
+  ],
+  "sources": [
+    "https://pubmed.ncbi.nlm.nih.gov/21841436/",
+    "https://pubmed.ncbi.nlm.nih.gov/24787305/",
+    "https://pmc.ncbi.nlm.nih.gov/articles/PMC3715629/",
+    "https://acsearch.acr.org/docs/3195154/Narrative/",
+    "https://pmc.ncbi.nlm.nih.gov/articles/PMC6583326/",
+    "https://pubmed.ncbi.nlm.nih.gov/17418325/"
+  ],
+  "remainingOpen": [
+    "MasonI immobilisation/full-load timing",
+    "TerribleTriad all-three-surgery statement",
+    "PASTAthreshold",
+    "No broader medical recertification"
+  ],
+  "validation": {
+    "moduleCompile": "PASS: bothmodules",
+    "radiusAssessmentExports": "deepEqual unchanged questions/cards/topics acrossall3locales",
+    "radiusLessonIds": "unchanged lessonID and full section metadata",
+    "literalChangeCount": 34,
+    "actualGraphSSR": "6/6 locale-route design checks PASS; all34 changed strings present in actual HTML after standard HTML entity decoding",
+    "diffCheck": "git diff --check scoped PASS"
+  }
+}

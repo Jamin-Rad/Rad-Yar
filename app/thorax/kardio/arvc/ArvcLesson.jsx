@@ -1,5 +1,8 @@
 'use client'
 
+import { useLanguage } from '@/providers/LanguageProvider'
+import { localizeArvcTree } from './lessonTranslations'
+
 
 import LegacyLessonMigration from '@/components/lesson-template/LegacyLessonMigration'
 import Link from 'next/link'
@@ -17,7 +20,9 @@ import template from '@/components/LessonTemplate.module.css'
 import styles from './page.module.css'
 
 function Definition() {
-  return <>
+  const { lang: _arvcLang } = useLanguage()
+
+  return localizeArvcTree(<>
     <p className={styles.lead}>Bei der <strong>arrhythmogenen Kardiomyopathie (ACM)</strong> wird Herzmuskel durch Narbengewebe ersetzt, teilweise auch durch Fett. Das kann gefährliche Rhythmusstörungen aus den Herzkammern auslösen – auch wenn die Pumpfunktion noch relativ gut ist.</p>
     <p className={styles.bodyText}>Früher wurde vor allem die rechte Herzkammer beschrieben: daher der Name <strong>ARVC</strong>. Heute weiß man, dass auch die linke Kammer betroffen sein kann, manchmal sogar überwiegend. <strong>ACM ist deshalb der umfassendere Begriff.</strong> Die Erkrankung ist häufig erblich; eine LV-Beteiligung ist auch für die Prognose wichtig.</p>
     <h3 className={styles.subheading}>Drei mögliche Verteilungen</h3>
@@ -28,26 +33,32 @@ function Definition() {
     ]}/>
     <p className={styles.bodyText}>Ein Anlass zur Abklärung können Palpitationen, eine Synkope, ventrikuläre Rhythmusstörungen oder eine belastete Familiengeschichte sein. Das MRT hilft, die Veränderungen am Herzmuskel einzuordnen; EKG, Rhythmusdiagnostik und Familienanamnese gehören dazu.</p>
     <Note title="Für das MRT merken">Immer beide Herzkammern ansehen: Größe, Bewegung, Pumpfunktion und Narben.</Note>
-  </>
+  </>, _arvcLang)
 }
 
 function Mrt() {
-  return <>
+  const { lang: _arvcLang } = useLanguage()
+
+  return localizeArvcTree(<>
     <p className={styles.lead}>Bei Verdacht auf ACM beantworten wir drei Fragen: <strong>Wie bewegt sich die Wand? Wie groß sind die Kammern und wie gut pumpen sie? Wo liegt eine Narbe?</strong></p>
     <ProtocolOverview/>
     <Note caution title="Nicht an einem einzelnen Schnitt entscheiden">Der RV ist dünnwandig und geometrisch komplex. Auffällige Bewegung oder eine scheinbar helle Wandstelle über die Serie und in einer zweiten Ebene überprüfen.</Note>
-  </>
+  </>, _arvcLang)
 }
 
 function Patterns() {
-  return <>
+  const { lang: _arvcLang } = useLanguage()
+
+  return localizeArvcTree(<>
     <p className={styles.lead}>Zuerst die Bewegung im Cine ansehen, dann die Gewebeveränderungen im LGE. Die folgenden Aufnahmen stammen aus echten Radiopaedia-Untersuchungen.</p>
     <MrtOverview/>
-  </>
+  </>, _arvcLang)
 }
 
 function Differentials() {
-  return <>
+  const { lang: _arvcLang } = useLanguage()
+
+  return localizeArvcTree(<>
     <p className={styles.lead}>Ein großer RV oder eine Narbe kann verschiedene Ursachen haben. Entscheidend ist, ob <strong>Bewegung, Kammerfunktion, Narbenmuster und klinische Angaben zusammenpassen.</strong></p>
     <TeachingTable caption="Die wichtigsten Überschneidungen" headers={['Möglichkeit', 'Was hilft bei der Einordnung?']} rows={[
       ['Sportherz', 'RV-Vergrößerung kann eine Trainingsanpassung sein. Beide Kammern vergleichen und nach sicheren regionalen Störungen oder Narben suchen.'],
@@ -57,23 +68,29 @@ function Differentials() {
       ['Artefakte oder frühere Ablation', 'Bewegung aus der Schicht, Arrhythmie und Partialvolumen können täuschen. Eine frühere Ablation kann selbst eine Narbe hinterlassen.'],
     ]}/>
     <Note title="Drei Dinge nicht gleichsetzen">Großer RV ist nicht automatisch ARVC. LGE ist nicht automatisch ACM. Und fehlendes LGE schließt eine ARVC nicht aus.</Note>
-  </>
+  </>, _arvcLang)
 }
 
 const CONTENT = { definition: Definition, mrt: Mrt, muster: Patterns, kriterien: CriteriaOverview, differenzialdiagnosen: Differentials, bilder: CaseAtlas }
 const LEGACY_SECTIONS = { tfc: 'kriterien', padua: 'kriterien' }
 
 function Chapter({ section, open, read, onSelect, onRead, children }) {
-  return <section id={section.id} className={`${template.section} ${styles.chapter} ${open ? template.sectionOpen : ''}`}><button type="button" className={template.sectionHeader} onClick={() => onSelect(section.id)} aria-expanded={open} aria-controls={`${section.id}-panel`} data-lehr-section-managed="true"><span className={template.sectionIcon}><Icon name={section.icon}/></span><span><strong>{section.title}</strong></span><span className={template.toggle} aria-hidden="true">{open ? '−' : '+'}</span></button><div id={`${section.id}-panel`} hidden={!open} className={`${template.sectionBody} ${styles.chapterBody}`}>{children}{!section.optional ? <button type="button" className={`${template.readButton} ${read ? template.readButtonDone : ''}`} aria-pressed={read} onClick={() => onRead(section.id)}><Icon name="check"/>{read ? 'Als gelesen markiert' : 'Abschnitt als gelesen markieren'}</button> : null}</div></section>
+  const { lang: _arvcLang } = useLanguage()
+
+  return localizeArvcTree(<section id={section.id} className={`${template.section} ${styles.chapter} ${open ? template.sectionOpen : ''}`}><button type="button" className={template.sectionHeader} onClick={() => onSelect(section.id)} aria-expanded={open} aria-controls={`${section.id}-panel`} data-lehr-section-managed="true"><span className={template.sectionIcon}><Icon name={section.icon}/></span><span><strong>{section.title}</strong></span><span className={template.toggle} aria-hidden="true">{open ? '−' : '+'}</span></button><div id={`${section.id}-panel`} hidden={!open} className={`${template.sectionBody} ${styles.chapterBody}`}>{children}{!section.optional ? <button type="button" className={`${template.readButton} ${read ? template.readButtonDone : ''}`} aria-pressed={read} onClick={() => onRead(section.id)}><Icon name="check"/>{read ? 'Als gelesen markiert' : 'Abschnitt als gelesen markieren'}</button> : null}</div></section>, _arvcLang)
 }
 
 function MobilePath({ openId, readSections, onSelect }) {
+  const { lang: _arvcLang } = useLanguage()
+
   const [expanded, setExpanded] = useState(false)
   const current = SECTIONS.find(s => s.id === openId) || SECTIONS[0]
-  return <div className={template.mobileLearningPath}>{expanded ? <section className={template.mobilePathPanel} id="acm-mobile-path" aria-label="Lernpfad"><header><div><small>Lernpfad</small><strong>{readSections.size} / {CORE_SECTION_IDS.length} gelesen</strong></div><button type="button" onClick={() => setExpanded(false)} aria-label="Lernpfad schließen">×</button></header><nav>{SECTIONS.map(section => <button type="button" key={section.id} className={openId === section.id ? template.mobilePathCurrent : ''} onClick={() => { onSelect(section.id); setExpanded(false) }} aria-current={openId === section.id ? 'location' : undefined}><span className={template.mobilePathItemIcon}><Icon name={section.icon}/></span><span><strong>{section.short}</strong><small>{section.title}</small></span><i aria-label={readSections.has(section.id) ? 'gelesen' : undefined}>{readSections.has(section.id) ? '✓' : ''}</i></button>)}</nav></section> : null}<button type="button" className={template.mobilePathButton} aria-expanded={expanded} aria-controls="acm-mobile-path" onClick={() => setExpanded(value => !value)}><span className={template.mobileProgressRing} style={{'--mobile-progress':`${readSections.size / CORE_SECTION_IDS.length * 360}deg`}}><b>{readSections.size}</b><small>/{CORE_SECTION_IDS.length}</small></span><span className={template.mobileCurrentIcon}><Icon name={current.icon}/></span><span className={template.mobilePathLabel}><strong>Lernpfad</strong><small>{current.short}</small></span></button></div>
+  return localizeArvcTree(<div className={template.mobileLearningPath}>{expanded ? <section className={template.mobilePathPanel} id="acm-mobile-path" aria-label="Lernpfad"><header><div><small>Lernpfad</small><strong>{readSections.size} / {CORE_SECTION_IDS.length} gelesen</strong></div><button type="button" onClick={() => setExpanded(false)} aria-label="Lernpfad schließen">×</button></header><nav>{SECTIONS.map(section => <button type="button" key={section.id} className={openId === section.id ? template.mobilePathCurrent : ''} onClick={() => { onSelect(section.id); setExpanded(false) }} aria-current={openId === section.id ? 'location' : undefined}><span className={template.mobilePathItemIcon}><Icon name={section.icon}/></span><span><strong>{section.short}</strong><small>{section.title}</small></span><i aria-label={readSections.has(section.id) ? 'gelesen' : undefined}>{readSections.has(section.id) ? '✓' : ''}</i></button>)}</nav></section> : null}<button type="button" className={template.mobilePathButton} aria-expanded={expanded} aria-controls="acm-mobile-path" onClick={() => setExpanded(value => !value)}><span className={template.mobileProgressRing} style={{'--mobile-progress':`${readSections.size / CORE_SECTION_IDS.length * 360}deg`}}><b>{readSections.size}</b><small>/{CORE_SECTION_IDS.length}</small></span><span className={template.mobileCurrentIcon}><Icon name={current.icon}/></span><span className={template.mobilePathLabel}><strong>Lernpfad</strong><small>{current.short}</small></span></button></div>, _arvcLang)
 }
 
 export default function ArvcLesson() {
+  const { lang: _arvcLang } = useLanguage()
+
   const [openId, setOpenId] = useState('definition')
   const [summaryOpen, setSummaryOpen] = useState(false)
   const [sourcesOpen, setSourcesOpen] = useState(false)
@@ -110,7 +127,7 @@ export default function ArvcLesson() {
     setReadSections(allRead ? new Set() : new Set(CORE_SECTION_IDS))
     if (isRead !== !allRead) toggleRead()
   }
-  return <LegacyLessonMigration className={`${template.page} ${styles.page}`} data-lesson-section-divider="true" data-lesson-progress-managed="true" data-disable-lesson-explorer="true" lang="de" dir="ltr" lessonRoute="/thorax/kardio/arvc" lessonId={'arvc-de-v4'}>
+  return localizeArvcTree(<LegacyLessonMigration className={`${template.page} ${styles.page}`} data-lesson-section-divider="true" data-lesson-progress-managed="true" data-disable-lesson-explorer="true" lang={_arvcLang} dir={_arvcLang === 'fa' ? 'rtl' : 'ltr'} lessonRoute="/thorax/kardio/arvc" lessonId={'arvc-de-v4'}>
     <header className={template.header}>
       <div className={template.topline}><nav className={template.breadcrumb} aria-label="Brotkrumennavigation"><Link href="/lernen">RadYar</Link><span>/</span><Link href="/lernen/thorax">Thorax</Link><span>/</span><strong>ACM / ARVC</strong></nav><span className={template.author}>RadYar</span></div>
       <div className={styles.compactHero}><h1>Arrhythmogene Kardiomyopathie</h1><p>ACM verstehen und im MRT einordnen – mit echten Bildbeispielen.</p></div>
@@ -120,9 +137,9 @@ export default function ArvcLesson() {
     </header>
     <div className={template.layout}><aside className={`${template.sidebar} ${styles.sidebar}`}><h2 className={template.learningPathHeading}>Lernpfad</h2><nav aria-label="Lernpfad">{SECTIONS.map(section => <button type="button" key={section.id} className={openId === section.id ? template.activeSideItem : ''} aria-current={openId === section.id ? 'location' : undefined} aria-label={`Abschnitt öffnen: ${section.short}`} onClick={() => select(section.id)}><span className={template.sideIcon}><Icon name={section.icon}/></span><strong>{section.short}{readSections.has(section.id) ? <span className={template.readTick} aria-label="gelesen"> ✓</span> : null}</strong></button>)}</nav></aside>
       <article className={template.lesson}>{SECTIONS.map(section => { const Content = CONTENT[section.id]; return <Chapter key={section.id} section={section} open={lehrMode || openId === section.id} read={readSections.has(section.id)} onSelect={select} onRead={toggleSection} migrationChapter><Content/></Chapter> })}
-        <section id="take-home" className={`${template.section} ${template.takeHomeSection} ${styles.takeHome} ${summaryOpen || lehrMode ? template.sectionOpen : ''}`}><button type="button" className={template.sectionHeader} aria-expanded={summaryOpen || lehrMode} aria-controls="take-home-panel" data-lehr-section-managed="true" onClick={() => setSummaryOpen(value => !value)}><span className={template.sectionIcon}><Icon name="spark"/></span><span><strong>Take Home Message</strong></span><span className={template.toggle} aria-hidden="true">{summaryOpen || lehrMode ? '−' : '+'}</span></button><div id="take-home-panel" className={template.sectionBody} hidden={!summaryOpen && !lehrMode}><LessonTakeHome points={TAKE_HOME} lang="de" idPrefix="acm-takehome"/></div></section>
+        <section id="take-home" className={`${template.section} ${template.takeHomeSection} ${styles.takeHome} ${summaryOpen || lehrMode ? template.sectionOpen : ''}`}><button type="button" className={template.sectionHeader} aria-expanded={summaryOpen || lehrMode} aria-controls="take-home-panel" data-lehr-section-managed="true" onClick={() => setSummaryOpen(value => !value)}><span className={template.sectionIcon}><Icon name="spark"/></span><span><strong>Take Home Message</strong></span><span className={template.toggle} aria-hidden="true">{summaryOpen || lehrMode ? '−' : '+'}</span></button><div id="take-home-panel" className={template.sectionBody} hidden={!summaryOpen && !lehrMode}><LessonTakeHome points={TAKE_HOME} lang={_arvcLang} idPrefix="acm-takehome"/></div></section>
         <section id="quellen" className={styles.sources}><button type="button" aria-expanded={sourcesOpen || lehrMode} aria-controls="acm-sources" onClick={() => setSourcesOpen(v => !v)}><strong>Quellen & Bildnachweise</strong><span aria-hidden="true">{sourcesOpen || lehrMode ? '−' : '+'}</span></button><div id="acm-sources" hidden={!sourcesOpen && !lehrMode}><p>Deutsche Fassung · MRT-orientierter Überblick.</p><ul>{SOURCES.map(source => <li key={source.url}><a href={source.url} target="_blank" rel="noreferrer"><strong>{source.label}</strong><span>{source.title}</span><Icon name="external"/></a></li>)}</ul><h3>Radiopaedia-Originalfälle</h3><ul>{CASES.filter(item => item.id !== '95633').map(item => <li key={item.id}><a href={item.url} target="_blank" rel="noreferrer"><strong>rID {item.id} · {item.creator}</strong><span>{item.title}</span><Icon name="external"/></a></li>)}</ul><p>Die MRT-Bilder und das Cine sind Originalaufnahmen. Einblendbare Orientierungspunkte von RadYar liegen separat über den unveränderten Bildern.</p></div></section>
       </article>
     </div><MobilePath openId={openId} readSections={readSections} onSelect={select}/>
-  </LegacyLessonMigration>
+  </LegacyLessonMigration>, _arvcLang)
 }

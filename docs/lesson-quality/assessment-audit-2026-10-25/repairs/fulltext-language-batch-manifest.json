@@ -1,0 +1,120 @@
+{
+  "date": "2026-10-25",
+  "changes": [
+    {
+      "file": "data/gehirnHsvEnzephalitisLesson.js",
+      "before": "تمپورال میانی",
+      "after": "تمپورال داخلی (مزیال)",
+      "recoveredEarlierExecution": true
+    },
+    {
+      "file": "data/gehirnInfektionsmusterLesson.js",
+      "before": "تمپورال میانی",
+      "after": "تمپورال داخلی (مزیال)",
+      "recoveredEarlierExecution": true
+    },
+    {
+      "file": "data/gehirnDemenzMusterLesson.js",
+      "before": "تمپورال میانی",
+      "after": "تمپورال داخلی (مزیال)",
+      "recoveredEarlierExecution": true
+    },
+    {
+      "file": "data/gehirnHsvEnzephalitisLesson.js",
+      "before": "لوب‌های تمپورال داخلی (مزیال)",
+      "after": "بخش‌های داخلی (مزیال) لوب‌های تمپورال",
+      "recoveredEarlierExecution": true
+    },
+    {
+      "file": "data/pcnslLesson.js",
+      "field": "caseT1Alt.de",
+      "before": "Axiale T1-Aufnahme nach Kontrastmittelgabe aus Fall 59537: Läsion der rechten Basalganglien mit ringförmiger Anreicherung und zentralem nicht anreicherndem Anteil.",
+      "after": "Axiale T1-Aufnahme nach Kontrastmittelgabe aus Fall 59537: Läsion der rechten Basalganglien mit ringförmiger Anreicherung und zentralem nicht anreicherndem Anteil."
+    },
+    {
+      "file": "data/pcnslLesson.js",
+      "field": "caseDwiAlt.de",
+      "before": "Axiale DWI derselben Läsion aus Fall 59537: Hohes Signal in der Läsion mit der zugehörigen ADC-Karte vergleichen.",
+      "after": "Axiale DWI derselben Läsion aus Fall 59537: Hohes Signal in der Läsion mit der zugehörigen ADC-Karte vergleichen."
+    },
+    {
+      "file": "data/pcnslLesson.js",
+      "field": "caseAdcAlt.de",
+      "before": "Axiale ADC-Karte derselben Läsion aus Fall 59537: Korrespondierend erniedrigte ADC-Werte in den DWI-hyperintensen Anteilen stützen eine Diffusionsrestriktion.",
+      "after": "Axiale ADC-Karte derselben Läsion aus Fall 59537: Korrespondierend erniedrigte ADC-Werte in den DWI-hyperintensen Anteilen stützen eine Diffusionsrestriktion."
+    },
+    {
+      "file": "data/avm.js",
+      "before": "کنولوت عروق",
+      "after": "شبکهٔ درهم‌پیچیدهٔ عروق",
+      "recoveredEarlierExecution": true
+    },
+    {
+      "file": "data/dva.js",
+      "before": "سیگنال T1، حساسیت",
+      "after": "سیگنال T1، اثر حساسیت مغناطیسی",
+      "recoveredEarlierExecution": true
+    },
+    {
+      "file": "data/dva.js",
+      "before": "SWI حساسیت وریدی را نشان می‌دهد",
+      "after": "SWI اثر حساسیت مغناطیسی وریدها را نشان می‌دهد",
+      "recoveredEarlierExecution": true
+    },
+    {
+      "file": "data/edh.js",
+      "before": "دوراl یا abscess",
+      "after": "دورال یا آبسه",
+      "recoveredEarlierExecution": true
+    },
+    {
+      "file": "data/edh.js",
+      "before": "temporoپاریتال",
+      "after": "تمپوروپاریتال",
+      "recoveredEarlierExecution": true
+    },
+    {
+      "file": "app/abdomen/gi/mesenteriale-ischaemie/page.js",
+      "before": "CTA با ماده حاجب تصویربرداری محوری است",
+      "after": "CTA با ماده حاجب روش اصلی تصویربرداری است",
+      "recoveredEarlierExecution": true
+    },
+    {
+      "file": "app/abdomen/gi/pylorusstenose/page.js",
+      "before": "پیاز دوازدهه",
+      "after": "بولب دوازدهه",
+      "recoveredEarlierExecution": true
+    },
+    {
+      "file": "app/abdomen/gi/untere-gi-blutung/page.js",
+      "before": "در ناپایداری پایدار",
+      "after": "در صورت تداوم ناپایداری",
+      "recoveredEarlierExecution": true
+    },
+    {
+      "file": "app/abdomen/leber/hcc/page.js",
+      "before": "رشد قابل توجه در پیگیری",
+      "after": "رشد آستانه‌ای در پیگیری",
+      "recoveredEarlierExecution": true
+    },
+    {
+      "file": "app/abdomen/leber/li-rads/page.js",
+      "before": "کاهش نسبی تقویت در فاز تأخیری مجاز",
+      "after": "کاهش نسبی تقویت در فاز بعدی مجاز",
+      "recoveredEarlierExecution": true
+    },
+    {
+      "file": "app/abdomen/leber/psc-mrcp/page.js",
+      "before": "«تنگی مرتبط»",
+      "after": "«تنگی بااهمیت بالینی (relevant stricture)»",
+      "recoveredEarlierExecution": true
+    },
+    {
+      "file": "data/deQuervainLesson.js",
+      "before": "در بسیاری از منابع از مانور آیکهوف تفکیک می‌شود",
+      "after": "در بسیاری از منابع به‌عنوان مانور آیکهوف از تست فینکلشتاین تفکیک می‌شود",
+      "count": 1
+    }
+  ],
+  "scope": "Exact language deltas from reviewers, no new clinical rule or score/key change."
+}

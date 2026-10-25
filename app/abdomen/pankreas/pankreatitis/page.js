@@ -232,7 +232,7 @@ const CONTENT = {
       headers: ['Entity', 'Clues'],
       rows: [
         ['Chronic pancreatitis', 'Calcifications, a long ductal narrowing and the duct-penetrating sign: the duct can be seen traversing the lesion.'],
-        ['Pancreatic carcinoma', 'No calcifications within the mass, abrupt duct cut-off, downstream tail atrophy and vascular infiltration.'],
+        ['Pancreatic carcinoma', 'No calcifications within the mass, abrupt duct cut-off, upstream tail atrophy and vascular infiltration.'],
         ['Autoimmune pancreatitis type 1', 'Sausage-shaped configuration with loss of lobulation, hypodense capsule-like halo and rapid steroid response.'],
       ],
       cave: 'Abrupt duct cut-off with tail atrophy and vascular contact is suspicious for malignancy, even when pancreatitis is suspected clinically.',

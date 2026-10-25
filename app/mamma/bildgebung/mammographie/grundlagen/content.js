@@ -106,9 +106,9 @@ export const CASE_STEPS = [
 ]
 
 export const TAKE_HOME = [
-  L('Describe before you diagnose.', 'Describe before you diagnose.', 'پیش از تشخیص، توصیف کنید.'),
-  L('Mass = Shape + Margin + Density.', 'Mass = shape + margin + density.', 'توده = شکل + حاشیه + دانسیته.'),
-  L('Calcifications = Morphology + Distribution.', 'Calcifications = morphology + distribution.', 'کلسیفیکاسیون = مورفولوژی + توزیع.'),
+  L('Vor der Diagnose den Befund beschreiben.', 'Describe before you diagnose.', 'پیش از تشخیص، توصیف کنید.'),
+  L('Mass = Form + Rand + Dichte.', 'Mass = shape + margin + density.', 'توده = شکل + حاشیه + دانسیته.'),
+  L('Verkalkungen = Morphologie + Verteilung.', 'Calcifications = morphology + distribution.', 'کلسیفیکاسیون = مورفولوژی + توزیع.'),
   L('Obscured bedeutet nicht beurteilbar; indistinct bedeutet tatsächlich unscharf.', 'Obscured means not assessable; indistinct means truly ill-defined.', 'Obscured یعنی قابل ارزیابی نیست؛ indistinct یعنی واقعاً نامشخص است.'),
-  L('No enhancement does not downgrade suspicious calcifications.', 'No enhancement does not downgrade suspicious calcifications.', 'نبود تقویت پس از تزریق باعث کاهش درجه کلسیفیکاسیون مشکوک نمی‌شود.'),
+  L('Fehlende Anreicherung stuft suspekte Verkalkungen nicht herab.', 'No enhancement does not downgrade suspicious calcifications.', 'نبود تقویت پس از تزریق باعث کاهش درجه کلسیفیکاسیون مشکوک نمی‌شود.'),
 ]

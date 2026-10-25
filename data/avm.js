@@ -53,7 +53,7 @@ export const AVM_LESSON = {
         text: L(
           'Konvolut dysplastischer Gefäße ohne Kapillarbett — die eigentliche Malformation. Direkte AV-Verbindung → arterieller Druck im venösen System → Wand­schwäche → Blutung.',
           'Tangle of dysplastic vessels without a capillary bed — the malformation itself. Direct AV connection → arterial pressure in the venous system → wall weakness → haemorrhage.',
-          'کنولوت عروق دیسپلاستیک بدون بستر مویرگی — خود مالفورماسیون. اتصال مستقیم AV → فشار شریانی در سیستم وریدی → ضعف دیواره → خونریزی.'
+          'شبکهٔ درهم‌پیچیدهٔ عروق دیسپلاستیک بدون بستر مویرگی — خود مالفورماسیون. اتصال مستقیم AV → فشار شریانی در سیستم وریدی → ضعف دیواره → خونریزی.'
         ),
       },
       {
@@ -70,8 +70,8 @@ export const AVM_LESSON = {
         title: L('Epidemiologie', 'Epidemiology', 'اپیدمیولوژی'),
         text: L(
           'Häufig im jungen Erwachsenenalter (20.–40. Lebensjahr); meist supratentoriell in den Hemisphären.',
-          'Often presents in young adulthood (2nd–4th decade); mostly supratentorial in the cerebral hemispheres.',
-          'اغلب در بزرگسالی جوان (دهه دوم تا چهارم) دیده می‌شود؛ عمدتاً سوپراتنتوریال و در نیم‌کره‌های مغز است.'
+          'Often presents in young adulthood (20–40 years); mostly supratentorial in the cerebral hemispheres.',
+          'اغلب در بزرگسالی جوان (۲۰ تا ۴۰ سالگی) دیده می‌شود؛ عمدتاً سوپراتنتوریال و در نیم‌کره‌های مغز است.'
         ),
       },
     ],
@@ -153,12 +153,12 @@ export const AVM_LESSON = {
       ],
       [
         L('Lokalisation', 'Location', 'محل'),
-        L('Nicht-eloquent (Frontal, Okzipital, Kleinhirn-Hemisphäre)', 'Non-eloquent (frontal, occipital, cerebellar hemisphere)', 'غیرگویا (فرونتال، اکسیپیتال، نیم‌کره مخچه)'),
+        L('Nichteloquente Lage: außerhalb der unten genannten Funktionsregionen', 'Noneloquent location: outside the functional regions listed below', 'محل غیرحساس عملکردی: خارج از نواحی عملکردی فهرست‌شده در ردیف بعد'),
         '0',
       ],
       [
         '',
-        L('Eloquent (Sensomotorik, Sprache, Sehrinde, Hypothalamus, Thalamus, Hirnstamm, Kleinhirnstiele, tiefe Kleinhirnkerne)', 'Eloquent (sensorimotor, language, visual cortex, hypothalamus, thalamus, brainstem, cerebellar peduncles, deep cerebellar nuclei)', 'گویا (حسی-حرکتی، زبان، قشر بینایی، هیپوتالاموس، تالاموس، ساقه مغز، پدیکل‌های مخچه‌ای، هسته‌های عمقی مخچه)'),
+        L('Eloquent (Sensomotorik, Sprache, Sehrinde, Hypothalamus, Thalamus, innere Kapsel, Hirnstamm, Kleinhirnstiele, tiefe Kleinhirnkerne)', 'Eloquent (sensorimotor, language, visual cortex, hypothalamus, thalamus, internal capsule, brainstem, cerebellar peduncles, deep cerebellar nuclei)', 'حساس از نظر عملکردی (قشر حسی‌حرکتی، زبان، بینایی، هیپوتالاموس، تالاموس، کپسول داخلی، ساقهٔ مغز، پایه‌های مخچه و هسته‌های عمقی مخچه)'),
         '1',
       ],
       [
@@ -451,12 +451,12 @@ const TQ = [
     [
       L('Thalamus', 'Thalamus', 'تالاموس'),
       L('Frontalpol', 'Frontal pole', 'قطب فرونتال'),
-      L('Okzipitalpol', 'Occipital pole', 'قطب اکسیپیتال'),
+      L('Anteriore frontale Konvexität außerhalb motorischer und sprachrelevanter Areale', 'Anterior frontal convexity outside motor and language areas', 'کانوکسیتی قدامی فرونتال خارج از نواحی حرکتی و زبانی'),
       L('Kleinhirnhemisphäre', 'Cerebellar hemisphere', 'نیم‌کره مخچه'),
     ], 0,
-    L('Eloquente Areale: Sensomotorik, Sprache, Sehrinde, Hypothalamus, Thalamus, Hirnstamm, Kleinhirnstiele, tiefe Kleinhirnkerne. Frontalpol, Okzipitalpol und Kleinhirnhemisphären gelten als nicht-eloquent.',
-      'Eloquent areas: sensorimotor, language, visual cortex, hypothalamus, thalamus, brainstem, cerebellar peduncles, deep cerebellar nuclei. Frontal pole, occipital pole and cerebellar hemispheres are non-eloquent.',
-      'نواحی گویا: حسی-حرکتی، زبان، قشر بینایی، هیپوتالاموس، تالاموس، ساقه مغز، پدیکل‌های مخچه‌ای، هسته‌های عمقی مخچه. قطب فرونتال، اکسیپیتال و نیم‌کره مخچه غیرگویا هستند.')),
+    L('Im Spetzler-Martin-System zählen sensomotorischer, sprachrelevanter und visueller Kortex, Hypothalamus, Thalamus, innere Kapsel, Hirnstamm, Kleinhirnstiele und tiefe Kleinhirnkerne als eloquent. Der Thalamus ist hier die zutreffende Antwort. Die konkrete Funktionslage ist entscheidend; der Okzipitalpol darf nicht pauschal als nichteloquent gelten.',
+      'In the Spetzler-Martin system, sensorimotor, language and visual cortex, hypothalamus, thalamus, internal capsule, brainstem, cerebellar peduncles and deep cerebellar nuclei are eloquent. The thalamus is the correct answer here. Functional location matters; the occipital pole must not be categorically called noneloquent.',
+      'در نظام اسپتزلر–مارتین، قشر حسی‌حرکتی، زبانی و بینایی، هیپوتالاموس، تالاموس، کپسول داخلی، ساقهٔ مغز، پایه‌های مخچه و هسته‌های عمقی مخچه نواحی مهم عملکردی محسوب می‌شوند. در این سؤال تالاموس پاسخ درست است. محل عملکردی دقیق اهمیت دارد؛ قطب اکسیپیتال را نباید به‌طور کلی غیرمهم عملکردی دانست.')),
 
   Q('06',
     L('Welcher MRT-Befund ist am typischsten für eine AVM?',
@@ -487,18 +487,18 @@ const TQ = [
       'SWI و T2* به سوسپتیبیلیتی ناشی از فرآورده‌های خونی حساس‌اند؛ جایگزین تصویربرداری عروقی نیستند.')),
 
   Q('08',
-    L('Welcher DSA-Befund spricht für einen arteriovenösen Shunt?',
-      'Which DSA finding supports an arteriovenous shunt?',
-      'کدام یافته DSA به نفع شانت شریانی‌وریدی است؟'),
+    L('Welcher DSA-Befund spricht spezifisch für eine parenchymale AVM mit arteriovenösem Shunt?',
+      'Which DSA finding supports a parenchymal AVM with arteriovenous shunting?',
+      'کدام یافتهٔ DSA به نفع AVM پارانشیمی همراه شانت شریانی‌وریدی است؟'),
     [
       L('Nidus + frühe Venenfüllung in der arteriellen Phase', 'Nidus + early venous filling in the arterial phase', 'نیدوس + پُرشدگی زودرس وریدی در فاز شریانی'),
       L('Aneurysma an der Bifurkation der A. cerebri media', 'Aneurysm at the MCA bifurcation', 'آنوریسم در انشعاب شریان مغزی میانی'),
       L('Retrograde Sinusfüllung ohne Nidus', 'Retrograde sinus filling without nidus', 'پُرشدگی رتروگراد سینوس بدون نیدوس'),
       L('Diffuses Hypervaskularisierungsmuster ohne Nidus', 'Diffuse hypervascularisation without nidus', 'الگوی هایپرواسکولاریزاسیون منتشر بدون نیدوس'),
     ], 0,
-    L('Nidus und frühe venöse Drainage während der arteriellen Phase sprechen für einen arteriovenösen Shunt.',
-      'A nidus and early venous drainage during the arterial phase support an arteriovenous shunt.',
-      'نیدوس و درناژ زودرس وریدی در فاز شریانی به نفع شانت شریانی‌وریدی است.')),
+    L('Nidus und frühe venöse Drainage in der arteriellen Phase stützen eine parenchymale AVM. Retrograde Sinusfüllung ohne Nidus kann zu einer dAVF passen und beantwortet die Frage nach einer parenchymalen AVM nicht.',
+      'A nidus and early venous drainage in the arterial phase support a parenchymal AVM. Retrograde sinus filling without a nidus can fit a dAVF and does not answer the question about a parenchymal AVM.',
+      'نیدوس و درناژ زودرس وریدی در فاز شریانی به نفع AVM پارانشیمی است. پُرشدگی رتروگراد سینوس بدون نیدوس می‌تواند با dAVF سازگار باشد و پاسخ پرسش دربارهٔ AVM پارانشیمی نیست.')),
 
   Q('09',
     L('Welche drei Kriterien bilden den Spetzler-Martin-Score?', 'Which three criteria make up the Spetzler–Martin score?', 'سه معیار امتیاز Spetzler–Martin کدام‌اند؟'),
@@ -570,11 +570,11 @@ const TF = [
   F('definition', L('Grundlagen', 'Basics', 'مبانی'),
     L('Was ist eine zerebrale AVM?', 'What is a cerebral AVM?', 'AVM مغزی چیست؟'),
     L('Kongenitaler AV-Shunt mit Nidus — ohne Kapillarbett.', 'Congenital AV shunt with nidus — without capillary bed.', 'شانت AV مادرزادی با نیدوس — بدون بستر مویرگی.'),
-    L('Direkte arteriovenöse Verbindung über ein Konvolut dysplastischer Gefäße (Nidus). Kein zwischengeschaltetes Kapillarbett → Hochdruckshunt → Blutungsrisiko.', 'Direct arteriovenous connection via a tangle of dysplastic vessels (nidus). No intervening capillary bed → high-pressure shunt → haemorrhage risk.', 'اتصال مستقیم شریانی-وریدی از طریق یک کنولوت عروق دیسپلاستیک (نیدوس). بدون بستر مویرگی واسط → شانت پرفشار → خطر خونریزی.')),
+    L('Direkte arteriovenöse Verbindung über ein Konvolut dysplastischer Gefäße (Nidus). Kein zwischengeschaltetes Kapillarbett → Hochdruckshunt → Blutungsrisiko.', 'Direct arteriovenous connection via a tangle of dysplastic vessels (nidus). No intervening capillary bed → high-pressure shunt → haemorrhage risk.', 'اتصال مستقیم شریانی-وریدی از طریق یک شبکهٔ درهم‌پیچیدهٔ عروق دیسپلاستیک (نیدوس). بدون بستر مویرگی واسط → شانت پرفشار → خطر خونریزی.')),
 
   F('nidus', L('Grundlagen', 'Basics', 'مبانی'),
     L('Was ist der Nidus der AVM?', 'What is the AVM nidus?', 'نیدوس AVM چیست؟'),
-    L('Konvolut dysplastischer Gefäße ohne Kapillarbett.', 'Tangle of dysplastic vessels without a capillary bed.', 'کنولوت عروق دیسپلاستیک بدون بستر مویرگی.'),
+    L('Konvolut dysplastischer Gefäße ohne Kapillarbett.', 'Tangle of dysplastic vessels without a capillary bed.', 'شبکهٔ درهم‌پیچیدهٔ عروق دیسپلاستیک بدون بستر مویرگی.'),
     L('Der Nidus ist der Kern der AVM — dysplastische Gefäße, die Arterien direkt mit Venen verbinden. Fehlt bei dAVF. Der arterielle Hochdruck im venösen System schwächt die Gefäßwände und verursacht Blutungsrisiko.', 'The nidus is the core of the AVM — dysplastic vessels directly connecting arteries to veins. Absent in dAVF. High arterial pressure in the venous system weakens vessel walls and creates haemorrhage risk.', 'نیدوس هسته AVM است — عروق دیسپلاستیک که شریان‌ها را مستقیماً به وریدها متصل می‌کنند. در dAVF وجود ندارد. فشار شریانی بالا در سیستم وریدی دیواره عروق را ضعیف و خطر خونریزی ایجاد می‌کند.')),
 
   F('epidemio', L('Grundlagen', 'Basics', 'مبانی'),
@@ -599,8 +599,8 @@ const TF = [
 
   F('eloquenz', L('Klassifikation', 'Classification', 'طبقه‌بندی'),
     L('Welche Areale gelten als eloquent?', 'Which areas are considered eloquent?', 'کدام نواحی گویا محسوب می‌شوند؟'),
-    L('Sensomotorik, Sprache, Sehen, Thalamus, Hirnstamm, Kleinhirnstiele.', 'Sensorimotor, language, vision, thalamus, brainstem, cerebellar peduncles.', 'حسی-حرکتی، زبان، بینایی، تالاموس، ساقه مغز، پدیکل‌های مخچه‌ای.'),
-    L('Vollständige Liste: Sensomotorik, Sprache, Sehrinde, Hypothalamus, Thalamus, Hirnstamm, Kleinhirnstiele, tiefe Kleinhirnkerne. Nicht-eloquent: Frontalpol, Okzipitalpol, Kleinhirnhemisphäre.', 'Complete list: sensorimotor, language, visual cortex, hypothalamus, thalamus, brainstem, cerebellar peduncles, deep cerebellar nuclei. Non-eloquent: frontal pole, occipital pole, cerebellar hemisphere.', 'لیست کامل: حسی-حرکتی، زبان، قشر بینایی، هیپوتالاموس، تالاموس، ساقه مغز، پدیکل‌های مخچه‌ای، هسته‌های عمقی مخچه. غیرگویا: قطب فرونتال، اکسیپیتال، نیم‌کره مخچه.')),
+    L('Sensomotorischer, sprachrelevanter und visueller Kortex; Hypothalamus, Thalamus, innere Kapsel; Hirnstamm, Kleinhirnstiele und tiefe Kleinhirnkerne.', 'Sensorimotor, language and visual cortex; hypothalamus, thalamus and internal capsule; brainstem, cerebellar peduncles and deep cerebellar nuclei.', 'قشر حسی‌حرکتی، زبانی و بینایی؛ هیپوتالاموس، تالاموس و کپسول داخلی؛ ساقهٔ مغز، پایه‌های مخچه و هسته‌های عمقی مخچه.'),
+    L('Zur Spetzler-Martin-Liste gehören sensomotorischer, sprachrelevanter und visueller Kortex, Hypothalamus, Thalamus, innere Kapsel, Hirnstamm, Kleinhirnstiele und tiefe Kleinhirnkerne. Die Beziehung zur konkreten Funktionsregion entscheidet; eine pauschale Zuordnung des Okzipitalpols als nichteloquent ist falsch.', 'The Spetzler-Martin list includes sensorimotor, language and visual cortex, hypothalamus, thalamus, internal capsule, brainstem, cerebellar peduncles and deep cerebellar nuclei. The relationship to the actual functional region determines eloquence; categorically calling the occipital pole noneloquent is incorrect.', 'فهرست اسپتزلر–مارتین شامل قشر حسی‌حرکتی، زبانی و بینایی، هیپوتالاموس، تالاموس، کپسول داخلی، ساقهٔ مغز، پایه‌های مخچه و هسته‌های عمقی مخچه است. ارتباط با ناحیهٔ عملکردی دقیق، اهمیت عملکردی را تعیین می‌کند؛ غیرمهم عملکردی دانستن کلی قطب اکسیپیتال نادرست است.')),
 
   F('flow-voids', L('Bildgebung', 'Imaging', 'تصویربرداری'),
     L('Welches MRT-Zeichen ist typisch für eine AVM?', 'Which MRI sign is typical of an AVM?', 'کدام علامت MRI برای AVM تیپیک است؟'),

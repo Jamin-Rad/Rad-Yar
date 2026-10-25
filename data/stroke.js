@@ -400,13 +400,18 @@ const QUESTION_SEEDS = [
     id: 'aspects',
     question: L('Wie wird der ASPECTS berechnet?', 'How is ASPECTS calculated?', 'ASPECTS چگونه محاسبه می‌شود؟'),
     options: [
-      L('Start bei 0, pro normale Region +1', 'Start at 0 and add 1 for each normal region', 'شروع از ۰ و افزودن ۱ برای هر ناحیه طبیعی'),
+      L('Start bei 6; nur für betroffene kortikale Regionen M1–M6 je einen Punkt abziehen', 'Start at 6 and subtract one point for each affected cortical region M1–M6 only', 'شروع از ۶ و کم کردن یک امتیاز فقط برای هر ناحیهٔ قشری درگیر M1–M6'),
       L('Start bei 10, pro ischämische Region −1', 'Start at 10 and subtract 1 for each ischaemic region', 'شروع از ۱۰ و کم کردن ۱ برای هر ناحیه ایسکمیک'),
       L('Anzahl hyperdenser Gefäße', 'Number of hyperdense vessels', 'تعداد عروق هایپردنس'),
       L('Volumen des Perfusionsdefizits in Millilitern', 'Perfusion deficit volume in millilitres', 'حجم نقص پرفیوژن به میلی‌لیتر'),
     ],
     correct: 'B',
     explanation: L('ASPECTS beginnt bei 10. Jede der zehn MCA-Regionen mit frühen ischämischen Veränderungen reduziert den Score um einen Punkt.', 'ASPECTS begins at 10; each of ten MCA regions with early ischaemic change reduces the score by one.', 'ASPECTS از ۱۰ شروع می‌شود و هر ناحیه ایسکمیک از ده ناحیه MCA یک امتیاز کم می‌کند.'),
+    wrongExplanations: {
+      A: L('Nur M1–M6 zu zählen lässt Insula, Nucleus caudatus, Linsenkern und innere Kapsel aus. Der vollständige ASPECTS bewertet zehn Regionen und beginnt bei 10.', 'Counting only M1–M6 omits the insula, caudate nucleus, lentiform nucleus and internal capsule. Complete ASPECTS evaluates ten regions and starts at 10.', 'شمارش فقط M1–M6 اینسولا، هستهٔ دمی، هستهٔ عدسی و کپسول داخلی را حذف می‌کند. ASPECTS کامل ده ناحیه را ارزیابی می‌کند و از ۱۰ شروع می‌شود.'),
+      C: L('Hyperdense Gefäße können auf einen Thrombus hinweisen. ASPECTS bewertet dagegen frühe ischämische Parenchymveränderungen in definierten Regionen.', 'Hyperdense vessels may indicate thrombus. ASPECTS instead evaluates early ischaemic parenchymal change in defined regions.', 'عروق هایپردنس ممکن است نشان‌دهندهٔ ترومبوس باشند؛ در مقابل، ASPECTS تغییرات زودرس ایسکمیک پارانشیم را در نواحی مشخص ارزیابی می‌کند.'),
+      D: L('Ein in Millilitern gemessenes Perfusionsdefizit ist ein Volumenparameter. ASPECTS ist ein regionaler Punktwert, kein Volumenmaß.', 'A perfusion deficit measured in millilitres is a volume parameter. ASPECTS is a regional score rather than a volume measurement.', 'نقص پرفیوژن بر حسب میلی‌لیتر یک شاخص حجمی است؛ ASPECTS یک امتیاز ناحیه‌ای است، نه اندازه‌گیری حجم.'),
+    },
   },
   {
     id: 'cta',
@@ -532,6 +537,7 @@ export const STROKE_QUESTIONS = Object.fromEntries(['de', 'en', 'fa'].map(lang =
     options: item.options.map((text, optionIndex) => ({ id: ['A', 'B', 'C', 'D'][optionIndex], text: text[lang] })),
     correct: item.correct,
     explanation: item.explanation[lang],
+    ...(item.wrongExplanations ? { wrongExplanations: Object.fromEntries(Object.entries(item.wrongExplanations).map(([id, text]) => [id, text[lang]])) } : {}),
   })),
 ]))
 

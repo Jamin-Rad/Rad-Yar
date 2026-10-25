@@ -1,0 +1,534 @@
+{
+  "date": "2026-10-25",
+  "baseline": "2ea96afff3d3a5c16b1a825f592a5884a001a820",
+  "counts": {
+    "lessons": 234,
+    "renderedLocaleGraphs": 702,
+    "mcqs": 883,
+    "flashcards": 1099,
+    "casesStructuralOnly": 18
+  },
+  "groups": [
+    {
+      "file": "gehirn-review.json",
+      "scope": "All active Gehirn canonical MCQs and flashcards, snapshot from current runtime corpus; no app edits.",
+      "counts": {
+        "mcq": 249,
+        "flashcards": 328
+      },
+      "sourceChecks": [
+        {
+          "id": "AHA2026",
+          "url": "https://www.ahajournals.org/doi/10.1161/STR.0000000000000513",
+          "readEvidence": "Search/full-page indexed primary-source evidence inspected 2026-10-25; source supports bounded claims only."
+        },
+        {
+          "id": "ASPECTS2000",
+          "url": "https://www.kissnetwork.us/wp-content/uploads/2018/06/ASPECTS-Barber-et-al-Lancet-2000.pdf",
+          "readEvidence": "Search/full-page indexed primary-source evidence inspected 2026-10-25; source supports bounded claims only."
+        },
+        {
+          "id": "DWI2001",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/11290470/",
+          "readEvidence": "Search/full-page indexed primary-source evidence inspected 2026-10-25; source supports bounded claims only."
+        },
+        {
+          "id": "Insula1990",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/2389039/",
+          "readEvidence": "Search/full-page indexed primary-source evidence inspected 2026-10-25; source supports bounded claims only."
+        },
+        {
+          "id": "Fogging1981",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/7301107/",
+          "readEvidence": "Search/full-page indexed primary-source evidence inspected 2026-10-25; source supports bounded claims only."
+        },
+        {
+          "id": "HT2004",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/15205127/",
+          "readEvidence": "Search/full-page indexed primary-source evidence inspected 2026-10-25; source supports bounded claims only."
+        },
+        {
+          "id": "Swelling2014",
+          "url": "https://www.ahajournals.org/doi/abs/10.1161/01.str.0000441965.15164.d6?download=true",
+          "readEvidence": "Search/full-page indexed primary-source evidence inspected 2026-10-25; source supports bounded claims only."
+        },
+        {
+          "id": "Boston2022",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9389452/",
+          "readEvidence": "Primary source indexed text/abstract inspected; HbMRI1985 abstract did not expose molecular mechanism, so that mechanism remains pending."
+        },
+        {
+          "id": "ICH2022",
+          "url": "https://www.ahajournals.org/doi/10.1161/STR.0000000000000407",
+          "readEvidence": "Primary source indexed text/abstract inspected; HbMRI1985 abstract did not expose molecular mechanism, so that mechanism remains pending."
+        },
+        {
+          "id": "MRIacute2004",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/15494579/",
+          "readEvidence": "Primary source indexed text/abstract inspected; HbMRI1985 abstract did not expose molecular mechanism, so that mechanism remains pending."
+        },
+        {
+          "id": "HbMRI1985",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/4034983/",
+          "readEvidence": "Primary source indexed text/abstract inspected; HbMRI1985 abstract did not expose molecular mechanism, so that mechanism remains pending."
+        },
+        {
+          "url": "https://braintrauma.org/coma/guidelines/surgical",
+          "support": "Exact EDH observation and >30cm3 evacuation thresholds."
+        },
+        {
+          "url": "https://onlinelibrary.wiley.com/doi/10.1111/ene.14183",
+          "support": "CADASIL genetic confirmation, family history, biopsy, individual antithrombotic assessment."
+        },
+        {
+          "url": "https://www.ahajournals.org/doi/epdf/10.1161/STR.0000000000000457",
+          "support": "Dissection individualized antithrombotics 3–6months and otherwise-eligible reperfusion."
+        }
+      ],
+      "limitations": null
+    },
+    {
+      "file": "thorax-review.json",
+      "scope": "All active Thorax including cardiac:143MCQ+155cards, DE/EN/FA independent content triage",
+      "counts": {
+        "mcq": 143,
+        "flashcard": 155
+      },
+      "sourceChecks": [
+        {
+          "url": "https://pubs.rsna.org/doi/full/10.1148/radiol.232558",
+          "support": "2024glossary honeycomb single-layer conditional; airtrapping terminology."
+        },
+        {
+          "url": "https://pubmed.ncbi.nlm.nih.gov/6779538/",
+          "support": "Historical65cavities radiographic riskassociation, maximalwall thickness ≤4/5–15/>15, not universalCTmanagement."
+        },
+        {
+          "url": "https://academic.oup.com/eurheartj/article/43/38/3618/6673929",
+          "support": "ExactPH/pre/postcapillary haemodynamic criteria Table5."
+        },
+        {
+          "url": "https://academic.oup.com/eurheartj/article/44/37/3503/7246608",
+          "support": "ESC2023phenotypes and LV hypertrabeculation as trait."
+        },
+        {
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4105392/",
+          "support": "PrimaryTFCvalidationstudy exact2010CMRthresholds."
+        },
+        {
+          "url": "https://www.jacc.org/doi/10.1016/j.jacc.2018.09.072",
+          "support": "OriginalupdatedLakeLouise T2+T1 CMRtissuecriteria."
+        },
+        {
+          "url": "https://pubs.rsna.org/doi/full/10.1148/radiol.2017161659",
+          "support": "Partsolid/solidsize controlintervals and population qualifiers read; no unboundedscientificcertification."
+        }
+      ],
+      "limitations": null
+    },
+    {
+      "file": "mamma-review.json",
+      "scope": "AllmainMCQtriads and all83cardlocalizedfields directly read; see feedback/source limits.",
+      "counts": {
+        "mcq": 67,
+        "flashcards": 83
+      },
+      "sourceChecks": [
+        "https://www.acr.org/Clinical-Resources/Clinical-Tools-and-Reference/Reporting-and-Data-Systems/BI-RADS",
+        "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-MRI.pdf",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC9474540/"
+      ],
+      "limitations": null
+    },
+    {
+      "file": "msk-spine-review/review.json",
+      "scope": {
+        "mcqs": 208,
+        "cards": 228
+      },
+      "counts": {
+        "mcqs": 208,
+        "cards": 228
+      },
+      "progress": {
+        "allGermanItemsRead": 436,
+        "allMainLocaleItemsCompared": 436,
+        "mcqMainLocaleRowsRead": 624,
+        "cardMainLocaleVariantsRead": 684,
+        "authoredWrongFeedbackLocaleStringsRead": 630,
+        "numericLocaleScan": "All208MCQs/228cards; five apparent differences manually checked, benign Persian decimal marks or written-out numerals.",
+        "authorFollowup": "RCLcard answer now states method all3 rather than describing abnormal finding; TerribleTriad DEoption translated; noIDs/keychanges"
+      },
+      "sourceChecks": [
+        {
+          "id": "SRC-SH",
+          "urls": [
+            "https://surgeryreference.aofoundation.org/orthopedic-trauma/pediatric-trauma/further-reading/the-physis"
+          ],
+          "claim": "Salter-HarrisIVvsV classification distinction",
+          "itemKeys": [
+            "fk-sh-4-LOCALE",
+            "fk-fc-sh3",
+            "fk-fc-sh5"
+          ],
+          "status": "specific claim checked; not full paediatric module recertification"
+        },
+        {
+          "id": "SRC-RCL",
+          "urls": [
+            "https://pubmed.ncbi.nlm.nih.gov/21841436/",
+            "https://pubmed.ncbi.nlm.nih.gov/24787305/"
+          ],
+          "claim": "Original normal-pediatric-elbow studies on RCL age/projection/neck-axis and limited specificity",
+          "itemKeys": [
+            "rk-rcline-1-LOCALE",
+            "rk-fc-4",
+            "unterarm-LOCALE-rcl",
+            "unterarm-fc-05"
+          ],
+          "status": "primary abstracts read; supports qualifying the rule"
+        },
+        {
+          "id": "SRC-PIN",
+          "urls": [
+            "https://pmc.ncbi.nlm.nih.gov/articles/PMC3715629/"
+          ],
+          "claim": "IsolatedPIN finger/thumb weakness with sparedECRL wrist extension",
+          "itemKeys": [
+            "rk-nerv-1-LOCALE"
+          ],
+          "status": "primary case-report clinical discussion read"
+        },
+        {
+          "id": "SRC-BURSAL",
+          "urls": [
+            "https://pmc.ncbi.nlm.nih.gov/articles/PMC6583326/"
+          ],
+          "claim": "Arthroscopy-correlated series: superficial tendon defect or intratendinous fluid reaching bursal surface",
+          "itemKeys": [
+            "rotatorenmanschette-LOCALE-06",
+            "rotatorenmanschette-06"
+          ],
+          "status": "primary study diagnostic methods/results read"
+        },
+        {
+          "id": "SRC-GOUTALLIER",
+          "urls": [
+            "https://pubmed.ncbi.nlm.nih.gov/17418325/"
+          ],
+          "claim": "Selectedgrade3/4patients can improve function afterrepair; highgradealone is not impossible",
+          "itemKeys": [
+            "rotatorenmanschette-LOCALE-13",
+            "rotatorenmanschette-12"
+          ],
+          "status": "primary clinical series abstract read; does not prove every patient repairable"
+        },
+        {
+          "id": "SRC-SPINE-GUIDELINES",
+          "urls": [
+            "https://www.idsociety.org/practice-guideline/lyme-disease/",
+            "https://www.nice.org.uk/guidance/ng65/chapter/recommendations",
+            "https://kdigo.org/wp-content/uploads/2026/04/KDIGO-2017-CKD-MBD-Guideline.pdf"
+          ],
+          "claim": "SimultaneousCSF/serumindex; negativeMRI/HLA-B27doesnotexcludeaxSpA; decision-relevantDXA inCKD",
+          "itemKeys": [
+            "neuroborreliose-spinal-csf-LOCALE",
+            "neuroborreliose-spinal-csf",
+            "ws-axspa-negative-mri-01-LOCALE",
+            "ws-axspa-negative-mri",
+            "renale-osteodystrophie-ws-LOCALE-dichte",
+            "renale-osteodystrophie-ws-dichte"
+          ],
+          "status": "specific official guideline recommendations read, not all spine disease claims verified"
+        },
+        {
+          "id": "SRC-LEE",
+          "urls": [
+            "https://pubmed.ncbi.nlm.nih.gov/20308517/"
+          ],
+          "claim": "OriginalMRIforaminalstenosisgradingdefinitions",
+          "itemKeys": [
+            "neuroforamenstenose-LOCALE-lee-grade",
+            "neuroforamenstenose-fat",
+            "neuroforamenstenose-grade-2",
+            "neuroforamenstenose-grade-3"
+          ],
+          "status": "primary study abstract read"
+        },
+        {
+          "id": "SRC-DISC",
+          "urls": [
+            "https://ref.mcbradiology.com/Neuro/References/Lumbar%20Disc%20Nomenclature%20-%20Version%202.0.pdf",
+            "https://pubmed.ncbi.nlm.nih.gov/24768732/"
+          ],
+          "claim": "Consensusdefinition protrusion/extrusion same-plane base relation and sequestration",
+          "itemKeys": [
+            "bandscheibenpathologien-LOCALE-protrusion-base",
+            "bandscheibenpathologien-LOCALE-sequester-continuity",
+            "bandscheibenpathologien-LOCALE-foraminal-zone",
+            "bandscheibenpathologien-LOCALE-subarticular-location",
+            "bandscheibenpathologien-protrusion",
+            "bandscheibenpathologien-extrusion-sequester",
+            "bandscheibenpathologien-axial-zones",
+            "bandscheibenpathologien-neural-structure"
+          ],
+          "status": "original society-consensus paper pp3/7 definitions read via mirrored originalPDF; publisherfulltext403 recorded"
+        },
+        {
+          "id": "SRC-SHOULDER",
+          "urls": [
+            "https://acsearch.acr.org/docs/69433/Narrative"
+          ],
+          "claim": "2024ACRacuteinstability nextMRIwithoutIVcontrast; radiographyinitial",
+          "itemKeys": [
+            "schulterinstabilitaet-LOCALE-modality",
+            "schulterinstabilitaet-03-modality"
+          ],
+          "status": "official guideline variant4read; not general blanket first-lineMRIrecommendation"
+        }
+      ],
+      "limitations": [
+        "No blanket clinical PASS; sources checked by named grouped claims only.",
+        "No actual assessment browser/keyboard/media frame verification in this child review.",
+        "Inline JSX lesson self-checks are not comprehensively extracted; separate gap.",
+        "Subject ownership follows actualbank metadata and aliases, so several spinaltopics taggedMSK are inside this combinedscope.",
+        "Ten MCQ keys and eight cards corrected under parent authorization; independent review pending; PASTA width/depth ambiguity left unchanged per parent instruction."
+      ]
+    },
+    {
+      "file": "abdomen-technik-vascular-review/review.json",
+      "scope": {
+        "questions": 216,
+        "cards": 305
+      },
+      "counts": {
+        "questions": 216,
+        "cards": 305
+      },
+      "progress": {
+        "mainMcqItemsCompared": 216,
+        "mainCardsCompared": 305,
+        "mcqMainLocaleRows": 648,
+        "cardLocaleVariants": 915,
+        "authoredWrongFeedbackItems": 71,
+        "authoredWrongFeedbackLocaleStringsRead": 639,
+        "numericAudit": "All216MCQs and305cards scanned;10apparent locale differences manually checked, decimal punctuation or written-out Persian numerals; no numeric-content mismatch established"
+      },
+      "sourceChecks": [
+        {
+          "id": "SRC-ATV-ATLANTA",
+          "urls": [
+            "https://doi.org/10.1136/gutjnl-2012-302779"
+          ],
+          "claim": "Original consensus: severe clinical AP requires persistent organ failure >48h; morphology/CT score is distinct.",
+          "itemKeys": [
+            "pankreatitis-LOCALE-ctsi-severe",
+            "pankreatitis-ctsi",
+            "pankreatitis-collections"
+          ],
+          "status": "Specific original-consensus definitions read; not all pancreatitis claims verified"
+        },
+        {
+          "id": "SRC-ATV-PSEUDOCYST",
+          "urls": [
+            "https://pubmed.ncbi.nlm.nih.gov/1709337/",
+            "https://doi.org/10.1136/gutjnl-2018-316027"
+          ],
+          "claim": "Primary43patient study demonstrated pseudocyst-duct communication; European guidelines use full morphology/context and MRCP duct assessment.",
+          "itemKeys": [
+            "abdomen-pancreatic-cysts-LOCALE-01"
+          ],
+          "status": "Primary abstract and official guideline recommendations read; old study used only for communication existence, not its obsolete procedure advice"
+        },
+        {
+          "id": "SRC-ATV-PDAC",
+          "urls": [
+            "https://els-jbs-prod-cdn.jbs.elsevierhealth.com/article/S0016-5085%2813%2901588-6/fulltext",
+            "https://pubmed.ncbi.nlm.nih.gov/12202711/"
+          ],
+          "claim": "SAR/APA consensus describes proximal/upstream atrophy with abrupt duct interruption; tail can be distal anatomically but not downstream in duct-drainage terminology.",
+          "itemKeys": [
+            "pankreatitis-LOCALE-carcinoma-dd",
+            "pankreatitis-carcinoma-dd",
+            "pdac-isoattenuating",
+            "abdomen-pdac-isoattenuating-LOCALE-01"
+          ],
+          "status": "Named consensus paragraph and primary CT abstract read"
+        },
+        {
+          "id": "SRC-ATV-EASL",
+          "urls": [
+            "https://www.journal-of-hepatology.eu/article/S0168-8278%2816%2930101-5/fulltext"
+          ],
+          "claim": "FNH epidemiology denominator is benign tumour; typicalFNH nofollowup except vascularliverdisease; haemangiomaUS<3cm in healthy liver with typical morphology.",
+          "itemKeys": [
+            "fnh-LOCALE-02",
+            "fnh-02-epidemiologie",
+            "fnh-12-reporting",
+            "haemangiom-LOCALE-02",
+            "haemangiom-03-sono-klassisch"
+          ],
+          "status": "Specific guideline recommendations read; ACG2cm threshold not independently reverified"
+        },
+        {
+          "id": "SRC-ATV-DGVS",
+          "urls": [
+            "https://www.dgvs.de/leitlinien/unterer-gi-trakt/divertikelkrankheit-divertikulitis/?digital=1"
+          ],
+          "claim": "CurrentCDD separates2a<=3cm and2b>3cm;1bphlegmonous noabscess;2cfreeperforation.",
+          "itemKeys": [
+            "divertikulitis-cdd-1",
+            "divertikulitis-cdd-2",
+            "divertikulitis-cdd-3"
+          ],
+          "status": "Official classification table read"
+        },
+        {
+          "id": "SRC-ATV-CONTRAST",
+          "urls": [
+            "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/Clinical/Contrast-Manual/ACR-Manual-on-Contrast-Media.pdf",
+            "https://www.esur.org/wp-content/uploads/2026/10/Guidelines-2026.pdf"
+          ],
+          "claim": "ACRGroupII vs ESURintermediate for gadoxetate/gadobenate; distinct dialysis/metformin guidance and neonatal thyroid/breastfeeding recommendations verified in named sections.",
+          "itemKeys": [
+            "km-ultraschall-LOCALE-1",
+            "km-ultraschall-LOCALE-2",
+            "km-ultraschall-LOCALE-3",
+            "km-jod-typen-LOCALE-1",
+            "km-jod-typen-LOCALE-2",
+            "km-jod-typen-LOCALE-3",
+            "km-jod-reaktionen-LOCALE-1",
+            "km-jod-reaktionen-LOCALE-2",
+            "km-jod-reaktionen-LOCALE-3",
+            "km-jod-reaktionen-LOCALE-4",
+            "km-gastrointestinal-LOCALE-1",
+            "km-gastrointestinal-LOCALE-2",
+            "km-gadolinium-LOCALE-1",
+            "km-gadolinium-LOCALE-2",
+            "km-gadolinium-LOCALE-3",
+            "km-gadolinium-retention-nsf-LOCALE-1",
+            "km-gadolinium-retention-nsf-LOCALE-2",
+            "km-gadolinium-retention-nsf-LOCALE-3",
+            "km-buscopan-LOCALE-1",
+            "km-buscopan-LOCALE-2",
+            "km-niereninsuffizienz-LOCALE-1",
+            "km-niereninsuffizienz-LOCALE-2",
+            "km-niereninsuffizienz-LOCALE-3",
+            "km-schilddruese-LOCALE-1",
+            "km-schilddruese-LOCALE-2",
+            "km-schilddruese-LOCALE-3",
+            "km-schwangerschaft-stillzeit-LOCALE-1",
+            "km-schwangerschaft-stillzeit-LOCALE-2",
+            "km-schwangerschaft-stillzeit-LOCALE-3",
+            "km-ultraschall-card-1",
+            "km-ultraschall-card-2",
+            "km-ultraschall-card-3",
+            "km-jod-typen-card-1",
+            "km-jod-typen-card-2",
+            "km-jod-typen-card-3",
+            "km-jod-reaktionen-card-1",
+            "km-jod-reaktionen-card-2",
+            "km-jod-reaktionen-card-3",
+            "km-jod-reaktionen-card-4",
+            "km-gastrointestinal-card-1",
+            "km-gastrointestinal-card-2",
+            "km-gadolinium-card-1",
+            "km-gadolinium-card-2",
+            "km-gadolinium-card-3",
+            "km-gadolinium-retention-nsf-card-1",
+            "km-gadolinium-retention-nsf-card-2",
+            "km-gadolinium-retention-nsf-card-3",
+            "km-buscopan-card-1",
+            "km-buscopan-card-2",
+            "km-niereninsuffizienz-card-1",
+            "km-niereninsuffizienz-card-2",
+            "km-niereninsuffizienz-card-3",
+            "km-schilddruese-card-1",
+            "km-schilddruese-card-2",
+            "km-schilddruese-card-3",
+            "km-schwangerschaft-stillzeit-card-1",
+            "km-schwangerschaft-stillzeit-card-2",
+            "km-schwangerschaft-stillzeit-card-3"
+          ],
+          "status": "Only named grouped recommendations checked, not every contrast item/drug label or emergency regimen; ACR2026officialPDF via currentmanualpage, ESUR2026 pp19/25-28"
+        },
+        {
+          "id": "SRC-ATV-LAW",
+          "urls": [
+            "https://www.gesetze-im-internet.de/strlschg/BJNR196610017.html",
+            "https://www.gesetze-im-internet.de/strlschv_2018/__47.html",
+            "https://www.gesetze-im-internet.de/strlschv_2018/__49.html",
+            "https://www.gesetze-im-internet.de/strlschg/__83.html"
+          ],
+          "claim": "German law: application-specificFachkunde evidence, SSV remainsresponsible, qualifiedphysician presentforteleradiology, individualjustification.",
+          "itemKeys": [
+            "strahlenschutz-gesetzliche-grundlagen-LOCALE-01",
+            "strahlenschutzbereiche-verantwortliche-LOCALE-01",
+            "fachkunde-strahlenschutz-LOCALE-01",
+            "teleradiologie-LOCALE-01",
+            "strahlenschutz-gesetzliche-grundlagen-01",
+            "strahlenschutzbereiche-verantwortliche-01",
+            "fachkunde-strahlenschutz-01",
+            "teleradiologie-01"
+          ],
+          "status": "Currentofficialstatutorytext consulted; not fulllegalreview; Einzel70/14fetch timeout bypassed viaofficialconsolidatedstatute"
+        },
+        {
+          "id": "SRC-ATV-VOLVULUS",
+          "urls": [
+            "https://pmc.ncbi.nlm.nih.gov/articles/PMC10186802/"
+          ],
+          "claim": "WSESconsensus: twisting beyond180degrees can causeobstruction; exact360notrequireddefinition.",
+          "itemKeys": [
+            "volvulus-ct"
+          ],
+          "status": "Specific consensus mechanics paragraph read"
+        }
+      ],
+      "limitations": [
+        "No blanket scientific or translation PASS: named source checks only.",
+        "No child browser assessment interaction/media-load test; local corpus/consumer code review only.",
+        "Inline JSX lesson checks remain outside exhaustive bank extraction.",
+        "883MCQ/1099card corpus snapshot predates author fixes; current validation/manifests record exact corrections.",
+        "68/69missing exactlessonpracticehrefs do not mean empty banks; curriculum access and evidence-based candidate pools recorded separately in routecoverage.json.",
+        "95topics<2/159<3 are blueprint signals, not fixed-quota failures; runtime option shuffling prevents using rawA-skew as a displayed-letter defect."
+      ]
+    }
+  ],
+  "structural": {
+    "duplicateQuestionIds": 0,
+    "duplicateCardIds": 0,
+    "invalidCorrectIds": 0,
+    "missingMcqLocales": 0,
+    "localeAnswerIdDifferences": 0
+  },
+  "coverage": {
+    "routes": 234,
+    "mcqMissing": 68,
+    "flashcardMissing": 69,
+    "mcqZeroPool": 0,
+    "flashcardZeroPool": 0,
+    "routesWithCurriculumMCQ": 126,
+    "routesWithCurriculumCards": 125,
+    "mcqAbsentFromLessonAndCurriculum": 63,
+    "cardsAbsentFromLessonAndCurriculum": 66,
+    "candidatePoolButNoDirectMcq": 6,
+    "candidatePoolButNoDirectCards": 4
+  },
+  "sourceMethod": "Primary sources for named high-impact claims; unverified claims explicitly pending. No wholesale six-PDF/diagnostic-image reread in this assessment phase.",
+  "difficulty": "Editorial difficulty/cognitive demand only. No empirical calibration, passmark validation or learner-response psychometrics.",
+  "lessonLanguageScope": "234 complete collected rendered text triads compared; 82 fresh brain/thorax + full reusedARVC/CMRpairs and150 other freshtriads. No blanket clinical approval or hidden-state/media rereview.",
+  "feedbackScope": "Brain/Thorax/MSK/Spine/ATV all authored wrong-feedback read. Mamma main67triads+83cards all read; large feedback output truncated, so no blanket full-feedback-read claim.",
+  "methodSources": [
+    "https://www.nbme.org/institutions/nbme-item-writing-guide/",
+    "https://www.myesr.org/education/training-curricula/"
+  ],
+  "release": "Concrete reviewed repairs only; overall scientific acceptance by Dr.Zia pending.",
+  "additionalPrimaryChecks": [
+    "https://pubmed.ncbi.nlm.nih.gov/32630180/",
+    "https://pubmed.ncbi.nlm.nih.gov/2919583/",
+    "https://pubmed.ncbi.nlm.nih.gov/1913122/",
+    "https://www.acr.org/-/media/ACR/Files/RADS/BI-RADS/Mammography-Reporting.pdf",
+    "https://pmc.ncbi.nlm.nih.gov/articles/PMC7907894/"
+  ]
+}

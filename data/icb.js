@@ -421,19 +421,15 @@ const ICB_QUESTION_SEEDS = [
   },
   {
     id: 'icb-q07',
-    question: L('Warum erscheint eine hyperakute ICB (Oxy-Hb) auf T2 hyperintens?', 'Why does a hyperacute ICB (OxyHb) appear hyperintense on T2?', 'چرا ICB فوق‌حاد (Oxy-Hb) در T2 هایپرانتنس دیده می‌شود؟'),
+    question: L("Eine sehr frühe ICB kann auf T2 überwiegend hell erscheinen. Welche Schlussfolgerung ist richtig?", "A very early ICH may appear predominantly bright on T2. Which conclusion is correct?", "خونریزی داخل مغزی بسیار زودرس ممکن است در T2 عمدتاً روشن دیده شود. کدام نتیجه‌گیری درست است؟"),
     options: [
-      L('Wegen des hohen Eisengehalts von Oxy-Hb', 'Because of the high iron content of oxyHb', 'به دلیل محتوای بالای آهن در Oxy-Hb'),
-      L('Weil Oxy-Hb diamagnetisch ist und keinen Suszeptibilitätseffekt erzeugt – T2 bleibt wie Wasser hell', 'Because oxyHb is diamagnetic and produces no susceptibility effect — T2 remains bright like water', 'چون Oxy-Hb دیاماگنتیک است و اثر سوسپتیبیلیتی ندارد — T2 مثل آب روشن می‌ماند'),
-      L('Wegen diffusiver Konversion zu Met-Hb', 'Due to diffuse conversion to metHb', 'به دلیل تبدیل منتشر به Met-Hb'),
-      L('Wegen vasogenem Ödem um die Blutung', 'Due to vasogenic oedema around the bleed', 'به دلیل ادم واسوژنیک اطراف خونریزی'),
+      L("Ein helles T2-Signal schließt eine Blutung aus", "A bright T2 signal excludes haemorrhage", "سیگنال روشن T2 خونریزی را رد می‌کند"),
+      L("T2 allein reicht zum Ausschluss nicht aus; CT beziehungsweise blutsensitive MRT-Sequenzen mitbeurteilen", "T2 alone cannot exclude haemorrhage; assess CT or blood-sensitive MRI sequences as appropriate", "T2 به‌تنهایی برای رد خونریزی کافی نیست؛ بر حسب شرایط CT یا سکانس‌های حساس به خون در MRI را نیز ارزیابی کنید"),
+      L("Eine ICB muss in jeder frühen MRT-Sequenz signalarm sein", "An ICH must be dark on every early MRI sequence", "خونریزی داخل مغزی در تمام سکانس‌های MRI زودرس باید کم‌سیگنال باشد"),
+      L("Das T2-Signal bestimmt unabhängig von der Sequenz das Blutungsalter exakt", "T2 signal determines the exact age of haemorrhage independently of sequence parameters", "سیگنال T2 مستقل از پارامترهای سکانس، سن خونریزی را دقیق تعیین می‌کند"),
     ],
     correct: 'B',
-    explanation: L(
-      'Oxy-Hb ist diamagnetisch und erzeugt keinen Suszeptibilitätseffekt. Daher zeigt T2 ein hohes Signal – ähnlich wie Wasser. Im Gegensatz zu Deoxy-Hb (paramagnetisch) fehlt das Blooming auf T2*. Dies macht die hyperakute Phase im MRT schwer diagnostizierbar.',
-      'OxyHb is diamagnetic and produces no susceptibility effect, so T2 remains bright — similar to water. Unlike deoxyHb (paramagnetic), there is no blooming on T2*. This makes the hyperacute stage difficult to diagnose on MRI.',
-      "Oxy-Hb دیاماگنتیک است و اثر سوسپتیبیلیتی ندارد، پس T2 روشن می‌ماند — مثل آب. برخلاف Deoxy-Hb (پاراماگنتیک)، آرتیفکت شکوفه‌ای در T2* ندارد."
-    ),
+    explanation: L("Blutungsstadien können sich überlagern; das Signal hängt auch von Sequenz und Blutprodukten ab. Ein helles T2-Signal schließt eine frühe ICB nicht aus. CT ist rasch verfügbar; MRT mit GRE/T2* oder SWI kann auch hyperakute Blutungen zuverlässig erkennen.", "Stages may overlap, and signal also depends on the sequence and blood products. Bright T2 signal does not exclude an early ICH. CT is rapidly available; MRI including GRE/T2* or SWI can also detect hyperacute haemorrhage accurately.", "مراحل ممکن است هم‌پوشانی داشته باشند و سیگنال به سکانس و محصولات خونی نیز بستگی دارد. سیگنال روشن T2 خونریزی داخل مغزی زودرس را رد نمی‌کند. CT سریع در دسترس است؛ MRI شامل GRE/T2* یا SWI نیز می‌تواند خونریزی فوق‌حاد را با دقت تشخیص دهد."),
   },
   {
     id: 'icb-q08',
@@ -453,7 +449,7 @@ const ICB_QUESTION_SEEDS = [
   },
   {
     id: 'icb-q09',
-    question: L('Welches MRT-Muster kann bei intrazellulärem Met-Hb im früh-subakuten Stadium auftreten?', 'Which MRI pattern may occur with intracellular metHb in the early subacute stage?', 'کدام الگوی MRI ممکن است با Met-Hb داخل‌سلولی در مرحلهٔ زیرحاد اولیه دیده شود؟'),
+    question: L("Welche Veränderung auf nativen T1-gewichteten Bildern ist typisch für intrazelluläres Met-Hb im früh-subakuten Stadium?", "Which change on unenhanced T1-weighted images is typical of intracellular metHb in the early subacute stage?", "کدام تغییر در تصاویر T1 بدون تزریق برای مت‌هموگلوبین داخل‌سلولی در مرحلهٔ زیرحاد اولیه تیپیک است؟"),
     options: [
       L('T2-Hypointensität auf der DWI-Sequenz', 'T2 hypointensity on DWI', 'هیپوانتنسیتی T2 در سکانس DWI'),
       L('T1-Hyperintensität durch intrazelluläres Met-Hb (früh subakut)', 'T1 hyperintensity from intracellular metHb (early subacute)', 'هایپرانتنسیتی T1 از Met-Hb داخل سلولی (زیرحاد اولیه)'),
@@ -552,7 +548,7 @@ const ICB_QUESTION_SEEDS = [
     question: L('Ein junger Patient ohne Hypertonus hat eine lobäre ICB. Was sollte als nächstes veranlasst werden?', 'A young patient without hypertension has a lobar ICB. What should be the next step?', 'یک بیمار جوان بدون فشار خون بالا ICB لوبار دارد. قدم بعدی چیست؟'),
     options: [
       L('Keine weitere Abklärung nötig – lobäre ICB immer benigne', 'No further workup needed – lobar ICB is always benign', 'نیازی به بررسی بیشتر نیست — ICB لوبار همیشه خوش‌خیم است'),
-      L('CTA zum Ausschluss einer vaskulären Malformation (AVM, Kavernom)', 'CTA to exclude vascular malformation (AVM, cavernoma)', 'CTA برای رد مالفورماسیون عروقی (AVM، کاورنوم)'),
+      L("Zeitnahe CTA zur Suche nach einer makrovaskulären Ursache, etwa AVM oder Aneurysma", "Prompt CTA to investigate a macrovascular cause such as an AVM or aneurysm", "CTA به‌موقع برای بررسی علت ماکروواسکولار مانند AVM یا آنوریسم"),
       L('Sofortige Antikoagulation', 'Immediate anticoagulation', 'ضدانعقاد فوری'),
       L('PET-CT zum Tumorausschluss', 'PET-CT for tumour exclusion', 'PET-CT برای رد تومور'),
     ],
@@ -560,7 +556,7 @@ const ICB_QUESTION_SEEDS = [
     explanation: L(
       'Bei einem jungen Patienten ohne klassische Risikofaktoren (arterieller Hypertonus) und ohne Antikoagulanzieneinnahme ist eine vaskuläre Malformation (AVM, Kavernom, dAVF) eine wichtige Ursache. CTA (und ggf. DSA) zum Ausschluss einer AVM oder eines Aneurysmas ist indiziert. Die MRT (SWI) kann ein Kavernom mit typischem Popcorn-Muster zeigen.',
       'In a young patient without classical risk factors (hypertension) and not on anticoagulants, a vascular malformation (AVM, cavernoma, dAVF) is an important cause. CTA (and possibly DSA) to exclude AVM or aneurysm is indicated. MRI (SWI) may show a cavernoma with a typical popcorn pattern.',
-      'در بیمار جوان بدون فاکتورهای خطر کلاسیک، مالفورماسیون عروقی (AVM، کاورنوم) علت مهمی است. CTA (و در صورت لزوم DSA) برای رد AVM یا آنوریسم ضروری است.'
+      'در بیمار جوان بدون عوامل خطر کلاسیک مانند پرفشاری خون و بدون مصرف ضدانعقاد، مالفورماسیون عروقی (AVM، کاورنوم، dAVF) علت مهمی است. CTA و در صورت لزوم DSA برای بررسی AVM یا آنوریسم اندیکاسیون دارد. MRI شامل SWI می‌تواند کاورنوم را با الگوی تیپیک پاپ‌کورنی نشان دهد.'
     ),
   },
 ]
@@ -600,24 +596,12 @@ export const ICB_FLASHCARD_TOPIC = {
 }
 
 const ICB_FLASHCARD_SEEDS = [
-  // ── 1. Oxy-Hb (hyperakut) ──────────────────────────────────────────────────
+  // ── 1. Hyperakute ICB ────────────────────────────────────────────────────
   {
-    front: L('Oxy-Hb (hyperakut) · T1 und T2?', 'OxyHb (hyperacute) · T1 and T2?', 'Oxy-Hb (فوق‌حاد) · T1 و T2؟'),
-    back: L(
-      'T1: iso / leicht ↓\nT2: ↑↑ (wie Wasser)\nT2*/SWI: leicht ↓\n→ diamagnetisch, kein Suszeptibilitätseffekt',
-      'T1: iso / mildly ↓\nT2: ↑↑ (like water)\nT2*/SWI: mildly ↓\n→ diamagnetic, no susceptibility effect',
-      'T1: ایزو / کمی ↓\nT2: ↑↑ (مثل آب)\nT2*/SWI: کمی ↓\n→ دیاماگنتیک، بدون اثر سوسپتیبیلیتی',
-    ),
-    explanation: L(
-      'Oxy-Hb hat keine ungepaarten Elektronen (diamagnetisch) → kein Suszeptibilitätseffekt. T2 bleibt hell wie freies Wasser. Auf SWI nur minimales Blooming. Diese Phase ist im MRT schwer zu erkennen – die Diagnose erfolgt primär mit dem nativen CT (hyperdens 50–80 HU). Das MRT ist in dieser Phase weniger sensitiv als das CT.',
-      'OxyHb has no unpaired electrons (diamagnetic) → no susceptibility effect. T2 remains bright like free water. Only minimal SWI blooming. This phase is difficult to detect on MRI — diagnosis relies primarily on NCCT (hyperattenuating 50–80 HU). MRI is actually less sensitive than CT in the hyperacute stage.',
-      "Oxy-Hb الکترون جفت‌نشده ندارد (دیاماگنتیک) → بدون اثر سوسپتیبیلیتی. T2 مانند آب آزاد روشن می‌ماند. در SWI فقط آرتیفکت شکوفه‌ای (blooming) حداقلی. این مرحله در MRI سخت تشخیص داده می‌شود — تشخیص اصلی با CT بدون کنتراست (هایپردنس ۵۰-۸۰ HU) است.",
-    ),
-    diagram: L(
-      'Oxy-Hb (Fe²⁺, diamagn.) → kein Suszeptibilitätseffekt → T2 ↑↑ (wie Wasser) → SWI minimal ↓ → CT: hyperdens (50-80 HU)',
-      'OxyHb (Fe²⁺, diamagnetic) → no susceptibility effect → T2 ↑↑ (like water) → SWI minimal ↓ → CT: hyperattenuating (50-80 HU)',
-      'Oxy-Hb (Fe²⁺, دیاماگنتیک) → بدون سوسپتیبیلیتی → T2 ↑↑ (مثل آب) → SWI حداقلی ↓ → CT: هایپردنس (۵۰-۸۰ HU)',
-    ),
+    front: L("Hyperakute ICB · Was leisten T2, CT und blutsensitive MRT-Sequenzen?", "Hyperacute ICH · What can T2, CT and blood-sensitive MRI sequences show?", "خونریزی داخل مغزی فوق‌حاد · نقش T2، CT و سکانس‌های حساس به خون در MRI چیست؟"),
+    back: L("T2 kann überwiegend hell sein und schließt Blut nicht aus.\nCT: schnelle Akutdiagnostik.\nGRE/T2* oder SWI: auch hyperakute Blutung erkennbar.", "T2 may be predominantly bright and does not exclude blood.\nCT: rapid acute assessment.\nGRE/T2* or SWI: can also detect hyperacute haemorrhage.", "T2 ممکن است عمدتاً روشن باشد و خونریزی را رد نمی‌کند.\nCT: ارزیابی سریع در مرحلهٔ حاد.\nGRE/T2* یا SWI: امکان تشخیص خونریزی فوق‌حاد نیز وجود دارد."),
+    explanation: L("Signal und Suszeptibilität hängen von Sequenz, Blutprodukten und deren räumlicher Verteilung ab. Das vereinfachte Oxy-Hb-Modell rechtfertigt weder einen Blutungsausschluss auf T2 noch die pauschale Aussage, MRT sei hyperakut weniger sensitiv als CT. Beide Verfahren können eine akute ICB erkennen; Verfügbarkeit und klinische Situation bestimmen die Erstuntersuchung.", "Signal and susceptibility depend on the sequence, blood products and their spatial distribution. The simplified oxyHb model justifies neither excluding haemorrhage on T2 nor claiming that MRI is invariably less sensitive than CT in the hyperacute stage. Both can detect acute ICH; availability and the clinical situation determine the initial study.", "سیگنال و حساسیت مغناطیسی به سکانس، محصولات خونی و توزیع فضایی آن‌ها بستگی دارند. مدل ساده‌شدهٔ اکسی‌هموگلوبین نه رد خونریزی بر اساس T2 را توجیه می‌کند و نه این ادعای کلی را که MRI در مرحلهٔ فوق‌حاد همیشه از CT کم‌حساس‌تر است. هر دو روش می‌توانند خونریزی حاد را تشخیص دهند؛ دسترسی و وضعیت بالینی تعیین‌کنندهٔ بررسی اولیه‌اند."),
+    diagram: L("T2 hell ≠ Blutung ausgeschlossen → CT / GRE / SWI im Kontext beurteilen", "Bright T2 ≠ haemorrhage excluded → assess CT / GRE / SWI in context", "T2 روشن ≠ رد خونریزی ← CT / GRE / SWI را در زمینهٔ بالینی ارزیابی کنید"),
     tag: 'icb-mrt',
   },
   // ── 2. Deoxy-Hb (akut) ─────────────────────────────────────────────────────
@@ -732,7 +716,7 @@ const ICB_FLASHCARD_SEEDS = [
   },
   // ── 8. CT-Dichte Stadien ───────────────────────────────────────────────────
   {
-    front: L('CT-Dichte ICB: Akut, Subakut, Chronisch?', 'CT attenuation ICB: acute, subacute, chronic?', 'دانسیته CT ICB: حاد، زیرحاد، مزمن؟'),
+    front: L('CT-Dichte ICB: Akut, Subakut, Chronisch?', 'CT attenuation in ICH: acute, subacute, chronic?', 'دانسیتهٔ خونریزی داخل مغزی در CT: حاد، زیرحاد و مزمن؟'),
     back: L(
       'Akut: Blut häufig hyperdens\nResorption: Dichte kann variabel abnehmen und zeitweise isodens werden\nSpäter: häufig hypodense Residualveränderung\n⚠ Verlauf und Zeitpunkt sind variabel; HU nicht als lineare Uhr verwenden.',
       'Acute: blood is often hyperattenuating\nResorption: attenuation may decrease variably and become temporarily isoattenuating\nLater: often a hypoattenuating residual change\n⚠ Course and timing vary; do not use HU as a linear clock.',
@@ -752,17 +736,13 @@ const ICB_FLASHCARD_SEEDS = [
   },
   // ── 9. CAA vs. Hypertensive ICB ────────────────────────────────────────────
   {
-    front: L('CAA vs. Hypertensive ICB · Lokalisation?', 'CAA vs. hypertensive ICB · location?', 'CAA در برابر ICB هیپرتانسیو · محل؟'),
+    front: L('CAA vs. Hypertensive ICB · Lokalisation?', 'CAA vs. hypertensive ICH · location?', 'CAA در برابر خونریزی داخل مغزی ناشی از پرفشاری خون · محل؟'),
     back: L(
-      'Hypertensiv: tief (Putamen 35%, Thalamus 20%, Pons, Kleinhirn)\nCAA: lobär, kortexnah, oft multipel\n  Prädilektion: okzipital + parietal\n  Multiple lobäre Mikroblutungen auf SWI → ✓ CAA',
-      'Hypertensive: deep (putamen 35%, thalamus 20%, pons, cerebellum)\nCAA: lobar, cortical, often multiple\n  Predilection: occipital + parietal\n  Multiple lobar microbleeds on SWI → ✓ CAA',
-      'هیپرتانسیو: عمقی (پوتامن ۳۵٪، تالاموس ۲۰٪، پونز، مخچه)\nCAA: لوبار، نزدیک کورتکس، اغلب چندگانه\n  تمایل: اکسیپیتال + پاریتال\n  میکروبلید لوبار متعدد در SWI → ✓ CAA',
+      'Hypertensiv: tief (Putamen 35%, Thalamus 20%, Pons, Kleinhirn)\nCAA: lobär, kortexnah, oft multipel\n  Prädilektion: okzipital + parietal\n  Streng lobäre Mikroblutungen auf SWI → CAA-Verdacht; Kriterien prüfen',
+      'Hypertensive: deep (putamen 35%, thalamus 20%, pons, cerebellum)\nCAA: lobar, cortical, often multiple\n  Predilection: occipital + parietal\n  Strictly lobar microbleeds on SWI → suspect CAA; assess criteria',
+      'هیپرتانسیو: عمقی (پوتامن ۳۵٪، تالاموس ۲۰٪، پونز، مخچه)\nCAA: لوبار، نزدیک کورتکس، اغلب چندگانه\n  تمایل: اکسیپیتال + پاریتال\n  میکروخونریزی‌های صرفاً لوبار در SWI ← شک به CAA؛ معیارها را بررسی کنید',
     ),
-    explanation: L(
-      'Hypertensive ICB: Lipohyalinose kleiner penetrierender Arterien → Charcot-Bouchard-Mikroaneurysmen → Ruptur in tiefe Strukturen (Putamen häufigste Lokalisation ~35%, Thalamus ~20%, Pons, Kleinhirn). CAA: Amyloid-β-Ablagerungen in den Wänden kortikaler und leptomeningealer Arterien → Wandschwäche → lobäre Blutungen bevorzugt okzipital und parietal. SWI zeigt bei CAA multiple lobäre Mikroblutungen (>3 nach Boston-Kriterien). Alter: CAA tritt typischerweise bei Patienten >65 Jahre auf.',
-      'Hypertensive ICB: lipohyalinosis of small penetrating arteries → Charcot-Bouchard microaneurysms → rupture into deep structures (putamen most common ~35%, thalamus ~20%, pons, cerebellum). CAA: amyloid-β deposition in walls of cortical and leptomeningeal arteries → wall weakness → lobar haemorrhages, preferentially occipital and parietal. SWI shows multiple lobar microbleeds (>3 on Boston criteria) in CAA. Age: CAA typically affects patients >65 years.',
-      'ICB هیپرتانسیو: لیپوهیالینوز آرترئول‌های کوچک → ریزآنوریسم‌های Charcot-Bouchard → پارگی در ساختارهای عمقی (پوتامن ~۳۵٪، تالاموس ~۲۰٪). CAA: رسوب آمیلوئید-β در دیواره عروق کورتیکال → ضعف دیواره → خونریزی لوبار اکسیپیتال/پاریتال. SWI در CAA میکروبلیدهای لوبار متعدد نشان می‌دهد.',
-    ),
+    explanation: L("Tiefe Blutungen sprechen im passenden Kontext eher für hypertensive Arteriopathie, streng lobäre Blutungen und kortikale superfizielle Siderose eher für CAA. Mehrere lobäre Mikroblutungen unterstützen den Verdacht, sind allein aber keine Diagnose. Boston v2.0 verwendet für wahrscheinliche CAA ab 50 Jahren bei passender klinischer Präsentation entweder mindestens zwei streng lobäre hämorrhagische Läsionen oder eine solche Läsion plus ein definiertes Marklagermerkmal. Tiefe hämorrhagische Läsionen und andere Ursachen müssen ausgeschlossen sein; es gibt keine allgemeine Regel „mehr als drei Mikroblutungen“.", "Deep haemorrhages favour hypertensive arteriopathy in the appropriate context; strictly lobar haemorrhages and cortical superficial siderosis favour CAA. Multiple lobar microbleeds support suspicion but are not diagnostic alone. For probable CAA, Boston v2.0 requires age at least 50 and an eligible clinical presentation, with either at least two strictly lobar haemorrhagic lesions or one such lesion plus a specified white-matter feature. Deep haemorrhagic lesions and alternative causes must be absent; there is no general “more than three microbleeds” rule.", "در زمینهٔ مناسب، خونریزی‌های عمقی بیشتر به نفع آرتریوپاتی ناشی از پرفشاری خون و خونریزی‌های صرفاً لوبار و سیدروز سطحی قشر بیشتر به نفع CAA هستند. میکروخونریزی‌های لوبار متعدد شک را تقویت می‌کنند، اما به‌تنهایی تشخیصی نیستند. معیار Boston v2.0 برای CAA محتمل، سن دست‌کم ۵۰ سال و تظاهر بالینی واجد شرایط را همراه با حداقل دو ضایعهٔ خونریزی‌دهندهٔ صرفاً لوبار، یا یک ضایعهٔ لوبار به‌اضافهٔ یک ویژگی مشخص مادهٔ سفید لازم می‌داند. ضایعهٔ خونریزی‌دهندهٔ عمقی و علل جایگزین باید وجود نداشته باشند؛ قاعدهٔ کلی «بیش از سه میکروخونریزی» وجود ندارد."),
     diagram: L(
       'Hypertonie → Lipohyalinose tiefer Arterien → Putamen / Thalamus / Pons\nCAA → Amyloid in kortikalen Gefäßen → lobär okzipital / parietal → SWI: multiple Mikroblutungen',
       'Hypertension → lipohyalinosis deep arteries → putamen / thalamus / pons\nCAA → amyloid in cortical vessels → lobar occipital / parietal → SWI: multiple microbleeds',
@@ -772,7 +752,7 @@ const ICB_FLASHCARD_SEEDS = [
   },
   // ── 10. Ringenhancement ────────────────────────────────────────────────────
   {
-    front: L('Ringenhancement bei ICB · Wie lange? · DD?', 'Ring enhancement in ICB · How long? · DD?', 'Ring تقویت پس از تزریق در ICB · چقدر؟ · DD؟'),
+    front: L('Ringenhancement bei ICB · Wie lange? · DD?', 'Ring enhancement after ICH · Duration and differential diagnosis?', 'تقویت حلقوی پس از خونریزی داخل مغزی · مدت و تشخیص افتراقی؟'),
     back: L(
       'Dauer: bis zu 6 Monate nach Blutung\nUrsache: Blut-Hirn-Schrankenstörung am Resorptionsrand\nDD: Abszess (DWI-Restriktion im Zentrum)\n    Metastase (Ödem > Läsion)\n    Glioblastom (irreguläres Enhancement)',
       'Duration: up to 6 months after haemorrhage\nCause: BBB disruption at resorption rim\nDD: abscess (DWI restriction in centre)\n    metastasis (oedema > lesion)\n    glioblastoma (irregular enhancement)',
@@ -781,7 +761,7 @@ const ICB_FLASHCARD_SEEDS = [
     explanation: L(
       'Ein Ringenhancement entsteht durch Störung der Blut-Hirn-Schranke am Resorptionsrand der Blutung – Makrophagen und Neovaskularisation bilden einen lecken Kapillarring. Es kann bis zu 6 Monate nach der initialen ICB persistieren und ist in der subakuten Phase normal. Wichtige Differenzialdiagnosen: Hirnabszess (DWI-Restriktion im Zentrum = Eiter), Hirnmetastase (perifokales Ödem größer als Läsion), Glioblastom (unregelmäßiges, wandnahes Enhancement). Der klinische Kontext (bekannte Blutung? Fieber? bekannter Tumor?) ist entscheidend.',
       'Ring enhancement arises from BBB disruption at the resorption rim of the haematoma — macrophages and neovascularisation form a leaky capillary ring. It can persist up to 6 months after the initial ICB and is normal in the subacute phase. Key differential diagnoses: brain abscess (DWI restriction in centre = pus), brain metastasis (perifocal oedema larger than lesion), glioblastoma (irregular wall-based enhancement). Clinical context (known haemorrhage? fever? known tumour?) is decisive.',
-      'Ring تقویت پس از تزریق به دلیل اختلال سد خونی-مغزی در لبه جذب هماتوم ایجاد می‌شود — ماکروفاژها و نئوواسکولاریزاسیون یک حلقه مویرگی نشت‌دار تشکیل می‌دهند. می‌تواند تا ۶ ماه پس از ICB اولیه باقی بماند. DD مهم: آبسه (محدودیت DWI مرکزی)، متاستاز (ادم > ضایعه)، GBM (تقویت پس از تزریق نامنظم).',
+      'تقویت حلقوی پس از تزریق به دلیل اختلال سد خونی-مغزی در لبه جذب هماتوم ایجاد می‌شود — ماکروفاژها و نئوواسکولاریزاسیون یک حلقه مویرگی نشت‌دار تشکیل می‌دهند. می‌تواند تا ۶ ماه پس از ICB اولیه باقی بماند. DD مهم: آبسه (محدودیت DWI مرکزی)، متاستاز (ادم > ضایعه)، GBM (تقویت پس از تزریق نامنظم).',
     ),
     tag: 'icb-ct',
   },
@@ -807,7 +787,7 @@ const ICB_FLASHCARD_SEEDS = [
   },
   // ── 12. Sequenzen je Stadium ───────────────────────────────────────────────
   {
-    front: L('Welche MRT-Sequenz für welche ICB-Phase?', 'Which MRI sequence for which ICB phase?', 'کدام سکانس MRI برای کدام مرحله ICB؟'),
+    front: L('Welche MRT-Sequenz für welche ICB-Phase?', 'Which MRI sequence for which ICH phase?', 'کدام سکانس MRI برای کدام مرحلهٔ خونریزی داخل مغزی؟'),
     back: L(
       'Akut: CT zuerst; T2*/SWI ergänzt Suszeptibilitätsinformation\nSubakut: T1/T2 gemeinsam mit Blutprodukten interpretieren\nChronisch: Suszeptibilitätssequenzen helfen bei kleinen alten Blutprodukten\n⚠ Signale variieren; CT und MRT beantworten unterschiedliche Fragen.',
       'Acute: CT first; T2*/SWI add susceptibility information\nSubacute: interpret T1/T2 together with blood products\nChronic: susceptibility-sensitive sequences help depict small old blood products\n⚠ Signals vary; CT and MRI answer different questions.',

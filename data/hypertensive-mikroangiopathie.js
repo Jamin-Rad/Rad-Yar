@@ -103,7 +103,7 @@ export const HMA_LESSON = {
       [L('Fibrinoide Nekrose', 'Fibrinoid necrosis', 'نکروز فیبرینوئید'), L('Wandruptur → Extravasation', 'Wall rupture → extravasation', 'پارگی دیواره → اکستراواسیون'), L('Hyperdens im CCT', 'Hyperdense on CCT', 'هیپردنس در CCT')],
       [L('Charcot-Bouchard-Aneurysmen', 'Charcot-Bouchard aneurysms', 'آنوریسم‌های Charcot-Bouchard'), L('Ruptur → intrazerebrale Blutung', 'Rupture → intracerebral haemorrhage', 'پارگی → خونریزی داخل مغزی'), L('ICB im CCT/MRT', 'ICH on CCT/MRI', 'ICH در CCT/MRI')],
       [L('Perivaskuläre Demyelinisierung', 'Perivascullar demyelination', 'دمیلینیزاسیون پریواسکولار'), L('Axonverlust, WMH', 'Axon loss, WMH', 'از دست رفتن آکسون، WMH'), L('FLAIR-Hyperintensitäten', 'FLAIR hyperintensities', 'هایپرانتنسیتی در FLAIR')],
-      [L('Perforator-Verschluss', 'Perforator occlusion', 'انسداد پرفوراتور'), L('Lakunärer Infarkt (<15 mm)', 'Lacunar infarct (<15 mm)', 'انفارکت لاکونار (<15 میلی‌متر)'), L('DWI-Restriktion, später T2-Höhle', 'DWI restriction, later T2 cavity', 'محدودیت DWI، بعداً حفره T2')],
+      [L('Perforator-Verschluss', 'Perforator occlusion', 'انسداد پرفوراتور'), L('Frischer kleiner subkortikaler Infarkt (axial meist ≤20 mm)', 'Recent small subcortical infarct (usually ≤20 mm axially)', 'انفارکت کوچک زیرقشری تازه (محوری معمولاً ≤۲۰ میلی‌متر)'), L('DWI-Restriktion, später T2-Höhle', 'DWI restriction, later T2 cavity', 'محدودیت DWI، بعداً حفره T2')],
     ],
     key: L(
       'Charcot-Bouchard-Aneurysmen entstehen durch Lipohyalinose der Perforatoren und sind die direkte Ursache der hypertensiven ICB.',
@@ -181,7 +181,7 @@ export const HMA_LESSON = {
     ],
     seqRows: [
       [L('T2 / FLAIR', 'T2 / FLAIR', 'T2 / FLAIR'), L('Periventrikuläre und tiefe WMH (weiß)', 'Periventricular and deep WMH (bright)', 'WMH پریونتریکولار و عمقی (روشن)'), L('Leukoaraiose = chronische Ischämie, Fazekas-Klassifikation', 'Leukoaraiosis = chronic ischaemia, Fazekas classification', 'لوکوآرائوز = ایسکمی مزمن، طبقه‌بندی Fazekas')],
-      [L('DWI / ADC', 'DWI / ADC', 'DWI / ADC'), L('Restriktionsmuster (<15 mm, tief)', 'Restriction pattern (<15 mm, deep)', 'الگوی محدودیت (<15 میلی‌متر، عمقی)'), L('Akuter lakunärer Infarkt (Perforator)', 'Acute lacunar infarct (perforator)', 'انفارکت لاکونار حاد (پرفوراتور)')],
+      [L('DWI / ADC', 'DWI / ADC', 'DWI / ADC'), L('Restriktionsmuster (subkortikal, axial meist ≤20 mm)', 'Restriction pattern (subcortical, usually ≤20 mm axially)', 'الگوی محدودیت (زیرقشری، محوری معمولاً ≤۲۰ میلی‌متر)'), L('Akuter lakunärer Infarkt (Perforator)', 'Acute lacunar infarct (perforator)', 'انفارکت لاکونار حاد (پرفوراتور)')],
       [L('GRE / SWI', 'GRE / SWI', 'GRE / SWI'), L('Punktförmige Hypointensitäten (Blütenmuster)', 'Punctate hypointensities (blooming artefact)', 'هایپوانتنسیتی‌های نقطه‌ای (الگوی شکوفه)'), L('Zerebrale Mikroblutungen (CMBs): tief = Hypertonie, kortikal = CAA', 'CMBs: deep = hypertension, cortical = CAA', 'CMBs: عمقی = فشار خون، کورتیکال = CAA')],
       [L('T1', 'T1', 'T1'), L('Hypointense Höhlen im Marklager / Basalganglien', 'Hypointense cavities in white matter / basal ganglia', 'حفره‌های هایپوانتنس در ماده سفید / بازال گانگلیا'), L('Chronische Lakunen (>3 Monate alt)', 'Chronic lacunes (>3 months old)', 'لاکون‌های مزمن (>3 ماه)')],
       [L('T1 Gd', 'T1 Gd', 'T1 Gd'), L('Keine Enhancement (außer im akuten Infarkt)', 'No enhancement (except in acute infarct)', "بدون تقویت پس از تزریق (جز در انفارکت حاد)"), L('Hilft bei Differenzierung Metastase vs. ICB', 'Helps differentiate metastasis from ICH', 'کمک به تمایز متاستاز از ICH')],
@@ -220,7 +220,7 @@ export const HMA_LESSON = {
       {
         icon: '💪',
         title: L('Pure Motor Hemiparesis', 'Pure Motor Hemiparesis', 'همی‌پارزی خالص حرکتی'),
-        text: L('Capsula interna (hinteres Schenkel) / Pons. Rein motorisches Defizit ohne Sensibilitätsstörung.', 'Internal capsule (posterior limb) / pons. Pure motor deficit without sensory loss.', 'کپسول داخلی (پای خلفی) / پونز. نقص حرکتی خالص بدون اختلال حسی.'),
+        text: L('Capsula interna (hinterer Schenkel) / Pons. Rein motorisches Defizit ohne Sensibilitätsstörung.', 'Internal capsule (posterior limb) / pons. Pure motor deficit without sensory loss.', 'کپسول داخلی (بازوی خلفی) / پونز. نقص حرکتی خالص بدون اختلال حسی.'),
       },
       {
         icon: '🖐️',
@@ -239,9 +239,9 @@ export const HMA_LESSON = {
       },
     ],
     key: L(
-      'Kleinhirnblutung: Ataxie + Kopfschmerz + Erbrechen ohne Hemiparese. Ab 3 cm oder bei Dekompensation: neurochirurgische Evaluation!',
-      'Cerebellar haemorrhage: ataxia + headache + vomiting without hemiparesis. If ≥3 cm or decompensation: neurosurgical evaluation!',
-      'خونریزی مخچه: آتاکسی + سردرد + استفراغ بدون همی‌پارزی. در صورت ≥3 سانتی‌متر یا جبران‌ناپذیری: ارزیابی جراحی مغز!'
+      'Kleinhirnblutung: Ataxie + Kopfschmerz + Erbrechen ohne Hemiparese. Bei einem Volumen ≥15 ml oder klinischer Verschlechterung: neurochirurgische Evaluation!',
+      'Cerebellar haemorrhage: ataxia + headache + vomiting without hemiparesis. If volume ≥15 mL or decompensation: neurosurgical evaluation!',
+      'خونریزی مخچه: آتاکسی + سردرد + استفراغ بدون همی‌پارزی. در صورت حجم ≥۱۵ میلی‌لیتر یا بدترشدن وضعیت عصبی: ارزیابی جراحی مغز!'
     ),
   },
 
@@ -284,17 +284,17 @@ export const HMA_LESSON = {
       {
         icon: '💉',
         title: L('Blutdruckkontrolle', 'Blood pressure control', 'کنترل فشار خون'),
-        text: L('Ziel akut: <140 mmHg systolisch (AHA/ASA-Leitlinien). Iv. Labetalol, Nicardipine oder Urapidil. Senkt Hämatomexpansionsrisiko.', 'Acute target: <140 mmHg systolic (AHA/ASA guidelines). IV labetalol, nicardipine, or urapidil. Reduces haematoma expansion risk.', 'هدف حاد: <140 mmHg سیستولیک (دستورالعمل AHA/ASA). لابتالول، نیکاردیپین یا اورادیپیل IV. خطر گسترش هماتوم را کاهش می‌دهد.'),
+        text: L('Bei leichter bis mittelschwerer spontaner ICB und initial systolisch 150–220 mmHg kann eine gleichmäßige Senkung auf etwa 140 mmHg mit Erhaltung im Bereich 130–150 mmHg erwogen werden. Nicht unter 130 mmHg senken. Bei schwerer ICB oder geplanter Dekompression individuell entscheiden.', 'For mild-to-moderate spontaneous ICH with initial systolic BP 150–220 mmHg, smooth lowering towards 140 mmHg and maintaining 130–150 mmHg may be reasonable. Do not lower below 130 mmHg. Individualise management in severe ICH or planned decompression.', 'در خونریزی خودبه‌خودی خفیف تا متوسط با فشار سیستولیک اولیهٔ ۱۵۰ تا ۲۲۰ میلی‌متر جیوه، می‌توان کاهش یکنواخت تا حدود ۱۴۰ و حفظ فشار در محدودهٔ ۱۳۰ تا ۱۵۰ را در نظر گرفت. فشار را به زیر ۱۳۰ کاهش ندهید. در خونریزی شدید یا جراحی کاهش فشار برنامه‌ریزی‌شده، تصمیم باید فردی باشد.'),
       },
       {
         icon: '🔄',
         title: L('Antikoagulanzienwirkung aufheben', 'Reverse anticoagulation', 'معکوس کردن ضد انعقادها'),
-        text: L('Phenprocoumon/Warfarin: PCC (25 IE/kg) + Vit. K iv. DOAK: Idarucizumab (Dabigatran), Andexanet alfa (Faktor-Xa-Inhibitoren). Ziel: INR <1,3 innerhalb 4 h.', 'Phenprocoumon/warfarin: PCC (25 IU/kg) + IV vitamin K. DOACs: idarucizumab (dabigatran), andexanet alfa (factor Xa inhibitors). Target: INR <1.3 within 4 h.', 'فنپروکومون/وارفارین: PCC (25 IU/kg) + ویتامین K IV. DOACها: ایداروسیزوماب (داbiگاتران)، اندگزانت آلفا (مهارکننده‌های فاکتور Xa). هدف: INR <1.3 در عرض 4 ساعت.'),
+        text: L('Phenprocoumon/Warfarin: 4-Faktor-PCC (Dosis nach INR, Körpergewicht und Präparat) + Vit. K iv. DOAK: Idarucizumab (Dabigatran), Andexanet alfa (Faktor-Xa-Inhibitoren). Ziel: INR <1,3 innerhalb 4 h.', 'Phenprocoumon/warfarin: 4-factor PCC (dose according to INR, body weight and product) + IV vitamin K. DOACs: idarucizumab (dabigatran), andexanet alfa (factor Xa inhibitors). Target: INR <1.3 within 4 h.', 'فنپروکومون/وارفارین: PCC چهارعاملی (دوز متناسب با INR، وزن و فرآورده) + ویتامین K IV. DOACها: ایداروسیزوماب (دابیگاتران)، اندگزانت آلفا (مهارکننده‌های فاکتور Xa). هدف: INR <1.3 در عرض 4 ساعت.'),
       },
       {
         icon: '🏥',
         title: L('Neurochirurgische Intervention', 'Neurosurgical intervention', 'مداخله جراحی مغز'),
-        text: L('Kleinhirnblutung ≥3 cm oder mit Kompression des 4. Ventrikels: dringende chirurgische Entlastung. Supratentorielle ICB: in ausgewählten Fällen (raumfordernd, jung, gute Prognose).', 'Cerebellar haemorrhage ≥3 cm or compressing the 4th ventricle: urgent surgical decompression. Supratentorial ICH: selected cases (space-occupying, young patient, good prognosis).', 'خونریزی مخچه ≥3 سانتی‌متر یا با فشار به بطن چهارم: کاهش فشار جراحی فوری. ICH سوپراتانتوریال: موارد انتخابی (فضا اشغال‌کننده، بیمار جوان، پیش‌آگهی خوب).'),
+        text: L('Kleinhirnblutung mit einem Volumen ≥15 ml oder mit Hirnstammkompression oder obstruktivem Hydrozephalus: dringende chirurgische Entlastung. Supratentorielle ICB: in ausgewählten Fällen (raumfordernd, jung, gute Prognose).', 'Cerebellar haemorrhage volume ≥15 mL or brainstem compression or obstructive hydrocephalus: urgent surgical decompression. Supratentorial ICH: selected cases (space-occupying, young patient, good prognosis).', 'خونریزی مخچه با حجم ≥۱۵ میلی‌لیتر یا با فشار به ساقهٔ مغز یا هیدروسفالی انسدادی: کاهش فشار جراحی فوری. ICH سوپراتانتوریال: موارد انتخابی (فضا اشغال‌کننده، بیمار جوان، پیش‌آگهی خوب).'),
       },
       {
         icon: '💊',
@@ -341,7 +341,7 @@ export const HMA_LESSON = {
       },
       {
         title: L('Therapie-Notfall', 'Treatment emergency', 'اورژانس درمانی'),
-        text: L('RR <140 mmHg (iv.) + Antikoagulanzienwirkung aufheben + Kleinhirnblutung ≥3 cm neurochirurgisch evaluieren. Keine Lyse!', 'BP <140 mmHg (IV) + reverse anticoagulation + cerebellar haemorrhage ≥3 cm → neurosurgical evaluation. No thrombolysis!', 'فشار خون <140 mmHg (IV) + معکوس ضد انعقاد + خونریزی مخچه ≥3 سانتی‌متر → ارزیابی جراحی مغز. تروم‌بولیز ممنوع!'),
+        text: L('Blutdruck gleichmäßig kontrollieren; Zielwerte an Schwere und Ausgangsdruck anpassen, nicht pauschal unter 140 senken. Antikoagulation rasch aufheben. Bei Kleinhirnblutung ≥15 ml, Verschlechterung, Hirnstammkompression oder obstruktivem Hydrozephalus dringende Neurochirurgie. Keine Lyse!', 'Control BP smoothly, adapting targets to severity and baseline BP rather than universally lowering below 140. Reverse anticoagulation promptly. Cerebellar haemorrhage ≥15 mL, deterioration, brainstem compression or obstructive hydrocephalus requires urgent neurosurgical assessment. No thrombolysis!', 'فشار خون را یکنواخت و متناسب با شدت بیماری و فشار اولیه کنترل کنید؛ کاهش همگانی به زیر ۱۴۰ درست نیست. اثر ضدانعقاد را سریع خنثی کنید. خونریزی مخچه با حجم حداقل ۱۵ میلی‌لیتر، بدترشدن عصبی، فشار به ساقهٔ مغز یا هیدروسفالی انسدادی نیازمند ارزیابی فوری جراحی مغز است. ترومبولیز ممنوع است!'),
       },
     ],
   },
@@ -381,18 +381,18 @@ const HMA_QUESTION_SEEDS = [
   ),
 
   Q('hma-03',
-    L('Ein 72-jähriger Patient mit langjährigem Bluthochdruck hat akut eine Ataxie, Schwindel und Erbrechen. Das CCT zeigt eine hyperdens Läsion im Kleinhirn mit 3,5 cm Durchmesser. Was ist der nächste Schritt?',
-      'A 72-year-old patient with long-standing hypertension presents with acute ataxia, dizziness and vomiting. CCT shows a hyperdense lesion in the cerebellum 3.5 cm in diameter. What is the next step?',
-      'یک بیمار ۷۲ ساله با فشار خون مزمن با آتاکسی حاد، سرگیجه و استفراغ مراجعه می‌کند. CCT یک ضایعه هیپردنس در مخچه با قطر 3.5 سانتی‌متر نشان می‌دهد. قدم بعدی چیست؟'),
+    L('Ein 72-jähriger Patient mit langjährigem Bluthochdruck hat akut eine Ataxie, Schwindel und Erbrechen. Das CCT zeigt eine hyperdense Läsion im Kleinhirn mit einem Volumen von 18 ml. Was ist der nächste Schritt?',
+      'A 72-year-old patient with long-standing hypertension presents with acute ataxia, dizziness and vomiting. CCT shows a hyperdense lesion in the cerebellum with a volume of 18 mL. What is the next step?',
+      'یک بیمار ۷۲ ساله با فشار خون مزمن با آتاکسی حاد، سرگیجه و استفراغ مراجعه می‌کند. CCT یک ضایعه هیپردنس در مخچه با حجم ۱۸ میلی‌لیتر نشان می‌دهد. قدم بعدی چیست؟'),
     [
       L('Dringende neurochirurgische Evaluation', 'Urgent neurosurgical evaluation', 'ارزیابی فوری جراحی مغز'),
       L('Thrombolyse mit rtPA', 'Thrombolysis with rtPA', 'تروم‌بولیز با rtPA'),
       L('Sofortige Antikoagulation', 'Immediate anticoagulation', 'ضد انعقاد فوری'),
       L('Abwarten und CCT-Kontrolle nach 24 h', 'Wait and repeat CCT after 24 h', 'صبر و تکرار CCT بعد از ۲۴ ساعت'),
     ], 0,
-    L('Kleinhirnblutungen ≥3 cm oder mit Kompression des 4. Ventrikels sind ein neurochirurgischer Notfall. Die Gefahr eines obstruktiven Hydrozephalus und Hirnstammkompression erfordert dringende chirurgische Intervention. Lyse ist bei ICB absolut kontraindiziert.',
-      'Cerebellar haemorrhages ≥3 cm or compressing the 4th ventricle are a neurosurgical emergency. The risk of obstructive hydrocephalus and brainstem compression requires urgent surgical intervention. Thrombolysis is absolutely contraindicated in ICH.',
-      'خونریزی‌های مخچه ≥3 سانتی‌متر یا با فشار به بطن چهارم اورژانس جراحی مغز هستند. خطر هیدروسفالی انسدادی و فشار به ساقه مغز نیاز به مداخله جراحی فوری دارد. تروم‌بولیز در ICH مطلقاً منع مصرف است.')
+    L('Kleinhirnblutungen mit einem Volumen ≥15 ml oder mit Hirnstammkompression oder obstruktivem Hydrozephalus sind ein neurochirurgischer Notfall. Die Gefahr eines obstruktiven Hydrozephalus und Hirnstammkompression erfordert dringende chirurgische Intervention. Lyse ist bei ICB absolut kontraindiziert.',
+      'Cerebellar haemorrhages with volume ≥15 mL or brainstem compression or obstructive hydrocephalus are a neurosurgical emergency. The risk of obstructive hydrocephalus and brainstem compression requires urgent surgical intervention. Thrombolysis is absolutely contraindicated in ICH.',
+      'خونریزی‌های مخچه با حجم ≥۱۵ میلی‌لیتر یا با فشار به ساقهٔ مغز یا هیدروسفالی انسدادی اورژانس جراحی مغز هستند. خطر هیدروسفالی انسدادی و فشار به ساقه مغز نیاز به مداخله جراحی فوری دارد. تروم‌بولیز در ICH مطلقاً منع مصرف است.')
   ),
 
   Q('hma-04',
@@ -450,9 +450,7 @@ const HMA_QUESTION_SEEDS = [
       L('SWI (Susceptibility Weighted Imaging)', 'SWI (susceptibility weighted imaging)', 'SWI (تصویربرداری با وزن حساسیت)'),
       L('CCT nativ', 'Non-contrast CCT', 'CCT بدون کنتراست'),
     ], 0,
-    L('DWI zeigt akute Ischämien (einschließlich lakunärer Infarkte <15 mm in tiefen Territorien) als Restriktionsmuster bereits innerhalb von Minuten. T2/FLAIR wird erst nach 6–24 h positiv. CCT ist für kleine lakunäre Infarkte wenig sensitiv.',
-      'DWI shows acute ischaemia (including lacunar infarcts <15 mm in deep territories) as a restriction pattern within minutes. T2/FLAIR becomes positive only after 6–24 h. CCT has low sensitivity for small lacunar infarcts.',
-      'DWI ایسکمی حاد (از جمله انفارکت‌های لاکونار <15 میلی‌متر در مناطق عمقی) را در عرض چند دقیقه به عنوان الگوی محدودیت نشان می‌دهد. T2/FLAIR فقط پس از 6-24 ساعت مثبت می‌شود. CCT برای انفارکت‌های لاکونار کوچک حساسیت کمی دارد.')
+    L("DWI kann frische kleine subkortikale Infarkte früh als Diffusionsrestriktion zeigen; kleine oder sehr frühe Läsionen können aber DWI-negativ sein. T2/FLAIR-Veränderungen entwickeln sich variabel und besitzen keine feste 6–24-Stunden-Grenze. Ein frischer kleiner subkortikaler Infarkt ist von einer chronischen Lakune zu unterscheiden.", "DWI can reveal recent small subcortical infarcts early as restricted diffusion, although small or very early lesions may be DWI-negative. T2/FLAIR changes evolve variably and have no fixed 6–24-hour boundary. A recent small subcortical infarct should be distinguished from a chronic lacune.", "DWI می‌تواند انفارکت کوچک زیرقشری تازه را زود به‌صورت محدودیت دیفیوژن نشان دهد؛ بااین‌حال ضایعات کوچک یا بسیار زودرس ممکن است در DWI دیده نشوند. تغییرات T2/FLAIR زمان‌بندی متغیری دارند و مرز ثابت ۶ تا ۲۴ ساعت ندارند. انفارکت کوچک زیرقشری تازه باید از لاکون مزمن جدا شود.")
   ),
 
   Q('hma-08',
@@ -480,9 +478,7 @@ const HMA_QUESTION_SEEDS = [
       L('Abwarten bis INR spontan sinkt', 'Wait for INR to fall spontaneously', 'صبر کردن تا INR به طور خودبخود کاهش یابد'),
       L('Thrombozytenkonzentrat', 'Platelet concentrate', 'کنسانتره پلاکتی'),
     ], 0,
-    L('Bei Warfarin-assoziierter ICB: sofort PCC (25 IE/kg) zur schnellen Reversal der Antikoagulation + Vitamin K iv. zur dauerhaften Normalisierung. Ziel: INR <1,3 innerhalb von 4 h. FFP allein ist zu langsam und voluminös. Thrombozytenkonzentrat nur bei Thrombozytopenie / ASS-Einnahme.',
-      'In warfarin-associated ICH: immediately PCC (25 IU/kg) for rapid reversal of anticoagulation + IV vitamin K for sustained normalisation. Target: INR <1.3 within 4 h. FFP alone is too slow and bulky. Platelet concentrate only for thrombocytopenia or aspirin use.',
-      'در ICH مرتبط با وارفارین: فوراً PCC (25 IU/kg) برای معکوس سریع ضد انعقاد + ویتامین K IV برای نرمال‌سازی پایدار. هدف: INR <1.3 در عرض 4 ساعت. FFP به تنهایی خیلی کند و حجیم است. کنسانتره پلاکتی فقط برای ترومبوسیتوپنی یا مصرف آسپرین.')
+    L("Bei VKA-assoziierter ICB rasch 4-Faktor-PCC plus Vitamin K intravenös geben; die PCC-Dosis richtet sich nach INR, Körpergewicht und Präparat. INR zeitnah kontrollieren. Bei ASS-assoziierter spontaner ICB ohne Notfalloperation sind Thrombozytentransfusionen potenziell schädlich und nicht zu geben. Vor einer Notfallneurochirurgie kann die Gabe erwogen werden; schwere Thrombozytopenie ist eine gesonderte Indikation.", "For VKA-associated ICH, promptly administer four-factor PCC plus intravenous vitamin K; PCC dosing depends on INR, body weight and product. Recheck INR promptly. In aspirin-associated spontaneous ICH without emergency surgery, platelet transfusions are potentially harmful and should not be given. They may be considered before emergency neurosurgery; severe thrombocytopenia is a separate indication.", "در خونریزی داخل مغزی مرتبط با آنتاگونیست ویتامین K، PCC چهارعاملی و ویتامین K وریدی را سریع تجویز کنید؛ دوز PCC به INR، وزن و فرآورده بستگی دارد. INR را به‌موقع دوباره بررسی کنید. در خونریزی خودبه‌خودی مرتبط با آسپرین بدون جراحی اورژانسی، تزریق پلاکت بالقوه زیان‌بار است و نباید انجام شود. پیش از جراحی اورژانسی مغز می‌توان آن را در نظر گرفت؛ ترومبوسیتوپنی شدید اندیکاسیونی جداگانه است.")
   ),
 
   Q('hma-10',
@@ -505,14 +501,12 @@ const HMA_QUESTION_SEEDS = [
       'Which statement about lacunar infarct is correct?',
       'کدام گزارش درباره انفارکت لاکونار صحیح است؟'),
     [
-      L('Größe <15 mm, durch Perforatoren-Verschluss bedingt, im tiefen Territorium', 'Size <15 mm, caused by perforator occlusion, in deep territory', 'اندازه <15 میلی‌متر، ناشی از انسداد پرفوراتور، در مناطق عمقی'),
+      L("Frischer kleiner subkortikaler Infarkt im Perforatorgebiet; axial meist bis etwa 20 mm", "Recent small subcortical infarct in a perforator territory; usually up to about 20 mm axially", "انفارکت کوچک زیرقشری تازه در قلمرو پرفوراتور؛ معمولاً تا حدود ۲۰ میلی‌متر در صفحهٔ محوری"),
       L('Immer >2 cm, kortikal gelegen', 'Always >2 cm, cortical location', 'همیشه >2 سانتی‌متر، محل کورتیکال'),
-      L('Durch große Gefäßatherosklerose bedingt', 'Caused by large vessel atherosclerosis', 'ناشی از آترواسکلروز عروق بزرگ'),
+      L("Durch Verschluss einer kortikalen Vene bedingt", "Caused by occlusion of a cortical vein", "ناشی از انسداد ورید قشری"),
       L('Nur im MRT, nicht im CCT sichtbar', 'Visible on MRI only, not CCT', 'فقط در MRI قابل مشاهده، نه در CCT'),
     ], 0,
-    L('Lakunäre Infarkte entstehen durch Verschluss einzelner Perforatoren (Aa. lenticulostriatae etc.) durch Lipohyalinose. Definition: <15 mm, im tiefen Territorium (Basalganglien, Capsula interna, Thalamus, Pons). Im akuten Stadium DWI-positiv, chronisch als T1-hypointense Höhle sichtbar.',
-      'Lacunar infarcts arise from occlusion of individual perforators (lenticulostriate arteries etc.) by lipohyalinosis. Definition: <15 mm, in deep territory (basal ganglia, internal capsule, thalamus, pons). Acute stage: DWI positive; chronic: visible as T1 hypointense cavity.',
-      'انفارکت‌های لاکونار از انسداد پرفوراتورهای منفرد (شریان‌های لنتیکولواستریات و غیره) توسط لیپوهیالینوز ناشی می‌شوند. تعریف: <15 میلی‌متر، در مناطق عمقی (بازال گانگلیا، کپسول داخلی، تالاموس، پونز). مرحله حاد: DWI مثبت؛ مزمن: به عنوان حفره هایپوانتنس T1 قابل مشاهده.')
+    L("Nach STRIVE liegt ein frischer kleiner subkortikaler Infarkt im Gebiet einer Perforatorarterie und misst axial meist bis etwa 20 mm. DWI kann Diffusionsrestriktion zeigen. Eine Lakune bezeichnet dagegen eine chronische liquorähnliche Höhle von etwa 3–15 mm; nicht jeder frische Infarkt kavitiert.", "Under STRIVE, a recent small subcortical infarct lies in a perforator territory and usually measures up to about 20 mm axially. DWI may show restricted diffusion. A lacune instead denotes a chronic CSF-like cavity about 3–15 mm in size; not every recent infarct cavitates.", "بر اساس STRIVE، انفارکت کوچک زیرقشری تازه در قلمرو شریان پرفوراتور قرار دارد و معمولاً در صفحهٔ محوری تا حدود ۲۰ میلی‌متر است. DWI ممکن است محدودیت دیفیوژن نشان دهد. لاکون به حفرهٔ مزمن با سیگنال شبیه مایع مغزی‌نخاعی و اندازهٔ حدود ۳ تا ۱۵ میلی‌متر گفته می‌شود؛ همهٔ انفارکت‌های تازه به حفره تبدیل نمی‌شوند.")
   ),
 
   Q('hma-12',
@@ -588,8 +582,8 @@ const HMA_FLASH_SEEDS = [
 
   F('lakunen', L('MRT/DWI', 'MRI/DWI', 'MRI/DWI'),
     L('Lakunärer Infarkt: Definition und MRT-Befunde?', 'Lacunar infarct: definition and MRI findings?', 'انفارکت لاکونار: تعریف و یافته‌های MRI؟'),
-    L('Definition: ischämischer Infarkt <15 mm durch Perforator-Verschluss im tiefen Territorium (Basalganglien, Capsula interna, Thalamus, Pons)\n\nMRT:\n• Akut: DWI hyperintens + ADC hypointens\n• Chronisch: T1 hypointense Höhle (Lakune)\n• FLAIR: umgebende WMH', 'Definition: ischaemic infarct <15 mm from perforator occlusion in deep territory (basal ganglia, internal capsule, thalamus, pons)\n\nMRI:\n• Acute: DWI hyperintense + ADC hypointense\n• Chronic: T1 hypointense cavity (lacune)\n• FLAIR: surrounding WMH', 'تعریف: انفارکت ایسکمیک <15 میلی‌متر از انسداد پرفوراتور در منطقه عمقی (بازال گانگلیا، کپسول داخلی، تالاموس، پونز)\n\nMRI:\n• حاد: DWI هایپرانتنس + ADC هایپوانتنس\n• مزمن: حفره هایپوانتنس T1 (لاکون)\n• FLAIR: WMH اطراف'),
-    L('Lakunen <15 mm tief, DWI akut, T1-Höhle chronisch', 'Lacunes <15 mm deep, DWI acute, T1 cavity chronic', 'لاکون <15 میلی‌متر عمقی، DWI حاد، حفره T1 مزمن')
+    L("Frischer kleiner subkortikaler Infarkt: Perforatorgebiet, axial meist bis etwa 20 mm; akut häufig DWI↑ und ADC↓.\nChronische Lakune: liquorähnliche Höhle von etwa 3–15 mm, oft mit FLAIR-Saum. Nicht jeder frische Infarkt hinterlässt eine Lakune.", "Recent small subcortical infarct: perforator territory, usually up to about 20 mm axially; often DWI↑ and ADC↓ acutely.\nChronic lacune: CSF-like cavity about 3–15 mm, often with a FLAIR rim. Not every recent infarct leaves a lacune.", "انفارکت کوچک زیرقشری تازه: قلمرو پرفوراتور، معمولاً تا حدود ۲۰ میلی‌متر در صفحهٔ محوری؛ در فاز حاد اغلب DWI↑ و ADC↓.\nلاکون مزمن: حفرهٔ حدود ۳ تا ۱۵ میلی‌متر با سیگنال شبیه مایع مغزی‌نخاعی، اغلب با حاشیه در FLAIR. همهٔ انفارکت‌های تازه لاکون باقی نمی‌گذارند."),
+    L("Frischer Infarkt ≠ chronische Lakune (3–15 mm)", "Recent infarct ≠ chronic lacune (3–15 mm)", "انفارکت تازه ≠ لاکون مزمن (۳ تا ۱۵ میلی‌متر)")
   ),
 
   F('pons-klinik', L('Klinik', 'Clinical', 'کلینیک'),
@@ -600,8 +594,8 @@ const HMA_FLASH_SEEDS = [
 
   F('kleinhirn-op', L('Therapie', 'Treatment', 'درمان'),
     L('Wann ist bei einer Kleinhirnblutung eine neurochirurgische Intervention indiziert?', 'When is neurosurgical intervention indicated for cerebellar haemorrhage?', 'چه زمانی مداخله جراحی مغز برای خونریزی مخچه نشان داده می‌شود؟'),
-    L('Indikationen:\n• Durchmesser ≥3 cm\n• Kompression des 4. Ventrikels\n• Obstruktiver Hydrozephalus\n• Neurologische Verschlechterung trotz konservativer Therapie\n\nDringend: klinischer Zustand verschlechtert sich rasch', 'Indications:\n• Diameter ≥3 cm\n• Compression of the 4th ventricle\n• Obstructive hydrocephalus\n• Neurological deterioration despite conservative treatment\n\nUrgent: rapidly deteriorating clinical condition', 'اندیکاسیون‌ها:\n• قطر ≥3 سانتی‌متر\n• فشار به بطن چهارم\n• هیدروسفالی انسدادی\n• تدهور عصبی علیرغم درمان محافظه‌کارانه\n\nفوری: وضعیت بالینی به سرعت بدتر می‌شود'),
-    L('Kleinhirn ≥3 cm → neurochirurgisch', 'Cerebellum ≥3 cm → neurosurgical', 'مخچه ≥3 سانتی‌متر → جراحی مغز')
+    L('Indikationen:\n• Volumen ≥15 ml\n• Hirnstammkompression\n• Obstruktiver Hydrozephalus\n• Neurologische Verschlechterung\n\nDringend: klinischer Zustand verschlechtert sich rasch', 'Indications:\n• Volume ≥15 mL\n• Brainstem compression\n• Obstructive hydrocephalus\n• Neurological deterioration\n\nUrgent: rapidly deteriorating clinical condition', 'اندیکاسیون‌ها:\n• حجم ≥۱۵ میلی‌لیتر\n• فشار به ساقهٔ مغز\n• هیدروسفالی انسدادی\n• بدترشدن وضعیت عصبی\n\nفوری: وضعیت بالینی به سرعت بدتر می‌شود'),
+    L('Kleinhirn Volumen ≥15 ml → neurochirurgisch', 'Cerebellar volume ≥15 mL → neurosurgical', 'مخچه با حجم ≥۱۵ میلی‌لیتر → جراحی مغز')
   ),
 
   F('dd-icb', L('Differenzialdiagnose', 'Differential', 'تشخیص افتراقی'),
@@ -612,8 +606,8 @@ const HMA_FLASH_SEEDS = [
 
   F('reversal', L('Therapie', 'Treatment', 'درمان'),
     L('Antikoagulanzien-Reversal bei ICB: Welches Mittel für welches Antikoagulans?', 'Anticoagulant reversal in ICH: which agent for which anticoagulant?', 'معکوس ضد انعقاد در ICH: کدام عامل برای کدام ضد انعقاد؟'),
-    L('Warfarin/Phenprocoumon:\n→ PCC (25 IU/kg) + Vitamin K iv. (Ziel INR <1,3)\n\nDabigatran (DTI):\n→ Idarucizumab (Praxbind®)\n\nFaktor-Xa-Inhibitoren (Rivaroxaban, Apixaban):\n→ Andexanet alfa\n\nAlle: so schnell wie möglich!', 'Warfarin/phenprocoumon:\n→ PCC (25 IU/kg) + IV vitamin K (target INR <1.3)\n\nDabigatran (DTI):\n→ Idarucizumab (Praxbind®)\n\nFactor Xa inhibitors (rivaroxaban, apixaban):\n→ Andexanet alfa\n\nAll: as fast as possible!', 'وارفارین/فنپروکومون:\n→ PCC (25 IU/kg) + ویتامین K IV (هدف INR <1.3)\n\nداbیگاتران (DTI):\n→ ایداروسیزوماب (Praxbind®)\n\nمهارکننده‌های فاکتور Xa (ریواروکسابان، آپیکسابان):\n→ اندگزانت آلفا\n\nهمه: در اسرع وقت!'),
-    L('Warfarin→PCC+VitK | Dabigatran→Idarucizumab | Xa→Andexanet', 'Warfarin→PCC+VitK | Dabigatran→idarucizumab | Xa→andexanet', 'وارفارین→PCC+VitK | داbیگاتران→ایداروسیزوماب | Xa→اندگزانت')
+    L('Warfarin/Phenprocoumon:\n→ 4-Faktor-PCC (Dosis nach INR, Körpergewicht und Präparat) + Vitamin K iv. (Ziel INR <1,3)\n\nDabigatran (DTI):\n→ Idarucizumab (Praxbind®)\n\nFaktor-Xa-Inhibitoren (Rivaroxaban, Apixaban):\n→ Andexanet alfa\n\nAlle: so schnell wie möglich!', 'Warfarin/phenprocoumon:\n→ 4-factor PCC (dose according to INR, body weight and product) + IV vitamin K (target INR <1.3)\n\nDabigatran (DTI):\n→ Idarucizumab (Praxbind®)\n\nFactor Xa inhibitors (rivaroxaban, apixaban):\n→ Andexanet alfa\n\nAll: as fast as possible!', 'وارفارین/فنپروکومون:\n→ PCC چهارعاملی (دوز متناسب با INR، وزن و فرآورده) + ویتامین K IV (هدف INR <1.3)\n\nدابیگاتران (DTI):\n→ ایداروسیزوماب (Praxbind®)\n\nمهارکننده‌های فاکتور Xa (ریواروکسابان، آپیکسابان):\n→ اندگزانت آلفا\n\nهمه: در اسرع وقت!'),
+    L('Warfarin→PCC+VitK | Dabigatran→Idarucizumab | Xa→Andexanet', 'Warfarin→PCC+VitK | Dabigatran→idarucizumab | Xa→andexanet', 'وارفارین→PCC+VitK | دابیگاتران→ایداروسیزوماب | Xa→اندگزانت')
   ),
 ]
 

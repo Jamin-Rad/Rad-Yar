@@ -3,9 +3,9 @@ export const pick = (value, lang) => typeof value === 'string' ? value : value?.
 export const COPY = {
   title: { de: 'Kaiser Score', en: 'Kaiser Score', fa: 'امتیاز کایزر' },
   subtitle: {
-    de: 'Der Entscheidungsbaum, der Morphologie und Kinetik in drei Schritten zu einer nachvollziehbaren MRT-Einschätzung verbindet.',
-    en: 'A decision tree that combines morphology and kinetics into a traceable MRI assessment in three steps.',
-    fa: 'درخت تصمیمی که مورفولوژی و کینتیک را در سه گام به یک ارزیابی قابل‌پیگیری در MRI تبدیل می‌کند.',
+    de: 'Der Entscheidungsbaum, der Morphologie und Kinetik in bis zu drei Schritten zu einer nachvollziehbaren MRT-Einschätzung verbindet.',
+    en: 'A decision tree that combines morphology and kinetics into a traceable MRI assessment in up to three steps.',
+    fa: 'درخت تصمیمی که مورفولوژی و کینتیک را در حداکثر سه گام به یک ارزیابی قابل‌پیگیری در MRI تبدیل می‌کند.',
   },
   contents: { de: 'Inhaltsverzeichnis', en: 'Contents', fa: 'فهرست مطالب' },
   mamma: { de: 'Mamma', en: 'Breast', fa: 'پستان' },
@@ -138,7 +138,7 @@ export const UI = {
     presets: 'Guided examples', load: 'Load path',
   },
   fa: {
-    trainerEyebrow: 'سه تصمیم · یک مسیر قابل‌پیگیری', trainerTitle: 'خودتان امتیاز را بسازید', trainerIntro: 'از علامت ریشه‌ای (Root sign) شروع کنید. درخت فقط ویژگی‌ای را نشان می‌دهد که در مسیر شما واقعاً لازم است.',
+    trainerEyebrow: 'حداکثر سه تصمیم · یک مسیر قابل‌پیگیری', trainerTitle: 'خودتان امتیاز را بسازید', trainerIntro: 'از علامت ریشه‌ای (Root sign) شروع کنید. درخت فقط ویژگی‌ای را نشان می‌دهد که در مسیر شما واقعاً لازم است.',
     reset: 'شروع دوباره', back: 'یک گام عقب', choose: 'یک پاسخ انتخاب کنید', step: 'گام', of: 'از ۳', path: 'مسیر شما', result: 'نتیجه', openCalculator: 'بررسی با محاسبه‌گر بالینی',
     questions: {
       root: ['آیا علامت ریشه‌ای (Root sign) وجود دارد؟', 'وجود یک اسپیکول قطعی کافی است.'],

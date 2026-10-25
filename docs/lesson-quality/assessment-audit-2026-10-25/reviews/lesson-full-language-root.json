@@ -1,0 +1,329 @@
+{
+  "date": "2026-10-25",
+  "reviewer": "root",
+  "scope": "24/24 Mamma/Spine route full rendered DE/EN/FA text triads read; some captured text precedes independently retested authored deltas.",
+  "records": [
+    {
+      "route": "/wirbelsaeule/degenerative/ligamentossifikation",
+      "entry": "app/wirbelsaeule/degenerative/ligamentossifikation/page.js",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\217-wirbelsaeule--degenerative--ligamentossifikation.txt",
+      "sha256": "932547cab5b4f3106790db1e0c392a78be12b073fde58c931ca1441ab5c466a5",
+      "read": "All DE/EN/FA rendered text lines read, including individual clinical paragraphs/tables, initial inline question stems/options, captions/alt, takehome and source scope.",
+      "languageStatus": "REVISE_MINOR",
+      "scopeLimits": "No renewed PDF/diagnostic-image verification; postinteraction feedback states notall captured; language triage is not scientific approval."
+    },
+    {
+      "route": "/wirbelsaeule/degenerative/spondylolisthesis",
+      "entry": "app/wirbelsaeule/degenerative/spondylolisthesis/page.js",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\220-wirbelsaeule--degenerative--spondylolisthesis.txt",
+      "sha256": "cc782b14b467957e440462db88f8db915e2d8a0331ed948424c183529573bb71",
+      "read": "All DE/EN/FA rendered text lines read, including individual clinical paragraphs/tables, initial inline question stems/options, captions/alt, takehome and source scope.",
+      "languageStatus": "NO_MATERIAL_SEMANTIC_ERROR_OBSERVED",
+      "scopeLimits": "No renewed PDF/diagnostic-image verification; postinteraction feedback states notall captured; language triage is not scientific approval."
+    },
+    {
+      "route": "/wirbelsaeule/degenerative/spondylarthrose",
+      "entry": "app/wirbelsaeule/degenerative/spondylarthrose/page.js",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\219-wirbelsaeule--degenerative--spondylarthrose.txt",
+      "sha256": "9d9a0d0d3f68e7cb3f26e6f508b848bea9d511b35853df81ebc5a15a54e2c110",
+      "read": "All DE/EN/FA rendered text lines read, including individual clinical paragraphs/tables, initial inline question stems/options, captions/alt, takehome and source scope.",
+      "languageStatus": "NO_MATERIAL_SEMANTIC_ERROR_OBSERVED",
+      "scopeLimits": "No renewed PDF/diagnostic-image verification; postinteraction feedback states notall captured; language triage is not scientific approval."
+    },
+    {
+      "route": "/wirbelsaeule/metabolisch/osteoporose",
+      "entry": "app/wirbelsaeule/metabolisch/osteoporose/page.js",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\227-wirbelsaeule--metabolisch--osteoporose.txt",
+      "sha256": "979628919fb1ad6e4c8cc65957d04936c32b263d75abd76fdc6d4fb6b9ac3e48",
+      "read": "All DE/EN/FA rendered text lines read, including individual clinical paragraphs/tables, initial inline question stems/options, captions/alt, takehome and source scope.",
+      "languageStatus": "NO_MATERIAL_SEMANTIC_ERROR_OBSERVED",
+      "scopeLimits": "No renewed PDF/diagnostic-image verification; postinteraction feedback states notall captured; language triage is not scientific approval."
+    },
+    {
+      "route": "/wirbelsaeule/entzuendlich/leptomeningitis",
+      "entry": "app/wirbelsaeule/entzuendlich/leptomeningitis/page.js",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\222-wirbelsaeule--entzuendlich--leptomeningitis.txt",
+      "sha256": "8c8a620d107e48cb0f8f2ce5570ac529d5201d3519d8eac1483168ea63eb8088",
+      "read": "All DE/EN/FA rendered text lines read, including individual clinical paragraphs/tables, initial inline question stems/options, captions/alt, takehome and source scope.",
+      "languageStatus": "NO_MATERIAL_SEMANTIC_ERROR_OBSERVED",
+      "scopeLimits": "No renewed PDF/diagnostic-image verification; postinteraction feedback states notall captured; language triage is not scientific approval."
+    },
+    {
+      "route": "/wirbelsaeule/entzuendlich/neuroborreliose",
+      "entry": "app/wirbelsaeule/entzuendlich/neuroborreliose/page.js",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\223-wirbelsaeule--entzuendlich--neuroborreliose.txt",
+      "sha256": "926223a855472b655c7aca8d3aca4c9b169cf55423eef8e4438751e8834673a4",
+      "read": "All DE/EN/FA rendered text lines read, including individual clinical paragraphs/tables, initial inline question stems/options, captions/alt, takehome and source scope.",
+      "languageStatus": "NO_MATERIAL_SEMANTIC_ERROR_OBSERVED",
+      "scopeLimits": "No renewed PDF/diagnostic-image verification; postinteraction feedback states notall captured; language triage is not scientific approval."
+    },
+    {
+      "route": "/wirbelsaeule/trauma/hws-verletzungen",
+      "entry": "app/wirbelsaeule/trauma/hws-verletzungen/page.js",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\231-wirbelsaeule--trauma--hws-verletzungen.txt",
+      "sha256": "70b3758941564f993bbfb0ad546d4ff4cbeaa49e52d0ffd2658e573f1a7128aa",
+      "read": "All DE/EN/FA rendered text lines read, including individual clinical paragraphs/tables, initial inline question stems/options, captions/alt, takehome and source scope.",
+      "languageStatus": "REVISE_MINOR",
+      "scopeLimits": "No renewed PDF/diagnostic-image verification; postinteraction feedback states notall captured; language triage is not scientific approval."
+    },
+    {
+      "route": "/wirbelsaeule/trauma/kraniozervikaler-uebergang",
+      "entry": "app/wirbelsaeule/trauma/kraniozervikaler-uebergang/page.js",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\232-wirbelsaeule--trauma--kraniozervikaler-uebergang.txt",
+      "sha256": "25ad20fd559e49c5631b80da82e5fe8865e1f7ce676e0772e846f56a44a29722",
+      "read": "All DE/EN/FA rendered text lines read, including individual clinical paragraphs/tables, initial inline question stems/options, captions/alt, takehome and source scope.",
+      "languageStatus": "REVISE_MINOR",
+      "scopeLimits": "No renewed PDF/diagnostic-image verification; postinteraction feedback states notall captured; language triage is not scientific approval."
+    },
+    {
+      "route": "/wirbelsaeule/metabolisch/renale-osteodystrophie",
+      "entry": "app/wirbelsaeule/metabolisch/renale-osteodystrophie/page.js",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\228-wirbelsaeule--metabolisch--renale-osteodystrophie.txt",
+      "read": "All DE/EN/FA rendered paragraphs/tables/initialinlinequestions/captions/alt/takehome/source text read; arachnoid FA reread separately after truncatedtwo-routebatch.",
+      "languageStatus": "NO_MATERIAL_SEMANTIC_ERROR_OBSERVED",
+      "scopeLimits": "No new global clinical/PDF/imageapproval or postinteractionfeedback review."
+    },
+    {
+      "route": "/wirbelsaeule/trauma/bws-lws-frakturen",
+      "entry": "app/wirbelsaeule/trauma/bws-lws-frakturen/page.js",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\230-wirbelsaeule--trauma--bws-lws-frakturen.txt",
+      "read": "All DE/EN/FA rendered paragraphs/tables/initialinlinequestions/captions/alt/takehome/source text read; arachnoid FA reread separately after truncatedtwo-routebatch.",
+      "languageStatus": "REVISE_MINOR",
+      "scopeLimits": "No new global clinical/PDF/imageapproval or postinteractionfeedback review."
+    },
+    {
+      "route": "/wirbelsaeule/entzuendlich/guillain-barre-syndrom",
+      "entry": "app/wirbelsaeule/entzuendlich/guillain-barre-syndrom/page.jsx",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\221-wirbelsaeule--entzuendlich--guillain-barre-syndrom.txt",
+      "read": "All DE/EN/FA rendered paragraphs/tables/initialinlinequestions/captions/alt/takehome/source text read; arachnoid FA reread separately after truncatedtwo-routebatch.",
+      "languageStatus": "NO_MATERIAL_SEMANTIC_ERROR_OBSERVED",
+      "scopeLimits": "No new global clinical/PDF/imageapproval or postinteractionfeedback review."
+    },
+    {
+      "route": "/wirbelsaeule/arachnoiditis",
+      "entry": "app/wirbelsaeule/arachnoiditis/page.jsx",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\216-wirbelsaeule--arachnoiditis.txt",
+      "read": "All DE/EN/FA rendered paragraphs/tables/initialinlinequestions/captions/alt/takehome/source text read; arachnoid FA reread separately after truncatedtwo-routebatch.",
+      "languageStatus": "REVISE_WRONG_LANGUAGE",
+      "scopeLimits": "No new global clinical/PDF/imageapproval or postinteractionfeedback review."
+    },
+    {
+      "route": "/mamma/bildgebung/mammographie/grundlagen",
+      "entry": "app/mamma/bildgebung/mammographie/grundlagen/page.js",
+      "group": "root-mamma-spine",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\098-mamma--bildgebung--mammographie--grundlagen.txt",
+      "chars": 15602,
+      "sha256": "c2e8b0e754a2e8b5e8499a525aed4150df385d9d3f6b884282aad9a912924c6c",
+      "read": "All DE/EN/FA rendered text lines comparatively read: paragraphs/tables, initial inline stems/options, image captions/alt, takehome and source scope.",
+      "languageStatus": "REVISE_MINOR",
+      "scopeLimits": "No renewed PDF or diagnostic-image verification. Hidden/postinteraction states not all represented; no global scientific approval."
+    },
+    {
+      "route": "/mamma/bildgebung/mammographie/verkalkungen",
+      "entry": "app/mamma/bildgebung/mammographie/verkalkungen/page.js",
+      "group": "root-mamma-spine",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\099-mamma--bildgebung--mammographie--verkalkungen.txt",
+      "chars": 51342,
+      "sha256": "37dc960d1c5c2db648fb5824b0cd9b37f0a09421b611fe3930f8b22c31a46252",
+      "read": "All DE/EN/FA rendered text lines comparatively read: paragraphs/tables, initial inline stems/options, image captions/alt, takehome and source scope.",
+      "languageStatus": "REVISE_MINOR",
+      "scopeLimits": "No renewed PDF or diagnostic-image verification. Hidden/postinteraction states not all represented; no global scientific approval."
+    },
+    {
+      "route": "/mamma/bildgebung/mrt/basics",
+      "entry": "app/mamma/bildgebung/mrt/basics/page.js",
+      "group": "root-mamma-spine",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\100-mamma--bildgebung--mrt--basics.txt",
+      "chars": 23172,
+      "sha256": "1174daa0222745ed20eb3f771f1f153b2aecb3b52e769db8105a7c25addb1412",
+      "read": "All DE/EN/FA rendered text lines comparatively read: paragraphs/tables, initial inline stems/options, image captions/alt, takehome and source scope.",
+      "languageStatus": "REVISE_MINOR",
+      "scopeLimits": "No renewed PDF or diagnostic-image verification. Hidden/postinteraction states not all represented; no global scientific approval."
+    },
+    {
+      "route": "/mamma/bildgebung/mrt/besondere-mammakarzinome",
+      "entry": "app/mamma/bildgebung/mrt/besondere-mammakarzinome/page.js",
+      "group": "root-mamma-spine",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\101-mamma--bildgebung--mrt--besondere-mammakarzinome.txt",
+      "chars": 22586,
+      "sha256": "b51c0540127a1d327e946b3e4d15c466b2ffadc11d49790b2d4c2d6d2c966adb",
+      "read": "All DE/EN/FA rendered text lines comparatively read: paragraphs/tables, initial inline stems/options, image captions/alt, takehome and source scope.",
+      "languageStatus": "REVISE_MINOR",
+      "scopeLimits": "No renewed PDF or diagnostic-image verification. Hidden/postinteraction states not all represented; no global scientific approval."
+    },
+    {
+      "route": "/mamma/bildgebung/mrt/kaiser-score",
+      "entry": "app/mamma/bildgebung/mrt/kaiser-score/page.js",
+      "group": "root-mamma-spine",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\102-mamma--bildgebung--mrt--kaiser-score.txt",
+      "chars": 16144,
+      "sha256": "c8df09551fed360bf37c5f98db31a6558d81de2dc132129fc2147e853a7d38fd",
+      "read": "All DE/EN/FA rendered text lines comparatively read: paragraphs/tables, initial inline stems/options, image captions/alt, takehome and source scope.",
+      "languageStatus": "REVISE_MINOR",
+      "scopeLimits": "No renewed PDF or diagnostic-image verification. Hidden/postinteraction states not all represented; no global scientific approval."
+    },
+    {
+      "route": "/mamma/bildgebung/mrt/laesionscharakterisierung",
+      "entry": "app/mamma/bildgebung/mrt/laesionscharakterisierung/page.js",
+      "group": "root-mamma-spine",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\103-mamma--bildgebung--mrt--laesionscharakterisierung.txt",
+      "chars": 37552,
+      "sha256": "91264f7343f584b3a5bc02a3680531cbb3b92434184cb60f3d80ecb1b459c186",
+      "read": "All DE/EN/FA rendered text lines comparatively read: paragraphs/tables, initial inline stems/options, image captions/alt, takehome and source scope.",
+      "languageStatus": "REVISE_MINOR",
+      "scopeLimits": "No renewed PDF or diagnostic-image verification. Hidden/postinteraction states not all represented; no global scientific approval."
+    },
+    {
+      "route": "/wirbelsaeule/degenerative",
+      "entry": "app/wirbelsaeule/degenerative/page.js",
+      "group": "root-mamma-spine",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\218-wirbelsaeule--degenerative.txt",
+      "chars": 25503,
+      "sha256": "64d2fa8f18121d4b59411e93414d93278c224534b9f01a52521aa502ee2e7f32",
+      "read": "All DE/EN/FA rendered text lines comparatively read: paragraphs/tables, initial inline stems/options, image captions/alt, takehome and source scope.",
+      "languageStatus": "NO_MATERIAL_SEMANTIC_ERROR_OBSERVED",
+      "scopeLimits": "No renewed PDF or diagnostic-image verification. Hidden/postinteraction states not all represented; no global scientific approval."
+    },
+    {
+      "route": "/wirbelsaeule/entzuendlich",
+      "entry": "app/wirbelsaeule/entzuendlich/page.js",
+      "group": "root-mamma-spine",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\224-wirbelsaeule--entzuendlich.txt",
+      "chars": 29253,
+      "sha256": "37bed8138b6c79d78aa21861c5272e2d5b9df3087ef068efac57eabf282c5f36",
+      "read": "All DE/EN/FA rendered text lines comparatively read: paragraphs/tables, initial inline stems/options, image captions/alt, takehome and source scope.",
+      "languageStatus": "NO_MATERIAL_SEMANTIC_ERROR_OBSERVED",
+      "scopeLimits": "No renewed PDF or diagnostic-image verification. Hidden/postinteraction states not all represented; no global scientific approval."
+    },
+    {
+      "route": "/wirbelsaeule/infektion",
+      "entry": "app/wirbelsaeule/infektion/page.js",
+      "group": "root-mamma-spine",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\225-wirbelsaeule--infektion.txt",
+      "chars": 21604,
+      "sha256": "21cb9564bdacbab57276d50cc2eb10f35d6f985351d62bf5653bbbe586826c9c",
+      "read": "All DE/EN/FA rendered text lines comparatively read: paragraphs/tables, initial inline stems/options, image captions/alt, takehome and source scope.",
+      "languageStatus": "NO_MATERIAL_SEMANTIC_ERROR_OBSERVED",
+      "scopeLimits": "No renewed PDF or diagnostic-image verification. Hidden/postinteraction states not all represented; no global scientific approval."
+    },
+    {
+      "route": "/wirbelsaeule/metabolisch/funikulaere-myelose",
+      "entry": "app/wirbelsaeule/metabolisch/funikulaere-myelose/page.jsx",
+      "group": "root-mamma-spine",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\226-wirbelsaeule--metabolisch--funikulaere-myelose.txt",
+      "chars": 19872,
+      "sha256": "d6c9e5661da185854f4fc44bf72abb23d8855759f159544f4bbdee27d348048f",
+      "read": "All DE/EN/FA rendered text lines comparatively read: paragraphs/tables, initial inline stems/options, image captions/alt, takehome and source scope.",
+      "languageStatus": "NO_MATERIAL_SEMANTIC_ERROR_OBSERVED",
+      "scopeLimits": "No renewed PDF or diagnostic-image verification. Hidden/postinteraction states not all represented; no global scientific approval."
+    },
+    {
+      "route": "/wirbelsaeule/neuroforamenstenose",
+      "entry": "app/wirbelsaeule/neuroforamenstenose/page.jsx",
+      "group": "root-mamma-spine",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\229-wirbelsaeule--neuroforamenstenose.txt",
+      "chars": 15571,
+      "sha256": "1c691949c45bd88d8a3b2432fea6a5b88cae877059d6a574249db107ce329ec1",
+      "read": "All DE/EN/FA rendered text lines comparatively read: paragraphs/tables, initial inline stems/options, image captions/alt, takehome and source scope.",
+      "languageStatus": "NO_MATERIAL_SEMANTIC_ERROR_OBSERVED",
+      "scopeLimits": "No renewed PDF or diagnostic-image verification. Hidden/postinteraction states not all represented; no global scientific approval."
+    },
+    {
+      "route": "/wirbelsaeule/tumoren/grundlagen",
+      "entry": "app/wirbelsaeule/tumoren/grundlagen/page.jsx",
+      "group": "root-mamma-spine",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\233-wirbelsaeule--tumoren--grundlagen.txt",
+      "chars": 26143,
+      "sha256": "32a496054163dfddadf4492e79a9889fb6aca97934fd53e7abddc10e9957cd5f",
+      "read": "All DE/EN/FA rendered text lines comparatively read: paragraphs/tables, initial inline stems/options, image captions/alt, takehome and source scope.",
+      "languageStatus": "NO_MATERIAL_SEMANTIC_ERROR_OBSERVED",
+      "scopeLimits": "No renewed PDF or diagnostic-image verification. Hidden/postinteraction states not all represented; no global scientific approval."
+    }
+  ],
+  "findings": [
+    {
+      "id": "LNG-ROOT-LESSON-SPINE-ACRONYMS",
+      "severity": "minor",
+      "routes": [
+        "/wirbelsaeule/trauma/hws-verletzungen",
+        "/wirbelsaeule/trauma/kraniozervikaler-uebergang"
+      ],
+      "entry": "app/wirbelsaeule/trauma/SpineTraumaLesson.jsx",
+      "observed": "EN/FA region schematic retains German BWS/LWS; FA cervical lesson repeatedly retains German HWS in clinical teaching.",
+      "correction": "Localized region label T/L-spine or سینه‌ای/کمری and expanded FA cervical term; lang forwarded to diagram.",
+      "status": "AUTHORED_PENDING_RETEST"
+    },
+    {
+      "id": "LNG-ROOT-LESSON-DISH-FLOWING",
+      "severity": "minor",
+      "route": "/wirbelsaeule/degenerative/ligamentossifikation",
+      "observed": "FA flowing bridges rendered پل‌های استخوانی روان, unnatural literal flowing liquid phrasing.",
+      "correction": "Prefer پل‌های استخوانی پیوسته, preserve anterolateral location.",
+      "status": "AUTHORED_PENDING_RETEST"
+    },
+    {
+      "id": "LNG-ROOT-LESSON-ARACH-DE",
+      "severity": "major",
+      "route": "/wirbelsaeule/arachnoiditis",
+      "entry": "data/spinaleArachnoiditisLesson.js",
+      "observed": "Entire Mimics lead DE remained English Rootclumpingisapattern...",
+      "status": "AUTHORED_PENDING_RETEST"
+    },
+    {
+      "id": "LNG-ROOT-LESSON-TRAUMA-FA-LITERAL",
+      "severity": "minor",
+      "route": "/wirbelsaeule/trauma/bws-lws-frakturen",
+      "entry": "app/wirbelsaeule/trauma/SpineTraumaLesson.jsx",
+      "observed": "FA preservesGermanSinterandliteral generously",
+      "status": "AUTHORED_PENDING_RETEST"
+    },
+    {
+      "id": "LNG-ROOT-LESSON-LEE-CUE",
+      "route": "/wirbelsaeule/neuroforamenstenose",
+      "severity": "major",
+      "observed": "Inline question title gives away requested Lee grade2.",
+      "status": "AUTHORED_PENDING_RETEST",
+      "correction": "Neutral title in all3 languages; answer/key unchanged."
+    },
+    {
+      "id": "LNG-ROOT-MAMMA-CALC-MANAGEMENT",
+      "route": "/mamma/bildgebung/mammographie/verkalkungen",
+      "severity": "major",
+      "observed": "4A no biopsy/12month blanket advice unsupported by cited meta-analysis;4A/4B cells German on EN/FA.",
+      "status": "AUTHORED_PENDING_RETEST",
+      "correction": "BI-RADS4/5 tissue diagnosis indication retained; selected MRI biopsy-avoidance study scope explicit (pure microcalcifications without associated findings/pretest<=22%), no blanket12month rule.",
+      "sources": [
+        "https://www.acr.org/-/media/ACR/Files/RADS/BI-RADS/Mammography-Reporting.pdf",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC7907894/"
+      ]
+    },
+    {
+      "id": "LNG-ROOT-MAMMA-NAMING",
+      "routes": [
+        "/mamma/bildgebung/mammographie/grundlagen",
+        "/mamma/bildgebung/mrt/basics",
+        "/mamma/bildgebung/mrt/laesionscharakterisierung",
+        "/mamma/bildgebung/mrt/besondere-mammakarzinome",
+        "/mamma/bildgebung/mrt/kaiser-score"
+      ],
+      "severity": "minor",
+      "observed": "German THM partly English;FAcalcium label insteadcalcifications;JSXherotitle casts objectObject intoalt;EN/FA T2/ADClabels German;FAThickrim mixed;duplicatedpostcontrastphrases;uncertainvssuspicious heading.",
+      "status": "AUTHORED_PENDING_RETEST",
+      "correction": "Exact bounded language fixes in root-fulltext-author-manifest.json."
+    },
+    {
+      "id": "LNG-ROOT-MAMMA-CLUMPED",
+      "route": "/mamma/bildgebung/mrt/laesionscharakterisierung",
+      "severity": "minor",
+      "observed": "FA clumped switches between کلامپ‌شده and توده‌ای/خوشه‌ای, latter can confuse Mass category despite explicit NMEcontext.",
+      "status": "OPEN_EDITORIAL"
+    },
+    {
+      "id": "LNG-ROOT-SPINAL-TUMOR-SCOPE",
+      "route": "/wirbelsaeule/tumoren/grundlagen",
+      "severity": "major",
+      "observed": "Lesson explicitly states several short tumor/sequence claims clinically unverified and no-DWI source term unresolved; language parity is good but this is not complete scientific review.",
+      "status": "OPEN_SCIENTIFIC_REVIEW"
+    }
+  ]
+}

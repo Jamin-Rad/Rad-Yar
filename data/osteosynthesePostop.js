@@ -9,10 +9,10 @@ export const OSTEOSYNTHESE_POSTOP = {
       title: L('Eine kurze Checkliste für die postoperative Aufnahme', 'A short checklist for the postoperative radiograph', 'چک‌لیست کوتاه برای رادیوگرافی پس از عمل'),
       lead: L('Prüfe zuerst die Fraktur als Ganzes: Passen die Fragmente zueinander? Stimmen Achse und Länge? Danach das Osteosynthesematerial auf Bruch und eine mögliche iatrogene Fraktur absuchen.', 'First assess the fracture as a whole: are the fragments adapted, and are alignment and length acceptable? Then look for broken fixation material and a possible iatrogenic fracture.', 'ابتدا خود شکستگی را یکپارچه ارزیابی کنید: تطابق قطعات، محور و طول چگونه‌اند؟ سپس سالم‌بودن وسیلهٔ فیکساسیون و وجود شکستگی احتمالیِ ایجادشده حین عمل را بررسی کنید.'),
       rows: [
-        { label: L('۱ · تطابق قطعات', '1 · Fragment adaptation', '۱ · تطابق قطعات'), text: L('Sind die Frakturfragmente zueinander adaptiert?', 'Are the fracture fragments adapted to one another?', 'آیا قطعات شکستگی با یکدیگر تطابق دارند؟') },
-        { label: L('۲ · محور و طول', '2 · Alignment and length', '۲ · محور و طول'), text: L('Bestehen Achs- oder Längenabweichungen?', 'Is there an alignment or length discrepancy?', 'آیا انحراف محور یا اختلاف طول دیده می‌شود؟') },
-        { label: L('۳ · Material', '3 · Fixation material', '۳ · وسیلهٔ فیکساسیون'), text: L('Ist das Osteosynthesematerial intakt oder zeigt es einen Bruch?', 'Is the fixation material intact, or is there a break?', 'آیا وسیلهٔ فیکساسیون سالم است یا شکستگی دارد؟') },
-        { label: L('۴ · Begleitverletzung', '4 · Associated injury', '۴ · آسیب همراه'), text: L('Ist eine iatrogene Fraktur erkennbar?', 'Is an iatrogenic fracture visible?', 'آیا شکستگیِ ایجادشده حین عمل قابل مشاهده است؟') },
+        { label: L("1 · Fragmentadaptation", '1 · Fragment adaptation', '۱ · تطابق قطعات'), text: L('Sind die Frakturfragmente zueinander adaptiert?', 'Are the fracture fragments adapted to one another?', 'آیا قطعات شکستگی با یکدیگر تطابق دارند؟') },
+        { label: L("2 · Achse und Länge", '2 · Alignment and length', '۲ · محور و طول'), text: L('Bestehen Achs- oder Längenabweichungen?', 'Is there an alignment or length discrepancy?', 'آیا انحراف محور یا اختلاف طول دیده می‌شود؟') },
+        { label: L("3 · Osteosynthesematerial", '3 · Fixation material', '۳ · وسیلهٔ فیکساسیون'), text: L('Ist das Osteosynthesematerial intakt oder zeigt es einen Bruch?', 'Is the fixation material intact, or is there a break?', 'آیا وسیلهٔ فیکساسیون سالم است یا شکستگی دارد؟') },
+        { label: L("4 · Begleitverletzung", '4 · Associated injury', '۴ · آسیب همراه'), text: L('Ist eine iatrogene Fraktur erkennbar?', 'Is an iatrogenic fracture visible?', 'آیا شکستگیِ ایجادشده حین عمل قابل مشاهده است؟') },
       ],
     },
     {

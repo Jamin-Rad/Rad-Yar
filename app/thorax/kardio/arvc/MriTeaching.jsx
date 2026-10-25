@@ -1,5 +1,8 @@
 'use client'
 
+import { useLanguage } from '@/providers/LanguageProvider'
+import { localizeArvcTree } from './lessonTranslations'
+
 import Image from 'next/image'
 import { useEffect, useId, useRef, useState } from 'react'
 import { CASES } from './lessonContent'
@@ -33,10 +36,14 @@ const SCENES = {
 }
 
 function Orientation({ points, id }) {
-  return <svg className={styles.mriOverlay} viewBox="0 0 100 100" preserveAspectRatio="none" aria-labelledby={id} role="img"><title id={id}>Orientierung im Originalbild: {points.map((point, index) => `${index + 1} ${point.label}`).join(', ')}</title>{points.map((point, index) => <g key={point.label}><circle cx={point.x} cy={point.y} r="2.6"/><text x={point.x} y={point.y} dy=".35em" textAnchor="middle">{index + 1}</text></g>)}</svg>
+  const { lang: _arvcLang } = useLanguage()
+
+  return localizeArvcTree(<svg className={styles.mriOverlay} viewBox="0 0 100 100" preserveAspectRatio="none" aria-labelledby={id} role="img"><title id={id}>Orientierung im Originalbild: {points.map((point, index) => `${index + 1} ${point.label}`).join(', ')}</title>{points.map((point, index) => <g key={point.label}><circle cx={point.x} cy={point.y} r="2.6"/><text x={point.x} y={point.y} dy=".35em" textAnchor="middle">{index + 1}</text></g>)}</svg>, _arvcLang)
 }
 
 export default function MriTeaching({ scene, heading }) {
+  const { lang: _arvcLang } = useLanguage()
+
   const data = SCENES[scene]
   const item = CASES.find(entry => entry.id === data.caseId)
   const view = item.views[data.view]
@@ -57,7 +64,7 @@ export default function MriTeaching({ scene, heading }) {
 
   const frame = (expanded = false) => <div className={styles.mriFrame} style={{ aspectRatio: `${data.width} / ${data.height}` }}><Image data-no-zoom unoptimized src={view.src} alt={view.alt} width={data.width} height={data.height} sizes={expanded ? '90vw' : '(max-width:760px) 90vw, 420px'} loading="lazy"/>{marked ? <Orientation points={data.points} id={`${uid}-${expanded ? 'zoom' : 'inline'}-orientation`}/> : null}</div>
 
-  return <figure className={styles.mriTeaching} data-mri-teaching={scene}>
+  return localizeArvcTree(<figure className={styles.mriTeaching} data-mri-teaching={scene}>
     <header><span>Am Originalbild lernen · Radiopaedia rID {item.id}</span><h4>{heading || data.title}</h4></header>
     <div className={styles.mriTeachingGrid}>
       <div className={styles.mriMedia}>
@@ -73,5 +80,5 @@ export default function MriTeaching({ scene, heading }) {
     </div>
     <figcaption className={styles.mriAttribution}>Case courtesy of {item.creator}, <a href={item.url} target="_blank" rel="noreferrer">Radiopaedia.org · rID {item.id}</a> · <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank" rel="noreferrer">CC BY-NC-SA 3.0</a>. Originalaufnahme unverändert{view.type !== 'video' ? '; einblendbare Orientierungspunkte von RadYar.' : '.'}</figcaption>
     {view.type !== 'video' ? <dialog ref={dialog} className={`${styles.imageDialog} ${styles.mriZoom}`} aria-label={`MRT vergrößert: ${data.title}`} onClick={event => { if (event.target === dialog.current) dialog.current.close() }}><button type="button" autoFocus onClick={() => dialog.current?.close()}>Schließen ×</button>{frame(true)}<p>{view.sequence} · {item.creator} · Radiopaedia rID {item.id}</p></dialog> : null}
-  </figure>
+  </figure>, _arvcLang)
 }

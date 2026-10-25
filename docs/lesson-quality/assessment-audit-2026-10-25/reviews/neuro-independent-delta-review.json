@@ -1,0 +1,94 @@
+{
+  "date": "2026-10-25",
+  "role": "Independent read-only reviewer; author /remove_lesson_notice",
+  "scope": "74 changed exported fields in eight frozen neuro modules; plus two additional author follow-up FA front/answer fields and refreshed diagram.",
+  "status": "ACCEPT_BOUNDED_DELTA_WITH_EXPLICIT_OPEN_ITEMS",
+  "runtime": [
+    {
+      "file": "data/avm.js",
+      "changedFields": 24,
+      "status": "PASS_CURRENT_EXPORTS_AND_STABLE_KEYS"
+    },
+    {
+      "file": "data/davf.js",
+      "changedFields": 12,
+      "status": "PASS_CURRENT_EXPORTS_AND_STABLE_KEYS"
+    },
+    {
+      "file": "data/pcnslLesson.js",
+      "changedFields": 3,
+      "status": "PASS_CURRENT_EXPORTS_AND_STABLE_KEYS"
+    },
+    {
+      "file": "data/hie.js",
+      "changedFields": 12,
+      "status": "PASS_CURRENT_EXPORTS_AND_STABLE_KEYS"
+    },
+    {
+      "file": "data/edh.js",
+      "changedFields": 8,
+      "status": "PASS_CURRENT_EXPORTS_AND_STABLE_KEYS"
+    },
+    {
+      "file": "data/gehirnNf1CnsLesson.js",
+      "changedFields": 3,
+      "status": "PASS_CURRENT_EXPORTS_AND_STABLE_KEYS"
+    },
+    {
+      "file": "data/atrtLesson.js",
+      "changedFields": 3,
+      "status": "PASS_CURRENT_EXPORTS_AND_STABLE_KEYS"
+    },
+    {
+      "file": "data/medulloblastomLesson.js",
+      "changedFields": 9,
+      "status": "PASS_CURRENT_EXPORTS_AND_STABLE_KEYS"
+    }
+  ],
+  "reviewedContext": "All 74 after-fields read in DE/EN/FA. Actual PCNSL option D remains incorrect with negative feedback. NF1, ATRT and medulloblastoma stimuli are self-contained and match unchanged keyed answers. IDs, option IDs, correct keys and topic IDs match pre-repair exports.",
+  "independentFinding": {
+    "issue": "FA profound insult rendered as anatomical depth",
+    "resolution": "Author corrected front, answer and diagram to severity, retaining deep nuclei anatomy; all three actual compiled fields independently retested.",
+    "status": "CLOSED"
+  },
+  "sources": [
+    {
+      "url": "https://www.england.nhs.uk/commissioning/wp-content/uploads/sites/12/2013/10/d05-p-c.pdf",
+      "support": "Appendix1 eloquent visual cortex and internal capsule; primary policy definition of parenchymal AVM",
+      "independentlyRead": "NHS Appendix1 page13 eloquent sites full list."
+    },
+    {
+      "url": "https://pubs.rsna.org/doi/10.1148/radiology.194.3.7862961",
+      "support": "Original Cognard drainage definitions distinguish antegradeI and retrogradeIIa without cortical reflux; not a management mandate",
+      "independentlyRead": "Original Cognard abstract: I antegrade; IIa sinus reflux; cortical reflux distinguished."
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9326856/",
+      "support": "Primary cohort reports selected recurrentIIa conservatively managed; individual symptoms/followup required",
+      "independentlyRead": "Primary cohort Recurrences/Table4: mild symptomatic recurrent IIa observed; cranial neuropathy IIa retreated. Primary indexed text read; direct PMC captcha."
+    },
+    {
+      "url": "https://braintrauma.org/coma/guidelines/surgical",
+      "support": "EDH observation recommendation contains all inequalities,units,focaldeficit and centre/serialCT requirements",
+      "independentlyRead": "Official BTF surgical EDH observation recommendation: all thresholds, units, GCS, focal deficit, serial CT and neurosurgical centre."
+    },
+    {
+      "url": "https://link.springer.com/article/10.1007/s12028-023-01688-3",
+      "support": "2023 adultpostarrest GoodPracticeStatement1 ROSC/rewarming anchors,confounders and delayedmultimodal prognosis",
+      "independentlyRead": "2023 Good Practice Statements1,2,4: ROSC versus rewarming anchors, confounders and multimodal assessment; coma alone not poor prognosis."
+    }
+  ],
+  "open": [
+    "HIE precise evolution0–24h/1–7d/1–3w remains unverified; translated with explicit variable-timing qualifier, not recertified.",
+    "dAVF SWI venous-compartment mechanism and most-common-cause assertion remainOPEN; no mechanism rewritten without evidence.",
+    "Moyamoya DSA/ivy/bypass and otherunverified clinical claims/distractor redesign remainOPEN.",
+    "Root owns ICB/HMA/stroke.",
+    "Existing weak-evidence jugular-compression sentence in dAVF lesson remains unverified; not promoted to self-treatment guidance or scientific approval."
+  ],
+  "limits": [
+    "No full scientific recertification. HIE precise evolution windows remain unverified.",
+    "Retained jugular-compression claim unverified; no self-treatment endorsement.",
+    "No duplicate ICB/HMA/stroke review; another independent reviewer owns these.",
+    "No source PDF image validation or all-lesson translation approval inferred from compile or author SSR."
+  ]
+}

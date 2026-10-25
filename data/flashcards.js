@@ -3577,19 +3577,19 @@ const LEGACY_FLASHCARDS = [
       "fa": "پارگی جزئی سمت بورسال سوپراسپیناتوس در MRI چگونه دیده می‌شود؟"
     },
     "answer": {
-      "de": "Fokaler Flüssigkeitssaum zwischen Sehne und Bursa subacromialis in T2 fs.",
-      "en": "Focal fluid signal between the tendon and subacromial bursa on T2 fs.",
-      "fa": "حاشیه کانونی مایع بین تاندون و بورس ساب‌آکرومیال در T2 fs."
+      "de": "Flüssigkeitsäquivalenter Defekt der oberflächlichen Sehnenfasern mit Kontakt zur Bursaseite; artikuläre Fasern bleiben erhalten",
+      "en": "Fluid-equivalent defect in the superficial tendon fibres reaching the bursal surface, with preserved articular fibres",
+      "fa": "نقص با سیگنال هم‌ارز مایع در فیبرهای سطحی تاندون که به سطح بورسال می‌رسد؛ فیبرهای مفصلی حفظ شده‌اند"
     },
     "explanation": {
-      "de": "Die bursaseitige Partialruptur betrifft die oberflächlichen Fasern. Typisch ist ein scharf begrenzter Flüssigkeitssaum an der Sehnenoberseite, der nicht die gesamte Sehnendicke durchsetzt.",
-      "en": "A bursal-sided partial tear affects the superficial fibres. A sharply marginated fluid rim along the superior tendon surface, not extending through the full thickness, is typical.",
-      "fa": "پارگی جزئی سمت بورسال فیبرهای سطحی را درگیر می‌کند. حاشیه مایع با مرز مشخص در سطح فوقانی تاندون، بدون درگیری کامل ضخامت تاندون، تیپیک است."
+      "de": "Eine bursaseitige Partialruptur zeigt einen Defekt der oberflächlichen Sehnenfasern oder intratendinöses Flüssigkeitssignal mit Kontakt zur Bursaseite. Die Sehne ist nicht auf voller Dicke unterbrochen. Flüssigkeit in der Bursa bei intakter Sehnenoberfläche allein beweist keine Ruptur.",
+      "en": "A bursal-sided partial tear shows a superficial tendon-fibre defect or intratendinous fluid signal reaching the bursal surface. The tendon is not disrupted through its full thickness. Bursal fluid with an intact tendon surface alone does not establish a tear.",
+      "fa": "پارگی جزئی سمت بورسال، نقص فیبرهای سطحی تاندون یا سیگنال مایع داخل تاندون با تماس با سطح بورسال دارد. تاندون در تمام ضخامت قطع نشده است. وجود مایع در بورس با سطح سالم تاندون، به‌تنهایی پارگی را ثابت نمی‌کند."
     },
     "diagram": {
-      "de": "Bursa ↔ Sehne (Oberseite, Fokus = Flüssigkeit, T2 fs) ↔ Gelenk (intakt)",
-      "en": "Bursa ↔ tendon (superior surface, fluid focus, T2 fs) ↔ joint (intact)",
-      "fa": "بورس ↔ تاندون (سطح فوقانی، کانون مایع، T2 fs) ↔ مفصل (سالم)"
+      "de": "Oberflächlicher Sehnendefekt → Kontakt zur Bursa; artikuläre Fasern erhalten\nBursaflüssigkeit allein ≠ Ruptur",
+      "en": "Superficial tendon defect → reaches bursal surface; articular fibres preserved\nBursal fluid alone ≠ tear",
+      "fa": "نقص سطحی تاندون → تماس با سطح بورسال؛ فیبرهای مفصلی حفظ شده‌اند\nمایع بورس به‌تنهایی ≠ پارگی"
     }
   },
   {
@@ -3746,14 +3746,14 @@ const LEGACY_FLASHCARDS = [
       "fa": "یافته‌های همراه"
     },
     "front": {
-      "de": "Was zeigt die Goutallier-Klassifikation und ab welchem Grad ist eine Sehnenrekonstruktion meist unwahrscheinlich?",
-      "en": "What does the Goutallier classification show, and from which grade is tendon repair usually unlikely?",
-      "fa": "طبقه‌بندی Goutallier چه چیزی را نشان می‌دهد و از چه درجه‌ای ترمیم تاندون معمولاً غیرممکن است؟"
+      "de": "Was beschreibt die Goutallier-Klassifikation und wie ist ein hoher Grad einzuordnen?",
+      "en": "What does the Goutallier classification describe, and how should a high grade be interpreted?",
+      "fa": "طبقه‌بندی Goutallier چه چیزی را توصیف می‌کند و درجهٔ بالا چگونه تفسیر می‌شود؟"
     },
     "answer": {
-      "de": "Grad der fettigen Muskelatrophie (0–4); ab Grad 3–4 ist eine Rekonstruktion meist nicht mehr aussichtsreich.",
-      "en": "Degree of fatty muscle atrophy (0–4); from grade 3–4 onward, repair is usually not promising.",
-      "fa": "درجه آتروفی چربی عضله (۰ تا ۴)؛ از درجه ۳ تا ۴، ترمیم معمولاً امیدبخش نیست."
+      "de": "Fettinfiltration der Muskulatur, Grad 0–4. Ein hoher Grad ist ein ungünstiger Prognosefaktor, beweist allein aber keine Unmöglichkeit der Rekonstruktion.",
+      "en": "Fatty infiltration of muscle, grades 0–4. A high grade is an adverse prognostic factor but does not alone establish that repair is impossible.",
+      "fa": "نفوذ چربی در عضله، از درجهٔ ۰ تا ۴. درجهٔ بالا عامل پیش‌آگهی نامطلوب است، اما به‌تنهایی ناممکن‌بودن ترمیم را ثابت نمی‌کند."
     },
     "explanation": {
       "de": "Grad 0 = keine Fettinfiltration, Grad 4 = mehr Fett als Muskel. Hohe Goutallier-Grade sind ein wichtiger negativer Prädiktor für den Erfolg einer Rotatorenmanschettennaht. Zusätzlich wichtig: Impingement-Faktoren (Akromion-Typ nach Bigliani, ACG-Arthrose, Bursitis) und eine Dislokation der langen Bizepssehne als indirektes Zeichen einer Subscapularis-Ruptur.",
@@ -3761,9 +3761,9 @@ const LEGACY_FLASHCARDS = [
       "fa": "درجه ۰ = بدون نفوذ چربی، درجه ۴ = چربی بیشتر از عضله. درجات بالای Goutallier پیش‌بینی‌کننده منفی مهمی برای موفقیت ترمیم روتاتور کاف هستند. همچنین مهم: عوامل ایمپینجمنت (تیپ آکرومیون بر اساس Bigliani، آرتروز ACG، بورسیت) و دیسلوکیشن تاندون سر بلند بایسپس به‌عنوان نشانه غیرمستقیم پارگی ساب‌اسکاپولاریس."
     },
     "diagram": {
-      "de": "Goutallier 0 (kein Fett) → ... → 4 (Fett > Muskel)\nGrad ≥3 → Rekonstruktion unwahrscheinlich\n+ Bigliani-Akromion / ACG-Arthrose / LHB-Dislokation = Begleitbefunde",
-      "en": "Goutallier 0 (no fat) → ... → 4 (fat > muscle)\nGrade ≥3 → repair unlikely\n+ Bigliani acromion / ACJ OA / LHB dislocation = associated findings",
-      "fa": "Goutallier ۰ (بدون چربی) → ... → ۴ (چربی > عضله)\nدرجه ≥۳ → ترمیم غیرممکن\n+ آکرومیون Bigliani / آرتروز ACG / دیسلوکیشن LHB = یافته‌های همراه"
+      "de": "Goutallier 0: kein Fett → 4: mehr Fett als Muskel\nHoher Grad → ungünstigere Heilungsaussichten; keine alleinige Irreparabilitätsregel",
+      "en": "Goutallier 0: no fat → 4: more fat than muscle\nHigh grade → less favourable healing prospects; not a stand-alone irreparability rule",
+      "fa": "Goutallier ۰: بدون چربی → ۴: چربی بیشتر از عضله\nدرجهٔ بالا → احتمال ترمیم نامطلوب‌تر؛ نه معیار مستقل غیرقابل‌ترمیم‌بودن"
     }
   }
 ]

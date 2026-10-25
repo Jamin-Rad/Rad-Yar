@@ -40,7 +40,7 @@ export const NEUROFORAMENSTENOSE_LESSON = {
     },
   ],
   check: {
-    title: L('Welche Beschreibung entspricht Lee-Grad 2?', 'Which description matches Lee grade 2?', 'کدام توصیف با درجهٔ ۲ لی مطابقت دارد؟'),
+    title: L('Den Lee-Grad bestimmen', 'Determine the Lee grade', 'درجهٔ لی را تعیین کنید'),
     prompt: L('Die perineurale Fettmanschette ist vertikal und transversal aufgehoben, die Wurzel bleibt morphologisch unverändert. Welcher Grad passt?', 'Perineural fat is obliterated in both vertical and transverse directions, while root morphology remains unchanged. Which grade fits?', 'چربی پیرامون ریشه در هر دو جهت عمودی و عرضی محو شده است، اما شکل ریشه تغییر نکرده. کدام درجه مناسب است؟'),
     options: [L('Grad 0','Grade 0','درجهٔ ۰'), L('Grad 1','Grade 1','درجهٔ ۱'), L('Grad 2','Grade 2','درجهٔ ۲'), L('Grad 3','Grade 3','درجهٔ ۳')],
     answerIndex: 2,

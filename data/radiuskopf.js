@@ -71,18 +71,18 @@ export const RADIUSKOPF_LESSON = {
         icon: '🦾',
         title: L('N. interosseus posterior', 'Posterior interosseous nerve', 'عصب بین‌استخوانی خلفی'),
         text: L(
-          'Der N. interosseus posterior (Ast des N. radialis) verläuft in direkter Nachbarschaft zum Radiusköpfchen. Verletzungs- und Operationsrisiko beachten – Verletzung → Extensionsparesen der Hand.',
-          'The posterior interosseous nerve (branch of the radial nerve) runs in close proximity to the radial head. Consider injury and surgical risk – damage leads to wrist and finger extension paresis.',
-          'عصب بین‌استخوانی خلفی (شاخه عصب رادیال) در مجاورت مستقیم سر رادیوس قرار دارد. خطر آسیب و جراحی را در نظر بگیرید – آسیب → فلج اکستانسوری مچ و انگشتان.'
+          "Der N. interosseus posterior verläuft nahe dem Radiusköpfchen und kann bei der Operation verletzt werden. Eine isolierte Läsion schwächt die Finger- und Daumenextension ohne kutanen Sensibilitätsausfall. Die Handgelenkextension bleibt durch den erhaltenen M. extensor carpi radialis longus typischerweise möglich, gegebenenfalls mit Radialabweichung.",
+          "The posterior interosseous nerve runs near the radial head and may be injured during surgery. An isolated lesion weakens finger and thumb extension without cutaneous sensory loss. Wrist extension is typically preserved by the spared extensor carpi radialis longus, sometimes with radial deviation.",
+          "عصب بین‌استخوانی خلفی نزدیک سر رادیوس می‌گذرد و ممکن است هنگام جراحی آسیب ببیند. آسیب منفرد آن اکستنشن انگشتان و شست را بدون نقص حسی پوستی ضعیف می‌کند. اکستنشن مچ معمولاً به‌واسطهٔ حفظ عضلهٔ اکستانسور کارپی رادیالیس لونگوس باقی می‌ماند و ممکن است با انحراف رادیال همراه باشد."
         ),
       },
       {
         icon: '📐',
         title: L('Radiocapitellar Line', 'Radiocapitellar Line', 'خط رادیوکاپیتلار'),
         text: L(
-          'Eine Linie durch die Längsachse des Radius muss in allen Projektionen und Flexionsgraden durch den Mittelpunkt des Capitulum humeri verlaufen. Abweichung → Radiusköpfchenluxation (Mason IV oder Monteggia).',
-          'A line along the long axis of the radius must pass through the centre of the capitellum on all projections and at all degrees of flexion. Deviation → radial head dislocation (Mason IV or Monteggia).',
-          'خطی در امتداد محور طولی رادیوس باید در تمام نماها و درجات خم شدن از مرکز کاپیتولوم هومروس عبور کند. انحراف → لوکساسیون سر رادیوس (ماسون IV یا مونتگیا).'
+          "Eine entlang des Radiushalses gezogene Linie ist im echten Seitenbild die verlässlichere Orientierung. Bei Kindern beeinflussen Alter, Ossifikation und Projektion die Beziehung zum Capitulum; selbst eine normale Linie trifft nicht immer dessen Zentrum. Fehlende Deckung erfordert eine Prüfung der Technik und der gesamten Gelenkstellung, beweist allein aber keine Luxation.",
+          "A line along the radial neck on a true lateral view is the more reliable reference. In children, age, ossification and projection affect its relationship to the capitellum; a normal line does not invariably cross its centre. Nonintersection warrants checking technique and overall joint alignment but does not alone prove dislocation.",
+          "خط در امتداد گردن رادیوس در نمای لترال واقعی مرجع قابل‌اتکاتری است. در کودکان، سن، استخوانی‌شدن و نما بر رابطهٔ خط با کاپیتولوم اثر دارند؛ خط طبیعی نیز همیشه از مرکز آن عبور نمی‌کند. عبور نکردن خط نیازمند بررسی تکنیک و هم‌راستایی کلی مفصل است، اما به‌تنهایی دررفتگی را ثابت نمی‌کند."
         ),
       },
     ],
@@ -134,8 +134,8 @@ export const RADIUSKOPF_LESSON = {
         },
         {
           icon: '▼',
-          title: L('Posteriores Fettkissen – immer pathologisch', 'Posterior fat pad – always pathological', 'بالشتک چربی خلفی – همیشه پاتولوژیک'),
-          text: L('Im Normal-Röntgen NICHT sichtbar. Jedes sichtbare posteriore Fettkissen = Gelenkerguss → Fraktur ausschließen, auch wenn knöcherner Befund unauffällig.', 'NOT visible on normal X-ray. Any visible posterior fat pad = joint effusion → exclude fracture, even if bony finding is unremarkable.', 'در رادیوگرافی طبیعی قابل مشاهده نیست. هر بالشتک چربی خلفی قابل مشاهده = افیوژن مفصلی → شکستگی را رد کنید، حتی اگر یافته استخوانی طبیعی باشد.'),
+          title: L("Posteriores Fettkissen – Ergusszeichen", "Posterior fat pad – effusion sign", "بالشتک چربی خلفی – نشانهٔ افیوژن"),
+          text: L("Ein sichtbares posteriores Fettkissen im echten Seitenbild spricht für einen Gelenkerguss. Nach Trauma ist eine okkulte Fraktur möglich; das Zeichen legt weder Frakturort noch Mason-Typ fest.", "A visible posterior fat pad on a true lateral view supports joint effusion. After trauma an occult fracture is possible; the sign establishes neither fracture location nor Mason type.", "دیده‌شدن بالشتک چربی خلفی در نمای لترال واقعی به نفع افیوژن مفصل است. پس از تروما شکستگی پنهان ممکن است؛ این علامت نه محل شکستگی و نه نوع ماسون را تعیین می‌کند."),
         },
       ],
     },
@@ -145,7 +145,7 @@ export const RADIUSKOPF_LESSON = {
       images: [
         {
           src: '/radiuskopf/radiocapitellar-line-rid41196.jpeg',
-          caption: L('Radiocapitellar Line: Linie durch Radiusschaft-Mitte muss durch Capitulum-Mitte verlaufen – in jeder Projektion und jedem Flexionsgrad', 'Radiocapitellar line: line through the centre of the radial shaft must pass through the centre of the capitellum – in every projection and degree of flexion', 'خط رادیوکاپیتلار: خط از مرکز تنه رادیوس باید از مرکز کاپیتولوم عبور کند – در هر نما و هر درجه خم شدن'),
+          caption: L("Radiocapitellar Line zur Orientierung prüfen. Eine Linie entlang des Radiushalses ist im echten Seitenbild verlässlicher; bei Kindern Alter, Ossifikation und Projektion beachten. Fehlende Deckung beweist allein keine Luxation.", "Check the radiocapitellar line for orientation. A radial-neck line on a true lateral view is more reliable; in children consider age, ossification and projection. Nonintersection alone does not prove dislocation.", "خط رادیوکاپیتلار را برای جهت‌یابی بررسی کنید. خط در امتداد گردن رادیوس در نمای لترال واقعی قابل‌اتکاتر است؛ در کودکان سن، استخوانی‌شدن و نما را لحاظ کنید. عبور نکردن خط به‌تنهایی دررفتگی را ثابت نمی‌کند."),
         },
       ],
     },
@@ -159,9 +159,9 @@ export const RADIUSKOPF_LESSON = {
       ],
     },
     cave: L(
-      'Okkulte Frakturen (Mason I): Röntgen kann normal sein – nur das posteriore Fettkissenzeichen gibt den Hinweis. Bei klinischem Verdacht und isoliertem Fettkissenzeichen → Radiusköpfchenfraktur bis zum Beweis des Gegenteils.',
-      'Occult fractures (Mason I): X-ray may appear normal – only the posterior fat pad sign gives the clue. With clinical suspicion and isolated fat pad sign → radial head fracture until proven otherwise.',
-      'شکستگی‌های پنهان (ماسون I): رادیوگرافی ممکن است طبیعی به نظر برسد – فقط نشانه بالشتک چربی خلفی راهنما است. با ظن بالینی و نشانه بالشتک چربی به‌تنهایی → شکستگی سر رادیوس تا زمانی که خلاف آن ثابت نشود.'
+      "Bei Erwachsenen mit akutem Trauma, fortbestehendem Frakturverdacht und normalem oder unklarem Röntgen kommen je nach klinischer Frage eine Röntgenkontrolle nach 10–14 Tagen oder CT ohne Kontrastmittel infrage. Ein isoliertes Fettkissenzeichen beweist keine Radiusköpfchenfraktur und ordnet keine Mason-I-Behandlung an.",
+      "In adults after acute trauma with persistent fracture suspicion and normal or indeterminate radiographs, repeat radiographs after 10–14 days or noncontrast CT may be appropriate for the clinical question. An isolated fat pad sign does not prove a radial-head fracture or prescribe Mason I treatment.",
+      "در بزرگسالان پس از ترومای حاد با تداوم شک به شکستگی و رادیوگرافی طبیعی یا نامشخص، بر اساس پرسش بالینی می‌توان رادیوگرافی پیگیری پس از ۱۰ تا ۱۴ روز یا CT بدون کنتراست را در نظر گرفت. علامت منفرد بالشتک چربی شکستگی سر رادیوس را ثابت نمی‌کند و درمان ماسون I را تجویز نمی‌کند."
     ),
   },
 
@@ -245,7 +245,7 @@ export const RADIUSKOPF_LESSON = {
       },
       {
         icon: '🔄',
-        title: L('Mason IV – Reposition zuerst', 'Mason IV – Reduction first', 'ماسون IV – ابتدا کاهش'),
+        title: L("Mason IV – Reposition zuerst", "Mason IV – Reduction first", "ماسون IV – ابتدا جااندازی"),
         text: L(
           'Ellenbogenluxation zeitnah geschlossen reponieren → anschließend Stabilität beurteilen. Die weitere Frakturbehandlung wird orthopädisch anhand von Stabilität, Rekonstruierbarkeit, Begleitverletzungen und patientenbezogenen Faktoren festgelegt; Mason-Typ II oder III schreibt nicht automatisch ORIF oder Prothese vor.',
           'Promptly reduce the elbow dislocation, then assess stability. Orthopaedic assessment determines subsequent fracture treatment based on stability, reconstructibility, associated injuries, and patient factors; Mason Type II or III does not automatically prescribe ORIF or arthroplasty.',
@@ -312,12 +312,12 @@ export const RADIUSKOPF_LESSON = {
     lead: L('Die wichtigsten Merksätze auf einen Blick.', 'The most important points at a glance.', 'مهم‌ترین نکات در یک نگاه.'),
     items: [
       {
-        title: L('Posteriores Fettkissen = Fraktur', 'Posterior fat pad = fracture', 'بالشتک چربی خلفی = شکستگی'),
-        text: L('Im Seitenbild des Ellenbogens ist ein sichtbares posteriores Fettkissen immer pathologisch. Bei unauffälligem Röntgen + posteriorem Fettkissenzeichen → Mason-I-Fraktur behandeln.', 'A visible posterior fat pad on the lateral elbow view is always pathological. With normal X-ray + posterior fat pad sign → treat as Mason I fracture.', 'بالشتک چربی خلفی قابل مشاهده در نمای جانبی آرنج همیشه پاتولوژیک است. با رادیوگرافی طبیعی + نشانه بالشتک چربی خلفی → به عنوان ماسون I درمان کنید.'),
+        title: L("Posteriores Fettkissen: Erguss und Frakturverdacht", "Posterior fat pad: effusion and fracture suspicion", "بالشتک چربی خلفی: افیوژن و شک به شکستگی"),
+        text: L("Ein sichtbares posteriores Fettkissen im echten Seitenbild spricht für einen Gelenkerguss. Nach Trauma ist eine okkulte Fraktur möglich; das Zeichen legt weder Frakturort noch Mason-Typ fest.", "A visible posterior fat pad on a true lateral view supports joint effusion. After trauma an occult fracture is possible; the sign establishes neither fracture location nor Mason type.", "دیده‌شدن بالشتک چربی خلفی در نمای لترال واقعی به نفع افیوژن مفصل است. پس از تروما شکستگی پنهان ممکن است؛ این علامت نه محل شکستگی و نه نوع ماسون را تعیین می‌کند."),
       },
       {
         title: L('Radiocapitellar Line prüfen', 'Check radiocapitellar line', 'خط رادیوکاپیتلار را بررسی کنید'),
-        text: L('In jeder Ellenbogenaufnahme die Linie durch den Radius-Schaft auf das Capitulum prüfen. Abweichung = Luxation → Mason IV oder Monteggia.', 'On every elbow X-ray, check the line through the radial shaft to the capitellum. Deviation = dislocation → Mason IV or Monteggia.', 'در هر رادیوگرافی آرنج، خط از تنه رادیوس به کاپیتولوم را بررسی کنید. انحراف = لوکساسیون → ماسون IV یا مونتگیا.'),
+        text: L("Radiokapitellare Stellung in beiden Ebenen prüfen; im echten Seitenbild bevorzugt am Radiushals orientieren. Bei Kindern technische und altersabhängige Abweichungen beachten: Eine auffällige Linie beweist allein keine Luxation.", "Assess radiocapitellar alignment in both planes, using the radial neck as the preferred lateral reference. In children consider technical and age-related variation: an abnormal line alone does not prove dislocation.", "هم‌راستایی رادیوکاپیتلار را در هر دو نما بررسی کنید و در لترال واقعی گردن رادیوس را مرجع قرار دهید. در کودکان تغییرات تکنیکی و وابسته به سن را لحاظ کنید؛ خط غیرطبیعی به‌تنهایی دررفتگی را ثابت نمی‌کند."),
       },
       {
         title: L('Mason I vs. II – PDF-Grenzwerte', 'Mason I vs. II – PDF thresholds', 'ماسون I در برابر II – آستانه‌های PDF'),
@@ -376,31 +376,31 @@ export const RADIUSKOPF_QUESTIONS = Object.fromEntries(['de', 'en', 'fa'].map(la
   ),
 
   Q(`rk-fettkissen-1-${lang}`,
-    L('Im Seitenbild des Ellenbogens zeigt sich ein posteriores Fettkissen bei normalem knöchernem Befund. Was bedeutet das?',
-      'On the lateral elbow view, a posterior fat pad is visible with normal bony findings. What does this mean?',
-      'در نمای جانبی آرنج، بالشتک چربی خلفی با یافته‌های استخوانی طبیعی قابل مشاهده است. این به چه معناست؟')[lang],
+    L('Nach einem Ellenbogentrauma beim Erwachsenen ist im echten Seitenbild ein posteriores Fettkissen abgehoben, eine Fraktur aber nicht sichtbar. Welche Einordnung passt?',
+      'After elbow trauma in an adult, a true lateral view shows an elevated posterior fat pad but no visible fracture. Which interpretation fits?',
+      'پس از ترومای آرنج در بزرگسال، در نمای لترال واقعی بالشتک چربی خلفی بالا آمده است، اما شکستگی دیده نمی‌شود. کدام تفسیر مناسب است؟')[lang],
     [
       L('Normalbefund, keine weiteren Maßnahmen', 'Normal finding, no further action', 'یافته طبیعی، بدون اقدام بیشتر')[lang],
-      L('Gelenkerguss → okkulte Fraktur möglich → Mason I bis zum Beweis des Gegenteils behandeln', 'Joint effusion → occult fracture possible → treat as Mason I until proven otherwise', 'افیوژن مفصلی → شکستگی پنهان ممکن → تا اثبات خلاف به عنوان ماسون I درمان کنید')[lang],
+      L('Gelenkerguss mit möglicher okkulter Fraktur; das Zeichen allein beweist keine Mason-I-Fraktur', 'Joint effusion with possible occult fracture; the sign alone does not establish a Mason I fracture', 'افیوژن مفصل همراه با احتمال شکستگی پنهان؛ این علامت به‌تنهایی شکستگی ماسون I را ثابت نمی‌کند')[lang],
       L('Immer MRT indiziert', 'MRI always indicated', 'MRI همیشه اندیکاسیون دارد')[lang],
       L('Hinweis auf anteriore Gelenkkapselruptur', 'Indicates anterior joint capsule rupture', 'نشانه پارگی کپسول مفصلی قدامی')[lang],
     ],
     1,
-    L('Das posteriore Fettkissen ist im Normalbild NICHT sichtbar. Jedes sichtbare posteriore Fettkissen = Gelenkerguss (Hämarthros bei Trauma). Bei normalem Röntgen + positivem Fettkissenzeichen → klinisch Mason-I-Fraktur annehmen und konservativ behandeln.', 'The posterior fat pad is NOT visible on a normal X-ray. Any visible posterior fat pad = joint effusion (haemarthrosis in trauma). With normal X-ray + positive fat pad sign → clinically assume Mason I and treat conservatively.', 'بالشتک چربی خلفی در رادیوگرافی طبیعی قابل مشاهده نیست. هر بالشتک چربی خلفی قابل مشاهده = افیوژن مفصلی (همارتروس در تروما). با رادیوگرافی طبیعی + نشانه بالشتک چربی مثبت → بالینی ماسون I را فرض کنید و محافظه‌کارانه درمان کنید.')[lang]
+    L('Ein abgehobenes posteriores Fettkissen spricht für einen Erguss und im Traumakontext für eine mögliche okkulte Fraktur. Es legt weder den Frakturort noch einen Mason-Typ fest. Bei fortbestehendem Frakturverdacht kommen je nach klinischer Frage eine Röntgenkontrolle nach 10–14 Tagen oder CT ohne Kontrastmittel infrage.', 'An elevated posterior fat pad supports an effusion and, after trauma, a possible occult fracture. It establishes neither fracture location nor a Mason type. If fracture suspicion persists, repeat radiographs after 10–14 days or noncontrast CT may be appropriate according to the clinical question.', 'بالا آمدن بالشتک چربی خلفی به نفع افیوژن و در زمینهٔ تروما مطرح‌کنندهٔ شکستگی پنهان احتمالی است. این علامت نه محل شکستگی و نه نوع ماسون را تعیین می‌کند. در صورت تداوم شک به شکستگی، بر اساس پرسش بالینی می‌توان رادیوگرافی پیگیری پس از ۱۰ تا ۱۴ روز یا CT بدون کنتراست را در نظر گرفت.')[lang]
   ),
 
   Q(`rk-rcline-1-${lang}`,
-    L('Was sagt die Radiocapitellar Line aus und wann ist sie pathologisch?',
-      'What does the radiocapitellar line indicate and when is it pathological?',
-      'خط رادیوکاپیتلار چه چیزی نشان می‌دهد و چه زمانی پاتولوژیک است؟')[lang],
+    L('Wie hilft die Radiocapitellar Line bei der Suche nach einer Radiusköpfchenluxation?',
+      'How does the radiocapitellar line help assess possible radial-head dislocation?',
+      'خط رادیوکاپیتلار چگونه به ارزیابی احتمال دررفتگی سر رادیوس کمک می‌کند؟')[lang],
     [
       L('Sie verläuft durch das Olekranon – pathologisch bei Abweichung > 5 mm', 'It passes through the olecranon – pathological if deviation > 5 mm', 'از اولکرانون عبور می‌کند – اگر انحراف > ۵ میلی‌متر پاتولوژیک است')[lang],
-      L('Linie durch Radius-Schaft-Achse muss Capitulum-Mitte treffen – Abweichung = Radiusköpfchenluxation', 'Line through radial shaft axis must hit centre of capitellum – deviation = radial head dislocation', 'خط از محور تنه رادیوس باید مرکز کاپیتولوم را لمس کند – انحراف = لوکساسیون سر رادیوس')[lang],
+      L('Radius-Hals-Achse im echten Seitenbild prüfen; fehlende Deckung ist verdächtig, nicht beweisend', 'Assess the radial-neck axis on a true lateral view; nonintersection is suspicious, not diagnostic alone', 'محور گردن رادیوس را در نمای لترال واقعی بررسی کنید؛ عبور نکردن خط مشکوک است، نه اثبات‌کننده به‌تنهایی')[lang],
       L('Sie gilt nur in der AP-Projektion', 'It only applies to the AP projection', 'فقط در نمای AP صدق می‌کند')[lang],
       L('Pathologisch wenn Winkel < 45°', 'Pathological when angle < 45°', 'اگر زاویه < ۴۵ درجه باشد پاتولوژیک است')[lang],
     ],
     1,
-    L('Die Radiocapitellar Line wird durch die Längsachse des Radius gezogen. Sie muss in jeder Projektion (lateral, AP, axial) und jedem Flexionsgrad den Mittelpunkt des Capitulum humeri treffen. Abweichung → Luxation (Mason IV oder Monteggia).', 'The radiocapitellar line is drawn along the long axis of the radius. It must pass through the centre of the capitellum in every projection (lateral, AP, axial) and at all degrees of flexion. Deviation → dislocation (Mason IV or Monteggia).', 'خط رادیوکاپیتلار در امتداد محور طولی رادیوس کشیده می‌شود. باید در هر نما (جانبی، AP، محوری) و هر درجه خم شدن از مرکز کاپیتولوم هومروس عبور کند. انحراف → لوکساسیون (ماسون IV یا مونتگیا).')[lang]
+    L('Eine entlang des Radiushalses gezogene Linie ist im echten Seitenbild die verlässlichere Orientierung. Bei Kindern beeinflussen Alter, Ossifikation und Projektion die Beziehung zum Capitulum; selbst eine normale Linie trifft nicht immer dessen Zentrum. Fehlende Deckung erfordert eine Prüfung der Technik und der gesamten Gelenkstellung, beweist allein aber keine Luxation.', 'A line along the radial neck on a true lateral view is the more reliable reference. In children, age, ossification and projection affect its relationship to the capitellum; a normal line does not invariably cross its centre. Nonintersection warrants checking technique and overall joint alignment but does not alone prove dislocation.', 'خط در امتداد گردن رادیوس در نمای لترال واقعی مرجع قابل‌اتکاتری است. در کودکان، سن، استخوانی‌شدن و نما بر رابطهٔ خط با کاپیتولوم اثر دارند؛ خط طبیعی نیز همیشه از مرکز آن عبور نمی‌کند. عبور نکردن خط نیازمند بررسی تکنیک و هم‌راستایی کلی مفصل است، اما به‌تنهایی دررفتگی را ثابت نمی‌کند.')[lang]
   ),
 
   Q(`rk-therapie-1-${lang}`,
@@ -425,7 +425,7 @@ export const RADIUSKOPF_QUESTIONS = Object.fromEntries(['de', 'en', 'fa'].map(la
       L('Radiusköpfchen + Ulnafraktur + MCL', 'Radial head + ulna fracture + MCL', 'سر رادیوس + شکستگی اولنا + MCL')[lang],
       L('Ellenbogenluxation + Radiusköpfchenfraktur + Coronoidfraktur der Ulna', 'Elbow dislocation + radial head fracture + coronoid process fracture', 'لوکساسیون آرنج + شکستگی سر رادیوس + شکستگی زائده کرونوئید اولنا')[lang],
       L('Radiusköpfchen + MCL + LCL', 'Radial head + MCL + LCL', 'سر رادیوس + MCL + LCL')[lang],
-      L('Dislocated olecranon + radial head + humerus', 'Dislocated olecranon + radial head + humerus', 'اولکرانون جابجا شده + سر رادیوس + هومروس')[lang],
+      L('Luxiertes Olekranon + Radiuskopf + Humerus', 'Dislocated olecranon + radial head + humerus', 'اولکرانون جابجا شده + سر رادیوس + هومروس')[lang],
     ],
     1,
     L('Die Kombination ist häufig instabil. Stabilität und jede Begleitverletzung beurteilen; die Therapie wird anhand des Gesamtbefunds, der Rekonstruierbarkeit und patientenbezogener Faktoren geplant. Eine operative Versorgung aller Komponenten oder ein MRT ist nicht automatisch erforderlich.', 'This combination is often unstable. Assess stability and each associated injury; plan treatment based on the overall findings, reconstructibility, and patient factors. Surgery for every component or MRI is not automatic.', 'این ترکیب اغلب ناپایدار است. پایداری و هر آسیب همراه را ارزیابی کنید؛ درمان را بر اساس مجموع یافته‌ها، قابلیت بازسازی و عوامل مربوط به بیمار برنامه‌ریزی کنید. جراحی همهٔ مؤلفه‌ها یا MRI به‌طور خودکار لازم نیست.')[lang]
@@ -470,7 +470,7 @@ export const RADIUSKOPF_QUESTIONS = Object.fromEntries(['de', 'en', 'fa'].map(la
       L('A. radialis', 'Radial artery', 'شریان رادیال')[lang],
     ],
     2,
-    L('Der N. interosseus posterior (tiefer Ast des N. radialis) verläuft in unmittelbarer Nähe zum Radiusköpfchen. Verletzung → Extensionsparese der Finger und Handgelenk (keine Sensibilitätsstörung da rein motorisch). Besonders bei dorsalem Zugang gefährdet.', 'The posterior interosseous nerve (deep branch of the radial nerve) runs in direct proximity to the radial head. Injury → extension paresis of fingers and wrist (no sensory loss as it is purely motor). Especially at risk with a posterior approach.', 'عصب بین‌استخوانی خلفی (شاخه عمیق عصب رادیال) در مجاورت مستقیم سر رادیوس قرار دارد. آسیب → فلج اکستانسوری انگشتان و مچ (بدون اختلال حسی چون کاملاً حرکتی است). به‌ویژه در رویکرد خلفی در معرض خطر است.')[lang]
+    L('Der N. interosseus posterior verläuft nahe dem Radiusköpfchen und kann bei der Operation verletzt werden. Eine isolierte Läsion schwächt die Finger- und Daumenextension ohne kutanen Sensibilitätsausfall. Die Handgelenkextension bleibt durch den erhaltenen M. extensor carpi radialis longus typischerweise möglich, gegebenenfalls mit Radialabweichung.', 'The posterior interosseous nerve runs near the radial head and may be injured during surgery. An isolated lesion weakens finger and thumb extension without cutaneous sensory loss. Wrist extension is typically preserved by the spared extensor carpi radialis longus, sometimes with radial deviation.', 'عصب بین‌استخوانی خلفی نزدیک سر رادیوس می‌گذرد و ممکن است هنگام جراحی آسیب ببیند. آسیب منفرد آن اکستنشن انگشتان و شست را بدون نقص حسی پوستی ضعیف می‌کند. اکستنشن مچ معمولاً به‌واسطهٔ حفظ عضلهٔ اکستانسور کارپی رادیالیس لونگوس باقی می‌ماند و ممکن است با انحراف رادیال همراه باشد.')[lang]
   ),
 
   Q(`rk-mason-therapie-2-${lang}`,
@@ -533,14 +533,14 @@ export const RADIUSKOPF_FLASHCARDS = [
 
   F('rk-fc-3', L('Bildgebung', 'Imaging', 'تصویربرداری'),
     L('Fettkissenzeichen: anteriores vs. posteriores?', 'Fat pad sign: anterior vs. posterior?', 'نشانه بالشتک چربی: قدامی در مقابل خلفی؟'),
-    L('Anterior: normal sichtbar als flache Linie, pathologisch wenn eleviert (Sail Sign). Posterior: im Normalbild NIE sichtbar – jedes sichtbare posteriore Fettkissen = Gelenkerguss → okkulte Fraktur!', 'Anterior: normally visible as a flat line, pathological when elevated (sail sign). Posterior: NEVER visible normally – any visible posterior fat pad = joint effusion → occult fracture!', 'قدامی: معمولاً به صورت خط صاف قابل مشاهده، پاتولوژیک اگر بالا باشد (نشانه بادبان). خلفی: در حالت طبیعی هرگز قابل مشاهده نیست – هر بالشتک چربی خلفی قابل مشاهده = افیوژن → شکستگی پنهان!'),
-    L('Posteriores Fettkissen = immer pathologisch!', 'Posterior fat pad = always pathological!', 'بالشتک چربی خلفی = همیشه پاتولوژیک!')
+    L('Im echten Seitenbild ist ein flaches anteriores Fettkissen normal sichtbar. Ein eleviertes anteriores oder sichtbares posteriores Fettkissen spricht für einen Erguss; nach Trauma ist eine okkulte Fraktur möglich.', 'On a true lateral view, a flat anterior fat pad may be normal. An elevated anterior or visible posterior fat pad supports effusion; an occult fracture is possible after trauma.', 'در نمای لترال واقعی، بالشتک قدامی صاف می‌تواند طبیعی دیده شود. بالا آمدن بالشتک قدامی یا دیده‌شدن بالشتک خلفی به نفع افیوژن است؛ پس از تروما، شکستگی پنهان ممکن است.'),
+    L('Ergusszeichen im klinischen Kontext bewerten; daraus allein weder Frakturort noch Mason-Typ ableiten.', 'Interpret the effusion sign in clinical context; it alone establishes neither fracture location nor Mason type.', 'علامت افیوژن را در زمینهٔ بالینی تفسیر کنید؛ به‌تنهایی محل شکستگی یا نوع ماسون را تعیین نمی‌کند.')
   ),
 
   F('rk-fc-4', L('Bildgebung', 'Imaging', 'تصویربرداری'),
     L('Radiocapitellar Line: Norm und Pathologie?', 'Radiocapitellar Line: normal and pathological?', 'خط رادیوکاپیتلار: طبیعی و پاتولوژیک؟'),
-    L('Linie durch Längsachse des Radius → muss Zentrum des Capitulum humeri treffen. Gilt in JEDER Projektion und JEDEM Flexionsgrad. Abweichung → Luxation (Mason IV, Monteggia). Immer aktiv prüfen!', 'Line through long axis of radius → must hit centre of capitellum. Applies in EVERY projection and EVERY degree of flexion. Deviation → dislocation (Mason IV, Monteggia). Always actively check!', 'خط از محور طولی رادیوس → باید مرکز کاپیتولوم را لمس کند. در هر نما و هر درجه خم شدن صدق می‌کند. انحراف → لوکساسیون (ماسون IV، مونتگیا). همیشه فعالانه بررسی کنید!'),
-    L('Merke: Radiocapitellar Line verletzt → immer an Luxation denken!', 'Remember: disrupted radiocapitellar line → always think dislocation!', 'به یاد داشته باشید: خط رادیوکاپیتلار قطع شده → همیشه به لوکساسیون فکر کنید!')
+    L('Eine entlang des Radiushalses gezogene Linie ist im echten Seitenbild die verlässlichere Orientierung. Bei Kindern beeinflussen Alter, Ossifikation und Projektion die Beziehung zum Capitulum; selbst eine normale Linie trifft nicht immer dessen Zentrum. Fehlende Deckung erfordert eine Prüfung der Technik und der gesamten Gelenkstellung, beweist allein aber keine Luxation.', 'A line along the radial neck on a true lateral view is the more reliable reference. In children, age, ossification and projection affect its relationship to the capitellum; a normal line does not invariably cross its centre. Nonintersection warrants checking technique and overall joint alignment but does not alone prove dislocation.', 'خط در امتداد گردن رادیوس در نمای لترال واقعی مرجع قابل‌اتکاتری است. در کودکان، سن، استخوانی‌شدن و نما بر رابطهٔ خط با کاپیتولوم اثر دارند؛ خط طبیعی نیز همیشه از مرکز آن عبور نمی‌کند. عبور نکردن خط نیازمند بررسی تکنیک و هم‌راستایی کلی مفصل است، اما به‌تنهایی دررفتگی را ثابت نمی‌کند.'),
+    L('Bei Verdacht auf Monteggia die gesamte Ulnamorphologie und radiokapitellare Stellung prüfen; technische und altersabhängige Abweichungen mitbedenken.', 'When Monteggia injury is suspected, assess the entire ulnar morphology and radiocapitellar alignment; consider technical and age-dependent variation.', 'در شک به مونتگیا، مورفولوژی کل اولنا و هم‌راستایی رادیوکاپیتلار را بررسی و تغییرات وابسته به تکنیک و سن را لحاظ کنید.')
   ),
 
   F('rk-fc-5', L('Assoziiert', 'Associated', 'همراه'),
@@ -562,7 +562,7 @@ export const RADIUSKOPF_FLASHCARDS = [
   ),
 
   F('rk-fc-8', L('Anatomie', 'Anatomy', 'آناتومی'),
-    L('Welchen Anteil der axialen Last überträgt das Radiusköpfchen?', 'What proportion of axial load does the radial head transmit?', 'چه نسبتی از بار محوری را سر رادیوس منتقل می‌کند؟'),
+    L('Welche Bedeutung hat das Radiusköpfchen für die Unterarmstabilität?', 'What is the role of the radial head in forearm stability?', 'سر رادیوس چه نقشی در پایداری ساعد دارد؟'),
     L('Das Radiusköpfchen trägt zur axialen Unterarmstabilität bei. Bei vermuteter Instabilität vor einer Resektion die Begleitverletzungen und Längsstabilität vollständig beurteilen; Erhalt, Fixation oder Ersatz hängen vom Gesamtbefund ab.', 'The radial head contributes to axial forearm stability. If instability is suspected, assess associated injuries and longitudinal stability fully before considering excision; preservation, fixation, or replacement depends on the overall injury.', 'سر رادیوس به پایداری محوری ساعد کمک می‌کند. در صورت شک به ناپایداری، پیش از بررسی رزکسیون، آسیب‌های همراه و پایداری طولی را کامل ارزیابی کنید؛ حفظ، تثبیت یا جایگزینی به مجموع یافته‌ها بستگی دارد.'),
     L('Radialkopf stabilisiert mit – erst Begleitverletzungen und Längsstabilität prüfen, dann individuell entscheiden.', 'The radial head contributes to stability—assess associated injuries and longitudinal stability before deciding.', 'سر رادیوس در پایداری نقش دارد؛ ابتدا آسیب‌های همراه و پایداری طولی را بسنجید، سپس فردی تصمیم بگیرید.')
   ),

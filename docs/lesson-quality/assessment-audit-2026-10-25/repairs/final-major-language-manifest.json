@@ -1,0 +1,70 @@
+{
+  "changes": [
+    {
+      "file": "data/patellaStreckapparatLesson.js",
+      "before": "imageAlt: L('سه نمونهٔ تصویری شکل فاست کشکک در تیپ‌های ویبرگ I تا III، بازنشرشده از PDF منبع.'",
+      "after": "imageAlt: L('Drei Abbildungen aus der Quell-PDF zur Form der Patellafacetten bei Wiberg-Typ I bis III.'"
+    },
+    {
+      "file": "data/patellaStreckapparatLesson.js",
+      "before": "imageAlt: L('شماتیک غیرتشخیصی سه جهت خط شکستگی کشکک: عرضی، طولی و چندقطعه‌ای؛ تصویر بیمار نیست و به مقیاس رسم نشده است.'",
+      "after": "imageAlt: L('Nichtdiagnostisches Schema dreier Patellafrakturmuster: quer, längs und mehrfragmentär; keine Patientenaufnahme und nicht maßstabsgetreu.'"
+    },
+    {
+      "file": "data/patellaStreckapparatLesson.js",
+      "before": "imageAlt: L('شماتیک غیرتشخیصی از کشکک و محل تقریبی کوفتگی در وجه داخلی کشکک و کندیل خارجی فمور پس از دررفتگی جانبی.'",
+      "after": "imageAlt: L('Nichtdiagnostisches Schema der Patella mit ungefähren Kontusionsstellen an ihrer medialen Facette und am lateralen Femurkondylus nach lateraler Luxation.'"
+    },
+    {
+      "file": "data/frakturbeschreibung.js",
+      "before": "تعریف بالینی دارد؛ گاز یا جسم خارجی نشانه است اما قطعی نیست.",
+      "after": "تعریف بالینی دارد؛ گاز یا جسم خارجی نشانهٔ هشدارند، اما بازبودن شکستگی را نه با اطمینان اثبات و نه رد می‌کنند."
+    },
+    {
+      "file": "data/frakturen-kindesalter.js",
+      "before": "protects against complete dislocation",
+      "after": "helps prevent complete displacement of the fracture fragments"
+    },
+    {
+      "file": "data/frakturen-kindesalter.js",
+      "before": "از دررفتگی کامل محافظت می‌کند",
+      "after": "به جلوگیری از جابه‌جایی کامل قطعات شکستگی کمک می‌کند"
+    },
+    {
+      "file": "data/frakturen-kindesalter.js",
+      "before": "prevents complete dislocation (acts as a hinge)",
+      "after": "helps prevent complete displacement of the fracture fragments (acts as a hinge)"
+    },
+    {
+      "file": "data/frakturen-kindesalter.js",
+      "before": "از دررفتگی کامل جلوگیری می‌کند (مثل لولا عمل می‌کند)",
+      "after": "به جلوگیری از جابه‌جایی کامل قطعات شکستگی کمک می‌کند (مثل لولا عمل می‌کند)"
+    },
+    {
+      "file": "data/unterarmschaftfrakturen.js",
+      "before": "در غیر این صورت از دست رفتن دائمی پروناسیون/سوپیناسیون رخ می‌دهد",
+      "after": "در غیر این صورت خطر از دست‌رفتن دائمی پروناسیون/سوپیناسیون وجود دارد"
+    },
+    {
+      "file": "data/contrastLessons.js",
+      "before": "همودیالیز فوری و دو روز بعد جلسات دیالیز",
+      "after": "همودیالیز فوری و جلسات دیالیز در هر یک از دو روز بعد"
+    },
+    {
+      "file": "app/msk/trauma/frakturbeschreibung/page.js",
+      "before": "L('Zusätzliche Beschriftung in der Quelle','Additional source labels','برچسب‌های تکمیلی منبع')",
+      "after": "L({de:'Zusätzliche Beschriftung in der Quelle',en:'Additional source labels',fa:'برچسب‌های تکمیلی منبع'},lang)"
+    },
+    {
+      "file": "app/msk/trauma/frakturbeschreibung/page.js",
+      "before": "L('Was die Abbildung zeigt','What the figure shows','آنچه شکل نشان می‌دهد')",
+      "after": "L({de:'Was die Abbildung zeigt',en:'What the figure shows',fa:'آنچه شکل نشان می‌دهد'},lang)"
+    },
+    {
+      "file": "app/msk/trauma/frakturbeschreibung/page.js",
+      "before": "L('Für die Beschreibung','For reporting','برای توصیف')",
+      "after": "L({de:'Für die Beschreibung',en:'For reporting',fa:'برای توصیف'},lang)"
+    }
+  ],
+  "scope": "Confirmed source-locale parity fixes; no medical criterion/scoring change. HD timing only aligns FA to existing qualified DE/EN guideline comparison; does not independently recertify guideline content."
+}

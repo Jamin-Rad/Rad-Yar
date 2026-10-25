@@ -86,7 +86,7 @@ export const GEHIRN_NF1_QUESTIONS = Object.fromEntries(['de', 'en', 'fa'].map(la
   },
   {
     id: `neurofibromatose-typ1-${lang}-systemic`, tags: ['neurofibromatose-typ1'], fach: 'gehirn',
-    question: { de: 'Wie ist die Knochen-, Gefäß- und Abdomenliste auf PDF-Seite 84 am sinnvollsten zu verwenden?', en: 'What is the best use of the bone, vascular, and abdominal list on PDF page 84?', fa: 'بهترین کاربرد فهرست استخوان، عروق و شکم در صفحهٔ ۸۴ PDF چیست؟' }[lang],
+    question: { de: 'Ein Lernüberblick nennt knöcherne, vaskuläre und abdominale NF1-Manifestationen, legt aber keine Screeningintervalle oder vollständige Organdiagnostik fest. Wie ist er sinnvoll zu verwenden?', en: 'A teaching overview lists skeletal, vascular and abdominal NF1 manifestations but specifies neither screening intervals nor a complete organ work-up. How should it be used?', fa: 'یک مرور آموزشی تظاهرات اسکلتی، عروقی و شکمی NF1 را فهرست می‌کند، اما فاصلهٔ غربالگری یا بررسی کامل اعضا را تعیین نمی‌کند. چگونه باید از آن استفاده کرد؟' }[lang],
     options: [
       { id: 'A', text: { de: 'Als vollständiges Screeningprotokoll für alle NF1-Betroffenen', en: 'As a complete screening protocol for everyone with NF1', fa: 'به‌عنوان پروتکل کامل غربالگری برای همهٔ مبتلایان به NF1' }[lang] },
       { id: 'B', text: { de: 'Als fachübergreifende Erkennungshinweise, die eine eigene Fragestellung und zuständige Fachbeurteilung brauchen', en: 'As cross-specialty recognition cues requiring a separate clinical question and the relevant specialist assessment', fa: 'به‌عنوان سرنخ‌های بین‌رشته‌ای که به پرسش بالینی جدا و ارزیابی تخصصی مربوط نیاز دارند' }[lang] },

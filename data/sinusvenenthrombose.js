@@ -186,6 +186,6 @@ export const SVT_SOURCES = [
   {
     href: 'https://academic.oup.com/esj/article/2/3/195/8275513',
     label: L('European Stroke Organization: Guideline for cerebral venous thrombosis', 'European Stroke Organization: Guideline for cerebral venous thrombosis', 'راهنمای سازمان سکته اروپا درباره ترومبوز وریدی مغز'),
-    note: L('راهنمای تکمیلی درباره درمان ضدانعقادی و درمان اندوواسکولار انتخابی.', 'Supplemental guideline context for anticoagulation and selected endovascular treatment.', 'راهنمای تکمیلی درباره ضدانعقاد و درمان اندوواسکولار انتخابی.'),
+    note: L("Ergänzender Leitlinienkontext zur Antikoagulation und zu ausgewählten endovaskulären Behandlungen.", 'Supplemental guideline context for anticoagulation and selected endovascular treatment.', 'راهنمای تکمیلی درباره ضدانعقاد و درمان اندوواسکولار انتخابی.'),
   },
 ]

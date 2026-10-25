@@ -1,0 +1,443 @@
+{
+  "date": "2026-10-25",
+  "result": "PASS_BOUNDED_TECHNICAL_CHECKS__GLOBAL_CONTENT_REVISE",
+  "productionBuild": {
+    "command": "npm run build",
+    "exitCode": 0,
+    "scope": "Final merged source on top of main efb3d3cd, including latest cardiomyopathy precontrast mirror; global scientific result remains REVISE.",
+    "mainBase": "efb3d3cd"
+  },
+  "ssr": {
+    "routes": 234,
+    "locales": [
+      "de",
+      "en",
+      "fa"
+    ],
+    "passed": 702,
+    "scope": "Actual page-graph rendering and design contract, not allhiddenbrowserstates"
+  },
+  "assessmentBank": {
+    "mcqsPerLocale": 883,
+    "casesPerLocale": 18,
+    "cards": 1099,
+    "check": "IDs/options/keys/feedback structural validity; not scientific acceptance"
+  },
+  "regression": {
+    "questionLocaleRows": 30,
+    "cardIds": 8,
+    "countsStable": true
+  },
+  "independentExamples": {
+    "arvcCMRTranslationUnits": 743,
+    "arvcRenderedStates": 75,
+    "rootDeltaRoutesLocales": 27,
+    "heroAltFixtures": 6,
+    "majorLanguageRoutesLocales": 15,
+    "mskLessonMirrorsFields": 34
+  },
+  "browser": {
+    "environment": "Local dev, ordinary existing user session, targeted UI test",
+    "checks": [
+      {
+        "route": "/technik/dosimetrie",
+        "locales": [
+          "de",
+          "en",
+          "fa"
+        ],
+        "verified": "Restored stimulus, all3options, correctchoice and feedback; state preserved on languagechange."
+      },
+      {
+        "route": "/ueben/quiz?fach=gehirn&themen=intrazerebrale-blutung",
+        "locales": [
+          "de",
+          "en",
+          "fa"
+        ],
+        "verified": "15questionpool; shuffled correctSWI option at positionD accepted, progress/feedback translated acrosslanguages."
+      },
+      {
+        "route": "/flashcards/intrazerebrale-blutung?mode=practice",
+        "locales": [
+          "de",
+          "en",
+          "fa"
+        ],
+        "verified": "Topic naming,12cardpool, flipshortanswer, expandableexplanation+diagram, localechange preserves revealedstate; no Leitner grading performed."
+      },
+      {
+        "route": "/mamma/bildgebung/mrt/basics?lang=fa",
+        "verified": "JSXtitle no longer leaks objectObject into imagealt; actual accessible heading/image labelread."
+      }
+    ],
+    "limitations": "Not all234 browser pages or all1982 assessment interactionstates. No fullmobile/RTL/livelanguage visualrecertification."
+  },
+  "live": "Targeted post-push deployment checks are reported separately in the handover; no full234route liveinteractionpass claimed.",
+  "sourceHashes": [
+    {
+      "file": "app/abdomen/gi/divertikulitis/page.js",
+      "sha256": "f8dd77fb1efd6c9eba95f01174a6546287bd1da46465252717db12cc932b8275"
+    },
+    {
+      "file": "app/abdomen/gi/gist/page.js",
+      "sha256": "611f04c5504364ed209f72c61ea0f30e5455053a7ed368216e369360d5765847"
+    },
+    {
+      "file": "app/abdomen/gi/mesenteriale-ischaemie/page.js",
+      "sha256": "384eeeb9699103b0fa6e6b8e162c452b6fb70e14c758f82825f57b644764e4d2"
+    },
+    {
+      "file": "app/abdomen/gi/pylorusstenose/page.js",
+      "sha256": "cab67e71658cb64f4e1b1a62c5a15eff68f3eefd2c64a24927f88e1df696851c"
+    },
+    {
+      "file": "app/abdomen/gi/untere-gi-blutung/page.js",
+      "sha256": "3e9cd0269784e37a74bb904e980616096240a9c418936213b4bd47d91fb88b24"
+    },
+    {
+      "file": "app/abdomen/leber/hcc/page.js",
+      "sha256": "62644a3262cc597cb0c1e2624fb38358491d888b07c19e21ebc1e4fc409b6c95"
+    },
+    {
+      "file": "app/abdomen/leber/li-rads/page.js",
+      "sha256": "f4c5b7629b82b29365bf56db99724258a34c067cab1e9ec005dcf98cef0e8009"
+    },
+    {
+      "file": "app/abdomen/leber/psc-mrcp/page.js",
+      "sha256": "f8445b3fe5566aaa3e124f5f0cf9407a9769b8bb14670897deff6adea938980e"
+    },
+    {
+      "file": "app/abdomen/pankreas/pankreatitis/page.js",
+      "sha256": "7ce96265eb2f76f4de64ad39a5e7aef002d41da2fd1708f6f6d6e5fb80b679e9"
+    },
+    {
+      "file": "app/abdomen/pankreas/zystische-tumoren/page.js",
+      "sha256": "a1d95db99d58193ed4bcb3612e20b38a5a2f09057ea12a1c3feafc3971c3cf1a"
+    },
+    {
+      "file": "app/mamma/bildgebung/mammographie/grundlagen/content.js",
+      "sha256": "e443d7355c0e5380b72f5fa101e7d397cc59ca9fb393cf37b6725d2edd18a8b6"
+    },
+    {
+      "file": "app/mamma/bildgebung/mammographie/grundlagen/page.js",
+      "sha256": "d9d424708780b13043e065c68d66c1ac90c61643b8eb7a06338d6229d93b55d6"
+    },
+    {
+      "file": "app/mamma/bildgebung/mammographie/verkalkungen/page.js",
+      "sha256": "e448960e8bd184066c26601a5066986693f4b0ae3607c23564fe5ccd28b87ba9"
+    },
+    {
+      "file": "app/mamma/bildgebung/mammographie/verkalkungen/translations.js",
+      "sha256": "8830707f3a8adfe602f3eba2e6a0381346f22e663d5190ff2e456889ea940bfb"
+    },
+    {
+      "file": "app/mamma/bildgebung/mrt/basics/content.js",
+      "sha256": "51481cc51cc8553637db5e02207228909a8d88602eb2639dc18076df29555ec8"
+    },
+    {
+      "file": "app/mamma/bildgebung/mrt/besondere-mammakarzinome/content.js",
+      "sha256": "24e6286f15f21c5451c21da212703f1a54c48470fe8298baa1ec4df49f4fbab4"
+    },
+    {
+      "file": "app/mamma/bildgebung/mrt/kaiser-score/content.js",
+      "sha256": "f14580e62ff8f8ac8b9151817f5b0286b772977af113252d82ffbdf536546575"
+    },
+    {
+      "file": "app/mamma/bildgebung/mrt/kaiser-score/page.js",
+      "sha256": "d95ec0be2f4e64e407bf51fcba91484bce133b1356c8af3c746145382b806c70"
+    },
+    {
+      "file": "app/mamma/bildgebung/mrt/laesionscharakterisierung/page.js",
+      "sha256": "4dda690160d2c8123064eb43c1626302ffa5b5e79270d0dd99e0804a22a8d969"
+    },
+    {
+      "file": "app/msk/schulter/rotatorenmanschette/page.js",
+      "sha256": "1673c20f7affe3c585bff27b41065b6ce3dce59c1eae26ad2b7178706eac3908"
+    },
+    {
+      "file": "app/msk/trauma/frakturbeschreibung/page.js",
+      "sha256": "7bb16441fc8b317ec01a6710d01ff5f4f022fbdfd6aea278360c0785a3ff9fad"
+    },
+    {
+      "file": "app/technik/dosimetrie/page.jsx",
+      "sha256": "59aa47c52532cd22e5aea20b301d316988b730e616e1a5e61ad95b8047aba15c"
+    },
+    {
+      "file": "app/thorax/fremdkoerperaspiration/page.js",
+      "sha256": "2eeed73b4d834f24b9ff6c483e145383b124fda6b446632888ef67c5eab04de2"
+    },
+    {
+      "file": "app/thorax/kardio/arvc/ArvcLesson.jsx",
+      "sha256": "0ca9f195e18b32ae8eab8e45e8679803e2a53ee17061bec5b70de1aa1c52b982"
+    },
+    {
+      "file": "app/thorax/kardio/arvc/CaseAtlas.jsx",
+      "sha256": "ff46ba27708cf0a675b6b86f6182614924993e38b03fc9e691a5afb81e1124b8"
+    },
+    {
+      "file": "app/thorax/kardio/arvc/CriteriaLab.jsx",
+      "sha256": "b5661dc266cd09438ef438feaeb32a773f91ebd2c61d95b1d8497707020ad851"
+    },
+    {
+      "file": "app/thorax/kardio/arvc/LessonVisuals.jsx",
+      "sha256": "4cfd71f52c0a7a318dab6069fe032ffe3f4751a40ef49bb12e2426feb19b2416"
+    },
+    {
+      "file": "app/thorax/kardio/arvc/MriTeaching.jsx",
+      "sha256": "db8720f70c1892c5d41d5dbac136493301c37e041ace70844a26fe511a894e52"
+    },
+    {
+      "file": "app/thorax/kardio/kardio-mrt-basics/page.js",
+      "sha256": "58a55320ce64d3d4eb809bd18bc042771b607b8be01d7694d0a3de4733de285c"
+    },
+    {
+      "file": "app/thorax/kardio/kardio-mrt-indikationen/page.js",
+      "sha256": "eaeb4142449835d9990a8975297465985fd29a62603accca205e1790d0db87db"
+    },
+    {
+      "file": "app/thorax/kardio/kardiomyopathien/page.js",
+      "sha256": "b663a62edc5363ed98e9225f38cdf6e9d6c204a90708206bff5a9c40724e2aac"
+    },
+    {
+      "file": "app/wirbelsaeule/trauma/SpineTraumaLesson.jsx",
+      "sha256": "8f8c8e50d3552340667f990423269bf1d8bb89175f7a682d8691bc2adb191681"
+    },
+    {
+      "file": "components/LessonHero.jsx",
+      "sha256": "23df4cfa8c317e53c150d5d6e1ebc4a7651c9f0a5938349269393e21bfa31eab"
+    },
+    {
+      "file": "data/abdomenThoraxAssessmentDrafts.js",
+      "sha256": "ffac09dfe846f769ad74349a05760696cdbd2142d384559718dbd1ea242cfc4f"
+    },
+    {
+      "file": "data/adpkdImagingLesson.js",
+      "sha256": "4fd78e597edb8cb805243d387895715b893bf9b356f1de9eb7097ee36bd687b7"
+    },
+    {
+      "file": "data/arterialAnatomyLowerLimb.js",
+      "sha256": "3431f7c115f9d6e08ef59175c61c9fa5f976b3d3420d5b681dff229ee57e830b"
+    },
+    {
+      "file": "data/arvcTraining.js",
+      "sha256": "793c9aacb02ad6b782a84c834eab496c19ba26cedf2f3f7e53ce78e5b745027a"
+    },
+    {
+      "file": "data/atrtLesson.js",
+      "sha256": "ed8019cd426f3fd2521829add136905a62c34db42b1925721fc36b4aaac65270"
+    },
+    {
+      "file": "data/avm.js",
+      "sha256": "87ae7142c201a1a3b36424acc20cbc91278b93b4436a639ba22c79c047a4e823"
+    },
+    {
+      "file": "data/cardiomyopathy.js",
+      "sha256": "a55e250d5ec42615d788b3a1ffdc00c62168a61de25035ccb80380bf91009007"
+    },
+    {
+      "file": "data/contrastLessons.js",
+      "sha256": "5cf0d039a28b944528e86a94c30a7c818a39adfbfc665d86be9b656026abf5f0"
+    },
+    {
+      "file": "data/davf.js",
+      "sha256": "6ab0f559e87dd19f327eb3b835d56da6b5e35e9d885ba0d49256a3c7d68059ed"
+    },
+    {
+      "file": "data/deQuervainLesson.js",
+      "sha256": "0162f551dc0b373c79c92b54eedc8f3223d2b576a45df3ec305aa7cdb45a350d"
+    },
+    {
+      "file": "data/distale-radiusfraktur.js",
+      "sha256": "8d6772137562fd2ac3e4305df10c483ddeaf7e277451f6c6f94fa92f0f12bc62"
+    },
+    {
+      "file": "data/dva.js",
+      "sha256": "49427080fc57d28d9a8d9c6df427dbfbd71d052c6bd1be76295c7c9552c4b583"
+    },
+    {
+      "file": "data/edh.js",
+      "sha256": "8da118a493edc0fabab352afe297b5ef150eeae902c09fd9be8352ce4eed5e1e"
+    },
+    {
+      "file": "data/flashcards.js",
+      "sha256": "0c6f85f19516aaa101263ec100a036ae2bf9145114773d10e49c827d989c6eb2"
+    },
+    {
+      "file": "data/foreignBodyAspirationLearning.js",
+      "sha256": "c261b3c7894ea3caf7270c7d8c36b944573d40e5c869bcc71c5feef4c39759ee"
+    },
+    {
+      "file": "data/frakturbeschreibung.js",
+      "sha256": "e2f498b9283597c3dcf69ba8a5aaa7f3dc76214d8ec04a995bac4366cb857ed9"
+    },
+    {
+      "file": "data/frakturen-kindesalter.js",
+      "sha256": "ec326d2ee6b0fcf7d4a1820cffdf8b2fb4ec4648051b3ac0aaba0e439fc77554"
+    },
+    {
+      "file": "data/gehirnDemenzMusterLesson.js",
+      "sha256": "6073c4ef8ea92f58f0191ffde4d2196a2f2566a51d7ac819ab854e62bd212c75"
+    },
+    {
+      "file": "data/gehirnHsvEnzephalitisLesson.js",
+      "sha256": "b0e2db20420f91e1cbc0343e5ec4b5f62da33e497fec4c482678baa4b99d4fe3"
+    },
+    {
+      "file": "data/gehirnInfektionsmusterLesson.js",
+      "sha256": "95f100827abf49fed6358be5d5c02a8a76af1cd0aa9d8dee4b614a08d351ec84"
+    },
+    {
+      "file": "data/gehirnNf1CnsLesson.js",
+      "sha256": "f382680a693d648311ade859919c8639f09cc70b58202e1c793bf284988cd68c"
+    },
+    {
+      "file": "data/hie.js",
+      "sha256": "83032563e346cec28c4c0023ad02698a7d636bb5d41dba103aee24e91ee428a4"
+    },
+    {
+      "file": "data/hrct-muster.js",
+      "sha256": "84fc272f66aa8d62777e0a1d6f646918dcd65a8f8d209791288a176350167e04"
+    },
+    {
+      "file": "data/hypertensive-mikroangiopathie.js",
+      "sha256": "d44b6fcfa3f69dbc79776700b19a7b7df8d6698eb2cd52bb7422c8d1d09b53ba"
+    },
+    {
+      "file": "data/icb.js",
+      "sha256": "a29327e8eb6455835743c1f6455f113ae333745124669d5e2ea864f621f613fe"
+    },
+    {
+      "file": "data/mammaKaiserScore.js",
+      "sha256": "3e30a48dc14feb1414d2ad5650031830130fd461cb6d0e1c8bbc21b151ba6b65"
+    },
+    {
+      "file": "data/mammaMrtBasics.js",
+      "sha256": "4b2ee70f591f162fc0f44d7d9fa11f26bc965b90d084a6a0a3803a54b2df9318"
+    },
+    {
+      "file": "data/mammaMrtLesions.js",
+      "sha256": "1b2b1fd4ad8776d6c9d6a4df759ff4397a37d353241ee896f60e85d1fb464cb9"
+    },
+    {
+      "file": "data/medulloblastomLesson.js",
+      "sha256": "3fa14d1fd29040db216f763d89dbc477eb535f719e79bef9de77c669c7a12c8f"
+    },
+    {
+      "file": "data/mskEnchondromLesson.js",
+      "sha256": "c8220ac5ed5e8cc1c64710ec99676924200285e42ded8e33da9b230b70439c58"
+    },
+    {
+      "file": "data/mskFibroeseDysplasieLesson.js",
+      "sha256": "1f5cbe1600fe3c83cde3b2dfaebf9f8f27d56d30c67427ac5581041793a46555"
+    },
+    {
+      "file": "data/mskNofLesson.js",
+      "sha256": "060cfb4bee98f9d78b63dda9d5965e02ef5a17cbe78361a8ced1c56efa3e2dba"
+    },
+    {
+      "file": "data/mskOsteochondromLesson.js",
+      "sha256": "02f90e95bb1b8e96f3d7896a52c53d03eb0bcfa83ff3a4d7061eef7912f3c8ec"
+    },
+    {
+      "file": "data/mskOsteoidOsteomLesson.js",
+      "sha256": "490e5c9982ee76639cda550b08001c2cc90e24468d79b7c54b04938c9ff7e77f"
+    },
+    {
+      "file": "data/mskSimpleBoneCystLesson.js",
+      "sha256": "e9e6f1d00d40c86b5da59615581b39677c7b03d5a1816e914e4e4ed4dd5e306f"
+    },
+    {
+      "file": "data/myocardialInjury.js",
+      "sha256": "aca1e99f706ab345e29eed7b268341d8beb669c868b0ad32aa8232284a7e1191"
+    },
+    {
+      "file": "data/neuroforamenstenoseLesson.js",
+      "sha256": "f95da010dfb000fc6009d7f1bf6c6419fe2482ef25666c6d9b58fcadf4f57f75"
+    },
+    {
+      "file": "data/osteoblastomLesson.js",
+      "sha256": "c9fa9f43a457efddb9449601fd7d5ad7d4eb2f862a7a118104af84585f5270ab"
+    },
+    {
+      "file": "data/osteosynthesePostop.js",
+      "sha256": "9f5a5eed914fd7857e29c1b540df83aabd4568820873546ed4811ae145b440e0"
+    },
+    {
+      "file": "data/patellaStreckapparatLesson.js",
+      "sha256": "3229e3dd036179ed3b8d723e199486239e5b6df083582d1a5c6f92300a333e98"
+    },
+    {
+      "file": "data/pcnslLesson.js",
+      "sha256": "4a97d20652906fd3860d40008fb6dd15172dab5606678db83ccb903c5282df1a"
+    },
+    {
+      "file": "data/questions.js",
+      "sha256": "48a34067fffd02727be4fdbccc33a313d2c3ffa90caf423a015723ad33ca3e11"
+    },
+    {
+      "file": "data/radiuskopf.js",
+      "sha256": "22deeedeb7013882330c3b57b6e6f3de1600a1a59fc86219e5ec76708a359451"
+    },
+    {
+      "file": "data/sab.js",
+      "sha256": "9e3f69d26f5c1cf4f24f7d0520f82cf0a81ad3e51e69098710cb6e8a912ad54b"
+    },
+    {
+      "file": "data/sinusvenenthrombose.js",
+      "sha256": "5d527c5977a309c76486ab578d6e0da13318af9ce6a6f3ecfd5414fc97295cd7"
+    },
+    {
+      "file": "data/solidRenalMassesFlashcards.js",
+      "sha256": "5a45b178c28f4b4a5767322b2ac0720d204e2ac308e72ce48859543cd9fd2898"
+    },
+    {
+      "file": "data/spinaleArachnoiditisLesson.js",
+      "sha256": "f806ebc8789e0d82769fca67569ab342becfb05f2b944f69586580066e48aa39"
+    },
+    {
+      "file": "data/spineDegenerativeCompletion.js",
+      "sha256": "376de734c51061aa2188b1d80d192eaf1bac50b2e24a6a902cb059ec239acec8"
+    },
+    {
+      "file": "data/spineInfectiousCompletion.js",
+      "sha256": "9785c871037274c2654b3b5b6697be61d5a4ebfc38ecf6dc2a2b70eae631ae71"
+    },
+    {
+      "file": "data/spineTrauma.js",
+      "sha256": "8f4487bfb4e0db0ed158f37a938349235bf67dbf478d9e06a2fd737a50a6a986"
+    },
+    {
+      "file": "data/stroke.js",
+      "sha256": "fa4e3ccf80916aee978d70d6cd2b5354ce0b3469571a43e956aca21a0aeb6f2e"
+    },
+    {
+      "file": "data/technikCTBasicsLesson.js",
+      "sha256": "2f2ba12a2896299f8d112cee90617d8af48bc731f385e4e821fff0999bcd23d1"
+    },
+    {
+      "file": "data/technikCTPerfusionLesson.js",
+      "sha256": "c03c939b04632c0c2ecec92bde2cd66e7e75d5f69cc059d699cc51a8147dd428"
+    },
+    {
+      "file": "data/technikEntranceKermaAssessment.js",
+      "sha256": "dcf86465e7176dfc0c056a696f7952376dff44a110b286b846323a04cfa7fe58"
+    },
+    {
+      "file": "data/unterarmschaftfrakturen.js",
+      "sha256": "4ba97414fa0799bb77345817063399bec658ef1be7a16ef5a5552f89ffa658a5"
+    },
+    {
+      "file": "data/wristExtensorCompartments.js",
+      "sha256": "604d6e2f3b21e6e24723921d8d532eb1e9d1c3e9d338474b3d069ab0324618ae"
+    },
+    {
+      "file": "app/thorax/kardio/arvc/lessonTranslations.js",
+      "sha256": "0ce76b1139e08f7f59a96c76b9520d3ba733dc3dd06118f3d2b6edb7c998a3ef"
+    },
+    {
+      "file": "data/cardiacMriBasicsTranslations.js",
+      "sha256": "b4ad4eb99827a288cf503f14c4fcef93aecf8f0a08c60638e3fd947300ed2857"
+    }
+  ]
+}

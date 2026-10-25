@@ -38,9 +38,9 @@ function DoseMap({ lang }) {
 function DoseCheck({ lang }) {
   const [answer, setAnswer] = useState(null)
   const copy = {
-    de: { title: 'Selbstcheck: Scanlänge und DLP', prompt: pick(lesson.chapters[3].task, lang), choose: 'Eine Antwort auswählen' },
-    en: { title: 'Self-check: scan length and DLP', prompt: pick(lesson.chapters[3].task, lang), choose: 'Choose one answer' },
-    fa: { title: 'خودآزمایی: طول اسکن و DLP', prompt: pick(lesson.chapters[3].task, lang), choose: 'یک پاسخ انتخاب کنید' },
+    de: { title: 'Selbstcheck: Scanlänge und DLP', prompt: pick(lesson.chapters.find(chapter => chapter.id === 'decision')?.task, lang), choose: 'Eine Antwort auswählen' },
+    en: { title: 'Self-check: scan length and DLP', prompt: pick(lesson.chapters.find(chapter => chapter.id === 'decision')?.task, lang), choose: 'Choose one answer' },
+    fa: { title: 'خودآزمایی: طول اسکن و DLP', prompt: pick(lesson.chapters.find(chapter => chapter.id === 'decision')?.task, lang), choose: 'یک پاسخ انتخاب کنید' },
   }[lang] || {}
   const sections = [
     { title: L('CTDIvol verdoppelt sich; das DLP bleibt gleich.', 'CTDIvol doubles; DLP stays the same.', 'CTDIvol دو برابر می‌شود؛ DLP ثابت می‌ماند.') },

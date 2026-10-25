@@ -52,8 +52,8 @@ export const DAVF_LESSON = {
         title: L('Epidemiologie', 'Epidemiology', 'اپیدمیولوژی'),
         text: L(
           'Auftreten meist im Erwachsenenalter (40.–60. Lebensjahr). Häufigste Lokalisation: Sinus transversus / sigmoideus. Eine kavernöse Sinus-dAVF ist meist eine indirekte durale Karotis-Kavernosus-Fistel (Barrow B–D); sie ist von der direkten ICA-Fistel (Barrow A) zu unterscheiden.',
-          'Typically presents in adulthood (4th–6th decade). Most common location: transverse/sigmoid sinus. A cavernous sinus dAVF is usually an indirect dural carotid-cavernous fistula (Barrow B–D), distinct from a direct ICA fistula (Barrow A).',
-          'معمولاً در بزرگسالی (دهه ۴–۶ زندگی) رخ می‌دهد. شایع‌ترین محل: سینوس ترانسورسوس/سیگموئیدوس. dAVF سینوس کاورنوسوس معمولاً فیستول غیرمستقیم دورال کاروتید–کاورنوسوس (Barrow B–D) است و با فیستول مستقیم ICA (Barrow A) تفاوت دارد.'
+          'Typically presents in adulthood (40–60 years). Most common location: transverse/sigmoid sinus. A cavernous sinus dAVF is usually an indirect dural carotid-cavernous fistula (Barrow B–D), distinct from a direct ICA fistula (Barrow A).',
+          'معمولاً در بزرگسالی (۴۰ تا ۶۰ سالگی) رخ می‌دهد. شایع‌ترین محل: سینوس ترانسورسوس/سیگموئیدوس. dAVF سینوس کاورنوسوس معمولاً فیستول غیرمستقیم دورال کاروتید–کاورنوسوس (Barrow B–D) است و با فیستول مستقیم ICA (Barrow A) تفاوت دارد.'
         ),
       },
       {
@@ -272,9 +272,9 @@ export const DAVF_LESSON = {
         icon: '🛡️',
         title: L('Konservatives Management', 'Conservative management', 'مدیریت محافظه‌کارانه'),
         text: L(
-          'Nur bei Cognard I (benigne, kein CVD, asymptomatisch oder nur Tinnitus). Regelmäßige Bildgebungskontrollen. Kompression der Jugularvene kann helfen (Vorsicht: keine starke Evidenz).',
-          'Only for Cognard I (benign, no CVD, asymptomatic or pulsatile tinnitus only). Regular imaging follow-up. Compression of the jugular vein may help (caution: limited evidence).',
-          'فقط برای Cognard I (خوش‌خیم، بدون CVD، بدون علامت یا فقط تینیتوس). پیگیری تصویربرداری منظم. فشردن ورید ژوگولار می‌تواند کمک کند (احتیاط: شواهد محدود).'
+          'Bei ausgewählten Cognard-I- oder IIa-Fisteln ohne kortikalen Reflux nach individueller Beurteilung von Symptomen und venösem Abfluss; Zeichen intrakranieller Hypertension beachten. Regelmäßige Bildgebungskontrollen. Kompression der Jugularvene kann helfen (Vorsicht: keine starke Evidenz).',
+          'For selected Cognard I or IIa fistulas without cortical reflux, after individual assessment of symptoms and venous outflow; assess signs of intracranial hypertension. Regular imaging follow-up. Compression of the jugular vein may help (caution: limited evidence).',
+          'در فیستول‌های منتخب Cognard I یا IIa بدون رفلاکس کورتیکال، پس از ارزیابی فردی علائم و خروج وریدی؛ به نشانه‌های پرفشاری داخل جمجمه توجه شود. پیگیری تصویربرداری منظم. فشردن ورید ژوگولار می‌تواند کمک کند (احتیاط: شواهد محدود).'
         ),
       },
     ],
@@ -390,9 +390,9 @@ const TQ = [
       L('Zerebelläre Ataxie', 'Cerebellar ataxia', 'آتاکسی مخچه‌ای'),
       L('Bitemporal Hemianopsie', 'Bitemporal hemianopia', 'همیانوپسی بیتمپورال'),
     ], 0,
-    L('Die Sinus-transversus-dAVF drainiert retrograd in die Jugularvene → Turbulenzgeräusch = pulssynchroner Tinnitus.',
-      'Transverse sinus dAVF drains retrogradely into the jugular vein → turbulent flow = pulsatile tinnitus.',
-      'dAVF سینوس ترانسورسوس به‌صورت رتروگراد به ورید ژوگولار تخلیه می‌کند → صدای توربولانس = تینیتوس سنکرون با نبض.')),
+    L('Pulssynchroner Tinnitus kann auf eine sinusnahe dAVF hinweisen. Die Flussrichtung ist nicht obligat retrograd; antegrade oder retrograde Sinusdrainage werden angiographisch unterschieden.',
+      'Pulsatile tinnitus can point to a sinus-adjacent dAVF. Flow is not obligatorily retrograde; antegrade and retrograde sinus drainage are distinguished angiographically.',
+      'تینیتوس هم‌زمان با نبض می‌تواند به نفع dAVF نزدیک سینوس باشد. جهت جریان الزاماً رتروگراد نیست؛ درناژ آنتروگراد و رتروگراد سینوس با آنژیوگرافی تفکیک می‌شوند.')),
 
   Q('06',
     L('Eine Patientin klagt über Exophthalmus, Chemose, Rötung des Auges und Visusstörung. Welche dAVF-Lokalisation ist am wahrscheinlichsten?',
@@ -573,8 +573,8 @@ const TF = [
 
   F('konservativ', L('Management', 'Management', 'مدیریت'),
     L('Wann ist konservatives Management bei dAVF akzeptabel?', 'When is conservative management acceptable in dAVF?', 'چه زمانی مدیریت محافظه‌کارانه در dAVF قابل قبول است؟'),
-    L('Nur bei Cognard I (kein CVD, asymptomatisch oder Tinnitus).', 'Only for Cognard I (no CVD, asymptomatic or tinnitus only).', 'فقط برای Cognard I (بدون CVD، بدون علامت یا فقط تینیتوس).'),
-    L('Cognard I hat antegrade Sinusdrainage ohne CVD. Management und Verlaufskontrolle richten sich nach Symptomen und individueller Beurteilung.', 'Cognard I has antegrade sinus drainage without CVD. Management and follow-up depend on symptoms and individualized assessment.', 'Cognard I درناژ آنتروگراد سینوس بدون CVD دارد. مدیریت و پیگیری بر اساس علائم و ارزیابی فردی است.')),
+    L('Bei ausgewählten Cognard-I- oder IIa-Fisteln ohne kortikalen venösen Reflux nach individueller Beurteilung.', 'For selected Cognard I or IIa fistulas without cortical venous reflux, following individual assessment.', 'در فیستول‌های منتخب Cognard I یا IIa بدون رفلاکس وریدی کورتیکال، پس از ارزیابی فردی.'),
+    L('Cognard I hat antegrade, IIa retrograde Sinusdrainage ohne kortikalen Reflux. Beschwerden, venöse Abflussbehinderung und Zeichen intrakranieller Hypertension sind mitzubeurteilen; Beobachtung erfordert geplante Verlaufskontrollen und erneute Abklärung bei veränderten Symptomen.', 'Cognard I has antegrade and IIa retrograde sinus drainage without cortical reflux. Assess symptoms, venous outflow obstruction and signs of intracranial hypertension; observation requires planned follow-up and reassessment if symptoms change.', 'Cognard I درناژ آنتروگراد و IIa درناژ رتروگراد سینوس را بدون رفلاکس کورتیکال دارند. علائم، اختلال خروج وریدی و نشانه‌های پرفشاری داخل جمجمه نیز باید ارزیابی شوند؛ مشاهده به پیگیری برنامه‌ریزی‌شده و بررسی مجدد در صورت تغییر علائم نیاز دارد.')),
 ]
 
 export const DAVF_FLASHCARDS = TF.map((item, index) => ({

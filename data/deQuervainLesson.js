@@ -29,7 +29,7 @@ export const DE_QUERVAIN_LESSON = {
       note: t(
         'Terminologie beachten: Die im PDF als Finkelstein-Test bezeichnete Variante mit eingeschlagenem Daumen wird in der Literatur häufig als Eichhoff-Manöver abgegrenzt. Schmerzprovokation allein ist kein beweisender Befund; Testnamen und Ausführung sind nicht einheitlich verwendet.',
         'Terminology matters: the thumb-in-fist variant labelled the Finkelstein test in the PDF is often distinguished in the literature as the Eichhoff manoeuvre. Pain provocation alone is not diagnostic; test names and descriptions are used inconsistently.',
-        'به نام‌گذاری توجه کنید: مانورِ قرار دادن شست داخل مشت که در PDF «تست فینکلشتاین» نامیده شده، در بسیاری از منابع از مانور آیکهوف تفکیک می‌شود. بازتولید درد به‌تنهایی تشخیصی نیست و نام و اجرای این آزمون‌ها در منابع یکسان نیست.'
+        'به نام‌گذاری توجه کنید: مانورِ قرار دادن شست داخل مشت که در PDF «تست فینکلشتاین» نامیده شده، در بسیاری از منابع به‌عنوان مانور آیکهوف از تست فینکلشتاین تفکیک می‌شود. بازتولید درد به‌تنهایی تشخیصی نیست و نام و اجرای این آزمون‌ها در منابع یکسان نیست.'
       ),
       source: t('MSK.pdf, PDF-S. 42 / Druck-S. 41; Wu et al. 2018.', 'MSK.pdf, PDF p. 42 / printed p. 41; Wu et al. 2018.', 'MSK.pdf، صفحهٔ PDF ۴۲ / صفحهٔ چاپی ۴۱؛ Wu و همکاران، ۲۰۱۸.'),
     },

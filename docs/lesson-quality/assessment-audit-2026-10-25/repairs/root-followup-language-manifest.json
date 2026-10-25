@@ -1,0 +1,29 @@
+{
+  "changes": [
+    {
+      "file": "data/mskOsteoidOsteomLesson.js",
+      "before": "با تمایل به محل نخاعی است",
+      "after": "با تمایل به محل ستون فقرات است"
+    },
+    {
+      "file": "data/mskOsteochondromLesson.js",
+      "before": "تکثیر واکنشی پررنگ پریوست",
+      "after": "تکثیر واکنشی برجستهٔ پریوست"
+    },
+    {
+      "file": "data/osteoblastomLesson.js",
+      "before": "و بقیه نیز در استخوان‌های بلند دیده می‌شود",
+      "after": "و همچنین در استخوان‌های بلند دیده می‌شود"
+    },
+    {
+      "file": "data/sab.js",
+      "field": "FA Fisher THM",
+      "change": "Align highestcategory/no clinicalmonitoringsubstitute to DEEN; remove stale40%individualriskcopy."
+    },
+    {
+      "file": "data/hypertensive-mikroangiopathie.js",
+      "field": "puremotorcapsule",
+      "change": "FAposteriorlimb=بازوی خلفی; DEhintererSchenkel grammar."
+    }
+  ]
+}

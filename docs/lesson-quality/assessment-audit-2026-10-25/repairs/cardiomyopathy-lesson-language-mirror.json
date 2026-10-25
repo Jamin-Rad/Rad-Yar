@@ -1,0 +1,20 @@
+{
+  "changes": [
+    {
+      "file": "app/thorax/kardio/kardiomyopathien/page.js",
+      "before": "T1 طبیعی و ECV برای نفوذ یا فیبروز منتشر؛ T1 طبیعیِ پایین می‌تواند به نفع فابری باشد.",
+      "after": "T1 پیش از تزریق و ECV برای نفوذ یا فیبروز منتشر؛ T1 پایینِ پیش از تزریق می‌تواند به نفع فابری باشد."
+    },
+    {
+      "file": "app/thorax/kardio/kardiomyopathien/page.js",
+      "before": "ادم، T1/T2 طبیعی، ECV و الگوی LGE همراه قطعات و وسعت.",
+      "after": "ادم، T1/T2 پیش از تزریق، ECV و الگوی LGE همراه قطعات و وسعت."
+    },
+    {
+      "file": "app/thorax/kardio/kardiomyopathien/page.js",
+      "before": "ترومبوز اپیکال",
+      "after": "ترومبوس اپیکال"
+    }
+  ],
+  "scope": "Mirror native/precontrast terminology from independently retested bank into lesson; apicalthrombus nounpolish. ENDEscientificclaims unchanged, ECV not called precontrast."
+}

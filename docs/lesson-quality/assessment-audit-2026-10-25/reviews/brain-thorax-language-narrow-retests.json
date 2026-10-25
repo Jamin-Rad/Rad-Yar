@@ -1,0 +1,85 @@
+{
+  "scope": "Independent source-only narrow retest, actual strings read against original triad evidence/manifest. Not author PASS, not runtime/media/live/scientificglobalapproval.",
+  "sourceHashes": {
+    "data/pcnslLesson.js": "4a97d20652906fd3860d40008fb6dd15172dab5606678db83ccb903c5282df1a",
+    "data/gehirnHsvEnzephalitisLesson.js": "b0e2db20420f91e1cbc0343e5ec4b5f62da33e497fec4c482678baa4b99d4fe3",
+    "data/gehirnInfektionsmusterLesson.js": "95f100827abf49fed6358be5d5c02a8a76af1cd0aa9d8dee4b614a08d351ec84",
+    "data/gehirnDemenzMusterLesson.js": "6073c4ef8ea92f58f0191ffde4d2196a2f2566a51d7ac819ab854e62bd212c75",
+    "data/avm.js": "87ae7142c201a1a3b36424acc20cbc91278b93b4436a639ba22c79c047a4e823",
+    "data/dva.js": "49427080fc57d28d9a8d9c6df427dbfbd71d052c6bd1be76295c7c9552c4b583",
+    "data/edh.js": "8da118a493edc0fabab352afe297b5ef150eeae902c09fd9be8352ce4eed5e1e",
+    "data/sab.js": "9e3f69d26f5c1cf4f24f7d0520f82cf0a81ad3e51e69098710cb6e8a912ad54b",
+    "data/hypertensive-mikroangiopathie.js": "43a1298a8ffe95f984d23543071f96ee4b8c0b23db941238809b043bed04d0d2",
+    "app/thorax/fremdkoerperaspiration/page.js": "2eeed73b4d834f24b9ff6c483e145383b124fda6b446632888ef67c5eab04de2",
+    "data/icb.js": "019dee87ff3485b94e4eeba314ad1a7484d4c53f4bcc724998e2cd5943636ad1",
+    "data/cardiomyopathy.js": "a55e250d5ec42615d788b3a1ffdc00c62168a61de25035ccb80380bf91009007",
+    "app/thorax/kardio/kardiomyopathien/page.js": "b663a62edc5363ed98e9225f38cdf6e9d6c204a90708206bff5a9c40724e2aac",
+    "data/mskOsteoidOsteomLesson.js": "490e5c9982ee76639cda550b08001c2cc90e24468d79b7c54b04938c9ff7e77f",
+    "data/mskOsteochondromLesson.js": "02f90e95bb1b8e96f3d7896a52c53d03eb0bcfa83ff3a4d7061eef7912f3c8ec",
+    "data/osteoblastomLesson.js": "c9fa9f43a457efddb9449601fd7d5ad7d4eb2f862a7a118104af84585f5270ab"
+  },
+  "findings": [
+    {
+      "id": "LNG-FULL-BT-003",
+      "resolution": "CLOSED",
+      "retest": "PASS current exactFAstrings in HSV, infectionoverview and dementia read. Mesial=داخلی (مزیال), original middle term absent; anatomy qualifiers retained. Source-only retest, no fresh browser."
+    },
+    {
+      "id": "LNG-FULL-BT-005",
+      "resolution": "PARTIALLY_CLOSED",
+      "retest": "PASS actual malformedFA دوراl/abscess and temporoپاریتال replaced by دورال/آبسه/تمپوروپاریتال. Sharedhero bikonvex and other English FA prose remain OPEN."
+    },
+    {
+      "id": "LNG-FULL-BT-009",
+      "resolution": "CLOSED",
+      "retest": "PASS actual gitdiff shows all3DEalts replaced from Persian to German. Read fullDEENFA triples: axialpostcontrast/rightbasalganglia/ringnonenhancingcentre, DWIADCpair/lowADC inDWIbrightportions preserved. Manifest before==after was an author rerun artifact; gitbaseline independently confirms true before."
+    },
+    {
+      "id": "LNG-FULL-BT-010",
+      "resolution": "PARTIALLY_CLOSED",
+      "retest": "PASS actual Konvolut→شبکهٔ درهم‌پیچیدهٔ عروق and peduncles→پایه‌های مخچه read insource; T1nativ localization remains OPEN."
+    },
+    {
+      "id": "LNG-FULL-BT-011",
+      "resolution": "PARTIALLY_CLOSED",
+      "retest": "PASS DVA FA table T1 effect now اثر حساسیت مغناطیسی and linkedSWIMCQ explanation same qualifier. Additional capillary-telangiectasia terminology remains OPEN."
+    },
+    {
+      "id": "LNG-FULL-BT-013",
+      "resolution": "CLOSED",
+      "retest": "PASS current puremotor DEENFA triple: Capsulainterna(hintererSchenkel)/posteriorlimb/بازوی خلفی, Pons and no sensoryloss preserved."
+    },
+    {
+      "id": "LNG-FULL-BT-019",
+      "resolution": "PARTIALLY_CLOSED",
+      "retest": "PASS currentSABFA FisherTHM now highestcategory and scale not substitute clinicalmonitoring; stale40%removed; <1/≥1/IVH0–4 retained. Remaining minor omissions SIADH/CSW and HuntHess/admissioncontext OPEN. Major riskclaim discrepancy CLOSED."
+    },
+    {
+      "id": "LNG-FULL-BT-025",
+      "resolution": "CLOSED",
+      "retest": "PASS actual currentinlinepage3FAstrings and all3actualrouteSSRrenders independently retested (test-brain-thorax-native-ssr.mjs; brain-thorax-native-ssr.json; tmp/brain-thorax-native-ssr/0-{de,en,fa}.html). Read rendered Mapping,Fabrylow-nativeT1,reportT1/T2 and apicalthrombus in DEENFA. FA پیش از تزریق and ترومبوس preserve meaning; ECV is not labelled precontrast. Source-only/context-fixture SSR, no new browser or live approval."
+    }
+  ],
+  "extraChecks": [
+    {
+      "item": "ICB display9strings",
+      "status": "PASS",
+      "evidence": "All9new actualdisplaystrings present and9old forms absent. Read natural ENICH/Persian خونریزی داخل مغزی and ring phrase. ResidualICB in oldback/explanations outside9scope not claimedgloballylocalized."
+    },
+    {
+      "item": "Foreignbody lesson technique3langs",
+      "status": "PASS",
+      "evidence": "Read actual current3C.techstrings; affecteddependentlung+retainedinflation+failurevolumeattenuationchangecoherent. Matches previouslyverifiedbank."
+    },
+    {
+      "item": "MSK3minorFAfollowups",
+      "status": "PASS",
+      "evidence": "Current strings distinguish spinalcolumn notcord, floridreaction→prominentnotcolour, also longbones notallremainingdistribution. No newclinicalrule."
+    },
+    {
+      "item": "Cardiomyopathy lesson nativeT1",
+      "status": "PASS",
+      "evidence": "PASS actual currentinlinepage3FAstrings and all3actualrouteSSRrenders independently retested (test-brain-thorax-native-ssr.mjs; brain-thorax-native-ssr.json; tmp/brain-thorax-native-ssr/0-{de,en,fa}.html). Read rendered Mapping,Fabrylow-nativeT1,reportT1/T2 and apicalthrombus in DEENFA. FA پیش از تزریق and ترومبوس preserve meaning; ECV is not labelled precontrast. Source-only/context-fixture SSR, no new browser or live approval."
+    }
+  ]
+}

@@ -564,7 +564,7 @@ const PANCREATITIS_QUESTION_CONTENT = [
       fa: 'کدام یافته بیشتر به نفع کارسینوم پانکراس نسبت به پانکراتیت مزمن است؟',
     },
     options: [
-      { id: 'A', text: { de: 'Abrupter Gangabbruch mit konsekutiver Schwanzatrophie', en: 'Abrupt duct cut-off with downstream tail atrophy', fa: 'قطع ناگهانی مجرا همراه آتروفی دم پانکراس' } },
+      { id: 'A', text: { de: 'Abrupter Gangabbruch mit konsekutiver Schwanzatrophie', en: 'Abrupt duct cut-off with upstream tail atrophy', fa: 'قطع ناگهانی مجرا همراه آتروفی دم پانکراس' } },
       { id: 'B', text: { de: 'Duct-penetrating-sign', en: 'Duct-penetrating sign', fa: 'علامت duct-penetrating' } },
       { id: 'C', text: { de: 'Intraduktale und parenchymale Verkalkungen', en: 'Intraductal and parenchymal calcifications', fa: 'کلسیفیکاسیون داخل مجرا و پارانشیم' } },
       { id: 'D', text: { de: 'Perlschnurartig wechselnde Gangweiten', en: 'Chain-of-lakes ductal irregularity', fa: 'نامنظمی زنجیره‌ای مجرا' } },
@@ -1738,12 +1738,12 @@ const LEGACY_QUESTION_BANK = {
       "question": "Wie zeigt sich eine bursaseitige Partialruptur der Supraspinatussehne typischerweise in der MRT?",
       "options": [
         { "id": "A", "text": "Vollständige Diskontinuität der Sehne mit Retraktion des Stumpfes" },
-        { "id": "B", "text": "Fokaler Flüssigkeitssaum zwischen Sehne und Bursa subacromialis in T2 fs" },
+        { "id": "B", "text": "Flüssigkeitsäquivalenter Defekt der oberflächlichen Sehnenfasern mit Kontakt zur Bursaseite; artikuläre Fasern bleiben erhalten" },
         { "id": "C", "text": "Diffuse Signalminderung der gesamten Sehne in T1 ohne weitere Auffälligkeiten" },
         { "id": "D", "text": "Isoliertes Knochenmarködem im Humeruskopf ohne Sehnenveränderung" }
       ],
       "correct": "B",
-      "explanation": "Eine bursaseitige Partialruptur betrifft die oberflächlichen (bursalen) Faseranteile und zeigt einen fokalen Flüssigkeitssaum zwischen Sehne und Bursa subacromialis in T2 fs."
+      "explanation": "Eine bursaseitige Partialruptur zeigt einen Defekt der oberflächlichen Sehnenfasern oder intratendinöses Flüssigkeitssignal mit Kontakt zur Bursaseite. Die Sehne ist nicht auf voller Dicke unterbrochen. Flüssigkeit in der Bursa bei intakter Sehnenoberfläche allein beweist keine Ruptur."
     },
     {
       "id": "rotatorenmanschette-de-07",
@@ -1841,7 +1841,7 @@ const LEGACY_QUESTION_BANK = {
         { "id": "D", "text": "Sie basiert ausschließlich auf konventionellen Röntgenbefunden" }
       ],
       "correct": "B",
-      "explanation": "Die Goutallier-Klassifikation graduiert die fettige Muskelatrophie von Grad 0 (keine Fettinfiltration) bis Grad 4 (Fett > Muskel). Ab Grad 3-4 gilt eine Rekonstruktion meist als nicht mehr erfolgsversprechend."
+      "explanation": "Goutallier beschreibt die Fettinfiltration von Grad 0 (kein Fett) bis Grad 4 (mehr Fett als Muskel). Hohe Grade sind ein ungünstiger Prognosefaktor für die Heilung, bestimmen aber allein weder Reparabilität noch individuellen funktionellen Nutzen; weitere Sehnen-, Muskel- und klinische Befunde sind einzubeziehen."
     },
     {
       "id": "rotatorenmanschette-de-14",
@@ -2938,12 +2938,12 @@ const LEGACY_QUESTION_BANK = {
       "question": "How does a bursal-sided partial tear of the supraspinatus tendon typically appear on MRI?",
       "options": [
         { "id": "A", "text": "Complete discontinuity of the tendon with retraction of the stump" },
-        { "id": "B", "text": "Focal fluid rim between the tendon and subacromial bursa on T2 fs" },
+        { "id": "B", "text": "Fluid-equivalent defect in the superficial tendon fibres reaching the bursal surface, with preserved articular fibres" },
         { "id": "C", "text": "Diffuse low signal of the entire tendon on T1 without further findings" },
         { "id": "D", "text": "Isolated bone marrow oedema in the humeral head without tendon change" }
       ],
       "correct": "B",
-      "explanation": "A bursal-sided partial tear affects the superficial (bursal) fibres and shows a focal fluid rim between the tendon and subacromial bursa on T2 fs."
+      "explanation": "A bursal-sided partial tear shows a superficial tendon-fibre defect or intratendinous fluid signal reaching the bursal surface. The tendon is not disrupted through its full thickness. Bursal fluid with an intact tendon surface alone does not establish a tear."
     },
     {
       "id": "rotatorenmanschette-en-07",
@@ -3041,7 +3041,7 @@ const LEGACY_QUESTION_BANK = {
         { "id": "D", "text": "It is based exclusively on conventional radiographs" }
       ],
       "correct": "B",
-      "explanation": "The Goutallier classification grades fatty muscle atrophy from grade 0 (no fatty infiltration) to grade 4 (fat > muscle). From grade 3-4 onwards, repair is generally considered unlikely to succeed."
+      "explanation": "Goutallier describes fatty infiltration from grade 0 (no fat) to grade 4 (more fat than muscle). High grades are an adverse prognostic factor for healing but do not alone determine repairability or individual functional benefit; integrate the other tendon, muscle and clinical findings."
     },
     {
       "id": "rotatorenmanschette-en-14",
@@ -4138,12 +4138,12 @@ const LEGACY_QUESTION_BANK = {
       "question": "پارگی جزئی سمت بورسال تاندون سوپراسپیناتوس معمولاً در MRI چگونه دیده می‌شود؟",
       "options": [
         { "id": "A", "text": "عدم تداوم کامل تاندون همراه با رتراکشن انتهای آن" },
-        { "id": "B", "text": "حاشیه کانونی مایع بین تاندون و بورس ساب‌آکرومیال در T2 fs" },
+        { "id": "B", "text": "نقص با سیگنال هم‌ارز مایع در فیبرهای سطحی تاندون که به سطح بورسال می‌رسد؛ فیبرهای مفصلی حفظ شده‌اند" },
         { "id": "C", "text": "کاهش منتشر سیگنال کل تاندون در T1 بدون یافته دیگر" },
         { "id": "D", "text": "ادم مغز استخوان در سر هومروس بدون تغییر در تاندون" }
       ],
       "correct": "B",
-      "explanation": "پارگی جزئی سمت بورسال فیبرهای سطحی (بورسال) را درگیر می‌کند و حاشیه کانونی مایع بین تاندون و بورس ساب‌آکرومیال در T2 fs نشان می‌دهد."
+      "explanation": "پارگی جزئی سمت بورسال، نقص فیبرهای سطحی تاندون یا سیگنال مایع داخل تاندون با تماس با سطح بورسال دارد. تاندون در تمام ضخامت قطع نشده است. وجود مایع در بورس با سطح سالم تاندون، به‌تنهایی پارگی را ثابت نمی‌کند."
     },
     {
       "id": "rotatorenmanschette-fa-07",
@@ -4241,7 +4241,7 @@ const LEGACY_QUESTION_BANK = {
         { "id": "D", "text": "فقط بر اساس یافته‌های رادیوگرافی ساده است" }
       ],
       "correct": "B",
-      "explanation": "طبقه‌بندی Goutallier آتروفی چربی عضله را از درجه ۰ (بدون نفوذ چربی) تا درجه ۴ (چربی > عضله) درجه‌بندی می‌کند. از درجه ۳ تا ۴ به بعد، ترمیم معمولاً کم‌احتمال در نظر گرفته می‌شود."
+      "explanation": "Goutallier نفوذ چربی را از درجهٔ ۰ (بدون چربی) تا درجهٔ ۴ (چربی بیشتر از عضله) توصیف می‌کند. درجات بالا عامل پیش‌آگهی نامطلوب برای ترمیم‌اند، اما به‌تنهایی قابلیت ترمیم یا منفعت عملکردی فرد را تعیین نمی‌کنند؛ سایر یافته‌های تاندون، عضله و بالین نیز باید لحاظ شوند."
     },
     {
       "id": "rotatorenmanschette-fa-14",
@@ -4474,7 +4474,6 @@ export const MCQ_TOPIC_GROUPS = [
   { fachId: 'gehirn', kapitelId: 'kopf-tumoren', title: { de: 'Hirntumoren', en: 'Brain tumours', fa: 'تومورهای مغزی' }, topics: [{ id: 'meningeom', title: { de: 'Meningeom', en: 'Meningioma', fa: 'مننژیوم' } }, { id: 'medulloblastom', title: { de: 'Medulloblastom', en: 'Medulloblastoma', fa: 'مدولوبلاستوم' } }, { id: 'lymphom-zns', title: { de: 'Primäres ZNS-Lymphom', en: 'Primary CNS lymphoma', fa: 'لنفوم اولیه سیستم عصبی مرکزی' } }, { id: 'metastasen-meningeosis', title: { de: 'Hirnmetastasen · parenchymal', en: 'Brain metastases · parenchymal', fa: 'متاستاز مغزی پارانشیمی' } }, { id: 'kolloidzyste', title: { de: 'Kolloidzyste', en: 'Colloid cyst', fa: 'کیست کلوئید' } }] },
   { fachId: 'thorax', kapitelId: 'thorax-lunge', title: { de: 'Lungenparenchymerkrankungen', en: 'Pulmonary parenchymal diseases', fa: 'بیماری‌های پارانشیم ریه' }, topics: [{ id: 'uip-ipf', title: { de: 'UIP / IPF', en: 'UIP / IPF', fa: 'UIP / IPF' } }, { id: 'lungenoedem', title: { de: 'Lungenödem · HRCT', en: 'Pulmonary oedema · HRCT', fa: 'ادم ریه · HRCT' } }] },
   { fachId: 'thorax', kapitelId: 'thorax-atemwege', title: { de: 'Atemwegserkrankungen', en: 'Airway diseases', fa: 'بیماری‌های راه‌های هوایی' }, topics: [{ id: 'bronchiektasen', title: { de: 'Bronchiektasen', en: 'Bronchiectasis', fa: 'برونشکتازی' } }] },
-  { fachId: 'thorax', kapitelId: 'thorax-lunge', title: { de: 'Lunge', en: 'Lung', fa: 'ریه' }, topics: [{ id: 'fremdkoerper-atemwege', title: { de: 'Fremdkörperaspiration bei Kindern', en: 'Foreign-body aspiration in children', fa: 'آسپیراسیون جسم خارجی در کودکان' } }] },
   { fachId: 'msk', kapitelId: 'msk-knochennekrosen', title: { de: 'Knochennekrosen', en: 'Bone necrosis', fa: 'نکروزهای استخوانی' }, topics: [{ id: 'knocheninfarkt', title: { de: 'Knocheninfarkt', en: 'Bone infarct', fa: 'انفارکت استخوان' } }] },
   { fachId: 'msk', kapitelId: 'msk-knochentumoren', title: { de: 'Tumorähnliche Läsionen', en: 'Tumour-like lesions', fa: 'ضایعات شبه‌توموری' }, topics: [{ id: 'eosinophiles-granulom', title: { de: 'Langerhans-Zell-Histiozytose des Knochens', en: 'Osseous Langerhans cell histiocytosis', fa: 'هیستیوسیتوز سلول لانگرهانس در استخوان' } }] },
   ...ABDOMEN_THORAX_REGISTERED_TOPIC_GROUPS,

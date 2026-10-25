@@ -1,0 +1,29 @@
+{
+  "date": "2026-10-25",
+  "reviewer": "root, distinct from /design_inventory author",
+  "status": "PASS_SCOPED_REPAIRS_ONLY",
+  "scope": "Actual changed MSK/Spine/ATV source diffs andbeforeafter records read; currenttest-reviewed-fixes.mjs pass30questionlocalerows+8cards. No wholeMSKclinicalacceptance.",
+  "accepted": [
+    "SH IV/V distinction",
+    "RCL age/projection/neck-axis qualification",
+    "posttrauma adultfatpad possibleoccultfracture notprovenMasonI",
+    "PIN fingers/thumb weakness with sparedwristextension",
+    "bursal tendonfiberdefect ratherthanbursalfluidalone",
+    "Goutallierhighgradeadverse notstandaloneirreparability",
+    "FAfracturetranslation=displacement",
+    "radiusheadloadfront nowasksstabilityrole",
+    "spinalLymefeedback doesnotinventlabconfirmation",
+    "18ATV DEtranslations+letterindependentfeedback replacements",
+    "unterarmfc05actuallyanswerslineconstructionmethod",
+    "DETerribleTriadoptiontranslated"
+  ],
+  "primarySourcesRead": [
+    "https://surgeryreference.aofoundation.org/orthopedic-trauma/pediatric-trauma/further-reading/the-physis",
+    "https://pubmed.ncbi.nlm.nih.gov/21841436/",
+    "https://acsearch.acr.org/docs/3195154/Narrative/",
+    "https://pmc.ncbi.nlm.nih.gov/articles/PMC3715629/",
+    "https://pmc.ncbi.nlm.nih.gov/articles/PMC6583326/",
+    "https://pubmed.ncbi.nlm.nih.gov/17418325/"
+  ],
+  "limitations": "Grouped specific scientificclaims verified, notallmodules,PDFcasesorremainingrehab/PASTA/editorialfindings. Newtestscript assertions verifyID/answerkey consistency, notmedicine."
+}

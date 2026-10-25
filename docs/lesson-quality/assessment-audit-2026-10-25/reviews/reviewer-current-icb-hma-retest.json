@@ -1,0 +1,3764 @@
+{
+  "at": "2026-10-25T07:26:46.955Z",
+  "icbQuestions": {
+    "de": [
+      {
+        "id": "icb-q01",
+        "tags": [
+          "intrazerebrale-blutung",
+          "gehirn-blutung"
+        ],
+        "fach": "gehirn",
+        "question": "Was unterscheidet eine Makroblutung von einer Mikroblutung?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Makroblutung > 10 mm, klinisch relevant; Mikroblutung < 10 mm, oft nur auf SWI sichtbar"
+          },
+          {
+            "id": "B",
+            "text": "Mikroblutung tritt immer lobär auf, Makroblutung immer tief"
+          },
+          {
+            "id": "C",
+            "text": "Makroblutung = venös, Mikroblutung = arteriell"
+          },
+          {
+            "id": "D",
+            "text": "Kein klinisch relevanter Unterschied"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Per Definition sind Makroblutungen > 10 mm und klinisch symptomatisch. Mikroblutungen (< 10 mm) sind häufig asymptomatisch und nur auf suszeptibilitätsgewichteten Sequenzen (SWI/T2*) sichtbar. Sie sind Marker für Mikroangiopathie oder CAA."
+      },
+      {
+        "id": "icb-q02",
+        "tags": [
+          "intrazerebrale-blutung",
+          "gehirn-blutung"
+        ],
+        "fach": "gehirn",
+        "question": "Was ist die häufigste Ursache einer primären ICB?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Arterieller Hypertonus (Putamen, Thalamus, Pons, Kleinhirn)"
+          },
+          {
+            "id": "B",
+            "text": "Zerebrale Amyloidangiopathie (lobär)"
+          },
+          {
+            "id": "C",
+            "text": "Orale Antikoagulanzien"
+          },
+          {
+            "id": "D",
+            "text": "AVM und Kavernome"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Arterieller Hypertonus ist mit 50–70 % die häufigste Ursache der primären ICB. Er führt zu Lipohyalinose kleiner penetrierender Arterien, bevorzugt im Putamen, Thalamus, Pons und Kleinhirn."
+      },
+      {
+        "id": "icb-q03",
+        "tags": [
+          "intrazerebrale-blutung",
+          "gehirn-blutung"
+        ],
+        "fach": "gehirn",
+        "question": "Welche HU-Dichte hat eine frische ICB in der nativen CCT?",
+        "options": [
+          {
+            "id": "A",
+            "text": "0–10 HU (hypodens wie Wasser)"
+          },
+          {
+            "id": "B",
+            "text": "20–35 HU (isodens wie Hirngewebe)"
+          },
+          {
+            "id": "C",
+            "text": "50–80 HU (hyperdens)"
+          },
+          {
+            "id": "D",
+            "text": "> 120 HU (stark hyperdens wie Kalk)"
+          }
+        ],
+        "correct": "C",
+        "explanation": "Frisches Blut ist in der nativen CCT häufig hyperdens; die genaue Dichte hängt unter anderem von Hämatokrit und Technik ab. Der zeitliche Dichteverlauf ist variabel und erlaubt keine lineare Altersbestimmung."
+      },
+      {
+        "id": "icb-q04",
+        "tags": [
+          "intrazerebrale-blutung",
+          "gehirn-blutung"
+        ],
+        "fach": "gehirn",
+        "question": "Was bedeutet das Swirl Sign im CT?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Ringförmige KM-Aufnahme als Zeichen einer Resorptionsphase"
+          },
+          {
+            "id": "B",
+            "text": "Möglicher unverklotteter Anteil, der mit Expansion assoziiert sein kann"
+          },
+          {
+            "id": "C",
+            "text": "Hyperdens imponiierendes Blut im Subarachnoidalraum"
+          },
+          {
+            "id": "D",
+            "text": "Diffuse Hypodensität des Hirnparenchyms als Zeichen eines Ödems"
+          }
+        ],
+        "correct": "B",
+        "explanation": "Hypodense Areale innerhalb eines hyperdensen Hämatoms können einen nicht koagulierten Anteil darstellen. Als Heterogenitätszeichen können sie mit Expansion assoziiert sein, beweisen aber keine aktuell aktive Blutung."
+      },
+      {
+        "id": "icb-q05",
+        "tags": [
+          "intrazerebrale-blutung",
+          "gehirn-blutung"
+        ],
+        "fach": "gehirn",
+        "question": "Was ist das Spot Sign und welche Sequenz zeigt es?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Punktförmige Verkalkung im Hämatom · sichtbar in der nativen CCT"
+          },
+          {
+            "id": "B",
+            "text": "Aktive KM-Extravasation im Hämatom · sichtbar in der CTA"
+          },
+          {
+            "id": "C",
+            "text": "Hämosiderin-Depot · sichtbar auf SWI"
+          },
+          {
+            "id": "D",
+            "text": "Ringenhancement im KM-CT · Zeichen der Resorption"
+          }
+        ],
+        "correct": "B",
+        "explanation": "Das Spot Sign ist ein fokaler Kontrastmittelpool innerhalb oder am Rand des Hämatoms in der CTA. Ein positives Zeichen ist mit einem erhöhten Risiko für Hämatomexpansion assoziiert; seine Vorhersage hängt unter anderem von CTA-Zeitpunkt und Protokoll ab und ist keine sichere Individualprognose."
+      },
+      {
+        "id": "icb-q06",
+        "tags": [
+          "intrazerebrale-blutung",
+          "gehirn-blutung"
+        ],
+        "fach": "gehirn",
+        "question": "Welche Aussage zur CT-Dichte während der Resorption einer ICB ist am zutreffendsten?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Sie sinkt in jedem Fall linear mit einer konstanten HU-Rate."
+          },
+          {
+            "id": "B",
+            "text": "Sie kann im Verlauf abnehmen, aber die Geschwindigkeit ist variabel und HU erlauben keine lineare Datierung."
+          },
+          {
+            "id": "C",
+            "text": "Sie bleibt bis zur vollständigen Resorption unverändert."
+          },
+          {
+            "id": "D",
+            "text": "Sie nimmt nur bei einer sekundären ICB ab."
+          }
+        ],
+        "correct": "B",
+        "explanation": "Die Dichte kann im Resorptionsverlauf sinken und vorübergehend isodens werden. Zeitpunkt und Ausmaß variieren; ein einzelner HU-Wert datiert die Blutung nicht zuverlässig."
+      },
+      {
+        "id": "icb-q07",
+        "tags": [
+          "intrazerebrale-blutung",
+          "gehirn-blutung"
+        ],
+        "fach": "gehirn",
+        "question": "Eine sehr frühe ICB kann auf T2 überwiegend hell erscheinen. Welche Schlussfolgerung ist richtig?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Ein helles T2-Signal schließt eine Blutung aus"
+          },
+          {
+            "id": "B",
+            "text": "T2 allein reicht zum Ausschluss nicht aus; CT beziehungsweise blutsensitive MRT-Sequenzen mitbeurteilen"
+          },
+          {
+            "id": "C",
+            "text": "Eine ICB muss in jeder frühen MRT-Sequenz signalarm sein"
+          },
+          {
+            "id": "D",
+            "text": "Das T2-Signal bestimmt unabhängig von der Sequenz das Blutungsalter exakt"
+          }
+        ],
+        "correct": "B",
+        "explanation": "Blutungsstadien können sich überlagern; das Signal hängt auch von Sequenz und Blutprodukten ab. Ein helles T2-Signal schließt eine frühe ICB nicht aus. CT ist rasch verfügbar; MRT mit GRE/T2* oder SWI kann auch hyperakute Blutungen zuverlässig erkennen."
+      },
+      {
+        "id": "icb-q08",
+        "tags": [
+          "intrazerebrale-blutung",
+          "gehirn-blutung"
+        ],
+        "fach": "gehirn",
+        "question": "Warum zeigt akutes Deoxy-Hb kein T1-Signal trotz Paramagnetismus?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Weil Deoxy-Hb extrazellulär vorliegt"
+          },
+          {
+            "id": "B",
+            "text": "Weil Deoxy-Hb intrazellulär kompartimentiert ist und Wasser das Fe²⁺ nicht erreichen kann"
+          },
+          {
+            "id": "C",
+            "text": "Weil die Erythrozyten bei akuter ICB bereits lysiert sind"
+          },
+          {
+            "id": "D",
+            "text": "Weil T1-KM das Signal überlagert"
+          }
+        ],
+        "correct": "B",
+        "explanation": "Für eine T1-Verkürzung ist eine direkte Dipol-Dipol-Wechselwirkung zwischen Wasser und Fe²⁺ nötig. Im akuten Stadium liegt Deoxy-Hb jedoch noch innerhalb intakter Erythrozyten (intrazellulär), sodass Wasser keinen Zugang zum Eisen hat. Deshalb fehlt das T1-Signal trotz Paramagnetismus."
+      },
+      {
+        "id": "icb-q09",
+        "tags": [
+          "intrazerebrale-blutung",
+          "gehirn-blutung"
+        ],
+        "fach": "gehirn",
+        "question": "Welche Veränderung auf nativen T1-gewichteten Bildern ist typisch für intrazelluläres Met-Hb im früh-subakuten Stadium?",
+        "options": [
+          {
+            "id": "A",
+            "text": "T2-Hypointensität auf der DWI-Sequenz"
+          },
+          {
+            "id": "B",
+            "text": "T1-Hyperintensität durch intrazelluläres Met-Hb (früh subakut)"
+          },
+          {
+            "id": "C",
+            "text": "Ringenhancement in der T1-KM-Sequenz"
+          },
+          {
+            "id": "D",
+            "text": "Blooming auf SWI/T2*"
+          }
+        ],
+        "correct": "B",
+        "explanation": "Intrazelluläres Met-Hb ist häufig mit T1-Hyperintensität bei weiterhin möglicher T2-Hypointensität verbunden. Zeitpunkt und Ausprägung sind variabel; in größeren Hämatomen können verschiedene Stadien nebeneinander vorkommen."
+      },
+      {
+        "id": "icb-q10",
+        "tags": [
+          "intrazerebrale-blutung",
+          "gehirn-blutung"
+        ],
+        "fach": "gehirn",
+        "question": "Was ist das „Bright–Bright\"-Muster auf MRT und welche Differenzialdiagnose muss bedacht werden?",
+        "options": [
+          {
+            "id": "A",
+            "text": "T1 hypo + T2 hypo · DD: Verkalkung"
+          },
+          {
+            "id": "B",
+            "text": "T1 hell + T2 hell (spät subakut durch extrazelluläres Met-Hb) · DD: Melanommetastase, fettige Läsion"
+          },
+          {
+            "id": "C",
+            "text": "T1 hypo + T2 hell · DD: Abszess"
+          },
+          {
+            "id": "D",
+            "text": "T1 hell + T2 hypo · DD: Fibrom"
+          }
+        ],
+        "correct": "B",
+        "explanation": "Im spät subakuten Verlauf kann extrazelluläres Met-Hb T1 und T2 hyperintens erscheinen lassen. Das bright-bright-Muster ist unspezifisch und kann Melaninmetastasen oder Fett imitieren. SWI/T2*, fettunterdrückte Sequenzen, Verlauf, Morphologie und Klinik helfen gemeinsam bei der Differenzialdiagnose; ein einzelner Befund ist nicht beweisend."
+      },
+      {
+        "id": "icb-q11",
+        "tags": [
+          "intrazerebrale-blutung",
+          "gehirn-blutung"
+        ],
+        "fach": "gehirn",
+        "question": "Welche Sequenz ist am sensitivsten für den Nachweis alter Mikroblutungen?",
+        "options": [
+          {
+            "id": "A",
+            "text": "T1-Wichtung ohne Kontrastmittel"
+          },
+          {
+            "id": "B",
+            "text": "FLAIR"
+          },
+          {
+            "id": "C",
+            "text": "SWI (Suszeptibilitätsgewichtete Bildgebung) / T2*"
+          },
+          {
+            "id": "D",
+            "text": "Diffusionsgewichtete Bildgebung (DWI)"
+          }
+        ],
+        "correct": "C",
+        "explanation": "Hämosiderin erzeugt einen ausgeprägten Suszeptibilitätseffekt auf SWI/T2*. CT und MRT beantworten unterschiedliche Fragen; kleine alte Blutprodukte werden mit susceptibility-sensitiven MRT-Sequenzen besonders gut erfasst."
+      },
+      {
+        "id": "icb-q12",
+        "tags": [
+          "intrazerebrale-blutung",
+          "gehirn-blutung"
+        ],
+        "fach": "gehirn",
+        "question": "Welcher Befund sollte bei einer ICB an eine sekundäre Ursache (z. B. Tumor) denken lassen?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Hämatom in den Basalganglien bei bekanntem Hypertonus"
+          },
+          {
+            "id": "B",
+            "text": "Perifokales Ödem unverhältnismäßig groß im Vergleich zur Blutungsgröße"
+          },
+          {
+            "id": "C",
+            "text": "Hämatom kleiner als 5 ml bei älterem Patienten"
+          },
+          {
+            "id": "D",
+            "text": "Swirl Sign im CT"
+          }
+        ],
+        "correct": "B",
+        "explanation": "Bei einer primären ICB ist das perifokale Ödem meist proportional zur Blutungsgröße. Ein unverhältnismäßig großes Ödem (viel größer als das Hämatom) ist ein Warnsignal für eine sekundäre ICB durch Tumor oder hämorrhagischen Infarkt. Auch atypische Lokalisation oder junges Alter ohne vaskuläre Risikofaktoren sollten an AVM/Kavernom denken lassen → CTA."
+      },
+      {
+        "id": "icb-q13",
+        "tags": [
+          "intrazerebrale-blutung",
+          "gehirn-blutung"
+        ],
+        "fach": "gehirn",
+        "question": "Was ist die typische Lokalisation einer CAA-bedingten ICB?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Tief gelegen: Putamen, Thalamus, Pons"
+          },
+          {
+            "id": "B",
+            "text": "Lobär (kortexnah), oft multipel, häufig okzipital und parietal"
+          },
+          {
+            "id": "C",
+            "text": "Ausschließlich periventrikulär"
+          },
+          {
+            "id": "D",
+            "text": "Immer im Kleinhirn"
+          }
+        ],
+        "correct": "B",
+        "explanation": "Die zerebrale Amyloidangiopathie (CAA) führt zu Amyloidablagerungen in kleinen kortikalen und leptomeningealen Gefäßen. Typisch sind lobäre ICBs (kortexnah), die häufig multipel auftreten und eine Prädilektion für den Okzipital- und Parietallappen zeigen. Multiple lobäre Mikroblutungen auf SWI stärken den Verdacht auf CAA. Im Gegensatz dazu: Hypertensive ICBs sind tief (Putamen, Thalamus)."
+      },
+      {
+        "id": "icb-q14",
+        "tags": [
+          "intrazerebrale-blutung",
+          "gehirn-blutung"
+        ],
+        "fach": "gehirn",
+        "question": "Bis zu wie vielen Monaten nach einer ICB kann ein Ringenhancement im CT nachweisbar sein?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Bis zu 2 Wochen"
+          },
+          {
+            "id": "B",
+            "text": "Bis zu 6 Wochen"
+          },
+          {
+            "id": "C",
+            "text": "Bis zu 6 Monaten"
+          },
+          {
+            "id": "D",
+            "text": "Dauerhaft persistierend"
+          }
+        ],
+        "correct": "C",
+        "explanation": "Ein Ringenhancement nach ICB ist durch die Blut-Hirn-Schrankenstörung am Rand der Resorptionszone bedingt. Es kann bis zu 6 Monate nach dem Blutungsereignis nachweisbar sein. Dieser Befund kann leicht mit einem Abszess oder einer Metastase verwechselt werden (Differenzialdiagnose!) und erfordert klinische Korrelation und ggf. MRT mit DWI."
+      },
+      {
+        "id": "icb-q15",
+        "tags": [
+          "intrazerebrale-blutung",
+          "gehirn-blutung"
+        ],
+        "fach": "gehirn",
+        "question": "Ein junger Patient ohne Hypertonus hat eine lobäre ICB. Was sollte als nächstes veranlasst werden?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Keine weitere Abklärung nötig – lobäre ICB immer benigne"
+          },
+          {
+            "id": "B",
+            "text": "Zeitnahe CTA zur Suche nach einer makrovaskulären Ursache, etwa AVM oder Aneurysma"
+          },
+          {
+            "id": "C",
+            "text": "Sofortige Antikoagulation"
+          },
+          {
+            "id": "D",
+            "text": "PET-CT zum Tumorausschluss"
+          }
+        ],
+        "correct": "B",
+        "explanation": "Bei einem jungen Patienten ohne klassische Risikofaktoren (arterieller Hypertonus) und ohne Antikoagulanzieneinnahme ist eine vaskuläre Malformation (AVM, Kavernom, dAVF) eine wichtige Ursache. CTA (und ggf. DSA) zum Ausschluss einer AVM oder eines Aneurysmas ist indiziert. Die MRT (SWI) kann ein Kavernom mit typischem Popcorn-Muster zeigen."
+      }
+    ],
+    "en": [
+      {
+        "id": "icb-q01",
+        "tags": [
+          "intrazerebrale-blutung",
+          "gehirn-blutung"
+        ],
+        "fach": "gehirn",
+        "question": "What distinguishes a macrobleed from a microbleed?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Macrobleed > 10 mm, clinically significant; microbleed < 10 mm, often visible only on SWI"
+          },
+          {
+            "id": "B",
+            "text": "Microbleed always occurs lobarly, macrobleed always deep"
+          },
+          {
+            "id": "C",
+            "text": "Macrobleed = venous, microbleed = arterial"
+          },
+          {
+            "id": "D",
+            "text": "No clinically relevant difference"
+          }
+        ],
+        "correct": "A",
+        "explanation": "By definition macrobleeds are >10 mm and clinically symptomatic. Microbleeds (<10 mm) are often asymptomatic and visible only on susceptibility-weighted sequences (SWI/T2*). They are markers of microangiopathy or CAA."
+      },
+      {
+        "id": "icb-q02",
+        "tags": [
+          "intrazerebrale-blutung",
+          "gehirn-blutung"
+        ],
+        "fach": "gehirn",
+        "question": "What is the most common cause of primary ICB?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Arterial hypertension (putamen, thalamus, pons, cerebellum)"
+          },
+          {
+            "id": "B",
+            "text": "Cerebral amyloid angiopathy (lobar)"
+          },
+          {
+            "id": "C",
+            "text": "Oral anticoagulants"
+          },
+          {
+            "id": "D",
+            "text": "AVM and cavernomas"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Arterial hypertension is the most common cause of primary ICB (50–70 %). It causes lipohyalinosis of small penetrating arteries, predominantly in the putamen, thalamus, pons and cerebellum."
+      },
+      {
+        "id": "icb-q03",
+        "tags": [
+          "intrazerebrale-blutung",
+          "gehirn-blutung"
+        ],
+        "fach": "gehirn",
+        "question": "What HU attenuation does a fresh ICB show on NCCT?",
+        "options": [
+          {
+            "id": "A",
+            "text": "0–10 HU (hypoattenuating like water)"
+          },
+          {
+            "id": "B",
+            "text": "20–35 HU (isoattenuating to brain)"
+          },
+          {
+            "id": "C",
+            "text": "50–80 HU (hyperattenuating)"
+          },
+          {
+            "id": "D",
+            "text": ">120 HU (markedly hyperattenuating like calcification)"
+          }
+        ],
+        "correct": "C",
+        "explanation": "Fresh blood is often hyperattenuating on NCCT; its exact attenuation depends in part on haematocrit and technique. Attenuation changes over time are variable and do not provide a linear clock for dating the haemorrhage."
+      },
+      {
+        "id": "icb-q04",
+        "tags": [
+          "intrazerebrale-blutung",
+          "gehirn-blutung"
+        ],
+        "fach": "gehirn",
+        "question": "What does the Swirl Sign indicate on CT?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Ring enhancement indicating the resorption phase"
+          },
+          {
+            "id": "B",
+            "text": "Possible unclotted component that may be associated with expansion"
+          },
+          {
+            "id": "C",
+            "text": "Hyperattenuating blood in the subarachnoid space"
+          },
+          {
+            "id": "D",
+            "text": "Diffuse parenchymal hypodensity indicating oedema"
+          }
+        ],
+        "correct": "B",
+        "explanation": "Hypoattenuating areas within a hyperattenuating haematoma may represent an unclotted component. As a heterogeneity sign they may be associated with expansion, but they do not prove active bleeding at the time of imaging."
+      },
+      {
+        "id": "icb-q05",
+        "tags": [
+          "intrazerebrale-blutung",
+          "gehirn-blutung"
+        ],
+        "fach": "gehirn",
+        "question": "What is the Spot Sign and which sequence shows it?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Punctate calcification in the haematoma · visible on NCCT"
+          },
+          {
+            "id": "B",
+            "text": "Active CM extravasation in the haematoma · visible on CTA"
+          },
+          {
+            "id": "C",
+            "text": "Haemosiderin deposit · visible on SWI"
+          },
+          {
+            "id": "D",
+            "text": "Ring enhancement on contrast CT · sign of resorption"
+          }
+        ],
+        "correct": "B",
+        "explanation": "The Spot Sign is a focal pool of contrast within or at the margin of the haematoma on CTA. A positive sign is associated with increased risk of haematoma expansion; its predictive performance depends in part on CTA timing and protocol and is not a certain individual prognosis."
+      },
+      {
+        "id": "icb-q06",
+        "tags": [
+          "intrazerebrale-blutung",
+          "gehirn-blutung"
+        ],
+        "fach": "gehirn",
+        "question": "Which statement about CT attenuation during ICH resorption is most accurate?",
+        "options": [
+          {
+            "id": "A",
+            "text": "It always decreases linearly at a constant HU rate."
+          },
+          {
+            "id": "B",
+            "text": "It may decrease over time, but the rate varies and HU do not allow linear dating."
+          },
+          {
+            "id": "C",
+            "text": "It remains unchanged until complete resorption."
+          },
+          {
+            "id": "D",
+            "text": "It decreases only in secondary ICH."
+          }
+        ],
+        "correct": "B",
+        "explanation": "Attenuation may decrease during resorption and can become temporarily isoattenuating. Timing and extent vary; a single HU value does not reliably date the haemorrhage."
+      },
+      {
+        "id": "icb-q07",
+        "tags": [
+          "intrazerebrale-blutung",
+          "gehirn-blutung"
+        ],
+        "fach": "gehirn",
+        "question": "A very early ICH may appear predominantly bright on T2. Which conclusion is correct?",
+        "options": [
+          {
+            "id": "A",
+            "text": "A bright T2 signal excludes haemorrhage"
+          },
+          {
+            "id": "B",
+            "text": "T2 alone cannot exclude haemorrhage; assess CT or blood-sensitive MRI sequences as appropriate"
+          },
+          {
+            "id": "C",
+            "text": "An ICH must be dark on every early MRI sequence"
+          },
+          {
+            "id": "D",
+            "text": "T2 signal determines the exact age of haemorrhage independently of sequence parameters"
+          }
+        ],
+        "correct": "B",
+        "explanation": "Stages may overlap, and signal also depends on the sequence and blood products. Bright T2 signal does not exclude an early ICH. CT is rapidly available; MRI including GRE/T2* or SWI can also detect hyperacute haemorrhage accurately."
+      },
+      {
+        "id": "icb-q08",
+        "tags": [
+          "intrazerebrale-blutung",
+          "gehirn-blutung"
+        ],
+        "fach": "gehirn",
+        "question": "Why does acute deoxyHb show no T1 signal despite its paramagnetism?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Because deoxyHb is extracellular"
+          },
+          {
+            "id": "B",
+            "text": "Because deoxyHb is intracellularly compartmentalised and water cannot access the Fe²⁺"
+          },
+          {
+            "id": "C",
+            "text": "Because erythrocytes have already lysed in acute ICB"
+          },
+          {
+            "id": "D",
+            "text": "Because T1 contrast overwhelms the signal"
+          }
+        ],
+        "correct": "B",
+        "explanation": "T1 shortening requires direct dipole-dipole interaction between water and Fe²⁺. In the acute stage, deoxyHb is still within intact erythrocytes (intracellular), so water cannot access the iron. Hence there is no T1 signal despite paramagnetism."
+      },
+      {
+        "id": "icb-q09",
+        "tags": [
+          "intrazerebrale-blutung",
+          "gehirn-blutung"
+        ],
+        "fach": "gehirn",
+        "question": "Which change on unenhanced T1-weighted images is typical of intracellular metHb in the early subacute stage?",
+        "options": [
+          {
+            "id": "A",
+            "text": "T2 hypointensity on DWI"
+          },
+          {
+            "id": "B",
+            "text": "T1 hyperintensity from intracellular metHb (early subacute)"
+          },
+          {
+            "id": "C",
+            "text": "Ring enhancement on T1 post-contrast"
+          },
+          {
+            "id": "D",
+            "text": "Blooming on SWI/T2*"
+          }
+        ],
+        "correct": "B",
+        "explanation": "Intracellular metHb is often associated with T1 hyperintensity while T2 may remain hypointense. Timing and appearance vary; different stages may coexist within a larger haematoma."
+      },
+      {
+        "id": "icb-q10",
+        "tags": [
+          "intrazerebrale-blutung",
+          "gehirn-blutung"
+        ],
+        "fach": "gehirn",
+        "question": "What is the \"bright-bright\" pattern on MRI and which differential diagnosis must be considered?",
+        "options": [
+          {
+            "id": "A",
+            "text": "T1 hypo + T2 hypo · DD: calcification"
+          },
+          {
+            "id": "B",
+            "text": "T1 bright + T2 bright (late subacute, extracellular metHb) · DD: melanoma metastasis, fatty lesion"
+          },
+          {
+            "id": "C",
+            "text": "T1 hypo + T2 bright · DD: abscess"
+          },
+          {
+            "id": "D",
+            "text": "T1 bright + T2 hypo · DD: fibroma"
+          }
+        ],
+        "correct": "B",
+        "explanation": "During the late subacute course, extracellular metHb may make T1 and T2 hyperintense. The bright-bright pattern is nonspecific and can mimic melanin-containing metastases or fat. SWI/T2*, fat-suppressed sequences, interval change, morphology and clinical context help together with the differential; no single finding is definitive."
+      },
+      {
+        "id": "icb-q11",
+        "tags": [
+          "intrazerebrale-blutung",
+          "gehirn-blutung"
+        ],
+        "fach": "gehirn",
+        "question": "Which sequence is most sensitive for detecting old microbleeds?",
+        "options": [
+          {
+            "id": "A",
+            "text": "T1-weighted without contrast"
+          },
+          {
+            "id": "B",
+            "text": "FLAIR"
+          },
+          {
+            "id": "C",
+            "text": "SWI (susceptibility-weighted imaging) / T2*"
+          },
+          {
+            "id": "D",
+            "text": "Diffusion-weighted imaging (DWI)"
+          }
+        ],
+        "correct": "C",
+        "explanation": "Haemosiderin produces marked susceptibility effects on SWI/T2*. CT and MRI answer different questions; small old blood products are particularly well depicted with susceptibility-sensitive MRI sequences."
+      },
+      {
+        "id": "icb-q12",
+        "tags": [
+          "intrazerebrale-blutung",
+          "gehirn-blutung"
+        ],
+        "fach": "gehirn",
+        "question": "Which finding should raise suspicion of a secondary cause (e.g. tumour) in ICB?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Haematoma in the basal ganglia with known hypertension"
+          },
+          {
+            "id": "B",
+            "text": "Perilesional oedema disproportionately large relative to haematoma size"
+          },
+          {
+            "id": "C",
+            "text": "Haematoma smaller than 5 ml in an elderly patient"
+          },
+          {
+            "id": "D",
+            "text": "Swirl Sign on CT"
+          }
+        ],
+        "correct": "B",
+        "explanation": "In primary ICB, perilesional oedema is usually proportional to haematoma size. Disproportionately large oedema (much larger than the haematoma) is a warning sign for secondary ICB from tumour or haemorrhagic infarct. Atypical location or young age without vascular risk factors should raise suspicion of AVM/cavernoma → CTA."
+      },
+      {
+        "id": "icb-q13",
+        "tags": [
+          "intrazerebrale-blutung",
+          "gehirn-blutung"
+        ],
+        "fach": "gehirn",
+        "question": "What is the typical location of CAA-related ICB?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Deep: putamen, thalamus, pons"
+          },
+          {
+            "id": "B",
+            "text": "Lobar (cortical), often multiple, frequently occipital and parietal"
+          },
+          {
+            "id": "C",
+            "text": "Exclusively periventricular"
+          },
+          {
+            "id": "D",
+            "text": "Always in the cerebellum"
+          }
+        ],
+        "correct": "B",
+        "explanation": "Cerebral amyloid angiopathy causes amyloid deposits in small cortical and leptomeningeal vessels. Typical are lobar ICBs (cortical), often multiple with a predilection for the occipital and parietal lobes. Multiple lobar microbleeds on SWI support CAA. In contrast, hypertensive ICBs are deep (putamen, thalamus)."
+      },
+      {
+        "id": "icb-q14",
+        "tags": [
+          "intrazerebrale-blutung",
+          "gehirn-blutung"
+        ],
+        "fach": "gehirn",
+        "question": "For how many months after ICB can ring enhancement persist on CT?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Up to 2 weeks"
+          },
+          {
+            "id": "B",
+            "text": "Up to 6 weeks"
+          },
+          {
+            "id": "C",
+            "text": "Up to 6 months"
+          },
+          {
+            "id": "D",
+            "text": "Persisting indefinitely"
+          }
+        ],
+        "correct": "C",
+        "explanation": "Ring enhancement after ICB results from blood-brain barrier disruption at the periphery of the resorption zone. It can persist for up to 6 months after the haemorrhagic event. This finding may easily be confused with an abscess or metastasis (differential diagnosis!) and requires clinical correlation and DWI on MRI."
+      },
+      {
+        "id": "icb-q15",
+        "tags": [
+          "intrazerebrale-blutung",
+          "gehirn-blutung"
+        ],
+        "fach": "gehirn",
+        "question": "A young patient without hypertension has a lobar ICB. What should be the next step?",
+        "options": [
+          {
+            "id": "A",
+            "text": "No further workup needed – lobar ICB is always benign"
+          },
+          {
+            "id": "B",
+            "text": "Prompt CTA to investigate a macrovascular cause such as an AVM or aneurysm"
+          },
+          {
+            "id": "C",
+            "text": "Immediate anticoagulation"
+          },
+          {
+            "id": "D",
+            "text": "PET-CT for tumour exclusion"
+          }
+        ],
+        "correct": "B",
+        "explanation": "In a young patient without classical risk factors (hypertension) and not on anticoagulants, a vascular malformation (AVM, cavernoma, dAVF) is an important cause. CTA (and possibly DSA) to exclude AVM or aneurysm is indicated. MRI (SWI) may show a cavernoma with a typical popcorn pattern."
+      }
+    ],
+    "fa": [
+      {
+        "id": "icb-q01",
+        "tags": [
+          "intrazerebrale-blutung",
+          "gehirn-blutung"
+        ],
+        "fach": "gehirn",
+        "question": "تفاوت ماکروبلید و میکروبلید چیست؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "ماکروبلید > ۱۰ میلی‌متر، بالینی مهم؛ میکروبلید < ۱۰ میلی‌متر، اغلب فقط روی SWI"
+          },
+          {
+            "id": "B",
+            "text": "میکروبلید همیشه لوبار، ماکروبلید همیشه عمقی"
+          },
+          {
+            "id": "C",
+            "text": "ماکروبلید = وریدی، میکروبلید = شریانی"
+          },
+          {
+            "id": "D",
+            "text": "تفاوت بالینی مرتبطی وجود ندارد"
+          }
+        ],
+        "correct": "A",
+        "explanation": "ماکروبلیدها > ۱۰ میلی‌متر و بالینی علامت‌دار هستند. میکروبلیدها (< ۱۰ میلی‌متر) اغلب بدون علامت بوده و فقط روی SWI/T2* قابل رؤیت‌اند."
+      },
+      {
+        "id": "icb-q02",
+        "tags": [
+          "intrazerebrale-blutung",
+          "gehirn-blutung"
+        ],
+        "fach": "gehirn",
+        "question": "شایع‌ترین علت ICB اولیه چیست؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "فشار خون شریانی (پوتامن، تالاموس، پونز، مخچه)"
+          },
+          {
+            "id": "B",
+            "text": "آنژیوپاتی آمیلوئید مغزی (لوبار)"
+          },
+          {
+            "id": "C",
+            "text": "ضدانعقادهای خوراکی"
+          },
+          {
+            "id": "D",
+            "text": "AVM و کاورنوم"
+          }
+        ],
+        "correct": "A",
+        "explanation": "فشار خون شریانی با ۵۰-۷۰٪ شایع‌ترین علت ICB اولیه است که باعث لیپوهیالینوز شریان‌های نفوذی کوچک در پوتامن، تالاموس، پونز و مخچه می‌شود."
+      },
+      {
+        "id": "icb-q03",
+        "tags": [
+          "intrazerebrale-blutung",
+          "gehirn-blutung"
+        ],
+        "fach": "gehirn",
+        "question": "دانسیته HU ICB تازه در CT بدون کنتراست چقدر است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "۰-۱۰ HU (هیپودنس مثل آب)"
+          },
+          {
+            "id": "B",
+            "text": "۲۰-۳۵ HU (ایزودنس مثل بافت مغز)"
+          },
+          {
+            "id": "C",
+            "text": "۵۰-۸۰ HU (هایپردنس)"
+          },
+          {
+            "id": "D",
+            "text": "> ۱۲۰ HU (مثل کلسیفیکاسیون)"
+          }
+        ],
+        "correct": "C",
+        "explanation": "خون تازه در CT بدون کنتراست اغلب هایپردنس است؛ دانسیتهٔ دقیق از جمله به هماتوکریت و تکنیک بستگی دارد. تغییر دانسیته در طول زمان متغیر است و برای تعیین خطی سن خونریزی به کار نمی‌رود."
+      },
+      {
+        "id": "icb-q04",
+        "tags": [
+          "intrazerebrale-blutung",
+          "gehirn-blutung"
+        ],
+        "fach": "gehirn",
+        "question": "علامت چرخش (Swirl sign) در CT به چه معناست؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "حلقوی نشانگر فاز جذب"
+          },
+          {
+            "id": "B",
+            "text": "احتمال وجود بخشی لخته‌نشده که ممکن است با گسترش مرتبط باشد"
+          },
+          {
+            "id": "C",
+            "text": "خون هایپردنس در فضای ساب‌آراکنوئید"
+          },
+          {
+            "id": "D",
+            "text": "هیپودنسیتی منتشر پارانشیم نشانگر ادم"
+          }
+        ],
+        "correct": "B",
+        "explanation": "نواحی کم‌دانسیته درون هماتوم پرچگال ممکن است نشان‌دهندهٔ بخشی لخته‌نشده باشند. این ناهمگنی می‌تواند با گسترش هماتوم ارتباط داشته باشد، اما خونریزی فعال در زمان تصویربرداری را ثابت نمی‌کند."
+      },
+      {
+        "id": "icb-q05",
+        "tags": [
+          "intrazerebrale-blutung",
+          "gehirn-blutung"
+        ],
+        "fach": "gehirn",
+        "question": "علامت اسپات (Spot sign) چیست و در کدام سکانس دیده می‌شود؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "کلسیفیکاسیون نقطه‌ای در هماتوم · در CT بدون کنتراست"
+          },
+          {
+            "id": "B",
+            "text": "خروج فعال ماده حاجب در هماتوم · در CTA"
+          },
+          {
+            "id": "C",
+            "text": "رسوب هموسیدرین · در SWI"
+          },
+          {
+            "id": "D",
+            "text": "حلقوی در CT با کنتراست · نشانه جذب"
+          }
+        ],
+        "correct": "B",
+        "explanation": "Spot sign تجمع کانونی ماده حاجب درون یا حاشیهٔ هماتوم در CTA است. مثبت‌بودن آن با افزایش خطر گسترش هماتوم ارتباط دارد؛ ارزش پیش‌بینی به زمان و پروتکل CTA هم وابسته است و پیش‌آگهی قطعی فردی نمی‌دهد."
+      },
+      {
+        "id": "icb-q06",
+        "tags": [
+          "intrazerebrale-blutung",
+          "gehirn-blutung"
+        ],
+        "fach": "gehirn",
+        "question": "کدام عبارت دربارهٔ دانسیتهٔ CT در زمان جذب ICB دقیق‌تر است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "در همهٔ موارد با نرخ ثابت و به‌صورت خطی کاهش می‌یابد."
+          },
+          {
+            "id": "B",
+            "text": "ممکن است با گذر زمان کاهش یابد، اما سرعت متغیر است و HU امکان تعیین خطی زمان را نمی‌دهد."
+          },
+          {
+            "id": "C",
+            "text": "تا جذب کامل بدون تغییر می‌ماند."
+          },
+          {
+            "id": "D",
+            "text": "فقط در ICB ثانویه کاهش می‌یابد."
+          }
+        ],
+        "correct": "B",
+        "explanation": "دانسیته ممکن است طی جذب کاهش یابد و موقتاً ایزودنس شود. زمان و میزان تغییر متغیر است؛ یک مقدار HU به‌تنهایی سن خونریزی را به‌طور قابل اعتماد تعیین نمی‌کند."
+      },
+      {
+        "id": "icb-q07",
+        "tags": [
+          "intrazerebrale-blutung",
+          "gehirn-blutung"
+        ],
+        "fach": "gehirn",
+        "question": "خونریزی داخل مغزی بسیار زودرس ممکن است در T2 عمدتاً روشن دیده شود. کدام نتیجه‌گیری درست است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "سیگنال روشن T2 خونریزی را رد می‌کند"
+          },
+          {
+            "id": "B",
+            "text": "T2 به‌تنهایی برای رد خونریزی کافی نیست؛ بر حسب شرایط CT یا سکانس‌های حساس به خون در MRI را نیز ارزیابی کنید"
+          },
+          {
+            "id": "C",
+            "text": "خونریزی داخل مغزی در تمام سکانس‌های MRI زودرس باید کم‌سیگنال باشد"
+          },
+          {
+            "id": "D",
+            "text": "سیگنال T2 مستقل از پارامترهای سکانس، سن خونریزی را دقیق تعیین می‌کند"
+          }
+        ],
+        "correct": "B",
+        "explanation": "مراحل ممکن است هم‌پوشانی داشته باشند و سیگنال به سکانس و محصولات خونی نیز بستگی دارد. سیگنال روشن T2 خونریزی داخل مغزی زودرس را رد نمی‌کند. CT سریع در دسترس است؛ MRI شامل GRE/T2* یا SWI نیز می‌تواند خونریزی فوق‌حاد را با دقت تشخیص دهد."
+      },
+      {
+        "id": "icb-q08",
+        "tags": [
+          "intrazerebrale-blutung",
+          "gehirn-blutung"
+        ],
+        "fach": "gehirn",
+        "question": "چرا Deoxy-Hb حاد با وجود پاراماگنتیسم، سیگنال T1 ندارد؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "چون Deoxy-Hb خارج سلولی است"
+          },
+          {
+            "id": "B",
+            "text": "چون Deoxy-Hb داخل سلول محدود است و آب نمی‌تواند به Fe²⁺ دسترسی داشته باشد"
+          },
+          {
+            "id": "C",
+            "text": "چون اریتروسیت‌ها در ICB حاد از قبل لیز شده‌اند"
+          },
+          {
+            "id": "D",
+            "text": "چون کنتراست T1 سیگنال را پوشش می‌دهد"
+          }
+        ],
+        "correct": "B",
+        "explanation": "کوتاه‌شدن T1 نیازمند برهم‌کنش مستقیم دوقطبی-دوقطبی بین آب و Fe²⁺ است. در مرحله حاد، Deoxy-Hb هنوز درون اریتروسیت‌های سالم (داخل سلول) است، پس آب به آهن دسترسی ندارد."
+      },
+      {
+        "id": "icb-q09",
+        "tags": [
+          "intrazerebrale-blutung",
+          "gehirn-blutung"
+        ],
+        "fach": "gehirn",
+        "question": "کدام تغییر در تصاویر T1 بدون تزریق برای مت‌هموگلوبین داخل‌سلولی در مرحلهٔ زیرحاد اولیه تیپیک است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "هیپوانتنسیتی T2 در سکانس DWI"
+          },
+          {
+            "id": "B",
+            "text": "هایپرانتنسیتی T1 از Met-Hb داخل سلولی (زیرحاد اولیه)"
+          },
+          {
+            "id": "C",
+            "text": "حلقوی در T1 پس از کنتراست"
+          },
+          {
+            "id": "D",
+            "text": "آرتیفکت شکوفه‌ای در SWI/T2*"
+          }
+        ],
+        "correct": "B",
+        "explanation": "Met-Hb داخل‌سلولی اغلب با پرسیگنال‌شدن T1 همراه است، درحالی‌که T2 ممکن است همچنان کم‌سیگنال باشد. زمان و شدت متغیر است و در هماتوم بزرگ ممکن است چند مرحله هم‌زمان وجود داشته باشد."
+      },
+      {
+        "id": "icb-q10",
+        "tags": [
+          "intrazerebrale-blutung",
+          "gehirn-blutung"
+        ],
+        "fach": "gehirn",
+        "question": "الگوی روشن-روشن (Bright-Bright) در MRI چیست و تشخیص افتراقی آن کدام است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "T1 هیپو + T2 هیپو · DD: کلسیفیکاسیون"
+          },
+          {
+            "id": "B",
+            "text": "T1 روشن + T2 روشن (زیرحاد دیررس از Met-Hb خارج سلولی) · DD: متاستاز ملانوم، ضایعه چربی"
+          },
+          {
+            "id": "C",
+            "text": "T1 هیپو + T2 روشن · DD: آبسه"
+          },
+          {
+            "id": "D",
+            "text": "T1 روشن + T2 هیپو · DD: فیبروم"
+          }
+        ],
+        "correct": "B",
+        "explanation": "در سیر زیرحاد دیررس، مت‌هموگلوبین خارج‌سلولی ممکن است T1 و T2 را پرسیگنال کند. الگوی روشن-روشن اختصاصی نیست و می‌تواند متاستاز حاوی ملانین یا چربی را تقلید کند. SWI/T2*، توالی‌های سرکوب چربی، تغییرات پیگیری، مورفولوژی و زمینهٔ بالینی در کنار هم به تشخیص افتراقی کمک می‌کنند؛ هیچ یافتهٔ منفردی قطعی نیست."
+      },
+      {
+        "id": "icb-q11",
+        "tags": [
+          "intrazerebrale-blutung",
+          "gehirn-blutung"
+        ],
+        "fach": "gehirn",
+        "question": "کدام سکانس برای تشخیص میکروبلیدهای قدیمی حساس‌ترین است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "T1 بدون کنتراست"
+          },
+          {
+            "id": "B",
+            "text": "FLAIR"
+          },
+          {
+            "id": "C",
+            "text": "SWI (تصویربرداری وزنی سوسپتیبیلیتی) / T2*"
+          },
+          {
+            "id": "D",
+            "text": "تصویربرداری وزنی دیفیوژن (DWI)"
+          }
+        ],
+        "correct": "C",
+        "explanation": "هموسیدرین در SWI/T2* اثر susceptibility برجسته ایجاد می‌کند. CT و MRI پرسش‌های متفاوتی را پاسخ می‌دهند؛ محصولات خونی کوچک و قدیمی با سکانس‌های حساس به susceptibility در MRI بهتر دیده می‌شوند."
+      },
+      {
+        "id": "icb-q12",
+        "tags": [
+          "intrazerebrale-blutung",
+          "gehirn-blutung"
+        ],
+        "fach": "gehirn",
+        "question": "کدام یافته در ICB باید به علت ثانویه (مثلاً تومور) فکر کرد؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "هماتوم در گانگلیون‌های قاعده‌ای با فشار خون شناخته‌شده"
+          },
+          {
+            "id": "B",
+            "text": "ادم اطراف ضایعه نسبت به اندازه هماتوم بیش از حد بزرگ"
+          },
+          {
+            "id": "C",
+            "text": "هماتوم کوچک‌تر از ۵ میلی‌لیتر در بیمار مسن"
+          },
+          {
+            "id": "D",
+            "text": "علامت چرخش (Swirl sign) در CT"
+          }
+        ],
+        "correct": "B",
+        "explanation": "در ICB اولیه ادم اطراف معمولاً متناسب با اندازه هماتوم است. ادم بیش از حد بزرگ هشدار ICB ثانویه از تومور یا انفارکت هموراژیک است."
+      },
+      {
+        "id": "icb-q13",
+        "tags": [
+          "intrazerebrale-blutung",
+          "gehirn-blutung"
+        ],
+        "fach": "gehirn",
+        "question": "محل تیپیک ICB ناشی از CAA کجاست؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "عمقی: پوتامن، تالاموس، پونز"
+          },
+          {
+            "id": "B",
+            "text": "لوبار (نزدیک کورتکس)، اغلب چندگانه، غالباً اکسیپیتال و پاریتال"
+          },
+          {
+            "id": "C",
+            "text": "فقط پری‌ونتریکولار"
+          },
+          {
+            "id": "D",
+            "text": "همیشه در مخچه"
+          }
+        ],
+        "correct": "B",
+        "explanation": "CAA باعث رسوب آمیلوئید در عروق کوچک کورتیکال و لپتومنینژال می‌شود. تیپیک ICBهای لوبار (نزدیک کورتکس) که اغلب چندگانه هستند با تمایل به لوب اکسیپیتال و پاریتال. میکروبلیدهای لوبار متعدد در SWI از CAA حمایت می‌کند."
+      },
+      {
+        "id": "icb-q14",
+        "tags": [
+          "intrazerebrale-blutung",
+          "gehirn-blutung"
+        ],
+        "fach": "gehirn",
+        "question": "تا چند ماه پس از ICB می‌توان حلقوی را در CT تشخیص داد؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "تا ۲ هفته"
+          },
+          {
+            "id": "B",
+            "text": "تا ۶ هفته"
+          },
+          {
+            "id": "C",
+            "text": "تا ۶ ماه"
+          },
+          {
+            "id": "D",
+            "text": "به‌طور دائمی باقی می‌ماند"
+          }
+        ],
+        "correct": "C",
+        "explanation": "حلقوی پس از ICB ناشی از اختلال سد خونی-مغزی در لبه ناحیه جذب است. تا ۶ ماه پس از رویداد خونریزی قابل تشخیص است و ممکن است با آبسه یا متاستاز اشتباه گرفته شود."
+      },
+      {
+        "id": "icb-q15",
+        "tags": [
+          "intrazerebrale-blutung",
+          "gehirn-blutung"
+        ],
+        "fach": "gehirn",
+        "question": "یک بیمار جوان بدون فشار خون بالا ICB لوبار دارد. قدم بعدی چیست؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "نیازی به بررسی بیشتر نیست — ICB لوبار همیشه خوش‌خیم است"
+          },
+          {
+            "id": "B",
+            "text": "CTA به‌موقع برای بررسی علت ماکروواسکولار مانند AVM یا آنوریسم"
+          },
+          {
+            "id": "C",
+            "text": "ضدانعقاد فوری"
+          },
+          {
+            "id": "D",
+            "text": "PET-CT برای رد تومور"
+          }
+        ],
+        "correct": "B",
+        "explanation": "در بیمار جوان بدون عوامل خطر کلاسیک مانند پرفشاری خون و بدون مصرف ضدانعقاد، مالفورماسیون عروقی (AVM، کاورنوم، dAVF) علت مهمی است. CTA و در صورت لزوم DSA برای بررسی AVM یا آنوریسم اندیکاسیون دارد. MRI شامل SWI می‌تواند کاورنوم را با الگوی تیپیک پاپ‌کورنی نشان دهد."
+      }
+    ]
+  },
+  "icbCards": [
+    {
+      "id": "icb-fc-01",
+      "topicId": "intrazerebrale-blutung",
+      "front": {
+        "de": "Hyperakute ICB · Was leisten T2, CT und blutsensitive MRT-Sequenzen?",
+        "en": "Hyperacute ICH · What can T2, CT and blood-sensitive MRI sequences show?",
+        "fa": "خونریزی داخل مغزی فوق‌حاد · نقش T2، CT و سکانس‌های حساس به خون در MRI چیست؟"
+      },
+      "back": {
+        "de": "T2 kann überwiegend hell sein und schließt Blut nicht aus.\nCT: schnelle Akutdiagnostik.\nGRE/T2* oder SWI: auch hyperakute Blutung erkennbar.",
+        "en": "T2 may be predominantly bright and does not exclude blood.\nCT: rapid acute assessment.\nGRE/T2* or SWI: can also detect hyperacute haemorrhage.",
+        "fa": "T2 ممکن است عمدتاً روشن باشد و خونریزی را رد نمی‌کند.\nCT: ارزیابی سریع در مرحلهٔ حاد.\nGRE/T2* یا SWI: امکان تشخیص خونریزی فوق‌حاد نیز وجود دارد."
+      },
+      "explanation": {
+        "de": "Signal und Suszeptibilität hängen von Sequenz, Blutprodukten und deren räumlicher Verteilung ab. Das vereinfachte Oxy-Hb-Modell rechtfertigt weder einen Blutungsausschluss auf T2 noch die pauschale Aussage, MRT sei hyperakut weniger sensitiv als CT. Beide Verfahren können eine akute ICB erkennen; Verfügbarkeit und klinische Situation bestimmen die Erstuntersuchung.",
+        "en": "Signal and susceptibility depend on the sequence, blood products and their spatial distribution. The simplified oxyHb model justifies neither excluding haemorrhage on T2 nor claiming that MRI is invariably less sensitive than CT in the hyperacute stage. Both can detect acute ICH; availability and the clinical situation determine the initial study.",
+        "fa": "سیگنال و حساسیت مغناطیسی به سکانس، محصولات خونی و توزیع فضایی آن‌ها بستگی دارند. مدل ساده‌شدهٔ اکسی‌هموگلوبین نه رد خونریزی بر اساس T2 را توجیه می‌کند و نه این ادعای کلی را که MRI در مرحلهٔ فوق‌حاد همیشه از CT کم‌حساس‌تر است. هر دو روش می‌توانند خونریزی حاد را تشخیص دهند؛ دسترسی و وضعیت بالینی تعیین‌کنندهٔ بررسی اولیه‌اند."
+      },
+      "diagram": {
+        "de": "T2 hell ≠ Blutung ausgeschlossen → CT / GRE / SWI im Kontext beurteilen",
+        "en": "Bright T2 ≠ haemorrhage excluded → assess CT / GRE / SWI in context",
+        "fa": "T2 روشن ≠ رد خونریزی ← CT / GRE / SWI را در زمینهٔ بالینی ارزیابی کنید"
+      },
+      "tag": "icb-mrt"
+    },
+    {
+      "id": "icb-fc-09",
+      "topicId": "intrazerebrale-blutung",
+      "front": {
+        "de": "CAA vs. Hypertensive ICB · Lokalisation?",
+        "en": "CAA vs. hypertensive ICB · location?",
+        "fa": "CAA در برابر ICB هیپرتانسیو · محل؟"
+      },
+      "back": {
+        "de": "Hypertensiv: tief (Putamen 35%, Thalamus 20%, Pons, Kleinhirn)\nCAA: lobär, kortexnah, oft multipel\n  Prädilektion: okzipital + parietal\n  Streng lobäre Mikroblutungen auf SWI → CAA-Verdacht; Kriterien prüfen",
+        "en": "Hypertensive: deep (putamen 35%, thalamus 20%, pons, cerebellum)\nCAA: lobar, cortical, often multiple\n  Predilection: occipital + parietal\n  Strictly lobar microbleeds on SWI → suspect CAA; assess criteria",
+        "fa": "هیپرتانسیو: عمقی (پوتامن ۳۵٪، تالاموس ۲۰٪، پونز، مخچه)\nCAA: لوبار، نزدیک کورتکس، اغلب چندگانه\n  تمایل: اکسیپیتال + پاریتال\n  میکروخونریزی‌های صرفاً لوبار در SWI ← شک به CAA؛ معیارها را بررسی کنید"
+      },
+      "explanation": {
+        "de": "Tiefe Blutungen sprechen im passenden Kontext eher für hypertensive Arteriopathie, streng lobäre Blutungen und kortikale superfizielle Siderose eher für CAA. Mehrere lobäre Mikroblutungen unterstützen den Verdacht, sind allein aber keine Diagnose. Boston v2.0 verwendet für wahrscheinliche CAA ab 50 Jahren bei passender klinischer Präsentation entweder mindestens zwei streng lobäre hämorrhagische Läsionen oder eine solche Läsion plus ein definiertes Marklagermerkmal. Tiefe hämorrhagische Läsionen und andere Ursachen müssen ausgeschlossen sein; es gibt keine allgemeine Regel „mehr als drei Mikroblutungen“.",
+        "en": "Deep haemorrhages favour hypertensive arteriopathy in the appropriate context; strictly lobar haemorrhages and cortical superficial siderosis favour CAA. Multiple lobar microbleeds support suspicion but are not diagnostic alone. For probable CAA, Boston v2.0 requires age at least 50 and an eligible clinical presentation, with either at least two strictly lobar haemorrhagic lesions or one such lesion plus a specified white-matter feature. Deep haemorrhagic lesions and alternative causes must be absent; there is no general “more than three microbleeds” rule.",
+        "fa": "در زمینهٔ مناسب، خونریزی‌های عمقی بیشتر به نفع آرتریوپاتی ناشی از پرفشاری خون و خونریزی‌های صرفاً لوبار و سیدروز سطحی قشر بیشتر به نفع CAA هستند. میکروخونریزی‌های لوبار متعدد شک را تقویت می‌کنند، اما به‌تنهایی تشخیصی نیستند. معیار Boston v2.0 برای CAA محتمل، سن دست‌کم ۵۰ سال و تظاهر بالینی واجد شرایط را همراه با حداقل دو ضایعهٔ خونریزی‌دهندهٔ صرفاً لوبار، یا یک ضایعهٔ لوبار به‌اضافهٔ یک ویژگی مشخص مادهٔ سفید لازم می‌داند. ضایعهٔ خونریزی‌دهندهٔ عمقی و علل جایگزین باید وجود نداشته باشند؛ قاعدهٔ کلی «بیش از سه میکروخونریزی» وجود ندارد."
+      },
+      "diagram": {
+        "de": "Hypertonie → Lipohyalinose tiefer Arterien → Putamen / Thalamus / Pons\nCAA → Amyloid in kortikalen Gefäßen → lobär okzipital / parietal → SWI: multiple Mikroblutungen",
+        "en": "Hypertension → lipohyalinosis deep arteries → putamen / thalamus / pons\nCAA → amyloid in cortical vessels → lobar occipital / parietal → SWI: multiple microbleeds",
+        "fa": "هیپرتانسیون → لیپوهیالینوز عروق عمقی → پوتامن / تالاموس / پونز\nCAA → آمیلوئید در عروق کورتیکال → لوبار اکسیپیتال / پاریتال → SWI: میکروبلید متعدد"
+      },
+      "tag": "icb-aetiology"
+    }
+  ],
+  "hmaQuestions": {
+    "de": [
+      {
+        "id": "hma-de-hma-01",
+        "tags": [
+          "hypertensive-mikroangiopathie",
+          "hypertensive-icb",
+          "gehirn"
+        ],
+        "fach": "gehirn",
+        "question": "Welche Lokalisation ist bei der hypertensiven intrazerebralen Blutung am häufigsten?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Putamen / Globus pallidus"
+          },
+          {
+            "id": "B",
+            "text": "Thalamus"
+          },
+          {
+            "id": "C",
+            "text": "Lobär (Frontallappen)"
+          },
+          {
+            "id": "D",
+            "text": "Pons"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Putamen/Globus pallidus/Capsula interna sind mit ~50 % die häufigste Lokalisation der hypertensiven ICB, gefolgt von Thalamus (~15 %), Kleinhirn (~10 %) und Pons (~10 %). Lobäre Blutungen sprechen eher für CAA."
+      },
+      {
+        "id": "hma-de-hma-02",
+        "tags": [
+          "hypertensive-mikroangiopathie",
+          "hypertensive-icb",
+          "gehirn"
+        ],
+        "fach": "gehirn",
+        "question": "Was bedeutet ein Spot-Sign im CTA?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Aktive Nachblutung mit Risiko der Hämatomexpansion"
+          },
+          {
+            "id": "B",
+            "text": "Zerebrale Mikroblutungen"
+          },
+          {
+            "id": "C",
+            "text": "Lakunärer Infarkt"
+          },
+          {
+            "id": "D",
+            "text": "Abszessbildung"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Das Spot-Sign bezeichnet eine punktförmige Kontrastmittelanreicherung innerhalb der ICB im CTA. Es ist ein direkter Hinweis auf eine aktive Nachblutung und prädiktiv für Hämatomexpansion sowie erhöhte Mortalität."
+      },
+      {
+        "id": "hma-de-hma-03",
+        "tags": [
+          "hypertensive-mikroangiopathie",
+          "hypertensive-icb",
+          "gehirn"
+        ],
+        "fach": "gehirn",
+        "question": "Ein 72-jähriger Patient mit langjährigem Bluthochdruck hat akut eine Ataxie, Schwindel und Erbrechen. Das CCT zeigt eine hyperdense Läsion im Kleinhirn mit einem Volumen von 18 ml. Was ist der nächste Schritt?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Dringende neurochirurgische Evaluation"
+          },
+          {
+            "id": "B",
+            "text": "Thrombolyse mit rtPA"
+          },
+          {
+            "id": "C",
+            "text": "Sofortige Antikoagulation"
+          },
+          {
+            "id": "D",
+            "text": "Abwarten und CCT-Kontrolle nach 24 h"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Kleinhirnblutungen mit einem Volumen ≥15 ml oder mit Hirnstammkompression oder obstruktivem Hydrozephalus sind ein neurochirurgischer Notfall. Die Gefahr eines obstruktiven Hydrozephalus und Hirnstammkompression erfordert dringende chirurgische Intervention. Lyse ist bei ICB absolut kontraindiziert."
+      },
+      {
+        "id": "hma-de-hma-04",
+        "tags": [
+          "hypertensive-mikroangiopathie",
+          "hypertensive-icb",
+          "gehirn"
+        ],
+        "fach": "gehirn",
+        "question": "Was ist der pathologische Hauptmechanismus der hypertensiven Mikroangiopathie?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Lipohyalinose der kleinen Perforatoren"
+          },
+          {
+            "id": "B",
+            "text": "Embolie aus dem Herzen"
+          },
+          {
+            "id": "C",
+            "text": "Atherosklerose der großen Gefäße"
+          },
+          {
+            "id": "D",
+            "text": "Amyloidablagerung in der Adventitia"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Chronisch erhöhter Blutdruck führt zur Lipohyalinose der kleinen Perforatoren: Wandverdickung, Lumenverengung und fibrinoide Nekrose. Die daraus entstehenden Charcot-Bouchard-Mikroaneurysmen können rupturieren → ICB. Wandverdickung mit Lumenverengung → Lakunäre Infarkte und WMH."
+      },
+      {
+        "id": "hma-de-hma-05",
+        "tags": [
+          "hypertensive-mikroangiopathie",
+          "hypertensive-icb",
+          "gehirn"
+        ],
+        "fach": "gehirn",
+        "question": "Im MRT/SWI zeigt ein 68-jähriger Patient zahlreiche kleine Hypointensitäten in Basalganglien, Thalamus und Pons. Was ist die wahrscheinlichste Diagnose?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Hypertensive Mikroangiopathie mit CMBs"
+          },
+          {
+            "id": "B",
+            "text": "Zerebrale Amyloidangiopathie (CAA)"
+          },
+          {
+            "id": "C",
+            "text": "Multiple Kavernome"
+          },
+          {
+            "id": "D",
+            "text": "Diffuse axonale Verletzung"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Tiefe zerebrale Mikroblutungen (CMBs) in SWI — lokalisiert in Basalganglien, Thalamus, Pons — sind typisch für die hypertensive Mikroangiopathie. CAA zeigt dagegen kortikale/subkortikale CMBs. Diese Differenzierung (tief vs. kortikal) ist klinisch wichtig für die Diagnosestellung und Rezidivrisikobewertung."
+      },
+      {
+        "id": "hma-de-hma-06",
+        "tags": [
+          "hypertensive-mikroangiopathie",
+          "hypertensive-icb",
+          "gehirn"
+        ],
+        "fach": "gehirn",
+        "question": "Was beschreibt die Fazekas-Skala?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Ausmaß der periventrikulären und tiefen Marklager-WMH im MRT"
+          },
+          {
+            "id": "B",
+            "text": "Schweregrad der hypertensiven ICB nach Volumen"
+          },
+          {
+            "id": "C",
+            "text": "Anzahl der Mikroblutungen im SWI"
+          },
+          {
+            "id": "D",
+            "text": "Stenosegrad der intrazerebralen Arterien"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Die Fazekas-Skala klassifiziert das Ausmaß der WMH (Leukoaraiose) in FLAIR/T2: Grad 0 (keine) → Grad 3 (konfluierend). Getrennte Bewertung für periventrikuläre (Caps/Bands) und tiefe weiße Substanz."
+      },
+      {
+        "id": "hma-de-hma-07",
+        "tags": [
+          "hypertensive-mikroangiopathie",
+          "hypertensive-icb",
+          "gehirn"
+        ],
+        "fach": "gehirn",
+        "question": "Welche Sequenz zeigt einen akuten lakunären Infarkt am sensitivsten?",
+        "options": [
+          {
+            "id": "A",
+            "text": "DWI (Diffusions-gewichtete Bildgebung)"
+          },
+          {
+            "id": "B",
+            "text": "T2 / FLAIR"
+          },
+          {
+            "id": "C",
+            "text": "SWI (Susceptibility Weighted Imaging)"
+          },
+          {
+            "id": "D",
+            "text": "CCT nativ"
+          }
+        ],
+        "correct": "A",
+        "explanation": "DWI kann frische kleine subkortikale Infarkte früh als Diffusionsrestriktion zeigen; kleine oder sehr frühe Läsionen können aber DWI-negativ sein. T2/FLAIR-Veränderungen entwickeln sich variabel und besitzen keine feste 6–24-Stunden-Grenze. Ein frischer kleiner subkortikaler Infarkt ist von einer chronischen Lakune zu unterscheiden."
+      },
+      {
+        "id": "hma-de-hma-08",
+        "tags": [
+          "hypertensive-mikroangiopathie",
+          "hypertensive-icb",
+          "gehirn"
+        ],
+        "fach": "gehirn",
+        "question": "Welcher Befund im CCT spricht am stärksten für eine Metastase und NICHT für eine hypertensive ICB?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Runde Form + perifokales Ödem + periphere Lokalisation"
+          },
+          {
+            "id": "B",
+            "text": "Irreguläre Form + tiefe Lokalisation"
+          },
+          {
+            "id": "C",
+            "text": "Hyperdens + Ventrikeleinbruch"
+          },
+          {
+            "id": "D",
+            "text": "Kleine Hypodensitäten in den Basalganglien"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Metastasen-typische CCT-Zeichen: rund, peripher, ausgeprägtes perifokales Ödem, oft multipel. KM-Enhancement. Hypertensive ICB ist irregulär, tief, mit relativ wenigem Ödem. Das Ödem-Ausmaß ist ein wichtiges Differenzierungskriterium."
+      },
+      {
+        "id": "hma-de-hma-09",
+        "tags": [
+          "hypertensive-mikroangiopathie",
+          "hypertensive-icb",
+          "gehirn"
+        ],
+        "fach": "gehirn",
+        "question": "Ein Patient hat eine hypertensive ICB unter Warfarin (INR 3,2). Welche Maßnahme hat die höchste Priorität?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Sofortige Antagonisierung mit PCC + Vitamin K iv."
+          },
+          {
+            "id": "B",
+            "text": "Frisches gefrorenes Plasma (FFP) allein"
+          },
+          {
+            "id": "C",
+            "text": "Abwarten bis INR spontan sinkt"
+          },
+          {
+            "id": "D",
+            "text": "Thrombozytenkonzentrat"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Bei VKA-assoziierter ICB rasch 4-Faktor-PCC plus Vitamin K intravenös geben; die PCC-Dosis richtet sich nach INR, Körpergewicht und Präparat. INR zeitnah kontrollieren. Bei ASS-assoziierter spontaner ICB ohne Notfalloperation sind Thrombozytentransfusionen potenziell schädlich und nicht zu geben. Vor einer Notfallneurochirurgie kann die Gabe erwogen werden; schwere Thrombozytopenie ist eine gesonderte Indikation."
+      },
+      {
+        "id": "hma-de-hma-10",
+        "tags": [
+          "hypertensive-mikroangiopathie",
+          "hypertensive-icb",
+          "gehirn"
+        ],
+        "fach": "gehirn",
+        "question": "Was ist das klassische klinische Bild einer Pons-Blutung?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Stecknadelkopf-Pupillen + Tetraparese + Koma"
+          },
+          {
+            "id": "B",
+            "text": "Kontralaterale Hemiparese + Hemisensibilitätsstörung"
+          },
+          {
+            "id": "C",
+            "text": "Ataxie + Schwindel + Erbrechen"
+          },
+          {
+            "id": "D",
+            "text": "Hemisensibilitätsstörung + vertikale Blickparese"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Ponsblutung: charakteristisch sind beidseitige Stecknadelkopf-Pupillen (sympathische Fasern bilateral betroffen), Tetraparese (bilateral deszendierend) und rascher Bewusstseinsverlust bis zum Koma. Schlechteste Prognose aller ICB-Lokalisationen."
+      },
+      {
+        "id": "hma-de-hma-11",
+        "tags": [
+          "hypertensive-mikroangiopathie",
+          "hypertensive-icb",
+          "gehirn"
+        ],
+        "fach": "gehirn",
+        "question": "Welche Aussage zum lakunären Infarkt trifft zu?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Frischer kleiner subkortikaler Infarkt im Perforatorgebiet; axial meist bis etwa 20 mm"
+          },
+          {
+            "id": "B",
+            "text": "Immer >2 cm, kortikal gelegen"
+          },
+          {
+            "id": "C",
+            "text": "Durch Verschluss einer kortikalen Vene bedingt"
+          },
+          {
+            "id": "D",
+            "text": "Nur im MRT, nicht im CCT sichtbar"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Nach STRIVE liegt ein frischer kleiner subkortikaler Infarkt im Gebiet einer Perforatorarterie und misst axial meist bis etwa 20 mm. DWI kann Diffusionsrestriktion zeigen. Eine Lakune bezeichnet dagegen eine chronische liquorähnliche Höhle von etwa 3–15 mm; nicht jeder frische Infarkt kavitiert."
+      },
+      {
+        "id": "hma-de-hma-12",
+        "tags": [
+          "hypertensive-mikroangiopathie",
+          "hypertensive-icb",
+          "gehirn"
+        ],
+        "fach": "gehirn",
+        "question": "Ein 70-jähriger mit Bluthochdruck: MRT FLAIR zeigt großflächige periventrikuläre und konfluierende tiefe WMH. Fazekas-Grad?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Grad 3"
+          },
+          {
+            "id": "B",
+            "text": "Grad 1"
+          },
+          {
+            "id": "C",
+            "text": "Grad 2"
+          },
+          {
+            "id": "D",
+            "text": "Grad 0"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Fazekas Grad 3: ausgedehnte periventrikuläre WMH (kein abgrenzbares Halo mehr, sondern irreguläre Randzone) + großflächig konfluierende tiefe Marklagerläsionen. Grad 1 = gepunktet, Grad 2 = beginnende Konfluenz. Fazekas 3 korreliert mit kognitivem Abbau und erhöhtem Schlaganfallrisiko."
+      }
+    ],
+    "en": [
+      {
+        "id": "hma-en-hma-01",
+        "tags": [
+          "hypertensive-mikroangiopathie",
+          "hypertensive-icb",
+          "gehirn"
+        ],
+        "fach": "gehirn",
+        "question": "Which location is most common in hypertensive intracerebral haemorrhage?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Putamen / Globus pallidus"
+          },
+          {
+            "id": "B",
+            "text": "Thalamus"
+          },
+          {
+            "id": "C",
+            "text": "Lobar (frontal lobe)"
+          },
+          {
+            "id": "D",
+            "text": "Pons"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Putamen/globus pallidus/internal capsule account for ~50% of hypertensive ICH locations, followed by thalamus (~15%), cerebellum (~10%) and pons (~10%). Lobar haemorrhage suggests CAA rather than hypertension."
+      },
+      {
+        "id": "hma-en-hma-02",
+        "tags": [
+          "hypertensive-mikroangiopathie",
+          "hypertensive-icb",
+          "gehirn"
+        ],
+        "fach": "gehirn",
+        "question": "What does a spot sign on CTA indicate?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Active re-bleeding with risk of haematoma expansion"
+          },
+          {
+            "id": "B",
+            "text": "Cerebral microbleeds"
+          },
+          {
+            "id": "C",
+            "text": "Lacunar infarct"
+          },
+          {
+            "id": "D",
+            "text": "Abscess formation"
+          }
+        ],
+        "correct": "A",
+        "explanation": "The spot sign refers to focal contrast enhancement within the ICH on CTA. It is a direct indicator of active re-bleeding and is predictive of haematoma expansion and increased mortality."
+      },
+      {
+        "id": "hma-en-hma-03",
+        "tags": [
+          "hypertensive-mikroangiopathie",
+          "hypertensive-icb",
+          "gehirn"
+        ],
+        "fach": "gehirn",
+        "question": "A 72-year-old patient with long-standing hypertension presents with acute ataxia, dizziness and vomiting. CCT shows a hyperdense lesion in the cerebellum with a volume of 18 mL. What is the next step?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Urgent neurosurgical evaluation"
+          },
+          {
+            "id": "B",
+            "text": "Thrombolysis with rtPA"
+          },
+          {
+            "id": "C",
+            "text": "Immediate anticoagulation"
+          },
+          {
+            "id": "D",
+            "text": "Wait and repeat CCT after 24 h"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Cerebellar haemorrhages with volume ≥15 mL or brainstem compression or obstructive hydrocephalus are a neurosurgical emergency. The risk of obstructive hydrocephalus and brainstem compression requires urgent surgical intervention. Thrombolysis is absolutely contraindicated in ICH."
+      },
+      {
+        "id": "hma-en-hma-04",
+        "tags": [
+          "hypertensive-mikroangiopathie",
+          "hypertensive-icb",
+          "gehirn"
+        ],
+        "fach": "gehirn",
+        "question": "What is the main pathological mechanism of hypertensive microangiopathy?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Lipohyalinosis of small perforators"
+          },
+          {
+            "id": "B",
+            "text": "Cardiac embolism"
+          },
+          {
+            "id": "C",
+            "text": "Atherosclerosis of large vessels"
+          },
+          {
+            "id": "D",
+            "text": "Amyloid deposition in the adventitia"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Chronic hypertension leads to lipohyalinosis of small perforators: wall thickening, luminal narrowing and fibrinoid necrosis. The resulting Charcot-Bouchard microaneurysms may rupture → ICH. Wall thickening with luminal narrowing → lacunar infarcts and WMH."
+      },
+      {
+        "id": "hma-en-hma-05",
+        "tags": [
+          "hypertensive-mikroangiopathie",
+          "hypertensive-icb",
+          "gehirn"
+        ],
+        "fach": "gehirn",
+        "question": "On MRI/SWI a 68-year-old patient shows numerous small hypointensities in the basal ganglia, thalamus and pons. What is the most likely diagnosis?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Hypertensive microangiopathy with CMBs"
+          },
+          {
+            "id": "B",
+            "text": "Cerebral amyloid angiopathy (CAA)"
+          },
+          {
+            "id": "C",
+            "text": "Multiple cavernomas"
+          },
+          {
+            "id": "D",
+            "text": "Diffuse axonal injury"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Deep cerebral microbleeds (CMBs) on SWI localised in basal ganglia, thalamus and pons are typical of hypertensive microangiopathy. CAA shows cortical/subcortical CMBs. This distinction (deep vs. cortical) is clinically important for diagnosis and recurrence risk assessment."
+      },
+      {
+        "id": "hma-en-hma-06",
+        "tags": [
+          "hypertensive-mikroangiopathie",
+          "hypertensive-icb",
+          "gehirn"
+        ],
+        "fach": "gehirn",
+        "question": "What does the Fazekas scale describe?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Extent of periventricular and deep white matter WMH on MRI"
+          },
+          {
+            "id": "B",
+            "text": "Severity of hypertensive ICH by volume"
+          },
+          {
+            "id": "C",
+            "text": "Number of microbleeds on SWI"
+          },
+          {
+            "id": "D",
+            "text": "Degree of stenosis of intracerebral arteries"
+          }
+        ],
+        "correct": "A",
+        "explanation": "The Fazekas scale classifies the extent of WMH (leukoaraiosis) on FLAIR/T2: grade 0 (none) → grade 3 (confluent). Separate scoring for periventricular (caps/bands) and deep white matter."
+      },
+      {
+        "id": "hma-en-hma-07",
+        "tags": [
+          "hypertensive-mikroangiopathie",
+          "hypertensive-icb",
+          "gehirn"
+        ],
+        "fach": "gehirn",
+        "question": "Which sequence is most sensitive for detecting an acute lacunar infarct?",
+        "options": [
+          {
+            "id": "A",
+            "text": "DWI (diffusion-weighted imaging)"
+          },
+          {
+            "id": "B",
+            "text": "T2 / FLAIR"
+          },
+          {
+            "id": "C",
+            "text": "SWI (susceptibility weighted imaging)"
+          },
+          {
+            "id": "D",
+            "text": "Non-contrast CCT"
+          }
+        ],
+        "correct": "A",
+        "explanation": "DWI can reveal recent small subcortical infarcts early as restricted diffusion, although small or very early lesions may be DWI-negative. T2/FLAIR changes evolve variably and have no fixed 6–24-hour boundary. A recent small subcortical infarct should be distinguished from a chronic lacune."
+      },
+      {
+        "id": "hma-en-hma-08",
+        "tags": [
+          "hypertensive-mikroangiopathie",
+          "hypertensive-icb",
+          "gehirn"
+        ],
+        "fach": "gehirn",
+        "question": "Which CCT finding most strongly suggests a metastasis and NOT hypertensive ICH?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Round shape + perilesional oedema + peripheral location"
+          },
+          {
+            "id": "B",
+            "text": "Irregular shape + deep location"
+          },
+          {
+            "id": "C",
+            "text": "Hyperdense + intraventricular extension"
+          },
+          {
+            "id": "D",
+            "text": "Small hypodensities in the basal ganglia"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Metastasis-typical CCT signs: round, peripheral, prominent perilesional oedema, often multiple. Contrast enhancement. Hypertensive ICH is irregular, deep, with relatively little oedema. The extent of oedema is an important differentiating criterion."
+      },
+      {
+        "id": "hma-en-hma-09",
+        "tags": [
+          "hypertensive-mikroangiopathie",
+          "hypertensive-icb",
+          "gehirn"
+        ],
+        "fach": "gehirn",
+        "question": "A patient has a hypertensive ICH while on warfarin (INR 3.2). Which measure has the highest priority?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Immediate reversal with PCC + IV vitamin K"
+          },
+          {
+            "id": "B",
+            "text": "Fresh frozen plasma (FFP) alone"
+          },
+          {
+            "id": "C",
+            "text": "Wait for INR to fall spontaneously"
+          },
+          {
+            "id": "D",
+            "text": "Platelet concentrate"
+          }
+        ],
+        "correct": "A",
+        "explanation": "For VKA-associated ICH, promptly administer four-factor PCC plus intravenous vitamin K; PCC dosing depends on INR, body weight and product. Recheck INR promptly. In aspirin-associated spontaneous ICH without emergency surgery, platelet transfusions are potentially harmful and should not be given. They may be considered before emergency neurosurgery; severe thrombocytopenia is a separate indication."
+      },
+      {
+        "id": "hma-en-hma-10",
+        "tags": [
+          "hypertensive-mikroangiopathie",
+          "hypertensive-icb",
+          "gehirn"
+        ],
+        "fach": "gehirn",
+        "question": "What is the classic clinical picture of a pontine haemorrhage?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Pinpoint pupils + tetraparesis + coma"
+          },
+          {
+            "id": "B",
+            "text": "Contralateral hemiparesis + hemisensory loss"
+          },
+          {
+            "id": "C",
+            "text": "Ataxia + dizziness + vomiting"
+          },
+          {
+            "id": "D",
+            "text": "Hemisensory loss + vertical gaze palsy"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Pontine haemorrhage: characteristic bilateral pinpoint pupils (bilateral involvement of sympathetic fibres), tetraparesis (bilateral descending tracts) and rapid loss of consciousness to coma. Worst prognosis of all ICH locations."
+      },
+      {
+        "id": "hma-en-hma-11",
+        "tags": [
+          "hypertensive-mikroangiopathie",
+          "hypertensive-icb",
+          "gehirn"
+        ],
+        "fach": "gehirn",
+        "question": "Which statement about lacunar infarct is correct?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Recent small subcortical infarct in a perforator territory; usually up to about 20 mm axially"
+          },
+          {
+            "id": "B",
+            "text": "Always >2 cm, cortical location"
+          },
+          {
+            "id": "C",
+            "text": "Caused by occlusion of a cortical vein"
+          },
+          {
+            "id": "D",
+            "text": "Visible on MRI only, not CCT"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Under STRIVE, a recent small subcortical infarct lies in a perforator territory and usually measures up to about 20 mm axially. DWI may show restricted diffusion. A lacune instead denotes a chronic CSF-like cavity about 3–15 mm in size; not every recent infarct cavitates."
+      },
+      {
+        "id": "hma-en-hma-12",
+        "tags": [
+          "hypertensive-mikroangiopathie",
+          "hypertensive-icb",
+          "gehirn"
+        ],
+        "fach": "gehirn",
+        "question": "A 70-year-old with hypertension: MRI FLAIR shows extensive periventricular and confluent deep WMH. Fazekas grade?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Grade 3"
+          },
+          {
+            "id": "B",
+            "text": "Grade 1"
+          },
+          {
+            "id": "C",
+            "text": "Grade 2"
+          },
+          {
+            "id": "D",
+            "text": "Grade 0"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Fazekas grade 3: extensive periventricular WMH (no longer a distinct halo but an irregular margin) + large confluent deep white matter lesions. Grade 1 = punctate, grade 2 = beginning confluence. Fazekas 3 correlates with cognitive decline and increased stroke risk."
+      }
+    ],
+    "fa": [
+      {
+        "id": "hma-fa-hma-01",
+        "tags": [
+          "hypertensive-mikroangiopathie",
+          "hypertensive-icb",
+          "gehirn"
+        ],
+        "fach": "gehirn",
+        "question": "کدام محل در خونریزی داخل مغزی فشار خون بالا شایع‌ترین است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "پوتامن / گلوبوس پالیدوس"
+          },
+          {
+            "id": "B",
+            "text": "تالاموس"
+          },
+          {
+            "id": "C",
+            "text": "لوبار (لوب فرونتال)"
+          },
+          {
+            "id": "D",
+            "text": "پونز"
+          }
+        ],
+        "correct": "A",
+        "explanation": "پوتامن/گلوبوس پالیدوس/کپسول داخلی با ~۵۰٪ شایع‌ترین محل ICH فشار خون بالا هستند، سپس تالاموس (~۱۵٪)، مخچه (~۱۰٪) و پونز (~۱۰٪). خونریزی لوبار بیشتر به CAA اشاره دارد."
+      },
+      {
+        "id": "hma-fa-hma-02",
+        "tags": [
+          "hypertensive-mikroangiopathie",
+          "hypertensive-icb",
+          "gehirn"
+        ],
+        "fach": "gehirn",
+        "question": "علامت اسپات (Spot sign) در CTA چه معنایی دارد؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "خونریزی فعال مجدد با خطر گسترش هماتوم"
+          },
+          {
+            "id": "B",
+            "text": "خونریزی‌های میکرو مغزی"
+          },
+          {
+            "id": "C",
+            "text": "انفارکت لاکونار"
+          },
+          {
+            "id": "D",
+            "text": "تشکیل آبسه"
+          }
+        ],
+        "correct": "A",
+        "explanation": "علامت اسپات (Spot sign) به تجمع کنتراست نقطه‌ای داخل ICH در CTA اشاره دارد. این نشانه مستقیماً نشان‌دهنده خونریزی فعال مجدد است و پیش‌بینی‌کننده گسترش هماتوم و افزایش مرگ‌ومیر است."
+      },
+      {
+        "id": "hma-fa-hma-03",
+        "tags": [
+          "hypertensive-mikroangiopathie",
+          "hypertensive-icb",
+          "gehirn"
+        ],
+        "fach": "gehirn",
+        "question": "یک بیمار ۷۲ ساله با فشار خون مزمن با آتاکسی حاد، سرگیجه و استفراغ مراجعه می‌کند. CCT یک ضایعه هیپردنس در مخچه با حجم ۱۸ میلی‌لیتر نشان می‌دهد. قدم بعدی چیست؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "ارزیابی فوری جراحی مغز"
+          },
+          {
+            "id": "B",
+            "text": "تروم‌بولیز با rtPA"
+          },
+          {
+            "id": "C",
+            "text": "ضد انعقاد فوری"
+          },
+          {
+            "id": "D",
+            "text": "صبر و تکرار CCT بعد از ۲۴ ساعت"
+          }
+        ],
+        "correct": "A",
+        "explanation": "خونریزی‌های مخچه با حجم ≥۱۵ میلی‌لیتر یا با فشار به ساقهٔ مغز یا هیدروسفالی انسدادی اورژانس جراحی مغز هستند. خطر هیدروسفالی انسدادی و فشار به ساقه مغز نیاز به مداخله جراحی فوری دارد. تروم‌بولیز در ICH مطلقاً منع مصرف است."
+      },
+      {
+        "id": "hma-fa-hma-04",
+        "tags": [
+          "hypertensive-mikroangiopathie",
+          "hypertensive-icb",
+          "gehirn"
+        ],
+        "fach": "gehirn",
+        "question": "مکانیسم پاتولوژیک اصلی میکروآنژیوپاتی فشار خون بالا چیست؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "لیپوهیالینوز پرفوراتورهای کوچک"
+          },
+          {
+            "id": "B",
+            "text": "آمبولی از قلب"
+          },
+          {
+            "id": "C",
+            "text": "آترواسکلروز عروق بزرگ"
+          },
+          {
+            "id": "D",
+            "text": "رسوب آمیلوئید در ادوانتیشیا"
+          }
+        ],
+        "correct": "A",
+        "explanation": "فشار خون مزمن بالا منجر به لیپوهیالینوز پرفوراتورهای کوچک می‌شود: ضخیم شدن دیواره، تنگی لومن و نکروز فیبرینوئید. میکروآنوریسم‌های Charcot-Bouchard ممکن است پاره شوند → ICH. ضخیم شدن دیواره با تنگی لومن → انفارکت لاکونار و WMH."
+      },
+      {
+        "id": "hma-fa-hma-05",
+        "tags": [
+          "hypertensive-mikroangiopathie",
+          "hypertensive-icb",
+          "gehirn"
+        ],
+        "fach": "gehirn",
+        "question": "در MRI/SWI یک بیمار ۶۸ ساله هایپوانتنسیتی‌های کوچک متعددی در بازال گانگلیا، تالاموس و پونز نشان می‌دهد. محتمل‌ترین تشخیص چیست؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "میکروآنژیوپاتی فشار خون بالا با CMBs"
+          },
+          {
+            "id": "B",
+            "text": "آنژیوپاتی آمیلوئید مغزی (CAA)"
+          },
+          {
+            "id": "C",
+            "text": "کاورنوم‌های متعدد"
+          },
+          {
+            "id": "D",
+            "text": "آسیب آکسونال منتشر"
+          }
+        ],
+        "correct": "A",
+        "explanation": "خونریزی‌های میکرو مغزی (CMBs) عمقی در SWI که در بازال گانگلیا، تالاموس و پونز قرار دارند، مشخصه میکروآنژیوپاتی فشار خون بالا هستند. CAA CMBs کورتیکال/ساب‌کورتیکال نشان می‌دهد. این تمایز (عمقی در مقابل کورتیکال) از نظر بالینی برای تشخیص و ارزیابی خطر عود مهم است."
+      },
+      {
+        "id": "hma-fa-hma-06",
+        "tags": [
+          "hypertensive-mikroangiopathie",
+          "hypertensive-icb",
+          "gehirn"
+        ],
+        "fach": "gehirn",
+        "question": "مقیاس Fazekas چه چیزی را توصیف می‌کند؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "میزان WMH پریونتریکولار و ماده سفید عمقی در MRI"
+          },
+          {
+            "id": "B",
+            "text": "شدت ICH فشار خون بالا بر اساس حجم"
+          },
+          {
+            "id": "C",
+            "text": "تعداد خونریزی‌های میکرو در SWI"
+          },
+          {
+            "id": "D",
+            "text": "درجه تنگی شریان‌های داخل مغزی"
+          }
+        ],
+        "correct": "A",
+        "explanation": "مقیاس Fazekas میزان WMH (لوکوآرائوز) را در FLAIR/T2 طبقه‌بندی می‌کند: درجه ۰ (هیچ) → درجه ۳ (تجمع‌یافته). نمره‌دهی جداگانه برای ماده سفید پریونتریکولار (کپ‌ها/باندها) و عمقی."
+      },
+      {
+        "id": "hma-fa-hma-07",
+        "tags": [
+          "hypertensive-mikroangiopathie",
+          "hypertensive-icb",
+          "gehirn"
+        ],
+        "fach": "gehirn",
+        "question": "کدام سکانس برای تشخیص انفارکت لاکونار حاد حساس‌ترین است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "DWI (تصویربرداری با وزن انتشار)"
+          },
+          {
+            "id": "B",
+            "text": "T2 / FLAIR"
+          },
+          {
+            "id": "C",
+            "text": "SWI (تصویربرداری با وزن حساسیت)"
+          },
+          {
+            "id": "D",
+            "text": "CCT بدون کنتراست"
+          }
+        ],
+        "correct": "A",
+        "explanation": "DWI می‌تواند انفارکت کوچک زیرقشری تازه را زود به‌صورت محدودیت دیفیوژن نشان دهد؛ بااین‌حال ضایعات کوچک یا بسیار زودرس ممکن است در DWI دیده نشوند. تغییرات T2/FLAIR زمان‌بندی متغیری دارند و مرز ثابت ۶ تا ۲۴ ساعت ندارند. انفارکت کوچک زیرقشری تازه باید از لاکون مزمن جدا شود."
+      },
+      {
+        "id": "hma-fa-hma-08",
+        "tags": [
+          "hypertensive-mikroangiopathie",
+          "hypertensive-icb",
+          "gehirn"
+        ],
+        "fach": "gehirn",
+        "question": "کدام یافته CCT بیشتر از همه به متاستاز اشاره دارد و نه ICH فشار خون بالا؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "شکل گرد + ادم پریفوکال + محل محیطی"
+          },
+          {
+            "id": "B",
+            "text": "شکل نامنظم + محل عمقی"
+          },
+          {
+            "id": "C",
+            "text": "هیپردنس + گسترش بطنی"
+          },
+          {
+            "id": "D",
+            "text": "هایپودنسیته‌های کوچک در بازال گانگلیا"
+          }
+        ],
+        "correct": "A",
+        "explanation": "نشانه‌های تیپیک CCT متاستاز: گرد، محیطی، ادم پریفوکال شدید، اغلب متعدد. تقویت پس از تزریق. ICH فشار خون نامنظم، عمقی، با ادم نسبتاً کم است. میزان ادم یک معیار مهم تمایز است."
+      },
+      {
+        "id": "hma-fa-hma-09",
+        "tags": [
+          "hypertensive-mikroangiopathie",
+          "hypertensive-icb",
+          "gehirn"
+        ],
+        "fach": "gehirn",
+        "question": "یک بیمار با وارفارین (INR 3.2) دچار ICH فشار خون بالا می‌شود. کدام اقدام بالاترین اولویت را دارد؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "معکوس فوری با PCC + ویتامین K IV"
+          },
+          {
+            "id": "B",
+            "text": "پلاسمای تازه منجمد (FFP) به تنهایی"
+          },
+          {
+            "id": "C",
+            "text": "صبر کردن تا INR به طور خودبخود کاهش یابد"
+          },
+          {
+            "id": "D",
+            "text": "کنسانتره پلاکتی"
+          }
+        ],
+        "correct": "A",
+        "explanation": "در خونریزی داخل مغزی مرتبط با آنتاگونیست ویتامین K، PCC چهارعاملی و ویتامین K وریدی را سریع تجویز کنید؛ دوز PCC به INR، وزن و فرآورده بستگی دارد. INR را به‌موقع دوباره بررسی کنید. در خونریزی خودبه‌خودی مرتبط با آسپرین بدون جراحی اورژانسی، تزریق پلاکت بالقوه زیان‌بار است و نباید انجام شود. پیش از جراحی اورژانسی مغز می‌توان آن را در نظر گرفت؛ ترومبوسیتوپنی شدید اندیکاسیونی جداگانه است."
+      },
+      {
+        "id": "hma-fa-hma-10",
+        "tags": [
+          "hypertensive-mikroangiopathie",
+          "hypertensive-icb",
+          "gehirn"
+        ],
+        "fach": "gehirn",
+        "question": "تصویر بالینی کلاسیک خونریزی پونز چیست؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "مردمک‌های سوزن‌نقطه‌ای + تتراپارزی + کما"
+          },
+          {
+            "id": "B",
+            "text": "همی‌پارزی کنترالترال + اختلال حسی نیمه"
+          },
+          {
+            "id": "C",
+            "text": "آتاکسی + سرگیجه + استفراغ"
+          },
+          {
+            "id": "D",
+            "text": "اختلال حسی نیمه + فلج نگاه عمودی"
+          }
+        ],
+        "correct": "A",
+        "explanation": "خونریزی پونز: مردمک‌های سوزن‌نقطه‌ای دوطرفه مشخصه (درگیری دوطرفه فیبرهای سمپاتیک)، تتراپارزی (مسیرهای نزولی دوطرفه) و از دست دادن سریع هوشیاری تا کما. بدترین پیش‌آگهی از تمام محل‌های ICH."
+      },
+      {
+        "id": "hma-fa-hma-11",
+        "tags": [
+          "hypertensive-mikroangiopathie",
+          "hypertensive-icb",
+          "gehirn"
+        ],
+        "fach": "gehirn",
+        "question": "کدام گزارش درباره انفارکت لاکونار صحیح است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "انفارکت کوچک زیرقشری تازه در قلمرو پرفوراتور؛ معمولاً تا حدود ۲۰ میلی‌متر در صفحهٔ محوری"
+          },
+          {
+            "id": "B",
+            "text": "همیشه >2 سانتی‌متر، محل کورتیکال"
+          },
+          {
+            "id": "C",
+            "text": "ناشی از انسداد ورید قشری"
+          },
+          {
+            "id": "D",
+            "text": "فقط در MRI قابل مشاهده، نه در CCT"
+          }
+        ],
+        "correct": "A",
+        "explanation": "بر اساس STRIVE، انفارکت کوچک زیرقشری تازه در قلمرو شریان پرفوراتور قرار دارد و معمولاً در صفحهٔ محوری تا حدود ۲۰ میلی‌متر است. DWI ممکن است محدودیت دیفیوژن نشان دهد. لاکون به حفرهٔ مزمن با سیگنال شبیه مایع مغزی‌نخاعی و اندازهٔ حدود ۳ تا ۱۵ میلی‌متر گفته می‌شود؛ همهٔ انفارکت‌های تازه به حفره تبدیل نمی‌شوند."
+      },
+      {
+        "id": "hma-fa-hma-12",
+        "tags": [
+          "hypertensive-mikroangiopathie",
+          "hypertensive-icb",
+          "gehirn"
+        ],
+        "fach": "gehirn",
+        "question": "یک ۷۰ ساله با فشار خون: MRI FLAIR وسیع WMH پریونتریکولار و تجمع عمقی نشان می‌دهد. درجه Fazekas؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "درجه ۳"
+          },
+          {
+            "id": "B",
+            "text": "درجه ۱"
+          },
+          {
+            "id": "C",
+            "text": "درجه ۲"
+          },
+          {
+            "id": "D",
+            "text": "درجه ۰"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Fazekas درجه ۳: WMH پریونتریکولار وسیع (دیگر هاله متمایزی وجود ندارد، بلکه حاشیه نامنظم) + ضایعات ماده سفید عمقی تجمع وسیع. درجه ۱ = نقطه‌ای، درجه ۲ = شروع تجمع. Fazekas 3 با کاهش شناختی و افزایش خطر سکته مرتبط است."
+      }
+    ]
+  },
+  "hmaCards": [
+    {
+      "id": "hma-08-lakunen",
+      "topicId": "hypertensive-mikroangiopathie",
+      "category": {
+        "de": "MRT/DWI",
+        "en": "MRI/DWI",
+        "fa": "MRI/DWI"
+      },
+      "front": {
+        "de": "Lakunärer Infarkt: Definition und MRT-Befunde?",
+        "en": "Lacunar infarct: definition and MRI findings?",
+        "fa": "انفارکت لاکونار: تعریف و یافته‌های MRI؟"
+      },
+      "answer": {
+        "de": "Frischer kleiner subkortikaler Infarkt: Perforatorgebiet, axial meist bis etwa 20 mm; akut häufig DWI↑ und ADC↓.\nChronische Lakune: liquorähnliche Höhle von etwa 3–15 mm, oft mit FLAIR-Saum. Nicht jeder frische Infarkt hinterlässt eine Lakune.",
+        "en": "Recent small subcortical infarct: perforator territory, usually up to about 20 mm axially; often DWI↑ and ADC↓ acutely.\nChronic lacune: CSF-like cavity about 3–15 mm, often with a FLAIR rim. Not every recent infarct leaves a lacune.",
+        "fa": "انفارکت کوچک زیرقشری تازه: قلمرو پرفوراتور، معمولاً تا حدود ۲۰ میلی‌متر در صفحهٔ محوری؛ در فاز حاد اغلب DWI↑ و ADC↓.\nلاکون مزمن: حفرهٔ حدود ۳ تا ۱۵ میلی‌متر با سیگنال شبیه مایع مغزی‌نخاعی، اغلب با حاشیه در FLAIR. همهٔ انفارکت‌های تازه لاکون باقی نمی‌گذارند."
+      },
+      "explanation": {
+        "de": "Frischer Infarkt ≠ chronische Lakune (3–15 mm)",
+        "en": "Recent infarct ≠ chronic lacune (3–15 mm)",
+        "fa": "انفارکت تازه ≠ لاکون مزمن (۳ تا ۱۵ میلی‌متر)"
+      }
+    },
+    {
+      "id": "hma-10-kleinhirn-op",
+      "topicId": "hypertensive-mikroangiopathie",
+      "category": {
+        "de": "Therapie",
+        "en": "Treatment",
+        "fa": "درمان"
+      },
+      "front": {
+        "de": "Wann ist bei einer Kleinhirnblutung eine neurochirurgische Intervention indiziert?",
+        "en": "When is neurosurgical intervention indicated for cerebellar haemorrhage?",
+        "fa": "چه زمانی مداخله جراحی مغز برای خونریزی مخچه نشان داده می‌شود؟"
+      },
+      "answer": {
+        "de": "Indikationen:\n• Volumen ≥15 ml\n• Hirnstammkompression\n• Obstruktiver Hydrozephalus\n• Neurologische Verschlechterung\n\nDringend: klinischer Zustand verschlechtert sich rasch",
+        "en": "Indications:\n• Volume ≥15 mL\n• Brainstem compression\n• Obstructive hydrocephalus\n• Neurological deterioration\n\nUrgent: rapidly deteriorating clinical condition",
+        "fa": "اندیکاسیون‌ها:\n• حجم ≥۱۵ میلی‌لیتر\n• فشار به ساقهٔ مغز\n• هیدروسفالی انسدادی\n• بدترشدن وضعیت عصبی\n\nفوری: وضعیت بالینی به سرعت بدتر می‌شود"
+      },
+      "explanation": {
+        "de": "Kleinhirn Volumen ≥15 ml → neurochirurgisch",
+        "en": "Cerebellar volume ≥15 mL → neurosurgical",
+        "fa": "مخچه با حجم ≥۱۵ میلی‌لیتر → جراحی مغز"
+      }
+    },
+    {
+      "id": "hma-12-reversal",
+      "topicId": "hypertensive-mikroangiopathie",
+      "category": {
+        "de": "Therapie",
+        "en": "Treatment",
+        "fa": "درمان"
+      },
+      "front": {
+        "de": "Antikoagulanzien-Reversal bei ICB: Welches Mittel für welches Antikoagulans?",
+        "en": "Anticoagulant reversal in ICH: which agent for which anticoagulant?",
+        "fa": "معکوس ضد انعقاد در ICH: کدام عامل برای کدام ضد انعقاد؟"
+      },
+      "answer": {
+        "de": "Warfarin/Phenprocoumon:\n→ 4-Faktor-PCC (Dosis nach INR, Körpergewicht und Präparat) + Vitamin K iv. (Ziel INR <1,3)\n\nDabigatran (DTI):\n→ Idarucizumab (Praxbind®)\n\nFaktor-Xa-Inhibitoren (Rivaroxaban, Apixaban):\n→ Andexanet alfa\n\nAlle: so schnell wie möglich!",
+        "en": "Warfarin/phenprocoumon:\n→ 4-factor PCC (dose according to INR, body weight and product) + IV vitamin K (target INR <1.3)\n\nDabigatran (DTI):\n→ Idarucizumab (Praxbind®)\n\nFactor Xa inhibitors (rivaroxaban, apixaban):\n→ Andexanet alfa\n\nAll: as fast as possible!",
+        "fa": "وارفارین/فنپروکومون:\n→ PCC چهارعاملی (دوز متناسب با INR، وزن و فرآورده) + ویتامین K IV (هدف INR <1.3)\n\nدابیگاتران (DTI):\n→ ایداروسیزوماب (Praxbind®)\n\nمهارکننده‌های فاکتور Xa (ریواروکسابان، آپیکسابان):\n→ اندگزانت آلفا\n\nهمه: در اسرع وقت!"
+      },
+      "explanation": {
+        "de": "Warfarin→PCC+VitK | Dabigatran→Idarucizumab | Xa→Andexanet",
+        "en": "Warfarin→PCC+VitK | Dabigatran→idarucizumab | Xa→andexanet",
+        "fa": "وارفارین→PCC+VitK | دابیگاتران→ایداروسیزوماب | Xa→اندگزانت"
+      }
+    }
+  ],
+  "hmaLesson": {
+    "pdfSourcePages": [
+      25,
+      26
+    ],
+    "breadcrumb": {
+      "de": "Hypertensive Mikroangiopathie",
+      "en": "Hypertensive Microangiopathy",
+      "fa": "میکروآنژیوپاتی فشار خون بالا"
+    },
+    "title": {
+      "de": "Hypertensive Mikroangiopathie",
+      "en": "Hypertensive Microangiopathy",
+      "fa": "میکروآنژیوپاتی فشار خون بالا"
+    },
+    "definition": {
+      "de": "Folge chronischer Hypertonie auf die kleinen Hirnarterien mit Lipohyalinose und fibrinoider Nekrose – Spektrum aus Leukoaraiose, lakunären Infarkten und hypertensiver intrazerebraler Blutung.",
+      "en": "Consequence of chronic hypertension on small cerebral arteries causing lipohyalinosis and fibrinoid necrosis, with a spectrum of leukoaraiosis, lacunar infarcts, and hypertensive intracerebral haemorrhage.",
+      "fa": "پیامد فشار خون مزمن بر عروق کوچک مغزی با لیپوهیالینوز و نکروز فیبرینوئید — طیف شامل لوکوآرائوز، انفارکت لاکونار و خونریزی مغزی فشار خون بالا."
+    },
+    "sourceLabel": "Dr. Zia",
+    "keyLabel": {
+      "de": "Merke",
+      "en": "Key point",
+      "fa": "نکته کلیدی"
+    },
+    "caveLabel": {
+      "de": "Cave",
+      "en": "Warning",
+      "fa": "هشدار"
+    },
+    "toc": {
+      "de": "Inhalte",
+      "en": "Contents",
+      "fa": "فهرست"
+    },
+    "heroCards": [
+      {
+        "value": {
+          "de": "~50 %",
+          "en": "~50 %",
+          "fa": "~۵۰٪"
+        },
+        "label": {
+          "de": "aller spontanen ICBs",
+          "en": "of all spontaneous ICH",
+          "fa": "از تمام ICH‌های خودبخودی"
+        },
+        "text": {
+          "de": "sind hypertensiv bedingt",
+          "en": "are hypertension-related",
+          "fa": "ناشی از فشار خون بالا هستند"
+        }
+      },
+      {
+        "value": {
+          "de": "5 Loci",
+          "en": "5 Loci",
+          "fa": "۵ محل"
+        },
+        "label": {
+          "de": "Typische Lokalisationen",
+          "en": "Typical locations",
+          "fa": "محل‌های معمول"
+        },
+        "text": {
+          "de": "Putamen · Thalamus · Pons · Kleinhirn · Capsula interna",
+          "en": "Putamen · Thalamus · Pons · Cerebellum · Internal capsule",
+          "fa": "پوتامن · تالاموس · پونز · مخچه · کپسول داخلی"
+        }
+      },
+      {
+        "value": {
+          "de": "Spot-Sign",
+          "en": "Spot Sign",
+          "fa": "علامت اسپات (Spot sign)"
+        },
+        "label": {
+          "de": "CTA-Marker",
+          "en": "CTA marker",
+          "fa": "نشانه CTA"
+        },
+        "text": {
+          "de": "aktive Nachblutung, Hämatomexpansion",
+          "en": "active re-bleeding, haematoma expansion",
+          "fa": "خونریزی فعال، گسترش هماتوم"
+        }
+      }
+    ],
+    "sections": [
+      {
+        "id": "grundlagen",
+        "icon": "📌",
+        "label": {
+          "de": "Grundlagen",
+          "en": "Basics",
+          "fa": "اساسیات"
+        }
+      },
+      {
+        "id": "pathophysio",
+        "icon": "🔬",
+        "label": {
+          "de": "Pathophysiologie",
+          "en": "Pathophysiology",
+          "fa": "پاتوفیزیولوژی"
+        }
+      },
+      {
+        "id": "cct",
+        "icon": "💻",
+        "label": {
+          "de": "CCT & CTA",
+          "en": "CCT & CTA",
+          "fa": "CCT و CTA"
+        }
+      },
+      {
+        "id": "mrt",
+        "icon": "🧲",
+        "label": {
+          "de": "MRT",
+          "en": "MRI",
+          "fa": "MRI"
+        }
+      },
+      {
+        "id": "klinik",
+        "icon": "🩺",
+        "label": {
+          "de": "Klinik",
+          "en": "Clinical",
+          "fa": "کلینیک"
+        }
+      },
+      {
+        "id": "differenzial",
+        "icon": "⚖️",
+        "label": {
+          "de": "Differenzialdiagnose",
+          "en": "Differential",
+          "fa": "افتراقی"
+        }
+      },
+      {
+        "id": "therapie",
+        "icon": "💊",
+        "label": {
+          "de": "Therapie",
+          "en": "Treatment",
+          "fa": "درمان"
+        }
+      },
+      {
+        "id": "takehome",
+        "icon": "🏁",
+        "label": {
+          "de": "Take-home",
+          "en": "Take-home",
+          "fa": "جمع‌بندی"
+        }
+      }
+    ],
+    "grundlagen": {
+      "title": {
+        "de": "Grundlagen & Epidemiologie",
+        "en": "Basics & Epidemiology",
+        "fa": "اساسیات و اپیدمیولوژی"
+      },
+      "lead": {
+        "de": "Die hypertensive Mikroangiopathie umfasst das Spektrum der Hirnschäden durch chronisch erhöhten Blutdruck auf die kleinen Hirnarterien (Perforatoren, Durchmesser <300 µm).",
+        "en": "Hypertensive microangiopathy encompasses the spectrum of brain damage caused by chronically elevated blood pressure affecting small cerebral arteries (perforators, diameter <300 µm).",
+        "fa": "میکروآنژیوپاتی فشار خون بالا طیفی از آسیب‌های مغزی ناشی از فشار خون مزمن بالا بر شریان‌های کوچک مغزی (پرفوراتورها، قطر <300 میکرومتر) را در بر می‌گیرد."
+      },
+      "items": [
+        {
+          "icon": "🩸",
+          "title": {
+            "de": "Hypertensive ICB",
+            "en": "Hypertensive ICH",
+            "fa": "ICH فشار خون بالا"
+          },
+          "text": {
+            "de": "Ruptur von Charcot-Bouchard-Mikroaneurysmen → akute intrazerebrale Blutung. Häufigste Ursache der spontanen ICB (~50 %).",
+            "en": "Rupture of Charcot-Bouchard microaneurysms → acute intracerebral haemorrhage. Most common cause of spontaneous ICH (~50 %).",
+            "fa": "پارگی میکرو‌آنوریسم‌های Charcot-Bouchard → خونریزی داخل مغزی حاد. شایع‌ترین علت ICH خودبخودی (~۵۰٪)."
+          }
+        },
+        {
+          "icon": "🧠",
+          "title": {
+            "de": "Chronische Mikroangiopathie",
+            "en": "Chronic microangiopathy",
+            "fa": "میکروآنژیوپاتی مزمن"
+          },
+          "text": {
+            "de": "Lipohyalinose → Wandverdickung, Lumeneinengung → lakunäre Infarkte, WMH (Leukoaraiose) und zerebrale Mikroblutungen (CMBs).",
+            "en": "Lipohyalinosis → wall thickening, luminal narrowing → lacunar infarcts, WMH (leukoaraiosis) and cerebral microbleeds (CMBs).",
+            "fa": "لیپوهیالینوز → ضخیم شدن دیواره، تنگی لومن → انفارکت لاکونار، WMH (لوکوآرائوز) و خونریزی‌های میکرو مغزی (CMBs)."
+          }
+        },
+        {
+          "icon": "📊",
+          "title": {
+            "de": "Epidemiologie",
+            "en": "Epidemiology",
+            "fa": "اپیدمیولوژی"
+          },
+          "text": {
+            "de": "Zweithäufigste Schlaganfallursache nach dem ischämischen Schlaganfall. Lebenszeitrisiko für ICB bei unkontrollierter Hypertonie 4-fach erhöht.",
+            "en": "Second most common stroke cause after ischaemic stroke. Lifetime risk of ICH is 4-fold increased in uncontrolled hypertension.",
+            "fa": "دومین علت شایع سکته مغزی پس از سکته ایسکمیک. خطر مادام‌العمر ICH با فشار خون کنترل‌نشده ۴ برابر افزایش می‌یابد."
+          }
+        },
+        {
+          "icon": "⚠️",
+          "title": {
+            "de": "Risikofaktoren",
+            "en": "Risk factors",
+            "fa": "عوامل خطر"
+          },
+          "text": {
+            "de": "Unkontrollierter Bluthochdruck (Hauptfaktor), Diabetes mellitus, Rauchen, Alter, männliches Geschlecht.",
+            "en": "Uncontrolled hypertension (main factor), diabetes mellitus, smoking, age, male sex.",
+            "fa": "فشار خون کنترل‌نشده (عامل اصلی)، دیابت ملیتوس، سیگار، سن، جنس مذکر."
+          }
+        }
+      ],
+      "key": {
+        "de": "Zwei Manifestationen merken: akute ICB (Charcot-Bouchard-Aneurysmen) + chronische Mikroangiopathie (Lakunen + WMH + CMBs).",
+        "en": "Remember two manifestations: acute ICH (Charcot-Bouchard aneurysms) + chronic microangiopathy (lacunes + WMH + CMBs).",
+        "fa": "دو تظاهر را بخاطر بسپار: ICH حاد (آنوریسم‌های Charcot-Bouchard) + میکروآنژیوپاتی مزمن (لاکون + WMH + CMBs)."
+      }
+    },
+    "pathophysio": {
+      "title": {
+        "de": "Pathophysiologie",
+        "en": "Pathophysiology",
+        "fa": "پاتوفیزیولوژی"
+      },
+      "lead": {
+        "de": "Chronisch erhöhter Blutdruck schädigt die kleinen Hirnarterien über mehrere Mechanismen, die zu unterschiedlichen bildgebenden Manifestationen führen.",
+        "en": "Chronic hypertension damages small cerebral arteries via several mechanisms, each producing distinct imaging manifestations.",
+        "fa": "فشار خون مزمن بالا از طریق مکانیسم‌های مختلف به شریان‌های کوچک مغزی آسیب می‌زند که هر کدام تظاهرات تصویربرداری متفاوتی ایجاد می‌کند."
+      },
+      "headers": [
+        {
+          "de": "Mechanismus",
+          "en": "Mechanism",
+          "fa": "مکانیسم"
+        },
+        {
+          "de": "Resultat",
+          "en": "Result",
+          "fa": "نتیجه"
+        },
+        {
+          "de": "Bildgebung",
+          "en": "Imaging",
+          "fa": "تصویربرداری"
+        }
+      ],
+      "rows": [
+        [
+          {
+            "de": "Lipohyalinose",
+            "en": "Lipohyalinosis",
+            "fa": "لیپوهیالینوز"
+          },
+          {
+            "de": "Wandverdickung, Lumenverengung",
+            "en": "Wall thickening, luminal narrowing",
+            "fa": "ضخیم‌شدن دیواره، تنگی لومن"
+          },
+          {
+            "de": "WMH in T2/FLAIR",
+            "en": "WMH on T2/FLAIR",
+            "fa": "WMH در T2/FLAIR"
+          }
+        ],
+        [
+          {
+            "de": "Fibrinoide Nekrose",
+            "en": "Fibrinoid necrosis",
+            "fa": "نکروز فیبرینوئید"
+          },
+          {
+            "de": "Wandruptur → Extravasation",
+            "en": "Wall rupture → extravasation",
+            "fa": "پارگی دیواره → اکستراواسیون"
+          },
+          {
+            "de": "Hyperdens im CCT",
+            "en": "Hyperdense on CCT",
+            "fa": "هیپردنس در CCT"
+          }
+        ],
+        [
+          {
+            "de": "Charcot-Bouchard-Aneurysmen",
+            "en": "Charcot-Bouchard aneurysms",
+            "fa": "آنوریسم‌های Charcot-Bouchard"
+          },
+          {
+            "de": "Ruptur → intrazerebrale Blutung",
+            "en": "Rupture → intracerebral haemorrhage",
+            "fa": "پارگی → خونریزی داخل مغزی"
+          },
+          {
+            "de": "ICB im CCT/MRT",
+            "en": "ICH on CCT/MRI",
+            "fa": "ICH در CCT/MRI"
+          }
+        ],
+        [
+          {
+            "de": "Perivaskuläre Demyelinisierung",
+            "en": "Perivascullar demyelination",
+            "fa": "دمیلینیزاسیون پریواسکولار"
+          },
+          {
+            "de": "Axonverlust, WMH",
+            "en": "Axon loss, WMH",
+            "fa": "از دست رفتن آکسون، WMH"
+          },
+          {
+            "de": "FLAIR-Hyperintensitäten",
+            "en": "FLAIR hyperintensities",
+            "fa": "هایپرانتنسیتی در FLAIR"
+          }
+        ],
+        [
+          {
+            "de": "Perforator-Verschluss",
+            "en": "Perforator occlusion",
+            "fa": "انسداد پرفوراتور"
+          },
+          {
+            "de": "Frischer kleiner subkortikaler Infarkt (axial meist ≤20 mm)",
+            "en": "Recent small subcortical infarct (usually ≤20 mm axially)",
+            "fa": "انفارکت کوچک زیرقشری تازه (محوری معمولاً ≤۲۰ میلی‌متر)"
+          },
+          {
+            "de": "DWI-Restriktion, später T2-Höhle",
+            "en": "DWI restriction, later T2 cavity",
+            "fa": "محدودیت DWI، بعداً حفره T2"
+          }
+        ]
+      ],
+      "key": {
+        "de": "Charcot-Bouchard-Aneurysmen entstehen durch Lipohyalinose der Perforatoren und sind die direkte Ursache der hypertensiven ICB.",
+        "en": "Charcot-Bouchard aneurysms arise from lipohyalinosis of perforators and are the direct cause of hypertensive ICH.",
+        "fa": "آنوریسم‌های Charcot-Bouchard از لیپوهیالینوز پرفوراتورها ناشی می‌شوند و علت مستقیم ICH فشار خون بالا هستند."
+      }
+    },
+    "cct": {
+      "title": {
+        "de": "Bildgebung: CCT & CTA",
+        "en": "Imaging: CCT & CTA",
+        "fa": "تصویربرداری: CCT و CTA"
+      },
+      "lead": {
+        "de": "Das CCT ist die Methode der Wahl bei Verdacht auf akute intrazerebrale Blutung: schnell, überall verfügbar, sensitiv für Frischblut.",
+        "en": "CCT is the method of choice when acute intracerebral haemorrhage is suspected: fast, universally available, sensitive for fresh blood.",
+        "fa": "CCT روش انتخابی برای مشکوک به خونریزی داخل مغزی حاد است: سریع، همه‌جا در دسترس، حساس برای خون تازه."
+      },
+      "morphHeaders": [
+        {
+          "de": "Merkmal",
+          "en": "Feature",
+          "fa": "ویژگی"
+        },
+        {
+          "de": "Befund",
+          "en": "Finding",
+          "fa": "یافته"
+        },
+        {
+          "de": "Erklärung",
+          "en": "Explanation",
+          "fa": "توضیح"
+        }
+      ],
+      "morphRows": [
+        [
+          {
+            "de": "Dichte",
+            "en": "Density",
+            "fa": "دانسیته"
+          },
+          {
+            "de": "Hyperdens (50–70 HU)",
+            "en": "Hyperdense (50–70 HU)",
+            "fa": "هیپردنس (50–70 HU)"
+          },
+          {
+            "de": "Koaguliertes Hämoglobin",
+            "en": "Coagulated haemoglobin",
+            "fa": "هموگلوبین منعقد"
+          }
+        ],
+        [
+          {
+            "de": "Form",
+            "en": "Shape",
+            "fa": "شکل"
+          },
+          {
+            "de": "Irregulär, nicht vollkommen rund",
+            "en": "Irregular, not perfectly round",
+            "fa": "نامنظم، کاملاً گرد نیست"
+          },
+          {
+            "de": "Akute Blutung folgt Gewebespalten",
+            "en": "Acute bleed tracks tissue planes",
+            "fa": "خون حاد در مسیر فضاهای بافتی گسترش می‌یابد"
+          }
+        ],
+        [
+          {
+            "de": "Ödem",
+            "en": "Oedema",
+            "fa": "ادم"
+          },
+          {
+            "de": "Anfangs gering, später zunehmendes Umgebungsödem",
+            "en": "Initially mild, progressively increasing perilesional oedema",
+            "fa": "در ابتدا خفیف، ادم اطراف ضایعه به تدریج افزایش می‌یابد"
+          },
+          {
+            "de": "Proteintranssudat, Entzündungsreaktion",
+            "en": "Protein transsudate, inflammatory reaction",
+            "fa": "ترانسودا پروتئینی، واکنش التهابی"
+          }
+        ],
+        [
+          {
+            "de": "Ventrikeleinbruch",
+            "en": "Intraventricular extension",
+            "fa": "گسترش داخل بطنی"
+          },
+          {
+            "de": "Möglich, schlechtere Prognose",
+            "en": "Possible, poorer prognosis",
+            "fa": "ممکن است، پیش‌آگهی بدتر"
+          },
+          {
+            "de": "Obstruktiver Hydrozephalus möglich",
+            "en": "Obstructive hydrocephalus possible",
+            "fa": "هیدروسفالی انسدادی ممکن"
+          }
+        ]
+      ],
+      "locHeaders": [
+        {
+          "de": "Lokalisation",
+          "en": "Location",
+          "fa": "محل"
+        },
+        {
+          "de": "Häufigkeit",
+          "en": "Frequency",
+          "fa": "فراوانی"
+        },
+        {
+          "de": "Klinik",
+          "en": "Clinical",
+          "fa": "کلینیک"
+        }
+      ],
+      "locRows": [
+        [
+          {
+            "de": "Putamen / Globus pallidus / Capsula interna",
+            "en": "Putamen / Globus pallidus / Internal capsule",
+            "fa": "پوتامن / گلوبوس پالیدوس / کپسول داخلی"
+          },
+          {
+            "de": "~50 % (häufigste!)",
+            "en": "~50 % (most common!)",
+            "fa": "~۵۰٪ (شایع‌ترین!)"
+          },
+          {
+            "de": "Kontralat. Hemiplegie/-parese, Hemisensibilität",
+            "en": "Contralat. hemiplegia/-paresis, hemisensory loss",
+            "fa": "همی‌پلژی/همی‌پارزی کنترالترال، اختلال حسی نیمه"
+          }
+        ],
+        [
+          {
+            "de": "Thalamus",
+            "en": "Thalamus",
+            "fa": "تالاموس"
+          },
+          {
+            "de": "~15 %",
+            "en": "~15 %",
+            "fa": "~۱۵٪"
+          },
+          {
+            "de": "Hemisensibilität, vertikale Blickparese",
+            "en": "Hemisensory loss, vertical gaze palsy",
+            "fa": "اختلال حسی نیمه، فلج نگاه عمودی"
+          }
+        ],
+        [
+          {
+            "de": "Pons",
+            "en": "Pons",
+            "fa": "پونز"
+          },
+          {
+            "de": "~10 %",
+            "en": "~10 %",
+            "fa": "~۱۰٪"
+          },
+          {
+            "de": "Stecknadelkopf-Pupillen, Tetraparese, Koma",
+            "en": "Pinpoint pupils, tetraparesis, coma",
+            "fa": "مردمک‌های سوزن‌نقطه‌ای، تتراپارزی، کما"
+          }
+        ],
+        [
+          {
+            "de": "Kleinhirn",
+            "en": "Cerebellum",
+            "fa": "مخچه"
+          },
+          {
+            "de": "~10 %",
+            "en": "~10 %",
+            "fa": "~۱۰٪"
+          },
+          {
+            "de": "Ataxie, Schwindel, Erbrechen, Kopfschmerz",
+            "en": "Ataxia, dizziness, vomiting, headache",
+            "fa": "آتاکسی، سرگیجه، استفراغ، سردرد"
+          }
+        ],
+        [
+          {
+            "de": "Lobär (selten, eher CAA)",
+            "en": "Lobar (rare, more likely CAA)",
+            "fa": "لوبار (نادر، بیشتر CAA)"
+          },
+          {
+            "de": "<10 %",
+            "en": "<10 %",
+            "fa": "<۱۰٪"
+          },
+          {
+            "de": "Fokal-neurologisch je nach Lappen",
+            "en": "Focal neurological deficit per lobe",
+            "fa": "نقص عصبی کانونی بر حسب لوب"
+          }
+        ]
+      ],
+      "spotHeaders": [
+        {
+          "de": "Merkmal",
+          "en": "Feature",
+          "fa": "ویژگی"
+        },
+        {
+          "de": "Beschreibung",
+          "en": "Description",
+          "fa": "توضیح"
+        }
+      ],
+      "spotRows": [
+        [
+          {
+            "de": "Definition",
+            "en": "Definition",
+            "fa": "تعریف"
+          },
+          {
+            "de": "Punktförmige KM-Anreicherung innerhalb der ICB im CTA",
+            "en": "Focal contrast enhancement within the ICH on CTA",
+            "fa": "تجمع کنتراست نقطه‌ای داخل ICH در CTA"
+          }
+        ],
+        [
+          {
+            "de": "Bedeutung",
+            "en": "Significance",
+            "fa": "اهمیت"
+          },
+          {
+            "de": "Aktive Nachblutung aus einem kleinen Gefäß",
+            "en": "Active re-bleeding from a small vessel",
+            "fa": "خونریزی فعال از یک عروق کوچک"
+          }
+        ],
+        [
+          {
+            "de": "Konsequenz",
+            "en": "Consequence",
+            "fa": "عواقب"
+          },
+          {
+            "de": "Hohes Risiko der Hämatomexpansion",
+            "en": "High risk of haematoma expansion",
+            "fa": "خطر بالای گسترش هماتوم"
+          }
+        ],
+        [
+          {
+            "de": "Prognose",
+            "en": "Prognosis",
+            "fa": "پیش‌آگهی"
+          },
+          {
+            "de": "Erhöhte 90-Tage-Mortalität",
+            "en": "Increased 90-day mortality",
+            "fa": "افزایش مرگ‌ومیر ۹۰ روزه"
+          }
+        ]
+      ],
+      "spotTitle": {
+        "de": "Spot-Sign (CTA)",
+        "en": "Spot Sign (CTA)",
+        "fa": "علامت اسپات در CTA"
+      },
+      "locTitle": {
+        "de": "Typische Lokalisationen der hypertensiven ICB",
+        "en": "Typical locations of hypertensive ICH",
+        "fa": "محل‌های معمول ICH فشار خون بالا"
+      },
+      "morphTitle": {
+        "de": "CCT-Morphologie der akuten ICB",
+        "en": "CCT morphology of acute ICH",
+        "fa": "مورفولوژی CCT در ICH حاد"
+      },
+      "key": {
+        "de": "Irregulär + tief (Basalganglien/Thalamus/Pons/Kleinhirn) + wenig Ödem + bekannte Hypertonie = hypertensive ICB.",
+        "en": "Irregular + deep (basal ganglia / thalamus / pons / cerebellum) + minimal oedema + known hypertension = hypertensive ICH.",
+        "fa": "نامنظم + عمقی (بازال گانگلیا/تالاموس/پونز/مخچه) + ادم کم + فشار خون شناخته‌شده = ICH فشار خون بالا."
+      },
+      "imageAlt": {
+        "de": "CCT-Beispiel: Hypertensive Kleinhirnblutung vs. Metastase",
+        "en": "CCT example: hypertensive cerebellar haemorrhage vs. metastasis",
+        "fa": "مثال CCT: خونریزی مخچه‌ای فشار خون بالا در مقابل متاستاز"
+      },
+      "imageCaptionA": {
+        "de": "A – Hypertensive Blutung: irregulär, medial, geringes Ödem",
+        "en": "A – Hypertensive haemorrhage: irregular, medial, little oedema",
+        "fa": "A – خونریزی فشار خون: نامنظم، مدیال، ادم کم"
+      },
+      "imageCaptionB": {
+        "de": "B – Metastase: rund, peripher, ausgeprägtes Ödem",
+        "en": "B – Metastasis: round, peripheral, prominent oedema",
+        "fa": "B – متاستاز: گرد، محیطی، ادم شدید"
+      }
+    },
+    "mrt": {
+      "title": {
+        "de": "Bildgebung: MRT",
+        "en": "Imaging: MRI",
+        "fa": "تصویربرداری: MRI"
+      },
+      "lead": {
+        "de": "Das MRT liefert die empfindlichsten Zeichen der chronischen Mikroangiopathie: Leukoaraiose, Mikroblutungen (CMBs) und lakunäre Infarkte.",
+        "en": "MRI provides the most sensitive signs of chronic microangiopathy: leukoaraiosis, microbleeds (CMBs) and lacunar infarcts.",
+        "fa": "MRI حساس‌ترین نشانه‌های میکروآنژیوپاتی مزمن را نشان می‌دهد: لوکوآرائوز، خونریزی‌های میکرو (CMBs) و انفارکت‌های لاکونار."
+      },
+      "seqHeaders": [
+        {
+          "de": "Sequenz",
+          "en": "Sequence",
+          "fa": "سکانس"
+        },
+        {
+          "de": "Befund",
+          "en": "Finding",
+          "fa": "یافته"
+        },
+        {
+          "de": "Bedeutung",
+          "en": "Significance",
+          "fa": "اهمیت"
+        }
+      ],
+      "seqRows": [
+        [
+          {
+            "de": "T2 / FLAIR",
+            "en": "T2 / FLAIR",
+            "fa": "T2 / FLAIR"
+          },
+          {
+            "de": "Periventrikuläre und tiefe WMH (weiß)",
+            "en": "Periventricular and deep WMH (bright)",
+            "fa": "WMH پریونتریکولار و عمقی (روشن)"
+          },
+          {
+            "de": "Leukoaraiose = chronische Ischämie, Fazekas-Klassifikation",
+            "en": "Leukoaraiosis = chronic ischaemia, Fazekas classification",
+            "fa": "لوکوآرائوز = ایسکمی مزمن، طبقه‌بندی Fazekas"
+          }
+        ],
+        [
+          {
+            "de": "DWI / ADC",
+            "en": "DWI / ADC",
+            "fa": "DWI / ADC"
+          },
+          {
+            "de": "Restriktionsmuster (subkortikal, axial meist ≤20 mm)",
+            "en": "Restriction pattern (subcortical, usually ≤20 mm axially)",
+            "fa": "الگوی محدودیت (زیرقشری، محوری معمولاً ≤۲۰ میلی‌متر)"
+          },
+          {
+            "de": "Akuter lakunärer Infarkt (Perforator)",
+            "en": "Acute lacunar infarct (perforator)",
+            "fa": "انفارکت لاکونار حاد (پرفوراتور)"
+          }
+        ],
+        [
+          {
+            "de": "GRE / SWI",
+            "en": "GRE / SWI",
+            "fa": "GRE / SWI"
+          },
+          {
+            "de": "Punktförmige Hypointensitäten (Blütenmuster)",
+            "en": "Punctate hypointensities (blooming artefact)",
+            "fa": "هایپوانتنسیتی‌های نقطه‌ای (الگوی شکوفه)"
+          },
+          {
+            "de": "Zerebrale Mikroblutungen (CMBs): tief = Hypertonie, kortikal = CAA",
+            "en": "CMBs: deep = hypertension, cortical = CAA",
+            "fa": "CMBs: عمقی = فشار خون، کورتیکال = CAA"
+          }
+        ],
+        [
+          {
+            "de": "T1",
+            "en": "T1",
+            "fa": "T1"
+          },
+          {
+            "de": "Hypointense Höhlen im Marklager / Basalganglien",
+            "en": "Hypointense cavities in white matter / basal ganglia",
+            "fa": "حفره‌های هایپوانتنس در ماده سفید / بازال گانگلیا"
+          },
+          {
+            "de": "Chronische Lakunen (>3 Monate alt)",
+            "en": "Chronic lacunes (>3 months old)",
+            "fa": "لاکون‌های مزمن (>3 ماه)"
+          }
+        ],
+        [
+          {
+            "de": "T1 Gd",
+            "en": "T1 Gd",
+            "fa": "T1 Gd"
+          },
+          {
+            "de": "Keine Enhancement (außer im akuten Infarkt)",
+            "en": "No enhancement (except in acute infarct)",
+            "fa": "بدون تقویت پس از تزریق (جز در انفارکت حاد)"
+          },
+          {
+            "de": "Hilft bei Differenzierung Metastase vs. ICB",
+            "en": "Helps differentiate metastasis from ICH",
+            "fa": "کمک به تمایز متاستاز از ICH"
+          }
+        ]
+      ],
+      "fazekasHeaders": [
+        {
+          "de": "Fazekas-Grad",
+          "en": "Fazekas Grade",
+          "fa": "درجه Fazekas"
+        },
+        {
+          "de": "Periventrikulär",
+          "en": "Periventricular",
+          "fa": "پریونتریکولار"
+        },
+        {
+          "de": "Tiefe weiße Substanz",
+          "en": "Deep white matter",
+          "fa": "ماده سفید عمقی"
+        }
+      ],
+      "fazekasRows": [
+        [
+          {
+            "de": "Grad 0",
+            "en": "Grade 0",
+            "fa": "درجه ۰"
+          },
+          {
+            "de": "Keine Läsion",
+            "en": "No lesion",
+            "fa": "بدون ضایعه"
+          },
+          {
+            "de": "Keine Läsion",
+            "en": "No lesion",
+            "fa": "بدون ضایعه"
+          }
+        ],
+        [
+          {
+            "de": "Grad 1",
+            "en": "Grade 1",
+            "fa": "درجه ۱"
+          },
+          {
+            "de": "Gepunktelte Caps / Bänder",
+            "en": "Punctate caps/bands",
+            "fa": "کلاهک‌ها/باندهای نقطه‌ای"
+          },
+          {
+            "de": "Gepunktelte Läsionen",
+            "en": "Punctate lesions",
+            "fa": "ضایعات نقطه‌ای"
+          }
+        ],
+        [
+          {
+            "de": "Grad 2",
+            "en": "Grade 2",
+            "fa": "درجه ۲"
+          },
+          {
+            "de": "Halo um die Ventrikel",
+            "en": "Halo around ventricles",
+            "fa": "هاله دور بطن‌ها"
+          },
+          {
+            "de": "Beginn der Konfluenz",
+            "en": "Beginning confluent",
+            "fa": "شروع تجمع"
+          }
+        ],
+        [
+          {
+            "de": "Grad 3",
+            "en": "Grade 3",
+            "fa": "درجه ۳"
+          },
+          {
+            "de": "Ausgedehnte periventrikuläre WMH",
+            "en": "Extensive periventricular WMH",
+            "fa": "WMH پریونتریکولار وسیع"
+          },
+          {
+            "de": "Großflächig konfluierend",
+            "en": "Large confluent areas",
+            "fa": "مناطق تجمع وسیع"
+          }
+        ]
+      ],
+      "fazekasTitle": {
+        "de": "Fazekas-Skala (FLAIR/T2)",
+        "en": "Fazekas Scale (FLAIR/T2)",
+        "fa": "مقیاس Fazekas (FLAIR/T2)"
+      },
+      "fazekasImageAlt": {
+        "de": "FLAIR-MRT-Beispiele für Fazekas-Grade 1, 2 und 3; die Abbildungen zeigen zunehmende Konfluenz periventrikulärer und tiefer Marklagerhyperintensitäten.",
+        "en": "FLAIR MRI examples of Fazekas grades 1, 2 and 3, showing increasing confluence of periventricular and deep white-matter hyperintensities.",
+        "fa": "نمونه‌های FLAIR برای درجات ۱، ۲ و ۳ فازکاس؛ تصاویر افزایش پیوستگی هایپراینتنسیتی‌های پری‌ونتریکولار و ماده سفید عمقی را نشان می‌دهند."
+      },
+      "fazekasImageCaption": {
+        "de": "Quelle: Gehirn.pdf, S. 25 (gedruckte S. 24); Bildnachweis E. De Marzio. Originalausschnitt aus dem bereitgestellten PDF.",
+        "en": "Source: Gehirn.pdf, p. 25 (printed p. 24); image credit E. De Marzio. Cropped from the supplied PDF.",
+        "fa": "منبع: Gehirn.pdf، صفحهٔ ۲۵ (شمارهٔ چاپی ۲۴)؛ اعتبار تصویر: E. De Marzio. برش از PDF ارائه‌شده."
+      },
+      "key": {
+        "de": "Tiefe CMBs in SWI + Fazekas WMH + lakunäre Infarkte in DWI = MRT-Trias der chronischen hypertensiven Mikroangiopathie.",
+        "en": "Deep CMBs on SWI + Fazekas WMH + lacunar infarcts on DWI = MRI triad of chronic hypertensive microangiopathy.",
+        "fa": "CMBs عمقی در SWI + WMH Fazekas + انفارکت‌های لاکونار در DWI = تریاد MRI میکروآنژیوپاتی فشار خون مزمن."
+      }
+    },
+    "klinik": {
+      "title": {
+        "de": "Klinik",
+        "en": "Clinical Presentation",
+        "fa": "تظاهرات بالینی"
+      },
+      "lead": {
+        "de": "Das klinische Bild richtet sich nach der genauen Blutungslokalisation. Lakunäre Syndrome entstehen durch Verschluss einzelner Perforatoren.",
+        "en": "The clinical picture depends on the exact bleeding location. Lacunar syndromes arise from occlusion of individual perforators.",
+        "fa": "تصویر بالینی به محل دقیق خونریزی بستگی دارد. سندرم‌های لاکونار از انسداد پرفوراتورهای منفرد ناشی می‌شوند."
+      },
+      "lacunarTitle": {
+        "de": "Lakunäre Syndrome",
+        "en": "Lacunar Syndromes",
+        "fa": "سندرم‌های لاکونار"
+      },
+      "lacunarItems": [
+        {
+          "icon": "💪",
+          "title": {
+            "de": "Pure Motor Hemiparesis",
+            "en": "Pure Motor Hemiparesis",
+            "fa": "همی‌پارزی خالص حرکتی"
+          },
+          "text": {
+            "de": "Capsula interna (hinteres Schenkel) / Pons. Rein motorisches Defizit ohne Sensibilitätsstörung.",
+            "en": "Internal capsule (posterior limb) / pons. Pure motor deficit without sensory loss.",
+            "fa": "کپسول داخلی (پای خلفی) / پونز. نقص حرکتی خالص بدون اختلال حسی."
+          }
+        },
+        {
+          "icon": "🖐️",
+          "title": {
+            "de": "Pure Sensory Stroke",
+            "en": "Pure Sensory Stroke",
+            "fa": "سکته حسی خالص"
+          },
+          "text": {
+            "de": "Thalamus (VPL-Kern). Rein sensibles Hemisyndrom ohne motorisches Defizit.",
+            "en": "Thalamus (VPL nucleus). Pure hemisensory syndrome without motor deficit.",
+            "fa": "تالاموس (هسته VPL). سندرم حسی نیمه خالص بدون نقص حرکتی."
+          }
+        },
+        {
+          "icon": "🤸",
+          "title": {
+            "de": "Ataktische Hemiparese",
+            "en": "Ataxic Hemiparesis",
+            "fa": "همی‌پارزی آتاکتیک"
+          },
+          "text": {
+            "de": "Pons / Capsula interna. Ipsilaterale Ataxie + kontralaterale Hemiparese = dissoziierts Bild.",
+            "en": "Pons / internal capsule. Ipsilateral ataxia + contralateral hemiparesis = dissociated picture.",
+            "fa": "پونز / کپسول داخلی. آتاکسی همان‌طرف + همی‌پارزی طرف مقابل = تصویر تجزیه‌شده."
+          }
+        },
+        {
+          "icon": "🗣️",
+          "title": {
+            "de": "Dysarthrie-Clumsy-Hand-Syndrom",
+            "en": "Dysarthria-Clumsy Hand Syndrome",
+            "fa": "سندرم دیزآرتری-دست ناشیانه"
+          },
+          "text": {
+            "de": "Knie der Capsula interna / Pons. Dysarthrie + Feinmotorikverlust der ipsilateralen Hand.",
+            "en": "Genu of internal capsule / pons. Dysarthria + loss of fine motor control of ipsilateral hand.",
+            "fa": "زانوی کپسول داخلی / پونز. دیزآرتری + از دست دادن کنترل حرکات ظریف دست همان‌طرف."
+          }
+        }
+      ],
+      "key": {
+        "de": "Kleinhirnblutung: Ataxie + Kopfschmerz + Erbrechen ohne Hemiparese. Bei einem Volumen ≥15 ml oder klinischer Verschlechterung: neurochirurgische Evaluation!",
+        "en": "Cerebellar haemorrhage: ataxia + headache + vomiting without hemiparesis. If volume ≥15 mL or decompensation: neurosurgical evaluation!",
+        "fa": "خونریزی مخچه: آتاکسی + سردرد + استفراغ بدون همی‌پارزی. در صورت حجم ≥۱۵ میلی‌لیتر یا بدترشدن وضعیت عصبی: ارزیابی جراحی مغز!"
+      }
+    },
+    "differenzial": {
+      "title": {
+        "de": "Differenzialdiagnose der ICB",
+        "en": "Differential Diagnosis of ICH",
+        "fa": "تشخیص افتراقی ICH"
+      },
+      "lead": {
+        "de": "Die hypertensive ICB muss von anderen Ursachen intrazerebraler Blutungen abgegrenzt werden. Wichtigste Kriterien: Lokalisation, Alter, Vorgeschichte, Blutungsmuster.",
+        "en": "Hypertensive ICH must be distinguished from other causes of intracerebral haemorrhage. Key criteria: location, age, history, bleeding pattern.",
+        "fa": "ICH فشار خون باید از سایر علل خونریزی داخل مغزی افتراق داده شود. معیارهای کلیدی: محل، سن، سابقه، الگوی خونریزی."
+      },
+      "ddHeaders": [
+        {
+          "de": "Diagnose",
+          "en": "Diagnosis",
+          "fa": "تشخیص"
+        },
+        {
+          "de": "Lokalisation",
+          "en": "Location",
+          "fa": "محل"
+        },
+        {
+          "de": "Schlüsselmerkmal",
+          "en": "Key feature",
+          "fa": "ویژگی کلیدی"
+        }
+      ],
+      "ddRows": [
+        [
+          {
+            "de": "Hypertensive ICB",
+            "en": "Hypertensive ICH",
+            "fa": "ICH فشار خون بالا"
+          },
+          {
+            "de": "Tief: Putamen, Thalamus, Pons, Kleinhirn",
+            "en": "Deep: putamen, thalamus, pons, cerebellum",
+            "fa": "عمقی: پوتامن، تالاموس، پونز، مخچه"
+          },
+          {
+            "de": "Irregulär, tiefe CMBs in SWI, Hypertonie-Anamnese",
+            "en": "Irregular, deep CMBs on SWI, hypertension history",
+            "fa": "نامنظم، CMBs عمقی در SWI، سابقه فشار خون"
+          }
+        ],
+        [
+          {
+            "de": "Zerebrale Amyloidangiopathie (CAA)",
+            "en": "Cerebral amyloid angiopathy (CAA)",
+            "fa": "آنژیوپاتی آمیلوئید مغزی (CAA)"
+          },
+          {
+            "de": "Lobär (kortikal-subkortikal)",
+            "en": "Lobar (cortical-subcortical)",
+            "fa": "لوبار (کورتیکال-ساب‌کورتیکال)"
+          },
+          {
+            "de": "Älterer Patient, kortikale CMBs in SWI, Boston-Kriterien",
+            "en": "Older patient, cortical CMBs on SWI, Boston criteria",
+            "fa": "بیمار مسن‌تر، CMBs کورتیکال در SWI، معیارهای Boston"
+          }
+        ],
+        [
+          {
+            "de": "Hirnmetastase",
+            "en": "Brain metastasis",
+            "fa": "متاستاز مغزی"
+          },
+          {
+            "de": "Peripher, kortikal-subkortikal, oft multiple",
+            "en": "Peripheral, cortical-subcortical, often multiple",
+            "fa": "محیطی، کورتیکال-ساب‌کورتیکال، اغلب متعدد"
+          },
+          {
+            "de": "Rund, ausgeprägtes perifokales Ödem, KM-Enhancement, Tumoranamnese",
+            "en": "Round, prominent perilesional oedema, contrast enhancement, tumour history",
+            "fa": "گرد، ادم پریفوکال شدید، تقویت پس از تزریق، سابقه تومور"
+          }
+        ],
+        [
+          {
+            "de": "Kavernom",
+            "en": "Cavernoma",
+            "fa": "کاورنوم"
+          },
+          {
+            "de": "Überall, oft im Hirnstamm",
+            "en": "Anywhere, often brainstem",
+            "fa": "همه‌جا، اغلب ساقه مغز"
+          },
+          {
+            "de": "„Popcorn\"-Muster T2, SWI-Hypointensität, kein Ödem, MRT-typisch",
+            "en": "\"Popcorn\" pattern T2, SWI hypointensity, no oedema, typical MRI",
+            "fa": "الگوی «پاپ‌کورن» T2، هایپوانتنسیتی SWI، بدون ادم، تیپیک MRI"
+          }
+        ],
+        [
+          {
+            "de": "AVM-Blutung",
+            "en": "AVM haemorrhage",
+            "fa": "خونریزی AVM"
+          },
+          {
+            "de": "Variabel, oft lobär",
+            "en": "Variable, often lobar",
+            "fa": "متغیر، اغلب لوبار"
+          },
+          {
+            "de": "Junger Patient, serpentiginöse Gefäßstrukturen im MRA/CTA, kein Hypertoniehintergrund",
+            "en": "Young patient, serpiginous vascular structures on MRA/CTA, no hypertension background",
+            "fa": "بیمار جوان، ساختارهای عروقی مارپیچی در MRA/CTA، بدون سابقه فشار خون"
+          }
+        ]
+      ],
+      "key": {
+        "de": "Merkhilfe: Hypertensive ICB = tief + irregulär. CAA = lobär + kortikal. Metastase = rund + viel Ödem + Enhancement.",
+        "en": "Mnemonic: hypertensive ICH = deep + irregular. CAA = lobar + cortical. Metastasis = round + lots of oedema + enhancement.",
+        "fa": "جمله‌یادآور: ICH فشار خون = عمقی + نامنظم. CAA = لوبار + کورتیکال. متاستاز = گرد + ادم زیاد + تقویت پس از تزریق."
+      }
+    },
+    "therapie": {
+      "title": {
+        "de": "Therapie",
+        "en": "Treatment",
+        "fa": "درمان"
+      },
+      "lead": {
+        "de": "Die Behandlung der akuten hypertensiven ICB zielt auf Hämatomkontrolle, Hirndrucksenkung und Verhinderung von Rezidiven.",
+        "en": "Treatment of acute hypertensive ICH aims at haematoma control, ICP reduction and prevention of recurrence.",
+        "fa": "درمان ICH حاد فشار خون بالا به کنترل هماتوم، کاهش فشار داخل جمجمه و جلوگیری از عود هدف دارد."
+      },
+      "items": [
+        {
+          "icon": "💉",
+          "title": {
+            "de": "Blutdruckkontrolle",
+            "en": "Blood pressure control",
+            "fa": "کنترل فشار خون"
+          },
+          "text": {
+            "de": "Bei leichter bis mittelschwerer spontaner ICB und initial systolisch 150–220 mmHg kann eine gleichmäßige Senkung auf etwa 140 mmHg mit Erhaltung im Bereich 130–150 mmHg erwogen werden. Nicht unter 130 mmHg senken. Bei schwerer ICB oder geplanter Dekompression individuell entscheiden.",
+            "en": "For mild-to-moderate spontaneous ICH with initial systolic BP 150–220 mmHg, smooth lowering towards 140 mmHg and maintaining 130–150 mmHg may be reasonable. Do not lower below 130 mmHg. Individualise management in severe ICH or planned decompression.",
+            "fa": "در خونریزی خودبه‌خودی خفیف تا متوسط با فشار سیستولیک اولیهٔ ۱۵۰ تا ۲۲۰ میلی‌متر جیوه، می‌توان کاهش یکنواخت تا حدود ۱۴۰ و حفظ فشار در محدودهٔ ۱۳۰ تا ۱۵۰ را در نظر گرفت. فشار را به زیر ۱۳۰ کاهش ندهید. در خونریزی شدید یا جراحی کاهش فشار برنامه‌ریزی‌شده، تصمیم باید فردی باشد."
+          }
+        },
+        {
+          "icon": "🔄",
+          "title": {
+            "de": "Antikoagulanzienwirkung aufheben",
+            "en": "Reverse anticoagulation",
+            "fa": "معکوس کردن ضد انعقادها"
+          },
+          "text": {
+            "de": "Phenprocoumon/Warfarin: 4-Faktor-PCC (Dosis nach INR, Körpergewicht und Präparat) + Vit. K iv. DOAK: Idarucizumab (Dabigatran), Andexanet alfa (Faktor-Xa-Inhibitoren). Ziel: INR <1,3 innerhalb 4 h.",
+            "en": "Phenprocoumon/warfarin: 4-factor PCC (dose according to INR, body weight and product) + IV vitamin K. DOACs: idarucizumab (dabigatran), andexanet alfa (factor Xa inhibitors). Target: INR <1.3 within 4 h.",
+            "fa": "فنپروکومون/وارفارین: PCC چهارعاملی (دوز متناسب با INR، وزن و فرآورده) + ویتامین K IV. DOACها: ایداروسیزوماب (دابیگاتران)، اندگزانت آلفا (مهارکننده‌های فاکتور Xa). هدف: INR <1.3 در عرض 4 ساعت."
+          }
+        },
+        {
+          "icon": "🏥",
+          "title": {
+            "de": "Neurochirurgische Intervention",
+            "en": "Neurosurgical intervention",
+            "fa": "مداخله جراحی مغز"
+          },
+          "text": {
+            "de": "Kleinhirnblutung mit einem Volumen ≥15 ml oder mit Hirnstammkompression oder obstruktivem Hydrozephalus: dringende chirurgische Entlastung. Supratentorielle ICB: in ausgewählten Fällen (raumfordernd, jung, gute Prognose).",
+            "en": "Cerebellar haemorrhage volume ≥15 mL or brainstem compression or obstructive hydrocephalus: urgent surgical decompression. Supratentorial ICH: selected cases (space-occupying, young patient, good prognosis).",
+            "fa": "خونریزی مخچه با حجم ≥۱۵ میلی‌لیتر یا با فشار به ساقهٔ مغز یا هیدروسفالی انسدادی: کاهش فشار جراحی فوری. ICH سوپراتانتوریال: موارد انتخابی (فضا اشغال‌کننده، بیمار جوان، پیش‌آگهی خوب)."
+          }
+        },
+        {
+          "icon": "💊",
+          "title": {
+            "de": "Osmotherapie / ICP-Management",
+            "en": "Osmotherapy / ICP management",
+            "fa": "اسمتراپی / مدیریت ICP"
+          },
+          "text": {
+            "de": "Mannitol 20 % (0,5–1 g/kg) oder hypertone NaCl 7,5 % bei erhöhtem Hirndruck. Oberkörperhochlagerung 30°, Ventrikeldrainage bei Hydrozephalus.",
+            "en": "Mannitol 20% (0.5–1 g/kg) or hypertonic NaCl 7.5% for elevated ICP. Head-of-bed elevation 30°, ventricular drain for hydrocephalus.",
+            "fa": "مانیتول ۲۰٪ (0.5–1 g/kg) یا NaCl هیپرتونیک 7.5٪ برای ICP بالا. ارتفاع سر تخت 30 درجه، تخلیه بطنی برای هیدروسفالی."
+          }
+        },
+        {
+          "icon": "🛡️",
+          "title": {
+            "de": "Sekundärprophylaxe",
+            "en": "Secondary prevention",
+            "fa": "پیشگیری ثانویه"
+          },
+          "text": {
+            "de": "Strikte Langzeit-Blutdruckkontrolle (Ziel <130/80 mmHg). Lebensstilanpassung (Gewicht, Alkohol, Rauchen). Statine. Lakunäre Infarkte: Thrombozytenaggregationshemmer.",
+            "en": "Strict long-term BP control (target <130/80 mmHg). Lifestyle modification (weight, alcohol, smoking). Statins. Lacunar infarcts: antiplatelet therapy.",
+            "fa": "کنترل فشار خون بلندمدت دقیق (هدف <130/80 mmHg). اصلاح سبک زندگی (وزن، الکل، سیگار). استاتین‌ها. انفارکت لاکونار: ضد تجمع پلاکتی."
+          }
+        }
+      ],
+      "cave": {
+        "de": "Keine Thrombolyse (rtPA) bei intrazerebraler Blutung! Bei Antikoagulanzien-assoziierter ICB sofortige Reversal-Therapie anstreben.",
+        "en": "No thrombolysis (rtPA) in intracerebral haemorrhage! In anticoagulant-associated ICH, aim for immediate reversal therapy.",
+        "fa": "تروم‌بولیز (rtPA) در خونریزی داخل مغزی ممنوع! در ICH مرتبط با ضد انعقادها، درمان معکوس فوری انجام دهید."
+      }
+    },
+    "takehome": {
+      "title": {
+        "de": "Take-home",
+        "en": "Take-home",
+        "fa": "جمع‌بندی"
+      },
+      "lead": {
+        "de": "Die fünf wichtigsten Punkte zur hypertensiven Mikroangiopathie.",
+        "en": "The five key points on hypertensive microangiopathy.",
+        "fa": "پنج نکته مهم درباره میکروآنژیوپاتی فشار خون."
+      },
+      "items": [
+        {
+          "title": {
+            "de": "Zwei Manifestationen",
+            "en": "Two manifestations",
+            "fa": "دو تظاهر"
+          },
+          "text": {
+            "de": "Akute hypertensive ICB (Charcot-Bouchard-Aneurysmen) + Chronische Mikroangiopathie (WMH + Lakunen + CMBs) — beide durch Lipohyalinose kleiner Gefäße.",
+            "en": "Acute hypertensive ICH (Charcot-Bouchard aneurysms) + Chronic microangiopathy (WMH + lacunes + CMBs) — both from lipohyalinosis of small vessels.",
+            "fa": "ICH حاد فشار خون (آنوریسم‌های Charcot-Bouchard) + میکروآنژیوپاتی مزمن (WMH + لاکون + CMBs) — هر دو از لیپوهیالینوز عروق کوچک."
+          }
+        },
+        {
+          "title": {
+            "de": "CCT: tief + irregulär = hypertensiv",
+            "en": "CCT: deep + irregular = hypertensive",
+            "fa": "CCT: عمقی + نامنظم = فشار خون"
+          },
+          "text": {
+            "de": "Putamen (50 %) > Thalamus > Kleinhirn > Pons. Irregulär, wenig Ödem. Rund + peripher + viel Ödem → eher Metastase oder CAA.",
+            "en": "Putamen (50%) > thalamus > cerebellum > pons. Irregular, little oedema. Round + peripheral + lots of oedema → more likely metastasis or CAA.",
+            "fa": "پوتامن (50٪) > تالاموس > مخچه > پونز. نامنظم، ادم کم. گرد + محیطی + ادم زیاد → بیشتر متاستاز یا CAA."
+          }
+        },
+        {
+          "title": {
+            "de": "Spot-Sign im CTA",
+            "en": "Spot sign on CTA",
+            "fa": "علامت اسپات (Spot sign) در CTA"
+          },
+          "text": {
+            "de": "Kontrastmittelanreicherung innerhalb der Blutung = aktive Nachblutung. Prädiktiv für Hämatomexpansion und erhöhte Mortalität.",
+            "en": "Contrast enhancement within the bleed = active re-bleeding. Predictive of haematoma expansion and increased mortality.",
+            "fa": "تقویت پس از تزریق داخل خونریزی = خونریزی فعال مجدد. پیش‌بینی‌کننده گسترش هماتوم و مرگ‌ومیر بالاتر."
+          }
+        },
+        {
+          "title": {
+            "de": "MRT-Trias der Mikroangiopathie",
+            "en": "MRI triad of microangiopathy",
+            "fa": "تریاد MRI میکروآنژیوپاتی"
+          },
+          "text": {
+            "de": "SWI: tiefe CMBs | FLAIR: WMH (Fazekas 1–3) | DWI: akute Lakunen. Tiefe CMBs = Hypertonie, kortikale CMBs = CAA (wichtig für DD!).",
+            "en": "SWI: deep CMBs | FLAIR: WMH (Fazekas 1–3) | DWI: acute lacunes. Deep CMBs = hypertension, cortical CMBs = CAA (important for DDx!).",
+            "fa": "SWI: CMBs عمقی | FLAIR: WMH (Fazekas 1-3) | DWI: لاکون‌های حاد. CMBs عمقی = فشار خون، CMBs کورتیکال = CAA (مهم برای تشخیص افتراقی!)."
+          }
+        },
+        {
+          "title": {
+            "de": "Therapie-Notfall",
+            "en": "Treatment emergency",
+            "fa": "اورژانس درمانی"
+          },
+          "text": {
+            "de": "Blutdruck gleichmäßig kontrollieren; Zielwerte an Schwere und Ausgangsdruck anpassen, nicht pauschal unter 140 senken. Antikoagulation rasch aufheben. Bei Kleinhirnblutung ≥15 ml, Verschlechterung, Hirnstammkompression oder obstruktivem Hydrozephalus dringende Neurochirurgie. Keine Lyse!",
+            "en": "Control BP smoothly, adapting targets to severity and baseline BP rather than universally lowering below 140. Reverse anticoagulation promptly. Cerebellar haemorrhage ≥15 mL, deterioration, brainstem compression or obstructive hydrocephalus requires urgent neurosurgical assessment. No thrombolysis!",
+            "fa": "فشار خون را یکنواخت و متناسب با شدت بیماری و فشار اولیه کنترل کنید؛ کاهش همگانی به زیر ۱۴۰ درست نیست. اثر ضدانعقاد را سریع خنثی کنید. خونریزی مخچه با حجم حداقل ۱۵ میلی‌لیتر، بدترشدن عصبی، فشار به ساقهٔ مغز یا هیدروسفالی انسدادی نیازمند ارزیابی فوری جراحی مغز است. ترومبولیز ممنوع است!"
+          }
+        }
+      ]
+    }
+  }
+}

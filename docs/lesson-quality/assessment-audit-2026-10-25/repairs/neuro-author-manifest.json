@@ -1,0 +1,587 @@
+{
+  "scope": "Bounded confirmed neuro semantics/language/stimulus repair. Other50-review findings remainOPEN unless explicitly covered; no global scientific approval.",
+  "files": [
+    {
+      "file": "data/avm.js",
+      "changedExportFields": 24,
+      "idsAndCorrectLettersPreserved": true,
+      "itemIds": [
+        "avm-zns-07-eloquenz",
+        "avm-zns-de-05",
+        "avm-zns-de-08",
+        "avm-zns-en-05",
+        "avm-zns-en-08",
+        "avm-zns-fa-05",
+        "avm-zns-fa-08"
+      ],
+      "changes": [
+        {
+          "key": ".AVM_FLASHCARDS.6.answer.de",
+          "itemId": "avm-zns-07-eloquenz",
+          "before": "Sensomotorik, Sprache, Sehen, Thalamus, Hirnstamm, Kleinhirnstiele.",
+          "after": "Sensomotorischer, sprachrelevanter und visueller Kortex; Hypothalamus, Thalamus, innere Kapsel; Hirnstamm, Kleinhirnstiele und tiefe Kleinhirnkerne."
+        },
+        {
+          "key": ".AVM_FLASHCARDS.6.answer.en",
+          "itemId": "avm-zns-07-eloquenz",
+          "before": "Sensorimotor, language, vision, thalamus, brainstem, cerebellar peduncles.",
+          "after": "Sensorimotor, language and visual cortex; hypothalamus, thalamus and internal capsule; brainstem, cerebellar peduncles and deep cerebellar nuclei."
+        },
+        {
+          "key": ".AVM_FLASHCARDS.6.answer.fa",
+          "itemId": "avm-zns-07-eloquenz",
+          "before": "حسی-حرکتی، زبان، بینایی، تالاموس، ساقه مغز، پدیکل‌های مخچه‌ای.",
+          "after": "قشر حسی‌حرکتی، زبانی و بینایی؛ هیپوتالاموس، تالاموس و کپسول داخلی؛ ساقهٔ مغز، پایه‌های مخچه و هسته‌های عمقی مخچه."
+        },
+        {
+          "key": ".AVM_FLASHCARDS.6.explanation.de",
+          "itemId": "avm-zns-07-eloquenz",
+          "before": "Vollständige Liste: Sensomotorik, Sprache, Sehrinde, Hypothalamus, Thalamus, Hirnstamm, Kleinhirnstiele, tiefe Kleinhirnkerne. Nicht-eloquent: Frontalpol, Okzipitalpol, Kleinhirnhemisphäre.",
+          "after": "Zur Spetzler-Martin-Liste gehören sensomotorischer, sprachrelevanter und visueller Kortex, Hypothalamus, Thalamus, innere Kapsel, Hirnstamm, Kleinhirnstiele und tiefe Kleinhirnkerne. Die Beziehung zur konkreten Funktionsregion entscheidet; eine pauschale Zuordnung des Okzipitalpols als nichteloquent ist falsch."
+        },
+        {
+          "key": ".AVM_FLASHCARDS.6.explanation.en",
+          "itemId": "avm-zns-07-eloquenz",
+          "before": "Complete list: sensorimotor, language, visual cortex, hypothalamus, thalamus, brainstem, cerebellar peduncles, deep cerebellar nuclei. Non-eloquent: frontal pole, occipital pole, cerebellar hemisphere.",
+          "after": "The Spetzler-Martin list includes sensorimotor, language and visual cortex, hypothalamus, thalamus, internal capsule, brainstem, cerebellar peduncles and deep cerebellar nuclei. The relationship to the actual functional region determines eloquence; categorically calling the occipital pole noneloquent is incorrect."
+        },
+        {
+          "key": ".AVM_FLASHCARDS.6.explanation.fa",
+          "itemId": "avm-zns-07-eloquenz",
+          "before": "لیست کامل: حسی-حرکتی، زبان، قشر بینایی، هیپوتالاموس، تالاموس، ساقه مغز، پدیکل‌های مخچه‌ای، هسته‌های عمقی مخچه. غیرگویا: قطب فرونتال، اکسیپیتال، نیم‌کره مخچه.",
+          "after": "فهرست اسپتزلر–مارتین شامل قشر حسی‌حرکتی، زبانی و بینایی، هیپوتالاموس، تالاموس، کپسول داخلی، ساقهٔ مغز، پایه‌های مخچه و هسته‌های عمقی مخچه است. ارتباط با ناحیهٔ عملکردی دقیق، اهمیت عملکردی را تعیین می‌کند؛ غیرمهم عملکردی دانستن کلی قطب اکسیپیتال نادرست است."
+        },
+        {
+          "key": ".AVM_LESSON.spetzler.rows.3.1.de",
+          "itemId": null,
+          "before": "Nicht-eloquent (Frontal, Okzipital, Kleinhirn-Hemisphäre)",
+          "after": "Nichteloquente Lage: außerhalb der unten genannten Funktionsregionen"
+        },
+        {
+          "key": ".AVM_LESSON.spetzler.rows.3.1.en",
+          "itemId": null,
+          "before": "Non-eloquent (frontal, occipital, cerebellar hemisphere)",
+          "after": "Noneloquent location: outside the functional regions listed below"
+        },
+        {
+          "key": ".AVM_LESSON.spetzler.rows.3.1.fa",
+          "itemId": null,
+          "before": "غیرگویا (فرونتال، اکسیپیتال، نیم‌کره مخچه)",
+          "after": "محل غیرحساس عملکردی: خارج از نواحی عملکردی فهرست‌شده در ردیف بعد"
+        },
+        {
+          "key": ".AVM_LESSON.spetzler.rows.4.1.de",
+          "itemId": null,
+          "before": "Eloquent (Sensomotorik, Sprache, Sehrinde, Hypothalamus, Thalamus, Hirnstamm, Kleinhirnstiele, tiefe Kleinhirnkerne)",
+          "after": "Eloquent (Sensomotorik, Sprache, Sehrinde, Hypothalamus, Thalamus, innere Kapsel, Hirnstamm, Kleinhirnstiele, tiefe Kleinhirnkerne)"
+        },
+        {
+          "key": ".AVM_LESSON.spetzler.rows.4.1.en",
+          "itemId": null,
+          "before": "Eloquent (sensorimotor, language, visual cortex, hypothalamus, thalamus, brainstem, cerebellar peduncles, deep cerebellar nuclei)",
+          "after": "Eloquent (sensorimotor, language, visual cortex, hypothalamus, thalamus, internal capsule, brainstem, cerebellar peduncles, deep cerebellar nuclei)"
+        },
+        {
+          "key": ".AVM_LESSON.spetzler.rows.4.1.fa",
+          "itemId": null,
+          "before": "گویا (حسی-حرکتی، زبان، قشر بینایی، هیپوتالاموس، تالاموس، ساقه مغز، پدیکل‌های مخچه‌ای، هسته‌های عمقی مخچه)",
+          "after": "حساس از نظر عملکردی (قشر حسی‌حرکتی، زبان، بینایی، هیپوتالاموس، تالاموس، کپسول داخلی، ساقهٔ مغز، پایه‌های مخچه و هسته‌های عمقی مخچه)"
+        },
+        {
+          "key": ".AVM_QUESTIONS.de.4.options.1.text",
+          "itemId": "avm-zns-de-05",
+          "before": "Okzipitalpol",
+          "after": "Anteriore frontale Konvexität außerhalb motorischer und sprachrelevanter Areale"
+        },
+        {
+          "key": ".AVM_QUESTIONS.de.4.explanation",
+          "itemId": "avm-zns-de-05",
+          "before": "Eloquente Areale: Sensomotorik, Sprache, Sehrinde, Hypothalamus, Thalamus, Hirnstamm, Kleinhirnstiele, tiefe Kleinhirnkerne. Frontalpol, Okzipitalpol und Kleinhirnhemisphären gelten als nicht-eloquent.",
+          "after": "Im Spetzler-Martin-System zählen sensomotorischer, sprachrelevanter und visueller Kortex, Hypothalamus, Thalamus, innere Kapsel, Hirnstamm, Kleinhirnstiele und tiefe Kleinhirnkerne als eloquent. Der Thalamus ist hier die zutreffende Antwort. Die konkrete Funktionslage ist entscheidend; der Okzipitalpol darf nicht pauschal als nichteloquent gelten."
+        },
+        {
+          "key": ".AVM_QUESTIONS.de.7.question",
+          "itemId": "avm-zns-de-08",
+          "before": "Welcher DSA-Befund spricht für einen arteriovenösen Shunt?",
+          "after": "Welcher DSA-Befund spricht spezifisch für eine parenchymale AVM mit arteriovenösem Shunt?"
+        },
+        {
+          "key": ".AVM_QUESTIONS.de.7.explanation",
+          "itemId": "avm-zns-de-08",
+          "before": "Nidus und frühe venöse Drainage während der arteriellen Phase sprechen für einen arteriovenösen Shunt.",
+          "after": "Nidus und frühe venöse Drainage in der arteriellen Phase stützen eine parenchymale AVM. Retrograde Sinusfüllung ohne Nidus kann zu einer dAVF passen und beantwortet die Frage nach einer parenchymalen AVM nicht."
+        },
+        {
+          "key": ".AVM_QUESTIONS.en.4.options.1.text",
+          "itemId": "avm-zns-en-05",
+          "before": "Occipital pole",
+          "after": "Anterior frontal convexity outside motor and language areas"
+        },
+        {
+          "key": ".AVM_QUESTIONS.en.4.explanation",
+          "itemId": "avm-zns-en-05",
+          "before": "Eloquent areas: sensorimotor, language, visual cortex, hypothalamus, thalamus, brainstem, cerebellar peduncles, deep cerebellar nuclei. Frontal pole, occipital pole and cerebellar hemispheres are non-eloquent.",
+          "after": "In the Spetzler-Martin system, sensorimotor, language and visual cortex, hypothalamus, thalamus, internal capsule, brainstem, cerebellar peduncles and deep cerebellar nuclei are eloquent. The thalamus is the correct answer here. Functional location matters; the occipital pole must not be categorically called noneloquent."
+        },
+        {
+          "key": ".AVM_QUESTIONS.en.7.question",
+          "itemId": "avm-zns-en-08",
+          "before": "Which DSA finding supports an arteriovenous shunt?",
+          "after": "Which DSA finding supports a parenchymal AVM with arteriovenous shunting?"
+        },
+        {
+          "key": ".AVM_QUESTIONS.en.7.explanation",
+          "itemId": "avm-zns-en-08",
+          "before": "A nidus and early venous drainage during the arterial phase support an arteriovenous shunt.",
+          "after": "A nidus and early venous drainage in the arterial phase support a parenchymal AVM. Retrograde sinus filling without a nidus can fit a dAVF and does not answer the question about a parenchymal AVM."
+        },
+        {
+          "key": ".AVM_QUESTIONS.fa.4.options.1.text",
+          "itemId": "avm-zns-fa-05",
+          "before": "قطب اکسیپیتال",
+          "after": "کانوکسیتی قدامی فرونتال خارج از نواحی حرکتی و زبانی"
+        },
+        {
+          "key": ".AVM_QUESTIONS.fa.4.explanation",
+          "itemId": "avm-zns-fa-05",
+          "before": "نواحی گویا: حسی-حرکتی، زبان، قشر بینایی، هیپوتالاموس، تالاموس، ساقه مغز، پدیکل‌های مخچه‌ای، هسته‌های عمقی مخچه. قطب فرونتال، اکسیپیتال و نیم‌کره مخچه غیرگویا هستند.",
+          "after": "در نظام اسپتزلر–مارتین، قشر حسی‌حرکتی، زبانی و بینایی، هیپوتالاموس، تالاموس، کپسول داخلی، ساقهٔ مغز، پایه‌های مخچه و هسته‌های عمقی مخچه نواحی مهم عملکردی محسوب می‌شوند. در این سؤال تالاموس پاسخ درست است. محل عملکردی دقیق اهمیت دارد؛ قطب اکسیپیتال را نباید به‌طور کلی غیرمهم عملکردی دانست."
+        },
+        {
+          "key": ".AVM_QUESTIONS.fa.7.question",
+          "itemId": "avm-zns-fa-08",
+          "before": "کدام یافته DSA به نفع شانت شریانی‌وریدی است؟",
+          "after": "کدام یافتهٔ DSA به نفع AVM پارانشیمی همراه شانت شریانی‌وریدی است؟"
+        },
+        {
+          "key": ".AVM_QUESTIONS.fa.7.explanation",
+          "itemId": "avm-zns-fa-08",
+          "before": "نیدوس و درناژ زودرس وریدی در فاز شریانی به نفع شانت شریانی‌وریدی است.",
+          "after": "نیدوس و درناژ زودرس وریدی در فاز شریانی به نفع AVM پارانشیمی است. پُرشدگی رتروگراد سینوس بدون نیدوس می‌تواند با dAVF سازگار باشد و پاسخ پرسش دربارهٔ AVM پارانشیمی نیست."
+        }
+      ]
+    },
+    {
+      "file": "data/davf.js",
+      "changedExportFields": 12,
+      "idsAndCorrectLettersPreserved": true,
+      "itemIds": [
+        "davf-14-konservativ",
+        "davf-de-05",
+        "davf-en-05",
+        "davf-fa-05"
+      ],
+      "changes": [
+        {
+          "key": ".DAVF_FLASHCARDS.13.answer.de",
+          "itemId": "davf-14-konservativ",
+          "before": "Nur bei Cognard I (kein CVD, asymptomatisch oder Tinnitus).",
+          "after": "Bei ausgewählten Cognard-I- oder IIa-Fisteln ohne kortikalen venösen Reflux nach individueller Beurteilung."
+        },
+        {
+          "key": ".DAVF_FLASHCARDS.13.answer.en",
+          "itemId": "davf-14-konservativ",
+          "before": "Only for Cognard I (no CVD, asymptomatic or tinnitus only).",
+          "after": "For selected Cognard I or IIa fistulas without cortical venous reflux, following individual assessment."
+        },
+        {
+          "key": ".DAVF_FLASHCARDS.13.answer.fa",
+          "itemId": "davf-14-konservativ",
+          "before": "فقط برای Cognard I (بدون CVD، بدون علامت یا فقط تینیتوس).",
+          "after": "در فیستول‌های منتخب Cognard I یا IIa بدون رفلاکس وریدی کورتیکال، پس از ارزیابی فردی."
+        },
+        {
+          "key": ".DAVF_FLASHCARDS.13.explanation.de",
+          "itemId": "davf-14-konservativ",
+          "before": "Cognard I hat antegrade Sinusdrainage ohne CVD. Management und Verlaufskontrolle richten sich nach Symptomen und individueller Beurteilung.",
+          "after": "Cognard I hat antegrade, IIa retrograde Sinusdrainage ohne kortikalen Reflux. Beschwerden, venöse Abflussbehinderung und Zeichen intrakranieller Hypertension sind mitzubeurteilen; Beobachtung erfordert geplante Verlaufskontrollen und erneute Abklärung bei veränderten Symptomen."
+        },
+        {
+          "key": ".DAVF_FLASHCARDS.13.explanation.en",
+          "itemId": "davf-14-konservativ",
+          "before": "Cognard I has antegrade sinus drainage without CVD. Management and follow-up depend on symptoms and individualized assessment.",
+          "after": "Cognard I has antegrade and IIa retrograde sinus drainage without cortical reflux. Assess symptoms, venous outflow obstruction and signs of intracranial hypertension; observation requires planned follow-up and reassessment if symptoms change."
+        },
+        {
+          "key": ".DAVF_FLASHCARDS.13.explanation.fa",
+          "itemId": "davf-14-konservativ",
+          "before": "Cognard I درناژ آنتروگراد سینوس بدون CVD دارد. مدیریت و پیگیری بر اساس علائم و ارزیابی فردی است.",
+          "after": "Cognard I درناژ آنتروگراد و IIa درناژ رتروگراد سینوس را بدون رفلاکس کورتیکال دارند. علائم، اختلال خروج وریدی و نشانه‌های پرفشاری داخل جمجمه نیز باید ارزیابی شوند؛ مشاهده به پیگیری برنامه‌ریزی‌شده و بررسی مجدد در صورت تغییر علائم نیاز دارد."
+        },
+        {
+          "key": ".DAVF_LESSON.management.items.2.text.de",
+          "itemId": null,
+          "before": "Nur bei Cognard I (benigne, kein CVD, asymptomatisch oder nur Tinnitus). Regelmäßige Bildgebungskontrollen. Kompression der Jugularvene kann helfen (Vorsicht: keine starke Evidenz).",
+          "after": "Bei ausgewählten Cognard-I- oder IIa-Fisteln ohne kortikalen Reflux nach individueller Beurteilung von Symptomen und venösem Abfluss; Zeichen intrakranieller Hypertension beachten. Regelmäßige Bildgebungskontrollen. Kompression der Jugularvene kann helfen (Vorsicht: keine starke Evidenz)."
+        },
+        {
+          "key": ".DAVF_LESSON.management.items.2.text.en",
+          "itemId": null,
+          "before": "Only for Cognard I (benign, no CVD, asymptomatic or pulsatile tinnitus only). Regular imaging follow-up. Compression of the jugular vein may help (caution: limited evidence).",
+          "after": "For selected Cognard I or IIa fistulas without cortical reflux, after individual assessment of symptoms and venous outflow; assess signs of intracranial hypertension. Regular imaging follow-up. Compression of the jugular vein may help (caution: limited evidence)."
+        },
+        {
+          "key": ".DAVF_LESSON.management.items.2.text.fa",
+          "itemId": null,
+          "before": "فقط برای Cognard I (خوش‌خیم، بدون CVD، بدون علامت یا فقط تینیتوس). پیگیری تصویربرداری منظم. فشردن ورید ژوگولار می‌تواند کمک کند (احتیاط: شواهد محدود).",
+          "after": "در فیستول‌های منتخب Cognard I یا IIa بدون رفلاکس کورتیکال، پس از ارزیابی فردی علائم و خروج وریدی؛ به نشانه‌های پرفشاری داخل جمجمه توجه شود. پیگیری تصویربرداری منظم. فشردن ورید ژوگولار می‌تواند کمک کند (احتیاط: شواهد محدود)."
+        },
+        {
+          "key": ".DAVF_QUESTIONS.de.4.explanation",
+          "itemId": "davf-de-05",
+          "before": "Die Sinus-transversus-dAVF drainiert retrograd in die Jugularvene → Turbulenzgeräusch = pulssynchroner Tinnitus.",
+          "after": "Pulssynchroner Tinnitus kann auf eine sinusnahe dAVF hinweisen. Die Flussrichtung ist nicht obligat retrograd; antegrade oder retrograde Sinusdrainage werden angiographisch unterschieden."
+        },
+        {
+          "key": ".DAVF_QUESTIONS.en.4.explanation",
+          "itemId": "davf-en-05",
+          "before": "Transverse sinus dAVF drains retrogradely into the jugular vein → turbulent flow = pulsatile tinnitus.",
+          "after": "Pulsatile tinnitus can point to a sinus-adjacent dAVF. Flow is not obligatorily retrograde; antegrade and retrograde sinus drainage are distinguished angiographically."
+        },
+        {
+          "key": ".DAVF_QUESTIONS.fa.4.explanation",
+          "itemId": "davf-fa-05",
+          "before": "dAVF سینوس ترانسورسوس به‌صورت رتروگراد به ورید ژوگولار تخلیه می‌کند → صدای توربولانس = تینیتوس سنکرون با نبض.",
+          "after": "تینیتوس هم‌زمان با نبض می‌تواند به نفع dAVF نزدیک سینوس باشد. جهت جریان الزاماً رتروگراد نیست؛ درناژ آنتروگراد و رتروگراد سینوس با آنژیوگرافی تفکیک می‌شوند."
+        }
+      ]
+    },
+    {
+      "file": "data/pcnslLesson.js",
+      "changedExportFields": 3,
+      "idsAndCorrectLettersPreserved": true,
+      "itemIds": [
+        "lymphom-zns-de-pattern",
+        "lymphom-zns-en-pattern",
+        "lymphom-zns-fa-pattern"
+      ],
+      "changes": [
+        {
+          "key": ".PCNSL_QUESTIONS.de.0.wrongExplanations.D",
+          "itemId": "lymphom-zns-de-pattern",
+          "before": "Richtig. Restriktion kann PCNSL stützen, trennt es aber allein nicht sicher von Toxoplasmose.",
+          "after": "Nein. Niedriger ADC beweist keine Toxoplasmose; Diffusionsbefunde können mit PCNSL überlappen und müssen im Kontext beurteilt werden."
+        },
+        {
+          "key": ".PCNSL_QUESTIONS.en.0.wrongExplanations.D",
+          "itemId": "lymphom-zns-en-pattern",
+          "before": "Correct. Restriction can support PCNSL but cannot reliably separate it from toxoplasmosis on its own.",
+          "after": "No. Low ADC does not prove toxoplasmosis; diffusion findings can overlap with PCNSL and must be interpreted in context."
+        },
+        {
+          "key": ".PCNSL_QUESTIONS.fa.0.wrongExplanations.D",
+          "itemId": "lymphom-zns-fa-pattern",
+          "before": "درست است. محدودیت انتشار می‌تواند از PCNSL حمایت کند، اما به‌تنهایی آن را به‌طور قابل اعتماد از توکسوپلاسموز جدا نمی‌کند.",
+          "after": "خیر. ADC پایین توکسوپلاسموز را ثابت نمی‌کند؛ یافته‌های انتشار می‌توانند با PCNSL هم‌پوشانی داشته باشند و باید در زمینهٔ بالینی تفسیر شوند."
+        }
+      ]
+    },
+    {
+      "file": "data/hie.js",
+      "changedExportFields": 12,
+      "idsAndCorrectLettersPreserved": true,
+      "itemIds": [
+        "hie-fc-profound-vs-watershed",
+        "hie-fc-timeline",
+        "hie-fc-dphl",
+        "hie-fc-prognosis"
+      ],
+      "changes": [
+        {
+          "key": ".HIE_FLASHCARDS.3.diagram.de",
+          "itemId": "hie-fc-profound-vs-watershed",
+          "before": "profund → Kortex + BG/Thalamus\nHypotonie → ACA/MCA + MCA/PCA",
+          "after": "profund → Kortex + Basalganglien/Thalamus\nHypotonie → ACA/MCA- und MCA/PCA-Grenzzonen"
+        },
+        {
+          "key": ".HIE_FLASHCARDS.3.diagram.en",
+          "itemId": "hie-fc-profound-vs-watershed",
+          "after": "Profound insult → cortex + basal ganglia/thalamus\nHypotension → ACA/MCA and MCA/PCA border zones"
+        },
+        {
+          "key": ".HIE_FLASHCARDS.3.diagram.fa",
+          "itemId": "hie-fc-profound-vs-watershed",
+          "after": "آسیب شدید → کورتکس + گانگلیون‌های قاعده‌ای/تالاموس\nافت فشار → نواحی مرزی ACA/MCA و MCA/PCA"
+        },
+        {
+          "key": ".HIE_FLASHCARDS.9.diagram.de",
+          "itemId": "hie-fc-timeline",
+          "before": "0–24 h DWI → 1–7 d DWI+FLAIR → 1–3 w T1 laminar → chronisch Atrophie",
+          "after": "Zeitabhängiges Orientierungsschema, variable Übergänge: 0–24 h DWI → 1–7 d DWI+FLAIR → 1–3 w T1 laminar → chronisch Atrophie"
+        },
+        {
+          "key": ".HIE_FLASHCARDS.9.diagram.en",
+          "itemId": "hie-fc-timeline",
+          "after": "Timing-dependent teaching outline, variable transitions: 0–24 h DWI → 1–7 d DWI+FLAIR → 1–3 w laminar T1 → chronic atrophy"
+        },
+        {
+          "key": ".HIE_FLASHCARDS.9.diagram.fa",
+          "itemId": "hie-fc-timeline",
+          "after": "طرح آموزشی وابسته به زمان، با گذارهای متغیر: ۰–۲۴ ساعت DWI ← ۱–۷ روز DWI+FLAIR ← ۱–۳ هفته T1 لامینار ← آتروفی مزمن"
+        },
+        {
+          "key": ".HIE_FLASHCARDS.14.diagram.de",
+          "itemId": "hie-fc-dphl",
+          "before": "Hypoxie → Erholung → lucid interval → Leukoenzephalopathie",
+          "after": "Hypoxie → Erholung → symptomarmes Intervall → Leukoenzephalopathie"
+        },
+        {
+          "key": ".HIE_FLASHCARDS.14.diagram.en",
+          "itemId": "hie-fc-dphl",
+          "after": "Hypoxia → recovery → lucid interval → leukoencephalopathy"
+        },
+        {
+          "key": ".HIE_FLASHCARDS.14.diagram.fa",
+          "itemId": "hie-fc-dphl",
+          "after": "هیپوکسی ← بهبود ← دورهٔ کم‌علامت ← لکوانسفالوپاتی"
+        },
+        {
+          "key": ".HIE_FLASHCARDS.16.diagram.de",
+          "itemId": "hie-fc-prognosis",
+          "before": "≥72 h + keine Konfounder + Klinik/EEG/SSEP/Biomarker/Bildgebung",
+          "after": "Bei Erwachsenen nach Herzstillstand: Prognosebeurteilung frühestens 72 h nach ROSC ohne Hypothermie bzw. 72 h nach Wiedererwärmung; ohne Konfounder und multimodal (Klinik/EEG/SSEP/Biomarker/Bildgebung). Fortbestehendes Koma allein beweist keine schlechte Prognose."
+        },
+        {
+          "key": ".HIE_FLASHCARDS.16.diagram.en",
+          "itemId": "hie-fc-prognosis",
+          "after": "In adults after cardiac arrest: defer prognostic assessment until at least 72 h after ROSC without hypothermia, or 72 h after rewarming; remove confounders and use multiple modalities (clinical examination/EEG/SSEP/biomarkers/imaging). Persistent coma alone does not prove poor outcome."
+        },
+        {
+          "key": ".HIE_FLASHCARDS.16.diagram.fa",
+          "itemId": "hie-fc-prognosis",
+          "after": "در بزرگسالان پس از ایست قلبی: ارزیابی پیش‌آگهی زودتر از ۷۲ ساعت پس از ROSC در نبود هیپوترمی، یا ۷۲ ساعت پس از گرم‌کردن مجدد انجام نشود؛ عوامل مخدوش‌کننده حذف و روش‌های متعدد (معاینه/EEG/SSEP/نشانگرها/تصویربرداری) ترکیب شوند. تداوم کما به‌تنهایی پیش‌آگهی نامطلوب را ثابت نمی‌کند."
+        }
+      ]
+    },
+    {
+      "file": "data/edh.js",
+      "changedExportFields": 8,
+      "idsAndCorrectLettersPreserved": true,
+      "itemIds": [
+        "edh-fc-sdh",
+        "edh-fc-observe",
+        "edh-fc-workflow"
+      ],
+      "changes": [
+        {
+          "key": ".EDH_FLASHCARDS.10.diagram.en",
+          "itemId": "edh-fc-sdh",
+          "after": "EDH → lens + suture boundary\nSDH → crescent + falx/tentorium"
+        },
+        {
+          "key": ".EDH_FLASHCARDS.10.diagram.fa",
+          "itemId": "edh-fc-sdh",
+          "after": "EDH ← عدسی + مرز درز جمجمه\nSDH ← هلال + فالکس/تنتوریوم"
+        },
+        {
+          "key": ".EDH_FLASHCARDS.12.diagram.de",
+          "itemId": "edh-fc-observe",
+          "before": "Volumen <30 + Dicke <15 + Shift <5 + GCS >8 + kein Defizit → eng beobachten",
+          "after": "Volumen <30 cm³ + Dicke <15 mm + Mittellinienverlagerung <5 mm + GCS >8 + kein fokales Defizit → serielle CT und engmaschige neurologische Beobachtung in einem neurochirurgischen Zentrum"
+        },
+        {
+          "key": ".EDH_FLASHCARDS.12.diagram.en",
+          "itemId": "edh-fc-observe",
+          "after": "Volume <30 cm³ + thickness <15 mm + midline shift <5 mm + GCS >8 + no focal deficit → serial CT and close neurological observation in a neurosurgical centre"
+        },
+        {
+          "key": ".EDH_FLASHCARDS.12.diagram.fa",
+          "itemId": "edh-fc-observe",
+          "after": "حجم <30 cm³ + ضخامت <15 mm + جابه‌جایی خط وسط <5 mm + GCS >8 + نبود نقص فوکال ← CT سریال و پایش نزدیک عصبی در مرکز جراحی مغز و اعصاب"
+        },
+        {
+          "key": ".EDH_FLASHCARDS.17.diagram.de",
+          "itemId": "edh-fc-workflow",
+          "before": "GCS↓ / Anisokorie → sofortige CT + Neurosurgery → Evakuation prüfen",
+          "after": "GCS↓ / Anisokorie → sofortige CT + Neurochirurgie → Evakuation prüfen"
+        },
+        {
+          "key": ".EDH_FLASHCARDS.17.diagram.en",
+          "itemId": "edh-fc-workflow",
+          "after": "Falling GCS / anisocoria → immediate CT + neurosurgical assessment → assess evacuation"
+        },
+        {
+          "key": ".EDH_FLASHCARDS.17.diagram.fa",
+          "itemId": "edh-fc-workflow",
+          "after": "کاهش GCS / آنیزوکوری ← CT فوری + ارزیابی جراحی مغز و اعصاب ← بررسی تخلیه"
+        }
+      ]
+    },
+    {
+      "file": "data/gehirnNf1CnsLesson.js",
+      "changedExportFields": 3,
+      "idsAndCorrectLettersPreserved": true,
+      "itemIds": [
+        "neurofibromatose-typ1-de-systemic",
+        "neurofibromatose-typ1-en-systemic",
+        "neurofibromatose-typ1-fa-systemic"
+      ],
+      "changes": [
+        {
+          "key": ".GEHIRN_NF1_QUESTIONS.de.2.question",
+          "itemId": "neurofibromatose-typ1-de-systemic",
+          "before": "Wie ist die Knochen-, Gefäß- und Abdomenliste auf PDF-Seite 84 am sinnvollsten zu verwenden?",
+          "after": "Ein Lernüberblick nennt knöcherne, vaskuläre und abdominale NF1-Manifestationen, legt aber keine Screeningintervalle oder vollständige Organdiagnostik fest. Wie ist er sinnvoll zu verwenden?"
+        },
+        {
+          "key": ".GEHIRN_NF1_QUESTIONS.en.2.question",
+          "itemId": "neurofibromatose-typ1-en-systemic",
+          "before": "What is the best use of the bone, vascular, and abdominal list on PDF page 84?",
+          "after": "A teaching overview lists skeletal, vascular and abdominal NF1 manifestations but specifies neither screening intervals nor a complete organ work-up. How should it be used?"
+        },
+        {
+          "key": ".GEHIRN_NF1_QUESTIONS.fa.2.question",
+          "itemId": "neurofibromatose-typ1-fa-systemic",
+          "before": "بهترین کاربرد فهرست استخوان، عروق و شکم در صفحهٔ ۸۴ PDF چیست؟",
+          "after": "یک مرور آموزشی تظاهرات اسکلتی، عروقی و شکمی NF1 را فهرست می‌کند، اما فاصلهٔ غربالگری یا بررسی کامل اعضا را تعیین نمی‌کند. چگونه باید از آن استفاده کرد؟"
+        }
+      ]
+    },
+    {
+      "file": "data/atrtLesson.js",
+      "changedExportFields": 3,
+      "idsAndCorrectLettersPreserved": true,
+      "itemIds": [
+        "atrt-pdf-boundary"
+      ],
+      "changes": [
+        {
+          "key": ".ATRT_FLASHCARDS.2.front.de",
+          "itemId": "atrt-pdf-boundary",
+          "before": "Welche Sequenzen zeigt Gehirn.pdf p.44 — und welche fehlen?",
+          "after": "Eine Lehrzusammenstellung zu einer Hirnraumforderung enthält nur sagittales T1, axiales FLAIR und axiales T1 C+. Welche Daten fehlen zur Beurteilung von Diffusion und spinalem Befall, und ist damit ein ATRT belegt?"
+        },
+        {
+          "key": ".ATRT_FLASHCARDS.2.front.en",
+          "itemId": "atrt-pdf-boundary",
+          "before": "Which sequences appear on Gehirn.pdf p.44 — and which are absent?",
+          "after": "A teaching set for an intracranial mass contains only sagittal T1, axial FLAIR and axial post-contrast T1. What data are missing for assessing diffusion and spinal involvement, and does this establish ATRT?"
+        },
+        {
+          "key": ".ATRT_FLASHCARDS.2.front.fa",
+          "itemId": "atrt-pdf-boundary",
+          "before": "صفحهٔ ۴۴ Gehirn.pdf چه توالی‌هایی دارد و کدام‌ها غایب‌اند؟",
+          "after": "یک مجموعهٔ آموزشی دربارهٔ تودهٔ داخل جمجمه فقط T1 ساژیتال، FLAIR محوری و T1 محوری پس از تزریق دارد. برای بررسی انتشار و درگیری نخاعی چه داده‌هایی کم است و آیا با این مجموعه ATRT اثبات می‌شود؟"
+        }
+      ]
+    },
+    {
+      "file": "data/medulloblastomLesson.js",
+      "changedExportFields": 9,
+      "idsAndCorrectLettersPreserved": true,
+      "itemIds": [
+        "medulloblastom-evidence",
+        "medulloblastom-de-evidence",
+        "medulloblastom-en-evidence",
+        "medulloblastom-fa-evidence"
+      ],
+      "changes": [
+        {
+          "key": ".MEDULLO_CHECK.question.de",
+          "itemId": null,
+          "before": "Die Quellmontage zeigt T1, FLAIR und T1 C+. Welche Aussage ist damit am besten begründet?",
+          "after": "Eine MRT-Auswahl umfasst T1, FLAIR und T1 nach Kontrastmittelgabe; DWI/ADC und spinale Aufnahmen liegen nicht vor. Welche Aussage ist anhand dieser Sequenzauswahl begründet?"
+        },
+        {
+          "key": ".MEDULLO_CHECK.question.en",
+          "itemId": null,
+          "before": "The source montage shows T1, FLAIR and T1 C+. Which statement is best supported?",
+          "after": "An MRI set contains T1, FLAIR and post-contrast T1; DWI/ADC and spinal images are unavailable. Which statement is supported by this sequence selection?"
+        },
+        {
+          "key": ".MEDULLO_CHECK.question.fa",
+          "itemId": null,
+          "before": "مونتاژ منبع T1، FLAIR و T1 C+ را نشان می‌دهد. کدام گزاره بیشترین پشتوانه را دارد؟",
+          "after": "یک مجموعهٔ MRI شامل T1، FLAIR و T1 پس از تزریق است؛ DWI/ADC و تصاویر نخاعی در دسترس نیستند. بر اساس این توالی‌ها کدام گزاره پشتوانه دارد؟"
+        },
+        {
+          "key": ".MEDULLO_FLASHCARDS.0.front.de",
+          "itemId": "medulloblastom-evidence",
+          "before": "Die Quellmontage zeigt T1, FLAIR und T1 C+. Welche Aussage ist damit am besten begründet?",
+          "after": "Eine MRT-Auswahl umfasst T1, FLAIR und T1 nach Kontrastmittelgabe; DWI/ADC und spinale Aufnahmen liegen nicht vor. Welche Aussage ist anhand dieser Sequenzauswahl begründet?"
+        },
+        {
+          "key": ".MEDULLO_FLASHCARDS.0.front.en",
+          "itemId": "medulloblastom-evidence",
+          "before": "The source montage shows T1, FLAIR and T1 C+. Which statement is best supported?",
+          "after": "An MRI set contains T1, FLAIR and post-contrast T1; DWI/ADC and spinal images are unavailable. Which statement is supported by this sequence selection?"
+        },
+        {
+          "key": ".MEDULLO_FLASHCARDS.0.front.fa",
+          "itemId": "medulloblastom-evidence",
+          "before": "مونتاژ منبع T1، FLAIR و T1 C+ را نشان می‌دهد. کدام گزاره بیشترین پشتوانه را دارد؟",
+          "after": "یک مجموعهٔ MRI شامل T1، FLAIR و T1 پس از تزریق است؛ DWI/ADC و تصاویر نخاعی در دسترس نیستند. بر اساس این توالی‌ها کدام گزاره پشتوانه دارد؟"
+        },
+        {
+          "key": ".MEDULLO_QUESTIONS.de.0.question",
+          "itemId": "medulloblastom-de-evidence",
+          "before": "Die Quellmontage zeigt T1, FLAIR und T1 C+. Welche Aussage ist damit am besten begründet?",
+          "after": "Eine MRT-Auswahl umfasst T1, FLAIR und T1 nach Kontrastmittelgabe; DWI/ADC und spinale Aufnahmen liegen nicht vor. Welche Aussage ist anhand dieser Sequenzauswahl begründet?"
+        },
+        {
+          "key": ".MEDULLO_QUESTIONS.en.0.question",
+          "itemId": "medulloblastom-en-evidence",
+          "before": "The source montage shows T1, FLAIR and T1 C+. Which statement is best supported?",
+          "after": "An MRI set contains T1, FLAIR and post-contrast T1; DWI/ADC and spinal images are unavailable. Which statement is supported by this sequence selection?"
+        },
+        {
+          "key": ".MEDULLO_QUESTIONS.fa.0.question",
+          "itemId": "medulloblastom-fa-evidence",
+          "before": "مونتاژ منبع T1، FLAIR و T1 C+ را نشان می‌دهد. کدام گزاره بیشترین پشتوانه را دارد؟",
+          "after": "یک مجموعهٔ MRI شامل T1، FLAIR و T1 پس از تزریق است؛ DWI/ADC و تصاویر نخاعی در دسترس نیستند. بر اساس این توالی‌ها کدام گزاره پشتوانه دارد؟"
+        }
+      ]
+    }
+  ],
+  "sourceLedger": [
+    {
+      "url": "https://www.england.nhs.uk/commissioning/wp-content/uploads/sites/12/2013/10/d05-p-c.pdf",
+      "support": "Appendix1 eloquent visual cortex and internal capsule; primary policy definition of parenchymal AVM"
+    },
+    {
+      "url": "https://pubs.rsna.org/doi/10.1148/radiology.194.3.7862961",
+      "support": "Original Cognard drainage definitions distinguish antegradeI and retrogradeIIa without cortical reflux; not a management mandate"
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9326856/",
+      "support": "Primary cohort reports selected recurrentIIa conservatively managed; individual symptoms/followup required"
+    },
+    {
+      "url": "https://braintrauma.org/coma/guidelines/surgical",
+      "support": "EDH observation recommendation contains all inequalities,units,focaldeficit and centre/serialCT requirements"
+    },
+    {
+      "url": "https://link.springer.com/article/10.1007/s12028-023-01688-3",
+      "support": "2023 adultpostarrest GoodPracticeStatement1 ROSC/rewarming anchors,confounders and delayedmultimodal prognosis"
+    }
+  ],
+  "open": [
+    "HIE precise evolution0–24h/1–7d/1–3w remains unverified; translated with explicit variable-timing qualifier, not recertified.",
+    "dAVF SWI venous-compartment mechanism and most-common-cause assertion remainOPEN; no mechanism rewritten without evidence.",
+    "Moyamoya DSA/ivy/bypass and otherunverified clinical claims/distractor redesign remainOPEN.",
+    "Root owns ICB/HMA/stroke.",
+    "Existing weak-evidence jugular-compression sentence in dAVF lesson remains unverified; not promoted to self-treatment guidance or scientific approval."
+  ],
+  "tests": {
+    "actualSsr": "702/702 PASS",
+    "all8DataModulesCompile": true,
+    "idsAndCorrectLettersPreserved": true,
+    "pcnslWrongDNoPositiveCueAll3": true,
+    "all7DiagramsHaveAll3Languages": true
+  },
+  "reviewerFollowup": {
+    "finding": "FA profound described severity, not anatomic depth",
+    "file": "data/hie.js",
+    "itemId": "hie-fc-profound-vs-watershed",
+    "changedFields": [
+      "prompt.fa",
+      "answer.fa",
+      "diagram.fa"
+    ],
+    "after": {
+      "prompt": "آنکسی شدید در برابر هیپوپرفیوژن ناکامل: چه الگویی؟",
+      "answer": "شدید: کورتکس و هسته‌های عمقی. ناکامل: نواحی مرزی.",
+      "diagram": "آسیب شدید → کورتکس + گانگلیون‌های قاعده‌ای/تالاموس\nافت فشار → نواحی مرزی ACA/MCA و MCA/PCA"
+    }
+  }
+}

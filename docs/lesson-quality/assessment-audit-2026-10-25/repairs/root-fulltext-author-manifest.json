@@ -1,0 +1,113 @@
+{
+  "date": "2026-10-25",
+  "changes": [
+    {
+      "file": "app/mamma/bildgebung/mammographie/grundlagen/page.js",
+      "before": "'Calcifications', 'کلسیم'",
+      "after": "'Calcifications', 'کلسیفیکاسیون‌ها'",
+      "recoveredEarlierExecution": true
+    },
+    {
+      "file": "app/mamma/bildgebung/mammographie/grundlagen/content.js",
+      "before": "L('Describe before you diagnose.',",
+      "after": "L('Vor der Diagnose den Befund beschreiben.',",
+      "recoveredEarlierExecution": true
+    },
+    {
+      "file": "app/mamma/bildgebung/mammographie/grundlagen/content.js",
+      "before": "L('Mass = Shape + Margin + Density.',",
+      "after": "L('Mass = Form + Rand + Dichte.',",
+      "recoveredEarlierExecution": true
+    },
+    {
+      "file": "app/mamma/bildgebung/mammographie/grundlagen/content.js",
+      "before": "L('Calcifications = Morphology + Distribution.',",
+      "after": "L('Verkalkungen = Morphologie + Verteilung.',",
+      "recoveredEarlierExecution": true
+    },
+    {
+      "file": "app/mamma/bildgebung/mammographie/grundlagen/content.js",
+      "before": "L('No enhancement does not downgrade suspicious calcifications.',",
+      "after": "L('Fehlende Anreicherung stuft suspekte Verkalkungen nicht herab.',",
+      "recoveredEarlierExecution": true
+    },
+    {
+      "file": "app/mamma/bildgebung/mrt/besondere-mammakarzinome/content.js",
+      "before": "گرد/بیضی، Thick حلقوی، نکروز",
+      "after": "گرد/بیضی، تقویت حلقوی ضخیم، نکروز",
+      "recoveredEarlierExecution": true
+    },
+    {
+      "file": "app/mamma/bildgebung/mrt/kaiser-score/page.js",
+      "before": "fa: 'مشکوک ≠ مثبت'",
+      "after": "fa: 'نامطمئن ≠ مثبت'",
+      "recoveredEarlierExecution": true
+    },
+    {
+      "file": "app/mamma/bildgebung/mrt/basics/content.js",
+      "before": "مقادیر ADC پایین و Restriction در Diffusion نشان می‌دهند",
+      "after": "مقادیر ADC پایین و محدودیت انتشار نشان می‌دهند",
+      "recoveredEarlierExecution": true
+    },
+    {
+      "file": "app/mamma/bildgebung/mrt/basics/content.js",
+      "before": "بافت طبیعی فیبروگلاندولار پس از تزریق تا چه اندازه پس از تزریق تقویت می‌شود",
+      "after": "بافت طبیعی فیبروگلاندولار پس از تزریق تا چه اندازه تقویت می‌شود",
+      "recoveredEarlierExecution": true
+    },
+    {
+      "file": "app/mamma/bildgebung/mrt/basics/content.js",
+      "before": "بافت طبیعی فیبروگلاندولار پس از تزریق تا چه اندازه پس از تزریق تقویت می‌شود",
+      "after": "بافت طبیعی فیبروگلاندولار پس از تزریق تا چه اندازه تقویت می‌شود",
+      "recoveredEarlierExecution": true
+    },
+    {
+      "file": "app/mamma/bildgebung/mrt/laesionscharakterisierung/page.js",
+      "before": ">T2 hell ≠ automatisch benign</strong>",
+      "after": ">{pick({de:'T2 hell ≠ automatisch benign',en:'T2 bright ≠ automatically benign',fa:'پرسیگنالی T2 ≠ الزاماً خوش‌خیم'},lang)}</strong>",
+      "recoveredEarlierExecution": true
+    },
+    {
+      "file": "app/mamma/bildgebung/mrt/laesionscharakterisierung/page.js",
+      "before": ">ADC = Zusatzkriterium</strong>",
+      "after": ">{pick({de:'ADC = Zusatzkriterium',en:'ADC = an additional criterion',fa:'ADC = معیار تکمیلی'},lang)}</strong>",
+      "recoveredEarlierExecution": true
+    },
+    {
+      "file": "app/mamma/bildgebung/mammographie/verkalkungen/page.js",
+      "before": "category==='4A'?t(\"Keine Biopsie; Kontrolle mittels Mammographie in 12 Monaten.\"):category==='4B'?t(\"Individuelle Entscheidung, aber eher biopsiezurückhaltend.\"):t(\"Biopsie auch bei negativer MRT erforderlich.\")",
+      "after": "t(\"Biopsieindikation bleibt bei bestätigter mammographischer BI-RADS-Kategorie 4 oder 5 bestehen; eine negative MRT hebt sie nicht automatisch auf.\")",
+      "recoveredEarlierExecution": true
+    },
+    {
+      "file": "app/mamma/bildgebung/mammographie/verkalkungen/page.js",
+      "before": "</tbody></table></div>\r\n      <p className={caseStyles.biradsCaption}>",
+      "after": "</tbody></table></div>\r\n      <p className={caseStyles.biradsCaption}>{t(\"Die Metaanalyse untersuchte einen möglichen Biopsieverzicht in ausgewählten Fällen: bei reinem Mikrokalk ohne Begleitbefund bis zu einer Vortestwahrscheinlichkeit von 22 %. Sie begründet keine allgemeine 12-Monats-Kontrolle für BI-RADS 4A und keinen generellen Biopsieverzicht bei 4B. Entscheidung und gegebenenfalls angepasstes Vorgehen erfordern eine individuelle fachärztliche Bewertung.\")}</p>\r\n      <p className={caseStyles.biradsCaption}>"
+    },
+    {
+      "file": "app/mamma/bildgebung/mammographie/verkalkungen/translations.js",
+      "before": "export const LESSON_TRANSLATIONS = {",
+      "after": "export const LESSON_TRANSLATIONS = {\n\"Biopsieindikation bleibt bei bestätigter mammographischer BI-RADS-Kategorie 4 oder 5 bestehen; eine negative MRT hebt sie nicht automatisch auf.\": {\"en\":\"Biopsy remains indicated for a confirmed mammographic BI-RADS category 4 or 5 finding; a negative MRI does not automatically cancel that indication.\",\"fa\":\"در یافتهٔ تأییدشدهٔ ماموگرافیک BI-RADS 4 یا 5، اندیکاسیون بیوپسی باقی است؛ MRI منفی آن را به‌طور خودکار لغو نمی‌کند.\"},\n\"Die Metaanalyse untersuchte einen möglichen Biopsieverzicht in ausgewählten Fällen: bei reinem Mikrokalk ohne Begleitbefund bis zu einer Vortestwahrscheinlichkeit von 22 %. Sie begründet keine allgemeine 12-Monats-Kontrolle für BI-RADS 4A und keinen generellen Biopsieverzicht bei 4B. Entscheidung und gegebenenfalls angepasstes Vorgehen erfordern eine individuelle fachärztliche Bewertung.\": {\"en\":\"The meta-analysis explored possible biopsy avoidance in selected cases: pure microcalcifications without associated findings and a pre-test probability up to 22%. It does not establish a general 12-month follow-up rule for BI-RADS 4A or routine biopsy avoidance for 4B. Decisions and any tailored approach require individual specialist assessment.\",\"fa\":\"این متاآنالیز امکان صرف‌نظر از بیوپسی را در موارد منتخب بررسی کرد: میکروکلسیفیکاسیون بدون یافتهٔ همراه و احتمال پیش‌آزمون حداکثر ۲۲٪. این پژوهش قاعدهٔ عمومی پیگیری ۱۲ماهه برای BI-RADS 4A یا صرف‌نظر کلی از بیوپسی در 4B را اثبات نمی‌کند. تصمیم و هر تغییر احتمالی در رویکرد نیازمند ارزیابی فردی متخصص است.\"},"
+    },
+    {
+      "file": "components/LessonHero.jsx",
+      "before": "import Image from 'next/image'",
+      "after": "import Image from 'next/image'\nimport { Children, isValidElement } from 'react'\n\nconst textContent = node => Children.toArray(node).map(child => typeof child === 'string' || typeof child === 'number' ? String(child) : isValidElement(child) ? textContent(child.props.children) : '').join(' ').replace(/\\s+/g, ' ').trim()"
+    },
+    {
+      "file": "components/LessonHero.jsx",
+      "before": "  const pathname = usePathname()",
+      "after": "  const pathname = usePathname()\n  const altTitle = textContent(imageAlt || title)"
+    },
+    {
+      "file": "components/LessonHero.jsx",
+      "before": "\"use client\"\r\n\r\nimport Image from 'next/image'\nimport { Children, isValidElement } from 'react'\n\nconst textContent = node => Children.toArray(node).map(child => typeof child === 'string' || typeof child === 'number' ? String(child) : isValidElement(child) ? textContent(child.props.children) : '').join(' ').replace(/\\s+/g, ' ').trim()\r\nimport { usePathname } from 'next/navigation'\r\nimport { LESSON_DESIGN_HEROES } from '@/data/lessonDesignHeroes'\r\nimport styles from './LessonHero.module.css'\r\n\r\nexport default function LessonHero({ title, imageSrc, imageAlt, imageClassName, titleClassName, visual, visualCaption, lang = 'de', lessonId }) {\r\n  const pathname = usePathname()\n  const altTitle = textContent(imageAlt || title)\r\n  const designedImage = LESSON_DESIGN_HEROES[pathname]\r\n  const source = designedImage || imageSrc\r\n  const raster = Boolean(source && !source.endsWith('.svg'))\r\n  return <div className={styles.hero} data-lesson-hero data-hero-topic={lessonId || pathname} lang={lang}>\r\n    <h1 className={titleClassName}>{title}</h1>\r\n    <figure className={styles.visual}>\r\n      {raster ? <Image src={source} alt={designedImage && designedImage !== imageSrc ? (lang === 'fa' ? `تصویر مفهومی ${title}` : lang === 'en' ? `Concept illustration: ${title}` : `Schematische Illustration: ${title}`) : (imageAlt || title)} className={imageClassName} fill sizes=\"(max-width: 760px) 160px, (max-width: 1100px) 365px, 525px\" priority data-designed-illustration={source?.startsWith('/educational/lesson-design/') ? 'true' : undefined} data-no-zoom /> : (visual || (source ? <Image src={source} alt={imageAlt || title} fill sizes=\"(max-width: 760px) 160px, 525px\" priority data-designed-illustration={source?.startsWith('/educational/lesson-design/') ? 'true' : undefined} data-no-zoom /> : null))}\r\n      {!raster && visualCaption ? <figcaption className={styles.visualCaption}>{visualCaption}</figcaption> : null}\r\n    </figure>\r\n  </div>\r\n}\r\n",
+      "after": "\"use client\"\r\n\r\nimport Image from 'next/image'\nimport { Children, isValidElement } from 'react'\n\nconst textContent = node => Children.toArray(node).map(child => typeof child === 'string' || typeof child === 'number' ? String(child) : isValidElement(child) ? textContent(child.props.children) : '').join(' ').replace(/\\s+/g, ' ').trim()\r\nimport { usePathname } from 'next/navigation'\r\nimport { LESSON_DESIGN_HEROES } from '@/data/lessonDesignHeroes'\r\nimport styles from './LessonHero.module.css'\r\n\r\nexport default function LessonHero({ title, imageSrc, imageAlt, imageClassName, titleClassName, visual, visualCaption, lang = 'de', lessonId }) {\r\n  const pathname = usePathname()\n  const altTitle = textContent(imageAlt || title)\r\n  const designedImage = LESSON_DESIGN_HEROES[pathname]\r\n  const source = designedImage || imageSrc\r\n  const raster = Boolean(source && !source.endsWith('.svg'))\r\n  return <div className={styles.hero} data-lesson-hero data-hero-topic={lessonId || pathname} lang={lang}>\r\n    <h1 className={titleClassName}>{title}</h1>\r\n    <figure className={styles.visual}>\r\n      {raster ? <Image src={source} alt={designedImage && designedImage !== imageSrc ? (lang === 'fa' ? `تصویر مفهومی ${altTitle}` : lang === 'en' ? `Concept illustration: ${altTitle}` : `Schematische Illustration: ${altTitle}`) : altTitle} className={imageClassName} fill sizes=\"(max-width: 760px) 160px, (max-width: 1100px) 365px, 525px\" priority data-designed-illustration={source?.startsWith('/educational/lesson-design/') ? 'true' : undefined} data-no-zoom /> : (visual || (source ? <Image src={source} alt={altTitle} fill sizes=\"(max-width: 760px) 160px, 525px\" priority data-designed-illustration={source?.startsWith('/educational/lesson-design/') ? 'true' : undefined} data-no-zoom /> : null))}\r\n      {!raster && visualCaption ? <figcaption className={styles.visualCaption}>{visualCaption}</figcaption> : null}\r\n    </figure>\r\n  </div>\r\n}\r\n"
+    }
+  ],
+  "sources": [
+    "https://www.acr.org/-/media/ACR/Files/RADS/BI-RADS/Mammography-Reporting.pdf",
+    "https://pmc.ncbi.nlm.nih.gov/articles/PMC7907894/"
+  ],
+  "scope": "Bounded language repairs, accessible hero text normalization and calcification management correction. No complete scientific approval."
+}

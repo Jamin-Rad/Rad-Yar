@@ -1,0 +1,80 @@
+{
+  "date": "2026-10-25",
+  "status": "ACCEPT_BOUNDED_LANGUAGE_DELTAS",
+  "scope": "Six specified ATV language changes only; no broad medical approval.",
+  "renderCount": 18,
+  "results": [
+    {
+      "file": "app/abdomen/gi/mesenteriale-ischaemie/page.js",
+      "before": "CTA با ماده حاجب تصویربرداری محوری است",
+      "after": "CTA با ماده حاجب روش اصلی تصویربرداری است",
+      "recoveredEarlierExecution": true,
+      "route": "/abdomen/gi/mesenteriale-ischaemie",
+      "sourceAfterPresent": true,
+      "renderAfterPresent": true,
+      "renderBeforeAbsent": true,
+      "review": "ACCEPT_BOUNDED_LANGUAGE_DELTA",
+      "evidence": "Changed FA passage compared against its actual DE and EN authored parallels. Actual page graph SSR renders the corrected wording. Existing numbers, negation, diagnostic context and keys untouched."
+    },
+    {
+      "file": "app/abdomen/gi/pylorusstenose/page.js",
+      "before": "پیاز دوازدهه",
+      "after": "بولب دوازدهه",
+      "recoveredEarlierExecution": true,
+      "route": "/abdomen/gi/pylorusstenose",
+      "sourceAfterPresent": true,
+      "renderAfterPresent": true,
+      "renderBeforeAbsent": true,
+      "review": "ACCEPT_BOUNDED_LANGUAGE_DELTA",
+      "evidence": "Changed FA passage compared against its actual DE and EN authored parallels. Actual page graph SSR renders the corrected wording. Existing numbers, negation, diagnostic context and keys untouched."
+    },
+    {
+      "file": "app/abdomen/gi/untere-gi-blutung/page.js",
+      "before": "در ناپایداری پایدار",
+      "after": "در صورت تداوم ناپایداری",
+      "recoveredEarlierExecution": true,
+      "route": "/abdomen/gi/untere-gi-blutung",
+      "sourceAfterPresent": true,
+      "renderAfterPresent": true,
+      "renderBeforeAbsent": true,
+      "review": "ACCEPT_BOUNDED_LANGUAGE_DELTA",
+      "evidence": "Changed FA passage compared against its actual DE and EN authored parallels. Actual page graph SSR renders the corrected wording. Existing numbers, negation, diagnostic context and keys untouched."
+    },
+    {
+      "file": "app/abdomen/leber/hcc/page.js",
+      "before": "رشد قابل توجه در پیگیری",
+      "after": "رشد آستانه‌ای در پیگیری",
+      "recoveredEarlierExecution": true,
+      "route": "/abdomen/leber/hcc",
+      "sourceAfterPresent": true,
+      "renderAfterPresent": true,
+      "renderBeforeAbsent": true,
+      "review": "ACCEPT_BOUNDED_LANGUAGE_DELTA",
+      "evidence": "Changed FA passage compared against its actual DE and EN authored parallels. Actual page graph SSR renders the corrected wording. Existing numbers, negation, diagnostic context and keys untouched."
+    },
+    {
+      "file": "app/abdomen/leber/li-rads/page.js",
+      "before": "کاهش نسبی تقویت در فاز تأخیری مجاز",
+      "after": "کاهش نسبی تقویت در فاز بعدی مجاز",
+      "recoveredEarlierExecution": true,
+      "route": "/abdomen/leber/li-rads",
+      "sourceAfterPresent": true,
+      "renderAfterPresent": true,
+      "renderBeforeAbsent": true,
+      "review": "ACCEPT_BOUNDED_LANGUAGE_DELTA",
+      "evidence": "Changed FA passage compared against its actual DE and EN authored parallels. Actual page graph SSR renders the corrected wording. Existing numbers, negation, diagnostic context and keys untouched."
+    },
+    {
+      "file": "app/abdomen/leber/psc-mrcp/page.js",
+      "before": "«تنگی مرتبط»",
+      "after": "«تنگی بااهمیت بالینی (relevant stricture)»",
+      "recoveredEarlierExecution": true,
+      "route": "/abdomen/leber/psc-mrcp",
+      "sourceAfterPresent": true,
+      "renderAfterPresent": true,
+      "renderBeforeAbsent": true,
+      "review": "ACCEPT_BOUNDED_LANGUAGE_DELTA",
+      "evidence": "Changed FA passage compared against its actual DE and EN authored parallels. Actual page graph SSR renders the corrected wording. Existing numbers, negation, diagnostic context and keys untouched."
+    }
+  ]
+}

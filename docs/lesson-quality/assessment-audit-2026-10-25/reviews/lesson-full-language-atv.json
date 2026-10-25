@@ -1,0 +1,1435 @@
+{
+  "date": "2026-10-25",
+  "scope": "66 Abdomen, Technik and vascular lesson routes, actual SSR text captures in DE, EN and FA; semantic language triage only.",
+  "status": "COMPLETE_TRIAGE_WITH_REVISE_FINDINGS",
+  "method": "Each individual clinical passage, caption, alt text, table, embedded check and source scope read comparatively across DE/EN/FA. Shared navigation boilerplate read once. No source-PDF, image interpretation or scientific recertification.",
+  "findings": [
+    {
+      "id": "LNG-ATV-001",
+      "severity": "minor",
+      "route": "/abdomen/gi/mesenteriale-ischaemie",
+      "source": "app/abdomen/gi/mesenteriale-ischaemie/page.js",
+      "locale": "fa",
+      "observed": "CTA با ماده حاجب تصویربرداری محوری است",
+      "parallel": "CTA is the central imaging test / zentrale Bildgebung",
+      "issue": "محوری can be read as axial in an imaging lesson; intended meaning is the primary/key examination, not acquisition plane.",
+      "required": "Use روش اصلی تصویربرداری است or equivalent.",
+      "status": "FIXED_INDEPENDENTLY_RETESTED",
+      "retest": {
+        "date": "2026-10-25",
+        "replacement": "CTA با ماده حاجب روش اصلی تصویربرداری است",
+        "source": true,
+        "actualSSR": true,
+        "scope": "FA equivalence to existing DE/EN; no scientific recertification"
+      }
+    },
+    {
+      "id": "LNG-ATV-002",
+      "severity": "minor",
+      "route": "/abdomen/gi/pylorusstenose",
+      "source": "app/abdomen/gi/pylorusstenose/page.js",
+      "locale": "fa",
+      "observed": "پیاز دوازدهه",
+      "parallel": "duodenal bulb / Duodenalbulbus",
+      "issue": "Literal nonstandard anatomical label; siblingulcerlesson uses بولب دوازدهه correctly.",
+      "required": "Use بولب دوازدهه consistently in localization and canalmeasurement captions.",
+      "status": "FIXED_INDEPENDENTLY_RETESTED",
+      "retest": {
+        "date": "2026-10-25",
+        "replacement": "بولب دوازدهه",
+        "source": true,
+        "actualSSR": true,
+        "scope": "FA equivalence to existing DE/EN; no scientific recertification"
+      }
+    },
+    {
+      "id": "LNG-ATV-003",
+      "severity": "minor",
+      "route": "/abdomen/gi/untere-gi-blutung",
+      "source": "app/abdomen/gi/untere-gi-blutung/page.js",
+      "locale": "fa",
+      "observed": "CT ± آنژیوگرافی در ناپایداری پایدار",
+      "parallel": "CT ± angiography for ongoing instability",
+      "issue": "Literal wording sounds like stable instability; intended meaning is persisting haemodynamic instability.",
+      "required": "Use در صورت تداوم ناپایداری rather than ناپایداری پایدار.",
+      "status": "FIXED_INDEPENDENTLY_RETESTED",
+      "retest": {
+        "date": "2026-10-25",
+        "replacement": "در صورت تداوم ناپایداری",
+        "source": true,
+        "actualSSR": true,
+        "scope": "FA equivalence to existing DE/EN; no scientific recertification"
+      }
+    },
+    {
+      "id": "LNG-ATV-004",
+      "severity": "minor",
+      "route": "/abdomen/leber/hcc",
+      "source": "app/abdomen/leber/hcc/page.js",
+      "locale": "fa",
+      "text": "رشد قابل توجه در پیگیری",
+      "parallel": "relevantes Schwellenwachstum / relevant threshold growth",
+      "issue": "Formal threshold-growth feature becomes nonspecific significant growth.",
+      "recommendation": "رشد آستانه‌ای در پیگیری; preserve formal LI-RADS feature name.",
+      "status": "FIXED_INDEPENDENTLY_RETESTED",
+      "retest": {
+        "date": "2026-10-25",
+        "replacement": "رشد آستانه‌ای در پیگیری",
+        "source": true,
+        "actualSSR": true,
+        "scope": "FA equivalence to existing DE/EN; no scientific recertification"
+      }
+    },
+    {
+      "id": "LNG-ATV-005",
+      "severity": "minor",
+      "route": "/abdomen/leber/li-rads",
+      "source": "app/abdomen/leber/li-rads/page.js",
+      "locale": "fa",
+      "text": "کاهش نسبی تقویت در فاز تأخیری مجاز",
+      "parallel": "zulässiger späterer Phase / an eligible later phase",
+      "issue": "Later-phase wording narrowed to delayed phase; could be read as excluding portal venous phase.",
+      "recommendation": "کاهش نسبی تقویت در فاز بعدی مجاز",
+      "status": "FIXED_INDEPENDENTLY_RETESTED",
+      "retest": {
+        "date": "2026-10-25",
+        "replacement": "کاهش نسبی تقویت در فاز بعدی مجاز",
+        "source": true,
+        "actualSSR": true,
+        "scope": "FA equivalence to existing DE/EN; no scientific recertification"
+      }
+    },
+    {
+      "id": "LNG-ATV-006",
+      "severity": "minor",
+      "route": "/abdomen/leber/psc-mrcp",
+      "source": "app/abdomen/leber/psc-mrcp/page.js",
+      "locale": "fa",
+      "text": "تنگی مرتبط",
+      "parallel": "relevante Striktur / relevant stricture",
+      "issue": "Related stricture is not the intended clinically relevant stricture.",
+      "recommendation": "تنگی بااهمیت بالینی (relevant stricture)",
+      "status": "FIXED_INDEPENDENTLY_RETESTED",
+      "retest": {
+        "date": "2026-10-25",
+        "replacement": "«تنگی بااهمیت بالینی (relevant stricture)»",
+        "source": true,
+        "actualSSR": true,
+        "scope": "FA equivalence to existing DE/EN; no scientific recertification"
+      }
+    },
+    {
+      "id": "LNG-ATV-007",
+      "severity": "minor",
+      "route": "/abdomen/niere/adpkd",
+      "source": "app/abdomen/niere/adpkd/page.jsx / concept image description",
+      "locale": "de",
+      "text": "شماتیک دو کلیهٔ بزرگ‌شده با کیست‌های متعدد و یک کیست کبدی احتمالی؛ تصویر تشخیصی نیست.",
+      "parallel": "EN/FA concept sketch description correctly localized",
+      "issue": "German learner receives a Persian clinical schematic description.",
+      "recommendation": "Localize German image description rather than fallback to Persian.",
+      "status": "AUTHORED_PENDING_SEPARATE_INDEPENDENT_REVIEW",
+      "followup": {
+        "manifest": "tmp/assessment-quality/root-clinical-renderer-manifest.json",
+        "author": "/root",
+        "independentReviewer": "/root/remove_lesson_notice",
+        "note": "Bounded correction authored; this reviewer avoids duplicate review. Original full-text finding retained for provenance; closure requires separate reviewer evidence."
+      }
+    },
+    {
+      "id": "LNG-ATV-008",
+      "severity": "moderate",
+      "route": "/abdomen/pankreas/pankreatitis",
+      "source": "app/abdomen/pankreas/pankreatitis/page.js",
+      "locale": "en",
+      "text": "downstream tail atrophy",
+      "parallel": "konsekutive Schwanzatrophie / آتروفی دم پانکراس",
+      "issue": "Tail atrophy upstream of an obstructing ductal carcinoma is mislabeled downstream in English. Same directional issue previously flagged in assessment review.",
+      "recommendation": "Use upstream pancreatic body/tail atrophy or simply distal pancreatic/tail atrophy without incorrect flow-direction label.",
+      "status": "AUTHORED_PENDING_SEPARATE_INDEPENDENT_REVIEW",
+      "followup": {
+        "manifest": "tmp/assessment-quality/root-clinical-renderer-manifest.json",
+        "author": "/root",
+        "independentReviewer": "/root/remove_lesson_notice",
+        "note": "Bounded correction authored; this reviewer avoids duplicate review. Original full-text finding retained for provenance; closure requires separate reviewer evidence."
+      }
+    },
+    {
+      "id": "LNG-ATV-009",
+      "severity": "minor",
+      "route": "/abdomen/pankreas/pankreatitis",
+      "source": "app/abdomen/pankreas/pankreatitis/page.js",
+      "locale": "de/en/fa",
+      "text": "DE langer Gangverschluss versus EN long ductal narrowing and FA تنگی طولانی مجرا",
+      "issue": "Occlusion and narrowing are not identical; parallel chronic-pancreatitis differential table differs.",
+      "recommendation": "Author should verify intended morphology and align all three; no unsupported medical rewrite by reviewer.",
+      "status": "OPEN_REVISE"
+    },
+    {
+      "id": "LNG-ATV-010",
+      "severity": "moderate",
+      "route": "/abdomen/pankreas/zystische-tumoren",
+      "source": "app/abdomen/pankreas/zystische-tumoren/page.js",
+      "locale": "de/en/fa",
+      "text": "DE Bei fehlendem passenden Kontext oder Gangbezug / EN Without a fitting context or when duct communication is present / FA اگر زمینه مناسب نیست یا ارتباط مجرایی وجود دارد",
+      "issue": "Absent versus present duct communication is opposite between DE and EN/FA.",
+      "recommendation": "Author must align a clinically qualified caveat; duct communication alone does not reliably separate pseudocyst from IPMN. Do not blindly flip one polarity without source verification.",
+      "status": "AUTHORED_PENDING_SEPARATE_INDEPENDENT_REVIEW",
+      "followup": {
+        "manifest": "tmp/assessment-quality/root-clinical-renderer-manifest.json",
+        "author": "/root",
+        "independentReviewer": "/root/remove_lesson_notice",
+        "note": "Bounded correction authored; this reviewer avoids duplicate review. Original full-text finding retained for provenance; closure requires separate reviewer evidence."
+      }
+    },
+    {
+      "id": "LNG-ATV-011",
+      "severity": "moderate",
+      "route": "/technik/dosimetrie",
+      "source": "app/technik/dosimetrie/page.jsx:41-43",
+      "locale": "de/en/fa",
+      "text": "Self-check has title and options but no actual scan-length/constant-CTDIvol stimulus in all three SSR sections.",
+      "issue": "Renderer reads lesson.chapters[3].task, now kerma chapter without task after inserted chapter; actual task exists in final chapter data/technikDosimetrieLesson.js:29.",
+      "recommendation": "Use stable chapter ID or explicit task property; preserve existing three-language task text.",
+      "status": "AUTHORED_PENDING_SEPARATE_INDEPENDENT_REVIEW",
+      "followup": {
+        "manifest": "tmp/assessment-quality/root-clinical-renderer-manifest.json",
+        "author": "/root",
+        "independentReviewer": "/root/remove_lesson_notice",
+        "note": "Bounded correction authored; this reviewer avoids duplicate review. Original full-text finding retained for provenance; closure requires separate reviewer evidence."
+      }
+    },
+    {
+      "id": "LNG-ATV-012",
+      "severity": "minor",
+      "route": "/technik/interventionelle-radiologie",
+      "source": "data/technikInterventionelleRadiologieLesson.js / source figure metadata",
+      "locale": "fa",
+      "text": "تصویر بومی",
+      "parallel": "natives Bild / native frame",
+      "issue": "Literal native=indigenous instead of the precontrast/unsubtracted mask image.",
+      "recommendation": "تصویر پیش از تزریق / تصویر ماسک بدون کنتراست عروقی according to source context; appears in alt, caption and source note.",
+      "status": "OPEN_REVISE"
+    },
+    {
+      "id": "LNG-ATV-013",
+      "severity": "minor",
+      "route": "/technik/kontrastmittel/mrt",
+      "source": "MRT contrast header badges",
+      "locale": "en/fa",
+      "text": "Präparatespezifisch / Makrozyklisch",
+      "issue": "German clinical badge terms remain in English and Persian lessons.",
+      "recommendation": "EN Agent-specific / Macrocyclic; FA وابسته به فرآورده / ماکروسیکلیک.",
+      "status": "OPEN_REVISE"
+    },
+    {
+      "id": "LNG-ATV-014",
+      "severity": "moderate",
+      "route": "/technik/kontrastmittel/nierenfunktion",
+      "source": "Dialysis timing table",
+      "locale": "fa",
+      "text": "همودیالیز فوری و دو روز بعد جلسات دیالیز",
+      "parallel": "sofortige HD ... plus Sitzungen an den zwei Folgetagen / immediate HD ... and sessions on the following two days",
+      "issue": "Persian reads sessions two days later rather than on each of the following two days; timing ambiguity in a guideline comparison.",
+      "recommendation": "همودیالیز فوری و جلسات دیالیز در هر یک از دو روز بعد; retain explicit pre-existing-HD and source-guideline qualifiers.",
+      "status": "FIXED_INDEPENDENTLY_RETESTED",
+      "retest": {
+        "date": "2026-10-25",
+        "replacement": "همودیالیز فوری و جلسات دیالیز در هر یک از دو روز بعد",
+        "source": "data/contrastLessons.js",
+        "actualSSR": true,
+        "scope": "FA timing equals existing qualified DE/EN; existing HD and agent-specific restrictions retained. No guideline recertification."
+      }
+    },
+    {
+      "id": "LNG-ATV-015",
+      "severity": "minor",
+      "route": "/technik/kontrastmittel/schwangerschaft",
+      "source": "Pregnancy contrast header badges",
+      "locale": "en/fa",
+      "text": "10.–12. SSW / Keine Pause",
+      "issue": "German gestational-week abbreviation and no-pause label remain untranslated in EN and FA.",
+      "recommendation": "EN 10–12 weeks gestation / No interruption; FA هفته‌های ۱۰ تا ۱۲ بارداری / بدون وقفه.",
+      "status": "OPEN_REVISE"
+    },
+    {
+      "id": "LNG-ATV-016",
+      "severity": "minor",
+      "route": "/technik/kontrastmittel/roentgen",
+      "source": "ACR/AAAAI premedication key point",
+      "locale": "fa",
+      "text": "پیش‌دارودرمانی از بروز واکنش ناخواسته به‌طور مطمئن جلوگیری نمی‌کند",
+      "parallel": "Prämedikation verhindert Durchbruchreaktionen nicht sicher / Premedication does not reliably prevent breakthrough reactions",
+      "issue": "Specific breakthrough reaction despite premedication becomes generic adverse reaction.",
+      "recommendation": "واکنش حساسیتی با وجود پیش‌دارودرمانی can preserve the specific intended concept.",
+      "status": "OPEN_REVISE"
+    }
+  ],
+  "ledger": [
+    {
+      "index": 0,
+      "route": "/abdomen/gefaesse/fmd",
+      "entry": "app/abdomen/gefaesse/fmd/page.js",
+      "group": "abdomen-technik-vascular",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\000-abdomen--gefaesse--fmd.txt",
+      "chars": 14304,
+      "status": "READ_COMPARATIVE_NO_BLOCKING_DIFFERENCE",
+      "readEvidence": "Actualwholetriadreadincludingcaption/alttext/check/finalsummary",
+      "unitsRead": {
+        "DE": 54,
+        "EN": 54,
+        "FA": 54
+      },
+      "limits": "No browserinteraction/closedfeedbackstate or directPDF/clinicalsourceverification fromthistextreview.",
+      "unitDefinition": "Nonempty captured SSR lines per locale, including clinical prose, tables, captions, checks and source metadata; not a count of independent clinical claims."
+    },
+    {
+      "index": 1,
+      "route": "/abdomen/gi/appendizitis",
+      "entry": "app/abdomen/gi/appendizitis/page.js",
+      "group": "abdomen-technik-vascular",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\001-abdomen--gi--appendizitis.txt",
+      "chars": 12833,
+      "status": "READ_COMPARATIVE_NO_BLOCKING_DIFFERENCE",
+      "readEvidence": "Actualwholetriadreadincludingcaption/alttext/check/finalsummary",
+      "unitsRead": {
+        "DE": 49,
+        "EN": 49,
+        "FA": 49
+      },
+      "limits": "No browserinteraction/closedfeedbackstate or directPDF/clinicalsourceverification fromthistextreview.",
+      "unitDefinition": "Nonempty captured SSR lines per locale, including clinical prose, tables, captions, checks and source metadata; not a count of independent clinical claims."
+    },
+    {
+      "index": 2,
+      "route": "/abdomen/gi/divertikulitis",
+      "entry": "app/abdomen/gi/divertikulitis/page.js",
+      "group": "abdomen-technik-vascular",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\002-abdomen--gi--divertikulitis.txt",
+      "chars": 20197,
+      "status": "READ_COMPARATIVE_NO_BLOCKING_DIFFERENCE",
+      "readEvidence": "Reused independentfullCONTENTDEENFAreview,158FAstringleaves, documentedactualrefinement; SSRextra/sharedUI checkedinwholebatch",
+      "unitsRead": {
+        "DE": 93,
+        "EN": 93,
+        "FA": 93
+      },
+      "limits": "No browserinteraction/closedfeedbackstate or directPDF/clinicalsourceverification fromthistextreview.",
+      "unitDefinition": "Nonempty captured SSR lines per locale, including clinical prose, tables, captions, checks and source metadata; not a count of independent clinical claims."
+    },
+    {
+      "index": 3,
+      "route": "/abdomen/gi/duodenaldivertikel",
+      "entry": "app/abdomen/gi/duodenaldivertikel/page.js",
+      "group": "abdomen-technik-vascular",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\003-abdomen--gi--duodenaldivertikel.txt",
+      "chars": 10483,
+      "status": "READ_COMPARATIVE_NO_BLOCKING_DIFFERENCE",
+      "readEvidence": "Actualwholetriadreadincludingcaption/alttext/check/finalsummary",
+      "unitsRead": {
+        "DE": 36,
+        "EN": 36,
+        "FA": 36
+      },
+      "limits": "No browserinteraction/closedfeedbackstate or directPDF/clinicalsourceverification fromthistextreview.",
+      "unitDefinition": "Nonempty captured SSR lines per locale, including clinical prose, tables, captions, checks and source metadata; not a count of independent clinical claims."
+    },
+    {
+      "index": 4,
+      "route": "/abdomen/gi/gist",
+      "entry": "app/abdomen/gi/gist/page.js",
+      "group": "abdomen-technik-vascular",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\004-abdomen--gi--gist.txt",
+      "chars": 14731,
+      "status": "READ_COMPARATIVE_NO_BLOCKING_DIFFERENCE",
+      "readEvidence": "Actualwholetriadreadincludingcaption/alttext/check/finalsummary",
+      "unitsRead": {
+        "DE": 48,
+        "EN": 48,
+        "FA": 48
+      },
+      "limits": "No browserinteraction/closedfeedbackstate or directPDF/clinicalsourceverification fromthistextreview.",
+      "unitDefinition": "Nonempty captured SSR lines per locale, including clinical prose, tables, captions, checks and source metadata; not a count of independent clinical claims."
+    },
+    {
+      "index": 5,
+      "route": "/abdomen/gi/ileus-volvulus",
+      "entry": "app/abdomen/gi/ileus-volvulus/page.js",
+      "group": "abdomen-technik-vascular",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\005-abdomen--gi--ileus-volvulus.txt",
+      "chars": 32014,
+      "status": "READ_COMPARATIVE_NO_BLOCKING_DIFFERENCE",
+      "readEvidence": "ActualwholeDEENFAtriadread: individualclinicalparagraphs,caption/alttext,visibleembeddedquestionoptions,sourcequalificationsandfinalsummary",
+      "unitsRead": {
+        "DE": 102,
+        "EN": 102,
+        "FA": 102
+      },
+      "limits": "No browserinteraction/closedfeedbackstate or directPDF/clinicalsourceverification fromthistextreview.",
+      "crossReference": "All3languages reproducefixed360degreeWhirl definition; alreadyASM-ATV-013clinicalREVISE,nottranslationmismatch.",
+      "unitDefinition": "Nonempty captured SSR lines per locale, including clinical prose, tables, captions, checks and source metadata; not a count of independent clinical claims."
+    },
+    {
+      "index": 6,
+      "route": "/abdomen/gi/kolitis-patterns",
+      "entry": "app/abdomen/gi/kolitis-patterns/page.js",
+      "group": "abdomen-technik-vascular",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\006-abdomen--gi--kolitis-patterns.txt",
+      "chars": 21765,
+      "status": "READ_COMPARATIVE_NO_BLOCKING_DIFFERENCE",
+      "readEvidence": "ActualwholeDEENFAtriadread: individualclinicalparagraphs,caption/alttext,visibleembeddedquestionoptions,sourcequalificationsandfinalsummary",
+      "unitsRead": {
+        "DE": 64,
+        "EN": 64,
+        "FA": 64
+      },
+      "limits": "No browserinteraction/closedfeedbackstate or directPDF/clinicalsourceverification fromthistextreview.",
+      "unitDefinition": "Nonempty captured SSR lines per locale, including clinical prose, tables, captions, checks and source metadata; not a count of independent clinical claims."
+    },
+    {
+      "index": 7,
+      "route": "/abdomen/gi/kolorektales-karzinom",
+      "entry": "app/abdomen/gi/kolorektales-karzinom/page.js",
+      "group": "abdomen-technik-vascular",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\007-abdomen--gi--kolorektales-karzinom.txt",
+      "chars": 17021,
+      "status": "READ_COMPARATIVE_NO_BLOCKING_DIFFERENCE",
+      "readEvidence": "ActualwholeDEENFAtriadread: individualclinicalparagraphs,caption/alttext,visibleembeddedquestionoptions,sourcequalificationsandfinalsummary",
+      "unitsRead": {
+        "DE": 60,
+        "EN": 60,
+        "FA": 60
+      },
+      "limits": "No browserinteraction/closedfeedbackstate or directPDF/clinicalsourceverification fromthistextreview.",
+      "unitDefinition": "Nonempty captured SSR lines per locale, including clinical prose, tables, captions, checks and source metadata; not a count of independent clinical claims."
+    },
+    {
+      "index": 8,
+      "route": "/abdomen/gi/mesenteriale-ischaemie",
+      "entry": "app/abdomen/gi/mesenteriale-ischaemie/page.js",
+      "group": "abdomen-technik-vascular",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\008-abdomen--gi--mesenteriale-ischaemie.txt",
+      "chars": 14845,
+      "status": "READ_COMPARATIVE_MINOR_TERMINOLOGY_REVISE",
+      "readEvidence": "ActualwholeDEENFAtriadread: individualclinicalparagraphs,caption/alttext,visibleembeddedquestionoptions,sourcequalificationsandfinalsummary",
+      "unitsRead": {
+        "DE": 43,
+        "EN": 43,
+        "FA": 43
+      },
+      "limits": "No browserinteraction/closedfeedbackstate or directPDF/clinicalsourceverification fromthistextreview.",
+      "unitDefinition": "Nonempty captured SSR lines per locale, including clinical prose, tables, captions, checks and source metadata; not a count of independent clinical claims.",
+      "retestStatus": "ALL_RECORDED_LANGUAGE_FINDINGS_FIXED_AND_RETESTED"
+    },
+    {
+      "index": 9,
+      "route": "/abdomen/gi/pylorusstenose",
+      "entry": "app/abdomen/gi/pylorusstenose/page.js",
+      "group": "abdomen-technik-vascular",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\009-abdomen--gi--pylorusstenose.txt",
+      "chars": 14581,
+      "status": "READ_COMPARATIVE_MINOR_TERMINOLOGY_REVISE",
+      "readEvidence": "ActualwholeDEENFAtriadread: individualclinicalparagraphs,caption/alttext,visibleembeddedquestionoptions,sourcequalificationsandfinalsummary",
+      "unitsRead": {
+        "DE": 43,
+        "EN": 43,
+        "FA": 43
+      },
+      "limits": "No browserinteraction/closedfeedbackstate or directPDF/clinicalsourceverification fromthistextreview.",
+      "unitDefinition": "Nonempty captured SSR lines per locale, including clinical prose, tables, captions, checks and source metadata; not a count of independent clinical claims.",
+      "retestStatus": "ALL_RECORDED_LANGUAGE_FINDINGS_FIXED_AND_RETESTED"
+    },
+    {
+      "index": 10,
+      "route": "/abdomen/gi/ulkuserkrankung",
+      "entry": "app/abdomen/gi/ulkuserkrankung/page.js",
+      "group": "abdomen-technik-vascular",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\010-abdomen--gi--ulkuserkrankung.txt",
+      "chars": 9516,
+      "status": "READ_COMPARATIVE_NO_BLOCKING_DIFFERENCE",
+      "readEvidence": "ActualwholeDEENFAtriadread: individualclinicalparagraphs,caption/alttext,visibleembeddedquestionoptions,sourcequalificationsandfinalsummary",
+      "unitsRead": {
+        "DE": 34,
+        "EN": 34,
+        "FA": 34
+      },
+      "limits": "No browserinteraction/closedfeedbackstate or directPDF/clinicalsourceverification fromthistextreview.",
+      "unitDefinition": "Nonempty captured SSR lines per locale, including clinical prose, tables, captions, checks and source metadata; not a count of independent clinical claims."
+    },
+    {
+      "index": 11,
+      "route": "/abdomen/gi/untere-gi-blutung",
+      "entry": "app/abdomen/gi/untere-gi-blutung/page.js",
+      "group": "abdomen-technik-vascular",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\011-abdomen--gi--untere-gi-blutung.txt",
+      "chars": 14953,
+      "status": "READ_COMPARATIVE_MINOR_TERMINOLOGY_REVISE",
+      "readEvidence": "Actual whole DE/EN/FA triad read including individual clinical paragraphs, captions, alt text, embedded check and final summary.",
+      "unitsRead": {
+        "DE": 49,
+        "EN": 49,
+        "FA": 49
+      },
+      "limits": "No browserinteraction/closedfeedbackstate or directPDF/clinicalsourceverification fromthistextreview.",
+      "unitDefinition": "Nonempty captured SSR lines per locale, including clinical prose, tables, captions, checks and source metadata; not a count of independent clinical claims.",
+      "retestStatus": "ALL_RECORDED_LANGUAGE_FINDINGS_FIXED_AND_RETESTED"
+    },
+    {
+      "index": 12,
+      "route": "/abdomen/hernien/inguinal-femoral",
+      "entry": "app/abdomen/hernien/inguinal-femoral/page.jsx",
+      "group": "abdomen-technik-vascular",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\012-abdomen--hernien--inguinal-femoral.txt",
+      "chars": 11957,
+      "status": "READ_COMPARATIVE_NO_BLOCKING_DIFFERENCE",
+      "readEvidence": "Actual whole DE/EN/FA triad read including individual clinical paragraphs, captions, alt text, embedded check and final summary.",
+      "unitsRead": {
+        "DE": 42,
+        "EN": 42,
+        "FA": 42
+      },
+      "limits": "No browserinteraction/closedfeedbackstate or directPDF/clinicalsourceverification fromthistextreview.",
+      "unitDefinition": "Nonempty captured SSR lines per locale, including clinical prose, tables, captions, checks and source metadata; not a count of independent clinical claims."
+    },
+    {
+      "index": 13,
+      "route": "/abdomen/leber/adenom",
+      "entry": "app/abdomen/leber/adenom/page.js",
+      "group": "abdomen-technik-vascular",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\013-abdomen--leber--adenom.txt",
+      "chars": 19037,
+      "status": "READ_COMPARATIVE_NO_BLOCKING_DIFFERENCE",
+      "readEvidence": "Actual whole DE/EN/FA triad read including full clinical recommendations, time windows, size thresholds, image captions/alt text and final summary.",
+      "unitsRead": {
+        "DE": 52,
+        "EN": 52,
+        "FA": 52
+      },
+      "limits": "No browserinteraction/closedfeedbackstate or directPDF/clinicalsourceverification fromthistextreview.",
+      "unitDefinition": "Nonempty captured SSR lines per locale, including clinical prose, tables, captions, checks and source metadata; not a count of independent clinical claims."
+    },
+    {
+      "index": 14,
+      "route": "/abdomen/leber/angiomyolipom",
+      "entry": "app/abdomen/leber/angiomyolipom/page.js",
+      "group": "abdomen-technik-vascular",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\014-abdomen--leber--angiomyolipom.txt",
+      "chars": 10415,
+      "status": "READ_COMPARATIVE_NO_BLOCKING_DIFFERENCE",
+      "readEvidence": "Actual whole DE/EN/FA triad read including full clinical recommendations, time windows, size thresholds, image captions/alt text and final summary.",
+      "unitsRead": {
+        "DE": 41,
+        "EN": 41,
+        "FA": 41
+      },
+      "limits": "No browserinteraction/closedfeedbackstate or directPDF/clinicalsourceverification fromthistextreview.",
+      "unitDefinition": "Nonempty captured SSR lines per locale, including clinical prose, tables, captions, checks and source metadata; not a count of independent clinical claims."
+    },
+    {
+      "index": 15,
+      "route": "/abdomen/leber/avm",
+      "entry": "app/abdomen/leber/avm/page.js",
+      "group": "abdomen-technik-vascular",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\015-abdomen--leber--avm.txt",
+      "chars": 26837,
+      "status": "READ_COMPARATIVE_NO_BLOCKING_EQUIVALENCE_ERROR",
+      "readEvidence": "Full DE/EN/FA SSR chapter prose, tables, captions, alt texts, embedded check stems/options and final rules read comparatively; no independent source-image or scientific recertification.",
+      "unitsRead": {
+        "DE": 88,
+        "EN": 88,
+        "FA": 88
+      },
+      "limits": "No browserinteraction/closedfeedbackstate or directPDF/clinicalsourceverification fromthistextreview.",
+      "unitDefinition": "Nonempty captured SSR lines per locale, including clinical prose, tables, captions, checks and source metadata; not a count of independent clinical claims."
+    },
+    {
+      "index": 16,
+      "route": "/abdomen/leber/fibrolamellaeres-karzinom",
+      "entry": "app/abdomen/leber/fibrolamellaeres-karzinom/page.jsx",
+      "group": "abdomen-technik-vascular",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\016-abdomen--leber--fibrolamellaeres-karzinom.txt",
+      "chars": 11572,
+      "status": "READ_COMPARATIVE_NO_BLOCKING_EQUIVALENCE_ERROR",
+      "readEvidence": "Full DE/EN/FA SSR chapter prose, tables, captions, alt texts, embedded check stems/options and final rules read comparatively; no independent source-image or scientific recertification.",
+      "unitsRead": {
+        "DE": 36,
+        "EN": 36,
+        "FA": 36
+      },
+      "limits": "No browserinteraction/closedfeedbackstate or directPDF/clinicalsourceverification fromthistextreview.",
+      "unitDefinition": "Nonempty captured SSR lines per locale, including clinical prose, tables, captions, checks and source metadata; not a count of independent clinical claims."
+    },
+    {
+      "index": 17,
+      "route": "/abdomen/leber/fnh",
+      "entry": "app/abdomen/leber/fnh/page.js",
+      "group": "abdomen-technik-vascular",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\017-abdomen--leber--fnh.txt",
+      "chars": 19475,
+      "status": "READ_COMPARATIVE_NO_BLOCKING_EQUIVALENCE_ERROR",
+      "readEvidence": "Full DE/EN/FA SSR chapter prose, tables, captions, alt texts, embedded check stems/options and final rules read comparatively; no independent source-image or scientific recertification.",
+      "unitsRead": {
+        "DE": 83,
+        "EN": 83,
+        "FA": 83
+      },
+      "limits": "No browserinteraction/closedfeedbackstate or directPDF/clinicalsourceverification fromthistextreview.",
+      "crossReference": "Existing FNH 70% scar/20% atypical estimates and second-benign-lesion scope already open in assessment ATV ledger; translated equivalently, not scientifically certified.",
+      "unitDefinition": "Nonempty captured SSR lines per locale, including clinical prose, tables, captions, checks and source metadata; not a count of independent clinical claims."
+    },
+    {
+      "index": 18,
+      "route": "/abdomen/leber/fokale-laesionen",
+      "entry": "app/abdomen/leber/fokale-laesionen/page.js",
+      "group": "abdomen-technik-vascular",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\018-abdomen--leber--fokale-laesionen.txt",
+      "chars": 9991,
+      "status": "READ_COMPARATIVE_NO_BLOCKING_EQUIVALENCE_ERROR",
+      "readEvidence": "Full DE/EN/FA SSR chapter prose, tables, captions, alt texts, embedded check stems/options and final rules read comparatively; no independent source-image or scientific recertification.",
+      "unitsRead": {
+        "DE": 45,
+        "EN": 45,
+        "FA": 45
+      },
+      "limits": "No browserinteraction/closedfeedbackstate or directPDF/clinicalsourceverification fromthistextreview.",
+      "unitDefinition": "Nonempty captured SSR lines per locale, including clinical prose, tables, captions, checks and source metadata; not a count of independent clinical claims."
+    },
+    {
+      "index": 19,
+      "route": "/abdomen/leber/gefaesse",
+      "entry": "app/abdomen/leber/gefaesse/page.jsx",
+      "group": "abdomen-technik-vascular",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\019-abdomen--leber--gefaesse.txt",
+      "chars": 11765,
+      "status": "READ_COMPARATIVE_NO_BLOCKING_EQUIVALENCE_ERROR",
+      "readEvidence": "Full DE/EN/FA SSR chapter prose, tables, captions, alt texts, embedded check stems/options and final rules read comparatively; no independent source-image or scientific recertification.",
+      "unitsRead": {
+        "DE": 44,
+        "EN": 44,
+        "FA": 44
+      },
+      "limits": "No browserinteraction/closedfeedbackstate or directPDF/clinicalsourceverification fromthistextreview.",
+      "unitDefinition": "Nonempty captured SSR lines per locale, including clinical prose, tables, captions, checks and source metadata; not a count of independent clinical claims."
+    },
+    {
+      "index": 20,
+      "route": "/abdomen/leber/haemangiom",
+      "entry": "app/abdomen/leber/haemangiom/page.js",
+      "group": "abdomen-technik-vascular",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\020-abdomen--leber--haemangiom.txt",
+      "chars": 20572,
+      "status": "READ_COMPARATIVE_NO_BLOCKING_EQUIVALENCE_ERROR",
+      "readEvidence": "Full actual DE/EN/FA prose/tables/captions/alt/checks/summary read comparatively; thresholds, negations and target population compared.",
+      "unitsRead": {
+        "DE": 76,
+        "EN": 76,
+        "FA": 76
+      },
+      "limits": "No browserinteraction/closedfeedbackstate or directPDF/clinicalsourceverification fromthistextreview.",
+      "unitDefinition": "Nonempty captured SSR lines per locale, including clinical prose, tables, captions, checks and source metadata; not a count of independent clinical claims."
+    },
+    {
+      "index": 21,
+      "route": "/abdomen/leber/hcc",
+      "entry": "app/abdomen/leber/hcc/page.js",
+      "group": "abdomen-technik-vascular",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\021-abdomen--leber--hcc.txt",
+      "chars": 21777,
+      "status": "READ_COMPARATIVE_MINOR_TERMINOLOGY_REVISE",
+      "readEvidence": "Full actual DE/EN/FA prose/tables/captions/alt/checks/summary read comparatively; thresholds, negations and target population compared.",
+      "unitsRead": {
+        "DE": 89,
+        "EN": 89,
+        "FA": 89
+      },
+      "limits": "No browserinteraction/closedfeedbackstate or directPDF/clinicalsourceverification fromthistextreview.",
+      "unitDefinition": "Nonempty captured SSR lines per locale, including clinical prose, tables, captions, checks and source metadata; not a count of independent clinical claims.",
+      "retestStatus": "ALL_RECORDED_LANGUAGE_FINDINGS_FIXED_AND_RETESTED"
+    },
+    {
+      "index": 22,
+      "route": "/abdomen/leber/li-rads",
+      "entry": "app/abdomen/leber/li-rads/page.js",
+      "group": "abdomen-technik-vascular",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\022-abdomen--leber--li-rads.txt",
+      "chars": 15927,
+      "status": "READ_COMPARATIVE_MINOR_TERMINOLOGY_REVISE",
+      "readEvidence": "Full actual DE/EN/FA prose/tables/captions/alt/checks/summary read comparatively; thresholds, negations and target population compared.",
+      "unitsRead": {
+        "DE": 57,
+        "EN": 57,
+        "FA": 57
+      },
+      "limits": "No browserinteraction/closedfeedbackstate or directPDF/clinicalsourceverification fromthistextreview.",
+      "unitDefinition": "Nonempty captured SSR lines per locale, including clinical prose, tables, captions, checks and source metadata; not a count of independent clinical claims.",
+      "retestStatus": "ALL_RECORDED_LANGUAGE_FINDINGS_FIXED_AND_RETESTED"
+    },
+    {
+      "index": 23,
+      "route": "/abdomen/leber/metastasen",
+      "entry": "app/abdomen/leber/metastasen/page.js",
+      "group": "abdomen-technik-vascular",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\023-abdomen--leber--metastasen.txt",
+      "chars": 9305,
+      "status": "READ_COMPARATIVE_NO_BLOCKING_EQUIVALENCE_ERROR",
+      "readEvidence": "Full actual DE/EN/FA prose/tables/captions/alt/checks/summary read comparatively; thresholds, negations and target population compared.",
+      "unitsRead": {
+        "DE": 33,
+        "EN": 33,
+        "FA": 33
+      },
+      "limits": "No browserinteraction/closedfeedbackstate or directPDF/clinicalsourceverification fromthistextreview.",
+      "unitDefinition": "Nonempty captured SSR lines per locale, including clinical prose, tables, captions, checks and source metadata; not a count of independent clinical claims."
+    },
+    {
+      "index": 24,
+      "route": "/abdomen/leber/psc-mrcp",
+      "entry": "app/abdomen/leber/psc-mrcp/page.js",
+      "group": "abdomen-technik-vascular",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\024-abdomen--leber--psc-mrcp.txt",
+      "chars": 10423,
+      "status": "READ_COMPARATIVE_MINOR_TERMINOLOGY_REVISE",
+      "readEvidence": "Full actual DE/EN/FA prose/tables/captions/alt/checks/summary read comparatively; thresholds, negations and target population compared.",
+      "unitsRead": {
+        "DE": 44,
+        "EN": 44,
+        "FA": 44
+      },
+      "limits": "No browserinteraction/closedfeedbackstate or directPDF/clinicalsourceverification fromthistextreview.",
+      "unitDefinition": "Nonempty captured SSR lines per locale, including clinical prose, tables, captions, checks and source metadata; not a count of independent clinical claims.",
+      "retestStatus": "ALL_RECORDED_LANGUAGE_FINDINGS_FIXED_AND_RETESTED"
+    },
+    {
+      "index": 25,
+      "route": "/abdomen/leber/steatose",
+      "entry": "app/abdomen/leber/steatose/page.js",
+      "group": "abdomen-technik-vascular",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\025-abdomen--leber--steatose.txt",
+      "chars": 14949,
+      "status": "READ_COMPARATIVE_NO_BLOCKING_EQUIVALENCE_ERROR",
+      "readEvidence": "All actual DE/EN/FA individual chapter paragraphs, tables, captions/alt and checks/summary compared; no source/PDF recertification.",
+      "unitsRead": {
+        "DE": 44,
+        "EN": 44,
+        "FA": 44
+      },
+      "limits": "No browserinteraction/closedfeedbackstate or directPDF/clinicalsourceverification fromthistextreview.",
+      "unitDefinition": "Nonempty captured SSR lines per locale, including clinical prose, tables, captions, checks and source metadata; not a count of independent clinical claims."
+    },
+    {
+      "index": 26,
+      "route": "/abdomen/leber/zirrhose",
+      "entry": "app/abdomen/leber/zirrhose/page.js",
+      "group": "abdomen-technik-vascular",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\026-abdomen--leber--zirrhose.txt",
+      "chars": 12012,
+      "status": "READ_COMPARATIVE_NO_BLOCKING_EQUIVALENCE_ERROR",
+      "readEvidence": "All actual DE/EN/FA individual chapter paragraphs, tables, captions/alt and checks/summary compared; no source/PDF recertification.",
+      "unitsRead": {
+        "DE": 35,
+        "EN": 35,
+        "FA": 35
+      },
+      "limits": "No browserinteraction/closedfeedbackstate or directPDF/clinicalsourceverification fromthistextreview.",
+      "unitDefinition": "Nonempty captured SSR lines per locale, including clinical prose, tables, captions, checks and source metadata; not a count of independent clinical claims."
+    },
+    {
+      "index": 27,
+      "route": "/abdomen/leber/zystische-laesionen",
+      "entry": "app/abdomen/leber/zystische-laesionen/page.js",
+      "group": "abdomen-technik-vascular",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\027-abdomen--leber--zystische-laesionen.txt",
+      "chars": 13744,
+      "status": "READ_COMPARATIVE_NO_BLOCKING_EQUIVALENCE_ERROR",
+      "readEvidence": "All actual DE/EN/FA individual chapter paragraphs, tables, captions/alt and checks/summary compared; no source/PDF recertification.",
+      "unitsRead": {
+        "DE": 51,
+        "EN": 51,
+        "FA": 51
+      },
+      "limits": "No browserinteraction/closedfeedbackstate or directPDF/clinicalsourceverification fromthistextreview.",
+      "unitDefinition": "Nonempty captured SSR lines per locale, including clinical prose, tables, captions, checks and source metadata; not a count of independent clinical claims."
+    },
+    {
+      "index": 28,
+      "route": "/abdomen/nebenniere/raumforderungen",
+      "entry": "app/abdomen/nebenniere/raumforderungen/page.js",
+      "group": "abdomen-technik-vascular",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\028-abdomen--nebenniere--raumforderungen.txt",
+      "chars": 22451,
+      "status": "READ_COMPARATIVE_NO_BLOCKING_EQUIVALENCE_ERROR",
+      "readEvidence": "All actual DE/EN/FA individual chapter paragraphs, tables, captions/alt and checks/summary compared; no source/PDF recertification.",
+      "unitsRead": {
+        "DE": 56,
+        "EN": 56,
+        "FA": 56
+      },
+      "limits": "No browserinteraction/closedfeedbackstate or directPDF/clinicalsourceverification fromthistextreview.",
+      "unitDefinition": "Nonempty captured SSR lines per locale, including clinical prose, tables, captions, checks and source metadata; not a count of independent clinical claims."
+    },
+    {
+      "index": 29,
+      "route": "/abdomen/niere/adpkd",
+      "entry": "app/abdomen/niere/adpkd/page.jsx",
+      "group": "abdomen-technik-vascular",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\029-abdomen--niere--adpkd.txt",
+      "chars": 11461,
+      "status": "READ_COMPARATIVE_MINOR_LANGUAGE_REVISE",
+      "readEvidence": "All actual DE/EN/FA individual chapter paragraphs, tables, captions/alt and checks/summary compared; no source/PDF recertification.",
+      "unitsRead": {
+        "DE": 30,
+        "EN": 30,
+        "FA": 30
+      },
+      "limits": "No browserinteraction/closedfeedbackstate or directPDF/clinicalsourceverification fromthistextreview.",
+      "unitDefinition": "Nonempty captured SSR lines per locale, including clinical prose, tables, captions, checks and source metadata; not a count of independent clinical claims."
+    },
+    {
+      "index": 30,
+      "route": "/abdomen/niere/anatomie",
+      "entry": "app/abdomen/niere/anatomie/page.js",
+      "group": "abdomen-technik-vascular",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\030-abdomen--niere--anatomie.txt",
+      "chars": 10115,
+      "status": "READ_COMPARATIVE_NO_BLOCKING_EQUIVALENCE_ERROR",
+      "readEvidence": "All actual DE/EN/FA individual chapter paragraphs, tables, captions/alt and checks/summary compared; no source/PDF recertification.",
+      "unitsRead": {
+        "DE": 36,
+        "EN": 36,
+        "FA": 36
+      },
+      "limits": "No browserinteraction/closedfeedbackstate or directPDF/clinicalsourceverification fromthistextreview.",
+      "unitDefinition": "Nonempty captured SSR lines per locale, including clinical prose, tables, captions, checks and source metadata; not a count of independent clinical claims."
+    },
+    {
+      "index": 31,
+      "route": "/abdomen/niere/fornixruptur",
+      "entry": "app/abdomen/niere/fornixruptur/page.js",
+      "group": "abdomen-technik-vascular",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\031-abdomen--niere--fornixruptur.txt",
+      "chars": 10647,
+      "status": "READ_COMPARATIVE_NO_BLOCKING_EQUIVALENCE_ERROR",
+      "readEvidence": "Full individual clinical prose/tables/captions/alt/checks and final rules read in all three actual SSR language sections.",
+      "unitsRead": {
+        "DE": 39,
+        "EN": 39,
+        "FA": 39
+      },
+      "limits": "No browserinteraction/closedfeedbackstate or directPDF/clinicalsourceverification fromthistextreview.",
+      "unitDefinition": "Nonempty captured SSR lines per locale, including clinical prose, tables, captions, checks and source metadata; not a count of independent clinical claims."
+    },
+    {
+      "index": 32,
+      "route": "/abdomen/niere/nierenzysten",
+      "entry": "app/abdomen/niere/nierenzysten/page.js",
+      "group": "abdomen-technik-vascular",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\032-abdomen--niere--nierenzysten.txt",
+      "chars": 11645,
+      "status": "READ_COMPARATIVE_NO_BLOCKING_EQUIVALENCE_ERROR",
+      "readEvidence": "Full individual clinical prose/tables/captions/alt/checks and final rules read in all three actual SSR language sections.",
+      "unitsRead": {
+        "DE": 34,
+        "EN": 34,
+        "FA": 34
+      },
+      "limits": "No browserinteraction/closedfeedbackstate or directPDF/clinicalsourceverification fromthistextreview.",
+      "unitDefinition": "Nonempty captured SSR lines per locale, including clinical prose, tables, captions, checks and source metadata; not a count of independent clinical claims."
+    },
+    {
+      "index": 33,
+      "route": "/abdomen/niere/pyelonephritis",
+      "entry": "app/abdomen/niere/pyelonephritis/page.jsx",
+      "group": "abdomen-technik-vascular",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\033-abdomen--niere--pyelonephritis.txt",
+      "chars": 15793,
+      "status": "READ_COMPARATIVE_NO_BLOCKING_EQUIVALENCE_ERROR",
+      "readEvidence": "Full individual clinical prose/tables/captions/alt/checks and final rules read in all three actual SSR language sections.",
+      "unitsRead": {
+        "DE": 35,
+        "EN": 35,
+        "FA": 35
+      },
+      "limits": "No browserinteraction/closedfeedbackstate or directPDF/clinicalsourceverification fromthistextreview.",
+      "unitDefinition": "Nonempty captured SSR lines per locale, including clinical prose, tables, captions, checks and source metadata; not a count of independent clinical claims."
+    },
+    {
+      "index": 34,
+      "route": "/abdomen/niere/raumforderungen",
+      "entry": "app/abdomen/niere/raumforderungen/page.js",
+      "group": "abdomen-technik-vascular",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\034-abdomen--niere--raumforderungen.txt",
+      "chars": 15739,
+      "status": "READ_COMPARATIVE_NO_BLOCKING_EQUIVALENCE_ERROR",
+      "readEvidence": "Full individual clinical prose/tables/captions/alt/checks and final rules read in all three actual SSR language sections.",
+      "unitsRead": {
+        "DE": 46,
+        "EN": 46,
+        "FA": 46
+      },
+      "limits": "No browserinteraction/closedfeedbackstate or directPDF/clinicalsourceverification fromthistextreview.",
+      "unitDefinition": "Nonempty captured SSR lines per locale, including clinical prose, tables, captions, checks and source metadata; not a count of independent clinical claims."
+    },
+    {
+      "index": 35,
+      "route": "/abdomen/niere/renaltrauma",
+      "entry": "app/abdomen/niere/renaltrauma/page.jsx",
+      "group": "abdomen-technik-vascular",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\035-abdomen--niere--renaltrauma.txt",
+      "chars": 16899,
+      "status": "READ_COMPARATIVE_NO_BLOCKING_EQUIVALENCE_ERROR",
+      "readEvidence": "Full individual clinical prose/tables/captions/alt/checks and final rules read in all three actual SSR language sections.",
+      "unitsRead": {
+        "DE": 33,
+        "EN": 33,
+        "FA": 33
+      },
+      "limits": "No browserinteraction/closedfeedbackstate or directPDF/clinicalsourceverification fromthistextreview.",
+      "unitDefinition": "Nonempty captured SSR lines per locale, including clinical prose, tables, captions, checks and source metadata; not a count of independent clinical claims."
+    },
+    {
+      "index": 36,
+      "route": "/abdomen/niere/wilms-tumour",
+      "entry": "app/abdomen/niere/wilms-tumour/page.jsx",
+      "group": "abdomen-technik-vascular",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\036-abdomen--niere--wilms-tumour.txt",
+      "chars": 11412,
+      "status": "READ_COMPARATIVE_NO_BLOCKING_EQUIVALENCE_ERROR",
+      "readEvidence": "Full individual clinical prose/tables/captions/alt/checks and final rules read in all three actual SSR language sections.",
+      "unitsRead": {
+        "DE": 33,
+        "EN": 33,
+        "FA": 33
+      },
+      "limits": "No browserinteraction/closedfeedbackstate or directPDF/clinicalsourceverification fromthistextreview.",
+      "unitDefinition": "Nonempty captured SSR lines per locale, including clinical prose, tables, captions, checks and source metadata; not a count of independent clinical claims."
+    },
+    {
+      "index": 37,
+      "route": "/abdomen/pankreas/neuroendokrine-tumoren",
+      "entry": "app/abdomen/pankreas/neuroendokrine-tumoren/page.js",
+      "group": "abdomen-technik-vascular",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\037-abdomen--pankreas--neuroendokrine-tumoren.txt",
+      "chars": 7554,
+      "status": "READ_COMPARATIVE_NO_BLOCKING_EQUIVALENCE_ERROR",
+      "readEvidence": "Full individual clinical prose/tables/captions/alt/checks and final rules read in all three actual SSR language sections.",
+      "unitsRead": {
+        "DE": 37,
+        "EN": 37,
+        "FA": 37
+      },
+      "limits": "No browserinteraction/closedfeedbackstate or directPDF/clinicalsourceverification fromthistextreview.",
+      "unitDefinition": "Nonempty captured SSR lines per locale, including clinical prose, tables, captions, checks and source metadata; not a count of independent clinical claims."
+    },
+    {
+      "index": 38,
+      "route": "/abdomen/pankreas/pankreaskarzinom",
+      "entry": "app/abdomen/pankreas/pankreaskarzinom/page.js",
+      "group": "abdomen-technik-vascular",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\038-abdomen--pankreas--pankreaskarzinom.txt",
+      "chars": 11774,
+      "status": "READ_COMPARATIVE_NO_BLOCKING_EQUIVALENCE_ERROR",
+      "readEvidence": "Full individual clinical prose/tables/captions/alt/checks and final rules read in all three actual SSR language sections.",
+      "unitsRead": {
+        "DE": 48,
+        "EN": 48,
+        "FA": 48
+      },
+      "limits": "No browserinteraction/closedfeedbackstate or directPDF/clinicalsourceverification fromthistextreview.",
+      "unitDefinition": "Nonempty captured SSR lines per locale, including clinical prose, tables, captions, checks and source metadata; not a count of independent clinical claims."
+    },
+    {
+      "index": 39,
+      "route": "/abdomen/pankreas/pankreatitis",
+      "entry": "app/abdomen/pankreas/pankreatitis/page.js",
+      "group": "abdomen-technik-vascular",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\039-abdomen--pankreas--pankreatitis.txt",
+      "chars": 18406,
+      "status": "READ_COMPARATIVE_DIRECTION_AND_TERM_REVISE",
+      "readEvidence": "Full individual clinical prose/tables/captions/alt/checks and final rules read in all three actual SSR language sections.",
+      "unitsRead": {
+        "DE": 86,
+        "EN": 86,
+        "FA": 86
+      },
+      "limits": "No browserinteraction/closedfeedbackstate or directPDF/clinicalsourceverification fromthistextreview.",
+      "crossReference": "ATV assessment CTSI versus clinical Atlanta severity and old mortality estimates remain unverified; this language review does not endorse them.",
+      "unitDefinition": "Nonempty captured SSR lines per locale, including clinical prose, tables, captions, checks and source metadata; not a count of independent clinical claims."
+    },
+    {
+      "index": 40,
+      "route": "/abdomen/pankreas/zystische-tumoren",
+      "entry": "app/abdomen/pankreas/zystische-tumoren/page.js",
+      "group": "abdomen-technik-vascular",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\040-abdomen--pankreas--zystische-tumoren.txt",
+      "chars": 12497,
+      "status": "READ_COMPARATIVE_POLARITY_REVISE",
+      "readEvidence": "Complete individual DE/EN/FA chapter text, source qualifications, image guidance, retrieval checks and summary read comparatively.",
+      "unitsRead": {
+        "DE": 48,
+        "EN": 48,
+        "FA": 48
+      },
+      "limits": "No browserinteraction/closedfeedbackstate or directPDF/clinicalsourceverification fromthistextreview.",
+      "crossReference": "ATV assessment IPMN-versus-pseudocyst communication discriminator remains scientifically open.",
+      "unitDefinition": "Nonempty captured SSR lines per locale, including clinical prose, tables, captions, checks and source metadata; not a count of independent clinical claims."
+    },
+    {
+      "index": 41,
+      "route": "/abdomen/peritoneum/appendicitis-epiploica",
+      "entry": "app/abdomen/peritoneum/appendicitis-epiploica/page.jsx",
+      "group": "abdomen-technik-vascular",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\041-abdomen--peritoneum--appendicitis-epiploica.txt",
+      "chars": 15040,
+      "status": "READ_COMPARATIVE_NO_BLOCKING_EQUIVALENCE_ERROR",
+      "readEvidence": "Complete individual DE/EN/FA chapter text, source qualifications, image guidance, retrieval checks and summary read comparatively.",
+      "unitsRead": {
+        "DE": 42,
+        "EN": 42,
+        "FA": 42
+      },
+      "limits": "No browserinteraction/closedfeedbackstate or directPDF/clinicalsourceverification fromthistextreview.",
+      "unitDefinition": "Nonempty captured SSR lines per locale, including clinical prose, tables, captions, checks and source metadata; not a count of independent clinical claims."
+    },
+    {
+      "index": 42,
+      "route": "/abdomen/peritoneum/mesenteriale-panniculitis",
+      "entry": "app/abdomen/peritoneum/mesenteriale-panniculitis/page.jsx",
+      "group": "abdomen-technik-vascular",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\042-abdomen--peritoneum--mesenteriale-panniculitis.txt",
+      "chars": 17666,
+      "status": "READ_COMPARATIVE_NO_BLOCKING_EQUIVALENCE_ERROR",
+      "readEvidence": "Complete individual DE/EN/FA chapter text, source qualifications, image guidance, retrieval checks and summary read comparatively.",
+      "unitsRead": {
+        "DE": 46,
+        "EN": 46,
+        "FA": 46
+      },
+      "limits": "No browserinteraction/closedfeedbackstate or directPDF/clinicalsourceverification fromthistextreview.",
+      "unitDefinition": "Nonempty captured SSR lines per locale, including clinical prose, tables, captions, checks and source metadata; not a count of independent clinical claims."
+    },
+    {
+      "index": 43,
+      "route": "/abdomen/peritoneum/peritonealkarzinose",
+      "entry": "app/abdomen/peritoneum/peritonealkarzinose/page.jsx",
+      "group": "abdomen-technik-vascular",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\043-abdomen--peritoneum--peritonealkarzinose.txt",
+      "chars": 15165,
+      "status": "READ_COMPARATIVE_NO_BLOCKING_EQUIVALENCE_ERROR",
+      "readEvidence": "Complete individual DE/EN/FA chapter text, source qualifications, image guidance, retrieval checks and summary read comparatively.",
+      "unitsRead": {
+        "DE": 42,
+        "EN": 42,
+        "FA": 42
+      },
+      "limits": "No browserinteraction/closedfeedbackstate or directPDF/clinicalsourceverification fromthistextreview.",
+      "unitDefinition": "Nonempty captured SSR lines per locale, including clinical prose, tables, captions, checks and source metadata; not a count of independent clinical claims."
+    },
+    {
+      "index": 44,
+      "route": "/abdomen/retroperitoneum/morbus-ormond",
+      "entry": "app/abdomen/retroperitoneum/morbus-ormond/page.jsx",
+      "group": "abdomen-technik-vascular",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\044-abdomen--retroperitoneum--morbus-ormond.txt",
+      "chars": 15596,
+      "status": "READ_COMPARATIVE_NO_BLOCKING_EQUIVALENCE_ERROR",
+      "readEvidence": "Complete individual DE/EN/FA chapter text, source qualifications, image guidance, retrieval checks and summary read comparatively.",
+      "unitsRead": {
+        "DE": 47,
+        "EN": 47,
+        "FA": 47
+      },
+      "limits": "No browserinteraction/closedfeedbackstate or directPDF/clinicalsourceverification fromthistextreview.",
+      "unitDefinition": "Nonempty captured SSR lines per locale, including clinical prose, tables, captions, checks and source metadata; not a count of independent clinical claims."
+    },
+    {
+      "index": 45,
+      "route": "/gefaesse/anatomie-obere-extremitaet",
+      "entry": "app/gefaesse/anatomie-obere-extremitaet/page.jsx",
+      "group": "abdomen-technik-vascular",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\045-gefaesse--anatomie-obere-extremitaet.txt",
+      "chars": 11105,
+      "status": "READ_COMPARATIVE_NO_BLOCKING_EQUIVALENCE_ERROR",
+      "readEvidence": "Full actual triad read, including anatomy branch directions, technical diagrams, parameters/units, qualifiers and checks.",
+      "unitsRead": {
+        "DE": 44,
+        "EN": 44,
+        "FA": 44
+      },
+      "limits": "No browserinteraction/closedfeedbackstate or directPDF/clinicalsourceverification fromthistextreview.",
+      "unitDefinition": "Nonempty captured SSR lines per locale, including clinical prose, tables, captions, checks and source metadata; not a count of independent clinical claims."
+    },
+    {
+      "index": 46,
+      "route": "/gefaesse/anatomie-untere-extremitaet",
+      "entry": "app/gefaesse/anatomie-untere-extremitaet/page.jsx",
+      "group": "abdomen-technik-vascular",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\046-gefaesse--anatomie-untere-extremitaet.txt",
+      "chars": 16557,
+      "status": "READ_COMPARATIVE_NO_BLOCKING_EQUIVALENCE_ERROR",
+      "readEvidence": "Full actual triad read, including anatomy branch directions, technical diagrams, parameters/units, qualifiers and checks.",
+      "unitsRead": {
+        "DE": 56,
+        "EN": 56,
+        "FA": 56
+      },
+      "limits": "No browserinteraction/closedfeedbackstate or directPDF/clinicalsourceverification fromthistextreview.",
+      "unitDefinition": "Nonempty captured SSR lines per locale, including clinical prose, tables, captions, checks and source metadata; not a count of independent clinical claims."
+    },
+    {
+      "index": 47,
+      "route": "/technik/berufsdosimetrie",
+      "entry": "app/technik/berufsdosimetrie/page.jsx",
+      "group": "abdomen-technik-vascular",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\164-technik--berufsdosimetrie.txt",
+      "chars": 13888,
+      "status": "READ_COMPARATIVE_NO_BLOCKING_EQUIVALENCE_ERROR",
+      "readEvidence": "Full actual triad read, including anatomy branch directions, technical diagrams, parameters/units, qualifiers and checks.",
+      "unitsRead": {
+        "DE": 38,
+        "EN": 38,
+        "FA": 38
+      },
+      "limits": "No browserinteraction/closedfeedbackstate or directPDF/clinicalsourceverification fromthistextreview.",
+      "unitDefinition": "Nonempty captured SSR lines per locale, including clinical prose, tables, captions, checks and source metadata; not a count of independent clinical claims."
+    },
+    {
+      "index": 48,
+      "route": "/technik/ct-grundlagen",
+      "entry": "app/technik/ct-grundlagen/page.jsx",
+      "group": "abdomen-technik-vascular",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\165-technik--ct-grundlagen.txt",
+      "chars": 22901,
+      "status": "READ_COMPARATIVE_NO_BLOCKING_EQUIVALENCE_ERROR",
+      "readEvidence": "Full actual triad read, including anatomy branch directions, technical diagrams, parameters/units, qualifiers and checks.",
+      "unitsRead": {
+        "DE": 62,
+        "EN": 62,
+        "FA": 62
+      },
+      "limits": "No browserinteraction/closedfeedbackstate or directPDF/clinicalsourceverification fromthistextreview.",
+      "unitDefinition": "Nonempty captured SSR lines per locale, including clinical prose, tables, captions, checks and source metadata; not a count of independent clinical claims."
+    },
+    {
+      "index": 49,
+      "route": "/technik/ct-perfusion",
+      "entry": "app/technik/ct-perfusion/page.jsx",
+      "group": "abdomen-technik-vascular",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\166-technik--ct-perfusion.txt",
+      "chars": 15298,
+      "status": "READ_COMPARATIVE_NO_BLOCKING_EQUIVALENCE_ERROR",
+      "readEvidence": "Full actual triad read, including anatomy branch directions, technical diagrams, parameters/units, qualifiers and checks.",
+      "unitsRead": {
+        "DE": 35,
+        "EN": 35,
+        "FA": 35
+      },
+      "limits": "No browserinteraction/closedfeedbackstate or directPDF/clinicalsourceverification fromthistextreview.",
+      "unitDefinition": "Nonempty captured SSR lines per locale, including clinical prose, tables, captions, checks and source metadata; not a count of independent clinical claims."
+    },
+    {
+      "index": 50,
+      "route": "/technik/dosimetrie",
+      "entry": "app/technik/dosimetrie/page.jsx",
+      "group": "abdomen-technik-vascular",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\167-technik--dosimetrie.txt",
+      "chars": 18082,
+      "status": "READ_COMPARATIVE_RENDERED_STIMULUS_MISSING",
+      "readEvidence": "Full actual triad read, including anatomy branch directions, technical diagrams, parameters/units, qualifiers and checks.",
+      "unitsRead": {
+        "DE": 50,
+        "EN": 50,
+        "FA": 50
+      },
+      "limits": "No browserinteraction/closedfeedbackstate or directPDF/clinicalsourceverification fromthistextreview.",
+      "unitDefinition": "Nonempty captured SSR lines per locale, including clinical prose, tables, captions, checks and source metadata; not a count of independent clinical claims."
+    },
+    {
+      "index": 51,
+      "route": "/technik/dual-energy-ct",
+      "entry": "app/technik/dual-energy-ct/page.jsx",
+      "group": "abdomen-technik-vascular",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\168-technik--dual-energy-ct.txt",
+      "chars": 15827,
+      "status": "READ_COMPARATIVE_NO_BLOCKING_EQUIVALENCE_ERROR",
+      "readEvidence": "Full actual triad read, including anatomy branch directions, technical diagrams, parameters/units, qualifiers and checks.",
+      "unitsRead": {
+        "DE": 43,
+        "EN": 43,
+        "FA": 43
+      },
+      "limits": "No browserinteraction/closedfeedbackstate or directPDF/clinicalsourceverification fromthistextreview.",
+      "unitDefinition": "Nonempty captured SSR lines per locale, including clinical prose, tables, captions, checks and source metadata; not a count of independent clinical claims."
+    },
+    {
+      "index": 52,
+      "route": "/technik/grundlagen",
+      "entry": "app/technik/grundlagen/page.jsx",
+      "group": "abdomen-technik-vascular",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\169-technik--grundlagen.txt",
+      "chars": 393070,
+      "status": "READ_COMPARATIVE_NO_BLOCKING_EQUIVALENCE_ERROR",
+      "readEvidence": "All 2,556 original captured lines read comparatively: DE 1–855, EN 856–1705, FA 1706–2556. All 24 chapters, tables, captions/alt text, checks, final three take-home points and all 76 source entries/scopes read. Exact-line reuse analysis was supplementary; original full triad was subsequently read.",
+      "unitsRead": {
+        "DE": 849,
+        "EN": 849,
+        "FA": 849
+      },
+      "limits": "No browserinteraction/closedfeedbackstate or directPDF/clinicalsourceverification fromthistextreview.",
+      "unitDefinition": "Nonempty captured SSR lines per locale, including clinical prose, tables, captions, checks and source metadata; not a count of independent clinical claims.",
+      "crossReferences": [
+        "Existing SWI MIP/minIP nomenclature finding remains open in assessment review; equivalent wording across locales is not scientific approval.",
+        "RECIST draft-boundary wording and MR-safety manual-check status are internally stale across all three locales; no content changed by this reviewer."
+      ]
+    },
+    {
+      "index": 53,
+      "route": "/technik/interventionelle-radiologie",
+      "entry": "app/technik/interventionelle-radiologie/page.jsx",
+      "group": "abdomen-technik-vascular",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\170-technik--interventionelle-radiologie.txt",
+      "chars": 25901,
+      "status": "READ_COMPARATIVE_MINOR_TERMINOLOGY_REVISE",
+      "readEvidence": "Full actual DE/EN/FA paragraphs/tables/clinical qualifications, diagrams/captions and check options read comparatively.",
+      "unitsRead": {
+        "DE": 60,
+        "EN": 60,
+        "FA": 60
+      },
+      "limits": "No browserinteraction/closedfeedbackstate or directPDF/clinicalsourceverification fromthistextreview.",
+      "unitDefinition": "Nonempty captured SSR lines per locale, including clinical prose, tables, captions, checks and source metadata; not a count of independent clinical claims."
+    },
+    {
+      "index": 54,
+      "route": "/technik/kontrastmittel/mrt",
+      "entry": "app/technik/kontrastmittel/mrt/page.jsx",
+      "group": "abdomen-technik-vascular",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\171-technik--kontrastmittel--mrt.txt",
+      "chars": 22088,
+      "status": "READ_COMPARATIVE_MINOR_TERMINOLOGY_REVISE",
+      "readEvidence": "Full actual DE/EN/FA paragraphs/tables/clinical qualifications, diagrams/captions and check options read comparatively.",
+      "unitsRead": {
+        "DE": 92,
+        "EN": 92,
+        "FA": 92
+      },
+      "limits": "No browserinteraction/closedfeedbackstate or directPDF/clinicalsourceverification fromthistextreview.",
+      "unitDefinition": "Nonempty captured SSR lines per locale, including clinical prose, tables, captions, checks and source metadata; not a count of independent clinical claims."
+    },
+    {
+      "index": 55,
+      "route": "/technik/kontrastmittel/nierenfunktion",
+      "entry": "app/technik/kontrastmittel/nierenfunktion/page.jsx",
+      "group": "abdomen-technik-vascular",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\172-technik--kontrastmittel--nierenfunktion.txt",
+      "chars": 25479,
+      "status": "READ_COMPARATIVE_MINOR_TERMINOLOGY_REVISE",
+      "readEvidence": "Full actual DE/EN/FA paragraphs/tables/clinical qualifications, diagrams/captions and check options read comparatively.",
+      "unitsRead": {
+        "DE": 96,
+        "EN": 96,
+        "FA": 96
+      },
+      "limits": "No browserinteraction/closedfeedbackstate or directPDF/clinicalsourceverification fromthistextreview.",
+      "unitDefinition": "Nonempty captured SSR lines per locale, including clinical prose, tables, captions, checks and source metadata; not a count of independent clinical claims.",
+      "retestStatus": "ALL_RECORDED_LANGUAGE_FINDINGS_FIXED_AND_RETESTED"
+    },
+    {
+      "index": 56,
+      "route": "/technik/kontrastmittel/roentgen",
+      "entry": "app/technik/kontrastmittel/roentgen/page.jsx",
+      "group": "abdomen-technik-vascular",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\173-technik--kontrastmittel--roentgen.txt",
+      "chars": 53192,
+      "status": "READ_COMPARATIVE_MINOR_TERMINOLOGY_REVISE",
+      "readEvidence": "Full actual triad individually compared; X-ray contrast read separately complete DE, EN, FA with all table values, reaction/thyroid/extravasation/enteral cautions; RECIST thresholds and example arithmetic match.",
+      "unitsRead": {
+        "DE": 165,
+        "EN": 165,
+        "FA": 165
+      },
+      "limits": "No browserinteraction/closedfeedbackstate or directPDF/clinicalsourceverification fromthistextreview.",
+      "unitDefinition": "Nonempty captured SSR lines per locale, including clinical prose, tables, captions, checks and source metadata; not a count of independent clinical claims."
+    },
+    {
+      "index": 57,
+      "route": "/technik/kontrastmittel/schwangerschaft",
+      "entry": "app/technik/kontrastmittel/schwangerschaft/page.jsx",
+      "group": "abdomen-technik-vascular",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\174-technik--kontrastmittel--schwangerschaft.txt",
+      "chars": 14054,
+      "status": "READ_COMPARATIVE_MINOR_LANGUAGE_REVISE",
+      "readEvidence": "Full actual triad individually compared; X-ray contrast read separately complete DE, EN, FA with all table values, reaction/thyroid/extravasation/enteral cautions; RECIST thresholds and example arithmetic match.",
+      "unitsRead": {
+        "DE": 55,
+        "EN": 55,
+        "FA": 55
+      },
+      "limits": "No browserinteraction/closedfeedbackstate or directPDF/clinicalsourceverification fromthistextreview.",
+      "unitDefinition": "Nonempty captured SSR lines per locale, including clinical prose, tables, captions, checks and source metadata; not a count of independent clinical claims."
+    },
+    {
+      "index": 58,
+      "route": "/technik/kontrastmittel/ultraschall",
+      "entry": "app/technik/kontrastmittel/ultraschall/page.jsx",
+      "group": "abdomen-technik-vascular",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\175-technik--kontrastmittel--ultraschall.txt",
+      "chars": 11181,
+      "status": "READ_COMPARATIVE_NO_BLOCKING_EQUIVALENCE_ERROR",
+      "readEvidence": "Full actual triad individually compared; X-ray contrast read separately complete DE, EN, FA with all table values, reaction/thyroid/extravasation/enteral cautions; RECIST thresholds and example arithmetic match.",
+      "unitsRead": {
+        "DE": 33,
+        "EN": 33,
+        "FA": 33
+      },
+      "limits": "No browserinteraction/closedfeedbackstate or directPDF/clinicalsourceverification fromthistextreview.",
+      "unitDefinition": "Nonempty captured SSR lines per locale, including clinical prose, tables, captions, checks and source metadata; not a count of independent clinical claims."
+    },
+    {
+      "index": 59,
+      "route": "/technik/mr-myelographie",
+      "entry": "app/technik/mr-myelographie/page.jsx",
+      "group": "abdomen-technik-vascular",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\176-technik--mr-myelographie.txt",
+      "chars": 11740,
+      "status": "READ_COMPARATIVE_NO_BLOCKING_EQUIVALENCE_ERROR",
+      "readEvidence": "Full actual triad individually compared; X-ray contrast read separately complete DE, EN, FA with all table values, reaction/thyroid/extravasation/enteral cautions; RECIST thresholds and example arithmetic match.",
+      "unitsRead": {
+        "DE": 37,
+        "EN": 37,
+        "FA": 37
+      },
+      "limits": "No browserinteraction/closedfeedbackstate or directPDF/clinicalsourceverification fromthistextreview.",
+      "unitDefinition": "Nonempty captured SSR lines per locale, including clinical prose, tables, captions, checks and source metadata; not a count of independent clinical claims."
+    },
+    {
+      "index": 60,
+      "route": "/technik/onkologie/recist-1-1",
+      "entry": "app/technik/onkologie/recist-1-1/page.js",
+      "group": "abdomen-technik-vascular",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\177-technik--onkologie--recist-1-1.txt",
+      "chars": 16303,
+      "status": "READ_COMPARATIVE_NO_BLOCKING_EQUIVALENCE_ERROR",
+      "readEvidence": "Full actual triad individually compared; X-ray contrast read separately complete DE, EN, FA with all table values, reaction/thyroid/extravasation/enteral cautions; RECIST thresholds and example arithmetic match.",
+      "unitsRead": {
+        "DE": 54,
+        "EN": 54,
+        "FA": 54
+      },
+      "limits": "No browserinteraction/closedfeedbackstate or directPDF/clinicalsourceverification fromthistextreview.",
+      "unitDefinition": "Nonempty captured SSR lines per locale, including clinical prose, tables, captions, checks and source metadata; not a count of independent clinical claims."
+    },
+    {
+      "index": 61,
+      "route": "/technik/qualitaetssicherung-vorkommnisse",
+      "entry": "app/technik/qualitaetssicherung-vorkommnisse/page.jsx",
+      "group": "abdomen-technik-vascular",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\178-technik--qualitaetssicherung-vorkommnisse.txt",
+      "chars": 34000,
+      "status": "READ_COMPARATIVE_NO_BLOCKING_EQUIVALENCE_ERROR",
+      "readEvidence": "Complete DE/EN/FA passages read; reporting criteria, dates, thresholds/units, scientific qualifiers, prenatal workflow, ultrasound physics and radiation-origin distinctions compared.",
+      "unitsRead": {
+        "DE": 78,
+        "EN": 78,
+        "FA": 78
+      },
+      "limits": "No browserinteraction/closedfeedbackstate or directPDF/clinicalsourceverification fromthistextreview.",
+      "unitDefinition": "Nonempty captured SSR lines per locale, including clinical prose, tables, captions, checks and source metadata; not a count of independent clinical claims."
+    },
+    {
+      "index": 62,
+      "route": "/technik/sonographie/grundlagen",
+      "entry": "app/technik/sonographie/grundlagen/page.jsx",
+      "group": "abdomen-technik-vascular",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\179-technik--sonographie--grundlagen.txt",
+      "chars": 11078,
+      "status": "READ_COMPARATIVE_NO_BLOCKING_EQUIVALENCE_ERROR",
+      "readEvidence": "Complete DE/EN/FA passages read; reporting criteria, dates, thresholds/units, scientific qualifiers, prenatal workflow, ultrasound physics and radiation-origin distinctions compared.",
+      "unitsRead": {
+        "DE": 34,
+        "EN": 34,
+        "FA": 34
+      },
+      "limits": "No browserinteraction/closedfeedbackstate or directPDF/clinicalsourceverification fromthistextreview.",
+      "unitDefinition": "Nonempty captured SSR lines per locale, including clinical prose, tables, captions, checks and source metadata; not a count of independent clinical claims."
+    },
+    {
+      "index": 63,
+      "route": "/technik/strahlenbelastung",
+      "entry": "app/technik/strahlenbelastung/page.jsx",
+      "group": "abdomen-technik-vascular",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\180-technik--strahlenbelastung.txt",
+      "chars": 12541,
+      "status": "READ_COMPARATIVE_NO_BLOCKING_EQUIVALENCE_ERROR",
+      "readEvidence": "Complete DE/EN/FA passages read; reporting criteria, dates, thresholds/units, scientific qualifiers, prenatal workflow, ultrasound physics and radiation-origin distinctions compared.",
+      "unitsRead": {
+        "DE": 36,
+        "EN": 36,
+        "FA": 36
+      },
+      "limits": "No browserinteraction/closedfeedbackstate or directPDF/clinicalsourceverification fromthistextreview.",
+      "unitDefinition": "Nonempty captured SSR lines per locale, including clinical prose, tables, captions, checks and source metadata; not a count of independent clinical claims."
+    },
+    {
+      "index": 64,
+      "route": "/technik/strahlenschutz/praenatale-exposition",
+      "entry": "app/technik/strahlenschutz/praenatale-exposition/page.jsx",
+      "group": "abdomen-technik-vascular",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\181-technik--strahlenschutz--praenatale-exposition.txt",
+      "chars": 18342,
+      "status": "READ_COMPARATIVE_NO_BLOCKING_EQUIVALENCE_ERROR",
+      "readEvidence": "Complete DE/EN/FA passages read; reporting criteria, dates, thresholds/units, scientific qualifiers, prenatal workflow, ultrasound physics and radiation-origin distinctions compared.",
+      "unitsRead": {
+        "DE": 42,
+        "EN": 42,
+        "FA": 42
+      },
+      "limits": "No browserinteraction/closedfeedbackstate or directPDF/clinicalsourceverification fromthistextreview.",
+      "unitDefinition": "Nonempty captured SSR lines per locale, including clinical prose, tables, captions, checks and source metadata; not a count of independent clinical claims."
+    },
+    {
+      "index": 65,
+      "route": "/technik/strahlungsarten",
+      "entry": "app/technik/strahlungsarten/page.jsx",
+      "group": "abdomen-technik-vascular",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\182-technik--strahlungsarten.txt",
+      "chars": 11173,
+      "status": "READ_COMPARATIVE_NO_BLOCKING_EQUIVALENCE_ERROR",
+      "readEvidence": "Complete DE/EN/FA passages read; reporting criteria, dates, thresholds/units, scientific qualifiers, prenatal workflow, ultrasound physics and radiation-origin distinctions compared.",
+      "unitsRead": {
+        "DE": 36,
+        "EN": 36,
+        "FA": 36
+      },
+      "limits": "No browserinteraction/closedfeedbackstate or directPDF/clinicalsourceverification fromthistextreview.",
+      "unitDefinition": "Nonempty captured SSR lines per locale, including clinical prose, tables, captions, checks and source metadata; not a count of independent clinical claims."
+    }
+  ],
+  "progress": {
+    "readRoutes": 66,
+    "totalRoutes": 66,
+    "pendingRoutes": 0
+  },
+  "completedAt": "2026-10-25",
+  "summary": {
+    "routesRead": 66,
+    "findings": 16,
+    "statusCounts": {
+      "READ_COMPARATIVE_NO_BLOCKING_DIFFERENCE": 12,
+      "READ_COMPARATIVE_MINOR_TERMINOLOGY_REVISE": 10,
+      "READ_COMPARATIVE_NO_BLOCKING_EQUIVALENCE_ERROR": 39,
+      "READ_COMPARATIVE_MINOR_LANGUAGE_REVISE": 2,
+      "READ_COMPARATIVE_DIRECTION_AND_TERM_REVISE": 1,
+      "READ_COMPARATIVE_POLARITY_REVISE": 1,
+      "READ_COMPARATIVE_RENDERED_STIMULUS_MISSING": 1
+    },
+    "unitsRead": {
+      "DE": 4268,
+      "EN": 4268,
+      "FA": 4268
+    },
+    "fixedFindings": 7,
+    "openFindings": 5,
+    "authoredPendingSeparateReview": 4,
+    "scopeNote": "Audit reading is complete. Seven narrow language findings independently retested here, four clinical/renderer repairs delegated to a separate independent reviewer, five minor findings remain open. No global scientific or release approval."
+  }
+}

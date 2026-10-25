@@ -1,0 +1,51 @@
+{
+  "role": "Independent read-only retest of root-authored bounded Mamma repairs",
+  "date": "2026-10-25",
+  "files": [
+    "data/mammaMrtBasics.js",
+    "data/mammaMrtLesions.js",
+    "data/mammaKaiserScore.js",
+    "app/mamma/bildgebung/mrt/kaiser-score/content.js"
+  ],
+  "baseline": "tmp/assessment-quality/mamma-author-fixes.json before snapshots",
+  "boundedFixStatus": "PASS",
+  "overallAssessmentQuality": "REVISE",
+  "reviewed": [
+    {
+      "id": "MAMMA-RETEST-VERSION",
+      "status": "PASS",
+      "scope": "Historical2013 focus stems/cards versus current2025 lesion descriptions",
+      "evidence": "ACR2025 comparison explicitly removes focus as a finding; current items label the older definition historically and do not infer benignity from the legacy term.",
+      "sourceUrl": "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BIRADS-v2025-Whats-New.pdf",
+      "locator": "PDF p6, MRI revisions"
+    },
+    {
+      "id": "MAMMA-RETEST-LEXICON",
+      "status": "PASS",
+      "scope": "Changed mass description, indistinct margin and T2 note in DE/EN/FA",
+      "evidence": "Current ACR MRI form includes shape/margin/internal enhancement/T2 signal; revised margin wording distinguishes irregular shape from indistinct margin.",
+      "sourceUrl": "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/BI-RADS-Summary-Form-MRI.pdf",
+      "locator": "MRI form p1"
+    },
+    {
+      "id": "MAMMA-RETEST-KAISER",
+      "status": "PASS",
+      "scope": "Up to three decisions; not additive; source and option semantics",
+      "evidence": "The original-author2018 guide describes the classification tree,1–11 endpoints and conditional feature branches. Up-to-three wording preserves terminal paths; no MCQ correct-letter or item-ID change established.",
+      "sourceUrl": "https://link.springer.com/article/10.1007/s13244-018-0611-8",
+      "locator": "Decision-rule section and Figure7; current authored tree path structure compared"
+    },
+    {
+      "id": "MAMMA-RETEST-LNG",
+      "status": "PASS",
+      "scope": "Changed Persian FGT/BPE repetition, contrast terminology, and latest letter-removal feedback D",
+      "evidence": "Current FGT/BPE wording states one contrast qualification; DE/EN/FA feedback D now states one irregular-shape/spiculation comparison, with the duplicated Persian clause removed."
+    }
+  ],
+  "limits": [
+    "This is a retest of bounded changed fields and source-version claims, not a new full67-MCQ/83-card approval. Unchanged raw feedback/distractor depth was not exhaustively reread.",
+    "Exact historical5mm boundary was not independently checked against the original2013 ACR book; the accessible2018 author guide uses ≤5mm, whereas the item retains its existing <5mm historical phrasing. The2025 removal/version distinction is directly verified.",
+    "No new browser run or universal scientific release approval. Remaining general assessment-depth/edition consistency findings remain in the root ledger."
+  ],
+  "productionEdits": 0
+}

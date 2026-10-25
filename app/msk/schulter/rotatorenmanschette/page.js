@@ -67,7 +67,7 @@ const CONTENT = {
       "lead": "Partialrupturen werden nach ihrer Lokalisation innerhalb der Sehne eingeteilt. Diese Unterscheidung ist entscheidend für Therapieentscheidung und Prognose.",
       "tableHeaders": ["Typ", "Lokalisation", "MRT-Befund"],
       "tableRows": [
-        ["Bursaseitig", "oberflächliche (bursale) Faseranteile", "fokaler Flüssigkeitssaum zwischen Sehne und Bursa subacromialis in T2 fs"],
+        ["Bursaseitig", "oberflächliche (bursale) Faseranteile", "Flüssigkeitssignalreicher Defekt der oberflächlichen Sehnenfasern bis zur bursalen Oberfläche, bei erhaltenen artikulären Fasern; Bursaflüssigkeit allein beweist keinen Riss."],
         ["Gelenkseitig (PASTA)", "tiefe (artikuläre) Faseranteile am Footprint", "Partial Articular Surface Tendon Avulsion - fokaler Defekt am Footprint, oft mit Impingement assoziiert"],
         ["Intratendinös", "innerhalb der Sehne, ohne Oberflächenkontakt", "lineare/fokale T2-hyperintense Signalanhebung ohne Kontakt zur Bursa oder zum Gelenk"],
         ["Tendinopathie", "diffuse Degeneration", "intratendinöse Signalanhebung in PD/T1, kein eindeutiges T2-Flüssigkeitssignal, ggf. Sehnenverdickung"]
@@ -90,7 +90,7 @@ const CONTENT = {
       "lightBulbTitle": "Klassifikation nach Patte",
       "lightBulbText": "Grad 1: Sehnenstumpf nahe am Footprint. Grad 2: Stumpf auf Höhe des Humeruskopfes. Grad 3: Stumpf auf Höhe des Glenoids - je höher der Grad, desto schwieriger die spannungsfreie Rekonstruktion.",
       "dwiTitle": "Goutallier-Klassifikation der Muskelatrophie",
-      "dwiText": "Grad 0: keine Fettinfiltration. Grad 1: vereinzelte Fettstreifen. Grad 2: Fett < Muskel. Grad 3: Fett = Muskel. Grad 4: Fett > Muskel. Ab Grad 3-4 gilt eine Rekonstruktion meist als nicht mehr erfolgsversprechend.",
+      "dwiText": "Grad 0: keine Fettinfiltration. Grad 1: vereinzelte Fettstreifen. Grad 2: Fett < Muskel. Grad 3: Fett = Muskel. Grad 4: Fett > Muskel. Ein hoher Fettinfiltrationsgrad erschwert die Planung, schließt eine funktionelle Besserung nach Rekonstruktion aber nicht pauschal aus. Ausgewählte Patientinnen und Patienten mit Grad 3–4 profitierten in einer klinischen Serie; Rekonstruierbarkeit und Behandlung bleiben individuell.",
       "key": "Die Patte-Klassifikation (Retraktion) und die Goutallier-Klassifikation (Fettatrophie) sind entscheidend für die OP-Planung - eine hochgradige Atrophie limitiert die Erfolgsaussichten einer Rekonstruktion unabhängig vom Retraktionsgrad."
     },
     "begleit": {
@@ -174,7 +174,7 @@ const CONTENT = {
       "lead": "Partial tears are classified according to their location within the tendon. This distinction is crucial for treatment decisions and prognosis.",
       "tableHeaders": ["Type", "Location", "MRI finding"],
       "tableRows": [
-        ["Bursal-sided", "superficial (bursal) fibres", "focal fluid rim between the tendon and subacromial bursa on T2 fs"],
+        ["Bursal-sided", "superficial (bursal) fibres", "Fluid-signal defect of superficial tendon fibres reaching the bursal surface, with preserved articular fibres; bursal fluid alone does not establish a tear."],
         ["Articular-sided (PASTA)", "deep (articular) fibres at the footprint", "Partial Articular Surface Tendon Avulsion - focal defect at the footprint, often associated with impingement"],
         ["Intratendinous", "within the tendon, no surface contact", "linear/focal T2-hyperintense signal without contact to the bursa or joint"],
         ["Tendinopathy", "diffuse degeneration", "intratendinous signal elevation on PD/T1, no clear T2 fluid signal, possible tendon thickening"]
@@ -197,7 +197,7 @@ const CONTENT = {
       "lightBulbTitle": "Patte classification",
       "lightBulbText": "Grade 1: tendon stump close to the footprint. Grade 2: stump at the level of the humeral head. Grade 3: stump at the level of the glenoid - the higher the grade, the more difficult a tension-free repair becomes.",
       "dwiTitle": "Goutallier classification of muscle atrophy",
-      "dwiText": "Grade 0: no fatty infiltration. Grade 1: scattered fatty streaks. Grade 2: fat < muscle. Grade 3: fat = muscle. Grade 4: fat > muscle. From grade 3-4 onwards, repair is generally considered unlikely to succeed.",
+      "dwiText": "Grade 0: no fatty infiltration. Grade 1: scattered fatty streaks. Grade 2: fat < muscle. Grade 3: fat = muscle. Grade 4: fat > muscle. High-grade fatty infiltration complicates planning but does not categorically exclude functional improvement after repair. Selected patients with grades 3–4 improved in a clinical series; repairability and treatment remain individual.",
       "key": "The Patte classification (retraction) and the Goutallier classification (fatty atrophy) are decisive for surgical planning - significant atrophy limits the chance of a successful repair regardless of the degree of retraction."
     },
     "begleit": {
@@ -281,7 +281,7 @@ const CONTENT = {
       "lead": "پارگی‌های جزئی بر اساس محل آن‌ها در داخل تاندون طبقه‌بندی می‌شوند. این تفاوت برای تصمیم درمانی و پیش‌آگهی حیاتی است.",
       "tableHeaders": ["نوع", "محل", "یافته MRI"],
       "tableRows": [
-        ["سمت بورسال", "فیبرهای سطحی (بورسال)", "حاشیه کانونی مایع بین تاندون و بورس ساب‌آکرومیال در T2 fs"],
+        ["سمت بورسال", "فیبرهای سطحی (بورسال)", "نقص با سیگنال مایع در الیاف سطحی تاندون تا سطح بورسال، با حفظ الیاف مفصلی؛ مایع بورس به‌تنهایی پارگی را ثابت نمی‌کند."],
         ["سمت مفصلی (PASTA)", "فیبرهای عمقی (مفصلی) در محل اتصال تاندون (footprint)", "پارگی جزئی سطح مفصلی تاندون (PASTA) - نقص کانونی در محل اتصال تاندون (footprint)، اغلب همراه با ایمپینجمنت"],
         ["داخل تاندونی", "درون تاندون، بدون تماس با سطح", "سیگنال خطی/کانونی هیپراینتنس T2 بدون تماس با بورس یا مفصل"],
         ["تاندینوپاتی", "دژنراسیون منتشر", "افزایش سیگنال داخل تاندونی در PD/T1، بدون سیگنال مایع واضح در T2، احتمال ضخیم‌شدن تاندون"]
@@ -304,7 +304,7 @@ const CONTENT = {
       "lightBulbTitle": "طبقه‌بندی Patte",
       "lightBulbText": "درجه ۱: انتهای تاندون نزدیک محل اتصال تاندون (footprint). درجه ۲: انتها در سطح سر هومروس. درجه ۳: انتها در سطح گلنوئید - هرچه درجه بالاتر، ترمیم بدون کشش دشوارتر می‌شود.",
       "dwiTitle": "طبقه‌بندی Goutallier برای آتروفی عضلانی",
-      "dwiText": "درجه ۰: بدون نفوذ چربی. درجه ۱: رگه‌های پراکنده چربی. درجه ۲: چربی < عضله. درجه ۳: چربی = عضله. درجه ۴: چربی > عضله. از درجه ۳ تا ۴ به بعد، ترمیم معمولاً کم‌احتمال در نظر گرفته می‌شود.",
+      "dwiText": "درجه ۰: بدون نفوذ چربی. درجه ۱: رگه‌های پراکنده چربی. درجه ۲: چربی < عضله. درجه ۳: چربی = عضله. درجه ۴: چربی > عضله. نفوذ چربی با درجهٔ بالا برنامه‌ریزی را دشوار می‌کند، اما بهبود عملکرد پس از ترمیم را به‌طور کلی منتفی نمی‌کند. در یک مجموعهٔ بالینی، بیماران منتخب با درجات ۳ تا ۴ بهبود یافتند؛ قابلیت ترمیم و درمان باید فردی ارزیابی شوند.",
       "key": "طبقه‌بندی Patte (رتراکشن) و طبقه‌بندی Goutallier (آتروفی چربی) برای برنامه‌ریزی جراحی تعیین‌کننده‌اند - آتروفی شدید شانس ترمیم موفق را مستقل از درجه رتراکشن محدود می‌کند."
     },
     "begleit": {

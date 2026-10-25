@@ -12,7 +12,7 @@ const TOPICS = {
     subtitle: L('Alignment · Facetten · Diskoligamentär · Myelon · Vertebralis', 'Alignment · facets · disco-ligamentous injury · cord · vertebral artery', 'الاینمنت · فاست ها · دیسک و رباط · نخاع · شریان ورتبرال'),
   },
   'bws-lws-frakturen': {
-    title: L('BWS / LWS-Frakturen', 'Thoracic / lumbar spine fractures', 'شکستگی های ستون فقرات توراسیک / کمری'),
+    title: L('BWS / LWS-Frakturen', 'Thoracic / lumbar spine fractures', 'شکستگی‌های ستون فقرات سینه‌ای و کمری'),
     subtitle: L('AO-Spine · Berstung · Distraktion · PLC · Spinalkanal', 'AO Spine · burst · distraction · PLC · spinal canal', 'AO Spine · شکستگی انفجاری · دیستراکشن · کمپلکس خلفی · کانال نخاعی'),
   },
 }

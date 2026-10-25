@@ -1,0 +1,2188 @@
+{
+  "scope": "Independent full actual SSR text semantic triage of84brain-thorax routes in DE/EN/FA. No source/scientific/media/browser/live approval inferred. Each route individually read; reused prior title and ARVC/CMR fullpair evidence explicitly.",
+  "targetRoutes": 84,
+  "routes": [
+    {
+      "route": "/gehirn/anatomie/balkenagenesie",
+      "entry": "app/gehirn/anatomie/balkenagenesie/page.jsx",
+      "snapshot": "tmp\\assessment-quality\\lesson-text-triads\\047-gehirn--anatomie--balkenagenesie.txt",
+      "snapshotSha256": "bac228088d90eb85d169b3bf0a7cd60fcef571c45f679204797d6710d8379453",
+      "status": "PASS",
+      "reviewedLocales": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "reviewedUnits": "All three chapters, four MRI alt/caption pairs, source/provenance limits, selfcheck3options and3THM read. Complete-vs-partial, thincontinuous distinction, supportive-only signs and non-syndromic guard preserved.",
+      "lineCounts": {
+        "de": 48,
+        "en": 48,
+        "fa": 48
+      },
+      "findingIds": [],
+      "gateScope": "LNG semantic text triage only; not clinical/editorial overall route PASS.",
+      "statusBasis": "Frozen fulltext triage plus explicitly documented current-source narrow retests; no browser/live approval."
+    },
+    {
+      "route": "/gehirn/anatomie/chiari",
+      "entry": "app/gehirn/anatomie/chiari/page.jsx",
+      "snapshot": "tmp\\assessment-quality\\lesson-text-triads\\048-gehirn--anatomie--chiari.txt",
+      "snapshotSha256": "6676709996c4f667616342433cd82e3068c48c09e3619b3538025d24791dba10",
+      "status": "PASS",
+      "reviewedLocales": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "reviewedUnits": "Four chaptertexts, sagittal schema labels,3–5/≥5mm thresholds, acquired-cause exclusions,4selfcheckoptions and3THM read. No material omission/negation inversion. FA perpendicular wording could be clearer but not demonstrated wrong angle.",
+      "lineCounts": {
+        "de": 34,
+        "en": 34,
+        "fa": 34
+      },
+      "findingIds": [],
+      "gateScope": "LNG semantic text triage only; not clinical/editorial overall route PASS.",
+      "statusBasis": "Frozen fulltext triage plus explicitly documented current-source narrow retests; no browser/live approval."
+    },
+    {
+      "route": "/gehirn/anatomie/liquorraeume-ventrikelsystem",
+      "entry": "app/gehirn/anatomie/liquorraeume-ventrikelsystem/page.js",
+      "snapshot": "tmp\\assessment-quality\\lesson-text-triads\\049-gehirn--anatomie--liquorraeume-ventrikelsystem.txt",
+      "snapshotSha256": "1aa0c9c42946b8aa8ad9f508ac211d1d37ff80c9509c784716d7cc4e73a347cf",
+      "status": "REVISE",
+      "reviewedLocales": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "reviewedUnits": "All8chapters and tables, production500mL/day/volume150mL, sequence signals, obstructionpatterns, CSP/CV/CVIcomparisons, all casealt/captions,4selfcheckoptions,6reportingsteps and4THM read; minor named-landmark omissions identified.",
+      "lineCounts": {
+        "de": 185,
+        "en": 185,
+        "fa": 185
+      },
+      "findingIds": [
+        "LNG-FULL-BT-001"
+      ],
+      "gateScope": "LNG semantic text triage only; not clinical/editorial overall route PASS.",
+      "statusBasis": "Frozen fulltext triage plus explicitly documented current-source narrow retests; no browser/live approval."
+    },
+    {
+      "route": "/gehirn/anatomie/normaldruckhydrozephalus",
+      "entry": "app/gehirn/anatomie/normaldruckhydrozephalus/page.js",
+      "snapshot": "tmp\\assessment-quality\\lesson-text-triads\\050-gehirn--anatomie--normaldruckhydrozephalus.txt",
+      "snapshotSha256": "f85712ac882bf8e19359b28acd49135c5db6f318703056356d00242fdaca5b10",
+      "status": "PASS",
+      "reviewedLocales": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "reviewedUnits": "All8chapters/tables, EI>0.30/CA<90°, fourthventricle/obstruction caveat, DESH, differential/treatment/taptest caveats, casealt/caption and4THM read. No material semantic difference identified.",
+      "lineCounts": {
+        "de": 100,
+        "en": 100,
+        "fa": 100
+      },
+      "findingIds": [],
+      "gateScope": "LNG semantic text triage only; not clinical/editorial overall route PASS.",
+      "statusBasis": "Frozen fulltext triage plus explicitly documented current-source narrow retests; no browser/live approval."
+    },
+    {
+      "route": "/gehirn/anatomie/pvl",
+      "entry": "app/gehirn/anatomie/pvl/page.jsx",
+      "snapshot": "tmp\\assessment-quality\\lesson-text-triads\\051-gehirn--anatomie--pvl.txt",
+      "snapshotSha256": "8b78b142fffd5f6c33d0726fb66dba5c044c25985a477839291625bf536e7d0a",
+      "status": "PASS",
+      "reviewedLocales": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "reviewedUnits": "All3chapters, US/MRI distinction, cystregression/sourceattribution,3timeline labels,3MRIalt/captions,3selfcheckoptions,3THM/provenance limits read. Guards and chronology retained.",
+      "lineCounts": {
+        "de": 41,
+        "en": 41,
+        "fa": 41
+      },
+      "findingIds": [],
+      "gateScope": "LNG semantic text triage only; not clinical/editorial overall route PASS.",
+      "statusBasis": "Frozen fulltext triage plus explicitly documented current-source narrow retests; no browser/live approval."
+    },
+    {
+      "route": "/gehirn/encephalopathie/pres",
+      "entry": "app/gehirn/encephalopathie/pres/page.jsx",
+      "snapshot": "tmp\\assessment-quality\\lesson-text-triads\\052-gehirn--encephalopathie--pres.txt",
+      "snapshotSha256": "4602ca6a346674bf1a36f60facf0812e64a85d0fdfa612e5e1bbc813bed4c2c6",
+      "status": "PASS",
+      "reviewedLocales": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "reviewedUnits": "All4chapters, bilateralvsatypicaldistribution, ADC/T2shine-through, cytotoxiccomplication caveat, MRIalt/caption,4selfcheckoptions,4THM andsourceannotations read. Negations/reversibility caveats preserved.",
+      "lineCounts": {
+        "de": 44,
+        "en": 44,
+        "fa": 44
+      },
+      "findingIds": [],
+      "gateScope": "LNG semantic text triage only; not clinical/editorial overall route PASS.",
+      "statusBasis": "Frozen fulltext triage plus explicitly documented current-source narrow retests; no browser/live approval."
+    },
+    {
+      "route": "/gehirn/entzuendlich/demyelinisierende-muster",
+      "entry": "app/gehirn/entzuendlich/demyelinisierende-muster/page.jsx",
+      "snapshot": "tmp\\assessment-quality\\lesson-text-triads\\053-gehirn--entzuendlich--demyelinisierende-muster.txt",
+      "snapshotSha256": "8af4dd3fe2e986d00d4eba8fba2a7b648464d906d6be9638da0daee428502295",
+      "status": "PASS",
+      "reviewedLocales": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "reviewedUnits": "All3chapters, anatomy/schema labels, MS/NMOSD/MOGAD/ADEM brain/opticnerve/cord comparison rows,4MCQoptions+3selfcheckoptions,4THM, criteria/source scope annotations read. Conditionality/overlap/pediatric-nonextrapolation preserved.",
+      "lineCounts": {
+        "de": 52,
+        "en": 52,
+        "fa": 52
+      },
+      "findingIds": [],
+      "gateScope": "LNG semantic text triage only; not clinical/editorial overall route PASS.",
+      "statusBasis": "Frozen fulltext triage plus explicitly documented current-source narrow retests; no browser/live approval."
+    },
+    {
+      "route": "/gehirn/hals-nnh/einseitige-verschattung",
+      "entry": "app/gehirn/hals-nnh/einseitige-verschattung/page.jsx",
+      "snapshot": "tmp\\assessment-quality\\lesson-text-triads\\054-gehirn--hals-nnh--einseitige-verschattung.txt",
+      "snapshotSha256": "768a27e7bb6a4010f5a784fe772bb5b6c8b24b37aca5884ad11ed2e6d061ff4f",
+      "status": "REVISE",
+      "reviewedLocales": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "reviewedUnits": "All4chapters,5differentials, invertedpapilloma5–10%/hyperostosis70–90% caveats, DWIlimitations, full CTDIvol/DLP/mSv numerical dose table and guards,3selfcheckoptions,3THM andsource annotations read. Clinical meaning preserved; localized breadcrumb issue.",
+      "lineCounts": {
+        "de": 44,
+        "en": 44,
+        "fa": 44
+      },
+      "findingIds": [
+        "LNG-FULL-BT-002"
+      ],
+      "gateScope": "LNG semantic text triage only; not clinical/editorial overall route PASS.",
+      "statusBasis": "Frozen fulltext triage plus explicitly documented current-source narrow retests; no browser/live approval."
+    },
+    {
+      "route": "/gehirn/hals-nnh/paragangliome",
+      "entry": "app/gehirn/hals-nnh/paragangliome/page.jsx",
+      "snapshot": "tmp\\assessment-quality\\lesson-text-triads\\055-gehirn--hals-nnh--paragangliome.txt",
+      "snapshotSha256": "11b92d9949c499244fc42aff11aad3806040ed112dea6ae3ff373790742c6ebd",
+      "status": "PASS",
+      "reviewedLocales": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "reviewedUnits": "All7chapters, sourceCTalt/caption, MRI2cm non-exclusion caveat, ShamblinI–III, TOF/CE-MRA/DSA/SSTRPET scope,4differentials,2selfchecks×3options,4THM andsource annotations read. No material semantic difference found.",
+      "lineCounts": {
+        "de": 59,
+        "en": 59,
+        "fa": 59
+      },
+      "findingIds": [],
+      "gateScope": "LNG semantic text triage only; not clinical/editorial overall route PASS.",
+      "statusBasis": "Frozen fulltext triage plus explicitly documented current-source narrow retests; no browser/live approval."
+    },
+    {
+      "route": "/gehirn/infektionen/herpes-enzephalitis",
+      "entry": "app/gehirn/infektionen/herpes-enzephalitis/page.jsx",
+      "snapshot": "tmp\\assessment-quality\\lesson-text-triads\\056-gehirn--infektionen--herpes-enzephalitis.txt",
+      "snapshotSha256": "219184b76989928ffa88232dff157b31c05d7518b3b8337654611f4dffdd5a7e",
+      "status": "PASS",
+      "reviewedLocales": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "reviewedUnits": "All3chapters, limbicregion/basalgangliasparing, CT/MRI/DWIADC/SWI patterns,3differentials, timecriticalaciclovirguard, imagealt/caption,3selfcheckoptions,3THM/sourceannotations read. FA mesial terminology should be more precise.",
+      "lineCounts": {
+        "de": 42,
+        "en": 42,
+        "fa": 42
+      },
+      "findingIds": [
+        "LNG-FULL-BT-003"
+      ],
+      "gateScope": "LNG semantic text triage only; not clinical/editorial overall route PASS.",
+      "statusBasis": "Frozen fulltext triage plus explicitly documented current-source narrow retests; no browser/live approval."
+    },
+    {
+      "route": "/gehirn/infektionen/hirnabszess",
+      "entry": "app/gehirn/infektionen/hirnabszess/page.jsx",
+      "snapshot": "tmp\\assessment-quality\\lesson-text-triads\\057-gehirn--infektionen--hirnabszess.txt",
+      "snapshotSha256": "b369d8cac86ccc0f06b9a02d0c1ac56ea8ece36759ebe8326d98cc46385d359e",
+      "status": "PASS",
+      "reviewedLocales": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "reviewedUnits": "All4chapters, urgentcareguard, centralDWI/ADC, capsule/spread, progression variable, SWI9/12vs0/20 with smallsample caveat, FLAIR/T1notSWI distinction, comparisontable/3selfcheckoptions/4THM/sourceannotations read. No material semantic difference.",
+      "lineCounts": {
+        "de": 59,
+        "en": 59,
+        "fa": 59
+      },
+      "findingIds": [],
+      "gateScope": "LNG semantic text triage only; not clinical/editorial overall route PASS.",
+      "statusBasis": "Frozen fulltext triage plus explicitly documented current-source narrow retests; no browser/live approval."
+    },
+    {
+      "route": "/gehirn/infektionen/hiv-enzephalopathie",
+      "entry": "app/gehirn/infektionen/hiv-enzephalopathie/page.jsx",
+      "snapshot": "tmp\\assessment-quality\\lesson-text-triads\\058-gehirn--infektionen--hiv-enzephalopathie.txt",
+      "snapshotSha256": "70db1c6e5fbcedd32a057e347fa5719b07d7b2e5d32c48bb540ab0b503241c7f",
+      "status": "PASS",
+      "reviewedLocales": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "reviewedUnits": "All4chapters inclinitialclosed bodytext in snapshot, bilateralwhite-matter/Ufibersparing, absentenhancement/restriction nonuniversalguards, imagealt/caption,4selfcheckoptions,4THM/sourcecitations read. No material semantic difference.",
+      "lineCounts": {
+        "de": 41,
+        "en": 41,
+        "fa": 41
+      },
+      "findingIds": [],
+      "gateScope": "LNG semantic text triage only; not clinical/editorial overall route PASS.",
+      "statusBasis": "Frozen fulltext triage plus explicitly documented current-source narrow retests; no browser/live approval."
+    },
+    {
+      "route": "/gehirn/infektionen/meningitis-enzephalitis",
+      "entry": "app/gehirn/infektionen/meningitis-enzephalitis/page.jsx",
+      "snapshot": "tmp\\assessment-quality\\lesson-text-triads\\059-gehirn--infektionen--meningitis-enzephalitis.txt",
+      "snapshotSha256": "b1eae8cf31291d530435fc5b69b8592de4963c76772c972d316924b486d933e6",
+      "status": "PASS",
+      "reviewedLocales": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "reviewedUnits": "All3chapters, meningealvsparenchymalcompartment/schema labels, contrast/FLAIR/DWI and earlynormalMRI limits, sourceHIV-vsheadingdistinction,3selfcheckoptions,3THM/sourceannotations read. No material semantic difference.",
+      "lineCounts": {
+        "de": 43,
+        "en": 43,
+        "fa": 43
+      },
+      "findingIds": [],
+      "gateScope": "LNG semantic text triage only; not clinical/editorial overall route PASS.",
+      "statusBasis": "Frozen fulltext triage plus explicitly documented current-source narrow retests; no browser/live approval."
+    },
+    {
+      "route": "/gehirn/infektionen/muster",
+      "entry": "app/gehirn/infektionen/muster/page.jsx",
+      "snapshot": "tmp\\assessment-quality\\lesson-text-triads\\060-gehirn--infektionen--muster.txt",
+      "snapshotSha256": "dc7a7504b1c31db41950936de1e70ed9500abca9df2a4d317d64de856f0be135",
+      "status": "PASS",
+      "reviewedLocales": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "reviewedUnits": "All5chapters, distribution-diffusion-enhancement workflow, HIV/PML/toxo/lymphoma, HSVclinicalurgency and abscessmetastasis distinctions,3selfcheckoptions,3THM/sourceguard read. FA mesial terminology sameprecision issue asHSV lesson.",
+      "lineCounts": {
+        "de": 29,
+        "en": 29,
+        "fa": 29
+      },
+      "findingIds": [
+        "LNG-FULL-BT-003"
+      ],
+      "gateScope": "LNG semantic text triage only; not clinical/editorial overall route PASS.",
+      "statusBasis": "Frozen fulltext triage plus explicitly documented current-source narrow retests; no browser/live approval."
+    },
+    {
+      "route": "/gehirn/kopfschmerz/migraene",
+      "entry": "app/gehirn/kopfschmerz/migraene/page.js",
+      "snapshot": "tmp\\assessment-quality\\lesson-text-triads\\061-gehirn--kopfschmerz--migraene.txt",
+      "snapshotSha256": "aa441e79f445b985a0cbf4412c393f931a31beb0b33c51371162c69f73df0538",
+      "status": "PASS",
+      "reviewedLocales": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "reviewedUnits": "Full5chaptertext+sources, aura5–60min/chronic≥15days>3months≥8migrainedays, immediate-strokepathguards, protocol7modalities, visible29yo scenario, WMHactualimagealt/caption/4guidelabels, aura/ischemia visiblecourse, complications>60min/≥1week,7dangerousdifferentials,2reporttemplates,8miniMCQstems/alloptions and5expandedTHM read all3locales. Numericboundaries/urgency/negations preserved; hidden tabs/cases/feedback not included in snapshot need separatestateevidence.",
+      "lineCounts": {
+        "de": 168,
+        "en": 168,
+        "fa": 168
+      },
+      "findingIds": [],
+      "gateScope": "LNG semantic text triage only; not clinical/editorial overall route PASS.",
+      "statusBasis": "Frozen fulltext triage plus explicitly documented current-source narrow retests; no browser/live approval."
+    },
+    {
+      "route": "/gehirn/neurodegeneration/cjd",
+      "entry": "app/gehirn/neurodegeneration/cjd/page.jsx",
+      "snapshot": "tmp\\assessment-quality\\lesson-text-triads\\062-gehirn--neurodegeneration--cjd.txt",
+      "snapshotSha256": "05c972dcead2c291ef07d1a6faccbf56b9146ac229e13145f2d913700be56a59",
+      "status": "PASS",
+      "reviewedLocales": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "reviewedUnits": "All4chapters,2casealt/captions, noADCimage limitation, cortical/striatal/thalamicpattern,vCJDpulvinarvs sCJDdistinction, CDC≥2corticalregions criterion,4selfcheckoptions,3THM/sourceannotations read. No material semantic difference.",
+      "lineCounts": {
+        "de": 40,
+        "en": 40,
+        "fa": 40
+      },
+      "findingIds": [],
+      "gateScope": "LNG semantic text triage only; not clinical/editorial overall route PASS.",
+      "statusBasis": "Frozen fulltext triage plus explicitly documented current-source narrow retests; no browser/live approval."
+    },
+    {
+      "route": "/gehirn/neurodegeneration/demenzmuster",
+      "entry": "app/gehirn/neurodegeneration/demenzmuster/page.jsx",
+      "snapshot": "tmp\\assessment-quality\\lesson-text-triads\\063-gehirn--neurodegeneration--demenzmuster.txt",
+      "snapshotSha256": "b539b9f64bd7f11376744ba05680eba7eede62030b93191e1c10b47c0b1c8634",
+      "status": "REVISE",
+      "reviewedLocales": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "reviewedUnits": "All4chapters, MTA0–4tablecontext/age75gap/nospecificcutoff guard, DLBclinical/relativeMTLpreservation, DaTSCANnotMRI, FTD<65/knifeedge/clinicalcriteriaguard,2imagealt/captions,3selfcheckoptions,3THM/sourceannotations read. FA mesialprecision and ENonlysourceinterpretiveannotations noted.",
+      "lineCounts": {
+        "de": 42,
+        "en": 42,
+        "fa": 42
+      },
+      "findingIds": [
+        "LNG-FULL-BT-003",
+        "LNG-FULL-BT-004"
+      ],
+      "gateScope": "LNG semantic text triage only; not clinical/editorial overall route PASS.",
+      "statusBasis": "Frozen fulltext triage plus explicitly documented current-source narrow retests; no browser/live approval."
+    },
+    {
+      "route": "/gehirn/neurodegeneration/parkinson",
+      "entry": "app/gehirn/neurodegeneration/parkinson/page.jsx",
+      "snapshot": "tmp\\assessment-quality\\lesson-text-triads\\064-gehirn--neurodegeneration--parkinson.txt",
+      "snapshotSha256": "041e652e096336d5a42acdb3fcecb6bf038e65faaa2a659a23c6126a1ea41249",
+      "status": "PASS",
+      "reviewedLocales": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "reviewedUnits": "All4chapters,2SWIcasealts/caption, absentnigrosome nonspecific/technicalindeterminateguards, DATvsFDG distinctmeasurements,2selfchecks×3options+initialhints,3THM/sourceannotations read. No material semantic difference.",
+      "lineCounts": {
+        "de": 43,
+        "en": 43,
+        "fa": 43
+      },
+      "findingIds": [],
+      "gateScope": "LNG semantic text triage only; not clinical/editorial overall route PASS.",
+      "statusBasis": "Frozen fulltext triage plus explicitly documented current-source narrow retests; no browser/live approval."
+    },
+    {
+      "route": "/gehirn/neurofibromatose/nf1",
+      "entry": "app/gehirn/neurofibromatose/nf1/page.jsx",
+      "snapshot": "tmp\\assessment-quality\\lesson-text-triads\\065-gehirn--neurofibromatose--nf1.txt",
+      "snapshotSha256": "96d9b83c40e3cebc064303561de4af2cbf857e73a5fc9530dfbb63c1408c0a02",
+      "status": "PASS",
+      "reviewedLocales": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "reviewedUnits": "Allmainclinicalcontent/learninggoals: FASI/2021criteria notFASI criterion,2yoexample/3imagealtcaptions, opticnervechiasmtract, plexiformtargetguard, fullsystemicmanifestationlist and noscreeningguard,4selfcheckoptions and4THM read. No material semantic difference.",
+      "lineCounts": {
+        "de": 38,
+        "en": 38,
+        "fa": 38
+      },
+      "findingIds": [],
+      "gateScope": "LNG semantic text triage only; not clinical/editorial overall route PASS.",
+      "statusBasis": "Frozen fulltext triage plus explicitly documented current-source narrow retests; no browser/live approval."
+    },
+    {
+      "route": "/gehirn/trauma/epidurale-blutung",
+      "entry": "app/gehirn/trauma/epidurale-blutung/page.js",
+      "snapshot": "tmp\\assessment-quality\\lesson-text-triads\\066-gehirn--trauma--epidurale-blutung.txt",
+      "snapshotSha256": "47e05eaaafaa2b2ebc8634e92020e87b35f3baa54c3b4545211c695f8acf79ef",
+      "status": "REVISE",
+      "reviewedLocales": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "reviewedUnits": "All9chapters,source/mechanism/CT/suturerules/swirl/differentialtables, fulloperative>30cm3vsobservation<30/<15mm/<5mm/GCS>8/nodeficit and comaGCS<9 table,2cases×2imagealts+captions,sidesrightparietal/leftfrontotemporal,4THM read all3. Numericthresholds/negations preserved; malformedFAwords andGermanstat value remain.",
+      "lineCounts": {
+        "de": 117,
+        "en": 117,
+        "fa": 117
+      },
+      "findingIds": [
+        "LNG-FULL-BT-005"
+      ],
+      "gateScope": "LNG semantic text triage only; not clinical/editorial overall route PASS.",
+      "statusBasis": "Frozen fulltext triage plus explicitly documented current-source narrow retests; no browser/live approval."
+    },
+    {
+      "route": "/gehirn/tumoren/atrt",
+      "entry": "app/gehirn/tumoren/atrt/page.jsx",
+      "snapshot": "tmp\\assessment-quality\\lesson-text-triads\\067-gehirn--tumoren--atrt.txt",
+      "snapshotSha256": "83a8d93714886e7bf99e0f52f6e5a1264164357bf0fd2cfb42f407c10cb464ef",
+      "status": "REVISE",
+      "reviewedLocales": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "reviewedUnits": "All4chapters,sourcePDFnotverifiedATRTguard,4sequencefindings,diffusionoverlap/nonobligatorycomponents,4selfcheckoptions,4THM/allsourceannotations read. No material meaning inversion; FA CAVEDiffusionheading misleadingly labels restriction.",
+      "lineCounts": {
+        "de": 44,
+        "en": 44,
+        "fa": 44
+      },
+      "findingIds": [
+        "LNG-FULL-BT-006"
+      ],
+      "gateScope": "LNG semantic text triage only; not clinical/editorial overall route PASS.",
+      "statusBasis": "Frozen fulltext triage plus explicitly documented current-source narrow retests; no browser/live approval."
+    },
+    {
+      "route": "/gehirn/tumoren/diffuse-gliome",
+      "entry": "app/gehirn/tumoren/diffuse-gliome/page.jsx",
+      "snapshot": "tmp\\assessment-quality\\lesson-text-triads\\068-gehirn--tumoren--diffuse-gliome.txt",
+      "snapshotSha256": "1706cc53cac1cdb8c4fef5ba79ce31c0ecb094a94923ae16e4c3712a582bd6d8",
+      "status": "PASS",
+      "reviewedLocales": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "reviewedUnits": "All5chapters/tables WHOgrades2/3/4 IDHandcodeletion, mismatch+absenceguard, calcification/grade2enhancement/perfusionexceptions, GBMFLAIRvsinfiltration/edema,11yearfollowupcaption,4casealt/captions,3selfchecks×4options,3THM/sourceannotations read. No material mismatch.",
+      "lineCounts": {
+        "de": 79,
+        "en": 79,
+        "fa": 79
+      },
+      "findingIds": [],
+      "gateScope": "LNG semantic text triage only; not clinical/editorial overall route PASS.",
+      "statusBasis": "Frozen fulltext triage plus explicitly documented current-source narrow retests; no browser/live approval."
+    },
+    {
+      "route": "/gehirn/tumoren/ependymom",
+      "entry": "app/gehirn/tumoren/ependymom/page.jsx",
+      "snapshot": "tmp\\assessment-quality\\lesson-text-triads\\069-gehirn--tumoren--ependymom.txt",
+      "snapshotSha256": "04520991b242b085f8b68fe0cb2dd9d18e67031367591c15052f4adcaef5b822",
+      "status": "PASS",
+      "reviewedLocales": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "reviewedUnits": "All4chapters,ventriclefloor/Luschka/Magendieanatomyandschemamarkers,2actualsourceframealts/captions,noforaminaextensionproof,WHOoldgrade/CNS5integratedlimits,4selfcheckoptions,4THM/fullsourceannotations read. No material mismatch.",
+      "lineCounts": {
+        "de": 50,
+        "en": 50,
+        "fa": 50
+      },
+      "findingIds": [],
+      "gateScope": "LNG semantic text triage only; not clinical/editorial overall route PASS.",
+      "statusBasis": "Frozen fulltext triage plus explicitly documented current-source narrow retests; no browser/live approval."
+    },
+    {
+      "route": "/gehirn/tumoren/epidermoid-arachnoid",
+      "entry": "app/gehirn/tumoren/epidermoid-arachnoid/page.jsx",
+      "snapshot": "tmp\\assessment-quality\\lesson-text-triads\\070-gehirn--tumoren--epidermoid-arachnoid.txt",
+      "snapshotSha256": "8ff9c85f59f4a5444d2492784f4996b885a017635658d6d9a757ebf445c6e785",
+      "status": "PASS",
+      "reviewedLocales": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "reviewedUnits": "All4chapters,5caseframealts/sequence labels, absenceADCguard,DWIADCbelowCSF/parenchymarange/notstandalone distinction,FLAIRresidual/morphology/no-solid-enhancement/chemicalmeningitis,4selfcheckoptions,4THM/sourceannotations read. No material mismatch.",
+      "lineCounts": {
+        "de": 59,
+        "en": 59,
+        "fa": 59
+      },
+      "findingIds": [],
+      "gateScope": "LNG semantic text triage only; not clinical/editorial overall route PASS.",
+      "statusBasis": "Frozen fulltext triage plus explicitly documented current-source narrow retests; no browser/live approval."
+    },
+    {
+      "route": "/gehirn/tumoren/gliome",
+      "entry": "app/gehirn/tumoren/gliome/page.jsx",
+      "snapshot": "tmp\\assessment-quality\\lesson-text-triads\\071-gehirn--tumoren--gliome.txt",
+      "snapshotSha256": "0e977056e5e73efb996665c932970373fc4e3deceaea5882126cd737a8d7055f",
+      "status": "PASS",
+      "reviewedLocales": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "reviewedUnits": "All4chapters,WHO3adultdiffusevscircumscribed/grades1–4,SEGA/PXAnamingonly,pilocyticmuralnodule/cyst/hemangioblastomadifferential,casealt/caption,4selfcheckoptions,3THM/sourceannotations read. No material mismatch.",
+      "lineCounts": {
+        "de": 39,
+        "en": 39,
+        "fa": 39
+      },
+      "findingIds": [],
+      "gateScope": "LNG semantic text triage only; not clinical/editorial overall route PASS.",
+      "statusBasis": "Frozen fulltext triage plus explicitly documented current-source narrow retests; no browser/live approval."
+    },
+    {
+      "route": "/gehirn/tumoren/haemangioblastom-vhl",
+      "entry": "app/gehirn/tumoren/haemangioblastom-vhl/page.jsx",
+      "snapshot": "tmp\\assessment-quality\\lesson-text-triads\\072-gehirn--tumoren--haemangioblastom-vhl.txt",
+      "snapshotSha256": "e6ae402f0760cc1dbd619b63711b7e90e3234852177d22a357a2ba60c191f069",
+      "status": "PASS",
+      "reviewedLocales": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "reviewedUnits": "All5chapters,WHO1/cystwallvariable/VHLautosomalinheritance/systemiclist/surveillanceindividualguard,montage5labels/A1labelsretained/FLAIRnotreliablybright/noflowvoidproof,noperfusionDSAguard,comparisontable,3selfcheckoptions,4THM/sourceannotations read. No material mismatch.",
+      "lineCounts": {
+        "de": 45,
+        "en": 45,
+        "fa": 45
+      },
+      "findingIds": [],
+      "gateScope": "LNG semantic text triage only; not clinical/editorial overall route PASS.",
+      "statusBasis": "Frozen fulltext triage plus explicitly documented current-source narrow retests; no browser/live approval."
+    },
+    {
+      "route": "/gehirn/tumoren/hirnmetastasen",
+      "entry": "app/gehirn/tumoren/hirnmetastasen/page.jsx",
+      "snapshot": "tmp\\assessment-quality\\lesson-text-triads\\073-gehirn--tumoren--hirnmetastasen.txt",
+      "snapshotSha256": "c12a24530c1847b89136884d587084ed8bb917729142790d7a528f13f2f099e0",
+      "status": "PASS",
+      "reviewedLocales": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "reviewedUnits": "All4chapters/parenchymalvsleptomeningealdistribution,2schemaaltlabels,minimumMRIsequences,wholebrainspineMRI+CSF/LPbeforeMRIguard,2selfchecks×4options,5THM/fullsourceannotations read. Negations and neuraxis coverage preserved.",
+      "lineCounts": {
+        "de": 40,
+        "en": 40,
+        "fa": 40
+      },
+      "findingIds": [],
+      "gateScope": "LNG semantic text triage only; not clinical/editorial overall route PASS.",
+      "statusBasis": "Frozen fulltext triage plus explicitly documented current-source narrow retests; no browser/live approval."
+    },
+    {
+      "route": "/gehirn/tumoren/kolloidzyste",
+      "entry": "app/gehirn/tumoren/kolloidzyste/page.jsx",
+      "snapshot": "tmp\\assessment-quality\\lesson-text-triads\\074-gehirn--tumoren--kolloidzyste.txt",
+      "snapshotSha256": "47fd05c6633c7b6a896d6f1bb9b3a031839bad3fe5f4aeb778d947f1c76e258a",
+      "status": "REVISE",
+      "reviewedLocales": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "reviewedUnits": "All4chapters,MonrolocationvariableCTMRIsignals/FLAIRinvisibilityguard,obstructionrisknotautomatic/surgeryguard,schemalabels,4selfcheckoptions,4THM/sourceannotations read. Clinical meaning preserved; CTnativ Germanlabel leftinENFA.",
+      "lineCounts": {
+        "de": 37,
+        "en": 37,
+        "fa": 37
+      },
+      "findingIds": [
+        "LNG-FULL-BT-007"
+      ],
+      "gateScope": "LNG semantic text triage only; not clinical/editorial overall route PASS.",
+      "statusBasis": "Frozen fulltext triage plus explicitly documented current-source narrow retests; no browser/live approval."
+    },
+    {
+      "route": "/gehirn/tumoren/medulloblastom",
+      "entry": "app/gehirn/tumoren/medulloblastom/page.js",
+      "snapshot": "tmp\\assessment-quality\\lesson-text-triads\\075-gehirn--tumoren--medulloblastom.txt",
+      "snapshotSha256": "72c9305dd81c72f2ad587a096d7dd2c7c0f6213f226e4f47b7fde62edda90bf5",
+      "status": "PASS",
+      "reviewedLocales": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "reviewedUnits": "All3clinicalchapters+THM,WHOCNS4/variablelocation/negativeenhancementnotexclusion,source3panelalt/caption/nodiffusionoraxialspinalproof,signaltable,CSFdropmetastases separateassessment,4selfcheckoptions,4THM/sources read. No material mismatch.",
+      "lineCounts": {
+        "de": 44,
+        "en": 44,
+        "fa": 44
+      },
+      "findingIds": [],
+      "gateScope": "LNG semantic text triage only; not clinical/editorial overall route PASS.",
+      "statusBasis": "Frozen fulltext triage plus explicitly documented current-source narrow retests; no browser/live approval."
+    },
+    {
+      "route": "/gehirn/tumoren/meningeom",
+      "entry": "app/gehirn/tumoren/meningeom/page.jsx",
+      "snapshot": "tmp\\assessment-quality\\lesson-text-triads\\076-gehirn--tumoren--meningeom.txt",
+      "snapshotSha256": "e4964f122c48f8a7a730ed70185bfaf11fc69c9aeeea2d045b8e28b8838f42c1",
+      "status": "PASS",
+      "reviewedLocales": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "reviewedUnits": "All3clinicalchapters+THM,sourceextraxialbasis/CSFcleftnotduralgap/white-matterbuckling,locationalternatives,invasion/gradeguards,2actualMRIalt/captions/leftside,MRScholinealanine/NAAguard/DSC,ADCgradeoverlap,4selfcheckoptions,4THM read. No material mismatch.",
+      "lineCounts": {
+        "de": 65,
+        "en": 65,
+        "fa": 65
+      },
+      "findingIds": [],
+      "gateScope": "LNG semantic text triage only; not clinical/editorial overall route PASS.",
+      "statusBasis": "Frozen fulltext triage plus explicitly documented current-source narrow retests; no browser/live approval."
+    },
+    {
+      "route": "/gehirn/tumoren/muster",
+      "entry": "app/gehirn/tumoren/muster/page.jsx",
+      "snapshot": "tmp\\assessment-quality\\lesson-text-triads\\077-gehirn--tumoren--muster.txt",
+      "snapshotSha256": "eaca2a9316c6e23e1c0539dc84098eac8f0589196216bd81bf9f8b190e707881",
+      "status": "PASS",
+      "reviewedLocales": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "reviewedUnits": "All10chapters,4workflowdiagramlabels,8tumorpattern summaries anddifferentials,3selfcheckoptions,3THM/sourceverificationlimits read. Negations and diffusioncomparisons preserved; no material mismatch.",
+      "lineCounts": {
+        "de": 50,
+        "en": 50,
+        "fa": 50
+      },
+      "findingIds": [],
+      "gateScope": "LNG semantic text triage only; not clinical/editorial overall route PASS.",
+      "statusBasis": "Frozen fulltext triage plus explicitly documented current-source narrow retests; no browser/live approval."
+    },
+    {
+      "route": "/gehirn/tumoren/schwannom-cpa",
+      "entry": "app/gehirn/tumoren/schwannom-cpa/page.jsx",
+      "snapshot": "tmp\\assessment-quality\\lesson-text-triads\\078-gehirn--tumoren--schwannom-cpa.txt",
+      "snapshotSha256": "345f4d707b33459ff341a8a53535388c4f1064e6af94e5d9c0d1ccb42634fe70",
+      "status": "REVISE",
+      "reviewedLocales": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "reviewedUnits": "All4chapters,IAC/CPAcenter/bilateralNF2guard,T1T2contrastenhancement/CISSFIESTA,DWI,actual3panelsalts/caption1.2cmleftside/nocisternalproof,comparisontable3entities,3selfcheckoptions,4THM/sourceannotations read. FA icecreamcone metaphor inaccurately shortened funnel.",
+      "lineCounts": {
+        "de": 39,
+        "en": 39,
+        "fa": 39
+      },
+      "findingIds": [
+        "LNG-FULL-BT-008"
+      ],
+      "gateScope": "LNG semantic text triage only; not clinical/editorial overall route PASS.",
+      "statusBasis": "Frozen fulltext triage plus explicitly documented current-source narrow retests; no browser/live approval."
+    },
+    {
+      "route": "/gehirn/tumoren/sella-parasella",
+      "entry": "app/gehirn/tumoren/sella-parasella/page.jsx",
+      "snapshot": "tmp\\assessment-quality\\lesson-text-triads\\079-gehirn--tumoren--sella-parasella.txt",
+      "snapshotSha256": "de41d5c2ed44c6852de920de3e58f040ab2502dd05375224d2c4cb0794416b44",
+      "status": "PASS",
+      "reviewedLocales": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "reviewedUnits": "All3clinicalchapters+THM,sella/stalk/chiasm/cavernoussinusdiagramaltlabels,3entitycomparison,under10vs≥10mm sizeclassification,pre/postcontrastT1T2protocolguard,4selfcheckoptions,4THM read. No material language inversion.",
+      "lineCounts": {
+        "de": 45,
+        "en": 45,
+        "fa": 45
+      },
+      "findingIds": [],
+      "gateScope": "LNG semantic text triage only; not clinical/editorial overall route PASS.",
+      "statusBasis": "Frozen fulltext triage plus explicitly documented current-source narrow retests; no browser/live approval."
+    },
+    {
+      "route": "/gehirn/tumoren/zns-lymphom",
+      "entry": "app/gehirn/tumoren/zns-lymphom/page.js",
+      "snapshot": "tmp\\assessment-quality\\lesson-text-triads\\080-gehirn--tumoren--zns-lymphom.txt",
+      "snapshotSha256": "d59c1bd83501880fc8cd461ac2c15b4efe1cba4ba096f88403e0c4661c21cce1",
+      "status": "PASS",
+      "reviewedLocales": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "reviewedUnits": "All3clinicalchapters+THM,PCNSLimmunestatus/EBV/solitarymultipleguards,signaltables/DWIADC/MRS/rCBV,case3imagealts+caption,3differentials,toxoADC overlap,4selfcheckoptions,4THM read. ThreeGermanimagealts actuallyPersian in snapshot and current source.",
+      "lineCounts": {
+        "de": 57,
+        "en": 57,
+        "fa": 57
+      },
+      "findingIds": [
+        "LNG-FULL-BT-009"
+      ],
+      "gateScope": "LNG semantic text triage only; not clinical/editorial overall route PASS.",
+      "statusBasis": "Frozen fulltext triage plus explicitly documented current-source narrow retests; no browser/live approval."
+    },
+    {
+      "route": "/gehirn/vaskulaer/avm-zns",
+      "entry": "app/gehirn/vaskulaer/avm-zns/page.js",
+      "snapshot": "tmp\\assessment-quality\\lesson-text-triads\\081-gehirn--vaskulaer--avm-zns.txt",
+      "snapshotSha256": "519657f37417c0bba502fd35575bd0acf596eab7ed7cff7085c609dc1d858b12",
+      "status": "REVISE",
+      "reviewedLocales": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "reviewedUnits": "All7chapters,components/schemaalt/labels,20–40years,fullsize<3/3–6/>6grading/venousdrainage/riskclassification,5sequencefindings,3caseimagealts+MRAframeguard,4differentials,3treatmentoptions/individualguards,3THM read. Existingclinicaleloquencedelta separatelyowned; newFApeduncle/convoluttermerrors noted.",
+      "lineCounts": {
+        "de": 99,
+        "en": 99,
+        "fa": 99
+      },
+      "findingIds": [
+        "LNG-FULL-BT-010"
+      ],
+      "gateScope": "LNG semantic text triage only; not clinical/editorial overall route PASS.",
+      "statusBasis": "Frozen fulltext triage plus explicitly documented current-source narrow retests; no browser/live approval."
+    },
+    {
+      "route": "/gehirn/vaskulaer/caa",
+      "entry": "app/gehirn/vaskulaer/caa/page.js",
+      "snapshot": "tmp\\assessment-quality\\lesson-text-triads\\082-gehirn--vaskulaer--caa.txt",
+      "snapshotSha256": "ab9dbf81eda24e8ebba39cc38732f899091e50c41d94409c3d07bea727aa3cfe",
+      "status": "PASS",
+      "reviewedLocales": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "reviewedUnits": "Allvisible4chaptersand5expandedTHM,includingpathology,nonsystemicamyloidguard,Alzheimer79%andICH15%range5–20%,TFNEcoursevisibleonset,cognition,sequencecontent/PVSfigurealt/caption,Bostonvisibleprobable≥2or1+WMeligibility≥50/nodeep/nocause/nodoublecount,visibleSWIcase7/12alt/caption,hypertensivedifferential visiblepanel read3languages. No material mismatch. Other tabs/Bostoncalculator state not in triad, not claimed.",
+      "lineCounts": {
+        "de": 157,
+        "en": 157,
+        "fa": 157
+      },
+      "findingIds": [],
+      "gateScope": "LNG semantic text triage only; not clinical/editorial overall route PASS.",
+      "statusBasis": "Frozen fulltext triage plus explicitly documented current-source narrow retests; no browser/live approval."
+    },
+    {
+      "route": "/gehirn/vaskulaer/cadasil",
+      "entry": "app/gehirn/vaskulaer/cadasil/page.js",
+      "snapshot": "tmp\\assessment-quality\\lesson-text-triads\\083-gehirn--vaskulaer--cadasil.txt",
+      "snapshotSha256": "1c80964cf6201a81c7283547795f7cd12bbd05c0e59b2621befd7fd5bc5141ab",
+      "status": "PASS",
+      "reviewedLocales": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "reviewedUnits": "All7chapters,NOTCH3chrom19/AD50%/familynonegativeguard,clinicalage3rd4thdecade,MRI7rows/distribution/schemaaltlabels,4diagnosticsteps/geneticconfirmation/biopsy,7differentials,3casealt/captions/4interpretationsteps,managementantiplatelet/anticoagulationindividualguards,6THM read. No material mismatch.",
+      "lineCounts": {
+        "de": 97,
+        "en": 97,
+        "fa": 97
+      },
+      "findingIds": [],
+      "gateScope": "LNG semantic text triage only; not clinical/editorial overall route PASS.",
+      "statusBasis": "Frozen fulltext triage plus explicitly documented current-source narrow retests; no browser/live approval."
+    },
+    {
+      "route": "/gehirn/vaskulaer/davf",
+      "entry": "app/gehirn/vaskulaer/davf/page.js",
+      "snapshot": "tmp\\assessment-quality\\lesson-text-triads\\084-gehirn--vaskulaer--davf.txt",
+      "snapshotSha256": "44ef98709c6c1b7bbcbfa52c2f18a778e9a56a47586f0ad744ce618bfc3a3698",
+      "status": "PASS",
+      "reviewedLocales": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "reviewedUnits": "All6chapters,directduralshuntnonidus/BarrowAversusB–D40–60years,clinical3rowstable,CognardI/IIa/IIb/IIa+b/III/IV/Vfulltable+schemaalt/leftanterograderightreflux/legend,5modalities,4differentials,3treatmentoptions,3THMread. No material language inversion; oldclinicalrules noted separately in previousassessmentreview andnotreapproved.",
+      "lineCounts": {
+        "de": 71,
+        "en": 71,
+        "fa": 71
+      },
+      "findingIds": [],
+      "gateScope": "LNG semantic text triage only; not clinical/editorial overall route PASS.",
+      "statusBasis": "Frozen fulltext triage plus explicitly documented current-source narrow retests; no browser/live approval."
+    },
+    {
+      "route": "/gehirn/vaskulaer/dva",
+      "entry": "app/gehirn/vaskulaer/dva/page.js",
+      "snapshot": "tmp\\assessment-quality\\lesson-text-triads\\085-gehirn--vaskulaer--dva.txt",
+      "snapshotSha256": "ef72835509cf4bbcecf9f545ba746aaff6c3da5c963f8c94ff1a3f5c0f46f24a",
+      "status": "PASS",
+      "reviewedLocales": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "reviewedUnits": "All8chapters,venousarchitecture3rows,5sequencefindings,10–20%association,4complications,5differentials,3casealts/caption35yowomanrightcerebellum/torculardrainage,managementno-resectionguard and5THMread. No material language inversion; oneFAmagneticsusceptibility termgeneralized.",
+      "lineCounts": {
+        "de": 92,
+        "en": 92,
+        "fa": 92
+      },
+      "findingIds": [
+        "LNG-FULL-BT-011"
+      ],
+      "gateScope": "LNG semantic text triage only; not clinical/editorial overall route PASS.",
+      "statusBasis": "Frozen fulltext triage plus explicitly documented current-source narrow retests; no browser/live approval."
+    },
+    {
+      "route": "/gehirn/vaskulaer/gefaessdissektion",
+      "entry": "app/gehirn/vaskulaer/gefaessdissektion/page.js",
+      "snapshot": "tmp\\assessment-quality\\lesson-text-triads\\086-gehirn--vaskulaer--gefaessdissektion.txt",
+      "snapshotSha256": "b63e8b959e128bab7870a36fec90546a4ea3a9b6959488197f156ab5160e510b",
+      "status": "REVISE",
+      "reviewedLocales": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "reviewedUnits": "All7chapters,2–3cmdistalICA/V2V3/subintimalvssubadventitialmechanism,CTAsignstable,T1wallhematoma48–72hguard,DWInegativeandTOFpitfalls,3–6monthindividualantithromboticandstentexceptions,intra-vsextracranialSAHguard,4reportingsteps,2casealts/captions/rightICA1.2cm,4THMread. Numeric/sides/urgentguards preserved; GermanstatJ. andFAflamewordingminor.",
+      "lineCounts": {
+        "de": 89,
+        "en": 89,
+        "fa": 89
+      },
+      "findingIds": [
+        "LNG-FULL-BT-012"
+      ],
+      "gateScope": "LNG semantic text triage only; not clinical/editorial overall route PASS.",
+      "statusBasis": "Frozen fulltext triage plus explicitly documented current-source narrow retests; no browser/live approval."
+    },
+    {
+      "route": "/gehirn/vaskulaer/hypertensive-mikroangiopathie",
+      "entry": "app/gehirn/vaskulaer/hypertensive-mikroangiopathie/page.js",
+      "snapshot": "tmp\\assessment-quality\\lesson-text-triads\\087-gehirn--vaskulaer--hypertensive-mikroangiopathie.txt",
+      "snapshotSha256": "7fe5fee1be2d5197053f398399d9c32cef49978112cf09ebc53b74b453a39a37",
+      "status": "PASS",
+      "reviewedLocales": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "reviewedUnits": "All7chapters,diameter<300µm/epidemiologicpercentagesand4foldrisk,5mechanisms,CTdensity50–70HU/locationfreqtable+case3alts/captions/spot90daymortality,MRIsequencetable/Fazekas0–3casealt,4lacunarclinicalsyndromes,5differentials,therapyqualifiedBP150–220target140maintain130–150not<130/PCCproductweightINR/≥15mLcerebellar/INR<1.3in4h/osmoticdoses/longBP<130/80,5THMread. Fullsourceclinicaldelta reviewedseparatelybyotherreviewer; FAposteriorlimb awkward literalterm.",
+      "lineCounts": {
+        "de": 116,
+        "en": 116,
+        "fa": 116
+      },
+      "findingIds": [
+        "LNG-FULL-BT-013"
+      ],
+      "gateScope": "LNG semantic text triage only; not clinical/editorial overall route PASS.",
+      "statusBasis": "Frozen fulltext triage plus explicitly documented current-source narrow retests; no browser/live approval."
+    },
+    {
+      "route": "/gehirn/vaskulaer/hypoxisch-ischaemische-hirnschaedigung",
+      "entry": "app/gehirn/vaskulaer/hypoxisch-ischaemische-hirnschaedigung/page.js",
+      "snapshot": "tmp\\assessment-quality\\lesson-text-triads\\088-gehirn--vaskulaer--hypoxisch-ischaemische-hirnschaedigung.txt",
+      "snapshotSha256": "da371f278e48f509ea109ecc51f440b3fe129128315d36481bf26b6ede7b6c29",
+      "status": "REVISE",
+      "reviewedLocales": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "reviewedUnits": "All9chapters,causes/clinicalphases/selectivevulnerability6structures/4patternstates,CT4signs/MRI5sequence/time0–24h1–7d1–3wk/differentials5rows/6reportingsteps/prognosis72hROSCorrewarmingandsedationtemperatureguards,8imagealts+2captions,4THMread. No materialnegation/numberloss; FAprofoundlabel anatomical mistranslation.",
+      "lineCounts": {
+        "de": 131,
+        "en": 131,
+        "fa": 131
+      },
+      "findingIds": [
+        "LNG-FULL-BT-015"
+      ],
+      "gateScope": "LNG semantic text triage only; not clinical/editorial overall route PASS.",
+      "statusBasis": "Frozen fulltext triage plus explicitly documented current-source narrow retests; no browser/live approval."
+    },
+    {
+      "route": "/gehirn/vaskulaer/intrazerebrale-blutung",
+      "entry": "app/gehirn/vaskulaer/intrazerebrale-blutung/page.js",
+      "snapshot": "tmp\\assessment-quality\\lesson-text-triads\\089-gehirn--vaskulaer--intrazerebrale-blutung.txt",
+      "snapshotSha256": "27fc23fbce096b73e9a14c19e10f7b2833b4516c26417e398ffc99d8913477c9",
+      "status": "REVISE",
+      "reviewedLocales": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "reviewedUnits": "All5chapters,macro>10/micro<10mm/10–15%stroke40%mortality/sourcecausefrequencies/contextvascularworkup,CTstages/swirlspotguards/hemoglobin5states/tablealt1.5T/peripheraltransition/sequencechoices/differentials,3casealts/captions72yo1→3cmrightcerebellum,5THMread. FAcasecaptionandflowchart omit specificdetails; metadatacreditGermanENFA.",
+      "lineCounts": {
+        "de": 100,
+        "en": 100,
+        "fa": 100
+      },
+      "findingIds": [
+        "LNG-FULL-BT-014"
+      ],
+      "gateScope": "LNG semantic text triage only; not clinical/editorial overall route PASS.",
+      "statusBasis": "Frozen fulltext triage plus explicitly documented current-source narrow retests; no browser/live approval."
+    },
+    {
+      "route": "/gehirn/vaskulaer/isch-aemischer-schlaganfall",
+      "entry": "app/gehirn/vaskulaer/isch-aemischer-schlaganfall/page.js",
+      "snapshot": "tmp\\assessment-quality\\lesson-text-triads\\090-gehirn--vaskulaer--isch-aemischer-schlaganfall.txt",
+      "snapshotSha256": "a600b9369da0af99c3a7160b6d5a129c0e9d327f06b3825479862259fb5bdf1b",
+      "status": "REVISE",
+      "reviewedLocales": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "reviewedUnits": "All11chapters, ASPECTS10regions and figure German-label disclosure/translatedlegend, CT and MRI timelines, rCBF<30%/Tmax>6s and softwareguards, IVT4.5h/selected4.5–9h and selectedEVT24h, 3imagealts+2casecaptions80yoMCA/30yopostpartum,5THM read. No material negation/threshold loss; localized time/UI label remnant.",
+      "lineCounts": {
+        "de": 191,
+        "en": 191,
+        "fa": 191
+      },
+      "findingIds": [
+        "LNG-FULL-BT-016"
+      ],
+      "gateScope": "LNG semantic text triage only; not clinical/editorial overall route PASS.",
+      "statusBasis": "Frozen fulltext triage plus explicitly documented current-source narrow retests; no browser/live approval."
+    },
+    {
+      "route": "/gehirn/vaskulaer/kapillaere-teleangiektasie",
+      "entry": "app/gehirn/vaskulaer/kapillaere-teleangiektasie/page.js",
+      "snapshot": "tmp\\assessment-quality\\lesson-text-triads\\091-gehirn--vaskulaer--kapillaere-teleangiektasie.txt",
+      "snapshotSha256": "f688a7e5968cb3d21157e055b6a2f706a4ce85ba79d60dc2dd3d6facd048ada9",
+      "status": "REVISE",
+      "reviewedLocales": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "reviewedUnits": "All6chapters, histology normalinterveningparenchyma/lowflow/noshunt, sixmodalities including negativeDSAnotexclusion,5differentials,2cases7imagealts/captions rID58408/9732,4imageanalysissteps,management/biopsyrisk guards,4THM read. FA susceptibility terminology imprecise; no material numeric/negation inversion.",
+      "lineCounts": {
+        "de": 93,
+        "en": 93,
+        "fa": 93
+      },
+      "findingIds": [
+        "LNG-FULL-BT-011"
+      ],
+      "gateScope": "LNG semantic text triage only; not clinical/editorial overall route PASS.",
+      "statusBasis": "Frozen fulltext triage plus explicitly documented current-source narrow retests; no browser/live approval."
+    },
+    {
+      "route": "/gehirn/vaskulaer/kavernom",
+      "entry": "app/gehirn/vaskulaer/kavernom/page.js",
+      "snapshot": "tmp\\assessment-quality\\lesson-text-triads\\092-gehirn--vaskulaer--kavernom.txt",
+      "snapshotSha256": "62cf932d7b9c1e8469f5e9fe99c3c96c22d7c37849363df11c1c93b67ec5bc5c",
+      "status": "REVISE",
+      "reviewedLocales": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "reviewedUnits": "All8chapters, sporadic/familial/histology/DSAoccult, clinicaltable80%/bleedguards,6sequence table,5sequencealts,4Zabramskitypes,DVApreservation,5differentials,4casealts+caption/4interpretationsteps,4managementcards and6THM points read. Alts German in ENFA; FA susceptibility precision.",
+      "lineCounts": {
+        "de": 107,
+        "en": 107,
+        "fa": 107
+      },
+      "findingIds": [
+        "LNG-FULL-BT-017"
+      ],
+      "gateScope": "LNG semantic text triage only; not clinical/editorial overall route PASS.",
+      "statusBasis": "Frozen fulltext triage plus explicitly documented current-source narrow retests; no browser/live approval."
+    },
+    {
+      "route": "/gehirn/vaskulaer/moya-moya",
+      "entry": "app/gehirn/vaskulaer/moya-moya/page.js",
+      "snapshot": "tmp\\assessment-quality\\lesson-text-triads\\093-gehirn--vaskulaer--moya-moya.txt",
+      "snapshotSha256": "1e82f264602a5961e2fe87f51a95041277d02dbf4de79059f0ff9cf054165904",
+      "status": "REVISE",
+      "reviewedLocales": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "reviewedUnits": "All7chapters, unilateral/bilateral disease-vs-syndrome definitions, incidence0.5–1/100000/year women1.8:1 RNF213, path4steps, age5–10/35–45 and hyperventilation mechanism,CT3/MRI4rows,Ivy claims reproduced3langs,3vascularmethods6Suzukigrades,bypass3+medical,2stackalts/captions,5THM read. Language remnants/FA watershedliteral noted; no scientific approval of shared Ivy/treatment assertions.",
+      "lineCounts": {
+        "de": 112,
+        "en": 112,
+        "fa": 112
+      },
+      "findingIds": [
+        "LNG-FULL-BT-018"
+      ],
+      "gateScope": "LNG semantic text triage only; not clinical/editorial overall route PASS.",
+      "statusBasis": "Frozen fulltext triage plus explicitly documented current-source narrow retests; no browser/live approval."
+    },
+    {
+      "route": "/gehirn/vaskulaer/sinusvenenthrombose",
+      "entry": "app/gehirn/vaskulaer/sinusvenenthrombose/page.js",
+      "snapshot": "tmp\\assessment-quality\\lesson-text-triads\\094-gehirn--vaskulaer--sinusvenenthrombose.txt",
+      "snapshotSha256": "1c2826e7e5d3cce495226411aa560e880239c6a4edb2311ac1978ec320aa6cd0",
+      "status": "PASS",
+      "reviewedLocales": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "reviewedUnits": "All8chapters and final4THM,venous4location table,risks4,clinical4,mechanisms4,CT4rows,acute0–5/subacute>5MRI and MRVPCguards,4pitfalls,3selfcheckoptions,2localizedsource scopes,therapy4+hemorrhage-not-automaticcontraindication guards read. No material language inversion found; FA cord-sign eponym omitted but finding meaning retained.",
+      "lineCounts": {
+        "de": 113,
+        "en": 113,
+        "fa": 113
+      },
+      "findingIds": [],
+      "gateScope": "LNG semantic text triage only; not clinical/editorial overall route PASS.",
+      "statusBasis": "Frozen fulltext triage plus explicitly documented current-source narrow retests; no browser/live approval."
+    },
+    {
+      "route": "/gehirn/vaskulaer/subarachnoidalblutung",
+      "entry": "app/gehirn/vaskulaer/subarachnoidalblutung/page.js",
+      "snapshot": "tmp\\assessment-quality\\lesson-text-triads\\095-gehirn--vaskulaer--subarachnoidalblutung.txt",
+      "snapshotSha256": "2e19a4c4550f8e1f6fc81d0da335010ce7cd05320170109232f6760d0a347381",
+      "status": "REVISE",
+      "reviewedLocales": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "reviewedUnits": "All5chapters+5THM,selfcheck4options,2source scopes,CT<6h vs>6/newdeficit and exact6boundary guards,Fisher5rows<1/≥1mm+IVH,3comparison paragraphs,4vascularmethods,4complicationgroups and24htreatment,CTalt/caption/sourceattribution read. FA stale40% summary materially differs from DEEN; detailed finding logged.",
+      "lineCounts": {
+        "de": 101,
+        "en": 101,
+        "fa": 101
+      },
+      "findingIds": [
+        "LNG-FULL-BT-019"
+      ],
+      "gateScope": "LNG semantic text triage only; not clinical/editorial overall route PASS.",
+      "statusBasis": "Frozen fulltext triage plus explicitly documented current-source narrow retests; no browser/live approval."
+    },
+    {
+      "route": "/gehirn/vaskulaer/subduralhaematom",
+      "entry": "app/gehirn/vaskulaer/subduralhaematom/page.js",
+      "snapshot": "tmp\\assessment-quality\\lesson-text-triads\\096-gehirn--vaskulaer--subduralhaematom.txt",
+      "snapshotSha256": "e2a2d14e08dce07ff42140471f0e59585e9a0b045c5ac63e15a0c4e4823666bc",
+      "status": "REVISE",
+      "reviewedLocales": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "reviewedUnits": "All6chapters,clinicalrisk3,CT4rows/extent/windowguards,age<3days/3days–3weeks/>3weeks and60–80HU,4differentials,4reportingsteps,2casealts/captions rightnoShift/left16mmcontralateralShift,4THM read. No material numeric/negation loss; sharedGermanhero and EnglishFA nouns remain.",
+      "lineCounts": {
+        "de": 81,
+        "en": 81,
+        "fa": 81
+      },
+      "findingIds": [
+        "LNG-FULL-BT-020"
+      ],
+      "gateScope": "LNG semantic text triage only; not clinical/editorial overall route PASS.",
+      "statusBasis": "Frozen fulltext triage plus explicitly documented current-source narrow retests; no browser/live approval."
+    },
+    {
+      "route": "/lunge/sarkoidose",
+      "entry": "app/lunge/sarkoidose/page.js",
+      "snapshot": "tmp\\assessment-quality\\lesson-text-triads\\097-lunge--sarkoidose.txt",
+      "snapshotSha256": "5b3cf55b9fb30987d36f1a94a59599bf70fdec4ef8ff6931d9f366c4df79e599",
+      "status": "PASS",
+      "reviewedLocales": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "reviewedUnits": "All6chapters,>90%2–4mm1-2-3,Scadding0–IV,lymphnodes4/parenchyma4/signs2+CTalt/caption/sourcepage42/41,4extrapulmonary manifestations,4DD+6row3diseasecomparison,3backgroundarticle disclaimers,4THM read. No material language mismatch found; shared clinical claims not newly source-verified.",
+      "lineCounts": {
+        "de": 109,
+        "en": 109,
+        "fa": 109
+      },
+      "findingIds": [],
+      "gateScope": "LNG semantic text triage only; not clinical/editorial overall route PASS.",
+      "statusBasis": "Frozen fulltext triage plus explicitly documented current-source narrow retests; no browser/live approval."
+    },
+    {
+      "route": "/thorax/akute-le",
+      "entry": "app/thorax/akute-le/page.js",
+      "snapshot": "tmp\\assessment-quality\\lesson-text-triads\\183-thorax--akute-le.txt",
+      "snapshotSha256": "6a28cfb3c2bde1c703236b2edc5d59bc66073e5e20d59ce32db5ebb480c606e1",
+      "status": "PASS",
+      "reviewedLocales": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "reviewedUnits": "All5chapters, dual-bloodsupply infarctionguard/Hampton pleuralwedge hilumapex nonspecific,CTvsradiograph distinction and2alts/captionrID27283/PDFlimit,CTPA fillingdefect/enhancementvsatelectasis/reversehalonotrequired,3selfcheckoptions,4THMrules,4source scopes read. Semantic parity preserved.",
+      "lineCounts": {
+        "de": 36,
+        "en": 36,
+        "fa": 36
+      },
+      "findingIds": [],
+      "gateScope": "LNG semantic text triage only; not clinical/editorial overall route PASS.",
+      "statusBasis": "Frozen fulltext triage plus explicitly documented current-source narrow retests; no browser/live approval."
+    },
+    {
+      "route": "/thorax/anatomie/aortenbogen",
+      "entry": "app/thorax/anatomie/aortenbogen/page.js",
+      "snapshot": "tmp\\assessment-quality\\lesson-text-triads\\184-thorax--anatomie--aortenbogen.txt",
+      "snapshotSha256": "180d6a9bc0efc892f46554bba83004af8f0cab87abbeb8515d6d7527592fbcff",
+      "status": "PASS",
+      "reviewedLocales": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "reviewedUnits": "All7chapters,normal3branchleftarchanatomy3rows+diagramalt/caption,3branchvariants5varianttable+diagramalt/caption,leftligamentringguard/aberrantrightretroesophageal,3imagingmethods,4reportelements/example,3pitfalls,3THM read. Side/negation/conditionalring meanings preserved.",
+      "lineCounts": {
+        "de": 80,
+        "en": 80,
+        "fa": 80
+      },
+      "findingIds": [],
+      "gateScope": "LNG semantic text triage only; not clinical/editorial overall route PASS.",
+      "statusBasis": "Frozen fulltext triage plus explicitly documented current-source narrow retests; no browser/live approval."
+    },
+    {
+      "route": "/thorax/anatomie/lungenanatomie",
+      "entry": "app/thorax/anatomie/lungenanatomie/page.jsx",
+      "snapshot": "tmp\\assessment-quality\\lesson-text-triads\\185-thorax--anatomie--lungenanatomie.txt",
+      "snapshotSha256": "a517c9e2e8a9aa1b57e7b2ddf99d7101c16082d8f061a4b42314b86261e4a10d",
+      "status": "PASS",
+      "reviewedLocales": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "reviewedUnits": "All5chapters,lobule1–2.5cm/acinus4–8mm/filling nonspecific,centralbronchiolearteriole/peripheralveinslymph,6segmentrowsrightS1–10/leftS1+2S7+8/S4–5lingula,2schemaalts+captions/3patientimagealts+2captions,interstitium3,accessoryfissure3/azygosguard,2selfchecks3options each,4THM/5source scopes andPDFcorrectiondisclosure read. All numeric/anatomic parity preserved.",
+      "lineCounts": {
+        "de": 67,
+        "en": 67,
+        "fa": 67
+      },
+      "findingIds": [],
+      "gateScope": "LNG semantic text triage only; not clinical/editorial overall route PASS.",
+      "statusBasis": "Frozen fulltext triage plus explicitly documented current-source narrow retests; no browser/live approval."
+    },
+    {
+      "route": "/thorax/bronchialkarzinom-bildgebung",
+      "entry": "app/thorax/bronchialkarzinom-bildgebung/page.jsx",
+      "snapshot": "tmp\\assessment-quality\\lesson-text-triads\\186-thorax--bronchialkarzinom-bildgebung.txt",
+      "snapshotSha256": "e8860331161054b78261335cca3de7a397973eaae855f02c8400a4c36259b6ca",
+      "status": "PASS",
+      "reviewedLocales": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "reviewedUnits": "All5chapters and3THM,NSCLC/SCLC not established by imaging,solidlongestdiameterexclude spicules/atelectasis,3extentregions/station+shortaxis,schemealt+captionnoCTcase,qualifiedreportexampleRUL/ipsilateralnode/nocertainchestwallinvasion,4selfcheckoptions,4source scopes/PDFheadingonly disclaimer read. No material semantic discrepancy.",
+      "lineCounts": {
+        "de": 46,
+        "en": 46,
+        "fa": 46
+      },
+      "findingIds": [],
+      "gateScope": "LNG semantic text triage only; not clinical/editorial overall route PASS.",
+      "statusBasis": "Frozen fulltext triage plus explicitly documented current-source narrow retests; no browser/live approval."
+    },
+    {
+      "route": "/thorax/bronchiektasen",
+      "entry": "app/thorax/bronchiektasen/page.jsx",
+      "snapshot": "tmp\\assessment-quality\\lesson-text-triads\\187-thorax--bronchiektasen.txt",
+      "snapshotSha256": "28677682614a1b990505fc51513a080aa109012065075f5ca317ba440449abd2",
+      "status": "PASS",
+      "reviewedLocales": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "reviewedUnits": "All5chapters,≤1mmthinCT/ratio>1/nontapering/within1cmcostalorcontactmediastinalpleura,diagramalt+caption,adultnotchildcontext,transientdilation/indirectsignsnonspecific,distribution/morphology/uncertaintyreporttemplate,4selfcheckoptions,3THM/3source scopes read. Numeric/negation parity preserved.",
+      "lineCounts": {
+        "de": 45,
+        "en": 45,
+        "fa": 45
+      },
+      "findingIds": [],
+      "gateScope": "LNG semantic text triage only; not clinical/editorial overall route PASS.",
+      "statusBasis": "Frozen fulltext triage plus explicitly documented current-source narrow retests; no browser/live approval."
+    },
+    {
+      "route": "/thorax/bronchiolitis",
+      "entry": "app/thorax/bronchiolitis/page.jsx",
+      "snapshot": "tmp\\assessment-quality\\lesson-text-triads\\188-thorax--bronchiolitis.txt",
+      "snapshotSha256": "70a2e09ca5ed80e19aab41e4ed3a410fd23e160201a82ac627fc2712cd3722e7",
+      "status": "PASS",
+      "reviewedLocales": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "reviewedUnits": "All3chapterheadings and2actualcontentchapters,centralnodulespleurasparing,Treeinbud mucus/pus/noagentproof,airtrappingexpiration denser/smallerfailure,2observationrows,2four-optionselfchecks,CTalt/caption/3THM/source scope read. Language parity preserved. Separate non-LNG observation: third chapter has no body after THM migration in all3snapshots.",
+      "lineCounts": {
+        "de": 32,
+        "en": 32,
+        "fa": 32
+      },
+      "findingIds": [],
+      "gateScope": "LNG semantic text triage only; not clinical/editorial overall route PASS.",
+      "statusBasis": "Frozen fulltext triage plus explicitly documented current-source narrow retests; no browser/live approval."
+    },
+    {
+      "route": "/thorax/copd-bildgebung",
+      "entry": "app/thorax/copd-bildgebung/page.jsx",
+      "snapshot": "tmp\\assessment-quality\\lesson-text-triads\\189-thorax--copd-bildgebung.txt",
+      "snapshotSha256": "9fe90e48a849a3ee860a1afdbc9c269312f15f92e66586a0892eb67f558e2ab8",
+      "status": "PASS",
+      "reviewedLocales": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "reviewedUnits": "All5chapters,CTstructurevsfunctionalCOPD/spirometryguard,3emphysemapatternrows+schemealt/caption,airwayvsparenchyma andexpirationairtrapping,quantitativeprotocol/software/dose/inspirationguards,3reportsteps/example,4selfcheckoptions,3THM/4source scopes read. No language mismatch demonstrated.",
+      "lineCounts": {
+        "de": 48,
+        "en": 48,
+        "fa": 48
+      },
+      "findingIds": [],
+      "gateScope": "LNG semantic text triage only; not clinical/editorial overall route PASS.",
+      "statusBasis": "Frozen fulltext triage plus explicitly documented current-source narrow retests; no browser/live approval."
+    },
+    {
+      "route": "/thorax/fleischner-kriterien",
+      "entry": "app/thorax/fleischner-kriterien/page.js",
+      "snapshot": "tmp\\assessment-quality\\lesson-text-triads\\190-thorax--fleischner-kriterien.txt",
+      "snapshotSha256": "2e100221da692d04891f92990f0be018e3f8ffde725776b9398f11fab1f01d2b",
+      "status": "PASS",
+      "reviewedLocales": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "reviewedUnits": "All7chapters,≥35/exclusionsscreeningknowncancerimmunosuppression/benignmorphology,3attenuationtypes,1–1.5mmCT/mean8x6→7rounding/growth≥2mm,all6solidrows/3subsolidrows/followupintervals,exact8boundary andsolidsuspect≥6/>8guards,reportexample7mmRLL,5casequestionsexplanationsages52/68/61/70/59,4THM read. All3locale numbers/negations/intervals preserved.",
+      "lineCounts": {
+        "de": 84,
+        "en": 84,
+        "fa": 84
+      },
+      "findingIds": [],
+      "gateScope": "LNG semantic text triage only; not clinical/editorial overall route PASS.",
+      "statusBasis": "Frozen fulltext triage plus explicitly documented current-source narrow retests; no browser/live approval."
+    },
+    {
+      "route": "/thorax/fremdkoerperaspiration",
+      "entry": "app/thorax/fremdkoerperaspiration/page.js",
+      "snapshot": "tmp\\assessment-quality\\lesson-text-triads\\191-thorax--fremdkoerperaspiration.txt",
+      "snapshotSha256": "a7db49f916d0f7f013e5db29d21402296f9e655c2789a3c4dffa0d49f7cee7ca",
+      "status": "PASS",
+      "reviewedLocales": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "reviewedUnits": "All3sections,allnested4lessonblocks,age1–3/symmetricbronchi/radiolucency,3indirectsigns+3pitfalls,PAinsp-exp/decubitusparagraph,3selfcheckoptions/3THM/PDFscope read. Same meaning3langs; separate observed source-level suspected-side-down versus dependenthealthy statement remains ambiguous/contradictory in all3, parent notified.",
+      "lineCounts": {
+        "de": 40,
+        "en": 40,
+        "fa": 40
+      },
+      "findingIds": [],
+      "gateScope": "LNG semantic text triage only; not clinical/editorial overall route PASS.",
+      "statusBasis": "Frozen fulltext triage plus explicitly documented current-source narrow retests; no browser/live approval."
+    },
+    {
+      "route": "/thorax/hrct/architekturmuster",
+      "entry": "app/thorax/hrct/architekturmuster/page.js",
+      "snapshot": "tmp\\assessment-quality\\lesson-text-triads\\192-thorax--hrct--architekturmuster.txt",
+      "snapshotSha256": "785c1f6c373aee9f2317486e58bf7cb0f8122b12871be5ae94008f431aee89b7",
+      "status": "PASS",
+      "reviewedLocales": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "reviewedUnits": "All4chapters,honeycomb3–10upto25mm/fibroticcontext/singlelayerconditional,mosaic3mechanisms,CPGGO+septa/5DD,4imagealts+captions+3provenance scopes,3selfcheckoptions,3THM read. No material language mismatch.",
+      "lineCounts": {
+        "de": 55,
+        "en": 55,
+        "fa": 55
+      },
+      "findingIds": [],
+      "gateScope": "LNG semantic text triage only; not clinical/editorial overall route PASS.",
+      "statusBasis": "Frozen fulltext triage plus explicitly documented current-source narrow retests; no browser/live approval."
+    },
+    {
+      "route": "/thorax/hrct/dichteanhebung",
+      "entry": "app/thorax/hrct/dichteanhebung/page.js",
+      "snapshot": "tmp\\assessment-quality\\lesson-text-triads\\193-thorax--hrct--dichteanhebung.txt",
+      "snapshotSha256": "0596eafeb85cdffb0abe100efe3c539e6dcae17ca0b055fd461543b1757374f9",
+      "status": "PASS",
+      "reviewedLocales": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "reviewedUnits": "All4chapters,volume-loss/convergingcomettail/notproofguards,4selfcheckoptions,GGOvsconsolidation2patterns/shape,hdyrostaticdependentperihilarbasal+noncardiogenicguards,nodule<6/6–30/>30mm andPFNsigns,8imagealts/captions,3THM read. Parity preserved. Separate provenance placeholders remain blank PDFpage/rID for twoimages in all3.",
+      "lineCounts": {
+        "de": 74,
+        "en": 74,
+        "fa": 74
+      },
+      "findingIds": [],
+      "gateScope": "LNG semantic text triage only; not clinical/editorial overall route PASS.",
+      "statusBasis": "Frozen fulltext triage plus explicitly documented current-source narrow retests; no browser/live approval."
+    },
+    {
+      "route": "/thorax/hrct/dichteminderung",
+      "entry": "app/thorax/hrct/dichteminderung/page.js",
+      "snapshot": "tmp\\assessment-quality\\lesson-text-triads\\194-thorax--hrct--dichteminderung.txt",
+      "snapshotSha256": "18e5abb6f6dd9a2eb1c0127a8e2c39865f15a4732211d0173ed7530697335f01",
+      "status": "PASS",
+      "reviewedLocales": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "reviewedUnits": "All3chapters,bulla/cyst/cavitymechanisms3definitions/no rigidcutoff/histologynotCT,wall<4/4–15/>15mm context andairfluidnondiagnostic,3topographicDD/incavitarymobilemass,4imagealts/captions+provenance,3THM read. Clinical translation meaning preserved; shared historical wall-thickness claims not newly verified.",
+      "lineCounts": {
+        "de": 56,
+        "en": 56,
+        "fa": 56
+      },
+      "findingIds": [],
+      "gateScope": "LNG semantic text triage only; not clinical/editorial overall route PASS.",
+      "statusBasis": "Frozen fulltext triage plus explicitly documented current-source narrow retests; no browser/live approval."
+    },
+    {
+      "route": "/thorax/hrct/retikulaer-nodulaer",
+      "entry": "app/thorax/hrct/retikulaer-nodulaer/page.js",
+      "snapshot": "tmp\\assessment-quality\\lesson-text-triads\\195-thorax--hrct--retikulaer-nodulaer.txt",
+      "snapshotSha256": "75f0487b4fdf58585ae3357afaaa222933c5b3f7f9613c72060fca05c41d36fb",
+      "status": "PASS",
+      "reviewedLocales": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "reviewedUnits": "All3chapters,reticularvsreticulonodular2definitions/smoothirregular+lymphangiticguards/50%notgeneral/LIPcontext,3nodulardistributions5–10mmgap,Treeinbudfilledbronchioles/notperilymphatic/LCHuppercystsanglesparing,14imagealts/captions/provenances,3THM read. No material inversion; blank provenance same acrosslocales.",
+      "lineCounts": {
+        "de": 83,
+        "en": 83,
+        "fa": 83
+      },
+      "findingIds": [],
+      "gateScope": "LNG semantic text triage only; not clinical/editorial overall route PASS.",
+      "statusBasis": "Frozen fulltext triage plus explicitly documented current-source narrow retests; no browser/live approval."
+    },
+    {
+      "route": "/thorax/hypersensitivitaetspneumonitis",
+      "entry": "app/thorax/hypersensitivitaetspneumonitis/page.jsx",
+      "snapshot": "tmp\\assessment-quality\\lesson-text-triads\\196-thorax--hypersensitivitaetspneumonitis.txt",
+      "snapshotSha256": "af7f08dc4dd94cd959b92d3d4b38946fbd85aff787fcf22af855a1d7d0dbc655",
+      "status": "PASS",
+      "reviewedLocales": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "reviewedUnits": "All3chapters,immune/exposure/nonfibroticdiffuseGGO+mosaic+smallairway vsfibroticcriterion,4findingtable/three-densityandexpiration,size-densityschematiclabels/caption,CTalt/captionrID17192,2four-optionselfchecks,IgGcontactnotcause/diagnosisguard,3THM/2source scopes read. All semantic guards preserved.",
+      "lineCounts": {
+        "de": 42,
+        "en": 42,
+        "fa": 42
+      },
+      "findingIds": [],
+      "gateScope": "LNG semantic text triage only; not clinical/editorial overall route PASS.",
+      "statusBasis": "Frozen fulltext triage plus explicitly documented current-source narrow retests; no browser/live approval."
+    },
+    {
+      "route": "/thorax/kardio/arvc",
+      "entry": "app/thorax/kardio/arvc/page.js",
+      "snapshot": "tmp\\assessment-quality\\lesson-text-triads\\197-thorax--kardio--arvc.txt",
+      "snapshotSha256": "212a039b5a0b3e583ed7e3f036efb78241fe93a8c82274313dfb9cd1997e2dea",
+      "status": "PASS",
+      "reviewedLocales": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "reviewedUnits": "REUSED prior complete independent ARVC310COPYunits×DEENFA semantic review plus 75actualSSRcomponentstates and FA assembledcaseparagraph retest in arvc-cmr-independent-language-review.json. All criteria thresholds/exclusions/regionalANDglobal/categorydoublecount/PaduaLVgenetics/ablationguard and case50yo115mL/m²41% checked. No inferredbrowser/PDFsourceapproval. Snapshot separately fingerprinted, not falsely claimed re-read743pairs.",
+      "lineCounts": {
+        "de": 117,
+        "en": 117,
+        "fa": 117
+      },
+      "findingIds": [],
+      "gateScope": "LNG semantic text triage only; not clinical/editorial overall route PASS.",
+      "reusedEvidence": "tmp/assessment-quality/arvc-cmr-independent-language-review.json",
+      "statusBasis": "Frozen fulltext triage plus explicitly documented current-source narrow retests; no browser/live approval."
+    },
+    {
+      "route": "/thorax/kardio/kardio-mrt-basics",
+      "entry": "app/thorax/kardio/kardio-mrt-basics/page.js",
+      "snapshot": "tmp\\assessment-quality\\lesson-text-triads\\198-thorax--kardio--kardio-mrt-basics.txt",
+      "snapshotSha256": "1b5fe19b3f72290adb97d1675ce85639b0e3a23e06aae10023cc4ba915857b63",
+      "status": "PASS",
+      "reviewedLocales": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "reviewedUnits": "REUSED prior complete independent CMR433COPYunits×DEENFA semantic review in arvc-cmr-independent-language-review.json. Full chaptermarkdown/sequenceprotocol17segments/nativeT1/artifacts/exclusionguards and linecontinuations checked. No materialnegation/thresholdloss found in that fullpair review. Snapshot fingerprinted; browser/media/sourcegates excluded.",
+      "lineCounts": {
+        "de": 503,
+        "en": 491,
+        "fa": 502
+      },
+      "findingIds": [],
+      "gateScope": "LNG semantic text triage only; not clinical/editorial overall route PASS.",
+      "reusedEvidence": "tmp/assessment-quality/arvc-cmr-independent-language-review.json",
+      "statusBasis": "Frozen fulltext triage plus explicitly documented current-source narrow retests; no browser/live approval."
+    },
+    {
+      "route": "/thorax/kardio/kardio-mrt-indikationen",
+      "entry": "app/thorax/kardio/kardio-mrt-indikationen/page.js",
+      "snapshot": "tmp\\assessment-quality\\lesson-text-triads\\199-thorax--kardio--kardio-mrt-indikationen.txt",
+      "snapshotSha256": "07a42894aa9c7b38f93dda2fc2945a846b6c835b34c424fe9cd22d8796e28dca",
+      "status": "REVISE",
+      "reviewedLocales": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "reviewedUnits": "All5chapters plus initial indicationselector7labels/firstmyocarditisdetail,3CMRstrengths,4coreindications,4notfirstscenarios,5safetygroups,4referralsteps+exampleLVEF38/eGFR72mL/min/1.73m²,4THM/6sources read. No numeric/negation loss; FA thrombusprocess word and ordinaryUIlabel remnants noted. Hidden selectorstates not inferred.",
+      "lineCounts": {
+        "de": 72,
+        "en": 72,
+        "fa": 72
+      },
+      "findingIds": [
+        "LNG-FULL-BT-021"
+      ],
+      "gateScope": "LNG semantic text triage only; not clinical/editorial overall route PASS.",
+      "statusBasis": "Frozen fulltext triage plus explicitly documented current-source narrow retests; no browser/live approval."
+    },
+    {
+      "route": "/thorax/kardio/kardiomyopathien",
+      "entry": "app/thorax/kardio/kardiomyopathien/page.js",
+      "snapshot": "tmp\\assessment-quality\\lesson-text-triads\\200-thorax--kardio--kardiomyopathien.txt",
+      "snapshotSha256": "368e74529aadeb847c74d519b62855ffac70599ab2174907f7b91b06233384d4",
+      "status": "PASS",
+      "reviewedLocales": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "reviewedUnits": "All6chapters includinginitialHCMphenotypedetail,LVNC/TTS,4MRIreadingsteps,LGEterritoryguards,7imagealts/captions/syntheticdisclosure,6reportingsteps/example19mm68%8%LVmassnoedema,4THM/sources read. Snapshot FA nativeT1=normal mistranslation already separately authored and accepted in assessment retest; current lesson source delta to retest. Hiddenphenotypetabs not inferred.",
+      "lineCounts": {
+        "de": 82,
+        "en": 82,
+        "fa": 82
+      },
+      "findingIds": [
+        "LNG-FULL-BT-025"
+      ],
+      "gateScope": "LNG semantic text triage only; not clinical/editorial overall route PASS.",
+      "statusBasis": "Frozen fulltext triage plus explicitly documented current-source narrow retests; no browser/live approval.",
+      "currentSourceRetest": "LNG-FULL-BT-025 closed by actual current3localeSSR evidence. Prior frozen text hadwrongnativecopy; current fix supersedes only precise targetedpassages.",
+      "currentSourceSha256": "b663a62edc5363ed98e9225f38cdf6e9d6c204a90708206bff5a9c40724e2aac"
+    },
+    {
+      "route": "/thorax/kardio/myokardinfarkt-differentialdiagnosen",
+      "entry": "app/thorax/kardio/myokardinfarkt-differentialdiagnosen/page.js",
+      "snapshot": "tmp\\assessment-quality\\lesson-text-triads\\201-thorax--kardio--myokardinfarkt-differentialdiagnosen.txt",
+      "snapshotSha256": "4951bdc8bd43d117b8a56b9dcc003a67af0f07606529ac4acfb41868092671d2",
+      "status": "REVISE",
+      "reviewedLocales": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "reviewedUnits": "All7chapters,decisionflowchartalt/8troponincauses/initialcausepanel,LGE10–15min/nulling/walllayer/territory/MVO,MINOCAtrueMI/<50/noatherosclerosisassumption/4ischemiccauses/mimicexclusion,TTS4variants/case55yo4wk,myocarditisT2+T1criteria/supportiveonly/case30yo,sarcoidscarvsactivity/case50yo,acutechronic/MVOhemorrhagethrombusaneurysmpseudodiff/17segmentanatomyguard,9imagealts,5THM/11sources read. Certainty/contextlocale differences noted; no material threshold inversion.",
+      "lineCounts": {
+        "de": 175,
+        "en": 175,
+        "fa": 175
+      },
+      "findingIds": [
+        "LNG-FULL-BT-022"
+      ],
+      "gateScope": "LNG semantic text triage only; not clinical/editorial overall route PASS.",
+      "statusBasis": "Frozen fulltext triage plus explicitly documented current-source narrow retests; no browser/live approval."
+    },
+    {
+      "route": "/thorax/kardio/myokardinfarkt-mrt",
+      "entry": "app/thorax/kardio/myokardinfarkt-mrt/page.js",
+      "snapshot": "tmp\\assessment-quality\\lesson-text-triads\\202-thorax--kardio--myokardinfarkt-mrt.txt",
+      "snapshotSha256": "7fd56789a01f807f0c4dbf70e650e5bb8e724f7ed6c2c448ca172fd8d778f017",
+      "status": "PASS",
+      "reviewedLocales": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "reviewedUnits": "All8chapters+5THM,LGE/nulling extracellularspace,subendocardialtransmural,MVOvsintracavitarythrombuslocation,4nonischemicpatterns,stressfirstpassRV→LV→myocardium/≥about4framesnonrigid/restavailablequalifier,darkrim1–2frames/restandterritoryguards,dualLGEkeyquestion/amyloidosisexception,sources read. Languageparity preserved. Separate UXdraftnotice remains all3: LektionimAufbau/Lessoninprogress/درسدرحالتکمیل.",
+      "lineCounts": {
+        "de": 59,
+        "en": 59,
+        "fa": 59
+      },
+      "findingIds": [],
+      "gateScope": "LNG semantic text triage only; not clinical/editorial overall route PASS.",
+      "statusBasis": "Frozen fulltext triage plus explicitly documented current-source narrow retests; no browser/live approval."
+    },
+    {
+      "route": "/thorax/kavitaeten",
+      "entry": "app/thorax/kavitaeten/page.js",
+      "snapshot": "tmp\\assessment-quality\\lesson-text-triads\\203-thorax--kavitaeten.txt",
+      "snapshotSha256": "9c06b4a9561f10f353b18cc9ba0d28d11f58b918187662021f2cb1ea9fd484ac",
+      "status": "PASS",
+      "reviewedLocales": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "reviewedUnits": "All4chapters,2diagramalts+labels/disclaimers/CTaltcaptionrID16033,6morphologydistributionrows plus3topographicsketchlabels,4patterncomparisonrows/aircrescentnotproof,2three-optionselfchecks/4THM/all16source scopes+studycounts96/225/102/PDF25–26 read. No material language inversion; parent sources not independently newly verified.",
+      "lineCounts": {
+        "de": 71,
+        "en": 71,
+        "fa": 71
+      },
+      "findingIds": [],
+      "gateScope": "LNG semantic text triage only; not clinical/editorial overall route PASS.",
+      "statusBasis": "Frozen fulltext triage plus explicitly documented current-source narrow retests; no browser/live approval."
+    },
+    {
+      "route": "/thorax/lch-lunge",
+      "entry": "app/thorax/lch-lunge/page.js",
+      "snapshot": "tmp\\assessment-quality\\lesson-text-triads\\204-thorax--lch-lunge.txt",
+      "snapshotSha256": "f75abcd2c1660697844de4ed066f21c89ef1f57c4f93b79abf12f09a7bc59648",
+      "status": "PASS",
+      "reviewedLocales": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "reviewedUnits": "All3chapters,PLCHadultsmoking/nodules+irregularcysts/uppermiddle+relativecostophrenicsparing,2CTalts+captions2y/nofixedtimeline/noanglesinuppercropsguard,2four-optionselfchecks/diagnosticbiopsyindividualexception,3THM/source scope read. Semantic parity preserved.",
+      "lineCounts": {
+        "de": 35,
+        "en": 35,
+        "fa": 35
+      },
+      "findingIds": [],
+      "gateScope": "LNG semantic text triage only; not clinical/editorial overall route PASS.",
+      "statusBasis": "Frozen fulltext triage plus explicitly documented current-source narrow retests; no browser/live approval."
+    },
+    {
+      "route": "/thorax/lung-rads",
+      "entry": "app/thorax/lung-rads/page.js",
+      "snapshot": "tmp\\assessment-quality\\lesson-text-triads\\205-thorax--lung-rads.txt",
+      "snapshotSha256": "e1d01ef8a849bfc0989dc0cf11d39a5db826d6263a9ff21e5d8a5943a196e4f6",
+      "status": "PASS",
+      "reviewedLocales": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "reviewedUnits": "All6chapters,categorydiagram0/1–2/3/4A4B4X/S and7labels,screeningeligibilityvsfindings/incidentalFleischnerexclusions,solidbaseline/new/growing2/3/4A4B thresholds/intervals12/6/3months,PETsolid≥8,meanround0.1/growth>1.5within12mo/partsolid≥6solid<6/6–<8/≥8/newsolid<4vs≥4,4Xcategorynotmodifier/S0–4,2selfcheckoptions/4THM/3source version scopes read. All threshold endpoints and limitations preserved.",
+      "lineCounts": {
+        "de": 66,
+        "en": 66,
+        "fa": 66
+      },
+      "findingIds": [],
+      "gateScope": "LNG semantic text triage only; not clinical/editorial overall route PASS.",
+      "statusBasis": "Frozen fulltext triage plus explicitly documented current-source narrow retests; no browser/live approval."
+    },
+    {
+      "route": "/thorax/lungenoedem",
+      "entry": "app/thorax/lungenoedem/page.js",
+      "snapshot": "tmp\\assessment-quality\\lesson-text-triads\\206-thorax--lungenoedem.txt",
+      "snapshotSha256": "f853be6862d5e237efd492c5987a25207191c8c226cdaa318b96cdd7012d7a40",
+      "status": "PASS",
+      "reviewedLocales": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "reviewedUnits": "All6chapters,3stage diagramlabels/alt,venousinterstitialalveolar3rows andPCWP5–12/overlap18notfixedimagingpressureguard,hydrostatic4rows+positionalstudynegativeGGOdifference,3likelihoodrows+3modalitypanelalt/caption,ARDSbilateralnotfullyeffusioncollapse/noduleclinicaloxygenationrequirement/PDFincompleteguard,2selfcheckoptions,4THM/6source scopes read. No material language mismatch.",
+      "lineCounts": {
+        "de": 66,
+        "en": 66,
+        "fa": 66
+      },
+      "findingIds": [],
+      "gateScope": "LNG semantic text triage only; not clinical/editorial overall route PASS.",
+      "statusBasis": "Frozen fulltext triage plus explicitly documented current-source narrow retests; no browser/live approval."
+    },
+    {
+      "route": "/thorax/lungenzysten-differentialdiagnose",
+      "entry": "app/thorax/lungenzysten-differentialdiagnose/page.jsx",
+      "snapshot": "tmp\\assessment-quality\\lesson-text-triads\\207-thorax--lungenzysten-differentialdiagnose.txt",
+      "snapshotSha256": "a2f2d98d81723c21247a2d7f9e5f707a600f751c59de4188fc1c578915c55efd",
+      "status": "PASS",
+      "reviewedLocales": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "reviewedUnits": "All3chapters,4structuraldefinitions/morphologynotetiology/continuitybronchus,CTaltcaptionrightbase/rID10493/nodiffusediseaseproof,3distributionpatternsplus3expandedPLCHLAM/BHDcontexts/TSCAML/absentskinnotexclude,2four-optionselfchecks,3THM/4sourcescope read. All diagnostic qualification/negation meaning preserved.",
+      "lineCounts": {
+        "de": 56,
+        "en": 56,
+        "fa": 56
+      },
+      "findingIds": [],
+      "gateScope": "LNG semantic text triage only; not clinical/editorial overall route PASS.",
+      "statusBasis": "Frozen fulltext triage plus explicitly documented current-source narrow retests; no browser/live approval."
+    },
+    {
+      "route": "/thorax/mukoviszidose",
+      "entry": "app/thorax/mukoviszidose/page.js",
+      "snapshot": "tmp\\assessment-quality\\lesson-text-triads\\208-thorax--mukoviszidose.txt",
+      "snapshotSha256": "ae8a8519718b10eab418ffde385ae9baa7440fe2bed4ecdea8b9f823fe05481f",
+      "status": "PASS",
+      "reviewedLocales": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "reviewedUnits": "All3chapters,CFTRmechanism/3airwayCTsigns/uppernotmandatoryspecific,bronchialcontinuityvscysts/airtrappingneedsphase,2CTalts+captionssameexamnotbeforeafter/25yowomanpretransplantnotearlydisease,diagnosticCFTRsweatgenetics/individualCT2025guidance,2four-optionselfchecks,3THM/4source scopes read. No material language mismatch.",
+      "lineCounts": {
+        "de": 44,
+        "en": 44,
+        "fa": 44
+      },
+      "findingIds": [],
+      "gateScope": "LNG semantic text triage only; not clinical/editorial overall route PASS.",
+      "statusBasis": "Frozen fulltext triage plus explicitly documented current-source narrow retests; no browser/live approval."
+    },
+    {
+      "route": "/thorax/pectus-excavatum",
+      "entry": "app/thorax/pectus-excavatum/page.jsx",
+      "snapshot": "tmp\\assessment-quality\\lesson-text-triads\\209-thorax--pectus-excavatum.txt",
+      "snapshotSha256": "dd923c015523a732337ba6218398fd70009e0d15e1394a0af6abee4240c7219f",
+      "status": "REVISE",
+      "reviewedLocales": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "reviewedUnits": "All2chapters,sternuminward/frontalrightborder/anteriorribdownsloping/pseudocardiomegaly/lateraldorsaldepressionretrosternalspace,2imagealts+captions/rID33208/lungcoexistenceguard,4selfcheckoptions,3THM/4source scopes read. Main anatomy andnegation parity preserved; malformed FAPDFlingulamimic sentence noted.",
+      "lineCounts": {
+        "de": 33,
+        "en": 33,
+        "fa": 33
+      },
+      "findingIds": [
+        "LNG-FULL-BT-023"
+      ],
+      "gateScope": "LNG semantic text triage only; not clinical/editorial overall route PASS.",
+      "statusBasis": "Frozen fulltext triage plus explicitly documented current-source narrow retests; no browser/live approval."
+    },
+    {
+      "route": "/thorax/pneumonie-muster",
+      "entry": "app/thorax/pneumonie-muster/page.js",
+      "snapshot": "tmp\\assessment-quality\\lesson-text-triads\\210-thorax--pneumonie-muster.txt",
+      "snapshotSha256": "b3c856781bf6cf4fdfe9938e269e711b0483b19519f6733bf66c930f290912ca",
+      "status": "PASS",
+      "reviewedLocales": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "reviewedUnits": "All3sections,3learningobjectives/8patternrowsinclPJP30%PDFonly/subpleuralsparing/pneumothorax/aspergillushaloaircrescent/empyemacontrastdoublepleuranotproof/postinfectiouspneumatocelechildstaphnotPJP,3imagealts+captions,4reportingsteps/causeguard,3selfcheckoptions,3THM/5sources read. No material language inversion; sourcepageformat differs butno clinicaleffect.",
+      "lineCounts": {
+        "de": 58,
+        "en": 58,
+        "fa": 58
+      },
+      "findingIds": [],
+      "gateScope": "LNG semantic text triage only; not clinical/editorial overall route PASS.",
+      "statusBasis": "Frozen fulltext triage plus explicitly documented current-source narrow retests; no browser/live approval."
+    },
+    {
+      "route": "/thorax/pulmonale-hypertonie",
+      "entry": "app/thorax/pulmonale-hypertonie/page.jsx",
+      "snapshot": "tmp\\assessment-quality\\lesson-text-triads\\211-thorax--pulmonale-hypertonie.txt",
+      "snapshotSha256": "a20e7d5483066521ef5b1b1168907a01494b18a218ab4f2a1939db66b8136e78",
+      "status": "PASS",
+      "reviewedLocales": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "reviewedUnits": "All4chapters,mPAP>20/PAWP≤15>PVR2pre/Ipc/Cpcandall3criterionguard,RHCnotCT/singlemPAPnotPAH,schematiclabelsandcaption/PA0.9vsPDF1.0and29mm/RVLV>1/contextguard,5WHOgroups4.1CTEPH,3selfcheckoptions1.05/3THM/2source scopes read. Numeric endpoints andreasoning preserved; DEEN literal &gt;20 text separate formatting observation.",
+      "lineCounts": {
+        "de": 46,
+        "en": 46,
+        "fa": 46
+      },
+      "findingIds": [],
+      "gateScope": "LNG semantic text triage only; not clinical/editorial overall route PASS.",
+      "statusBasis": "Frozen fulltext triage plus explicitly documented current-source narrow retests; no browser/live approval."
+    },
+    {
+      "route": "/thorax/rippenpathologien",
+      "entry": "app/thorax/rippenpathologien/page.jsx",
+      "snapshot": "tmp\\assessment-quality\\lesson-text-triads\\212-thorax--rippenpathologien.txt",
+      "snapshotSha256": "46fab7e2e7bbd8c8208ee7b795afec4d06dffcdc6db95d2f459764165277b1c1",
+      "status": "PASS",
+      "reviewedLocales": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "reviewedUnits": "All2chapters,anterior1/3first-ribleftapexpseudoarticulation/CTnotuniversalnoduleexclusionguard,CTnoncontrastACReligibility≥35indeterminateonly,sourcearrowalt/caption,3selfcheckoptions,3THM/3source scopes read. Side/age/exclusion andconditionalimaging parity preserved.",
+      "lineCounts": {
+        "de": 30,
+        "en": 30,
+        "fa": 30
+      },
+      "findingIds": [],
+      "gateScope": "LNG semantic text triage only; not clinical/editorial overall route PASS.",
+      "statusBasis": "Frozen fulltext triage plus explicitly documented current-source narrow retests; no browser/live approval."
+    },
+    {
+      "route": "/thorax/roentgen-thorax-systematik",
+      "entry": "app/thorax/roentgen-thorax-systematik/page.js",
+      "snapshot": "tmp\\assessment-quality\\lesson-text-triads\\213-thorax--roentgen-thorax-systematik.txt",
+      "snapshotSha256": "c1887a195597c765fc9742eda74fba0c434cd1bc10db54a264a07b2252a065ca",
+      "status": "PASS",
+      "reviewedLocales": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "reviewedUnits": "All3sections,PAfrontdetectorvsAPmagnification,quality4steps6anterior10posteriorribs/exposure/sharpness,4projectionpitfallsincludingimplantouterbreastinnercapsule/notintrapulmonary,3selfcheckoptions,4THM/PDF27–28scope read. No material language discrepancy.",
+      "lineCounts": {
+        "de": 39,
+        "en": 39,
+        "fa": 39
+      },
+      "findingIds": [],
+      "gateScope": "LNG semantic text triage only; not clinical/editorial overall route PASS.",
+      "statusBasis": "Frozen fulltext triage plus explicitly documented current-source narrow retests; no browser/live approval."
+    },
+    {
+      "route": "/thorax/tuberkulose-muster",
+      "entry": "app/thorax/tuberkulose-muster/page.js",
+      "snapshot": "tmp\\assessment-quality\\lesson-text-triads\\214-thorax--tuberkulose-muster.txt",
+      "snapshotSha256": "3ca0f525837aefac287627282f717bf0528f7294d9eaf0d3dd1df232ad1b3efe",
+      "status": "PASS",
+      "reviewedLocales": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "reviewedUnits": "All3sections,primaryGhonipsilateralhilar/Rankecalcified,postprimaryuppercavityTreeinbud/miliaryrandomalllobes/oldcalcnotcauseoractivityproof,3selfcheckoptions/3THM/PDF36–37scope read. No material language mismatch; clinicalgeneralization not independentlyapproved.",
+      "lineCounts": {
+        "de": 36,
+        "en": 36,
+        "fa": 36
+      },
+      "findingIds": [],
+      "gateScope": "LNG semantic text triage only; not clinical/editorial overall route PASS.",
+      "statusBasis": "Frozen fulltext triage plus explicitly documented current-source narrow retests; no browser/live approval."
+    },
+    {
+      "route": "/thorax/uip-ipf",
+      "entry": "app/thorax/uip-ipf/page.jsx",
+      "snapshot": "tmp\\assessment-quality\\lesson-text-triads\\215-thorax--uip-ipf.txt",
+      "snapshotSha256": "6b5ee145bf413ec170a466dfdba623cb5fed8a297015c0b532fe91b67a09279e",
+      "status": "REVISE",
+      "reviewedLocales": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "reviewedUnits": "All5chapters,UIPpatternvsIPFexclusionknowncause,PDFedemaCTnotUIPdisclosure,3fibrosissigns/honeycombusuallymultilayernotisolatedcyst,diagramaltcaption,4HRCTcategoriesprobablewithoutHCorsubpleuralsparing/alternatives,HPCTDcontext/exposuremedicationandMDD/edemadiffguard,4selfcheckoptions,4THM/3sources read. FAneutralmosaicattenuation narrowedtolowerdensity noted.",
+      "lineCounts": {
+        "de": 46,
+        "en": 46,
+        "fa": 46
+      },
+      "findingIds": [
+        "LNG-FULL-BT-024"
+      ],
+      "gateScope": "LNG semantic text triage only; not clinical/editorial overall route PASS.",
+      "statusBasis": "Frozen fulltext triage plus explicitly documented current-source narrow retests; no browser/live approval."
+    }
+  ],
+  "findings": [
+    {
+      "id": "LNG-FULL-BT-001",
+      "severity": "minor",
+      "route": "/gehirn/anatomie/liquorraeume-ventrikelsystem",
+      "source": "app/gehirn/anatomie/liquorraeume-ventrikelsystem/page.js:462 (thirdventricle row),:385 (CVIcoronal row)",
+      "observed": "DE thirdventricle relationship row names Recessusopticus+infundibularis; EN/FA omit those landmarks and replace with width/context. FA CVIcoronal landmark uses general deepcerebralveins instead of specific internalcerebralveins (innereHirnvenen inDE,:116; exactENinternalcerebralveins preserved).",
+      "impact": "Learners in EN/FA lose named anatomy in table; FA exact localization landmark generalized. No demonstrated threshold/negation inversion.",
+      "requiredCorrection": "Restore optic/infundibular recesses in EN/FA and use specific وریدهای داخلی مغز for internalcerebralveins.",
+      "retest": "Pending.",
+      "resolution": "OPEN"
+    },
+    {
+      "id": "LNG-FULL-BT-002",
+      "severity": "minor",
+      "route": "/gehirn/hals-nnh/einseitige-verschattung",
+      "source": "app/gehirn/hals-nnh/einseitige-verschattung/page.jsx",
+      "observed": "EN/FA breadcrumb still contains Gehirn while same UI element in other localized routes is Brain/مغز.",
+      "impact": "German navigation label remains in translated page.",
+      "requiredCorrection": "Localize breadcrumb label.",
+      "retest": "Pending.",
+      "resolution": "OPEN"
+    },
+    {
+      "id": "LNG-FULL-BT-003",
+      "severity": "minor",
+      "routes": [
+        "/gehirn/infektionen/herpes-enzephalitis",
+        "/gehirn/infektionen/muster",
+        "/gehirn/neurodegeneration/demenzmuster"
+      ],
+      "source": "data/gehirnHsvEnzephalitisLesson.js; data/gehirnInfektionsmusterLesson.js chhsv;text; data/gehirnDemenzMusterLesson.js heroAlt,chapters0/1,THM: FA mesial/medial temporal strings",
+      "observed": "Mesial/medial temporal localization rendered تمپورال میانی (middle/intermediate temporal) repeatedly; DE mesial/medial and ENmesial refer to medial temporal structures.",
+      "impact": "Anatomical localization can be confused with middle temporal gyrus rather than mesial temporal structures. No new treatment/threshold inversion.",
+      "requiredCorrection": "Use مزیال/داخلی لوب تمپورال consistently in HSV and infectionoverview; exact sourcekeys to locate on author side.",
+      "retest": "PASS current exactFAstrings in HSV, infectionoverview and dementia read. Mesial=داخلی (مزیال), original middle term absent; anatomy qualifiers retained. Source-only retest, no fresh browser.",
+      "resolution": "CLOSED"
+    },
+    {
+      "id": "LNG-FULL-BT-004",
+      "severity": "minor",
+      "route": "/gehirn/neurodegeneration/demenzmuster",
+      "source": "data/gehirnDemenzMusterLesson.js sources annotations; LessonSources consumer",
+      "observed": "Explanatory source annotations remain English in DE/FA, e.g Does not validate every age threshold quoted in supplied slide; Imaging supports probable classification with functional decline; imaging alone insufficient. These are clinical scope comments rather than bibliographic titles.",
+      "impact": "Source limits inaccessible to learner reading only DE/FA.",
+      "requiredCorrection": "Localize explanatory annotations while retaining original publication titles/bibliography.",
+      "retest": "Pending.",
+      "resolution": "OPEN"
+    },
+    {
+      "id": "LNG-FULL-BT-005",
+      "severity": "minor",
+      "route": "/gehirn/trauma/epidurale-blutung",
+      "source": "data/edh.js:178,58; hero stat value",
+      "observed": "FA malformed دوراl and temporoپاریتال, Englishclinicalnouns scattered in FA; shared hero stat literal bikonvex remains German in EN/FA.",
+      "impact": "Poor localized terminology/readability without demonstrated numeric/negation inversion.",
+      "requiredCorrection": "Use دورال/آبسه/تمپوروپاریتال and localized biconvexstat value (ENbiconvex,FAدوکوژ) preservingclinicalmeaning.",
+      "retest": "PASS actual malformedFA دوراl/abscess and temporoپاریتال replaced by دورال/آبسه/تمپوروپاریتال. Sharedhero bikonvex and other English FA prose remain OPEN.",
+      "resolution": "PARTIALLY_CLOSED"
+    },
+    {
+      "id": "LNG-FULL-BT-006",
+      "severity": "minor",
+      "route": "/gehirn/tumoren/atrt",
+      "source": "ATRT lesson FA diffusioncaveat callout title",
+      "observed": "CAVE Diffusion / Diffusion caveat label translated محدودیت انتشار, the name of diffusionrestriction rather than a caution label. Body accurately says restrictionnonspecific.",
+      "impact": "Heading confuses caveat label with diagnostic finding.",
+      "requiredCorrection": "Use نکتهٔ احتیاط دربارهٔ انتشار or comparable cautionheading.",
+      "retest": "Pending.",
+      "resolution": "OPEN"
+    },
+    {
+      "id": "LNG-FULL-BT-007",
+      "severity": "minor",
+      "route": "/gehirn/tumoren/kolloidzyste",
+      "source": "Kolloidzyste lesson sequence table CT nativ row label",
+      "observed": "Same literal CT nativ retained for English and Persian table method label. Body translated anddensitymeaningpreserved.",
+      "impact": "Protocol label remains German rather than stating non-contrastCT.",
+      "requiredCorrection": "Localize ENNon-contrastCT,FACT بدون کنتراست / بدون تزریق.",
+      "retest": "Pending.",
+      "resolution": "OPEN"
+    },
+    {
+      "id": "LNG-FULL-BT-008",
+      "severity": "minor",
+      "route": "/gehirn/tumoren/schwannom-cpa",
+      "source": "Vestibularschwannom FA firstchapter and image-task paragraphs",
+      "observed": "DE Eistüte/ENice-cream-cone becomes FA شکل قیفی (funnel), losing roundedcisternal icecream+intracanalicular cone analogy. Same route separately discusses funnel-shaped IACremodelling, so terms should remain distinct.",
+      "impact": "Weakens spatial teaching and conflates lesion shape with bonyfunnelremodeling.",
+      "requiredCorrection": "Use نمای بستنی قیفی for lesionmetaphor in two FA mentions; retain funnel-shaped IACremodeling separately.",
+      "retest": "Pending.",
+      "resolution": "OPEN"
+    },
+    {
+      "id": "LNG-FULL-BT-009",
+      "severity": "major",
+      "route": "/gehirn/tumoren/zns-lymphom",
+      "source": "data/pcnslLesson.js:25–27 caseT1Alt.de/caseDwiAlt.de/caseAdcAlt.de; app/gehirn/tumoren/zns-lymphom/page.js:33–35",
+      "observed": "AllthreeactualGermanMRIalttextsarePersian. Current actualsourceconfirmed same, not onlysnapshot.",
+      "impact": "German screenreaderlearner cannot understand caseguidance; locale label/content mismatch.",
+      "requiredCorrection": "Translate these3DEaltfieldstocorrectGerman preservingclinicaldirections/sequence/rightbasalganglia/corecomparison.",
+      "retest": "PASS actual gitdiff shows all3DEalts replaced from Persian to German. Read fullDEENFA triples: axialpostcontrast/rightbasalganglia/ringnonenhancingcentre, DWIADCpair/lowADC inDWIbrightportions preserved. Manifest before==after was an author rerun artifact; gitbaseline independently confirms true before.",
+      "resolution": "CLOSED"
+    },
+    {
+      "id": "LNG-FULL-BT-010",
+      "severity": "minor",
+      "route": "/gehirn/vaskulaer/avm-zns",
+      "source": "data/avm.js niduSdefinition/peduncleseloquenceFA; T1nativcaselabel",
+      "observed": "FA cerebellarpeduncles becomes پدیکل‌های مخچه‌ای (pedicles rather than peduncles); Nidusdefinition uses malformeduntranslated کنولوت fromKonvolut. T1nativlabelGermanENFA.",
+      "impact": "Anatomicalterm and core vascularnetwork concept unclear; no scoredthresholdchange inferred.",
+      "requiredCorrection": "Use پایه‌ها/پدانکل‌های مخچه‌ای and شبکهٔ درهم‌پیچیدهٔ عروق; localizeprecontrastT1figurelabel.",
+      "retest": "PASS actual Konvolut→شبکهٔ درهم‌پیچیدهٔ عروق and peduncles→پایه‌های مخچه read insource; T1nativ localization remains OPEN.",
+      "resolution": "PARTIALLY_CLOSED"
+    },
+    {
+      "id": "LNG-FULL-BT-011",
+      "severity": "minor",
+      "route": "/gehirn/vaskulaer/dva",
+      "source": "data/dva.js complications collector-veinthrombosis imaging FAcell",
+      "observed": "MRI Suszeptibilität/susceptibility becomes FA حساسیت (generic sensitivity) without magnetic qualifier. Additional capillary-telangiectasia FA intro and both SWI alttexts use generic حساسیت; same magnetic-susceptibility qualifier missing.",
+      "impact": "Imagingproperty canbeconfused with diagnostic sensitivity rather than susceptibilityeffect.",
+      "requiredCorrection": "Use اثر حساسیت مغناطیسی/سوسپتیبیلیتی preserving remainder.",
+      "retest": "PASS DVA FA table T1 effect now اثر حساسیت مغناطیسی and linkedSWIMCQ explanation same qualifier. Additional capillary-telangiectasia terminology remains OPEN.",
+      "additionalRoutes": [
+        "/gehirn/vaskulaer/kapillaere-teleangiektasie"
+      ],
+      "resolution": "PARTIALLY_CLOSED"
+    },
+    {
+      "id": "LNG-FULL-BT-012",
+      "severity": "minor",
+      "route": "/gehirn/vaskulaer/gefaessdissektion",
+      "source": "Dissection lesson hero stat <50J.; FA Flame-sign morphology cell",
+      "observed": "Hero ageunit J. remains German EN/FA. Flame taperedocclusion translated انسداد تدریجی و شعله‌ای (gradualocclusion); temporalwordcouldbeconfusedwithspatialtapering.",
+      "impact": "Localized ageunit missing; spatial vesselshape description lessprecise.",
+      "requiredCorrection": "Use ENyears/FAسال and spatial باریک‌شونده/نوک‌تیز for Flame morphology rather than gradualtemporalterm.",
+      "retest": "Pending.",
+      "resolution": "OPEN"
+    },
+    {
+      "id": "LNG-FULL-BT-013",
+      "severity": "minor",
+      "route": "/gehirn/vaskulaer/hypertensive-mikroangiopathie",
+      "source": "data/hypertensive-mikroangiopathie.js clinical.puremotor FA text",
+      "observed": "Posteriorlimb ofinternalcapsule rendered کپسول داخلی (پای خلفی), literal posteriorleg rather than named anatomical limb.",
+      "impact": "Anatomicalterminology unprofessional/ambiguous.",
+      "requiredCorrection": "Use بازوی خلفی کپسول داخلی or شاخهٔ خلفی consistentglossary; no clinicalsyndromeside/scoringedits.",
+      "retest": "PASS current puremotor DEENFA triple: Capsulainterna(hintererSchenkel)/posteriorlimb/بازوی خلفی, Pons and no sensoryloss preserved.",
+      "resolution": "CLOSED"
+    },
+    {
+      "id": "LNG-FULL-BT-014",
+      "severity": "minor",
+      "route": "/gehirn/vaskulaer/intrazerebrale-blutung",
+      "source": "data/icb.js lessoncase1caption+overviewflowchartcasecaption; sourcecredits",
+      "observed": "FA firstcasecaption omits initial no-perifocaledema and later incipient fourthventriclecompressionqualifier. FAoverviewflowcharthyperacute line omitsT1iso/hypo presentDEEN (bodytextelsewherehasit). Imagecredit Bildmaterial aus dem Lehrmaterial remainsGermanENFA.",
+      "impact": "Comparisoncaption loses specificobservedinitial/followupdetails and summarysequencefact; creditnotlocalized. No demonstrated thresholdinversion.",
+      "requiredCorrection": "Restore preciseFAdetailsandlocalizegenericcreditphrase; retainproperattributionsandlicense.",
+      "retest": "Pending.",
+      "resolution": "OPEN"
+    },
+    {
+      "id": "LNG-FULL-BT-015",
+      "severity": "minor",
+      "route": "/gehirn/vaskulaer/hypoxisch-ischaemische-hirnschaedigung",
+      "source": "HIE lesson FA profoundpattern title andhero bilateralstat",
+      "observed": "ProfundesMuster/profoundpattern becomes الگوی عمیق (anatomicallydeep) ratherthan severeinjurypattern. Separatecentral/deepgreypatternexists. Hero bilateral literalEnglish remainsFA.",
+      "impact": "Patternlabelconflatesseveritywithdepthoflesions.",
+      "requiredCorrection": "Use الگوی آسیب شدید / الگوی هیپوکسی شدید; localizedدوطرفهhero.",
+      "retest": "Pending.",
+      "resolution": "OPEN"
+    },
+    {
+      "id": "LNG-FULL-BT-016",
+      "severity": "minor",
+      "route": "/gehirn/vaskulaer/isch-aemischer-schlaganfall",
+      "source": "data/stroke.js CT temporal-evolution fogging row time label; FA Definition heading",
+      "observed": "2–3 Wochen time label remains German in EN/FA. FA Definition label untranslated. All clinical timing and software/selection guards otherwise preserved.",
+      "impact": "Localized temporal marker inaccessible to monolingual learner.",
+      "requiredCorrection": "Use 2–3 weeks / ۲ تا ۳ هفته and localize FA definition label.",
+      "retest": "Pending.",
+      "resolution": "OPEN"
+    },
+    {
+      "id": "LNG-FULL-BT-017",
+      "severity": "minor",
+      "route": "/gehirn/vaskulaer/kavernom",
+      "source": "data/kavernom.js sequence-comparison image alts; susceptibility cells",
+      "observed": "Five supratentorial sequence image alts retain German Kavernom in EN/FA. FA small-lesion T2 cell and case interpretation use generic حساسیت for susceptibility rather than magnetic susceptibility.",
+      "impact": "Screenreader locale remnants and ambiguous imaging-property terminology.",
+      "requiredCorrection": "Localize cavernoma/کاورنوم in alts and specify حساسیت مغناطیسی in relevant cells.",
+      "retest": "Pending.",
+      "resolution": "OPEN"
+    },
+    {
+      "id": "LNG-FULL-BT-018",
+      "severity": "minor",
+      "route": "/gehirn/vaskulaer/moya-moya",
+      "source": "Moyamoya lesson associated-condition headings, hero Grad I–VI and FA chronic infarct CT cell",
+      "observed": "Down-Syndrom (Trisomie 21), Neurofibromatose Typ 1 and Grad I–VI retained German EN/FA. FA watershed-distributed infarcts rendered zone آبشاری (waterfall) rather than border-zone.",
+      "impact": "Untranslated clinical labels and misleading literal spatial term.",
+      "requiredCorrection": "Localize named-condition descriptors/grade; use نواحی مرزی (watershed) for infarct distribution.",
+      "retest": "Pending.",
+      "resolution": "OPEN"
+    },
+    {
+      "id": "LNG-FULL-BT-019",
+      "severity": "major",
+      "route": "/gehirn/vaskulaer/subarachnoidalblutung",
+      "source": "data/sab.js:470–474 THM Fisher, :488–490 THM complications",
+      "observed": "FA Fisher THM uniquely retains about40% highest-risk claim while DE/EN removed percentage and state scale does not replace monitoring. FA scope below says no individual probabilities. FA THM complications omits SIADH/CSW; reduced-consciousness prose omits Hunt/Hess attribution and admission timing.",
+      "impact": "Persian learners receive materially different risk claim and lose monitoring caveat.",
+      "requiredCorrection": "Align FA Fisher summary with DE/EN no individual percentage + monitoring qualifier; restore specific omitted summary/context terms.",
+      "retest": "PASS currentSABFA FisherTHM now highestcategory and scale not substitute clinicalmonitoring; stale40%removed; <1/≥1/IVH0–4 retained. Remaining minor omissions SIADH/CSW and HuntHess/admissioncontext OPEN. Major riskclaim discrepancy CLOSED.",
+      "resolution": "PARTIALLY_CLOSED",
+      "remainingSeverity": "minor"
+    },
+    {
+      "id": "LNG-FULL-BT-020",
+      "severity": "minor",
+      "route": "/gehirn/vaskulaer/subduralhaematom",
+      "source": "SDH lesson shared hero stat value and scattered FA prose",
+      "observed": "German Sichel retained as hero value EN/FA; FA prose leaves arachnoid, anticoagulation, fracture, compartment and hematocrit as untranslated English nouns.",
+      "impact": "Polish/localized terminology incomplete although core clinical parity preserved.",
+      "requiredCorrection": "Use crescent/هلال and natural Persian equivalents in FA prose.",
+      "retest": "Pending.",
+      "resolution": "OPEN"
+    },
+    {
+      "id": "LNG-FULL-BT-021",
+      "severity": "minor",
+      "route": "/thorax/kardio/kardio-mrt-indikationen",
+      "source": "Cardiac MRI indications FA mass/thrombus entries and hero QUESTIONFIRST/KHK labels",
+      "observed": "FA translates thrombus (the clot/mass) as ترومبوز (thrombosis disease/process) in mass-selector and tumour/pericardium differential; QUESTIONFIRST and German KHK persist in localized UI.",
+      "impact": "Mass-vs-process terminology imprecise and UI fragments unlocalized.",
+      "requiredCorrection": "Use ترومبوس/لخته for intracardiac mass and localize ordinary UI labels; retain thrombosis term where actual disease intended.",
+      "retest": "Pending.",
+      "resolution": "OPEN"
+    },
+    {
+      "id": "LNG-FULL-BT-022",
+      "severity": "minor",
+      "route": "/thorax/kardio/myokardinfarkt-differentialdiagnosen",
+      "source": "MI differential lesson decision-path alt; Takotsubo case4wk followup; chronicinfarct LGE FA sentence",
+      "observed": "DE decision-path alt lacks clinicallystable qualifier present ENFA. DE Takotsubo case says wallmotion/pericardialeffusion rückläufig after4wk; ENFA state resolved/برطرف شدند. FA chronicinfarct LGE states wallthinning without DEEN often qualifier.",
+      "impact": "Clinical context and evolution certainty differ by locale, although main case/threshold details preserved.",
+      "requiredCorrection": "Align stablepatient condition and casefollowup certainty to verified case/source; retain often wallthinning in FA.",
+      "retest": "Pending.",
+      "resolution": "OPEN"
+    },
+    {
+      "id": "LNG-FULL-BT-023",
+      "severity": "minor",
+      "route": "/thorax/pectus-excavatum",
+      "source": "Pectus excavatum FA secondchapter PDF lingula mimic paragraph",
+      "observed": "FA PDF به اشتباه با پنومونی لینگولا نیز اشاره می‌کند malformed, can imply PDF wrongly mentions lingularpneumonia. DEENsay PDF also mentions confusion with lingularpneumonia.",
+      "impact": "Source attribution/mimic wording unclear; main rightmiddle-lobe anatomy preserved.",
+      "requiredCorrection": "Say PDF همچنین به امکان اشتباه‌گرفتن با پنومونی لینگولا اشاره می‌کند preservingnotcoexistenceexclusion.",
+      "retest": "Pending.",
+      "resolution": "OPEN"
+    },
+    {
+      "id": "LNG-FULL-BT-024",
+      "severity": "minor",
+      "route": "/thorax/uip-ipf",
+      "source": "UIP/IPF FA alternative-diagnosis HRCT category row",
+      "observed": "Marked mosaic attenuation rendered کاهش دانسیته با توزیع موزاییکی (mosaic attenuation), narrowing neutral differing attenuation to decreased attenuation.",
+      "impact": "Mosaic terminology unnecessarily restricted despite earlier HRCT teaching that bright or dark regions may be abnormal.",
+      "requiredCorrection": "Use دانسیتهٔ موزائیکی واضح / موزائیک اتنوئیشن بارز with three-density phrase retained.",
+      "retest": "Pending.",
+      "resolution": "OPEN"
+    },
+    {
+      "id": "LNG-FULL-BT-025",
+      "severity": "major",
+      "route": "/thorax/kardio/kardiomyopathien",
+      "source": "app/thorax/kardio/kardiomyopathien/page.js:61 readingSteps Mapping text.fa; :82 reporting Tissue text.fa",
+      "observed": "Active lesson still translates native T1 as T1 طبیعی (normal T1), including T1 طبیعیِ پایین for low native T1; reporting repeats T1/T2 طبیعی. data/cardiomyopathy.js assessment bank was repaired, but lesson uses separate inline content.",
+      "impact": "Persian learner can misread pre-contrast technique as a normal result and confuse low-nativeT1 Fabry clue. This is current source rather than stale snapshot.",
+      "requiredCorrection": "Mirror technique-specific پیش از تزریق into both lesson rows, preserving ECV and low-T1 clinical meaning; use ترومبوس for apical clot as minor terminology polish.",
+      "retest": "PASS actual currentinlinepage3FAstrings and all3actualrouteSSRrenders independently retested (test-brain-thorax-native-ssr.mjs; brain-thorax-native-ssr.json; tmp/brain-thorax-native-ssr/0-{de,en,fa}.html). Read rendered Mapping,Fabrylow-nativeT1,reportT1/T2 and apicalthrombus in DEENFA. FA پیش از تزریق and ترومبوس preserve meaning; ECV is not labelled precontrast. Source-only/context-fixture SSR, no new browser or live approval.",
+      "resolution": "CLOSED"
+    }
+  ],
+  "limits": [
+    "SSR text snapshot includes initial visible/expanded author-collected sections; interactive hidden-state coverage not inferred.",
+    "No fresh comprehensive primary-source or PDF/media rereview; no browser/RTL layout pass from text.",
+    "Current source may change after frozen text; author deltas separately reviewed."
+  ],
+  "reviewedRoutes": 84,
+  "triageComplete": true,
+  "otherObservedLimits": [
+    {
+      "route": "/thorax/bronchiolitis",
+      "gate": "EDU",
+      "observed": "Thirdchapter has heading+readcontrol with no body after rules moved finalTHM. Same3locales. Parentnotified."
+    },
+    {
+      "route": "/thorax/fremdkoerperaspiration",
+      "gate": "EDU",
+      "observed": "Lesson suspected-side-down/then-dependenthealthy statement source-level contradiction same3locales. Parentauthorfixedpendingindependentretest.",
+      "retest": "PASS current actual C.de/en/fa.tech strings independently read: suspected dependent lung remains inflated and lacks expected size decrease/density increase. Contradictory dependenthealthy clause removed in all3. Source-only; runtime still parent-owned."
+    },
+    {
+      "routes": [
+        "/thorax/hrct/dichteanhebung",
+        "/thorax/hrct/retikulaer-nodulaer"
+      ],
+      "gate": "SRC",
+      "observed": "Several extra provenance paragraphs have blank PDFpage/printedpage/rID placeholders although image captions name provenance. No fresh verification."
+    },
+    {
+      "route": "/thorax/kardio/myokardinfarkt-mrt",
+      "gate": "UX",
+      "observed": "Draftnotice LektionimAufbau/Lessoninprogress/Persiandraft remains at top; parentnotified."
+    },
+    {
+      "route": "/thorax/pulmonale-hypertonie",
+      "gate": "UX",
+      "observed": "DEEN haemodynamic subtype prose renders literal &gt;20mmHg; FAprose correctcomparison. This is textformattingevidence, notbrowserinspection."
+    }
+  ],
+  "gateSummary": {
+    "SRC": "BLOCKED",
+    "EDU": "NOT_APPLICABLE",
+    "VIS": "BLOCKED",
+    "LNG": "REVISE",
+    "ASM": "NOT_APPLICABLE",
+    "UX": "BLOCKED",
+    "REV": "PASS"
+  },
+  "completionSummary": {
+    "routes": 84,
+    "freshTriadRoutes": 82,
+    "reusedFullPairRoutes": 2,
+    "snapshotChars": 1651021,
+    "fullPairReuse": "ARVC310+CMR433 COPY units×DEENFA;75actualARVCcomponentSSRstates",
+    "findingGroups": 25,
+    "closedFindingGroups": [
+      "LNG-FULL-BT-003",
+      "LNG-FULL-BT-009",
+      "LNG-FULL-BT-013",
+      "LNG-FULL-BT-025"
+    ],
+    "partiallyClosedGroups": [
+      "LNG-FULL-BT-005",
+      "LNG-FULL-BT-010",
+      "LNG-FULL-BT-011",
+      "LNG-FULL-BT-019"
+    ],
+    "remainingMajor": [],
+    "noGlobalClinicalPass": true,
+    "openOrPartiallyOpenGroups": 21,
+    "currentLNGPassRoutes": 63,
+    "currentLNGReviseRoutes": 21,
+    "allDemonstratedMajorLanguageDefectsResolved": true,
+    "retestLimit": "Remaining minor text findings deliberately OPEN. Browser/hidden states/media/rights/PDF scientific verification beyond specified prior evidence not inferred."
+  }
+}

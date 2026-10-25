@@ -1,0 +1,211 @@
+{
+  "date": "2026-10-25",
+  "scope": "All10 assigned MSKtumor DE/EN/FA rendered text triads fully comparatively read, including all clinicalparagraphs/tables, captions/alt, initialselfcheckoptions,THM/sourcecomments. Re-read truncatedmiddleOsteomFAin separate boundedcall.",
+  "status": "COMPLETE_TRIAGE_REVISE",
+  "routes": [
+    {
+      "route": "/msk/tumoren/knochenmetastasen",
+      "entry": "app/msk/tumoren/knochenmetastasen/page.jsx",
+      "group": "msk",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\154-msk--tumoren--knochenmetastasen.txt",
+      "chars": 17457,
+      "snapshotSha256": "0ae8bd95adf0b7a6f19aa15dd8aa87b260459157b8e1136c90094d414af44e47",
+      "status": "REVISE",
+      "reviewedLocales": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "limitations": "Not an independent reread of sourcePDF, patientimages, scientificclaims or all postinteractionstates."
+    },
+    {
+      "route": "/msk/tumoren/knochenzeichen",
+      "entry": "app/msk/tumoren/knochenzeichen/page.js",
+      "group": "msk",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\155-msk--tumoren--knochenzeichen.txt",
+      "chars": 18662,
+      "snapshotSha256": "2b3e9fe041d18510ed28d913462b623913e834dce721420b089d570afcd02594",
+      "status": "REVISE",
+      "reviewedLocales": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "limitations": "Not an independent reread of sourcePDF, patientimages, scientificclaims or all postinteractionstates."
+    },
+    {
+      "route": "/msk/tumoren/nicht-ossifizierendes-fibrom",
+      "entry": "app/msk/tumoren/nicht-ossifizierendes-fibrom/page.jsx",
+      "group": "msk",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\156-msk--tumoren--nicht-ossifizierendes-fibrom.txt",
+      "chars": 16230,
+      "snapshotSha256": "b075ec3c62373f22cb1b708f9c8a50226a078ca8a7813ec547036b8b788479c1",
+      "status": "REVISE",
+      "reviewedLocales": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "limitations": "Not an independent reread of sourcePDF, patientimages, scientificclaims or all postinteractionstates."
+    },
+    {
+      "route": "/msk/tumoren/osteoblastom",
+      "entry": "app/msk/tumoren/osteoblastom/page.jsx",
+      "group": "msk",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\157-msk--tumoren--osteoblastom.txt",
+      "chars": 14230,
+      "snapshotSha256": "c4ff62ad23c7cf84661c9a5b1d64f463673b82cbf520cbc7b9658cce33d60b7d",
+      "status": "REVISE",
+      "reviewedLocales": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "limitations": "Not an independent reread of sourcePDF, patientimages, scientificclaims or all postinteractionstates."
+    },
+    {
+      "route": "/msk/tumoren/osteochondrom",
+      "entry": "app/msk/tumoren/osteochondrom/page.jsx",
+      "group": "msk",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\158-msk--tumoren--osteochondrom.txt",
+      "chars": 15103,
+      "snapshotSha256": "5829853db0ef347966ff51f5630f9215a569391a2d6c2c73c03361376792909b",
+      "status": "REVISE",
+      "reviewedLocales": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "limitations": "Not an independent reread of sourcePDF, patientimages, scientificclaims or all postinteractionstates."
+    },
+    {
+      "route": "/msk/tumoren/osteoid-osteom",
+      "entry": "app/msk/tumoren/osteoid-osteom/page.jsx",
+      "group": "msk",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\159-msk--tumoren--osteoid-osteom.txt",
+      "chars": 17557,
+      "snapshotSha256": "62ccebddfaeebe91653e7f9a4286d6ef46920280fa148934e15a66bf27c52732",
+      "status": "REVISE",
+      "reviewedLocales": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "limitations": "Not an independent reread of sourcePDF, patientimages, scientificclaims or all postinteractionstates."
+    },
+    {
+      "route": "/msk/tumoren/osteom",
+      "entry": "app/msk/tumoren/osteom/page.jsx",
+      "group": "msk",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\160-msk--tumoren--osteom.txt",
+      "chars": 16451,
+      "snapshotSha256": "c5299f47e8323a0b5a4f69654cd136bdad8e3100e0c7d6c298948e4062659aab",
+      "status": "REVISE",
+      "reviewedLocales": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "limitations": "Not an independent reread of sourcePDF, patientimages, scientificclaims or all postinteractionstates."
+    },
+    {
+      "route": "/msk/tumoren/osteosarkom",
+      "entry": "app/msk/tumoren/osteosarkom/page.jsx",
+      "group": "msk",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\161-msk--tumoren--osteosarkom.txt",
+      "chars": 20707,
+      "snapshotSha256": "50ef17817503776dcf28bb73ddf60e2fa89775fb322b4ea720b78817bad675e1",
+      "status": "REVISE",
+      "reviewedLocales": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "limitations": "Not an independent reread of sourcePDF, patientimages, scientificclaims or all postinteractionstates."
+    },
+    {
+      "route": "/msk/tumoren/plasmozytom-myelom",
+      "entry": "app/msk/tumoren/plasmozytom-myelom/page.jsx",
+      "group": "msk",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\162-msk--tumoren--plasmozytom-myelom.txt",
+      "chars": 24913,
+      "snapshotSha256": "f4196364fccfbf541d177449bc6ab93107166c9d60c54098445b51b088b0eb40",
+      "status": "REVISE",
+      "reviewedLocales": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "limitations": "Not an independent reread of sourcePDF, patientimages, scientificclaims or all postinteractionstates."
+    },
+    {
+      "route": "/msk/tumoren/tgct",
+      "entry": "app/msk/tumoren/tgct/page.jsx",
+      "group": "msk",
+      "file": "tmp\\assessment-quality\\lesson-text-triads\\163-msk--tumoren--tgct.txt",
+      "chars": 19179,
+      "snapshotSha256": "3807d4e03a40604528e7ce0fe0b2d1b2ce11504817c3d0135f9359e0af2c6e7c",
+      "status": "REVISE",
+      "reviewedLocales": [
+        "de",
+        "en",
+        "fa"
+      ],
+      "limitations": "Not an independent reread of sourcePDF, patientimages, scientificclaims or all postinteractionstates."
+    }
+  ],
+  "findings": [
+    {
+      "id": "LNG-ROOT-MSK-SOURCE-COMMENTS",
+      "severity": "minor",
+      "routes": [
+        "/msk/tumoren/nicht-ossifizierendes-fibrom",
+        "/msk/tumoren/osteochondrom",
+        "/msk/tumoren/osteoblastom"
+      ],
+      "observed": "Authored source-appraisal annotations in DE and/or FA remain English (retrospective103lesions/cohort limits, CTcriteria multi-feature limits,101lesionvalidation,WHOclassificationcomment). Publication titles may stay original; appraisalcomments should localize.",
+      "status": "OPEN_EDITORIAL"
+    },
+    {
+      "id": "LNG-ROOT-MSK-SPINAL",
+      "severity": "minor",
+      "route": "/msk/tumoren/osteoid-osteom",
+      "observed": "FA osteoblastoma differential says محل نخاعی (cord) instead of vertebral/spinallocation (DE spinal; sameFAsentence latercorrectly says ستون فقرات).",
+      "source": "data/mskOsteoidOsteomLesson.js",
+      "required": "محل ستون فقرات",
+      "status": "OPEN_EDITORIAL"
+    },
+    {
+      "id": "LNG-ROOT-MSK-FLORID",
+      "severity": "minor",
+      "route": "/msk/tumoren/osteochondrom",
+      "observed": "FA Nora lesion florid reactiveproliferation rendered پررنگ (colour-intense) rather than prominentproliferation. Underlying Nora classification distinction itself not scientifically recertified.",
+      "status": "OPEN_EDITORIAL"
+    },
+    {
+      "id": "LNG-ROOT-MSK-OSTEOBLASTOMA-DISTRIBUTION",
+      "severity": "minor",
+      "route": "/msk/tumoren/osteoblastom",
+      "observed": "FA بقیه نیز در استخوان‌های بلند suggests allremaining cases longbones; DE sonstauch/ENanother site do not state thatallothercases arelongbones.",
+      "status": "OPEN_EDITORIAL"
+    },
+    {
+      "id": "PED-ROOT-MSK-VISIBLE-CHECKS",
+      "severity": "moderate",
+      "routes": [
+        "/msk/tumoren/knochenmetastasen",
+        "/msk/tumoren/knochenzeichen",
+        "/msk/tumoren/nicht-ossifizierendes-fibrom",
+        "/msk/tumoren/osteoblastom",
+        "/msk/tumoren/osteochondrom",
+        "/msk/tumoren/osteoid-osteom",
+        "/msk/tumoren/osteom",
+        "/msk/tumoren/osteosarkom",
+        "/msk/tumoren/plasmozytom-myelom",
+        "/msk/tumoren/tgct"
+      ],
+      "observed": "Visible selfchecks mainly ask one basic clue/appropriate cautious interpretation with obviously unsafe absolute/proof distractors. These usefulintrochecks do not alone establish specialist examination difficulty or diagnostic-image application. Some need stronger same-plausibility alternatives.",
+      "status": "OPEN_BLUEPRINT_REVIEW"
+    }
+  ]
+}

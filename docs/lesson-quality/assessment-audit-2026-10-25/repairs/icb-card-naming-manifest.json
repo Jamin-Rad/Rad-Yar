@@ -1,0 +1,50 @@
+{
+  "changes": [
+    {
+      "file": "data/icb.js",
+      "before": "CT attenuation ICB: acute, subacute, chronic?",
+      "after": "CT attenuation in ICH: acute, subacute, chronic?"
+    },
+    {
+      "file": "data/icb.js",
+      "before": "CAA vs. hypertensive ICB · location?",
+      "after": "CAA vs. hypertensive ICH · location?"
+    },
+    {
+      "file": "data/icb.js",
+      "before": "Ring enhancement in ICB · How long? · DD?",
+      "after": "Ring enhancement after ICH · Duration and differential diagnosis?"
+    },
+    {
+      "file": "data/icb.js",
+      "before": "Which MRI sequence for which ICB phase?",
+      "after": "Which MRI sequence for which ICH phase?"
+    },
+    {
+      "file": "data/icb.js",
+      "before": "دانسیته CT ICB: حاد، زیرحاد، مزمن؟",
+      "after": "دانسیتهٔ خونریزی داخل مغزی در CT: حاد، زیرحاد و مزمن؟"
+    },
+    {
+      "file": "data/icb.js",
+      "before": "CAA در برابر ICB هیپرتانسیو · محل؟",
+      "after": "CAA در برابر خونریزی داخل مغزی ناشی از پرفشاری خون · محل؟"
+    },
+    {
+      "file": "data/icb.js",
+      "before": "Ring تقویت پس از تزریق در ICB · چقدر؟ · DD؟",
+      "after": "تقویت حلقوی پس از خونریزی داخل مغزی · مدت و تشخیص افتراقی؟"
+    },
+    {
+      "file": "data/icb.js",
+      "before": "کدام سکانس MRI برای کدام مرحله ICB؟",
+      "after": "کدام سکانس MRI برای کدام مرحلهٔ خونریزی داخل مغزی؟"
+    },
+    {
+      "file": "data/icb.js",
+      "before": "Ring تقویت پس از تزریق به دلیل",
+      "after": "تقویت حلقوی پس از تزریق به دلیل"
+    }
+  ],
+  "scope": "Display naming only, no IDs/scientificclaim/key changes. Observed actual card UI with German ICB in EN/FA and malformed Ring phrase."
+}

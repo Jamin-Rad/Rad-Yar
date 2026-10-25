@@ -1,0 +1,20 @@
+{
+  "scope": "Mirror already independently verified bank decubitus interpretation into contradictory lesson copy; no new management rule.",
+  "changes": [
+    {
+      "file": "app/thorax/fremdkoerperaspiration/page.js",
+      "before": "Bleibt sie überbläht, unterstützt das Air trapping; die abhängige gesunde Seite kann durch Schwerkraft etwas dichter erscheinen.",
+      "after": "Bleibt die unten liegende verdächtige Lunge überbläht und zeigt nicht die erwartete Volumenabnahme und Dichtezunahme, unterstützt das Air trapping."
+    },
+    {
+      "file": "app/thorax/fremdkoerperaspiration/page.js",
+      "before": "Persistent hyperinflation supports air trapping; the dependent healthy lung may become slightly denser under gravity.",
+      "after": "Persistent inflation of the dependent suspected lung, without the expected volume decrease and density increase, supports air trapping."
+    },
+    {
+      "file": "app/thorax/fremdkoerperaspiration/page.js",
+      "before": "باقی‌ماندن پرهوایی به نفع حبس هواست؛ ریه سالمِ پایین‌قرارگرفته ممکن است بر اثر جاذبه کمی متراکم‌تر شود.",
+      "after": "اگر ریهٔ مشکوکِ پایین‌قرارگرفته پُرهوا بماند و کاهش حجم و افزایش دانسیتهٔ مورد انتظار را نشان ندهد، این یافته به نفع حبس هواست."
+    }
+  ]
+}
