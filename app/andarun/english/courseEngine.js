@@ -1,9 +1,9 @@
-import { questions, questionMap, flashcards, flashcardMap, lessonMap } from './courseContent.js'
+import { questions, questionMap, flashcards, flashcardMap, lessonMap, categories } from './courseContent.js'
 
 export const LEGACY_STORAGE_KEY = 'jaminova-english-b1-pilot-v1'
 export const STORAGE_KEY = 'jaminova-english-b1-v2'
 export const DAY = 86400000
-export const emptyState = () => ({ version: 2, updatedAt: 0, attempts: 0, mistakes: {}, cards: {}, session: null, sessionUpdatedAt: 0, history: [] })
+export const emptyState = () => ({ version: 2, updatedAt: 0, attempts: 0, completedTests: {}, mistakes: {}, cards: {}, session: null, sessionUpdatedAt: 0, history: [] })
 const validTime = n => Number.isSafeInteger(n) && n >= 0 && n < 9000000000000
 const validAnswer = n => Number.isInteger(n) && n >= 0 && n < 4
 const stamp = (state, now) => Math.max(now, state.updatedAt + 1)
@@ -34,12 +34,23 @@ export function readState(raw) {
     if(entry&&validTime(entry.due)&&Number.isInteger(entry.box)&&entry.box>=0&&entry.box<=5)
       clean.cards[c.id]={due:entry.due,box:entry.box,updatedAt:validTime(entry.updatedAt)?entry.updatedAt:1}
   }
-  clean.history=Array.isArray(raw.history)?raw.history.filter(h=>h&&['test','review','random'].includes(h.mode)&&validTime(h.at)&&Number.isInteger(h.correct)&&Number.isInteger(h.total)&&h.total>0&&h.total<=120&&h.correct>=0&&h.correct<=h.total).slice(-100).map(h=>({
+  clean.history=Array.isArray(raw.history)?raw.history.filter(h=>h&&['test','review','random'].includes(h.mode)&&validTime(h.at)&&Number.isInteger(h.correct)&&Number.isInteger(h.total)&&h.total>0&&h.total<=questions.length&&h.correct>=0&&h.correct<=h.total).slice(-100).map(h=>({
     id:typeof h.id==='string'?h.id.slice(0,120):'legacy-'+h.at,mode:h.mode,at:h.at,lessonId:h.lessonId==='all'?'all':Object.hasOwn(lessonMap,h.lessonId)?h.lessonId:'b1-01',
     category:['reading','grammar','vocabulary','conversation'].includes(h.category)?h.category:'mixed',correct:h.correct,total:h.total
   })):[]
+  // Keep completions independently of the bounded recent-history list.
+  for(const lessonId of Object.keys(lessonMap)){
+    const record={}
+    for(const category of Object.keys(categories)){
+      const value=raw.completedTests?.[lessonId]?.[category]
+      if(validTime(value))record[category]=value
+    }
+    for(const h of clean.history)if(h.mode==='test'&&h.lessonId===lessonId&&Object.hasOwn(categories,h.category))
+      record[h.category]=Math.max(record[h.category]||0,h.at)
+    if(Object.keys(record).length)clean.completedTests[lessonId]=record
+  }
   const s=raw.session
-  if(s&&typeof s.id==='string'&&['test','review','random'].includes(s.mode)&&Array.isArray(s.ids)&&s.ids.length>0&&s.ids.length<=120&&
+  if(s&&typeof s.id==='string'&&['test','review','random'].includes(s.mode)&&Array.isArray(s.ids)&&s.ids.length>0&&s.ids.length<=questions.length&&
     new Set(s.ids).size===s.ids.length&&s.ids.every(id=>Object.hasOwn(questionMap,id))&&
     Number.isInteger(s.index)&&s.index>=0&&s.index<=s.ids.length&&[0,1].includes(s.variant)){
     const answers=Object.fromEntries(s.ids.filter(id=>validAnswer(s.answers?.[id])).map(id=>[id,s.answers[id]]))
@@ -54,10 +65,19 @@ const latest = (a,b) => (a?.updatedAt||0)>(b?.updatedAt||0)?a:b
 export function mergeState(left,right) {
   const a=readState(left),b=readState(right)
   const mergeRecords=(x,y)=>Object.fromEntries([...new Set([...Object.keys(x),...Object.keys(y)])].map(id=>[id,latest(x[id],y[id])]))
+  const completedTests={}
+  for(const id of Object.keys(lessonMap)){
+    const record={}
+    for(const category of Object.keys(categories)){
+      const values=[a.completedTests[id]?.[category],b.completedTests[id]?.[category]].filter(validTime)
+      if(values.length)record[category]=Math.max(...values)
+    }
+    if(Object.keys(record).length)completedTests[id]=record
+  }
   const winner=a.sessionUpdatedAt>b.sessionUpdatedAt?a:b
   return readState({
     ...winner,version:2,updatedAt:Math.max(a.updatedAt,b.updatedAt),attempts:Math.max(a.attempts,b.attempts),
-    mistakes:mergeRecords(a.mistakes,b.mistakes),cards:mergeRecords(a.cards,b.cards),
+    completedTests,mistakes:mergeRecords(a.mistakes,b.mistakes),cards:mergeRecords(a.cards,b.cards),
     history:[...new Map([...a.history,...b.history].map(h=>[h.id,h])).values()].sort((x,y)=>x.at-y.at).slice(-100)
   })
 }
@@ -105,7 +125,10 @@ export function advance(state,now=Date.now()) {
   if(!q||s.answers[q.id]===undefined)return state
   const updatedAt=stamp(state,now),next={...s,index:s.index+1},score=result(next)
   const history=next.index===next.ids.length?[...state.history,{id:s.id,mode:s.mode,lessonId:s.lessonId,category:s.category,at:now,correct:score.correct,total:score.total}].slice(-100):state.history
-  return {...state,updatedAt,sessionUpdatedAt:updatedAt,session:next,history}
+  const completedTests=next.index===next.ids.length&&s.mode==='test'&&Object.hasOwn(lessonMap,s.lessonId)&&Object.hasOwn(categories,s.category)
+    ?{...state.completedTests,[s.lessonId]:{...state.completedTests?.[s.lessonId],[s.category]:now}}
+    :state.completedTests
+  return {...state,updatedAt,sessionUpdatedAt:updatedAt,session:next,history,completedTests}
 }
 export function dueCards(state,lessonId,now=Date.now()) {
   return flashcards.filter(c=>(lessonId==='all'||c.lessonId===lessonId)&&(!state.cards[c.id]||state.cards[c.id].due<=now))
