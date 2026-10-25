@@ -1,0 +1,32 @@
+{
+  "date": "2026-10-25",
+  "status": "AUTHOR_REPAIRED_RETEST_PENDING",
+  "finding": "ROTATOR-LNG-01 native/nonarthrographic equivalence",
+  "changes": [
+    {
+      "id": "rotatorenmanschette-en-04",
+      "field": "question",
+      "before": "Non-arthrographic shoulder MRI should assess cuff defects in several planes. Which sequence group best supports that task?",
+      "after": "Unenhanced, non-arthrographic shoulder MRI should assess cuff defects in several planes. Which sequence group best supports that task?"
+    },
+    {
+      "id": "rotatorenmanschette-fa-04",
+      "field": "question",
+      "before": "در MRI بدون آرتروگرافی شانه باید نقص‌های روتاتور کاف در چند نما بررسی شوند. کدام گروه سکانس این هدف را بهتر پشتیبانی می‌کند؟",
+      "after": "در MRI شانه بدون تزریق مادهٔ حاجب و بدون آرتروگرافی باید نقص‌های روتاتور کاف در چند نما بررسی شوند. کدام گروه سکانس این هدف را بهتر پشتیبانی می‌کند؟"
+    },
+    {
+      "id": "rotatorenmanschette-04",
+      "field": "front.en",
+      "before": "Which sequence components belong in non-arthrographic shoulder MRI for the rotator cuff?",
+      "after": "Which sequence components belong in unenhanced, non-arthrographic shoulder MRI for the rotator cuff?"
+    },
+    {
+      "id": "rotatorenmanschette-04",
+      "field": "front.fa",
+      "before": "کدام اجزای سکانسی برای MRI بدون آرتروگرافی شانه جهت بررسی روتاتور کاف لازم‌اند؟",
+      "after": "کدام اجزای سکانسی برای MRI شانه بدون تزریق مادهٔ حاجب و بدون آرتروگرافی جهت بررسی روتاتور کاف لازم‌اند؟"
+    }
+  ],
+  "limits": "Proposals only; rootcanonicalapplication pending. Otherfields unchanged."
+}

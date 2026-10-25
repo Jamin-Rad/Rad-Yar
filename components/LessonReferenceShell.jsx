@@ -3,6 +3,7 @@
 import { Children, cloneElement, createElement, isValidElement, useState } from 'react'
 import StandardLessonShell, { LessonSection, TakeHomeList } from '@/components/lesson-template/StandardLessonShell'
 import { abdomenThoraxAssessmentDrafts } from '@/data/abdomenThoraxAssessmentDrafts'
+import { lessonCheckFeedback } from '@/lib/lessonCheckFeedback'
 import styles from './LessonReferenceShell.module.css'
 
 const COPY = {
@@ -29,7 +30,7 @@ function ReferenceCheck({ lessonId, lang, check, labels }) {
     <fieldset className={styles.options}><legend>{labels.choose}</legend>{check.options.map((option, index) => <label key={index} className={picked === index ? styles.selected : ''}>
       <input type="radio" name={`self-check-${lessonId}`} checked={picked === index} onChange={() => setPicked(index)} />{pick(option, lang)}
     </label>)}</fieldset>
-    {picked === null ? <p className={styles.feedback}>{labels.reveal}</p> : <div className={`${styles.feedback} ${picked === check.answer ? styles.correct : styles.incorrect}`} role="status"><strong>{picked === check.answer ? labels.correct : labels.incorrect}</strong>{pick(check.explanation, lang)}</div>}
+    {picked === null ? <p className={styles.feedback}>{labels.reveal}</p> : <div className={`${styles.feedback} ${picked === check.answer ? styles.correct : styles.incorrect}`} role="status"><strong>{picked === check.answer ? labels.correct : labels.incorrect}</strong>{pick(lessonCheckFeedback(check, picked), lang)}</div>}
   </>
 }
 

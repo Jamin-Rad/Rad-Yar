@@ -3548,237 +3548,205 @@ const LEGACY_FLASHCARDS = [
     "topicId": "sarkoidose"
   },
   {
-    "id": "rotatorenmanschette-01",
-    "topicId": "rotatorenmanschette",
-    "category": {
-      "de": "Anatomie",
-      "en": "Anatomy",
-      "fa": "آناتومی"
-    },
-    "front": {
-      "de": "Welche vier Muskeln bilden die Rotatorenmanschette (Merkwort)?",
-      "en": "Which four muscles form the rotator cuff (mnemonic)?",
-      "fa": "روتاتور کاف از کدام چهار عضله تشکیل شده است؟ (مخفف)"
-    },
-    "answer": {
-      "de": "SITS: Supraspinatus, Infraspinatus, Teres minor, Subscapularis.",
-      "en": "SITS: Supraspinatus, Infraspinatus, Teres minor, Subscapularis.",
-      "fa": "SITS: سوپراسپیناتوس، اینفراسپیناتوس، ترس مینور، ساب‌اسکاپولاریس."
-    },
-    "explanation": {
-      "de": "Die vier Muskeln entspringen an der Skapula und setzen am Tuberculum majus (SIT) bzw. minus (Subscapularis) an. Sie stabilisieren den Humeruskopf in der Gelenkpfanne.",
-      "en": "All four muscles originate at the scapula and insert on the greater (SIT) or lesser (subscapularis) tuberosity. They stabilise the humeral head within the glenoid.",
-      "fa": "هر چهار عضله از اسکاپولا منشأ می‌گیرند و به توبروزیتی بزرگ (SIT) یا کوچک (ساب‌اسکاپولاریس) متصل می‌شوند و سر هومروس را در گلنوئید تثبیت می‌کنند."
-    },
-    "diagram": {
-      "de": "SITS = Supraspinatus + Infraspinatus + Teres minor + Subscapularis",
-      "en": "SITS = Supraspinatus + Infraspinatus + Teres minor + Subscapularis",
-      "fa": "SITS = سوپراسپیناتوس + اینفراسپیناتوس + ترس مینور + ساب‌اسکاپولاریس"
-    }
+  "id": "rotatorenmanschette-01",
+  "topicId": "rotatorenmanschette",
+  "category": {
+    "de": "Anatomie",
+    "en": "Anatomy",
+    "fa": "آناتومی"
   },
+  "front": {
+    "de": "Welche vier Muskeln bilden die Rotatorenmanschette (Merkwort)?",
+    "en": "Which four muscles form the rotator cuff (mnemonic)?",
+    "fa": "روتاتور کاف از کدام چهار عضله تشکیل شده است؟ (مخفف)"
+  },
+  "answer": {
+    "de": "SITS: Supraspinatus, Infraspinatus, Teres minor, Subscapularis.",
+    "en": "SITS: Supraspinatus, Infraspinatus, Teres minor, Subscapularis.",
+    "fa": "SITS: سوپراسپیناتوس، اینفراسپیناتوس، ترس مینور، ساب‌اسکاپولاریس."
+  },
+  "explanation": {
+    "de": "Die vier Muskeln entspringen an der Skapula und setzen am Tuberculum majus (SIT) bzw. minus (Subscapularis) an. Sie stabilisieren den Humeruskopf in der Gelenkpfanne.",
+    "en": "All four muscles originate at the scapula and insert on the greater (SIT) or lesser (subscapularis) tuberosity. They stabilise the humeral head within the glenoid.",
+    "fa": "هر چهار عضله از اسکاپولا منشأ می‌گیرند و به توبروزیتی بزرگ (SIT) یا کوچک (ساب‌اسکاپولاریس) متصل می‌شوند و سر هومروس را در گلنوئید تثبیت می‌کنند."
+  },
+  "source": "https://pubmed.ncbi.nlm.nih.gov/1624486/; https://pubmed.ncbi.nlm.nih.gov/12647876/"
+},
   {
-    "id": "rotatorenmanschette-02",
-    "topicId": "rotatorenmanschette",
-    "category": {
-      "de": "Anatomie",
-      "en": "Anatomy",
-      "fa": "آناتومی"
-    },
-    "front": {
-      "de": "Was ist die 'Critical Zone' des Supraspinatus?",
-      "en": "What is the 'critical zone' of the supraspinatus tendon?",
-      "fa": "'Critical Zone' تاندون سوپراسپیناتوس چیست؟"
-    },
-    "answer": {
-      "de": "Hypovaskuläre Zone 1–2 cm vor dem Ansatz am Tuberculum majus.",
-      "en": "Hypovascular zone 1–2 cm proximal to the insertion on the greater tuberosity.",
-      "fa": "ناحیه هیپوواسکولار ۱ تا ۲ سانتی‌متر قبل از محل اتصال به توبرکل بزرگ."
-    },
-    "explanation": {
-      "de": "Diese minderdurchblutete Zone ist der häufigste Ort für Tendinopathie und Rupturen des Supraspinatus.",
-      "en": "This relatively avascular zone is the most common site of supraspinatus tendinopathy and tears.",
-      "fa": "این ناحیه با خون‌رسانی کم، شایع‌ترین محل تاندینوپاتی و پارگی سوپراسپیناتوس است."
-    },
-    "diagram": {
-      "de": "Ansatz ←(1–2cm)→ Critical Zone (hypovaskulär) → häufigste Rupturstelle",
-      "en": "Insertion ←(1–2cm)→ critical zone (hypovascular) → most common tear site",
-      "fa": "محل اتصال ←(۱ تا ۲ سانتی‌متر)→ Critical Zone (هیپوواسکولار) → شایع‌ترین محل پارگی"
-    }
+  "id": "rotatorenmanschette-02",
+  "topicId": "rotatorenmanschette",
+  "category": {
+    "de": "Anatomie",
+    "en": "Anatomy",
+    "fa": "آناتومی"
   },
+  "front": {
+    "de": "Was ist die 'Critical Zone' des Supraspinatus?",
+    "en": "What is the 'critical zone' of the supraspinatus tendon?",
+    "fa": "'Critical Zone' تاندون سوپراسپیناتوس چیست؟"
+  },
+  "answer": {
+    "de": "Ansatznaher Abschnitt der Supraspinatussehne, historisch als relativ minderdurchblutet beschrieben.",
+    "en": "An insertional region of supraspinatus historically described as relatively poorly vascularised.",
+    "fa": "بخشی نزدیک محل اتصال تاندون سوپراسپیناتوس که در توصیف‌های تاریخی خون‌رسانی نسبتاً کمتری داشته است."
+  },
+  "explanation": {
+    "de": "Die Gefäßversorgung ist regional und belastungsabhängig. Die klassische Bezeichnung beweist weder eine stets avaskuläre Zone noch, dass Minderdurchblutung die alleinige Ursache einer Ruptur ist.",
+    "en": "Vascularity varies by region and loading. The classical term proves neither an invariably avascular zone nor that reduced perfusion is the sole cause of a tear.",
+    "fa": "خون‌رسانی با ناحیه و بارگذاری تغییر می‌کند. اصطلاح کلاسیک نه ناحیه‌ای همواره بدون عروق را ثابت می‌کند و نه اینکه کاهش پرفیوژن علت منفرد پارگی باشد."
+  },
+  "source": "https://pubmed.ncbi.nlm.nih.gov/2323147/; https://pubmed.ncbi.nlm.nih.gov/18647848/; https://pubmed.ncbi.nlm.nih.gov/26412209/"
+},
   {
-    "id": "rotatorenmanschette-03",
-    "topicId": "rotatorenmanschette",
-    "category": {
-      "de": "Anatomie",
-      "en": "Anatomy",
-      "fa": "آناتومی"
-    },
-    "front": {
-      "de": "Welche Bewegung führt der M. subscapularis aus?",
-      "en": "What movement does the subscapularis perform?",
-      "fa": "عضله ساب‌اسکاپولاریس چه حرکتی انجام می‌دهد؟"
-    },
-    "answer": {
-      "de": "Innenrotation des Arms.",
-      "en": "Internal rotation of the arm.",
-      "fa": "چرخش داخلی بازو."
-    },
-    "explanation": {
-      "de": "Der Subscapularis ist der wichtigste Innenrotator und der einzige der vier RM-Muskeln, der am Tuberculum minus ansetzt. Bei seiner Ruptur sieht man oft eine Dislokation der langen Bizepssehne.",
-      "en": "The subscapularis is the principal internal rotator and the only one of the four cuff muscles inserting on the lesser tuberosity. Its tear is often associated with biceps tendon dislocation.",
-      "fa": "ساب‌اسکاپولاریس مهم‌ترین چرخاننده داخلی و تنها عضله از چهار عضله روتاتور کاف است که به توبرکل کوچک متصل می‌شود. در پارگی آن، اغلب دیسلوکیشن تاندون بایسپس دیده می‌شود."
-    },
-    "diagram": {
-      "de": "Subscapularis → Tuberculum minus → Innenrotation\nRuptur → oft LHB-Dislokation",
-      "en": "Subscapularis → lesser tuberosity → internal rotation\nTear → often LHB dislocation",
-      "fa": "ساب‌اسکاپولاریس → توبرکل کوچک → چرخش داخلی\nپارگی → اغلب دیسلوکیشن LHB"
-    }
+  "id": "rotatorenmanschette-03",
+  "topicId": "rotatorenmanschette",
+  "category": {
+    "de": "Anatomie",
+    "en": "Anatomy",
+    "fa": "آناتومی"
   },
+  "front": {
+    "de": "Welche Bewegung führt der M. subscapularis aus?",
+    "en": "What movement does the subscapularis perform?",
+    "fa": "عضله ساب‌اسکاپولاریس چه حرکتی انجام می‌دهد؟"
+  },
+  "answer": {
+    "de": "Innenrotation des Arms.",
+    "en": "Internal rotation of the arm.",
+    "fa": "چرخش داخلی بازو."
+  },
+  "explanation": {
+    "de": "Der Subscapularis setzt am Tuberculum minus an und unterstützt Innenrotation sowie glenohumerale Stabilität. Sein Beitrag hängt von Armstellung und Muskelabschnitt ab. Eine mediale Instabilität der langen Bizepssehne ist ein Anlass, besonders oberen Subscapularis und Pulley gezielt zu prüfen.",
+    "en": "Subscapularis inserts on the lesser tuberosity and contributes to internal rotation and glenohumeral stability. Its contribution depends on arm position and muscle segment. Medial long-head biceps instability warrants targeted assessment of the upper subscapularis and pulley.",
+    "fa": "ساب‌اسکاپولاریس به توبرکل کوچک متصل می‌شود و در چرخش داخلی و پایداری گلنوهومرال نقش دارد. سهم آن به وضعیت بازو و بخش عضله وابسته است. ناپایداری مدیال سر بلند بایسپس دلیلی برای بررسی هدفمند بخش فوقانی ساب‌اسکاپولاریس و پولی است."
+  },
+  "source": "https://pubmed.ncbi.nlm.nih.gov/10888162/; https://pubmed.ncbi.nlm.nih.gov/28867549/; https://pubmed.ncbi.nlm.nih.gov/1624486/; https://pmc.ncbi.nlm.nih.gov/articles/PMC6151251/"
+},
   {
-    "id": "rotatorenmanschette-04",
-    "topicId": "rotatorenmanschette",
-    "category": {
-      "de": "MRT-Technik",
-      "en": "MRI technique",
-      "fa": "تکنیک MRI"
-    },
-    "front": {
-      "de": "Welches Sequenzprotokoll ist für die RM-Diagnostik im MRT essenziell?",
-      "en": "Which sequence protocol is essential for rotator cuff MRI?",
-      "fa": "کدام پروتکل سکانس برای تشخیص روتاتور کاف در MRI ضروری است؟"
-    },
-    "answer": {
-      "de": "Fettsupprimierte, flüssigkeitssensitive Sequenzen (z.B. PD/T2 fs) in mind. 2 Ebenen.",
-      "en": "Fat-suppressed, fluid-sensitive sequences (e.g. PD/T2 fs) in at least 2 planes.",
-      "fa": "سکانس‌های فت‌ساپرس و حساس به مایع (مثل PD/T2 fs) در حداقل دو پلان."
-    },
-    "explanation": {
-      "de": "Erst die Kombination aus mind. zwei Ebenen mit flüssigkeitssensitiven, fettsupprimierten Sequenzen erlaubt eine sichere Detektion und Differenzierung von Partial- und Komplettrupturen.",
-      "en": "Only the combination of at least two planes with fluid-sensitive, fat-suppressed sequences allows reliable detection and differentiation of partial vs full-thickness tears.",
-      "fa": "فقط ترکیب حداقل دو پلان با سکانس‌های حساس به مایع و فت‌ساپرس امکان تشخیص مطمئن و افتراق پارگی جزئی از کامل را فراهم می‌کند."
-    },
-    "diagram": {
-      "de": "PD/T2 fs × ≥2 Ebenen → sichere Rupturdiagnostik",
-      "en": "PD/T2 fs × ≥2 planes → reliable tear diagnosis",
-      "fa": "PD/T2 fs × ≥۲ پلان → تشخیص مطمئن پارگی"
-    }
+  "id": "rotatorenmanschette-04",
+  "topicId": "rotatorenmanschette",
+  "category": {
+    "de": "MRT-Technik",
+    "en": "MRI technique",
+    "fa": "تکنیک MRI"
   },
+  "front": {
+    "de": "Welche Sequenzbausteine gehören zur nativen Schulter-MRT für die Rotatorenmanschette?",
+    "en": "Which sequence components belong in unenhanced, non-arthrographic shoulder MRI for the rotator cuff?",
+    "fa": "کدام اجزای سکانسی برای MRI شانه بدون تزریق مادهٔ حاجب و بدون آرتروگرافی جهت بررسی روتاتور کاف لازم‌اند؟"
+  },
+  "answer": {
+    "de": "Flüssigkeitssensitive Sequenzen in mehreren Ebenen, meist mit Fettunterdrückung, ergänzt durch T1-Aufnahmen für Anatomie und Muskelqualität.",
+    "en": "Multiplanar fluid-sensitive sequences, usually with fat suppression, supplemented by T1 images for anatomy and muscle quality.",
+    "fa": "سکانس‌های حساس به مایع در چند نما، معمولاً با فت‌ساپرشن، همراه با T1 برای آناتومی و کیفیت عضله."
+  },
+  "explanation": {
+    "de": "Übliche Ebenen sind axial, koronar-schräg und sagittal-schräg. Das Protokoll wird an Fragestellung und Gerät angepasst. Auch ein geeignetes Protokoll garantiert keine fehlerfreie Detektion jeder Partialruptur; Morphologie und alle Sequenzen gemeinsam beurteilen.",
+    "en": "Usual planes are axial, coronal oblique and sagittal oblique. Tailor the protocol to the clinical question and equipment. Even an appropriate protocol does not guarantee detection of every partial tear; interpret morphology and all sequences together.",
+    "fa": "نماهای معمول آگزیال، کرونال مایل و ساژیتال مایل‌اند. پروتکل را متناسب با سؤال بالینی و دستگاه تنظیم کنید. حتی پروتکل مناسب نیز تشخیص بی‌خطای همهٔ پارگی‌های جزئی را تضمین نمی‌کند؛ مورفولوژی و تمام سکانس‌ها را با هم بررسی کنید."
+  },
+  "source": "https://www.essr.org/content-essr/uploads/2016/10/ESSR-MRI-Protocols-Shoulder.pdf; https://gravitas.acr.org/PPTS/DownloadPreviewDocument?DocId=45&ReleaseId=2; https://pmc.ncbi.nlm.nih.gov/articles/PMC2930161/"
+},
   {
-    "id": "rotatorenmanschette-05",
-    "topicId": "rotatorenmanschette",
-    "category": {
-      "de": "MRT-Technik",
-      "en": "MRI technique",
-      "fa": "تکنیک MRI"
-    },
-    "front": {
-      "de": "Was ist das 'Magic-Angle'-Phänomen?",
-      "en": "What is the 'magic angle' phenomenon?",
-      "fa": "پدیده 'Magic Angle' چیست؟"
-    },
-    "answer": {
-      "de": "Pseudo-Signalanhebung in T1/PD bei ~55° Sehnenverlauf zum B0-Feld, in T2 verschwindet sie.",
-      "en": "Pseudo signal increase on T1/PD when the tendon runs at ~55° to B0, which disappears on T2.",
-      "fa": "افزایش سیگنال کاذب در T1/PD هنگامی که تاندون با زاویه ~۵۵ درجه نسبت به B0 قرار دارد و در T2 ناپدید می‌شود."
-    },
-    "explanation": {
-      "de": "Diese Signalanhebung darf nicht mit einer echten Tendinopathie verwechselt werden. Der Schlüssel zur Unterscheidung ist die Kontrolle in einer T2-Sequenz, in der das Phänomen verschwindet.",
-      "en": "This signal increase must not be mistaken for true tendinopathy. The key to distinguishing it is checking a T2 sequence, where the phenomenon disappears.",
-      "fa": "این افزایش سیگنال نباید با تاندینوپاتی واقعی اشتباه گرفته شود. کلید افتراق، بررسی در سکانس T2 است که این پدیده در آن ناپدید می‌شود."
-    },
-    "diagram": {
-      "de": "Sehne @ ~55° zu B0 → ↑Signal in T1/PD, normal in T2 → Magic Angle (kein echter Befund)",
-      "en": "Tendon @ ~55° to B0 → ↑signal on T1/PD, normal on T2 → magic angle (not a true finding)",
-      "fa": "تاندون @ زاویه ~۵۵° با B0 → ↑سیگنال در T1/PD، طبیعی در T2 → Magic Angle (نه یک یافته واقعی)"
-    }
+  "id": "rotatorenmanschette-05",
+  "topicId": "rotatorenmanschette",
+  "category": {
+    "de": "MRT-Technik",
+    "en": "MRI technique",
+    "fa": "تکنیک MRI"
   },
+  "front": {
+    "de": "Was ist das 'Magic-Angle'-Phänomen?",
+    "en": "What is the 'magic angle' phenomenon?",
+    "fa": "پدیده 'Magic Angle' چیست؟"
+  },
+  "answer": {
+    "de": "Orientierungsabhängige Signalanhebung einer Sehne nahe55° zu B0, vor allem auf kurzen TE-Aufnahmen. Bei längerem TE nimmt der Effekt ab.",
+    "en": "Orientation-dependent tendon signal increase near 55° to B0, most apparent at short TE; the effect decreases at longer TE.",
+    "fa": "افزایش سیگنال وابسته به جهت تاندون نزدیک زاویهٔ ۵۵ درجه نسبت به B0، به‌ویژه در TE کوتاه؛ اثر در TE طولانی‌تر کاهش می‌یابد."
+  },
+  "explanation": {
+    "de": "TE und Sehnenorientierung sind entscheidend, nicht die Sequenzbezeichnung allein. Erhaltene Fasern und abnehmendes Signal bei längerem TE stützen den Effekt; ein helles kurzes-TE-Bild allein beweist weder Tendinopathie noch Ruptur.",
+    "en": "TE and tendon orientation matter, rather than the sequence label alone. Intact fibres and decreasing signal at longer TE support the effect; brightness on a short-TE image alone proves neither tendinopathy nor a tear.",
+    "fa": "TE و جهت تاندون اهمیت دارند، نه صرفاً نام سکانس. حفظ رشته‌ها و کاهش سیگنال در TE طولانی‌تر از این اثر حمایت می‌کنند؛ روشن‌بودن تصویر با TE کوتاه به‌تنهایی نه تاندینوپاتی و نه پارگی را ثابت می‌کند."
+  },
+  "source": "https://pubs.rsna.org/doi/10.1148/radiology.181.2.1924777; https://pubmed.ncbi.nlm.nih.gov/16709684/"
+},
   {
-    "id": "rotatorenmanschette-06",
-    "topicId": "rotatorenmanschette",
-    "category": {
-      "de": "Partialruptur",
-      "en": "Partial tear",
-      "fa": "پارگی جزئی"
-    },
-    "front": {
-      "de": "Wie zeigt sich eine bursaseitige Partialruptur des Supraspinatus im MRT?",
-      "en": "How does a bursal-sided partial tear of the supraspinatus appear on MRI?",
-      "fa": "پارگی جزئی سمت بورسال سوپراسپیناتوس در MRI چگونه دیده می‌شود؟"
-    },
-    "answer": {
-      "de": "Flüssigkeitsäquivalenter Defekt der oberflächlichen Sehnenfasern mit Kontakt zur Bursaseite; artikuläre Fasern bleiben erhalten",
-      "en": "Fluid-equivalent defect in the superficial tendon fibres reaching the bursal surface, with preserved articular fibres",
-      "fa": "نقص با سیگنال هم‌ارز مایع در فیبرهای سطحی تاندون که به سطح بورسال می‌رسد؛ فیبرهای مفصلی حفظ شده‌اند"
-    },
-    "explanation": {
-      "de": "Eine bursaseitige Partialruptur zeigt einen Defekt der oberflächlichen Sehnenfasern oder intratendinöses Flüssigkeitssignal mit Kontakt zur Bursaseite. Die Sehne ist nicht auf voller Dicke unterbrochen. Flüssigkeit in der Bursa bei intakter Sehnenoberfläche allein beweist keine Ruptur.",
-      "en": "A bursal-sided partial tear shows a superficial tendon-fibre defect or intratendinous fluid signal reaching the bursal surface. The tendon is not disrupted through its full thickness. Bursal fluid with an intact tendon surface alone does not establish a tear.",
-      "fa": "پارگی جزئی سمت بورسال، نقص فیبرهای سطحی تاندون یا سیگنال مایع داخل تاندون با تماس با سطح بورسال دارد. تاندون در تمام ضخامت قطع نشده است. وجود مایع در بورس با سطح سالم تاندون، به‌تنهایی پارگی را ثابت نمی‌کند."
-    },
-    "diagram": {
-      "de": "Oberflächlicher Sehnendefekt → Kontakt zur Bursa; artikuläre Fasern erhalten\nBursaflüssigkeit allein ≠ Ruptur",
-      "en": "Superficial tendon defect → reaches bursal surface; articular fibres preserved\nBursal fluid alone ≠ tear",
-      "fa": "نقص سطحی تاندون → تماس با سطح بورسال؛ فیبرهای مفصلی حفظ شده‌اند\nمایع بورس به‌تنهایی ≠ پارگی"
-    }
+  "id": "rotatorenmanschette-06",
+  "topicId": "rotatorenmanschette",
+  "category": {
+    "de": "Partialruptur",
+    "en": "Partial tear",
+    "fa": "پارگی جزئی"
   },
+  "front": {
+    "de": "Wie zeigt sich eine bursaseitige Partialruptur des Supraspinatus im MRT?",
+    "en": "How does a bursal-sided partial tear of the supraspinatus appear on MRI?",
+    "fa": "پارگی جزئی سمت بورسال سوپراسپیناتوس در MRI چگونه دیده می‌شود؟"
+  },
+  "answer": {
+    "de": "Flüssigkeitsäquivalenter Defekt der oberflächlichen Sehnenfasern mit Kontakt zur Bursaseite; artikuläre Fasern bleiben erhalten",
+    "en": "Fluid-equivalent defect in the superficial tendon fibres reaching the bursal surface, with preserved articular fibres",
+    "fa": "نقص با سیگنال هم‌ارز مایع در فیبرهای سطحی تاندون که به سطح بورسال می‌رسد؛ فیبرهای مفصلی حفظ شده‌اند"
+  },
+  "explanation": {
+    "de": "Eine bursaseitige Partialruptur zeigt einen Defekt der oberflächlichen Sehnenfasern oder intratendinöses Flüssigkeitssignal mit Kontakt zur Bursaseite. Die Sehne ist nicht auf voller Dicke unterbrochen. Flüssigkeit in der Bursa bei intakter Sehnenoberfläche allein beweist keine Ruptur.",
+    "en": "A bursal-sided partial tear shows a superficial tendon-fibre defect or intratendinous fluid signal reaching the bursal surface. The tendon is not disrupted through its full thickness. Bursal fluid with an intact tendon surface alone does not establish a tear.",
+    "fa": "پارگی جزئی سمت بورسال، نقص فیبرهای سطحی تاندون یا سیگنال مایع داخل تاندون با تماس با سطح بورسال دارد. تاندون در تمام ضخامت قطع نشده است. وجود مایع در بورس با سطح سالم تاندون، به‌تنهایی پارگی را ثابت نمی‌کند."
+  },
+  "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2930161/"
+},
   {
-    "id": "rotatorenmanschette-07",
-    "topicId": "rotatorenmanschette",
-    "category": {
-      "de": "Partialruptur",
-      "en": "Partial tear",
-      "fa": "پارگی جزئی"
-    },
-    "front": {
-      "de": "Wofür steht PASTA-Läsion?",
-      "en": "What does a PASTA lesion stand for?",
-      "fa": "ضایعه PASTA به چه معناست؟"
-    },
-    "answer": {
-      "de": "Partial Articular Surface Tendon Avulsion – gelenkseitige Partialruptur im Footprint.",
-      "en": "Partial Articular Surface Tendon Avulsion – an articular-sided partial tear at the footprint.",
-      "fa": "پارگی جزئی سطح مفصلی تاندون (PASTA) – پارگی جزئی سمت مفصلی در محل اتصال تاندون (footprint)."
-    },
-    "explanation": {
-      "de": "Die PASTA-Läsion betrifft die tiefen (gelenkseitigen) Fasern am Footprint des Supraspinatus, oft assoziiert mit Impingement.",
-      "en": "PASTA lesions affect the deep (articular-sided) fibres at the supraspinatus footprint, often associated with impingement.",
-      "fa": "ضایعه PASTA فیبرهای عمقی (سمت مفصلی) را در محل اتصال تاندون (footprint) سوپراسپیناتوس درگیر می‌کند و اغلب با ایمپینجمنت همراه است."
-    },
-    "diagram": {
-      "de": "Footprint (gelenkseitig, tiefe Fasern) → PASTA-Läsion → oft + Impingement",
-      "en": "Footprint (articular side, deep fibres) → PASTA lesion → often + impingement",
-      "fa": "محل اتصال تاندون (footprint) (سمت مفصلی، فیبرهای عمقی) → ضایعه PASTA → اغلب + ایمپینجمنت"
-    }
+  "id": "rotatorenmanschette-07",
+  "topicId": "rotatorenmanschette",
+  "category": {
+    "de": "Partialruptur",
+    "en": "Partial tear",
+    "fa": "پارگی جزئی"
   },
+  "front": {
+    "de": "Wofür steht PASTA-Läsion?",
+    "en": "What does a PASTA lesion stand for?",
+    "fa": "ضایعه PASTA به چه معناست؟"
+  },
+  "answer": {
+    "de": "Partial Articular Surface Tendon Avulsion: eine gelenkseitige Partialablösung am Footprint.",
+    "en": "Partial Articular Surface Tendon Avulsion: an articular-sided partial avulsion at the footprint.",
+    "fa": "Partial Articular Surface Tendon Avulsion: جداشدگی جزئی سمت مفصلی در محل اتصال تاندون."
+  },
+  "explanation": {
+    "de": "Der Defekt betrifft die gelenkseitigen Fasern des Sehnenansatzes; die Sehne ist nicht auf voller Dicke durchtrennt. Bei Überkopfsportlern kann ein posterosuperiores internes Impingement-Muster hinzukommen. Der Begriff allein beweist weder diesen Mechanismus noch die Schmerzursache.",
+    "en": "The defect involves the articular-side fibres at the insertion without full-thickness disruption. An internal posterosuperior impingement pattern may coexist in overhead athletes. The term alone proves neither that mechanism nor the cause of pain.",
+    "fa": "نقص، رشته‌های سمت مفصلیِ محل اتصال را درگیر می‌کند و تمام ضخامت تاندون قطع نشده است. در ورزشکاران بالای سر، الگوی ایمپینجمنت داخلی خلفی‌فوقانی ممکن است همراه باشد. اصطلاح به‌تنهایی نه این مکانیسم و نه علت درد را ثابت می‌کند."
+  },
+  "source": "https://pubmed.ncbi.nlm.nih.gov/16762713/; https://pmc.ncbi.nlm.nih.gov/articles/PMC3728419/; https://pubmed.ncbi.nlm.nih.gov/22959196/"
+},
   {
-    "id": "rotatorenmanschette-08",
-    "topicId": "rotatorenmanschette",
-    "category": {
-      "de": "Partialruptur",
-      "en": "Partial tear",
-      "fa": "پارگی جزئی"
-    },
-    "front": {
-      "de": "Wie unterscheidet man eine intratendinöse Partialruptur von reiner Tendinopathie im MRT?",
-      "en": "How do you distinguish an intratendinous partial tear from pure tendinopathy on MRI?",
-      "fa": "چگونه پارگی جزئی داخل تاندونی را از تاندینوپاتی خالص در MRI افتراق می‌دهیم؟"
-    },
-    "answer": {
-      "de": "Fokales T2-hyperintenses Signal ohne Oberflächenkontakt = Riss; reine Signalanhebung in PD/T1 ohne klares T2-Flüssigkeitssignal = Tendinopathie.",
-      "en": "Focal T2-hyperintense signal without surface contact = tear; isolated PD/T1 signal increase without clear T2 fluid signal = tendinopathy.",
-      "fa": "سیگنال کانونی هیپراینتنس T2 بدون تماس با سطح = پارگی؛ افزایش سیگنال صرف در PD/T1 بدون سیگنال مایع واضح در T2 = تاندینوپاتی."
-    },
-    "explanation": {
-      "de": "Der entscheidende Marker für eine echte (intratendinöse) Ruptur ist flüssigkeitsäquivalentes Signal in T2 fs, das die Sehnenoberfläche nicht erreicht. Tendinopathie zeigt nur eine mukoide Signalanhebung ohne echtes Flüssigkeitssignal.",
-      "en": "The key marker for a true (intratendinous) tear is fluid-equivalent T2 fs signal that does not reach the tendon surface. Tendinopathy shows only mucoid signal increase without true fluid signal.",
-      "fa": "علامت کلیدی پارگی واقعی (داخل تاندونی) سیگنال هم‌ارز با مایع در T2 fs است که به سطح تاندون نمی‌رسد. تاندینوپاتی فقط افزایش سیگنال موکوئیدی بدون سیگنال مایع واقعی دارد."
-    },
-    "diagram": {
-      "de": "Tendinopathie: ↑PD/T1, kein T2-Flüssigkeitssignal\nIntratendinöser Riss: fokal T2-hyperintens, kein Oberflächenkontakt",
-      "en": "Tendinopathy: ↑PD/T1, no T2 fluid signal\nIntratendinous tear: focal T2-hyperintense, no surface contact",
-      "fa": "تاندینوپاتی: ↑PD/T1، بدون سیگنال مایع T2\nپارگی داخل تاندونی: کانونی هیپراینتنس T2، بدون تماس با سطح"
-    }
+  "id": "rotatorenmanschette-08",
+  "topicId": "rotatorenmanschette",
+  "category": {
+    "de": "Partialruptur",
+    "en": "Partial tear",
+    "fa": "پارگی جزئی"
   },
+  "front": {
+    "de": "Wie unterscheidet man eine intratendinöse Partialruptur von reiner Tendinopathie im MRT?",
+    "en": "How do you distinguish an intratendinous partial tear from pure tendinopathy on MRI?",
+    "fa": "چگونه پارگی جزئی داخل تاندونی را از تاندینوپاتی خالص در MRI افتراق می‌دهیم؟"
+  },
+  "answer": {
+    "de": "Ein flüssigkeitsäquivalenter Spalt mit Faserdefekt innerhalb der Sehne und ohne Kontakt zu ihren Oberflächen stützt einen intratendinösen Riss. Signaländerung allein genügt nicht.",
+    "en": "A fluid-equivalent cleft with an internal fibre defect and no surface communication supports an intratendinous tear. Signal change alone is insufficient.",
+    "fa": "شکاف با سیگنال هم‌ارز مایع همراه نقص رشته‌ها داخل تاندون، بدون ارتباط با سطوح، از پارگی داخل تاندونی حمایت می‌کند. تغییر سیگنال به‌تنهایی کافی نیست."
+  },
+  "explanation": {
+    "de": "Tendinopathie kann auch auf flüssigkeitssensitiven Bildern signalreich sein, ohne einen Riss zu bilden. Flüssigkeitsäquivalenz, Faserkontinuität, Oberfläche und Ausdehnung gemeinsam beurteilen; aus unspezifischer T2-Hyperintensität keine binäre Rissdiagnose ableiten.",
+    "en": "Tendinopathy may also be bright on fluid-sensitive images without a tear. Assess fluid equivalence, fibre continuity, surface communication and extent together; nonspecific T2 hyperintensity is not a binary tear test.",
+    "fa": "تاندینوپاتی می‌تواند در تصاویر حساس به مایع نیز پُرسیگنال باشد، بدون اینکه پارگی وجود داشته باشد. هم‌ارزی با مایع، پیوستگی رشته‌ها، ارتباط سطحی و وسعت را با هم بسنجید؛ هیپراینتنسیتهٔ غیراختصاصی T2 آزمون دوحالتی پارگی نیست."
+  },
+  "source": "https://pubmed.ncbi.nlm.nih.gov/20578021/; https://pmc.ncbi.nlm.nih.gov/articles/PMC4733769/; https://pmc.ncbi.nlm.nih.gov/articles/PMC2465433/"
+},
   {
   "id": "rotatorenmanschette-09",
   "topicId": "rotatorenmanschette",
@@ -3798,104 +3766,92 @@ const LEGACY_FLASHCARDS = [
     "fa": "سهم عمق نقص از ضخامت تاندون؛ علائم، عملکرد و پاسخ به درمان غیرجراحی نیز ارزیابی شوند."
   },
   "explanation": {
-    "de": "Die 50-%-Angabe bezieht sich auf die Sehnendicke beziehungsweise Defekttiefe. Freiliegender medial-lateraler Footprint kann die Tiefe arthroskopisch abschätzen; Fläche oder anteroposteriore Breite sind nicht dasselbe. Symptome, Funktion und bisherige Behandlung mitberücksichtigen; der Messwert allein ordnet keine Operation an.",
-    "en": "The 50% refers to tendon thickness or tear depth. Mediolateral exposed footprint can estimate depth arthroscopically; area or anteroposterior width is not equivalent. Consider symptoms, function and previous treatment; the measurement alone does not mandate surgery.",
-    "fa": "۵۰٪ به ضخامت تاندون یا عمق پارگی اشاره دارد. پهنای داخلی‌خارجی footprint نمایان می‌تواند در آرتروسکوپی عمق را تخمین بزند؛ مساحت یا عرض قدامی‌خلفی معادل آن نیست. علائم، عملکرد و درمان قبلی نیز لحاظ شوند؛ اندازه‌گیری به‌تنهایی جراحی را الزامی نمی‌کند."
+    "de": "Die Prozentangabe betrifft Defekttiefe relativ zur Sehnendicke, nicht die anteroposteriore Breite oder die Fläche. Arthroskopisch kann freiliegender medial-lateraler Footprint die Tiefe abschätzen. Wegen anatomischer Unterschiede lässt sich eine feste Millimetergrenze nicht bei jedem Menschen mit 50% Sehnendicke gleichsetzen. Symptome, Funktion und bisherige Behandlung bleiben entscheidend.",
+    "en": "The percentage concerns tear depth relative to tendon thickness, not anteroposterior width or area. Exposed mediolateral footprint can estimate depth arthroscopically. Because anatomy varies, a fixed millimetre threshold does not equal 50% tendon thickness in every individual. Symptoms, function and previous treatment remain important.",
+    "fa": "درصد به عمق نقص نسبت به ضخامت تاندون اشاره دارد، نه عرض قدامی‌خلفی یا مساحت. محل اتصال نمایان در جهت داخلی‌خارجی می‌تواند در آرتروسکوپی عمق را تخمین بزند. به‌دلیل تفاوت‌های آناتومیک، مقدار ثابت برحسب میلی‌متر را نمی‌توان در همهٔ افراد معادل ۵۰٪ ضخامت تاندون دانست. علائم، عملکرد و درمان قبلی همچنان اهمیت دارند."
   },
   "diagram": {
     "de": "Defekttiefe / Sehnendicke → Ausmaß\nAusmaß + klinischer Verlauf → individuelle Planung",
     "en": "Tear depth / tendon thickness → extent\nExtent + clinical course → individual planning",
     "fa": "عمق نقص / ضخامت تاندون ← میزان درگیری\nمیزان درگیری + سیر بالینی ← برنامه‌ریزی فردی"
   },
-  "source": "https://pubmed.ncbi.nlm.nih.gov/15007313/ ; https://pmc.ncbi.nlm.nih.gov/articles/PMC3728419/"
+  "source": "https://pubmed.ncbi.nlm.nih.gov/15007313/; https://pmc.ncbi.nlm.nih.gov/articles/PMC3600138/; https://pmc.ncbi.nlm.nih.gov/articles/PMC3728419/"
 },
   {
-    "id": "rotatorenmanschette-10",
-    "topicId": "rotatorenmanschette",
-    "category": {
-      "de": "Komplettruptur",
-      "en": "Full-thickness tear",
-      "fa": "پارگی کامل"
-    },
-    "front": {
-      "de": "Welches MRT-Zeichen ist beweisend für eine Komplettruptur der Rotatorenmanschette?",
-      "en": "Which MRI sign is diagnostic of a full-thickness rotator cuff tear?",
-      "fa": "کدام علامت MRI برای پارگی کامل روتاتور کاف تشخیصی است؟"
-    },
-    "answer": {
-      "de": "Vollständige T2-hyperintense Unterbrechung der Sehne mit Flüssigkeit, die Gelenk und Bursa verbindet.",
-      "en": "Complete T2-hyperintense discontinuity of the tendon with fluid connecting joint and bursa.",
-      "fa": "قطع کامل و هیپراینتنس تاندون در T2 همراه با مایعی که مفصل و بورس را به هم متصل می‌کند."
-    },
-    "explanation": {
-      "de": "Bei einer Komplettruptur entsteht ein direkter Kommunikationsweg zwischen Gelenkhöhle und Bursa subacromialis – die Sehne ist auf voller Dicke unterbrochen.",
-      "en": "A full-thickness tear creates a direct communication between the glenohumeral joint and the subacromial bursa – the tendon is discontinuous across its full thickness.",
-      "fa": "در پارگی کامل، یک ارتباط مستقیم بین حفره مفصل گلنوهومرال و بورس ساب‌آکرومیال ایجاد می‌شود - تاندون در تمام ضخامت آن قطع شده است."
-    },
-    "diagram": {
-      "de": "Gelenk ↔ (Flüssigkeit durch Defekt) ↔ Bursa = Komplettruptur",
-      "en": "Joint ↔ (fluid through defect) ↔ bursa = full-thickness tear",
-      "fa": "مفصل ↔ (مایع از طریق نقص) ↔ بورس = پارگی کامل"
-    }
+  "id": "rotatorenmanschette-10",
+  "topicId": "rotatorenmanschette",
+  "category": {
+    "de": "Komplettruptur",
+    "en": "Full-thickness tear",
+    "fa": "پارگی کامل"
   },
-  {
-    "id": "rotatorenmanschette-11",
-    "topicId": "rotatorenmanschette",
-    "category": {
-      "de": "Komplettruptur",
-      "en": "Full-thickness tear",
-      "fa": "پارگی کامل"
-    },
-    "front": {
-      "de": "Was beschreibt die Patte-Klassifikation und was bedeutet 'Tangent sign'?",
-      "en": "What does the Patte classification describe, and what is the 'tangent sign'?",
-      "fa": "طبقه‌بندی Patte چه چیزی را توصیف می‌کند و 'علامت تانژانت' چیست؟"
-    },
-    "answer": {
-      "de": "Patte: Grad der Sehnenretraktion (1–3). Tangentenzeichen positiv = der Supraspinatus-Muskelbauch reicht auf der sagittal-schrägen Y-Aufnahme nicht über die Linie zwischen oberer Spina scapulae und oberem Korakoidrand hinaus; Hinweis auf Muskelatrophie.",
-      "en": "Patte: degree of tendon retraction (1–3). Positive tangent sign = on the oblique sagittal Y view, the supraspinatus muscle belly does not extend above the line joining the superior scapular spine and coracoid margins; this indicates muscle atrophy.",
-      "fa": "Patte: درجه رتراکشن تاندون (۱ تا ۳). علامت تانژانت مثبت یعنی در نمای ساژیتال مایل Y، شکم عضله سوپراسپیناتوس از خط بین لبه فوقانی خار اسکاپولا و لبه فوقانی کوراکوئید بالاتر نمی‌رود؛ این یافته به نفع آتروفی عضله است."
-    },
-    "explanation": {
-      "de": "Patte Grad 1 = Stumpf nahe Footprint, Grad 3 = Retraktion bis Glenoidniveau. Beides sind wichtige Parameter für die OP-Planung (Reparierbarkeit).",
-      "en": "Patte grade 1 = stump near footprint, grade 3 = retraction to glenoid level. Both are key parameters for surgical planning (reparability).",
-      "fa": "Patte درجه ۱ = انتهای تاندون نزدیک محل اتصال تاندون (footprint)، درجه ۳ = رتراکشن تا سطح گلنوئید. هر دو از پارامترهای مهم برنامه‌ریزی جراحی (قابلیت ترمیم) هستند."
-    },
-    "diagram": {
-      "de": "Patte 1 (nahe Footprint) → 2 → 3 (Glenoidniveau)\nTangentenzeichen + → Supraspinatus-Muskelbauch bleibt unter der Linie Spina scapulae–Korakoid",
-      "en": "Patte 1 (near footprint) → 2 → 3 (glenoid level)\nPositive tangent sign → supraspinatus muscle belly remains below the scapular spine–coracoid line",
-      "fa": "Patte ۱ (نزدیک محل اتصال تاندون (footprint)) → ۲ → ۳ (سطح گلنوئید)\nعلامت تانژانت مثبت → شکم سوپراسپیناتوس زیر خط خار اسکاپولا–کوراکوئید باقی می‌ماند"
-    }
+  "front": {
+    "de": "Was bedeutet Vollschichtruptur der Rotatorenmanschette, und was sagt sie nicht über die Breite?",
+    "en": "What does a full-thickness cuff tear mean, and what does it not establish about width?",
+    "fa": "پارگی تمام‌ضخامت روتاتور کاف چه معنایی دارد و چه چیزی را دربارهٔ عرض ثابت نمی‌کند؟"
   },
+  "answer": {
+    "de": "Der Defekt durchsetzt die gesamte Dicke von Gelenk- bis Bursaseite. Er muss nicht die gesamte anteroposteriore Sehnenbreite betreffen.",
+    "en": "The defect traverses the entire thickness from articular to bursal surface; it need not involve the entire anteroposterior tendon width.",
+    "fa": "نقص تمام ضخامت را از سمت مفصلی تا بورسال قطع می‌کند؛ الزاماً تمام عرض قدامی‌خلفی تاندون را درگیر نمی‌کند."
+  },
+  "explanation": {
+    "de": "Ein durchgehender flüssigkeitsgefüllter Defekt ist ein typisches direktes MRT-Zeichen. Sehnenbreite, Stumpfretraktion und Muskelqualität zusätzlich getrennt beschreiben. Bursaflüssigkeit ohne nachweisbaren durchgehenden Faserdefekt ist nicht dasselbe.",
+    "en": "A continuous fluid-filled gap is a typical direct MRI sign. Also report width, stump retraction and muscle quality separately. Bursal fluid without a demonstrated through-thickness fibre defect is not equivalent.",
+    "fa": "شکاف پیوستهٔ حاوی مایع نشانهٔ مستقیم تیپیک MRI است. عرض، رتراکشن انتهای تاندون و کیفیت عضله را نیز جداگانه گزارش کنید. مایع بورس بدون نقص رشته‌ایِ اثبات‌شده در تمام ضخامت، معادل آن نیست."
+  },
+  "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5483776/; https://pmc.ncbi.nlm.nih.gov/articles/PMC2930161/"
+},
   {
-    "id": "rotatorenmanschette-12",
-    "topicId": "rotatorenmanschette",
-    "category": {
-      "de": "Begleitbefunde",
-      "en": "Associated findings",
-      "fa": "یافته‌های همراه"
-    },
-    "front": {
-      "de": "Was beschreibt die Goutallier-Klassifikation und wie ist ein hoher Grad einzuordnen?",
-      "en": "What does the Goutallier classification describe, and how should a high grade be interpreted?",
-      "fa": "طبقه‌بندی Goutallier چه چیزی را توصیف می‌کند و درجهٔ بالا چگونه تفسیر می‌شود؟"
-    },
-    "answer": {
-      "de": "Fettinfiltration der Muskulatur, Grad 0–4. Ein hoher Grad ist ein ungünstiger Prognosefaktor, beweist allein aber keine Unmöglichkeit der Rekonstruktion.",
-      "en": "Fatty infiltration of muscle, grades 0–4. A high grade is an adverse prognostic factor but does not alone establish that repair is impossible.",
-      "fa": "نفوذ چربی در عضله، از درجهٔ ۰ تا ۴. درجهٔ بالا عامل پیش‌آگهی نامطلوب است، اما به‌تنهایی ناممکن‌بودن ترمیم را ثابت نمی‌کند."
-    },
-    "explanation": {
-      "de": "Grad 0 = keine Fettinfiltration, Grad 4 = mehr Fett als Muskel. Hohe Goutallier-Grade sind ein wichtiger negativer Prädiktor für den Erfolg einer Rotatorenmanschettennaht. Zusätzlich wichtig: Impingement-Faktoren (Akromion-Typ nach Bigliani, ACG-Arthrose, Bursitis) und eine Dislokation der langen Bizepssehne als indirektes Zeichen einer Subscapularis-Ruptur.",
-      "en": "Grade 0 = no fatty infiltration, grade 4 = more fat than muscle. High Goutallier grades are an important negative predictor for the success of rotator cuff repair. Also important: impingement factors (Bigliani acromion type, ACJ osteoarthritis, bursitis) and long head biceps tendon dislocation as an indirect sign of subscapularis tear.",
-      "fa": "درجه ۰ = بدون نفوذ چربی، درجه ۴ = چربی بیشتر از عضله. درجات بالای Goutallier پیش‌بینی‌کننده منفی مهمی برای موفقیت ترمیم روتاتور کاف هستند. همچنین مهم: عوامل ایمپینجمنت (تیپ آکرومیون بر اساس Bigliani، آرتروز ACG، بورسیت) و دیسلوکیشن تاندون سر بلند بایسپس به‌عنوان نشانه غیرمستقیم پارگی ساب‌اسکاپولاریس."
-    },
-    "diagram": {
-      "de": "Goutallier 0: kein Fett → 4: mehr Fett als Muskel\nHoher Grad → ungünstigere Heilungsaussichten; keine alleinige Irreparabilitätsregel",
-      "en": "Goutallier 0: no fat → 4: more fat than muscle\nHigh grade → less favourable healing prospects; not a stand-alone irreparability rule",
-      "fa": "Goutallier ۰: بدون چربی → ۴: چربی بیشتر از عضله\nدرجهٔ بالا → احتمال ترمیم نامطلوب‌تر؛ نه معیار مستقل غیرقابل‌ترمیم‌بودن"
-    }
-  }
+  "id": "rotatorenmanschette-11",
+  "topicId": "rotatorenmanschette",
+  "category": {
+    "de": "Komplettruptur",
+    "en": "Full-thickness tear",
+    "fa": "پارگی کامل"
+  },
+  "front": {
+    "de": "Welche unterschiedlichen Befundparameter beschreiben Patte-Retraktionsgrad und Tangentenzeichen?",
+    "en": "Which different reporting parameters are described by the Patte retraction grade and tangent sign?",
+    "fa": "درجهٔ رتراکشن Patte و علامت تانژانت کدام دو پارامتر متفاوت گزارش را توصیف می‌کنند؟"
+  },
+  "answer": {
+    "de": "Patte-Retraktionsgrad: Lage des Sehnenstumpfes. Positives Tangentenzeichen: Supraspinatus-Muskelbauch bleibt unter der Korakoid–Spina-scapulae-Linie; Hinweis auf Atrophie.",
+    "en": "Patte retraction grade: tendon-stump position. Positive tangent sign: the supraspinatus belly fails to cross the coracoid–scapular-spine line, supporting atrophy.",
+    "fa": "درجهٔ رتراکشن Patte: موقعیت انتهای تاندون. تانژانت مثبت: شکم سوپراسپیناتوس از خط کوراکوئید–خار اسکاپولا بالاتر نمی‌رود؛ به نفع آتروفی."
+  },
+  "explanation": {
+    "de": "Für das Tangentenzeichen die oberen Ränder von Korakoid und Spina scapulae auf der sagittal-schrägen Y-Aufnahme verbinden. Retraktion, Muskelvolumen und Fettinfiltration getrennt beurteilen. Die ursprüngliche Patte-Klassifikation umfasste mehrere Merkmale; hier ist ausdrücklich die Retraktionskomponente gemeint. Beim Retraktionsgrad liegt Patte 1 nahe am Footprint, Patte 3 auf Glenoidniveau.",
+    "en": "For the tangent sign, connect the superior coracoid and scapular-spine margins on the sagittal-oblique Y view. Assess retraction, muscle bulk and fatty infiltration separately. The original Patte classification included several characteristics; this card specifically refers to its retraction component. For retraction grading, Patte 1 is near the footprint and Patte 3 at glenoid level.",
+    "fa": "برای علامت تانژانت، لبه‌های فوقانی کوراکوئید و خار اسکاپولا را در نمای Y ساژیتال مایل به هم وصل کنید. رتراکشن، حجم عضله و نفوذ چربی را جداگانه بسنجید. طبقه‌بندی اصلی Patte چند ویژگی را شامل می‌شد؛ این کارت مشخصاً به مؤلفهٔ رتراکشن اشاره دارد. در درجه‌بندی رتراکشن، Patte ۱ نزدیک محل اتصال و Patte ۳ در سطح گلنوئید است."
+  },
+  "source": "https://pubmed.ncbi.nlm.nih.gov/2323151/; https://pubmed.ncbi.nlm.nih.gov/9525755/; https://pmc.ncbi.nlm.nih.gov/articles/PMC2837810/"
+},
+  {
+  "id": "rotatorenmanschette-12",
+  "topicId": "rotatorenmanschette",
+  "category": {
+    "de": "Begleitbefunde",
+    "en": "Associated findings",
+    "fa": "یافته‌های همراه"
+  },
+  "front": {
+    "de": "Was beschreibt die Goutallier-Klassifikation und wie ist ein hoher Grad einzuordnen?",
+    "en": "What does the Goutallier classification describe, and how should a high grade be interpreted?",
+    "fa": "طبقه‌بندی Goutallier چه چیزی را توصیف می‌کند و درجهٔ بالا چگونه تفسیر می‌شود؟"
+  },
+  "answer": {
+    "de": "Fettinfiltration der Muskulatur, Grad 0–4. Ein hoher Grad ist ein ungünstiger Prognosefaktor, beweist allein aber keine Unmöglichkeit der Rekonstruktion.",
+    "en": "Fatty infiltration of muscle, grades 0–4. A high grade is an adverse prognostic factor but does not alone establish that repair is impossible.",
+    "fa": "نفوذ چربی در عضله، از درجهٔ ۰ تا ۴. درجهٔ بالا عامل پیش‌آگهی نامطلوب است، اما به‌تنهایی ناممکن‌بودن ترمیم را ثابت نمی‌کند."
+  },
+  "explanation": {
+    "de": "Die Skala reicht von Grad 0 ohne Fettinfiltration bis Grad 4 mit mehr Fett als Muskel. Ein hoher Grad ist ein ungünstiger Heilungsfaktor; er legt aber weder die technische Rekonstruierbarkeit noch den individuellen funktionellen Nutzen allein fest. Sehnenbefund, Retraktion, Muskelvolumen und Klinik ergänzen.",
+    "en": "The scale runs from grade 0 without fatty infiltration to grade 4 with more fat than muscle. A high grade is an adverse healing factor, but alone establishes neither technical repairability nor individual functional benefit. Integrate tendon findings, retraction, muscle bulk and clinical assessment.",
+    "fa": "مقیاس از درجهٔ ۰ بدون نفوذ چربی تا درجهٔ ۴ با چربی بیشتر از عضله است. درجهٔ بالا عامل نامطلوب ترمیم است، اما به‌تنهایی نه قابلیت فنی بازسازی و نه منفعت عملکردی فرد را تعیین می‌کند. یافته‌های تاندون، رتراکشن، حجم عضله و بالین را نیز لحاظ کنید."
+  },
+  "source": "https://pubmed.ncbi.nlm.nih.gov/8020238/; https://pubmed.ncbi.nlm.nih.gov/17418325/"
+}
 ]
 
 export const FLASHCARDS = [

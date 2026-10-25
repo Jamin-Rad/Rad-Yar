@@ -1,0 +1,84 @@
+{
+  "date": "2026-10-25",
+  "reviewer": "/root/remove_lesson_notice",
+  "author": "/root/brain_remediation",
+  "route": "/gehirn/neurofibromatose/nf1",
+  "status": "ACCEPT_BOUNDED_FULL_ASSESSMENT_POOL_AND_TEXT_PARITY",
+  "scope": {
+    "originalQuestionTriads": 3,
+    "newQuestionTriads": 1,
+    "totalLocalizedQuestionsRead": 12,
+    "cardTriadsRead": 4,
+    "fieldsRead": "Every stem, four options, key, explanation, all wrong feedback, card front/answer/explanation/source in DE/EN/FA; four learning goals and mappings. Actual lesson goals, four chapters, inline assessment with all option feedback, summary, references and related caveats/notes compared.",
+    "actualFiles": [
+      "data/gehirnNf1CnsLesson.js",
+      "data/assessmentQuality/brain.js (four NF1 card records only)",
+      "docs/lesson-quality/remediation-2026-10-25/brain/packet13-nf1-original-bank.json"
+    ],
+    "productionSourceEditsByReviewer": 0
+  },
+  "gates": {
+    "SRC": {
+      "status": "PASS_BOUNDED",
+      "evidence": "Fresh primary cohort, original diagnostic consensus and official guideline passages directly support the four assessed decisions; retained PDF/case claims not newly accepted."
+    },
+    "EDU": {
+      "status": "PASS_BOUNDED",
+      "evidence": "Four observable goals have actual retrieval mappings; concise self-contained clinical stems and standalone cards; differential options or competing investigation strategies have specific feedback."
+    },
+    "VIS": {
+      "status": "NOT_APPLICABLE_TO_POOL_REVIEW",
+      "evidence": "No question/card requires an absent stimulus. Existing diagnostic lesson figures and PDF82–84 were not re-opened."
+    },
+    "LNG": {
+      "status": "PASS_BOUNDED",
+      "evidence": "All four question/card triads and related active teaching clauses compared; no meaning-changing omission, key reversal, numerical mismatch or wrong-language block found. FA nonexpansile wording is understandable in context; could receive later idiomatic polishing without changing the clinical claim."
+    },
+    "ASM": {
+      "status": "PASS_BOUNDED",
+      "evidence": "16/16 current producer objects exactly equal manifest. Original 3 question IDs, keys and option IDs preserved in all languages; fourth question and four cards map to the four goals. Inline FASI question and explanation exactly equal current bank."
+    },
+    "UX": {
+      "status": "BLOCKED_SEPARATE_CONSUMER_RETEST",
+      "evidence": "No browser audit by this reviewer. Shared LessonReferenceShell individual optionFeedback consumer is root-owned and requires its own real interaction retest."
+    },
+    "REV": {
+      "status": "PASS",
+      "evidence": "Reviewer did not author NF1 changes and made no production edits."
+    }
+  },
+  "sources": [
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8041008/",
+      "type": "Hainc2021 original longitudinal cohort",
+      "actualRead": "Indexed primary methods, results, biopsy-proven lesion evolution, discussion and conclusion. Direct PMC repeated open returned challenge; indexed full primary text was accessible.",
+      "supports": "Typical distributions and facilitated diffusion overlap; enhancing lesions may regress; new cysts or second enhancement phase prompted tumour reassessment. Not generalized as a prospective diagnostic performance rule."
+    },
+    {
+      "url": "https://www.genturis.eu/l%3Deng/Assets/NF1-Guideline---ERN-GENTURIS.pdf",
+      "type": "Official ERN GENTURIS original guideline",
+      "actualRead": "OPG Table3 and linked discussion; MPNST warning signs and regional MRI/PET/biopsy recommendations. Original published guideline indexed full text also read.",
+      "supports": "Suspicious visual findings warrant brain/orbital MRI and expert referral. New persistent night pain/accelerated PNF growth warrants regional MRI and specialist workup; PET and sampling are complementary, not blind replacements."
+    },
+    {
+      "url": "https://www.nature.com/articles/s41436-021-01170-5",
+      "type": "Legius2021 original international diagnostic consensus",
+      "actualRead": "Original publisher text: consensus process and features explicitly not incorporated; FASI exclusion.",
+      "supports": "FASI is not an NF1 diagnostic criterion; revised criteria include genetic/choroidal findings."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/33921292/",
+      "type": "Bibliographic verification only",
+      "actualRead": "Actual authors, title, DOI and article type.",
+      "supports": "Existing review attribution is Russo et al.; not a substitute primary proof for assessment keys."
+    }
+  ],
+  "findings": [],
+  "runtimeEvidence": "packet13-independent-runtime-retest.json",
+  "limitations": [
+    "Acceptance is for the entire current four-question/four-card pool and its bounded teaching parity, not every NF1 clinical statement or systemic chapter claim.",
+    "Retained figures, case selection/attribution and PDF82–84 coverage were not freshly reverified. No new image or rights approval.",
+    "Primary sources were read for the assessed claims, not every cited reference end-to-end.",
+    "No fresh browser, access-gate, RTL, physician scientific release or published snapshot approval is inferred."
+  ]
+}

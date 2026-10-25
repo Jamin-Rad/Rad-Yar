@@ -8623,6 +8623,106 @@
         "fa": ""
       },
       "source": "https://doi.org/10.2967/jnumed.124.268754"
+    },
+    {
+      "id": "aq-brain-nf1-fasi",
+      "topicId": "neurofibromatose-typ1",
+      "category": {
+        "de": "NF1",
+        "en": "NF1",
+        "fa": "NF1"
+      },
+      "front": {
+        "de": "Welche Befunde stützen typische FASI bei NF1, und was beweisen sie nicht?",
+        "en": "Which findings support typical FASI in NF1, and what do they not establish?",
+        "fa": "کدام یافته‌ها از FASI تیپیک در NF1 حمایت می‌کنند و چه چیزی را ثابت نمی‌کنند؟"
+      },
+      "answer": {
+        "de": "T2/FLAIR-helle, meist nicht expansive und nicht anreichernde Herde in typischer Verteilung; kein eigenständiges NF1-Kriterium und kein sicherer Gliomausschluss.",
+        "en": "T2/FLAIR-bright, usually nonexpansile and nonenhancing foci in a typical distribution; not an independent NF1 criterion or a definitive glioma exclusion.",
+        "fa": "کانون‌های روشن T2/FLAIR، معمولاً بدون گسترش یا جذب مادهٔ حاجب در توزیع تیپیک؛ نه معیار مستقل NF1 و نه رد قطعی گلیوم."
+      },
+      "explanation": {
+        "de": "Verteilung, Symmetrie und fehlende Expansion passen zu typischen FASI. Die Einordnung bleibt morphologisch und im Verlauf zu prüfen: Auch Gliome können nicht anreichern, und FASI sind kein NF1-Diagnosekriterium.",
+        "en": "Distribution, symmetry and lack of expansion fit typical FASI. Interpretation still requires morphology and evolution: gliomas may also lack enhancement, and FASI are not an NF1 diagnostic criterion.",
+        "fa": "توزیع، تقارن و نبود گسترش با FASI تیپیک سازگارند. تفسیر همچنان به مورفولوژی و سیر وابسته است؛ گلیوم نیز ممکن است جذب مادهٔ حاجب نداشته باشد و FASI معیار تشخیصی NF1 نیست."
+      },
+      "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8041008/"
+    },
+    {
+      "id": "aq-brain-nf1-pathway",
+      "topicId": "neurofibromatose-typ1",
+      "category": {
+        "de": "NF1",
+        "en": "NF1",
+        "fa": "NF1"
+      },
+      "front": {
+        "de": "Wann ist bei einem Kind mit NF1 eine MRT zur OPG-Abklärung angezeigt?",
+        "en": "When is MRI for OPG evaluation indicated in a child with NF1?",
+        "fa": "در کودک مبتلا به NF1، چه زمانی MRI برای بررسی OPG لازم می‌شود؟"
+      },
+      "answer": {
+        "de": "Bei verdächtigem Augenbefund, etwa neuer Visusminderung; Gehirn/Orbitae und die gesamte Sehbahn erfassen und mit Augen-/NF1-Experten einordnen.",
+        "en": "With suspicious ophthalmological findings such as new visual loss; cover brain/orbits and the full pathway and correlate with ophthalmology/NF1 experts.",
+        "fa": "در یافتهٔ مشکوک چشم‌پزشکی مانند کاهش جدید بینایی؛ مغز/اربیت و تمام مسیر بررسی و با متخصصان چشم و NF1 تفسیر شود."
+      },
+      "explanation": {
+        "de": "Ein verdächtiger Augenbefund rechtfertigt eine MRT von Gehirn und Orbitae. Nerven, Chiasma und Tractus im Verlauf beurteilen; ein symptomatisches OPG gehört zeitnah in ein erfahrenes Team. Bildmorphologie allein bestimmt die Behandlung nicht.",
+        "en": "A suspicious ophthalmological finding warrants brain and orbital MRI. Assess the nerves, chiasm and tracts along their course; symptomatic OPG requires prompt review by an experienced team. Morphology alone does not determine treatment.",
+        "fa": "یافتهٔ مشکوک چشم‌پزشکی MRI مغز و اربیت را توجیه می‌کند. عصب‌ها، کیاسما و تراکت‌ها در امتداد مسیر بررسی شوند؛ OPG علامت‌دار نیازمند ارزیابی به‌موقع تیم باتجربه است. مورفولوژی به‌تنهایی درمان را تعیین نمی‌کند."
+      },
+      "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9845795/"
+    },
+    {
+      "id": "aq-brain-nf1-systemic",
+      "topicId": "neurofibromatose-typ1",
+      "category": {
+        "de": "NF1",
+        "en": "NF1",
+        "fa": "NF1"
+      },
+      "front": {
+        "de": "Welche neuen Zeichen eines plexiformen Neurofibroms lösen eine gezielte Abklärung aus?",
+        "en": "Which new features of plexiform neurofibroma trigger targeted investigation?",
+        "fa": "کدام ویژگی‌های جدید نوروفیبروم پلکس‌فرم بررسی هدفمند را ضروری می‌کنند؟"
+      },
+      "answer": {
+        "de": "Anhaltende neue Schmerzen, rasches Wachstum oder neue neurologische Defizite: regionales MRT und spezialisiertes NF1-/Tumorteam; keine Diagnose aus dem Target-Zeichen allein.",
+        "en": "Persistent new pain, rapid growth or new neurological deficits: regional MRI and specialist NF1/tumour assessment; do not diagnose from the target sign alone.",
+        "fa": "درد جدید و پایدار، رشد سریع یا نقص عصبی جدید: MRI ناحیه‌ای و ارزیابی تخصصی NF1/تومور؛ تشخیص صرفاً بر اساس نشانهٔ هدف تعیین نشود."
+      },
+      "explanation": {
+        "de": "Neue persistierende Schmerzen und beschleunigtes Wachstum sind Warnzeichen für eine atypische oder maligne Veränderung und verlangen gezielte Abklärung. Die Leitlinie beginnt mit regionaler MRT und spezialisiertem Team; weitere metabolische Bildgebung und Gewebegewinnung werden individuell geplant. Ein einzelnes MRT-Zeichen beweist Malignität nicht.",
+        "en": "New persistent pain and accelerated growth are warning signs of atypical or malignant change requiring targeted investigation. The guideline starts with regional MRI and an expert team; further metabolic imaging and tissue sampling are planned individually. No single MRI sign establishes malignancy.",
+        "fa": "درد جدیدِ پایدار و رشد شتاب‌گرفته علائم هشدار تغییر آتیپیک یا بدخیم و نیازمند بررسی هدفمندند. راهنما با MRI ناحیه‌ای و تیم تخصصی شروع می‌کند؛ تصویربرداری متابولیک و نمونه‌برداری بعدی فردی برنامه‌ریزی می‌شوند. هیچ نشانهٔ منفرد MRI بدخیمی را ثابت نمی‌کند."
+      },
+      "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9845795/"
+    },
+    {
+      "id": "aq-brain-nf1-enhancing-fasi",
+      "topicId": "neurofibromatose-typ1",
+      "category": {
+        "de": "NF1",
+        "en": "NF1",
+        "fa": "NF1"
+      },
+      "front": {
+        "de": "Welche Verlaufsänderungen eines möglichen anreichernden FASI sollten eine Tumor-Neubewertung auslösen?",
+        "en": "Which interval changes in possible enhancing FASI should trigger tumour reassessment?",
+        "fa": "کدام تغییرات زمانی در FASI احتمالیِ دارای جذب مادهٔ حاجب باید بازبینی از نظر تومور را مطرح کنند؟"
+      },
+      "answer": {
+        "de": "Neue zystische Anteile oder erneute deutliche Progression nach Rückbildung; seltene anreichernde FASI und niedriggradige Gliome können sich überlappen.",
+        "en": "New cystic components or renewed clear progression after regression; rare enhancing FASI and low-grade glioma can overlap.",
+        "fa": "اجزای کیستیک جدید یا پیشرفت واضح دوباره پس از پسرفت؛ FASI نادرِ دارای جذب مادهٔ حاجب و گلیوم کم‌درجه می‌توانند هم‌پوشانی داشته باشند."
+      },
+      "explanation": {
+        "de": "Seltene anreichernde FASI können regressieren, sodass Enhancement allein keinen Tumor beweist. Neue Zysten oder eine zweite Wachstums-/Enhancementphase waren in der Originalserie Anlass für die Tumorabklärung. Das Muster erfordert spezialisierte Neubewertung; DWI/ADC allein trennt FASI und niedriggradiges Gliom nicht zuverlässig.",
+        "en": "Rare enhancing FASI can regress, so enhancement alone does not prove tumour. New cysts or a second growth/enhancement phase prompted tumour evaluation in the original series. Specialist reassessment is required; DWI/ADC alone does not reliably distinguish FASI from low-grade glioma.",
+        "fa": "FASI نادرِ دارای جذب مادهٔ حاجب می‌تواند پسرفت کند؛ جذب به‌تنهایی تومور را ثابت نمی‌کند. کیست جدید یا مرحلهٔ دوم رشد/افزایش جذب در مجموعهٔ اصلی علت بررسی تومور بود. بازبینی تخصصی لازم است؛ DWI/ADC به‌تنهایی FASI را از گلیوم کم‌درجه با اطمینان جدا نمی‌کند."
+      },
+      "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8041008/"
     }
   ],
   "topics": [
@@ -8775,6 +8875,21 @@
         "fa": "تفسیر بالینی تصاویر و تصمیم‌های گزارش‌نویسی"
       },
       "href": "/flashcards/aq-parkinson"
+    },
+    {
+      "id": "neurofibromatose-typ1",
+      "title": {
+        "de": "NF1: Bildmuster und klinische Warnzeichen",
+        "en": "NF1: imaging patterns and clinical warning signs",
+        "fa": "NF1: الگوهای تصویری و علائم هشدار بالینی"
+      },
+      "subject": "gehirn",
+      "description": {
+        "de": "FASI, Sehbahn und plexiforme Neurofibrome",
+        "en": "FASI, optic pathway and plexiform neurofibromas",
+        "fa": "FASI، مسیر بینایی و نوروفیبروم پلکس‌فرم"
+      },
+      "href": "/flashcards/neurofibromatose-typ1"
     },
     {
       "id": "morbus-perthes",
@@ -9621,6 +9736,151 @@
             "dva-13-dsa",
             "dva-14-befund",
             "dva-15-operation"
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/gehirn/vaskulaer/kapillaere-teleangiektasie",
+      "topicId": "kapillaere-teleangiektasie",
+      "status": "AUTHOR_FULL_ORIGINAL_BANK_REVIEW_READY",
+      "learningGoals": [
+        {
+          "id": "recognise-morphology",
+          "text": {
+            "de": "Die typische Morphologie, Lokalisation und Grundhistologie mit Sequenzkorrelation erkennen.",
+            "en": "Recognise typical morphology, location and basic histology with sequence correlation.",
+            "fa": "مورفولوژی، محل و بافت‌شناسی پایهٔ تیپیک را با تطبیق سکانس‌ها بشناسید."
+          },
+          "questionIds": [
+            "kapillaere-teleangiektasie-de-01",
+            "kapillaere-teleangiektasie-de-02",
+            "kapillaere-teleangiektasie-de-03",
+            "kapillaere-teleangiektasie-de-05"
+          ],
+          "cardIds": [
+            "kapillaere-teleangiektasie-01-definition",
+            "kapillaere-teleangiektasie-02-lokalisation",
+            "kapillaere-teleangiektasie-03-enhancement",
+            "kapillaere-teleangiektasie-05-trias",
+            "kapillaere-teleangiektasie-06-t2"
+          ]
+        },
+        {
+          "id": "interpret-susceptibility-and-associations",
+          "text": {
+            "de": "Suszeptibilität von Blutungsnachweis trennen und DVA/Kavernom als Begleitbefunde einordnen.",
+            "en": "Separate susceptibility from proven haemorrhage and interpret associated DVA/cavernoma.",
+            "fa": "سوسپتیبیلیتی را از اثبات خونریزی جدا و DVA/کاورنوم همراه را تفسیر کنید."
+          },
+          "questionIds": [
+            "kapillaere-teleangiektasie-de-04",
+            "kapillaere-teleangiektasie-de-07",
+            "kapillaere-teleangiektasie-de-08"
+          ],
+          "cardIds": [
+            "kapillaere-teleangiektasie-04-swi",
+            "kapillaere-teleangiektasie-08-blutung",
+            "kapillaere-teleangiektasie-09-dva",
+            "kapillaere-teleangiektasie-10-kavernom",
+            "kapillaere-teleangiektasie-15-assoziation"
+          ]
+        },
+        {
+          "id": "recognise-limits-and-red-flags",
+          "text": {
+            "de": "DWI/ADC mit technischer Qualität beurteilen und atypische Expansion oder Restriktion erkennen.",
+            "en": "Interpret DWI/ADC with technical quality and recognise atypical expansion or restriction.",
+            "fa": "DWI/ADC را با توجه به کیفیت فنی تفسیر و گسترش یا محدودیت غیرتیپیک را شناسایی کنید."
+          },
+          "questionIds": [
+            "kapillaere-teleangiektasie-de-06",
+            "kapillaere-teleangiektasie-de-09"
+          ],
+          "cardIds": [
+            "kapillaere-teleangiektasie-07-dwi",
+            "kapillaere-teleangiektasie-13-atypisch"
+          ]
+        },
+        {
+          "id": "report-and-correlate-clinically",
+          "text": {
+            "de": "Typische stabile Befunde angemessen berichten, klinische Kausalität prüfen und unnötige Eskalation vermeiden.",
+            "en": "Report typical stable findings appropriately, assess clinical causality and avoid unnecessary escalation.",
+            "fa": "یافتهٔ تیپیک و پایدار را مناسب گزارش کنید، رابطهٔ علّی بالینی را بررسی و از تشدید غیرضروری اقدامات پرهیز کنید."
+          },
+          "questionIds": [
+            "kapillaere-teleangiektasie-de-10",
+            "kapillaere-teleangiektasie-de-11",
+            "kapillaere-teleangiektasie-de-12"
+          ],
+          "cardIds": [
+            "kapillaere-teleangiektasie-11-management",
+            "kapillaere-teleangiektasie-12-biopsie",
+            "kapillaere-teleangiektasie-14-befund"
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/gehirn/neurofibromatose/nf1",
+      "topicId": "neurofibromatose-typ1",
+      "status": "AUTHOR_FULL_ORIGINAL_BANK_PLUS_GAP_READY",
+      "learningGoals": [
+        {
+          "id": "fasi",
+          "text": {
+            "de": "Ein typisches FASI-Muster erkennen, ohne Gliom oder NF1-Diagnose allein aus dem Signal abzuleiten.",
+            "en": "Recognise a typical FASI pattern without establishing glioma or NF1 diagnosis from signal alone.",
+            "fa": "الگوی تیپیک FASI را بشناسید، بدون تعیین تشخیص گلیوم یا NF1 صرفاً از سیگنال."
+          },
+          "questionIds": [
+            "neurofibromatose-typ1-de-fasi"
+          ],
+          "cardIds": [
+            "aq-brain-nf1-fasi"
+          ]
+        },
+        {
+          "id": "pathway",
+          "text": {
+            "de": "Neue Sehstörung bei NF1 mit gezielter Sehbahn-Bildgebung und Fachbeurteilung abklären.",
+            "en": "Investigate new visual dysfunction in NF1 with targeted visual-pathway imaging and specialist assessment.",
+            "fa": "اختلال بینایی جدید در NF1 را با تصویربرداری هدفمند مسیر بینایی و ارزیابی تخصصی بررسی کنید."
+          },
+          "questionIds": [
+            "neurofibromatose-typ1-de-pathway"
+          ],
+          "cardIds": [
+            "aq-brain-nf1-pathway"
+          ]
+        },
+        {
+          "id": "systemic",
+          "text": {
+            "de": "Neue Schmerz-/Wachstumszeichen eines plexiformen Neurofibroms als fachübergreifenden Abklärungsanlass erkennen.",
+            "en": "Recognise new pain/growth in plexiform neurofibroma as a reason for cross-specialty evaluation.",
+            "fa": "درد یا رشد جدید نوروفیبروم پلکس‌فرم را نیازمند بررسی بین‌رشته‌ای بدانید."
+          },
+          "questionIds": [
+            "neurofibromatose-typ1-de-systemic"
+          ],
+          "cardIds": [
+            "aq-brain-nf1-systemic"
+          ]
+        },
+        {
+          "id": "enhancing-fasi",
+          "text": {
+            "de": "Atypische Verlaufsmerkmale einer zunächst FASI-verdächtigen Läsion erkennen.",
+            "en": "Recognise atypical evolution of a lesion initially considered FASI.",
+            "fa": "سیر غیرتیپیک ضایعه‌ای را که ابتدا مشکوک به FASI بوده شناسایی کنید."
+          },
+          "questionIds": [
+            "neurofibromatose-typ1-de-enhancing-fasi"
+          ],
+          "cardIds": [
+            "aq-brain-nf1-enhancing-fasi"
           ]
         }
       ]

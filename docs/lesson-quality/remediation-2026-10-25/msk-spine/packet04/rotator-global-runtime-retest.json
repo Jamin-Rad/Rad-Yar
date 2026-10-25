@@ -1,0 +1,13 @@
+{
+  "date": "2026-10-25",
+  "status": "PASS_57_OF_57_ACTUAL_GLOBAL_AFTER_VALUES",
+  "questions": 45,
+  "cardTriads": 12,
+  "fullDeepEquality": true,
+  "idsCorrectKeysOptionIdsPreserved": true,
+  "wrongFeedbackExactlyThreePerQuestion": true,
+  "independentReview": "review-rotator.json",
+  "limitations": [
+    "Author retest after root canonical integration, independent semantic review remains Brain evidence. No browser or media approval."
+  ]
+}

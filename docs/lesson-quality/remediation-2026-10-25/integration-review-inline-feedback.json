@@ -1,0 +1,49 @@
+{
+  "date": "2026-10-25",
+  "reviewer": "/root/brain_remediation; independent read-only review of root-authored consumer fix",
+  "status": "ACCEPT_BOUNDED_TECHNICAL_FIX",
+  "scope": "Selected-option feedback resolution in LessonReferenceShell. Source inspection plus actual isolated Node probes; no clinical or browser acceptance implied.",
+  "filesRead": [
+    "lib/lessonCheckFeedback.js",
+    "components/LessonReferenceShell.jsx",
+    "scripts/test-lesson-check-feedback.mjs"
+  ],
+  "checks": [
+    {
+      "id": "INLINE02-01",
+      "status": "PASS",
+      "evidence": "Helper returns null before selection, selected optionFeedback first, correct explanation for correct answer, then indexed wrongFeedback or letter-keyed wrongExplanations with legacy explanation fallback."
+    },
+    {
+      "id": "INLINE02-02",
+      "status": "PASS",
+      "evidence": "Actual ReferenceCheck passes numeric radio index; localized object is selected before existing pick(lang) fallback. Existing correct/incorrect styling, answer key, radio labels and state unchanged. Scoped legacy rationale is normalized to explanation as before."
+    },
+    {
+      "id": "INLINE02-03",
+      "status": "PASS",
+      "evidence": "Root regression script executed independently as isolated esbuild Node bundle. Two actual reviewed Appendix/Pankreas checks exercise letter-keyed wrong rationales; synthetic cases cover optionFeedback/wrongFeedback/correct/legacy/null/undefined."
+    },
+    {
+      "id": "INLINE02-04",
+      "status": "PASS",
+      "evidence": "Additional actual NF1 probe: all12 selected-option locale comparisons exactly match actual canonical original FASI question feedback, including every wrong option in DE/EN/FA."
+    }
+  ],
+  "runtimeEvidence": {
+    "regression": "tmp/brain-inline-feedback-test.cjs exit0",
+    "actualNf1": "12/12 exact rationale comparisons",
+    "limits": "No Next build or interactive browser execution by reviewer."
+  },
+  "findings": [],
+  "limitations": [
+    "This does not revise any clinical question or validate its medical contents.",
+    "Legacy checks with a single explanation intentionally retain that explanation for incorrect answers; no claim that all legacy pools now have individualized rationale.",
+    "Browser interaction/build remain root-owned. Generic fallback quiz behavior is outside this change."
+  ],
+  "sha256": {
+    "lib/lessonCheckFeedback.js": "afb32b23e2c888d4c9130c0c7b6c59e951801cbd98747042943e1c4b57d3e714",
+    "components/LessonReferenceShell.jsx": "e9be750edd7e5d647bbbb8e2a3e59cc775b10f15e4806f5a491ed4fac40f34b7",
+    "scripts/test-lesson-check-feedback.mjs": "0fb360f7b80b2827bf1f7adab99cf2e4be1f59e340463fdf8031662601bbd226"
+  }
+}

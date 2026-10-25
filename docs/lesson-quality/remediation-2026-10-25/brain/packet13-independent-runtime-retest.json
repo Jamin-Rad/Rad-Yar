@@ -1,0 +1,37 @@
+{
+  "date": "2026-10-25",
+  "reviewer": "/root/remove_lesson_notice",
+  "status": "PASS_CURRENT_AUTHOR_PRODUCERS",
+  "checks": [
+    {
+      "kind": "questions",
+      "lang": "de",
+      "count": 4,
+      "exact": true
+    },
+    {
+      "kind": "questions",
+      "lang": "en",
+      "count": 4,
+      "exact": true
+    },
+    {
+      "kind": "questions",
+      "lang": "fa",
+      "count": 4,
+      "exact": true
+    },
+    {
+      "kind": "cards",
+      "count": 4,
+      "exact": true
+    }
+  ],
+  "canonicalObjectsCompared": 16,
+  "originalQuestionKeysAndOptionIDsPreserved": true,
+  "fourGoalsActuallyMapped": true,
+  "inlineFasiQuestionExplanationExact": true,
+  "limitations": [
+    "Author producer comparison; publishedBank admission and browser feedback consumer are root-owned separate checks."
+  ]
+}

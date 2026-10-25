@@ -1,0 +1,11 @@
+{
+  "date": "2026-10-25",
+  "status": "PASS_CURRENT_GLOBAL_PRODUCERS",
+  "originalLocalizedQuestions": 36,
+  "originalCardTriads": 8,
+  "matchedCurrentObjects": 44,
+  "correctKeysAndIDsPreserved": true,
+  "allClinicalAndFeedbackAndSourceFieldsEqual": true,
+  "separateSupplement": "Prior independentlyaccepted AQalignmentitem remains unchanged; full media/browser/lesson notclaimed.",
+  "independentReview": "review-radiuskopf.json"
+}

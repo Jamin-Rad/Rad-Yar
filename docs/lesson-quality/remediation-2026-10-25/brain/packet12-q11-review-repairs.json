@@ -1,0 +1,35 @@
+{
+  "date": "2026-10-25",
+  "scope": "Two independent Q11 findings; optional explicit FA contrast clarification",
+  "changes": [
+    {
+      "before": "SWI und konventionelle Sequenzen fehlen noch.",
+      "after": "SWI und konventionelle Sequenzen sind noch nicht ausgewertet."
+    },
+    {
+      "before": "Zunächst nur postkontrast T1 kurzfristig wiederholen, ohne die übrigen Sequenzen auszuwerten",
+      "after": "Kurzfristige Verlaufskontrolle mit postkontrast T1"
+    },
+    {
+      "before": "First repeat postcontrast T1 after a short interval without reviewing the other sequences",
+      "after": "Short-interval follow-up with postcontrast T1"
+    },
+    {
+      "before": "ابتدا فقط T1 پس از تزریق در فاصلهٔ کوتاه تکرار شود، بدون بازبینی سکانس‌های دیگر",
+      "after": "پیگیری در فاصلهٔ کوتاه با T1 پس از تزریق"
+    },
+    {
+      "before": "Vor einer bloßen Wiederholung sollten die fehlenden diagnostischen Sequenzen ausgewertet werden; Stabilität allein liefert nicht die gesamte Musterbeurteilung.",
+      "after": "Vor einer Verlaufskontrolle sollten die vorliegenden diagnostischen Sequenzen vollständig ausgewertet werden; Stabilität allein liefert nicht die gesamte Musterbeurteilung."
+    },
+    {
+      "before": "Review missing diagnostic sequences before simply repeating a study; stability alone does not provide the complete pattern assessment.",
+      "after": "Review all available diagnostic sequences before scheduling follow-up; stability alone does not provide the complete pattern assessment."
+    },
+    {
+      "before": "شدت افزایش سیگنال یا اندازه به‌تنهایی کافی نیست.",
+      "after": "شدت افزایش سیگنال پس از تزریق یا اندازه به‌تنهایی کافی نیست."
+    }
+  ],
+  "keys": "All keys and IDs unchanged"
+}

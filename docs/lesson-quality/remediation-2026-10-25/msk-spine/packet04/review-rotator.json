@@ -1,0 +1,213 @@
+{
+  "date": "2026-10-25",
+  "reviewer": "/root/brain_remediation; independent read-only",
+  "status": "ACCEPT_BOUNDED_FULL_ORIGINAL_ASSESSMENT_POOL_AFTER_RETEST",
+  "scope": "Complete original15-MCQ and12-card DE/EN/FA canonical pool, with90 actually applied adjacent lesson fields; exact fresh global after-export retest passed. No full lesson/PDF/media/browser or release approval.",
+  "route": "/msk/schulter/rotatorenmanschette",
+  "read": {
+    "questionTriads": 15,
+    "localizedQuestionObjects": 45,
+    "cardTriads": 12,
+    "allFields": "Stems, four alternatives, keys, correct and individual incorrect feedback; card front/answer/explanation/category/diagram. All actually read; no key or polarity flip found.",
+    "lessonParityFields": 90,
+    "goals": [
+      {
+        "id": "anatomy",
+        "text": {
+          "de": "Manschettenmuskeln, Funktion und ansatznahe Critical Zone mit begrenzter Gefäßinterpretation zuordnen.",
+          "en": "Identify cuff muscles, function and insertional critical zone with qualified vascular interpretation.",
+          "fa": "عضلات کاف، عملکرد و ناحیهٔ بحرانی نزدیک اتصال را با تفسیر محدودشدهٔ عروقی مشخص کنید."
+        },
+        "questionIds": [
+          "rotatorenmanschette-de-01",
+          "rotatorenmanschette-de-02",
+          "rotatorenmanschette-de-03"
+        ],
+        "cardIds": [
+          "rotatorenmanschette-01",
+          "rotatorenmanschette-02",
+          "rotatorenmanschette-03"
+        ]
+      },
+      {
+        "id": "mri",
+        "text": {
+          "de": "Mehrplanare MRT-Bausteine wählen und TE-abhängiges Magic-Angle-Signal von einem Defekt unterscheiden.",
+          "en": "Choose multiplanar MRI components and distinguish TE-dependent magic-angle signal from a defect.",
+          "fa": "اجزای چندنمایی MRI را انتخاب و سیگنال مجیک‌انگل وابسته به TE را از نقص جدا کنید."
+        },
+        "questionIds": [
+          "rotatorenmanschette-de-04",
+          "rotatorenmanschette-de-05"
+        ],
+        "cardIds": [
+          "rotatorenmanschette-04",
+          "rotatorenmanschette-05"
+        ]
+      },
+      {
+        "id": "morphology",
+        "text": {
+          "de": "Bursale, artikuläre, intratendinöse und Vollschichtdefekte anhand von Defekt und Oberflächenkontakt einordnen.",
+          "en": "Classify bursal, articular, intratendinous and full-thickness defects by morphology and surface communication.",
+          "fa": "نقص‌های بورسال، مفصلی، داخل تاندونی و تمام‌ضخامت را بر اساس مورفولوژی و ارتباط سطحی طبقه‌بندی کنید."
+        },
+        "questionIds": [
+          "rotatorenmanschette-de-06",
+          "rotatorenmanschette-de-07",
+          "rotatorenmanschette-de-08",
+          "rotatorenmanschette-de-10"
+        ],
+        "cardIds": [
+          "rotatorenmanschette-06",
+          "rotatorenmanschette-07",
+          "rotatorenmanschette-08",
+          "rotatorenmanschette-10"
+        ]
+      },
+      {
+        "id": "report-and-context",
+        "text": {
+          "de": "Defekttiefe, Retraktion, Atrophie, Fettinfiltration und relevante Begleitbefunde für die individuelle klinische Planung getrennt berichten.",
+          "en": "Report tear depth, retraction, atrophy, fatty infiltration and relevant associated findings separately for individual clinical planning.",
+          "fa": "عمق نقص، رتراکشن، آتروفی، نفوذ چربی و یافته‌های همراه مهم را برای برنامه‌ریزی بالینی فردی جداگانه گزارش کنید."
+        },
+        "questionIds": [
+          "rotatorenmanschette-de-09",
+          "rotatorenmanschette-de-11",
+          "rotatorenmanschette-de-12",
+          "rotatorenmanschette-de-13",
+          "rotatorenmanschette-de-14",
+          "rotatorenmanschette-de-15"
+        ],
+        "cardIds": [
+          "rotatorenmanschette-09",
+          "rotatorenmanschette-11",
+          "rotatorenmanschette-12",
+          "rotatorenmanschette-03"
+        ]
+      }
+    ]
+  },
+  "structuralEvidence": {
+    "beforeComparison": "57/57 before objects deepEqual fresh actual global QUESTION_BANK/FLASHCARDS exports using isolated esbuild probe; root may now apply proposals.",
+    "afterShape": "45 rows preserve original IDs, keys and option IDs with every incorrect option explained; all12 cards complete in DE/EN/FA.",
+    "teachingParity": "90/90 actual CONTENT locale path values deepEqual applied manifest after fields, including T1 muscle quality, fluid-sensitive marrow oedema, TE dependence, defect morphology, Patte retraction, Goutallier fat and qualified clinical planning.",
+    "canonicalAfterComparison": "57/57 actual fresh global QUESTION_BANK/FLASHCARDS objects deepEqual final independently reviewed after proposals, including four EN/FA context repairs."
+  },
+  "findings": [
+    {
+      "id": "ROTATOR-LNG-01",
+      "severity": "minor",
+      "gate": "LNG",
+      "key": "Q04 question EN/FA and card04 front EN/FA",
+      "observed": "German native specifies unenhanced imaging; nonarthrographic alone in EN/FA did not explicitly exclude IV contrast.",
+      "learnerImpact": "Protocol context was not completely equivalent.",
+      "requiredCorrection": "Explicit unenhanced/nonarthrographic wording in EN/FA.",
+      "status": "CLOSED_AFTER_RETEST",
+      "retest": "Read all four actual repaired proposal fields; exact equality with rotator-review-repairs.json. Other keys remain unchanged."
+    }
+  ],
+  "primaryEvidence": [
+    {
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/1624486/",
+        "https://pubmed.ncbi.nlm.nih.gov/12647876/"
+      ],
+      "read": "Complete original anatomy/cadaver abstracts",
+      "supports": "SITS and interwoven cuff/capsular support, distinct from biceps."
+    },
+    {
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/10888162/",
+        "https://pubmed.ncbi.nlm.nih.gov/28867549/"
+      ],
+      "read": "Complete original model/20-adult EMG abstracts",
+      "supports": "Internal rotation and segment/position dependent stabilisation; no isolated universal muscle ranking."
+    },
+    {
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/2323147/",
+        "https://pubmed.ncbi.nlm.nih.gov/18647848/",
+        "https://pubmed.ncbi.nlm.nih.gov/26412209/"
+      ],
+      "read": "Complete original vascular specimen, exercise-US and laser-Doppler abstracts",
+      "supports": "Insertional region and regional/loading variation, not invariably avascular or sole cause of every tear."
+    },
+    {
+      "urls": [
+        "https://www.essr.org/content-essr/uploads/2016/10/ESSR-MRI-Protocols-Shoulder.pdf"
+      ],
+      "read": "Actual official shoulder plane and sequence table text, PDFpages4–5; ACRpreview403, not claimed read.",
+      "supports": "Multiplanar fluid-sensitive and sagittal T1 components; no universal complete protocol claim."
+    },
+    {
+      "urls": [
+        "https://pubs.rsna.org/doi/10.1148/radiology.181.2.1924777",
+        "https://pubmed.ncbi.nlm.nih.gov/16709684/",
+        "https://pubmed.ncbi.nlm.nih.gov/20578021/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC2465433/"
+      ],
+      "read": "Original orientation/MRI/histology abstracts and original tendinosis methods/definitions",
+      "supports": "Short-TE orientation effect; anatomically intact degeneration can be T2 bright; require morphology, not binary T2 proof."
+    },
+    {
+      "urls": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC2930161/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC4733769/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC5483776/"
+      ],
+      "read": "Original methods, definitions and diagnostic discussion; cohort exclusions actually read",
+      "supports": "Bursal/articular/intratendinous vs through-thickness morphology; bursal fluid not a substitute for fibre defect. MRA study excludes intratendinous cohort and is not used for its accuracy."
+    },
+    {
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/16762713/",
+        "https://pubmed.ncbi.nlm.nih.gov/22959196/",
+        "https://pubmed.ncbi.nlm.nih.gov/15007313/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC3600138/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC3728419/"
+      ],
+      "read": "Original technique/anatomic/athlete abstracts plus depth-guide and repair-trial methods/limits",
+      "supports": "PASTA expansion; thickness distinct from area/AP width; variable millimetre conversion; selected symptomatic repair context, not automatic surgery or repair-vs-no-treatment inference."
+    },
+    {
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/2323151/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC2837810/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC6421693/",
+        "https://pubmed.ncbi.nlm.nih.gov/9525755/"
+      ],
+      "read": "Original Patte abstract, original clinical retraction methods/tables and original tangent-sign abstract",
+      "supports": "Patte original multidimensional, specifically its retraction component here; near insertion/head/glenoid landmarks; superior coracoid–spine tangent and non-crossing muscle atrophy."
+    },
+    {
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/8020238/",
+        "https://pubmed.ncbi.nlm.nih.gov/10633896/",
+        "https://pubmed.ncbi.nlm.nih.gov/17418325/"
+      ],
+      "read": "Complete original CT, CT/MRI comparison and selected advanced-fat repair abstracts",
+      "supports": "Fat is related to but distinct from atrophy; no one-grade universal irreparability or function judgment."
+    },
+    {
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/16337525/",
+        "https://pubmed.ncbi.nlm.nih.gov/12934022/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC6151251/"
+      ],
+      "read": "Complete spur cohort/histochemical abstracts; actual432-patient biceps-MRA methods/results/discussion",
+      "supports": "Spur association/secondary formation not clinical causality proof; medial biceps clue without universal extent inference or negative exclusion."
+    }
+  ],
+  "limitations": [
+    "No full retained diagnostic image/PDF36–38/browser acceptance; no new image-specific interpretation requested or made.",
+    "No empirical question difficulty/discrimination validation; bounded editorial/scientific text review only.",
+    "No Next build/server, author source edits or Git commit by reviewer."
+  ],
+  "sha256": {
+    "rotator-proposals.json": "7270afb967bfbed58f4a70385d64a5d3203d59b7c8742e18160f820085b1ff00",
+    "rotator-lesson-proposal.json": "2356a0ba2825fbe1a24f150868bafc50cec594eea43db7dc64bdb19516e05157",
+    "rotator-review-repairs.json": "f9eccedd2dfdfe604a4752cec3f3dde47f41cc530b02aa9c625c5765b7488fa4"
+  }
+}

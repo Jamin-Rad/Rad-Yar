@@ -1,0 +1,318 @@
+{
+  "date": "2026-10-25",
+  "status": "AUTHOR_REPAIRED_INDEPENDENT_RETEST_PENDING",
+  "languageRepairs": [
+    {
+      "id": "rk-essex-1-de",
+      "field": "explanation",
+      "before": "Essex-Lopresti = Radiusköpfchenfraktur + Ruptur der Membrana interossea + DRUG-Verletzung; das Muster kann longitudinale Unterarminstabilität verursachen. DRUG und Unterarmlänge/Stabilität prüfen. Bei bestätigter Instabilität wird die radiale Länge erhalten oder wiederhergestellt; Fixation oder Ersatz richten sich nach Rekonstruierbarkeit und Begleitverletzungen. Keine automatische Prothese und keine pauschale Resektionsregel.",
+      "after": "Essex-Lopresti = Radiusköpfchenfraktur + Ruptur der Membrana interossea + DRUG-Verletzung; das Muster kann longitudinale Unterarminstabilität verursachen. DRUG und Unterarmlänge/Stabilität prüfen. Bei bestätigter Instabilität wird die radiale Länge erhalten oder wiederhergestellt; Fixation oder Ersatz richten sich nach Rekonstruierbarkeit und Begleitverletzungen."
+    },
+    {
+      "id": "rk-essex-1-en",
+      "field": "explanation",
+      "before": "Essex-Lopresti = radial head fracture + interosseous membrane rupture + DRUJ injury; the pattern can cause longitudinal forearm instability. Assess the DRUJ and forearm length/stability. With confirmed instability, preserve or restore radial length; fixation or replacement depends on reconstructibility and associated injuries. Neither arthroplasty nor a blanket rule against resection is automatic.",
+      "after": "Essex-Lopresti = radial head fracture + interosseous membrane rupture + DRUJ injury; the pattern can cause longitudinal forearm instability. Assess the DRUJ and forearm length/stability. With confirmed instability, preserve or restore radial length; fixation or replacement depends on reconstructibility and associated injuries."
+    },
+    {
+      "id": "rk-essex-1-fa",
+      "field": "explanation",
+      "before": "اسکس-لوپرستی = شکستگی سر رادیوس + پارگی غشای بین‌استخوانی + آسیب DRUJ؛ این الگو می‌تواند موجب ناپایداری طولی ساعد شود. DRUJ و طول/پایداری ساعد را ارزیابی کنید. در ناپایداری تأییدشده، طول رادیوس حفظ یا بازسازی می‌شود؛ تثبیت یا جایگزینی به قابلیت بازسازی و آسیب‌های همراه بستگی دارد. نه پروتز خودکار است و نه قاعده‌ای مطلق برای منع رزکسیون وجود دارد.",
+      "after": "اسکس-لوپرستی = شکستگی سر رادیوس + پارگی غشای بین‌استخوانی + آسیب DRUJ؛ این الگو می‌تواند موجب ناپایداری طولی ساعد شود. DRUJ و طول/پایداری ساعد را ارزیابی کنید. در ناپایداری تأییدشده، طول رادیوس حفظ یا بازسازی می‌شود؛ تثبیت یا جایگزینی به قابلیت بازسازی و آسیب‌های همراه بستگی دارد."
+    },
+    {
+      "id": "rk-mechanismus-1-fa",
+      "field": "options.A",
+      "before": "اولنا ← تروکلئای هومروس",
+      "after": "از اولنا به تروکلئای هومروس"
+    },
+    {
+      "id": "rk-mechanismus-1-fa",
+      "field": "options.B",
+      "before": "رادیوس ← کاپیتولوم هومروس",
+      "after": "از رادیوس به کاپیتولوم هومروس"
+    },
+    {
+      "id": "rk-mechanismus-1-fa",
+      "field": "options.C",
+      "before": "رادیوس ← تروکلئای هومروس",
+      "after": "از رادیوس به تروکلئای هومروس"
+    },
+    {
+      "id": "rk-mechanismus-1-fa",
+      "field": "options.D",
+      "before": "اولنا ← کاپیتولوم هومروس",
+      "after": "از اولنا به کاپیتولوم هومروس"
+    }
+  ],
+  "lessonChanges": [
+    {
+      "file": "data/radiuskopf.js",
+      "path": "definition",
+      "before": {
+        "de": "Intraartikuläre Fraktur des Radiusköpfchens am Ellenbogen, klassifiziert nach Mason (I–IV), mit entscheidender Bedeutung für die Beurteilung der Gelenkkongruenz und assoziierter Ligamentverletzungen.",
+        "en": "Intra-articular fracture of the radial head at the elbow, classified by Mason (I–IV), with critical importance for assessing joint congruence and associated ligamentous injuries.",
+        "fa": "شکستگی داخل مفصلی سر رادیوس در آرنج، طبق طبقه‌بندی ماسون (I–IV)، با اهمیت حیاتی برای ارزیابی تطابق مفصلی و آسیب‌های رباطی همراه."
+      },
+      "after": {
+        "de": "Intraartikuläre Fraktur des Radiusköpfchens am Ellenbogen, klassifiziert nach Mason mit Johnston-Erweiterung (I–IV), mit entscheidender Bedeutung für die Beurteilung der Gelenkkongruenz und assoziierter Ligamentverletzungen.",
+        "en": "Intra-articular fracture of the radial head at the elbow, classified by Mason with the Johnston extension (I–IV), with critical importance for assessing joint congruence and associated ligamentous injuries.",
+        "fa": "شکستگی داخل مفصلی سر رادیوس در آرنج، با طبقه‌بندی ماسون همراه با گسترش جانستون (I–IV)، با اهمیت حیاتی برای ارزیابی تطابق مفصلی و آسیب‌های رباطی همراه."
+      },
+      "reason": "Name the extension responsible for typeIV; preserve definition.",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/20566295/",
+        "MSK.pdf physical15/printed14 (actual page read)"
+      ]
+    },
+    {
+      "file": "data/radiuskopf.js",
+      "path": "mason.lead",
+      "before": {
+        "de": "Die Mason-Einteilung auf der PDF-Seite ordnet die Frakturen nach Dislokation, Fragmentierung und Ellenbogenluxation ein. Die Tabelle direkt unter der Abbildung dient zugleich als übersetzte Bildlegende.",
+        "en": "The Mason scheme on the PDF page classifies fractures by displacement, fragmentation, and elbow dislocation. The table directly below the figure also serves as its translated legend.",
+        "fa": "طبقه‌بندی ماسون در صفحهٔ PDF شکستگی‌ها را بر اساس جابجایی، چندقطعه‌ای بودن و لوکساسیون آرنج دسته‌بندی می‌کند. جدول زیر تصویر، راهنمای ترجمه‌شدهٔ آن نیز هست."
+      },
+      "after": {
+        "de": "Die PDF-Abbildung zeigt die Typen I–IV. Die Tabelle ergänzt die Quellenkurzfassung um die deskriptive Trennung von Teil- und Ganzkopffraktur; Typ IV bezeichnet die zusätzliche Ellenbogenluxation nach Johnston.",
+        "en": "The PDF figure shows types I–IV. The table supplements the source summary with the descriptive distinction between partial-head and whole-head fractures; type IV denotes associated elbow dislocation in the Johnston extension.",
+        "fa": "تصویر PDF انواع I تا IV را نشان می‌دهد. جدول، خلاصهٔ منبع را با تمایز توصیفی شکستگی بخشی از سر و تمام سر رادیوس تکمیل می‌کند؛ نوع IV در گسترش جانستون به دررفتگی همراه آرنج اشاره دارد."
+      },
+      "reason": "Clarify source figure versus descriptive classification used in current assessment.",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/20566295/",
+        "MSK.pdf physical15/printed14 (actual page read)"
+      ]
+    },
+    {
+      "file": "data/radiuskopf.js",
+      "path": "mason.headers.1",
+      "before": {
+        "de": "Definition",
+        "en": "Definition",
+        "fa": "تعریف"
+      },
+      "after": {
+        "de": "Deskriptives Grundmuster",
+        "en": "Descriptive pattern",
+        "fa": "الگوی توصیفی"
+      },
+      "reason": "Table names descriptive patterns rather than claiming a universal numerical definition.",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/20566295/",
+        "MSK.pdf physical15/printed14 (actual page read)"
+      ]
+    },
+    {
+      "file": "data/radiuskopf.js",
+      "path": "mason.rows.0.2",
+      "before": {
+        "de": "Gelenkstufe < 2 mm",
+        "en": "Joint step < 2 mm",
+        "fa": "پله مفصلی < ۲ میلی‌متر"
+      },
+      "after": {
+        "de": "Geringe Dislokation; Gelenkstufe messen und verwendete Modifikation nennen",
+        "en": "Minimal displacement; measure the articular step and name the modification used",
+        "fa": "جابه‌جایی کم؛ پلهٔ مفصلی را اندازه بگیرید و نسخهٔ اصلاح‌شدهٔ مورد استفاده را نام ببرید"
+      },
+      "reason": "PDF-specific numbers retained once in source note, not mixed into universal table.",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/20566295/",
+        "MSK.pdf physical15/printed14 (actual page read)"
+      ]
+    },
+    {
+      "file": "data/radiuskopf.js",
+      "path": "mason.rows.1.1",
+      "before": {
+        "de": "Dislozierte marginale Fraktur (Keilfraktur)",
+        "en": "Displaced marginal fracture (wedge)",
+        "fa": "شکستگی حاشیه‌ای جابجا شده (گوه‌ای)"
+      },
+      "after": {
+        "de": "Dislozierte Teilkopffraktur, zum Beispiel Rand-/Keilfragment",
+        "en": "Displaced partial-head fracture, for example a marginal/wedge fragment",
+        "fa": "شکستگی جابه‌جاشدهٔ بخشی از سر، مثلاً قطعهٔ حاشیه‌ای یا گوه‌ای"
+      },
+      "reason": "Preserve wedge example while adding primary-supported partial-head extent.",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/20566295/",
+        "MSK.pdf physical15/printed14 (actual page read)"
+      ]
+    },
+    {
+      "file": "data/radiuskopf.js",
+      "path": "mason.rows.1.2",
+      "before": {
+        "de": "Gelenkstufe > 2 mm ODER > 30 % Gelenkfläche; oft Keilfraktur; intra- oder extraartikulär",
+        "en": "Joint step > 2 mm OR > 30 % of the articular surface; often a wedge fracture; intra- or extra-articular",
+        "fa": "پله مفصلی > ۲ میلی‌متر یا درگیری > ۳۰٪ سطح مفصلی؛ اغلب شکستگی گوه‌ای؛ داخل یا خارج مفصل"
+      },
+      "after": {
+        "de": "Gelenkstufe und betroffenen Gelenkflächenanteil angeben; auch mehrfragmentär möglich",
+        "en": "Report the articular step and proportion of articular surface involved; may also be multifragmentary",
+        "fa": "پلهٔ مفصلی و سهم سطح مفصلی درگیر را گزارش کنید؛ چندقطعه‌ای‌بودن نیز ممکن است"
+      },
+      "reason": "Guitton3DCT:fragment count does not automatically separateII/III; source numeric/extraarticular shorthand not used as diagnostic rule.",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/20566295/",
+        "MSK.pdf physical15/printed14 (actual page read)"
+      ]
+    },
+    {
+      "file": "data/radiuskopf.js",
+      "path": "mason.rows.2.1",
+      "before": {
+        "de": "Mehrfragmentäre / Trümmerfraktur",
+        "en": "Multi-fragmentary / comminuted fracture",
+        "fa": "شکستگی چندقطعه‌ای / خرد شده"
+      },
+      "after": {
+        "de": "Fraktur des gesamten Radiusköpfchens",
+        "en": "Fracture involving the entire radial head",
+        "fa": "شکستگی درگیرکنندهٔ تمام سر رادیوس"
+      },
+      "reason": "Whole-head extent is the relevant descriptive distinction.",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/20566295/",
+        "MSK.pdf physical15/printed14 (actual page read)"
+      ]
+    },
+    {
+      "file": "data/radiuskopf.js",
+      "path": "mason.rows.2.2",
+      "before": {
+        "de": "Mason III: mehrfragmentär / Trümmerfraktur; keine Mindestzahl auf der PDF-Seite",
+        "en": "Mason III: multi-fragmentary / comminuted; no minimum count on the PDF page",
+        "fa": "ماسون III: چندقطعه‌ای / خردشده؛ صفحهٔ PDF حداقل تعداد را ذکر نمی‌کند"
+      },
+      "after": {
+        "de": "Fragmentzahl variabel; Ganzkopfbeteiligung von einer mehrfragmentären Teilkopffraktur unterscheiden",
+        "en": "Variable fragment count; distinguish whole-head involvement from a multifragmentary partial-head fracture",
+        "fa": "تعداد قطعات متغیر است؛ درگیری تمام سر را از شکستگی چندقطعه‌ایِ بخشی از سر جدا کنید"
+      },
+      "reason": "Avoid unsupported fragment minimum or automatic irreconstructibility.",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/20566295/",
+        "MSK.pdf physical15/printed14 (actual page read)"
+      ]
+    },
+    {
+      "file": "data/radiuskopf.js",
+      "path": "mason.key",
+      "before": {
+        "de": "Bildlegende: I nicht/minimal disloziert; II dislozierte Rand-/Keilfraktur; III mehrfragmentär/Trümmerfraktur; IV Radiusköpfchenfraktur mit Ellenbogenluxation. Laut PDF gilt Typ I bei Gelenkstufe < 2 mm und Typ II bei > 2 mm oder > 30 % Gelenkfläche; exakt 2 mm ohne > 30 % Beteiligung wird auf dieser Seite nicht zugeordnet. Die Klassifikation beschreibt Morphologie, nicht automatisch die Therapie; Mason-Modifikationen können abweichen.",
+        "en": "Figure legend: I non/minimally displaced; II displaced marginal/wedge fracture; III multi-fragmentary/comminuted; IV radial head fracture with elbow dislocation. The PDF assigns Type I to a joint step < 2 mm and Type II to > 2 mm or > 30 % articular involvement; it does not assign exactly 2 mm without > 30 % involvement. The classification describes morphology, not an automatic treatment; Mason modifications may differ.",
+        "fa": "راهنمای تصویر: I بدون جابجایی/با جابجایی کم؛ II شکستگی حاشیه‌ای/گوه‌ای جابجا‌شده؛ III چندقطعه‌ای/خردشده؛ IV شکستگی سر رادیوس همراه لوکساسیون آرنج. طبق PDF، پلهٔ < ۲ میلی‌متر نوع I و پلهٔ > ۲ میلی‌متر یا درگیری > ۳۰٪ نوع II است؛ برای پلهٔ دقیقاً ۲ میلی‌متر بدون درگیری > ۳۰٪، صفحه نوعی تعیین نمی‌کند. طبقه‌بندی مورفولوژی را توصیف می‌کند، نه درمان خودکار؛ نسخه‌های اصلاح‌شدهٔ ماسون ممکن است متفاوت باشند."
+      },
+      "after": {
+        "de": "PDF-Kurzfassung: Typ I < 2 mm Gelenkstufe; Typ II > 2 mm ODER > 30 % Gelenkfläche; Typ III mehrfragmentär. Exakt 2 mm ohne > 30 % Beteiligung bleibt dort unzugeordnet. Diese quellenbezogenen Zahlengrenzen sind nicht universell: Teil- und Ganzkopfbeteiligung unterscheiden, die verwendete Modifikation nennen und Begleitluxation dokumentieren. Auch Typ II kann mehrfragmentär sein; Morphologie allein legt keine Therapie fest.",
+        "en": "PDF summary: type I articular step < 2 mm; type II > 2 mm OR > 30% articular involvement; type III multifragmentary. Exactly 2 mm without > 30% involvement is unassigned there. These source-specific numerical boundaries are not universal: distinguish partial-head from whole-head involvement, name the modification used and document associated dislocation. Type II may also be multifragmentary; morphology alone does not prescribe treatment.",
+        "fa": "خلاصهٔ PDF: پلهٔ مفصلی نوع I کمتر از ۲ میلی‌متر؛ نوع II بیش از ۲ میلی‌متر یا درگیری بیش از ۳۰٪ سطح مفصلی؛ نوع III چندقطعه‌ای. پلهٔ دقیقاً ۲ میلی‌متر بدون درگیری بیش از ۳۰٪ در آن تعیین‌تکلیف نشده است. این آستانه‌های عددیِ منبع، همگانی نیستند: درگیری بخشی از سر را از تمام سر جدا کنید، نسخهٔ اصلاح‌شده را نام ببرید و دررفتگی همراه را ثبت کنید. نوع II نیز می‌تواند چندقطعه‌ای باشد؛ مورفولوژی به‌تنهایی درمان را تجویز نمی‌کند."
+      },
+      "reason": "Retain exact PDF provenance/threshold gap once, explicitly qualify applicability and clinical assessment.",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/20566295/",
+        "MSK.pdf physical15/printed14 (actual page read)"
+      ]
+    },
+    {
+      "file": "data/radiuskopf.js",
+      "path": "therapie.items.1.text",
+      "before": {
+        "de": "Eine Gelenkstufe > 2 mm oder ein Befall von > 30 % ordnet die Fraktur in der PDF-Kurzfassung Typ II zu, begründet für sich allein aber keine ORIF. Therapieentscheidungen berücksichtigen unter anderem einen persistierenden mechanischen Bewegungsblock, Stabilität, Rekonstruierbarkeit und Begleitverletzungen.",
+        "en": "A joint step > 2 mm or involvement of > 30 % places the fracture in Type II in the PDF summary, but does not by itself justify ORIF. Treatment decisions also consider a persistent mechanical block, stability, reconstructibility, and associated injuries.",
+        "fa": "در خلاصهٔ PDF، پلهٔ مفصلی > ۲ میلی‌متر یا درگیری > ۳۰٪ شکستگی را در نوع II قرار می‌دهد، اما به‌تنهایی توجیه‌کنندهٔ ORIF نیست. تصمیم درمانی همچنین به بلوک مکانیکی پایدار، پایداری، امکان بازسازی و آسیب‌های همراه توجه می‌کند."
+      },
+      "after": {
+        "de": "Eine dislozierte Teilkopffraktur begründet für sich allein keine ORIF. Therapieentscheidungen berücksichtigen unter anderem einen persistierenden mechanischen Bewegungsblock, Stabilität, Rekonstruierbarkeit und Begleitverletzungen.",
+        "en": "A displaced partial-head fracture does not by itself justify ORIF. Treatment decisions also consider a persistent mechanical block, stability, reconstructibility and associated injuries.",
+        "fa": "شکستگی جابه‌جاشدهٔ بخشی از سر به‌تنهایی توجیه‌کنندهٔ ORIF نیست. تصمیم درمانی همچنین بلوک مکانیکی پایدار، پایداری، قابلیت بازسازی و آسیب‌های همراه را در نظر می‌گیرد."
+      },
+      "reason": "Remove duplicate PDF numerical rule from treatment paragraph; preserve all clinical qualifiers.",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/20566295/",
+        "MSK.pdf physical15/printed14 (actual page read)"
+      ]
+    },
+    {
+      "file": "data/radiuskopf.js",
+      "path": "takehome.items.2.title",
+      "before": {
+        "de": "Mason I vs. II – PDF-Grenzwerte",
+        "en": "Mason I vs. II – PDF thresholds",
+        "fa": "ماسون I در برابر II – آستانه‌های PDF"
+      },
+      "after": {
+        "de": "Mason I/II: Morphologie und Version",
+        "en": "Mason I/II: morphology and version",
+        "fa": "ماسون I و II: مورفولوژی و نسخه"
+      },
+      "reason": "Summary prioritises transferable morphology rather than unversioned cutoff recall.",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/20566295/",
+        "MSK.pdf physical15/printed14 (actual page read)"
+      ]
+    },
+    {
+      "file": "data/radiuskopf.js",
+      "path": "takehome.items.2.text",
+      "before": {
+        "de": "PDF-Kurzfassung: Typ I Gelenkstufe < 2 mm; Typ II > 2 mm ODER > 30 % Gelenkfläche. Exakt 2 mm ohne > 30 % Beteiligung bleibt auf dieser Seite unzugeordnet. Die Grenzwerte beschreiben Morphologie und ordnen keine Therapie an.",
+        "en": "PDF summary: Type I joint step < 2 mm; Type II > 2 mm OR > 30 % articular surface involvement. Exactly 2 mm without > 30 % involvement is unassigned on this page. These thresholds describe morphology and do not prescribe treatment.",
+        "fa": "خلاصهٔ PDF: پلهٔ نوع I < ۲ میلی‌متر؛ نوع II > ۲ میلی‌متر یا درگیری > ۳۰٪ سطح مفصلی است. پلهٔ دقیقاً ۲ میلی‌متر بدون درگیری > ۳۰٪ در این صفحه تعیین‌تکلیف نشده است. این آستانه‌ها مورفولوژی را توصیف می‌کنند و درمان تجویز نمی‌کنند."
+      },
+      "after": {
+        "de": "Typ I ist nicht oder minimal disloziert; Typ II betrifft einen dislozierten Teil des Kopfes. Gelenkstufe und Gelenkflächenanteil messen und die verwendete Modifikation nennen; die PDF-Zahlengrenzen nicht als universellen Therapieauftrag verwenden.",
+        "en": "Type I is nondisplaced or minimally displaced; type II involves a displaced part of the head. Measure the articular step and surface involvement, name the modification used and do not treat the PDF cutoffs as universal treatment instructions.",
+        "fa": "نوع I بدون جابه‌جایی یا با جابه‌جایی کم است؛ نوع II بخشی جابه‌جاشده از سر را درگیر می‌کند. پلهٔ مفصلی و سهم سطح درگیر را اندازه بگیرید، نسخهٔ اصلاح‌شده را نام ببرید و آستانه‌های PDF را دستور همگانی درمان ندانید."
+      },
+      "reason": "Source numbers remain in body note; concise summary aligns current full pool.",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/20566295/",
+        "MSK.pdf physical15/printed14 (actual page read)"
+      ]
+    },
+    {
+      "file": "data/radiuskopf.js",
+      "path": "takehome.items.3.title",
+      "before": {
+        "de": "Mason III – Klassifikationsmerkmal",
+        "en": "Mason III – classification feature",
+        "fa": "ماسون III – ویژگی طبقه‌بندی"
+      },
+      "after": {
+        "de": "Mason III: Ganzkopfbeteiligung",
+        "en": "Mason III: whole-head involvement",
+        "fa": "ماسون III: درگیری تمام سر"
+      },
+      "reason": "Meaningful descriptive summary target.",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/20566295/",
+        "MSK.pdf physical15/printed14 (actual page read)"
+      ]
+    },
+    {
+      "file": "data/radiuskopf.js",
+      "path": "takehome.items.3.text",
+      "before": {
+        "de": "Die PDF-Seite definiert Mason III als mehrfragmentäre oder Trümmerfraktur des Radiusköpfchens. Sie gibt weder eine Mindestzahl von Fragmenten noch eine Therapieempfehlung; die Klasse allein bedeutet keine automatische Prothese.",
+        "en": "The PDF page defines Mason III as a multi-fragmentary or comminuted radial head fracture. It gives neither a minimum fragment count nor a treatment recommendation; the class alone does not mandate arthroplasty.",
+        "fa": "صفحهٔ PDF ماسون III را شکستگی چندقطعه‌ای یا خردشدهٔ سر رادیوس تعریف می‌کند. در آن نه حداقل تعداد قطعات آمده و نه توصیهٔ درمانی؛ این طبقه به‌تنهایی پروتز را الزامی نمی‌کند."
+      },
+      "after": {
+        "de": "Typ III betrifft den gesamten Kopf. Die Fragmentzahl allein trennt II und III nicht: Auch Teilkopffrakturen können mehrfragmentär sein. Rekonstruierbarkeit, Stabilität und Begleitverletzungen beurteilen; Typ III bedeutet keine automatische Prothese.",
+        "en": "Type III involves the entire head. Fragment count alone does not separate II from III: partial-head fractures may also be multifragmentary. Assess reconstructibility, stability and associated injuries; type III does not automatically mandate arthroplasty.",
+        "fa": "نوع III تمام سر را درگیر می‌کند. تعداد قطعات به‌تنهایی II را از III جدا نمی‌کند؛ شکستگی بخشی از سر نیز می‌تواند چندقطعه‌ای باشد. قابلیت بازسازی، پایداری و آسیب‌های همراه را ارزیابی کنید؛ نوع III پروتز را خودکار الزامی نمی‌کند."
+      },
+      "reason": "Retain nonautomatic treatment caveat and align descriptive extent.",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/20566295/",
+        "MSK.pdf physical15/printed14 (actual page read)"
+      ]
+    }
+  ],
+  "all44CurrentObjectsExact": true,
+  "scope": "Only named3review findings and bounded lesson/TakeHome parity; no global lesson/media approval."
+}

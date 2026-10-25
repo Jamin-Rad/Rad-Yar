@@ -32,35 +32,30 @@ const CONTENT = {
       { "id": "takehome", "label": "Zusammenfassung", "icon": "💡" }
     ],
     "heroCards": [
-      { "value": "Supraspinatus", "label": "häufigste betroffene Sehne", "text": "v. a. in der „Critical Zone“ vor dem Ansatz" },
-      { "value": "PD/T2 fs", "label": "Schlüsselsequenzen", "text": "fettunterdrückt, flüssigkeitssensitiv, mind. 2 Ebenen" },
-      { "value": "Patte / Goutallier", "label": "wichtigste Klassifikationen", "text": "Retraktionsgrad und Muskelatrophie" }
+      { "value": "Supraspinatus", "label": "typische Befundregion", "text": "Ansatz, Oberflächen und Faserkontinuität prüfen" },
+      { "value": "PD/T2 fs", "label": "Schlüsselsequenzen", "text": "flüssigkeitssensitiv und mehrplanar; T1 für Muskelqualität" },
+      { "value": "Patte / Goutallier", "label": "getrennte Befundparameter", "text": "Retraktion und Fettinfiltration" }
     ],
     "basics": {
       "title": "Anatomie & Grundlagen",
       "lead": "Die Rotatorenmanschette besteht aus vier Muskel-Sehnen-Einheiten, die den Humeruskopf umschließen und für Stabilität und Bewegung im Glenohumeralgelenk sorgen.",
       "items": [
         { "title": "Die vier Muskeln", "text": "M. supraspinatus (Abduktion, kranialer Stabilisator), M. infraspinatus und M. teres minor (Außenrotation), M. subscapularis (Innenrotation)." },
-        { "title": "Critical Zone", "text": "Hypovaskuläre Zone der Supraspinatussehne ca. 1-2 cm proximal des Ansatzes am Tuberculum majus - Prädilektionsstelle für Degeneration und Rupturen." },
-        { "title": "Kräftepaare", "text": "Subscapularis/Infraspinatus stabilisieren den Humeruskopf in der Transversalebene, Deltoideus/Supraspinatus in der Koronarebene - eine Dysbalance führt zur Dezentrierung des Humeruskopfes." }
+        { "title": "Critical Zone", "text": "Ansatznaher Bereich der Supraspinatussehne, historisch als relativ minderdurchblutet beschrieben. Die Perfusion variiert regional und mit Belastung; keine stets avaskuläre Zone oder alleinige Rupturursache." },
+        { "title": "Kräftepaare", "text": "Vordere und hintere Manschette tragen zu einem ausbalancierten Kraftpaar und zur Zentrierung des Humeruskopfes bei. Subscapularis und Infraspinatus sind dafür wichtige Komponenten; der Beitrag einzelner Muskeln hängt von Armstellung und Belastung ab." }
       ],
-      "key": "Die Supraspinatussehne ist mit Abstand am häufigsten betroffen, insbesondere in der hypovaskulären Critical Zone kurz vor ihrem Ansatz am Tuberculum majus."
+      "key": "Die Critical Zone bezeichnet eine ansatznahe Region, keinen bildgebenden Beweis einer Minderdurchblutung. Bei der Befundung Sehnenverlauf, Faserdefekt und Oberflächenkontakt beschreiben."
     },
     "mri": {
       "title": "MRT-Technik & Normalbefund",
-      "lead": "Die MRT ist die Methode der Wahl zur Beurteilung der Rotatorenmanschette. Ein standardisiertes Protokoll mit fettunterdrückten, flüssigkeitssensitiven Sequenzen in mindestens zwei Ebenen ist essenziell.",
+      "lead": "Ein Schulter-MRT-Protokoll kombiniert flüssigkeitssensitive Aufnahmen in axialer, koronar-schräger und sagittal-schräger Ebene mit T1-Aufnahmen für Anatomie und Muskelqualität. Die Bausteine werden an die Fragestellung angepasst.",
       "tableHeaders": ["Sequenz", "Ebene", "Wertigkeit"],
-      "tableRows": [
-        ["PD/T2 fs", "koronar schräg", "Goldstandard zur Detektion von Rupturen und Tendinopathie"],
-        ["T1/PD", "axial", "Subscapularissehne, Bizepssehne, Muskelvolumen"],
-        ["T2 fs", "sagittal schräg (Y-View)", "Muskelatrophie (Goutallier), Tangentenzeichen"],
-        ["PD/T1", "alle Ebenen", "Knochenmarködem, ACG, Labrum"]
-      ],
+      "tableRows": [["PD/T2 fs","koronar-schräg","Sehnendefekte und flüssigkeitssensitive Strukturbeurteilung"],["PD fs","axial","Subscapularissehne, lange Bizepssehne und Pulley"],["T1","sagittal-schräg (Y-Aufnahme)","Muskelvolumen, Fettinfiltration und Tangentenzeichen"],["PD/T2 fs","sagittal-schräg","Defektausdehnung und ergänzende Beurteilung von Muskulatur, Bursa und Marködem"]],
       "lightBulbTitle": "Normalbefund der Supraspinatussehne",
-      "lightBulbText": "Eine gesunde Sehne zeigt eine homogen niedrige Signalintensität in allen Sequenzen. Eine intratendinöse Signalanhebung in PD/T1 ohne T2-Korrelat entspricht meist einer Tendinopathie.",
+      "lightBulbText": "Normales Sehnengewebe ist auf üblichen Sequenzen überwiegend signalarm. Eine Signalzunahme auf kurzen TE-Aufnahmen kann orientierungsbedingt oder degenerativ sein. TE, Faserkontinuität und Defektmorphologie gemeinsam prüfen, bevor eine Ruptur angenommen wird.",
       "dwiTitle": "Magic-Angle-Phänomen",
-      "dwiText": "Verläuft die Sehne in einem Winkel von ca. 55° zum Hauptmagnetfeld (häufig nahe dem Ansatz), kann es zu einer artifiziellen Signalanhebung in kurzen TE-Sequenzen (T1, PD) kommen, die in T2-gewichteten Sequenzen verschwindet - keine echte Pathologie.",
-      "key": "Mindestens zwei Ebenen mit fettunterdrückten, flüssigkeitssensitiven Sequenzen sind notwendig, um eine Ruptur sicher von einer Tendinopathie oder einem Magic-Angle-Artefakt zu unterscheiden."
+      "dwiText": "Nahe55° zu B0 kann normales Sehnengewebe auf kurzen TE-Aufnahmen signalreich erscheinen. Bei längerem TE nimmt der Effekt ab. Entscheidend sind TE und Orientierung, nicht die Bezeichnung T1/PD/T2 allein; Morphologie und weitere Ebenen mitprüfen.",
+      "key": "Mehrplanare flüssigkeitssensitive Bilder und T1-Aufnahmen ergänzen sich. Ein helles Sehnensignal allein ist kein Rupturbeweis; den Faserdefekt und seine Beziehung zu Gelenk und Bursa suchen."
     },
     "partial": {
       "title": "Partialrupturen & Tendinopathie",
@@ -68,52 +63,52 @@ const CONTENT = {
       "tableHeaders": ["Typ", "Lokalisation", "MRT-Befund"],
       "tableRows": [
         ["Bursaseitig", "oberflächliche (bursale) Faseranteile", "Flüssigkeitssignalreicher Defekt der oberflächlichen Sehnenfasern bis zur bursalen Oberfläche, bei erhaltenen artikulären Fasern; Bursaflüssigkeit allein beweist keinen Riss."],
-        ["Gelenkseitig (PASTA)", "tiefe (artikuläre) Faseranteile am Footprint", "Partial Articular Surface Tendon Avulsion - fokaler Defekt am Footprint, oft mit Impingement assoziiert"],
-        ["Intratendinös", "innerhalb der Sehne, ohne Oberflächenkontakt", "lineare/fokale T2-hyperintense Signalanhebung ohne Kontakt zur Bursa oder zum Gelenk"],
-        ["Tendinopathie", "diffuse Degeneration", "intratendinöse Signalanhebung in PD/T1, kein eindeutiges T2-Flüssigkeitssignal, ggf. Sehnenverdickung"]
+        ["Gelenkseitig (PASTA)", "tiefe (artikuläre) Faseranteile am Footprint", "Gelenkseitige Partialablösung am Footprint; der Begriff allein beweist kein klinisches Impingement"],
+        ["Intratendinös", "innerhalb der Sehne, ohne Oberflächenkontakt", "Flüssigkeitsäquivalenter Spalt mit Faserdefekt innerhalb der Sehne bei erhaltenen Oberflächen"],
+        ["Tendinopathie", "degenerative Sehnenveränderung", "Signalzunahme unterhalb von Flüssigkeitssignal, teils auch auf T2; ohne klaren Faserdefekt, gegebenenfalls Verdickung"]
       ],
       "irisTitle": "Sehnendicke und klinischer Kontext",
       "irisText": "Bei PASTA-Läsionen die Defekttiefe als Anteil der Sehnendicke angeben, nicht als beliebige Footprint-Fläche oder anteroposteriore Breite. Der medial-laterale freiliegende Footprint kann die Tiefe arthroskopisch abschätzen. Eine Läsion > 50 % Sehnendicke ist ein Behandlungsfaktor, keine alleinige OP-Indikation: Symptome, Funktion und Ansprechen auf nichtoperative Therapie mitbeurteilen.",
-      "key": "Bursaseitige, gelenkseitige (PASTA) und intratendinöse Partialrupturen unterscheiden sich durch ihre Lage relativ zu Bursa und Gelenkspalt - alle drei zeigen eine fokale T2-hyperintense Signalanhebung."
+      "key": "Die Einteilung richtet sich nach Faserdefekt und Oberflächenkontakt: bursaseitig, artikulär oder rein intratendinös. Unspezifische T2-Hyperintensität allein trennt diese Muster nicht von Degeneration oder Artefakt."
     },
     "full": {
       "title": "Komplettrupturen & Retraktion",
       "lead": "Eine Komplettruptur durchtrennt die Sehne über ihre gesamte Dicke und führt zu einer direkten Kommunikation zwischen Glenohumeralgelenk und Bursa subacromialis.",
       "tableHeaders": ["Merkmal", "MRT-Befund"],
       "tableRows": [
-        ["Diskontinuität", "vollständige T2-hyperintense Unterbrechung der Sehne mit Flüssigkeit im Sehnendefekt"],
+        ["Diskontinuität", "Durchgehender Faserdefekt von Gelenk- bis Bursaseite, typischerweise mit Flüssigkeitssignal"],
         ["Retraktion", "Abstand des Sehnenstumpfes vom Footprint - Einteilung nach Patte (Grad 1-3)"],
         ["Tangentenzeichen", "Auf der sagittal-schrägen Y-Aufnahme verbindet die Tangente den Oberrand der Spina scapulae mit dem Oberrand des Korakoids. Positiv: Der Supraspinatus-Muskelbauch reicht nicht über die Linie hinaus - Hinweis auf Atrophie."],
-        ["Muskelatrophie", "fettige Degeneration des Muskelbauchs - Klassifikation nach Goutallier (Grad 0-4)"],
+        ["Fettinfiltration", "Fettanteil gegenüber Muskelgewebe, in der MRT insbesondere auf nicht fettunterdrückten T1-Aufnahmen; Goutallier-Grad 0–4"],
         ["Humeruskopfhochstand", "verminderter akromiohumeraler Abstand (< 7 mm) bei chronischer Massenruptur"]
       ],
-      "lightBulbTitle": "Klassifikation nach Patte",
+      "lightBulbTitle": "Patte-Retraktionsgrad",
       "lightBulbText": "Grad 1: Sehnenstumpf nahe am Footprint. Grad 2: Stumpf auf Höhe des Humeruskopfes. Grad 3: Stumpf auf Höhe des Glenoids - je höher der Grad, desto schwieriger die spannungsfreie Rekonstruktion.",
-      "dwiTitle": "Goutallier-Klassifikation der Muskelatrophie",
+      "dwiTitle": "Goutallier: Fettinfiltration",
       "dwiText": "Grad 0: keine Fettinfiltration. Grad 1: vereinzelte Fettstreifen. Grad 2: Fett < Muskel. Grad 3: Fett = Muskel. Grad 4: Fett > Muskel. Ein hoher Fettinfiltrationsgrad erschwert die Planung, schließt eine funktionelle Besserung nach Rekonstruktion aber nicht pauschal aus. Ausgewählte Patientinnen und Patienten mit Grad 3–4 profitierten in einer klinischen Serie; Rekonstruierbarkeit und Behandlung bleiben individuell.",
-      "key": "Die Patte-Klassifikation (Retraktion) und die Goutallier-Klassifikation (Fettatrophie) sind entscheidend für die OP-Planung - eine hochgradige Atrophie limitiert die Erfolgsaussichten einer Rekonstruktion unabhängig vom Retraktionsgrad."
+      "key": "Retraktion, Muskelvolumen und Fettinfiltration getrennt dokumentieren. Sie beeinflussen gemeinsam mit Defektmorphologie und Klinik die Planung; kein einzelner Grad legt Rekonstruierbarkeit oder individuellen Nutzen allein fest."
     },
     "begleit": {
       "title": "Begleitbefunde",
       "lead": "Rotatorenmanschettenpathologien treten häufig im Kontext weiterer Befunde an der Schulter auf, die mitbeurteilt werden müssen.",
       "tableHeaders": ["Befund", "Beschreibung"],
       "tableRows": [
-        ["Subakromiales Impingement", "Einengung des Subakromialraums durch Akromionform (Bigliani-Typ), Osteophyten oder Bursaverdickung"],
+        ["Mögliche subakromiale Engefaktoren","Knöcherne Vorsprünge und Sehnen-/Bursabefund beschreiben; Akromionform allein ist keine klinische Impingement-Diagnose"],
         ["Bursitis subacromialis/subdeltoidea", "Flüssigkeitsansammlung oder Verdickung der Bursa, häufig begleitend bei bursaseitigen Partial- oder Komplettrupturen"],
         ["ACG-Arthrose", "kaudale Osteophyten können den Supraspinatus-Outlet einengen (Os acromiale beachten)"],
-        ["Lange Bizepssehne (LBS)", "Pathologien der LBS-Sehne (Tendinopathie, Subluxation) häufig assoziiert mit Subscapularisrupturen"]
+        ["Lange Bizepssehne (LBS)", "Insbesondere mediale Subluxation/Luxation lenkt den Blick auf oberen Subscapularis und Pulley; eine normale Lage schließt die Läsion nicht aus"]
       ],
-      "cave": "Eine Dislokation der langen Bizepssehne aus dem Sulcus bicipitalis ist ein indirektes Zeichen für eine begleitende Subscapularisruptur - die Subscapularissehne sollte gezielt in axialen Sequenzen untersucht werden.",
+      "cave": "Bei medialer Instabilität der langen Bizepssehne oberen Subscapularis und Pulley gezielt, insbesondere axial, prüfen. Das indirekte Zeichen ersetzt nicht die direkte Beurteilung von Kontinuität und Ausdehnung.",
       "key": "Impingement, Bursitis, ACG-Arthrose und Bizepssehnenpathologien sind häufige Begleitbefunde, die das klinische Bild und die Therapieentscheidung mitbestimmen."
     },
     "takehome": {
       "title": "Zusammenfassung",
       "lead": "Die wichtigsten Punkte für die Befundung.",
       "items": [
-        { "title": "Anatomie", "text": "Vier Muskeln (SSP, ISP, TM, SSC) - die Supraspinatussehne ist in der Critical Zone am häufigsten betroffen." },
-        { "title": "Protokoll", "text": "Mindestens zwei Ebenen mit fettunterdrückten, flüssigkeitssensitiven Sequenzen." },
+        { "title": "Anatomie", "text": "Vier SITS-Muskeln zuordnen. Ansatznahe Veränderungen nach Morphologie beurteilen; die Critical Zone allein ist keine Erklärung jeder Ruptur." },
+        { "title": "Protokoll", "text": "Flüssigkeitssensitive Aufnahmen in mehreren Ebenen und T1 für Muskelqualität kombinieren; bei Signalauffälligkeit TE und Faserkontinuität prüfen." },
         { "title": "Partialrupturen", "text": "Bursaseitig, gelenkseitig (PASTA) und intratendinös unterscheiden." },
-        { "title": "Komplettrupturen", "text": "Retraktion nach Patte und Muskelatrophie nach Goutallier bestimmen die OP-Planung." }
+        { "title": "Komplettrupturen", "text": "Retraktion nach Patte, Atrophie anhand von Muskelvolumen/Tangentenzeichen und Fettinfiltration nach Goutallier getrennt berichten; individuelle Planung statt einer automatischen Operationsregel." }
       ]
     }
   },
@@ -139,35 +134,30 @@ const CONTENT = {
       { "id": "takehome", "label": "Summary", "icon": "💡" }
     ],
     "heroCards": [
-      { "value": "Supraspinatus", "label": "most commonly affected tendon", "text": "especially in the \"critical zone\" near its insertion" },
-      { "value": "PD/T2 fs", "label": "key sequences", "text": "fat-suppressed, fluid-sensitive, at least 2 planes" },
-      { "value": "Patte / Goutallier", "label": "key classifications", "text": "tendon retraction and muscle atrophy" }
+      { "value": "Supraspinatus", "label": "typical reporting region", "text": "assess insertion, surfaces and fibre continuity" },
+      { "value": "PD/T2 fs", "label": "key sequences", "text": "multiplanar fluid-sensitive imaging; T1 for muscle quality" },
+      { "value": "Patte / Goutallier", "label": "separate reporting parameters", "text": "retraction and fatty infiltration" }
     ],
     "basics": {
       "title": "Anatomy & basics",
       "lead": "The rotator cuff consists of four musculotendinous units that envelop the humeral head, providing stability and movement of the glenohumeral joint.",
       "items": [
         { "title": "The four muscles", "text": "Supraspinatus (abduction, superior stabiliser), infraspinatus and teres minor (external rotation), subscapularis (internal rotation)." },
-        { "title": "Critical zone", "text": "Hypovascular zone of the supraspinatus tendon about 1-2 cm proximal to its insertion on the greater tuberosity - a predilection site for degeneration and tears." },
-        { "title": "Force couples", "text": "Subscapularis/infraspinatus stabilise the humeral head in the transverse plane, deltoid/supraspinatus in the coronal plane - imbalance leads to decentring of the humeral head." }
+        { "title": "Critical zone", "text": "An insertional region of supraspinatus historically described as relatively poorly vascularised. Perfusion varies by region and loading; this is not an invariably avascular zone or a sole cause of tearing." },
+        { "title": "Force couples", "text": "Anterior and posterior cuff contribute to a balanced force couple and humeral-head centring. Subscapularis and infraspinatus are important components; individual contributions depend on arm position and loading." }
       ],
-      "key": "The supraspinatus tendon is by far the most frequently affected, particularly in the hypovascular critical zone just proximal to its insertion on the greater tuberosity."
+      "key": "The critical zone names an insertional region, not imaging proof of reduced blood flow. Report tendon course, fibre defect and surface communication."
     },
     "mri": {
       "title": "MRI technique & normal findings",
-      "lead": "MRI is the method of choice for assessing the rotator cuff. A standardised protocol with fat-suppressed, fluid-sensitive sequences in at least two planes is essential.",
+      "lead": "A shoulder MRI protocol combines fluid-sensitive axial, coronal-oblique and sagittal-oblique images with T1 acquisitions for anatomy and muscle quality. Tailor the components to the clinical question.",
       "tableHeaders": ["Sequence", "Plane", "Value"],
-      "tableRows": [
-        ["PD/T2 fs", "oblique coronal", "gold standard for detecting tears and tendinopathy"],
-        ["T1/PD", "axial", "subscapularis tendon, biceps tendon, muscle volume"],
-        ["T2 fs", "oblique sagittal (Y-view)", "muscle atrophy (Goutallier), tangent sign"],
-        ["PD/T1", "all planes", "bone marrow oedema, AC joint, labrum"]
-      ],
+      "tableRows": [["PD/T2 fs","coronal oblique","tendon defects and fluid-sensitive structural assessment"],["PD fs","axial","subscapularis, long head of biceps and pulley"],["T1","sagittal oblique (Y view)","muscle bulk, fatty infiltration and tangent sign"],["PD/T2 fs","sagittal oblique","defect extent and complementary assessment of muscle, bursa and marrow oedema"]],
       "lightBulbTitle": "Normal appearance of the supraspinatus tendon",
-      "lightBulbText": "A healthy tendon shows homogeneously low signal intensity on all sequences. Intratendinous signal elevation on PD/T1 without a T2 correlate usually represents tendinopathy.",
+      "lightBulbText": "Normal tendon is predominantly low signal on routine sequences. Short-TE signal increase may reflect orientation or degeneration. Assess TE, fibre continuity and defect morphology together before diagnosing a tear.",
       "dwiTitle": "Magic-angle phenomenon",
-      "dwiText": "When a tendon runs at an angle of about 55° to the main magnetic field (often near the insertion), short-TE sequences (T1, PD) can show an artefactual signal increase that disappears on T2-weighted sequences - not a true pathology.",
-      "key": "At least two planes with fat-suppressed, fluid-sensitive sequences are needed to reliably distinguish a tear from tendinopathy or a magic-angle artefact."
+      "dwiText": "Near 55° to B0, normal tendon can appear bright on short-TE acquisitions. The effect decreases at longer TE. TE and orientation matter, rather than the T1/PD/T2 label alone; also check morphology and other planes.",
+      "key": "Multiplanar fluid-sensitive images and T1 acquisitions are complementary. Bright tendon signal alone does not prove a tear; look for a fibre defect and its relationship to joint and bursa."
     },
     "partial": {
       "title": "Partial tears & tendinopathy",
@@ -175,52 +165,52 @@ const CONTENT = {
       "tableHeaders": ["Type", "Location", "MRI finding"],
       "tableRows": [
         ["Bursal-sided", "superficial (bursal) fibres", "Fluid-signal defect of superficial tendon fibres reaching the bursal surface, with preserved articular fibres; bursal fluid alone does not establish a tear."],
-        ["Articular-sided (PASTA)", "deep (articular) fibres at the footprint", "Partial Articular Surface Tendon Avulsion - focal defect at the footprint, often associated with impingement"],
-        ["Intratendinous", "within the tendon, no surface contact", "linear/focal T2-hyperintense signal without contact to the bursa or joint"],
-        ["Tendinopathy", "diffuse degeneration", "intratendinous signal elevation on PD/T1, no clear T2 fluid signal, possible tendon thickening"]
+        ["Articular-sided (PASTA)", "deep (articular) fibres at the footprint", "Articular-sided partial avulsion at the footprint; the term alone does not establish clinical impingement"],
+        ["Intratendinous", "within the tendon, no surface contact", "A fluid-equivalent cleft with an internal fibre defect and intact surfaces"],
+        ["Tendinopathy", "degenerative tendon change", "Signal increase below fluid intensity, sometimes on T2 as well, without a clear fibre defect; possible thickening"]
       ],
       "irisTitle": "Tendon thickness and clinical context",
       "irisText": "For PASTA lesions, report tear depth as a proportion of tendon thickness, not arbitrary footprint area or anteroposterior width. Mediolateral exposed footprint can estimate depth arthroscopically. A tear >50% of tendon thickness is one treatment factor, not a stand-alone indication for surgery: also assess symptoms, function and response to nonoperative care.",
-      "key": "Bursal-sided, articular-sided (PASTA) and intratendinous partial tears differ by their location relative to the bursa and joint space - all three show focal T2-hyperintense signal."
+      "key": "Classification depends on fibre defect and surface communication: bursal, articular or purely intratendinous. Nonspecific T2 hyperintensity alone does not separate these patterns from degeneration or artefact."
     },
     "full": {
       "title": "Full-thickness tears & retraction",
       "lead": "A full-thickness tear traverses the entire thickness of the tendon, creating direct communication between the glenohumeral joint and the subacromial bursa.",
       "tableHeaders": ["Feature", "MRI finding"],
       "tableRows": [
-        ["Discontinuity", "complete T2-hyperintense interruption of the tendon with fluid in the tendon gap"],
+        ["Discontinuity", "A through-thickness fibre defect from joint to bursal surface, typically with fluid signal"],
         ["Retraction", "distance of the tendon stump from the footprint - graded according to Patte (grade 1-3)"],
         ["Tangent sign", "On the oblique sagittal Y view, the line joins the superior scapular spine and superior coracoid margins. Positive: the supraspinatus muscle belly does not extend above the line, indicating atrophy."],
-        ["Muscle atrophy", "fatty degeneration of the muscle belly - graded according to Goutallier (grade 0-4)"],
+        ["Fatty infiltration", "Fat relative to muscle, on MRI particularly on non-fat-suppressed T1 images; Goutallier grades 0–4"],
         ["Superior migration of the humeral head", "decreased acromiohumeral distance (<7 mm) in chronic massive tears"]
       ],
-      "lightBulbTitle": "Patte classification",
+      "lightBulbTitle": "Patte retraction grade",
       "lightBulbText": "Grade 1: tendon stump close to the footprint. Grade 2: stump at the level of the humeral head. Grade 3: stump at the level of the glenoid - the higher the grade, the more difficult a tension-free repair becomes.",
-      "dwiTitle": "Goutallier classification of muscle atrophy",
+      "dwiTitle": "Goutallier: fatty infiltration",
       "dwiText": "Grade 0: no fatty infiltration. Grade 1: scattered fatty streaks. Grade 2: fat < muscle. Grade 3: fat = muscle. Grade 4: fat > muscle. High-grade fatty infiltration complicates planning but does not categorically exclude functional improvement after repair. Selected patients with grades 3–4 improved in a clinical series; repairability and treatment remain individual.",
-      "key": "The Patte classification (retraction) and the Goutallier classification (fatty atrophy) are decisive for surgical planning - significant atrophy limits the chance of a successful repair regardless of the degree of retraction."
+      "key": "Document retraction, muscle bulk and fatty infiltration separately. Along with defect morphology and clinical assessment, they inform planning; no single grade alone determines repairability or individual benefit."
     },
     "begleit": {
       "title": "Associated findings",
       "lead": "Rotator cuff pathology frequently occurs alongside other shoulder findings that must be assessed together.",
       "tableHeaders": ["Finding", "Description"],
       "tableRows": [
-        ["Subacromial impingement", "narrowing of the subacromial space due to acromion shape (Bigliani type), osteophytes or bursal thickening"],
+        ["Possible subacromial narrowing factors","Describe bony projections and tendon/bursal findings; acromial shape alone is not a clinical diagnosis of impingement"],
         ["Subacromial/subdeltoid bursitis", "fluid accumulation or thickening of the bursa, often accompanying bursal-sided partial or full-thickness tears"],
         ["AC joint osteoarthritis", "inferior osteophytes can narrow the supraspinatus outlet (consider os acromiale)"],
-        ["Long head of biceps (LHB)", "LHB tendon pathology (tendinopathy, subluxation) frequently associated with subscapularis tears"]
+        ["Long head of biceps (LHB)", "Medial subluxation/dislocation particularly directs attention to upper subscapularis and pulley; normal position does not exclude a lesion"]
       ],
-      "cave": "Dislocation of the LHB tendon from the bicipital groove is an indirect sign of an associated subscapularis tear - the subscapularis tendon should be specifically assessed on axial sequences.",
+      "cave": "With medial long-head biceps instability, assess upper subscapularis and pulley specifically, particularly axially. The indirect sign does not replace direct assessment of continuity and extent.",
       "key": "Impingement, bursitis, AC joint osteoarthritis and LHB pathology are common associated findings that influence the clinical picture and treatment decision."
     },
     "takehome": {
       "title": "Summary",
       "lead": "The most important points for reporting.",
       "items": [
-        { "title": "Anatomy", "text": "Four muscles (SSP, ISP, TM, SSC) - the supraspinatus tendon in the critical zone is most commonly affected." },
-        { "title": "Protocol", "text": "At least two planes with fat-suppressed, fluid-sensitive sequences." },
+        { "title": "Anatomy", "text": "Identify the four SITS muscles. Assess insertional change morphologically; the critical zone alone does not explain every tear." },
+        { "title": "Protocol", "text": "Combine multiplanar fluid-sensitive images with T1 for muscle quality; check TE and fibre continuity when signal is abnormal." },
         { "title": "Partial tears", "text": "Distinguish bursal-sided, articular-sided (PASTA) and intratendinous." },
-        { "title": "Full-thickness tears", "text": "Retraction (Patte) and muscle atrophy (Goutallier) determine surgical planning." }
+        { "title": "Full-thickness tears", "text": "Report Patte retraction, atrophy by muscle bulk/tangent sign and Goutallier fatty infiltration separately; planning remains individual rather than an automatic surgical rule." }
       ]
     }
   },
@@ -246,35 +236,30 @@ const CONTENT = {
       { "id": "takehome", "label": "جمع‌بندی", "icon": "💡" }
     ],
     "heroCards": [
-      { "value": "سوپراسپیناتوس", "label": "شایع‌ترین تاندون درگیر", "text": "به‌ویژه در «Critical Zone» نزدیک محل اتصال" },
-      { "value": "PD/T2 fs", "label": "سکانس‌های کلیدی", "text": "فت‌ساپرس، حساس به مایع، حداقل ۲ پلان" },
-      { "value": "Patte / Goutallier", "label": "مهم‌ترین طبقه‌بندی‌ها", "text": "درجه رتراکشن و آتروفی عضلانی" }
+      { "value": "سوپراسپیناتوس", "label": "ناحیهٔ معمول ارزیابی", "text": "محل اتصال، سطوح و پیوستگی رشته‌ها را بررسی کنید" },
+      { "value": "PD/T2 fs", "label": "سکانس‌های کلیدی", "text": "تصاویر چندنمایی حساس به مایع؛ T1 برای کیفیت عضله" },
+      { "value": "Patte / Goutallier", "label": "پارامترهای جداگانهٔ گزارش", "text": "رتراکشن و نفوذ چربی" }
     ],
     "basics": {
       "title": "آناتومی و مبانی",
       "lead": "روتاتور کاف از چهار واحد عضله-تاندون تشکیل شده که سر هومروس را احاطه کرده و ثبات و حرکت مفصل گلنوهومرال را تأمین می‌کنند.",
       "items": [
         { "title": "چهار عضله", "text": "سوپراسپیناتوس (ابداکسیون، تثبیت‌کننده فوقانی)، اینفراسپیناتوس و ترس مینور (چرخش خارجی)، ساب‌اسکاپولاریس (چرخش داخلی)." },
-        { "title": "ناحیه بحرانی (Critical Zone)", "text": "ناحیه هیپوواسکولار تاندون سوپراسپیناتوس حدود ۱ تا ۲ سانتی‌متر قبل از محل اتصال به توبرکل بزرگ - محل شایع دژنراسیون و پارگی." },
-        { "title": "کوپل‌های نیرویی", "text": "ساب‌اسکاپولاریس/اینفراسپیناتوس سر هومروس را در صفحه ترانسورس و دلتوئید/سوپراسپیناتوس در صفحه کرونال تثبیت می‌کنند - عدم تعادل منجر به جابه‌جایی سر هومروس می‌شود." }
+        { "title": "ناحیه بحرانی (Critical Zone)", "text": "ناحیه‌ای نزدیک محل اتصال سوپراسپیناتوس که در توصیف‌های تاریخی خون‌رسانی نسبتاً کمتری داشته است. پرفیوژن با ناحیه و بارگذاری تغییر می‌کند؛ ناحیه‌ای همواره بدون عروق یا علت منفرد پارگی نیست." },
+        { "title": "کوپل‌های نیرویی", "text": "بخش قدامی و خلفی کاف در زوج نیروی متعادل و مرکزی‌ماندن سر هومروس نقش دارند. ساب‌اسکاپولاریس و اینفراسپیناتوس اجزای مهم‌اند؛ سهم هر عضله به وضعیت بازو و بارگذاری وابسته است." }
       ],
-      "key": "تاندون سوپراسپیناتوس به‌طور قابل توجهی شایع‌ترین تاندون درگیر است، به‌ویژه در Critical Zone هیپوواسکولار درست قبل از محل اتصال آن به توبرکل بزرگ."
+      "key": "ناحیهٔ بحرانی نام ناحیه‌ای نزدیک اتصال است، نه اثبات تصویری کاهش خون‌رسانی. در گزارش مسیر تاندون، نقص رشته‌ها و ارتباط سطحی را توصیف کنید."
     },
     "mri": {
       "title": "تکنیک MRI و یافته‌های طبیعی",
-      "lead": "MRI روش انتخابی برای ارزیابی روتاتور کاف است. یک پروتکل استاندارد با سکانس‌های فت‌ساپرس و حساس به مایع در حداقل دو پلان ضروری است.",
+      "lead": "پروتکل MRI شانه تصاویر حساس به مایع را در نماهای آگزیال، کرونال مایل و ساژیتال مایل با T1 برای آناتومی و کیفیت عضله ترکیب می‌کند. اجزا متناسب با سؤال بالینی تنظیم می‌شوند.",
       "tableHeaders": ["سکانس", "پلان", "ارزش تشخیصی"],
-      "tableRows": [
-        ["PD/T2 fs", "کرونال مایل", "استاندارد طلایی برای تشخیص پارگی و تاندینوپاتی"],
-        ["T1/PD", "آگزیال", "تاندون ساب‌اسکاپولاریس، تاندون بایسپس، حجم عضله"],
-        ["T2 fs", "ساژیتال مایل (Y-view)", "آتروفی عضلانی (Goutallier)، علامت تانژانت"],
-        ["PD/T1", "همه پلان‌ها", "ادم مغز استخوان، مفصل ACG، لابروم"]
-      ],
+      "tableRows": [["PD/T2 fs","کرونال مایل","نقص‌های تاندون و ارزیابی ساختاری حساس به مایع"],["PD fs","آگزیال","ساب‌اسکاپولاریس، سر بلند بایسپس و پولی"],["T1","ساژیتال مایل، نمای Y","حجم عضله، نفوذ چربی و علامت تانژانت"],["PD/T2 fs","ساژیتال مایل","وسعت نقص و ارزیابی مکمل عضله، بورس و ادم مغز استخوان"]],
       "lightBulbTitle": "یافته طبیعی تاندون سوپراسپیناتوس",
-      "lightBulbText": "تاندون سالم سیگنال یکنواخت و پایین در همه سکانس‌ها دارد. افزایش سیگنال داخل تاندونی در PD/T1 بدون معادل در T2 معمولاً به معنای تاندینوپاتی است.",
+      "lightBulbText": "تاندون طبیعی در سکانس‌های معمول عمدتاً کم‌سیگنال است. افزایش سیگنال در TE کوتاه می‌تواند وابسته به جهت یا ناشی از دژنراسیون باشد. پیش از تشخیص پارگی، TE، پیوستگی رشته‌ها و مورفولوژی نقص را با هم بررسی کنید.",
       "dwiTitle": "پدیده Magic Angle",
-      "dwiText": "وقتی تاندون با زاویه حدود ۵۵ درجه نسبت به میدان مغناطیسی اصلی قرار گیرد (اغلب نزدیک محل اتصال)، سکانس‌های TE کوتاه (T1، PD) ممکن است افزایش سیگنال کاذب نشان دهند که در سکانس‌های T2 ناپدید می‌شود - یک پاتولوژی واقعی نیست.",
-      "key": "حداقل دو پلان با سکانس‌های فت‌ساپرس و حساس به مایع برای افتراق مطمئن پارگی از تاندینوپاتی یا آرتیفکت Magic Angle لازم است."
+      "dwiText": "نزدیک زاویهٔ ۵۵ درجه نسبت به B0، تاندون طبیعی می‌تواند در TE کوتاه پُرسیگنال شود. اثر در TE طولانی‌تر کاهش می‌یابد. TE و جهت اهمیت دارند، نه صرفاً نام T1 یا PD یا T2؛ مورفولوژی و نماهای دیگر را نیز بررسی کنید.",
+      "key": "تصاویر چندنمایی حساس به مایع و T1 مکمل یکدیگرند. سیگنال روشن تاندون به‌تنهایی پارگی را ثابت نمی‌کند؛ نقص رشته‌ها و ارتباط آن با مفصل و بورس را جست‌وجو کنید."
     },
     "partial": {
       "title": "پارگی‌های جزئی و تاندینوپاتی",
@@ -282,52 +267,52 @@ const CONTENT = {
       "tableHeaders": ["نوع", "محل", "یافته MRI"],
       "tableRows": [
         ["سمت بورسال", "فیبرهای سطحی (بورسال)", "نقص با سیگنال مایع در الیاف سطحی تاندون تا سطح بورسال، با حفظ الیاف مفصلی؛ مایع بورس به‌تنهایی پارگی را ثابت نمی‌کند."],
-        ["سمت مفصلی (PASTA)", "فیبرهای عمقی (مفصلی) در محل اتصال تاندون (footprint)", "پارگی جزئی سطح مفصلی تاندون (PASTA) - نقص کانونی در محل اتصال تاندون (footprint)، اغلب همراه با ایمپینجمنت"],
-        ["داخل تاندونی", "درون تاندون، بدون تماس با سطح", "سیگنال خطی/کانونی هیپراینتنس T2 بدون تماس با بورس یا مفصل"],
-        ["تاندینوپاتی", "دژنراسیون منتشر", "افزایش سیگنال داخل تاندونی در PD/T1، بدون سیگنال مایع واضح در T2، احتمال ضخیم‌شدن تاندون"]
+        ["سمت مفصلی (PASTA)", "فیبرهای عمقی (مفصلی) در محل اتصال تاندون (footprint)", "جداشدگی جزئی سمت مفصلی در محل اتصال؛ اصطلاح به‌تنهایی ایمپینجمنت بالینی را ثابت نمی‌کند"],
+        ["داخل تاندونی", "درون تاندون، بدون تماس با سطح", "شکاف با سیگنال هم‌ارز مایع و نقص رشته‌ها داخل تاندون، با حفظ سطوح"],
+        ["تاندینوپاتی", "تغییر دژنراتیو تاندون", "افزایش سیگنال کمتر از مایع، گاهی در T2 نیز، بدون نقص واضح رشته‌ها؛ ممکن است ضخیم‌شدن وجود داشته باشد"]
       ],
       "irisTitle": "ضخامت تاندون و زمینهٔ بالینی",
       "irisText": "در ضایعهٔ PASTA، عمق نقص به‌صورت سهمی از ضخامت تاندون گزارش شود، نه مساحت دلخواه footprint یا عرض قدامی‌خلفی. پهنای داخلی‌خارجی footprint نمایان می‌تواند در آرتروسکوپی عمق را تخمین بزند. پارگی بیش از ۵۰٪ ضخامت تاندون یکی از عوامل تصمیم درمانی است، نه اندیکاسیون مستقل جراحی؛ علائم، عملکرد و پاسخ به درمان غیرجراحی نیز بررسی شوند.",
-      "key": "پارگی‌های سمت بورسال، سمت مفصلی (PASTA) و داخل تاندونی بر اساس محل خود نسبت به بورس و فضای مفصلی متفاوت‌اند - هر سه با سیگنال کانونی هیپراینتنس T2 مشخص می‌شوند."
+      "key": "طبقه‌بندی به نقص رشته‌ها و ارتباط سطحی وابسته است: بورسال، مفصلی یا صرفاً داخل تاندونی. هیپراینتنسیتهٔ غیراختصاصی T2 به‌تنهایی این الگوها را از دژنراسیون یا آرتیفکت جدا نمی‌کند."
     },
     "full": {
       "title": "پارگی‌های کامل و رتراکشن",
       "lead": "پارگی کامل تمام ضخامت تاندون را قطع می‌کند و ارتباط مستقیمی بین مفصل گلنوهومرال و بورس ساب‌آکرومیال ایجاد می‌کند.",
       "tableHeaders": ["ویژگی", "یافته MRI"],
       "tableRows": [
-        ["عدم تداوم", "قطع کامل و هیپراینتنس در T2 با مایع در محل نقص تاندون"],
+        ["عدم تداوم", "نقص رشته‌ای در تمام ضخامت از سمت مفصلی تا بورسال، معمولاً با سیگنال مایع"],
         ["رتراکشن", "فاصله انتهای تاندون از محل اتصال تاندون (footprint) - طبقه‌بندی Patte (درجه ۱ تا ۳)"],
         ["علامت تانژانت", "در نمای ساژیتال مایل Y، خط فرضی از لبه فوقانی خار اسکاپولا تا لبه فوقانی کوراکوئید کشیده می‌شود. مثبت بودن علامت یعنی شکم عضله سوپراسپیناتوس از خط بالاتر نمی‌رود و به نفع آتروفی است."],
-        ["آتروفی عضلانی", "دژنراسیون چربی شکم عضله - طبقه‌بندی Goutallier (درجه ۰ تا ۴)"],
+        ["نفوذ چربی", "نسبت چربی به بافت عضله، در MRI به‌ویژه روی T1 بدون فت‌ساپرشن؛ درجات ۰ تا ۴ Goutallier"],
         ["بالا رفتن سر هومروس", "کاهش فاصله آکرومیوهومرال (< ۷ میلی‌متر) در پارگی‌های وسیع مزمن"]
       ],
-      "lightBulbTitle": "طبقه‌بندی Patte",
+      "lightBulbTitle": "درجهٔ رتراکشن Patte",
       "lightBulbText": "درجه ۱: انتهای تاندون نزدیک محل اتصال تاندون (footprint). درجه ۲: انتها در سطح سر هومروس. درجه ۳: انتها در سطح گلنوئید - هرچه درجه بالاتر، ترمیم بدون کشش دشوارتر می‌شود.",
-      "dwiTitle": "طبقه‌بندی Goutallier برای آتروفی عضلانی",
+      "dwiTitle": "Goutallier: نفوذ چربی",
       "dwiText": "درجه ۰: بدون نفوذ چربی. درجه ۱: رگه‌های پراکنده چربی. درجه ۲: چربی < عضله. درجه ۳: چربی = عضله. درجه ۴: چربی > عضله. نفوذ چربی با درجهٔ بالا برنامه‌ریزی را دشوار می‌کند، اما بهبود عملکرد پس از ترمیم را به‌طور کلی منتفی نمی‌کند. در یک مجموعهٔ بالینی، بیماران منتخب با درجات ۳ تا ۴ بهبود یافتند؛ قابلیت ترمیم و درمان باید فردی ارزیابی شوند.",
-      "key": "طبقه‌بندی Patte (رتراکشن) و طبقه‌بندی Goutallier (آتروفی چربی) برای برنامه‌ریزی جراحی تعیین‌کننده‌اند - آتروفی شدید شانس ترمیم موفق را مستقل از درجه رتراکشن محدود می‌کند."
+      "key": "رتراکشن، حجم عضله و نفوذ چربی را جداگانه ثبت کنید. این موارد همراه مورفولوژی نقص و بالین بر برنامه‌ریزی اثر دارند؛ هیچ درجهٔ منفردی به‌تنهایی قابلیت بازسازی یا منفعت فردی را تعیین نمی‌کند."
     },
     "begleit": {
       "title": "یافته‌های همراه",
       "lead": "پاتولوژی روتاتور کاف اغلب همراه با سایر یافته‌های شانه دیده می‌شود که باید هم‌زمان ارزیابی شوند.",
       "tableHeaders": ["یافته", "توضیح"],
       "tableRows": [
-        ["ایمپینجمنت ساب‌آکرومیال", "تنگی فضای ساب‌آکرومیال به دلیل شکل آکرومیون (تیپ Bigliani)، استئوفیت یا ضخیم‌شدن بورس"],
+        ["عوامل احتمالی تنگی ساب‌آکرومیال","برجستگی‌های استخوانی و یافته‌های تاندون و بورس را توصیف کنید؛ شکل آکرومیون به‌تنهایی تشخیص ایمپینجمنت بالینی نیست"],
         ["بورسیت ساب‌آکرومیال/ساب‌دلتوئید", "تجمع مایع یا ضخیم‌شدن بورس، اغلب همراه پارگی‌های جزئی یا کامل سمت بورسال"],
         ["آرتروز مفصل ACG", "استئوفیت‌های تحتانی می‌توانند Outlet سوپراسپیناتوس را تنگ کنند (توجه به Os acromiale)"],
-        ["تاندون سر بلند بایسپس (LHB)", "پاتولوژی تاندون LHB (تاندینوپاتی، ساب‌لوکساسیون) اغلب همراه با پارگی ساب‌اسکاپولاریس است"]
+        ["تاندون سر بلند بایسپس (LHB)", "به‌ویژه نیمه‌دررفتگی یا دررفتگی مدیال توجه را به ساب‌اسکاپولاریس فوقانی و پولی جلب می‌کند؛ موقعیت طبیعی ضایعه را رد نمی‌کند"]
       ],
-      "cave": "دیسلوکیشن تاندون سر بلند بایسپس از Sulcus bicipitalis نشانه غیرمستقیم پارگی همراه ساب‌اسکاپولاریس است - تاندون ساب‌اسکاپولاریس باید به‌طور هدفمند در سکانس‌های آگزیال بررسی شود.",
+      "cave": "در ناپایداری مدیال سر بلند بایسپس، بخش فوقانی ساب‌اسکاپولاریس و پولی را به‌طور هدفمند، به‌ویژه در نمای آگزیال، بررسی کنید. علامت غیرمستقیم جای ارزیابی مستقیم پیوستگی و وسعت را نمی‌گیرد.",
       "key": "ایمپینجمنت، بورسیت، آرتروز ACG و پاتولوژی تاندون بایسپس یافته‌های همراه شایعی هستند که بر تصویر بالینی و تصمیم درمانی اثر می‌گذارند."
     },
     "takehome": {
       "title": "جمع‌بندی",
       "lead": "مهم‌ترین نکات برای گزارش‌نویسی.",
       "items": [
-        { "title": "آناتومی", "text": "چهار عضله (SSP, ISP, TM, SSC) - تاندون سوپراسپیناتوس در Critical Zone شایع‌ترین محل درگیری است." },
-        { "title": "پروتکل", "text": "حداقل دو پلان با سکانس‌های فت‌ساپرس و حساس به مایع." },
+        { "title": "آناتومی", "text": "چهار عضلهٔ SITS را مشخص کنید. تغییرات نزدیک اتصال را مورفولوژیک بسنجید؛ ناحیهٔ بحرانی به‌تنهایی توضیح همهٔ پارگی‌ها نیست." },
+        { "title": "پروتکل", "text": "تصاویر چندنمایی حساس به مایع را با T1 برای کیفیت عضله ترکیب کنید؛ در سیگنال غیرطبیعی، TE و پیوستگی رشته‌ها را بررسی کنید." },
         { "title": "پارگی‌های جزئی", "text": "افتراق سمت بورسال، سمت مفصلی (PASTA) و داخل تاندونی." },
-        { "title": "پارگی‌های کامل", "text": "رتراکشن (Patte) و آتروفی عضلانی (Goutallier) برنامه‌ریزی جراحی را تعیین می‌کنند." }
+        { "title": "پارگی‌های کامل", "text": "رتراکشن Patte، آتروفی بر اساس حجم عضله و علامت تانژانت و نفوذ چربی Goutallier را جداگانه گزارش کنید؛ برنامه‌ریزی فردی است، نه قانون خودکار جراحی." }
       ]
     }
   }

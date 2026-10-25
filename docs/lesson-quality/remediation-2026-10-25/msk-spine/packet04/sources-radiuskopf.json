@@ -1,0 +1,112 @@
+{
+  "date": "2026-10-25",
+  "status": "AUTHOR_SOURCE_LEDGER_NOT_INDEPENDENT_ACCEPTANCE",
+  "sources": [
+    {
+      "id": "RK04-MORPHOLOGY",
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/20566295/"
+      ],
+      "type": "Original46-adult3DCT study",
+      "read": "Complete indexed original abstract; partial-head fractures often have multiple fragments; whole-head injuries may have few fragments.",
+      "claim": "Fragment count alone does not separate II/III or establish reconstructibility. Descriptive partial/whole-head extent preferred to mixed unversioned numerical modifications.",
+      "limits": "Original1954Mason full paper not read; not claimed."
+    },
+    {
+      "id": "RK04-PDF15",
+      "file": "C:/Users/Drham/OneDrive/Desktop/Lerncore/MSK.pdf",
+      "physicalPage": 15,
+      "printedPage": 14,
+      "read": "Actual page rendered and viewed; diagrams/table/text inspected.",
+      "claim": "Source summary gives I<2mm, II>2mm OR>30%, III multifragmentary, IVassociateddislocation; exact2mm without>30% not assigned. Preserved provenance once while explaining version-dependent limitations.",
+      "visual": "public/radiuskopf/mason-klassifikation-msk-p15.png retained; no new patient image."
+    },
+    {
+      "id": "RK04-EFFUSION",
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/15232392/",
+        "https://acsearch.acr.org/docs/3195154/Narrative"
+      ],
+      "type": "Original20-adultMRI study and officialACR acuteelbow/forearm guidance",
+      "read": "Complete indexed original abstract; ACRadult suspectedfracture/normal-indeterminateXR variant.",
+      "claim": "Posttrauma effusion suggests possible occultfracture but does not establish location or MasonI. ACRrepeatXR10–14days or noncontrastCT appropriate in stated setting; noMRIalways claim."
+    },
+    {
+      "id": "RK04-RCL",
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/21841436/"
+      ],
+      "type": "Original normal-child projection/age study",
+      "read": "Complete original abstract;20normalelbows,age1–8, neck/lateral more reliable; age/rotation matter.",
+      "claim": "Nonintersection/centre miss alone not proof ofdislocation; true-lateral neck reference and wholealignment assessment."
+    },
+    {
+      "id": "RK04-FORCE",
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/14668511/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC6451781/"
+      ],
+      "type": "Original26-cadaverloading study and original18-radiusmechanical study",
+      "read": "Complete original indexed abstract; latter original axialcompression methods.",
+      "claim": "Axial radius/capitellar contact mechanism, rotation and additionalforce influence patterns; no universalpronation or numericloadfraction."
+    },
+    {
+      "id": "RK04-PIN",
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/28050547/",
+        "https://pubmed.ncbi.nlm.nih.gov/20079998/"
+      ],
+      "type": "OriginalPIN/radialheadfracture cases",
+      "read": "Complete indexed case abstracts; first original motorpattern paragraph.",
+      "claim": "Finger/thumbextension weakness with preserved wrist extension and no cutaneousloss supportsPINpattern; no new caseimage."
+    },
+    {
+      "id": "RK04-TREATMENT",
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/33753275/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC12487719/"
+      ],
+      "type": "Original45-patient isolatedMasonIIrandomisedtrial; original2025selectedmechanicalblockstudy",
+      "read": "Complete RCT abstract;2025originalmethods/selection/approach.",
+      "claim": "IsolatedMasonII not automaticORIF. Persistenttrueblock warrants operativeassessment; reconstructibility/associatedinjury matter; selectedothertechniques mean not alloperations must be openscrews.",
+      "limits": "No study-specific50degree block threshold or universal operative mandate taught."
+    },
+    {
+      "id": "RK04-LONGITUDINAL",
+      "urls": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC5895887/"
+      ],
+      "type": "OriginalcadaverRAIL study",
+      "read": "Original introduction/definition and experimentalconcept.",
+      "claim": "Radialhead/IOM/DRUJpattern can destabilise longitudinalforearm/radiallength; does not supply a universal patient-treatmentalgorithm."
+    },
+    {
+      "id": "RK04-TERRIBLETRIAD",
+      "urls": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC4048392/"
+      ],
+      "type": "Original selectednonoperative clinicalcohort",
+      "read": "Original methods/selection and abstract in earlier authorpacket; independently refreshed by brainreviewer.",
+      "claim": "Elbowdislocation+radialhead+coronoid; selectedstableconcentric cases can be nonoperative. No allthree-needsurgery rule."
+    },
+    {
+      "id": "RK04-MONTEGGIA",
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/24978320/"
+      ],
+      "type": "Original112-childMonteggia series",
+      "read": "Complete original indexed abstract.",
+      "claim": "Ulnarfracture and radiocapitellar dislocation pattern; assess properviews/fullforearm notRCLalone."
+    },
+    {
+      "id": "RK04-MOTION",
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/22576643/",
+        "https://pubmed.ncbi.nlm.nih.gov/29664851/"
+      ],
+      "type": "Originalsimplefracture earlymotion RCT and homeexercise/formalPT RCT",
+      "read": "Complete original indexed abstracts in authorpacket01; independentRK04reviewer freshly read both.",
+      "claim": "Stable simpleinjury earlypainadaptedmotion; homeinstruction can suffice. No universal fixedwaiting/loading/return-work date or mandatoryformalPT."
+    }
+  ]
+}

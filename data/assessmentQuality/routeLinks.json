@@ -96,6 +96,22 @@
       "cardTopic": "dva",
       "subject": "gehirn"
     },
+    "/gehirn/vaskulaer/kapillaere-teleangiektasie": {
+      "topicIds": [
+        "kapillaere-teleangiektasie"
+      ],
+      "questionCount": 12,
+      "cardTopic": "kapillaere-teleangiektasie",
+      "subject": "gehirn"
+    },
+    "/gehirn/neurofibromatose/nf1": {
+      "topicIds": [
+        "neurofibromatose-typ1"
+      ],
+      "questionCount": 4,
+      "cardTopic": "neurofibromatose-typ1",
+      "subject": "gehirn"
+    },
     "/msk/trauma/radiuskoepfchenfraktur": {
       "topicIds": [
         "radiuskoepfchenfraktur"
@@ -376,7 +392,7 @@
   },
   "counts": {
     "chiari-malformation": 3,
-    "neurofibromatose-typ1": 3,
+    "neurofibromatose-typ1": 4,
     "pres": 4,
     "km-ultraschall": 3,
     "km-jod-typen": 3,

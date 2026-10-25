@@ -1,0 +1,151 @@
+{
+  "date": "2026-10-25",
+  "status": "AUTHOR_VERIFIED_CLAIMS_PEER_REVIEW_PENDING",
+  "sources": [
+    {
+      "id": "ROTATOR-ANATOMY",
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/1624486/",
+        "https://pubmed.ncbi.nlm.nih.gov/12647876/"
+      ],
+      "read": "Complete original32cuffgross/histology and5cadavermorphology abstracts.",
+      "claim": "Four SITS units/interwoveninsertion and anterior-posteriorforcecouple; no universalquantitativeforces used."
+    },
+    {
+      "id": "ROTATOR-FUNCTION",
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/10888162/",
+        "https://pubmed.ncbi.nlm.nih.gov/28867549/",
+        "https://pubmed.ncbi.nlm.nih.gov/11347692/"
+      ],
+      "read": "Complete originalEMGdrivenmodel,20healthyEMGsegment and10cadavershoulderloading abstracts.",
+      "claim": "Subscapularis internalrotation/stability contribution depends on position/segment; remove oversimplifieddeltoid/SSPpair and universalmuscleranking."
+    },
+    {
+      "id": "ROTATOR-VASCULAR",
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/2323147/",
+        "https://pubmed.ncbi.nlm.nih.gov/1705053/",
+        "https://pubmed.ncbi.nlm.nih.gov/18647848/",
+        "https://pubmed.ncbi.nlm.nih.gov/26412209/"
+      ],
+      "read": "Complete original18specimenvascular,22shouldersvascular,31asymptomaticcontrastUS and120arthroscopicpatientlaserDoppler abstracts.",
+      "claim": "Near-insertionregion; regionalperfusion differs and increaseswithloading. Does not establish alwaysavascularregion or onecausalreasonfor alltears. No universal1–2cm cutoff asserted."
+    },
+    {
+      "id": "ROTATOR-PROTOCOL",
+      "urls": [
+        "https://www.essr.org/content-essr/uploads/2016/10/ESSR-MRI-Protocols-Shoulder.pdf",
+        "https://gravitas.acr.org/PPTS/DownloadPreviewDocument?DocId=45&ReleaseId=2"
+      ],
+      "read": "OfficialESSRprotocol table/labels and officialACR–SPR–SSR shoulderparameter sequence/plane passages.",
+      "claim": "Multiplanarfluid-sensitive sequences plus nonFS T1muscle/anatomy; no fullprotocol,minimumuniversalTE or guaranteeofeverypartialtear inferred."
+    },
+    {
+      "id": "ROTATOR-MAGIC",
+      "urls": [
+        "https://pubs.rsna.org/doi/10.1148/radiology.181.2.1924777",
+        "https://pubmed.ncbi.nlm.nih.gov/16709684/"
+      ],
+      "read": "Complete original7healthyorientation and164selectedMRcase abstracts.",
+      "claim": "Orientationnear55 and shortTEsignal, attenuationatlongerTE, morphologyneedscorrelation; notlabelaloneT2proof."
+    },
+    {
+      "id": "ROTATOR-HISTOLOGY",
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/20578021/",
+        "https://pubs.rsna.org/doi/10.1148/radiology.181.3.1947107",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC2465433/"
+      ],
+      "read": "Complete original18cadavershoulderhistology abstract; original1991indexedhistopathabstractexcerpt; originalMRIreliabilitytendinosis methods/definitions.",
+      "claim": "Anatomicallyintactmucoid/chondroiddegeneration can increaseT2signal. Needdefectmorphology/fluid-equivalence, not anyT2hyperintensity=tear."
+    },
+    {
+      "id": "ROTATOR-PARTIAL",
+      "urls": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC2930161/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC4733769/"
+      ],
+      "read": "Original202patientMRA/arthroscopymethods/definitions/discussion and original33intratendinousrepaircohortpreop/intraoperative findings read.",
+      "claim": "Distinguishsurface-reaching defects and intratendinous defects.202patientstudy explicitlyexcludedintratendinouscases; not used asvalidation ofthat subtype. No universalaccuracyor surgeryrecommendation."
+    },
+    {
+      "id": "ROTATOR-FULL",
+      "urls": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC5483776/"
+      ],
+      "read": "Originalprospective45arthroscopycase methods/results and morphologicdiscussion.",
+      "claim": "A true through-thickness defect typicallyfluid-filled, differs fromanybursalfluid; not everychronictear must havebrightfluid. Fullthicknessnotnecessarilyfullwidth. No numericalaccuracygeneralisation."
+    },
+    {
+      "id": "ROTATOR-PASTA",
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/16762713/",
+        "https://pubmed.ncbi.nlm.nih.gov/22959196/"
+      ],
+      "read": "Complete originaltechnicalreportPASTAexpansion and original17athletearthroscopy abstract.",
+      "claim": "Surfacewording source-attested; articularfootprintpartialtear. Posteriorinternalimpingement maycoexistinoverheadathletes, not mechanismprovedbyacronym. No technique prescribed."
+    },
+    {
+      "id": "ROTATOR-DEPTH",
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/15007313/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC3600138/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC3728419/"
+      ],
+      "read": "Complete original17measurablecadaverfootprint abstract; originaldepthguidestudy cadaver/32patientmethod/resultsdiscussion; original60repairRCT inclusion/selection methods.",
+      "claim": "Thickness/depth notAPwidth/area. Exposedfootprintestimate depends onanatomy, no universalmm-to50%conversion. Repairtrial patients symptomatic afterconservativecare; notautomatic surgery or repairversusnonoperativeefficacytrial."
+    },
+    {
+      "id": "ROTATOR-PATTE",
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/2323151/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC2837810/"
+      ],
+      "read": "Complete originalclassification abstract; originalclinicaltearclassification/tables excerpt.",
+      "claim": "OriginalPattedescribesmultiplefeatures. Explicitlylimitquestion/cardto commonlyusedretractioncomponent; retainexistingfootprint/glenoidlandmarks."
+    },
+    {
+      "id": "ROTATOR-TANGENT",
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/9525755/"
+      ],
+      "read": "Complete original70asymptomatic+40clinicalcomparison abstract.",
+      "claim": "Tangentline uppercoracoid/scapularspinemargins; musclebellynotcrossing supportsatrophy, distinctfromfatandstump."
+    },
+    {
+      "id": "ROTATOR-FAT",
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/8020238/",
+        "https://pubmed.ncbi.nlm.nih.gov/10633896/",
+        "https://pubmed.ncbi.nlm.nih.gov/17418325/"
+      ],
+      "read": "Complete original63preopCT/57postopseries,41CTMRIcomparison and22selectedgrade3/4repairseries abstracts.",
+      "claim": "Fattyinfiltration and muscleatrophy relatedbutdifferent; no reliablemethod-equivalenceor onegradeuniversalirreparabilityclaim. Selectedpatients mayfunctionallybenefit despiteadvancedfat; notclaimhealingguarantee."
+    },
+    {
+      "id": "ROTATOR-SPUR",
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/16337525/",
+        "https://pubmed.ncbi.nlm.nih.gov/12934022/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC3725773/"
+      ],
+      "read": "Complete original1029shouldermixedgroup,15spurhistochemical and216prospectiveasymptomaticcohortabstracts.",
+      "claim": "Spur/cuffassociation notuniversalcausality orclinicalpainproof; spurmaybesecondary. No patient-specificrisk%ornewthreshold."
+    },
+    {
+      "id": "ROTATOR-BICEPS",
+      "urls": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC6151251/",
+        "https://pubmed.ncbi.nlm.nih.gov/1624486/"
+      ],
+      "read": "Original432selectedsurgicalMRAcases abstract/results/discussion andoriginalcuffanatomyabstract.",
+      "claim": "Medialbicepsinstability clues uppersubscapularis/pulley; absence doesnotexclude andindirectsign notalltearextentproof. No diagnosticperformanceextrapolation toallpatients."
+    }
+  ],
+  "limits": [
+    "Some sources read as completeoriginalabstracts/indexed originalexcerpts ratherthanfullarticle; granularreadscope recorded.",
+    "SuppliedMSK.pdf36–38 textcontext inspected; no newfigureassessment or wholePDFsourcevalidation claimed.",
+    "No fabricated patientimage or image-dependentnewquiz."
+  ]
+}

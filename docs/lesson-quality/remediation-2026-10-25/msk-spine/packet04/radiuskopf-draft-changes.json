@@ -1,0 +1,2825 @@
+[
+  {
+    "kind": "question",
+    "id": "rk-mason-1-de",
+    "lang": "de",
+    "before": {
+      "id": "rk-mason-1-de",
+      "question": "Welches Kriterium definiert die Grenze zwischen Mason Typ I und Typ II?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Gelenkstufe < 1 mm"
+        },
+        {
+          "id": "B",
+          "text": "Gelenkstufe > 2 mm oder > 30 % der Gelenkfläche betroffen"
+        },
+        {
+          "id": "C",
+          "text": "Anzahl der Fragmente (≥ 2)"
+        },
+        {
+          "id": "D",
+          "text": "Vorliegen einer Ellenbogenluxation"
+        }
+      ],
+      "correct": "B",
+      "explanation": "Laut PDF-Kurzfassung: Mason I mit Gelenkstufe < 2 mm; Typ II mit Gelenkstufe > 2 mm oder > 30 % Gelenkflächenbeteiligung. Exakt 2 mm ohne > 30 % Beteiligung wird auf dieser Seite nicht zugeordnet. Morphologie, keine automatische Therapieentscheidung.",
+      "tags": [
+        "radiuskoepfchenfraktur"
+      ]
+    },
+    "after": {
+      "id": "rk-mason-1-de",
+      "question": "Welche Frakturmorphologie entspricht Mason II im deskriptiven Schema mit Johnston-Erweiterung?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Nicht dislozierte Fissur oder Randfraktur"
+        },
+        {
+          "id": "B",
+          "text": "Dislozierte Fraktur eines Teils des Radiusköpfchens"
+        },
+        {
+          "id": "C",
+          "text": "Mehrfragmentäre Fraktur des gesamten Radiusköpfchens"
+        },
+        {
+          "id": "D",
+          "text": "Radiusköpfchenfraktur mit Ellenbogenluxation"
+        }
+      ],
+      "correct": "B",
+      "explanation": "Mason II beschreibt eine dislozierte Teilkopffraktur; eine Ganzkopffraktur gehört zu III, eine zusätzliche Ellenbogenluxation zur Johnston-Erweiterung IV. Auch Teilkopffrakturen können mehrfragmentär sein. Stufenhöhe und Gelenkflächenanteil im Befund messen und die verwendete Modifikation nennen, statt unterschiedliche Zahlengrenzen als universell zu vermischen.",
+      "tags": [
+        "radiuskoepfchenfraktur"
+      ],
+      "wrongExplanations": {
+        "A": "Fissur/Randfraktur ohne Dislokation entspricht dem Grundmuster von Typ I.",
+        "C": "Die Beteiligung des gesamten Kopfes kennzeichnet hier Typ III; Fragmentzahl allein trennt II und III nicht.",
+        "D": "Die Ellenbogenluxation führt in der Johnston-Erweiterung zur Kategorie IV."
+      },
+      "source": "https://pubmed.ncbi.nlm.nih.gov/20566295/; MSK.pdf physical15 /printed14"
+    },
+    "reason": "Replace unversioned numerical OR boundary test with source-supported descriptive partial/whole-head morphology; preserve correctB/ID."
+  },
+  {
+    "kind": "question",
+    "id": "rk-mason-1-en",
+    "lang": "en",
+    "before": {
+      "id": "rk-mason-1-en",
+      "question": "Which criterion defines the threshold between Mason Type I and Type II?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Joint step < 1 mm"
+        },
+        {
+          "id": "B",
+          "text": "Joint step > 2 mm or > 30 % of the articular surface involved"
+        },
+        {
+          "id": "C",
+          "text": "Number of fragments (≥ 2)"
+        },
+        {
+          "id": "D",
+          "text": "Presence of elbow dislocation"
+        }
+      ],
+      "correct": "B",
+      "explanation": "In the PDF summary: Mason I has a joint step < 2 mm; Type II has a step > 2 mm or > 30 % articular involvement. Exactly 2 mm without > 30 % involvement is not assigned on this page. These are morphological criteria, not an automatic treatment decision.",
+      "tags": [
+        "radiuskoepfchenfraktur"
+      ]
+    },
+    "after": {
+      "id": "rk-mason-1-en",
+      "question": "Which fracture morphology corresponds to Mason II in the descriptive scheme with the Johnston extension?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Nondisplaced fissure or marginal fracture"
+        },
+        {
+          "id": "B",
+          "text": "Displaced fracture involving part of the radial head"
+        },
+        {
+          "id": "C",
+          "text": "Comminuted fracture involving the entire radial head"
+        },
+        {
+          "id": "D",
+          "text": "Radial head fracture with elbow dislocation"
+        }
+      ],
+      "correct": "B",
+      "explanation": "Mason II describes a displaced partial-head fracture; a whole-head fracture corresponds to III, and associated elbow dislocation to Johnston type IV. Partial-head fractures can also be multifragmentary. Measure displacement and articular involvement and identify the classification modification rather than mixing numerical definitions into a universal rule.",
+      "tags": [
+        "radiuskoepfchenfraktur"
+      ],
+      "wrongExplanations": {
+        "A": "A nondisplaced fissure or marginal fracture is the basic type-I pattern.",
+        "C": "Whole-head involvement characterizes type III here; fragment count alone does not distinguish II from III.",
+        "D": "Elbow dislocation places the injury in Johnston type IV."
+      },
+      "source": "https://pubmed.ncbi.nlm.nih.gov/20566295/; MSK.pdf physical15 /printed14"
+    },
+    "reason": "Replace unversioned numerical OR boundary test with source-supported descriptive partial/whole-head morphology; preserve correctB/ID."
+  },
+  {
+    "kind": "question",
+    "id": "rk-mason-1-fa",
+    "lang": "fa",
+    "before": {
+      "id": "rk-mason-1-fa",
+      "question": "کدام معیار مرز بین ماسون نوع I و نوع II را تعریف می‌کند؟",
+      "options": [
+        {
+          "id": "A",
+          "text": "پله مفصلی < ۱ میلی‌متر"
+        },
+        {
+          "id": "B",
+          "text": "پلهٔ مفصلی > ۲ میلی‌متر یا درگیری > ۳۰٪ سطح مفصلی"
+        },
+        {
+          "id": "C",
+          "text": "تعداد قطعات (≥ ۲)"
+        },
+        {
+          "id": "D",
+          "text": "وجود لوکساسیون آرنج"
+        }
+      ],
+      "correct": "B",
+      "explanation": "طبق خلاصهٔ PDF: ماسون I پلهٔ مفصلی < ۲ میلی‌متر دارد؛ نوع II پلهٔ > ۲ میلی‌متر یا درگیری > ۳۰٪ سطح مفصلی دارد. پلهٔ دقیقاً ۲ میلی‌متر بدون درگیری > ۳۰٪ در این صفحه به نوعی اختصاص داده نشده است. این‌ها معیارهای مورفولوژیک‌اند، نه تصمیم خودکار درمانی.",
+      "tags": [
+        "radiuskoepfchenfraktur"
+      ]
+    },
+    "after": {
+      "id": "rk-mason-1-fa",
+      "question": "در طرح توصیفی ماسون با گسترش جانستون، کدام مورفولوژی شکستگی با نوع II مطابقت دارد؟",
+      "options": [
+        {
+          "id": "A",
+          "text": "ترک یا شکستگی حاشیه‌ای بدون جابه‌جایی"
+        },
+        {
+          "id": "B",
+          "text": "شکستگی جابه‌جا‌شدهٔ بخشی از سر رادیوس"
+        },
+        {
+          "id": "C",
+          "text": "شکستگی چندقطعه‌ای تمام سر رادیوس"
+        },
+        {
+          "id": "D",
+          "text": "شکستگی سر رادیوس همراه دررفتگی آرنج"
+        }
+      ],
+      "correct": "B",
+      "explanation": "ماسون II شکستگی جابه‌جا‌شدهٔ بخشی از سر رادیوس را توصیف می‌کند؛ شکستگی تمام سر در نوع III و دررفتگی همراه آرنج در گسترش جانستون، نوع IV است. شکستگی بخشی از سر نیز می‌تواند چندقطعه‌ای باشد. جابه‌جایی و میزان درگیری سطح مفصلی را اندازه‌گیری و نسخهٔ طبقه‌بندی را مشخص کنید؛ مرزهای عددی نسخه‌های مختلف را به یک قاعدهٔ همگانی تبدیل نکنید.",
+      "tags": [
+        "radiuskoepfchenfraktur"
+      ],
+      "wrongExplanations": {
+        "A": "ترک یا شکستگی حاشیه‌ای بدون جابه‌جایی، الگوی پایهٔ نوع I است.",
+        "C": "درگیری تمام سر در اینجا مشخصهٔ نوع III است؛ تعداد قطعات به‌تنهایی II را از III جدا نمی‌کند.",
+        "D": "در گسترش جانستون، دررفتگی آرنج آسیب را در نوع IV قرار می‌دهد."
+      },
+      "source": "https://pubmed.ncbi.nlm.nih.gov/20566295/; MSK.pdf physical15 /printed14"
+    },
+    "reason": "Replace unversioned numerical OR boundary test with source-supported descriptive partial/whole-head morphology; preserve correctB/ID."
+  },
+  {
+    "kind": "question",
+    "id": "rk-mason-2-de",
+    "lang": "de",
+    "before": {
+      "id": "rk-mason-2-de",
+      "question": "Was definiert Mason Typ IV?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Trümmerfraktur des Radiusköpfchens"
+        },
+        {
+          "id": "B",
+          "text": "Jede Radiusköpfchenfraktur kombiniert mit einer Ellenbogenluxation"
+        },
+        {
+          "id": "C",
+          "text": "Dislozierte Fraktur > 2 mm"
+        },
+        {
+          "id": "D",
+          "text": "Fraktur mit Essex-Lopresti-Verletzung"
+        }
+      ],
+      "correct": "B",
+      "explanation": "Mason IV = jede Radiusköpfchenfraktur in Kombination mit einer Ellenbogenluxation – unabhängig von der Fragmentzahl.",
+      "tags": [
+        "radiuskoepfchenfraktur"
+      ]
+    },
+    "after": {
+      "id": "rk-mason-2-de",
+      "question": "Was definiert Mason Typ IV?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Mehrfragmentäre Ganzkopffraktur ohne Ellenbogenluxation"
+        },
+        {
+          "id": "B",
+          "text": "Radiusköpfchenfraktur kombiniert mit einer Ellenbogenluxation"
+        },
+        {
+          "id": "C",
+          "text": "Dislozierte Teilkopffraktur ohne Ellenbogenluxation"
+        },
+        {
+          "id": "D",
+          "text": "Radiusköpfchenfraktur mit IOM-/DRUJ-Verletzung ohne Ellenbogenluxation"
+        }
+      ],
+      "correct": "B",
+      "explanation": "In der Johnston-Erweiterung ist Typ IV die Kombination aus Radiusköpfchenfraktur und Ellenbogenluxation. Der gesamte Verletzungskomplex wird zusätzlich beschrieben; Fragmentzahl allein definiert IV nicht.",
+      "tags": [
+        "radiuskoepfchenfraktur"
+      ],
+      "wrongExplanations": {
+        "A": "Eine mehrfragmentäre Ganzkopffraktur ohne Luxation entspricht dem Typ-III-Muster.",
+        "C": "Eine dislozierte Teilkopffraktur ohne Ellenbogenluxation beschreibt das Typ-II-Muster.",
+        "D": "IOM-/DRUJ-Verletzungen sprechen für eine Essex-Lopresti-Konstellation; sie ersetzen das Luxationskriterium von IV nicht."
+      },
+      "source": "MSK.pdf physical15 /printed14; https://pubmed.ncbi.nlm.nih.gov/20566295/"
+    },
+    "reason": "Retain useful classification target, make all alternatives full related fracture patterns, add specific feedback."
+  },
+  {
+    "kind": "question",
+    "id": "rk-mason-2-en",
+    "lang": "en",
+    "before": {
+      "id": "rk-mason-2-en",
+      "question": "What defines Mason Type IV?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Comminuted fracture of the radial head"
+        },
+        {
+          "id": "B",
+          "text": "Any radial head fracture combined with an elbow dislocation"
+        },
+        {
+          "id": "C",
+          "text": "Displaced fracture > 2 mm"
+        },
+        {
+          "id": "D",
+          "text": "Fracture with Essex-Lopresti lesion"
+        }
+      ],
+      "correct": "B",
+      "explanation": "Mason IV = any radial head fracture combined with an elbow dislocation, regardless of fragment count.",
+      "tags": [
+        "radiuskoepfchenfraktur"
+      ]
+    },
+    "after": {
+      "id": "rk-mason-2-en",
+      "question": "What defines Mason Type IV?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Comminuted whole-head fracture without elbow dislocation"
+        },
+        {
+          "id": "B",
+          "text": "Radial head fracture combined with elbow dislocation"
+        },
+        {
+          "id": "C",
+          "text": "Displaced partial-head fracture without elbow dislocation"
+        },
+        {
+          "id": "D",
+          "text": "Radial head fracture with IOM/DRUJ injury but no elbow dislocation"
+        }
+      ],
+      "correct": "B",
+      "explanation": "In the Johnston extension, type IV combines a radial head fracture with elbow dislocation. Describe the full associated injury pattern separately; fragment count alone does not define IV.",
+      "tags": [
+        "radiuskoepfchenfraktur"
+      ],
+      "wrongExplanations": {
+        "A": "A comminuted whole-head fracture without dislocation is the type-III pattern.",
+        "C": "A displaced partial-head fracture without elbow dislocation describes the type-II pattern.",
+        "D": "IOM/DRUJ injury suggests an Essex–Lopresti pattern; it does not substitute for the elbow-dislocation criterion of IV."
+      },
+      "source": "MSK.pdf physical15 /printed14; https://pubmed.ncbi.nlm.nih.gov/20566295/"
+    },
+    "reason": "Retain useful classification target, make all alternatives full related fracture patterns, add specific feedback."
+  },
+  {
+    "kind": "question",
+    "id": "rk-mason-2-fa",
+    "lang": "fa",
+    "before": {
+      "id": "rk-mason-2-fa",
+      "question": "ماسون نوع IV چه چیزی را تعریف می‌کند؟",
+      "options": [
+        {
+          "id": "A",
+          "text": "شکستگی خرد شده سر رادیوس"
+        },
+        {
+          "id": "B",
+          "text": "هر شکستگی سر رادیوس همراه با لوکساسیون آرنج"
+        },
+        {
+          "id": "C",
+          "text": "شکستگی جابجا شده > ۲ میلی‌متر"
+        },
+        {
+          "id": "D",
+          "text": "شکستگی با ضایعه اسکس-لوپرستی"
+        }
+      ],
+      "correct": "B",
+      "explanation": "ماسون IV = هر شکستگی سر رادیوس همراه با لوکساسیون آرنج، مستقل از تعداد قطعات.",
+      "tags": [
+        "radiuskoepfchenfraktur"
+      ]
+    },
+    "after": {
+      "id": "rk-mason-2-fa",
+      "question": "ماسون نوع IV چه چیزی را تعریف می‌کند؟",
+      "options": [
+        {
+          "id": "A",
+          "text": "شکستگی چندقطعه‌ای تمام سر بدون دررفتگی آرنج"
+        },
+        {
+          "id": "B",
+          "text": "شکستگی سر رادیوس همراه دررفتگی آرنج"
+        },
+        {
+          "id": "C",
+          "text": "شکستگی جابه‌جا‌شدهٔ بخشی از سر بدون دررفتگی آرنج"
+        },
+        {
+          "id": "D",
+          "text": "شکستگی سر رادیوس همراه آسیب IOM/DRUJ، بدون دررفتگی آرنج"
+        }
+      ],
+      "correct": "B",
+      "explanation": "در گسترش جانستون، نوع IV ترکیب شکستگی سر رادیوس و دررفتگی آرنج است. مجموعهٔ کامل آسیب‌های همراه را نیز توصیف کنید؛ تعداد قطعات به‌تنهایی نوع IV را تعریف نمی‌کند.",
+      "tags": [
+        "radiuskoepfchenfraktur"
+      ],
+      "wrongExplanations": {
+        "A": "شکستگی چندقطعه‌ای تمام سر بدون دررفتگی، الگوی نوع III است.",
+        "C": "شکستگی جابه‌جا‌شدهٔ بخشی از سر بدون دررفتگی آرنج، الگوی نوع II است.",
+        "D": "آسیب IOM/DRUJ الگوی اسکس–لوپرستی را مطرح می‌کند و جای معیار دررفتگی آرنج برای نوع IV را نمی‌گیرد."
+      },
+      "source": "MSK.pdf physical15 /printed14; https://pubmed.ncbi.nlm.nih.gov/20566295/"
+    },
+    "reason": "Retain useful classification target, make all alternatives full related fracture patterns, add specific feedback."
+  },
+  {
+    "kind": "question",
+    "id": "rk-fettkissen-1-de",
+    "lang": "de",
+    "before": {
+      "id": "rk-fettkissen-1-de",
+      "question": "Nach einem Ellenbogentrauma beim Erwachsenen ist im echten Seitenbild ein posteriores Fettkissen abgehoben, eine Fraktur aber nicht sichtbar. Welche Einordnung passt?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Normalbefund, keine weiteren Maßnahmen"
+        },
+        {
+          "id": "B",
+          "text": "Gelenkerguss mit möglicher okkulter Fraktur; das Zeichen allein beweist keine Mason-I-Fraktur"
+        },
+        {
+          "id": "C",
+          "text": "Immer MRT indiziert"
+        },
+        {
+          "id": "D",
+          "text": "Hinweis auf anteriore Gelenkkapselruptur"
+        }
+      ],
+      "correct": "B",
+      "explanation": "Ein abgehobenes posteriores Fettkissen spricht für einen Erguss und im Traumakontext für eine mögliche okkulte Fraktur. Es legt weder den Frakturort noch einen Mason-Typ fest. Bei fortbestehendem Frakturverdacht kommen je nach klinischer Frage eine Röntgenkontrolle nach 10–14 Tagen oder CT ohne Kontrastmittel infrage.",
+      "tags": [
+        "radiuskoepfchenfraktur"
+      ]
+    },
+    "after": {
+      "id": "rk-fettkissen-1-de",
+      "question": "Nach einem Ellenbogentrauma beim Erwachsenen ist im echten Seitenbild ein posteriores Fettkissen abgehoben, eine Fraktur aber nicht sichtbar. Welche Einordnung passt?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Normale Fettkissenlage ohne Gelenkerguss"
+        },
+        {
+          "id": "B",
+          "text": "Gelenkerguss mit möglicher okkulter Fraktur"
+        },
+        {
+          "id": "C",
+          "text": "Bereits gesicherte okkulte Mason-I-Radiusköpfchenfraktur"
+        },
+        {
+          "id": "D",
+          "text": "Bereits gesicherte okkulte Olekranonfraktur"
+        }
+      ],
+      "correct": "B",
+      "explanation": "Ein abgehobenes posteriores Fettkissen spricht für einen Erguss und im Traumakontext für eine mögliche okkulte Fraktur. Es legt weder den Frakturort noch einen Mason-Typ fest. Bei fortbestehendem Frakturverdacht kommen je nach klinischer Frage eine Röntgenkontrolle nach 10–14 Tagen oder CT ohne Kontrastmittel infrage.",
+      "tags": [
+        "radiuskoepfchenfraktur"
+      ],
+      "wrongExplanations": {
+        "A": "Ein abgehobenes posteriores Fettkissen im echten Seitenbild spricht für einen Erguss und ist nach Trauma kein unauffälliges Fettmuster.",
+        "C": "Eine okkulte Radiusköpfchenfraktur ist möglich, aber das Ergusszeichen allein legt weder den Frakturort noch den Mason-Typ fest.",
+        "D": "Auch andere Frakturorte können hinter einem Erguss stehen; das Fettkissenzeichen lokalisiert nicht sicher zum Olekranon."
+      },
+      "source": "https://pubmed.ncbi.nlm.nih.gov/15232392/; https://acsearch.acr.org/docs/3195154/Narrative"
+    },
+    "reason": "Replace MRI-always/capsule distractors with related diagnostic interpretations; no occult-location or Mason overclaim."
+  },
+  {
+    "kind": "question",
+    "id": "rk-fettkissen-1-en",
+    "lang": "en",
+    "before": {
+      "id": "rk-fettkissen-1-en",
+      "question": "After elbow trauma in an adult, a true lateral view shows an elevated posterior fat pad but no visible fracture. Which interpretation fits?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Normal finding, no further action"
+        },
+        {
+          "id": "B",
+          "text": "Joint effusion with possible occult fracture; the sign alone does not establish a Mason I fracture"
+        },
+        {
+          "id": "C",
+          "text": "MRI always indicated"
+        },
+        {
+          "id": "D",
+          "text": "Indicates anterior joint capsule rupture"
+        }
+      ],
+      "correct": "B",
+      "explanation": "An elevated posterior fat pad supports an effusion and, after trauma, a possible occult fracture. It establishes neither fracture location nor a Mason type. If fracture suspicion persists, repeat radiographs after 10–14 days or noncontrast CT may be appropriate according to the clinical question.",
+      "tags": [
+        "radiuskoepfchenfraktur"
+      ]
+    },
+    "after": {
+      "id": "rk-fettkissen-1-en",
+      "question": "After elbow trauma in an adult, a true lateral view shows an elevated posterior fat pad but no visible fracture. Which interpretation fits?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Normal fat-pad position without joint effusion"
+        },
+        {
+          "id": "B",
+          "text": "Joint effusion with a possible occult fracture"
+        },
+        {
+          "id": "C",
+          "text": "An already established occult Mason-I radial head fracture"
+        },
+        {
+          "id": "D",
+          "text": "An already established occult olecranon fracture"
+        }
+      ],
+      "correct": "B",
+      "explanation": "An elevated posterior fat pad supports an effusion and, after trauma, a possible occult fracture. It establishes neither fracture location nor a Mason type. If fracture suspicion persists, repeat radiographs after 10–14 days or noncontrast CT may be appropriate according to the clinical question.",
+      "tags": [
+        "radiuskoepfchenfraktur"
+      ],
+      "wrongExplanations": {
+        "A": "An elevated posterior fat pad on a true lateral view supports effusion rather than an unremarkable post-traumatic fat pattern.",
+        "C": "An occult radial head fracture is possible, but the effusion sign alone determines neither fracture location nor Mason type.",
+        "D": "Other fracture sites can underlie an effusion; the fat-pad sign does not securely localize an olecranon fracture."
+      },
+      "source": "https://pubmed.ncbi.nlm.nih.gov/15232392/; https://acsearch.acr.org/docs/3195154/Narrative"
+    },
+    "reason": "Replace MRI-always/capsule distractors with related diagnostic interpretations; no occult-location or Mason overclaim."
+  },
+  {
+    "kind": "question",
+    "id": "rk-fettkissen-1-fa",
+    "lang": "fa",
+    "before": {
+      "id": "rk-fettkissen-1-fa",
+      "question": "پس از ترومای آرنج در بزرگسال، در نمای لترال واقعی بالشتک چربی خلفی بالا آمده است، اما شکستگی دیده نمی‌شود. کدام تفسیر مناسب است؟",
+      "options": [
+        {
+          "id": "A",
+          "text": "یافته طبیعی، بدون اقدام بیشتر"
+        },
+        {
+          "id": "B",
+          "text": "افیوژن مفصل همراه با احتمال شکستگی پنهان؛ این علامت به‌تنهایی شکستگی ماسون I را ثابت نمی‌کند"
+        },
+        {
+          "id": "C",
+          "text": "MRI همیشه اندیکاسیون دارد"
+        },
+        {
+          "id": "D",
+          "text": "نشانه پارگی کپسول مفصلی قدامی"
+        }
+      ],
+      "correct": "B",
+      "explanation": "بالا آمدن بالشتک چربی خلفی به نفع افیوژن و در زمینهٔ تروما مطرح‌کنندهٔ شکستگی پنهان احتمالی است. این علامت نه محل شکستگی و نه نوع ماسون را تعیین می‌کند. در صورت تداوم شک به شکستگی، بر اساس پرسش بالینی می‌توان رادیوگرافی پیگیری پس از ۱۰ تا ۱۴ روز یا CT بدون کنتراست را در نظر گرفت.",
+      "tags": [
+        "radiuskoepfchenfraktur"
+      ]
+    },
+    "after": {
+      "id": "rk-fettkissen-1-fa",
+      "question": "پس از ترومای آرنج در بزرگسال، در نمای لترال واقعی بالشتک چربی خلفی بالا آمده است، اما شکستگی دیده نمی‌شود. کدام تفسیر مناسب است؟",
+      "options": [
+        {
+          "id": "A",
+          "text": "وضعیت طبیعی بالشتک چربی بدون افیوژن مفصل"
+        },
+        {
+          "id": "B",
+          "text": "افیوژن مفصل همراه شکستگی پنهان احتمالی"
+        },
+        {
+          "id": "C",
+          "text": "شکستگی پنهان ماسون I سر رادیوس که از پیش اثبات شده است"
+        },
+        {
+          "id": "D",
+          "text": "شکستگی پنهان اولکرانون که از پیش اثبات شده است"
+        }
+      ],
+      "correct": "B",
+      "explanation": "بالا آمدن بالشتک چربی خلفی به نفع افیوژن و در زمینهٔ تروما مطرح‌کنندهٔ شکستگی پنهان احتمالی است. این علامت نه محل شکستگی و نه نوع ماسون را تعیین می‌کند. در صورت تداوم شک به شکستگی، بر اساس پرسش بالینی می‌توان رادیوگرافی پیگیری پس از ۱۰ تا ۱۴ روز یا CT بدون کنتراست را در نظر گرفت.",
+      "tags": [
+        "radiuskoepfchenfraktur"
+      ],
+      "wrongExplanations": {
+        "A": "بالا آمدن بالشتک خلفی در نمای لترال واقعی به نفع افیوژن است، نه الگوی چربی طبیعی پس از تروما.",
+        "C": "شکستگی پنهان سر رادیوس ممکن است، اما علامت افیوژن به‌تنهایی نه محل شکستگی و نه نوع ماسون را تعیین می‌کند.",
+        "D": "محل‌های دیگر شکستگی نیز می‌توانند با افیوژن همراه باشند؛ علامت بالشتک چربی شکستگی اولکرانون را به‌طور قطعی مشخص نمی‌کند."
+      },
+      "source": "https://pubmed.ncbi.nlm.nih.gov/15232392/; https://acsearch.acr.org/docs/3195154/Narrative"
+    },
+    "reason": "Replace MRI-always/capsule distractors with related diagnostic interpretations; no occult-location or Mason overclaim."
+  },
+  {
+    "kind": "question",
+    "id": "rk-rcline-1-de",
+    "lang": "de",
+    "before": {
+      "id": "rk-rcline-1-de",
+      "question": "Wie hilft die Radiocapitellar Line bei der Suche nach einer Radiusköpfchenluxation?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Sie verläuft durch das Olekranon – pathologisch bei Abweichung > 5 mm"
+        },
+        {
+          "id": "B",
+          "text": "Radius-Hals-Achse im echten Seitenbild prüfen; fehlende Deckung ist verdächtig, nicht beweisend"
+        },
+        {
+          "id": "C",
+          "text": "Sie gilt nur in der AP-Projektion"
+        },
+        {
+          "id": "D",
+          "text": "Pathologisch wenn Winkel < 45°"
+        }
+      ],
+      "correct": "B",
+      "explanation": "Eine entlang des Radiushalses gezogene Linie ist im echten Seitenbild die verlässlichere Orientierung. Bei Kindern beeinflussen Alter, Ossifikation und Projektion die Beziehung zum Capitulum; selbst eine normale Linie trifft nicht immer dessen Zentrum. Fehlende Deckung erfordert eine Prüfung der Technik und der gesamten Gelenkstellung, beweist allein aber keine Luxation.",
+      "tags": [
+        "radiuskoepfchenfraktur"
+      ]
+    },
+    "after": {
+      "id": "rk-rcline-1-de",
+      "question": "Welche Orientierung beurteilt die radiokapitellare Stellung im kindlichen Röntgen am zuverlässigsten?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Radiusschaftachse in der AP-Aufnahme mit Zentrierung auf den Capitulumkern"
+        },
+        {
+          "id": "B",
+          "text": "Radiushalsachse im echten Seitenbild, mit Berücksichtigung von Alter und Projektion"
+        },
+        {
+          "id": "C",
+          "text": "Radiusschaftachse im Seitenbild mit Zentrierung auf den Capitulumkern"
+        },
+        {
+          "id": "D",
+          "text": "Vordere Humeruslinie im Seitenbild als radiokapitellare Referenz"
+        }
+      ],
+      "correct": "B",
+      "explanation": "Eine entlang des Radiushalses gezogene Linie ist im echten Seitenbild die verlässlichere Orientierung. Bei Kindern beeinflussen Alter, Ossifikation und Projektion die Beziehung zum Capitulum; selbst eine normale Linie trifft nicht immer dessen Zentrum. Fehlende Deckung erfordert eine Prüfung der Technik und der gesamten Gelenkstellung, beweist allein aber keine Luxation.",
+      "tags": [
+        "radiuskoepfchenfraktur"
+      ],
+      "wrongExplanations": {
+        "A": "Die Normalkinder-Studie fand die Halslinie im Seitenbild verlässlicher als die Schaftlinie in AP; zentrale Treffgenauigkeit ist außerdem altersabhängig.",
+        "C": "Die gebogene Radiusachse kann die Schaftlinie versetzen; die Halslinie im echten Seitenbild war die verlässlichere Orientierung.",
+        "D": "Die vordere Humeruslinie beschreibt einen humeralen Bezug; sie ersetzt nicht die Radius-Hals-Linie zur radiokapitellaren Stellung."
+      },
+      "source": "https://pubmed.ncbi.nlm.nih.gov/21841436/"
+    },
+    "reason": "Replace invented angle/olecranon thresholds and only-AP assertion with four relevant elbow reference-line strategies."
+  },
+  {
+    "kind": "question",
+    "id": "rk-rcline-1-en",
+    "lang": "en",
+    "before": {
+      "id": "rk-rcline-1-en",
+      "question": "How does the radiocapitellar line help assess possible radial-head dislocation?",
+      "options": [
+        {
+          "id": "A",
+          "text": "It passes through the olecranon – pathological if deviation > 5 mm"
+        },
+        {
+          "id": "B",
+          "text": "Assess the radial-neck axis on a true lateral view; nonintersection is suspicious, not diagnostic alone"
+        },
+        {
+          "id": "C",
+          "text": "It only applies to the AP projection"
+        },
+        {
+          "id": "D",
+          "text": "Pathological when angle < 45°"
+        }
+      ],
+      "correct": "B",
+      "explanation": "A line along the radial neck on a true lateral view is the more reliable reference. In children, age, ossification and projection affect its relationship to the capitellum; a normal line does not invariably cross its centre. Nonintersection warrants checking technique and overall joint alignment but does not alone prove dislocation.",
+      "tags": [
+        "radiuskoepfchenfraktur"
+      ]
+    },
+    "after": {
+      "id": "rk-rcline-1-en",
+      "question": "Which reference most reliably assesses radiocapitellar alignment on pediatric radiographs?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Radial-shaft axis on the AP view, centered on the capitellar ossification centre"
+        },
+        {
+          "id": "B",
+          "text": "Radial-neck axis on a true lateral view, interpreted with age and projection"
+        },
+        {
+          "id": "C",
+          "text": "Radial-shaft axis on the lateral view, centered on the capitellar ossification centre"
+        },
+        {
+          "id": "D",
+          "text": "Anterior humeral line on the lateral view as a radiocapitellar reference"
+        }
+      ],
+      "correct": "B",
+      "explanation": "A line along the radial neck on a true lateral view is the more reliable reference. In children, age, ossification and projection affect its relationship to the capitellum; a normal line does not invariably cross its centre. Nonintersection warrants checking technique and overall joint alignment but does not alone prove dislocation.",
+      "tags": [
+        "radiuskoepfchenfraktur"
+      ],
+      "wrongExplanations": {
+        "A": "The normal-child study found the lateral neck line more reliable than the AP shaft line; central intersection also varies with age.",
+        "C": "Radial bowing can alter the shaft line; the neck line on a true lateral view was the more reliable reference.",
+        "D": "The anterior humeral line is a humeral reference and does not replace the radial-neck line for radiocapitellar alignment."
+      },
+      "source": "https://pubmed.ncbi.nlm.nih.gov/21841436/"
+    },
+    "reason": "Replace invented angle/olecranon thresholds and only-AP assertion with four relevant elbow reference-line strategies."
+  },
+  {
+    "kind": "question",
+    "id": "rk-rcline-1-fa",
+    "lang": "fa",
+    "before": {
+      "id": "rk-rcline-1-fa",
+      "question": "خط رادیوکاپیتلار چگونه به ارزیابی احتمال دررفتگی سر رادیوس کمک می‌کند؟",
+      "options": [
+        {
+          "id": "A",
+          "text": "از اولکرانون عبور می‌کند – اگر انحراف > ۵ میلی‌متر پاتولوژیک است"
+        },
+        {
+          "id": "B",
+          "text": "محور گردن رادیوس را در نمای لترال واقعی بررسی کنید؛ عبور نکردن خط مشکوک است، نه اثبات‌کننده به‌تنهایی"
+        },
+        {
+          "id": "C",
+          "text": "فقط در نمای AP صدق می‌کند"
+        },
+        {
+          "id": "D",
+          "text": "اگر زاویه < ۴۵ درجه باشد پاتولوژیک است"
+        }
+      ],
+      "correct": "B",
+      "explanation": "خط در امتداد گردن رادیوس در نمای لترال واقعی مرجع قابل‌اتکاتری است. در کودکان، سن، استخوانی‌شدن و نما بر رابطهٔ خط با کاپیتولوم اثر دارند؛ خط طبیعی نیز همیشه از مرکز آن عبور نمی‌کند. عبور نکردن خط نیازمند بررسی تکنیک و هم‌راستایی کلی مفصل است، اما به‌تنهایی دررفتگی را ثابت نمی‌کند.",
+      "tags": [
+        "radiuskoepfchenfraktur"
+      ]
+    },
+    "after": {
+      "id": "rk-rcline-1-fa",
+      "question": "کدام مرجع برای ارزیابی هم‌راستایی رادیوکاپیتلار در رادیوگرافی کودک قابل‌اتکاتر است؟",
+      "options": [
+        {
+          "id": "A",
+          "text": "محور تنهٔ رادیوس در نمای AP با هدف‌گیری مرکز هستهٔ استخوانی‌شدن کاپیتولوم"
+        },
+        {
+          "id": "B",
+          "text": "محور گردن رادیوس در نمای لترال واقعی، با توجه به سن و نما"
+        },
+        {
+          "id": "C",
+          "text": "محور تنهٔ رادیوس در نمای لترال با هدف‌گیری مرکز هستهٔ استخوانی‌شدن کاپیتولوم"
+        },
+        {
+          "id": "D",
+          "text": "خط قدامی هومروس در نمای لترال به‌عنوان مرجع رادیوکاپیتلار"
+        }
+      ],
+      "correct": "B",
+      "explanation": "خط در امتداد گردن رادیوس در نمای لترال واقعی مرجع قابل‌اتکاتری است. در کودکان، سن، استخوانی‌شدن و نما بر رابطهٔ خط با کاپیتولوم اثر دارند؛ خط طبیعی نیز همیشه از مرکز آن عبور نمی‌کند. عبور نکردن خط نیازمند بررسی تکنیک و هم‌راستایی کلی مفصل است، اما به‌تنهایی دررفتگی را ثابت نمی‌کند.",
+      "tags": [
+        "radiuskoepfchenfraktur"
+      ],
+      "wrongExplanations": {
+        "A": "مطالعهٔ کودکان طبیعی، خط گردن در نمای لترال را از خط تنه در AP قابل‌اتکاتر یافت؛ عبور از مرکز نیز با سن تغییر می‌کند.",
+        "C": "قوس رادیوس می‌تواند خط تنه را تغییر دهد؛ خط گردن در نمای لترال واقعی مرجع قابل‌اتکاتری بود.",
+        "D": "خط قدامی هومروس مرجعی مربوط به هومروس است و جای خط گردن رادیوس را برای هم‌راستایی رادیوکاپیتلار نمی‌گیرد."
+      },
+      "source": "https://pubmed.ncbi.nlm.nih.gov/21841436/"
+    },
+    "reason": "Replace invented angle/olecranon thresholds and only-AP assertion with four relevant elbow reference-line strategies."
+  },
+  {
+    "kind": "question",
+    "id": "rk-therapie-1-de",
+    "lang": "de",
+    "before": {
+      "id": "rk-therapie-1-de",
+      "question": "Welches Merkmal beschreibt Mason Typ III auf der PDF-Seite?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Mehrfragmentäre oder Trümmerfraktur des Radiusköpfchens"
+        },
+        {
+          "id": "B",
+          "text": "Jede Fraktur mit Gelenkstufe > 2 mm"
+        },
+        {
+          "id": "C",
+          "text": "Jede Fraktur mit Ellenbogenluxation"
+        },
+        {
+          "id": "D",
+          "text": "Jede Fraktur mit einer Essex-Lopresti-Verletzung"
+        }
+      ],
+      "correct": "A",
+      "explanation": "Die PDF-Seite beschreibt Mason III als mehrfragmentäre oder Trümmerfraktur; sie nennt weder eine feste Fragmentzahl noch Rekonstruierbarkeit oder Therapie.",
+      "tags": [
+        "radiuskoepfchenfraktur"
+      ]
+    },
+    "after": {
+      "id": "rk-therapie-1-de",
+      "question": "CT beschreibt eine dislozierte Fraktur eines Teils des Radiusköpfchens mit drei Gelenkfragmenten; der übrige Kopf bleibt zusammenhängend. Eine Ellenbogenluxation liegt nicht vor. Welcher Mason-Typ passt zur deskriptiven Morphologie?",
+      "options": [
+        {
+          "id": "A",
+          "text": "II"
+        },
+        {
+          "id": "B",
+          "text": "III"
+        },
+        {
+          "id": "C",
+          "text": "I"
+        },
+        {
+          "id": "D",
+          "text": "IV"
+        }
+      ],
+      "correct": "A",
+      "explanation": "Die Teilkopfbeteiligung passt zu Mason II, auch wenn mehrere Fragmente vorliegen. Die primäre 3D-CT-Studie zeigte, dass Teilkopffrakturen häufig mehrfragmentär sind; Typ III beschreibt die Ganzkopffraktur. Fragmentzahl und Rekonstruierbarkeit müssen separat beurteilt werden.",
+      "tags": [
+        "radiuskoepfchenfraktur"
+      ],
+      "wrongExplanations": {
+        "B": "Drei Fragmente allein machen keine Ganzkopffraktur. Der erhaltene zusammenhängende Kopfanteil ist hier entscheidend.",
+        "C": "Die beschriebene dislozierte Teilkopffraktur entspricht nicht dem nicht/minimal dislozierten Typ-I-Grundmuster.",
+        "D": "Die für Typ IV zusätzliche Ellenbogenluxation fehlt in der Beschreibung."
+      },
+      "source": "https://pubmed.ncbi.nlm.nih.gov/20566295/; MSK.pdf physical15 /printed14"
+    },
+    "reason": "Replace imprecise any-multifragment=III recall with applied partial-head/whole-head distinction; preserve ID/correctA."
+  },
+  {
+    "kind": "question",
+    "id": "rk-therapie-1-en",
+    "lang": "en",
+    "before": {
+      "id": "rk-therapie-1-en",
+      "question": "Which feature describes Mason Type III on the PDF page?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Multi-fragmentary or comminuted radial head fracture"
+        },
+        {
+          "id": "B",
+          "text": "Any fracture with a joint step > 2 mm"
+        },
+        {
+          "id": "C",
+          "text": "Any fracture with elbow dislocation"
+        },
+        {
+          "id": "D",
+          "text": "Any fracture with an Essex-Lopresti injury"
+        }
+      ],
+      "correct": "A",
+      "explanation": "The PDF page describes Mason III as a multi-fragmentary or comminuted fracture; it specifies neither a fixed fragment count nor reconstructibility or treatment.",
+      "tags": [
+        "radiuskoepfchenfraktur"
+      ]
+    },
+    "after": {
+      "id": "rk-therapie-1-en",
+      "question": "CT describes a displaced fracture involving part of the radial head with three articular fragments; the remainder of the head stays continuous. There is no elbow dislocation. Which Mason type fits the descriptive morphology?",
+      "options": [
+        {
+          "id": "A",
+          "text": "II"
+        },
+        {
+          "id": "B",
+          "text": "III"
+        },
+        {
+          "id": "C",
+          "text": "I"
+        },
+        {
+          "id": "D",
+          "text": "IV"
+        }
+      ],
+      "correct": "A",
+      "explanation": "Partial-head involvement fits Mason II even when multiple fragments are present. The primary 3D-CT study found that partial-head fractures are frequently multifragmentary; type III describes whole-head involvement. Assess fragment count and reconstructibility separately.",
+      "tags": [
+        "radiuskoepfchenfraktur"
+      ],
+      "wrongExplanations": {
+        "B": "Three fragments alone do not make a whole-head fracture. The remaining continuous part of the head is decisive here.",
+        "C": "The described displaced partial-head fracture does not fit the nondisplaced/minimally displaced type-I pattern.",
+        "D": "The associated elbow dislocation required for type IV is absent from the description."
+      },
+      "source": "https://pubmed.ncbi.nlm.nih.gov/20566295/; MSK.pdf physical15 /printed14"
+    },
+    "reason": "Replace imprecise any-multifragment=III recall with applied partial-head/whole-head distinction; preserve ID/correctA."
+  },
+  {
+    "kind": "question",
+    "id": "rk-therapie-1-fa",
+    "lang": "fa",
+    "before": {
+      "id": "rk-therapie-1-fa",
+      "question": "کدام ویژگی ماسون نوع III را در صفحهٔ PDF توصیف می‌کند؟",
+      "options": [
+        {
+          "id": "A",
+          "text": "شکستگی چندقطعه‌ای یا خردشدهٔ سر رادیوس"
+        },
+        {
+          "id": "B",
+          "text": "هر شکستگی با پلهٔ مفصلی > ۲ میلی‌متر"
+        },
+        {
+          "id": "C",
+          "text": "هر شکستگی همراه با لوکساسیون آرنج"
+        },
+        {
+          "id": "D",
+          "text": "هر شکستگی همراه با آسیب اسکس-لوپرستی"
+        }
+      ],
+      "correct": "A",
+      "explanation": "صفحهٔ PDF ماسون III را شکستگی چندقطعه‌ای یا خردشده تعریف می‌کند؛ نه تعداد قطعات ثابتی می‌دهد و نه امکان بازسازی یا درمان را مشخص می‌کند.",
+      "tags": [
+        "radiuskoepfchenfraktur"
+      ]
+    },
+    "after": {
+      "id": "rk-therapie-1-fa",
+      "question": "CT شکستگی جابه‌جا‌شدهٔ بخشی از سر رادیوس با سه قطعهٔ مفصلی را توصیف می‌کند؛ بقیهٔ سر پیوسته باقی مانده است. دررفتگی آرنج وجود ندارد. کدام نوع ماسون با مورفولوژی توصیفی سازگار است؟",
+      "options": [
+        {
+          "id": "A",
+          "text": "II"
+        },
+        {
+          "id": "B",
+          "text": "III"
+        },
+        {
+          "id": "C",
+          "text": "I"
+        },
+        {
+          "id": "D",
+          "text": "IV"
+        }
+      ],
+      "correct": "A",
+      "explanation": "درگیری بخشی از سر با ماسون II سازگار است، حتی اگر چند قطعه وجود داشته باشد. مطالعهٔ اولیهٔ CT سه‌بعدی نشان داد شکستگی بخشی از سر اغلب چندقطعه‌ای است؛ نوع III درگیری تمام سر را توصیف می‌کند. تعداد قطعات و امکان بازسازی باید جداگانه ارزیابی شوند.",
+      "tags": [
+        "radiuskoepfchenfraktur"
+      ],
+      "wrongExplanations": {
+        "B": "سه قطعه به‌تنهایی به معنی شکستگی تمام سر نیست؛ بخش پیوستهٔ باقی‌ماندهٔ سر در اینجا اهمیت دارد.",
+        "C": "شکستگی جابه‌جا‌شدهٔ بخشی از سر با الگوی پایهٔ نوع I بدون یا با حداقل جابه‌جایی مطابقت ندارد.",
+        "D": "دررفتگی همراه آرنج که برای نوع IV لازم است، در توصیف وجود ندارد."
+      },
+      "source": "https://pubmed.ncbi.nlm.nih.gov/20566295/; MSK.pdf physical15 /printed14"
+    },
+    "reason": "Replace imprecise any-multifragment=III recall with applied partial-head/whole-head distinction; preserve ID/correctA."
+  },
+  {
+    "kind": "question",
+    "id": "rk-terrible-triad-1-de",
+    "lang": "de",
+    "before": {
+      "id": "rk-terrible-triad-1-de",
+      "question": "Welche drei Strukturen sind bei der \"Terrible Triad\" des Ellenbogens verletzt?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Radiusköpfchen + Ulnafraktur + MCL"
+        },
+        {
+          "id": "B",
+          "text": "Ellenbogenluxation + Radiusköpfchenfraktur + Coronoidfraktur der Ulna"
+        },
+        {
+          "id": "C",
+          "text": "Radiusköpfchen + MCL + LCL"
+        },
+        {
+          "id": "D",
+          "text": "Luxiertes Olekranon + Radiuskopf + Humerus"
+        }
+      ],
+      "correct": "B",
+      "explanation": "Die Kombination ist häufig instabil. Stabilität und jede Begleitverletzung beurteilen; die Therapie wird anhand des Gesamtbefunds, der Rekonstruierbarkeit und patientenbezogener Faktoren geplant. Eine operative Versorgung aller Komponenten oder ein MRT ist nicht automatisch erforderlich.",
+      "tags": [
+        "radiuskoepfchenfraktur"
+      ]
+    },
+    "after": {
+      "id": "rk-terrible-triad-1-de",
+      "question": "Welche Verletzungskombination bezeichnet die Terrible Triad des Ellenbogens?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Ellenbogenluxation + Radiusköpfchenfraktur + Olekranonfraktur"
+        },
+        {
+          "id": "B",
+          "text": "Ellenbogenluxation + Radiusköpfchenfraktur + Coronoidfraktur"
+        },
+        {
+          "id": "C",
+          "text": "Ellenbogenluxation + distale Humerusfraktur + Coronoidfraktur"
+        },
+        {
+          "id": "D",
+          "text": "Ellenbogenluxation + Radiushalsfraktur + Ulnaschaftfraktur"
+        }
+      ],
+      "correct": "B",
+      "explanation": "Die Kombination ist häufig instabil. Stabilität und jede Begleitverletzung beurteilen; die Therapie wird anhand des Gesamtbefunds, der Rekonstruierbarkeit und patientenbezogener Faktoren geplant. Eine operative Versorgung aller Komponenten oder ein MRT ist nicht automatisch erforderlich.",
+      "tags": [
+        "radiuskoepfchenfraktur"
+      ],
+      "wrongExplanations": {
+        "A": "Der Begriff verlangt die Coronoidfraktur; eine Olekranonfraktur ist eine andere knöcherne Begleitverletzung.",
+        "C": "Hier fehlt die definierende Radiusköpfchenfraktur. Eine distale Humerusfraktur ersetzt sie nicht.",
+        "D": "Radiushals- und Ulnaschaftfraktur bilden nicht die verlangte Kombination aus Radiusköpfchen- und Coronoidfraktur."
+      },
+      "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4048392/"
+    },
+    "reason": "Use homogeneous three-injury elbow fracture-dislocation alternatives; retain clinically qualified management explanation."
+  },
+  {
+    "kind": "question",
+    "id": "rk-terrible-triad-1-en",
+    "lang": "en",
+    "before": {
+      "id": "rk-terrible-triad-1-en",
+      "question": "Which three structures are injured in the \"Terrible Triad\" of the elbow?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Radial head + ulna fracture + MCL"
+        },
+        {
+          "id": "B",
+          "text": "Elbow dislocation + radial head fracture + coronoid process fracture"
+        },
+        {
+          "id": "C",
+          "text": "Radial head + MCL + LCL"
+        },
+        {
+          "id": "D",
+          "text": "Dislocated olecranon + radial head + humerus"
+        }
+      ],
+      "correct": "B",
+      "explanation": "This combination is often unstable. Assess stability and each associated injury; plan treatment based on the overall findings, reconstructibility, and patient factors. Surgery for every component or MRI is not automatic.",
+      "tags": [
+        "radiuskoepfchenfraktur"
+      ]
+    },
+    "after": {
+      "id": "rk-terrible-triad-1-en",
+      "question": "Which injury combination defines the terrible triad of the elbow?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Elbow dislocation + radial head fracture + olecranon fracture"
+        },
+        {
+          "id": "B",
+          "text": "Elbow dislocation + radial head fracture + coronoid fracture"
+        },
+        {
+          "id": "C",
+          "text": "Elbow dislocation + distal humeral fracture + coronoid fracture"
+        },
+        {
+          "id": "D",
+          "text": "Elbow dislocation + radial neck fracture + ulnar shaft fracture"
+        }
+      ],
+      "correct": "B",
+      "explanation": "This combination is often unstable. Assess stability and each associated injury; plan treatment based on the overall findings, reconstructibility, and patient factors. Surgery for every component or MRI is not automatic.",
+      "tags": [
+        "radiuskoepfchenfraktur"
+      ],
+      "wrongExplanations": {
+        "A": "The definition requires a coronoid fracture; an olecranon fracture is a different associated bony injury.",
+        "C": "The defining radial head fracture is missing; a distal humeral fracture does not replace it.",
+        "D": "Radial-neck and ulnar-shaft fractures do not form the required radial-head/coronoid fracture combination."
+      },
+      "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4048392/"
+    },
+    "reason": "Use homogeneous three-injury elbow fracture-dislocation alternatives; retain clinically qualified management explanation."
+  },
+  {
+    "kind": "question",
+    "id": "rk-terrible-triad-1-fa",
+    "lang": "fa",
+    "before": {
+      "id": "rk-terrible-triad-1-fa",
+      "question": "کدام سه ساختار در \"سه‌گانه وحشتناک\" آرنج آسیب می‌بینند؟",
+      "options": [
+        {
+          "id": "A",
+          "text": "سر رادیوس + شکستگی اولنا + MCL"
+        },
+        {
+          "id": "B",
+          "text": "لوکساسیون آرنج + شکستگی سر رادیوس + شکستگی زائده کرونوئید اولنا"
+        },
+        {
+          "id": "C",
+          "text": "سر رادیوس + MCL + LCL"
+        },
+        {
+          "id": "D",
+          "text": "اولکرانون جابجا شده + سر رادیوس + هومروس"
+        }
+      ],
+      "correct": "B",
+      "explanation": "این ترکیب اغلب ناپایدار است. پایداری و هر آسیب همراه را ارزیابی کنید؛ درمان را بر اساس مجموع یافته‌ها، قابلیت بازسازی و عوامل مربوط به بیمار برنامه‌ریزی کنید. جراحی همهٔ مؤلفه‌ها یا MRI به‌طور خودکار لازم نیست.",
+      "tags": [
+        "radiuskoepfchenfraktur"
+      ]
+    },
+    "after": {
+      "id": "rk-terrible-triad-1-fa",
+      "question": "کدام ترکیب آسیب، سه‌گانهٔ وحشتناک آرنج را تعریف می‌کند؟",
+      "options": [
+        {
+          "id": "A",
+          "text": "دررفتگی آرنج + شکستگی سر رادیوس + شکستگی اولکرانون"
+        },
+        {
+          "id": "B",
+          "text": "دررفتگی آرنج + شکستگی سر رادیوس + شکستگی کرونوئید"
+        },
+        {
+          "id": "C",
+          "text": "دررفتگی آرنج + شکستگی دیستال هومروس + شکستگی کرونوئید"
+        },
+        {
+          "id": "D",
+          "text": "دررفتگی آرنج + شکستگی گردن رادیوس + شکستگی تنهٔ اولنا"
+        }
+      ],
+      "correct": "B",
+      "explanation": "این ترکیب اغلب ناپایدار است. پایداری و هر آسیب همراه را ارزیابی کنید؛ درمان را بر اساس مجموع یافته‌ها، قابلیت بازسازی و عوامل مربوط به بیمار برنامه‌ریزی کنید. جراحی همهٔ مؤلفه‌ها یا MRI به‌طور خودکار لازم نیست.",
+      "tags": [
+        "radiuskoepfchenfraktur"
+      ],
+      "wrongExplanations": {
+        "A": "تعریف به شکستگی کرونوئید نیاز دارد؛ شکستگی اولکرانون، آسیب استخوانی همراه متفاوتی است.",
+        "C": "شکستگی تعریف‌کنندهٔ سر رادیوس در این گزینه وجود ندارد؛ شکستگی دیستال هومروس جای آن را نمی‌گیرد.",
+        "D": "شکستگی گردن رادیوس و تنهٔ اولنا، ترکیب لازمِ شکستگی سر رادیوس و کرونوئید را تشکیل نمی‌دهند."
+      },
+      "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4048392/"
+    },
+    "reason": "Use homogeneous three-injury elbow fracture-dislocation alternatives; retain clinically qualified management explanation."
+  },
+  {
+    "kind": "question",
+    "id": "rk-essex-1-de",
+    "lang": "de",
+    "before": {
+      "id": "rk-essex-1-de",
+      "question": "Was ist das charakteristische Merkmal der Essex-Lopresti-Verletzung?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Radiusköpfchenfraktur + Monteggia-Fraktur"
+        },
+        {
+          "id": "B",
+          "text": "Radiusköpfchenfraktur + Ruptur der Membrana interossea + DRUG-Verletzung"
+        },
+        {
+          "id": "C",
+          "text": "Trümmerfraktur + MCL-Ruptur"
+        },
+        {
+          "id": "D",
+          "text": "Radiusköpfchenfraktur + Koronodfraktur"
+        }
+      ],
+      "correct": "B",
+      "explanation": "Essex-Lopresti = Radiusköpfchenfraktur + Ruptur der Membrana interossea + DRUG-Verletzung; das Muster kann longitudinale Unterarminstabilität verursachen. DRUG und Unterarmlänge/Stabilität prüfen. Bei bestätigter Instabilität wird die radiale Länge erhalten oder wiederhergestellt; Fixation oder Ersatz richten sich nach Rekonstruierbarkeit und Begleitverletzungen. Keine automatische Prothese und keine pauschale Resektionsregel.",
+      "tags": [
+        "radiuskoepfchenfraktur"
+      ]
+    },
+    "after": {
+      "id": "rk-essex-1-de",
+      "question": "Welche Kombination kennzeichnet die Essex-Lopresti-Verletzung?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Radiusköpfchenfraktur + proximale Ulnafraktur + proximale Radiusluxation"
+        },
+        {
+          "id": "B",
+          "text": "Radiusköpfchenfraktur + IOM-Ruptur + DRUJ-Verletzung"
+        },
+        {
+          "id": "C",
+          "text": "Radiusköpfchenfraktur + Coronoidfraktur + Ellenbogenluxation"
+        },
+        {
+          "id": "D",
+          "text": "Radiusschaftfraktur + DRUJ-Luxation + Ulnastyloidfraktur"
+        }
+      ],
+      "correct": "B",
+      "explanation": "Essex-Lopresti = Radiusköpfchenfraktur + Ruptur der Membrana interossea + DRUG-Verletzung; das Muster kann longitudinale Unterarminstabilität verursachen. DRUG und Unterarmlänge/Stabilität prüfen. Bei bestätigter Instabilität wird die radiale Länge erhalten oder wiederhergestellt; Fixation oder Ersatz richten sich nach Rekonstruierbarkeit und Begleitverletzungen.",
+      "tags": [
+        "radiuskoepfchenfraktur"
+      ],
+      "wrongExplanations": {
+        "A": "Die proximale Ulna-/Radiuskonstellation lenkt auf eine Monteggia-assoziierte Verletzung; die longitudinale IOM-/DRUJ-Komponente der Essex-Lopresti-Verletzung ist damit nicht beschrieben.",
+        "C": "Dies ist die Terrible-Triad-Kombination am Ellenbogen, nicht die definierende IOM-/DRUJ-Konstellation.",
+        "D": "Radiusschaftfraktur mit DRUJ-Luxation gehört zur Galeazzi-Konstellation; die proximale Radiusköpfchenfraktur und IOM-Ruptur werden hier nicht beschrieben."
+      },
+      "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5895887/"
+    },
+    "reason": "Compare homogeneous forearm/elbow instability patterns, not unnamed two-structure or malformed combinations."
+  },
+  {
+    "kind": "question",
+    "id": "rk-essex-1-en",
+    "lang": "en",
+    "before": {
+      "id": "rk-essex-1-en",
+      "question": "What is the characteristic feature of an Essex-Lopresti lesion?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Radial head fracture + Monteggia fracture"
+        },
+        {
+          "id": "B",
+          "text": "Radial head fracture + interosseous membrane rupture + DRUJ injury"
+        },
+        {
+          "id": "C",
+          "text": "Comminuted fracture + MCL rupture"
+        },
+        {
+          "id": "D",
+          "text": "Radial head fracture + coronoid fracture"
+        }
+      ],
+      "correct": "B",
+      "explanation": "Essex-Lopresti = radial head fracture + interosseous membrane rupture + DRUJ injury; the pattern can cause longitudinal forearm instability. Assess the DRUJ and forearm length/stability. With confirmed instability, preserve or restore radial length; fixation or replacement depends on reconstructibility and associated injuries. Neither arthroplasty nor a blanket rule against resection is automatic.",
+      "tags": [
+        "radiuskoepfchenfraktur"
+      ]
+    },
+    "after": {
+      "id": "rk-essex-1-en",
+      "question": "Which combination characterizes an Essex–Lopresti injury?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Radial head fracture + proximal ulnar fracture + proximal radial dislocation"
+        },
+        {
+          "id": "B",
+          "text": "Radial head fracture + IOM rupture + DRUJ injury"
+        },
+        {
+          "id": "C",
+          "text": "Radial head fracture + coronoid fracture + elbow dislocation"
+        },
+        {
+          "id": "D",
+          "text": "Radial shaft fracture + DRUJ dislocation + ulnar styloid fracture"
+        }
+      ],
+      "correct": "B",
+      "explanation": "Essex-Lopresti = radial head fracture + interosseous membrane rupture + DRUJ injury; the pattern can cause longitudinal forearm instability. Assess the DRUJ and forearm length/stability. With confirmed instability, preserve or restore radial length; fixation or replacement depends on reconstructibility and associated injuries.",
+      "tags": [
+        "radiuskoepfchenfraktur"
+      ],
+      "wrongExplanations": {
+        "A": "The proximal ulnar/radial pattern points toward a Monteggia-associated injury; it does not describe the longitudinal IOM/DRUJ components of Essex–Lopresti injury.",
+        "C": "This is the terrible-triad combination at the elbow, not the defining IOM/DRUJ pattern.",
+        "D": "Radial-shaft fracture with DRUJ dislocation is a Galeazzi pattern; the proximal radial-head fracture and IOM rupture are not described here."
+      },
+      "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5895887/"
+    },
+    "reason": "Compare homogeneous forearm/elbow instability patterns, not unnamed two-structure or malformed combinations."
+  },
+  {
+    "kind": "question",
+    "id": "rk-essex-1-fa",
+    "lang": "fa",
+    "before": {
+      "id": "rk-essex-1-fa",
+      "question": "مشخصه ضایعه اسکس-لوپرستی چیست؟",
+      "options": [
+        {
+          "id": "A",
+          "text": "شکستگی سر رادیوس + شکستگی مونتگیا"
+        },
+        {
+          "id": "B",
+          "text": "شکستگی سر رادیوس + پارگی غشای بین‌استخوانی + آسیب DRUJ"
+        },
+        {
+          "id": "C",
+          "text": "شکستگی خرد شده + پارگی MCL"
+        },
+        {
+          "id": "D",
+          "text": "شکستگی سر رادیوس + شکستگی کرونوئید"
+        }
+      ],
+      "correct": "B",
+      "explanation": "اسکس-لوپرستی = شکستگی سر رادیوس + پارگی غشای بین‌استخوانی + آسیب DRUJ؛ این الگو می‌تواند موجب ناپایداری طولی ساعد شود. DRUJ و طول/پایداری ساعد را ارزیابی کنید. در ناپایداری تأییدشده، طول رادیوس حفظ یا بازسازی می‌شود؛ تثبیت یا جایگزینی به قابلیت بازسازی و آسیب‌های همراه بستگی دارد. نه پروتز خودکار است و نه قاعده‌ای مطلق برای منع رزکسیون وجود دارد.",
+      "tags": [
+        "radiuskoepfchenfraktur"
+      ]
+    },
+    "after": {
+      "id": "rk-essex-1-fa",
+      "question": "کدام ترکیب، آسیب اسکس–لوپرستی را مشخص می‌کند؟",
+      "options": [
+        {
+          "id": "A",
+          "text": "شکستگی سر رادیوس + شکستگی پروگزیمال اولنا + دررفتگی پروگزیمال رادیوس"
+        },
+        {
+          "id": "B",
+          "text": "شکستگی سر رادیوس + پارگی IOM + آسیب DRUJ"
+        },
+        {
+          "id": "C",
+          "text": "شکستگی سر رادیوس + شکستگی کرونوئید + دررفتگی آرنج"
+        },
+        {
+          "id": "D",
+          "text": "شکستگی تنهٔ رادیوس + دررفتگی DRUJ + شکستگی استیلوئید اولنا"
+        }
+      ],
+      "correct": "B",
+      "explanation": "اسکس-لوپرستی = شکستگی سر رادیوس + پارگی غشای بین‌استخوانی + آسیب DRUJ؛ این الگو می‌تواند موجب ناپایداری طولی ساعد شود. DRUJ و طول/پایداری ساعد را ارزیابی کنید. در ناپایداری تأییدشده، طول رادیوس حفظ یا بازسازی می‌شود؛ تثبیت یا جایگزینی به قابلیت بازسازی و آسیب‌های همراه بستگی دارد.",
+      "tags": [
+        "radiuskoepfchenfraktur"
+      ],
+      "wrongExplanations": {
+        "A": "ترکیب پروگزیمال اولنا/رادیوس آسیب همراهِ مونتگیا را مطرح می‌کند و اجزای طولی IOM/DRUJ در اسکس–لوپرستی را توصیف نمی‌کند.",
+        "C": "این ترکیب سه‌گانهٔ وحشتناک آرنج است، نه الگوی تعریف‌کنندهٔ IOM/DRUJ.",
+        "D": "شکستگی تنهٔ رادیوس همراه دررفتگی DRUJ الگوی گالئاتزی است؛ شکستگی پروگزیمال سر رادیوس و پارگی IOM در این گزینه توصیف نشده‌اند."
+      },
+      "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5895887/"
+    },
+    "reason": "Compare homogeneous forearm/elbow instability patterns, not unnamed two-structure or malformed combinations."
+  },
+  {
+    "kind": "question",
+    "id": "rk-mechanismus-1-de",
+    "lang": "de",
+    "before": {
+      "id": "rk-mechanismus-1-de",
+      "question": "Welcher Verletzungsmechanismus führt typischerweise zur Radiusköpfchenfraktur?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Direkte Gewalt auf den Ellenbogen (Schlag)"
+        },
+        {
+          "id": "B",
+          "text": "FOOSH – Sturz auf ausgestreckte, pronierte Hand mit axialer Kraftübertragung durch den Radius"
+        },
+        {
+          "id": "C",
+          "text": "Hyperextensionstrauma"
+        },
+        {
+          "id": "D",
+          "text": "Rotationsgewalt am Unterarm"
+        }
+      ],
+      "correct": "B",
+      "explanation": "FOOSH (Fall On OutStretched Hand): Sturz auf die ausgestreckte, pronierte Hand → axiale Kraft wird durch den Radius übertragen → Radiusköpfchen wird gegen das Capitulum humeri gepresst → Fraktur. Häufigster Mechanismus für alle Mason-Typen.",
+      "tags": [
+        "radiuskoepfchenfraktur"
+      ]
+    },
+    "after": {
+      "id": "rk-mechanismus-1-de",
+      "question": "Welcher direkte Kraftweg erklärt die axiale Kompression des Radiusköpfchens beim Sturz auf die Hand?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Ulna → Trochlea humeri"
+        },
+        {
+          "id": "B",
+          "text": "Radius → Capitulum humeri"
+        },
+        {
+          "id": "C",
+          "text": "Radius → Trochlea humeri"
+        },
+        {
+          "id": "D",
+          "text": "Ulna → Capitulum humeri"
+        }
+      ],
+      "correct": "B",
+      "explanation": "Axiale Last kann über den Radius auf das Capitulum übertragen werden und dort das Radiusköpfchen komprimieren. Unterarmrotation und zusätzliche Kräfte beeinflussen das Verletzungsmuster; Pronation ist keine Voraussetzung aller Radiusköpfchenfrakturen.",
+      "tags": [
+        "radiuskoepfchenfraktur"
+      ],
+      "wrongExplanations": {
+        "A": "Der ulnatrochleare Weg gehört zur Ellenbogenlastübertragung, beschreibt aber nicht den direkten Kontakt des Radiusköpfchens mit dem Capitulum.",
+        "C": "Der proximale Radius artikuliert im hier gefragten Kontakt mit dem Capitulum, nicht der Trochlea.",
+        "D": "Der direkte humerale Kontakt des Radiusköpfchens ist radiokapitellar; die Ulna ist nicht dessen Ersatz."
+      },
+      "source": "https://pubmed.ncbi.nlm.nih.gov/14668511/; https://pmc.ncbi.nlm.nih.gov/articles/PMC6451781/"
+    },
+    "reason": "Remove overlapping FOOSH/hyperextension choices and unsupported most-common-for-all-Mason assertion; assess anatomic force transfer."
+  },
+  {
+    "kind": "question",
+    "id": "rk-mechanismus-1-en",
+    "lang": "en",
+    "before": {
+      "id": "rk-mechanismus-1-en",
+      "question": "Which injury mechanism typically leads to a radial head fracture?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Direct blow to the elbow"
+        },
+        {
+          "id": "B",
+          "text": "FOOSH – fall on outstretched pronated hand with axial force transmission through the radius"
+        },
+        {
+          "id": "C",
+          "text": "Hyperextension injury"
+        },
+        {
+          "id": "D",
+          "text": "Rotational force on the forearm"
+        }
+      ],
+      "correct": "B",
+      "explanation": "FOOSH (Fall On OutStretched Hand): fall on the outstretched pronated hand → axial force transmitted through the radius → radial head compressed against capitellum → fracture. Most common mechanism for all Mason types.",
+      "tags": [
+        "radiuskoepfchenfraktur"
+      ]
+    },
+    "after": {
+      "id": "rk-mechanismus-1-en",
+      "question": "Which direct force pathway explains axial compression of the radial head after a fall onto the hand?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Ulna → humeral trochlea"
+        },
+        {
+          "id": "B",
+          "text": "Radius → humeral capitellum"
+        },
+        {
+          "id": "C",
+          "text": "Radius → humeral trochlea"
+        },
+        {
+          "id": "D",
+          "text": "Ulna → humeral capitellum"
+        }
+      ],
+      "correct": "B",
+      "explanation": "Axial load can be transmitted through the radius to the capitellum, compressing the radial head at that contact. Forearm rotation and additional forces influence the injury pattern; pronation is not a prerequisite of every radial head fracture.",
+      "tags": [
+        "radiuskoepfchenfraktur"
+      ],
+      "wrongExplanations": {
+        "A": "The ulnotrochlear pathway contributes to elbow load transfer but does not describe direct radial-head/capitellar contact.",
+        "C": "At the requested contact, the proximal radius articulates with the capitellum, not the trochlea.",
+        "D": "The radial head’s direct humeral contact is radiocapitellar; the ulna does not substitute for it."
+      },
+      "source": "https://pubmed.ncbi.nlm.nih.gov/14668511/; https://pmc.ncbi.nlm.nih.gov/articles/PMC6451781/"
+    },
+    "reason": "Remove overlapping FOOSH/hyperextension choices and unsupported most-common-for-all-Mason assertion; assess anatomic force transfer."
+  },
+  {
+    "kind": "question",
+    "id": "rk-mechanismus-1-fa",
+    "lang": "fa",
+    "before": {
+      "id": "rk-mechanismus-1-fa",
+      "question": "کدام مکانیسم آسیب معمولاً منجر به شکستگی سر رادیوس می‌شود؟",
+      "options": [
+        {
+          "id": "A",
+          "text": "ضربه مستقیم به آرنج"
+        },
+        {
+          "id": "B",
+          "text": "FOOSH – افتادن روی دست کشیده و pronated با انتقال نیروی محوری از رادیوس"
+        },
+        {
+          "id": "C",
+          "text": "تروما هایپراکستانسیون"
+        },
+        {
+          "id": "D",
+          "text": "نیروی چرخشی روی ساعد"
+        }
+      ],
+      "correct": "B",
+      "explanation": "FOOSH (افتادن روی دست کشیده): افتادن روی دست کشیده و pronated → نیروی محوری از طریق رادیوس منتقل می‌شود → سر رادیوس به کاپیتولوم فشرده می‌شود → شکستگی. شایع‌ترین مکانیسم برای تمام انواع ماسون.",
+      "tags": [
+        "radiuskoepfchenfraktur"
+      ]
+    },
+    "after": {
+      "id": "rk-mechanismus-1-fa",
+      "question": "کدام مسیر مستقیم انتقال نیرو، فشرده‌شدن محوری سر رادیوس را پس از افتادن روی دست توضیح می‌دهد؟",
+      "options": [
+        {
+          "id": "A",
+          "text": "از اولنا به تروکلئای هومروس"
+        },
+        {
+          "id": "B",
+          "text": "از رادیوس به کاپیتولوم هومروس"
+        },
+        {
+          "id": "C",
+          "text": "از رادیوس به تروکلئای هومروس"
+        },
+        {
+          "id": "D",
+          "text": "از اولنا به کاپیتولوم هومروس"
+        }
+      ],
+      "correct": "B",
+      "explanation": "بار محوری می‌تواند از راه رادیوس به کاپیتولوم منتقل شود و سر رادیوس را در این محل تماس بفشارد. چرخش ساعد و نیروهای همراه بر الگوی آسیب اثر دارند؛ پروناسیون شرط لازم تمام شکستگی‌های سر رادیوس نیست.",
+      "tags": [
+        "radiuskoepfchenfraktur"
+      ],
+      "wrongExplanations": {
+        "A": "مسیر اولنوتروکلئار در انتقال بار آرنج نقش دارد، اما تماس مستقیم سر رادیوس با کاپیتولوم را توصیف نمی‌کند.",
+        "C": "در تماس مورد سؤال، پروگزیمال رادیوس با کاپیتولوم مفصل می‌شود، نه تروکلئا.",
+        "D": "تماس مستقیم سر رادیوس با هومروس، رادیوکاپیتلار است؛ اولنا جای آن را نمی‌گیرد."
+      },
+      "source": "https://pubmed.ncbi.nlm.nih.gov/14668511/; https://pmc.ncbi.nlm.nih.gov/articles/PMC6451781/"
+    },
+    "reason": "Remove overlapping FOOSH/hyperextension choices and unsupported most-common-for-all-Mason assertion; assess anatomic force transfer."
+  },
+  {
+    "kind": "question",
+    "id": "rk-nerv-1-de",
+    "lang": "de",
+    "before": {
+      "id": "rk-nerv-1-de",
+      "question": "Welche Struktur ist beim Radiusköpfchen operativ besonders gefährdet?",
+      "options": [
+        {
+          "id": "A",
+          "text": "N. medianus"
+        },
+        {
+          "id": "B",
+          "text": "N. ulnaris"
+        },
+        {
+          "id": "C",
+          "text": "N. interosseus posterior (Ast des N. radialis)"
+        },
+        {
+          "id": "D",
+          "text": "A. radialis"
+        }
+      ],
+      "correct": "C",
+      "explanation": "Der N. interosseus posterior verläuft nahe dem Radiusköpfchen und kann bei der Operation verletzt werden. Eine isolierte Läsion schwächt die Finger- und Daumenextension ohne kutanen Sensibilitätsausfall. Die Handgelenkextension bleibt durch den erhaltenen M. extensor carpi radialis longus typischerweise möglich, gegebenenfalls mit Radialabweichung.",
+      "tags": [
+        "radiuskoepfchenfraktur"
+      ]
+    },
+    "after": {
+      "id": "rk-nerv-1-de",
+      "question": "Nach einer Radiusköpfchenfraktur sind Finger- und Daumenextension geschwächt. Handgelenkextension ist erhalten, die kutane Sensibilität unauffällig. Welche isolierte Nervenläsion passt am besten?",
+      "options": [
+        {
+          "id": "A",
+          "text": "N. medianus"
+        },
+        {
+          "id": "B",
+          "text": "N. ulnaris"
+        },
+        {
+          "id": "C",
+          "text": "N. interosseus posterior"
+        },
+        {
+          "id": "D",
+          "text": "R. superficialis des N. radialis"
+        }
+      ],
+      "correct": "C",
+      "explanation": "Der N. interosseus posterior verläuft nahe dem Radiusköpfchen und kann bei der Operation verletzt werden. Eine isolierte Läsion schwächt die Finger- und Daumenextension ohne kutanen Sensibilitätsausfall. Die Handgelenkextension bleibt durch den erhaltenen M. extensor carpi radialis longus typischerweise möglich, gegebenenfalls mit Radialabweichung.",
+      "tags": [
+        "radiuskoepfchenfraktur"
+      ],
+      "wrongExplanations": {
+        "A": "Eine Medianusläsion erklärt dieses isolierte Finger-/Daumenstreckdefizit bei erhaltener kutaner Sensibilität nicht am besten.",
+        "B": "Der Ulnaris versorgt nicht das hier ausgefallene Finger-/Daumenstrecksystem; ein ulnarer Ausfall hätte ein anderes motorisch-sensibles Muster.",
+        "D": "Der oberflächliche Radialisast ist sensibel und erklärt keine isolierte Parese dieser Streckmuskeln."
+      },
+      "source": "https://pubmed.ncbi.nlm.nih.gov/28050547/; https://pubmed.ncbi.nlm.nih.gov/20079998/"
+    },
+    "reason": "Convert bare operative-risk recall into a clinically self-contained motor/sensory interpretation; four neural alternatives, correctC stable."
+  },
+  {
+    "kind": "question",
+    "id": "rk-nerv-1-en",
+    "lang": "en",
+    "before": {
+      "id": "rk-nerv-1-en",
+      "question": "Which structure is particularly at risk surgically near the radial head?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Median nerve"
+        },
+        {
+          "id": "B",
+          "text": "Ulnar nerve"
+        },
+        {
+          "id": "C",
+          "text": "Posterior interosseous nerve (branch of radial nerve)"
+        },
+        {
+          "id": "D",
+          "text": "Radial artery"
+        }
+      ],
+      "correct": "C",
+      "explanation": "The posterior interosseous nerve runs near the radial head and may be injured during surgery. An isolated lesion weakens finger and thumb extension without cutaneous sensory loss. Wrist extension is typically preserved by the spared extensor carpi radialis longus, sometimes with radial deviation.",
+      "tags": [
+        "radiuskoepfchenfraktur"
+      ]
+    },
+    "after": {
+      "id": "rk-nerv-1-en",
+      "question": "After a radial head fracture, finger and thumb extension are weak. Wrist extension is preserved and cutaneous sensation is intact. Which isolated nerve lesion fits best?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Median nerve"
+        },
+        {
+          "id": "B",
+          "text": "Ulnar nerve"
+        },
+        {
+          "id": "C",
+          "text": "Posterior interosseous nerve"
+        },
+        {
+          "id": "D",
+          "text": "Superficial branch of the radial nerve"
+        }
+      ],
+      "correct": "C",
+      "explanation": "The posterior interosseous nerve runs near the radial head and may be injured during surgery. An isolated lesion weakens finger and thumb extension without cutaneous sensory loss. Wrist extension is typically preserved by the spared extensor carpi radialis longus, sometimes with radial deviation.",
+      "tags": [
+        "radiuskoepfchenfraktur"
+      ],
+      "wrongExplanations": {
+        "A": "A median nerve lesion does not best explain this isolated finger/thumb extension deficit with preserved cutaneous sensation.",
+        "B": "The ulnar nerve does not supply the impaired finger/thumb extensor system; ulnar injury produces a different motor-sensory pattern.",
+        "D": "The superficial radial branch is sensory and does not explain isolated weakness of these extensors."
+      },
+      "source": "https://pubmed.ncbi.nlm.nih.gov/28050547/; https://pubmed.ncbi.nlm.nih.gov/20079998/"
+    },
+    "reason": "Convert bare operative-risk recall into a clinically self-contained motor/sensory interpretation; four neural alternatives, correctC stable."
+  },
+  {
+    "kind": "question",
+    "id": "rk-nerv-1-fa",
+    "lang": "fa",
+    "before": {
+      "id": "rk-nerv-1-fa",
+      "question": "کدام ساختار در حین جراحی سر رادیوس به‌ویژه در معرض خطر است؟",
+      "options": [
+        {
+          "id": "A",
+          "text": "عصب مدیان"
+        },
+        {
+          "id": "B",
+          "text": "عصب اولنار"
+        },
+        {
+          "id": "C",
+          "text": "عصب بین‌استخوانی خلفی (شاخه عصب رادیال)"
+        },
+        {
+          "id": "D",
+          "text": "شریان رادیال"
+        }
+      ],
+      "correct": "C",
+      "explanation": "عصب بین‌استخوانی خلفی نزدیک سر رادیوس می‌گذرد و ممکن است هنگام جراحی آسیب ببیند. آسیب منفرد آن اکستنشن انگشتان و شست را بدون نقص حسی پوستی ضعیف می‌کند. اکستنشن مچ معمولاً به‌واسطهٔ حفظ عضلهٔ اکستانسور کارپی رادیالیس لونگوس باقی می‌ماند و ممکن است با انحراف رادیال همراه باشد.",
+      "tags": [
+        "radiuskoepfchenfraktur"
+      ]
+    },
+    "after": {
+      "id": "rk-nerv-1-fa",
+      "question": "پس از شکستگی سر رادیوس، اکستنشن انگشتان و شست ضعیف است. اکستنشن مچ حفظ شده و حس پوستی طبیعی است. کدام آسیب منفرد عصبی مناسب‌تر است؟",
+      "options": [
+        {
+          "id": "A",
+          "text": "عصب مدیان"
+        },
+        {
+          "id": "B",
+          "text": "عصب اولنار"
+        },
+        {
+          "id": "C",
+          "text": "عصب بین‌استخوانی خلفی"
+        },
+        {
+          "id": "D",
+          "text": "شاخهٔ سطحی عصب رادیال"
+        }
+      ],
+      "correct": "C",
+      "explanation": "عصب بین‌استخوانی خلفی نزدیک سر رادیوس می‌گذرد و ممکن است هنگام جراحی آسیب ببیند. آسیب منفرد آن اکستنشن انگشتان و شست را بدون نقص حسی پوستی ضعیف می‌کند. اکستنشن مچ معمولاً به‌واسطهٔ حفظ عضلهٔ اکستانسور کارپی رادیالیس لونگوس باقی می‌ماند و ممکن است با انحراف رادیال همراه باشد.",
+      "tags": [
+        "radiuskoepfchenfraktur"
+      ],
+      "wrongExplanations": {
+        "A": "آسیب مدیان بهترین توضیح برای این ضعف منفرد اکستنشن انگشتان/شست همراه حس پوستی حفظ‌شده نیست.",
+        "B": "عصب اولنار، سیستم اکستانسور انگشتان/شستِ درگیر در اینجا را عصب‌دهی نمی‌کند؛ آسیب آن الگوی حرکتی‌ـ‌حسی متفاوتی دارد.",
+        "D": "شاخهٔ سطحی رادیال حسی است و ضعف منفرد این عضلات اکستانسور را توضیح نمی‌دهد."
+      },
+      "source": "https://pubmed.ncbi.nlm.nih.gov/28050547/; https://pubmed.ncbi.nlm.nih.gov/20079998/"
+    },
+    "reason": "Convert bare operative-risk recall into a clinically self-contained motor/sensory interpretation; four neural alternatives, correctC stable."
+  },
+  {
+    "kind": "question",
+    "id": "rk-mason-therapie-2-de",
+    "lang": "de",
+    "before": {
+      "id": "rk-mason-therapie-2-de",
+      "question": "Ein 35-jähriger Patient hat nach FOOSH-Trauma eine rekonstruierbare Mason-II-Fraktur. Nach Analgesie und Gelenkaspiration bleibt ein eindeutiger mechanischer Block der Pro- und Supination bestehen. Welche Therapie ist am ehesten indiziert?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Frühfunktionelle konservative Therapie; der mechanische Block ist ohne Bedeutung"
+        },
+        {
+          "id": "B",
+          "text": "ORIF (offene Reposition und interne Fixation) mit Schrauben"
+        },
+        {
+          "id": "C",
+          "text": "Radiusköpfchenprothese trotz gut rekonstruierbarer Fraktur"
+        },
+        {
+          "id": "D",
+          "text": "Sechswöchige Ruhigstellung ohne Repositionsversuch"
+        }
+      ],
+      "correct": "B",
+      "explanation": "Ein persistierender mechanischer Rotationsblock ist bei einer rekonstruierbaren Mason-II-Fraktur eine klare Operationsindikation; ORIF stellt die Gelenkfläche wieder her. Eine isolierte stabile Mason-II-Fraktur ohne Block kann dagegen häufig frühfunktionell konservativ behandelt werden. Stufenhöhe oder Fragmentgröße allein erzwingen keine Operation.",
+      "tags": [
+        "radiuskoepfchenfraktur"
+      ]
+    },
+    "after": {
+      "id": "rk-mason-therapie-2-de",
+      "question": "Ein 35-jähriger Patient hat nach FOOSH-Trauma eine rekonstruierbare Mason-II-Fraktur. Nach Analgesie und Gelenkaspiration bleibt ein eindeutiger mechanischer Block der Pro- und Supination bestehen. Welche Therapie ist am ehesten indiziert?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Frühfunktionelle nichtoperative Behandlung ohne Reposition"
+        },
+        {
+          "id": "B",
+          "text": "Reposition und interne Fixation des rekonstruierbaren Fragments"
+        },
+        {
+          "id": "C",
+          "text": "Primärer Ersatz des Radiusköpfchens"
+        },
+        {
+          "id": "D",
+          "text": "Primäre Resektion des Radiusköpfchens ohne Ersatz"
+        }
+      ],
+      "correct": "B",
+      "explanation": "Der nach Schmerzausschaltung persistierende mechanische Block verlangt hier eine operative Beurteilung. Unter den genannten Optionen erlaubt Reposition/Fixation den Erhalt der rekonstruierbaren Gelenkfläche. Die konkrete Technik richtet sich nach Fragmentmorphologie und erreichbarer Stabilität; nicht jede Mason-II-Fraktur benötigt Operation, und nicht jede Operation ist zwingend eine offene Schraubenfixation.",
+      "tags": [
+        "radiuskoepfchenfraktur"
+      ],
+      "wrongExplanations": {
+        "A": "Der bestätigte mechanische Rotationsblock wird durch bloße Mobilisation ohne Korrektur des blockierenden Fragments nicht beseitigt.",
+        "C": "Die beschriebene gute Rekonstruierbarkeit spricht für eine erhaltende Lösung; ein Ersatz ist nicht allein durch die Typ-II-Bezeichnung begründet.",
+        "D": "Eine primäre Resektion gibt die rekonstruierbare Gelenkfläche auf und erfordert besonders sorgfältige Beurteilung der Begleitstabilität; sie ist hier nicht die bevorzugte erhaltende Option."
+      },
+      "source": "https://pubmed.ncbi.nlm.nih.gov/33753275/; https://pmc.ncbi.nlm.nih.gov/articles/PMC12487719/"
+    },
+    "reason": "Replace explicit ignore-block/prosthesis-despite/sixweek-noattempt cues with comparable treatment strategies; avoid exclusive open-screw mandate."
+  },
+  {
+    "kind": "question",
+    "id": "rk-mason-therapie-2-en",
+    "lang": "en",
+    "before": {
+      "id": "rk-mason-therapie-2-en",
+      "question": "A 35-year-old patient has a reconstructible Mason II fracture after FOOSH trauma. After analgesia and joint aspiration, a clear mechanical block to pronation and supination persists. Which treatment is most appropriate?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Early non-operative mobilisation; the mechanical block is irrelevant"
+        },
+        {
+          "id": "B",
+          "text": "ORIF (open reduction and internal fixation) with screws"
+        },
+        {
+          "id": "C",
+          "text": "Radial head arthroplasty despite a readily reconstructible fracture"
+        },
+        {
+          "id": "D",
+          "text": "Six weeks of immobilisation without attempting reduction"
+        }
+      ],
+      "correct": "B",
+      "explanation": "A persistent mechanical block to rotation is a clear operative indication in a reconstructible Mason II fracture; ORIF restores the articular surface. An isolated stable Mason II fracture without a block can often be managed non-operatively with early mobilisation. Step height or fragment size alone does not mandate surgery.",
+      "tags": [
+        "radiuskoepfchenfraktur"
+      ]
+    },
+    "after": {
+      "id": "rk-mason-therapie-2-en",
+      "question": "A 35-year-old patient has a reconstructible Mason II fracture after FOOSH trauma. After analgesia and joint aspiration, a clear mechanical block to pronation and supination persists. Which treatment is most appropriate?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Early functional nonoperative treatment without reduction"
+        },
+        {
+          "id": "B",
+          "text": "Reduction and internal fixation of the reconstructible fragment"
+        },
+        {
+          "id": "C",
+          "text": "Primary radial head replacement"
+        },
+        {
+          "id": "D",
+          "text": "Primary radial head excision without replacement"
+        }
+      ],
+      "correct": "B",
+      "explanation": "A persistent mechanical block after pain control requires operative assessment here. Among the listed options, reduction/fixation preserves the reconstructible articular surface. Technique depends on fragment morphology and achievable stability; not every Mason-II fracture requires surgery, and surgery does not invariably mean open screw fixation.",
+      "tags": [
+        "radiuskoepfchenfraktur"
+      ],
+      "wrongExplanations": {
+        "A": "Mobilisation alone without addressing the blocking fragment does not resolve the confirmed mechanical rotation block.",
+        "C": "The stated reconstructibility supports preservation; the type-II label alone does not justify replacement.",
+        "D": "Primary excision sacrifices a reconstructible articular surface and requires careful assessment of associated stability; it is not the preferred preserving option here."
+      },
+      "source": "https://pubmed.ncbi.nlm.nih.gov/33753275/; https://pmc.ncbi.nlm.nih.gov/articles/PMC12487719/"
+    },
+    "reason": "Replace explicit ignore-block/prosthesis-despite/sixweek-noattempt cues with comparable treatment strategies; avoid exclusive open-screw mandate."
+  },
+  {
+    "kind": "question",
+    "id": "rk-mason-therapie-2-fa",
+    "lang": "fa",
+    "before": {
+      "id": "rk-mason-therapie-2-fa",
+      "question": "بیمار ۳۵ ساله پس از تروما FOOSH دچار شکستگی قابل بازسازی ماسون II شده است. پس از بی‌دردی و آسپیراسیون مفصل، بلوک مکانیکی واضح پروناسیون و سوپیناسیون باقی می‌ماند. مناسب‌ترین درمان چیست؟",
+      "options": [
+        {
+          "id": "A",
+          "text": "درمان غیرجراحی با تحرک زودهنگام؛ بلوک مکانیکی اهمیتی ندارد"
+        },
+        {
+          "id": "B",
+          "text": "ORIF (کاهش باز و تثبیت داخلی) با پیچ"
+        },
+        {
+          "id": "C",
+          "text": "پروتز سر رادیوس با وجود قابل بازسازی بودن شکستگی"
+        },
+        {
+          "id": "D",
+          "text": "بی‌حرکتی شش‌هفته‌ای بدون تلاش برای جااندازی"
+        }
+      ],
+      "correct": "B",
+      "explanation": "بلوک مکانیکی پایدار در چرخش ساعد، در شکستگی قابل بازسازی ماسون II اندیکاسیون روشن جراحی است و ORIF سطح مفصلی را بازسازی می‌کند. شکستگی ماسون II مجزا و پایدار بدون بلوک را اغلب می‌توان با تحرک زودهنگام به‌صورت غیرجراحی درمان کرد. ارتفاع پله یا اندازه قطعه به‌تنهایی جراحی را الزامی نمی‌کند.",
+      "tags": [
+        "radiuskoepfchenfraktur"
+      ]
+    },
+    "after": {
+      "id": "rk-mason-therapie-2-fa",
+      "question": "بیمار ۳۵ ساله پس از افتادن روی دست کشیده (FOOSH) دچار شکستگی قابل بازسازی ماسون II شده است. پس از بی‌دردی و آسپیراسیون مفصل، بلوک مکانیکی واضح پروناسیون و سوپیناسیون باقی می‌ماند. مناسب‌ترین درمان چیست؟",
+      "options": [
+        {
+          "id": "A",
+          "text": "درمان غیرجراحی با حرکت زودهنگام، بدون جااندازی"
+        },
+        {
+          "id": "B",
+          "text": "جااندازی و تثبیت داخلی قطعهٔ قابل بازسازی"
+        },
+        {
+          "id": "C",
+          "text": "جایگزینی اولیهٔ سر رادیوس"
+        },
+        {
+          "id": "D",
+          "text": "برداشت اولیهٔ سر رادیوس بدون جایگزینی"
+        }
+      ],
+      "correct": "B",
+      "explanation": "بلوک مکانیکی باقی‌مانده پس از کنترل درد، در اینجا به ارزیابی جراحی نیاز دارد. در میان گزینه‌ها، جااندازی/تثبیت امکان حفظ سطح مفصلیِ قابل بازسازی را فراهم می‌کند. روش دقیق به مورفولوژی قطعه و پایداری قابل دستیابی بستگی دارد؛ همهٔ شکستگی‌های ماسون II به جراحی نیاز ندارند و هر جراحی نیز الزاماً تثبیت باز با پیچ نیست.",
+      "tags": [
+        "radiuskoepfchenfraktur"
+      ],
+      "wrongExplanations": {
+        "A": "حرکت‌دادن به‌تنهایی، بدون برطرف‌کردن قطعهٔ ایجادکنندهٔ بلوک، بلوک مکانیکی چرخشِ تأییدشده را برطرف نمی‌کند.",
+        "C": "قابلیت بازسازیِ ذکرشده از راهکار حفظ‌کننده حمایت می‌کند؛ نام نوع II به‌تنهایی جایگزینی را توجیه نمی‌کند.",
+        "D": "برداشت اولیه، سطح مفصلیِ قابل بازسازی را از بین می‌برد و به بررسی دقیق پایداری همراه نیاز دارد؛ در اینجا گزینهٔ حفظ‌کنندهٔ ترجیحی نیست."
+      },
+      "source": "https://pubmed.ncbi.nlm.nih.gov/33753275/; https://pmc.ncbi.nlm.nih.gov/articles/PMC12487719/"
+    },
+    "reason": "Replace explicit ignore-block/prosthesis-despite/sixweek-noattempt cues with comparable treatment strategies; avoid exclusive open-screw mandate."
+  },
+  {
+    "kind": "question",
+    "id": "rk-komplikation-1-de",
+    "lang": "de",
+    "before": {
+      "id": "rk-komplikation-1-de",
+      "question": "Was ist die häufigste Komplikation nach konservativ behandelter Radiusköpfchenfraktur?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Infektion"
+        },
+        {
+          "id": "B",
+          "text": "Ellenbogensteifigkeit (Bewegungseinschränkung)"
+        },
+        {
+          "id": "C",
+          "text": "Avaskuläre Nekrose"
+        },
+        {
+          "id": "D",
+          "text": "Lähmung des N. radialis"
+        }
+      ],
+      "correct": "B",
+      "explanation": "Ellenbogensteifigkeit ist eine wichtige Komplikation. Bei einfachen stabilen Frakturen unterstützt frühe schmerzadaptierte Bewegung die Funktion; unnötig lange Ruhigstellung vermeiden. Eine starre Wartezeit von 1–2 Wochen und formale Physiotherapie für jeden Fall sind nicht belegt. Die Begleitverletzungen bestimmen die individuelle Nachbehandlung.",
+      "wrongExplanations": {
+        "A": "Ohne Infektzeichen ist eine Infektion nicht die typische Erklärung der Bewegungseinschränkung.",
+        "C": "Gelenksteife ist die häufige funktionelle Komplikation; eine Nekrose ist nicht damit gleichzusetzen.",
+        "D": "Eine Nervenläsion verursacht ein motorisches Ausfallmuster, nicht allein eine Gelenksteife."
+      },
+      "tags": [
+        "radiuskoepfchenfraktur"
+      ]
+    },
+    "after": {
+      "id": "rk-komplikation-1-de",
+      "question": "Bei einer einfachen stabilen Radiusköpfchenfraktur ist frühe schmerzadaptierte Bewegung vorgesehen. Welche Komplikation soll damit vor allem vermieden werden?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Infektion"
+        },
+        {
+          "id": "B",
+          "text": "Ellenbogensteifigkeit"
+        },
+        {
+          "id": "C",
+          "text": "Avaskuläre Nekrose"
+        },
+        {
+          "id": "D",
+          "text": "Isolierte PIN-Parese"
+        }
+      ],
+      "correct": "B",
+      "explanation": "Ellenbogensteifigkeit ist eine wichtige Komplikation. Bei einfachen stabilen Frakturen unterstützt frühe schmerzadaptierte Bewegung die Funktion; unnötig lange Ruhigstellung vermeiden. Eine starre Wartezeit von 1–2 Wochen und formale Physiotherapie für jeden Fall sind nicht belegt. Die Begleitverletzungen bestimmen die individuelle Nachbehandlung.",
+      "wrongExplanations": {
+        "A": "Frühe Bewegung behandelt nicht die Ursachen einer Infektion; das hier angesprochene Ziel ist der Erhalt der Gelenkbeweglichkeit.",
+        "C": "Eine Nekrose ist nicht mit immobilisationsbedingter Gelenksteife gleichzusetzen; Bewegung allein ist kein spezifischer Nekroseschutz.",
+        "D": "Eine PIN-Läsion wird durch die neurologische Untersuchung erfasst; Mobilisation zur Steifevermeidung ersetzt diese Prüfung nicht."
+      },
+      "tags": [
+        "radiuskoepfchenfraktur"
+      ],
+      "source": "https://pubmed.ncbi.nlm.nih.gov/22576643/; https://pubmed.ncbi.nlm.nih.gov/29664851/"
+    },
+    "reason": "Replace unsupported whole-population most-common superlative with the source-backed purpose of early movement in simple stable fractures."
+  },
+  {
+    "kind": "question",
+    "id": "rk-komplikation-1-en",
+    "lang": "en",
+    "before": {
+      "id": "rk-komplikation-1-en",
+      "question": "What is the most common complication after conservatively treated radial head fracture?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Infection"
+        },
+        {
+          "id": "B",
+          "text": "Elbow stiffness (restricted motion)"
+        },
+        {
+          "id": "C",
+          "text": "Avascular necrosis"
+        },
+        {
+          "id": "D",
+          "text": "Radial nerve palsy"
+        }
+      ],
+      "correct": "B",
+      "explanation": "Elbow stiffness is an important complication. In simple stable fractures, early pain-adapted motion supports function; avoid unnecessary prolonged immobilisation. A fixed 1–2-week wait and formal physiotherapy for every case are not supported. Associated injuries determine individual rehabilitation.",
+      "wrongExplanations": {
+        "A": "Without signs of infection, infection is not the typical explanation for loss of motion.",
+        "C": "Joint stiffness is the common functional complication; necrosis is not equivalent.",
+        "D": "A nerve injury produces a motor deficit pattern, not simply joint stiffness."
+      },
+      "tags": [
+        "radiuskoepfchenfraktur"
+      ]
+    },
+    "after": {
+      "id": "rk-komplikation-1-en",
+      "question": "Early pain-adapted motion is planned for a simple stable radial head fracture. Which complication is this primarily intended to avoid?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Infection"
+        },
+        {
+          "id": "B",
+          "text": "Elbow stiffness"
+        },
+        {
+          "id": "C",
+          "text": "Avascular necrosis"
+        },
+        {
+          "id": "D",
+          "text": "Isolated PIN palsy"
+        }
+      ],
+      "correct": "B",
+      "explanation": "Elbow stiffness is an important complication. In simple stable fractures, early pain-adapted motion supports function; avoid unnecessary prolonged immobilisation. A fixed 1–2-week wait and formal physiotherapy for every case are not supported. Associated injuries determine individual rehabilitation.",
+      "wrongExplanations": {
+        "A": "Early motion does not treat infection mechanisms; the targeted aim here is preserving joint motion.",
+        "C": "Necrosis is not equivalent to immobilisation-related stiffness; motion alone is not a specific protection against necrosis.",
+        "D": "PIN injury is identified by neurological assessment; mobilisation to prevent stiffness does not substitute for that examination."
+      },
+      "tags": [
+        "radiuskoepfchenfraktur"
+      ],
+      "source": "https://pubmed.ncbi.nlm.nih.gov/22576643/; https://pubmed.ncbi.nlm.nih.gov/29664851/"
+    },
+    "reason": "Replace unsupported whole-population most-common superlative with the source-backed purpose of early movement in simple stable fractures."
+  },
+  {
+    "kind": "question",
+    "id": "rk-komplikation-1-fa",
+    "lang": "fa",
+    "before": {
+      "id": "rk-komplikation-1-fa",
+      "question": "شایع‌ترین عارضه پس از شکستگی سر رادیوس با درمان محافظه‌کارانه چیست؟",
+      "options": [
+        {
+          "id": "A",
+          "text": "عفونت"
+        },
+        {
+          "id": "B",
+          "text": "سفتی آرنج (محدودیت حرکتی)"
+        },
+        {
+          "id": "C",
+          "text": "نکروز آواسکولار"
+        },
+        {
+          "id": "D",
+          "text": "فلج عصب رادیال"
+        }
+      ],
+      "correct": "B",
+      "explanation": "سفتی آرنج عارضه‌ای مهم است. در شکستگی ساده و پایدار، حرکت زودهنگام متناسب با درد به عملکرد کمک می‌کند؛ از بی‌حرکتی غیرضروری و طولانی پرهیز شود. انتظار ثابت ۱ تا ۲ هفته و فیزیوتراپی رسمی برای همهٔ موارد پشتوانه ندارد. آسیب‌های همراه برنامهٔ توان‌بخشی فردی را تعیین می‌کنند.",
+      "wrongExplanations": {
+        "A": "بدون علائم عفونت، عفونت توضیح معمول محدودیت حرکت نیست.",
+        "C": "سفتی مفصل عارضهٔ عملکردی شایع است؛ نکروز معادل آن نیست.",
+        "D": "آسیب عصبی الگوی نقص حرکتی ایجاد می‌کند، نه صرفاً سفتی مفصل."
+      },
+      "tags": [
+        "radiuskoepfchenfraktur"
+      ]
+    },
+    "after": {
+      "id": "rk-komplikation-1-fa",
+      "question": "برای شکستگی ساده و پایدار سر رادیوس، حرکت زودهنگام متناسب با درد برنامه‌ریزی شده است. هدف اصلی، پیشگیری از کدام عارضه است؟",
+      "options": [
+        {
+          "id": "A",
+          "text": "عفونت"
+        },
+        {
+          "id": "B",
+          "text": "سفتی آرنج"
+        },
+        {
+          "id": "C",
+          "text": "نکروز آواسکولار"
+        },
+        {
+          "id": "D",
+          "text": "ضعف منفرد عصب PIN"
+        }
+      ],
+      "correct": "B",
+      "explanation": "سفتی آرنج عارضه‌ای مهم است. در شکستگی ساده و پایدار، حرکت زودهنگام متناسب با درد به عملکرد کمک می‌کند؛ از بی‌حرکتی غیرضروری و طولانی پرهیز شود. انتظار ثابت ۱ تا ۲ هفته و فیزیوتراپی رسمی برای همهٔ موارد پشتوانه ندارد. آسیب‌های همراه برنامهٔ توان‌بخشی فردی را تعیین می‌کنند.",
+      "wrongExplanations": {
+        "A": "حرکت زودهنگام سازوکارهای عفونت را درمان نمی‌کند؛ هدف مورد سؤال، حفظ حرکت مفصل است.",
+        "C": "نکروز معادل سفتی مفصل ناشی از بی‌حرکتی نیست؛ حرکت به‌تنهایی محافظت اختصاصی در برابر نکروز ایجاد نمی‌کند.",
+        "D": "آسیب PIN با ارزیابی عصبی بررسی می‌شود؛ حرکت‌دادن برای پیشگیری از سفتی جای این معاینه را نمی‌گیرد."
+      },
+      "tags": [
+        "radiuskoepfchenfraktur"
+      ],
+      "source": "https://pubmed.ncbi.nlm.nih.gov/22576643/; https://pubmed.ncbi.nlm.nih.gov/29664851/"
+    },
+    "reason": "Replace unsupported whole-population most-common superlative with the source-backed purpose of early movement in simple stable fractures."
+  },
+  {
+    "kind": "question",
+    "id": "rk-kinder-1-de",
+    "lang": "de",
+    "before": {
+      "id": "rk-kinder-1-de",
+      "question": "Was muss beim Ellenbogenröntgen eines Kindes mit Unterarmfraktur besonders beachtet werden?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Das Olekranon auf Avulsionsfraktur"
+        },
+        {
+          "id": "B",
+          "text": "Die Radiocapitellar Line auf Radiusköpfchenluxation (Monteggia!)"
+        },
+        {
+          "id": "C",
+          "text": "Das Processus styloideus ulnae"
+        },
+        {
+          "id": "D",
+          "text": "Den Humeruschaft auf Grünholzfraktur"
+        }
+      ],
+      "correct": "B",
+      "explanation": "Monteggia-Fraktur bei Kindern: Ulnafraktur + Radiusköpfchenluxation. Immer Radiocapitellar Line prüfen! Übersehene Luxation → chronische Deformität und Bewegungseinschränkung. Merke: Ulna gebrochen → Radius-Köpfchen anschauen!",
+      "tags": [
+        "radiuskoepfchenfraktur"
+      ]
+    },
+    "after": {
+      "id": "rk-kinder-1-de",
+      "question": "Bei einem Kind mit Ulnaschaftfraktur bestätigen korrekt eingestellte Aufnahmen eine Radiusköpfchenluxation. Welche Verletzungskonstellation liegt vor?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Galeazzi-Verletzung"
+        },
+        {
+          "id": "B",
+          "text": "Monteggia-Verletzung"
+        },
+        {
+          "id": "C",
+          "text": "Essex-Lopresti-Verletzung"
+        },
+        {
+          "id": "D",
+          "text": "Isolierte Radiusköpfchenfraktur"
+        }
+      ],
+      "correct": "B",
+      "explanation": "Ulnafraktur und Radiusköpfchenluxation bilden die Monteggia-Konstellation. Ulnaverlauf und radiokapitellare Stellung vollständig beurteilen; eine auffällige Hilfslinie allein beweist bei Kindern keine Luxation. Übersehene Fehlstellung kann die spätere Funktion beeinträchtigen.",
+      "tags": [
+        "radiuskoepfchenfraktur"
+      ],
+      "wrongExplanations": {
+        "A": "Galeazzi bezeichnet eine Radiusschaftfraktur mit distaler Radioulnarverletzung; hier sind Ulna und proximale Radiusstellung betroffen.",
+        "C": "Essex-Lopresti verlangt die Radiusköpfchen-/IOM-/DRUJ-Konstellation, nicht nur eine Ulnafraktur mit proximaler Radiusluxation.",
+        "D": "Es ist eine Luxation und eine Ulnaschaftfraktur beschrieben; das ist keine isolierte Radiusköpfchenfraktur."
+      },
+      "source": "https://pubmed.ncbi.nlm.nih.gov/24978320/; https://pubmed.ncbi.nlm.nih.gov/21841436/"
+    },
+    "reason": "Replace off-region targets with four related forearm injury patterns and preserve pediatric reference-line limitations."
+  },
+  {
+    "kind": "question",
+    "id": "rk-kinder-1-en",
+    "lang": "en",
+    "before": {
+      "id": "rk-kinder-1-en",
+      "question": "What must be specifically checked on an elbow X-ray of a child with a forearm fracture?",
+      "options": [
+        {
+          "id": "A",
+          "text": "The olecranon for avulsion fracture"
+        },
+        {
+          "id": "B",
+          "text": "The radiocapitellar line for radial head dislocation (Monteggia!)"
+        },
+        {
+          "id": "C",
+          "text": "The styloid process of the ulna"
+        },
+        {
+          "id": "D",
+          "text": "The humeral shaft for greenstick fracture"
+        }
+      ],
+      "correct": "B",
+      "explanation": "Monteggia fracture in children: ulna fracture + radial head dislocation. Always check the radiocapitellar line! Missed dislocation → chronic deformity and restricted motion. Remember: broken ulna → look at the radial head!",
+      "tags": [
+        "radiuskoepfchenfraktur"
+      ]
+    },
+    "after": {
+      "id": "rk-kinder-1-en",
+      "question": "In a child with an ulnar shaft fracture, adequately positioned radiographs confirm radial-head dislocation. Which injury pattern is present?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Galeazzi injury"
+        },
+        {
+          "id": "B",
+          "text": "Monteggia injury"
+        },
+        {
+          "id": "C",
+          "text": "Essex–Lopresti injury"
+        },
+        {
+          "id": "D",
+          "text": "Isolated radial head fracture"
+        }
+      ],
+      "correct": "B",
+      "explanation": "Ulnar fracture and radial-head dislocation form a Monteggia pattern. Assess the full ulnar contour and radiocapitellar alignment; an abnormal reference line alone does not prove pediatric dislocation. A missed malalignment can impair later function.",
+      "tags": [
+        "radiuskoepfchenfraktur"
+      ],
+      "wrongExplanations": {
+        "A": "Galeazzi denotes a radial-shaft fracture with distal radioulnar injury; here the ulna and proximal radial alignment are involved.",
+        "C": "Essex–Lopresti requires the radial-head/IOM/DRUJ pattern, rather than an ulnar fracture with proximal radial dislocation.",
+        "D": "The description includes dislocation and an ulnar-shaft fracture, not an isolated radial-head fracture."
+      },
+      "source": "https://pubmed.ncbi.nlm.nih.gov/24978320/; https://pubmed.ncbi.nlm.nih.gov/21841436/"
+    },
+    "reason": "Replace off-region targets with four related forearm injury patterns and preserve pediatric reference-line limitations."
+  },
+  {
+    "kind": "question",
+    "id": "rk-kinder-1-fa",
+    "lang": "fa",
+    "before": {
+      "id": "rk-kinder-1-fa",
+      "question": "در رادیوگرافی آرنج کودک با شکستگی ساعد چه چیزی باید به‌ویژه بررسی شود؟",
+      "options": [
+        {
+          "id": "A",
+          "text": "اولکرانون از نظر شکستگی آوولسیون"
+        },
+        {
+          "id": "B",
+          "text": "خط رادیوکاپیتلار برای لوکساسیون سر رادیوس (مونتگیا!)"
+        },
+        {
+          "id": "C",
+          "text": "زائده استیلوئید اولنا"
+        },
+        {
+          "id": "D",
+          "text": "تنه هومروس برای شکستگی گرین‌استیک"
+        }
+      ],
+      "correct": "B",
+      "explanation": "شکستگی مونتگیا در کودکان: شکستگی اولنا + لوکساسیون سر رادیوس. همیشه خط رادیوکاپیتلار را بررسی کنید! لوکساسیون از دست رفته → تغییر شکل مزمن و محدودیت حرکتی. به یاد داشته باشید: اولنا شکسته → به سر رادیوس نگاه کنید!",
+      "tags": [
+        "radiuskoepfchenfraktur"
+      ]
+    },
+    "after": {
+      "id": "rk-kinder-1-fa",
+      "question": "در کودکی با شکستگی تنهٔ اولنا، رادیوگرافی‌های با وضعیت‌گیری مناسب دررفتگی سر رادیوس را تأیید می‌کنند. کدام الگوی آسیب وجود دارد؟",
+      "options": [
+        {
+          "id": "A",
+          "text": "آسیب گالئاتزی"
+        },
+        {
+          "id": "B",
+          "text": "آسیب مونتگیا"
+        },
+        {
+          "id": "C",
+          "text": "آسیب اسکس–لوپرستی"
+        },
+        {
+          "id": "D",
+          "text": "شکستگی منفرد سر رادیوس"
+        }
+      ],
+      "correct": "B",
+      "explanation": "شکستگی اولنا و دررفتگی سر رادیوس، الگوی مونتگیا را تشکیل می‌دهند. تمام مسیر اولنا و هم‌راستایی رادیوکاپیتلار را ارزیابی کنید؛ خط کمکی غیرطبیعی به‌تنهایی دررفتگی را در کودک ثابت نمی‌کند. بدراستاییِ تشخیص‌داده‌نشده می‌تواند عملکرد بعدی را مختل کند.",
+      "tags": [
+        "radiuskoepfchenfraktur"
+      ],
+      "wrongExplanations": {
+        "A": "گالئاتزی به شکستگی تنهٔ رادیوس همراه آسیب رادیواولنار دیستال گفته می‌شود؛ در اینجا اولنا و هم‌راستایی پروگزیمال رادیوس درگیرند.",
+        "C": "اسکس–لوپرستی به الگوی سر رادیوس/IOM/DRUJ نیاز دارد، نه صرفاً شکستگی اولنا همراه دررفتگی پروگزیمال رادیوس.",
+        "D": "توصیف شامل دررفتگی و شکستگی تنهٔ اولنا است، نه شکستگی منفرد سر رادیوس."
+      },
+      "source": "https://pubmed.ncbi.nlm.nih.gov/24978320/; https://pubmed.ncbi.nlm.nih.gov/21841436/"
+    },
+    "reason": "Replace off-region targets with four related forearm injury patterns and preserve pediatric reference-line limitations."
+  },
+  {
+    "kind": "card",
+    "id": "rk-fc-1",
+    "before": {
+      "id": "rk-fc-1",
+      "category": {
+        "de": "Mason",
+        "en": "Mason",
+        "fa": "ماسون"
+      },
+      "front": {
+        "de": "Welche PDF-Merkmale trennen Mason I und II?",
+        "en": "Which PDF features distinguish Mason I and II?",
+        "fa": "کدام ویژگی‌های PDF ماسون I را از II جدا می‌کنند؟"
+      },
+      "answer": {
+        "de": "PDF-Kurzfassung: Typ I Gelenkstufe < 2 mm; Typ II Gelenkstufe > 2 mm ODER > 30 % Gelenkfläche. Exakt 2 mm ohne > 30 % Beteiligung bleibt auf der Seite unzugeordnet.",
+        "en": "PDF summary: Type I joint step < 2 mm; Type II joint step > 2 mm OR > 30 % articular surface. Exactly 2 mm without > 30 % involvement is unassigned on the page.",
+        "fa": "خلاصهٔ PDF: نوع I پلهٔ مفصلی < ۲ میلی‌متر؛ نوع II پلهٔ > ۲ میلی‌متر یا درگیری > ۳۰٪ سطح مفصلی. پلهٔ دقیقاً ۲ میلی‌متر بدون درگیری > ۳۰٪ در صفحه تعیین‌تکلیف نشده است."
+      },
+      "explanation": {
+        "de": "Die Zahlen beschreiben die Klassifikation. Sie allein ordnen keine ORIF an.",
+        "en": "The numbers describe the classification. They do not, by themselves, mandate ORIF.",
+        "fa": "این اعداد طبقه‌بندی را توصیف می‌کنند و به‌تنهایی ORIF را الزامی نمی‌کنند."
+      },
+      "topicId": "radiuskoepfchenfraktur"
+    },
+    "after": {
+      "id": "rk-fc-1",
+      "category": {
+        "de": "Mason",
+        "en": "Mason",
+        "fa": "ماسون"
+      },
+      "front": {
+        "de": "Welche Grundmorphologie trennt Mason I und II?",
+        "en": "Which basic morphology distinguishes Mason I from II?",
+        "fa": "کدام مورفولوژی پایه ماسون I را از II جدا می‌کند؟"
+      },
+      "answer": {
+        "de": "I: nicht/minimal dislozierte Fissur oder Randfraktur. II: dislozierte Teilkopffraktur.",
+        "en": "I: nondisplaced/minimally displaced fissure or marginal fracture. II: displaced partial-head fracture.",
+        "fa": "I: ترک یا شکستگی حاشیه‌ای بدون یا با حداقل جابه‌جایی. II: شکستگی جابه‌جا‌شدهٔ بخشی از سر."
+      },
+      "explanation": {
+        "de": "Numerische 2-mm-/30%-Grenzen gehören zu unterschiedlichen Modifikationen und sind keine universelle Operationsregel. Gemessene Stufenhöhe, Gelenkflächenanteil und Begleitverletzungen beschreiben und die verwendete Version nennen.",
+        "en": "Numerical 2-mm/30% thresholds belong to differing modifications and are not a universal surgery rule. Report measured displacement, articular involvement and associated injuries, and identify the version used.",
+        "fa": "مرزهای عددی ۲ میلی‌متر/۳۰٪ مربوط به نسخه‌های اصلاح‌شدهٔ متفاوت‌اند و قاعدهٔ همگانی جراحی نیستند. ارتفاع پله، درگیری سطح مفصلی و آسیب‌های همراه را توصیف و نسخهٔ استفاده‌شده را مشخص کنید."
+      },
+      "topicId": "radiuskoepfchenfraktur",
+      "source": "https://pubmed.ncbi.nlm.nih.gov/20566295/; MSK.pdf physical15 /printed14"
+    },
+    "reason": "Replace source-shortcut memorization with clinically useful morphology and version-aware reporting; do not select a universal mixed cutoff."
+  },
+  {
+    "kind": "card",
+    "id": "rk-fc-2",
+    "before": {
+      "id": "rk-fc-2",
+      "category": {
+        "de": "Mason",
+        "en": "Mason",
+        "fa": "ماسون"
+      },
+      "front": {
+        "de": "Was sagt die PDF-Seite über Mason III?",
+        "en": "What does the PDF page say about Mason III?",
+        "fa": "صفحهٔ PDF دربارهٔ ماسون III چه می‌گوید؟"
+      },
+      "answer": {
+        "de": "Mehrfragmentäre oder Trümmerfraktur des Radiusköpfchens. Keine Fragment-Mindestzahl und keine Therapieempfehlung angegeben.",
+        "en": "A multi-fragmentary or comminuted radial head fracture. No minimum fragment count or treatment recommendation is given.",
+        "fa": "شکستگی چندقطعه‌ای یا خردشدهٔ سر رادیوس؛ حداقل تعداد قطعه و توصیهٔ درمانی ذکر نشده است."
+      },
+      "explanation": {
+        "de": "Die Fragmentzahl allein beweist weder fehlende Rekonstruierbarkeit noch eine bestimmte Therapie.",
+        "en": "Fragment count alone does not establish irreconstructibility or dictate a specific treatment.",
+        "fa": "تعداد قطعات به‌تنهایی غیرقابل‌بازسازی بودن یا درمان مشخصی را ثابت نمی‌کند."
+      },
+      "topicId": "radiuskoepfchenfraktur"
+    },
+    "after": {
+      "id": "rk-fc-2",
+      "category": {
+        "de": "Mason",
+        "en": "Mason",
+        "fa": "ماسون"
+      },
+      "front": {
+        "de": "Warum trennt die Fragmentzahl allein Mason II und III nicht?",
+        "en": "Why does fragment count alone not distinguish Mason II from III?",
+        "fa": "چرا تعداد قطعات به‌تنهایی ماسون II را از III جدا نمی‌کند؟"
+      },
+      "answer": {
+        "de": "Auch Teilkopffrakturen (II) können mehrfragmentär sein. III beschreibt die Fraktur des gesamten Kopfes; Umfang und Fragmentmorphologie getrennt beurteilen.",
+        "en": "Partial-head fractures (II) can also be multifragmentary. III describes whole-head involvement; assess extent and fragment morphology separately.",
+        "fa": "شکستگی بخشی از سر (II) نیز می‌تواند چندقطعه‌ای باشد. III درگیری تمام سر را توصیف می‌کند؛ وسعت و مورفولوژی قطعات را جداگانه ارزیابی کنید."
+      },
+      "explanation": {
+        "de": "Die primäre 3D-CT-Studie fand komplexe Teilkopffrakturen und Ganzkopffrakturen mit wenigen Fragmenten. Die Typzahl ist damit kein alleiniger Beweis fehlender Rekonstruierbarkeit oder einer bestimmten Therapie.",
+        "en": "The primary 3D-CT study found complex partial-head fractures and whole-head fractures with few fragments. The type number therefore does not alone prove irreconstructibility or dictate treatment.",
+        "fa": "مطالعهٔ اولیهٔ CT سه‌بعدی، شکستگی پیچیدهٔ بخشی از سر و شکستگی تمام سر با قطعات کم را یافت. بنابراین شمارهٔ نوع به‌تنهایی غیرقابل‌بازسازی بودن یا درمان معین را ثابت نمی‌کند."
+      },
+      "topicId": "radiuskoepfchenfraktur",
+      "source": "https://pubmed.ncbi.nlm.nih.gov/20566295/"
+    },
+    "reason": "Make the partial/whole-head pitfall retrievable and preserve no-fixed-fragment-count/no-automatic-treatment caveats."
+  },
+  {
+    "kind": "card",
+    "id": "rk-fc-3",
+    "before": {
+      "id": "rk-fc-3",
+      "category": {
+        "de": "Bildgebung",
+        "en": "Imaging",
+        "fa": "تصویربرداری"
+      },
+      "front": {
+        "de": "Fettkissenzeichen: anteriores vs. posteriores?",
+        "en": "Fat pad sign: anterior vs. posterior?",
+        "fa": "نشانه بالشتک چربی: قدامی در مقابل خلفی؟"
+      },
+      "answer": {
+        "de": "Im echten Seitenbild ist ein flaches anteriores Fettkissen normal sichtbar. Ein eleviertes anteriores oder sichtbares posteriores Fettkissen spricht für einen Erguss; nach Trauma ist eine okkulte Fraktur möglich.",
+        "en": "On a true lateral view, a flat anterior fat pad may be normal. An elevated anterior or visible posterior fat pad supports effusion; an occult fracture is possible after trauma.",
+        "fa": "در نمای لترال واقعی، بالشتک قدامی صاف می‌تواند طبیعی دیده شود. بالا آمدن بالشتک قدامی یا دیده‌شدن بالشتک خلفی به نفع افیوژن است؛ پس از تروما، شکستگی پنهان ممکن است."
+      },
+      "explanation": {
+        "de": "Ergusszeichen im klinischen Kontext bewerten; daraus allein weder Frakturort noch Mason-Typ ableiten.",
+        "en": "Interpret the effusion sign in clinical context; it alone establishes neither fracture location nor Mason type.",
+        "fa": "علامت افیوژن را در زمینهٔ بالینی تفسیر کنید؛ به‌تنهایی محل شکستگی یا نوع ماسون را تعیین نمی‌کند."
+      },
+      "topicId": "radiuskoepfchenfraktur"
+    },
+    "after": {
+      "id": "rk-fc-3",
+      "category": {
+        "de": "Bildgebung",
+        "en": "Imaging",
+        "fa": "تصویربرداری"
+      },
+      "front": {
+        "de": "Fettkissenzeichen: anteriores vs. posteriores?",
+        "en": "Fat pad sign: anterior vs. posterior?",
+        "fa": "نشانه بالشتک چربی: قدامی در مقابل خلفی؟"
+      },
+      "answer": {
+        "de": "Im echten Seitenbild ist ein flaches anteriores Fettkissen normal sichtbar. Ein eleviertes anteriores oder sichtbares posteriores Fettkissen spricht für einen Erguss; nach Trauma ist eine okkulte Fraktur möglich.",
+        "en": "On a true lateral view, a flat anterior fat pad may be normal. An elevated anterior or visible posterior fat pad supports effusion; an occult fracture is possible after trauma.",
+        "fa": "در نمای لترال واقعی، بالشتک قدامی صاف می‌تواند طبیعی دیده شود. بالا آمدن بالشتک قدامی یا دیده‌شدن بالشتک خلفی به نفع افیوژن است؛ پس از تروما، شکستگی پنهان ممکن است."
+      },
+      "explanation": {
+        "de": "Ergusszeichen im klinischen Kontext bewerten; daraus allein weder Frakturort noch Mason-Typ ableiten.",
+        "en": "Interpret the effusion sign in clinical context; it alone establishes neither fracture location nor Mason type.",
+        "fa": "علامت افیوژن را در زمینهٔ بالینی تفسیر کنید؛ به‌تنهایی محل شکستگی یا نوع ماسون را تعیین نمی‌کند."
+      },
+      "topicId": "radiuskoepfchenfraktur",
+      "source": "https://pubmed.ncbi.nlm.nih.gov/15232392/; https://doi.org/10.1016/S0020-1383(79)80071-6"
+    },
+    "reason": "Full triad read: useful anterior/posterior distinction retained unchanged; add exact original evidence."
+  },
+  {
+    "kind": "card",
+    "id": "rk-fc-4",
+    "before": {
+      "id": "rk-fc-4",
+      "category": {
+        "de": "Bildgebung",
+        "en": "Imaging",
+        "fa": "تصویربرداری"
+      },
+      "front": {
+        "de": "Radiocapitellar Line: Norm und Pathologie?",
+        "en": "Radiocapitellar Line: normal and pathological?",
+        "fa": "خط رادیوکاپیتلار: طبیعی و پاتولوژیک؟"
+      },
+      "answer": {
+        "de": "Eine entlang des Radiushalses gezogene Linie ist im echten Seitenbild die verlässlichere Orientierung. Bei Kindern beeinflussen Alter, Ossifikation und Projektion die Beziehung zum Capitulum; selbst eine normale Linie trifft nicht immer dessen Zentrum. Fehlende Deckung erfordert eine Prüfung der Technik und der gesamten Gelenkstellung, beweist allein aber keine Luxation.",
+        "en": "A line along the radial neck on a true lateral view is the more reliable reference. In children, age, ossification and projection affect its relationship to the capitellum; a normal line does not invariably cross its centre. Nonintersection warrants checking technique and overall joint alignment but does not alone prove dislocation.",
+        "fa": "خط در امتداد گردن رادیوس در نمای لترال واقعی مرجع قابل‌اتکاتری است. در کودکان، سن، استخوانی‌شدن و نما بر رابطهٔ خط با کاپیتولوم اثر دارند؛ خط طبیعی نیز همیشه از مرکز آن عبور نمی‌کند. عبور نکردن خط نیازمند بررسی تکنیک و هم‌راستایی کلی مفصل است، اما به‌تنهایی دررفتگی را ثابت نمی‌کند."
+      },
+      "explanation": {
+        "de": "Bei Verdacht auf Monteggia die gesamte Ulnamorphologie und radiokapitellare Stellung prüfen; technische und altersabhängige Abweichungen mitbedenken.",
+        "en": "When Monteggia injury is suspected, assess the entire ulnar morphology and radiocapitellar alignment; consider technical and age-dependent variation.",
+        "fa": "در شک به مونتگیا، مورفولوژی کل اولنا و هم‌راستایی رادیوکاپیتلار را بررسی و تغییرات وابسته به تکنیک و سن را لحاظ کنید."
+      },
+      "topicId": "radiuskoepfchenfraktur"
+    },
+    "after": {
+      "id": "rk-fc-4",
+      "category": {
+        "de": "Bildgebung",
+        "en": "Imaging",
+        "fa": "تصویربرداری"
+      },
+      "front": {
+        "de": "Radiocapitellar Line: Norm und Pathologie?",
+        "en": "Radiocapitellar Line: normal and pathological?",
+        "fa": "خط رادیوکاپیتلار: طبیعی و پاتولوژیک؟"
+      },
+      "answer": {
+        "de": "Die Radiushalslinie im echten Seitenbild ist die verlässlichere Orientierung. Eine fehlende Deckung ist ein Anlass zur Prüfung von Technik und Gesamtstellung, kein alleiniger Luxationsbeweis.",
+        "en": "The radial-neck line on a true lateral view is the more reliable reference. Nonintersection prompts checking technique and overall alignment; it does not alone prove dislocation.",
+        "fa": "خط گردن رادیوس در نمای لترال واقعی مرجع قابل‌اتکاتری است. عبور نکردن خط، بررسی تکنیک و هم‌راستایی کلی را لازم می‌کند، اما به‌تنهایی دررفتگی را ثابت نمی‌کند."
+      },
+      "explanation": {
+        "de": "Alter, Ossifikation und Rotation verändern den Bezug zum Capitulumkern; selbst normale Linien müssen nicht dessen Zentrum treffen. Bei Monteggia-Verdacht den gesamten Ulnaverlauf und die radiokapitellare Stellung beurteilen.",
+        "en": "Age, ossification and rotation alter the relationship to the capitellar centre; normal lines need not cross its centre. When Monteggia injury is suspected, assess the full ulna and radiocapitellar alignment.",
+        "fa": "سن، استخوانی‌شدن و چرخش بر رابطه با مرکز هستهٔ کاپیتولوم اثر دارند؛ خط طبیعی نیز لزوماً از مرکز عبور نمی‌کند. در شک به مونتگیا، تمام مسیر اولنا و هم‌راستایی رادیوکاپیتلار را بررسی کنید."
+      },
+      "topicId": "radiuskoepfchenfraktur",
+      "source": "https://pubmed.ncbi.nlm.nih.gov/21841436/; https://pubmed.ncbi.nlm.nih.gov/24978320/"
+    },
+    "reason": "Separate core answer from age/technique/Monteggia detail while retaining every clinical qualifier."
+  },
+  {
+    "kind": "card",
+    "id": "rk-fc-5",
+    "before": {
+      "id": "rk-fc-5",
+      "category": {
+        "de": "Assoziiert",
+        "en": "Associated",
+        "fa": "همراه"
+      },
+      "front": {
+        "de": "Essex-Lopresti: Was ist es und warum wichtig?",
+        "en": "Essex-Lopresti: what is it and why important?",
+        "fa": "اسکس-لوپرستی: چیست و چرا مهم است؟"
+      },
+      "answer": {
+        "de": "Radiusköpfchenfraktur + Ruptur der Membrana interossea + DRUG-Verletzung → Risiko longitudinaler Unterarminstabilität. DRUG und Unterarmlänge/Stabilität gezielt prüfen. Bei bestätigter Instabilität wird die radiale Länge erhalten oder wiederhergestellt; Fixation oder Ersatz richten sich nach Rekonstruierbarkeit und Begleitverletzungen. Eine Resektion ist keine pauschale Option, aber auch eine Prothese nicht automatisch vorgeschrieben.",
+        "en": "Radial head fracture + interosseous membrane rupture + DRUJ injury → risk of longitudinal forearm instability. Assess the DRUJ and forearm length/stability. With confirmed instability, preserve or restore radial length; fixation or replacement depends on reconstructibility and associated injuries. Resection is not a default option, but arthroplasty is not automatic either.",
+        "fa": "شکستگی سر رادیوس + پارگی غشای بین‌استخوانی + آسیب DRUJ → خطر ناپایداری طولی ساعد. DRUJ و طول/پایداری ساعد را هدفمند ارزیابی کنید. در ناپایداری تأییدشده، طول رادیوس حفظ یا بازسازی می‌شود؛ تثبیت یا جایگزینی به قابلیت بازسازی و آسیب‌های همراه بستگی دارد. رزکسیون گزینهٔ پیش‌فرض نیست، اما پروتز هم خودکار تجویز نمی‌شود."
+      },
+      "explanation": {
+        "de": "Essex-Lopresti: 3 Strukturen; Längsstabilität prüfen und Therapie individuell planen.",
+        "en": "Essex-Lopresti: 3 structures; assess longitudinal stability and individualise treatment.",
+        "fa": "اسکس-لوپرستی: ۳ ساختار؛ پایداری طولی را بسنجید و درمان را فردی تعیین کنید."
+      },
+      "topicId": "radiuskoepfchenfraktur"
+    },
+    "after": {
+      "id": "rk-fc-5",
+      "category": {
+        "de": "Assoziiert",
+        "en": "Associated",
+        "fa": "همراه"
+      },
+      "front": {
+        "de": "Essex-Lopresti: Was ist es und warum wichtig?",
+        "en": "Essex-Lopresti: what is it and why important?",
+        "fa": "اسکس-لوپرستی: چیست و چرا مهم است؟"
+      },
+      "answer": {
+        "de": "Radiusköpfchenfraktur + IOM-Ruptur + DRUJ-Verletzung: Risiko longitudinaler Unterarminstabilität.",
+        "en": "Radial head fracture + IOM rupture + DRUJ injury: risk of longitudinal forearm instability.",
+        "fa": "شکستگی سر رادیوس + پارگی IOM + آسیب DRUJ: خطر ناپایداری طولی ساعد."
+      },
+      "explanation": {
+        "de": "DRUJ, Unterarmlänge und Stabilität gezielt prüfen. Bei bestätigter Instabilität radiale Länge erhalten/wiederherstellen; Fixation oder Ersatz nach Rekonstruierbarkeit und Begleitverletzungen. Weder Resektion noch Prothese ist eine automatische Standardantwort.",
+        "en": "Assess the DRUJ, forearm length and stability. With confirmed instability, preserve/restore radial length; choose fixation or replacement according to reconstructibility and associated injuries. Neither excision nor arthroplasty is automatic.",
+        "fa": "DRUJ، طول ساعد و پایداری را هدفمند بررسی کنید. در ناپایداری تأییدشده، طول رادیوس را حفظ/بازسازی کنید؛ تثبیت یا جایگزینی به امکان بازسازی و آسیب‌های همراه بستگی دارد. نه برداشت و نه پروتز پاسخ خودکار استاندارد نیست."
+      },
+      "topicId": "radiuskoepfchenfraktur",
+      "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5895887/"
+    },
+    "reason": "Keep one concise recall answer; move existing management qualifiers into explanation without dropping clinical nuance."
+  },
+  {
+    "kind": "card",
+    "id": "rk-fc-6",
+    "before": {
+      "id": "rk-fc-6",
+      "category": {
+        "de": "Assoziiert",
+        "en": "Associated",
+        "fa": "همراه"
+      },
+      "front": {
+        "de": "Terrible Triad des Ellenbogens: 3 Komponenten?",
+        "en": "Terrible Triad of the elbow: 3 components?",
+        "fa": "سه‌گانه وحشتناک آرنج: ۳ مؤلفه؟"
+      },
+      "answer": {
+        "de": "1) Ellenbogenluxation (posterior). 2) Radiusköpfchenfraktur. 3) Coronoidfraktur der Ulna. Begleitverletzungen und Stabilität jeder Komponente beurteilen; die Behandlungsplanung ist individuell und orientiert sich an der Gesamtstabilität.",
+        "en": "1) Posterior elbow dislocation. 2) Radial head fracture. 3) Coronoid process fracture. Assess associated injuries and the stability of each component; individualise management to the overall stability.",
+        "fa": "۱) لوکساسیون خلفی آرنج. ۲) شکستگی سر رادیوس. ۳) شکستگی زائدهٔ کرونوئید اولنا. آسیب‌های همراه و پایداری هر مؤلفه را بسنجید؛ درمان را بر اساس پایداری کلی و به‌صورت فردی برنامه‌ریزی کنید."
+      },
+      "explanation": {
+        "de": "Terrible Triad: 3 Verletzungen erkennen; Therapie nach Gesamtstabilität planen.",
+        "en": "Terrible triad: identify the 3 injuries; plan treatment for overall stability.",
+        "fa": "سه‌گانهٔ وحشتناک: سه آسیب را بشناسید؛ درمان را بر پایهٔ پایداری کلی برنامه‌ریزی کنید."
+      },
+      "topicId": "radiuskoepfchenfraktur"
+    },
+    "after": {
+      "id": "rk-fc-6",
+      "category": {
+        "de": "Assoziiert",
+        "en": "Associated",
+        "fa": "همراه"
+      },
+      "front": {
+        "de": "Terrible Triad des Ellenbogens: 3 Komponenten?",
+        "en": "Terrible Triad of the elbow: 3 components?",
+        "fa": "سه‌گانه وحشتناک آرنج: ۳ مؤلفه؟"
+      },
+      "answer": {
+        "de": "Ellenbogenluxation (typisch posterior) + Radiusköpfchenfraktur + Coronoidfraktur der Ulna.",
+        "en": "Elbow dislocation (typically posterior) + radial head fracture + ulnar coronoid fracture.",
+        "fa": "دررفتگی آرنج (معمولاً خلفی) + شکستگی سر رادیوس + شکستگی کرونوئید اولنا."
+      },
+      "explanation": {
+        "de": "Jede Komponente und Begleitverletzung beurteilen. Die Gesamtstabilität und Rekonstruierbarkeit bestimmen die individuelle Planung; nicht jede Komponente muss automatisch operiert werden.",
+        "en": "Assess each component and associated injury. Overall stability and reconstructibility guide individual planning; surgery for every component is not automatic.",
+        "fa": "هر مؤلفه و آسیب همراه را ارزیابی کنید. پایداری کلی و امکان بازسازی، برنامهٔ فردی را تعیین می‌کنند؛ جراحی هر مؤلفه به‌طور خودکار لازم نیست."
+      },
+      "topicId": "radiuskoepfchenfraktur",
+      "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4048392/"
+    },
+    "reason": "Focus answer on three components; retain individual stability-based treatment limits in explanation."
+  },
+  {
+    "kind": "card",
+    "id": "rk-fc-7",
+    "before": {
+      "id": "rk-fc-7",
+      "category": {
+        "de": "Therapie",
+        "en": "Treatment",
+        "fa": "درمان"
+      },
+      "front": {
+        "de": "Häufigste Komplikation nach Radiusköpfchenfraktur?",
+        "en": "Most common complication after radial head fracture?",
+        "fa": "شایع‌ترین عارضه پس از شکستگی سر رادیوس؟"
+      },
+      "answer": {
+        "de": "Ellenbogensteifigkeit. Unnötig lange Ruhigstellung begünstigt eine Bewegungseinschränkung. Bei einfachen stabilen Verletzungen früh schmerzadaptiert üben; eine angeleitete Eigenübung kann genügen. Formale Physiotherapie ist nicht für jede isolierte gering verschobene Fraktur obligatorisch.",
+        "en": "Elbow stiffness. Unnecessarily prolonged immobilisation favours loss of motion. With simple stable injuries, start early pain-adapted exercises; instructed home exercise may suffice. Formal physiotherapy is not mandatory for every isolated minimally displaced fracture.",
+        "fa": "سفتی آرنج. بی‌حرکتی غیرضروری و طولانی محدودیت حرکت را تشدید می‌کند. در آسیب ساده و پایدار، تمرین زودهنگام متناسب با درد آغاز شود؛ تمرین خانگی با آموزش مناسب ممکن است کافی باشد. فیزیوتراپی رسمی برای همهٔ شکستگی‌های منفرد با جابه‌جایی کم الزامی نیست."
+      },
+      "explanation": {
+        "de": "Steifigkeit = Hauptkomplikation. Früh mobilisieren!",
+        "en": "Stiffness = main complication. Mobilise early!",
+        "fa": "سفتی = عارضه اصلی. زود تحرک دهید!"
+      },
+      "topicId": "radiuskoepfchenfraktur"
+    },
+    "after": {
+      "id": "rk-fc-7",
+      "category": {
+        "de": "Therapie",
+        "en": "Treatment",
+        "fa": "درمان"
+      },
+      "front": {
+        "de": "Welche funktionelle Komplikation begründet frühe Bewegung bei einfacher stabiler Radiusköpfchenfraktur?",
+        "en": "Which functional complication motivates early motion after a simple stable radial head fracture?",
+        "fa": "در شکستگی ساده و پایدار سر رادیوس، پیشگیری از کدام عارضهٔ عملکردی حرکت زودهنگام را توجیه می‌کند؟"
+      },
+      "answer": {
+        "de": "Ellenbogensteifigkeit: unnötig lange Ruhigstellung vermeiden und bei stabiler Verletzung früh schmerzadaptiert üben.",
+        "en": "Elbow stiffness: avoid unnecessarily prolonged immobilisation and begin pain-adapted exercise early when the injury is stable.",
+        "fa": "سفتی آرنج: از بی‌حرکتی غیرضروری و طولانی پرهیز و در آسیب پایدار، تمرین زودهنگام متناسب با درد را آغاز کنید."
+      },
+      "explanation": {
+        "de": "Bei isolierten gering verschobenen Frakturen kann angeleitete Eigenübung genügen; formale Physiotherapie ist nicht für jeden Fall obligatorisch. Begleitverletzungen bestimmen die Nachbehandlung. Kein starrer Wartezeit- oder pauschaler Belastungsfreigabetermin.",
+        "en": "In isolated minimally displaced fractures, instructed home exercise may suffice; formal physiotherapy is not mandatory for every case. Associated injuries determine rehabilitation. No fixed waiting period or universal return-to-load date is implied.",
+        "fa": "در شکستگی منفرد با جابه‌جایی کم، تمرین خانگی آموزش‌داده‌شده ممکن است کافی باشد؛ فیزیوتراپی رسمی برای همهٔ موارد الزامی نیست. آسیب‌های همراه برنامهٔ توان‌بخشی را تعیین می‌کنند. زمان انتظار ثابت یا موعد همگانی بازگشت به بارگذاری مطرح نیست."
+      },
+      "topicId": "radiuskoepfchenfraktur",
+      "source": "https://pubmed.ncbi.nlm.nih.gov/22576643/; https://pubmed.ncbi.nlm.nih.gov/29664851/"
+    },
+    "reason": "Remove unqualified Mobilise early imperative and unsupported whole-population superlative; preserve stable-fracture/home-exercise limitations."
+  },
+  {
+    "kind": "card",
+    "id": "rk-fc-8",
+    "before": {
+      "id": "rk-fc-8",
+      "category": {
+        "de": "Anatomie",
+        "en": "Anatomy",
+        "fa": "آناتومی"
+      },
+      "front": {
+        "de": "Welche Bedeutung hat das Radiusköpfchen für die Unterarmstabilität?",
+        "en": "What is the role of the radial head in forearm stability?",
+        "fa": "سر رادیوس چه نقشی در پایداری ساعد دارد؟"
+      },
+      "answer": {
+        "de": "Das Radiusköpfchen trägt zur axialen Unterarmstabilität bei. Bei vermuteter Instabilität vor einer Resektion die Begleitverletzungen und Längsstabilität vollständig beurteilen; Erhalt, Fixation oder Ersatz hängen vom Gesamtbefund ab.",
+        "en": "The radial head contributes to axial forearm stability. If instability is suspected, assess associated injuries and longitudinal stability fully before considering excision; preservation, fixation, or replacement depends on the overall injury.",
+        "fa": "سر رادیوس به پایداری محوری ساعد کمک می‌کند. در صورت شک به ناپایداری، پیش از بررسی رزکسیون، آسیب‌های همراه و پایداری طولی را کامل ارزیابی کنید؛ حفظ، تثبیت یا جایگزینی به مجموع یافته‌ها بستگی دارد."
+      },
+      "explanation": {
+        "de": "Radialkopf stabilisiert mit – erst Begleitverletzungen und Längsstabilität prüfen, dann individuell entscheiden.",
+        "en": "The radial head contributes to stability—assess associated injuries and longitudinal stability before deciding.",
+        "fa": "سر رادیوس در پایداری نقش دارد؛ ابتدا آسیب‌های همراه و پایداری طولی را بسنجید، سپس فردی تصمیم بگیرید."
+      },
+      "topicId": "radiuskoepfchenfraktur"
+    },
+    "after": {
+      "id": "rk-fc-8",
+      "category": {
+        "de": "Anatomie",
+        "en": "Anatomy",
+        "fa": "آناتومی"
+      },
+      "front": {
+        "de": "Welche Bedeutung hat das Radiusköpfchen für die Unterarmstabilität?",
+        "en": "What is the role of the radial head in forearm stability?",
+        "fa": "سر رادیوس چه نقشی در پایداری ساعد دارد؟"
+      },
+      "answer": {
+        "de": "Das Radiusköpfchen trägt zur axialen Unterarmstabilität und Erhaltung der radialen Länge bei.",
+        "en": "The radial head contributes to axial forearm stability and preservation of radial length.",
+        "fa": "سر رادیوس به پایداری محوری ساعد و حفظ طول رادیوس کمک می‌کند."
+      },
+      "explanation": {
+        "de": "Vor einer Resektion Begleitverletzungen und Längsstabilität vollständig beurteilen, besonders IOM und DRUJ. Erhalt, Fixation oder Ersatz richten sich nach dem gesamten Verletzungsmuster.",
+        "en": "Before excision, fully assess associated injuries and longitudinal stability, especially the IOM and DRUJ. Preservation, fixation or replacement depends on the entire injury pattern.",
+        "fa": "پیش از برداشت، آسیب‌های همراه و پایداری طولی، به‌ویژه IOM و DRUJ را کامل ارزیابی کنید. حفظ، تثبیت یا جایگزینی به مجموعهٔ الگوی آسیب بستگی دارد."
+      },
+      "topicId": "radiuskoepfchenfraktur",
+      "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5895887/"
+    },
+    "reason": "Make the answer directly address stability and retain the prior-resction assessment caveat in explanation."
+  }
+]

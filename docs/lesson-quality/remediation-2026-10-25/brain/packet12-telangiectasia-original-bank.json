@@ -1,0 +1,121 @@
+{
+  "date": "2026-10-25",
+  "status": "AUTHOR_FULL_ORIGINAL_BANK_REVIEW_READY",
+  "route": "/gehirn/vaskulaer/kapillaere-teleangiektasie",
+  "files": [
+    "data/kapillaere-teleangiektasie.js full original pool and bounded teaching parity/FA clarification",
+    "data/assessmentQuality/brain.js coverage only"
+  ],
+  "questionTriadsRead": 12,
+  "cardTriadsRead": 15,
+  "keysAndIDs": "Existing12questionIDs/15cardIDs and allcorrectkeys preserved;3localizedwrongfeedback eachquestion; no additional duplicatepool.",
+  "coverage": {
+    "route": "/gehirn/vaskulaer/kapillaere-teleangiektasie",
+    "topicId": "kapillaere-teleangiektasie",
+    "status": "AUTHOR_FULL_ORIGINAL_BANK_REVIEW_READY",
+    "learningGoals": [
+      {
+        "id": "recognise-morphology",
+        "text": {
+          "de": "Die typische Morphologie, Lokalisation und Grundhistologie mit Sequenzkorrelation erkennen.",
+          "en": "Recognise typical morphology, location and basic histology with sequence correlation.",
+          "fa": "مورفولوژی، محل و بافت‌شناسی پایهٔ تیپیک را با تطبیق سکانس‌ها بشناسید."
+        },
+        "questionIds": [
+          "kapillaere-teleangiektasie-de-01",
+          "kapillaere-teleangiektasie-de-02",
+          "kapillaere-teleangiektasie-de-03",
+          "kapillaere-teleangiektasie-de-05"
+        ],
+        "cardIds": [
+          "kapillaere-teleangiektasie-01-definition",
+          "kapillaere-teleangiektasie-02-lokalisation",
+          "kapillaere-teleangiektasie-03-enhancement",
+          "kapillaere-teleangiektasie-05-trias",
+          "kapillaere-teleangiektasie-06-t2"
+        ]
+      },
+      {
+        "id": "interpret-susceptibility-and-associations",
+        "text": {
+          "de": "Suszeptibilität von Blutungsnachweis trennen und DVA/Kavernom als Begleitbefunde einordnen.",
+          "en": "Separate susceptibility from proven haemorrhage and interpret associated DVA/cavernoma.",
+          "fa": "سوسپتیبیلیتی را از اثبات خونریزی جدا و DVA/کاورنوم همراه را تفسیر کنید."
+        },
+        "questionIds": [
+          "kapillaere-teleangiektasie-de-04",
+          "kapillaere-teleangiektasie-de-07",
+          "kapillaere-teleangiektasie-de-08"
+        ],
+        "cardIds": [
+          "kapillaere-teleangiektasie-04-swi",
+          "kapillaere-teleangiektasie-08-blutung",
+          "kapillaere-teleangiektasie-09-dva",
+          "kapillaere-teleangiektasie-10-kavernom",
+          "kapillaere-teleangiektasie-15-assoziation"
+        ]
+      },
+      {
+        "id": "recognise-limits-and-red-flags",
+        "text": {
+          "de": "DWI/ADC mit technischer Qualität beurteilen und atypische Expansion oder Restriktion erkennen.",
+          "en": "Interpret DWI/ADC with technical quality and recognise atypical expansion or restriction.",
+          "fa": "DWI/ADC را با توجه به کیفیت فنی تفسیر و گسترش یا محدودیت غیرتیپیک را شناسایی کنید."
+        },
+        "questionIds": [
+          "kapillaere-teleangiektasie-de-06",
+          "kapillaere-teleangiektasie-de-09"
+        ],
+        "cardIds": [
+          "kapillaere-teleangiektasie-07-dwi",
+          "kapillaere-teleangiektasie-13-atypisch"
+        ]
+      },
+      {
+        "id": "report-and-correlate-clinically",
+        "text": {
+          "de": "Typische stabile Befunde angemessen berichten, klinische Kausalität prüfen und unnötige Eskalation vermeiden.",
+          "en": "Report typical stable findings appropriately, assess clinical causality and avoid unnecessary escalation.",
+          "fa": "یافتهٔ تیپیک و پایدار را مناسب گزارش کنید، رابطهٔ علّی بالینی را بررسی و از تشدید غیرضروری اقدامات پرهیز کنید."
+        },
+        "questionIds": [
+          "kapillaere-teleangiektasie-de-10",
+          "kapillaere-teleangiektasie-de-11",
+          "kapillaere-teleangiektasie-de-12"
+        ],
+        "cardIds": [
+          "kapillaere-teleangiektasie-11-management",
+          "kapillaere-teleangiektasie-12-biopsie",
+          "kapillaere-teleangiektasie-14-befund"
+        ]
+      }
+    ]
+  },
+  "sourceCorrections": [
+    "A prominent draining vein is possible in BCT: distinguish radial DVA architecture rather than presence/absence of a collector.",
+    "DWI can be iso/hypointense or technically limited; no reliable universal ADC exclusion from an unassessable sequence.",
+    "Removed unsupported universal two-thirds proportion and replaced with classic pontine plus possible supratentorial location.",
+    "Blooming alone is not a cavernoma discriminator; blood-product core/rim morphology and separate accompanying lesion matter.",
+    "FA enhancement consistently postcontrast, no conflation with native T2/FLAIR signal."
+  ],
+  "sourcesRead": [
+    {
+      "url": "https://access.archive-ouverte.unige.ch/access/metadata/128f90a4-a512-4e11-a6cf-e949b52a0062/download",
+      "scope": "Actual complete original2012 published PDF text from authorinstitutionalrepository:methods/criteria,33lesionresults including prominentdrainage10/33,DWI/ADCtechnical limits,follow-up,natureofSWI and histologydiscussion. No universalpercent/accuracy or ADCdiagnosticproof taught."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/9393538/",
+      "scope": "Complete original18adultMRI/3postmortemspecimen abstract:GREsignal loss/nohemosiderin,stablefollow-up,benignpattern anddifferential."
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12680281/",
+      "scope": "Current2025CMconsensus original MRIcriteria actualtext:reticulatedmixedbloodproductcore+hemosiderinrim andDVAassociation; no surgicalalgorithm authored."
+    }
+  ],
+  "checks": "12questions/lang,15cardtriads,3wrongfeedback each;4goals cover all IDs; own actualrouteSSR3/3.",
+  "limits": [
+    "Independent review pending; no completePDF33–34or existingRadiopaedia58408/9732 imageacceptance. Existingassets andcaseclaims not newlyinterpreted. FA enhancementwording clarifiedlexically inretainedcaptions only.",
+    "No browser/RTLvisual or psychometricdifficultyvalidation; authorlabelnotreleaseapproval.",
+    "Activelegacyproducer remains unstaged untilindependentacceptance; newcoverage is anauthorledger only."
+  ]
+}

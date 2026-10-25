@@ -1,0 +1,651 @@
+{
+  "date": "2026-10-25",
+  "status": "AUTHOR_FULL_ORIGINAL_BANK_PLUS_GAP_REVIEW_READY",
+  "route": "/gehirn/neurofibromatose/nf1",
+  "files": [
+    "data/gehirnNf1CnsLesson.js",
+    "data/assessmentQuality/brain.js NF1 cards/topic/coverage only"
+  ],
+  "originalQuestionTriads": 3,
+  "currentQuestionTriads": 4,
+  "newCards": 4,
+  "coverage": {
+    "route": "/gehirn/neurofibromatose/nf1",
+    "topicId": "neurofibromatose-typ1",
+    "status": "AUTHOR_FULL_ORIGINAL_BANK_PLUS_GAP_READY",
+    "learningGoals": [
+      {
+        "id": "fasi",
+        "text": {
+          "de": "Ein typisches FASI-Muster erkennen, ohne Gliom oder NF1-Diagnose allein aus dem Signal abzuleiten.",
+          "en": "Recognise a typical FASI pattern without establishing glioma or NF1 diagnosis from signal alone.",
+          "fa": "الگوی تیپیک FASI را بشناسید، بدون تعیین تشخیص گلیوم یا NF1 صرفاً از سیگنال."
+        },
+        "questionIds": [
+          "neurofibromatose-typ1-de-fasi"
+        ],
+        "cardIds": [
+          "aq-brain-nf1-fasi"
+        ]
+      },
+      {
+        "id": "pathway",
+        "text": {
+          "de": "Neue Sehstörung bei NF1 mit gezielter Sehbahn-Bildgebung und Fachbeurteilung abklären.",
+          "en": "Investigate new visual dysfunction in NF1 with targeted visual-pathway imaging and specialist assessment.",
+          "fa": "اختلال بینایی جدید در NF1 را با تصویربرداری هدفمند مسیر بینایی و ارزیابی تخصصی بررسی کنید."
+        },
+        "questionIds": [
+          "neurofibromatose-typ1-de-pathway"
+        ],
+        "cardIds": [
+          "aq-brain-nf1-pathway"
+        ]
+      },
+      {
+        "id": "systemic",
+        "text": {
+          "de": "Neue Schmerz-/Wachstumszeichen eines plexiformen Neurofibroms als fachübergreifenden Abklärungsanlass erkennen.",
+          "en": "Recognise new pain/growth in plexiform neurofibroma as a reason for cross-specialty evaluation.",
+          "fa": "درد یا رشد جدید نوروفیبروم پلکس‌فرم را نیازمند بررسی بین‌رشته‌ای بدانید."
+        },
+        "questionIds": [
+          "neurofibromatose-typ1-de-systemic"
+        ],
+        "cardIds": [
+          "aq-brain-nf1-systemic"
+        ]
+      },
+      {
+        "id": "enhancing-fasi",
+        "text": {
+          "de": "Atypische Verlaufsmerkmale einer zunächst FASI-verdächtigen Läsion erkennen.",
+          "en": "Recognise atypical evolution of a lesion initially considered FASI.",
+          "fa": "سیر غیرتیپیک ضایعه‌ای را که ابتدا مشکوک به FASI بوده شناسایی کنید."
+        },
+        "questionIds": [
+          "neurofibromatose-typ1-de-enhancing-fasi"
+        ],
+        "cardIds": [
+          "aq-brain-nf1-enhancing-fasi"
+        ]
+      }
+    ]
+  },
+  "actualQuestions": {
+    "de": [
+      {
+        "id": "neurofibromatose-typ1-de-fasi",
+        "tags": [
+          "neurofibromatose-typ1"
+        ],
+        "fach": "gehirn",
+        "question": "Ein asymptomatisches Kind mit bekannter NF1 hat symmetrische T2/FLAIR-helle Herde der Basalganglien und Kleinhirnkerne, ohne Expansion oder Kontrastaufnahme. Welche Einordnung passt am besten?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Fokale Signalalterationen (FASI)"
+          },
+          {
+            "id": "B",
+            "text": "Multifokale niedriggradige Gliome"
+          },
+          {
+            "id": "C",
+            "text": "Entzündlich demyelinisierende Herde"
+          },
+          {
+            "id": "D",
+            "text": "Multiple kleine ischämische Infarkte"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Verteilung, Symmetrie und fehlende Expansion passen zu typischen FASI. Die Einordnung bleibt morphologisch und im Verlauf zu prüfen: Auch Gliome können nicht anreichern, und FASI sind kein NF1-Diagnosekriterium.",
+        "wrongExplanations": {
+          "B": "Ein nicht anreicherndes Gliom ist möglich, aber das symmetrische Muster ohne Expansion passt hier stärker zu FASI. Auf fokale Raumforderung und atypischen Verlauf achten.",
+          "C": "Demyelinisierung verlangt passenden klinischen und bildmorphologischen Kontext; bei asymptomatischer NF1 und dieser typischen Verteilung ist FASI die naheliegendere Einordnung.",
+          "D": "Infarkte werden anhand von DWI/ADC, Gefäßverteilung und Verlauf beurteilt; diese symmetrischen nicht expansiven Herde sind nicht allein als Infarkte zu klassifizieren."
+        },
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8041008/"
+      },
+      {
+        "id": "neurofibromatose-typ1-de-pathway",
+        "tags": [
+          "neurofibromatose-typ1"
+        ],
+        "fach": "gehirn",
+        "question": "Bei einem sechsjährigen Kind mit NF1 bestätigt die Augenuntersuchung eine neue Visusminderung; ein Optikusbahn-Gliom wird vermutet. Welche Bildgebungsstrategie passt?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Zunächst nur die nächste reguläre Sehkontrolle abwarten"
+          },
+          {
+            "id": "B",
+            "text": "Gezielte MRT von Gehirn einschließlich Orbitae und gesamter Sehbahn, mit zeitnaher fachärztlicher Einordnung"
+          },
+          {
+            "id": "C",
+            "text": "MRT auf die vorderen intraorbitalen Nervenabschnitte begrenzen"
+          },
+          {
+            "id": "D",
+            "text": "Zuerst eine routinemäßige Ganzkörper-MRT zur allgemeinen Tumorlast durchführen"
+          }
+        ],
+        "correct": "B",
+        "explanation": "Ein verdächtiger Augenbefund rechtfertigt eine MRT von Gehirn und Orbitae. Nerven, Chiasma und Tractus im Verlauf beurteilen; ein symptomatisches OPG gehört zeitnah in ein erfahrenes Team. Bildmorphologie allein bestimmt die Behandlung nicht.",
+        "wrongExplanations": {
+          "A": "Eine bestätigte neue Visusminderung ist kein unauffälliges Routine-Screening; die gezielte Abklärung sollte nicht auf den normalen Kontrolltermin verschoben werden.",
+          "C": "Ein OPG kann über die Orbita hinaus Chiasma und Tractus betreffen; eine vordere Teiluntersuchung kann die Ausdehnung unterschätzen.",
+          "D": "Ganzkörper-MRT beantwortet die allgemeine interne Tumorlast, ersetzt aber keine auf Sehbahn und Orbitae ausgerichtete Untersuchung bei Visusverlust."
+        },
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9845795/"
+      },
+      {
+        "id": "neurofibromatose-typ1-de-systemic",
+        "tags": [
+          "neurofibromatose-typ1"
+        ],
+        "fach": "gehirn",
+        "question": "Eine Person mit NF1 und bekanntem tiefem plexiformem Neurofibrom berichtet neue anhaltende nächtliche Schmerzen und rasches Wachstum. Welche nächste Abklärung passt am besten?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Den Befund bei der nächsten routinemäßigen Ganzkörper-Verlaufskontrolle mitbeurteilen"
+          },
+          {
+            "id": "B",
+            "text": "Gezielte regionale MRT und Beurteilung im erfahrenen NF1-/Tumorteam veranlassen"
+          },
+          {
+            "id": "C",
+            "text": "FDG-PET als alleinigen Ersatz für die regionale anatomische Bildgebung einsetzen"
+          },
+          {
+            "id": "D",
+            "text": "Biopsie nur anhand des tastbaren Areals ohne vorherige regionale Bildgebung planen"
+          }
+        ],
+        "correct": "B",
+        "explanation": "Neue persistierende Schmerzen und beschleunigtes Wachstum sind Warnzeichen für eine atypische oder maligne Veränderung und verlangen gezielte Abklärung. Die Leitlinie beginnt mit regionaler MRT und spezialisiertem Team; weitere metabolische Bildgebung und Gewebegewinnung werden individuell geplant. Ein einzelnes MRT-Zeichen beweist Malignität nicht.",
+        "wrongExplanations": {
+          "A": "Neue klinische Warnzeichen sind Anlass für gezielte zeitnahe Abklärung, nicht bloß für die nächste Routine-Tumorlastkontrolle.",
+          "C": "Metabolische Bildgebung kann die regionale MRT ergänzen, ersetzt aber deren Anatomie und lokale Ausdehnungsbeurteilung nicht.",
+          "D": "Tumoren können heterogen sein. Bildgebung und multidisziplinäre Planung helfen bei einer gezielten repräsentativen Gewebegewinnung."
+        },
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9845795/"
+      },
+      {
+        "id": "neurofibromatose-typ1-de-enhancing-fasi",
+        "tags": [
+          "neurofibromatose-typ1"
+        ],
+        "fach": "gehirn",
+        "question": "Eine zuvor als mögliches kontrastierendes FASI eingeordnete Läsion bei NF1 wird im MRT-Verlauf beurteilt. Welche Veränderung verlangt besonders die erneute Prüfung eines zugrunde liegenden Tumors?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Rückgang der T2-Läsionsgröße ohne neues Enhancement"
+          },
+          {
+            "id": "B",
+            "text": "Neue zystische Komponente oder erneute Zunahme des Enhancements nach voriger Rückbildung"
+          },
+          {
+            "id": "C",
+            "text": "Abnehmendes Enhancement bei unveränderter umgebender Hirnstruktur"
+          },
+          {
+            "id": "D",
+            "text": "Geringe T2-Größenschwankung ohne Expansion oder neue Kontrastierung"
+          }
+        ],
+        "correct": "B",
+        "explanation": "Seltene anreichernde FASI können regressieren, sodass Enhancement allein keinen Tumor beweist. Neue Zysten oder eine zweite Wachstums-/Enhancementphase waren in der Originalserie Anlass für die Tumorabklärung. Das Muster erfordert spezialisierte Neubewertung; DWI/ADC allein trennt FASI und niedriggradiges Gliom nicht zuverlässig.",
+        "wrongExplanations": {
+          "A": "Eine Größenabnahme passt eher zu Regression. Sie ersetzt keine Verlaufsbeurteilung, ist aber nicht das gefragte neue Warnmerkmal.",
+          "C": "Abnehmende Aufnahme ohne neue Architekturänderung ist nicht dieselbe Warnkonstellation wie neue Zysten oder erneute Progression.",
+          "D": "FASI können im Verlauf schwanken. Eine kleine isolierte T2-Änderung ist weniger gezielt verdächtig als eine neue Zyste oder eine zweite ausgeprägte Enhancementphase."
+        },
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8041008/"
+      }
+    ],
+    "en": [
+      {
+        "id": "neurofibromatose-typ1-en-fasi",
+        "tags": [
+          "neurofibromatose-typ1"
+        ],
+        "fach": "gehirn",
+        "question": "An asymptomatic child with established NF1 has symmetric T2/FLAIR-bright foci in the basal ganglia and cerebellar nuclei without expansion or enhancement. Which interpretation fits best?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Foci of abnormal signal intensity (FASI)"
+          },
+          {
+            "id": "B",
+            "text": "Multifocal low-grade gliomas"
+          },
+          {
+            "id": "C",
+            "text": "Inflammatory demyelinating lesions"
+          },
+          {
+            "id": "D",
+            "text": "Multiple small ischaemic infarcts"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Distribution, symmetry and lack of expansion fit typical FASI. Interpretation still requires morphology and evolution: gliomas may also lack enhancement, and FASI are not an NF1 diagnostic criterion.",
+        "wrongExplanations": {
+          "B": "A nonenhancing glioma is possible, but symmetric nonexpansile change fits FASI better here. Look for focal mass-like morphology and atypical evolution.",
+          "C": "Demyelination requires compatible clinical and imaging context; in asymptomatic NF1 with this typical distribution, FASI is more likely.",
+          "D": "Assess infarction using DWI/ADC, vascular distribution and course; these symmetric nonexpansile foci should not be labelled infarcts from signal alone."
+        },
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8041008/"
+      },
+      {
+        "id": "neurofibromatose-typ1-en-pathway",
+        "tags": [
+          "neurofibromatose-typ1"
+        ],
+        "fach": "gehirn",
+        "question": "In a six-year-old with NF1, ophthalmological examination confirms new visual acuity loss and raises concern for optic pathway glioma. Which imaging strategy fits?",
+        "options": [
+          {
+            "id": "A",
+            "text": "First wait for the next routine visual assessment"
+          },
+          {
+            "id": "B",
+            "text": "Targeted brain MRI including orbits and the entire optic pathway, with prompt specialist assessment"
+          },
+          {
+            "id": "C",
+            "text": "Limit MRI to the anterior intraorbital nerve segments"
+          },
+          {
+            "id": "D",
+            "text": "First perform routine whole-body MRI for overall tumour burden"
+          }
+        ],
+        "correct": "B",
+        "explanation": "A suspicious ophthalmological finding warrants brain and orbital MRI. Assess the nerves, chiasm and tracts along their course; symptomatic OPG requires prompt review by an experienced team. Morphology alone does not determine treatment.",
+        "wrongExplanations": {
+          "A": "Confirmed new visual loss is not a normal surveillance finding; targeted assessment should not wait for the routine appointment.",
+          "C": "OPG can extend beyond the orbit to chiasm and tracts; an anterior-only examination may underestimate extent.",
+          "D": "Whole-body MRI assesses overall internal tumour burden but does not replace visual-pathway and orbital imaging for visual loss."
+        },
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9845795/"
+      },
+      {
+        "id": "neurofibromatose-typ1-en-systemic",
+        "tags": [
+          "neurofibromatose-typ1"
+        ],
+        "fach": "gehirn",
+        "question": "A person with NF1 and a known deep plexiform neurofibroma develops new persistent night pain and rapid growth. Which next investigation fits best?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Review the lesion at the next routine whole-body surveillance examination"
+          },
+          {
+            "id": "B",
+            "text": "Arrange targeted regional MRI and assessment by an experienced NF1/tumour team"
+          },
+          {
+            "id": "C",
+            "text": "Use FDG PET as the sole replacement for regional anatomical imaging"
+          },
+          {
+            "id": "D",
+            "text": "Plan biopsy from the palpable area without prior regional imaging"
+          }
+        ],
+        "correct": "B",
+        "explanation": "New persistent pain and accelerated growth are warning signs of atypical or malignant change requiring targeted investigation. The guideline starts with regional MRI and an expert team; further metabolic imaging and tissue sampling are planned individually. No single MRI sign establishes malignancy.",
+        "wrongExplanations": {
+          "A": "New clinical warning signs warrant targeted prompt evaluation rather than simply the next routine tumour-burden study.",
+          "C": "Metabolic imaging may complement regional MRI but does not replace its anatomy and local extent assessment.",
+          "D": "Tumours can be heterogeneous. Imaging and multidisciplinary planning help target representative tissue sampling."
+        },
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9845795/"
+      },
+      {
+        "id": "neurofibromatose-typ1-en-enhancing-fasi",
+        "tags": [
+          "neurofibromatose-typ1"
+        ],
+        "fach": "gehirn",
+        "question": "A lesion in NF1 initially considered a possible enhancing FASI is followed with MRI. Which change particularly warrants reassessment for an underlying tumour?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Decrease in T2 lesion size without new enhancement"
+          },
+          {
+            "id": "B",
+            "text": "New cystic component or renewed increase in enhancement after previous regression"
+          },
+          {
+            "id": "C",
+            "text": "Decreasing enhancement with unchanged surrounding brain architecture"
+          },
+          {
+            "id": "D",
+            "text": "Minor T2 size fluctuation without expansion or new enhancement"
+          }
+        ],
+        "correct": "B",
+        "explanation": "Rare enhancing FASI can regress, so enhancement alone does not prove tumour. New cysts or a second growth/enhancement phase prompted tumour evaluation in the original series. Specialist reassessment is required; DWI/ADC alone does not reliably distinguish FASI from low-grade glioma.",
+        "wrongExplanations": {
+          "A": "Decreasing size fits regression. It does not replace follow-up assessment but is not the new warning feature asked for.",
+          "C": "Decreasing enhancement without new architectural change is not the same warning pattern as new cysts or renewed progression.",
+          "D": "FASI may fluctuate. A small isolated T2 change is less specifically concerning than a new cyst or a second distinct enhancement phase."
+        },
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8041008/"
+      }
+    ],
+    "fa": [
+      {
+        "id": "neurofibromatose-typ1-fa-fasi",
+        "tags": [
+          "neurofibromatose-typ1"
+        ],
+        "fach": "gehirn",
+        "question": "کودک بدون علامت با NF1 شناخته‌شده کانون‌های متقارن روشن T2/FLAIR در عقده‌های قاعده‌ای و هسته‌های مخچه، بدون گسترش یا جذب مادهٔ حاجب دارد. کدام تفسیر مناسب‌تر است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "کانون‌های موضعی تغییر سیگنال (FASI)"
+          },
+          {
+            "id": "B",
+            "text": "گلیوم‌های کم‌درجهٔ چندکانونی"
+          },
+          {
+            "id": "C",
+            "text": "ضایعات دمیلینه‌کنندهٔ التهابی"
+          },
+          {
+            "id": "D",
+            "text": "انفارکت‌های ایسکمیک کوچک متعدد"
+          }
+        ],
+        "correct": "A",
+        "explanation": "توزیع، تقارن و نبود گسترش با FASI تیپیک سازگارند. تفسیر همچنان به مورفولوژی و سیر وابسته است؛ گلیوم نیز ممکن است جذب مادهٔ حاجب نداشته باشد و FASI معیار تشخیصی NF1 نیست.",
+        "wrongExplanations": {
+          "B": "گلیوم بدون جذب مادهٔ حاجب ممکن است، ولی الگوی متقارن بدون گسترش اینجا بیشتر با FASI سازگار است. مورفولوژی فضاگیر کانونی و سیر غیرتیپیک بررسی شوند.",
+          "C": "دمیلیناسیون به زمینهٔ بالینی و تصویری مناسب نیاز دارد؛ در NF1 بدون علامت با این توزیع تیپیک، FASI محتمل‌تر است.",
+          "D": "انفارکت با DWI/ADC، توزیع عروقی و سیر ارزیابی می‌شود؛ این کانون‌های متقارنِ بدون گسترش نباید صرفاً از روی سیگنال انفارکت نامیده شوند."
+        },
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8041008/"
+      },
+      {
+        "id": "neurofibromatose-typ1-fa-pathway",
+        "tags": [
+          "neurofibromatose-typ1"
+        ],
+        "fach": "gehirn",
+        "question": "در کودک شش‌سالهٔ مبتلا به NF1، معاینهٔ چشم کاهش جدید حدت بینایی را تأیید می‌کند و گلیوم مسیر بینایی مطرح است. کدام راهبرد تصویربرداری مناسب است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "ابتدا تا معاینهٔ منظم بعدی بینایی صبر شود"
+          },
+          {
+            "id": "B",
+            "text": "MRI هدفمند مغز شامل اربیت‌ها و تمام مسیر بینایی، همراه ارزیابی تخصصی به‌موقع"
+          },
+          {
+            "id": "C",
+            "text": "MRI به بخش‌های قدامی عصب داخل اربیت محدود شود"
+          },
+          {
+            "id": "D",
+            "text": "ابتدا MRI روتین تمام بدن برای بار کلی تومور انجام شود"
+          }
+        ],
+        "correct": "B",
+        "explanation": "یافتهٔ مشکوک چشم‌پزشکی MRI مغز و اربیت را توجیه می‌کند. عصب‌ها، کیاسما و تراکت‌ها در امتداد مسیر بررسی شوند؛ OPG علامت‌دار نیازمند ارزیابی به‌موقع تیم باتجربه است. مورفولوژی به‌تنهایی درمان را تعیین نمی‌کند.",
+        "wrongExplanations": {
+          "A": "کاهش جدید و تأییدشدهٔ بینایی یافتهٔ طبیعی غربالگری نیست؛ بررسی هدفمند نباید تا موعد روتین به تعویق افتد.",
+          "C": "OPG می‌تواند فراتر از اربیت، کیاسما و تراکت‌ها را درگیر کند؛ بررسی صرفاً قدامی ممکن است گسترش را کمتر از واقع نشان دهد.",
+          "D": "MRI تمام بدن بار کلی تومور داخلی را ارزیابی می‌کند، ولی جای بررسی اختصاصی مسیر بینایی و اربیت در کاهش بینایی را نمی‌گیرد."
+        },
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9845795/"
+      },
+      {
+        "id": "neurofibromatose-typ1-fa-systemic",
+        "tags": [
+          "neurofibromatose-typ1"
+        ],
+        "fach": "gehirn",
+        "question": "فرد مبتلا به NF1 با نوروفیبروم پلکس‌فرم عمقی شناخته‌شده، درد شبانهٔ جدید و پایدار و رشد سریع دارد. کدام بررسی بعدی مناسب‌تر است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "ضایعه در پایش روتین بعدی تمام بدن نیز بررسی شود"
+          },
+          {
+            "id": "B",
+            "text": "MRI هدفمند ناحیه‌ای و ارزیابی تیم باتجربهٔ NF1/تومور درخواست شود"
+          },
+          {
+            "id": "C",
+            "text": "FDG-PET به‌عنوان جایگزین منفرد تصویربرداری آناتومیک ناحیه‌ای انجام شود"
+          },
+          {
+            "id": "D",
+            "text": "بیوپسی فقط بر اساس ناحیهٔ قابل لمس، بدون تصویربرداری ناحیه‌ای قبلی برنامه‌ریزی شود"
+          }
+        ],
+        "correct": "B",
+        "explanation": "درد جدیدِ پایدار و رشد شتاب‌گرفته علائم هشدار تغییر آتیپیک یا بدخیم و نیازمند بررسی هدفمندند. راهنما با MRI ناحیه‌ای و تیم تخصصی شروع می‌کند؛ تصویربرداری متابولیک و نمونه‌برداری بعدی فردی برنامه‌ریزی می‌شوند. هیچ نشانهٔ منفرد MRI بدخیمی را ثابت نمی‌کند.",
+        "wrongExplanations": {
+          "A": "علائم بالینی هشداردهندهٔ جدید نیازمند بررسی هدفمند و به‌موقع‌اند، نه صرفاً پایش روتین بعدی بار تومور.",
+          "C": "تصویربرداری متابولیک می‌تواند MRI ناحیه‌ای را تکمیل کند، ولی جای آناتومی و ارزیابی گسترش موضعی را نمی‌گیرد.",
+          "D": "تومورها ممکن است ناهمگون باشند؛ تصویربرداری و برنامه‌ریزی چندتخصصی به نمونه‌برداری هدفمند و نماینده کمک می‌کنند."
+        },
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9845795/"
+      },
+      {
+        "id": "neurofibromatose-typ1-fa-enhancing-fasi",
+        "tags": [
+          "neurofibromatose-typ1"
+        ],
+        "fach": "gehirn",
+        "question": "ضایعه‌ای در NF1 که ابتدا FASI احتمالیِ دارای جذب مادهٔ حاجب تلقی شده، با MRI پیگیری می‌شود. کدام تغییر به‌ویژه نیازمند بررسی دوبارهٔ تومور زمینه‌ای است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "کاهش اندازهٔ ضایعهٔ T2 بدون جذب جدید مادهٔ حاجب"
+          },
+          {
+            "id": "B",
+            "text": "جزء کیستیک جدید یا افزایش دوبارهٔ جذب مادهٔ حاجب پس از پسرفت قبلی"
+          },
+          {
+            "id": "C",
+            "text": "کاهش جذب مادهٔ حاجب با ساختار مغزی اطراف بدون تغییر"
+          },
+          {
+            "id": "D",
+            "text": "نوسان اندک اندازهٔ T2 بدون گسترش یا جذب جدید مادهٔ حاجب"
+          }
+        ],
+        "correct": "B",
+        "explanation": "FASI نادرِ دارای جذب مادهٔ حاجب می‌تواند پسرفت کند؛ جذب به‌تنهایی تومور را ثابت نمی‌کند. کیست جدید یا مرحلهٔ دوم رشد/افزایش جذب در مجموعهٔ اصلی علت بررسی تومور بود. بازبینی تخصصی لازم است؛ DWI/ADC به‌تنهایی FASI را از گلیوم کم‌درجه با اطمینان جدا نمی‌کند.",
+        "wrongExplanations": {
+          "A": "کاهش اندازه بیشتر با پسرفت سازگار است. جای ارزیابی سیر را نمی‌گیرد، ولی ویژگی هشدار جدید مورد سؤال نیست.",
+          "C": "کاهش جذب بدون تغییر ساختاری جدید، همان الگوی هشدار کیست جدید یا پیشرفت دوباره نیست.",
+          "D": "FASI می‌تواند در سیر تغییر کند. تغییر کوچک و منفرد T2 کمتر از کیست جدید یا مرحلهٔ دوم مشخصِ جذب، هشدار هدفمند ایجاد می‌کند."
+        },
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8041008/"
+      }
+    ]
+  },
+  "actualCards": [
+    {
+      "id": "aq-brain-nf1-fasi",
+      "topicId": "neurofibromatose-typ1",
+      "category": {
+        "de": "NF1",
+        "en": "NF1",
+        "fa": "NF1"
+      },
+      "front": {
+        "de": "Welche Befunde stützen typische FASI bei NF1, und was beweisen sie nicht?",
+        "en": "Which findings support typical FASI in NF1, and what do they not establish?",
+        "fa": "کدام یافته‌ها از FASI تیپیک در NF1 حمایت می‌کنند و چه چیزی را ثابت نمی‌کنند؟"
+      },
+      "answer": {
+        "de": "T2/FLAIR-helle, meist nicht expansive und nicht anreichernde Herde in typischer Verteilung; kein eigenständiges NF1-Kriterium und kein sicherer Gliomausschluss.",
+        "en": "T2/FLAIR-bright, usually nonexpansile and nonenhancing foci in a typical distribution; not an independent NF1 criterion or a definitive glioma exclusion.",
+        "fa": "کانون‌های روشن T2/FLAIR، معمولاً بدون گسترش یا جذب مادهٔ حاجب در توزیع تیپیک؛ نه معیار مستقل NF1 و نه رد قطعی گلیوم."
+      },
+      "explanation": {
+        "de": "Verteilung, Symmetrie und fehlende Expansion passen zu typischen FASI. Die Einordnung bleibt morphologisch und im Verlauf zu prüfen: Auch Gliome können nicht anreichern, und FASI sind kein NF1-Diagnosekriterium.",
+        "en": "Distribution, symmetry and lack of expansion fit typical FASI. Interpretation still requires morphology and evolution: gliomas may also lack enhancement, and FASI are not an NF1 diagnostic criterion.",
+        "fa": "توزیع، تقارن و نبود گسترش با FASI تیپیک سازگارند. تفسیر همچنان به مورفولوژی و سیر وابسته است؛ گلیوم نیز ممکن است جذب مادهٔ حاجب نداشته باشد و FASI معیار تشخیصی NF1 نیست."
+      },
+      "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8041008/"
+    },
+    {
+      "id": "aq-brain-nf1-pathway",
+      "topicId": "neurofibromatose-typ1",
+      "category": {
+        "de": "NF1",
+        "en": "NF1",
+        "fa": "NF1"
+      },
+      "front": {
+        "de": "Wann ist bei einem Kind mit NF1 eine MRT zur OPG-Abklärung angezeigt?",
+        "en": "When is MRI for OPG evaluation indicated in a child with NF1?",
+        "fa": "در کودک مبتلا به NF1، چه زمانی MRI برای بررسی OPG لازم می‌شود؟"
+      },
+      "answer": {
+        "de": "Bei verdächtigem Augenbefund, etwa neuer Visusminderung; Gehirn/Orbitae und die gesamte Sehbahn erfassen und mit Augen-/NF1-Experten einordnen.",
+        "en": "With suspicious ophthalmological findings such as new visual loss; cover brain/orbits and the full pathway and correlate with ophthalmology/NF1 experts.",
+        "fa": "در یافتهٔ مشکوک چشم‌پزشکی مانند کاهش جدید بینایی؛ مغز/اربیت و تمام مسیر بررسی و با متخصصان چشم و NF1 تفسیر شود."
+      },
+      "explanation": {
+        "de": "Ein verdächtiger Augenbefund rechtfertigt eine MRT von Gehirn und Orbitae. Nerven, Chiasma und Tractus im Verlauf beurteilen; ein symptomatisches OPG gehört zeitnah in ein erfahrenes Team. Bildmorphologie allein bestimmt die Behandlung nicht.",
+        "en": "A suspicious ophthalmological finding warrants brain and orbital MRI. Assess the nerves, chiasm and tracts along their course; symptomatic OPG requires prompt review by an experienced team. Morphology alone does not determine treatment.",
+        "fa": "یافتهٔ مشکوک چشم‌پزشکی MRI مغز و اربیت را توجیه می‌کند. عصب‌ها، کیاسما و تراکت‌ها در امتداد مسیر بررسی شوند؛ OPG علامت‌دار نیازمند ارزیابی به‌موقع تیم باتجربه است. مورفولوژی به‌تنهایی درمان را تعیین نمی‌کند."
+      },
+      "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9845795/"
+    },
+    {
+      "id": "aq-brain-nf1-systemic",
+      "topicId": "neurofibromatose-typ1",
+      "category": {
+        "de": "NF1",
+        "en": "NF1",
+        "fa": "NF1"
+      },
+      "front": {
+        "de": "Welche neuen Zeichen eines plexiformen Neurofibroms lösen eine gezielte Abklärung aus?",
+        "en": "Which new features of plexiform neurofibroma trigger targeted investigation?",
+        "fa": "کدام ویژگی‌های جدید نوروفیبروم پلکس‌فرم بررسی هدفمند را ضروری می‌کنند؟"
+      },
+      "answer": {
+        "de": "Anhaltende neue Schmerzen, rasches Wachstum oder neue neurologische Defizite: regionales MRT und spezialisiertes NF1-/Tumorteam; keine Diagnose aus dem Target-Zeichen allein.",
+        "en": "Persistent new pain, rapid growth or new neurological deficits: regional MRI and specialist NF1/tumour assessment; do not diagnose from the target sign alone.",
+        "fa": "درد جدید و پایدار، رشد سریع یا نقص عصبی جدید: MRI ناحیه‌ای و ارزیابی تخصصی NF1/تومور؛ تشخیص صرفاً بر اساس نشانهٔ هدف تعیین نشود."
+      },
+      "explanation": {
+        "de": "Neue persistierende Schmerzen und beschleunigtes Wachstum sind Warnzeichen für eine atypische oder maligne Veränderung und verlangen gezielte Abklärung. Die Leitlinie beginnt mit regionaler MRT und spezialisiertem Team; weitere metabolische Bildgebung und Gewebegewinnung werden individuell geplant. Ein einzelnes MRT-Zeichen beweist Malignität nicht.",
+        "en": "New persistent pain and accelerated growth are warning signs of atypical or malignant change requiring targeted investigation. The guideline starts with regional MRI and an expert team; further metabolic imaging and tissue sampling are planned individually. No single MRI sign establishes malignancy.",
+        "fa": "درد جدیدِ پایدار و رشد شتاب‌گرفته علائم هشدار تغییر آتیپیک یا بدخیم و نیازمند بررسی هدفمندند. راهنما با MRI ناحیه‌ای و تیم تخصصی شروع می‌کند؛ تصویربرداری متابولیک و نمونه‌برداری بعدی فردی برنامه‌ریزی می‌شوند. هیچ نشانهٔ منفرد MRI بدخیمی را ثابت نمی‌کند."
+      },
+      "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9845795/"
+    },
+    {
+      "id": "aq-brain-nf1-enhancing-fasi",
+      "topicId": "neurofibromatose-typ1",
+      "category": {
+        "de": "NF1",
+        "en": "NF1",
+        "fa": "NF1"
+      },
+      "front": {
+        "de": "Welche Verlaufsänderungen eines möglichen anreichernden FASI sollten eine Tumor-Neubewertung auslösen?",
+        "en": "Which interval changes in possible enhancing FASI should trigger tumour reassessment?",
+        "fa": "کدام تغییرات زمانی در FASI احتمالیِ دارای جذب مادهٔ حاجب باید بازبینی از نظر تومور را مطرح کنند؟"
+      },
+      "answer": {
+        "de": "Neue zystische Anteile oder erneute deutliche Progression nach Rückbildung; seltene anreichernde FASI und niedriggradige Gliome können sich überlappen.",
+        "en": "New cystic components or renewed clear progression after regression; rare enhancing FASI and low-grade glioma can overlap.",
+        "fa": "اجزای کیستیک جدید یا پیشرفت واضح دوباره پس از پسرفت؛ FASI نادرِ دارای جذب مادهٔ حاجب و گلیوم کم‌درجه می‌توانند هم‌پوشانی داشته باشند."
+      },
+      "explanation": {
+        "de": "Seltene anreichernde FASI können regressieren, sodass Enhancement allein keinen Tumor beweist. Neue Zysten oder eine zweite Wachstums-/Enhancementphase waren in der Originalserie Anlass für die Tumorabklärung. Das Muster erfordert spezialisierte Neubewertung; DWI/ADC allein trennt FASI und niedriggradiges Gliom nicht zuverlässig.",
+        "en": "Rare enhancing FASI can regress, so enhancement alone does not prove tumour. New cysts or a second growth/enhancement phase prompted tumour evaluation in the original series. Specialist reassessment is required; DWI/ADC alone does not reliably distinguish FASI from low-grade glioma.",
+        "fa": "FASI نادرِ دارای جذب مادهٔ حاجب می‌تواند پسرفت کند؛ جذب به‌تنهایی تومور را ثابت نمی‌کند. کیست جدید یا مرحلهٔ دوم رشد/افزایش جذب در مجموعهٔ اصلی علت بررسی تومور بود. بازبینی تخصصی لازم است؛ DWI/ADC به‌تنهایی FASI را از گلیوم کم‌درجه با اطمینان جدا نمی‌کند."
+      },
+      "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8041008/"
+    }
+  ],
+  "changes": {
+    "originalQuestionIDsPreserved": [
+      "fasi",
+      "pathway",
+      "systemic"
+    ],
+    "newQuestion": "enhancing-fasi",
+    "distractors": "Parallel clinical differentials and competing imaging strategies with individually explained alternatives; no image dependency.",
+    "teachingParity": "Four observable goals; active inline FASI question synchronized; FASI/OPG/PNF caveat and note updates; bibliographic and FASI terminology cleanup."
+  },
+  "sources": [
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8041008/",
+      "type": "Hainc2021 original longitudinal cohort",
+      "read": "Methods, lesion evolution, ADC overlap, discussion and conclusions freshly read through indexed full primary text; direct repeat fetch returned a challenge page.",
+      "supports": [
+        "Rare enhancing FASI may regress",
+        "New cystic change or second-wave enhancement warrants tumour reassessment",
+        "DWI/ADC alone cannot reliably separate enhancing FASI from LGG"
+      ]
+    },
+    {
+      "url": "https://www.genturis.eu/l=deu/Assets/NF1-Guideline---ERN-GENTURIS.pdf",
+      "type": "Official ERN GENTURIS2023 primary guideline",
+      "read": "OPG, plexiform neurofibroma and malignant transformation recommendations; specific MRI and specialist assessment recommendations.",
+      "supports": [
+        "New suspicious ophthalmological finding requires brain/orbital MRI and specialist assessment",
+        "Persistent night pain/rapid growth/neurological change warrants regional MRI and expert tumour assessment; no single MRI sign proves biology"
+      ]
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8354850/",
+      "type": "Legius2021 international diagnostic consensus",
+      "read": "Table1 and proposed features not included; actual text read during authoring.",
+      "supports": [
+        "FASI is not an independent NF1 diagnostic criterion"
+      ]
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/33921292/",
+      "type": "Bibliographic metadata of existing Russo2021 review",
+      "read": "Actual author/title/DOI; original erroneous Taal attribution corrected to Russo.",
+      "supports": [
+        "Correct existing reference attribution only"
+      ]
+    }
+  ],
+  "limitations": [
+    "No fresh diagnostic figure or PDF82–84 acceptance: retained assets and specific case claims are outside this bounded pool/text revision.",
+    "Broader systemic introductory chapter remains; four goals cover the revised core assessment decisions rather than claiming every PDF fact is tested.",
+    "Shared LessonReferenceShell individual optionFeedback consumer fix is root-owned; author data equality established separately.",
+    "SSR is technical rendering evidence only; no browser, physician clinical approval, release or publication claim."
+  ],
+  "beforeSnapshot": "tmp/brain-nf1-before.json",
+  "sha256": {
+    "data/gehirnNf1CnsLesson.js": "088d0f1acd6bf349ffd8e511667f639ed01420236d1ae7d30291ba0e95ad4d96",
+    "data/assessmentQuality/brain.js": "f785d6f06a6682947347959c5aba60eb4bd021ba00be1e9b397b0b5f3f0ae68e"
+  }
+}

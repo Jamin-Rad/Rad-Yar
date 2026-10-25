@@ -1,0 +1,41 @@
+{
+  "date": "2026-10-25",
+  "status": "REVIEWED_BATCH_READY_FOR_MAIN",
+  "previousMain": "9bab60371788bcef4e40b8e8854f6363022481ab",
+  "scope": "Third bounded release during ongoing 234-route assessment remediation. The course-wide task remains incomplete.",
+  "acceptedAssessmentPools": {
+    "radiuskopf": "12 original MCQ and 8 card triads, adjacent classification language parity",
+    "rotator": "15 original MCQ and 12 card triads, 90 adjacent lesson fields; fresh 57/57 global after-value retest",
+    "telangiectasia": "12 original MCQ and 15 card triads with narrow related prose parity",
+    "nf1": "3 revised original MCQ plus 1 targeted new MCQ, 4 new card triads; selected-option inline feedback"
+  },
+  "reviews": [
+    "msk-spine/packet04/review-radiuskopf.json",
+    "msk-spine/packet04/review-rotator.json",
+    "brain/review-packet12-telangiectasia.json",
+    "brain/review-packet13-nf1.json",
+    "integration-review-inline-feedback.json"
+  ],
+  "runtime": {
+    "questionsPerLanguage": 948,
+    "casesPerLanguage": 18,
+    "supplementQuestionsPerLanguage": 64,
+    "supplementCards": 76,
+    "explicitRouteMappings": 49
+  },
+  "technicalEvidence": {
+    "productionBuild": "PASS remediation-build05.log; standard pre-existing CSS start/flex-start warning remains",
+    "allRouteRender": "702/702 actual route/locale SSR PASS, remediation-all-routes-ssr05.log; includes unrelated checkout author WIP excluded from staging",
+    "indexAudit": "Actual staged-source banks:948MCQ/18cases per language; key/options/feedback schema passes existing MCQ auditor. Registry generated with --staged.",
+    "tests": "Reviewed payload/global bank/goal exactness, content-version invalidation, return navigation, custom lesson action links and selected-option inline feedback passed.",
+    "browser": "Actual authenticated production build: NF1 EN lesson maps quiz4 and card topic; inline incorrect glioma option shows its specific rationale in EN and FA. FA screenshot visually inspected for legible font/RTL, four plausible choices and feedback. No grading/mark-as-read or access-gate changes.",
+    "screenshot": "tmp/assessment-quality/batch03-nf1-inline-fa.png"
+  },
+  "exclusions": [
+    "Demenz14, ATV03/04, AC-Luxation and other ongoing authoring remain outside the published snapshot or changed canonical release files",
+    "Offline author modules may contain later proposals; explicit reviewed ID allowlist controls supplemental runtime",
+    "Reticular HRCT draft remains offline and unpublished",
+    "Not a full lesson media/PDF verification, all-route browser test or Dr. Zia clinical release approval"
+  ],
+  "publication": "Pending commit and deployed verification"
+}

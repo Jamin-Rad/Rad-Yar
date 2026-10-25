@@ -1,7 +1,7 @@
 {
   "scope": "The supplemental runtime entry index.js consumes only reviewed snapshots publishedBank.json and routeLinks.json. IR inline uses interventionCheck.json. Offline bank inputs brain.js, mskSpine.js, abdomenTechnik.js and thoraxMamma.js may contain explicitly pending packets excluded by reviewedPackets.json. Separately imported canonical revision producers (contrastRevisions.js and gistRevision.js) have their own independent reviews; the allowlist does not approve canonical files wholesale.",
   "activeSupplementQuestionsPerLanguage": 64,
-  "activeSupplementCards": 72,
-  "activeRouteMappings": 47,
+  "activeSupplementCards": 76,
+  "activeRouteMappings": 49,
   "clinicalAcceptance": "No global clinical approval inferred; bounded review reports are authoritative."
 }

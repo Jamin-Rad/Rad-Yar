@@ -1,0 +1,110 @@
+{
+  "date": "2026-10-25",
+  "status": "AUTHOR_FULL_POOL_PROPOSALS_PEER_REVIEW_PENDING",
+  "route": "/msk/schulter/rotatorenmanschette",
+  "topicId": "rotatorenmanschette",
+  "originalMcqTriads": 15,
+  "originalCardTriads": 12,
+  "newQuestions": 0,
+  "newCards": 0,
+  "originalPoolRead": "Every DE/EN/FA stem/options/key/correctexplanation/cardfront/answer/explanation/diagram; no unread originalitem left.",
+  "proposalFile": "rotator-proposals.json",
+  "baseline": "rotator-before.json",
+  "canonicalApplication": "NOT_APPLIED_ROOT_OWNS_SHARED_QUESTIONS_AND_FLASHCARDS",
+  "validated": "57proposalobjects; allIDs/correctkeys/optionIDs preserved; wrongfeedbackcovers eachwrongID.",
+  "science": "Fresh originalanatomical/biomechanical/histology/MRIclinicalstudies and officialACR/ESSRprotocol checked; detailedsourceledger forthcoming. No diagnosis inferredfromunseenpatientimage. Someprimaryoriginalabstracts ratherthanfullarticles; no globalscientificreleaseclaim.",
+  "lessonParity": {
+    "status": "AUTHOR_APPLIED_PEER_REVIEW_PENDING",
+    "file": "app/msk/schulter/rotatorenmanschette/page.js",
+    "manifest": "rotator-lesson-proposal.json",
+    "localeFields": 90,
+    "triads": 30,
+    "limits": "Existing text/table fields only; IDs/layout/figures unchanged. Not fullPDF/media/browser acceptance."
+  },
+  "independent": "Reviewer brain_remediation notified; source/supplementpoolacceptance not selfclaimed.",
+  "goals": [
+    {
+      "id": "anatomy",
+      "text": {
+        "de": "Manschettenmuskeln, Funktion und ansatznahe Critical Zone mit begrenzter Gefäßinterpretation zuordnen.",
+        "en": "Identify cuff muscles, function and insertional critical zone with qualified vascular interpretation.",
+        "fa": "عضلات کاف، عملکرد و ناحیهٔ بحرانی نزدیک اتصال را با تفسیر محدودشدهٔ عروقی مشخص کنید."
+      },
+      "questionIds": [
+        "rotatorenmanschette-de-01",
+        "rotatorenmanschette-de-02",
+        "rotatorenmanschette-de-03"
+      ],
+      "cardIds": [
+        "rotatorenmanschette-01",
+        "rotatorenmanschette-02",
+        "rotatorenmanschette-03"
+      ]
+    },
+    {
+      "id": "mri",
+      "text": {
+        "de": "Mehrplanare MRT-Bausteine wählen und TE-abhängiges Magic-Angle-Signal von einem Defekt unterscheiden.",
+        "en": "Choose multiplanar MRI components and distinguish TE-dependent magic-angle signal from a defect.",
+        "fa": "اجزای چندنمایی MRI را انتخاب و سیگنال مجیک‌انگل وابسته به TE را از نقص جدا کنید."
+      },
+      "questionIds": [
+        "rotatorenmanschette-de-04",
+        "rotatorenmanschette-de-05"
+      ],
+      "cardIds": [
+        "rotatorenmanschette-04",
+        "rotatorenmanschette-05"
+      ]
+    },
+    {
+      "id": "morphology",
+      "text": {
+        "de": "Bursale, artikuläre, intratendinöse und Vollschichtdefekte anhand von Defekt und Oberflächenkontakt einordnen.",
+        "en": "Classify bursal, articular, intratendinous and full-thickness defects by morphology and surface communication.",
+        "fa": "نقص‌های بورسال، مفصلی، داخل تاندونی و تمام‌ضخامت را بر اساس مورفولوژی و ارتباط سطحی طبقه‌بندی کنید."
+      },
+      "questionIds": [
+        "rotatorenmanschette-de-06",
+        "rotatorenmanschette-de-07",
+        "rotatorenmanschette-de-08",
+        "rotatorenmanschette-de-10"
+      ],
+      "cardIds": [
+        "rotatorenmanschette-06",
+        "rotatorenmanschette-07",
+        "rotatorenmanschette-08",
+        "rotatorenmanschette-10"
+      ]
+    },
+    {
+      "id": "report-and-context",
+      "text": {
+        "de": "Defekttiefe, Retraktion, Atrophie, Fettinfiltration und relevante Begleitbefunde für die individuelle klinische Planung getrennt berichten.",
+        "en": "Report tear depth, retraction, atrophy, fatty infiltration and relevant associated findings separately for individual clinical planning.",
+        "fa": "عمق نقص، رتراکشن، آتروفی، نفوذ چربی و یافته‌های همراه مهم را برای برنامه‌ریزی بالینی فردی جداگانه گزارش کنید."
+      },
+      "questionIds": [
+        "rotatorenmanschette-de-09",
+        "rotatorenmanschette-de-11",
+        "rotatorenmanschette-de-12",
+        "rotatorenmanschette-de-13",
+        "rotatorenmanschette-de-14",
+        "rotatorenmanschette-de-15"
+      ],
+      "cardIds": [
+        "rotatorenmanschette-09",
+        "rotatorenmanschette-11",
+        "rotatorenmanschette-12",
+        "rotatorenmanschette-03"
+      ]
+    }
+  ],
+  "limits": [
+    "No newNextbuild/server",
+    "No change tosharedbanks orliveRotatorlesson yet",
+    "No fullPDF/media/browserapproval",
+    "No empiricdifficulty/discriminationvalidation"
+  ],
+  "sourceLedger": "rotator-sources.json"
+}

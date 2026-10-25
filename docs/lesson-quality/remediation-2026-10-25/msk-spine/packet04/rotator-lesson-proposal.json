@@ -1,0 +1,1302 @@
+{
+  "date": "2026-10-25",
+  "status": "AUTHOR_PARITY_APPLIED_INDEPENDENT_REVIEW_PENDING",
+  "file": "app/msk/schulter/rotatorenmanschette/page.js",
+  "changes": [
+    {
+      "file": "app/msk/schulter/rotatorenmanschette/page.js",
+      "lang": "de",
+      "path": "heroCards.0.label",
+      "before": "häufigste betroffene Sehne",
+      "after": "typische Befundregion",
+      "reason": "Avoid unsupported superlative as headerteaching rule",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/2323147/",
+        "https://pubmed.ncbi.nlm.nih.gov/18647848/",
+        "https://pubmed.ncbi.nlm.nih.gov/26412209/"
+      ]
+    },
+    {
+      "file": "app/msk/schulter/rotatorenmanschette/page.js",
+      "lang": "en",
+      "path": "heroCards.0.label",
+      "before": "most commonly affected tendon",
+      "after": "typical reporting region",
+      "reason": "Avoid unsupported superlative as headerteaching rule",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/2323147/",
+        "https://pubmed.ncbi.nlm.nih.gov/18647848/",
+        "https://pubmed.ncbi.nlm.nih.gov/26412209/"
+      ]
+    },
+    {
+      "file": "app/msk/schulter/rotatorenmanschette/page.js",
+      "lang": "fa",
+      "path": "heroCards.0.label",
+      "before": "شایع‌ترین تاندون درگیر",
+      "after": "ناحیهٔ معمول ارزیابی",
+      "reason": "Avoid unsupported superlative as headerteaching rule",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/2323147/",
+        "https://pubmed.ncbi.nlm.nih.gov/18647848/",
+        "https://pubmed.ncbi.nlm.nih.gov/26412209/"
+      ]
+    },
+    {
+      "file": "app/msk/schulter/rotatorenmanschette/page.js",
+      "lang": "de",
+      "path": "heroCards.0.text",
+      "before": "v. a. in der „Critical Zone“ vor dem Ansatz",
+      "after": "Ansatz, Oberflächen und Faserkontinuität prüfen",
+      "reason": "Replace deterministiccriticalzone header shorthand with actualobservableanatomy",
+      "sources": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC2930161/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC4733769/",
+        "https://pubmed.ncbi.nlm.nih.gov/20578021/"
+      ]
+    },
+    {
+      "file": "app/msk/schulter/rotatorenmanschette/page.js",
+      "lang": "en",
+      "path": "heroCards.0.text",
+      "before": "especially in the \"critical zone\" near its insertion",
+      "after": "assess insertion, surfaces and fibre continuity",
+      "reason": "Replace deterministiccriticalzone header shorthand with actualobservableanatomy",
+      "sources": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC2930161/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC4733769/",
+        "https://pubmed.ncbi.nlm.nih.gov/20578021/"
+      ]
+    },
+    {
+      "file": "app/msk/schulter/rotatorenmanschette/page.js",
+      "lang": "fa",
+      "path": "heroCards.0.text",
+      "before": "به‌ویژه در «Critical Zone» نزدیک محل اتصال",
+      "after": "محل اتصال، سطوح و پیوستگی رشته‌ها را بررسی کنید",
+      "reason": "Replace deterministiccriticalzone header shorthand with actualobservableanatomy",
+      "sources": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC2930161/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC4733769/",
+        "https://pubmed.ncbi.nlm.nih.gov/20578021/"
+      ]
+    },
+    {
+      "file": "app/msk/schulter/rotatorenmanschette/page.js",
+      "lang": "de",
+      "path": "heroCards.1.text",
+      "before": "fettunterdrückt, flüssigkeitssensitiv, mind. 2 Ebenen",
+      "after": "flüssigkeitssensitiv und mehrplanar; T1 für Muskelqualität",
+      "reason": "Mirror usefulMRIprotocolcomponents without guarantee",
+      "sources": [
+        "https://www.essr.org/content-essr/uploads/2016/10/ESSR-MRI-Protocols-Shoulder.pdf",
+        "https://gravitas.acr.org/PPTS/DownloadPreviewDocument?DocId=45&ReleaseId=2"
+      ]
+    },
+    {
+      "file": "app/msk/schulter/rotatorenmanschette/page.js",
+      "lang": "en",
+      "path": "heroCards.1.text",
+      "before": "fat-suppressed, fluid-sensitive, at least 2 planes",
+      "after": "multiplanar fluid-sensitive imaging; T1 for muscle quality",
+      "reason": "Mirror usefulMRIprotocolcomponents without guarantee",
+      "sources": [
+        "https://www.essr.org/content-essr/uploads/2016/10/ESSR-MRI-Protocols-Shoulder.pdf",
+        "https://gravitas.acr.org/PPTS/DownloadPreviewDocument?DocId=45&ReleaseId=2"
+      ]
+    },
+    {
+      "file": "app/msk/schulter/rotatorenmanschette/page.js",
+      "lang": "fa",
+      "path": "heroCards.1.text",
+      "before": "فت‌ساپرس، حساس به مایع، حداقل ۲ پلان",
+      "after": "تصاویر چندنمایی حساس به مایع؛ T1 برای کیفیت عضله",
+      "reason": "Mirror usefulMRIprotocolcomponents without guarantee",
+      "sources": [
+        "https://www.essr.org/content-essr/uploads/2016/10/ESSR-MRI-Protocols-Shoulder.pdf",
+        "https://gravitas.acr.org/PPTS/DownloadPreviewDocument?DocId=45&ReleaseId=2"
+      ]
+    },
+    {
+      "file": "app/msk/schulter/rotatorenmanschette/page.js",
+      "lang": "de",
+      "path": "heroCards.2.label",
+      "before": "wichtigste Klassifikationen",
+      "after": "getrennte Befundparameter",
+      "reason": "Patte/Goutallier measure differentparameters",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/8020238/",
+        "https://pubmed.ncbi.nlm.nih.gov/10633896/",
+        "https://pubmed.ncbi.nlm.nih.gov/17418325/"
+      ]
+    },
+    {
+      "file": "app/msk/schulter/rotatorenmanschette/page.js",
+      "lang": "en",
+      "path": "heroCards.2.label",
+      "before": "key classifications",
+      "after": "separate reporting parameters",
+      "reason": "Patte/Goutallier measure differentparameters",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/8020238/",
+        "https://pubmed.ncbi.nlm.nih.gov/10633896/",
+        "https://pubmed.ncbi.nlm.nih.gov/17418325/"
+      ]
+    },
+    {
+      "file": "app/msk/schulter/rotatorenmanschette/page.js",
+      "lang": "fa",
+      "path": "heroCards.2.label",
+      "before": "مهم‌ترین طبقه‌بندی‌ها",
+      "after": "پارامترهای جداگانهٔ گزارش",
+      "reason": "Patte/Goutallier measure differentparameters",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/8020238/",
+        "https://pubmed.ncbi.nlm.nih.gov/10633896/",
+        "https://pubmed.ncbi.nlm.nih.gov/17418325/"
+      ]
+    },
+    {
+      "file": "app/msk/schulter/rotatorenmanschette/page.js",
+      "lang": "de",
+      "path": "heroCards.2.text",
+      "before": "Retraktionsgrad und Muskelatrophie",
+      "after": "Retraktion und Fettinfiltration",
+      "reason": "CorrectGoutallierfatversusatrophy headerconflation",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/8020238/",
+        "https://pubmed.ncbi.nlm.nih.gov/10633896/",
+        "https://pubmed.ncbi.nlm.nih.gov/17418325/"
+      ]
+    },
+    {
+      "file": "app/msk/schulter/rotatorenmanschette/page.js",
+      "lang": "en",
+      "path": "heroCards.2.text",
+      "before": "tendon retraction and muscle atrophy",
+      "after": "retraction and fatty infiltration",
+      "reason": "CorrectGoutallierfatversusatrophy headerconflation",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/8020238/",
+        "https://pubmed.ncbi.nlm.nih.gov/10633896/",
+        "https://pubmed.ncbi.nlm.nih.gov/17418325/"
+      ]
+    },
+    {
+      "file": "app/msk/schulter/rotatorenmanschette/page.js",
+      "lang": "fa",
+      "path": "heroCards.2.text",
+      "before": "درجه رتراکشن و آتروفی عضلانی",
+      "after": "رتراکشن و نفوذ چربی",
+      "reason": "CorrectGoutallierfatversusatrophy headerconflation",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/8020238/",
+        "https://pubmed.ncbi.nlm.nih.gov/10633896/",
+        "https://pubmed.ncbi.nlm.nih.gov/17418325/"
+      ]
+    },
+    {
+      "file": "app/msk/schulter/rotatorenmanschette/page.js",
+      "lang": "de",
+      "path": "basics.items.1.text",
+      "before": "Hypovaskuläre Zone der Supraspinatussehne ca. 1-2 cm proximal des Ansatzes am Tuberculum majus - Prädilektionsstelle für Degeneration und Rupturen.",
+      "after": "Ansatznaher Bereich der Supraspinatussehne, historisch als relativ minderdurchblutet beschrieben. Die Perfusion variiert regional und mit Belastung; keine stets avaskuläre Zone oder alleinige Rupturursache.",
+      "reason": "Mirror qualifiedcriticalzoneperfusion, avoiduniversallocation/cause",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/2323147/",
+        "https://pubmed.ncbi.nlm.nih.gov/18647848/",
+        "https://pubmed.ncbi.nlm.nih.gov/26412209/"
+      ]
+    },
+    {
+      "file": "app/msk/schulter/rotatorenmanschette/page.js",
+      "lang": "en",
+      "path": "basics.items.1.text",
+      "before": "Hypovascular zone of the supraspinatus tendon about 1-2 cm proximal to its insertion on the greater tuberosity - a predilection site for degeneration and tears.",
+      "after": "An insertional region of supraspinatus historically described as relatively poorly vascularised. Perfusion varies by region and loading; this is not an invariably avascular zone or a sole cause of tearing.",
+      "reason": "Mirror qualifiedcriticalzoneperfusion, avoiduniversallocation/cause",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/2323147/",
+        "https://pubmed.ncbi.nlm.nih.gov/18647848/",
+        "https://pubmed.ncbi.nlm.nih.gov/26412209/"
+      ]
+    },
+    {
+      "file": "app/msk/schulter/rotatorenmanschette/page.js",
+      "lang": "fa",
+      "path": "basics.items.1.text",
+      "before": "ناحیه هیپوواسکولار تاندون سوپراسپیناتوس حدود ۱ تا ۲ سانتی‌متر قبل از محل اتصال به توبرکل بزرگ - محل شایع دژنراسیون و پارگی.",
+      "after": "ناحیه‌ای نزدیک محل اتصال سوپراسپیناتوس که در توصیف‌های تاریخی خون‌رسانی نسبتاً کمتری داشته است. پرفیوژن با ناحیه و بارگذاری تغییر می‌کند؛ ناحیه‌ای همواره بدون عروق یا علت منفرد پارگی نیست.",
+      "reason": "Mirror qualifiedcriticalzoneperfusion, avoiduniversallocation/cause",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/2323147/",
+        "https://pubmed.ncbi.nlm.nih.gov/18647848/",
+        "https://pubmed.ncbi.nlm.nih.gov/26412209/"
+      ]
+    },
+    {
+      "file": "app/msk/schulter/rotatorenmanschette/page.js",
+      "lang": "de",
+      "path": "basics.items.2.text",
+      "before": "Subscapularis/Infraspinatus stabilisieren den Humeruskopf in der Transversalebene, Deltoideus/Supraspinatus in der Koronarebene - eine Dysbalance führt zur Dezentrierung des Humeruskopfes.",
+      "after": "Vordere und hintere Manschette tragen zu einem ausbalancierten Kraftpaar und zur Zentrierung des Humeruskopfes bei. Subscapularis und Infraspinatus sind dafür wichtige Komponenten; der Beitrag einzelner Muskeln hängt von Armstellung und Belastung ab.",
+      "reason": "Replaceoversimplifieddeltoid/supraspinatusopposingpair with primaryqualifiedforcecouple",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/12647876/",
+        "https://pubmed.ncbi.nlm.nih.gov/11347692/"
+      ]
+    },
+    {
+      "file": "app/msk/schulter/rotatorenmanschette/page.js",
+      "lang": "en",
+      "path": "basics.items.2.text",
+      "before": "Subscapularis/infraspinatus stabilise the humeral head in the transverse plane, deltoid/supraspinatus in the coronal plane - imbalance leads to decentring of the humeral head.",
+      "after": "Anterior and posterior cuff contribute to a balanced force couple and humeral-head centring. Subscapularis and infraspinatus are important components; individual contributions depend on arm position and loading.",
+      "reason": "Replaceoversimplifieddeltoid/supraspinatusopposingpair with primaryqualifiedforcecouple",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/12647876/",
+        "https://pubmed.ncbi.nlm.nih.gov/11347692/"
+      ]
+    },
+    {
+      "file": "app/msk/schulter/rotatorenmanschette/page.js",
+      "lang": "fa",
+      "path": "basics.items.2.text",
+      "before": "ساب‌اسکاپولاریس/اینفراسپیناتوس سر هومروس را در صفحه ترانسورس و دلتوئید/سوپراسپیناتوس در صفحه کرونال تثبیت می‌کنند - عدم تعادل منجر به جابه‌جایی سر هومروس می‌شود.",
+      "after": "بخش قدامی و خلفی کاف در زوج نیروی متعادل و مرکزی‌ماندن سر هومروس نقش دارند. ساب‌اسکاپولاریس و اینفراسپیناتوس اجزای مهم‌اند؛ سهم هر عضله به وضعیت بازو و بارگذاری وابسته است.",
+      "reason": "Replaceoversimplifieddeltoid/supraspinatusopposingpair with primaryqualifiedforcecouple",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/12647876/",
+        "https://pubmed.ncbi.nlm.nih.gov/11347692/"
+      ]
+    },
+    {
+      "file": "app/msk/schulter/rotatorenmanschette/page.js",
+      "lang": "de",
+      "path": "basics.key",
+      "before": "Die Supraspinatussehne ist mit Abstand am häufigsten betroffen, insbesondere in der hypovaskulären Critical Zone kurz vor ihrem Ansatz am Tuberculum majus.",
+      "after": "Die Critical Zone bezeichnet eine ansatznahe Region, keinen bildgebenden Beweis einer Minderdurchblutung. Bei der Befundung Sehnenverlauf, Faserdefekt und Oberflächenkontakt beschreiben.",
+      "reason": "Removeunsupportedvascularcause/superlative; retainactionableinterpretation",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/2323147/",
+        "https://pubmed.ncbi.nlm.nih.gov/18647848/",
+        "https://pubmed.ncbi.nlm.nih.gov/26412209/"
+      ]
+    },
+    {
+      "file": "app/msk/schulter/rotatorenmanschette/page.js",
+      "lang": "en",
+      "path": "basics.key",
+      "before": "The supraspinatus tendon is by far the most frequently affected, particularly in the hypovascular critical zone just proximal to its insertion on the greater tuberosity.",
+      "after": "The critical zone names an insertional region, not imaging proof of reduced blood flow. Report tendon course, fibre defect and surface communication.",
+      "reason": "Removeunsupportedvascularcause/superlative; retainactionableinterpretation",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/2323147/",
+        "https://pubmed.ncbi.nlm.nih.gov/18647848/",
+        "https://pubmed.ncbi.nlm.nih.gov/26412209/"
+      ]
+    },
+    {
+      "file": "app/msk/schulter/rotatorenmanschette/page.js",
+      "lang": "fa",
+      "path": "basics.key",
+      "before": "تاندون سوپراسپیناتوس به‌طور قابل توجهی شایع‌ترین تاندون درگیر است، به‌ویژه در Critical Zone هیپوواسکولار درست قبل از محل اتصال آن به توبرکل بزرگ.",
+      "after": "ناحیهٔ بحرانی نام ناحیه‌ای نزدیک اتصال است، نه اثبات تصویری کاهش خون‌رسانی. در گزارش مسیر تاندون، نقص رشته‌ها و ارتباط سطحی را توصیف کنید.",
+      "reason": "Removeunsupportedvascularcause/superlative; retainactionableinterpretation",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/2323147/",
+        "https://pubmed.ncbi.nlm.nih.gov/18647848/",
+        "https://pubmed.ncbi.nlm.nih.gov/26412209/"
+      ]
+    },
+    {
+      "file": "app/msk/schulter/rotatorenmanschette/page.js",
+      "lang": "de",
+      "path": "mri.lead",
+      "before": "Die MRT ist die Methode der Wahl zur Beurteilung der Rotatorenmanschette. Ein standardisiertes Protokoll mit fettunterdrückten, flüssigkeitssensitiven Sequenzen in mindestens zwei Ebenen ist essenziell.",
+      "after": "Ein Schulter-MRT-Protokoll kombiniert flüssigkeitssensitive Aufnahmen in axialer, koronar-schräger und sagittal-schräger Ebene mit T1-Aufnahmen für Anatomie und Muskelqualität. Die Bausteine werden an die Fragestellung angepasst.",
+      "reason": "Officialmultiplanarprotocol, not universalMRIaloneguarantee",
+      "sources": [
+        "https://www.essr.org/content-essr/uploads/2016/10/ESSR-MRI-Protocols-Shoulder.pdf",
+        "https://gravitas.acr.org/PPTS/DownloadPreviewDocument?DocId=45&ReleaseId=2"
+      ]
+    },
+    {
+      "file": "app/msk/schulter/rotatorenmanschette/page.js",
+      "lang": "en",
+      "path": "mri.lead",
+      "before": "MRI is the method of choice for assessing the rotator cuff. A standardised protocol with fat-suppressed, fluid-sensitive sequences in at least two planes is essential.",
+      "after": "A shoulder MRI protocol combines fluid-sensitive axial, coronal-oblique and sagittal-oblique images with T1 acquisitions for anatomy and muscle quality. Tailor the components to the clinical question.",
+      "reason": "Officialmultiplanarprotocol, not universalMRIaloneguarantee",
+      "sources": [
+        "https://www.essr.org/content-essr/uploads/2016/10/ESSR-MRI-Protocols-Shoulder.pdf",
+        "https://gravitas.acr.org/PPTS/DownloadPreviewDocument?DocId=45&ReleaseId=2"
+      ]
+    },
+    {
+      "file": "app/msk/schulter/rotatorenmanschette/page.js",
+      "lang": "fa",
+      "path": "mri.lead",
+      "before": "MRI روش انتخابی برای ارزیابی روتاتور کاف است. یک پروتکل استاندارد با سکانس‌های فت‌ساپرس و حساس به مایع در حداقل دو پلان ضروری است.",
+      "after": "پروتکل MRI شانه تصاویر حساس به مایع را در نماهای آگزیال، کرونال مایل و ساژیتال مایل با T1 برای آناتومی و کیفیت عضله ترکیب می‌کند. اجزا متناسب با سؤال بالینی تنظیم می‌شوند.",
+      "reason": "Officialmultiplanarprotocol, not universalMRIaloneguarantee",
+      "sources": [
+        "https://www.essr.org/content-essr/uploads/2016/10/ESSR-MRI-Protocols-Shoulder.pdf",
+        "https://gravitas.acr.org/PPTS/DownloadPreviewDocument?DocId=45&ReleaseId=2"
+      ]
+    },
+    {
+      "file": "app/msk/schulter/rotatorenmanschette/page.js",
+      "lang": "de",
+      "path": "mri.tableRows",
+      "before": [
+        [
+          "PD/T2 fs",
+          "koronar schräg",
+          "Goldstandard zur Detektion von Rupturen und Tendinopathie"
+        ],
+        [
+          "T1/PD",
+          "axial",
+          "Subscapularissehne, Bizepssehne, Muskelvolumen"
+        ],
+        [
+          "T2 fs",
+          "sagittal schräg (Y-View)",
+          "Muskelatrophie (Goutallier), Tangentenzeichen"
+        ],
+        [
+          "PD/T1",
+          "alle Ebenen",
+          "Knochenmarködem, ACG, Labrum"
+        ]
+      ],
+      "after": [
+        [
+          "PD/T2 fs",
+          "koronar-schräg",
+          "Sehnendefekte und flüssigkeitssensitive Strukturbeurteilung"
+        ],
+        [
+          "PD fs",
+          "axial",
+          "Subscapularissehne, lange Bizepssehne und Pulley"
+        ],
+        [
+          "T1",
+          "sagittal-schräg (Y-Aufnahme)",
+          "Muskelvolumen, Fettinfiltration und Tangentenzeichen"
+        ],
+        [
+          "PD/T2 fs",
+          "sagittal-schräg",
+          "Defektausdehnung und ergänzende Beurteilung von Muskulatur, Bursa und Marködem"
+        ]
+      ],
+      "reason": "CorrectT1musclefat/tangentversusfluid-sensitiveedema roles; keep4row3columnlayout",
+      "sources": [
+        "https://www.essr.org/content-essr/uploads/2016/10/ESSR-MRI-Protocols-Shoulder.pdf",
+        "https://gravitas.acr.org/PPTS/DownloadPreviewDocument?DocId=45&ReleaseId=2",
+        "https://pubmed.ncbi.nlm.nih.gov/9525755/",
+        "https://pubmed.ncbi.nlm.nih.gov/10633896/"
+      ]
+    },
+    {
+      "file": "app/msk/schulter/rotatorenmanschette/page.js",
+      "lang": "en",
+      "path": "mri.tableRows",
+      "before": [
+        [
+          "PD/T2 fs",
+          "oblique coronal",
+          "gold standard for detecting tears and tendinopathy"
+        ],
+        [
+          "T1/PD",
+          "axial",
+          "subscapularis tendon, biceps tendon, muscle volume"
+        ],
+        [
+          "T2 fs",
+          "oblique sagittal (Y-view)",
+          "muscle atrophy (Goutallier), tangent sign"
+        ],
+        [
+          "PD/T1",
+          "all planes",
+          "bone marrow oedema, AC joint, labrum"
+        ]
+      ],
+      "after": [
+        [
+          "PD/T2 fs",
+          "coronal oblique",
+          "tendon defects and fluid-sensitive structural assessment"
+        ],
+        [
+          "PD fs",
+          "axial",
+          "subscapularis, long head of biceps and pulley"
+        ],
+        [
+          "T1",
+          "sagittal oblique (Y view)",
+          "muscle bulk, fatty infiltration and tangent sign"
+        ],
+        [
+          "PD/T2 fs",
+          "sagittal oblique",
+          "defect extent and complementary assessment of muscle, bursa and marrow oedema"
+        ]
+      ],
+      "reason": "CorrectT1musclefat/tangentversusfluid-sensitiveedema roles; keep4row3columnlayout",
+      "sources": [
+        "https://www.essr.org/content-essr/uploads/2016/10/ESSR-MRI-Protocols-Shoulder.pdf",
+        "https://gravitas.acr.org/PPTS/DownloadPreviewDocument?DocId=45&ReleaseId=2",
+        "https://pubmed.ncbi.nlm.nih.gov/9525755/",
+        "https://pubmed.ncbi.nlm.nih.gov/10633896/"
+      ]
+    },
+    {
+      "file": "app/msk/schulter/rotatorenmanschette/page.js",
+      "lang": "fa",
+      "path": "mri.tableRows",
+      "before": [
+        [
+          "PD/T2 fs",
+          "کرونال مایل",
+          "استاندارد طلایی برای تشخیص پارگی و تاندینوپاتی"
+        ],
+        [
+          "T1/PD",
+          "آگزیال",
+          "تاندون ساب‌اسکاپولاریس، تاندون بایسپس، حجم عضله"
+        ],
+        [
+          "T2 fs",
+          "ساژیتال مایل (Y-view)",
+          "آتروفی عضلانی (Goutallier)، علامت تانژانت"
+        ],
+        [
+          "PD/T1",
+          "همه پلان‌ها",
+          "ادم مغز استخوان، مفصل ACG، لابروم"
+        ]
+      ],
+      "after": [
+        [
+          "PD/T2 fs",
+          "کرونال مایل",
+          "نقص‌های تاندون و ارزیابی ساختاری حساس به مایع"
+        ],
+        [
+          "PD fs",
+          "آگزیال",
+          "ساب‌اسکاپولاریس، سر بلند بایسپس و پولی"
+        ],
+        [
+          "T1",
+          "ساژیتال مایل، نمای Y",
+          "حجم عضله، نفوذ چربی و علامت تانژانت"
+        ],
+        [
+          "PD/T2 fs",
+          "ساژیتال مایل",
+          "وسعت نقص و ارزیابی مکمل عضله، بورس و ادم مغز استخوان"
+        ]
+      ],
+      "reason": "CorrectT1musclefat/tangentversusfluid-sensitiveedema roles; keep4row3columnlayout",
+      "sources": [
+        "https://www.essr.org/content-essr/uploads/2016/10/ESSR-MRI-Protocols-Shoulder.pdf",
+        "https://gravitas.acr.org/PPTS/DownloadPreviewDocument?DocId=45&ReleaseId=2",
+        "https://pubmed.ncbi.nlm.nih.gov/9525755/",
+        "https://pubmed.ncbi.nlm.nih.gov/10633896/"
+      ]
+    },
+    {
+      "file": "app/msk/schulter/rotatorenmanschette/page.js",
+      "lang": "de",
+      "path": "mri.lightBulbText",
+      "before": "Eine gesunde Sehne zeigt eine homogen niedrige Signalintensität in allen Sequenzen. Eine intratendinöse Signalanhebung in PD/T1 ohne T2-Korrelat entspricht meist einer Tendinopathie.",
+      "after": "Normales Sehnengewebe ist auf üblichen Sequenzen überwiegend signalarm. Eine Signalzunahme auf kurzen TE-Aufnahmen kann orientierungsbedingt oder degenerativ sein. TE, Faserkontinuität und Defektmorphologie gemeinsam prüfen, bevor eine Ruptur angenommen wird.",
+      "reason": "Remove shortTEbrightwithoutT2=usuallytendinopathy misclassification",
+      "sources": [
+        "https://pubs.rsna.org/doi/10.1148/radiology.181.2.1924777",
+        "https://pubmed.ncbi.nlm.nih.gov/20578021/"
+      ]
+    },
+    {
+      "file": "app/msk/schulter/rotatorenmanschette/page.js",
+      "lang": "en",
+      "path": "mri.lightBulbText",
+      "before": "A healthy tendon shows homogeneously low signal intensity on all sequences. Intratendinous signal elevation on PD/T1 without a T2 correlate usually represents tendinopathy.",
+      "after": "Normal tendon is predominantly low signal on routine sequences. Short-TE signal increase may reflect orientation or degeneration. Assess TE, fibre continuity and defect morphology together before diagnosing a tear.",
+      "reason": "Remove shortTEbrightwithoutT2=usuallytendinopathy misclassification",
+      "sources": [
+        "https://pubs.rsna.org/doi/10.1148/radiology.181.2.1924777",
+        "https://pubmed.ncbi.nlm.nih.gov/20578021/"
+      ]
+    },
+    {
+      "file": "app/msk/schulter/rotatorenmanschette/page.js",
+      "lang": "fa",
+      "path": "mri.lightBulbText",
+      "before": "تاندون سالم سیگنال یکنواخت و پایین در همه سکانس‌ها دارد. افزایش سیگنال داخل تاندونی در PD/T1 بدون معادل در T2 معمولاً به معنای تاندینوپاتی است.",
+      "after": "تاندون طبیعی در سکانس‌های معمول عمدتاً کم‌سیگنال است. افزایش سیگنال در TE کوتاه می‌تواند وابسته به جهت یا ناشی از دژنراسیون باشد. پیش از تشخیص پارگی، TE، پیوستگی رشته‌ها و مورفولوژی نقص را با هم بررسی کنید.",
+      "reason": "Remove shortTEbrightwithoutT2=usuallytendinopathy misclassification",
+      "sources": [
+        "https://pubs.rsna.org/doi/10.1148/radiology.181.2.1924777",
+        "https://pubmed.ncbi.nlm.nih.gov/20578021/"
+      ]
+    },
+    {
+      "file": "app/msk/schulter/rotatorenmanschette/page.js",
+      "lang": "de",
+      "path": "mri.dwiText",
+      "before": "Verläuft die Sehne in einem Winkel von ca. 55° zum Hauptmagnetfeld (häufig nahe dem Ansatz), kann es zu einer artifiziellen Signalanhebung in kurzen TE-Sequenzen (T1, PD) kommen, die in T2-gewichteten Sequenzen verschwindet - keine echte Pathologie.",
+      "after": "Nahe55° zu B0 kann normales Sehnengewebe auf kurzen TE-Aufnahmen signalreich erscheinen. Bei längerem TE nimmt der Effekt ab. Entscheidend sind TE und Orientierung, nicht die Bezeichnung T1/PD/T2 allein; Morphologie und weitere Ebenen mitprüfen.",
+      "reason": "MirrorTEqualifiedmagicangle, no universalT2 disappearance",
+      "sources": [
+        "https://pubs.rsna.org/doi/10.1148/radiology.181.2.1924777",
+        "https://pubmed.ncbi.nlm.nih.gov/20578021/"
+      ]
+    },
+    {
+      "file": "app/msk/schulter/rotatorenmanschette/page.js",
+      "lang": "en",
+      "path": "mri.dwiText",
+      "before": "When a tendon runs at an angle of about 55° to the main magnetic field (often near the insertion), short-TE sequences (T1, PD) can show an artefactual signal increase that disappears on T2-weighted sequences - not a true pathology.",
+      "after": "Near 55° to B0, normal tendon can appear bright on short-TE acquisitions. The effect decreases at longer TE. TE and orientation matter, rather than the T1/PD/T2 label alone; also check morphology and other planes.",
+      "reason": "MirrorTEqualifiedmagicangle, no universalT2 disappearance",
+      "sources": [
+        "https://pubs.rsna.org/doi/10.1148/radiology.181.2.1924777",
+        "https://pubmed.ncbi.nlm.nih.gov/20578021/"
+      ]
+    },
+    {
+      "file": "app/msk/schulter/rotatorenmanschette/page.js",
+      "lang": "fa",
+      "path": "mri.dwiText",
+      "before": "وقتی تاندون با زاویه حدود ۵۵ درجه نسبت به میدان مغناطیسی اصلی قرار گیرد (اغلب نزدیک محل اتصال)، سکانس‌های TE کوتاه (T1، PD) ممکن است افزایش سیگنال کاذب نشان دهند که در سکانس‌های T2 ناپدید می‌شود - یک پاتولوژی واقعی نیست.",
+      "after": "نزدیک زاویهٔ ۵۵ درجه نسبت به B0، تاندون طبیعی می‌تواند در TE کوتاه پُرسیگنال شود. اثر در TE طولانی‌تر کاهش می‌یابد. TE و جهت اهمیت دارند، نه صرفاً نام T1 یا PD یا T2؛ مورفولوژی و نماهای دیگر را نیز بررسی کنید.",
+      "reason": "MirrorTEqualifiedmagicangle, no universalT2 disappearance",
+      "sources": [
+        "https://pubs.rsna.org/doi/10.1148/radiology.181.2.1924777",
+        "https://pubmed.ncbi.nlm.nih.gov/20578021/"
+      ]
+    },
+    {
+      "file": "app/msk/schulter/rotatorenmanschette/page.js",
+      "lang": "de",
+      "path": "mri.key",
+      "before": "Mindestens zwei Ebenen mit fettunterdrückten, flüssigkeitssensitiven Sequenzen sind notwendig, um eine Ruptur sicher von einer Tendinopathie oder einem Magic-Angle-Artefakt zu unterscheiden.",
+      "after": "Mehrplanare flüssigkeitssensitive Bilder und T1-Aufnahmen ergänzen sich. Ein helles Sehnensignal allein ist kein Rupturbeweis; den Faserdefekt und seine Beziehung zu Gelenk und Bursa suchen.",
+      "reason": "Removeprotocolguarantee, coherentwithactualmorphologylimitations",
+      "sources": [
+        "https://pubs.rsna.org/doi/10.1148/radiology.181.2.1924777",
+        "https://pubmed.ncbi.nlm.nih.gov/20578021/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC2930161/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC4733769/",
+        "https://pubmed.ncbi.nlm.nih.gov/20578021/"
+      ]
+    },
+    {
+      "file": "app/msk/schulter/rotatorenmanschette/page.js",
+      "lang": "en",
+      "path": "mri.key",
+      "before": "At least two planes with fat-suppressed, fluid-sensitive sequences are needed to reliably distinguish a tear from tendinopathy or a magic-angle artefact.",
+      "after": "Multiplanar fluid-sensitive images and T1 acquisitions are complementary. Bright tendon signal alone does not prove a tear; look for a fibre defect and its relationship to joint and bursa.",
+      "reason": "Removeprotocolguarantee, coherentwithactualmorphologylimitations",
+      "sources": [
+        "https://pubs.rsna.org/doi/10.1148/radiology.181.2.1924777",
+        "https://pubmed.ncbi.nlm.nih.gov/20578021/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC2930161/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC4733769/",
+        "https://pubmed.ncbi.nlm.nih.gov/20578021/"
+      ]
+    },
+    {
+      "file": "app/msk/schulter/rotatorenmanschette/page.js",
+      "lang": "fa",
+      "path": "mri.key",
+      "before": "حداقل دو پلان با سکانس‌های فت‌ساپرس و حساس به مایع برای افتراق مطمئن پارگی از تاندینوپاتی یا آرتیفکت Magic Angle لازم است.",
+      "after": "تصاویر چندنمایی حساس به مایع و T1 مکمل یکدیگرند. سیگنال روشن تاندون به‌تنهایی پارگی را ثابت نمی‌کند؛ نقص رشته‌ها و ارتباط آن با مفصل و بورس را جست‌وجو کنید.",
+      "reason": "Removeprotocolguarantee, coherentwithactualmorphologylimitations",
+      "sources": [
+        "https://pubs.rsna.org/doi/10.1148/radiology.181.2.1924777",
+        "https://pubmed.ncbi.nlm.nih.gov/20578021/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC2930161/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC4733769/",
+        "https://pubmed.ncbi.nlm.nih.gov/20578021/"
+      ]
+    },
+    {
+      "file": "app/msk/schulter/rotatorenmanschette/page.js",
+      "lang": "de",
+      "path": "partial.tableRows.1.2",
+      "before": "Partial Articular Surface Tendon Avulsion - fokaler Defekt am Footprint, oft mit Impingement assoziiert",
+      "after": "Gelenkseitige Partialablösung am Footprint; der Begriff allein beweist kein klinisches Impingement",
+      "reason": "QualifiedPASTAdefinition; specificathleteassociationstillassessmentexplanation",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/16762713/",
+        "https://pubmed.ncbi.nlm.nih.gov/22959196/"
+      ]
+    },
+    {
+      "file": "app/msk/schulter/rotatorenmanschette/page.js",
+      "lang": "en",
+      "path": "partial.tableRows.1.2",
+      "before": "Partial Articular Surface Tendon Avulsion - focal defect at the footprint, often associated with impingement",
+      "after": "Articular-sided partial avulsion at the footprint; the term alone does not establish clinical impingement",
+      "reason": "QualifiedPASTAdefinition; specificathleteassociationstillassessmentexplanation",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/16762713/",
+        "https://pubmed.ncbi.nlm.nih.gov/22959196/"
+      ]
+    },
+    {
+      "file": "app/msk/schulter/rotatorenmanschette/page.js",
+      "lang": "fa",
+      "path": "partial.tableRows.1.2",
+      "before": "پارگی جزئی سطح مفصلی تاندون (PASTA) - نقص کانونی در محل اتصال تاندون (footprint)، اغلب همراه با ایمپینجمنت",
+      "after": "جداشدگی جزئی سمت مفصلی در محل اتصال؛ اصطلاح به‌تنهایی ایمپینجمنت بالینی را ثابت نمی‌کند",
+      "reason": "QualifiedPASTAdefinition; specificathleteassociationstillassessmentexplanation",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/16762713/",
+        "https://pubmed.ncbi.nlm.nih.gov/22959196/"
+      ]
+    },
+    {
+      "file": "app/msk/schulter/rotatorenmanschette/page.js",
+      "lang": "de",
+      "path": "partial.tableRows.2.2",
+      "before": "lineare/fokale T2-hyperintense Signalanhebung ohne Kontakt zur Bursa oder zum Gelenk",
+      "after": "Flüssigkeitsäquivalenter Spalt mit Faserdefekt innerhalb der Sehne bei erhaltenen Oberflächen",
+      "reason": "Mirrorstructuralintratendinoustear notanyT2signal",
+      "sources": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC2930161/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC4733769/",
+        "https://pubmed.ncbi.nlm.nih.gov/20578021/"
+      ]
+    },
+    {
+      "file": "app/msk/schulter/rotatorenmanschette/page.js",
+      "lang": "en",
+      "path": "partial.tableRows.2.2",
+      "before": "linear/focal T2-hyperintense signal without contact to the bursa or joint",
+      "after": "A fluid-equivalent cleft with an internal fibre defect and intact surfaces",
+      "reason": "Mirrorstructuralintratendinoustear notanyT2signal",
+      "sources": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC2930161/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC4733769/",
+        "https://pubmed.ncbi.nlm.nih.gov/20578021/"
+      ]
+    },
+    {
+      "file": "app/msk/schulter/rotatorenmanschette/page.js",
+      "lang": "fa",
+      "path": "partial.tableRows.2.2",
+      "before": "سیگنال خطی/کانونی هیپراینتنس T2 بدون تماس با بورس یا مفصل",
+      "after": "شکاف با سیگنال هم‌ارز مایع و نقص رشته‌ها داخل تاندون، با حفظ سطوح",
+      "reason": "Mirrorstructuralintratendinoustear notanyT2signal",
+      "sources": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC2930161/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC4733769/",
+        "https://pubmed.ncbi.nlm.nih.gov/20578021/"
+      ]
+    },
+    {
+      "file": "app/msk/schulter/rotatorenmanschette/page.js",
+      "lang": "de",
+      "path": "partial.tableRows.3.1",
+      "before": "diffuse Degeneration",
+      "after": "degenerative Sehnenveränderung",
+      "reason": "Tendinopathycanbefocal notalwaysdiffuse",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/20578021/"
+      ]
+    },
+    {
+      "file": "app/msk/schulter/rotatorenmanschette/page.js",
+      "lang": "en",
+      "path": "partial.tableRows.3.1",
+      "before": "diffuse degeneration",
+      "after": "degenerative tendon change",
+      "reason": "Tendinopathycanbefocal notalwaysdiffuse",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/20578021/"
+      ]
+    },
+    {
+      "file": "app/msk/schulter/rotatorenmanschette/page.js",
+      "lang": "fa",
+      "path": "partial.tableRows.3.1",
+      "before": "دژنراسیون منتشر",
+      "after": "تغییر دژنراتیو تاندون",
+      "reason": "Tendinopathycanbefocal notalwaysdiffuse",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/20578021/"
+      ]
+    },
+    {
+      "file": "app/msk/schulter/rotatorenmanschette/page.js",
+      "lang": "de",
+      "path": "partial.tableRows.3.2",
+      "before": "intratendinöse Signalanhebung in PD/T1, kein eindeutiges T2-Flüssigkeitssignal, ggf. Sehnenverdickung",
+      "after": "Signalzunahme unterhalb von Flüssigkeitssignal, teils auch auf T2; ohne klaren Faserdefekt, gegebenenfalls Verdickung",
+      "reason": "PrimaryhistologyshowsintactdegenerativetendonscanbeT2bright",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/20578021/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC2465433/"
+      ]
+    },
+    {
+      "file": "app/msk/schulter/rotatorenmanschette/page.js",
+      "lang": "en",
+      "path": "partial.tableRows.3.2",
+      "before": "intratendinous signal elevation on PD/T1, no clear T2 fluid signal, possible tendon thickening",
+      "after": "Signal increase below fluid intensity, sometimes on T2 as well, without a clear fibre defect; possible thickening",
+      "reason": "PrimaryhistologyshowsintactdegenerativetendonscanbeT2bright",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/20578021/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC2465433/"
+      ]
+    },
+    {
+      "file": "app/msk/schulter/rotatorenmanschette/page.js",
+      "lang": "fa",
+      "path": "partial.tableRows.3.2",
+      "before": "افزایش سیگنال داخل تاندونی در PD/T1، بدون سیگنال مایع واضح در T2، احتمال ضخیم‌شدن تاندون",
+      "after": "افزایش سیگنال کمتر از مایع، گاهی در T2 نیز، بدون نقص واضح رشته‌ها؛ ممکن است ضخیم‌شدن وجود داشته باشد",
+      "reason": "PrimaryhistologyshowsintactdegenerativetendonscanbeT2bright",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/20578021/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC2465433/"
+      ]
+    },
+    {
+      "file": "app/msk/schulter/rotatorenmanschette/page.js",
+      "lang": "de",
+      "path": "partial.key",
+      "before": "Bursaseitige, gelenkseitige (PASTA) und intratendinöse Partialrupturen unterscheiden sich durch ihre Lage relativ zu Bursa und Gelenkspalt - alle drei zeigen eine fokale T2-hyperintense Signalanhebung.",
+      "after": "Die Einteilung richtet sich nach Faserdefekt und Oberflächenkontakt: bursaseitig, artikulär oder rein intratendinös. Unspezifische T2-Hyperintensität allein trennt diese Muster nicht von Degeneration oder Artefakt.",
+      "reason": "RemoveallpartialtearsdefinedbyfocalT2signal rule",
+      "sources": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC2930161/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC4733769/",
+        "https://pubmed.ncbi.nlm.nih.gov/20578021/",
+        "https://pubs.rsna.org/doi/10.1148/radiology.181.2.1924777",
+        "https://pubmed.ncbi.nlm.nih.gov/20578021/"
+      ]
+    },
+    {
+      "file": "app/msk/schulter/rotatorenmanschette/page.js",
+      "lang": "en",
+      "path": "partial.key",
+      "before": "Bursal-sided, articular-sided (PASTA) and intratendinous partial tears differ by their location relative to the bursa and joint space - all three show focal T2-hyperintense signal.",
+      "after": "Classification depends on fibre defect and surface communication: bursal, articular or purely intratendinous. Nonspecific T2 hyperintensity alone does not separate these patterns from degeneration or artefact.",
+      "reason": "RemoveallpartialtearsdefinedbyfocalT2signal rule",
+      "sources": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC2930161/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC4733769/",
+        "https://pubmed.ncbi.nlm.nih.gov/20578021/",
+        "https://pubs.rsna.org/doi/10.1148/radiology.181.2.1924777",
+        "https://pubmed.ncbi.nlm.nih.gov/20578021/"
+      ]
+    },
+    {
+      "file": "app/msk/schulter/rotatorenmanschette/page.js",
+      "lang": "fa",
+      "path": "partial.key",
+      "before": "پارگی‌های سمت بورسال، سمت مفصلی (PASTA) و داخل تاندونی بر اساس محل خود نسبت به بورس و فضای مفصلی متفاوت‌اند - هر سه با سیگنال کانونی هیپراینتنس T2 مشخص می‌شوند.",
+      "after": "طبقه‌بندی به نقص رشته‌ها و ارتباط سطحی وابسته است: بورسال، مفصلی یا صرفاً داخل تاندونی. هیپراینتنسیتهٔ غیراختصاصی T2 به‌تنهایی این الگوها را از دژنراسیون یا آرتیفکت جدا نمی‌کند.",
+      "reason": "RemoveallpartialtearsdefinedbyfocalT2signal rule",
+      "sources": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC2930161/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC4733769/",
+        "https://pubmed.ncbi.nlm.nih.gov/20578021/",
+        "https://pubs.rsna.org/doi/10.1148/radiology.181.2.1924777",
+        "https://pubmed.ncbi.nlm.nih.gov/20578021/"
+      ]
+    },
+    {
+      "file": "app/msk/schulter/rotatorenmanschette/page.js",
+      "lang": "de",
+      "path": "full.tableRows.0.1",
+      "before": "vollständige T2-hyperintense Unterbrechung der Sehne mit Flüssigkeit im Sehnendefekt",
+      "after": "Durchgehender Faserdefekt von Gelenk- bis Bursaseite, typischerweise mit Flüssigkeitssignal",
+      "reason": "Typicalfluidappearance notuniversaleverychronictear",
+      "sources": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC5483776/"
+      ]
+    },
+    {
+      "file": "app/msk/schulter/rotatorenmanschette/page.js",
+      "lang": "en",
+      "path": "full.tableRows.0.1",
+      "before": "complete T2-hyperintense interruption of the tendon with fluid in the tendon gap",
+      "after": "A through-thickness fibre defect from joint to bursal surface, typically with fluid signal",
+      "reason": "Typicalfluidappearance notuniversaleverychronictear",
+      "sources": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC5483776/"
+      ]
+    },
+    {
+      "file": "app/msk/schulter/rotatorenmanschette/page.js",
+      "lang": "fa",
+      "path": "full.tableRows.0.1",
+      "before": "قطع کامل و هیپراینتنس در T2 با مایع در محل نقص تاندون",
+      "after": "نقص رشته‌ای در تمام ضخامت از سمت مفصلی تا بورسال، معمولاً با سیگنال مایع",
+      "reason": "Typicalfluidappearance notuniversaleverychronictear",
+      "sources": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC5483776/"
+      ]
+    },
+    {
+      "file": "app/msk/schulter/rotatorenmanschette/page.js",
+      "lang": "de",
+      "path": "full.tableRows.3.0",
+      "before": "Muskelatrophie",
+      "after": "Fettinfiltration",
+      "reason": "Goutalliermeasuresfatnotatrophy",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/8020238/",
+        "https://pubmed.ncbi.nlm.nih.gov/10633896/",
+        "https://pubmed.ncbi.nlm.nih.gov/17418325/"
+      ]
+    },
+    {
+      "file": "app/msk/schulter/rotatorenmanschette/page.js",
+      "lang": "en",
+      "path": "full.tableRows.3.0",
+      "before": "Muscle atrophy",
+      "after": "Fatty infiltration",
+      "reason": "Goutalliermeasuresfatnotatrophy",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/8020238/",
+        "https://pubmed.ncbi.nlm.nih.gov/10633896/",
+        "https://pubmed.ncbi.nlm.nih.gov/17418325/"
+      ]
+    },
+    {
+      "file": "app/msk/schulter/rotatorenmanschette/page.js",
+      "lang": "fa",
+      "path": "full.tableRows.3.0",
+      "before": "آتروفی عضلانی",
+      "after": "نفوذ چربی",
+      "reason": "Goutalliermeasuresfatnotatrophy",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/8020238/",
+        "https://pubmed.ncbi.nlm.nih.gov/10633896/",
+        "https://pubmed.ncbi.nlm.nih.gov/17418325/"
+      ]
+    },
+    {
+      "file": "app/msk/schulter/rotatorenmanschette/page.js",
+      "lang": "de",
+      "path": "full.tableRows.3.1",
+      "before": "fettige Degeneration des Muskelbauchs - Klassifikation nach Goutallier (Grad 0-4)",
+      "after": "Fettanteil gegenüber Muskelgewebe, in der MRT insbesondere auf nicht fettunterdrückten T1-Aufnahmen; Goutallier-Grad 0–4",
+      "reason": "Do not usefat-suppressedT2 assolemusclefatgrading; separatevolume",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/8020238/",
+        "https://pubmed.ncbi.nlm.nih.gov/10633896/",
+        "https://pubmed.ncbi.nlm.nih.gov/17418325/",
+        "https://www.essr.org/content-essr/uploads/2016/10/ESSR-MRI-Protocols-Shoulder.pdf",
+        "https://gravitas.acr.org/PPTS/DownloadPreviewDocument?DocId=45&ReleaseId=2"
+      ]
+    },
+    {
+      "file": "app/msk/schulter/rotatorenmanschette/page.js",
+      "lang": "en",
+      "path": "full.tableRows.3.1",
+      "before": "fatty degeneration of the muscle belly - graded according to Goutallier (grade 0-4)",
+      "after": "Fat relative to muscle, on MRI particularly on non-fat-suppressed T1 images; Goutallier grades 0–4",
+      "reason": "Do not usefat-suppressedT2 assolemusclefatgrading; separatevolume",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/8020238/",
+        "https://pubmed.ncbi.nlm.nih.gov/10633896/",
+        "https://pubmed.ncbi.nlm.nih.gov/17418325/",
+        "https://www.essr.org/content-essr/uploads/2016/10/ESSR-MRI-Protocols-Shoulder.pdf",
+        "https://gravitas.acr.org/PPTS/DownloadPreviewDocument?DocId=45&ReleaseId=2"
+      ]
+    },
+    {
+      "file": "app/msk/schulter/rotatorenmanschette/page.js",
+      "lang": "fa",
+      "path": "full.tableRows.3.1",
+      "before": "دژنراسیون چربی شکم عضله - طبقه‌بندی Goutallier (درجه ۰ تا ۴)",
+      "after": "نسبت چربی به بافت عضله، در MRI به‌ویژه روی T1 بدون فت‌ساپرشن؛ درجات ۰ تا ۴ Goutallier",
+      "reason": "Do not usefat-suppressedT2 assolemusclefatgrading; separatevolume",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/8020238/",
+        "https://pubmed.ncbi.nlm.nih.gov/10633896/",
+        "https://pubmed.ncbi.nlm.nih.gov/17418325/",
+        "https://www.essr.org/content-essr/uploads/2016/10/ESSR-MRI-Protocols-Shoulder.pdf",
+        "https://gravitas.acr.org/PPTS/DownloadPreviewDocument?DocId=45&ReleaseId=2"
+      ]
+    },
+    {
+      "file": "app/msk/schulter/rotatorenmanschette/page.js",
+      "lang": "de",
+      "path": "full.dwiTitle",
+      "before": "Goutallier-Klassifikation der Muskelatrophie",
+      "after": "Goutallier: Fettinfiltration",
+      "reason": "Correctclassificationtitleatrophyconflation",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/8020238/",
+        "https://pubmed.ncbi.nlm.nih.gov/10633896/",
+        "https://pubmed.ncbi.nlm.nih.gov/17418325/"
+      ]
+    },
+    {
+      "file": "app/msk/schulter/rotatorenmanschette/page.js",
+      "lang": "en",
+      "path": "full.dwiTitle",
+      "before": "Goutallier classification of muscle atrophy",
+      "after": "Goutallier: fatty infiltration",
+      "reason": "Correctclassificationtitleatrophyconflation",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/8020238/",
+        "https://pubmed.ncbi.nlm.nih.gov/10633896/",
+        "https://pubmed.ncbi.nlm.nih.gov/17418325/"
+      ]
+    },
+    {
+      "file": "app/msk/schulter/rotatorenmanschette/page.js",
+      "lang": "fa",
+      "path": "full.dwiTitle",
+      "before": "طبقه‌بندی Goutallier برای آتروفی عضلانی",
+      "after": "Goutallier: نفوذ چربی",
+      "reason": "Correctclassificationtitleatrophyconflation",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/8020238/",
+        "https://pubmed.ncbi.nlm.nih.gov/10633896/",
+        "https://pubmed.ncbi.nlm.nih.gov/17418325/"
+      ]
+    },
+    {
+      "file": "app/msk/schulter/rotatorenmanschette/page.js",
+      "lang": "de",
+      "path": "full.key",
+      "before": "Die Patte-Klassifikation (Retraktion) und die Goutallier-Klassifikation (Fettatrophie) sind entscheidend für die OP-Planung - eine hochgradige Atrophie limitiert die Erfolgsaussichten einer Rekonstruktion unabhängig vom Retraktionsgrad.",
+      "after": "Retraktion, Muskelvolumen und Fettinfiltration getrennt dokumentieren. Sie beeinflussen gemeinsam mit Defektmorphologie und Klinik die Planung; kein einzelner Grad legt Rekonstruierbarkeit oder individuellen Nutzen allein fest.",
+      "reason": "Preserveprognosiswithoutatrophy=fat orindependentall-or-nothingrule",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/8020238/",
+        "https://pubmed.ncbi.nlm.nih.gov/10633896/",
+        "https://pubmed.ncbi.nlm.nih.gov/17418325/"
+      ]
+    },
+    {
+      "file": "app/msk/schulter/rotatorenmanschette/page.js",
+      "lang": "en",
+      "path": "full.key",
+      "before": "The Patte classification (retraction) and the Goutallier classification (fatty atrophy) are decisive for surgical planning - significant atrophy limits the chance of a successful repair regardless of the degree of retraction.",
+      "after": "Document retraction, muscle bulk and fatty infiltration separately. Along with defect morphology and clinical assessment, they inform planning; no single grade alone determines repairability or individual benefit.",
+      "reason": "Preserveprognosiswithoutatrophy=fat orindependentall-or-nothingrule",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/8020238/",
+        "https://pubmed.ncbi.nlm.nih.gov/10633896/",
+        "https://pubmed.ncbi.nlm.nih.gov/17418325/"
+      ]
+    },
+    {
+      "file": "app/msk/schulter/rotatorenmanschette/page.js",
+      "lang": "fa",
+      "path": "full.key",
+      "before": "طبقه‌بندی Patte (رتراکشن) و طبقه‌بندی Goutallier (آتروفی چربی) برای برنامه‌ریزی جراحی تعیین‌کننده‌اند - آتروفی شدید شانس ترمیم موفق را مستقل از درجه رتراکشن محدود می‌کند.",
+      "after": "رتراکشن، حجم عضله و نفوذ چربی را جداگانه ثبت کنید. این موارد همراه مورفولوژی نقص و بالین بر برنامه‌ریزی اثر دارند؛ هیچ درجهٔ منفردی به‌تنهایی قابلیت بازسازی یا منفعت فردی را تعیین نمی‌کند.",
+      "reason": "Preserveprognosiswithoutatrophy=fat orindependentall-or-nothingrule",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/8020238/",
+        "https://pubmed.ncbi.nlm.nih.gov/10633896/",
+        "https://pubmed.ncbi.nlm.nih.gov/17418325/"
+      ]
+    },
+    {
+      "file": "app/msk/schulter/rotatorenmanschette/page.js",
+      "lang": "de",
+      "path": "begleit.tableRows.0",
+      "before": [
+        "Subakromiales Impingement",
+        "Einengung des Subakromialraums durch Akromionform (Bigliani-Typ), Osteophyten oder Bursaverdickung"
+      ],
+      "after": [
+        "Mögliche subakromiale Engefaktoren",
+        "Knöcherne Vorsprünge und Sehnen-/Bursabefund beschreiben; Akromionform allein ist keine klinische Impingement-Diagnose"
+      ],
+      "reason": "Avoidimagingmorphologyaloneestablishingclinicalsyndrome",
+      "sources": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC3725773/",
+        "https://pubmed.ncbi.nlm.nih.gov/12934022/"
+      ]
+    },
+    {
+      "file": "app/msk/schulter/rotatorenmanschette/page.js",
+      "lang": "en",
+      "path": "begleit.tableRows.0",
+      "before": [
+        "Subacromial impingement",
+        "narrowing of the subacromial space due to acromion shape (Bigliani type), osteophytes or bursal thickening"
+      ],
+      "after": [
+        "Possible subacromial narrowing factors",
+        "Describe bony projections and tendon/bursal findings; acromial shape alone is not a clinical diagnosis of impingement"
+      ],
+      "reason": "Avoidimagingmorphologyaloneestablishingclinicalsyndrome",
+      "sources": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC3725773/",
+        "https://pubmed.ncbi.nlm.nih.gov/12934022/"
+      ]
+    },
+    {
+      "file": "app/msk/schulter/rotatorenmanschette/page.js",
+      "lang": "fa",
+      "path": "begleit.tableRows.0",
+      "before": [
+        "ایمپینجمنت ساب‌آکرومیال",
+        "تنگی فضای ساب‌آکرومیال به دلیل شکل آکرومیون (تیپ Bigliani)، استئوفیت یا ضخیم‌شدن بورس"
+      ],
+      "after": [
+        "عوامل احتمالی تنگی ساب‌آکرومیال",
+        "برجستگی‌های استخوانی و یافته‌های تاندون و بورس را توصیف کنید؛ شکل آکرومیون به‌تنهایی تشخیص ایمپینجمنت بالینی نیست"
+      ],
+      "reason": "Avoidimagingmorphologyaloneestablishingclinicalsyndrome",
+      "sources": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC3725773/",
+        "https://pubmed.ncbi.nlm.nih.gov/12934022/"
+      ]
+    },
+    {
+      "file": "app/msk/schulter/rotatorenmanschette/page.js",
+      "lang": "de",
+      "path": "begleit.tableRows.3.1",
+      "before": "Pathologien der LBS-Sehne (Tendinopathie, Subluxation) häufig assoziiert mit Subscapularisrupturen",
+      "after": "Insbesondere mediale Subluxation/Luxation lenkt den Blick auf oberen Subscapularis und Pulley; eine normale Lage schließt die Läsion nicht aus",
+      "reason": "Contextualisebicepsassociation; notanytendinopathyalone",
+      "sources": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC6151251/"
+      ]
+    },
+    {
+      "file": "app/msk/schulter/rotatorenmanschette/page.js",
+      "lang": "en",
+      "path": "begleit.tableRows.3.1",
+      "before": "LHB tendon pathology (tendinopathy, subluxation) frequently associated with subscapularis tears",
+      "after": "Medial subluxation/dislocation particularly directs attention to upper subscapularis and pulley; normal position does not exclude a lesion",
+      "reason": "Contextualisebicepsassociation; notanytendinopathyalone",
+      "sources": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC6151251/"
+      ]
+    },
+    {
+      "file": "app/msk/schulter/rotatorenmanschette/page.js",
+      "lang": "fa",
+      "path": "begleit.tableRows.3.1",
+      "before": "پاتولوژی تاندون LHB (تاندینوپاتی، ساب‌لوکساسیون) اغلب همراه با پارگی ساب‌اسکاپولاریس است",
+      "after": "به‌ویژه نیمه‌دررفتگی یا دررفتگی مدیال توجه را به ساب‌اسکاپولاریس فوقانی و پولی جلب می‌کند؛ موقعیت طبیعی ضایعه را رد نمی‌کند",
+      "reason": "Contextualisebicepsassociation; notanytendinopathyalone",
+      "sources": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC6151251/"
+      ]
+    },
+    {
+      "file": "app/msk/schulter/rotatorenmanschette/page.js",
+      "lang": "de",
+      "path": "begleit.cave",
+      "before": "Eine Dislokation der langen Bizepssehne aus dem Sulcus bicipitalis ist ein indirektes Zeichen für eine begleitende Subscapularisruptur - die Subscapularissehne sollte gezielt in axialen Sequenzen untersucht werden.",
+      "after": "Bei medialer Instabilität der langen Bizepssehne oberen Subscapularis und Pulley gezielt, insbesondere axial, prüfen. Das indirekte Zeichen ersetzt nicht die direkte Beurteilung von Kontinuität und Ausdehnung.",
+      "reason": "Mirrormediallocation/directassessment",
+      "sources": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC6151251/",
+        "https://pubmed.ncbi.nlm.nih.gov/1624486/"
+      ]
+    },
+    {
+      "file": "app/msk/schulter/rotatorenmanschette/page.js",
+      "lang": "en",
+      "path": "begleit.cave",
+      "before": "Dislocation of the LHB tendon from the bicipital groove is an indirect sign of an associated subscapularis tear - the subscapularis tendon should be specifically assessed on axial sequences.",
+      "after": "With medial long-head biceps instability, assess upper subscapularis and pulley specifically, particularly axially. The indirect sign does not replace direct assessment of continuity and extent.",
+      "reason": "Mirrormediallocation/directassessment",
+      "sources": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC6151251/",
+        "https://pubmed.ncbi.nlm.nih.gov/1624486/"
+      ]
+    },
+    {
+      "file": "app/msk/schulter/rotatorenmanschette/page.js",
+      "lang": "fa",
+      "path": "begleit.cave",
+      "before": "دیسلوکیشن تاندون سر بلند بایسپس از Sulcus bicipitalis نشانه غیرمستقیم پارگی همراه ساب‌اسکاپولاریس است - تاندون ساب‌اسکاپولاریس باید به‌طور هدفمند در سکانس‌های آگزیال بررسی شود.",
+      "after": "در ناپایداری مدیال سر بلند بایسپس، بخش فوقانی ساب‌اسکاپولاریس و پولی را به‌طور هدفمند، به‌ویژه در نمای آگزیال، بررسی کنید. علامت غیرمستقیم جای ارزیابی مستقیم پیوستگی و وسعت را نمی‌گیرد.",
+      "reason": "Mirrormediallocation/directassessment",
+      "sources": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC6151251/",
+        "https://pubmed.ncbi.nlm.nih.gov/1624486/"
+      ]
+    },
+    {
+      "file": "app/msk/schulter/rotatorenmanschette/page.js",
+      "lang": "de",
+      "path": "takehome.items.0.text",
+      "before": "Vier Muskeln (SSP, ISP, TM, SSC) - die Supraspinatussehne ist in der Critical Zone am häufigsten betroffen.",
+      "after": "Vier SITS-Muskeln zuordnen. Ansatznahe Veränderungen nach Morphologie beurteilen; die Critical Zone allein ist keine Erklärung jeder Ruptur.",
+      "reason": "Summaryparitycriticalzonequalification",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/2323147/",
+        "https://pubmed.ncbi.nlm.nih.gov/18647848/",
+        "https://pubmed.ncbi.nlm.nih.gov/26412209/"
+      ]
+    },
+    {
+      "file": "app/msk/schulter/rotatorenmanschette/page.js",
+      "lang": "en",
+      "path": "takehome.items.0.text",
+      "before": "Four muscles (SSP, ISP, TM, SSC) - the supraspinatus tendon in the critical zone is most commonly affected.",
+      "after": "Identify the four SITS muscles. Assess insertional change morphologically; the critical zone alone does not explain every tear.",
+      "reason": "Summaryparitycriticalzonequalification",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/2323147/",
+        "https://pubmed.ncbi.nlm.nih.gov/18647848/",
+        "https://pubmed.ncbi.nlm.nih.gov/26412209/"
+      ]
+    },
+    {
+      "file": "app/msk/schulter/rotatorenmanschette/page.js",
+      "lang": "fa",
+      "path": "takehome.items.0.text",
+      "before": "چهار عضله (SSP, ISP, TM, SSC) - تاندون سوپراسپیناتوس در Critical Zone شایع‌ترین محل درگیری است.",
+      "after": "چهار عضلهٔ SITS را مشخص کنید. تغییرات نزدیک اتصال را مورفولوژیک بسنجید؛ ناحیهٔ بحرانی به‌تنهایی توضیح همهٔ پارگی‌ها نیست.",
+      "reason": "Summaryparitycriticalzonequalification",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/2323147/",
+        "https://pubmed.ncbi.nlm.nih.gov/18647848/",
+        "https://pubmed.ncbi.nlm.nih.gov/26412209/"
+      ]
+    },
+    {
+      "file": "app/msk/schulter/rotatorenmanschette/page.js",
+      "lang": "de",
+      "path": "takehome.items.1.text",
+      "before": "Mindestens zwei Ebenen mit fettunterdrückten, flüssigkeitssensitiven Sequenzen.",
+      "after": "Flüssigkeitssensitive Aufnahmen in mehreren Ebenen und T1 für Muskelqualität kombinieren; bei Signalauffälligkeit TE und Faserkontinuität prüfen.",
+      "reason": "SummaryparityMRIactualcomponents",
+      "sources": [
+        "https://www.essr.org/content-essr/uploads/2016/10/ESSR-MRI-Protocols-Shoulder.pdf",
+        "https://gravitas.acr.org/PPTS/DownloadPreviewDocument?DocId=45&ReleaseId=2",
+        "https://pubs.rsna.org/doi/10.1148/radiology.181.2.1924777",
+        "https://pubmed.ncbi.nlm.nih.gov/20578021/"
+      ]
+    },
+    {
+      "file": "app/msk/schulter/rotatorenmanschette/page.js",
+      "lang": "en",
+      "path": "takehome.items.1.text",
+      "before": "At least two planes with fat-suppressed, fluid-sensitive sequences.",
+      "after": "Combine multiplanar fluid-sensitive images with T1 for muscle quality; check TE and fibre continuity when signal is abnormal.",
+      "reason": "SummaryparityMRIactualcomponents",
+      "sources": [
+        "https://www.essr.org/content-essr/uploads/2016/10/ESSR-MRI-Protocols-Shoulder.pdf",
+        "https://gravitas.acr.org/PPTS/DownloadPreviewDocument?DocId=45&ReleaseId=2",
+        "https://pubs.rsna.org/doi/10.1148/radiology.181.2.1924777",
+        "https://pubmed.ncbi.nlm.nih.gov/20578021/"
+      ]
+    },
+    {
+      "file": "app/msk/schulter/rotatorenmanschette/page.js",
+      "lang": "fa",
+      "path": "takehome.items.1.text",
+      "before": "حداقل دو پلان با سکانس‌های فت‌ساپرس و حساس به مایع.",
+      "after": "تصاویر چندنمایی حساس به مایع را با T1 برای کیفیت عضله ترکیب کنید؛ در سیگنال غیرطبیعی، TE و پیوستگی رشته‌ها را بررسی کنید.",
+      "reason": "SummaryparityMRIactualcomponents",
+      "sources": [
+        "https://www.essr.org/content-essr/uploads/2016/10/ESSR-MRI-Protocols-Shoulder.pdf",
+        "https://gravitas.acr.org/PPTS/DownloadPreviewDocument?DocId=45&ReleaseId=2",
+        "https://pubs.rsna.org/doi/10.1148/radiology.181.2.1924777",
+        "https://pubmed.ncbi.nlm.nih.gov/20578021/"
+      ]
+    },
+    {
+      "file": "app/msk/schulter/rotatorenmanschette/page.js",
+      "lang": "de",
+      "path": "takehome.items.3.text",
+      "before": "Retraktion nach Patte und Muskelatrophie nach Goutallier bestimmen die OP-Planung.",
+      "after": "Retraktion nach Patte, Atrophie anhand von Muskelvolumen/Tangentenzeichen und Fettinfiltration nach Goutallier getrennt berichten; individuelle Planung statt einer automatischen Operationsregel.",
+      "reason": "Summarycorrectfatversusatrophyandcontext",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/8020238/",
+        "https://pubmed.ncbi.nlm.nih.gov/10633896/",
+        "https://pubmed.ncbi.nlm.nih.gov/17418325/",
+        "https://pubmed.ncbi.nlm.nih.gov/9525755/"
+      ]
+    },
+    {
+      "file": "app/msk/schulter/rotatorenmanschette/page.js",
+      "lang": "en",
+      "path": "takehome.items.3.text",
+      "before": "Retraction (Patte) and muscle atrophy (Goutallier) determine surgical planning.",
+      "after": "Report Patte retraction, atrophy by muscle bulk/tangent sign and Goutallier fatty infiltration separately; planning remains individual rather than an automatic surgical rule.",
+      "reason": "Summarycorrectfatversusatrophyandcontext",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/8020238/",
+        "https://pubmed.ncbi.nlm.nih.gov/10633896/",
+        "https://pubmed.ncbi.nlm.nih.gov/17418325/",
+        "https://pubmed.ncbi.nlm.nih.gov/9525755/"
+      ]
+    },
+    {
+      "file": "app/msk/schulter/rotatorenmanschette/page.js",
+      "lang": "fa",
+      "path": "takehome.items.3.text",
+      "before": "رتراکشن (Patte) و آتروفی عضلانی (Goutallier) برنامه‌ریزی جراحی را تعیین می‌کنند.",
+      "after": "رتراکشن Patte، آتروفی بر اساس حجم عضله و علامت تانژانت و نفوذ چربی Goutallier را جداگانه گزارش کنید؛ برنامه‌ریزی فردی است، نه قانون خودکار جراحی.",
+      "reason": "Summarycorrectfatversusatrophyandcontext",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/8020238/",
+        "https://pubmed.ncbi.nlm.nih.gov/10633896/",
+        "https://pubmed.ncbi.nlm.nih.gov/17418325/",
+        "https://pubmed.ncbi.nlm.nih.gov/9525755/"
+      ]
+    },
+    {
+      "file": "app/msk/schulter/rotatorenmanschette/page.js",
+      "lang": "de",
+      "path": "full.lightBulbTitle",
+      "before": "Klassifikation nach Patte",
+      "after": "Patte-Retraktionsgrad",
+      "reason": "Name retractioncomponent ratherthanclaimalloriginalPatteclassificationisoneparameter",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/2323151/"
+      ]
+    },
+    {
+      "file": "app/msk/schulter/rotatorenmanschette/page.js",
+      "lang": "en",
+      "path": "full.lightBulbTitle",
+      "before": "Patte classification",
+      "after": "Patte retraction grade",
+      "reason": "Name retractioncomponent ratherthanclaimalloriginalPatteclassificationisoneparameter",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/2323151/"
+      ]
+    },
+    {
+      "file": "app/msk/schulter/rotatorenmanschette/page.js",
+      "lang": "fa",
+      "path": "full.lightBulbTitle",
+      "before": "طبقه‌بندی Patte",
+      "after": "درجهٔ رتراکشن Patte",
+      "reason": "Name retractioncomponent ratherthanclaimalloriginalPatteclassificationisoneparameter",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/2323151/"
+      ]
+    }
+  ],
+  "counts": {
+    "localeFields": 90,
+    "triads": 30
+  },
+  "limits": "Existingtext/tablefields only, sectionIDs/layout/figures unchanged; primarysourceread boundstoassertions, no fullmediaapproval."
+}

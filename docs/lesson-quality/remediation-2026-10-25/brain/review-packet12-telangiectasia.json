@@ -1,0 +1,90 @@
+{
+  "date": "2026-10-25",
+  "author": "/root/brain_remediation",
+  "reviewer": "/root/design_inventory",
+  "status": "ACCEPT_BOUNDED_FULL_ORIGINAL_ASSESSMENT_POOL_AFTER_RETEST",
+  "scope": {
+    "route": "/gehirn/vaskulaer/kapillaere-teleangiektasie",
+    "questionTriadsRead": 12,
+    "localizedQuestionsRead": 36,
+    "cardTriadsRead": 15,
+    "localizedCardsRead": 45,
+    "lesson": "Narrow active prose/sequence-table/DVA-DWI-management/caption language parity read DEENFA; scan truth and PDFcoverage not accepted."
+  },
+  "actualHash": "827accb652d871df462d1d4a3e1969cce1121f0a441321c80b27baabfc966c0c",
+  "findings": [
+    {
+      "id": "TEL12-LNG-001",
+      "severity": "minor",
+      "key": "question11 DE stem",
+      "issue": "DE missing sequences differed from EN/FA available but not reviewed sequences.",
+      "status": "CLOSED_ACTUAL_SOURCE_RETEST",
+      "retest": "DE now explicitly not yet evaluated; all3 next-step tasks align."
+    },
+    {
+      "id": "TEL12-EDU-002",
+      "severity": "minor",
+      "key": "question11 optionD",
+      "issue": "Option declared its own faulty reasoning by omitting other sequences, cueing rejection.",
+      "status": "CLOSED_ACTUAL_SOURCE_RETEST",
+      "retest": "All3 D options now neutral short-interval postcontrastT1 followup; specific feedback explains why available baseline review comes first."
+    },
+    {
+      "id": "TEL12-SRC-003",
+      "severity": "minor",
+      "key": "card05/card11 and adjacent lesson management/takehome/diagnosis",
+      "issue": "Formal-sounding diagnostic triad omitted fuller native-morphology/context qualification of the actual original criteria.",
+      "status": "CLOSED_ACTUAL_SOURCE_AND_PARITY_RETEST",
+      "retest": "Corefeature combination/overallpattern wording retained useful findings without claiming a validated three-sign test; native morphology/context explicit in card11 and management, matching takehome/case wording."
+    },
+    {
+      "id": "TEL12-LNG-004",
+      "severity": "minor",
+      "key": "lesson.bildgebung.key.fa",
+      "issue": "Duplicated postcontrast phrase after enhancement wording.",
+      "status": "CLOSED_ACTUAL_SOURCE_RETEST",
+      "retest": "Actual FA now one postinjection phrase, meaning matches EN/DE."
+    }
+  ],
+  "primaryEvidence": [
+    {
+      "url": "https://access.archive-ouverte.unige.ch/access/metadata/128f90a4-a512-4e11-a6cf-e949b52a0062/download",
+      "read": "Actual original El-Koussy2012 published PDF full body read: methods/inclusion criteria,33lesion results, DWI/ADC technical limits,drainage veins,selected followup,discussion,limitations and conclusion. No lesion prevalence/accuracy extrapolation; no histology in27patients."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/9393538/",
+      "read": "Complete original Lee1997 abstract read:18adultMRIcases and separate3postmortemspecimens; GREsusceptibility/nohemosiderin and typical nonexpansilepattern. No same-cohort histological confirmation assumed."
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12680281/",
+      "read": "Current2025 CMconsensus actual diagnostic MRIsection independently read in prior DVA review and reused: reticular bloodproductcore/rim, associatedDVA, acutehaematoma mayobscure lesion. No new surgery algorithm accepted."
+    }
+  ],
+  "coverage": {
+    "observableGoals": 4,
+    "all12OriginalQuestionIdsMap": true,
+    "all15OriginalCardIdsMap": true,
+    "interpretation": "Foundation/histology/location retained alongside sequence pattern, susceptibility mechanism versus bloodproducts, DWI limits, suspected tumour workup, stable incidental reporting and clinical correlation. No arbitrary quantity quota."
+  },
+  "technical": {
+    "actualModuleBundle": true,
+    "allKeysAndIdsStable": true,
+    "allThreeWrongFeedbackFieldsPresent": true,
+    "allLocalizedCardFieldsPresent": true
+  },
+  "gates": {
+    "SRC": "PASS_BOUNDED_NAMED_ASSESSMENT_CLAIMS",
+    "EDU": "PASS_BOUNDED_ORIGINAL_POOL",
+    "LNG": "PASS_COMPARATIVE_POOL_AND_NARROW_LESSON_MIRRORS",
+    "ASM": "PASS_ACTUAL_STRUCTURE_AND_GOAL_COVERAGE",
+    "VIS": "NOT_REVIEWED",
+    "UX": "NOT_REVIEWED",
+    "REV": "INDEPENDENT_READ_ONLY"
+  },
+  "limits": [
+    "No complete sourcePDF33–34 or retainedRadiopaedia58408/9732 diagnostic image/scan-plane/DWI-ADC claim verification or media rights review.",
+    "No independent browser/RTL/theme/mobileinteraction acceptance in this packet; author SSR3/3 is separate evidence.",
+    "El-Koussy diagnostic cohort selected by characteristic MRIcriteria and lacked histology; no universal sensitivity/specificity or zero lifetime risk claim inferred.",
+    "No wholelesson scientific release or physician signoff; acceptance pertains bounded original assessments and named parity/source checks."
+  ]
+}

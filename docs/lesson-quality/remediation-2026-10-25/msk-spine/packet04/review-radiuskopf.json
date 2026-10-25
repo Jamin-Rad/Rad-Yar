@@ -1,0 +1,138 @@
+{
+  "date": "2026-10-25",
+  "reviewer": "/root/brain_remediation",
+  "author": "/root/remove_lesson_notice",
+  "status": "ACCEPT_BOUNDED_FULL_ORIGINAL_ASSESSMENT_POOL_AFTER_RETEST",
+  "scope": {
+    "route": "/msk/trauma/radiuskoepfchenfraktur",
+    "questionTriadsActuallyRead": 12,
+    "localizedQuestionsActuallyRead": 36,
+    "cardTriadsActuallyRead": 8,
+    "languages": [
+      "de",
+      "en",
+      "fa"
+    ],
+    "actualProducer": "data/radiuskopf.js",
+    "exactRetest": "Independent read-only DataURL import:44/44 actual producer objects deepEqual radiuskopf-draft-changes.json after-values before repairs. After repair:44/44 updatedproducer objects,7languagefields and14lessontriads independentlyexact.",
+    "lessonScope": "Named current definition/hero/Mason teaching and take-home text inspected for classification parity; broader retained lesson and all case media not reviewed.",
+    "routeEvidence": "Resolved from actual lesson-coverage inventory."
+  },
+  "findings": [
+    {
+      "id": "RK04-LNG-001",
+      "severity": "moderate",
+      "anchor": "rk-essex-1 explanation last clause EN/FA vs DE",
+      "observed": "DE says no blanket resection rule, whereas EN/FA specifically deny a blanket prohibition of resection. In the confirmed longitudinal-instability context the unnecessary extra negation is both non-equivalent and potentially confusing after correctly teaching radial-length preservation.",
+      "required": "Remove this final resection-negation clause uniformly, retaining the existing individualized fixation/replacement and essential radial-length preservation/restoration statements.",
+      "status": "CLOSED_ACTUAL_AFTER_VALUE_RETEST",
+      "retest": "All3actual Essex explanations match repairmanifest; ambiguous final resection clause removed, individualized stabilization/radial length retained."
+    },
+    {
+      "id": "RK04-LNG-002",
+      "severity": "minor",
+      "anchor": "rk-mechanismus-1 FA options",
+      "observed": "Mixed RTL force-path arrows such as رادیوس ← کاپیتولوم create avoidable direction ambiguity. This is a clarity finding, not a claimed browser-proven reversal.",
+      "required": "Spell the four FA paths out as از ... به ... with existing keyB unchanged.",
+      "status": "CLOSED_ACTUAL_AFTER_VALUE_RETEST",
+      "retest": "All4actual FAforcepaths read as از...به..., preserving keyB without direction arrow."
+    },
+    {
+      "id": "RK04-PARITY-003",
+      "severity": "moderate",
+      "anchor": "RADIUSKOPF_LESSON Mason rows and take-home thresholds/fragmentation versus revised original pool",
+      "observed": "The pool now explicitly teaches a descriptive partial-head/whole-head distinction and Johnston extension; retained lesson text still foregrounds PDF numerical thresholds and III multi-fragmentation. The PDF itself does contain the old numerical summary; the issue is the still-pending explanatory bridge between versions, not a false statement that the PDF says something else.",
+      "required": "Complete the author-planned bounded teaching-table/summary alignment and source/version explanation, then request actual after-value retest. Do not erase PDF provenance or turn morphology into automatic treatment.",
+      "status": "CLOSED_ACTUAL_AFTER_VALUE_RETEST",
+      "retest": "All14actual lesson-field triads read DE/EN/FA and deepEqual repairmanifest. Source PDF15 summary retained once with numerical gap/caveat; descriptive table and take-home now align current12question/8cardpool."
+    }
+  ],
+  "scienceJudgment": "No wrong key, DE/EN/FA polarity reversal beyond the stated Essex clause, or unsafe automatic surgery recommendation found in the reviewed pool. Fragment count alone is correctly separated from partial/whole-head morphology and reconstructibility. Foundational classification/anatomy items remain, with meaningful fat-pad limits, pediatric alignment, PIN and mechanical-block scenarios. The candidate count is not treated as psychometric validation.",
+  "primarySourcesActuallyRead": [
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/20566295/",
+      "scope": "Complete original46-adult quantitative3DCT abstract:partial-head fractures often multifragmentary, whole-head can have few fragments; supports morphology rather than universal count threshold."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/15232392/",
+      "scope": "Complete original20-adult MRI study abstract:effusion/occult fractures, other sites and no fixed localization; no perfect predictive claim authored."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/21841436/",
+      "scope": "Complete original normal-child RCL methods/results/conclusion:neck/lateral reference,age/rotation and noncentral/nonintersection limits."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/14668511/",
+      "scope": "Complete original26-cadaver axial loading abstract:rotation modifies injury patterns/contact, not a universal clinical pronation requirement."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/28050547/",
+      "scope": "Complete original case abstract with finger/thumb extension weakness and preserved radially deviated wrist extension; source case is not a new image question."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/20079998/",
+      "scope": "Complete original PIN radial-head-fracture case abstract and motor screening implication."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/33753275/",
+      "scope": "Complete randomized45-adult isolatedMasonII abstract; limited to explaining that the classification does not automatically mandate surgery, not extrapolated to persistent mechanical block."
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12487719/",
+      "scope": "Fresh original2025 mechanical-block study abstract/methods:11ARnF patients compared withARIF; under listed options preservation/fixation is reasonable, while no claim that all operations must be open screw fixation is made."
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5895887/",
+      "scope": "Fresh original8-cadaver RAIL study abstract/introduction:radial-head/IOM/DRUJ and proximal migration; not a universal patient-treatment trial."
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4048392/",
+      "scope": "Fresh original selected12-case/11-followed terrible-triad study inclusion methods and imaging:concentric/stable selected injuries can avoid surgery; no general nonoperative pathway authored."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/22576643/",
+      "scope": "Complete original180-patient randomized simple-fracture mobilization abstract; early pain-adapted function and individualization, no fixed1–2week wait."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/29664851/",
+      "scope": "Complete original51-patient randomized formalPT versushomeexercise abstract; isolatedminimaldisplacement scope retained."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/24978320/",
+      "scope": "Complete original112-child Monteggia series abstract; confirms ulnar-pattern/radiocapitellar instability and importance of full injury assessment without copying treatment thresholds."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/730330/",
+      "scope": "Complete original89-elbow displacedfatpad study abstract. DOI10.1016/S0020-1383(79)80071-6 is correct despite1978/1979 index discrepancy; no unsupported perfecteffusion-fracture inference."
+    },
+    {
+      "url": "https://acsearch.acr.org/list/TopicNarrativePdf?topicId=335",
+      "scope": "Actual official2024 Variant2 table and indexedNarrative:repeat radiography10–14days ornoncontrastCT usuallyappropriate foradultsuspectedfracture withnormal/indeterminatefilms."
+    }
+  ],
+  "pdfEvidence": {
+    "path": "tmp/msk-inventory/radiuskopf-p15-remediation.png",
+    "read": "Actual rendered physicalMSK.pdf15/printed14 viewed:old<2/>2mm OR>30% summary, IIIcomminution, IVelbowdislocation and illustrative panels. No diagnostic image interpretation or fullPDF acceptance."
+  },
+  "gates": {
+    "SRC": "PASS_BOUNDED_ASSESSMENT_CLAIMS",
+    "ASM": "PASS_KEYS_AND_44_PRODUCER_IDENTITIES",
+    "LNG": "PASS_AFTER_RETEST",
+    "EDU": "PASS_BOUNDED_POOL_AND_NAMED_LESSON_PARITY",
+    "VIS": "NOT_REVIEWED_RETAINED_CASE_MEDIA",
+    "UX": "NOT_REVIEWED_BROWSER"
+  },
+  "limits": [
+    "No app/data/source file edits by independent reviewer.",
+    "No wholelesson,PDF,imageprovenance,build/browser,release orDr.Ziascientificapproval inferred.",
+    "Repair retest must read actual producer and update this report, not rely on author acknowledgement."
+  ],
+  "actualSourceHash": "9abdbe4287dea74d822274ac88d47be604e8c6e11c8b42a240f7072cd266692b",
+  "retest": {
+    "exactActualPoolObjects": 44,
+    "languageFieldRepairs": 7,
+    "lessonFieldTriadsReadAndExact": 14,
+    "keys": "Preserved current before/after keys; no new key or translation defect found in this bounded retest.",
+    "lessonParity": "Descriptive partial/whole-head and Johnston IV consistently taught; numeric source summary is explicitly nonuniversal and not a treatment directive."
+  }
+}

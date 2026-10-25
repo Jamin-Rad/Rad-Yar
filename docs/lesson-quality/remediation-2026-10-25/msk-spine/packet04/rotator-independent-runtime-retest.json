@@ -1,0 +1,10 @@
+{
+  "date": "2026-10-25",
+  "reviewer": "/root/brain_remediation",
+  "test": "Independent fresh esbuild actual canonical questions/cards bundle, assert.deepEqual every proposal after object",
+  "passed": 57,
+  "expected": 57,
+  "questionLocaleObjects": 45,
+  "cardTriads": 12,
+  "scope": "Canonical object equality only; no browser or clinical acceptance from schema"
+}

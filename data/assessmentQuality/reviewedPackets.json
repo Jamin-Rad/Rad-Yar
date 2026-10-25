@@ -19,7 +19,12 @@
     "brain/review-packet10-parkinson.json",
     "abdomen-technik/review-packet02.json",
     "abdomen-technik/review-critical-pancreatic-communication.json",
-    "brain/review-packet11-dva.json"
+    "brain/review-packet11-dva.json",
+    "msk-spine/packet04/review-radiuskopf.json",
+    "msk-spine/packet04/review-rotator.json",
+    "brain/review-packet12-telangiectasia.json",
+    "brain/review-packet13-nf1.json",
+    "integration-review-inline-feedback.json"
   ],
   "questionIds": [
     "aq-brain-aq-balkenagenesie-de-direct-assessment",
@@ -159,7 +164,11 @@
     "aq-msk-infarct-report",
     "aq-brain-aq-parkinson-technical-confidence",
     "aq-brain-aq-parkinson-dat-limits",
-    "aq-brain-aq-parkinson-fdg-measurement"
+    "aq-brain-aq-parkinson-fdg-measurement",
+    "aq-brain-nf1-fasi",
+    "aq-brain-nf1-pathway",
+    "aq-brain-nf1-systemic",
+    "aq-brain-nf1-enhancing-fasi"
   ],
   "routes": [
     "/gehirn/anatomie/balkenagenesie",
@@ -208,6 +217,8 @@
     "/abdomen/gi/divertikulitis",
     "/abdomen/gi/duodenaldivertikel",
     "/abdomen/gi/gist",
-    "/gehirn/vaskulaer/dva"
+    "/gehirn/vaskulaer/dva",
+    "/gehirn/vaskulaer/kapillaere-teleangiektasie",
+    "/gehirn/neurofibromatose/nf1"
   ]
 }

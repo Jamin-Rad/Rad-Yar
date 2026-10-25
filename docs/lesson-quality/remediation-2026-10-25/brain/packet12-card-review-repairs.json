@@ -1,0 +1,155 @@
+{
+  "date": "2026-10-25",
+  "scope": "Independent source precision finding: no named validated triad",
+  "changes": [
+    {
+      "id": "trias",
+      "before": {
+        "id": "trias",
+        "category": {
+          "de": "Diagnostik",
+          "en": "Diagnosis",
+          "fa": "تشخیص"
+        },
+        "front": {
+          "de": "Aus welchen drei MRT-Merkmalen besteht die diagnostische Trias der kapillären Teleangiektasie?",
+          "en": "Which three MRI features form the diagnostic triad of capillary telangiectasia?",
+          "fa": "تریاد تشخیصی MRI تلانژکتازی مویرگی از کدام سه ویژگی تشکیل می‌شود؟"
+        },
+        "answer": {
+          "de": "Brush-like Enhancement, SWI-Abfall, kein Masseneffekt.",
+          "en": "Brush-like enhancement, SWI signal loss, no mass effect.",
+          "fa": "افزایش سیگنال برس‌مانند پس از تزریق، افت SWI و نبود اثر فشاری."
+        },
+        "explanation": {
+          "de": "Zusammen sprechen zarte Kontrastierung, korrespondierende Suszeptibilität und fehlendes Ödem beziehungsweise fehlende Expansion stark für die benigne Gefäßmalformation. Die Kombination hilft, eine unnötige Tumorabklärung oder Biopsie zu vermeiden.",
+          "en": "Faint enhancement, corresponding susceptibility and absence of oedema or expansion strongly support this benign vascular malformation. The combination helps avoid unnecessary tumour work-up or biopsy.",
+          "fa": "ترکیب افزایش سیگنال ظریف پس از تزریق، اثر حساسیت مغناطیسی متناظر و نبود ادم یا اتساع به‌شدت به نفع این مالفورماسیون خوش‌خیم است. این الگو از بررسی توموری یا بیوپسی غیرضروری جلوگیری می‌کند."
+        },
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8050458/"
+      },
+      "after": {
+        "id": "trias",
+        "category": {
+          "de": "Diagnostik",
+          "en": "Diagnosis",
+          "fa": "تشخیص"
+        },
+        "front": {
+          "de": "Welche MRT-Kernmerkmale stützen eine typische kapilläre Teleangiektasie?",
+          "en": "Which core MRI features support typical capillary telangiectasia?",
+          "fa": "کدام ویژگی‌های اصلی MRI از تلانژکتازی مویرگی تیپیک حمایت می‌کنند؟"
+        },
+        "answer": {
+          "de": "Brush-like Enhancement, SWI-Abfall, kein Masseneffekt.",
+          "en": "Brush-like enhancement, SWI signal loss, no mass effect.",
+          "fa": "افزایش سیگنال برس‌مانند پس از تزریق، افت SWI و نبود اثر فشاری."
+        },
+        "explanation": {
+          "de": "Zusammen sprechen zarte Kontrastierung, korrespondierende Suszeptibilität und fehlendes Ödem beziehungsweise fehlende Expansion stark für die benigne Gefäßmalformation. Die Kombination hilft, eine unnötige Tumorabklärung oder Biopsie zu vermeiden.",
+          "en": "Faint enhancement, corresponding susceptibility and absence of oedema or expansion strongly support this benign vascular malformation. The combination helps avoid unnecessary tumour work-up or biopsy.",
+          "fa": "ترکیب افزایش سیگنال ظریف پس از تزریق، اثر حساسیت مغناطیسی متناظر و نبود ادم یا اتساع به‌شدت به نفع این مالفورماسیون خوش‌خیم است. این الگو از بررسی توموری یا بیوپسی غیرضروری جلوگیری می‌کند."
+        },
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8050458/"
+      }
+    },
+    {
+      "id": "management",
+      "before": {
+        "id": "management",
+        "category": {
+          "de": "Management",
+          "en": "Management",
+          "fa": "مدیریت"
+        },
+        "front": {
+          "de": "Wie wird eine MRT-typische asymptomatische kapilläre Teleangiektasie behandelt?",
+          "en": "How is an MRI-typical asymptomatic capillary telangiectasia managed?",
+          "fa": "تلانژکتازی مویرگی تیپیک MRI و بدون علامت چگونه مدیریت می‌شود؟"
+        },
+        "answer": {
+          "de": "Keine Therapie; meist keine Kontrolle.",
+          "en": "No treatment; usually no follow-up.",
+          "fa": "بدون درمان؛ معمولاً بدون پیگیری."
+        },
+        "explanation": {
+          "de": "Die typische kapilläre Teleangiektasie ist eine benigne Do-not-touch-Läsion. Wenn die vollständige MRT-Trias vorliegt, sind Operation, Embolisation und routinemäßige Verlaufskontrollen in der Regel nicht erforderlich.",
+          "en": "A typical capillary telangiectasia is a benign do-not-touch lesion. When the complete MRI triad is present, surgery, embolisation and routine follow-up are generally unnecessary.",
+          "fa": "تلانژکتازی تیپیک ضایعه‌ای خوش‌خیم و بدون نیاز به دستکاری است. با وجود تریاد کامل MRI، جراحی، آمبولیزاسیون و پیگیری روتین معمولاً لازم نیست."
+        },
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8050458/"
+      },
+      "after": {
+        "id": "management",
+        "category": {
+          "de": "Management",
+          "en": "Management",
+          "fa": "مدیریت"
+        },
+        "front": {
+          "de": "Wie wird eine MRT-typische asymptomatische kapilläre Teleangiektasie behandelt?",
+          "en": "How is an MRI-typical asymptomatic capillary telangiectasia managed?",
+          "fa": "تلانژکتازی مویرگی تیپیک MRI و بدون علامت چگونه مدیریت می‌شود؟"
+        },
+        "answer": {
+          "de": "Keine Therapie; meist keine Kontrolle.",
+          "en": "No treatment; usually no follow-up.",
+          "fa": "بدون درمان؛ معمولاً بدون پیگیری."
+        },
+        "explanation": {
+          "de": "Bei einer asymptomatischen Läsion mit passendem Gesamtmuster aus zarter Kontrastaufnahme, korrespondierendem SWI-Abfall und unauffälliger beziehungsweise nicht expansiver Nativmorphologie sind eine gezielte Behandlung und routinemäßige Bildkontrollen in der Regel nicht erforderlich. Klinischen Kontext und atypische Veränderungen gesondert beurteilen; dies ist kein allein anhand dreier Zeichen validierter Test.",
+          "en": "For an asymptomatic lesion with a matching overall pattern of faint enhancement, corresponding SWI loss and near-normal or nonexpansile precontrast morphology, targeted treatment and routine imaging follow-up are generally unnecessary. Assess clinical context and atypical changes separately; this is not a test validated from three signs alone.",
+          "fa": "در ضایعهٔ بدون علامت با الگوی کلیِ سازگار شامل جذب ظریف مادهٔ حاجب، افت متناظر SWI و مورفولوژی پیش از تزریق تقریباً طبیعی یا بدون اثر فضاگیر، درمان اختصاصی و پیگیری روتین تصویری معمولاً لازم نیست. زمینهٔ بالینی و تغییرات غیرتیپیک جداگانه ارزیابی شوند؛ این یک آزمون اعتبارسنجی‌شده صرفاً بر پایهٔ سه نشانه نیست."
+        },
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8050458/"
+      }
+    }
+  ],
+  "keysAndIDs": "unchanged",
+  "additionalLexicalRepair": {
+    "key": "TELEANGIEKTASIE_LESSON.bildgebung.key.fa",
+    "before": "پس از تزریق پس از کنتراست",
+    "after": "پس از تزریق"
+  },
+  "adjacentParity": [
+    {
+      "key": "management.items[1].text",
+      "before": {
+        "de": "Bei vollständiger typischer MRT-Trias ist meist keine Verlaufskontrolle nötig.",
+        "en": "With the complete typical MRI triad, routine follow-up is usually unnecessary.",
+        "fa": "با تریاد کامل تیپیک MRI، معمولاً پیگیری روتین لازم نیست."
+      },
+      "after": {
+        "de": "Bei asymptomatischer Läsion mit typischem Gesamtmuster einschließlich passender Nativmorphologie ist meist keine routinemäßige Bildkontrolle nötig; klinischen Kontext und atypische Veränderungen gesondert bewerten.",
+        "en": "An asymptomatic lesion with a typical overall pattern, including compatible precontrast morphology, usually needs no routine imaging follow-up; assess clinical context and atypical changes separately.",
+        "fa": "ضایعهٔ بدون علامت با الگوی کلی تیپیک، شامل مورفولوژی سازگار پیش از تزریق، معمولاً پیگیری روتین تصویری لازم ندارد؛ زمینهٔ بالینی و تغییرات غیرتیپیک جداگانه ارزیابی شوند."
+      }
+    },
+    {
+      "key": "takehome.items[1].title",
+      "before": {
+        "de": "Trias",
+        "en": "Triad",
+        "fa": "تریاد"
+      },
+      "after": {
+        "de": "MRT-Muster",
+        "en": "MRI pattern",
+        "fa": "الگوی MRI"
+      }
+    },
+    {
+      "key": "fall.diagnosis",
+      "before": {
+        "de": "Bei typischer Trias vereinbar mit benigner kapillärer Teleangiektasie.",
+        "en": "With the typical triad, compatible with a benign capillary telangiectasia.",
+        "fa": "با تریاد تیپیک، سازگار با تلانژکتازی مویرگی خوش‌خیم."
+      },
+      "after": {
+        "de": "Bei typischem MRT-Gesamtmuster vereinbar mit benigner kapillärer Teleangiektasie.",
+        "en": "With a typical overall MRI pattern, compatible with benign capillary telangiectasia.",
+        "fa": "با الگوی کلی تیپیک MRI، سازگار با تلانژکتازی مویرگی خوش‌خیم."
+      }
+    }
+  ]
+}

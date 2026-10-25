@@ -434,6 +434,216 @@ block('aq-parkinson','/gehirn/neurodegeneration/parkinson',L('Parkinson-Bildgebu
   }
 ])
 
+block('aq-demenzmuster','/gehirn/neurodegeneration/demenzmuster',L('Demenzmuster im MRT','Dementia patterns on MRI','الگوهای دمانس در MRI'),'https://pmc.ncbi.nlm.nih.gov/articles/PMC8305846/',[
+  {
+    "key": "mta-components",
+    "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8305846/",
+    "correct": "A",
+    "goal": {
+      "de": "Den MTA-Score mit seinen anatomischen Komponenten und diagnostischen Grenzen anwenden.",
+      "en": "Apply the MTA score using its anatomical components and diagnostic limits.",
+      "fa": "امتیاز MTA را با اجزای آناتومیک و محدودیت‌های تشخیصی آن به کار ببرید."
+    },
+    "question": {
+      "de": "Bei einer Gedächtnisstörung wird die mediale Temporallappenatrophie auf koronaren T1-Aufnahmen visuell bewertet. Welche Strukturgruppe geht unmittelbar in den MTA-Score ein?",
+      "en": "In a patient with memory impairment, medial temporal atrophy is rated visually on coronal T1 images. Which group of structures directly contributes to the MTA score?",
+      "fa": "در بیمار دچار اختلال حافظه، آتروفی تمپورال داخلی در تصاویر کرونال T1 به‌صورت دیداری امتیازدهی می‌شود. کدام گروه ساختاری مستقیماً در امتیاز MTA نقش دارد؟"
+    },
+    "options": [
+      {
+        "de": "Hippocampushöhe sowie Weite von Fissura choroidea und Temporalhorn",
+        "en": "Hippocampal height and widths of the choroid fissure and temporal horn",
+        "fa": "ارتفاع هیپوکامپ و پهنای شکاف کوروئید و شاخ تمپورال"
+      },
+      {
+        "de": "Frontale Ventrikelweite, Balkenwinkel und Weite der Konvexitätssulci",
+        "en": "Frontal ventricular width, callosal angle and convexity sulcal width",
+        "fa": "پهنای بطن‌های پیشانی، زاویهٔ جسم پینه‌ای و پهنای شیارهای تحدب"
+      },
+      {
+        "de": "Mittelhirnfläche, Ponsfläche und Breite des oberen Kleinhirnstiels",
+        "en": "Midbrain area, pontine area and superior cerebellar peduncle width",
+        "fa": "مساحت مغز میانی، مساحت پونز و پهنای پایهٔ فوقانی مخچه"
+      },
+      {
+        "de": "Weite der frontalen und anteriortemporalen Sulci sowie Insulavolumen",
+        "en": "Frontal and anterior temporal sulcal widths and insular volume",
+        "fa": "پهنای شیارهای فرونتال و تمپورال قدامی و حجم اینسولا"
+      }
+    ],
+    "feedback": {
+      "de": "MTA erfasst Hippocampusformation und angrenzende Liquorräume: mit zunehmender Atrophie erweitern sich Fissura choroidea und Temporalhorn, die Hippocampushöhe nimmt ab. Beide Seiten beurteilen. Alter und verwendete Referenz beeinflussen die Einordnung; der Score allein beweist keine Alzheimer-Erkrankung.",
+      "en": "MTA assesses the hippocampal formation and adjacent CSF spaces: with increasing atrophy, the choroid fissure and temporal horn widen and hippocampal height decreases. Assess both sides. Age and the chosen reference affect interpretation; the score alone does not establish Alzheimer disease.",
+      "fa": "MTA ساختار هیپوکامپ و فضاهای مجاور مایع مغزی‌نخاعی را ارزیابی می‌کند: با افزایش آتروفی، شکاف کوروئید و شاخ تمپورال گشاد و ارتفاع هیپوکامپ کم می‌شود. دو طرف را بسنجید. سن و مرجع به‌کاررفته بر تفسیر اثر دارند؛ امتیاز به‌تنهایی آلزایمر را ثابت نمی‌کند."
+    },
+    "wrong": [
+      {
+        "de": "Diese Größen dienen der Ventrikel-/Liquorraumbeurteilung; sie ersetzen die hippokampalen MTA-Komponenten nicht.",
+        "en": "These parameters assess ventricles and CSF spaces; they do not replace the hippocampal MTA components.",
+        "fa": "این پارامترها برای ارزیابی بطن‌ها و فضاهای مایع‌اند و جای اجزای هیپوکامپی MTA را نمی‌گیرند."
+      },
+      {
+        "de": "Diese Strukturen gehören zu einer infratentoriellen Musterbeurteilung, nicht zur visuellen MTA-Skala.",
+        "en": "These structures belong to infratentorial pattern assessment rather than the visual MTA scale.",
+        "fa": "این ساختارها مربوط به ارزیابی الگوهای زیرچادرینه‌ای‌اند، نه مقیاس دیداری MTA."
+      },
+      {
+        "de": "Diese Regionen können für andere Atrophiemuster relevant sein; die MTA-Skala richtet sich auf Hippocampus und angrenzende Liquorräume.",
+        "en": "These regions may matter in other atrophy patterns; MTA specifically rates the hippocampus and adjacent CSF spaces.",
+        "fa": "این نواحی ممکن است در الگوهای دیگر آتروفی مهم باشند؛ MTA مشخصاً هیپوکامپ و فضاهای مایع مجاور را می‌سنجد."
+      }
+    ],
+    "front": {
+      "de": "Welche drei anatomischen Komponenten beurteilt der visuelle MTA-Score, und was beweist er nicht?",
+      "en": "Which three anatomical components does the visual MTA score assess, and what does it not establish?",
+      "fa": "امتیاز دیداری MTA کدام سه جزء آناتومیک را می‌سنجد و چه چیزی را ثابت نمی‌کند؟"
+    },
+    "answer": {
+      "de": "Hippocampushöhe, Fissura-choroidea-Weite und Temporalhornweite auf koronaren T1-Aufnahmen; allein kein Alzheimer-Nachweis, alters- und referenzbezogen bewerten.",
+      "en": "Hippocampal height, choroid fissure width and temporal horn width on coronal T1 images; not proof of Alzheimer disease alone, interpreted with age and reference.",
+      "fa": "ارتفاع هیپوکامپ، پهنای شکاف کوروئید و شاخ تمپورال در T1 کرونال؛ به‌تنهایی اثبات آلزایمر نیست و با سن و مرجع تفسیر می‌شود."
+    }
+  },
+  {
+    "key": "dlb-biomarker",
+    "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5496518/",
+    "correct": "C",
+    "goal": {
+      "de": "Strukturelle Hinweise bei DLB von einem indikativen nuklearmedizinischen Biomarker unterscheiden.",
+      "en": "Distinguish structural clues in DLB from an indicative nuclear-medicine biomarker.",
+      "fa": "سرنخ‌های ساختاری DLB را از نشانگر زیستی شاخص در پزشکی هسته‌ای متمایز کنید."
+    },
+    "question": {
+      "de": "Bei klinischem Verdacht auf Lewy-Körper-Demenz ist der mediale Temporallappen im MRT relativ erhalten. Welcher zusätzliche Bildbefund zählt nach dem DLB-Konsensus 2017 als indikativer Biomarker?",
+      "en": "With clinical concern for dementia with Lewy bodies, MRI shows relative medial temporal preservation. Which additional imaging finding is an indicative biomarker in the 2017 DLB consensus?",
+      "fa": "در شک بالینی به دمانس با اجسام لویی، تمپورال داخلی در MRI نسبتاً حفظ شده است. طبق اجماع DLB سال ۲۰۱۷، کدام یافتهٔ تصویری اضافی در گروه نشانگرهای زیستی شاخص قرار می‌گیرد؟"
+    },
+    "options": [
+      {
+        "de": "Okzipital betonter Minderstoffwechsel im FDG-PET",
+        "en": "Occipital-predominant hypometabolism on FDG PET",
+        "fa": "کاهش متابولیسم با غلبهٔ اکسیپیتال در FDG-PET"
+      },
+      {
+        "de": "Relative Erhaltung des Hippocampusvolumens im MRT",
+        "en": "Relative preservation of hippocampal volume on MRI",
+        "fa": "حفظ نسبی حجم هیپوکامپ در MRI"
+      },
+      {
+        "de": "Verminderte striatale Dopamintransporteraufnahme in SPECT/PET",
+        "en": "Reduced striatal dopamine-transporter uptake on SPECT/PET",
+        "fa": "کاهش برداشت ناقل دوپامین استریاتال در SPECT/PET"
+      },
+      {
+        "de": "Diffuse Minderperfusion mit okzipitaler Betonung in der SPECT",
+        "en": "Diffuse hypoperfusion with occipital predominance on SPECT",
+        "fa": "کاهش منتشر پرفیوژن با غلبهٔ اکسیپیتال در SPECT"
+      }
+    ],
+    "feedback": {
+      "de": "Verminderte striatale DAT-Aufnahme gehört zu den indikativen Biomarkern; relative MTL-Erhaltung und das genannte Perfusions-/Stoffwechselmuster sind unterstützende Hinweise. Auch DAT-Bildgebung wird mit Klinik und Differenzialdiagnosen interpretiert; sie beweist DLB nicht allein und trennt nicht jede degenerative Parkinson-Erkrankung.",
+      "en": "Reduced striatal DAT uptake is an indicative biomarker; relative MTL preservation and the stated perfusion/metabolic patterns are supportive clues. DAT imaging still requires clinical and differential-diagnostic correlation; it does not establish DLB alone or distinguish every degenerative parkinsonian disorder.",
+      "fa": "کاهش برداشت استریاتال DAT در گروه نشانگرهای شاخص است؛ حفظ نسبی تمپورال داخلی و الگوهای پرفیوژن/متابولیسم ذکرشده یافته‌های حمایتی‌اند. تصویربرداری DAT نیز با بالین و افتراق‌ها تفسیر می‌شود؛ به‌تنهایی DLB را ثابت نمی‌کند و همهٔ اختلالات پارکینسونی دژنراتیو را از هم جدا نمی‌کند."
+    },
+    "wrong": [
+      {
+        "de": "Okzipital betonter Minderstoffwechsel ist ein unterstützender Biomarker, nicht die hier gesuchte indikative DAT-Kategorie.",
+        "en": "Occipital-predominant hypometabolism is supportive, rather than the indicative DAT category asked for here.",
+        "fa": "کاهش متابولیسم با غلبهٔ اکسیپیتال یافته‌ای حمایتی است، نه گروه شاخص مربوط به DAT که اینجا پرسیده شده است."
+      },
+      {
+        "de": "Relative MTL-Erhaltung ist ein struktureller unterstützender Hinweis; sie ersetzt den indikativen DAT-Biomarker nicht.",
+        "en": "Relative MTL preservation is a structural supportive clue; it does not replace the indicative DAT biomarker.",
+        "fa": "حفظ نسبی تمپورال داخلی سرنخ ساختاری حمایتی است و جای نشانگر شاخص مربوط به DAT را نمی‌گیرد."
+      },
+      {
+        "de": "Die Perfusions-/Stoffwechselkategorie ist unterstützend und weniger spezifisch; gefragt ist die indikative striatale DAT-Veränderung.",
+        "en": "The perfusion/metabolism category is supportive and less specific; the question asks for the indicative striatal DAT finding.",
+        "fa": "گروه پرفیوژن/متابولیسم حمایتی و کم‌اختصاص‌تر است؛ سؤال یافتهٔ استریاتال DAT در گروه شاخص را می‌خواهد."
+      }
+    ],
+    "front": {
+      "de": "Wie unterscheiden sich relative MTL-Erhaltung und verminderte DAT-Aufnahme im DLB-Konsensus 2017?",
+      "en": "How do relative MTL preservation and reduced DAT uptake differ in the 2017 DLB consensus?",
+      "fa": "حفظ نسبی تمپورال داخلی و کاهش برداشت DAT در اجماع DLB سال ۲۰۱۷ چه تفاوتی دارند؟"
+    },
+    "answer": {
+      "de": "MTL-Erhaltung: unterstützender struktureller Hinweis. Reduzierte striatale DAT-Aufnahme: indikativer Biomarker; beide benötigen klinische Einordnung, keine alleinige Diagnose.",
+      "en": "MTL preservation: supportive structural clue. Reduced striatal DAT uptake: indicative biomarker; both require clinical interpretation and neither establishes the diagnosis alone.",
+      "fa": "حفظ تمپورال داخلی: سرنخ ساختاری حمایتی. کاهش برداشت استریاتال DAT: نشانگر شاخص؛ هر دو به تفسیر بالینی نیاز دارند و هیچ‌یک به‌تنهایی تشخیص را تعیین نمی‌کند."
+    }
+  },
+  {
+    "key": "ftd-pattern",
+    "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3170532/",
+    "correct": "B",
+    "goal": {
+      "de": "Ein frontotemporales Atrophiemuster im passenden klinischen Kontext erkennen und die Diagnosegrenze benennen.",
+      "en": "Recognise frontotemporal atrophy in its clinical context and state its diagnostic limit.",
+      "fa": "الگوی آتروفی فرونتوتمپورال را در زمینهٔ بالینی مناسب بشناسید و محدودیت تشخیصی آن را بیان کنید."
+    },
+    "question": {
+      "de": "Eine Person entwickelt fortschreitend Enthemmung und verändertes Sozialverhalten. Welche MRT-Verteilung würde eine klinisch vermutete frontotemporale Degeneration am ehesten unterstützen?",
+      "en": "A person develops progressive disinhibition and altered social behaviour. Which MRI distribution would most strongly support the clinically suspected frontotemporal degeneration?",
+      "fa": "فردی به‌تدریج دچار مهارگسیختگی و تغییر رفتار اجتماعی می‌شود. کدام توزیع MRI بیشتر از دژنراسیون فرونتوتمپورالِ مطرح‌شده در بالین حمایت می‌کند؟"
+    },
+    "options": [
+      {
+        "de": "Vorwiegend beidseitige mesiotemporale Atrophie",
+        "en": "Predominantly bilateral medial temporal atrophy",
+        "fa": "آتروفی عمدتاً دوطرفهٔ تمپورال داخلی"
+      },
+      {
+        "de": "Betonte, oft asymmetrische frontale und/oder anteriortemporale Atrophie",
+        "en": "Prominent, often asymmetric frontal and/or anterior temporal atrophy",
+        "fa": "آتروفی برجسته و اغلب نامتقارن فرونتال و/یا تمپورال قدامی"
+      },
+      {
+        "de": "Vorwiegend parietookzipitale Atrophie bei relativ erhaltenen vorderen Regionen",
+        "en": "Predominantly parieto-occipital atrophy with relatively preserved anterior regions",
+        "fa": "آتروفی عمدتاً پاریتواُکسیپیتال با حفظ نسبی نواحی قدامی"
+      },
+      {
+        "de": "Gleichmäßig verteilte globale Atrophie ohne regionalen Schwerpunkt",
+        "en": "Uniform global atrophy without a regional predominance",
+        "fa": "آتروفی منتشر یکنواخت بدون غلبهٔ ناحیه‌ای"
+      }
+    ],
+    "feedback": {
+      "de": "Frontal und anteriortemporal betonte Atrophie unterstützt das passende klinische Syndrom. Bildgebung allein legt weder die Variante noch eine gesicherte bvFTD fest. Für die wahrscheinliche bvFTD werden passende klinische Kriterien, funktioneller Abbau und unterstützende Bildgebung zusammengeführt; andere Ursachen müssen berücksichtigt werden.",
+      "en": "Frontal and anterior temporal-predominant atrophy supports the matching clinical syndrome. Imaging alone establishes neither the variant nor definite bvFTD. Probable bvFTD integrates compatible clinical criteria, functional decline and supportive imaging, with competing causes considered.",
+      "fa": "آتروفی با غلبهٔ فرونتال و تمپورال قدامی از سندرم بالینی سازگار حمایت می‌کند. تصویربرداری به‌تنهایی نه گونه و نه bvFTD قطعی را تعیین می‌کند. در bvFTD محتمل، معیارهای بالینی سازگار، افت عملکرد و تصویربرداری حمایتی با هم ارزیابی و علل دیگر در نظر گرفته می‌شوند."
+    },
+    "wrong": [
+      {
+        "de": "Mesiotemporale Atrophie ist unter anderem im amnestischen Alzheimer-Spektrum relevant, aber nicht das hier gesuchte frontotemporal betonte Unterstützungsmuster.",
+        "en": "Medial temporal atrophy matters, among other contexts, in the amnestic Alzheimer spectrum, but is not the frontal/anterior temporal support pattern requested here.",
+        "fa": "آتروفی تمپورال داخلی از جمله در طیف آلزایمرِ همراه اختلال حافظه مهم است، ولی الگوی حمایتی فرونتال/تمپورال قدامیِ مورد سؤال نیست."
+      },
+      {
+        "de": "Eine posterior betonte Verteilung verlangt eine andere Muster- und klinische Einordnung; sie ist nicht das typische vordere Unterstützungsmuster dieses Falls.",
+        "en": "A posterior-predominant distribution calls for different pattern and clinical assessment; it is not the typical anterior support pattern in this vignette.",
+        "fa": "توزیع با غلبهٔ خلفی به تفسیر الگویی و بالینی دیگری نیاز دارد و الگوی حمایتی قدامیِ تیپیک این سناریو نیست."
+      },
+      {
+        "de": "Globale Atrophie ohne Schwerpunkt ist unspezifischer; die regionale frontale/anteriortemporale Betonung ist hier der gezieltere Hinweis.",
+        "en": "Global atrophy without a predominance is less specific; frontal/anterior temporal regional emphasis is the more targeted clue here.",
+        "fa": "آتروفی منتشر بدون غلبهٔ ناحیه‌ای کم‌اختصاص‌تر است؛ تأکید فرونتال/تمپورال قدامی اینجا سرنخ هدفمندتری است."
+      }
+    ],
+    "front": {
+      "de": "Welche Atrophieverteilung unterstützt ein frontotemporales Syndrom, und was braucht die wahrscheinliche bvFTD zusätzlich?",
+      "en": "Which atrophy distribution supports a frontotemporal syndrome, and what else is needed for probable bvFTD?",
+      "fa": "کدام توزیع آتروفی از سندرم فرونتوتمپورال حمایت می‌کند و bvFTD محتمل به چه موارد دیگری نیاز دارد؟"
+    },
+    "answer": {
+      "de": "Frontal und/oder anteriortemporal betonte, oft asymmetrische Atrophie; zusätzlich passende klinische Kriterien und funktioneller Abbau. Kein gesicherter Nachweis durch MRT allein.",
+      "en": "Frontal and/or anterior temporal-predominant, often asymmetric atrophy; also compatible clinical criteria and functional decline. MRI alone is not definitive proof.",
+      "fa": "آتروفی برجستهٔ فرونتال و/یا تمپورال قدامی، اغلب نامتقارن؛ همراه معیارهای بالینی سازگار و افت عملکرد. MRI به‌تنهایی اثبات قطعی نیست."
+    }
+  }
+])
+
 export function newQuestions(lang = 'de') {
   const locale = ['de', 'en', 'fa'].includes(lang) ? lang : 'de'
   return blocks.flatMap(b => b.items.map(item => {
@@ -704,6 +914,188 @@ routeCoverage.push({
         "kapillaere-teleangiektasie-11-management",
         "kapillaere-teleangiektasie-12-biopsie",
         "kapillaere-teleangiektasie-14-befund"
+      ]
+    }
+  ]
+})
+
+newCards.push(...[
+  {
+    "id": "aq-brain-nf1-fasi",
+    "topicId": "neurofibromatose-typ1",
+    "category": {
+      "de": "NF1",
+      "en": "NF1",
+      "fa": "NF1"
+    },
+    "front": {
+      "de": "Welche Befunde stützen typische FASI bei NF1, und was beweisen sie nicht?",
+      "en": "Which findings support typical FASI in NF1, and what do they not establish?",
+      "fa": "کدام یافته‌ها از FASI تیپیک در NF1 حمایت می‌کنند و چه چیزی را ثابت نمی‌کنند؟"
+    },
+    "answer": {
+      "de": "T2/FLAIR-helle, meist nicht expansive und nicht anreichernde Herde in typischer Verteilung; kein eigenständiges NF1-Kriterium und kein sicherer Gliomausschluss.",
+      "en": "T2/FLAIR-bright, usually nonexpansile and nonenhancing foci in a typical distribution; not an independent NF1 criterion or a definitive glioma exclusion.",
+      "fa": "کانون‌های روشن T2/FLAIR، معمولاً بدون گسترش یا جذب مادهٔ حاجب در توزیع تیپیک؛ نه معیار مستقل NF1 و نه رد قطعی گلیوم."
+    },
+    "explanation": {
+      "de": "Verteilung, Symmetrie und fehlende Expansion passen zu typischen FASI. Die Einordnung bleibt morphologisch und im Verlauf zu prüfen: Auch Gliome können nicht anreichern, und FASI sind kein NF1-Diagnosekriterium.",
+      "en": "Distribution, symmetry and lack of expansion fit typical FASI. Interpretation still requires morphology and evolution: gliomas may also lack enhancement, and FASI are not an NF1 diagnostic criterion.",
+      "fa": "توزیع، تقارن و نبود گسترش با FASI تیپیک سازگارند. تفسیر همچنان به مورفولوژی و سیر وابسته است؛ گلیوم نیز ممکن است جذب مادهٔ حاجب نداشته باشد و FASI معیار تشخیصی NF1 نیست."
+    },
+    "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8041008/"
+  },
+  {
+    "id": "aq-brain-nf1-pathway",
+    "topicId": "neurofibromatose-typ1",
+    "category": {
+      "de": "NF1",
+      "en": "NF1",
+      "fa": "NF1"
+    },
+    "front": {
+      "de": "Wann ist bei einem Kind mit NF1 eine MRT zur OPG-Abklärung angezeigt?",
+      "en": "When is MRI for OPG evaluation indicated in a child with NF1?",
+      "fa": "در کودک مبتلا به NF1، چه زمانی MRI برای بررسی OPG لازم می‌شود؟"
+    },
+    "answer": {
+      "de": "Bei verdächtigem Augenbefund, etwa neuer Visusminderung; Gehirn/Orbitae und die gesamte Sehbahn erfassen und mit Augen-/NF1-Experten einordnen.",
+      "en": "With suspicious ophthalmological findings such as new visual loss; cover brain/orbits and the full pathway and correlate with ophthalmology/NF1 experts.",
+      "fa": "در یافتهٔ مشکوک چشم‌پزشکی مانند کاهش جدید بینایی؛ مغز/اربیت و تمام مسیر بررسی و با متخصصان چشم و NF1 تفسیر شود."
+    },
+    "explanation": {
+      "de": "Ein verdächtiger Augenbefund rechtfertigt eine MRT von Gehirn und Orbitae. Nerven, Chiasma und Tractus im Verlauf beurteilen; ein symptomatisches OPG gehört zeitnah in ein erfahrenes Team. Bildmorphologie allein bestimmt die Behandlung nicht.",
+      "en": "A suspicious ophthalmological finding warrants brain and orbital MRI. Assess the nerves, chiasm and tracts along their course; symptomatic OPG requires prompt review by an experienced team. Morphology alone does not determine treatment.",
+      "fa": "یافتهٔ مشکوک چشم‌پزشکی MRI مغز و اربیت را توجیه می‌کند. عصب‌ها، کیاسما و تراکت‌ها در امتداد مسیر بررسی شوند؛ OPG علامت‌دار نیازمند ارزیابی به‌موقع تیم باتجربه است. مورفولوژی به‌تنهایی درمان را تعیین نمی‌کند."
+    },
+    "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9845795/"
+  },
+  {
+    "id": "aq-brain-nf1-systemic",
+    "topicId": "neurofibromatose-typ1",
+    "category": {
+      "de": "NF1",
+      "en": "NF1",
+      "fa": "NF1"
+    },
+    "front": {
+      "de": "Welche neuen Zeichen eines plexiformen Neurofibroms lösen eine gezielte Abklärung aus?",
+      "en": "Which new features of plexiform neurofibroma trigger targeted investigation?",
+      "fa": "کدام ویژگی‌های جدید نوروفیبروم پلکس‌فرم بررسی هدفمند را ضروری می‌کنند؟"
+    },
+    "answer": {
+      "de": "Anhaltende neue Schmerzen, rasches Wachstum oder neue neurologische Defizite: regionales MRT und spezialisiertes NF1-/Tumorteam; keine Diagnose aus dem Target-Zeichen allein.",
+      "en": "Persistent new pain, rapid growth or new neurological deficits: regional MRI and specialist NF1/tumour assessment; do not diagnose from the target sign alone.",
+      "fa": "درد جدید و پایدار، رشد سریع یا نقص عصبی جدید: MRI ناحیه‌ای و ارزیابی تخصصی NF1/تومور؛ تشخیص صرفاً بر اساس نشانهٔ هدف تعیین نشود."
+    },
+    "explanation": {
+      "de": "Neue persistierende Schmerzen und beschleunigtes Wachstum sind Warnzeichen für eine atypische oder maligne Veränderung und verlangen gezielte Abklärung. Die Leitlinie beginnt mit regionaler MRT und spezialisiertem Team; weitere metabolische Bildgebung und Gewebegewinnung werden individuell geplant. Ein einzelnes MRT-Zeichen beweist Malignität nicht.",
+      "en": "New persistent pain and accelerated growth are warning signs of atypical or malignant change requiring targeted investigation. The guideline starts with regional MRI and an expert team; further metabolic imaging and tissue sampling are planned individually. No single MRI sign establishes malignancy.",
+      "fa": "درد جدیدِ پایدار و رشد شتاب‌گرفته علائم هشدار تغییر آتیپیک یا بدخیم و نیازمند بررسی هدفمندند. راهنما با MRI ناحیه‌ای و تیم تخصصی شروع می‌کند؛ تصویربرداری متابولیک و نمونه‌برداری بعدی فردی برنامه‌ریزی می‌شوند. هیچ نشانهٔ منفرد MRI بدخیمی را ثابت نمی‌کند."
+    },
+    "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9845795/"
+  },
+  {
+    "id": "aq-brain-nf1-enhancing-fasi",
+    "topicId": "neurofibromatose-typ1",
+    "category": {
+      "de": "NF1",
+      "en": "NF1",
+      "fa": "NF1"
+    },
+    "front": {
+      "de": "Welche Verlaufsänderungen eines möglichen anreichernden FASI sollten eine Tumor-Neubewertung auslösen?",
+      "en": "Which interval changes in possible enhancing FASI should trigger tumour reassessment?",
+      "fa": "کدام تغییرات زمانی در FASI احتمالیِ دارای جذب مادهٔ حاجب باید بازبینی از نظر تومور را مطرح کنند؟"
+    },
+    "answer": {
+      "de": "Neue zystische Anteile oder erneute deutliche Progression nach Rückbildung; seltene anreichernde FASI und niedriggradige Gliome können sich überlappen.",
+      "en": "New cystic components or renewed clear progression after regression; rare enhancing FASI and low-grade glioma can overlap.",
+      "fa": "اجزای کیستیک جدید یا پیشرفت واضح دوباره پس از پسرفت؛ FASI نادرِ دارای جذب مادهٔ حاجب و گلیوم کم‌درجه می‌توانند هم‌پوشانی داشته باشند."
+    },
+    "explanation": {
+      "de": "Seltene anreichernde FASI können regressieren, sodass Enhancement allein keinen Tumor beweist. Neue Zysten oder eine zweite Wachstums-/Enhancementphase waren in der Originalserie Anlass für die Tumorabklärung. Das Muster erfordert spezialisierte Neubewertung; DWI/ADC allein trennt FASI und niedriggradiges Gliom nicht zuverlässig.",
+      "en": "Rare enhancing FASI can regress, so enhancement alone does not prove tumour. New cysts or a second growth/enhancement phase prompted tumour evaluation in the original series. Specialist reassessment is required; DWI/ADC alone does not reliably distinguish FASI from low-grade glioma.",
+      "fa": "FASI نادرِ دارای جذب مادهٔ حاجب می‌تواند پسرفت کند؛ جذب به‌تنهایی تومور را ثابت نمی‌کند. کیست جدید یا مرحلهٔ دوم رشد/افزایش جذب در مجموعهٔ اصلی علت بررسی تومور بود. بازبینی تخصصی لازم است؛ DWI/ADC به‌تنهایی FASI را از گلیوم کم‌درجه با اطمینان جدا نمی‌کند."
+    },
+    "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8041008/"
+  }
+])
+
+topics.push({
+  "id": "neurofibromatose-typ1",
+  "title": {
+    "de": "NF1: Bildmuster und klinische Warnzeichen",
+    "en": "NF1: imaging patterns and clinical warning signs",
+    "fa": "NF1: الگوهای تصویری و علائم هشدار بالینی"
+  },
+  "subject": "gehirn",
+  "description": {
+    "de": "FASI, Sehbahn und plexiforme Neurofibrome",
+    "en": "FASI, optic pathway and plexiform neurofibromas",
+    "fa": "FASI، مسیر بینایی و نوروفیبروم پلکس‌فرم"
+  },
+  "href": "/flashcards/neurofibromatose-typ1"
+})
+routeCoverage.push({
+  "route": "/gehirn/neurofibromatose/nf1",
+  "topicId": "neurofibromatose-typ1",
+  "status": "AUTHOR_FULL_ORIGINAL_BANK_PLUS_GAP_READY",
+  "learningGoals": [
+    {
+      "id": "fasi",
+      "text": {
+        "de": "Ein typisches FASI-Muster erkennen, ohne Gliom oder NF1-Diagnose allein aus dem Signal abzuleiten.",
+        "en": "Recognise a typical FASI pattern without establishing glioma or NF1 diagnosis from signal alone.",
+        "fa": "الگوی تیپیک FASI را بشناسید، بدون تعیین تشخیص گلیوم یا NF1 صرفاً از سیگنال."
+      },
+      "questionIds": [
+        "neurofibromatose-typ1-de-fasi"
+      ],
+      "cardIds": [
+        "aq-brain-nf1-fasi"
+      ]
+    },
+    {
+      "id": "pathway",
+      "text": {
+        "de": "Neue Sehstörung bei NF1 mit gezielter Sehbahn-Bildgebung und Fachbeurteilung abklären.",
+        "en": "Investigate new visual dysfunction in NF1 with targeted visual-pathway imaging and specialist assessment.",
+        "fa": "اختلال بینایی جدید در NF1 را با تصویربرداری هدفمند مسیر بینایی و ارزیابی تخصصی بررسی کنید."
+      },
+      "questionIds": [
+        "neurofibromatose-typ1-de-pathway"
+      ],
+      "cardIds": [
+        "aq-brain-nf1-pathway"
+      ]
+    },
+    {
+      "id": "systemic",
+      "text": {
+        "de": "Neue Schmerz-/Wachstumszeichen eines plexiformen Neurofibroms als fachübergreifenden Abklärungsanlass erkennen.",
+        "en": "Recognise new pain/growth in plexiform neurofibroma as a reason for cross-specialty evaluation.",
+        "fa": "درد یا رشد جدید نوروفیبروم پلکس‌فرم را نیازمند بررسی بین‌رشته‌ای بدانید."
+      },
+      "questionIds": [
+        "neurofibromatose-typ1-de-systemic"
+      ],
+      "cardIds": [
+        "aq-brain-nf1-systemic"
+      ]
+    },
+    {
+      "id": "enhancing-fasi",
+      "text": {
+        "de": "Atypische Verlaufsmerkmale einer zunächst FASI-verdächtigen Läsion erkennen.",
+        "en": "Recognise atypical evolution of a lesion initially considered FASI.",
+        "fa": "سیر غیرتیپیک ضایعه‌ای را که ابتدا مشکوک به FASI بوده شناسایی کنید."
+      },
+      "questionIds": [
+        "neurofibromatose-typ1-de-enhancing-fasi"
+      ],
+      "cardIds": [
+        "aq-brain-nf1-enhancing-fasi"
       ]
     }
   ]
