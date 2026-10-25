@@ -226,7 +226,7 @@
       "topicIds": [
         "kreuzbaender"
       ],
-      "questionCount": 8,
+      "questionCount": 11,
       "cardTopic": "kreuzbaender",
       "subject": "msk"
     },
@@ -590,9 +590,9 @@
     "distale-radiusfraktur": 12,
     "skaphoidfraktur": 4,
     "bandverletzungen-daumen": 2,
-    "kreuzbaender": 8,
-    "knieligamente": 8,
-    "knie": 30,
+    "kreuzbaender": 11,
+    "knieligamente": 11,
+    "knie": 33,
     "kraniozervikaler-uebergang-trauma": 2,
     "wirbelsaeule-trauma": 6,
     "hws-verletzungen": 2,

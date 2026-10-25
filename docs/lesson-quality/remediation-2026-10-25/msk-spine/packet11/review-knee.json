@@ -1,0 +1,298 @@
+{
+  "date": "2026-10-25",
+  "reviewer": "/root/integration_review_next",
+  "author": "/root/msk_next",
+  "route": "/msk/knie/kreuzbaender",
+  "worktree": "C:/Users/Drham/Documents/GitHub/Rad-Yar/.worktrees/gehirn-completion-main",
+  "scope": "Independent full original assessment-pool review: 8 original question triads plus 3 targeted additions, 7 canonical card triads plus unchanged shared aq-msk-knee-medial-report, and bounded route/biceps teaching mirrors. Whole-lesson, whole-media, browser, specialist sign-off and publication remain separate.",
+  "decisions": {
+    "bounded_content_acceptance": "PASS",
+    "overall_lesson_acceptance": "BLOCKED",
+    "editorial_qa": "PASS",
+    "scientific_review": "pending",
+    "browser_qa": "BLOCKED",
+    "publication": "not_requested",
+    "contentOpenCritical": 0,
+    "contentOpenMajor": 0,
+    "integrationOpenMajor": 0,
+    "integrationOpenMinor": 0
+  },
+  "filesRead": [
+    "data/knieligamente.js",
+    "data/kneeBicepsCompletion.js",
+    "app/msk/knie/kreuzbaender/page.js",
+    "data/questions.js (actual import/spreads and runtime export)",
+    "data/flashcards.js (actual import/spreads and runtime export)",
+    "components/lesson-template/LegacyLessonMigration.jsx",
+    "components/lesson-template/StandardLessonShell.jsx",
+    "components/LessonHero.jsx",
+    "data/lessonDesignHeroes.js (route mapping)",
+    "lib/lessonAssessmentLinks.js",
+    "data/assessmentQuality/routeLinks.json (current route count)",
+    "scripts/test-msk-knee-ligaments-p57-p66.mjs",
+    "scripts/test-msk-knee-biceps-completion.mjs",
+    "docs/lesson-quality/remediation-2026-10-25/msk-spine/packet11/knee-evidence.md",
+    "docs/lesson-quality/remediation-2026-10-25/msk-spine/packet11/knee-blueprint.json",
+    "docs/lesson-quality/remediation-2026-10-25/msk-spine/packet11/knee-author-manifest.json (manifest structure/configs/runtime fields)",
+    "docs/lesson-quality/remediation-2026-10-25/msk-spine/packet11/knee-author-records.json (coverage/limits/proposal)",
+    "docs/lesson-quality/remediation-2026-10-25/msk-spine/packet11/knee-before.json",
+    "docs/lesson-quality/remediation-2026-10-25/msk-spine/packet11/knee-after.json"
+  ],
+  "actualDataPath": {
+    "route": "COPY.de/en/fa in route supplies five topic chapters and summary; KNEE_BICEPS_COMPLETION supplies lateral chapter teaching/figure/check; LegacyLessonMigration -> StandardLessonShell is the actual shell.",
+    "hero": "LessonHero route override /educational/lesson-design/msk--knie--kreuzbaender.webp supersedes authored knee-ligaments-hero.png. No whole-hero acceptance claimed.",
+    "questions": "data/questions.js imports/spreads KNIE_LIGAMENTE_QUESTIONS; independently exact 11Q per language from actual canonical bank.",
+    "cards": "data/flashcards.js spreads 7 canonical cards plus one existing published shared medial-report card; independently exact8, unchanged sharedcard deepEqual before.",
+    "inline": "BicepsTeaching key=lang renders current KNEE_BICEPS_COMPLETION. Independent all3locale assertion verifies question, all4options, correct index and all4feedback strings exact Q08.",
+    "actions": "Custom same-topic quiz href is normalized by lessonAssessmentActions; current stale routeLinks count8 forces n=8 despite11 available questions."
+  },
+  "gates": {
+    "SRC": {
+      "status": "PASS",
+      "evidence": "Actual supplied138-page MSK.pdf freshly extracted physical57–66/printed56–65; all ten complete page images inspected. Relevant grading/anatomy/avulsion/continuity/mucoid/PCL decisions mapped. Fresh original abstracts/figure captions support revised clinically material distinctions. PDF >7mm number is explicitly qualified/deferred to measurement-specific primary evidence; no universal replacement threshold silently taught.",
+      "evidenceBlockers": []
+    },
+    "EDU": {
+      "status": "PASS",
+      "evidence": "All33 localized question objects,99 option-specific false rationales,7canonical+1shared complete card triads read. Added09/10/11 cover mucoid mimic, partial continuity and PCL grading uncertainty without duplicate card quota. Existing anatomy/diagnostic chapters have clear source-specific purposes; no Befund & Selbsttest chapter inserted. Figure follow-up2weeks is source-case timing, not universal clearance.",
+      "evidenceBlockers": []
+    },
+    "VIS": {
+      "status": "PASS",
+      "evidence": "Bounded image fit checked: actual Q01 public/knieligamente/mcl-sprain-followup.png matches source61 lower MRI pair, showing preserved dark MCL and greater left periligamentous edema. Current biceps follow-up montage and axial PLC anatomy viewed against source59/58; labels and restrained captions fit. Questions09–11 explicitly text vignettes; no invented scan.",
+      "evidenceBlockers": [
+        "Whole retained18-figure/hero selection, complete contributors/provenance and browser sizing/legibility were not certified by this bounded assessment review."
+      ]
+    },
+    "LNG": {
+      "status": "PASS",
+      "evidence": "Every stem,choice,key,explanation,false rationale and card unit compared DE/EN/FA. Tissue versus bone, direction, partial versus complete, uncertainty, source timing and targeted PLC/POL assessment agree. All nine route changed text lines and all current biceps teaching/captions/options/feedback read; no material omission found.",
+      "evidenceBlockers": [
+        "Actual Persian RTL/bidi/focus/feedback rendering pending under UX."
+      ]
+    },
+    "ASM": {
+      "status": "PASS",
+      "evidence": "Content/runtime parity PASS:11Q per locale, valid keys/four distinct choices,99false-feedbackfields; original8IDs+keys preserved; canonicalbank deepEquals aftersnapshot;8cards aftersnapshot exact; sharedcard unchanged; Q08 inline allfields exact. Current route selection still uses count8; see KNEE11-ASM-01. Root repair independently retested: exact four-goal proposal now equals producer and published runtime route coverage; actual DE/EN/FA action n=11 and all goal IDs reachable.",
+      "evidenceBlockers": [
+        "Root real browser check remains required under UX."
+      ]
+    },
+    "UX": {
+      "status": "BLOCKED",
+      "evidence": "Focused biceps test actually renders route/shell DE/EN/FA with environment fixtures and passes. This establishes SSR only; no real browser evidence for current packet supplied.",
+      "evidenceBlockers": [
+        "Root real browser desktop/mobile/themes/DEENFA, RTL, image modal/frame sizing, keyboard, answer-change/language-reset, progress/hash and linked return paths required."
+      ]
+    },
+    "REV": {
+      "status": "PASS",
+      "evidence": "Independent actual producer/card/inline checks and fresh source reading; author pass not adopted. No production rewrite, git mutation, build or server. Review ran existing tests, one of which generates tmp/knee-biceps-route.cjs test evidence.",
+      "evidenceBlockers": []
+    }
+  },
+  "findings": [
+    {
+      "id": "KNEE11-ASM-01",
+      "severity": "major",
+      "location": "data/assessmentQuality/routeLinks.json routes./msk/knie/kreuzbaender.questionCount -> lib/lessonAssessmentLinks.js",
+      "observedEvidence": "Independent current export contains11 kreuzbaender questions per language; actual lessonAssessmentActions for custom n=10/themen=kreuzbaender produces n=8 because current mapping still says8.",
+      "learnerImpact": "Lesson practice samples only8 of11 and advertises stale availability instead of the complete intended assessment pool.",
+      "requiredCorrection": "Root admit reviewed four-goal coverage proposal, regenerate route counts from intended bank/index, and retest actual locale href/count and goal reachability.",
+      "retestEvidence": "Independent exact producer+published coverage deepEqual to proposal.after and DE/EN/FA actual href n=11/lang/from; all goalIDs reachable.",
+      "status": "PASS",
+      "scope": "Integration blocker, not a demonstrated content error."
+    },
+    {
+      "id": "KNEE11-TEST-01",
+      "severity": "minor",
+      "location": "scripts/test-msk-knee-ligaments-p57-p66.mjs assert.match(assessments, /'acl-xray'/) and following literal phrase assertions",
+      "observedEvidence": "Actual run fails on single-quoted 'acl-xray' regex after producer serialization to double-quoted JSON. Following expected stem phrases are also superseded by the reviewed question06, so this is more than just quote style.",
+      "learnerImpact": "Stale source-text checks falsely fail the valid rewritten producer and prevent trustworthy regression reporting.",
+      "requiredCorrection": "Replace superseded lexical checks with actual question06 runtime ID/key/localized avulsion-location assertions; keep source/media/locale assertions.",
+      "retestEvidence": "Independent test diff preserves other assertions; runtime correct Segond answer checked for lateral proximal tibia below plateau in all3languages, accepts source serialization quote styles. Rerun node --import tsx scripts/test-msk-knee-ligaments-p57-p66.mjs PASS.",
+      "status": "PASS"
+    }
+  ],
+  "sourceCoverage": [
+    {
+      "physical": 57,
+      "printed": 56,
+      "point": "I/II/III continuity-based MRI grading",
+      "disposition": "Q01/Q10/card01; comparison replaces progression arrow."
+    },
+    {
+      "physical": 58,
+      "printed": 57,
+      "point": "LCL/biceps/popliteus/arcuate and fibular V",
+      "disposition": "Q02, lateral teaching/axial caption; actual page images read."
+    },
+    {
+      "physical": 59,
+      "printed": 58,
+      "point": "LCL timeline, biceps source montage, fibular arcuate avulsion",
+      "disposition": "Q03/Q08/cards02/07; source-case intervals not general healing rules."
+    },
+    {
+      "physical": 60,
+      "printed": 59,
+      "point": "MCL layers, POL/semimembranosus anatomy",
+      "disposition": "Q04/card03/shared medial-report; no new distance threshold question."
+    },
+    {
+      "physical": 61,
+      "printed": 60,
+      "point": "Separate6/12week partial MCL and2week gradeI MRI",
+      "disposition": "Q01 image verified; source grade/interval contextualized."
+    },
+    {
+      "physical": 62,
+      "printed": 61,
+      "point": "Source-labelled MCL/POL rupture",
+      "disposition": "Q04/card03/shared card prompt direct POL assessment; no automatic rupture from edema."
+    },
+    {
+      "physical": 63,
+      "printed": 62,
+      "point": "ACL bundle anatomy, physiological streaks, mechanism",
+      "disposition": "Q09/card05; older epidemiologic percentages outside bounded review, not endorsed."
+    },
+    {
+      "physical": 64,
+      "printed": 63,
+      "point": "ACL direct/indirect signs, Segond/eminence avulsion, >7mm source threshold",
+      "disposition": "Q05/Q06/card04 and nine route language mirror lines; qualitative core teaching and explicit source protocol qualification."
+    },
+    {
+      "physical": 65,
+      "printed": 64,
+      "point": "Mucoid enlargement/celery appearance, normal septation differential",
+      "disposition": "Q09/card05/three-language route mirror; retained historical unhappy-triad description not a new prevalence assertion."
+    },
+    {
+      "physical": 66,
+      "printed": 65,
+      "point": "PCL mechanism/morphology and treatment note",
+      "disposition": "Q07/Q11/card06 and three-language route mirror; no treatment allocation introduced through card."
+    }
+  ],
+  "primarySourcesFreshRead": [
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/12540438/",
+      "range": "Complete original13-patient arthroscopy/surgery-correlated abstract",
+      "supports": "Fibularstyloid avulsion, variable injured PLC structures and PCL association; not every structure necessarily torn."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/14520502/",
+      "range": "Complete original cadaveric+12patient abstract",
+      "supports": "Different fibular insertion/avulsion patterns; targeted structure assessment."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/34626207/",
+      "range": "Complete indexed original123MRI abstract; direct-open HHS-only response",
+      "supports": "POL distinct assessable structure and association with MCL/complex trauma, not automatic diagnosis."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/8497637/",
+      "range": "Complete indexed original89MR arthroscopy-correlated abstract",
+      "supports": "Measurement-specific lateral midsagittal tibial translation; study ≥7mm differs from PDF >7mm; no universal protocol-free cutoff accepted."
+    },
+    {
+      "url": "https://pubs.rsna.org/doi/10.1148/radiology.213.3.r99dc26697",
+      "range": "Original43patient pediatric abstract and displayed figures1–5captions",
+      "supports": "Primary/secondary ACL findings; age-specific performance not generalized."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/3263770/",
+      "range": "Complete indexed original9patient abstract",
+      "supports": "Segond lateral proximal tibial avulsion just below plateau and associated internal derangement."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/11465770/",
+      "range": "Complete original10MRI arthroscopy-correlated abstract",
+      "supports": "Bulky highsignal ACL can remain mechanically intact; ill-defined mucoid appearance means smooth contour is not mandatory."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/17056925/",
+      "range": "Complete original indexed abstract",
+      "supports": "Q05 alternative anterolateral femoral/inferomedial patellar contusion distribution."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/8089331/",
+      "range": "Complete original32patient clinical/surgical-correlated indexed abstract",
+      "supports": "Partial/complete PCL overlap in thickness/signal; focal discontinuity more frequent in complete tears."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/35136515/",
+      "range": "Original two-case abstract and complete displayed figures2–4captions",
+      "supports": "Distal biceps disruption with retained distal stump/intact neighboring LCL; no imported outside patient imagery."
+    }
+  ],
+  "mediaLedger": [
+    {
+      "path": "public/knieligamente/mcl-sprain-followup.png",
+      "source": "MSK.pdf physical61/printed60 lower coronalMRIpair",
+      "observed": "Actual fullasset seen; left edema/right regression with continuous MCL fits question01. Source labels Trauma/nach2Wochen retained; no contributor named.",
+      "reuse": "Project's explicit supplied-PDF image permission in standard."
+    },
+    {
+      "path": "public/knieligamente/biceps-femoris-injury-followup.jpg",
+      "source": "MSK.pdf physical59/printed58 montage",
+      "observed": "Actual1027x534 montage seen against source;8week label is case-specific; sequence/teargrade not invented.",
+      "reuse": "Supplied-PDF permission; no extra externalimageclaim."
+    },
+    {
+      "path": "public/knieligamente/plc-anatomy-axial.png",
+      "source": "MSK.pdf physical58/printed57 axial anatomy",
+      "observed": "Actual label/star/arrow/arrowhead/redarrow montage seen and caption fits; anatomy not arcuate-fracture example.",
+      "reuse": "Supplied-PDF permission; fullretainedmediaaudit separate."
+    }
+  ],
+  "tests": [
+    {
+      "command": "Independent node --import tsx runtime assertions",
+      "result": "PASS",
+      "observed": "Current Qbank exact11perlocale/33objects; aftersnapshot exact;8originalIDs+keys preserved;99wrongfields;8cards exact/sharedunchanged;Q08inlineallfields parity."
+    },
+    {
+      "command": "node --import tsx scripts/test-msk-knee-biceps-completion.mjs",
+      "result": "PASS",
+      "observed": "Actual route SSR DEENFA with fixtures; actualmontagedimensions and source/assessment/cardlinkage checks. No browser claim."
+    },
+    {
+      "command": "node --import tsx scripts/test-msk-knee-ligaments-p57-p66.mjs",
+      "result": "PASS",
+      "observed": "Superseded lexical assessment assertion; see KNEE11-TEST-01. Root repaired superseded assertions; independent rerun PASS."
+    }
+  ],
+  "hashes": [
+    {
+      "path": "data/knieligamente.js",
+      "sha256": "3159b7a67f9d3a99d1284cc28bf754393101a34919dd9bdacf3471640eccb99b"
+    },
+    {
+      "path": "data/kneeBicepsCompletion.js",
+      "sha256": "1bb1859638d71b7b836c0274544c29805454bc9301a68a83795553035a0b16e1"
+    },
+    {
+      "path": "app/msk/knie/kreuzbaender/page.js",
+      "sha256": "e30654c16760b4bc3d668b740c11ea9d344216d8b3c3e76b9aaae117e72fcb70"
+    },
+    {
+      "path": "scripts/test-msk-knee-ligaments-p57-p66.mjs",
+      "sha256": "0b415cba3d575655a2d88018e56303b8b6b31559a2d21505335e6dfe44346c22"
+    }
+  ],
+  "limitations": [
+    "Source coverage bounded to physical57–66, not all138pages or every unchanged whole-lesson claim.",
+    "Complete source page images read; not all original primary fullarticles or retained lessonassets certified.",
+    "Workingcheckout reviewed; no liveproductionversion claim.",
+    "Editorial content PASS does not imply Dr.Zia scientific approval or publication."
+  ],
+  "repairCycle": {
+    "status": "PASS",
+    "changedBy": "Root",
+    "scope": "Only exact guarded coverage admission, snapshot regeneration and focused legacy test correction; reviewer did not change artifacts.",
+    "independentRetest": "Both reported findings closed; overall acceptance remains BLOCKED for browser/wholemedia/DrZia. Original producer/route hashes unchanged."
+  }
+}

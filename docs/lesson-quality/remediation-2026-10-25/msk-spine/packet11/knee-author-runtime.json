@@ -1,0 +1,9 @@
+{
+  "status": "PASS",
+  "questionObjects": 33,
+  "canonicalCardTriads": 7,
+  "unchangedSharedCardTriads": 1,
+  "wrongFeedbackFields": 99,
+  "original8QuestionIdsAndKeysPreserved": true,
+  "scope": "Dedicated canonical producers and unchanged shared-card snapshot; global retrieval/SSR/build/browser assigned to Root"
+}

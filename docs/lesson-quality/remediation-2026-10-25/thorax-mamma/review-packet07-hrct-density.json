@@ -1,0 +1,241 @@
+{
+  "date": "2026-10-25",
+  "reviewer": "/root/integration_review_next",
+  "author": "/root",
+  "route": "/thorax/hrct/dichteanhebung",
+  "worktree": "C:/Users/Drham/Documents/GitHub/Rad-Yar/.worktrees/gehirn-completion-main",
+  "scope": "Independent bounded full assessment-pool review: all12 original question triads and15 original card triads, actual replacement wiring, bounded teaching/source-reference deltas and directly connected atelectasis inline assessment. No new question quota or whole-lesson/media/browser/scientific-release acceptance.",
+  "decisions": {
+    "bounded_content_acceptance": "PASS",
+    "bounded_integration_acceptance": "PASS",
+    "overall_lesson_acceptance": "BLOCKED",
+    "editorial_qa": "PASS",
+    "scientific_review": "pending",
+    "browser_qa": "BLOCKED",
+    "publication": "not_requested",
+    "openCritical": 0,
+    "openMajor": 0,
+    "openMinor": 0
+  },
+  "filesRead": [
+    "data/hrctIncreasedDensityCases.js",
+    "data/hrctClinicalRevisions.js (actual replacement import/spread and prior density override removal)",
+    "data/hrct-muster.js (actual density lesson, question/card producers and replacement loops)",
+    "app/thorax/hrct/dichteanhebung/page.js",
+    "components/HrctPatternLesson.jsx",
+    "data/thoraxAtelectasisAssessment.js",
+    "components/lesson-template/StandardLessonShell.jsx",
+    "components/lesson-template/TopicAssessment.jsx",
+    "components/LessonHero.jsx",
+    "data/lessonDesignHeroes.js (route mapping)",
+    "data/questions.js (actual HRCT imports/spreads and retrieval APIs)",
+    "data/flashcards.js (actual HRCT imports/spreads)",
+    "lib/lessonAssessmentLinks.js",
+    "docs/lesson-quality/remediation-2026-10-25/thorax-mamma/packet07-hrct-density-authoring.json",
+    "tmp/assessment-quality/hrct-density-before.json",
+    "tmp/assessment-quality/hrct-density-actual.json",
+    "tmp/assessment-quality/check-density-full.mjs (read only; not run because it rewrites author snapshot)",
+    "docs/lesson-quality/hrct-dichteanhebung-thorax-p13.md",
+    "scripts/test-hrct-density-thorax-p13.mjs (historical checks read; not relied on for current acceptance)"
+  ],
+  "actualDataPath": {
+    "route": "app/thorax/hrct/dichteanhebung/page.js -> HRCT_LESSONS['hrct-dichteanhebung'] -> HrctPatternLesson -> StandardLessonShell. Definition/orientation remain in first chapter, not hero subtitle.",
+    "questions": "HRCT_INCREASED_DENSITY_CASES -> HRCT_CLINICAL_REVISIONS spread -> HRCT_QUESTIONS per-language producer -> data/questions.js actual bank; originals replaced at same IDs, not appended as duplicates.",
+    "cards": "Existing HRCT_FLASHCARDS records13–15 overridden from HRCT_INCREASED_DENSITY_EXTRA_CARDS; records01–12 replaced by final HRCT_CLINICAL_REVISIONS loop. data/flashcards.js consumes actual15-card deck.",
+    "inline": "HrctPatternLesson uses ATELECTASIS_QUESTIONS[lang][0] in first chapter, key=lang. Independently read all3language stem/options/key/feedback; coherent volume-loss decision and separate source topic atelektase.",
+    "quiz": "Custom topic hrct-dichteanhebung/fach thorax/n12; actual retrieval via shuffleQuestionIds/getQuestionsForIds returns exactly12 in each language, with locale/return normalization owned by shared shell.",
+    "hero": "LessonHero uses route override /educational/lesson-design/thorax--hrct--dichteanhebung.webp. This retained asset was not granted a whole-media pass.",
+    "references": "HrctPatternLesson sources renders actual lesson.clinicalReferences; four primary links supplied with DE/EN/FA visible titles."
+  },
+  "gates": {
+    "SRC": {
+      "status": "PASS",
+      "evidence": "Actual supplied50page Thorax.pdf freshly extracted at physical11–15,17/printed10–14,16; all six full page images inspected. Original primary glossary/guideline definitions and relevant study sections read independently. Source pathognomonic/necrosis and size wording explicitly qualified; no protocol-free malignancy or treatment conclusion inferred.",
+      "evidenceBlockers": []
+    },
+    "EDU": {
+      "status": "PASS",
+      "evidence": "All36 localized question objects/108specific wrong rationales and45card language units read. Four observable goals cover morphology, volume/pleura, context and nodules. Existing topic chapters serve source tasks; no Befund & Selbsttest/default chapter added. Initial clinically material transfer gap was repaired in existing GGO/nodule chapters; six new teaching-text units reread. Original shape paragraph preserved when new PE card inserted. No new bank size/quota.",
+      "evidenceBlockers": []
+    },
+    "VIS": {
+      "status": "NOT_APPLICABLE",
+      "evidence": "No new/altered media or image-dependent question in this bounded packet; all assessment CT scenarios are self-contained text. Six PDF page images and four retained actual CT assets viewed for adjacent context; no whole media acceptance inferred.",
+      "evidenceBlockers": [
+        "Retained hero, remaining frames, contributor/study/frame metadata, full rights ledger and browser sizing/legibility need a separately scoped whole-media review."
+      ]
+    },
+    "LNG": {
+      "status": "PASS",
+      "evidence": "DE/EN/FA full stems/options/keys/correct and false feedback, all15cards, goals, source titles and actual changed lesson texts compared by semantic unit. Negation, certainty, 35/30mm distinction, micronodule<6 subset, central/peripheral sign arrangement, solid-component growth, technical comparability and necrosis caveats agree. FA comet-tail term revised naturally.",
+      "evidenceBlockers": [
+        "Real RTL/bidi/numeric-sign/focus/feedback rendering pending under UX."
+      ]
+    },
+    "ASM": {
+      "status": "PASS",
+      "evidence": "Independent current imports confirm12Qperlanguage/15cards/108false-feedback fields; original IDs preserved; aftersnapshot deepEqual actual producer; global banks/cards exact; four goal lists resolve and actual quiz retrieval selects12 per locale. Existing inline atelectasis check is consistent with revised volume-loss teaching. No clinical/key/feedback mismatch found.",
+      "evidenceBlockers": [
+        "Browser links/return and interactions still require root verification."
+      ]
+    },
+    "UX": {
+      "status": "BLOCKED",
+      "evidence": "No current-packet real browser evidence supplied or performed by reviewer. Actual component path inspected; data imports/retrieval are not browser evidence.",
+      "evidenceBlockers": [
+        "Root desktop/mobile/themes/DEENFA matrix, widths320/760 sampling, inline wrong/correct/change-answer/language reset, figure modal, focus, progress/hash, link return and console/assets required."
+      ]
+    },
+    "REV": {
+      "status": "PASS",
+      "evidence": "Independent read-only review of actual producers/consumers, primary evidence and PDF pages; initial supported finding sent to author; author repaired production and reviewer reread actual six text units and reran independent parity checks. No production/snapshot rewrite by reviewer.",
+      "evidenceBlockers": []
+    }
+  },
+  "findings": [
+    {
+      "id": "HRCT07-EDU-01",
+      "severity": "major",
+      "location": "data/hrct-muster.js HRCT_LESSONS['hrct-dichteanhebung'].sections ggo/noduli versus question10/card10 and questions07/12",
+      "observedEvidence": "Initial frozen lesson had no embolism/necrosis explanation and no comparable-reconstruction/component-measurement rule, while revised assessment tested those transfer decisions.",
+      "learnerImpact": "Learner could be tested on a clinically material distinction that the route had not taught.",
+      "requiredCorrection": "Add concise sourced DE/EN/FA teaching inside existing suitable chapters; preserve existing morphology content and chapter structure.",
+      "retestEvidence": "Author inserted ggo card 'With a matching pulmonary embolus' and noduli 'Use comparable measurements'. Reviewer read all6 text units and titles, verified existing shape card preserved, checked primary support and current aftersnapshot/runtime parity.",
+      "status": "PASS"
+    }
+  ],
+  "sourceCoverage": [
+    {
+      "physical": 11,
+      "printed": 10,
+      "point": "Atelectasis volume loss and rounded atelectasis pleural/bundle constellation",
+      "location": "atelektase chapter;Q02/Q05;cards02/05/15;separate inline atelectasis check",
+      "disposition": "covered with sign-not-proof qualification"
+    },
+    {
+      "physical": 12,
+      "printed": 11,
+      "point": "Embolism-associated wedge opacity, morphological terms and GGO",
+      "location": "ggo chapter including reviewed repair;Q01/Q10;cards01/10/13",
+      "disposition": "covered; acute opacity does not prove necrosis; nonspecific infiltrate replaced by descriptive language"
+    },
+    {
+      "physical": 13,
+      "printed": 12,
+      "point": "Consolidation, air bronchogram and reverse halo",
+      "location": "ggo chapter;Q04/Q09/Q11;cards04/09/11/14",
+      "disposition": "covered; shape and signs not etiologic proof; detailed disease lists remain outside bounded packet"
+    },
+    {
+      "physical": 14,
+      "printed": 13,
+      "point": "Nodule/mass size/morphology and measurement",
+      "location": "noduli chapter;Q03/Q07/Q12;cards03/07/12",
+      "disposition": "covered; glossary2024 nodule≤30 and micronodule<6 subgroup replaces disjoint6–30 wording"
+    },
+    {
+      "physical": 15,
+      "printed": 14,
+      "point": "Subsolid components and typical PFN morphology",
+      "location": "noduli chapter;Q06/Q07;cards06/07",
+      "disposition": "covered; fissure proximity alone not benignity. Source follow-up schedules are not claimed validated by this bounded task."
+    },
+    {
+      "physical": 17,
+      "printed": 16,
+      "point": "Hydrostatic edema pattern and associated findings",
+      "location": "oedem chapter;Q08/card08",
+      "disposition": "covered with clinical-context limits; unrelated UIP section not recertified"
+    }
+  ],
+  "primarySourcesFreshRead": [
+    {
+      "url": "https://doi.org/10.1148/radiol.232558",
+      "range": "Actual original2024glossary definitions: atelectasis, atoll/halo, GGO, consolidation, infarction, micronodule/nodule and air bronchogram.",
+      "supports": "Terminology, size boundaries, descriptive versus causal meaning and acute embolic opacity without necrosis. No primary diagnostic frame reused."
+    },
+    {
+      "url": "https://doi.org/10.1148/radiol.2017161659",
+      "range": "Actual original guideline similar-technique/measurement paragraphs, part-solid recommendations/solid-component discussion, PFN paragraphs and relevant figure captions.",
+      "supports": "Comparable section thickness/filter, consistent measurement, separate attention to solid-component progression and morphology-based PFN interpretation. No follow-up algorithm newly authored."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/3186982/",
+      "range": "Complete original260asbestos-exposed cohort abstract.",
+      "supports": "Pleural contiguity, volume loss and curving bronchi/vessels support rounded atelectasis; source cohort is not universal single-sign proof."
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3259383/",
+      "range": "Actual original98patient methods/results, cardiac decompensation case/Fig11text and differential discussion.",
+      "supports": "GGO/septal combination occurs in edema and multiple other diseases; context matters. Clinical diagnoses predominated; no absolute specificity assumed."
+    }
+  ],
+  "mediaLedger": [
+    {
+      "path": "public/hrct/dichteanhebung/image2.jpeg",
+      "source": "Thorax.pdf physical11; visible rID8563",
+      "observed": "Actual soft-tissue-window axial CT viewed against PDF: pleural/basal rounded opacity with folded/curving structures and adjacent pleural disease. Retained caption generic; no standalone diagnostic proof granted."
+    },
+    {
+      "path": "public/hrct/dichteanhebung/image4.jpeg",
+      "source": "Thorax.pdf physical12; rID21062",
+      "observed": "Actual CT viewed: patchy increased attenuation with retained vascular detail; does not establish cause."
+    },
+    {
+      "path": "public/hrct/dichteanhebung/image5.jpeg",
+      "source": "Thorax.pdf physical13/printed12; rID30227",
+      "observed": "Actual CT matches source consolidation case; air-filled bronchial structures in dense opacity visible."
+    },
+    {
+      "path": "public/hrct/dichteanhebung/image6.png",
+      "source": "Thorax.pdf physical13/printed12; rID26531",
+      "observed": "Actual annotated source CT shows central lower-attenuation region with denser peripheral ring; caption describes atoll/reverse halo without assigning etiology."
+    },
+    {
+      "rights": "User project supplied-PDF reuse authorization recorded in standard and prior p13source ledger. Contributor-level identities and separate external reuse terms not inferred from source rIDs; no new external asset imported."
+    }
+  ],
+  "terminologyChecks": [
+    {
+      "unit": "Micronodule/nodule/mass",
+      "result": "PASS: <6mm subset, nodule≤30mm, mass>30mm; same meaning DEENFA."
+    },
+    {
+      "unit": "Halo versus reverse halo",
+      "result": "PASS: peripheral GGO around dense focus versus central GGO/peripheral consolidation; nonspecificity preserved."
+    },
+    {
+      "unit": "Embolic opacity versus necrosis",
+      "result": "PASS: edema/hemorrhage possible; no histologic proof from CT; after repair taught before assessment."
+    },
+    {
+      "unit": "Comparable measurement",
+      "result": "PASS: available comparable thin reconstructions/filter/method; solid component assessed separately; no automatic new CT."
+    }
+  ],
+  "runtimeEvidence": {
+    "initialIndependentAudit": "Actual snapshot/current bank/card/retrieval parity PASS before teaching repair; reviewer corrected an audit assumption that global HRCT question objects carried fach. Actual consumer selects by topic IDs, and global objects deepEqual producer.",
+    "finalIndependentRetest": "After author repair: actual lesson/questions/cards deepEqual refreshed aftersnapshot;12Q/15cards IDs retained; global banks exact and actual12-item quiz retrieval succeeds in DEENFA. All108specific wrong-feedback keys match options.",
+    "lessonDelta": "16 structural delta records versus supplied before.lesson at final check, including source-page arrays, nodule terminology, visible primary references, PE teaching insertion and comparison card. Index shift of old shape card was inspected as preservation, not content removal."
+  },
+  "hashes": [
+    {
+      "path": "data/hrctIncreasedDensityCases.js",
+      "sha256": "dec32b3d58d3fe5307a4571388ee3b8cae5dca6dfd78db4d2e2f5a206452a5e6"
+    },
+    {
+      "path": "data/hrctClinicalRevisions.js",
+      "sha256": "45ed6462d4c651122fba962754b737eb6cafbfeded32c14cefa5899854bebfb1"
+    },
+    {
+      "path": "data/hrct-muster.js",
+      "sha256": "d6995983ffef6cbc6f776d0b6542ace6ab426b018965274b9e289a6d09bdccf9"
+    }
+  ],
+  "limitations": [
+    "Bounded pages11–15,17 read, not all50pages or every unchanged lesson claim.",
+    "No build/server/browser/git mutation by reviewer. Only this report written for this packet; author snapshot script read but not rerun.",
+    "Current checkout reviewed; no claim that reviewed bytes are deployed live.",
+    "Editorial/technical PASS is not Dr.Zia scientific approval and does not mean published."
+  ]
+}

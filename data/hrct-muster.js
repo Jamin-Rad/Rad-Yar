@@ -1,4 +1,5 @@
 import { HRCT_CLINICAL_REVISIONS } from './hrctClinicalRevisions'
+import { HRCT_INCREASED_DENSITY_EXTRA_CARDS } from './hrctIncreasedDensityCases'
 
 const L = (de, en, fa) => ({ de, en, fa })
 
@@ -13,7 +14,7 @@ export const HRCT_LESSONS = {
   'hrct-dichteanhebung': {
     id: 'hrct-dichteanhebung',
     slug: 'dichteanhebung',
-    sourceReferences: [{ source: 'Thorax.pdf', pages: [11, 12, 13, 17] }],
+    sourceReferences: [{ source: 'Thorax.pdf', pages: [11, 12, 13, 14, 15, 17], printedPages: [10, 11, 12, 13, 14, 16] }],
     title: L('HRCT: Dichteanhebung', 'HRCT: Increased Density', 'HRCT: افزایش دانسیته'),
     definition: L('Systematische Einordnung von Milchglas, Konsolidierung, Atelektase und pulmonalen Rundherden.', 'Systematic classification of ground-glass opacity, consolidation, atelectasis and pulmonary nodules.', 'طبقه‌بندی سیستماتیک کدورت شیشه‌مات، کنسولیدیشن، آتلکتازی و ندول‌های ریوی.'),
     heroCards: [
@@ -40,6 +41,7 @@ export const HRCT_LESSONS = {
         cards: [
           { title: L('Milchglas', 'Ground-glass opacity', 'کدورت شیشه‌مات'), text: L('Leichte Dichteanhebung ohne vollständige Verdeckung der Gefäße; möglich bei partieller Alveolenfüllung, interstitieller Verdickung oder Kollaps.', 'Mild opacity that does not completely obscure vessels; may reflect partial alveolar filling, interstitial thickening or collapse.', 'افزایش خفیف دانسیته بدون محوشدن کامل عروق؛ ناشی از پرشدگی نسبی آلوئول، ضخیم‌شدگی بینابینی یا کلاپس.') },
           { title: L('Konsolidierung', 'Consolidation', 'کنسولیدیشن'), text: L('Dichte Alveolenfüllung verdeckt Gefäßränder; ein positives Luftbronchogramm kann erhalten bleiben.', 'Dense alveolar filling obscures vascular margins; an air bronchogram may remain visible.', 'پرشدگی متراکم آلوئول‌ها حاشیه عروق را محو می‌کند؛ ممکن است برونکوگرام هوایی باقی بماند.') },
+          { title: L('Bei passender Lungenembolie', 'With a matching pulmonary embolus', 'در آمبولی ریوی منطبق'), text: L('Eine pleurabasierte keilförmige Verdichtung im Gebiet eines akut verschlossenen Lungengefäßes stützt eine embolieassoziierte Parenchymreaktion. Sie wird häufig als Infarkt bezeichnet; akut können aber Ödem und Blutung ohne Nekrose vorliegen. Die CT-Form allein beweist keinen Gewebsuntergang.', 'A pleural-based wedge-shaped opacity in the territory of an acutely occluded pulmonary vessel supports an embolism-associated parenchymal reaction. It is often termed infarction, but acute oedema and haemorrhage can occur without necrosis. CT shape alone does not prove tissue death.', 'کدورت گوه‌ای با قاعدهٔ پلورال در قلمرو رگ ریوی تازه‌مسدود، از واکنش پارانشیمی مرتبط با آمبولی حمایت می‌کند. اغلب انفارکت نامیده می‌شود، ولی ادم و خون‌ریزی حاد ممکن است بدون نکروز باشند. شکل CT به‌تنهایی مرگ بافتی را ثابت نمی‌کند.') },
           { title: L('Ausdehnung und Form beschreiben', 'Describe extent and shape', 'گستره و شکل را توصیف کنید'), text: L('Eine Dichteanhebung kann homogen, fleckig oder flächig/konfluierend sein. Eine rundliche Form kann eher an einen Rundherd oder eine Raumforderung denken lassen. Die Form allein ist nicht diagnostisch: Gefäßzeichnung, Volumenverlust und Begleitzeichen bleiben entscheidend.', 'An opacity may be homogeneous, patchy or extensive/confluent. A rounded shape may instead resemble a pulmonary nodule or mass. Shape alone is not diagnostic: assess vessel visibility, volume loss and associated findings as well.', 'افزایش دانسیته می‌تواند یکنواخت، لکه‌ای یا گسترده/به‌هم‌پیوسته باشد. شکل گرد ممکن است بیشتر شبیه ندول یا تودهٔ ریوی باشد. شکل به‌تنهایی تشخیصی نیست؛ مشاهده‌پذیری عروق، کاهش حجم و یافته‌های همراه را نیز بررسی کنید.') },
         ],
         images: [
@@ -62,9 +64,10 @@ export const HRCT_LESSONS = {
         id: 'noduli', icon: '🎯', title: L('Pulmonale Noduli & Raumforderungen', 'Pulmonary Nodules & Masses', 'ندول‌ها و توده‌های ریوی'),
         lead: L('Größe, Dichte, Morphologie und Wachstum bestimmen die Risikoeinschätzung.', 'Size, attenuation, morphology and growth determine risk assessment.', 'اندازه، دانسیته، مورفولوژی و رشد، ارزیابی خطر را تعیین می‌کنند.'),
         cards: [
-          { title: L('Größenbegriffe', 'Size terminology', 'اصطلاحات اندازه'), text: L('Mikronodulus < 6 mm; Nodulus 6–30 mm; Raumforderung > 30 mm.', 'Micronodule <6 mm; nodule 6–30 mm; mass >30 mm.', 'میکروندول <۶ میلی‌متر؛ ندول ۶–۳۰ میلی‌متر؛ توده >۳۰ میلی‌متر.') },
+          { title: L('Größenbegriffe', 'Size terminology', 'اصطلاحات اندازه'), text: L('Nodulus bis einschließlich 30 mm; Mikronodulus bezeichnet die Untergruppe unter 6 mm. Eine größere rundliche Läsion wird als Raumforderung bezeichnet. Diese Größenbegriffe legen keine Histologie fest.', 'Nodule up to and including 30 mm; micronodule denotes the subgroup below 6 mm. A larger rounded lesion is termed a mass. These size terms do not establish histology.', 'ندول تا ۳۰ میلی‌متر شامل خود این مقدار؛ میکروندول زیرگروه کمتر از ۶ میلی‌متر است. ضایعهٔ گرد بزرگ‌تر توده نامیده می‌شود. این اصطلاحات اندازه، بافت‌شناسی را تعیین نمی‌کنند.') },
           { title: L('Dichtetyp', 'Attenuation type', 'نوع دانسیته'), text: L('Solide, reine Milchglas- oder teilsolide Noduli getrennt beurteilen; die solide Komponente ist bei subsoliden Läsionen prognostisch wichtig.', 'Assess solid, pure ground-glass and part-solid nodules separately; the solid component is prognostically important in subsolid lesions.', 'ندول‌های جامد، شیشه‌مات خالص و نیمه‌جامد جداگانه ارزیابی شوند؛ جزء جامد در ضایعات ساب‌سالید اهمیت پیش‌آگهی دارد.') },
           { title: L('Perifissuraler Nodulus', 'Perifissural nodule', 'ندول پری‌فیشورال'), text: L('Typisch glatt, linsen- oder dreieckförmig und fissurennah; entspricht meist einem intrapulmonalen Lymphknoten.', 'Typically smooth, lentiform or triangular and fissure-related; usually an intrapulmonary lymph node.', 'معمولاً صاف، عدسی یا مثلثی و نزدیک فیشور؛ اغلب یک گره لنفاوی داخل‌ریوی است.') },
+          { title: L('Vergleichbar messen', 'Use comparable measurements', 'اندازه‌گیری قابل‌مقایسه'), text: L('Für den Verlauf möglichst vergleichbare vorhandene dünne CT-Rekonstruktionen mit ähnlichem Filter und konsistenter Messmethode verwenden. Unterschiedliche Schichtdicken können kleine scheinbare Größenunterschiede erzeugen. Bei teilsoliden Noduli Gesamtgröße und soliden Anteil getrennt messen: Ein wachsender solider Anteil bleibt auch bei stabilem Gesamtdurchmesser relevant.', 'For follow-up, use comparable available thin-section CT reconstructions with similar filters and a consistent measurement method where possible. Different section thicknesses can create small apparent size differences. Measure overall size and solid component separately in part-solid nodules: a growing solid component remains relevant despite stable total diameter.', 'برای پیگیری، در حد امکان از بازسازی‌های نازک CT موجود و قابل‌مقایسه با فیلتر مشابه و روش اندازه‌گیری ثابت استفاده کنید. ضخامت‌های متفاوت برش می‌توانند اختلاف کوچک ظاهری در اندازه ایجاد کنند. در ندول نیمه‌جامد، اندازهٔ کلی و جزء جامد را جداگانه بسنجید؛ رشد جزء جامد حتی با ثبات قطر کلی مهم است.') },
         ],
         images: [
           img('/hrct/dichteanhebung/image7.png', 'Typische und atypische perifissurale Noduli', 'Typical and atypical perifissural nodules', 'ندول‌های پری‌فیشورال تیپیک و آتیپیک'),
@@ -566,6 +569,12 @@ for (const lesson of Object.values(HRCT_LESSONS)) {
   }
 }
 
+for (const replacement of HRCT_INCREASED_DENSITY_EXTRA_CARDS) {
+  const card = HRCT_FLASHCARDS.find(item => item.id === replacement.id)
+  if (!card) throw new Error('Missing HRCT density retrieval card: ' + replacement.id)
+  Object.assign(card, replacement)
+}
+
 // Replace the corresponding saved retrieval cards; never leave a conflicting older card active.
 for (const [key, revision] of Object.entries(HRCT_CLINICAL_REVISIONS)) {
   const split = key.lastIndexOf('-')
@@ -636,3 +645,10 @@ HRCT_LESSONS['hrct-dichteminderung'].clinicalReferences = [
 
 HRCT_LESSONS['hrct-architekturmuster'].clinicalReferences = [{title:L('Fleischner Society: Thorax-Begriffe (2024)','Fleischner Society: thoracic terminology (2024)','انجمن فلایشنر: اصطلاحات قفسهٔ سینه (۲۰۲۴)'),url:'https://doi.org/10.1148/radiol.232558'},{title:L('De Wever: Crazy Paving und radiologisch-pathologische Korrelation (2011)','De Wever: crazy paving and radiological-pathological correlation (2011)','دو وِوِر: کریزی‌پیونگ و تطبیق رادیولوژی-آسیب‌شناسی (۲۰۱۱)'),url:'https://pmc.ncbi.nlm.nih.gov/articles/PMC3259383/'}]
 HRCT_LESSONS['hrct-architekturmuster'].clinicalReferences.push({title:L('ATS/ERS/JRS/ALAT: UIP-Muster (2022)','ATS/ERS/JRS/ALAT: UIP pattern (2022)','ATS/ERS/JRS/ALAT: الگوی UIP (۲۰۲۲)'),url:'https://pmc.ncbi.nlm.nih.gov/articles/PMC9851481/'})
+
+HRCT_LESSONS['hrct-dichteanhebung'].clinicalReferences = [
+  {title:L('Fleischner Society: Thorax-Begriffe (2024)','Fleischner Society: thoracic terminology (2024)','انجمن فلایشنر: اصطلاحات قفسهٔ سینه (۲۰۲۴)'),url:'https://doi.org/10.1148/radiol.232558'},
+  {title:L('Fleischner Society: inzidentelle Lungenrundherde (2017)','Fleischner Society: incidental pulmonary nodules (2017)','انجمن فلایشنر: ندول‌های ریوی اتفاقی (۲۰۱۷)'),url:'https://doi.org/10.1148/radiol.2017161659'},
+  {title:L('Lynch: Rundatelektase bei Asbestexposition, Originalkohorte (1988)','Lynch: rounded atelectasis in asbestos exposure, original cohort (1988)','لینچ: آتلکتازی گرد در مواجهه با آزبست، کوهورت اصلی (۱۹۸۸)'),url:'https://pubmed.ncbi.nlm.nih.gov/3186982/'},
+  {title:L('De Wever: Crazy Paving und radiologisch-pathologische Korrelation (2011)','De Wever: crazy paving and radiological-pathological correlation (2011)','دو وِوِر: کریزی‌پیونگ و تطبیق رادیولوژی-آسیب‌شناسی (۲۰۱۱)'),url:'https://pmc.ncbi.nlm.nih.gov/articles/PMC3259383/'}
+]

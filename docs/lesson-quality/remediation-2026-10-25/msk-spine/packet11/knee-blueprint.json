@@ -1,0 +1,100 @@
+{
+  "route": "/msk/knie/kreuzbaender",
+  "topicId": "kreuzbaender",
+  "learningGoals": [
+    {
+      "id": "mri-continuity",
+      "text": {
+        "de": "Ödem, Teildefekt und vollständige Diskontinuität mit ihren Aussagegrenzen unterscheiden.",
+        "en": "Distinguish oedema, partial defect and complete discontinuity within their limits.",
+        "fa": "ادم، نقص نسبی و گسستگی کامل را با حدود نتیجه‌گیری تفکیک کنید."
+      },
+      "questionIds": [
+        "kreuzbaender-de-01",
+        "kreuzbaender-de-10"
+      ],
+      "cardIds": [
+        "kreuzbaender-01"
+      ]
+    },
+    {
+      "id": "associated-complexes",
+      "text": {
+        "de": "Fibuläre und mediale Hinweise anatomisch zuordnen und PLC/POL/Biceps gezielt beurteilen.",
+        "en": "Localize fibular and medial clues and assess PLC/POL/biceps deliberately.",
+        "fa": "سرنخ‌های فیبولار و داخلی را موضع‌یابی و PLC/POL/بایسپس را هدفمند بررسی کنید."
+      },
+      "questionIds": [
+        "kreuzbaender-de-02",
+        "kreuzbaender-de-03",
+        "kreuzbaender-de-04",
+        "kreuzbaender-de-08"
+      ],
+      "cardIds": [
+        "kreuzbaender-02",
+        "kreuzbaender-03",
+        "kreuzbaender-07",
+        "aq-msk-knee-medial-report"
+      ]
+    },
+    {
+      "id": "acl-pattern-mimic",
+      "text": {
+        "de": "VKB-Begleitzeichen von direkten Zeichen und mukoider/normaler Signalmimik abgrenzen.",
+        "en": "Distinguish ACL associated signs from direct signs and mucoid/normal signal mimics.",
+        "fa": "علائم همراه ACL را از علائم مستقیم و مقلدهای سیگنال موکوئید/طبیعی جدا کنید."
+      },
+      "questionIds": [
+        "kreuzbaender-de-05",
+        "kreuzbaender-de-06",
+        "kreuzbaender-de-09"
+      ],
+      "cardIds": [
+        "kreuzbaender-04",
+        "kreuzbaender-05"
+      ]
+    },
+    {
+      "id": "pcl-mechanism-morphology",
+      "text": {
+        "de": "Posterioren Tibiaprall mit HKB-Verletzung verbinden und den MRT-Rupturgrad zurückhaltend begründen.",
+        "en": "Relate posterior tibial impact to PCL injury and justify MRI tear grading cautiously.",
+        "fa": "ضربهٔ رو به خلف تیبیا را به آسیب PCL مرتبط و درجه‌بندی پارگی در MRI را محتاطانه توجیه کنید."
+      },
+      "questionIds": [
+        "kreuzbaender-de-07",
+        "kreuzbaender-de-11"
+      ],
+      "cardIds": [
+        "kreuzbaender-06"
+      ]
+    }
+  ],
+  "chapterPlan": [
+    [
+      "Schweregradeinteilung von Bandverletzungen in MRT",
+      "Continuity before grade"
+    ],
+    [
+      "Lateraler Kollateralbandkomplex",
+      "Localize fibular structures and injury clues"
+    ],
+    [
+      "Medialer Kollateralbandkomplex",
+      "MCL and targeted POL assessment"
+    ],
+    [
+      "Vorderes Kreuzband",
+      "Integrate direct/indirect signs and mimics"
+    ],
+    [
+      "Hinteres Kreuzband",
+      "Mechanism and cautious MRI morphology"
+    ],
+    [
+      "Take-home",
+      "Retain existing summary; no new chapter"
+    ]
+  ],
+  "mediaPlan": "Retain observed source MRI pair for originalquestion01, actualPDF61/sourcecredit unchanged. Explicit text vignettes for new items; no invented diagnostic frame or new media."
+}

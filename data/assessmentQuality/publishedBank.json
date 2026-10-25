@@ -13422,53 +13422,24 @@
         {
           "id": "mri-continuity",
           "text": {
-            "de": "Periligamentäres Ödem und sichtbare Bandkontinuität in einem Quellbildpaar beschreiben.",
-            "en": "Describe periligamentous oedema and visible ligament continuity in a source image pair.",
-            "fa": "ادم پیرارباطی و پیوستگی قابل مشاهدهٔ رباط را در جفت تصاویر منبع توصیف کنید."
+            "de": "Ödem, Teildefekt und vollständige Diskontinuität mit ihren Aussagegrenzen unterscheiden.",
+            "en": "Distinguish oedema, partial defect and complete discontinuity within their limits.",
+            "fa": "ادم، نقص نسبی و گسستگی کامل را با حدود نتیجه‌گیری تفکیک کنید."
           },
           "questionIds": [
-            "kreuzbaender-de-01"
+            "kreuzbaender-de-01",
+            "kreuzbaender-de-10"
           ],
           "cardIds": [
             "kreuzbaender-01"
           ]
         },
         {
-          "id": "acl-pattern",
-          "text": {
-            "de": "Direkte und indirekte VKB-Zeichen mit Degenerationsmimik abgleichen.",
-            "en": "Integrate direct and indirect ACL signs with degenerative mimics.",
-            "fa": "علائم مستقیم و غیرمستقیم ACL را با مقلدهای دژنراتیو تطبیق دهید."
-          },
-          "questionIds": [
-            "kreuzbaender-de-05",
-            "kreuzbaender-de-06"
-          ],
-          "cardIds": [
-            "kreuzbaender-04",
-            "kreuzbaender-05"
-          ]
-        },
-        {
-          "id": "pcl-mechanism",
-          "text": {
-            "de": "Den anterioren Tibiaprall am gebeugten Knie der HKB-Verletzung zuordnen.",
-            "en": "Associate anterior tibial impact at a flexed knee with PCL injury.",
-            "fa": "ضربهٔ قدامی به تیبیا در زانوی خم را به آسیب PCL مرتبط کنید."
-          },
-          "questionIds": [
-            "kreuzbaender-de-07"
-          ],
-          "cardIds": [
-            "kreuzbaender-06"
-          ]
-        },
-        {
           "id": "associated-complexes",
           "text": {
-            "de": "Fibuläre und mediale Verletzungshinweise für eine gezielte PLC-/POL-Beurteilung und Befundbeschreibung nutzen.",
-            "en": "Use fibular and medial injury clues for targeted PLC/POL assessment and reporting.",
-            "fa": "از سرنخ‌های آسیب فیبولا و سمت داخلی برای ارزیابی هدفمند PLC/POL و گزارش استفاده کنید."
+            "de": "Fibuläre und mediale Hinweise anatomisch zuordnen und PLC/POL/Biceps gezielt beurteilen.",
+            "en": "Localize fibular and medial clues and assess PLC/POL/biceps deliberately.",
+            "fa": "سرنخ‌های فیبولار و داخلی را موضع‌یابی و PLC/POL/بایسپس را هدفمند بررسی کنید."
           },
           "questionIds": [
             "kreuzbaender-de-02",
@@ -13482,10 +13453,41 @@
             "kreuzbaender-07",
             "aq-msk-knee-medial-report"
           ]
+        },
+        {
+          "id": "acl-pattern-mimic",
+          "text": {
+            "de": "VKB-Begleitzeichen von direkten Zeichen und mukoider/normaler Signalmimik abgrenzen.",
+            "en": "Distinguish ACL associated signs from direct signs and mucoid/normal signal mimics.",
+            "fa": "علائم همراه ACL را از علائم مستقیم و مقلدهای سیگنال موکوئید/طبیعی جدا کنید."
+          },
+          "questionIds": [
+            "kreuzbaender-de-05",
+            "kreuzbaender-de-06",
+            "kreuzbaender-de-09"
+          ],
+          "cardIds": [
+            "kreuzbaender-04",
+            "kreuzbaender-05"
+          ]
+        },
+        {
+          "id": "pcl-mechanism-morphology",
+          "text": {
+            "de": "Posterioren Tibiaprall mit HKB-Verletzung verbinden und den MRT-Rupturgrad zurückhaltend begründen.",
+            "en": "Relate posterior tibial impact to PCL injury and justify MRI tear grading cautiously.",
+            "fa": "ضربهٔ رو به خلف تیبیا را به آسیب PCL مرتبط و درجه‌بندی پارگی در MRI را محتاطانه توجیه کنید."
+          },
+          "questionIds": [
+            "kreuzbaender-de-07",
+            "kreuzbaender-de-11"
+          ],
+          "cardIds": [
+            "kreuzbaender-06"
+          ]
         }
       ],
-      "status": "AUTHOR_PACKET_3_BOUNDED_DELTA_READY_FULL_EXISTING_POOL_REVIEW_PENDING",
-      "existingPoolReview": "Not fully reread or independently accepted; mapped unchanged IDs do not imply their pedagogic acceptance."
+      "status": "AUTHOR_PACKET11_FULL_ORIGINAL_POOL_PLUS_THREE_GAPS_REVIEW_PENDING"
     },
     {
       "route": "/msk/knie/meniskus",

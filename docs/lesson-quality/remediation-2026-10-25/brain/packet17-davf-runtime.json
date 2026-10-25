@@ -1,0 +1,35 @@
+{
+  "date": "2026-10-25",
+  "route": "/gehirn/vaskulaer/davf",
+  "questions": 36,
+  "questionTriads": 12,
+  "cards": 14,
+  "cardLanguageUnits": 42,
+  "wrongFeedbackTriads": 36,
+  "idsUnchanged": true,
+  "teachingDeltaEntries": 56,
+  "files": [
+    {
+      "path": "data/davf.js",
+      "sha256": "e982d1690bd6c59d054c4eb966304222bedb70ee5334243e2e0afeeb69fe2dc9"
+    },
+    {
+      "path": "app/gehirn/vaskulaer/davf/page.js",
+      "sha256": "00a0bdace8f0828ba712709b02013fb920f98ae9a875ca33574bdc2cc96748f3"
+    },
+    {
+      "path": "scripts/test-gehirn-davf-p35-p36.mjs",
+      "sha256": "305ad6b7d944f50da3fe2fefea666c51d513aa3edba914795f44d3532f9b1c8b"
+    }
+  ],
+  "checks": [
+    "12Q per language; exact old IDs; four distinct options; valid keys; all wrong-option feedback present; all question sources present",
+    "14exact old card IDs; trilingual fronts answers explanations; all sources present",
+    "Current runtime lesson delta freshly generated from actual original snapshot"
+  ],
+  "notTested": [
+    "root global-bank import/build",
+    "browser rendering and inline interactions",
+    "whole lesson/media/scientific approval"
+  ]
+}

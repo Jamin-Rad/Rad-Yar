@@ -8,7 +8,8 @@ import InProgressBanner from '@/components/InProgressBanner'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { useLessonReadStatus } from '@/hooks/useLessonReadStatus'
 import { useMobileLearningLayout } from '@/hooks/useMobileLearningLayout'
-import { DAVF_LESSON } from '@/data/davf'
+import { DAVF_LESSON, DAVF_QUESTIONS } from '@/data/davf'
+import TopicAssessment from '@/components/lesson-template/TopicAssessment'
 import LessonHero from '@/components/LessonHero'
 import styles from '../../../abdomen/gi/divertikulitis/page.module.css'
 
@@ -211,6 +212,7 @@ export default function DavfPage() {
 
         <div className={styles.main}>
           <Section migrationChapter id="grundlagen" title={c(DAVF_LESSON.grundlagen.title)} lead={c(DAVF_LESSON.grundlagen.lead)}>
+            <ul>{DAVF_LESSON.learningObjectives.map((goal, index) => <li key={index}>{c(goal)}</li>)}</ul>
             <Cards items={DAVF_LESSON.grundlagen.items} lang={lang} />
             <Callout label={c(DAVF_LESSON.keyLabel)}>{c(DAVF_LESSON.grundlagen.key)}</Callout>
           </Section>
@@ -230,11 +232,13 @@ export default function DavfPage() {
               </figcaption>
             </figure>
             <Callout label={c(DAVF_LESSON.keyLabel)}>{c(DAVF_LESSON.cognard.key)}</Callout>
+            <TopicAssessment key={`classification-${lang}`} question={DAVF_QUESTIONS[lang]?.find(q => q.id === `davf-${lang}-02`)} topic="davf" lang={lang} fach="gehirn" returnTo={withLang('/gehirn/vaskulaer/davf')} />
           </Section>
 
           <Section migrationChapter id="bildgebung" title={c(DAVF_LESSON.bildgebung.title)} lead={c(DAVF_LESSON.bildgebung.lead)}>
             <Table headers={DAVF_LESSON.bildgebung.headers.map(c)} rows={rows(DAVF_LESSON.bildgebung.rows)} />
             <Callout label={c(DAVF_LESSON.keyLabel)}>{c(DAVF_LESSON.bildgebung.key)}</Callout>
+            <TopicAssessment key={`imaging-${lang}`} question={DAVF_QUESTIONS[lang]?.find(q => q.id === `davf-${lang}-09`)} topic="davf" lang={lang} fach="gehirn" returnTo={withLang('/gehirn/vaskulaer/davf')} />
           </Section>
 
           <Section migrationChapter id="differenzial" title={c(DAVF_LESSON.differenzial.title)} lead={c(DAVF_LESSON.differenzial.lead)}>
@@ -244,6 +248,7 @@ export default function DavfPage() {
           <Section migrationChapter id="management" title={c(DAVF_LESSON.management.title)} lead={c(DAVF_LESSON.management.lead)}>
             <Cards items={DAVF_LESSON.management.items} lang={lang} />
             <Callout label={c(DAVF_LESSON.caveLabel)} cave>{c(DAVF_LESSON.management.cave)}</Callout>
+            <TopicAssessment key={`management-${lang}`} question={DAVF_QUESTIONS[lang]?.find(q => q.id === `davf-${lang}-08`)} topic="davf" lang={lang} fach="gehirn" returnTo={withLang('/gehirn/vaskulaer/davf')} />
           </Section>
 
           <Section migrationChapter id="takehome" title={c(DAVF_LESSON.takehome.title)} lead={c(DAVF_LESSON.takehome.lead)}>
@@ -259,6 +264,11 @@ export default function DavfPage() {
               ))}
             </div>
           </Section>
+
+          <footer>
+            <h2>{c({ de: 'Quellen', en: 'Sources', fa: 'منابع' })}</h2>
+            <ul>{DAVF_LESSON.sources.map((source, index) => <li key={index}>{source.url ? <a href={source.url} target="_blank" rel="noopener noreferrer">{source.label}</a> : c({ de: 'Gehirn.pdf · PDF-Seiten 35–36 (gedruckt 34–35)', en: 'Gehirn.pdf · PDF pages 35–36 (printed 34–35)', fa: 'Gehirn.pdf · صفحات ۳۵–۳۶ PDF (شمارهٔ چاپی ۳۴–۳۵)' })}</li>)}</ul>
+          </footer>
 
           <div className={styles.readBarBottom}>
             <ReadButton isRead={isRead} toggleRead={toggleRead} authError={authError} copy={copy} />

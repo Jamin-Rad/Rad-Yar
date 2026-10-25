@@ -1,0 +1,134 @@
+{
+  "date": "2026-10-25",
+  "status": "AUTHOR_READY_PENDING_INDEPENDENT_REVIEW",
+  "route": "/thorax/hrct/dichteanhebung",
+  "originalQuestionsPerLanguage": 12,
+  "originalCards": 15,
+  "newQuestions": 0,
+  "goals": [
+    {
+      "id": "attenuation",
+      "questionIds": [
+        "hrct-dichteanhebung-de-01",
+        "hrct-dichteanhebung-de-04",
+        "hrct-dichteanhebung-de-09",
+        "hrct-dichteanhebung-de-11"
+      ],
+      "cardIds": [
+        "hrct-dichteanhebung-fc-01",
+        "hrct-dichteanhebung-fc-04",
+        "hrct-dichteanhebung-fc-09",
+        "hrct-dichteanhebung-fc-11",
+        "hrct-dichteanhebung-fc-13",
+        "hrct-dichteanhebung-fc-14"
+      ],
+      "text": {
+        "de": "Milchglas, Konsolidierung und beschreibende Zeichen erkennen, ohne eine Ursache zu behaupten.",
+        "en": "Recognise ground glass, consolidation and descriptive signs without presuming cause.",
+        "fa": "شیشه‌مات، کنسولیدیشن و نشانه‌های توصیفی را بدون فرض علت بشناسید."
+      }
+    },
+    {
+      "id": "volume-pleura",
+      "questionIds": [
+        "hrct-dichteanhebung-de-02",
+        "hrct-dichteanhebung-de-05"
+      ],
+      "cardIds": [
+        "hrct-dichteanhebung-fc-02",
+        "hrct-dichteanhebung-fc-05",
+        "hrct-dichteanhebung-fc-15"
+      ],
+      "text": {
+        "de": "Volumenverlust und Pleura-/Bündelzeichen für Atelektase einordnen.",
+        "en": "Interpret volume loss and pleural/converging-bundle signs for atelectasis.",
+        "fa": "کاهش حجم و نشانه‌های پلور/دسته‌های همگرا را برای آتلکتازی تفسیر کنید."
+      }
+    },
+    {
+      "id": "clinical-context",
+      "questionIds": [
+        "hrct-dichteanhebung-de-08",
+        "hrct-dichteanhebung-de-10"
+      ],
+      "cardIds": [
+        "hrct-dichteanhebung-fc-08",
+        "hrct-dichteanhebung-fc-10"
+      ],
+      "text": {
+        "de": "Hydrostatische und embolieassoziierte Verdichtungen im klinischen Kontext mit Aussagegrenzen gewichten.",
+        "en": "Weigh hydrostatic and embolism-associated opacities in clinical context while respecting imaging limits.",
+        "fa": "کدورت‌های هیدروستاتیک و مرتبط با آمبولی را با زمینهٔ بالینی و محدودیت تصویربرداری بسنجید."
+      }
+    },
+    {
+      "id": "nodules",
+      "questionIds": [
+        "hrct-dichteanhebung-de-03",
+        "hrct-dichteanhebung-de-06",
+        "hrct-dichteanhebung-de-07",
+        "hrct-dichteanhebung-de-12"
+      ],
+      "cardIds": [
+        "hrct-dichteanhebung-fc-03",
+        "hrct-dichteanhebung-fc-06",
+        "hrct-dichteanhebung-fc-07",
+        "hrct-dichteanhebung-fc-12"
+      ],
+      "text": {
+        "de": "Nodulusbegriffe, perifissurale Morphologie und vergleichbare Komponentenmessung anwenden.",
+        "en": "Apply nodule terminology, perifissural morphology and comparable component measurement.",
+        "fa": "اصطلاحات ندول، مورفولوژی پری‌فیشورال و اندازه‌گیری قابل‌مقایسهٔ اجزا را به‌کار برید."
+      }
+    }
+  ],
+  "files": [
+    "data/hrctIncreasedDensityCases.js",
+    "data/hrctClinicalRevisions.js",
+    "data/hrct-muster.js"
+  ],
+  "source": {
+    "pdf": "Thorax.pdf",
+    "physicalPages": [
+      11,
+      12,
+      13,
+      14,
+      15,
+      17
+    ],
+    "printedPages": [
+      10,
+      11,
+      12,
+      13,
+      14,
+      16
+    ],
+    "read": "Actual text and six page images inspected. Source pathognomonic rounded-atelectasis claim not copied; CT wedge is not necrosis proof. Nodule morphology/size/measurement use original Fleischner2024glossary and2017guideline; no follow-up schedule or treatment algorithm added.",
+    "renders": "tmp/assessment-quality/hrct-density-pdf"
+  },
+  "primarySources": [
+    {
+      "url": "https://doi.org/10.1148/radiol.232558",
+      "read": "Actual glossary definitions GGO/consolidation/atelectasis/nodule/mass/infarction/airbronchogram/reversehalo."
+    },
+    {
+      "url": "https://doi.org/10.1148/radiol.2017161659",
+      "read": "Actual similar-technique section, partsolid components and perifissural morphology."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/3186982/",
+      "read": "OriginalLynch1988 cohort260asbestos-exposed subjects; characteristic pleural/volume/bundle findings, not universal proof."
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3259383/",
+      "read": "ActualDeWever2011methods/cardiacdecompensationexample and diffuseprocessdifferentials freshly read for previousarchitecturepacket."
+    }
+  ],
+  "limits": [
+    "No full retained-image/source licensing recertification.",
+    "No clinical release approval or empirical difficulty validation.",
+    "No new test quota: replace12originals, retain15cardIDs with three formerly redundant cards now targeted retrieval."
+  ]
+}

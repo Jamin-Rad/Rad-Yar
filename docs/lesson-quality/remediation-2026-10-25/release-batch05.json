@@ -1,6 +1,6 @@
 {
   "date": "2026-10-25",
-  "status": "REVIEWED_READY_FOR_MAIN_AFTER_FINAL_INDEX_CHECK",
+  "status": "PUSHED_MAIN_AND_BOUNDED_LIVE_VERIFIED",
   "previousMain": "d4e0c1903870352e81e3cbce8a58fc6547b66147",
   "scope": "Fifth bounded release in ongoing234-route remediation; twelve topics. Course-wide work remains incomplete.",
   "acceptedPools": {
@@ -13,15 +13,33 @@
     "distalRadius": "All12originalQ/15cards, four goals; contextual post-reduction criteria and non-diagnostic associated signs.51/51 global/after objects independently exact.",
     "scaphoid": "2originalQ/2cards plus two targeted goal gaps ->4Q/4cards. Proximal vascular risk is distinguished from proven necrosis; SNAC and bipartite variant caveats retained. All36wrong-feedback objects and39bounded teaching delta entries independently read."
   },
-  "runtime": {"questionsPerLanguage":972,"casesPerLanguage":18,"supplementQuestionsPerLanguage":86,"supplementCards":88,"explicitRouteMappings":64},
+  "runtime": {
+    "questionsPerLanguage": 972,
+    "casesPerLanguage": 18,
+    "supplementQuestionsPerLanguage": 86,
+    "supplementCards": 88,
+    "explicitRouteMappings": 64
+  },
   "sharedFix": "Route counts/default quiz selections include only explicit reviewed learning-goal singleton legacy subtopics; multi-tag ambiguity throws rather than adding a broad course tag.342goal references reachable DEENFA. Combined inguinal/femoral quiz topic receives matching localized metadata. Supplemental publisher consumes fifth explicitly allowlisted ATV04module.",
   "technicalEvidence": {
     "indexAudit": "Actual staged sources:972MCQ and18cases per language pass options/key/specific wrong-feedback transfer audit. Registry generated using --staged.",
     "build": "Production build08 PASS; existing unrelated CSS start/flex-start warning retained. Local build includes separate author WIP, while explicit Git index scope excludes pending dAVF/PNET/ATV05/HRCTdensity.",
     "SSR": "702/702 actual lesson-route/locale graph renders PASS, remediation-all-routes-ssr07.log. Source rendering fixtures are not HTTP/authentication/media or scientific validation.",
     "focusedChecks": "Reviewed payload/goal parity; locale-looking topic identity; changed-session invalidation; assessment actions; selected-option feedback; distal-radius PDF alignment; scaphoid actual hero/shell/content harness PASS.",
-    "browser": "Authenticated production build08: actual Hernia quiz exposes all4questions across original and new topic tags. New clinical MRI/soft-tissue vignette displayed EN and FA with corresponding alternatives, samequestion retained on language change; Back returns to FA lesson and localized card link. No answer grading or read marking.",
-    "screenshot": "tmp/assessment-quality/batch05-local-hernia-fa.png"
+    "browser": "Authenticated production build08: actual Hernia quiz exposes all4questions across original and new topic tags. New clinical MRI/soft-tissue vignette displayed EN and FA with corresponding alternatives, samequestion retained on language change; Back returns to FA lesson and localized card link. No answer grading or read marking. Actual FA card4 shortanswer and expandednecrosis-caveat explanation inspected in practice mode, no grading.",
+    "screenshot": "tmp/assessment-quality/batch05-local-hernia-fa.png",
+    "live": "Actual Main05 Hernia4question quiz: new strangulation/urgent communication vignette EN then FA with plausible alternatives, samequestion retained, no answersgraded. VisibleFAfonts/RTL screenshot inspected; initialSSRDE hydratesEN. No full-livecourseclaim.",
+    "liveScreenshot": "tmp/assessment-quality/batch05-live-hernia-fa.png"
   },
-  "limits": ["No global lesson/retained-media/whole-PDF clinical release inferred.","Question difficulty remains editorial; no empirical psychometric calibration.","Individual learner-facing browser checks are bounded; no exhaustive live234-route or mobile equivalence claim.","Dr.Zia scientific release approval remains separate."]
+  "limits": [
+    "No global lesson/retained-media/whole-PDF clinical release inferred.",
+    "Question difficulty remains editorial; no empirical psychometric calibration.",
+    "Individual learner-facing browser checks are bounded; no exhaustive live234-route or mobile equivalence claim.",
+    "Dr.Zia scientific release approval remains separate."
+  ],
+  "mainCommit": "1d9fadfe5e503c87e2caef1808b885104d367a29",
+  "deployment": {
+    "state": "success",
+    "url": "https://vercel.com/jamins-projects-e299c1d5/rad-yar/5rp2pMrLihSNQUekxiJwkVxCfbFk"
+  }
 }

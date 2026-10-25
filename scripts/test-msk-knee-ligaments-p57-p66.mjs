@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict'
 import fs from 'node:fs'
 import sharp from 'sharp'
+import { KNIE_LIGAMENTE_QUESTIONS } from '../data/knieligamente.js'
 
 const page = fs.readFileSync('app/msk/knie/kreuzbaender/page.js', 'utf8')
 const curriculum = fs.readFileSync('data/curriculum.js', 'utf8')
@@ -51,10 +52,17 @@ assert.match(heroProvenance.use, /not evidence for a clinical imaging finding/)
 assert.match(page, /صفحهٔ PDF ۶۱ \(صفحهٔ چاپی ۶۰\)/)
 assert.match(page, /صفحهٔ PDF ۶۲ \(صفحهٔ چاپی ۶۱\)/)
 assert.match(page, /صفحهٔ PDF ۶۴ \(صفحهٔ چاپی ۶۳\)، rID 90186/)
-assert.match(assessments, /'acl-xray'/)
-for (const phrase of [
-  'Segond-Fraktur am lateralen Tibiaplateau', 'Segond fracture at the lateral tibial plateau', 'شکستگی Segond در پلاتوی لترال تیبیا',
-]) assert.ok(assessments.includes(phrase), `ACL radiograph MCQ includes ${phrase}`)
+assert.match(assessments, /["']acl-xray["']/)
+for (const [locale, location] of [
+  ['de', /lateral an der proximalen Tibia.*unter dem Plateau/],
+  ['en', /lateral proximal tibial avulsion.*below the plateau/],
+  ['fa', /خارج تیبیا پروگزیمال.*زیر پلاتو/],
+]) {
+  const question = KNIE_LIGAMENTE_QUESTIONS[locale].find(item => /Segond/.test(item.question))
+  assert.ok(question, `${locale}: Segond MCQ remains connected`)
+  const answer = question.options.find(option => option.id === question.correct)
+  assert.match(answer.text, location, `${locale}: correct Segond answer preserves lateral proximal tibial anatomy`)
+}
 assert.match(page, /marked symptomatic instability that persists despite non-operative care/)
 assert.match(page, /ausgeprägter symptomatischer Instabilität trotz nichtoperativer Behandlung/)
 assert.match(page, /ناپایداری علامت‌دار و شدید که با درمان غیرجراحی برطرف نشده/)

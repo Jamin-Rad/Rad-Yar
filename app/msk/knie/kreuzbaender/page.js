@@ -73,10 +73,10 @@ const COPY = {
         lead: 'Das VKB liegt intraartikulär, aber extrasynovial, und zieht von lateral femoral nach medial tibial. Es besteht aus anteromedialem und posterolateralem Bündel.',
         cards: [
           ['Normale Bündelung', ['AM- und PL-Bündel verlaufen in Extension weitgehend parallel.', 'Feine streifige Signalanhebungen zwischen den Bündeln können physiologisch sein.']],
-          ['VKB-Ruptur', ['Direkte Zeichen: Faserdiskontinuität, T2/PD-Signalsteigerung, flacher oder welliger Verlauf.', 'Indirekte Zeichen: Kissing contusions, anteriore Tibiasubluxation über 7 mm, gebogenes HKB.']],
+          ['VKB-Ruptur', ['Direkte Zeichen: Faserdiskontinuität, T2/PD-Signalsteigerung, flacher oder welliger Verlauf.', 'Indirekte Zeichen: laterale Kissing contusions, anteriore Tibiasubluxation und gebogenes HKB; zusammen mit dem direkten Bandbefund bewerten.']],
           ['Mechanismus und Begleitzeichen', ['Häufig ist ein indirekter, nicht-kontaktbedingter Dreh-/Valgusmechanismus, etwa beim Sport.', 'Kissing contusions betreffen typischerweise den lateralen Femurkondylus und das posterolaterale Tibiaplateau.']],
           ['Röntgen und Therapieziele', ['Begleitzeichen im Röntgen sind ein Gelenkerguss und eine Impressionsfraktur am lateralen Femurkondylus; eine Segond-Fraktur ist ein wichtiger Hinweis auf eine VKB-Verletzung.', 'Therapie und Prognose richten sich auch nach dem Aktivitätsniveau. Ein wesentliches Ziel ist, chronische Instabilität und daraus folgende sekundäre Meniskus- und Knorpelschäden zu vermeiden.']],
-          ['Mukoide Degeneration', ['Chronische Einlagerung von Glykosaminoglykanen zwischen die Fasern.', 'Sellerie-Zeichen: intakte dunkle Fasern in hellem T2-hyperintensem Schleimgewebe.']],
+          ['Mukoide Degeneration', ['Chronische Einlagerung von Glykosaminoglykanen zwischen die Fasern.', 'Sellerie-Zeichen: durchgehende dunkle Fasern in hellem T2-hyperintensem Gewebe bei vergrößertem Band. Den gesamten Faserverlauf prüfen; Signal allein beweist keine Ruptur.']],
         ],
         note: 'Unhappy Triad: VKB-Ruptur, MCL-Ruptur und Innenmeniskusläsion nach Valgustrauma mit Außenrotation bei fixiertem Unterschenkel.',
       },
@@ -86,7 +86,7 @@ const COPY = {
         cards: [
           ['Epidemiologie', ['Isolierte HKB-Verletzungen sind selten.', 'Die HKB-Ruptur ist deutlich seltener als die VKB-Ruptur.']],
           ['Mechanismus', ['Typisch ist ein direkter anteriorer Anprall auf die Tibia bei gebeugtem Knie.', 'Klassisches Beispiel: Dashboard Injury; alternativ extreme Hyperflexion.']],
-          ['MRT', ['Rupturiertes HKB erscheint oft verdickt, signalverändert oder diskontinuierlich.', 'Eine Rekonstruktion kann bei ausgeprägter symptomatischer Instabilität trotz nichtoperativer Behandlung oder bei kombinierten Verletzungen erwogen werden; die Entscheidung ist individuell.']],
+          ['MRT', ['Verletztes HKB kann verdickt, signalverändert oder diskontinuierlich erscheinen. Signal und Dicke allein trennen Teil- und Komplettruptur nicht sicher.', 'Eine Rekonstruktion kann bei ausgeprägter symptomatischer Instabilität trotz nichtoperativer Behandlung oder bei kombinierten Verletzungen erwogen werden; die Entscheidung ist individuell.']],
         ],
       },
       takehome: {
@@ -205,10 +205,10 @@ COPY.en.sections = {
     lead: 'The ACL is intra-articular but extrasynovial and runs from the lateral femur to the medial tibia. It consists of an anteromedial and a posterolateral bundle.',
     cards: [
       ['Normal bundles', ['The AM and PL bundles run largely parallel in extension.', 'Fine streaky signal between the bundles may be physiologic.']],
-      ['ACL tear', ['Direct signs: fibre discontinuity, T2/PD signal increase, flattened or wavy course.', 'Indirect signs: kissing contusions, anterior tibial subluxation over 7 mm, buckled PCL.']],
+      ['ACL tear', ['Direct signs: fibre discontinuity, T2/PD signal increase, flattened or wavy course.', 'Indirect signs: lateral kissing contusions, anterior tibial subluxation and buckled PCL; interpret alongside the direct ligament findings.']],
       ['Mechanism and associated signs', ['An indirect, non-contact pivot/valgus mechanism during sport is common.', 'Kissing contusions typically involve the lateral femoral condyle and posterolateral tibial plateau.']],
       ['Radiographs and treatment goals', ['Associated radiographic signs include a joint effusion and an impaction fracture of the lateral femoral condyle; a Segond fracture is an important clue to ACL injury.', 'Treatment and prognosis also depend on activity level. A key goal is to prevent chronic instability and resulting secondary meniscal and cartilage damage.']],
-      ['Mucoid degeneration', ['Chronic glycosaminoglycan deposition between ACL fibres.', 'Celery-stalk sign: intact dark fibres within bright T2-hyperintense mucoid tissue.']],
+      ['Mucoid degeneration', ['Chronic glycosaminoglycan deposition between ACL fibres.', 'Celery-stalk sign: continuous dark fibres within bright T2-hyperintense tissue in an enlarged ligament. Assess the entire fibre course; signal alone does not prove a tear.']],
     ],
     note: 'Unhappy triad: ACL tear, MCL tear and medial meniscus lesion after valgus trauma with external rotation and a fixed lower leg.',
   },
@@ -218,7 +218,7 @@ COPY.en.sections = {
     cards: [
       ['Epidemiology', ['Isolated PCL injuries are rare.', 'PCL tears are much less common than ACL tears.']],
       ['Mechanism', ['A direct anterior blow to the tibia with the knee flexed is typical.', 'Classic example: dashboard injury; another mechanism is extreme hyperflexion.']],
-      ['MRI', ['A torn PCL often appears thickened, signal-altered or discontinuous.', 'Reconstruction may be considered for marked symptomatic instability that persists despite non-operative care, or for combined injuries; the decision is individualised.']],
+      ['MRI', ['An injured PCL may appear thickened, signal-altered or discontinuous. Signal and thickness alone do not reliably distinguish partial from complete tear.', 'Reconstruction may be considered for marked symptomatic instability that persists despite non-operative care, or for combined injuries; the decision is individualised.']],
     ],
   },
   takehome: {
@@ -298,10 +298,10 @@ COPY.fa.sections = {
     lead: 'ACL داخل مفصل ولی خارج از سینوویوم است و از فمور لترال به تیبیا مدیال می‌رود. از باندل قدامی-مدیال و خلفی-لترال تشکیل شده است.',
     cards: [
       ['باندل‌های طبیعی', ['باندل‌های AM و PL در اکستانسیون عمدتاً موازی‌اند.', 'سیگنال‌های خطی ظریف بین باندل‌ها می‌تواند فیزیولوژیک باشد.']],
-      ['پارگی ACL', ["علائم مستقیم: قطع فیبرها، افزایش سیگنال T2/PD، مسیر با شیب کمتر یا موج‌دار.", 'علائم غیرمستقیم: kissing contusions، سابلوکساسیون قدامی تیبیا بیش از ۷ میلی‌متر، PCL خمیده.']],
+      ['پارگی ACL', ["علائم مستقیم: قطع فیبرها، افزایش سیگنال T2/PD، مسیر با شیب کمتر یا موج‌دار.", 'علائم غیرمستقیم: kissing contusions خارجی، ساب‌لوکساسیون قدامی تیبیا و PCL خمیده؛ همراه یافتهٔ مستقیم رباط تفسیر شوند.']],
       ['مکانیسم و علائم همراه', ['مکانیسم چرخشی/والگوس غیرتماسی، برای نمونه هنگام ورزش، شایع است.', 'Kissing contusions معمولاً کندیل لترال فمور و بخش خلفی-لترال پلاتوی تیبیا را درگیر می‌کنند.']],
       ['رادیوگرافی و اهداف درمان', ['یافته‌های همراه در رادیوگرافی شامل افیوژن مفصل و فرورفتگی کندیل لترال فمور است؛ شکستگی Segond سرنخ مهمی برای آسیب ACL است.', 'درمان و پیش‌آگهی به سطح فعالیت هم بستگی دارند. یکی از هدف‌های اصلی پیشگیری از ناپایداری مزمن و آسیب‌های ثانویه منیسک و غضروف است.']],
-      ['دژنراسیون موکوئید', ['رسوب مزمن گلیکوزآمینوگلیکان‌ها بین فیبرهای ACL.', 'علامت celery-stalk: فیبرهای تیره سالم در میان بافت موکوئید روشن در T2.']],
+      ['دژنراسیون موکوئید', ['رسوب مزمن گلیکوزآمینوگلیکان‌ها بین فیبرهای ACL.', 'علامت celery-stalk: فیبرهای تیرهٔ پیوسته در بافت روشن T2 در رباط بزرگ‌شده. کل مسیر فیبرها را بسنجید؛ سیگنال به‌تنهایی پارگی را اثبات نمی‌کند.']],
     ],
     note: 'Unhappy triad: پارگی ACL، پارگی MCL و ضایعه منیسک داخلی پس از ترومای والگوس با چرخش خارجی و ساق ثابت.',
   },
@@ -311,7 +311,7 @@ COPY.fa.sections = {
     cards: [
       ['اپیدمیولوژی', ['آسیب منفرد PCL نادر است.', 'پارگی PCL بسیار کمتر از پارگی ACL دیده می‌شود.']],
       ['مکانیسم', ['ضربه مستقیم از جلو به تیبیا در زانوی خم‌شده تیپیک است.', 'مثال کلاسیک: dashboard injury؛ مکانیسم دیگر هایپرفلکشن شدید است.']],
-      ['MRI', ["PCL پاره اغلب ضخیم، با تغییر سیگنال یا ناپیوسته دیده می‌شود.", 'در صورت ناپایداری علامت‌دار و شدید که با درمان غیرجراحی برطرف نشده یا در آسیب‌های ترکیبی، بازسازی ممکن است مطرح شود؛ تصمیم‌گیری باید فردمحور باشد.']],
+      ['MRI', ["PCL آسیب‌دیده می‌تواند ضخیم، با تغییر سیگنال یا ناپیوسته دیده شود. سیگنال و ضخامت به‌تنهایی پارگی نسبی و کامل را با اطمینان جدا نمی‌کنند.", 'در صورت ناپایداری علامت‌دار و شدید که با درمان غیرجراحی برطرف نشده یا در آسیب‌های ترکیبی، بازسازی ممکن است مطرح شود؛ تصمیم‌گیری باید فردمحور باشد.']],
     ],
   },
   takehome: {

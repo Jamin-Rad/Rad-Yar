@@ -1,0 +1,352 @@
+{
+  "date": "2026-10-25",
+  "reviewer": "/root/integration_review_next",
+  "author": "/root/brain_remediation",
+  "route": "/gehirn/vaskulaer/davf",
+  "worktree": "C:/Users/Drham/Documents/GitHub/Rad-Yar/.worktrees/gehirn-completion-main",
+  "baseline": "d4e0c1903870352e81e3cbce8a58fc6547b66147",
+  "scope": "Independent bounded review of all 12 original MCQ triads, all 14 original card triads, all 56 lesson teaching-delta entries and directly connected route/registry behavior. Whole-lesson media/browser acceptance and scientific release remain separate.",
+  "decisions": {
+    "bounded_pool_acceptance": "PASS",
+    "overall_lesson_acceptance": "BLOCKED",
+    "editorial_qa": "PASS",
+    "editorial_qa_scope": "Assessment content, textual DE/EN/FA parity, exact teaching deltas and producer/registry integration only",
+    "scientific_review": "pending",
+    "browser_qa": "BLOCKED",
+    "publication": "not_requested",
+    "openCritical": 0,
+    "openMajor": 0,
+    "openMinor": 0,
+    "carriedForwardSharedShellMinor": 1
+  },
+  "actualDataPath": {
+    "entry": "app/gehirn/vaskulaer/davf/page.js -> DAVF_LESSON and DAVF_QUESTIONS from data/davf.js",
+    "renderedShell": "LegacyLessonMigration reads migrationChapter JSX and passes its authored bodies to StandardLessonShell; source Section local accordion/header/aside and InProgressBanner are not the final rendered shell.",
+    "hero": "StandardLessonShell -> LessonHero -> LESSON_DESIGN_HEROES[pathname] resolves /educational/lesson-design/gehirn--vaskulaer--davf.webp. Authored /davf/hero.svg is superseded.",
+    "inlineChecks": [
+      "davf-LOCALE-02 after Cognard table",
+      "davf-LOCALE-09 after imaging table",
+      "davf-LOCALE-08 after management"
+    ],
+    "inlineImplementation": "Actual TopicAssessment uses registered question objects, option-specific wrong feedback and live status; locale-key remounts reset selected answers. Click/keyboard behavior is not independently browser-tested.",
+    "questionRegistry": "data/questions.js imports and spreads DAVF_QUESTIONS.de/en/fa; independently deepEqual actual davf-tag pools to current producer.",
+    "cardRegistry": "data/flashcards.js imports DAVF_FLASHCARDS and DAVF_FLASHCARD_TOPIC; actual davf deck deepEqual current 14-card producer.",
+    "quiz": "Custom exact-topic davf action requests n=12, fach=gehirn; shared lessonAssessmentActions normalizes language/return target. App quiz shuffleOptionsForSession remaps correct key and wrong-feedback IDs with options.",
+    "sourcesFooter": "Route source footer is retained by LegacyLessonMigration outside chapter sequence; global application shell owns Navbar/Footer."
+  },
+  "filesRead": [
+    "skills/radyar-lessons/SKILL.md",
+    "docs/lesson-quality/standard.md",
+    "docs/lesson-quality/review-template.md",
+    "docs/educational-page-design-principles.md",
+    "data/davf.js",
+    "app/gehirn/vaskulaer/davf/page.js",
+    "scripts/test-gehirn-davf-p35-p36.mjs",
+    "components/lesson-template/LegacyLessonMigration.jsx",
+    "components/lesson-template/StandardLessonShell.jsx",
+    "components/lesson-template/TopicAssessment.jsx",
+    "components/LessonHero.jsx",
+    "data/lessonDesignHeroes.js",
+    "data/questions.js (dAVF import/spreads/topic and runtime exports)",
+    "data/flashcards.js (dAVF import/spread/topic and runtime exports)",
+    "app/ueben/quiz/page.jsx (shuffleOptionsForSession)",
+    "lib/lessonAssessmentLinks.js",
+    "docs/lesson-quality/remediation-2026-10-25/brain/packet17-davf-handoff.md",
+    "docs/lesson-quality/remediation-2026-10-25/brain/packet17-davf-plan.md",
+    "docs/lesson-quality/remediation-2026-10-25/brain/packet17-davf-sources.json",
+    "docs/lesson-quality/remediation-2026-10-25/brain/packet17-davf-teaching-delta.json",
+    "docs/lesson-quality/remediation-2026-10-25/brain/packet17-davf-runtime.json",
+    "public/davf/hero.svg",
+    "public/davf/drainage-patterns.svg",
+    "docs/lesson-quality/media-provenance.md",
+    "docs/lesson-quality/lesson-design-browser-verification.json (retained dAVF record)"
+  ],
+  "gates": {
+    "SRC": {
+      "status": "PASS",
+      "evidence": "Fresh extraction of actual supplied 89-page Gehirn.pdf physical35–36 (printed34–35); both complete page renders inspected. All relevant source points accounted for. Fresh primary abstract/statement reading supports revised classifications, risk qualifications, MRI/DSA distinction and anatomy-dependent treatment. PDF's categorical embolization-first wording is explicitly qualified in source ledger using AHA2018, and conservative IIa is declared sourced addition. No full-PDF or full-original-article claim.",
+      "evidenceBlockers": []
+    },
+    "EDU": {
+      "status": "PASS",
+      "evidence": "All 36 localized question objects and 42 card language units read, including all four choices, answers, correct explanations and 108 wrong-choice rationales. Four observable goals and three inline decisions follow the teaching they test. Q12 supplies nonterritorial edema/dilated veins/negative territorial DWI pattern before asking about congestion. Existing seven chapter purposes are justified in plan; no boilerplate Befund & Selbsttest inserted. Risk and classification caveats remain after shortening.",
+      "evidenceBlockers": []
+    },
+    "VIS": {
+      "status": "NOT_APPLICABLE",
+      "evidence": "No new or altered diagnostic frame or asset in this bounded assessment/teaching repair; vignettes are self-contained text, and PDF35/36 contain no diagnostic figure. Actual retained hero raster inspected for conceptual topic fit and existing drainage SVG source read. This does not certify retained route media.",
+      "evidenceBlockers": [
+        "Whole-lesson diagnostic example need, actual drainage-diagram rendered legibility/fit, full hero silhouette/background QA, and complete retained asset provenance/rights review remain outside this packet. No unseen patient image was accepted."
+      ]
+    },
+    "LNG": {
+      "status": "PASS",
+      "evidence": "DE/EN/FA semantic units compared across all original stems, options, key/explanation/wrong-feedback triads, 14 complete cards, goals and changed lesson text. Negations, CVD versus sinus reflux, III/IV ectasia distinction, spinal V, MRI uncertainty, treatment urgency and preserved normal venous outflow agree. Numeric grade labels and 40–60 source age range are consistent. Textual acceptance only.",
+      "evidenceBlockers": [
+        "Real browser RTL/bidi and accessible feedback/focus rendering still required under UX.",
+        "Pre-existing shared migration FA summary title override is recorded separately below; authored packet title is correct."
+      ]
+    },
+    "ASM": {
+      "status": "PASS",
+      "evidence": "Independent read-only assertions reproduced exact old question/card IDs against git d4e0c190. 12 questions per language, four distinct choices each, valid key, all three wrong-feedback keys, sources; 14 fully localized cards with sources. Actual global davf pools deepEqual current producer, with no supplementary duplicates. Three route checks consume exact producer questions02/09/08. Global quiz remaps both keys and feedback when shuffling; uniform producer A was not misread as a global fixed-position runtime defect.",
+      "evidenceBlockers": [
+        "Root-owned final build/browser verification and authenticated return/progress paths remain pending."
+      ]
+    },
+    "UX": {
+      "status": "BLOCKED",
+      "evidence": "No current-packet real browser interaction evidence supplied or performed by this reviewer. Author structural tests and prior design-only local record do not establish current full matrix. No server/build/access-gate changes made.",
+      "evidenceBlockers": [
+        "DE/EN/FA x desktop1440/mobile390 x light/dark, sampled320/760 widths; real inline wrong/correct/change-answer, language-switch reset, hash/reload, focus, accordion/progress, quiz/card return and console/assets evidence are still required."
+      ]
+    },
+    "REV": {
+      "status": "PASS",
+      "evidence": "Reviewer independently read actual producers/consumers and source evidence, reproduced the exact 56-entry lesson delta against git HEAD d4e0c190, confirmed hashes and ran focused plus independent bank assertions. No production artifact modified and author claimed pass was not adopted.",
+      "evidenceBlockers": []
+    }
+  },
+  "sourceCoverage": [
+    {
+      "page": 35,
+      "printed": 34,
+      "point": "Dural AV connection without nidus; acquired associations and adult/site pattern",
+      "locations": [
+        "grundlagen",
+        "Q01",
+        "Q07",
+        "Q10",
+        "cards01–04,12"
+      ],
+      "disposition": "covered; causation explicitly qualified"
+    },
+    {
+      "page": 35,
+      "printed": 34,
+      "point": "Transverse/sigmoid tinnitus, cavernous orbital symptoms, cortical drainage neurological sequelae",
+      "locations": [
+        "klinik",
+        "Q03",
+        "Q05",
+        "Q06",
+        "cards05,07,08"
+      ],
+      "disposition": "covered; symptom/site does not assign grade"
+    },
+    {
+      "page": 35,
+      "printed": 34,
+      "point": "T2/SWI/TOF clues and limitations",
+      "locations": [
+        "bildgebung",
+        "differenzial",
+        "Q04",
+        "Q09",
+        "Q12",
+        "cards09–11"
+      ],
+      "disposition": "covered; source pseudophlebitic wording qualified by primary DSA/SWI studies"
+    },
+    {
+      "page": 36,
+      "printed": 35,
+      "point": "CTA early venous filling/meningeal arteries and DSA shunt/feeder/outflow anatomy",
+      "locations": [
+        "bildgebung",
+        "Q04",
+        "Q10",
+        "cards11,12"
+      ],
+      "disposition": "covered"
+    },
+    {
+      "page": 36,
+      "printed": 35,
+      "point": "Embolization, microsurgery, selected conservative CognardI",
+      "locations": [
+        "management",
+        "Q08",
+        "cards13,14"
+      ],
+      "disposition": "covered with declared AHA2018 qualification and conservativeIIa addition; no compression recommendation retained"
+    },
+    {
+      "page": null,
+      "point": "Cognard/Borden correspondence, ectasia/presentation risk modifiers, spinalV",
+      "locations": [
+        "cognard",
+        "Q02",
+        "Q03",
+        "Q11",
+        "cards05,06"
+      ],
+      "disposition": "targeted supplemental primary-source evidence"
+    }
+  ],
+  "primarySourcesFreshRead": [
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/7862961/",
+      "range": "Complete original indexed abstract",
+      "supports": "I/IIa/IIb/IIa+b/III/IV/V drainage and III/IV ectasia. Historical presentation proportions not used as annual risk."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/7815143/",
+      "range": "Complete original indexed abstract via fresh PubMed search; direct open had HHS-only response",
+      "supports": "Borden sinus/meningeal vs subarachnoid drainage and meningeal arterial supply. No original full article reviewed."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/22610384/",
+      "range": "Complete original cohort/pooled-study abstract",
+      "supports": "Risk varies by presentation, cortical drainage and venous ectasia; blanket annual rate inappropriate."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/3968564/",
+      "range": "Complete original indexed abstract",
+      "supports": "BarrowA direct ICA versus B–D dural meningeal shunts."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/22051813/",
+      "range": "Complete original SWI study abstract plus displayed figure captions",
+      "supports": "SWI hyperintense shunt/venous structures, hypointense congestion veins and missed/underestimated cortical reflux. No diagnostic frame reused."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/26047821/",
+      "range": "Complete original92-patient abstract via fresh indexed PubMed search",
+      "supports": "Dilated leptomeningeal/medullary veins and edema are associated clues prompting DSA confirmation."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/33093135/",
+      "range": "Complete original201-patient abstract via fresh indexed PubMed search",
+      "supports": "Pseudophlebitic pattern defined angiographically with tortuous collateral/bridging/cortical veins and delayed normal brain circulation; associated edema/transmedullary veins."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/17494662/",
+      "range": "Complete original14-patient abstract via fresh indexed PubMed search",
+      "supports": "DSA reference; TOF may miss fistula and has false positives after obliteration. No performance percentage taught."
+    },
+    {
+      "url": "https://www.ahajournals.org/doi/pdf/10.1161/cir.0000000000000567",
+      "range": "Fresh indexed original Table3, adjacent DAVF treatment paragraphs and three-point summary",
+      "supports": "Anatomy/presentation-dependent treatment; protect normal venous pathways; endovascular/surgical options; delayed radiosurgery; selected nonaggressive conservative care."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/34628528/",
+      "range": "Complete original prospective registry abstract and Fig3 caption",
+      "supports": "BordenI conservative follow-up with palliative intervention for intolerable symptoms; limited28-patient3-year cohort is not zero lifetime risk."
+    }
+  ],
+  "mediaLedger": [
+    {
+      "asset": "Gehirn.pdf physical35–36",
+      "observed": "Both complete page images inspected: text-only source spread, no diagnostic scan or table image requiring selection.",
+      "reuse": "User-supplied PDF inspection; no new extracted asset."
+    },
+    {
+      "asset": "public/educational/lesson-design/gehirn--vaskulaer--davf.webp",
+      "observed": "Actual maintained conceptual hero inspected; dural/sinus shunt and embolization motif. Not diagnostic patient evidence.",
+      "status": "Retained media whole-pass pending",
+      "rights": "No new rights assertion made; no dAVF-specific provenance entry located in inspected media ledger."
+    },
+    {
+      "asset": "public/davf/drainage-patterns.svg",
+      "observed": "Actual source defines red feeder/blue sinus drainage/purple cortical outflow and route supplies translated captions/alt.",
+      "status": "Source read; actual rendered frame fit and comprehensive scientific diagram review pending",
+      "rights": "Retained code SVG; no new reuse claim."
+    }
+  ],
+  "terminologyComparison": [
+    {
+      "concept": "Sinus reflux versus cortical reflux",
+      "de": "Sinusreflux / kortikaler Reflux",
+      "en": "sinus reflux / cortical reflux",
+      "fa": "رفلاکس سینوسی / رفلاکس کورتیکال",
+      "result": "PASS textual distinction preserved"
+    },
+    {
+      "concept": "Direct cortical drainage / ectasia",
+      "de": "direkte kortikale Drainage / venöse Ektasie",
+      "en": "direct cortical drainage / venous ectasia",
+      "fa": "درناژ مستقیم کورتیکال / اکتازی وریدی",
+      "result": "PASS III/IV distinction preserved"
+    },
+    {
+      "concept": "Congestion clue does not prove reflux",
+      "de": "Stauungshinweis, kein Nachweis",
+      "en": "congestion clue, not proof",
+      "fa": "سرنخ احتقان، نه اثبات",
+      "result": "PASS uncertainty and negation preserved"
+    },
+    {
+      "concept": "Preserve normal cerebral venous drainage",
+      "de": "normalen Hirnvenenabfluss schützen",
+      "en": "protect normal cerebral venous outflow",
+      "fa": "حفظ درناژ وریدی طبیعی مغز",
+      "result": "PASS treatment caveat preserved"
+    }
+  ],
+  "findings": [],
+  "carriedForwardFindings": [
+    {
+      "id": "DAVF17-SHARED-LNG-01",
+      "severity": "minor",
+      "location": "components/lesson-template/LegacyLessonMigration.jsx COPY.fa.takeHome and final summary LessonSection",
+      "observedEvidence": "Authored DAVF_LESSON takehome.label/title.fa = پیام نهایی, but actual migration builds both summary navigation label and final title from c.takeHome = نکات کلیدی.",
+      "learnerImpact": "Shared-shell Persian summary label differs from maintained exact Take Home Message contract; clinical meaning remains understandable.",
+      "requiredCorrection": "Track as existing shared-shell localization issue and align in a separately scoped shell change.",
+      "retestEvidence": "Inspect actual rendered FA title/navigation after the shared correction; this reviewer did not relabel shared production files.",
+      "status": "REVISE",
+      "scope": "Pre-existing shared-shell finding; outside bounded packet content acceptance."
+    }
+  ],
+  "browserEvidence": [
+    {
+      "source": "Author packet17 handoff",
+      "observation": "No browser run supplied; accurately states pending.",
+      "status": "BLOCKED"
+    },
+    {
+      "source": "docs/lesson-quality/lesson-design-browser-verification.json retained dAVF record",
+      "observation": "Design-only local localhost3024 record lists loaded maintained hero and dark1265px summary; not tied to current packet content hash or complete language/theme/interaction matrix.",
+      "status": "BLOCKED"
+    }
+  ],
+  "tests": [
+    {
+      "command": "node scripts/test-gehirn-davf-p35-p36.mjs",
+      "result": "PASS",
+      "scope": "Structural/source assertions only; no browser simulation."
+    },
+    {
+      "command": "Independent in-memory current vs git d4e0c190/saved-before import assertions",
+      "result": "PASS",
+      "observed": "Saved before matches HEAD lesson; actual full lesson diff deepEquals all56 recorded delta entries; question/card IDs unchanged;108 localized wrong-feedback keys verified."
+    },
+    {
+      "command": "Independent esbuild write:false actual global bank import",
+      "result": "PASS",
+      "observed": "Exact current producer deepEquals registered12Q per language and14cards."
+    }
+  ],
+  "hashes": [
+    {
+      "path": "data/davf.js",
+      "sha256": "e982d1690bd6c59d054c4eb966304222bedb70ee5334243e2e0afeeb69fe2dc9"
+    },
+    {
+      "path": "app/gehirn/vaskulaer/davf/page.js",
+      "sha256": "00a0bdace8f0828ba712709b02013fb920f98ae9a875ca33574bdc2cc96748f3"
+    },
+    {
+      "path": "scripts/test-gehirn-davf-p35-p36.mjs",
+      "sha256": "305ad6b7d944f50da3fe2fefea666c51d513aa3edba914795f44d3532f9b1c8b"
+    }
+  ],
+  "limits": [
+    "No demonstrated critical or major error found in this bounded content packet.",
+    "No original study full-text or all-source-figure audit is claimed where only indexed abstract/statement sections were read.",
+    "Current checkout reviewed; no claim that these bytes are deployed on live site.",
+    "No build/server/browser/git mutation or production artifact edit by reviewer. Reports are the only intentional repository writes.",
+    "PASS is independent bounded technical/editorial content acceptance, not scientific approval by Dr. Zia and not publication."
+  ]
+}

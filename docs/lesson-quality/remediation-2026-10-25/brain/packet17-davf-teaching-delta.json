@@ -1,0 +1,322 @@
+[
+  {
+    "path": "DAVF_LESSON.sections[6].label.de",
+    "before": "Merke",
+    "after": "Take Home Message"
+  },
+  {
+    "path": "DAVF_LESSON.sections[6].label.en",
+    "before": "Take-home message",
+    "after": "Take Home Message"
+  },
+  {
+    "path": "DAVF_LESSON.sections[6].label.fa",
+    "before": "نکات کلیدی",
+    "after": "پیام نهایی"
+  },
+  {
+    "path": "DAVF_LESSON.grundlagen.items[1].text.de",
+    "before": "Meist erworben — im Gegensatz zur AVM (meist kongenital). Auslöser: Sinusthrombose, Trauma, OP oder Infektion → Neovaskularisation → Fistelbildung.",
+    "after": "Sinusthrombose und venöse Hypertension können die Entstehung duraler Shunts begünstigen. Auch Trauma, Operation oder Infektion sind Assoziationen. Die Ursache bleibt häufig unklar; eine Sinusthrombose ist weder Voraussetzung noch alleiniger Beweis einer dAVF."
+  },
+  {
+    "path": "DAVF_LESSON.grundlagen.items[1].text.en",
+    "before": "Mostly acquired — unlike AVM (usually congenital). Triggers: sinus thrombosis, trauma, surgery or infection → neovascularisation → fistula formation.",
+    "after": "Sinus thrombosis and venous hypertension can promote formation of dural shunts. Trauma, surgery and infection are also associations. The cause often remains unclear; sinus thrombosis is neither required for nor sufficient proof of dAVF."
+  },
+  {
+    "path": "DAVF_LESSON.grundlagen.items[1].text.fa",
+    "before": "اغلب اکتسابی — بر خلاف AVM (معمولاً مادرزادی). محرک‌ها: ترومبوز سینوس، تروما، جراحی یا عفونت → نئووسکولاریزاسیون → تشکیل فیستول.",
+    "after": "ترومبوز سینوس و پرفشاری وریدی می‌توانند به تشکیل شانت دورال کمک کنند. تروما، جراحی و عفونت نیز از عوامل همراه‌اند. علت اغلب نامشخص می‌ماند؛ ترومبوز سینوس نه پیش‌شرط و نه به‌تنهایی اثبات‌کنندهٔ dAVF است."
+  },
+  {
+    "path": "DAVF_LESSON.grundlagen.key.de",
+    "before": "dAVF = erworben + kein Nidus. Hauptauslöser: Sinusthrombose → Neovaskularisation → Fistelbildung.",
+    "after": "dAVF: duraler Shunt ohne Nidus, meist erworben. Sinusthrombose und venöse Hypertension sind Assoziationen, keine Voraussetzung jeder Fistel."
+  },
+  {
+    "path": "DAVF_LESSON.grundlagen.key.en",
+    "before": "dAVF = acquired + no nidus. Main trigger: sinus thrombosis → neovascularisation → fistula formation.",
+    "after": "dAVF: dural shunt without a nidus, usually acquired. Sinus thrombosis and venous hypertension are associations, not prerequisites for every fistula."
+  },
+  {
+    "path": "DAVF_LESSON.grundlagen.key.fa",
+    "before": "dAVF = اکتسابی + بدون نیدوس. محرک اصلی: ترومبوز سینوس → نئووسکولاریزاسیون → فیستول.",
+    "after": "dAVF: شانت دورال بدون نیدوس، معمولاً اکتسابی. ترومبوز سینوس و پرفشاری وریدی عوامل همراه‌اند، نه پیش‌شرط هر فیستول."
+  },
+  {
+    "path": "DAVF_LESSON.klinik.rows[0][2].de",
+    "before": "Niedrig (Cognard I)",
+    "after": "Vom Drainagemuster abhängig; Tinnitus allein erlaubt keine Gradeinteilung"
+  },
+  {
+    "path": "DAVF_LESSON.klinik.rows[0][2].en",
+    "before": "Low (Cognard I)",
+    "after": "Depends on drainage pattern; tinnitus alone does not establish grade"
+  },
+  {
+    "path": "DAVF_LESSON.klinik.rows[0][2].fa",
+    "before": "پایین (Cognard I)",
+    "after": "وابسته به الگوی درناژ؛ وزوز گوش به‌تنهایی درجه را مشخص نمی‌کند"
+  },
+  {
+    "path": "DAVF_LESSON.cognard.headers[2].de",
+    "before": "Blutungsrisiko",
+    "after": "Risikoeinordnung"
+  },
+  {
+    "path": "DAVF_LESSON.cognard.headers[2].en",
+    "before": "Haemorrhage risk",
+    "after": "Risk interpretation"
+  },
+  {
+    "path": "DAVF_LESSON.cognard.headers[2].fa",
+    "before": "خطر خونریزی",
+    "after": "ارزیابی خطر"
+  },
+  {
+    "path": "DAVF_LESSON.cognard.rows[1][2].de",
+    "before": "Mäßig — Stauungszeichen möglich",
+    "after": "Kein CVD; venöse Abflussbehinderung/intrakranielle Hypertension mitbeurteilen"
+  },
+  {
+    "path": "DAVF_LESSON.cognard.rows[1][2].en",
+    "before": "Moderate — congestion possible",
+    "after": "No CVD; assess venous outflow obstruction/intracranial hypertension"
+  },
+  {
+    "path": "DAVF_LESSON.cognard.rows[1][2].fa",
+    "before": "متوسط — احتقان ممکن",
+    "after": "بدون CVD؛ اختلال خروج وریدی/پرفشاری داخل جمجمه نیز بررسی شود"
+  },
+  {
+    "path": "DAVF_LESSON.cognard.key.de",
+    "before": "CVD = kortikale venöse Drainage. Sie liegt bei Cognard IIb, IIa+b, III und IV vor; Grad V beschreibt spinalen venösen Abfluss. CVD erfordert eine fachärztliche, individualisierte Risikobewertung und Therapieplanung.",
+    "after": "CVD betrifft Cognard IIb, IIa+b, III und IV; V beschreibt spinalen perimedullären Abfluss. Borden I = Sinus ohne kortikalen Reflux (Cognard I/IIa), II = Sinus mit kortikalem Reflux (IIb/IIa+b), III = direkte kortikale Drainage ohne Sinusdrainage (III/IV). Klassifikation und klinische Präsentation gemeinsam beurteilen."
+  },
+  {
+    "path": "DAVF_LESSON.cognard.key.en",
+    "before": "CVD = cortical venous drainage. It occurs in Cognard IIb, IIa+b, III and IV; grade V describes spinal venous drainage. CVD warrants specialist, individualized risk assessment and treatment planning.",
+    "after": "CVD occurs in Cognard IIb, IIa+b, III and IV; V denotes spinal perimedullary drainage. Borden I = sinus without cortical reflux (Cognard I/IIa), II = sinus with cortical reflux (IIb/IIa+b), III = direct cortical drainage without sinus drainage (III/IV). Assess classification together with clinical presentation."
+  },
+  {
+    "path": "DAVF_LESSON.cognard.key.fa",
+    "before": "CVD = درناژ وریدی کورتیکال. در Cognard IIb، IIa+b، III و IV وجود دارد؛ درجه V درناژ وریدی نخاعی را توصیف می‌کند. CVD نیازمند ارزیابی خطر و برنامه‌ریزی درمانی فردمحور توسط متخصص است.",
+    "after": "CVD در Cognard IIb، IIa+b، III و IV وجود دارد؛ V درناژ پری‌مدولاری نخاعی است. Borden I = سینوس بدون رفلاکس کورتیکال (Cognard I/IIa)، II = سینوس همراه رفلاکس کورتیکال (IIb/IIa+b)، III = درناژ مستقیم کورتیکال بدون درناژ سینوسی (III/IV). طبقه‌بندی همراه با تظاهر بالینی ارزیابی شود."
+  },
+  {
+    "path": "DAVF_LESSON.bildgebung.rows[0][2].de",
+    "before": "T2-Hyperintensität → CVD, venöse Stauung",
+    "after": "Ödem ist ein Stauungshinweis, kein alleiniger Nachweis von CVD"
+  },
+  {
+    "path": "DAVF_LESSON.bildgebung.rows[0][2].en",
+    "before": "T2 hyperintensity → CVD, venous congestion",
+    "after": "Oedema is a congestion clue, not proof of CVD by itself"
+  },
+  {
+    "path": "DAVF_LESSON.bildgebung.rows[0][2].fa",
+    "before": "هایپراینتنسیتی T2 → CVD، احتقان وریدی",
+    "after": "ادم سرنخ احتقان است، نه اثبات مستقل CVD"
+  },
+  {
+    "path": "DAVF_LESSON.bildgebung.rows[1][2].de",
+    "before": "Pseudophlebitisches Muster = CVD-Zeichen",
+    "after": "Auffällige Venen als Stauungshinweis; Reflux angiographisch klären"
+  },
+  {
+    "path": "DAVF_LESSON.bildgebung.rows[1][2].en",
+    "before": "Pseudophlebitic pattern = CVD sign",
+    "after": "Abnormal veins are a congestion clue; characterize reflux angiographically"
+  },
+  {
+    "path": "DAVF_LESSON.bildgebung.rows[1][2].fa",
+    "before": "الگوی سودوفلبیتیک = علامت CVD",
+    "after": "وریدهای غیرطبیعی سرنخ احتقان‌اند؛ رفلاکس با آنژیوگرافی مشخص شود"
+  },
+  {
+    "path": "DAVF_LESSON.bildgebung.key.de",
+    "before": "Pseudophlebitisches Muster in SWI = geschlängelte kortikale Venen = Hinweis auf CVD. DSA charakterisiert die Angioarchitektur vor Therapie umfassend.",
+    "after": "Angiographisch bestehen geschlängelte kollaterale/kortikale Venen und verzögerte normale Hirnzirkulation. Das SWI-Signal hängt von Oxygenierung und Fluss ab; Shuntvenen können hyperintens, gestaute Venen hypointens sein. SWI kann Reflux übersehen oder unterschätzen und ersetzt die Drainagecharakterisierung durch DSA nicht."
+  },
+  {
+    "path": "DAVF_LESSON.bildgebung.key.en",
+    "before": "Pseudophlebitic pattern on SWI = tortuous cortical veins = clue to CVD. DSA comprehensively characterizes angioarchitecture before treatment.",
+    "after": "Angiography shows tortuous collateral/cortical veins and delayed normal cerebral circulation. SWI signal depends on oxygenation and flow; shunt veins can be hyperintense and congested veins hypointense. SWI can miss or underestimate reflux and does not replace DSA characterization of drainage."
+  },
+  {
+    "path": "DAVF_LESSON.bildgebung.key.fa",
+    "before": "الگوی سودوفلبیتیک در SWI = وریدهای کورتیکال مارپیچ = نشانه‌ای از CVD. DSA آنژیوآناتومی را پیش از درمان به‌طور کامل مشخص می‌کند.",
+    "after": "در آنژیوگرافی وریدهای کولترال/کورتیکال پیچ‌خورده و تأخیر گردش طبیعی مغز دیده می‌شوند. سیگنال SWI به اکسیژناسیون و جریان وابسته است؛ وریدهای شانت ممکن است پرسیگنال و وریدهای دچار احتقان کم‌سیگنال باشند. SWI ممکن است رفلاکس را نشان ندهد یا کمتر از واقع برآورد کند و جای تعیین درناژ با DSA را نمی‌گیرد."
+  },
+  {
+    "path": "DAVF_LESSON.differenzial.rows[2][1].de",
+    "before": "Kann Ursache oder Folge der dAVF sein; kein arterieller Fluss im Sinus in TOF-MRA; kein früher arterieller Sinusnachfluss",
+    "after": "Sinusthrombose kann ohne Shunt bestehen oder mit dAVF koexistieren. TOF-Sinus-Signal allein trennt Thrombus, Fluss und Shunt nicht sicher; entscheidend sind dynamische Shuntfüllung und gezielte Gefäßabklärung."
+  },
+  {
+    "path": "DAVF_LESSON.differenzial.rows[2][1].en",
+    "before": "Can be cause or consequence of dAVF; no arterial flow in sinus on TOF-MRA; no early arterial sinus filling",
+    "after": "Sinus thrombosis may occur without a shunt or coexist with dAVF. TOF sinus signal alone does not reliably distinguish thrombus, flow and shunting; dynamic shunt filling and targeted vascular assessment are decisive."
+  },
+  {
+    "path": "DAVF_LESSON.differenzial.rows[2][1].fa",
+    "before": "می‌تواند علت یا عارضه dAVF باشد؛ بدون جریان شریانی در سینوس در TOF-MRA؛ بدون پُرشدگی زودرس شریانی سینوس",
+    "after": "ترومبوز سینوس می‌تواند بدون شانت باشد یا همراه dAVF وجود داشته باشد. سیگنال سینوس در TOF به‌تنهایی ترومبوس، جریان و شانت را با اطمینان جدا نمی‌کند؛ پُرشدگی دینامیک شانت و بررسی هدفمند عروقی تعیین‌کننده‌اند."
+  },
+  {
+    "path": "DAVF_LESSON.differenzial.rows[3][1].de",
+    "before": "Diffuse T2-Hyperintensität ohne erkennbare Fistel; Ausschluss durch DSA",
+    "after": "T2/FLAIR-Ödem ist unspezifisch. Bei auffälligen Venen oder fortbestehendem Shuntverdacht gezielte angiographische Abklärung einschließlich DSA."
+  },
+  {
+    "path": "DAVF_LESSON.differenzial.rows[3][1].en",
+    "before": "Diffuse T2 hyperintensity without identifiable fistula; exclude with DSA",
+    "after": "T2/FLAIR oedema is nonspecific. Abnormal veins or persistent shunt suspicion warrant targeted angiographic assessment including DSA."
+  },
+  {
+    "path": "DAVF_LESSON.differenzial.rows[3][1].fa",
+    "before": "هایپراینتنسیتی منتشر T2 بدون شناسایی فیستول؛ رد قطعی با DSA",
+    "after": "ادم T2/FLAIR غیراختصاصی است. وریدهای غیرطبیعی یا تداوم شک به شانت نیازمند بررسی هدفمند آنژیوگرافیک، از جمله DSA، هستند."
+  },
+  {
+    "path": "DAVF_LESSON.management.items[0].text.de",
+    "before": "Therapie der ersten Wahl — transarteriell oder transvenös. Transvenöse Okklusion des beteiligten Sinussegments ist oft kurativ.",
+    "after": "Häufig eingesetzte Behandlung, transarteriell oder transvenös je nach Shuntanatomie. Ziel ist der Fistelverschluss unter Schutz des normalen Hirnvenenabflusses; der beteiligte Sinus darf nicht pauschal verschlossen werden."
+  },
+  {
+    "path": "DAVF_LESSON.management.items[0].text.en",
+    "before": "Treatment of first choice — transarterial or transvenous. Transvenous occlusion of the involved sinus segment is often curative.",
+    "after": "Frequently used treatment, transarterial or transvenous according to shunt anatomy. The goal is fistula closure while protecting normal cerebral venous outflow; the involved sinus must not routinely be sacrificed."
+  },
+  {
+    "path": "DAVF_LESSON.management.items[0].text.fa",
+    "before": "درمان انتخابی — ترانس‌شریانی یا ترانس‌وریدی. انسداد ترانس‌وریدی سگمان سینوس درگیر اغلب درمان‌کننده است.",
+    "after": "درمانی پرکاربرد، ترانس‌شریانی یا ترانس‌وریدی بر اساس آناتومی شانت. هدف بستن فیستول همراه با حفظ درناژ وریدی طبیعی مغز است؛ سینوس درگیر نباید به‌طور بی‌قیدوشرط بسته شود."
+  },
+  {
+    "path": "DAVF_LESSON.management.items[1].text.de",
+    "before": "Bei endovaskulär nicht erreichbaren Fisteln oder nach fehlgeschlagener Embolisation. Ziel ist die Unterbrechung der kortikalen venösen Drainage.",
+    "after": "Bei geeigneter Anatomie wirksame Option, auch wenn ein endovaskulärer Zugang ungeeignet oder erfolglos ist. Ziel ist die gezielte Ausschaltung des Shunts unter Erhalt normaler venöser Drainage."
+  },
+  {
+    "path": "DAVF_LESSON.management.items[1].text.en",
+    "before": "For fistulas inaccessible by endovascular approach or after failed embolisation. The goal is to interrupt the cortical venous drainage.",
+    "after": "Effective option with suitable anatomy, including when endovascular access is unsuitable or unsuccessful. The aim is targeted shunt disconnection while preserving normal venous drainage."
+  },
+  {
+    "path": "DAVF_LESSON.management.items[1].text.fa",
+    "before": "برای فیستول‌های غیرقابل‌دسترس از راه اندوواسکولار یا پس از شکست آمبولیزاسیون. هدف قطع درناژ وریدی کورتیکال است.",
+    "after": "در آناتومی مناسب گزینه‌ای مؤثر است، از جمله زمانی که دسترسی اندوواسکولار نامناسب یا ناموفق باشد. هدف قطع هدفمند شانت همراه با حفظ درناژ وریدی طبیعی است."
+  },
+  {
+    "path": "DAVF_LESSON.management.items[2].text.de",
+    "before": "Bei ausgewählten Cognard-I- oder IIa-Fisteln ohne kortikalen Reflux nach individueller Beurteilung von Symptomen und venösem Abfluss; Zeichen intrakranieller Hypertension beachten. Regelmäßige Bildgebungskontrollen. Kompression der Jugularvene kann helfen (Vorsicht: keine starke Evidenz).",
+    "after": "Cognard I hat antegrade, IIa retrograde Sinusdrainage ohne kortikalen Reflux. Beschwerden, venöse Abflussbehinderung und Zeichen intrakranieller Hypertension sind mitzubeurteilen; Beobachtung erfordert geplante Verlaufskontrollen und erneute Abklärung bei veränderten Symptomen."
+  },
+  {
+    "path": "DAVF_LESSON.management.items[2].text.en",
+    "before": "For selected Cognard I or IIa fistulas without cortical reflux, after individual assessment of symptoms and venous outflow; assess signs of intracranial hypertension. Regular imaging follow-up. Compression of the jugular vein may help (caution: limited evidence).",
+    "after": "Cognard I has antegrade and IIa retrograde sinus drainage without cortical reflux. Assess symptoms, venous outflow obstruction and signs of intracranial hypertension; observation requires planned follow-up and reassessment if symptoms change."
+  },
+  {
+    "path": "DAVF_LESSON.management.items[2].text.fa",
+    "before": "در فیستول‌های منتخب Cognard I یا IIa بدون رفلاکس کورتیکال، پس از ارزیابی فردی علائم و خروج وریدی؛ به نشانه‌های پرفشاری داخل جمجمه توجه شود. پیگیری تصویربرداری منظم. فشردن ورید ژوگولار می‌تواند کمک کند (احتیاط: شواهد محدود).",
+    "after": "Cognard I درناژ آنتروگراد و IIa درناژ رتروگراد سینوس را بدون رفلاکس کورتیکال دارند. علائم، اختلال خروج وریدی و نشانه‌های پرفشاری داخل جمجمه نیز باید ارزیابی شوند؛ مشاهده به پیگیری برنامه‌ریزی‌شده و بررسی مجدد در صورت تغییر علائم نیاز دارد."
+  },
+  {
+    "path": "DAVF_LESSON.takehome.title.de",
+    "before": "Take-Home Message",
+    "after": "Take Home Message"
+  },
+  {
+    "path": "DAVF_LESSON.takehome.title.en",
+    "before": "Take-Home Message",
+    "after": "Take Home Message"
+  },
+  {
+    "path": "DAVF_LESSON.takehome.title.fa",
+    "before": "پیام اصلی",
+    "after": "پیام نهایی"
+  },
+  {
+    "path": "DAVF_LESSON.takehome.items[0].title.de",
+    "before": "Kein Nidus = kein AVM",
+    "after": "Duraler Shunt ohne Nidus"
+  },
+  {
+    "path": "DAVF_LESSON.takehome.items[0].title.en",
+    "before": "No nidus = not an AVM",
+    "after": "Dural shunt without a nidus"
+  },
+  {
+    "path": "DAVF_LESSON.takehome.items[0].title.fa",
+    "before": "بدون نیدوس = AVM نیست",
+    "after": "شانت دورال بدون نیدوس"
+  },
+  {
+    "path": "DAVF_LESSON.takehome.items[0].text.de",
+    "before": "Die dAVF ist eine erworbene direkte Fistel in der Dura — ohne Nidus. Das ist der wichtigste Unterschied zur zerebralen AVM (kongenital, mit Nidus im Parenchym).",
+    "after": "Das Gefäßkompartiment und der Nidus sind die entscheidenden strukturellen Merkmale. Die dAVF ist meist erworben; das Etikett kongenital/erworben ersetzt die Darstellung der Shuntanatomie nicht."
+  },
+  {
+    "path": "DAVF_LESSON.takehome.items[0].text.en",
+    "before": "The dAVF is an acquired direct fistula in the dura — without a nidus. This is the key difference from cerebral AVM (congenital, parenchymal nidus).",
+    "after": "Vascular compartment and nidus are the decisive structural features. dAVF is usually acquired; a congenital/acquired label does not replace demonstration of shunt anatomy."
+  },
+  {
+    "path": "DAVF_LESSON.takehome.items[0].text.fa",
+    "before": "dAVF یک فیستول مستقیم اکتسابی در دورا است — بدون نیدوس. این تفاوت اصلی با AVM مغزی (مادرزادی، نیدوس پارانشیمی) است.",
+    "after": "کمپارتمان عروقی و نیدوس ویژگی‌های ساختاری تعیین‌کننده‌اند. dAVF معمولاً اکتسابی است؛ برچسب مادرزادی/اکتسابی جای نمایش آناتومی شانت را نمی‌گیرد."
+  },
+  {
+    "path": "DAVF_LESSON.learningObjectives",
+    "after": [
+      {
+        "de": "Duralen Shunt von parenchymalem Nidus unterscheiden.",
+        "en": "Distinguish a dural shunt from a parenchymal nidus.",
+        "fa": "شانت دورال را از نیدوس پارانشیمی تفکیک کنید."
+      },
+      {
+        "de": "Sinus-, kortikalen und spinalen Abfluss klassifizieren und Borden/Cognard zuordnen.",
+        "en": "Classify sinus, cortical and spinal drainage and relate Borden to Cognard.",
+        "fa": "درناژ سینوسی، کورتیکال و نخاعی را طبقه‌بندی و Borden را با Cognard تطبیق دهید."
+      },
+      {
+        "de": "MRT-Stauungshinweise von angiographisch gesichertem Reflux trennen.",
+        "en": "Separate MRI congestion clues from angiographically established reflux.",
+        "fa": "سرنخ‌های احتقان در MRI را از رفلاکس اثبات‌شده با آنژیوگرافی جدا کنید."
+      },
+      {
+        "de": "Klinik und Angioarchitektur in die neurovaskuläre Behandlungsplanung einordnen.",
+        "en": "Use clinical presentation and angioarchitecture to inform neurovascular treatment planning.",
+        "fa": "تظاهر بالینی و آنژیوآناتومی را در برنامه‌ریزی درمان نوروعروقی به کار ببرید."
+      }
+    ]
+  },
+  {
+    "path": "DAVF_LESSON.sources",
+    "after": [
+      {
+        "label": "Gehirn.pdf · physical35–36 / printed34–35",
+        "url": null
+      },
+      {
+        "label": "Cognard et al. (1995)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/7862961/"
+      },
+      {
+        "label": "Borden et al. (1995)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/7815143/"
+      },
+      {
+        "label": "AHA (2018)",
+        "url": "https://www.ahajournals.org/doi/10.1161/CIR.0000000000000567"
+      },
+      {
+        "label": "Letourneau-Guillon & Krings (2012)",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7964792/"
+      }
+    ]
+  }
+]

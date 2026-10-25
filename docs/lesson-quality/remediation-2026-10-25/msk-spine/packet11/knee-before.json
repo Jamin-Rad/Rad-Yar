@@ -1,0 +1,1002 @@
+{
+  "questions": {
+    "de": [
+      {
+        "id": "kreuzbaender-de-01",
+        "tags": [
+          "kreuzbaender",
+          "knieligamente",
+          "knie"
+        ],
+        "fach": "msk",
+        "question": "Welche Beobachtung am medialen Kollateralband beschreibt das gezeigte Bildpaar am treffendsten?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Initial deutliches Umgebungsödem bei erhaltener Bandkontinuität; im zweiten Bild rückläufig."
+          },
+          {
+            "id": "B",
+            "text": "Initial flüssigkeitsgefüllte vollständige Bandlücke; im zweiten Bild weiterhin fehlende Kontinuität."
+          },
+          {
+            "id": "C",
+            "text": "Initial knöcherner Bandausriss; im zweiten Bild überbrückender Kallus."
+          },
+          {
+            "id": "D",
+            "text": "In beiden Bildern unauffälliges Band ohne sichtbare Umgebungsreaktion."
+          }
+        ],
+        "correct": "A",
+        "explanation": "Links ist periligamentäres Ödem bei kontinuierlich dargestelltem MCL sichtbar, rechts nimmt die Umgebungsreaktion ab. Die Quelle bezeichnet dies als Grad-I-Zerrung. Die eingeblendeten zwei Wochen beschreiben diesen Quellverlauf, keine allgemeine Heilungsfrist oder Freigabe zur Belastung.",
+        "wrongExplanations": {
+          "B": "Ein vollständiger flüssigkeitsgefüllter Defekt mit getrennten Bandstümpfen ist in diesem Quellpaar nicht das gezeigte Leitmuster.",
+          "C": "Das Paar demonstriert eine Weichteilreaktion um das Band, nicht einen knöchernen Ausriss mit Kallusverlauf.",
+          "D": "Im linken Bild ist eine deutliche helle Umgebungsreaktion sichtbar; beide Bilder sind daher nicht gleichermaßen unauffällig."
+        },
+        "source": "MSK.pdf physical61 /printed60; original page and retained MRI pair actually visually inspected2026-10-25",
+        "image": {
+          "src": "/knieligamente/mcl-sprain-followup.png",
+          "alt": "Koronares MRT-Bildpaar des Knies aus MSK.pdf Seite61; links „Trauma“, rechts „nach2Wochen“.",
+          "caption": "Originales Quellpaar ohne zusätzliche Markierungen.",
+          "credit": "MSK.pdf · PDF-Seite61 /Druck60 · Beitragender auf der Seite nicht genannt."
+        }
+      },
+      {
+        "id": "kreuzbaender-de-02",
+        "tags": [
+          "kreuzbaender",
+          "knieligamente",
+          "knie"
+        ],
+        "fach": "msk",
+        "question": "Welche zwei Strukturen bilden am Fibulaköpfchen sagittal typischerweise ein V?",
+        "options": [
+          {
+            "id": "A",
+            "text": "LCL anteromedial und Biceps-femoris-Sehne posterolateral"
+          },
+          {
+            "id": "B",
+            "text": "MCL anteromedial und POL posterolateral"
+          },
+          {
+            "id": "C",
+            "text": "VKB anterior und HKB posterior"
+          },
+          {
+            "id": "D",
+            "text": "Innenmeniskus und Pes-anserinus-Sehnen"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Im lateralen Kollateralbandkomplex liegen am Fibulaköpfchen das LCL eher anteromedial und die Biceps-femoris-Sehne eher posterolateral."
+      },
+      {
+        "id": "kreuzbaender-de-03",
+        "tags": [
+          "kreuzbaender",
+          "knieligamente",
+          "knie"
+        ],
+        "fach": "msk",
+        "question": "Nach Knietrauma zeigt sich ein knöcherner Ausriss am Fibulastyloid (Arcuate Sign). Welcher Verletzungskomplex muss gezielt mitbeurteilt werden?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Posterolaterale Stabilisatoren und Kreuzbänder."
+          },
+          {
+            "id": "B",
+            "text": "Medialer patellofemoraler Halteapparat."
+          },
+          {
+            "id": "C",
+            "text": "Distaler Streckapparat an der Tuberositas tibiae."
+          },
+          {
+            "id": "D",
+            "text": "Posteromediale Kapsel und Semimembranosusansatz."
+          }
+        ],
+        "correct": "A",
+        "explanation": "Das Arcuate Sign weist auf eine Verletzung von Strukturen hin, die am Fibulakopf/-styloid ansetzen. Posterolaterale Strukturen und Kreuzbänder gezielt prüfen; das Zeichen allein bestimmt nicht den gesamten Verletzungsumfang oder eine Therapie.",
+        "wrongExplanations": {
+          "B": "Ein fibulärer Ausriss liegt nicht am patellaren oder femoralen Ansatz des MPFL.",
+          "C": "Die Tuberositas tibiae ist der Patellarsehnenansatz; sie liegt nicht am Fibulastyloid.",
+          "D": "Diese Strukturen gehören zur posteromedialen Seite; der fibuläre Ausriss lenkt zunächst auf den posterolateralen Komplex."
+        },
+        "source": "https://pubmed.ncbi.nlm.nih.gov/12540438/; https://pubmed.ncbi.nlm.nih.gov/14520502/"
+      },
+      {
+        "id": "kreuzbaender-de-04",
+        "tags": [
+          "kreuzbaender",
+          "knieligamente",
+          "knie"
+        ],
+        "fach": "msk",
+        "question": "Bei einer akuten MCL-Verletzung soll auch die posteromediale Stabilisierung beurteilt werden. Welche Bandstruktur gehört gezielt zu dieser Beurteilung?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Posterior Oblique Ligament (POL)."
+          },
+          {
+            "id": "B",
+            "text": "Popliteofibulares Ligament."
+          },
+          {
+            "id": "C",
+            "text": "Mediales patellofemorales Ligament (MPFL)."
+          },
+          {
+            "id": "D",
+            "text": "Vorderes Kreuzband (VKB)."
+          }
+        ],
+        "correct": "A",
+        "explanation": "Das POL ist ein eigenständig beurteilbarer Teil des posteromedialen Komplexes. Die primäre MRT-Studie zeigte eine Assoziation mit MCL- und weiteren posteromedialen Verletzungen; eine MCL-Verletzung beweist aber keine POL-Ruptur.",
+        "wrongExplanations": {
+          "B": "Das popliteofibulare Ligament gehört zum posterolateralen, nicht zum gesuchten posteromedialen Komplex.",
+          "C": "Das MPFL stabilisiert die Patella medial; es ist nicht das hier gesuchte POL der posteromedialen Kapselregion.",
+          "D": "Das VKB ist intraartikulär und kein Ersatz für die gezielte POL-Beurteilung; Begleitverletzungen werden zusätzlich geprüft."
+        },
+        "source": "https://pubmed.ncbi.nlm.nih.gov/34626207/"
+      },
+      {
+        "id": "kreuzbaender-de-05",
+        "tags": [
+          "kreuzbaender",
+          "knieligamente",
+          "knie"
+        ],
+        "fach": "msk",
+        "question": "Welche Befundkombination ist ein typisches indirektes Zeichen einer VKB-Ruptur?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Kissing contusions lateral und anteriore Tibiasubluxation"
+          },
+          {
+            "id": "B",
+            "text": "Isolierte Baker-Zyste ohne Knochenmarködem"
+          },
+          {
+            "id": "C",
+            "text": "Nur glatte VKB-Verdickung ohne Traumaödem"
+          },
+          {
+            "id": "D",
+            "text": "Kalk in der Quadrizepssehne"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Zu den indirekten VKB-Zeichen gehören laterale Kissing contusions, anteriore Tibiasubluxation und ein entlastet gebogenes HKB."
+      },
+      {
+        "id": "kreuzbaender-de-06",
+        "tags": [
+          "kreuzbaender",
+          "knieligamente",
+          "knie"
+        ],
+        "fach": "msk",
+        "question": "Welcher Röntgenbefund ist ein wichtiger Hinweis auf eine VKB-Verletzung?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Segond-Fraktur am lateralen Tibiaplateau"
+          },
+          {
+            "id": "B",
+            "text": "Osteophyten am medialen Femurkondylus"
+          },
+          {
+            "id": "C",
+            "text": "Patella alta ohne Erguss"
+          },
+          {
+            "id": "D",
+            "text": "Chondrocalcinose im Meniskus"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Die Segond-Fraktur ist im PDF als pathognomonischer Hinweis genannt; im Lerntext bleibt sie als wichtiger Hinweis auf eine VKB-Verletzung formuliert."
+      },
+      {
+        "id": "kreuzbaender-de-07",
+        "tags": [
+          "kreuzbaender",
+          "knieligamente",
+          "knie"
+        ],
+        "fach": "msk",
+        "question": "Welcher Mechanismus passt klassisch zur HKB-Ruptur?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Direkter anteriorer Anprall auf die Tibia bei gebeugtem Knie"
+          },
+          {
+            "id": "B",
+            "text": "Valgus-Rotation ohne Kontakt beim Richtungswechsel"
+          },
+          {
+            "id": "C",
+            "text": "Langsame Überlastung ohne Trauma"
+          },
+          {
+            "id": "D",
+            "text": "Direkte Kontusion der Patella bei gestrecktem Knie"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Die klassische Dashboard Injury schiebt die Tibia bei gebeugtem Knie nach posterior und belastet dadurch das HKB."
+      },
+      {
+        "id": "kreuzbaender-de-08",
+        "tags": [
+          "kreuzbaender",
+          "knieligamente",
+          "knie"
+        ],
+        "fach": "msk",
+        "question": "Die distale Biceps-femoris-Sehne ist unterbrochen, ein knöchernes Fragment am Fibulaköpfchen fehlt. Welche Aussage passt?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Damit ist ein Arcuate Sign bewiesen."
+          },
+          {
+            "id": "B",
+            "text": "Eine Sehnenruptur ohne Arcuate Sign ist möglich; die übrigen PLC-Strukturen mitprüfen."
+          },
+          {
+            "id": "C",
+            "text": "Ohne Knochenfragment ist eine relevante Sehnenverletzung ausgeschlossen."
+          },
+          {
+            "id": "D",
+            "text": "Damit ist zugleich eine komplette LCL-Ruptur nachgewiesen."
+          }
+        ],
+        "correct": "B",
+        "explanation": "Richtig: Sehnenruptur und knöcherne Avulsion unterscheiden. Benachbarte PLC-Strukturen können mitverletzt sein."
+      }
+    ],
+    "en": [
+      {
+        "id": "kreuzbaender-en-01",
+        "tags": [
+          "kreuzbaender",
+          "knieligamente",
+          "knie"
+        ],
+        "fach": "msk",
+        "question": "Which observation of the medial collateral ligament best describes the displayed image pair?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Initially prominent surrounding oedema with preserved ligament continuity; reduced on the second image."
+          },
+          {
+            "id": "B",
+            "text": "Initially a fluid-filled complete ligament gap, with persistent discontinuity on the second image."
+          },
+          {
+            "id": "C",
+            "text": "Initially an osseous ligament avulsion, with bridging callus on the second image."
+          },
+          {
+            "id": "D",
+            "text": "An unremarkable ligament without visible surrounding reaction on either image."
+          }
+        ],
+        "correct": "A",
+        "explanation": "The left image shows periligamentous oedema around a continuously depicted MCL; the surrounding reaction decreases on the right. The source labels this a grade-I sprain. The displayed two weeks describe this source follow-up, not a universal healing or return-to-load deadline.",
+        "wrongExplanations": {
+          "B": "A complete fluid-filled gap with separated ligament ends is not the predominant pattern in this source pair.",
+          "C": "The pair demonstrates a soft-tissue reaction around the ligament, not an osseous avulsion with callus evolution.",
+          "D": "The left image shows a prominent bright surrounding reaction; the two images are not both unremarkable."
+        },
+        "source": "MSK.pdf physical61 /printed60; original page and retained MRI pair actually visually inspected2026-10-25",
+        "image": {
+          "src": "/knieligamente/mcl-sprain-followup.png",
+          "alt": "Coronal knee MRI pair from MSK.pdf page61; left labelled “Trauma”, right “after2weeks”.",
+          "caption": "Original source pair without added overlays.",
+          "credit": "MSK.pdf · PDF page61 /printed60 · no contributor named on the page."
+        }
+      },
+      {
+        "id": "kreuzbaender-en-02",
+        "tags": [
+          "kreuzbaender",
+          "knieligamente",
+          "knie"
+        ],
+        "fach": "msk",
+        "question": "Which two structures typically form a V at the fibular head on sagittal MRI?",
+        "options": [
+          {
+            "id": "A",
+            "text": "LCL anteromedially and biceps femoris tendon posterolaterally"
+          },
+          {
+            "id": "B",
+            "text": "MCL anteromedially and POL posterolaterally"
+          },
+          {
+            "id": "C",
+            "text": "ACL anteriorly and PCL posteriorly"
+          },
+          {
+            "id": "D",
+            "text": "Medial meniscus and pes anserinus tendons"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Within the lateral collateral complex, the LCL lies more anteromedially and the biceps femoris tendon more posterolaterally at the fibular head."
+      },
+      {
+        "id": "kreuzbaender-en-03",
+        "tags": [
+          "kreuzbaender",
+          "knieligamente",
+          "knie"
+        ],
+        "fach": "msk",
+        "question": "After knee trauma, a fibular styloid avulsion (arcuate sign) is seen. Which injury complex requires targeted assessment?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Posterolateral stabilizers and cruciate ligaments."
+          },
+          {
+            "id": "B",
+            "text": "Medial patellofemoral restraints."
+          },
+          {
+            "id": "C",
+            "text": "Distal extensor mechanism at the tibial tuberosity."
+          },
+          {
+            "id": "D",
+            "text": "Posteromedial capsule and semimembranosus insertion."
+          }
+        ],
+        "correct": "A",
+        "explanation": "The arcuate sign indicates injury to structures inserting at the fibular head/styloid. Assess posterolateral structures and cruciate ligaments; the sign alone does not determine the entire injury extent or treatment.",
+        "wrongExplanations": {
+          "B": "A fibular avulsion is not at a patellar or femoral MPFL attachment.",
+          "C": "The tibial tuberosity is the patellar tendon attachment, not the fibular styloid.",
+          "D": "These structures are posteromedial; fibular avulsion first directs attention to the posterolateral complex."
+        },
+        "source": "https://pubmed.ncbi.nlm.nih.gov/12540438/; https://pubmed.ncbi.nlm.nih.gov/14520502/"
+      },
+      {
+        "id": "kreuzbaender-en-04",
+        "tags": [
+          "kreuzbaender",
+          "knieligamente",
+          "knie"
+        ],
+        "fach": "msk",
+        "question": "An acute MCL injury also requires assessment of posteromedial stabilization. Which ligament belongs in this targeted assessment?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Posterior oblique ligament (POL)."
+          },
+          {
+            "id": "B",
+            "text": "Popliteofibular ligament."
+          },
+          {
+            "id": "C",
+            "text": "Medial patellofemoral ligament (MPFL)."
+          },
+          {
+            "id": "D",
+            "text": "Anterior cruciate ligament (ACL)."
+          }
+        ],
+        "correct": "A",
+        "explanation": "The POL is an independently assessable part of the posteromedial complex. The primary MRI study found association with MCL and other posteromedial injuries; an MCL injury does not itself prove a POL tear.",
+        "wrongExplanations": {
+          "B": "The popliteofibular ligament is posterolateral rather than part of the requested posteromedial complex.",
+          "C": "The MPFL restrains the patella medially; it is not the requested POL of the posteromedial capsular region.",
+          "D": "The ACL is intra-articular and does not replace targeted POL assessment; associated injuries are assessed separately."
+        },
+        "source": "https://pubmed.ncbi.nlm.nih.gov/34626207/"
+      },
+      {
+        "id": "kreuzbaender-en-05",
+        "tags": [
+          "kreuzbaender",
+          "knieligamente",
+          "knie"
+        ],
+        "fach": "msk",
+        "question": "Which combination is a typical indirect sign of an ACL tear?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Lateral kissing contusions and anterior tibial subluxation"
+          },
+          {
+            "id": "B",
+            "text": "Isolated Baker cyst without marrow oedema"
+          },
+          {
+            "id": "C",
+            "text": "Only smooth ACL thickening without traumatic oedema"
+          },
+          {
+            "id": "D",
+            "text": "Calcification in the quadriceps tendon"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Indirect ACL signs include lateral kissing contusions, anterior tibial subluxation and a buckled, unloaded PCL."
+      },
+      {
+        "id": "kreuzbaender-en-06",
+        "tags": [
+          "kreuzbaender",
+          "knieligamente",
+          "knie"
+        ],
+        "fach": "msk",
+        "question": "Which radiographic finding is an important clue to ACL injury?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Segond fracture at the lateral tibial plateau"
+          },
+          {
+            "id": "B",
+            "text": "Osteophytes at the medial femoral condyle"
+          },
+          {
+            "id": "C",
+            "text": "Patella alta without an effusion"
+          },
+          {
+            "id": "D",
+            "text": "Meniscal chondrocalcinosis"
+          }
+        ],
+        "correct": "A",
+        "explanation": "The PDF calls the Segond fracture pathognomonic; the lesson phrases it as an important clue to ACL injury."
+      },
+      {
+        "id": "kreuzbaender-en-07",
+        "tags": [
+          "kreuzbaender",
+          "knieligamente",
+          "knie"
+        ],
+        "fach": "msk",
+        "question": "Which mechanism classically fits a PCL tear?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Direct anterior blow to the tibia with the knee flexed"
+          },
+          {
+            "id": "B",
+            "text": "Non-contact valgus rotation during a pivot"
+          },
+          {
+            "id": "C",
+            "text": "Slow overuse without trauma"
+          },
+          {
+            "id": "D",
+            "text": "Direct patellar contusion with the knee extended"
+          }
+        ],
+        "correct": "A",
+        "explanation": "The classic dashboard injury drives the tibia posteriorly while the knee is flexed, stressing the PCL."
+      },
+      {
+        "id": "kreuzbaender-en-08",
+        "tags": [
+          "kreuzbaender",
+          "knieligamente",
+          "knie"
+        ],
+        "fach": "msk",
+        "question": "The distal biceps femoris tendon is disrupted, with no bony fragment at the fibular head. Which statement fits?",
+        "options": [
+          {
+            "id": "A",
+            "text": "This proves an arcuate sign."
+          },
+          {
+            "id": "B",
+            "text": "A tendon tear without an arcuate sign is possible; assess the other PLC structures."
+          },
+          {
+            "id": "C",
+            "text": "Without a bone fragment, a significant tendon injury is excluded."
+          },
+          {
+            "id": "D",
+            "text": "This also establishes a complete LCL tear."
+          }
+        ],
+        "correct": "B",
+        "explanation": "Correct: distinguish tendon tear from bony avulsion. Neighbouring PLC structures may also be injured."
+      }
+    ],
+    "fa": [
+      {
+        "id": "kreuzbaender-fa-01",
+        "tags": [
+          "kreuzbaender",
+          "knieligamente",
+          "knie"
+        ],
+        "fach": "msk",
+        "question": "کدام مشاهده دربارهٔ رباط جانبی داخلی، جفت تصاویر نشان‌داده‌شده را بهتر توصیف می‌کند؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "ادم واضح اولیه در اطراف رباط با حفظ پیوستگی آن؛ کاهش ادم در تصویر دوم."
+          },
+          {
+            "id": "B",
+            "text": "شکاف کامل رباط با محتوای مایع در ابتدا و تداوم گسستگی در تصویر دوم."
+          },
+          {
+            "id": "C",
+            "text": "کندگی استخوانی محل اتصال رباط در ابتدا و کالوس پل‌زننده در تصویر دوم."
+          },
+          {
+            "id": "D",
+            "text": "رباط بدون تغییر و بدون واکنش قابل مشاهدهٔ اطراف، در هر دو تصویر."
+          }
+        ],
+        "correct": "A",
+        "explanation": "در تصویر چپ ادم پیرارباطی در اطراف MCL با پیوستگی قابل مشاهده وجود دارد و در سمت راست واکنش اطراف کاهش یافته است. منبع این وضعیت را کشیدگی درجهٔ I می‌نامد. فاصلهٔ دو هفتهٔ درج‌شده مربوط به پیگیری همین منبع است، نه مهلت همگانی ترمیم یا بازگشت به بارگذاری.",
+        "wrongExplanations": {
+          "B": "نقص کامل پر از مایع با انتهای جداشدهٔ رباط، الگوی اصلیِ نشان‌داده‌شده در این جفت تصاویر منبع نیست.",
+          "C": "این جفت تصاویر واکنش بافت نرم اطراف رباط را نشان می‌دهد، نه کندگی استخوانی با سیر تشکیل کالوس.",
+          "D": "در تصویر چپ واکنش پرسیگنال واضح اطراف دیده می‌شود؛ بنابراین هر دو تصویر به یکسان طبیعی نیستند."
+        },
+        "source": "MSK.pdf physical61 /printed60; original page and retained MRI pair actually visually inspected2026-10-25",
+        "image": {
+          "src": "/knieligamente/mcl-sprain-followup.png",
+          "alt": "جفت تصاویر کرونال MRI زانو از صفحهٔ ۶۱ MSK.pdf؛ برچسب چپ «تروما» و راست «پس از دو هفته».",
+          "caption": "جفت تصاویر اصلی منبع، بدون علامت‌گذاری افزوده.",
+          "credit": "MSK.pdf · صفحهٔ PDF۶۱ /چاپی۶۰ · نام مشارکت‌کننده در صفحه ذکر نشده است."
+        }
+      },
+      {
+        "id": "kreuzbaender-fa-02",
+        "tags": [
+          "kreuzbaender",
+          "knieligamente",
+          "knie"
+        ],
+        "fach": "msk",
+        "question": "در MRI ساژیتال، کدام دو ساختار در سر فیبولا معمولاً شکل V می‌سازند؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "LCL در قدام-مدیال و تاندون بایسپس فموریس در خلف-لترال"
+          },
+          {
+            "id": "B",
+            "text": "MCL در قدام-مدیال و POL در خلف-لترال"
+          },
+          {
+            "id": "C",
+            "text": "ACL در قدام و PCL در خلف"
+          },
+          {
+            "id": "D",
+            "text": "منیسک داخلی و تاندون‌های پس آنسرینوس"
+          }
+        ],
+        "correct": "A",
+        "explanation": "در کمپلکس لترال، در سطح سر فیبولا LCL بیشتر قدام-مدیال و تاندون بایسپس فموریس بیشتر خلف-لترال قرار دارد."
+      },
+      {
+        "id": "kreuzbaender-fa-03",
+        "tags": [
+          "kreuzbaender",
+          "knieligamente",
+          "knie"
+        ],
+        "fach": "msk",
+        "question": "پس از ترومای زانو، کندگی استخوانی زائدهٔ استیلوئید فیبولا (علامت آرکوات) دیده می‌شود. کدام مجموعهٔ آسیب باید هدفمند ارزیابی شود؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "پایدارکننده‌های خلفی‌ـ‌خارجی و رباط‌های صلیبی."
+          },
+          {
+            "id": "B",
+            "text": "ساختارهای مهارکنندهٔ کشککی‌ـ‌رانی داخلی."
+          },
+          {
+            "id": "C",
+            "text": "مکانیسم اکستانسور دیستال در برجستگی درشت‌نی."
+          },
+          {
+            "id": "D",
+            "text": "کپسول خلفی‌ـ‌داخلی و اتصال نیم‌غشایی."
+          }
+        ],
+        "correct": "A",
+        "explanation": "علامت آرکوات به آسیب ساختارهای متصل به سر/استیلوئید فیبولا اشاره دارد. ساختارهای خلفی‌ـ‌خارجی و رباط‌های صلیبی را هدفمند بررسی کنید؛ این علامت به‌تنهایی وسعت کامل آسیب یا درمان را تعیین نمی‌کند.",
+        "wrongExplanations": {
+          "B": "کندگی فیبولا در محل اتصال کشککی یا رانی MPFL نیست.",
+          "C": "برجستگی درشت‌نی محل اتصال تاندون کشککی است، نه استیلوئید فیبولا.",
+          "D": "این ساختارها در سمت خلفی‌ـ‌داخلی‌اند؛ کندگی فیبولا ابتدا توجه را به مجموعهٔ خلفی‌ـ‌خارجی معطوف می‌کند."
+        },
+        "source": "https://pubmed.ncbi.nlm.nih.gov/12540438/; https://pubmed.ncbi.nlm.nih.gov/14520502/"
+      },
+      {
+        "id": "kreuzbaender-fa-04",
+        "tags": [
+          "kreuzbaender",
+          "knieligamente",
+          "knie"
+        ],
+        "fach": "msk",
+        "question": "در آسیب حاد MCL، پایداری خلفی‌ـ‌داخلی نیز باید ارزیابی شود. کدام رباط باید در این ارزیابی هدفمند بررسی شود؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "رباط مایل خلفی (POL)."
+          },
+          {
+            "id": "B",
+            "text": "رباط پوپلیته‌ـ‌فیبولار."
+          },
+          {
+            "id": "C",
+            "text": "رباط کشککی‌ـ‌رانی داخلی (MPFL)."
+          },
+          {
+            "id": "D",
+            "text": "رباط صلیبی قدامی (ACL)."
+          }
+        ],
+        "correct": "A",
+        "explanation": "POL جزء قابل ارزیابیِ مستقلِ مجموعهٔ خلفی‌ـ‌داخلی است. مطالعهٔ اولیهٔ MRI ارتباط آن را با آسیب MCL و دیگر ساختارهای خلفی‌ـ‌داخلی نشان داد؛ اما آسیب MCL به‌خودی‌خود پارگی POL را ثابت نمی‌کند.",
+        "wrongExplanations": {
+          "B": "رباط پوپلیته‌ـ‌فیبولار مربوط به مجموعهٔ خلفی‌ـ‌خارجی است، نه خلفی‌ـ‌داخلی مورد سؤال.",
+          "C": "MPFL کشکک را از سمت داخلی مهار می‌کند؛ این رباط، POL ناحیهٔ کپسولی خلفی‌ـ‌داخلی مورد سؤال نیست.",
+          "D": "ACL داخل‌مفصلی است و جای بررسی هدفمند POL را نمی‌گیرد؛ آسیب‌های همراه جداگانه ارزیابی می‌شوند."
+        },
+        "source": "https://pubmed.ncbi.nlm.nih.gov/34626207/"
+      },
+      {
+        "id": "kreuzbaender-fa-05",
+        "tags": [
+          "kreuzbaender",
+          "knieligamente",
+          "knie"
+        ],
+        "fach": "msk",
+        "question": "کدام ترکیب یافته‌ها علامت غیرمستقیم تیپیک پارگی ACL است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "ادم‌های استخوانی مقابل هم در لترال و سابلوکساسیون قدامی تیبیا"
+          },
+          {
+            "id": "B",
+            "text": "کیست بیکر منفرد بدون ادم مغز استخوان"
+          },
+          {
+            "id": "C",
+            "text": "فقط ضخیم‌شدن صاف ACL بدون ادم تروماتیک"
+          },
+          {
+            "id": "D",
+            "text": "کلسیفیکاسیون در تاندون کوادریسپس"
+          }
+        ],
+        "correct": "A",
+        "explanation": "علائم غیرمستقیم ACL شامل کوفتگی‌های استخوانی لترال، سابلوکساسیون قدامی تیبیا و حالت خمیده/شل PCL است."
+      },
+      {
+        "id": "kreuzbaender-fa-06",
+        "tags": [
+          "kreuzbaender",
+          "knieligamente",
+          "knie"
+        ],
+        "fach": "msk",
+        "question": "کدام یافتهٔ رادیوگرافی سرنخ مهمی برای آسیب ACL است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "شکستگی Segond در پلاتوی لترال تیبیا"
+          },
+          {
+            "id": "B",
+            "text": "استئوفیت در کندیل مدیال فمور"
+          },
+          {
+            "id": "C",
+            "text": "پاتلا آلتا بدون افیوژن"
+          },
+          {
+            "id": "D",
+            "text": "کندروکلسینوز منیسک"
+          }
+        ],
+        "correct": "A",
+        "explanation": "PDF شکستگی Segond را پاتوگنومونیک می‌داند؛ متن آموزشی آن را به‌صورت سرنخ مهمی برای آسیب ACL بیان می‌کند."
+      },
+      {
+        "id": "kreuzbaender-fa-07",
+        "tags": [
+          "kreuzbaender",
+          "knieligamente",
+          "knie"
+        ],
+        "fach": "msk",
+        "question": "کدام مکانیسم به طور کلاسیک با پارگی PCL تطابق دارد؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "ضربه مستقیم از جلو به تیبیا در حالی که زانو خم است"
+          },
+          {
+            "id": "B",
+            "text": "چرخش والگوس بدون تماس هنگام تغییر جهت"
+          },
+          {
+            "id": "C",
+            "text": "استفاده بیش از حد تدریجی بدون تروما"
+          },
+          {
+            "id": "D",
+            "text": "کنتوزیون مستقیم پاتلا در زانوی صاف"
+          }
+        ],
+        "correct": "A",
+        "explanation": "در dashboard injury، تیبیا در زانوی خم‌شده به عقب رانده می‌شود و PCL تحت کشش قرار می‌گیرد."
+      },
+      {
+        "id": "kreuzbaender-fa-08",
+        "tags": [
+          "kreuzbaender",
+          "knieligamente",
+          "knie"
+        ],
+        "fach": "msk",
+        "question": "تاندون دیستال بایسپس فموریس قطع شده، اما قطعهٔ استخوانی در سر فیبولا وجود ندارد. کدام عبارت درست است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "این یافته علامت آرکوات را ثابت می‌کند."
+          },
+          {
+            "id": "B",
+            "text": "پارگی تاندون بدون علامت آرکوات ممکن است؛ سایر ساختارهای PLC را بررسی کن."
+          },
+          {
+            "id": "C",
+            "text": "نبود قطعهٔ استخوانی، آسیب مهم تاندون را رد می‌کند."
+          },
+          {
+            "id": "D",
+            "text": "این یافته هم‌زمان پارگی کامل LCL را نیز ثابت می‌کند."
+          }
+        ],
+        "correct": "B",
+        "explanation": "درست است: پارگی تاندون را از آولسیون استخوانی جدا کن. ساختارهای مجاور PLC نیز ممکن است آسیب دیده باشند."
+      }
+    ]
+  },
+  "cards": [
+    {
+      "id": "kreuzbaender-01",
+      "topicId": "kreuzbaender",
+      "category": {
+        "de": "MRT-Grading",
+        "en": "MRI grading",
+        "fa": "درجه‌بندی MRI"
+      },
+      "front": {
+        "de": "Wie unterscheiden sich Grad I, II und III einer Bandverletzung im MRT?",
+        "en": "How do grade I, II and III ligament injuries differ on MRI?",
+        "fa": "آسیب رباط درجه I، II و III در MRI چه تفاوتی دارند؟"
+      },
+      "answer": {
+        "de": "I: Zerrung, II: Partialruptur, III: Komplettruptur.",
+        "en": "I: sprain, II: partial tear, III: complete tear.",
+        "fa": "I: کشیدگی، II: پارگی نسبی، III: پارگی کامل."
+      },
+      "explanation": {
+        "de": "Grad I zeigt periligamentöses Ödem bei erhaltener Kontur. Grad II zeigt Verdickung, intraligamentäres Signal und teilweisen Fasererhalt. Grad III zeigt komplette Diskontinuität, oft mit welligem Verlauf.",
+        "en": "Grade I shows periligamentous oedema with preserved contour. Grade II shows thickening, intraligamentous signal and some intact fibres. Grade III shows complete discontinuity, often with a wavy course.",
+        "fa": "درجه I ادم اطراف رباط با کانتور حفظ‌شده دارد. درجه II ضخیم‌شدن، سیگنال داخل رباط و باقی‌ماندن بخشی از فیبرها را نشان می‌دهد. درجه III قطع کامل و اغلب مسیر موج‌دار دارد."
+      },
+      "diagram": {
+        "de": "Ödem → Teilruptur → Diskontinuität",
+        "en": "Oedema → partial tear → discontinuity",
+        "fa": "ادم → پارگی نسبی → قطع کامل"
+      }
+    },
+    {
+      "id": "kreuzbaender-02",
+      "topicId": "kreuzbaender",
+      "category": {
+        "de": "LCL/PLC",
+        "en": "LCL/PLC",
+        "fa": "LCL/PLC"
+      },
+      "front": {
+        "de": "Was bedeutet das Arcuate Sign?",
+        "en": "What does the arcuate sign mean?",
+        "fa": "علامت آرکوات (Arcuate sign) به چه معناست؟"
+      },
+      "answer": {
+        "de": "Avulsion am Fibulaköpfchen und Red Flag für PLC-Verletzung.",
+        "en": "Fibular head avulsion and red flag for PLC injury.",
+        "fa": "کندگی سر فیبولا و هشدار برای آسیب PLC."
+      },
+      "explanation": {
+        "de": "Das kleine Fragment oberhalb der Fibula entsteht durch Zug des Arcuate-Ligament-Komplexes und ist für eine relevante posterolaterale Instabilität hoch verdächtig.",
+        "en": "The small fragment above the fibula results from traction of the arcuate ligament complex and strongly suggests relevant posterolateral instability.",
+        "fa": "قطعه کوچک بالای فیبولا ناشی از کشش کمپلکس لیگامانی آرکوات است و به شدت به نفع ناپایداری خلفی-لترال مهم است."
+      },
+      "diagram": {
+        "de": "Fibulaköpfchen-Avulsion → PLC prüfen",
+        "en": "Fibular head avulsion → check PLC",
+        "fa": "کندگی سر فیبولا → بررسی PLC"
+      }
+    },
+    {
+      "id": "kreuzbaender-03",
+      "topicId": "kreuzbaender",
+      "category": {
+        "de": "MCL/POL",
+        "en": "MCL/POL",
+        "fa": "MCL/POL"
+      },
+      "front": {
+        "de": "Warum muss bei MCL-Verletzung das POL mitbeurteilt werden?",
+        "en": "Why must the POL be assessed in MCL injuries?",
+        "fa": "چرا در آسیب MCL باید POL هم بررسی شود؟"
+      },
+      "answer": {
+        "de": "Weil MCL und POL eine mediale Stabilitätseinheit bilden.",
+        "en": "Because the MCL and POL form a medial stabilising unit.",
+        "fa": "چون MCL و POL یک واحد پایداری مدیال می‌سازند."
+      },
+      "explanation": {
+        "de": "Kombinierte Läsionen sind häufig. Eine isolierte Betrachtung des MCL kann die posteromediale Instabilität unterschätzen.",
+        "en": "Combined lesions are common. Looking only at the MCL can underestimate posteromedial instability.",
+        "fa": "ضایعات ترکیبی شایع‌اند. بررسی فقط MCL می‌تواند ناپایداری خلفی-مدیال را دست‌کم بگیرد."
+      }
+    },
+    {
+      "id": "kreuzbaender-04",
+      "topicId": "kreuzbaender",
+      "category": {
+        "de": "VKB",
+        "en": "ACL",
+        "fa": "ACL"
+      },
+      "front": {
+        "de": "Welche direkten und indirekten Zeichen sprechen für eine VKB-Ruptur?",
+        "en": "Which direct and indirect signs suggest an ACL tear?",
+        "fa": "کدام علائم مستقیم و غیرمستقیم به نفع پارگی ACL هستند؟"
+      },
+      "answer": {
+        "de": "Direkt: Diskontinuität, hohes Signal, flach-welliger Verlauf. Indirekt: Kissing contusions, anteriore Tibiasubluxation, gebogenes HKB.",
+        "en": "Direct: discontinuity, high signal, flat-wavy course. Indirect: kissing contusions, anterior tibial subluxation, buckled PCL.",
+        "fa": "مستقیم: قطع فیبر، سیگنال بالا، مسیر صاف/موج‌دار. غیرمستقیم: kissing contusions، سابلوکساسیون قدامی تیبیا، PCL خمیده."
+      },
+      "explanation": {
+        "de": "Die Kombination aus Bandbefund und typischem Knochenprellungsmuster erhöht die diagnostische Sicherheit.",
+        "en": "Combining the ligament abnormality with the typical bone bruise pattern increases diagnostic confidence.",
+        "fa": "ترکیب یافته رباط با الگوی تیپیک کوفتگی استخوانی اطمینان تشخیصی را بالا می‌برد."
+      }
+    },
+    {
+      "id": "kreuzbaender-05",
+      "topicId": "kreuzbaender",
+      "category": {
+        "de": "VKB-Differenzialdiagnose",
+        "en": "ACL differential",
+        "fa": "افتراق ACL"
+      },
+      "front": {
+        "de": "Wie grenzt man mukoide VKB-Degeneration von Ruptur ab?",
+        "en": "How do you distinguish mucoid ACL degeneration from rupture?",
+        "fa": "دژنراسیون موکوئید ACL را چگونه از پارگی افتراق می‌دهیم؟"
+      },
+      "answer": {
+        "de": "Verdicktes, konturglattes Band mit Sellerie-Zeichen, ohne Traumaödem oder Retraktion.",
+        "en": "Thickened, smoothly outlined ligament with celery-stalk sign, without traumatic oedema or retraction.",
+        "fa": "رباط ضخیم با کانتور صاف و علامت celery stalk، بدون ادم تروماتیک یا رتراکشن."
+      },
+      "explanation": {
+        "de": "Bei der Degeneration bleiben dunkle Fasern im T2-hellen muzinösen Gewebe erhalten; eine akute Ruptur zeigt eher Diskontinuität, Retraktion und Begleitödem.",
+        "en": "Degeneration preserves dark fibres within T2-bright mucinous tissue; an acute tear more often shows discontinuity, retraction and associated oedema.",
+        "fa": "در دژنراسیون، فیبرهای تیره داخل بافت موکینی روشن در T2 باقی می‌مانند؛ پارگی حاد بیشتر قطع، رتراکشن و ادم همراه دارد."
+      }
+    },
+    {
+      "id": "kreuzbaender-06",
+      "topicId": "kreuzbaender",
+      "category": {
+        "de": "HKB",
+        "en": "PCL",
+        "fa": "PCL"
+      },
+      "front": {
+        "de": "Was ist der typische Mechanismus der HKB-Ruptur?",
+        "en": "What is the typical mechanism of a PCL tear?",
+        "fa": "مکانیسم تیپیک پارگی PCL چیست؟"
+      },
+      "answer": {
+        "de": "Dashboard Injury: anteriorer Anprall auf die Tibia bei gebeugtem Knie; alternativ extreme Hyperflexion.",
+        "en": "Dashboard injury: anterior blow to the tibia with the knee flexed; alternatively extreme hyperflexion.",
+        "fa": "Dashboard injury: ضربه از جلو به تیبیا در زانوی خم؛ یا هایپرفلکشن شدید."
+      },
+      "explanation": {
+        "de": "HKB-Rupturen sind deutlich seltener als VKB-Rupturen und werden häufig konservativ behandelt, außer bei ausgeprägter Instabilität oder kombinierten Läsionen.",
+        "en": "PCL tears are much less common than ACL tears and are often treated conservatively unless instability is severe or injuries are combined.",
+        "fa": "پارگی PCL بسیار نادرتر از ACL است و اغلب محافظه‌کارانه درمان می‌شود، مگر در ناپایداری شدید یا آسیب‌های ترکیبی."
+      }
+    },
+    {
+      "id": "kreuzbaender-07",
+      "topicId": "kreuzbaender",
+      "category": {
+        "de": "Biceps femoris / PLC",
+        "en": "Biceps femoris / PLC",
+        "fa": "بایسپس فموریس / PLC"
+      },
+      "front": {
+        "de": "Ist eine distale Biceps-femoris-Ruptur ohne Knochenfragment ein Arcuate Sign?",
+        "en": "Is a distal biceps femoris tear without a bone fragment an arcuate sign?",
+        "fa": "آیا پارگی دیستال بایسپس فموریس بدون قطعهٔ استخوانی، علامت آرکوات محسوب می‌شود؟"
+      },
+      "answer": {
+        "de": "Nein. Das Arcuate Sign bezeichnet eine knöcherne Avulsion am Fibulaköpfchen.",
+        "en": "No. The arcuate sign denotes a bony avulsion at the fibular head.",
+        "fa": "خیر. علامت آرکوات به آولسیون استخوانی در سر فیبولا اشاره دارد."
+      },
+      "explanation": {
+        "de": "Richtig: Sehnenruptur und knöcherne Avulsion unterscheiden. Benachbarte PLC-Strukturen können mitverletzt sein.",
+        "en": "Correct: distinguish tendon tear from bony avulsion. Neighbouring PLC structures may also be injured.",
+        "fa": "درست است: پارگی تاندون را از آولسیون استخوانی جدا کن. ساختارهای مجاور PLC نیز ممکن است آسیب دیده باشند."
+      }
+    },
+    {
+      "id": "aq-msk-knee-medial-report",
+      "topicId": "kreuzbaender",
+      "front": {
+        "de": "MCL-Verletzung mit posteromedialem Ödem: Welche Angaben ergänzen eine bloße Gradzahl im Befund?",
+        "en": "MCL injury with posteromedial oedema: which findings add value beyond a grade number?",
+        "fa": "آسیب MCL همراه ادم خلفی‌ـ‌داخلی: کدام اطلاعات، گزارش را فراتر از ذکر یک درجه تکمیل می‌کنند؟"
+      },
+      "answer": {
+        "de": "Ort und Kontinuität der MCL-Anteile beschreiben und das POL sowie weitere posteromediale Strukturen gezielt prüfen; Ödem allein nicht als bewiesene POL-Ruptur bezeichnen.",
+        "en": "Describe the site and continuity of MCL components and assess the POL and other posteromedial structures directly; oedema alone does not establish a POL tear.",
+        "fa": "محل و پیوستگی اجزای MCL را توصیف و POL و دیگر ساختارهای خلفی‌ـ‌داخلی را هدفمند بررسی کنید؛ ادم به‌تنهایی پارگی POL را اثبات نمی‌کند."
+      },
+      "explanation": {
+        "de": "Die primäre MRT-Serie fand POL-Verletzungen häufig im Rahmen komplexer Bandverletzungen. Die Assoziation begründet eine gezielte Suche, nicht die automatische Diagnose einer Begleitruptur.",
+        "en": "The primary MRI series found POL injury frequently within complex ligament injuries. Association supports targeted assessment, not automatic diagnosis of an associated tear.",
+        "fa": "مجموعهٔ اولیهٔ MRI، آسیب POL را اغلب در چارچوب آسیب‌های پیچیدهٔ رباطی یافت. این ارتباط، بررسی هدفمند را توجیه می‌کند، نه تشخیص خودکار پارگی همراه را."
+      },
+      "source": "https://pubmed.ncbi.nlm.nih.gov/34626207/"
+    }
+  ]
+}
