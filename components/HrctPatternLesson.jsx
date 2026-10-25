@@ -91,7 +91,10 @@ export default function HrctPatternLesson({ lesson }) {
     actions={{ mcq: { label: copy.mcq, href: withLang(`/ueben/quiz?fach=thorax&n=12&themen=${lesson.id}&from=${encodeURIComponent(withLang(route))}`) }, flashcards: { label: copy.flash, href: withLang(`/flashcards/${lesson.id}?from=${encodeURIComponent(withLang(route))}`) } }}
     renderIcon={name => <ChapterIcon name={name} />} heroImageAlt={c(lesson.title)}
     theme={{ backgroundImage: '/andarun-galaxy-v3.png', accent: '#4b8d9c', accentStrong: '#285a69', accentSoft: '#e4f1f4', secondary: '#b58d9b', secondaryStrong: '#725367', heroBase: '#102633' }}
-    sources={<div className={localStyles.readStatus}><ReadButton isRead={isRead} toggleRead={toggleRead} authError={authError} copy={copy} /></div>}>
+    sources={<div>
+      {lesson.clinicalReferences?.length > 0 && <ul>{lesson.clinicalReferences.map(reference => <li key={reference.url}><a href={reference.url} target="_blank" rel="noopener noreferrer">{c(reference.title)}</a></li>)}</ul>}
+      <div className={localStyles.readStatus}><ReadButton isRead={isRead} toggleRead={toggleRead} authError={authError} copy={copy} /></div>
+    </div>}>
     {lesson.sections.map((section, index) => <LessonSection id={section.id} key={section.id} bodyClassName={localStyles.content}>
       {index === 0 ? <><p className={localStyles.lead}>{c(lesson.definition)}</p>{lesson.heroCards?.length ? <dl className={localStyles.orientation}>{lesson.heroCards.map(card => <div key={c(card.value)}><dt>{c(card.value)} · {c(card.label)}</dt><dd>{c(card.text)}</dd></div>)}</dl> : null}</> : null}
       {section.lead ? <p className={localStyles.lead}>{c(section.lead)}</p> : null}

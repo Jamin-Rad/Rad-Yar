@@ -3,6 +3,7 @@
 import { useLanguage } from '@/providers/LanguageProvider'
 import LessonReferenceShell from '@/components/LessonReferenceShell'
 import styles from './page.module.css'
+import { FMD_QUESTIONS, FMD_LEARNING_GOALS } from '@/data/fmdAssessments'
 
 const C = {
   de: {
@@ -121,8 +122,9 @@ export default function FmdPage() {
   const { lang } = useLanguage()
   const c = C[lang] || C.de
   const L = ({ title, text }) => <article className={styles.card} key={title}><h3>{title}</h3><p>{text}</p></article>
-  const check = { question: { de: C.de.checkQ, en: C.en.checkQ, fa: C.fa.checkQ }, options: C.de.options.map((_, i) => ({ de: C.de.options[i], en: C.en.options[i], fa: C.fa.options[i] })), answer: 0, explanation: { de: C.de.explanation, en: C.en.explanation, fa: C.fa.explanation }, diagramCaption: { de: C.de.diagramCaption, en: C.en.diagramCaption, fa: C.fa.diagramCaption } }
-  const goals = C.de.goals.map((_, i) => ({ de: C.de.goals[i], en: C.en.goals[i], fa: C.fa.goals[i] }))
+  const localizedChecks = Object.fromEntries(['de', 'en', 'fa'].map(locale => [locale, FMD_QUESTIONS[locale].find(item => item.id === `fmd-imaging-sequence-${locale}`)]))
+  const check = { question: Object.fromEntries(Object.entries(localizedChecks).map(([locale,item])=>[locale,item.question])), options: localizedChecks.de.options.map((_,i)=>Object.fromEntries(Object.entries(localizedChecks).map(([locale,item])=>[locale,item.options[i].text]))), answer: 0, explanation: Object.fromEntries(Object.entries(localizedChecks).map(([locale,item])=>[locale,item.explanation])), diagramCaption: { de: C.de.diagramCaption, en: C.en.diagramCaption, fa: C.fa.diagramCaption } }
+  const goals = FMD_LEARNING_GOALS.map(goal => goal[lang])
   const summary = C.de.summary.map((_, i) => ({ de: C.de.summary[i], en: C.en.summary[i], fa: C.fa.summary[i] }))
   const shellCopy = {
     contentTitle: { de: 'Von der Gefäßform zur Bildgebung', en: 'From vascular pattern to imaging choice', fa: 'از الگوی عروقی تا انتخاب تصویربرداری' },

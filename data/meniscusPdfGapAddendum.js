@@ -34,7 +34,7 @@ export const MENISCUS_PDF_GAP_ADDENDUM = {
       id: 'bucket-handle-signs',
       sourcePage: 50,
       image: '/msk/knie/meniskus/bucket-handle-signs-pdf-p50.png',
-      imageAlt: L('PDF-Beispiel mit disloziertem Meniskusfragment im Intercondylärraum und schematischer Lage zum HKB.', 'PDF example of a displaced meniscal fragment in the intercondylar notch and a schematic of its position relative to the PCL.', 'نمونهٔ PDF از قطعهٔ جابه‌جاشدهٔ منیسک در ناچ بین‌کندیلی و شماتیک موقعیت آن نسبت به PCL.'),
+      imageAlt: L("Obere Bildtafel aus dem Korbhenkelriss-Abschnitt der PDF: koronare, sagittale und axiale MRT-Ausschnitte mit Meniskus-Formskizze.", "Upper panel from the PDF bucket-handle-tear section: coronal, sagittal and axial MRI crops with a meniscal shape diagram.", "پنل بالایی از بخش پارگی دسته‌سطلی PDF: برش‌های MRI کرونال، ساژیتال و اکسیال همراه شماتیک شکل منیسک."),
       printedPage: 49,
       title: L('Korbhenkelriss: disloziertes Fragment suchen', 'Bucket-handle tear: identify the displaced fragment', 'پارگی دسته‌سطلی: قطعهٔ جابه‌جاشده را پیدا کنید'),
       text: L(

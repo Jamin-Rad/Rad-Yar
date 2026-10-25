@@ -1,0 +1,37 @@
+{
+  "date": "2026-10-25",
+  "status": "AUTHOR_READY_INDEPENDENT_REVIEW_PENDING",
+  "route": "/gehirn/infektionen/meningitis-enzephalitis",
+  "files": [
+    "data/assessmentQuality/brain.js aq-meningitis-enzephalitis block only",
+    "data/gehirnMeningitisEnzephalitisLesson.js original question/options/feedback, fourth taught concept and Fukui source entry"
+  ],
+  "questionTriads": 3,
+  "cardTriads": 3,
+  "goals": "Anatomical compartments, limits of normal MRI, ventricular infectious complication; actual IDs mapped in routeCoverage.",
+  "keys": [
+    "compartments:A",
+    "normal-mri:C",
+    "ventricular-complication:B"
+  ],
+  "primarySources": [
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/14716235/",
+      "read": "Complete original28-examination blinded-reader meningitis abstract: sulcal FLAIR/postcontrastT1 leptomeningeal findings; some viral and bacterial cases normal. No sensitivity/TE/protein threshold extrapolation."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/11559498/",
+      "read": "Complete original17-case abstract/captions: irregular dependent ventricular debris; hydrocephalus/ependymal enhancement may accompany; one pus example without ADC restriction. No obligatory restriction asserted."
+    },
+    {
+      "url": "https://www.ncbi.nlm.nih.gov/books/NBK614844/",
+      "read": "WHO2025 clinical/CSF/blood diagnostic basis and imaging context read. No LP timing, drugdose or management pathway added to this short imaging module."
+    }
+  ],
+  "checks": "23 total questions/lang24 cards author schema PASS. Actual meningitis route/localeSSR3/3 and originalcheck has4 corresponding feedback/options without removing other lesson fields.",
+  "limits": [
+    "New cases explicitly written, no unseen diagnostic image claim. Existing PDFheading-onlyprovenance not remapped and no PDF figure repurposed.",
+    "No assertion that entire lesson science or rendering is accepted. Browser/Live and independent clinical/language review remain pending."
+  ],
+  "production": "Draft root snapshot exclusion until independent acceptance."
+}

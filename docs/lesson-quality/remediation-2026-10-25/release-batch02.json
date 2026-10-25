@@ -1,0 +1,56 @@
+{
+  "date": "2026-10-25",
+  "status": "REVIEWED_BATCH_READY_FOR_MAIN",
+  "scope": "Second bounded release in ongoing234-route remediation. Full original-pool reviews are distinguished from changed-item packets. Not all lessons or the course are finished.",
+  "previousMain": "a48df7a4428e284f8cc769acd06a3371d31f440c",
+  "supplementalRuntime": {
+    "questionsPerLanguage": 64,
+    "cards": 72,
+    "routeMappings": 47
+  },
+  "bankStructure": {
+    "questionsPerLanguage": 947,
+    "casesPerLanguage": 18,
+    "meaning": "Schema/key/feedback transfer, not clinical proof"
+  },
+  "includedReviews": [
+    "msk-spine/review-packet03.json",
+    "abdomen-technik/review-packet02.json",
+    "abdomen-technik/review-critical-pancreatic-communication.json",
+    "thorax-mamma/review-packet03-hrct-cavity.json",
+    "brain/review-packet05-hiv.json",
+    "brain/review-packet06-meningitis.json",
+    "brain/review-packet07-cjd.json",
+    "brain/review-packet08-nph.json",
+    "brain/review-packet09-chiari.json",
+    "brain/review-packet10-parkinson.json",
+    "brain/review-packet11-dva.json",
+    "integration-review-batch02.json",
+    "abdomen-technik/gist-fa-final-polish.json"
+  ],
+  "scopeBreakdown": {
+    "fullExistingAssessmentPools": "ATV02 five topics:22MCQ/25cardtriads; NPH12/15; DVA12/15; HRCTDichteminderung12/15. See reports for exact original/new mix and limited prose parity.",
+    "newDedicatedPools": "HIV/meningitis/CJD/Parkinson3newMCQ+3cards each, with original inline checks synchronized.",
+    "boundedExistingDeltas": "MSK03 five routes:16canonical localized/card patch records,3original bone-infarctQ/3cards,2newMCQ/8cards; Chiari1originalMCQ; pancreatic communication1MCQtriad. Untouched larger ACL/meniscus pools not accepted."
+  },
+  "technicalEvidence": {
+    "productionBuild": "PASS remediation-build04-link-context.log after shared language/return fix. Final two FA prose-field polish independently2/2 reviewed and exact producer/snapshot checked; final source SSR passed.",
+    "allRoutesSSR": "702/702 actual route/locale SSR PASS, remediation-all-routes-ssr04-final.log",
+    "integration": "Reviewed snapshot/global banks/goal IDs and IR inline exact; local-version invalidation and language-aware return tests PASS.",
+    "localBrowser": "Actual authenticated normal account: HRCT12-question pool, specific shuffled incorrect feedback DE/EN/FA with stable selected option/key/score, executed return toFA lesson,15cards and practice-mode card12flip/explanation visually inspected. Legacy Meniscus path redirects to canonical22-questionFA quiz with language/return intact and normal access cap during hydration. GIST EN actual lesson link opens EN3-question quiz, FA switch and actual back-navigation return toFA GIST; quiz/card hrefs both carry lang/from. No full-bank interaction claim.",
+    "checkoutLimit": "Local technical render checks include unrelated author WIP excluded from staging. Only explicitly reviewed source files enter this commit; deployed commit build/status is verified separately.",
+    "indexAudit": "Actual staged-source bank947 DE/EN/FA and unchanged18cases pass existing MCQ auditor logic. Independent index/registry equality47/47; generator --staged added for partial releases. Working checkout now948 due excluded NF1 author draft; no draft-count publication inferred.",
+    "screenshots": [
+      "tmp/assessment-quality/batch02-hrct-fa-feedback.png",
+      "tmp/assessment-quality/batch02-hrct-fa-card12.png"
+    ]
+  },
+  "explicitExclusions": [
+    "RK04 data/radiuskopf.js accepted after source freeze, reserved for the next bounded release",
+    "ATV03 colitis/pylorus/Volvulus/advanced GI active sources",
+    "Brain teleangiectasia/NF1 and other original science/language pending sources",
+    "Offline reticular four-question draft is not wired or staged",
+    "Remaining original banks across234routes"
+  ],
+  "publication": "NOT_PUSHED_YET"
+}

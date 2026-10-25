@@ -1,0 +1,24 @@
+{
+  "date": "2026-10-25",
+  "status": "AUTHOR_BOUNDED_REPAIRS_READY",
+  "repairs": {
+    "HIV": [
+      "Four parallel diagnosis labels in diffuse-pattern question; source caveats retained in specific feedback",
+      "FA contrast-enhancement explicitly postcontrast in affected stems/feedback/IRIS cards and active lesson counterpart",
+      "IRIS card front now active timing/mechanism retrieval"
+    ],
+    "Meningitis": [
+      "FA sulcal/ependymal enhancement consistently postcontrast in affected feedback/cards/active short-check and source text"
+    ],
+    "CJD": [
+      "Four plausible diagnosis labels and case-specific wrong rationales in clinical-pattern; actual inline check synchronized",
+      "Bilateral pulvinar definition added to correct comparison, feedback, card and active lesson three languages",
+      "CSF comparison replaced by plausible caudate reference with precise wrong feedback"
+    ]
+  },
+  "verification": "Actual route/locale SSR 3/3 each HIV, meningitis, CJD; no build or browser claim. Keys unchanged.",
+  "limits": [
+    "Independent retest pending",
+    "No retained PDF/image acceptance implied"
+  ]
+}

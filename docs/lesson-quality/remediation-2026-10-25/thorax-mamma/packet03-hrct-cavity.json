@@ -1,0 +1,23 @@
+{
+  "date": "2026-10-25",
+  "status": "AUTHOR_FULL_ORIGINAL_ASSESSMENT_POOL_READY_REVIEW_PENDING",
+  "route": "/thorax/hrct/dichteminderung",
+  "files": ["data/hrctCavityCases.js", "data/hrctClinicalRevisions.js", "data/hrct-muster.js", "components/HrctPatternLesson.jsx"],
+  "scope": "All 12 original MCQ triads replaced at their existing IDs; corresponding 12 cards replaced. Remaining 3 named take-home retrieval cards read in all languages and retained. Written vignettes are not image questions. Actual retained media/source PDF pages were not rereviewed in this assessment packet.",
+  "evidence": "tmp/assessment-quality/cavity-actual-pool.json exports actual canonical items, not author seed claims. test-cavity.mjs passed 36 questions, 15 card triads and three specific wrong explanations per question. Build/browser and independent review remain pending.",
+  "goals": [
+    {"id":"morphology-context", "questionNumbers":["01","02","03","12"], "cardNumbers":["01","02","03","12","13"]},
+    {"id":"wall-analysis-and-progression", "questionNumbers":["04","05","06","07"], "cardNumbers":["04","05","06","07","14"]},
+    {"id":"content-and-topographic-differential", "questionNumbers":["08","09","10","11"], "cardNumbers":["08","09","10","11","15"]}
+  ],
+  "sourcesRead": [
+    {"url":"https://doi.org/10.1148/radiol.232558", "scope":"Actual indexed original Fleischner 2024 terminology for cyst, cavity, bulla and bronchiectasis; earlier HRCT source review. No diagnosis from air alone."},
+    {"url":"https://pubmed.ncbi.nlm.nih.gov/6779538/", "scope":"Entire original indexed 65-case radiographic abstract and modality. Historical maximum <=4,5-15,>15 groups are not universal CT thresholds; no patient-specific probability asserted."},
+    {"url":"https://pubmed.ncbi.nlm.nih.gov/27170221/", "scope":"Original CT study methods/results, maximum wall measurement and centrilobular perilesional association; repository full original indexed text read. Association, not a diagnostic test."},
+    {"url":"https://pubmed.ncbi.nlm.nih.gov/25279848/", "scope":"Entire original 24-patient indexed abstract: progressive wall thickening/new or growing mural nodule in cancer associated with cystic airspaces. Not extrapolated as a sensitivity, universal management interval or proof of malignancy."},
+    {"url":"https://pubmed.ncbi.nlm.nih.gov/3628758/", "scope":"Original indexed CT abstract including positional mobility and fixed spongework aspergillomas. Lack of mobility does not exclude aspergilloma."},
+    {"url":"https://pubmed.ncbi.nlm.nih.gov/3484866/", "scope":"Indexed original author publication: postprimary apicoposterior cavitation and bronchogenic spread. Review/update article; no old frequency extrapolated to modern populations."},
+    {"url":"https://pubmed.ncbi.nlm.nih.gov/17273583/", "scope":"Entire original 252-case aspiration abscess abstract: impaired consciousness and posterior-upper/superior-lower segment distribution; no prevalence or sensitivity extrapolated to general cavities."}
+  ],
+  "openScope": "Three other HRCT banks and the remaining Thorax/Mamma routes are not covered by this packet. Whole lesson scientific release approval and media verification are not claimed. This packet is not yet published."
+}

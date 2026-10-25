@@ -1,0 +1,13 @@
+{
+  "date": "2026-10-25",
+  "status": "AUTHOR_BOUNDED_REPAIRS_READY",
+  "changes": [
+    "Lee2020 original added as technical-confidence question/card source and active lesson reference",
+    "WrongD omits implied clinical/nigral ipsilateral correspondence; explicitly inferred from clinical asymmetry",
+    "FA optionC natural technical-indeterminate wording; all3inline optiontriads synchronized"
+  ],
+  "sourceRead": {
+    "url": "https://journals.plos.org/plosone/article?id=10.1371%2Fjournal.pone.0231010",
+    "scope": "Fresh original Results diagnosticconfidence/table3 and discussion:motion,suboptimalimages and causesoflowconfidence; no numerical cutoff or diagnosticaccuracy authored."
+  }
+}

@@ -228,6 +228,7 @@ export default function NormaldruckhydrozephalusPage() {
           </Section>
           <Section id="mrt" title={c(NPH_LESSON.mrt.title)} lead={c(NPH_LESSON.mrt.lead)} migrationChapter>
             <Table headers={NPH_LESSON.mrt.headers.map(c)} rows={rows(NPH_LESSON.mrt.rows)} /><Callout label={c(NPH_LESSON.keyLabel)}>{c(NPH_LESSON.mrt.key)}</Callout>
+            <p><small><a href="https://pubmed.ncbi.nlm.nih.gov/17041793/" target="_blank" rel="noopener noreferrer">Adachi et al. Radiat Med. 2006;24:568–572.</a> · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7905302/" target="_blank" rel="noopener noreferrer">iNPH Guidelines 2021, CQ3</a> {c({de:'Kleine Originalstudie zur posterioren Enge des Sulcus cinguli; kein alleiniger Diagnosetest.',en:'Small original study of posterior cingulate-sulcus tightness; not a stand-alone diagnostic test.',fa:'مطالعهٔ اصلی کوچک دربارهٔ تنگی بخش خلفی شیار سینگولیت؛ آزمون تشخیصی مستقل نیست.'})}</small></p>
           </Section>
           <Section id="differenzial" title={c(NPH_LESSON.differenzial.title)} lead={c(NPH_LESSON.differenzial.lead)} migrationChapter>
             <Table headers={NPH_LESSON.differenzial.headers.map(c)} rows={rows(NPH_LESSON.differenzial.rows)} />
@@ -249,6 +250,7 @@ export default function NormaldruckhydrozephalusPage() {
           </Section>
           <Section id="diagnostik" title={c(NPH_LESSON.diagnostik.title)} lead={c(NPH_LESSON.diagnostik.lead)} migrationChapter>
             <Cards items={NPH_LESSON.diagnostik.items} lang={lang} /><Callout label={c(NPH_LESSON.caveLabel)} cave>{c(NPH_LESSON.diagnostik.cave)}</Callout>
+            <p><small><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7905302/" target="_blank" rel="noopener noreferrer">{c({de:'Japanische iNPH-Leitlinie2021, Kapitel3: Tap-Test, Messmethode und Ergebnisgrenzen.',en:'Japanese iNPH guideline2021, chapter3: tap testing, measurement method and interpretive limits.',fa:'راهنمای ژاپنی iNPH سال۲۰۲۱، فصل۳: آزمون تخلیه، روش اندازه‌گیری و محدودیت تفسیر.'})}</a></small></p>
           </Section>
           <Section id="takehome" title={c(NPH_LESSON.takehome.title)} lead={c(NPH_LESSON.takehome.lead)} migrationChapter>
             <div className={styles.takeHomeGrid}>{NPH_LESSON.takehome.items.map((item, index) => <div className={styles.takeHomeItem} key={c(item.title)}><span>{String(index + 1).padStart(2, '0')}</span><div><h3>{c(item.title)}</h3><p>{c(item.text)}</p></div></div>)}</div>

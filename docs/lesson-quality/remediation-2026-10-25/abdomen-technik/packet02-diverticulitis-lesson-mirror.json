@@ -1,0 +1,57 @@
+{
+  "date": "2026-10-25",
+  "status": "AUTHOR_BOUNDED_MIRROR_READY_PEER_RETEST_PENDING",
+  "file": "app/abdomen/gi/divertikulitis/page.js",
+  "source": "https://www.dgvs.de/leitlinien/unterer-gi-trakt/divertikelkrankheit-divertikulitis/?digital=1",
+  "changes": [
+    {
+      "before": "Kolondivertikel sind erworbene Ausstülpungen von Mukosa und Submukosa durch Schwachstellen der Muskularis. Erst entzündliche Veränderungen am Divertikel und im umgebenden Fettgewebe begründen eine Divertikulitis.",
+      "after": "Kolondivertikel sind erworbene Ausstülpungen von Mukosa und Submukosa durch Schwachstellen der Muskularis. Divertikulitis bezeichnet die Entzündung eines oder mehrerer Divertikel, gegebenenfalls mit Reaktion der Darmwand und des umgebenden Gewebes."
+    },
+    {
+      "before": "Entzündetes Divertikel mit fokaler Darmwandverdickung und perikolischer Fettgewebsreaktion.",
+      "after": "Entzündung eines oder mehrerer Divertikel; Ausmaß und begleitende Darmwand- oder perikolische Reaktion können variieren."
+    },
+    {
+      "before": "Die Diagnose stützt sich nicht auf Divertikel allein, sondern auf die Kombination aus entzündetem Divertikel, segmentaler Wandverdickung und perikolischer Reaktion.",
+      "after": "Divertikel allein belegen keine Divertikulitis. Entzündetes Divertikel, Wandverdickung und perikolische Reaktion bilden eine typische CT-Konstellation; eine ausgeprägte vollständige Trias ist nicht in jeder Form erforderlich."
+    },
+    {
+      "before": "Die Classification of Diverticular Disease verbindet klinische und bildgebende Befunde. Für den radiologischen Bericht ist vor allem die Trennung zwischen unkompliziert und kompliziert entscheidend.",
+      "after": "Die Classification of Diverticular Disease verbindet klinische und bildgebende Befunde. Die folgende Tabelle verwendet die S3/DGVS-Fassung 2021 mit der 3-cm-Abszessgrenze. Für den Bericht ist die Trennung zwischen unkompliziert und kompliziert entscheidend."
+    },
+    {
+      "before": "Colonic diverticula are acquired herniations of mucosa and submucosa through weak points in the muscular wall. Diverticulitis requires inflammatory change involving a diverticulum and the surrounding fat.",
+      "after": "Colonic diverticula are acquired herniations of mucosa and submucosa through weak points in the muscular wall. Diverticulitis is inflammation of one or more diverticula, which may be accompanied by a reaction of the bowel wall and surrounding tissue."
+    },
+    {
+      "before": "An inflamed diverticulum with focal bowel wall thickening and pericolic inflammatory change.",
+      "after": "Inflammation of one or more diverticula; extent and associated mural or pericolic reaction may vary."
+    },
+    {
+      "before": "Diagnosis rests on the combination of an inflamed diverticulum, segmental wall thickening and pericolic inflammation, not on diverticula alone.",
+      "after": "Diverticula alone do not establish diverticulitis. An inflamed diverticulum, mural thickening and pericolic reaction form a typical CT pattern; a pronounced complete triad is not required in every form."
+    },
+    {
+      "before": "The Classification of Diverticular Disease combines clinical and imaging findings. The crucial radiological distinction is uncomplicated versus complicated disease.",
+      "after": "The Classification of Diverticular Disease combines clinical and imaging findings. The table uses the S3/DGVS 2021 version with the 3-cm abscess boundary. The crucial reporting distinction is uncomplicated versus complicated disease."
+    },
+    {
+      "before": "دیورتیکول‌های کولون بیرون‌زدگی‌های اکتسابی مخاط و زیرمخاط از نقاط ضعیف لایهٔ عضلانی هستند. دیورتیکولیت مستلزم تغییرات التهابی در دیورتیکول و چربی اطراف آن است.",
+      "after": "دیورتیکول‌های کولون بیرون‌زدگی‌های اکتسابی مخاط و زیرمخاط از نقاط ضعیف لایهٔ عضلانی هستند. دیورتیکولیت التهاب یک یا چند دیورتیکول است که می‌تواند با واکنش دیوارهٔ روده و بافت اطراف همراه باشد."
+    },
+    {
+      "before": "دیورتیکول ملتهب با ضخیم‌شدگی موضعی دیوارهٔ روده و تغییرات التهابی پریکولیک.",
+      "after": "التهاب یک یا چند دیورتیکول؛ وسعت و واکنش همراه دیواره یا اطراف کولون می‌تواند متفاوت باشد."
+    },
+    {
+      "before": "تشخیص بر ترکیب دیورتیکول ملتهب، ضخیم‌شدگی سگمنتال دیواره و التهاب پریکولیک تکیه دارد؛ وجود دیورتیکول به‌تنهایی کافی نیست.",
+      "after": "وجود دیورتیکول به‌تنهایی دیورتیکولیت را ثابت نمی‌کند. دیورتیکول ملتهب، ضخیم‌شدگی دیواره و واکنش اطراف کولون الگوی معمول CT را می‌سازند؛ تریاد کامل و شدید در همهٔ شکل‌ها الزامی نیست."
+    },
+    {
+      "before": "طبقه‌بندی بیماری دیورتیکولی (CDD) یافته‌های بالینی و تصویربرداری را کنار هم قرار می‌دهد. این جدول فقط الگوی طبقه‌بندی را خلاصه می‌کند و جایگزین ارزیابی بالینی نیست.",
+      "after": "طبقه‌بندی بیماری دیورتیکولی (CDD) یافته‌های بالینی و تصویربرداری را کنار هم قرار می‌دهد. جدول از نسخهٔ S3/DGVS 2021 با مرز ۳ سانتی‌متری آبسه استفاده می‌کند؛ این خلاصه جایگزین ارزیابی بالینی نیست."
+    }
+  ],
+  "scope": "Only definition lead/item/typical CT key and named CDD2021 edition DEENFA; numbers/IDs/design unchanged."
+}

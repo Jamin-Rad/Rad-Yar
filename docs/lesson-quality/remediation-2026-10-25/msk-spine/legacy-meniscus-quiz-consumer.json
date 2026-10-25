@@ -1,0 +1,49 @@
+{
+  "status": "PASS",
+  "cases": [
+    {
+      "input": {
+        "lang": "de"
+      },
+      "location": "/ueben/quiz?fach=msk&themen=meniskus&n=22&from=%2Fmsk%2Fknie%2Fmeniskus%3Flang%3Dde&lang=de"
+    },
+    {
+      "input": {
+        "lang": "en"
+      },
+      "location": "/ueben/quiz?fach=msk&themen=meniskus&n=22&from=%2Fmsk%2Fknie%2Fmeniskus%3Flang%3Den&lang=en"
+    },
+    {
+      "input": {
+        "lang": "fa"
+      },
+      "location": "/ueben/quiz?fach=msk&themen=meniskus&n=22&from=%2Fmsk%2Fknie%2Fmeniskus%3Flang%3Dfa&lang=fa"
+    },
+    {
+      "input": {},
+      "location": "/ueben/quiz?fach=msk&themen=meniskus&n=22&from=%2Fmsk%2Fknie%2Fmeniskus"
+    },
+    {
+      "input": {
+        "lang": "bad"
+      },
+      "location": "/ueben/quiz?fach=msk&themen=meniskus&n=22&from=%2Fmsk%2Fknie%2Fmeniskus"
+    },
+    {
+      "input": {
+        "lang": [
+          "fa",
+          "en"
+        ]
+      },
+      "location": "/ueben/quiz?fach=msk&themen=meniskus&n=22&from=%2Fmsk%2Fknie%2Fmeniskus%3Flang%3Dfa&lang=fa"
+    },
+    {
+      "input": {
+        "lang": "en-US"
+      },
+      "location": "/ueben/quiz?fach=msk&themen=meniskus&n=22&from=%2Fmsk%2Fknie%2Fmeniskus%3Flang%3Den&lang=en"
+    }
+  ],
+  "scope": "Actual async Next page compiled; only redirect primitive mocked. Canonical route retains existing LearningAccessGate in app/ueben/layout.jsx and effectiveN free-tier limit in quiz consumer. No browser/auth bypass claim."
+}

@@ -1,7 +1,7 @@
 {
-  "scope": "Production consumes publishedBank.json, routeLinks.json, interventionCheck.json and legacySessionBaseline.json. Other modules are authoring inputs and can contain explicit pending draft packets. Pending IDs are excluded by reviewedPackets.json; no current lesson imports these authoring banks. contrastRevisions.js separately supplies the29 independently reviewed existing contrast pairs.",
-  "activeSupplementQuestionsPerLanguage": 46,
-  "activeSupplementCards": 52,
-  "activeRouteMappings": 31,
+  "scope": "The supplemental runtime entry index.js consumes only reviewed snapshots publishedBank.json and routeLinks.json. IR inline uses interventionCheck.json. Offline bank inputs brain.js, mskSpine.js, abdomenTechnik.js and thoraxMamma.js may contain explicitly pending packets excluded by reviewedPackets.json. Separately imported canonical revision producers (contrastRevisions.js and gistRevision.js) have their own independent reviews; the allowlist does not approve canonical files wholesale.",
+  "activeSupplementQuestionsPerLanguage": 64,
+  "activeSupplementCards": 72,
+  "activeRouteMappings": 47,
   "clinicalAcceptance": "No global clinical approval inferred; bounded review reports are authoritative."
 }

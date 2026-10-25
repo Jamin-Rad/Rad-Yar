@@ -1,0 +1,26 @@
+{
+  "date": "2026-10-25",
+  "status": "AUTHOR_FULL_ORIGINAL_QUESTION_BANK_REVIEW_READY",
+  "route": "/gehirn/anatomie/chiari",
+  "files": [
+    "data/gehirnChiariLesson.js originalassessment/canonicalquestion/multiplanarmeasurementparagraph",
+    "app/gehirn/anatomie/chiari/page.jsx individualfeedbackconsumer"
+  ],
+  "originalQuestionTriads": 1,
+  "originalCards": 0,
+  "alreadyAcceptedSupplements": "2questiontriads and3cards read in independentpacket01; unchanged by this packet",
+  "changes": [
+    "Original weak absolute distractors replaced by four plausible craniocervical reference lines; originalID/keyA preserved, individualwrongfeedback all3locales.",
+    "Original simplistic both-tonsils-on-one-midline paragraph clarified: midsagittalMcRae reference plus multiplanar assessment whenasymmetric, not blind parasagittal measurement."
+  ],
+  "source": {
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9130617/",
+    "read": "Fresh actualmethods/figurecaptions/discussion: midsagittalMcRae perpendicularmeasurement; coronalreformats locate tonsillartips, separateparasagittalreference similarbutnotidentical. Study didnotclaimmidlinealwayssufficient."
+  },
+  "checks": "Actualcanonical3rows valid; originalinline3locales match; actualrouteSSR3/3. Existing twosupplementalquestiontriads/threecards unchanged.",
+  "limits": [
+    "No rereview of unchangedPDF87/88 images/sourceclassification; no diagnostic image used in newtextstem.",
+    "Fullassessmentauthorpass for original1question plus existingaccepted2questions/3cards is not wholelessonclinicalapproval.",
+    "Independentreview and realbrowserinteraction pending; canonicalproducer/page excluded from Mainuntilreview."
+  ]
+}

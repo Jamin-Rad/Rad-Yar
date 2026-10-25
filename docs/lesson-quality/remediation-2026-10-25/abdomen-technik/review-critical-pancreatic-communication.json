@@ -1,0 +1,20 @@
+{
+  "date": "2026-10-25",
+  "reviewer": "/root; independent of design_inventory author",
+  "status": "ACCEPT_BOUNDED_CANONICAL_CORRECTION_AFTER_RETEST",
+  "scope": "One existing MCQ triad only; no complete IPMN lesson or bank acceptance.",
+  "fieldsRead": "All DE/EN/FA stems, four options, key, correct and specific wrong explanations read independently; preserved key A and canonical IDs.",
+  "sourceEvidence": [
+    {
+      "url": "https://doi.org/10.1016/j.pan.2023.12.009",
+      "read": "Fresh original Kyoto2024 classification section3 and table2: BD-IPMN communicates; pseudocyst communication common, pancreatitis/trauma caveat. No treatment, size or cancer-risk threshold transferred."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/1913122/",
+      "read": "Fresh entire indexed original83-patient abstract; communication varies by clinical/duct subgroup. Old drainage guidance not transferred."
+    }
+  ],
+  "findings": [],
+  "retest": "critical-pancreatic-global-integration-parity.json: actual three-language global objects equal proposed after-values except expressly authorized source field as single valid Kyoto DOI. Other42 registrations/126 locale rows unchanged.",
+  "limits": "Basic misconception correction rather than measured difficult clinical vignette. No retained PDF/media or full-course clinical release approval. Browser/build pending."
+}

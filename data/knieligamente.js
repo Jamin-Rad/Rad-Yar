@@ -20,29 +20,81 @@ export const KNIE_LIGAMENTE_FLASHCARD_TOPIC = {
   },
 }
 
-const q = (id, question, options, correct, explanation) => ({ id, question, options, correct, explanation })
+const q = (id, question, options, correct, explanation, metadata = {}) => ({ id, question, options, correct, explanation, ...metadata })
 
 const CONTENT = [
-  q(
-    'grading',
-    {
-      de: 'Welcher MRT-Befund passt am besten zu einer Bandverletzung Grad I?',
-      en: 'Which MRI finding best matches a grade I ligament injury?',
-      fa: 'کدام یافته MRI بیشتر با آسیب رباط درجه I تطابق دارد؟',
+  q("grading",
+{
+  "de": "Welche Beobachtung am medialen Kollateralband beschreibt das gezeigte Bildpaar am treffendsten?",
+  "en": "Which observation of the medial collateral ligament best describes the displayed image pair?",
+  "fa": "کدام مشاهده دربارهٔ رباط جانبی داخلی، جفت تصاویر نشان‌داده‌شده را بهتر توصیف می‌کند؟"
+},
+[
+  {
+    "de": "Initial deutliches Umgebungsödem bei erhaltener Bandkontinuität; im zweiten Bild rückläufig.",
+    "en": "Initially prominent surrounding oedema with preserved ligament continuity; reduced on the second image.",
+    "fa": "ادم واضح اولیه در اطراف رباط با حفظ پیوستگی آن؛ کاهش ادم در تصویر دوم."
+  },
+  {
+    "de": "Initial flüssigkeitsgefüllte vollständige Bandlücke; im zweiten Bild weiterhin fehlende Kontinuität.",
+    "en": "Initially a fluid-filled complete ligament gap, with persistent discontinuity on the second image.",
+    "fa": "شکاف کامل رباط با محتوای مایع در ابتدا و تداوم گسستگی در تصویر دوم."
+  },
+  {
+    "de": "Initial knöcherner Bandausriss; im zweiten Bild überbrückender Kallus.",
+    "en": "Initially an osseous ligament avulsion, with bridging callus on the second image.",
+    "fa": "کندگی استخوانی محل اتصال رباط در ابتدا و کالوس پل‌زننده در تصویر دوم."
+  },
+  {
+    "de": "In beiden Bildern unauffälliges Band ohne sichtbare Umgebungsreaktion.",
+    "en": "An unremarkable ligament without visible surrounding reaction on either image.",
+    "fa": "رباط بدون تغییر و بدون واکنش قابل مشاهدهٔ اطراف، در هر دو تصویر."
+  }
+],
+"A",
+{
+  "de": "Links ist periligamentäres Ödem bei kontinuierlich dargestelltem MCL sichtbar, rechts nimmt die Umgebungsreaktion ab. Die Quelle bezeichnet dies als Grad-I-Zerrung. Die eingeblendeten zwei Wochen beschreiben diesen Quellverlauf, keine allgemeine Heilungsfrist oder Freigabe zur Belastung.",
+  "en": "The left image shows periligamentous oedema around a continuously depicted MCL; the surrounding reaction decreases on the right. The source labels this a grade-I sprain. The displayed two weeks describe this source follow-up, not a universal healing or return-to-load deadline.",
+  "fa": "در تصویر چپ ادم پیرارباطی در اطراف MCL با پیوستگی قابل مشاهده وجود دارد و در سمت راست واکنش اطراف کاهش یافته است. منبع این وضعیت را کشیدگی درجهٔ I می‌نامد. فاصلهٔ دو هفتهٔ درج‌شده مربوط به پیگیری همین منبع است، نه مهلت همگانی ترمیم یا بازگشت به بارگذاری."
+},
+{
+  "wrongExplanations": {
+    "B": {
+      "de": "Ein vollständiger flüssigkeitsgefüllter Defekt mit getrennten Bandstümpfen ist in diesem Quellpaar nicht das gezeigte Leitmuster.",
+      "en": "A complete fluid-filled gap with separated ligament ends is not the predominant pattern in this source pair.",
+      "fa": "نقص کامل پر از مایع با انتهای جداشدهٔ رباط، الگوی اصلیِ نشان‌داده‌شده در این جفت تصاویر منبع نیست."
     },
-    [
-      { de: 'Erhaltene Bandkontur mit periligamentösem Ödem', en: 'Preserved ligament contour with periligamentous oedema', fa: 'حفظ کانتور رباط همراه با ادم اطراف رباط' },
-      { de: 'Komplette Diskontinuität mit welligen Bandstümpfen', en: 'Complete discontinuity with wavy ligament ends', fa: 'قطع کامل همراه با حالت موج‌دار انتهای رباط' },
-      { de: 'Knöcherne Avulsion am Fibulaköpfchen', en: 'Bony avulsion at the fibular head', fa: 'کندگی استخوانی در رأس سر فیبولا' },
-      { de: 'Deutliche anteriore Tibiasubluxation über 7 mm', en: 'Marked anterior tibial subluxation over 7 mm', fa: 'سابلوکساسیون قدامی تیبیا بیش از ۷ میلی‌متر' },
-    ],
-    'A',
-    {
-      de: 'Grad I entspricht einer Zerrung: Die Bandkontur ist erhalten, das Leitsignal ist ein Flüssigkeitssaum bzw. periligamentöses Ödem.',
-      en: 'Grade I is a sprain: the ligament contour remains intact; the key finding is surrounding fluid or periligamentous oedema.',
-      fa: 'درجه I همان کشیدگی است: کانتور رباط حفظ می‌شود و یافته اصلی مایع/ادم اطراف رباط است.',
+    "C": {
+      "de": "Das Paar demonstriert eine Weichteilreaktion um das Band, nicht einen knöchernen Ausriss mit Kallusverlauf.",
+      "en": "The pair demonstrates a soft-tissue reaction around the ligament, not an osseous avulsion with callus evolution.",
+      "fa": "این جفت تصاویر واکنش بافت نرم اطراف رباط را نشان می‌دهد، نه کندگی استخوانی با سیر تشکیل کالوس."
     },
-  ),
+    "D": {
+      "de": "Im linken Bild ist eine deutliche helle Umgebungsreaktion sichtbar; beide Bilder sind daher nicht gleichermaßen unauffällig.",
+      "en": "The left image shows a prominent bright surrounding reaction; the two images are not both unremarkable.",
+      "fa": "در تصویر چپ واکنش پرسیگنال واضح اطراف دیده می‌شود؛ بنابراین هر دو تصویر به یکسان طبیعی نیستند."
+    }
+  },
+  "source": "MSK.pdf physical61 /printed60; original page and retained MRI pair actually visually inspected2026-10-25",
+  "image": {
+    "src": "/knieligamente/mcl-sprain-followup.png",
+    "alt": {
+      "de": "Koronares MRT-Bildpaar des Knies aus MSK.pdf Seite61; links „Trauma“, rechts „nach2Wochen“.",
+      "en": "Coronal knee MRI pair from MSK.pdf page61; left labelled “Trauma”, right “after2weeks”.",
+      "fa": "جفت تصاویر کرونال MRI زانو از صفحهٔ ۶۱ MSK.pdf؛ برچسب چپ «تروما» و راست «پس از دو هفته»."
+    },
+    "caption": {
+      "de": "Originales Quellpaar ohne zusätzliche Markierungen.",
+      "en": "Original source pair without added overlays.",
+      "fa": "جفت تصاویر اصلی منبع، بدون علامت‌گذاری افزوده."
+    },
+    "credit": {
+      "de": "MSK.pdf · PDF-Seite61 /Druck60 · Beitragender auf der Seite nicht genannt.",
+      "en": "MSK.pdf · PDF page61 /printed60 · no contributor named on the page.",
+      "fa": "MSK.pdf · صفحهٔ PDF۶۱ /چاپی۶۰ · نام مشارکت‌کننده در صفحه ذکر نشده است."
+    }
+  }
+}),
   q(
     'lcl-v-sign',
     {
@@ -63,46 +115,114 @@ const CONTENT = [
       fa: 'در کمپلکس لترال، در سطح سر فیبولا LCL بیشتر قدام-مدیال و تاندون بایسپس فموریس بیشتر خلف-لترال قرار دارد.',
     },
   ),
-  q(
-    'arcuate-sign',
-    {
-      de: 'Wofür ist das Arcuate Sign eine Red Flag?',
-      en: 'What is the arcuate sign a red flag for?',
-      fa: "علامت آرکوات (Arcuate sign) هشدار مهم برای چیست؟",
+  q("arcuate-sign",
+{
+  "de": "Nach Knietrauma zeigt sich ein knöcherner Ausriss am Fibulastyloid (Arcuate Sign). Welcher Verletzungskomplex muss gezielt mitbeurteilt werden?",
+  "en": "After knee trauma, a fibular styloid avulsion (arcuate sign) is seen. Which injury complex requires targeted assessment?",
+  "fa": "پس از ترومای زانو، کندگی استخوانی زائدهٔ استیلوئید فیبولا (علامت آرکوات) دیده می‌شود. کدام مجموعهٔ آسیب باید هدفمند ارزیابی شود؟"
+},
+[
+  {
+    "de": "Posterolaterale Stabilisatoren und Kreuzbänder.",
+    "en": "Posterolateral stabilizers and cruciate ligaments.",
+    "fa": "پایدارکننده‌های خلفی‌ـ‌خارجی و رباط‌های صلیبی."
+  },
+  {
+    "de": "Medialer patellofemoraler Halteapparat.",
+    "en": "Medial patellofemoral restraints.",
+    "fa": "ساختارهای مهارکنندهٔ کشککی‌ـ‌رانی داخلی."
+  },
+  {
+    "de": "Distaler Streckapparat an der Tuberositas tibiae.",
+    "en": "Distal extensor mechanism at the tibial tuberosity.",
+    "fa": "مکانیسم اکستانسور دیستال در برجستگی درشت‌نی."
+  },
+  {
+    "de": "Posteromediale Kapsel und Semimembranosusansatz.",
+    "en": "Posteromedial capsule and semimembranosus insertion.",
+    "fa": "کپسول خلفی‌ـ‌داخلی و اتصال نیم‌غشایی."
+  }
+],
+"A",
+{
+  "de": "Das Arcuate Sign weist auf eine Verletzung von Strukturen hin, die am Fibulakopf/-styloid ansetzen. Posterolaterale Strukturen und Kreuzbänder gezielt prüfen; das Zeichen allein bestimmt nicht den gesamten Verletzungsumfang oder eine Therapie.",
+  "en": "The arcuate sign indicates injury to structures inserting at the fibular head/styloid. Assess posterolateral structures and cruciate ligaments; the sign alone does not determine the entire injury extent or treatment.",
+  "fa": "علامت آرکوات به آسیب ساختارهای متصل به سر/استیلوئید فیبولا اشاره دارد. ساختارهای خلفی‌ـ‌خارجی و رباط‌های صلیبی را هدفمند بررسی کنید؛ این علامت به‌تنهایی وسعت کامل آسیب یا درمان را تعیین نمی‌کند."
+},
+{
+  "wrongExplanations": {
+    "B": {
+      "de": "Ein fibulärer Ausriss liegt nicht am patellaren oder femoralen Ansatz des MPFL.",
+      "en": "A fibular avulsion is not at a patellar or femoral MPFL attachment.",
+      "fa": "کندگی فیبولا در محل اتصال کشککی یا رانی MPFL نیست."
     },
-    [
-      { de: 'Schwere Verletzung des posterolateralen Eckpunkts', en: 'Severe posterolateral corner injury', fa: 'آسیب شدید گوشه خلفی-لترال زانو' },
-      { de: 'Isolierte Patellarsehnenruptur', en: 'Isolated patellar tendon rupture', fa: 'پارگی منفرد تاندون پاتلا' },
-      { de: 'Chronische mukoide VKB-Degeneration', en: 'Chronic mucoid ACL degeneration', fa: 'دژنراسیون موکوئید مزمن ACL' },
-      { de: 'Unkomplizierte Grad-I-MCL-Zerrung', en: 'Uncomplicated grade I MCL sprain', fa: 'کشیدگی ساده MCL درجه I' },
-    ],
-    'A',
-    {
-      de: 'Das Arcuate Sign ist eine Avulsionsfraktur am Apex des Fibulaköpfchens und spricht stark für eine relevante PLC-Verletzung.',
-      en: 'The arcuate sign is an avulsion fracture at the fibular head apex and is highly characteristic of a significant PLC injury.',
-      fa: "علامت آرکوات (Arcuate sign) یک شکستگی کندگی در رأس سر فیبولاست و به نفع آسیب مهم کمپلکس PLC است.",
+    "C": {
+      "de": "Die Tuberositas tibiae ist der Patellarsehnenansatz; sie liegt nicht am Fibulastyloid.",
+      "en": "The tibial tuberosity is the patellar tendon attachment, not the fibular styloid.",
+      "fa": "برجستگی درشت‌نی محل اتصال تاندون کشککی است، نه استیلوئید فیبولا."
     },
-  ),
-  q(
-    'mcl-pol',
-    {
-      de: 'Welche Struktur sollte bei jeder MCL-Verletzung gezielt mitbeurteilt werden?',
-      en: 'Which structure should be assessed deliberately in every MCL injury?',
-      fa: 'در هر آسیب MCL کدام ساختار باید هدفمند ارزیابی شود؟',
+    "D": {
+      "de": "Diese Strukturen gehören zur posteromedialen Seite; der fibuläre Ausriss lenkt zunächst auf den posterolateralen Komplex.",
+      "en": "These structures are posteromedial; fibular avulsion first directs attention to the posterolateral complex.",
+      "fa": "این ساختارها در سمت خلفی‌ـ‌داخلی‌اند؛ کندگی فیبولا ابتدا توجه را به مجموعهٔ خلفی‌ـ‌خارجی معطوف می‌کند."
+    }
+  },
+  "source": "https://pubmed.ncbi.nlm.nih.gov/12540438/; https://pubmed.ncbi.nlm.nih.gov/14520502/"
+}),
+  q("mcl-pol",
+{
+  "de": "Bei einer akuten MCL-Verletzung soll auch die posteromediale Stabilisierung beurteilt werden. Welche Bandstruktur gehört gezielt zu dieser Beurteilung?",
+  "en": "An acute MCL injury also requires assessment of posteromedial stabilization. Which ligament belongs in this targeted assessment?",
+  "fa": "در آسیب حاد MCL، پایداری خلفی‌ـ‌داخلی نیز باید ارزیابی شود. کدام رباط باید در این ارزیابی هدفمند بررسی شود؟"
+},
+[
+  {
+    "de": "Posterior Oblique Ligament (POL).",
+    "en": "Posterior oblique ligament (POL).",
+    "fa": "رباط مایل خلفی (POL)."
+  },
+  {
+    "de": "Popliteofibulares Ligament.",
+    "en": "Popliteofibular ligament.",
+    "fa": "رباط پوپلیته‌ـ‌فیبولار."
+  },
+  {
+    "de": "Mediales patellofemorales Ligament (MPFL).",
+    "en": "Medial patellofemoral ligament (MPFL).",
+    "fa": "رباط کشککی‌ـ‌رانی داخلی (MPFL)."
+  },
+  {
+    "de": "Vorderes Kreuzband (VKB).",
+    "en": "Anterior cruciate ligament (ACL).",
+    "fa": "رباط صلیبی قدامی (ACL)."
+  }
+],
+"A",
+{
+  "de": "Das POL ist ein eigenständig beurteilbarer Teil des posteromedialen Komplexes. Die primäre MRT-Studie zeigte eine Assoziation mit MCL- und weiteren posteromedialen Verletzungen; eine MCL-Verletzung beweist aber keine POL-Ruptur.",
+  "en": "The POL is an independently assessable part of the posteromedial complex. The primary MRI study found association with MCL and other posteromedial injuries; an MCL injury does not itself prove a POL tear.",
+  "fa": "POL جزء قابل ارزیابیِ مستقلِ مجموعهٔ خلفی‌ـ‌داخلی است. مطالعهٔ اولیهٔ MRI ارتباط آن را با آسیب MCL و دیگر ساختارهای خلفی‌ـ‌داخلی نشان داد؛ اما آسیب MCL به‌خودی‌خود پارگی POL را ثابت نمی‌کند."
+},
+{
+  "wrongExplanations": {
+    "B": {
+      "de": "Das popliteofibulare Ligament gehört zum posterolateralen, nicht zum gesuchten posteromedialen Komplex.",
+      "en": "The popliteofibular ligament is posterolateral rather than part of the requested posteromedial complex.",
+      "fa": "رباط پوپلیته‌ـ‌فیبولار مربوط به مجموعهٔ خلفی‌ـ‌خارجی است، نه خلفی‌ـ‌داخلی مورد سؤال."
     },
-    [
-      { de: 'Posterior Oblique Ligament (POL)', en: 'Posterior oblique ligament (POL)', fa: 'رباط مایل خلفی (POL)' },
-      { de: 'Ligamentum flavum', en: 'Ligamentum flavum', fa: 'لیگامنتوم فلاووم' },
-      { de: 'Ligamentum teres', en: 'Ligamentum teres', fa: 'لیگامنتوم ترس' },
-      { de: 'Retinaculum extensorum', en: 'Extensor retinaculum', fa: 'رتیناکولوم اکستانسور' },
-    ],
-    'A',
-    {
-      de: 'MCL und POL bilden funktionell eine mediale Stabilitätseinheit; kombinierte Läsionen sind häufig und dürfen nicht übersehen werden.',
-      en: 'The MCL and POL form a functional medial stabilising unit; combined lesions are common and should not be missed.',
-      fa: 'MCL و POL یک واحد پایداری مدیال می‌سازند؛ ضایعات ترکیبی شایع‌اند و نباید نادیده گرفته شوند.',
+    "C": {
+      "de": "Das MPFL stabilisiert die Patella medial; es ist nicht das hier gesuchte POL der posteromedialen Kapselregion.",
+      "en": "The MPFL restrains the patella medially; it is not the requested POL of the posteromedial capsular region.",
+      "fa": "MPFL کشکک را از سمت داخلی مهار می‌کند؛ این رباط، POL ناحیهٔ کپسولی خلفی‌ـ‌داخلی مورد سؤال نیست."
     },
-  ),
+    "D": {
+      "de": "Das VKB ist intraartikulär und kein Ersatz für die gezielte POL-Beurteilung; Begleitverletzungen werden zusätzlich geprüft.",
+      "en": "The ACL is intra-articular and does not replace targeted POL assessment; associated injuries are assessed separately.",
+      "fa": "ACL داخل‌مفصلی است و جای بررسی هدفمند POL را نمی‌گیرد؛ آسیب‌های همراه جداگانه ارزیابی می‌شوند."
+    }
+  },
+  "source": "https://pubmed.ncbi.nlm.nih.gov/34626207/"
+}),
   q(
     'acl-indirect',
     {
@@ -187,6 +307,9 @@ export const KNIE_LIGAMENTE_QUESTIONS = Object.fromEntries(
       })),
       correct: item.correct,
       explanation: item.explanation[lang],
+      ...(item.wrongExplanations ? { wrongExplanations: Object.fromEntries(Object.entries(item.wrongExplanations).map(([id, text]) => [id, text[lang]])) } : {}),
+      ...(item.source ? { source: item.source } : {}),
+      ...(item.image ? { image: Object.fromEntries(Object.entries(item.image).map(([key, value]) => [key, typeof value === 'object' ? value[lang] : value])) } : {}),
     })),
   ]),
 )

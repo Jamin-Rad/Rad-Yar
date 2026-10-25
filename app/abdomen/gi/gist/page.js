@@ -2,7 +2,7 @@
 
 import { useLanguage } from '@/providers/LanguageProvider'
 import LessonReferenceShell from '@/components/LessonReferenceShell'
-import { abdomenThoraxAssessmentDrafts } from '@/data/abdomenThoraxAssessmentDrafts'
+import { gistAssessment } from '@/data/assessmentQuality/gistRevision'
 import styles from './page.module.css'
 
 const C = {
@@ -65,12 +65,7 @@ const C = {
 export default function GistLessonPage() {
   const { lang } = useLanguage()
   const c = C[lang] || C.de
-  const draftCheck = abdomenThoraxAssessmentDrafts['abdomen-gist']
-  const check = { ...draftCheck, explanation: draftCheck.rationale, diagramCaption: {
-    de: 'Schematische Darstellung eines Magens mit einer nach außen wachsenden Raumforderung; kein Patientenbild.',
-    en: 'Teaching schematic of a stomach with an outward-growing mass; not patient imaging.',
-    fa: 'نمای شماتیک آموزشی از معده با توده‌ای رو به بیرون؛ تصویر بیمار نیست.',
-  } }
+  const check={question:gistAssessment.question,options:gistAssessment.options,answer:1,explanation:gistAssessment.explanation}
   const images = [
     ['/educational/gist/pdf-p68-axial-1.png', c.labels[0], c.alts[0]],
     ['/educational/gist/pdf-p68-axial-2.png', c.labels[1], c.alts[1]],

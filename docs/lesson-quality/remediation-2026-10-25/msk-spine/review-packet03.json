@@ -1,0 +1,126 @@
+{
+  "date": "2026-10-25",
+  "reviewer": "/root/brain_remediation; independent read-only reviewer of MSK author and root integration",
+  "status": "ACCEPT_BOUNDED_DELTA_PACKET",
+  "scope": {
+    "routes": [
+      "/msk/knie/kreuzbaender",
+      "/msk/knie/meniskus",
+      "/msk/knochennekrosen/avn-huefte",
+      "/msk/knochennekrosen/knocheninfarkt",
+      "/msk/knochenstoffwechsel/melorheostose"
+    ],
+    "newQuestionTriads": 2,
+    "newCardTriads": 8,
+    "boneInfarctOriginalQuestionTriads": 3,
+    "boneInfarctOriginalCardTriads": 3,
+    "canonicalPatchRecords": 16,
+    "canonicalPatchMeaning": "Five original MCQ triads and one flashcard triad, applied to actual producers during this review.",
+    "fieldsRead": "All scoped DE/EN/FA stems, alternatives, keys, correct/wrong explanations, card fronts/answers/explanations, actual diagnostic-image metadata and named source/version corrections. Unchanged larger ACL/meniscus pools are explicitly not accepted."
+  },
+  "findings": [],
+  "clinicalChecks": [
+    "ARCO2019 is distinguished from undated PDF table; 3mm depression with subchondral fracture and no arthrosis correctly maps toIIIB, ≤2mm retained forIIIA. Edema alone is not a positive osteonecrosis study.",
+    "Arcuate-sign and POL questions use relevant knee alternatives and distinguish an association/targeted search from automatic complete rupture or treatment.",
+    "Source-image MCL question describes actual visible continuous ligament/periligamentous edema with lesser follow-up reaction; source two-week timing is not a universal recovery rule.",
+    "Discoid quantitative criterion preserves original Samoto inclusive20% and sagittal75% versus coronal measurement distinction; current SSR2026 midcoronal15mm and thin-slice caveat read. Old sagittalText literals are not rendered by this component; no false runtime finding inferred from dead copy.",
+    "Degenerative-meniscus treatment question includes relevant eligibility, no true locking/acute injury/advanced OA and no prior exercise. PrimaryRCT supports exercise first here, without a blanket surgery prohibition.",
+    "Bone-infarct questions distinguish medullary location, rim/centre pattern and possible coexisting osteomyelitis; absence of double-line sign is not an exclusion.",
+    "Melorheostosis image, edema caveat and targeted CT/MRI roles match actual source/image and original40-case series. No invented overlay or unseen figure claimed."
+  ],
+  "evidence": {
+    "primary": [
+      {
+        "url": "https://pubmed.ncbi.nlm.nih.gov/31866252/",
+        "read": "Complete indexed original ARCO expert-panel Delphi abstract with fourstage definitions, inclusive2mm subdivision and arthrosis requirements."
+      },
+      {
+        "url": "https://pubmed.ncbi.nlm.nih.gov/10990307/",
+        "read": "Complete original200-patient ONFH MRI abstract: early interface abnormality versus nonspecific edema pattern; no universal no-edema rule."
+      },
+      {
+        "url": "https://pubmed.ncbi.nlm.nih.gov/15145483/",
+        "read": "Complete original42-case TOH abstract/results/follow-up; edema not equivalent to AVN."
+      },
+      {
+        "url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/jbm4.10472",
+        "read": "Original article abstract/opening methods/introduction and2021volume5issue4 metadata: associated edema and selected MRI soft-tissue benefit; classic pattern not obligatory."
+      },
+      {
+        "url": "https://pubmed.ncbi.nlm.nih.gov/12540438/",
+        "read": "Complete original13-patient radiographic/MRI/surgical abstract: fibularstyloid/arcuate and associatedPCL, without treating cohortall-patients result as universal."
+      },
+      {
+        "url": "https://pubmed.ncbi.nlm.nih.gov/14520502/",
+        "read": "Complete original cadaveric/12patient abstract: fibular insertions and avulsion patterns distinguish posterolateral structures."
+      },
+      {
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34626207/",
+        "read": "Complete original123-MRI abstract: POL as distinct structure and association with MCL/otherposteromedial injury."
+      },
+      {
+        "url": "https://pubmed.ncbi.nlm.nih.gov/11973030/",
+        "read": "Complete original60discoid/134semilunar arthroscopy-correlated abstract: coronalRMT≥20%, sagittalPCM≥75%, historic15mmwidth and3slices; no universalsensitivity imported."
+      },
+      {
+        "url": "https://link.springer.com/article/10.1007/s00256-026-05281-5",
+        "read": "Actual SSR2026 recommendation5: thin3–4mmprotocol makes3bowties criterion inappropriate; midcoronalbody≥15mm preferred. Current rendered lesson caveat checked against this."
+      },
+      {
+        "url": "https://pubmed.ncbi.nlm.nih.gov/8508844/",
+        "read": "Complete original11-patient chemicalshift abstract including3 medullaryinfarcts; double-line absent in some provenosteonecrosis."
+      },
+      {
+        "url": "https://pubmed.ncbi.nlm.nih.gov/10745133/",
+        "read": "Complete original selected11patient SCD/SLE abstract:3 infarct-plus-osteomyelitis cases, no universalaccuracy extrapolation."
+      },
+      {
+        "url": "https://www.bmj.com/content/bmj/354/bmj.i3740.full.pdf",
+        "read": "Original140participant RCT abstract, eligibility/exclusion/ intervention/results as indexed primarytext: acute trauma/lockedknee excluded, supervisedexercise compared withAPM, no clinicallyimportant2year functional difference. Published erratum concerns other-study discussion statistics, not taught result."
+      }
+    ],
+    "visuals": {
+      "originalPDFPagesRead": [
+        50,
+        61,
+        120,
+        121,
+        122,
+        123,
+        133
+      ],
+      "actualFilesViewed": [
+        "tmp/msk-inventory/meniscus-p50-remediation.png",
+        "tmp/msk-inventory/mcl-p61-remediation.png",
+        "tmp/msk-inventory/melor-p133-remediation.png",
+        "tmp/msk3-review-p-120.png",
+        "tmp/msk3-review-p-121.png",
+        "tmp/msk3-review-p-122.png",
+        "tmp/msk3-review-p-123.png",
+        "public/knieligamente/mcl-sprain-followup.png",
+        "public/educational/melorheostose/pdf-case-p133.jpg"
+      ],
+      "result": "Reviewer independently rendered PDF120–123 at100dpi. AVN undatedtable/earlyMRItext, medullaryinfarcttopography/rim/fat and infectiondifferential read. Actual MCLpair and left-handhyperostosis match scopedanswers. PDF50 contains separateupper andlower panels; retaineduppercrop is not the lowerdouble-PCLschematic."
+    },
+    "technical": {
+      "probe": "tmp/brain-msk3-probe.mjs",
+      "actualGlobalCanonicalAfterValues": "16/16 exact deep equality against intended after-values; no overlay layer assumed",
+      "authorManifestParity": "6newquestionrows,8newcards,9originalbone-infarctquestionrows and3originalcards match current actual exports exactly",
+      "independentSSR": "15/15 current actual five-route/three-language graph renders; report brain-review-packet03-ssr.json. Context andCSSfixtures do not prove realbrowserbehavior."
+    }
+  },
+  "gates": {
+    "SRC": "PASS_BOUNDED_REFERENCES_AND_PROVENANCE",
+    "EDU": "PASS_BOUNDED_DELTAS",
+    "VIS": "PASS_REFERENCED_DIAGNOSTIC_IMAGE_MATCH_ONLY",
+    "LNG": "PASS_BOUNDED_TRIAD_SEMANTICS",
+    "ASM": "PASS_BOUNDED_DELTAS_AND_BONE_INFARCT_ITEMS",
+    "UX": "BLOCKED_REAL_BROWSER_NOT_RUN",
+    "REV": "INDEPENDENT_BOUNDED_REVIEW_COMPLETE"
+  },
+  "limits": [
+    "This accepts only the specified delta packet, not every question/card in any of the five routes. Untouched ACL/meniscus etc remain pending systematic review.",
+    "No live deployment, responsive/theme/RTL browser interaction or auth-gate validation performed by reviewer. Root release QA remains necessary.",
+    "No learner-data difficulty calibration, full-PDF scientific approval or Dr.Zia sign-off inferred."
+  ]
+}

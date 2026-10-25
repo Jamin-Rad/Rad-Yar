@@ -58,13 +58,13 @@ const CONTENT = {
     ],
     basics: {
       title: 'Divertikulose ist nicht Divertikulitis',
-      lead: 'Kolondivertikel sind erworbene Ausstülpungen von Mukosa und Submukosa durch Schwachstellen der Muskularis. Erst entzündliche Veränderungen am Divertikel und im umgebenden Fettgewebe begründen eine Divertikulitis.',
+      lead: 'Kolondivertikel sind erworbene Ausstülpungen von Mukosa und Submukosa durch Schwachstellen der Muskularis. Divertikulitis bezeichnet die Entzündung eines oder mehrerer Divertikel, gegebenenfalls mit Reaktion der Darmwand und des umgebenden Gewebes.',
       items: [
         { title: 'Divertikulose', text: 'Divertikel ohne entzündliche Begleitreaktion. Häufiger asymptomatischer Zufallsbefund.' },
         { title: 'Prädilektion', text: 'Im westlichen Patientenkollektiv überwiegend im Sigma, wo ein engeres Lumen mit höherem intraluminalem Druck zusammentrifft.' },
-        { title: 'Divertikulitis', text: 'Entzündetes Divertikel mit fokaler Darmwandverdickung und perikolischer Fettgewebsreaktion.' },
+        { title: 'Divertikulitis', text: 'Entzündung eines oder mehrerer Divertikel; Ausmaß und begleitende Darmwand- oder perikolische Reaktion können variieren.' },
       ],
-      key: 'Die Diagnose stützt sich nicht auf Divertikel allein, sondern auf die Kombination aus entzündetem Divertikel, segmentaler Wandverdickung und perikolischer Reaktion.',
+      key: 'Divertikel allein belegen keine Divertikulitis. Entzündetes Divertikel, Wandverdickung und perikolische Reaktion bilden eine typische CT-Konstellation; eine ausgeprägte vollständige Trias ist nicht in jeder Form erforderlich.',
     },
     ct: {
       title: 'CT-Diagnostik',
@@ -86,7 +86,7 @@ const CONTENT = {
     },
     cdd: {
       title: 'CDD-Klassifikation',
-      lead: 'Die Classification of Diverticular Disease verbindet klinische und bildgebende Befunde. Für den radiologischen Bericht ist vor allem die Trennung zwischen unkompliziert und kompliziert entscheidend.',
+      lead: 'Die Classification of Diverticular Disease verbindet klinische und bildgebende Befunde. Die folgende Tabelle verwendet die S3/DGVS-Fassung 2021 mit der 3-cm-Abszessgrenze. Für den Bericht ist die Trennung zwischen unkompliziert und kompliziert entscheidend.',
       headers: ['Typ', 'Bezeichnung', 'Bildgebung'],
       rows: [
         ['0', 'Asymptomatische Divertikulose', 'Divertikel ohne Entzündung'],
@@ -181,13 +181,13 @@ const CONTENT = {
     ],
     basics: {
       title: 'Diverticulosis is not diverticulitis',
-      lead: 'Colonic diverticula are acquired herniations of mucosa and submucosa through weak points in the muscular wall. Diverticulitis requires inflammatory change involving a diverticulum and the surrounding fat.',
+      lead: 'Colonic diverticula are acquired herniations of mucosa and submucosa through weak points in the muscular wall. Diverticulitis is inflammation of one or more diverticula, which may be accompanied by a reaction of the bowel wall and surrounding tissue.',
       items: [
         { title: 'Diverticulosis', text: 'Diverticula without surrounding inflammation, commonly an asymptomatic incidental finding.' },
         { title: 'Predilection', text: 'In Western populations, the sigmoid colon is most often affected.' },
-        { title: 'Diverticulitis', text: 'An inflamed diverticulum with focal bowel wall thickening and pericolic inflammatory change.' },
+        { title: 'Diverticulitis', text: 'Inflammation of one or more diverticula; extent and associated mural or pericolic reaction may vary.' },
       ],
-      key: 'Diagnosis rests on the combination of an inflamed diverticulum, segmental wall thickening and pericolic inflammation, not on diverticula alone.',
+      key: 'Diverticula alone do not establish diverticulitis. An inflamed diverticulum, mural thickening and pericolic reaction form a typical CT pattern; a pronounced complete triad is not required in every form.',
     },
     ct: {
       title: 'CT diagnosis',
@@ -209,7 +209,7 @@ const CONTENT = {
     },
     cdd: {
       title: 'CDD classification',
-      lead: 'The Classification of Diverticular Disease combines clinical and imaging findings. The crucial radiological distinction is uncomplicated versus complicated disease.',
+      lead: 'The Classification of Diverticular Disease combines clinical and imaging findings. The table uses the S3/DGVS 2021 version with the 3-cm abscess boundary. The crucial reporting distinction is uncomplicated versus complicated disease.',
       headers: ['Type', 'Category', 'Imaging'],
       rows: [
         ['0', 'Asymptomatic diverticulosis', 'Diverticula without inflammation'],
@@ -346,7 +346,7 @@ CONTENT.fa = {
   ],
   "basics": {
     "title": "دیورتیکولوز همان دیورتیکولیت نیست",
-    "lead": "دیورتیکول‌های کولون بیرون‌زدگی‌های اکتسابی مخاط و زیرمخاط از نقاط ضعیف لایهٔ عضلانی هستند. دیورتیکولیت مستلزم تغییرات التهابی در دیورتیکول و چربی اطراف آن است.",
+    "lead": "دیورتیکول‌های کولون بیرون‌زدگی‌های اکتسابی مخاط و زیرمخاط از نقاط ضعیف لایهٔ عضلانی هستند. دیورتیکولیت التهاب یک یا چند دیورتیکول است که می‌تواند با واکنش دیوارهٔ روده و بافت اطراف همراه باشد.",
     "items": [
       {
         "title": "دیورتیکولوز",
@@ -358,10 +358,10 @@ CONTENT.fa = {
       },
       {
         "title": "دیورتیکولیت",
-        "text": "دیورتیکول ملتهب با ضخیم‌شدگی موضعی دیوارهٔ روده و تغییرات التهابی پریکولیک."
+        "text": "التهاب یک یا چند دیورتیکول؛ وسعت و واکنش همراه دیواره یا اطراف کولون می‌تواند متفاوت باشد."
       }
     ],
-    "key": "تشخیص بر ترکیب دیورتیکول ملتهب، ضخیم‌شدگی سگمنتال دیواره و التهاب پریکولیک تکیه دارد؛ وجود دیورتیکول به‌تنهایی کافی نیست."
+    "key": "وجود دیورتیکول به‌تنهایی دیورتیکولیت را ثابت نمی‌کند. دیورتیکول ملتهب، ضخیم‌شدگی دیواره و واکنش اطراف کولون الگوی معمول CT را می‌سازند؛ تریاد کامل و شدید در همهٔ شکل‌ها الزامی نیست."
   },
   "ct": {
     "title": "تشخیص با CT",
@@ -416,7 +416,7 @@ CONTENT.fa = {
   },
   "cdd": {
     "title": "طبقه‌بندی CDD",
-    "lead": "طبقه‌بندی بیماری دیورتیکولی (CDD) یافته‌های بالینی و تصویربرداری را کنار هم قرار می‌دهد. این جدول فقط الگوی طبقه‌بندی را خلاصه می‌کند و جایگزین ارزیابی بالینی نیست.",
+    "lead": "طبقه‌بندی بیماری دیورتیکولی (CDD) یافته‌های بالینی و تصویربرداری را کنار هم قرار می‌دهد. جدول از نسخهٔ S3/DGVS 2021 با مرز ۳ سانتی‌متری آبسه استفاده می‌کند؛ این خلاصه جایگزین ارزیابی بالینی نیست.",
     "headers": [
       "نوع",
       "دسته‌بندی",

@@ -1,0 +1,114 @@
+{
+  "date": "2026-10-25",
+  "status": "AUTHOR_PROPOSED_FULL_POOL_REVIEW_COMPLETE_PEER_PENDING",
+  "scope": "All five routes:18 original MCQ triads,4 new targeted MCQ triads,25 original card triads. Includes unmodified original items, not merely new additions. Current snapshots distinguish active pools from proposed root-owned patches.",
+  "readingBasis": {
+    "originalTriadReview": "tmp/assessment-quality/abdomen-technik-vascular-review/review.json",
+    "currentSnapshot": "packet02-author-manifest.json",
+    "currentUntouchedCardParity": "20 of25 cards retain all clinical front/answer/explanation/diagram locale fields from original triage corpus;27 changed fields across GIST4 and duodenal1 were reread at author revision. All13 Diverticulitis card triads reread in current snapshot, revealing further targeted corrections.",
+    "proposedSourceRevisions": "Every newly revised stem, option, key, correct/wrong rationale and card field compared across DE/EN/FA while authoring. This is author review, not independent acceptance."
+  },
+  "routes": [
+    {
+      "route": "/abdomen/gi/appendizitis",
+      "topicId": "appendizitis",
+      "originalMcqTriads": 1,
+      "newMcqTriads": 2,
+      "originalCardTriads": 3,
+      "originalPoolAccountedFor": true,
+      "authorRemediation": "COMPLETE_FOR_PROPOSED_POOL",
+      "canonicalApplication": "ROOT_SHARED_PATCHES_PENDING",
+      "independentAcceptance": "PENDING_FULL_POOL_REVIEW",
+      "wholeRouteStatus": "OPEN"
+    },
+    {
+      "route": "/abdomen/gi/gist",
+      "topicId": "gist",
+      "originalMcqTriads": 1,
+      "newMcqTriads": 2,
+      "originalCardTriads": 4,
+      "originalPoolAccountedFor": true,
+      "authorRemediation": "COMPLETE_FOR_PROPOSED_POOL",
+      "canonicalApplication": "DIRECT_TOPIC_EDITS_AUTHOR_READY",
+      "independentAcceptance": "PENDING_FULL_POOL_REVIEW",
+      "wholeRouteStatus": "OPEN"
+    },
+    {
+      "route": "/abdomen/gefaesse/fmd",
+      "topicId": "fibromuskulaere-dysplasie",
+      "originalMcqTriads": 3,
+      "newMcqTriads": 0,
+      "originalCardTriads": 3,
+      "originalPoolAccountedFor": true,
+      "authorRemediation": "COMPLETE_FOR_PROPOSED_POOL",
+      "canonicalApplication": "DIRECT_TOPIC_EDITS_AUTHOR_READY",
+      "independentAcceptance": "PENDING_FULL_POOL_REVIEW",
+      "wholeRouteStatus": "OPEN"
+    },
+    {
+      "route": "/abdomen/gi/duodenaldivertikel",
+      "topicId": "duodenaldivertikel",
+      "originalMcqTriads": 2,
+      "newMcqTriads": 0,
+      "originalCardTriads": 2,
+      "originalPoolAccountedFor": true,
+      "authorRemediation": "COMPLETE_FOR_PROPOSED_POOL",
+      "canonicalApplication": "DIRECT_TOPIC_EDITS_AUTHOR_READY",
+      "independentAcceptance": "PENDING_FULL_POOL_REVIEW",
+      "wholeRouteStatus": "OPEN"
+    },
+    {
+      "route": "/abdomen/gi/divertikulitis",
+      "topicId": "divertikulitis",
+      "originalMcqTriads": 11,
+      "newMcqTriads": 0,
+      "originalCardTriads": 13,
+      "originalPoolAccountedFor": true,
+      "authorRemediation": "COMPLETE_FOR_PROPOSED_POOL",
+      "canonicalApplication": "ROOT_SHARED_PATCHES_PENDING",
+      "independentAcceptance": "PENDING_FULL_POOL_REVIEW",
+      "wholeRouteStatus": "OPEN"
+    }
+  ],
+  "requiredPatches": [
+    "shared-bank-patches-packet02.json (36localized original question records)",
+    "shared-card-patches-packet02.json (5original card records)"
+  ],
+  "authorFindingsClosedInProposal": [
+    {
+      "id": "ATV02-SCI001",
+      "issue": "Diverticulitis card required surrounding fat inflammation in all forms, conflicting with CDD1a."
+    },
+    {
+      "id": "ATV02-SCI002",
+      "issue": "CDD1b card excluded any collection rather than distinguishing permitted fluid tracks without gas from abscess."
+    },
+    {
+      "id": "ATV02-ASM003",
+      "issue": "CDD2a stem said only2cm collection; now explicitly a confirmed abscess rather than reactive fluid."
+    },
+    {
+      "id": "ATV02-EDU004",
+      "issue": "GIST and duodenal choices used absolute proof or unrelated distractors; now parallel working diagnoses/features/text vignettes."
+    },
+    {
+      "id": "ATV02-EDU005",
+      "issue": "Diverticulitis original definition, CT protocol, free-perforation, threshold and reporting choices refined throughout the original pool."
+    },
+    {
+      "id": "ATV02-SCI006",
+      "issue": "Peritonitis clarified as clinical correlation rather than a CT-only conclusion."
+    }
+  ],
+  "tests": {
+    "proposedRuntime": "22questions perlocale,25cards; all keys/wrong-feedback vectors and16goals resolve; original shared before-fields match current runtime.",
+    "actualSSR": "15/15 five-route/language renders pass",
+    "inlineIntegration": "Stable wire-role regression and per-topic fach assertion pass"
+  },
+  "limits": [
+    "No whole-lesson/PDF/image scientific re-certification",
+    "No independent acceptance until separate reviewer reads full proposed pool",
+    "Root-owned shared patches are not active yet",
+    "Browser interaction tests pending coordinator"
+  ]
+}

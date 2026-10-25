@@ -164,22 +164,274 @@ block('aq-hirnabszess', '/gehirn/infektionen/hirnabszess', L('Hirnabszess', 'Bra
 block('aq-hiv-enzephalopathie','/gehirn/infektionen/hiv-enzephalopathie',L('HIV-assoziierte Hirnveränderungen','HIV-associated brain changes','تغییرات مغزی مرتبط با HIV'),'https://pmc.ncbi.nlm.nih.gov/articles/PMC3657494/',[
  {key:'diffuse-pattern',source:'https://pubmed.ncbi.nlm.nih.gov/2315479/',goal:L('Ein diffuses HIV-kompatibles Muster von fokalen opportunistischen Läsionen abgrenzen.','Distinguish a diffuse HIV-compatible pattern from focal opportunistic lesions.','الگوی منتشر سازگار با HIV را از ضایعات کانونی فرصت‌طلب تفکیک کنید.'),
  question:L('Bei HIV und langsam zunehmender kognitiver Verlangsamung zeigt die MRT relativ symmetrische tiefe/periventrikuläre FLAIR-Veränderungen und diffuse Atrophie ohne expansiven Herd. Welches Muster passt am ehesten?','In HIV with gradually progressive cognitive slowing, MRI shows relatively symmetric deep/periventricular FLAIR change and diffuse atrophy without an expansile lesion. Which pattern fits best?','در HIV همراه با کندی شناختی تدریجی، MRI تغییرات نسبتاً متقارن FLAIR در مادهٔ سفید عمقی/پیرابطنی و آتروفی منتشر را بدون ضایعهٔ فضاگیر نشان می‌دهد. کدام الگو مناسب‌تر است؟'),
- options:[L('Diffuse HIV-assoziierte Enzephalopathie, im klinischen Kontext zu prüfen','Diffuse HIV-associated encephalopathy, requiring clinical correlation','آنسفالوپاتی منتشر مرتبط با HIV، نیازمند تطبیق بالینی'),L('Raumfordernde zerebrale Toxoplasmose','Space-occupying cerebral toxoplasmosis','توکسوپلاسموز مغزی فضاگیر'),L('Primäres ZNS-Lymphom mit solidem Tumorknoten','Primary CNS lymphoma with a solid tumour nodule','لنفوم اولیهٔ دستگاه عصبی مرکزی با گرهٔ جامد توموری'),L('Typische fokale PML mit ausgeprägter Asymmetrie','Typical focal PML with marked asymmetry','PML کانونی تیپیک با عدم تقارن واضح')],correct:'A',
+ options:[L("HIV-assoziierte Enzephalopathie", "HIV-associated encephalopathy", "آنسفالوپاتی مرتبط با HIV"),L("Zerebrale Toxoplasmose", "Cerebral toxoplasmosis", "توکسوپلاسموز مغزی"),L("Primäres ZNS-Lymphom", "Primary CNS lymphoma", "لنفوم اولیهٔ دستگاه عصبی مرکزی"),L("Progressive multifokale Leukenzephalopathie", "Progressive multifocal leukoencephalopathy", "لکوانسفالوپاتی چندکانونی پیشرونده")],correct:'A',
  feedback:L('Ein symmetrisches tiefes Marklagermuster mit Volumenverlust kann zu HIV-assoziierter Enzephalopathie passen. Es ist unspezifisch; andere infektiöse, vaskuläre und metabolische Ursachen sowie die klinische Funktion müssen mitbeurteilt werden.','Symmetric deep white-matter change with volume loss may fit HIV-associated encephalopathy. It is nonspecific; assess other infectious, vascular, and metabolic causes and clinical function.','تغییرات متقارن مادهٔ سفید عمقی همراه با کاهش حجم می‌تواند با آنسفالوپاتی مرتبط با HIV سازگار باشد. این الگو غیراختصاصی است؛ علل عفونی، عروقی و متابولیک دیگر و عملکرد بالینی نیز باید بررسی شوند.'),
- wrong:[L('Toxoplasmose zeigt eher fokale, häufig ringförmig anreichernde Läsionen mit Ödem; ein solcher Herd ist nicht beschrieben.','Toxoplasmosis more often produces focal, frequently ring-enhancing lesions with oedema; none is described.','توکسوپلاسموز بیشتر ضایعات کانونی، اغلب حلقوی و همراه با ادم ایجاد می‌کند؛ چنین ضایعه‌ای توصیف نشده است.'),L('Ein solider expansiver Herd ist hier nicht vorhanden; ein Lymphom darf nicht aus diffuser Atrophie allein abgeleitet werden.','No solid expansile lesion is described; lymphoma cannot be inferred from diffuse atrophy alone.','ضایعهٔ جامد فضاگیر توصیف نشده است؛ لنفوم را نمی‌توان فقط از آتروفی منتشر نتیجه گرفت.'),L('PML bleibt eine Differenzialdiagnose, ist klassisch aber fokal/asymmetrischer als das beschriebene diffuse Muster.','PML remains a differential but is classically more focal/asymmetric than the described diffuse pattern.','PML همچنان یک افتراق است، ولی به‌طور کلاسیک از الگوی منتشر توصیف‌شده کانونی‌تر/نامتقارن‌تر است.')],
+ wrong:[L('Toxoplasmose zeigt eher fokale, häufig ringförmig anreichernde Läsionen mit Ödem; ein solcher Herd ist nicht beschrieben.','Toxoplasmosis more often produces focal, frequently ring-enhancing lesions with oedema; none is described.','توکسوپلاسموز بیشتر ضایعات کانونی، اغلب با افزایش سیگنال حلقوی پس از تزریق و همراه با ادم ایجاد می‌کند؛ چنین ضایعه‌ای توصیف نشده است.'),L('Ein solider expansiver Herd ist hier nicht vorhanden; ein Lymphom darf nicht aus diffuser Atrophie allein abgeleitet werden.','No solid expansile lesion is described; lymphoma cannot be inferred from diffuse atrophy alone.','ضایعهٔ جامد فضاگیر توصیف نشده است؛ لنفوم را نمی‌توان فقط از آتروفی منتشر نتیجه گرفت.'),L('PML bleibt eine Differenzialdiagnose, ist klassisch aber fokal/asymmetrischer als das beschriebene diffuse Muster.','PML remains a differential but is classically more focal/asymmetric than the described diffuse pattern.','PML همچنان یک افتراق است، ولی به‌طور کلاسیک از الگوی منتشر توصیف‌شده کانونی‌تر/نامتقارن‌تر است.')],
  front:L('Wie ordnet man symmetrische Marklagerveränderungen mit Atrophie bei HIV ein?','How should symmetric white-matter change with atrophy in HIV be interpreted?','تغییرات متقارن مادهٔ سفید همراه آتروفی در HIV چگونه تفسیر می‌شوند؟'),answer:L('Das Muster ist kompatibel mit HIV-Enzephalopathie, aber unspezifisch; klinische Einordnung und Ausschluss anderer Ursachen sind nötig.','The pattern is compatible with HIV encephalopathy but nonspecific; clinical assessment and exclusion of other causes are required.','الگو با آنسفالوپاتی HIV سازگار ولی غیراختصاصی است؛ ارزیابی بالینی و رد علل دیگر لازم‌اند.')},
  {key:'pml-differential',goal:L('Asymmetrische subkortikale Veränderungen bei HIV als PML-verdächtig erkennen.','Recognise asymmetric subcortical changes in HIV as suspicious for PML.','تغییرات نامتقارن زیرقشری در HIV را مشکوک به PML بشناسید.'),source:'https://clinicalinfo.hiv.gov/en/guidelines/hiv-clinical-guidelines-adult-and-adolescent-opportunistic-infections/progressive?view=full',
- question:L('Bei fortgeschrittenem HIV nehmen fokale Ausfälle über Wochen zu. MRT: asymmetrische subkortikale FLAIR-Läsionen mit U-Faser-Beteiligung, wenig Masseneffekt und kaum Enhancement. Welche Ursache muss gezielt geprüft werden?','In advanced HIV, focal deficits progress over weeks. MRI shows asymmetric subcortical FLAIR lesions involving U-fibres, with little mass effect and enhancement. Which cause should be specifically evaluated?','در HIV پیشرفته، نقص‌های کانونی طی هفته‌ها پیشرفت می‌کنند. MRI ضایعات نامتقارن زیرقشری FLAIR با درگیری فیبرهای U، اثر فشاری و افزایش سیگنال اندک را نشان می‌دهد. کدام علت باید به‌طور هدفمند بررسی شود؟'),
+ question:L('Bei fortgeschrittenem HIV nehmen fokale Ausfälle über Wochen zu. MRT: asymmetrische subkortikale FLAIR-Läsionen mit U-Faser-Beteiligung, wenig Masseneffekt und kaum Enhancement. Welche Ursache muss gezielt geprüft werden?','In advanced HIV, focal deficits progress over weeks. MRI shows asymmetric subcortical FLAIR lesions involving U-fibres, with little mass effect and enhancement. Which cause should be specifically evaluated?','در HIV پیشرفته، نقص‌های کانونی طی هفته‌ها پیشرفت می‌کنند. MRI ضایعات نامتقارن زیرقشری FLAIR با درگیری فیبرهای U، اثر فشاری اندک و افزایش سیگنال اندک پس از تزریق را نشان می‌دهد. کدام علت باید به‌طور هدفمند بررسی شود؟'),
     options:[L('Diffuse HIV-assoziierte Enzephalopathie','Diffuse HIV-associated encephalopathy','آنسفالوپاتی منتشر مرتبط با HIV'),L('Progressive multifokale Leukenzephalopathie','Progressive multifocal leukoencephalopathy','لکوانسفالوپاتی چندکانونی پیشرونده'),L('Zerebrale Toxoplasmose','Cerebral toxoplasmosis','توکسوپلاسموز مغزی'),L('Primäres ZNS-Lymphom','Primary CNS lymphoma','لنفوم اولیهٔ دستگاه عصبی مرکزی')],correct:'B',
  feedback:L('Der subakut progrediente fokale Verlauf und das asymmetrische Marklagermuster sind PML-verdächtig. JCV-PCR im Liquor kann die Diagnose im passenden Kontext stützen; ein negatives Ergebnis schließt sie nicht sicher aus.','The subacute progressive focal course and asymmetric white-matter pattern raise concern for PML. CSF JCV PCR can support diagnosis in context; a negative result does not reliably exclude it.','سیر کانونی پیشروندهٔ زیرحاد و الگوی نامتقارن مادهٔ سفید شک به PML را مطرح می‌کنند. PCR ویروس JCV در مایع مغزی‌نخاعی می‌تواند در زمینهٔ مناسب از تشخیص حمایت کند؛ نتیجهٔ منفی آن را با اطمینان رد نمی‌کند.'),
-    wrong:[L('Die fokale Progression mit asymmetrischer subkortikaler Beteiligung passt besser zu PML als zum typischen diffusen HIV-Muster.','Focal progression with asymmetric subcortical involvement fits PML better than the typical diffuse HIV pattern.','پیشرفت کانونی همراه درگیری نامتقارن زیرقشری بیشتر با PML سازگار است تا الگوی منتشر معمول HIV.'),L('Toxoplasmose bildet typischerweise fokale Herde mit mehr Ödem/Masseneffekt und Kontrastierung als hier beschrieben.','Toxoplasmosis typically forms focal lesions with more oedema/mass effect and enhancement than described here.','توکسوپلاسموز معمولاً ضایعات کانونی با ادم/اثر فشاری و افزایش سیگنال بیشتری از آنچه اینجا توصیف شده ایجاد می‌کند.'),L('Ein Lymphom zeigt eher eine expansive, häufig anreichernde Läsion; das nicht expansive subkortikale Muster spricht hier stärker für PML.','Lymphoma more often produces an expansile, frequently enhancing lesion; the nonexpansile subcortical pattern here favours PML.','لنفوم بیشتر ضایعه‌ای فضاگیر و اغلب دارای افزایش سیگنال ایجاد می‌کند؛ الگوی زیرقشری بدون اثر فشاری در اینجا بیشتر به نفع PML است.')],
+    wrong:[L('Die fokale Progression mit asymmetrischer subkortikaler Beteiligung passt besser zu PML als zum typischen diffusen HIV-Muster.','Focal progression with asymmetric subcortical involvement fits PML better than the typical diffuse HIV pattern.','پیشرفت کانونی همراه درگیری نامتقارن زیرقشری بیشتر با PML سازگار است تا الگوی منتشر معمول HIV.'),L('Toxoplasmose bildet typischerweise fokale Herde mit mehr Ödem/Masseneffekt und Kontrastierung als hier beschrieben.','Toxoplasmosis typically forms focal lesions with more oedema/mass effect and enhancement than described here.','توکسوپلاسموز معمولاً ضایعات کانونی با ادم/اثر فشاری و افزایش سیگنال بیشتری پس از تزریق از آنچه اینجا توصیف شده ایجاد می‌کند.'),L('Ein Lymphom zeigt eher eine expansive, häufig anreichernde Läsion; das nicht expansive subkortikale Muster spricht hier stärker für PML.','Lymphoma more often produces an expansile, frequently enhancing lesion; the nonexpansile subcortical pattern here favours PML.','لنفوم بیشتر ضایعه‌ای فضاگیر و اغلب دارای افزایش سیگنال پس از تزریق ایجاد می‌کند؛ الگوی زیرقشری بدون اثر فشاری در اینجا بیشتر به نفع PML است.')],
  front:L('Welches MRT-Muster sollte bei HIV fokale PML-Abklärung auslösen?','Which MRI pattern should prompt focal PML workup in HIV?','کدام الگوی MRI در HIV باید بررسی هدفمند PML را مطرح کند؟'),answer:L('Subakut progrediente, asymmetrische subkortikale Marklagerläsionen, oft mit wenig Masseneffekt; JCV-Diagnostik im Kontext.','Subacute progressive asymmetric subcortical white-matter lesions, often with little mass effect; assess JCV in context.','ضایعات زیرحاد پیشرونده و نامتقارن زیرقشری مادهٔ سفید، اغلب با اثر فشاری اندک؛ JCV در زمینه بررسی شود.')},
  {key:'pml-iris',goal:L('Entzündliche PML nach Immunrekonstitution als Ausnahme zum typischen Muster einordnen.','Recognise inflammatory PML after immune reconstitution as an exception to the typical pattern.','PML التهابی پس از بازسازی ایمنی را استثنایی بر الگوی معمول بدانید.'),source:'https://clinicalinfo.hiv.gov/en/guidelines/hiv-clinical-guidelines-adult-and-adolescent-opportunistic-infections/progressive?view=full',
  question:L('Bei bekannter PML treten nach Beginn wirksamer ART neue klinische Verschlechterung, Enhancement und Ödem an den bekannten Läsionen auf. Welche Erklärung muss vorrangig erwogen werden?','With known PML, new clinical deterioration, enhancement, and oedema develop at established lesions after effective ART begins. Which explanation must be prioritised?','در PML شناخته‌شده، پس از شروع ART مؤثر، بدترشدن بالینی همراه با افزایش سیگنال پس از تزریق و ادم در ضایعات قبلی ایجاد می‌شود. کدام توضیح باید در اولویت بررسی باشد؟'),
     options:[L('Nichtentzündliche Progression der klassischen PML','Non-inflammatory progression of classic PML','پیشرفت غیرالتهابی PML کلاسیک'),L('Diffuse HIV-Enzephalopathie','Diffuse HIV encephalopathy','آنسفالوپاتی منتشر HIV'),L('PML-assoziiertes Immunrekonstitutionssyndrom (PML-IRIS)','PML-associated immune reconstitution inflammatory syndrome (PML-IRIS)','سندرم التهابی بازسازی ایمنی مرتبط با PML (PML-IRIS)'),L('Zusätzliche zerebrale Toxoplasmose','Concurrent cerebral toxoplasmosis','توکسوپلاسموز مغزی هم‌زمان')],correct:'C',
- feedback:L('PML-IRIS kann nach ART mit entzündlicher Kontrastmittelaufnahme, Ödem und Masseneffekt auftreten. Die zeitliche Beziehung und bekannte PML sind entscheidend; die Einordnung bleibt klinisch und schließt eine zusätzliche Erkrankung nicht aus.','PML-IRIS can occur after ART with inflammatory enhancement, oedema, and mass effect. Timing and established PML are essential; interpretation remains clinical and does not exclude concurrent disease.','PML-IRIS می‌تواند پس از ART با افزایش سیگنال التهابی، ادم و اثر فشاری رخ دهد. رابطهٔ زمانی و PML شناخته‌شده مهم‌اند؛ تفسیر بالینی است و بیماری هم‌زمان را رد نمی‌کند.'),
+ feedback:L('PML-IRIS kann nach ART mit entzündlicher Kontrastmittelaufnahme, Ödem und Masseneffekt auftreten. Die zeitliche Beziehung und bekannte PML sind entscheidend; die Einordnung bleibt klinisch und schließt eine zusätzliche Erkrankung nicht aus.','PML-IRIS can occur after ART with inflammatory enhancement, oedema, and mass effect. Timing and established PML are essential; interpretation remains clinical and does not exclude concurrent disease.','PML-IRIS می‌تواند پس از ART با افزایش سیگنال التهابی پس از تزریق، ادم و اثر فشاری رخ دهد. رابطهٔ زمانی و PML شناخته‌شده مهم‌اند؛ تفسیر بالینی است و بیماری هم‌زمان را رد نمی‌کند.'),
     wrong:[L('Neue Entzündungszeichen nach wirksamer ART verlangen die Prüfung auf IRIS statt einer rein nichtentzündlichen Erklärung.','New inflammatory features after effective ART require assessment for IRIS rather than a purely non-inflammatory explanation.','نشانه‌های التهابی جدید پس از ART مؤثر به بررسی IRIS نیاز دارند، نه توضیح صرفاً غیرالتهابی.'),L('Diffuse HIV-Enzephalopathie erklärt diese entzündliche Veränderung bekannter PML-Herde nicht gut.','Diffuse HIV encephalopathy poorly explains inflammatory change at known PML lesions.','آنسفالوپاتی منتشر HIV تغییرات التهابی در ضایعات شناخته‌شدهٔ PML را خوب توضیح نمی‌دهد.'),L('Eine zusätzliche Infektion bleibt möglich; die neue Entzündung an bereits bekannten PML-Herden nach Immunrekonstitution passt jedoch unmittelbarer zu PML-IRIS.','Concurrent infection remains possible, but new inflammation at known PML lesions after immune reconstitution fits PML-IRIS more directly.','عفونت هم‌زمان ممکن است؛ بااین‌حال التهاب جدید در ضایعات شناخته‌شدهٔ PML پس از بازسازی ایمنی مستقیماً بیشتر با PML-IRIS سازگار است.')],
- front:L('Schließt Enhancement mit Ödem eine PML aus?','Do enhancement and oedema exclude PML?','آیا افزایش سیگنال پس از تزریق همراه با ادم، PML را رد می‌کند؟'),answer:L('Nein. Bei PML-IRIS nach Immunrekonstitution sind entzündliches Enhancement, Ödem und Masseneffekt möglich.','No. PML-IRIS after immune reconstitution may cause inflammatory enhancement, oedema, and mass effect.','خیر. در PML-IRIS پس از بازسازی ایمنی، افزایش سیگنال التهابی، ادم و اثر فشاری ممکن است.')},
+ front:L("Welche entzündliche Veränderung kann nach wirksamer ART bei bekannter PML auftreten, und wie wird sie eingeordnet?", "Which inflammatory change may occur after effective ART in established PML, and how is it interpreted?", "پس از ART مؤثر در PML شناخته‌شده، کدام تغییر التهابی ممکن است رخ دهد و چگونه تفسیر می‌شود؟"),answer:L('Bei PML-IRIS nach Immunrekonstitution sind entzündliches Enhancement, Ödem und Masseneffekt möglich.','PML-IRIS after immune reconstitution may cause inflammatory enhancement, oedema, and mass effect.','در PML-IRIS پس از بازسازی ایمنی، افزایش سیگنال التهابی پس از تزریق، ادم و اثر فشاری ممکن است.')},
+])
+
+block('aq-meningitis-enzephalitis','/gehirn/infektionen/meningitis-enzephalitis',L('Meningitis und Enzephalitis','Meningitis and encephalitis','مننژیت و آنسفالیت'),'https://pubmed.ncbi.nlm.nih.gov/14716235/',[
+ {key:'compartments',goal:L('Meningeale und parenchymale Befunde anatomisch zuordnen.','Localise meningeal and parenchymal findings anatomically.','یافته‌های مننژی و پارانشیمی را از نظر آناتومیک تعیین محل کنید.'),
+ question:L('Ein Erwachsener mit Fieber und Verwirrtheit hat dünne sulkale Kontrastmittelaufnahme und zusätzliche intraparenchymale temporale FLAIR-Herde. Welche Beschreibung erfasst beide Kompartimente?','An adult with fever and confusion has thin sulcal enhancement and additional intraparenchymal temporal FLAIR lesions. Which description captures both compartments?','بزرگسالی با تب و گیجی، افزایش سیگنال نازک پس از تزریق در شیارها و ضایعات FLAIR تمپورال داخل پارانشیم دارد. کدام توصیف هر دو بخش را بیان می‌کند؟'),
+ options:[L('Meningeale und parenchymale Beteiligung','Meningeal and parenchymal involvement','درگیری مننژی و پارانشیمی'),L('Isolierte meningeale Beteiligung','Isolated meningeal involvement','درگیری منفرد مننژی'),L('Isolierte parenchymale Beteiligung','Isolated parenchymal involvement','درگیری منفرد پارانشیمی'),L('Ausschließlich pachymeningeale Durabeteiligung','Exclusively pachymeningeal dural involvement','درگیری صرفاً پاکی‌مننژیال سخت‌شامه')],correct:'A',
+ feedback:L('Sulkale Aufnahme betrifft den leptomeningealen Raum; die ausdrücklich intraparenchymalen Herde liegen im Hirngewebe. Das ist eine anatomische Musterbeschreibung, kein Nachweis einer infektiösen Ursache oder eines bestimmten Erregers.','Sulcal enhancement involves the leptomeningeal space; the explicitly intraparenchymal lesions lie in brain tissue. This is anatomical pattern description, not proof of infection or a particular pathogen.','افزایش سیگنال پس از تزریق در شیارها به فضای لپتومننژی مربوط است؛ ضایعات داخل پارانشیم در بافت مغز قرار دارند. این توصیف آناتومیک الگو است، نه اثبات عفونت یا عامل مشخص.'),
+ wrong:[L('Die temporalen Parenchymherde fehlen in dieser Beschreibung.','This description omits the temporal parenchymal lesions.','این توصیف ضایعات پارانشیمی تمپورال را حذف می‌کند.'),L('Die zusätzliche sulkale Aufnahme gehört ebenfalls in den Befund.','The additional sulcal enhancement also belongs in the report.','افزایش سیگنال اضافهٔ پس از تزریق در شیارها نیز باید گزارش شود.'),L('Sulkale Aufnahme folgt den Leptomeningen; außerdem sind Parenchymherde beschrieben.','Sulcal enhancement follows the leptomeninges; parenchymal lesions are also described.','افزایش سیگنال پس از تزریق در شیارها از لپتومننژ پیروی می‌کند؛ ضایعات پارانشیمی نیز توصیف شده‌اند.')],
+ front:L('Welche Kompartimente beschreibt man bei einem Meningoenzephalitis-Muster getrennt?','Which compartments are described separately in a meningoencephalitic pattern?','در الگوی مننگوآنسفالیت کدام بخش‌ها جداگانه توصیف می‌شوند؟'),answer:L('Meningen/Liquorräume und Hirnparenchym; Verteilung, Sequenzen und Enhancement angeben, ohne daraus allein einen Erreger abzuleiten.','Meninges/CSF spaces and brain parenchyma; state distribution, sequences and enhancement without inferring a pathogen from these alone.','مننژ/فضاهای مایع مغزی‌نخاعی و پارانشیم مغز؛ توزیع، سکانس‌ها و افزایش سیگنال پس از تزریق را بیان کنید، بدون تعیین عامل صرفاً بر اساس آن‌ها.')},
+ {key:'normal-mri',goal:L('Eine normale MRT bei Meningitisverdacht korrekt begrenzen.','State the limits of normal MRI in suspected meningitis.','محدودیت MRI طبیعی در شک به مننژیت را بیان کنید.'),
+ question:L('Ein Erwachsener mit Fieber und Meningismus hat unauffällige FLAIR- und kontrastverstärkte T1-Bilder. Welche Schlussfolgerung ist angemessen?','An adult with fever and meningism has unremarkable FLAIR and contrast-enhanced T1 images. Which conclusion is appropriate?','بزرگسالی با تب و علائم مننژی، تصاویر طبیعی FLAIR و T1 پس از تزریق دارد. کدام نتیجه مناسب است؟'),
+ options:[L('Eine bakterielle Ursache ist ausgeschlossen, eine virale bleibt möglich','A bacterial cause is excluded while a viral cause remains possible','علت باکتریایی رد شده ولی علت ویروسی ممکن است'),L('Eine virale Ursache ist ausgeschlossen, eine bakterielle bleibt möglich','A viral cause is excluded while a bacterial cause remains possible','علت ویروسی رد شده ولی علت باکتریایی ممکن است'),L('Keine entsprechenden MRT-Zeichen; Meningitis bleibt klinisch und im Liquor zu prüfen','No corresponding MRI signs; meningitis still requires clinical and CSF assessment','نشانهٔ مربوط در MRI وجود ندارد؛ مننژیت همچنان با ارزیابی بالینی و مایع مغزی‌نخاعی بررسی شود'),L('Die Beschwerden sind damit als nichtentzündlich einzuordnen','The symptoms can therefore be classified as non-inflammatory','بر این اساس علائم غیرالتهابی طبقه‌بندی می‌شوند')],correct:'C',
+ feedback:L('Die kleine Originalstudie enthielt normale MRT bei viraler und bakterieller Meningitis. Eine normale MRT schließt die Erkrankung nicht aus und bestimmt ihre Ursache nicht; Klinik und Liquor bleiben wesentlich.','The small original study included normal MRI in viral and bacterial meningitis. Normal MRI neither excludes the disease nor determines its cause; clinical and CSF findings remain essential.','مطالعهٔ اصلی کوچک، MRI طبیعی را در مننژیت ویروسی و باکتریایی گزارش کرد. MRI طبیعی نه بیماری را رد و نه علت را تعیین می‌کند؛ یافته‌های بالینی و مایع مغزی‌نخاعی همچنان ضروری‌اند.'),
+ wrong:[L('Auch bakterielle Meningitis kann ohne diese MRT-Zeichen vorliegen.','Bacterial meningitis can also occur without these MRI signs.','مننژیت باکتریایی نیز می‌تواند بدون این نشانه‌های MRI وجود داشته باشد.'),L('Auch virale Meningitis kann bei unauffälliger MRT vorliegen.','Viral meningitis can also occur with unremarkable MRI.','مننژیت ویروسی نیز می‌تواند با MRI طبیعی وجود داشته باشد.'),L('Fehlende MRT-Zeichen legen keine nichtentzündliche Ursache fest.','Absent MRI signs do not establish a non-inflammatory cause.','نبود نشانه در MRI علت غیرالتهابی را تعیین نمی‌کند.')],
+ front:L('Welche diagnostische Grenze hat eine normale MRT bei Meningitisverdacht?','What diagnostic limit does normal MRI have in suspected meningitis?','MRI طبیعی در شک به مننژیت چه محدودیت تشخیصی دارد؟'),answer:L('Sie schließt Meningitis nicht aus und bestimmt keinen Erreger; klinische und Liquorbefunde bleiben entscheidend.','It does not exclude meningitis or identify a pathogen; clinical and CSF findings remain essential.','مننژیت را رد نمی‌کند و عامل را تعیین نمی‌کند؛ یافته‌های بالینی و مایع مغزی‌نخاعی همچنان ضروری‌اند.')},
+ {key:'ventricular-complication',goal:L('Ventrikulären Debris im Infektionskontext als Komplikationshinweis erkennen.','Recognise ventricular debris in infectious context as a complication clue.','دبری بطنی در زمینهٔ عفونی را سرنخ عارضه بدانید.'),source:'https://pubmed.ncbi.nlm.nih.gov/11559498/',
+ question:L('Bei bakterieller Meningitis und klinischer Verschlechterung zeigt die MRT neu unregelmäßig sedimentierendes Material in den Hinterhörnern, ependymale Aufnahme und zunehmende Ventrikelweite. Welche Komplikation ist besonders verdächtig?','With bacterial meningitis and clinical deterioration, MRI shows new irregular dependent material in the occipital horns, ependymal enhancement and increasing ventricular size. Which complication is particularly concerning?','در مننژیت باکتریایی همراه بدترشدن بالینی، MRI مواد رسوب‌کردهٔ نامنظم جدید در شاخ‌های پس‌سری، افزایش سیگنال اپاندیمی پس از تزریق و افزایش اندازهٔ بطن‌ها نشان می‌دهد. کدام عارضه به‌ویژه مطرح است؟'),
+ options:[L('Kommunizierender Hydrozephalus ohne intraventrikuläre Entzündung','Communicating hydrocephalus without intraventricular inflammation','هیدروسفالی ارتباطی بدون التهاب داخل بطن'),L('Pyogene Ventrikulitis mit begleitendem Hydrozephalus','Pyogenic ventriculitis with accompanying hydrocephalus','ونتریکولیت چرکی همراه با هیدروسفالی'),L('Subependymale Tumoraussaat','Subependymal tumour spread','انتشار تومور زیر اپاندیم'),L('Ex-vacuo-Erweiterung bei chronischer Hirnatrophie','Ex-vacuo enlargement in chronic brain atrophy','اتساع اکس‌واکو در آتروفی مزمن مغز')],correct:'B',
+ feedback:L('Unregelmäßiger ventrikulärer Debris ist im passenden Infektionskontext verdächtig auf Ventrikulitis. Ependymale Aufnahme und Hydrozephalus können begleiten. Material und Differenzialdiagnosen einschließlich Blutprodukte in der gesamten Untersuchung prüfen und den Komplikationsverdacht rasch kommunizieren.','Irregular ventricular debris is suspicious for ventriculitis in the appropriate infectious context. Ependymal enhancement and hydrocephalus may accompany it. Assess the material and alternatives including blood products across the examination and communicate concern promptly.','دبری نامنظم داخل بطن در زمینهٔ عفونی مناسب شک به ونتریکولیت را مطرح می‌کند. افزایش سیگنال اپاندیمی پس از تزریق و هیدروسفالی ممکن است همراه باشند. مواد و افتراق‌ها از جمله فرآورده‌های خونی در کل بررسی ارزیابی و احتمال عارضه سریع اطلاع داده شود.'),
+ wrong:[L('Die Erweiterung allein erklärt den neuen Debris und die ependymale Aufnahme nicht ausreichend.','Enlargement alone does not adequately explain the new debris and ependymal enhancement.','اتساع به‌تنهایی دبری جدید و افزایش سیگنال اپاندیمی پس از تزریق را کافی توضیح نمی‌دهد.'),L('Tumorbefall kann ependymale Befunde verursachen; akute Infektion und sedimentierender Debris sprechen hier stärker für die infektiöse Komplikation.','Tumour can cause ependymal findings, but acute infection and dependent debris here favour an infectious complication.','تومور می‌تواند یافتهٔ اپاندیمی ایجاد کند، ولی عفونت حاد و دبری رسوب‌کرده در اینجا بیشتر به نفع عارضهٔ عفونی‌اند.'),L('Atrophie erklärt weder neuen Debris noch entzündungsverdächtige Aufnahme.','Atrophy explains neither new debris nor enhancement suspicious for inflammation.','آتروفی نه دبری جدید و نه افزایش سیگنال پس از تزریق مشکوک به التهاب را توضیح می‌دهد.')],
+ front:L('Welche ventrikulären MRT-Befunde lassen bei ZNS-Infektion an Ventrikulitis denken?','Which ventricular MRI findings raise concern for ventriculitis in CNS infection?','در عفونت دستگاه عصبی مرکزی، کدام یافته‌های بطنی MRI شک به ونتریکولیت را مطرح می‌کنند؟'),answer:L('Besonders unregelmäßig sedimentierender Debris; ependymale Aufnahme und Hydrozephalus können hinzukommen. Blutprodukte differenzieren; kein Einzelzeichen ist obligat.','Especially irregular dependent debris; ependymal enhancement and hydrocephalus may accompany it. Differentiate blood products; no single sign is required.','به‌ویژه دبری رسوب‌کردهٔ نامنظم؛ افزایش سیگنال اپاندیمی پس از تزریق و هیدروسفالی ممکن است همراه باشند. فرآورده‌های خونی افتراق داده شوند؛ هیچ علامت منفردی الزامی نیست.')},
+])
+
+block('aq-cjd','/gehirn/neurodegeneration/cjd',L('CJK: Diffusionsmuster','CJD diffusion patterns','الگوهای انتشار در CJD'),'https://pmc.ncbi.nlm.nih.gov/articles/PMC3100134/',[
+ {key:'clinical-pattern',goal:L('Ein CJK-verdächtiges Grau-Substanz-Muster klinisch einordnen.','Interpret a CJD-suspicious grey-matter pattern clinically.','الگوی مشکوک به CJD در مادهٔ خاکستری را در زمینهٔ بالینی تفسیر کنید.'),
+ question:L('Ein Erwachsener entwickelt über Wochen kognitiven Abbau und Myoklonien. MRT: multifokales kortikales Ribboning und Caudatussignal, auf DWI deutlicher als auf FLAIR, mit korrespondierend niedrigem ADC und ohne Gefäßterritorium. Welche Diagnose sollte vorrangig abgeklärt werden?','An adult develops cognitive decline and myoclonus over weeks. MRI shows multifocal cortical ribboning and caudate signal, more conspicuous on DWI than FLAIR, with corresponding low ADC and no vascular territory. Which diagnosis should be prioritised for evaluation?','بزرگسالی طی هفته‌ها دچار افت شناختی و میوکلونوس می‌شود. MRI افزایش سیگنال نواری چندکانونی قشر و سیگنال هستهٔ دمی را نشان می‌دهد که در DWI از FLAIR واضح‌تر است، ADC متناظر پایین دارد و از قلمرو عروقی پیروی نمی‌کند. کدام تشخیص در اولویت بررسی است؟'),
+ options:[L("Sporadische Creutzfeldt-Jakob-Krankheit", "Sporadic Creutzfeldt–Jakob disease", "بیماری کروتزفلد–یاکوب اسپورادیک"),L("Hypoxisch-ischaemische Hirnschädigung", "Hypoxic–ischaemic brain injury", "آسیب هیپوکسیک‌ـ‌ایسکمیک مغز"),L("Autoimmune Enzephalitis", "Autoimmune encephalitis", "آنسفالیت خودایمنی"),L("Periiktale Signalveränderungen", "Peri-ictal signal changes", "تغییرات سیگنال پری‌ایکتال")],correct:'A',
+ feedback:L('Rascher Verlauf und nichtterritoriale kortiko-striatale Restriktion sind CJK-verdächtig. MRT ist ein diagnostischer Baustein; Klinik, weitere Diagnostik und behandelbare Differenzialdiagnosen bleiben erforderlich.','Rapid progression and nonterritorial cortical-striatal restriction raise concern for CJD. MRI is one diagnostic component; clinical assessment, further testing and treatable alternatives remain essential.','سیر سریع و محدودیت انتشار قشری‌ـ‌استریاتال خارج از قلمرو عروقی شک به CJD را مطرح می‌کنند. MRI بخشی از تشخیص است؛ ارزیابی بالینی، بررسی تکمیلی و افتراق علل قابل درمان همچنان ضروری‌اند.'),
+ wrong:[L("Hypoxie kann kortiko-striatale Restriktion verursachen. Ohne berichtetes hypoxisches Ereignis und bei über Wochen progredientem Abbau mit Myoklonien ist hier CJK vorrangig abzuklären.", "Hypoxia can cause cortical–striatal restriction. Without a reported hypoxic event, progressive decline over weeks with myoclonus prioritises CJD evaluation here.", "هیپوکسی می‌تواند محدودیت انتشار قشری‌ـ‌استریاتال ایجاد کند. بدون رویداد هیپوکسیک گزارش‌شده و با افت پیشرونده طی هفته‌ها همراه میوکلونوس، بررسی CJD در اینجا در اولویت است."),L("Autoimmune Enzephalitis bleibt eine behandelbare Differenzialdiagnose. Das DWI-betonte kortiko-striatale Muster mit niedrigem ADC und raschem Abbau stützt hier stärker den CJK-Verdacht; klinisch weiter abklären.", "Autoimmune encephalitis remains a treatable differential. DWI-predominant cortical–striatal change with low ADC and rapid decline more strongly supports CJD suspicion here; continue clinical evaluation.", "آنسفالیت خودایمنی همچنان افتراقی قابل درمان است. الگوی قشری‌ـ‌استریاتال غالب در DWI با ADC پایین و افت سریع در اینجا بیشتر از شک به CJD حمایت می‌کند؛ بررسی بالینی ادامه یابد."),L("Anfälle können kortikale Diffusionsveränderungen imitieren. Der fortschreitende Verlauf über Wochen mit multifokaler kortiko-striataler Beteiligung verlangt hier vorrangig CJK-Abklärung; Anfallsanamnese und EEG bleiben relevant.", "Seizures can mimic cortical diffusion changes. Progressive decline over weeks with multifocal cortical–striatal involvement prioritises CJD evaluation here; seizure history and EEG remain relevant.", "تشنج می‌تواند تغییرات انتشار قشری را تقلید کند. سیر پیشرونده طی هفته‌ها با درگیری چندکانونی قشری‌ـ‌استریاتال، بررسی CJD را در اینجا در اولویت قرار می‌دهد؛ شرح حال تشنج و EEG همچنان مهم‌اند.")],
+ front:L('Wie formuliert man ein CJK-verdächtiges MRT-Muster, ohne die Diagnose allein bildgebend festzulegen?','How do you report a CJD-suspicious MRI pattern without establishing diagnosis from imaging alone?','الگوی MRI مشکوک به CJD چگونه بدون تعیین تشخیص صرفاً با تصویر گزارش می‌شود؟'),answer:L('DWI/ADC-korrelierte kortikale und/oder striatale Verteilung beschreiben und bei rascher Progression CJK-Abklärung anregen; MRT allein ist keine definitive Diagnose.','Describe DWI/ADC-concordant cortical and/or striatal distribution and suggest CJD evaluation in rapid progression; MRI alone is not a definitive diagnosis.','توزیع قشری و/یا استریاتال با تطابق DWI/ADC توصیف و در سیر سریع بررسی CJD پیشنهاد شود؛ MRI به‌تنهایی تشخیص قطعی نیست.')},
+ {key:'limbic-mimic',goal:L('Ein vorwiegend limbisches FLAIR-Muster als Anlass zur Differenzialdiagnose erkennen.','Recognise a predominantly limbic FLAIR pattern as a reason to broaden the differential.','الگوی عمدتاً لیمبیک FLAIR را دلیلی برای گسترش افتراق بدانید.'),
+ question:L("Bei rasch progredienter Demenz wird sporadische CJK diskutiert. Welches MRT-Muster sollte besonders zur Prüfung limbischer entzündlicher oder periiktaler Alternativen führen?", "Sporadic CJD is considered in rapidly progressive dementia. Which MRI pattern should particularly prompt evaluation of limbic inflammatory or peri-ictal alternatives?", "در دمانس سریع‌پیشرونده، CJD اسپورادیک مطرح است. کدام الگوی MRI باید به‌ویژه به بررسی علل التهابی لیمبیک یا پری‌ایکتال منجر شود؟"),
+ options:[L("Caudatus und Putamen DWI-betont hyperintens mit korrespondierend niedrigem ADC", "DWI-predominant caudate and putamen hyperintensity with corresponding low ADC", "هایپرسیگنال غالب در DWI هستهٔ دمی و پوتامن با ADC متناظر پایین"),L("Parietales und okzipitales kortikales Ribboning mit niedrigem ADC", "Parietal and occipital cortical ribboning with low ADC", "افزایش سیگنال نواری قشر آهیانه‌ای و پس‌سری با ADC پایین"),L("Isoliert mesiotemporale FLAIR-Betonung bei nicht erniedrigtem ADC", "Isolated mesial temporal FLAIR predominance without reduced ADC", "غلبهٔ منفرد FLAIR تمپورال داخلی بدون کاهش ADC"),L("Multifokale kortikale und striatale DWI-Betonung mit ADC-Abfall", "Multifocal cortical and striatal DWI predominance with ADC reduction", "غلبهٔ چندکانونی DWI قشری و استریاتال با افت ADC")],correct:'C',
+ feedback:L('Isolierte limbische FLAIR-Betonung ohne ADC-Abfall verlangt andere Ursachen, darunter autoimmune oder infektiöse Enzephalitis und Anfallsfolgen. Bildgebung allein trennt diese nicht sicher; DWI-Helligkeit ist nicht automatisch Restriktion.','Isolated limbic FLAIR predominance without ADC reduction requires consideration of other causes, including autoimmune or infectious encephalitis and seizure effects. Imaging alone does not reliably separate these; bright DWI is not automatically restriction.','غلبهٔ منفرد FLAIR لیمبیک بدون افت ADC نیازمند بررسی علل دیگر، از جمله آنسفالیت خودایمنی یا عفونی و پیامد تشنج است. تصویربرداری به‌تنهایی این‌ها را با اطمینان جدا نمی‌کند؛ DWI روشن لزوماً محدودیت انتشار نیست.'),
+ wrong:[L("Striatale DWI-Betonung mit ADC-Abfall kann ein CJK-verdächtiges Muster stützen; sie ist nicht der hier gesuchte isoliert limbische FLAIR-Befund.", "Striatal DWI predominance with low ADC can support a CJD-suspicious pattern; it is not the isolated limbic FLAIR finding asked for.", "غلبهٔ DWI استریاتال با ADC پایین می‌تواند از الگوی مشکوک به CJD حمایت کند؛ یافتهٔ منفرد لیمبیک FLAIR مورد پرسش نیست."),L("Mehrregionale neokortikale Restriktion kann im passenden Verlauf CJK-verdächtig sein. Gesucht ist das hiervon abweichende isolierte limbische Muster.", "Multiregional neocortical restriction may raise concern for CJD in context. The question asks for the differing isolated limbic pattern.", "محدودیت انتشار چندناحیه‌ای نئوکورتکس در سیر مناسب می‌تواند مشکوک به CJD باشد. الگوی متفاوت و منفرد لیمبیک مورد پرسش است."),L("Die Kombination aus kortikaler und striataler Restriktion kann CJK stützen, beweist sie aber nicht. Sie entspricht nicht dem isoliert limbischen Vergleichsmuster.", "Combined cortical and striatal restriction can support CJD but does not prove it. It differs from the isolated limbic comparison pattern.", "ترکیب محدودیت انتشار قشری و استریاتال می‌تواند از CJD حمایت کند ولی آن را ثابت نمی‌کند. با الگوی مقایسه‌ای منفرد لیمبیک متفاوت است.")],
+ front:L('Warum ist DWI-Helligkeit bei rascher Demenz kein ausreichender CJK-Nachweis?','Why is bright DWI in rapid dementia insufficient to establish CJD?','چرا DWI روشن در دمانس سریع برای اثبات CJD کافی نیست؟'),answer:L('ADC-Korrelation, Verteilung und Klinik prüfen; Anfälle, Enzephalitis, Ischämie oder Stoffwechselstörungen können imitieren.','Check ADC, distribution and clinical context; seizures, encephalitis, ischaemia or metabolic disorders may mimic it.','ADC، توزیع و زمینهٔ بالینی بررسی شوند؛ تشنج، آنسفالیت، ایسکمی یا اختلال متابولیک می‌توانند تقلیدکننده باشند.')},
+ {key:'pulvinar-comparator',goal:L('Das klassische Pulvinar-Zeichen der vCJK von unspezifischem Thalamussignal abgrenzen.','Distinguish the classic vCJD pulvinar sign from nonspecific thalamic signal.','علامت کلاسیک پول‌وینار vCJD را از سیگنال غیراختصاصی تالاموس جدا کنید.'),source:'https://pubmed.ncbi.nlm.nih.gov/13679271/',
+ question:L('In einer Prion-Abklärung wird ein klassisches Pulvinar-Zeichen auf FLAIR beschrieben. Welcher Signalvergleich gehört zur Definition dieses besonders mit vCJK verbundenen Zeichens?','During a prion workup, a classic pulvinar sign is described on FLAIR. Which signal comparison belongs to the definition of this sign particularly associated with vCJD?','در بررسی بیماری پریونی، علامت کلاسیک پول‌وینار در FLAIR توصیف می‌شود. کدام مقایسهٔ سیگنال در تعریف این علامت، که به‌ویژه با vCJD مرتبط است، قرار دارد؟'),
+ options:[L('Pulvinar beidseits heller als das vordere Putamen','Bilateral pulvinar brighter than the anterior putamen','پول‌وینار دوطرفه روشن‌تر از پوتامن قدامی'),L('Pulvinar heller als der Caudatus als definierende Referenz','Pulvinar brighter than the caudate as the defining reference','پول‌وینار روشن‌تر از هستهٔ دمی به‌عنوان مرجع تعریف‌کننده'),L('Pulvinar heller als das übrige Thalamusgewebe allein','Pulvinar brighter than the remaining thalamus alone','پول‌وینار صرفاً روشن‌تر از سایر بافت تالاموس'),L('Caudatus heller als der Pulvinar','Caudate brighter than the pulvinar','هستهٔ دمی روشن‌تر از پول‌وینار')],correct:'A',
+ feedback:L('Der beidseitige Pulvinar-Vergleich mit dem vorderen Putamen präzisiert das klassische Zeichen. Ein hellerer Pulvinar gegenüber anderen Thalamuskernen allein ist damit nicht gleichzusetzen. Das Zeichen gehört in den klinischen vCJK-Kontext, nicht als allgemeines sCJK-Leitzeichen.','Bilateral pulvinar comparison with the anterior putamen defines the classic sign more precisely. Pulvinar brightness relative only to other thalamic nuclei is not equivalent. Interpret it in the clinical vCJD context rather than as a general sCJD hallmark.','مقایسهٔ پول‌وینار دوطرفه با پوتامن قدامی علامت کلاسیک را دقیق‌تر تعریف می‌کند. روشن‌بودن پول‌وینار صرفاً نسبت به سایر هسته‌های تالاموس معادل آن نیست. علامت در زمینهٔ بالینی vCJD تفسیر می‌شود، نه به‌عنوان نشانهٔ عمومی sCJD.'),
+ wrong:[L('Der Caudatus ist nicht der definierende Referenzvergleich; die klassische Definition vergleicht beidseitigen Pulvinar mit dem vorderen Putamen.','The caudate is not the defining reference; the classic definition compares bilateral pulvinar with anterior putamen.','هستهٔ دمی مرجع تعریف‌کننده نیست؛ تعریف کلاسیک پول‌وینار دوطرفه را با پوتامن قدامی مقایسه می‌کند.'),L('Dieser Vergleich kann auffälliges Thalamussignal beschreiben, erfüllt aber nicht die präzisierte Definition gegenüber dem vorderen Putamen.','This may describe conspicuous thalamic signal but does not meet the more precise comparison with anterior putamen.','این مقایسه می‌تواند سیگنال برجستهٔ تالاموس را توصیف کند، ولی تعریف دقیق‌تر مقایسه با پوتامن قدامی را برآورده نمی‌کند.'),L('Das Verhältnis ist umgekehrt formuliert und benutzt zudem Caudatus statt vorderem Putamen als Referenz.','This reverses the relationship and uses caudate rather than anterior putamen as reference.','رابطه برعکس بیان شده و هستهٔ دمی به‌جای پوتامن قدامی مرجع قرار گرفته است.')],
+ front:L('Welche Referenz und welcher klinische Kontext definieren das klassische Pulvinar-Zeichen?','Which reference and clinical context define the classic pulvinar sign?','کدام مرجع و زمینهٔ بالینی علامت کلاسیک پول‌وینار را تعریف می‌کنند؟'),answer:L('Beidseitiges Pulvinar-Signal höher als im vorderen Putamen, besonders im vCJK-Kontext; nicht jede thalamische Hyperintensität ist dieses Zeichen.','Bilateral pulvinar signal higher than anterior putamen, particularly in vCJD context; not every thalamic hyperintensity is this sign.','سیگنال پول‌وینار دوطرفه بالاتر از پوتامن قدامی، به‌ویژه در زمینهٔ vCJD؛ هر هایپرسیگنال تالاموس این علامت نیست.')},
+])
+
+block('aq-parkinson','/gehirn/neurodegeneration/parkinson',L('Parkinson-Bildgebung','Imaging in parkinsonism','تصویربرداری سندرم پارکینسونی'),'https://pmc.ncbi.nlm.nih.gov/articles/PMC8323030/',[
+  {
+    "key": "technical-confidence",
+    "source": "https://doi.org/10.1371/journal.pone.0231010",
+    "goal": {
+      "de": "Technisch eingeschränkte Nigrosom-Sichtbarkeit angemessen berichten.",
+      "en": "Report technically limited nigrosome visibility appropriately.",
+      "fa": "دیده‌شدن نیگروزوم با محدودیت فنی را مناسب گزارش کنید."
+    },
+    "question": {
+      "de": "Bei einem Erwachsenen mit klinischem Parkinson-Syndrom verwischt Bewegung die dorsolaterale Substantia nigra auf SWI. Nigrosom 1 lässt sich beidseits nicht sicher abgrenzen. Welche Befundkategorie passt?",
+      "en": "In an adult with clinical parkinsonism, motion blurs the dorsolateral substantia nigra on SWI. Nigrosome 1 cannot be confidently delineated on either side. Which reporting category fits?",
+      "fa": "در بزرگسالی با سندرم پارکینسونی بالینی، حرکت ناحیهٔ دورسولترال جسم سیاه را در SWI محو کرده است. نیگروزوم ۱ در هیچ‌یک از دو سمت با اطمینان قابل تفکیک نیست. کدام طبقه‌بندی برای گزارش مناسب است؟"
+    },
+    "options": [
+      {
+        "de": "Beidseitig pathologischer Nigrosom-Befund",
+        "en": "Bilateral abnormal nigrosome finding",
+        "fa": "یافتهٔ غیرطبیعی دوطرفهٔ نیگروزوم"
+      },
+      {
+        "de": "Regelrechte Nigrosom-Sichtbarkeit ohne relevante Seitendifferenz",
+        "en": "Normal nigrosome visibility without relevant asymmetry",
+        "fa": "دیده‌شدن طبیعی نیگروزوم بدون عدم تقارن مهم"
+      },
+      {
+        "de": "Technisch eingeschränkte, nicht sicher klassifizierbare Nigrosom-Sichtbarkeit",
+        "en": "Technically limited nigrosome visibility that cannot be confidently classified",
+        "fa": "ارزیابی نیگروزوم از نظر فنی محدود است و طبقه‌بندی قطعی ممکن نیست"
+      },
+      {
+        "de": "Aus klinischer Asymmetrie abgeleiteter einseitig pathologischer Nigrosom-Befund",
+        "en": "Unilateral abnormal nigrosome finding inferred from clinical asymmetry",
+        "fa": "استنباط یافتهٔ غیرطبیعی یک‌طرفهٔ نیگروزوم از عدم تقارن بالینی"
+      }
+    ],
+    "correct": "C",
+    "feedback": {
+      "de": "Nicht sicher sichtbar ist bei Bewegungsunschärfe nicht gleichbedeutend mit sicher fehlend. Technische Einschränkung dokumentieren; aus diesem Befund keine positive oder negative Parkinson-Diagnose ableiten. Auch bei guter Qualität bleibt die Aussage eines isolierten Nigrosom-Zeichens begrenzt.",
+      "en": "Not confidently visible under motion blur does not mean confirmed absence. Document the technical limitation; derive neither a positive nor a negative Parkinson diagnosis from this finding. Even at adequate quality, an isolated nigrosome sign has limited interpretation.",
+      "fa": "دیده‌نشدن با اطمینان در حضور محوشدگی حرکتی معادل نبودِ تأییدشده نیست. محدودیت فنی را ثبت کنید و از این یافته نه تشخیص مثبت و نه منفی پارکینسون نتیجه بگیرید. حتی با کیفیت مناسب نیز تفسیر نشانهٔ منفرد نیگروزوم محدودیت دارد."
+    },
+    "wrong": [
+      {
+        "de": "Für eine beidseitig pathologische Klassifikation müsste die Struktur bei ausreichender Bildqualität beurteilbar sein; hier verhindert Bewegung diese Zuordnung.",
+        "en": "A bilateral abnormal classification requires adequate image quality for assessment; motion prevents that classification here.",
+        "fa": "طبقه‌بندی غیرطبیعی دوطرفه نیازمند کیفیت کافی برای ارزیابی ساختار است؛ حرکت در اینجا مانع آن است."
+      },
+      {
+        "de": "Fehlende sicher erkennbare Asymmetrie unter Bewegungsunschärfe belegt keine regelrechte Struktur. Beide Seiten sind technisch unsicher.",
+        "en": "Lack of confidently seen asymmetry under motion blur does not establish normal structure. Both sides are technically uncertain.",
+        "fa": "نبودِ عدم تقارن قابل تشخیص با اطمینان در محوشدگی حرکتی، ساختار طبیعی را ثابت نمی‌کند؛ ارزیابی هر دو سمت از نظر فنی نامطمئن است."
+      },
+      {
+        "de": "Die klinische Seitigkeit kann den bildgebenden Nachweis nicht ersetzen; aus beidseits unzureichender Sichtbarkeit lässt sich keine einseitige Läsion zuordnen.",
+        "en": "Clinical laterality cannot replace imaging evidence; bilateral inadequate visibility cannot assign a unilateral abnormality.",
+        "fa": "سمت درگیری بالینی جای شواهد تصویری را نمی‌گیرد؛ دیده‌شدن ناکافی دوطرفه، ضایعهٔ یک‌طرفه را تعیین نمی‌کند."
+      }
+    ],
+    "front": {
+      "de": "Wie wird ein bewegungsbedingt nicht sicher sichtbares Nigrosom-Zeichen berichtet?",
+      "en": "How is a nigrosome sign that cannot be confidently seen because of motion reported?",
+      "fa": "نشانهٔ نیگروزوم که به‌علت حرکت با اطمینان دیده نمی‌شود چگونه گزارش می‌شود؟"
+    },
+    "answer": {
+      "de": "Als technisch nicht sicher beurteilbar, nicht als bestätigt fehlend oder normal; Bildqualität und klinischen Kontext nennen.",
+      "en": "As technically indeterminate, rather than confirmed absent or normal; state image quality and clinical context.",
+      "fa": "به‌صورت غیرقابل ارزیابی با اطمینان به‌دلایل فنی، نه غایبِ تأییدشده یا طبیعی؛ کیفیت تصویر و زمینهٔ بالینی ذکر شوند."
+    }
+  },
+  {
+    "key": "dat-limits",
+    "source": "https://www.ema.europa.eu/en/documents/product-information/datscan-epar-product-information_en.pdf",
+    "goal": {
+      "de": "Eine reduzierte DAT-Bindung von einer spezifischen Parkinson-Syndromdiagnose trennen.",
+      "en": "Separate reduced DAT binding from a specific parkinsonian syndrome diagnosis.",
+      "fa": "کاهش اتصال DAT را از تشخیص سندرم پارکینسونی مشخص جدا کنید."
+    },
+    "question": {
+      "de": "Bei einem Erwachsenen mit unklarem Parkinson-Syndrom zeigt eine technisch adäquate DaTSCAN-SPECT reduzierte striatale Bindung. Welche Aussage beantwortet diese Untersuchung am ehesten?",
+      "en": "In an adult with uncertain parkinsonism, technically adequate DaTSCAN SPECT shows reduced striatal binding. Which statement best describes what the examination establishes?",
+      "fa": "در بزرگسالی با سندرم پارکینسونی نامشخص، DaTSCAN-SPECT با کیفیت فنی مناسب کاهش اتصال استریاتال نشان می‌دهد. کدام عبارت بهتر بیانگر نتیجهٔ این بررسی است؟"
+    },
+    "options": [
+      {
+        "de": "Das Bindungsmuster unterscheidet idiopathischen Parkinson von MSA und PSP",
+        "en": "The binding pattern distinguishes idiopathic Parkinson disease from MSA and PSP",
+        "fa": "الگوی اتصال، پارکینسون ایدیوپاتیک را از MSA و PSP تفکیک می‌کند"
+      },
+      {
+        "de": "Es spricht für ein präsynaptisches dopaminerges Defizit; PD, MSA und PSP werden damit nicht zuverlässig voneinander getrennt",
+        "en": "It supports a presynaptic dopaminergic deficit; it does not reliably distinguish PD, MSA and PSP",
+        "fa": "از نقص دوپامینرژیک پیش‌سیناپسی حمایت می‌کند؛ PD، MSA و PSP را با اطمینان از هم جدا نمی‌کند"
+      },
+      {
+        "de": "Es beschreibt primär die postsynaptische Dopaminrezeptorverfügbarkeit",
+        "en": "It primarily describes postsynaptic dopamine receptor availability",
+        "fa": "عمدتاً دسترسی گیرندهٔ دوپامین پس‌سیناپسی را توصیف می‌کند"
+      },
+      {
+        "de": "Es beschreibt primär das regionale Glukosestoffwechselmuster",
+        "en": "It primarily describes the regional glucose metabolism pattern",
+        "fa": "عمدتاً الگوی منطقه‌ای متابولیسم گلوکز را توصیف می‌کند"
+      }
+    ],
+    "correct": "B",
+    "feedback": {
+      "de": "DaTSCAN beurteilt funktionelle präsynaptische dopaminerge Endigungen. Die zugelassene Aussage umfasst nicht die Trennung von PD, MSA und PSP. Klinisches Syndrom, Verlauf und ergänzende Untersuchungen bleiben entscheidend.",
+      "en": "DaTSCAN assesses functional presynaptic dopaminergic terminals. Its approved interpretation does not include distinguishing PD, MSA and PSP. Clinical syndrome, course and additional tests remain essential.",
+      "fa": "DaTSCAN پایانه‌های عملکردی دوپامینرژیک پیش‌سیناپسی را ارزیابی می‌کند. کاربرد تأییدشدهٔ آن شامل تفکیک PD، MSA و PSP نیست. سندرم بالینی، سیر بیماری و بررسی‌های تکمیلی همچنان تعیین‌کننده‌اند."
+    },
+    "wrong": [
+      {
+        "de": "Alle drei Syndrome können eine reduzierte striatale DAT-Bindung zeigen; die EMA-Produktinformation schließt diese spezifische Trennung ausdrücklich aus.",
+        "en": "All three syndromes can show reduced striatal DAT binding; the EMA product information explicitly excludes this specific distinction.",
+        "fa": "هر سه سندرم می‌توانند کاهش اتصال DAT استریاتال داشته باشند؛ اطلاعات فرآوردهٔ EMA صراحتاً این تفکیک مشخص را خارج از توان بررسی می‌داند."
+      },
+      {
+        "de": "Ioflupan bindet an den Dopamintransporter an präsynaptischen Endigungen; ein postsynaptischer Rezeptortracer beantwortet eine andere Frage.",
+        "en": "Ioflupane binds dopamine transporters at presynaptic terminals; a postsynaptic receptor tracer addresses a different question.",
+        "fa": "یوفلوپان به ناقل دوپامین در پایانهٔ پیش‌سیناپسی متصل می‌شود؛ ردیاب گیرندهٔ پس‌سیناپسی پرسش دیگری را بررسی می‌کند."
+      },
+      {
+        "de": "Regionale Glukosestoffwechselmuster werden mit FDG-PET beurteilt; sie sind nicht die Messgröße der DaTSCAN-SPECT.",
+        "en": "Regional glucose metabolism patterns are assessed with FDG PET; they are not the measurement made by DaTSCAN SPECT.",
+        "fa": "الگوهای منطقه‌ای متابولیسم گلوکز با FDG-PET ارزیابی می‌شوند؛ کمیت اندازه‌گیری‌شده در DaTSCAN-SPECT نیستند."
+      }
+    ],
+    "front": {
+      "de": "Welche zentrale Aussagegrenze hat ein pathologischer DaTSCAN bei Parkinson-Syndrom?",
+      "en": "What is the central interpretive limitation of an abnormal DaTSCAN in parkinsonism?",
+      "fa": "محدودیت اصلی تفسیر DaTSCAN غیرطبیعی در سندرم پارکینسونی چیست؟"
+    },
+    "answer": {
+      "de": "Ein präsynaptisches dopaminerges Defizit stützt keine sichere Trennung von PD, MSA und PSP; die Syndromzuordnung bleibt klinisch.",
+      "en": "A presynaptic dopaminergic deficit does not reliably distinguish PD, MSA and PSP; syndrome classification remains clinical.",
+      "fa": "نقص دوپامینرژیک پیش‌سیناپسی PD، MSA و PSP را با اطمینان از هم جدا نمی‌کند؛ طبقه‌بندی سندرم همچنان بالینی است."
+    }
+  },
+  {
+    "key": "fdg-measurement",
+    "source": "https://doi.org/10.2967/jnumed.124.268754",
+    "goal": {
+      "de": "FDG-PET als ergänzende Stoffwechselmuster-Beurteilung einordnen.",
+      "en": "Interpret FDG PET as complementary metabolic-pattern assessment.",
+      "fa": "FDG-PET را بررسی تکمیلی الگوی متابولیسم بدانید."
+    },
+    "question": {
+      "de": "Trotz reduzierter DAT-Bindung bleibt die klinische Abgrenzung von PD gegenüber atypischem Parkinson-Syndrom offen. Eine ergänzende FDG-PET wird diskutiert. Welche zusätzliche Messgröße kann diese Untersuchung für die Differenzialdiagnose liefern?",
+      "en": "Despite reduced DAT binding, clinical differentiation of PD from atypical parkinsonism remains uncertain. Complementary FDG PET is discussed. Which additional measurement can it provide for the differential?",
+      "fa": "با وجود کاهش اتصال DAT، افتراق بالینی PD از سندرم پارکینسونی غیرمعمول همچنان نامشخص است. FDG-PET تکمیلی مطرح می‌شود. این بررسی کدام کمیت تکمیلی را برای افتراق ارائه می‌کند؟"
+    },
+    "options": [
+      {
+        "de": "Regionale Verteilung des Glukosestoffwechsels",
+        "en": "Regional distribution of glucose metabolism",
+        "fa": "توزیع منطقه‌ای متابولیسم گلوکز"
+      },
+      {
+        "de": "Regionale Verfügbarkeit präsynaptischer Dopamintransporter",
+        "en": "Regional availability of presynaptic dopamine transporters",
+        "fa": "دسترسی منطقه‌ای ناقل‌های دوپامین پیش‌سیناپسی"
+      },
+      {
+        "de": "Regionale Verfügbarkeit postsynaptischer D2-Rezeptoren",
+        "en": "Regional availability of postsynaptic D2 receptors",
+        "fa": "دسترسی منطقه‌ای گیرنده‌های D2 پس‌سیناپسی"
+      },
+      {
+        "de": "Regionale Amyloidablagerung",
+        "en": "Regional amyloid deposition",
+        "fa": "رسوب منطقه‌ای آمیلوئید"
+      }
+    ],
+    "correct": "A",
+    "feedback": {
+      "de": "FDG-PET beurteilt regionale Glukosestoffwechselmuster und kann die klinische Differenzialdiagnose von PD und atypischen Syndromen ergänzen. Relative Zu- und Abnahmen sind möglich; Therapie und klinischer Kontext beeinflussen die Einordnung. Sie wiederholt keine DAT-Messung.",
+      "en": "FDG PET assesses regional glucose metabolism patterns and may complement clinical differentiation of PD and atypical syndromes. Relative increases and decreases can occur; treatment and clinical context affect interpretation. It does not repeat a DAT measurement.",
+      "fa": "FDG-PET الگوهای منطقه‌ای متابولیسم گلوکز را ارزیابی می‌کند و می‌تواند افتراق بالینی PD و سندرم‌های غیرمعمول را تکمیل کند. افزایش و کاهش نسبی ممکن‌اند؛ درمان و زمینهٔ بالینی بر تفسیر اثر می‌گذارند. این روش تکرار اندازه‌گیری DAT نیست."
+    },
+    "wrong": [
+      {
+        "de": "Das ist die Zielgröße einer DAT-Untersuchung, nicht der FDG-PET. Ein zweiter Tracer muss nach seiner eigenen Zielstruktur interpretiert werden.",
+        "en": "That is the target of DAT imaging, not FDG PET. Interpret a second tracer according to its own target.",
+        "fa": "این کمیت هدف تصویربرداری DAT است، نه FDG-PET. ردیاب دوم باید بر اساس هدف خودش تفسیر شود."
+      },
+      {
+        "de": "D2-Rezeptorverfügbarkeit erfordert einen dafür geeigneten Rezeptortracer; FDG misst keine D2-Bindung.",
+        "en": "D2 receptor availability requires an appropriate receptor tracer; FDG does not measure D2 binding.",
+        "fa": "دسترسی گیرندهٔ D2 به ردیاب مناسب گیرنده نیاز دارد؛ FDG اتصال D2 را اندازه نمی‌گیرد."
+      },
+      {
+        "de": "Amyloid-PET verwendet eigene Tracer. FDG zeigt Stoffwechselverteilung, nicht direkt Amyloidablagerung.",
+        "en": "Amyloid PET uses dedicated tracers. FDG shows metabolic distribution rather than directly depicting amyloid deposition.",
+        "fa": "PET آمیلوئید از ردیاب‌های مخصوص استفاده می‌کند؛ FDG توزیع متابولیسم را نشان می‌دهد، نه رسوب مستقیم آمیلوئید."
+      }
+    ],
+    "front": {
+      "de": "Was ergänzt FDG-PET gegenüber DAT-SPECT in der Parkinson-Differenzialdiagnostik?",
+      "en": "What does FDG PET add to DAT SPECT in the parkinsonian differential?",
+      "fa": "FDG-PET در افتراق سندرم‌های پارکینسونی چه چیزی به DAT-SPECT اضافه می‌کند؟"
+    },
+    "answer": {
+      "de": "Regionale Glukosestoffwechselmuster statt Transporterbindung; als Ergänzung zu Klinik und MRT, unter Beachtung von Therapieeinflüssen.",
+      "en": "Regional glucose metabolism patterns rather than transporter binding; as a complement to clinical assessment and MRI, accounting for treatment effects.",
+      "fa": "الگوهای منطقه‌ای متابولیسم گلوکز به‌جای اتصال ناقل؛ مکمل بالین و MRI، با توجه به اثر درمان."
+    }
+  }
 ])
 
 export function newQuestions(lang = 'de') {
@@ -195,8 +447,264 @@ newCards.push({ id: 'aq-brain-chiari-landmark-context', topicId: 'chiari-malform
 export const topics = blocks.map(b => ({ id: b.topicId, title: b.title, subject: 'gehirn', description: L('Klinische Bildinterpretation und Befundentscheidungen', 'Clinical image interpretation and reporting decisions', 'تفسیر بالینی تصاویر و تصمیم‌های گزارش‌نویسی'), href: `/flashcards/${b.topicId}` }))
 export const routeCoverage = blocks.map(b => ({ route: b.route, topicId: b.topicId, learningGoals: b.items.map(item => ({ id: item.key, text: item.goal, questionIds: [`aq-brain-${b.topicId}-de-${item.key}`], cardIds: [`aq-brain-${b.topicId}-${item.key}`] })), status: 'AUTHORED_REVIEW_PENDING' }))
 routeCoverage.find(x => x.topicId === 'chiari-malformation').learningGoals.unshift({ id: 'measure-and-context', text: L('Tonsillenlage mit Landmarken, Morphologie und erworbenen Ursachen einordnen.', 'Interpret tonsillar position with landmarks, morphology, and acquired causes.', 'موقعیت لوزه‌ها را با نشانه‌های آناتومیک، شکل‌شناسی و علل اکتسابی تفسیر کنید.'), questionIds: ['chiari-malformation-de-1'], cardIds: ['aq-brain-chiari-landmark-context'] })
-routeCoverage.push({ route: '/gehirn/anatomie/normaldruckhydrozephalus', topicId: 'normaldruckhydrozephalus', learningGoals: [
-  { id: 'ventriculomegaly-pattern', text: L('Ventrikulomegalie im DESH-Muster von proportionaler Atrophie abgrenzen.', 'Distinguish DESH-pattern ventriculomegaly from proportionate atrophy.', 'گشادشدگی بطن در الگوی DESH را از آتروفی متناسب تفکیک کنید.'), questionIds: ['normaldruckhydrozephalus-de-04', 'normaldruckhydrozephalus-de-05', 'normaldruckhydrozephalus-de-08', 'normaldruckhydrozephalus-de-12'], cardIds: ['normaldruckhydrozephalus-04-evans', 'normaldruckhydrozephalus-06-desh'] },
-  { id: 'standard-measurement', text: L('Evans-Index und Balkenwinkel in standardisierter Ebene beurteilen.', 'Assess Evans index and callosal angle in standardised planes.', 'شاخص ایوانز و زاویهٔ کالوزال را در صفحات استاندارد ارزیابی کنید.'), questionIds: ['normaldruckhydrozephalus-de-03', 'normaldruckhydrozephalus-de-06', 'normaldruckhydrozephalus-de-07'], cardIds: ['normaldruckhydrozephalus-04-evans', 'normaldruckhydrozephalus-05-callosal'] },
-  { id: 'clinical-selection', text: L('Bildmuster, klinischen Verlauf und begrenzte Sensitivität des Tap-Tests zusammenführen.', 'Integrate imaging, clinical course, and the limited sensitivity of the tap test.', 'تصویربرداری، سیر بالینی و حساسیت محدود آزمون تخلیهٔ مایع را تلفیق کنید.'), questionIds: ['normaldruckhydrozephalus-de-01', 'normaldruckhydrozephalus-de-10', 'normaldruckhydrozephalus-de-11', 'normaldruckhydrozephalus-de-12'], cardIds: ['normaldruckhydrozephalus-11-tap'] },
-], status: 'IN_PROGRESS_ORIGINAL_DISTRACTOR_REPAIR' })
+routeCoverage.push({
+  "route": "/gehirn/anatomie/normaldruckhydrozephalus",
+  "topicId": "normaldruckhydrozephalus",
+  "learningGoals": [
+    {
+      "id": "ventriculomegaly-pattern",
+      "text": {
+        "de": "Ventrikulomegalie und DESH von proportionaler Atrophie abgrenzen und angemessen berichten.",
+        "en": "Distinguish ventriculomegaly/DESH from proportional atrophy and report appropriately.",
+        "fa": "بزرگی بطن و DESH را از آتروفی متناسب تفکیک و مناسب گزارش کنید."
+      },
+      "questionIds": [
+        "normaldruckhydrozephalus-de-04",
+        "normaldruckhydrozephalus-de-05",
+        "normaldruckhydrozephalus-de-08",
+        "normaldruckhydrozephalus-de-12"
+      ],
+      "cardIds": [
+        "normaldruckhydrozephalus-06-desh",
+        "normaldruckhydrozephalus-07-atrophie",
+        "normaldruckhydrozephalus-15-befund"
+      ]
+    },
+    {
+      "id": "standard-measurement",
+      "text": {
+        "de": "Evans-Index und Balkenwinkel in standardisierten Ebenen beurteilen.",
+        "en": "Assess Evans index and callosal angle in standardised planes.",
+        "fa": "شاخص ایوانز و زاویهٔ کالوزال را در صفحات استاندارد ارزیابی کنید."
+      },
+      "questionIds": [
+        "normaldruckhydrozephalus-de-03",
+        "normaldruckhydrozephalus-de-06",
+        "normaldruckhydrozephalus-de-07"
+      ],
+      "cardIds": [
+        "normaldruckhydrozephalus-04-evans",
+        "normaldruckhydrozephalus-05-callosal"
+      ]
+    },
+    {
+      "id": "supporting-imaging-limits",
+      "text": {
+        "de": "Flusszeichen, periventrikuläres Signal und Cingulum-Morphologie als unterstützend und begrenzt einordnen.",
+        "en": "Interpret flow signs, periventricular signal and cingulate morphology as supportive and limited.",
+        "fa": "نشانه‌های جریان، سیگنال پیرابطنی و مورفولوژی سینگولیت را حمایتی و دارای محدودیت تفسیر کنید."
+      },
+      "questionIds": [
+        "normaldruckhydrozephalus-de-09"
+      ],
+      "cardIds": [
+        "normaldruckhydrozephalus-08-polkappen",
+        "normaldruckhydrozephalus-09-flowvoid",
+        "normaldruckhydrozephalus-10-cingulate"
+      ]
+    },
+    {
+      "id": "clinical-profile",
+      "text": {
+        "de": "Das typische Gang-/Triasprofil und die klinisch-radiologische Definition nennen.",
+        "en": "Recall the typical gait/triad profile and clinical-radiological definition.",
+        "fa": "الگوی معمول راه‌رفتن/تریاد و تعریف بالینی‌ـ‌تصویری را بیان کنید."
+      },
+      "questionIds": [
+        "normaldruckhydrozephalus-de-01",
+        "normaldruckhydrozephalus-de-02"
+      ],
+      "cardIds": [
+        "normaldruckhydrozephalus-01-definition",
+        "normaldruckhydrozephalus-02-trias",
+        "normaldruckhydrozephalus-03-gang"
+      ]
+    },
+    {
+      "id": "functional-selection",
+      "text": {
+        "de": "Tap-Test methodisch bewerten und Nutzen/Risiko der individuellen Shunt-Auswahl einordnen.",
+        "en": "Evaluate tap-test methodology and interpret benefit/risk in individual shunt selection.",
+        "fa": "روش آزمون تخلیه را ارزیابی و سود و خطر را در انتخاب فردی شانت تفسیر کنید."
+      },
+      "questionIds": [
+        "normaldruckhydrozephalus-de-10",
+        "normaldruckhydrozephalus-de-11",
+        "normaldruckhydrozephalus-de-12"
+      ],
+      "cardIds": [
+        "normaldruckhydrozephalus-11-tap",
+        "normaldruckhydrozephalus-12-drainage",
+        "normaldruckhydrozephalus-13-shunt",
+        "normaldruckhydrozephalus-14-komplikation"
+      ]
+    }
+  ],
+  "status": "AUTHOR_FULL_ORIGINAL_BANK_REVIEW_READY"
+})
+
+routeCoverage.push({
+  "route": "/gehirn/vaskulaer/dva",
+  "topicId": "dva",
+  "status": "AUTHOR_FULL_ORIGINAL_BANK_REVIEW_READY",
+  "learningGoals": [
+    {
+      "id": "recognise-architecture",
+      "text": {
+        "de": "Die typische venöse Architektur erkennen und von Shuntläsionen abgrenzen.",
+        "en": "Recognise typical venous architecture and distinguish shunting lesions.",
+        "fa": "معماری وریدی تیپیک را بشناسید و از ضایعات شانت‌دار تفکیک کنید."
+      },
+      "questionIds": [
+        "dva-de-01",
+        "dva-de-02",
+        "dva-de-08"
+      ],
+      "cardIds": [
+        "dva-01-definition",
+        "dva-02-häufigkeit",
+        "dva-03-caput",
+        "dva-08-avm"
+      ]
+    },
+    {
+      "id": "choose-complementary-sequences",
+      "text": {
+        "de": "Postkontrast-T1, SWI und DWI ihren unterschiedlichen diagnostischen Aufgaben zuordnen.",
+        "en": "Assign postcontrast T1, SWI and DWI to their distinct diagnostic tasks.",
+        "fa": "T1 پس از تزریق، SWI و DWI را به نقش‌های تشخیصی متفاوتشان مرتبط کنید."
+      },
+      "questionIds": [
+        "dva-de-03",
+        "dva-de-04",
+        "dva-de-09"
+      ],
+      "cardIds": [
+        "dva-04-sequenz",
+        "dva-05-swi",
+        "dva-06-kavernom",
+        "dva-07-dwi"
+      ]
+    },
+    {
+      "id": "evaluate-symptomatic-dva",
+      "text": {
+        "de": "Bei neuen Symptomen oder Blutung Begleitläsion und venösen Abfluss gezielt prüfen.",
+        "en": "Evaluate associated lesions and venous outflow with new symptoms or haemorrhage.",
+        "fa": "در علائم یا خونریزی جدید، ضایعات همراه و خروج وریدی را هدفمند بررسی کنید."
+      },
+      "questionIds": [
+        "dva-de-07",
+        "dva-de-10"
+      ],
+      "cardIds": [
+        "dva-09-symptome",
+        "dva-10-thrombose"
+      ]
+    },
+    {
+      "id": "report-and-preserve-drainage",
+      "text": {
+        "de": "Eine unkomplizierte DVA angemessen berichten und notwendige Drainage bei Eingriffen berücksichtigen.",
+        "en": "Report uncomplicated DVA appropriately and account for essential drainage during interventions.",
+        "fa": "DVA بدون عارضه را مناسب گزارش کنید و در مداخلات تخلیهٔ ضروری را لحاظ کنید."
+      },
+      "questionIds": [
+        "dva-de-05",
+        "dva-de-06",
+        "dva-de-11",
+        "dva-de-12"
+      ],
+      "cardIds": [
+        "dva-11-therapie",
+        "dva-12-sammelvene",
+        "dva-13-dsa",
+        "dva-14-befund",
+        "dva-15-operation"
+      ]
+    }
+  ]
+})
+
+routeCoverage.push({
+  "route": "/gehirn/vaskulaer/kapillaere-teleangiektasie",
+  "topicId": "kapillaere-teleangiektasie",
+  "status": "AUTHOR_FULL_ORIGINAL_BANK_REVIEW_READY",
+  "learningGoals": [
+    {
+      "id": "recognise-morphology",
+      "text": {
+        "de": "Die typische Morphologie, Lokalisation und Grundhistologie mit Sequenzkorrelation erkennen.",
+        "en": "Recognise typical morphology, location and basic histology with sequence correlation.",
+        "fa": "مورفولوژی، محل و بافت‌شناسی پایهٔ تیپیک را با تطبیق سکانس‌ها بشناسید."
+      },
+      "questionIds": [
+        "kapillaere-teleangiektasie-de-01",
+        "kapillaere-teleangiektasie-de-02",
+        "kapillaere-teleangiektasie-de-03",
+        "kapillaere-teleangiektasie-de-05"
+      ],
+      "cardIds": [
+        "kapillaere-teleangiektasie-01-definition",
+        "kapillaere-teleangiektasie-02-lokalisation",
+        "kapillaere-teleangiektasie-03-enhancement",
+        "kapillaere-teleangiektasie-05-trias",
+        "kapillaere-teleangiektasie-06-t2"
+      ]
+    },
+    {
+      "id": "interpret-susceptibility-and-associations",
+      "text": {
+        "de": "Suszeptibilität von Blutungsnachweis trennen und DVA/Kavernom als Begleitbefunde einordnen.",
+        "en": "Separate susceptibility from proven haemorrhage and interpret associated DVA/cavernoma.",
+        "fa": "سوسپتیبیلیتی را از اثبات خونریزی جدا و DVA/کاورنوم همراه را تفسیر کنید."
+      },
+      "questionIds": [
+        "kapillaere-teleangiektasie-de-04",
+        "kapillaere-teleangiektasie-de-07",
+        "kapillaere-teleangiektasie-de-08"
+      ],
+      "cardIds": [
+        "kapillaere-teleangiektasie-04-swi",
+        "kapillaere-teleangiektasie-08-blutung",
+        "kapillaere-teleangiektasie-09-dva",
+        "kapillaere-teleangiektasie-10-kavernom",
+        "kapillaere-teleangiektasie-15-assoziation"
+      ]
+    },
+    {
+      "id": "recognise-limits-and-red-flags",
+      "text": {
+        "de": "DWI/ADC mit technischer Qualität beurteilen und atypische Expansion oder Restriktion erkennen.",
+        "en": "Interpret DWI/ADC with technical quality and recognise atypical expansion or restriction.",
+        "fa": "DWI/ADC را با توجه به کیفیت فنی تفسیر و گسترش یا محدودیت غیرتیپیک را شناسایی کنید."
+      },
+      "questionIds": [
+        "kapillaere-teleangiektasie-de-06",
+        "kapillaere-teleangiektasie-de-09"
+      ],
+      "cardIds": [
+        "kapillaere-teleangiektasie-07-dwi",
+        "kapillaere-teleangiektasie-13-atypisch"
+      ]
+    },
+    {
+      "id": "report-and-correlate-clinically",
+      "text": {
+        "de": "Typische stabile Befunde angemessen berichten, klinische Kausalität prüfen und unnötige Eskalation vermeiden.",
+        "en": "Report typical stable findings appropriately, assess clinical causality and avoid unnecessary escalation.",
+        "fa": "یافتهٔ تیپیک و پایدار را مناسب گزارش کنید، رابطهٔ علّی بالینی را بررسی و از تشدید غیرضروری اقدامات پرهیز کنید."
+      },
+      "questionIds": [
+        "kapillaere-teleangiektasie-de-10",
+        "kapillaere-teleangiektasie-de-11",
+        "kapillaere-teleangiektasie-de-12"
+      ],
+      "cardIds": [
+        "kapillaere-teleangiektasie-11-management",
+        "kapillaere-teleangiektasie-12-biopsie",
+        "kapillaere-teleangiektasie-14-befund"
+      ]
+    }
+  ]
+})

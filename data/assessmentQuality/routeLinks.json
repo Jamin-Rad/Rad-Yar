@@ -48,6 +48,54 @@
       "cardTopic": "aq-hirnabszess",
       "subject": "gehirn"
     },
+    "/gehirn/infektionen/hiv-enzephalopathie": {
+      "topicIds": [
+        "aq-hiv-enzephalopathie"
+      ],
+      "questionCount": 3,
+      "cardTopic": "aq-hiv-enzephalopathie",
+      "subject": "gehirn"
+    },
+    "/gehirn/infektionen/meningitis-enzephalitis": {
+      "topicIds": [
+        "aq-meningitis-enzephalitis"
+      ],
+      "questionCount": 3,
+      "cardTopic": "aq-meningitis-enzephalitis",
+      "subject": "gehirn"
+    },
+    "/gehirn/neurodegeneration/cjd": {
+      "topicIds": [
+        "aq-cjd"
+      ],
+      "questionCount": 3,
+      "cardTopic": "aq-cjd",
+      "subject": "gehirn"
+    },
+    "/gehirn/neurodegeneration/parkinson": {
+      "topicIds": [
+        "aq-parkinson"
+      ],
+      "questionCount": 3,
+      "cardTopic": "aq-parkinson",
+      "subject": "gehirn"
+    },
+    "/gehirn/anatomie/normaldruckhydrozephalus": {
+      "topicIds": [
+        "normaldruckhydrozephalus"
+      ],
+      "questionCount": 12,
+      "cardTopic": "normaldruckhydrozephalus",
+      "subject": "gehirn"
+    },
+    "/gehirn/vaskulaer/dva": {
+      "topicIds": [
+        "dva"
+      ],
+      "questionCount": 12,
+      "cardTopic": "dva",
+      "subject": "gehirn"
+    },
     "/msk/trauma/radiuskoepfchenfraktur": {
       "topicIds": [
         "radiuskoepfchenfraktur"
@@ -149,6 +197,46 @@
       "cardTopic": "osteochondrosis-dissecans",
       "subject": "msk"
     },
+    "/msk/knie/kreuzbaender": {
+      "topicIds": [
+        "kreuzbaender"
+      ],
+      "questionCount": 8,
+      "cardTopic": "kreuzbaender",
+      "subject": "msk"
+    },
+    "/msk/knie/meniskus": {
+      "topicIds": [
+        "meniskus"
+      ],
+      "questionCount": 22,
+      "cardTopic": "meniskus",
+      "subject": "msk"
+    },
+    "/msk/knochennekrosen/avn-huefte": {
+      "topicIds": [
+        "avn-huefte"
+      ],
+      "questionCount": 1,
+      "cardTopic": "avn-huefte",
+      "subject": "msk"
+    },
+    "/msk/knochennekrosen/knocheninfarkt": {
+      "topicIds": [
+        "knocheninfarkt"
+      ],
+      "questionCount": 3,
+      "cardTopic": "knocheninfarkt",
+      "subject": "msk"
+    },
+    "/msk/knochenstoffwechsel/melorheostose": {
+      "topicIds": [
+        "melorheostose"
+      ],
+      "questionCount": 1,
+      "cardTopic": "melorheostose",
+      "subject": "msk"
+    },
     "/technik/interventionelle-radiologie": {
       "topicIds": [
         "aq-atv-intervention"
@@ -196,6 +284,46 @@
       "questionCount": 3,
       "cardTopic": "km-schwangerschaft-stillzeit",
       "subject": "technik"
+    },
+    "/abdomen/gi/appendizitis": {
+      "topicIds": [
+        "appendizitis"
+      ],
+      "questionCount": 3,
+      "cardTopic": "appendizitis",
+      "subject": "abdomen"
+    },
+    "/abdomen/gi/gist": {
+      "topicIds": [
+        "gist"
+      ],
+      "questionCount": 3,
+      "cardTopic": "gist",
+      "subject": "abdomen"
+    },
+    "/abdomen/gefaesse/fmd": {
+      "topicIds": [
+        "fibromuskulaere-dysplasie"
+      ],
+      "questionCount": 3,
+      "cardTopic": "fibromuskulaere-dysplasie",
+      "subject": "abdomen"
+    },
+    "/abdomen/gi/duodenaldivertikel": {
+      "topicIds": [
+        "duodenaldivertikel"
+      ],
+      "questionCount": 2,
+      "cardTopic": "duodenaldivertikel",
+      "subject": "abdomen"
+    },
+    "/abdomen/gi/divertikulitis": {
+      "topicIds": [
+        "divertikulitis"
+      ],
+      "questionCount": 11,
+      "cardTopic": "divertikulitis",
+      "subject": "abdomen"
     },
     "/thorax/lung-rads": {
       "topicIds": [
@@ -461,7 +589,7 @@
     "herzgroesse-roentgen": 1,
     "lungenanatomie": 1,
     "leberzyste": 1,
-    "appendizitis": 1,
+    "appendizitis": 3,
     "pdac": 3,
     "inguinalhernie": 1,
     "femoralhernie": 1,
@@ -504,7 +632,7 @@
     "fluoroskopie-durchleuchtung": 1,
     "dosisgroessen-dosimetrie": 1,
     "riesenzelltumor": 1,
-    "gist": 1,
+    "gist": 3,
     "volvulus": 1,
     "pnet": 4,
     "hepatisches-angiomyolipom": 4,
@@ -547,6 +675,12 @@
     "morbus-perthes": 2,
     "chondrokalzinose": 2,
     "osgood-schlatter": 1,
-    "weitere-osteochondrosen": 2
+    "weitere-osteochondrosen": 2,
+    "aq-hiv-enzephalopathie": 3,
+    "aq-meningitis-enzephalitis": 3,
+    "aq-cjd": 3,
+    "avn-huefte": 1,
+    "melorheostose": 1,
+    "aq-parkinson": 3
   }
 }

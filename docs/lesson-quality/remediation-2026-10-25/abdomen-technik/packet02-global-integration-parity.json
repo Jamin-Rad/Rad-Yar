@@ -1,0 +1,223 @@
+{
+  "date": "2026-10-25",
+  "status": "PASS_ACTUAL_GLOBAL_PROPOSAL_PARITY_ONLY",
+  "records": [
+    {
+      "id": "abdomen-appendizitis-de-01",
+      "kind": "MCQ",
+      "status": "ACTUAL_GLOBAL_AFTER_DEEP_EQUAL"
+    },
+    {
+      "id": "abdomen-appendizitis-en-01",
+      "kind": "MCQ",
+      "status": "ACTUAL_GLOBAL_AFTER_DEEP_EQUAL"
+    },
+    {
+      "id": "abdomen-appendizitis-fa-01",
+      "kind": "MCQ",
+      "status": "ACTUAL_GLOBAL_AFTER_DEEP_EQUAL"
+    },
+    {
+      "id": "divertikulitis-de-definition",
+      "kind": "MCQ",
+      "status": "ACTUAL_GLOBAL_AFTER_DEEP_EQUAL"
+    },
+    {
+      "id": "divertikulitis-en-definition",
+      "kind": "MCQ",
+      "status": "ACTUAL_GLOBAL_AFTER_DEEP_EQUAL"
+    },
+    {
+      "id": "divertikulitis-fa-definition",
+      "kind": "MCQ",
+      "status": "ACTUAL_GLOBAL_AFTER_DEEP_EQUAL"
+    },
+    {
+      "id": "divertikulitis-de-ct-triad",
+      "kind": "MCQ",
+      "status": "ACTUAL_GLOBAL_AFTER_DEEP_EQUAL"
+    },
+    {
+      "id": "divertikulitis-en-ct-triad",
+      "kind": "MCQ",
+      "status": "ACTUAL_GLOBAL_AFTER_DEEP_EQUAL"
+    },
+    {
+      "id": "divertikulitis-fa-ct-triad",
+      "kind": "MCQ",
+      "status": "ACTUAL_GLOBAL_AFTER_DEEP_EQUAL"
+    },
+    {
+      "id": "divertikulitis-de-protocol",
+      "kind": "MCQ",
+      "status": "ACTUAL_GLOBAL_AFTER_DEEP_EQUAL"
+    },
+    {
+      "id": "divertikulitis-en-protocol",
+      "kind": "MCQ",
+      "status": "ACTUAL_GLOBAL_AFTER_DEEP_EQUAL"
+    },
+    {
+      "id": "divertikulitis-fa-protocol",
+      "kind": "MCQ",
+      "status": "ACTUAL_GLOBAL_AFTER_DEEP_EQUAL"
+    },
+    {
+      "id": "divertikulitis-de-cdd-1b",
+      "kind": "MCQ",
+      "status": "ACTUAL_GLOBAL_AFTER_DEEP_EQUAL"
+    },
+    {
+      "id": "divertikulitis-en-cdd-1b",
+      "kind": "MCQ",
+      "status": "ACTUAL_GLOBAL_AFTER_DEEP_EQUAL"
+    },
+    {
+      "id": "divertikulitis-fa-cdd-1b",
+      "kind": "MCQ",
+      "status": "ACTUAL_GLOBAL_AFTER_DEEP_EQUAL"
+    },
+    {
+      "id": "divertikulitis-de-cdd-2a",
+      "kind": "MCQ",
+      "status": "ACTUAL_GLOBAL_AFTER_DEEP_EQUAL"
+    },
+    {
+      "id": "divertikulitis-en-cdd-2a",
+      "kind": "MCQ",
+      "status": "ACTUAL_GLOBAL_AFTER_DEEP_EQUAL"
+    },
+    {
+      "id": "divertikulitis-fa-cdd-2a",
+      "kind": "MCQ",
+      "status": "ACTUAL_GLOBAL_AFTER_DEEP_EQUAL"
+    },
+    {
+      "id": "divertikulitis-de-cdd-3c",
+      "kind": "MCQ",
+      "status": "ACTUAL_GLOBAL_AFTER_DEEP_EQUAL"
+    },
+    {
+      "id": "divertikulitis-en-cdd-3c",
+      "kind": "MCQ",
+      "status": "ACTUAL_GLOBAL_AFTER_DEEP_EQUAL"
+    },
+    {
+      "id": "divertikulitis-fa-cdd-3c",
+      "kind": "MCQ",
+      "status": "ACTUAL_GLOBAL_AFTER_DEEP_EQUAL"
+    },
+    {
+      "id": "divertikulitis-de-macroabscess",
+      "kind": "MCQ",
+      "status": "ACTUAL_GLOBAL_AFTER_DEEP_EQUAL"
+    },
+    {
+      "id": "divertikulitis-en-macroabscess",
+      "kind": "MCQ",
+      "status": "ACTUAL_GLOBAL_AFTER_DEEP_EQUAL"
+    },
+    {
+      "id": "divertikulitis-fa-macroabscess",
+      "kind": "MCQ",
+      "status": "ACTUAL_GLOBAL_AFTER_DEEP_EQUAL"
+    },
+    {
+      "id": "divertikulitis-de-fistula",
+      "kind": "MCQ",
+      "status": "ACTUAL_GLOBAL_AFTER_DEEP_EQUAL"
+    },
+    {
+      "id": "divertikulitis-en-fistula",
+      "kind": "MCQ",
+      "status": "ACTUAL_GLOBAL_AFTER_DEEP_EQUAL"
+    },
+    {
+      "id": "divertikulitis-fa-fistula",
+      "kind": "MCQ",
+      "status": "ACTUAL_GLOBAL_AFTER_DEEP_EQUAL"
+    },
+    {
+      "id": "divertikulitis-de-free-perforation",
+      "kind": "MCQ",
+      "status": "ACTUAL_GLOBAL_AFTER_DEEP_EQUAL"
+    },
+    {
+      "id": "divertikulitis-en-free-perforation",
+      "kind": "MCQ",
+      "status": "ACTUAL_GLOBAL_AFTER_DEEP_EQUAL"
+    },
+    {
+      "id": "divertikulitis-fa-free-perforation",
+      "kind": "MCQ",
+      "status": "ACTUAL_GLOBAL_AFTER_DEEP_EQUAL"
+    },
+    {
+      "id": "divertikulitis-de-cancer-differential",
+      "kind": "MCQ",
+      "status": "ACTUAL_GLOBAL_AFTER_DEEP_EQUAL"
+    },
+    {
+      "id": "divertikulitis-en-cancer-differential",
+      "kind": "MCQ",
+      "status": "ACTUAL_GLOBAL_AFTER_DEEP_EQUAL"
+    },
+    {
+      "id": "divertikulitis-fa-cancer-differential",
+      "kind": "MCQ",
+      "status": "ACTUAL_GLOBAL_AFTER_DEEP_EQUAL"
+    },
+    {
+      "id": "divertikulitis-de-reporting",
+      "kind": "MCQ",
+      "status": "ACTUAL_GLOBAL_AFTER_DEEP_EQUAL"
+    },
+    {
+      "id": "divertikulitis-en-reporting",
+      "kind": "MCQ",
+      "status": "ACTUAL_GLOBAL_AFTER_DEEP_EQUAL"
+    },
+    {
+      "id": "divertikulitis-fa-reporting",
+      "kind": "MCQ",
+      "status": "ACTUAL_GLOBAL_AFTER_DEEP_EQUAL"
+    },
+    {
+      "id": "divertikulitis-definition",
+      "kind": "card",
+      "status": "ACTUAL_GLOBAL_AFTER_DEEP_EQUAL"
+    },
+    {
+      "id": "divertikulitis-cdd-1",
+      "kind": "card",
+      "status": "ACTUAL_GLOBAL_AFTER_DEEP_EQUAL"
+    },
+    {
+      "id": "divertikulitis-perforation",
+      "kind": "card",
+      "status": "ACTUAL_GLOBAL_AFTER_DEEP_EQUAL"
+    },
+    {
+      "id": "divertikulitis-protocol",
+      "kind": "card",
+      "status": "ACTUAL_GLOBAL_AFTER_DEEP_EQUAL"
+    },
+    {
+      "id": "divertikulitis-cdd-3",
+      "kind": "card",
+      "status": "ACTUAL_GLOBAL_AFTER_DEEP_EQUAL"
+    }
+  ],
+  "counts": {
+    "localizedMCQ": 36,
+    "cards": 5,
+    "total41": 41,
+    "unrelatedRegistrationsPreserved": 42,
+    "unrelatedLocalizedRegistrationRows": 126
+  },
+  "scope": "Root applied33 Diverticulitis question locales+5cards; author applied exact3appendix locales to original draft/registration with optional wrong-feedback transfer. Actual global producers deep-equal all41 proposed after-values.",
+  "limits": [
+    "This proves canonical integration, not independent clinical acceptance.",
+    "ATV02 whole-pool peer review remains pending; new supplemental rows are still release-filtered."
+  ]
+}

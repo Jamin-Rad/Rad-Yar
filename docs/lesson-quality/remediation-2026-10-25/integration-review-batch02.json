@@ -1,0 +1,67 @@
+{
+  "date": "2026-10-25",
+  "reviewer": "/root/brain_remediation; independent read-only review of root-authored shared fix",
+  "status": "ACCEPT_BOUNDED_TECHNICAL_FIX",
+  "scope": "Existing internal lesson quiz/card actions: language propagation and missing return target; no lesson clinical, visual, or release acceptance.",
+  "filesRead": [
+    "lib/lessonAssessmentLinks.js",
+    "scripts/test-lesson-assessment-actions.mjs",
+    "scripts/generate-assessment-quality-links.mjs"
+  ],
+  "checks": [
+    {
+      "id": "INT02-01",
+      "status": "PASS",
+      "evidence": "All three locales carry current lang and missing from. Existing labels and onClick function identities retained. Caller input remains unchanged."
+    },
+    {
+      "id": "INT02-02",
+      "status": "PASS",
+      "evidence": "Explicit nonempty from retains its nested query/hash; current action language replaces stale lang. fragen, themen, topic and action hash remain present."
+    },
+    {
+      "id": "INT02-03",
+      "status": "PASS",
+      "evidence": "External HTTPS, protocol-relative, unrelated internal, and handler-only actions remain unchanged. Unmapped route without actions produces no new actions."
+    },
+    {
+      "id": "INT02-04",
+      "status": "PASS",
+      "evidence": "GIST existing quota result remains 3; quota calculation is unchanged in actual git diff. Existing normalization now preserves hash rather than dropping it. getQuestionSetVersion, assessmentContentVersion and question selection producer are untouched by this fix."
+    },
+    {
+      "id": "INT02-05",
+      "status": "PASS",
+      "evidence": "Read --staged implementation: Git index blobs loaded for local JS/JSX/MJS/JSON through esbuild onLoad, no index mutation or network; normal author working mode unchanged. Imports outside repository/node_modules bypass hook; missing index blobs fail rather than falling back to WIP."
+    }
+  ],
+  "runtimeEvidence": {
+    "command": "Isolated esbuild Node bundle of scripts/test-lesson-assessment-actions.mjs -> tmp/brain-shared-actions-test.cjs, then node execution",
+    "exitCode": 0,
+    "output": "Custom assessment actions preserve language, return target, topic, hash and handlers without inventing unmapped links."
+  },
+  "findings": [],
+  "limitations": [
+    "Runtime probes and source review only; production browser validation remains root responsibility.",
+    "Flashcard normalization is scoped to existing topic paths /flashcards/<topic>; search found no base /flashcards? custom action requiring additional coverage.",
+    "No Next build, app/data edits, or shared author edits performed by reviewer."
+  ],
+  "sha256": {
+    "lib/lessonAssessmentLinks.js": "97a49da50c7e7e43f146b0c295164fefa4067580ec7edff38df298df3ee7c582",
+    "scripts/test-lesson-assessment-actions.mjs": "612f4da637da67e9795218e7d1b5c5f46b5f09090d748cd37539b5cea87181a2",
+    "scripts/generate-assessment-quality-links.mjs": "e4fdc884bf882beab0b46991ec7a0925ee42404f0de560e84c3b3b7458239b78"
+  },
+  "stagedPublicationEvidence": {
+    "actualStagedQuestionCounts": {
+      "de": 947,
+      "en": 947,
+      "fa": 947
+    },
+    "mappedRoutes": 47,
+    "topicCounts": "Every staged-bank topic count exactly equals both actual staged and working routeLinks counts.",
+    "routeObjects": "All47 reconstructed route objects deepEqual actual staged registry, including cardTopic/subject.",
+    "draftIsolation": "All9 NF1 original locale objects deepEqual actual git-show index producer. Fourth WIP enhancing-fasi question is absent. No draft NF1 cards or route metadata are used by this published snapshot.",
+    "sourceMode": "Existing root-generated tmp/assessment-quality/staged-assessment-banks.cjs executed as Node module; actual Git index blobs read independently for NF1 source and registry.",
+    "noMutation": "Reviewer changed docs/tmp only; did not invoke generator against production output or change Git index."
+  }
+}

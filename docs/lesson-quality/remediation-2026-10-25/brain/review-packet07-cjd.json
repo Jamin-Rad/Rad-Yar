@@ -1,0 +1,57 @@
+{
+  "date": "2026-10-25",
+  "reviewer": "/root; independent of brain_remediation author",
+  "status": "ACCEPT_BOUNDED_ASSESSMENT_PACKET_AFTER_RETEST",
+  "scope": "All three new MCQ triads and three card triads actually read DE/EN/FA, including options, keys, specific feedback, negations and source scope. Inline/canonical retest and repairs pending. No unchanged PDF/media or full lesson release approval.",
+  "gates": {
+    "SRC": "PASS_BOUNDED_TEXT_CLAIMS",
+    "EDU": "PASS_BOUNDED_POOL",
+    "LNG": "PASS_BOUNDED_TRIADS",
+    "ASM": "PASS_BOUNDED_POOL",
+    "VIS": "NOT_APPLICABLE_NO_NEW_MEDIA",
+    "UX": "PENDING_REBUILD_BROWSER",
+    "REV": "INDEPENDENT_CONTENT_ACCEPTED_BROWSER_PENDING"
+  },
+  "findings": [
+    {
+      "id": "CJD07-EDU01",
+      "severity": "moderate",
+      "anchor": "clinical-pattern options and original inline",
+      "observed": "Single territorial infarct and expansile necrotic tumour are qualified to contradict explicit nonterritorial cortical-striatal stem.",
+      "impact": "Learner can answer by superficial qualifier elimination.",
+      "required": "Parallel plausible clinical differentials and case-specific wrong rationales.",
+      "status": "CLOSED_RETESTED",
+      "retest": "Root read actual repaired DE/EN/FA fields; canonical and inline question/options/correct and three wrong rationales exactly matched for all three languages. See tmp/assessment-quality/brain050607-retest-diff.log."
+    },
+    {
+      "id": "CJD07-SRC01",
+      "severity": "moderate",
+      "anchor": "pulvinar-comparator correct comparison, definition card and teaching",
+      "observed": "Definition omits bilateral qualifier from original Collie conclusion.",
+      "impact": "Incomplete named-sign definition.",
+      "required": "Preserve bilateral pulvinar >anterior putamen and appropriate clinical context in three languages.",
+      "status": "CLOSED_RETESTED",
+      "retest": "Root read actual repaired DE/EN/FA fields; canonical and inline question/options/correct and three wrong rationales exactly matched for all three languages. See tmp/assessment-quality/brain050607-retest-diff.log."
+    },
+    {
+      "id": "CJD07-EDU02",
+      "severity": "minor",
+      "anchor": "pulvinar-comparator CSF alternative",
+      "observed": "FLAIR CSF comparator is an implausible reference compared with grey-matter comparator.",
+      "impact": "Unnecessarily easy distractor.",
+      "required": "Plausible comparable grey-matter reference, exact specific feedback.",
+      "status": "CLOSED_RETESTED",
+      "retest": "Root read actual repaired DE/EN/FA fields; canonical and inline question/options/correct and three wrong rationales exactly matched for all three languages. See tmp/assessment-quality/brain050607-retest-diff.log."
+    }
+  ],
+  "primaryEvidenceRead": [
+    "Original Vitali2011 90-patient study indexed abstract and actual full results/discussion read fresh, PMID21471469/PMC3100134.",
+    "Original Collie2003 86 neuropathologically confirmed vCJD cases, full indexed abstract and conclusion read fresh, PMID13679271/PMC7973975.",
+    "Current official CDC CJD2026 criteria read: MRI component distinct from definite diagnosis."
+  ],
+  "retest": {
+    "read": "All changed fields reread, including final HIV ring-enhancing FA feedback and natural DE bilateral pulvinar comparison.",
+    "inline": "Nine actual language/inline comparisons passed",
+    "limits": "No full retained PDF/media review or measured difficulty validation; production and browser checks remain separate."
+  }
+}

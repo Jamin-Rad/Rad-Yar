@@ -39,23 +39,29 @@ const questions = [
   },
 ]
 
-export const FMD_QUESTIONS = Object.fromEntries(['de', 'en', 'fa'].map(lang => [lang,
-  questions.map(item => ({
-    id: `fmd-${item.id}-${lang}`,
-    question: item.question[lang],
-    options: item.options.map((text, index) => ({ id: ['A', 'B', 'C', 'D'][index], text: text[lang] })),
-    correct: ['A', 'B', 'C', 'D'][item.correct],
-    explanation: item.explanation[lang],
-    tags: ['fibromuskulaere-dysplasie'],
-    fach: 'abdomen',
-  })),
-]))
+const FMD_SOURCE='https://journals.sagepub.com/doi/10.1177/1358863X18821816'
+const revisions={
+ 'focal-fmd':{options:[
+ L('Fokale FMD bleibt möglich; die Läsion im Gefäßkontext von anderen Stenoseursachen abgrenzen.','Focal FMD remains possible; distinguish it from other stenosis causes in vascular context.','FMD فوکال همچنان ممکن است؛ با توجه به زمینهٔ عروقی آن را از علل دیگر تنگی جدا کنید.'),
+ L('Fehlendes Beading spricht für eine reine Tortuosität als ausreichende FMD-Diagnose.','Absent beading favours isolated tortuosity as sufficient for an FMD diagnosis.','نبود الگوی مهره‌ای به نفع پیچ‌خوردگی منفرد به‌عنوان معیار کافی تشخیص FMD است.'),
+ L('Die tubuläre Form bestätigt eine atherosklerotische Plaque auch ohne weitere Plaquezeichen.','The tubular shape confirms atherosclerotic plaque even without other plaque features.','شکل لوله‌ای حتی بدون نشانه‌های دیگر پلاک، پلاک آترواسکلروتیک را تأیید می‌کند.'),
+ L('Das fehlende Beading erlaubt eine Dissektion als gesicherte Ursache der Stenose.','Absent beading establishes dissection as the cause of the stenosis.','نبود الگوی مهره‌ای، دیسکسیون را علت قطعی تنگی مشخص می‌کند.')],
+ wrong:[null,L('Tortuosität allein genügt nicht; eine fokale oder multifokale Läsion ist erforderlich.','Tortuosity alone is insufficient; a focal or multifocal lesion is required.','پیچ‌خوردگی به‌تنهایی کافی نیست؛ ضایعهٔ فوکال یا چندکانونی لازم است.'),L('Die Form allein beweist keine Plaque; Lokalisation und weitere Gefäßzeichen mitbeurteilen.','Shape alone does not prove plaque; assess location and additional vascular features.','شکل به‌تنهایی پلاک را ثابت نمی‌کند؛ محل و دیگر نشانه‌های عروقی را بررسی کنید.'),L('Fehlendes Beading ist kein direkter Nachweis einer Dissektion.','Absent beading does not directly demonstrate dissection.','نبود الگوی مهره‌ای شاهد مستقیم دیسکسیون نیست.')]},
+ 'imaging-sequence':{options:[
+ L('CTA initial, kontrastverstärkte MRA bei CTA-Kontraindikation; DSA, wenn ihr Ergebnis die Versorgung beeinflussen kann.','Initial CTA, contrast-enhanced MRA when CTA is contraindicated; DSA if its result may affect care.','ابتدا CTA و در صورت منع آن MRA با کنتراست؛ DSA اگر نتیجه بتواند بر مراقبت اثر بگذارد.'),
+ L('Native MRA als Standard-Ersttest, anschließend CTA nur bei positivem Befund.','Unenhanced MRA as the standard initial test, followed by CTA only if positive.','MRA بدون تزریق به‌عنوان بررسی استاندارد اولیه و سپس CTA فقط در صورت نتیجهٔ مثبت.'),
+ L('Duplex als Ersttest auch ohne FMD-Erfahrung des Zentrums, CTA erst nach Intervention.','Duplex first even without centre-specific FMD expertise, with CTA only after intervention.','ابتدا داپلر حتی بدون تجربهٔ اختصاصی مرکز در FMD و CTA فقط پس از مداخله.'),
+ L('DSA initial bei klinischem Verdacht, CTA/MRA nur zur Nachkontrolle.','Initial DSA for clinical suspicion, with CTA/MRA reserved for follow-up.','در شک بالینی ابتدا DSA و CTA/MRA فقط برای پیگیری.')],
+ wrong:[null,L('Der Konsens bevorzugt CTA; als Alternative nennt er kontrastverstärkte MRA, nicht diese allgemeine native Abfolge.','Consensus favours CTA and identifies contrast-enhanced MRA as the alternative, not this general unenhanced sequence.','اجماع CTA را ترجیح می‌دهد و MRA با تزریق را جایگزین می‌داند، نه این ترتیب عمومی بدون تزریق.'),L('Duplex als erste FMD-Diagnostik ist spezialisierten Zentren mit großer Erfahrung vorbehalten.','First-line duplex for FMD is reserved for specialised centres with extensive experience.','داپلر خط اول برای FMD به مراکز تخصصی با تجربهٔ گسترده محدود است.'),L('Die invasive DSA wird nicht als allgemeiner Ersttest empfohlen; ein erwarteter Einfluss auf die Versorgung ist entscheidend.','Invasive DSA is not the general first test; an expected impact on care is important.','DSA تهاجمی، بررسی اولیهٔ همگانی نیست؛ انتظار اثر بر مراقبت اهمیت دارد.')]}
+}
+const morphologyWrong=[null,L('Ostiale verkalkte Plaques passen eher zu Atherosklerose als zum multifokalen Beading.','Calcified ostial plaques favour atherosclerosis rather than multifocal beading.','پلاک کلسیفیهٔ دهانه‌ای بیشتر با آترواسکلروز سازگار است تا الگوی مهره‌ای چندکانونی.'),L('Dissektion allein reicht nicht für die FMD-Diagnose.','Dissection alone is insufficient for FMD diagnosis.','دیسکسیون به‌تنهایی برای تشخیص FMD کافی نیست.'),L('Multifokales Beading enthält Stenosen und Dilatationen; reine Dilatation erfüllt dieses Muster nicht.','Multifocal beading includes stenoses and dilatations; pure dilation does not match that pattern.','الگوی مهره‌ای چندکانونی شامل تنگی و اتساع است؛ اتساع خالص با آن سازگار نیست.')]
+export const FMD_QUESTIONS=Object.fromEntries(['de','en','fa'].map(lang=>[lang,questions.map(q=>{const r=revisions[q.id];const feedback=r?.wrong||morphologyWrong;return{id:`fmd-${q.id}-${lang}`,question:q.question[lang],options:(r?.options||q.options).map((v,i)=>({id:'ABCD'[i],text:v[lang]})),correct:'ABCD'[q.correct],explanation:q.explanation[lang],wrongExplanations:Object.fromEntries(feedback.flatMap((v,i)=>v?[['ABCD'[i],v[lang]]]:[])),source:FMD_SOURCE,tags:['fibromuskulaere-dysplasie'],fach:'abdomen'}})]))
 
 export const FMD_FLASHCARDS = [
   { id: 'fmd-multifocal-pattern', topicId: 'fibromuskulaere-dysplasie', category: L('Morphologie', 'Morphology', 'مورفولوژی'), front: L('Was kennzeichnet das multifokale FMD-Muster?', 'What characterizes multifocal FMD?', 'الگوی چندکانونی FMD با چه چیزی مشخص می‌شود؟'), answer: L('Wechselnde Stenosen und Dilatationen („Perlschnurmuster“), häufig in mittleren oder distalen Nierenarterienabschnitten.', 'Alternating stenoses and dilatations (“string-of-beads” pattern), often in the middle or distal renal artery.', 'تنگی‌ها و گشادشدگی‌های متناوب («الگوی مهره‌ای»)، اغلب در بخش‌های میانی یا دیستال شریان کلیوی.'), explanation: L('Die fokale Form kann anders aussehen; fehlendes Beading schließt FMD nicht aus.', 'The focal form may look different; absence of beading does not exclude FMD.', 'شکل فوکال می‌تواند ظاهر دیگری داشته باشد؛ نبود الگوی مهره‌ای FMD را رد نمی‌کند.') },
   { id: 'fmd-focal-vs-multifocal', topicId: 'fibromuskulaere-dysplasie', category: L('Formen', 'Patterns', 'الگوها'), front: L('Welche zwei Läsionsmuster kann FMD verursachen?', 'Which two lesion patterns can FMD cause?', 'FMD چه دو الگوی ضایعه‌ای می‌تواند ایجاد کند؟'), answer: L('Fokale und multifokale Läsionen. Aneurysma, Dissektion oder Tortuosität allein sichern die Diagnose nicht.', 'Focal and multifocal lesions. Aneurysm, dissection or tortuosity alone does not establish the diagnosis.', 'ضایعات فوکال و چندکانونی. آنوریسم، دیسکسیون یا پیچ‌خوردگی به‌تنهایی تشخیص را ثابت نمی‌کند.'), explanation: L('Für die Diagnose braucht es eine fokale oder multifokale FMD-Läsion.', 'Diagnosis requires a focal or multifocal FMD lesion.', 'برای تشخیص، وجود ضایعهٔ فوکال یا چندکانونی FMD لازم است.') },
   { id: 'fmd-imaging-limits', topicId: 'fibromuskulaere-dysplasie', category: L('Bildgebung', 'Imaging', 'تصویربرداری'), front: L('Was sagen CTA/MRA zur hämodynamischen Bedeutung einer renalen FMD-Stenose?', 'What do CTA/MRA show about the haemodynamic significance of renal FMD stenosis?', 'CTA/MRA دربارهٔ اهمیت همودینامیک تنگی FMD کلیوی چه چیزی نشان می‌دهند؟'), answer: L('Sie zeigen die Gefäßmorphologie, bestimmen aber allein die hämodynamische Bedeutung nicht zuverlässig.', 'They depict vascular morphology but do not reliably determine haemodynamic significance by themselves.', 'مورفولوژی عروق را نشان می‌دهند، اما به‌تنهایی اهمیت همودینامیک را با اطمینان تعیین نمی‌کنند.'), explanation: L('Die klinische Einordnung benötigt den spezialisierten Kontext; diese Karte gibt keine Interventionsindikation.', 'Clinical interpretation requires specialist context; this card does not provide an indication for intervention.', 'تفسیر بالینی به زمینهٔ تخصصی نیاز دارد؛ این کارت اندیکاسیون مداخله ارائه نمی‌کند.') },
-]
+].map(card=>({...card,source:FMD_SOURCE}))
 
 export const FMD_FLASHCARD_TOPIC = {
   id: 'fibromuskulaere-dysplasie',
@@ -67,3 +73,5 @@ export const FMD_FLASHCARD_TOPIC = {
   title: L('Fibromuskuläre Dysplasie', 'Fibromuscular dysplasia', 'دیسپلازی فیبروماسکولار'),
   subtitle: L('fokal · multifokal · Bildgebungsgrenzen', 'focal · multifocal · imaging limits', 'فوکال · چندکانونی · محدودیت‌های تصویربرداری'),
 }
+
+export const FMD_LEARNING_GOALS=[L('Multifokales Beading und typische renale Verteilung von ostialen Plaques unterscheiden.','Distinguish multifocal beading and typical renal distribution from ostial plaque.','الگوی مهره‌ای چندکانونی و توزیع تیپیک کلیوی را از پلاک دهانه‌ای جدا کنید.'),L('Fokale FMD und die diagnostischen Grenzen isolierter Begleitbefunde einordnen.','Interpret focal FMD and the diagnostic limits of isolated associated findings.','FMD فوکال و محدودیت تشخیصی یافته‌های همراه منفرد را تفسیر کنید.'),L('Initiale nichtinvasive Diagnostik, selektive DSA und hämodynamische Aussage unterscheiden.','Distinguish initial non-invasive testing, selective DSA and haemodynamic assessment.','بررسی غیرتهاجمی اولیه، DSA انتخابی و ارزیابی همودینامیک را جدا کنید.')]

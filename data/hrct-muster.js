@@ -1,3 +1,5 @@
+import { HRCT_CLINICAL_REVISIONS } from './hrctClinicalRevisions'
+
 const L = (de, en, fa) => ({ de, en, fa })
 
 const img = (src, de, en, fa, rid, pdfSource) => ({
@@ -233,9 +235,42 @@ export const HRCT_LESSONS = {
         id: 'wand', icon: '📏', title: L('Wandanalyse & Inhalt', 'Wall Analysis & Contents', 'تحلیل دیواره و محتوا'),
         lead: L('Wanddicke ist nur ein Hinweis; Kontur, umgebende Läsion, Inhalt und klinischer Verlauf sind ebenso wichtig.', 'Wall thickness is only a clue; contour, surrounding lesion, contents and clinical course are equally important.', 'ضخامت دیواره فقط یک سرنخ است؛ کانتور، ضایعه اطراف، محتوا و سیر بالینی نیز مهم‌اند.'),
         cards: [
-          { title: L('< 4 mm', '<4 mm', '<۴ میلی‌متر'), text: L('Eher benigne, aber kein sicherer Ausschluss einer malignen oder infektiösen Ursache.', 'More often benign, but does not safely exclude malignancy or infection.', 'بیشتر خوش‌خیم، اما بدخیمی یا عفونت را با قطعیت رد نمی‌کند.') },
-          { title: L('4–15 mm', '4–15 mm', '۴–۱۵ میلی‌متر'), text: L('Indeterminierter Bereich; unregelmäßige Innenkontur und noduläre Wandanteile erhöhen den Verdacht.', 'Indeterminate range; an irregular inner contour and nodular wall components increase suspicion.', 'محدوده نامعین؛ کانتور داخلی نامنظم و اجزای ندولار دیواره شک را افزایش می‌دهند.') },
-          { title: L('> 15 mm', '>15 mm', '>۱۵ میلی‌متر'), text: L('Häufiger maligne, insbesondere bei solitärer dickwandiger irregulärer Kaverne.', 'More often malignant, especially in a solitary thick-walled irregular cavity.', 'اغلب بدخیم‌تر، به‌ویژه کاویتی منفرد با دیواره ضخیم و نامنظم.') },
+          {
+  "title": {
+    "de": "Maximale Wanddicke",
+    "en": "Maximum wall thickness",
+    "fa": "حداکثر ضخامت دیواره"
+  },
+  "text": {
+    "de": "Die dickste Stelle dokumentieren. Ein dünner Wandabschnitt oder ein Mittelwert darf fokale Verdickungen nicht verdecken.",
+    "en": "Document the thickest point. A thin wall segment or a mean must not obscure focal thickening.",
+    "fa": "ضخیم‌ترین بخش را ثبت کنید. قسمت نازک یا میانگین نباید ضخیم‌شدگی کانونی را پنهان کند."
+  }
+},
+          {
+  "title": {
+    "de": "Kontur und Begleitbefunde",
+    "en": "Contour and associated findings",
+    "fa": "حاشیه و یافته‌های همراه"
+  },
+  "text": {
+    "de": "Noduläre Wandanteile, Spikulation und zentrilobuläre Satelliten mitbeurteilen. Kein Einzelmerkmal legt die Ursache sicher fest.",
+    "en": "Assess mural nodules, spiculation and centrilobular satellites. No single feature reliably establishes the cause.",
+    "fa": "ندول‌های دیواره، اسپیکولاسیون و ندول‌های ماهواره‌ای سنترلوبولار را بررسی کنید. هیچ ویژگی منفردی علت را با اطمینان تعیین نمی‌کند."
+  }
+},
+          {
+  "title": {
+    "de": "Voraufnahmen und Klinik",
+    "en": "Prior imaging and clinical context",
+    "fa": "تصاویر قبلی و زمینهٔ بالینی"
+  },
+  "text": {
+    "de": "Neu entstandene oder wachsende solide Wandanteile sind gezielt abzuklären. Die historischen Gruppen ≤4, 5–15 und >15 mm stammen aus einer Röntgenserie; sie sind keine universelle CT-Managementregel.",
+    "en": "New or enlarging solid mural components require targeted evaluation. The historical ≤4, 5–15 and >15 mm groups derive from a radiographic series; they are not a universal CT management rule.",
+    "fa": "بخش جامد جدید یا در حال رشد دیواره نیازمند بررسی هدفمند است. گروه‌های قدیمی ≤۴، ۵–۱۵ و >۱۵ میلی‌متر از سری رادیوگرافی آمده‌اند و قاعدهٔ همگانی مدیریت CT نیستند."
+  }
+},
           { title: L('Luft-Flüssigkeitsspiegel', 'Air-fluid level', 'سطح هوا-مایع'), text: L('Eine dickwandige Kaverne mit Luft-Flüssigkeitsspiegel kann zusammen mit Fieber und Leukozytose an einen Lungenabszess denken lassen; das Muster ist nicht diagnosespezifisch.', 'Fever and leukocytosis together with an air-fluid level in a thick-walled cavity may suggest a lung abscess; the pattern is not diagnostic.', 'سطح هوا-مایع در کاویتی دیواره‌ضخیم، همراه تب و لکوسیتوز، می‌تواند آبسهٔ ریه را مطرح کند؛ این الگو تشخیص‌گذار نیست.') },
         ],
         images: [img('/hrct/dichteminderung/image31.jpeg', 'Irreguläre dickwandige Kaverne', 'Irregular thick-walled cavity', 'کاویتی با دیواره ضخیم و نامنظم')],
@@ -395,13 +430,21 @@ const CAVITY_DEFINITIONS = [
 
 export const HRCT_QUESTIONS = Object.fromEntries(['de', 'en', 'fa'].map(lang => [
   lang,
-  Object.entries(quizFacts).flatMap(([topicId, facts]) => facts.map((fact, index) =>
-    Q(String(index + 1).padStart(2, '0'), topicId, lang, (QUESTION_ALTERNATIVES[`${topicId}-${String(index + 1).padStart(2, '0')}`]?.question || fact[0])[lang], fact[1].map((option, optionIndex) => {
-      const alternative = QUESTION_ALTERNATIVES[`${topicId}-${String(index + 1).padStart(2, '0')}`]
+  Object.entries(quizFacts).flatMap(([topicId, facts]) => facts.map((fact, index) => {
+    const number = String(index + 1).padStart(2, '0')
+    const revision = HRCT_CLINICAL_REVISIONS[`${topicId}-${number}`]
+    if (revision) return {
+      ...Q(number, topicId, lang, revision.question[lang], revision.options.map(option => option[lang]), revision.correct, revision.explanation[lang]),
+      source: revision.source,
+      difficulty: revision.difficulty,
+      wrongExplanations: Object.fromEntries(revision.wrong.flatMap((text, i) => i === revision.correct ? [] : [[String.fromCharCode(65 + i), text[lang]]])),
+    }
+    const alternative = QUESTION_ALTERNATIVES[`${topicId}-${number}`]
+    return Q(number, topicId, lang, (alternative?.question || fact[0])[lang], fact[1].map((option, optionIndex) => {
       if (topicId === 'hrct-dichteminderung' && [2, 11].includes(index)) return CAVITY_DEFINITIONS[optionIndex][lang]
       return alternative?.index === optionIndex ? alternative.text[lang] : option[lang]
     }), fact[2], fact[3][lang])
-  )),
+  })),
 ]))
 
 const flashExtra = {
@@ -531,3 +574,71 @@ for (const lesson of Object.values(HRCT_LESSONS)) {
     cards.push(card)
   }
 }
+
+// Replace the corresponding saved retrieval cards; never leave a conflicting older card active.
+for (const [key, revision] of Object.entries(HRCT_CLINICAL_REVISIONS)) {
+  const split = key.lastIndexOf('-')
+  const id = key.slice(0, split) + '-fc-' + key.slice(split + 1)
+  const card = HRCT_FLASHCARDS.find(item => item.id === id)
+  if (!card) throw new Error('Missing HRCT revision card: ' + id)
+  Object.assign(card, { front: revision.front, answer: revision.answer, explanation: revision.explanation, source: revision.source })
+}
+
+HRCT_LESSONS['hrct-dichteminderung'].clinicalReferences = [
+  {
+    "title": {
+      "de": "Fleischner Society: Thorax-Begriffe (2024)",
+      "en": "Fleischner Society: thoracic terminology (2024)",
+      "fa": "انجمن فلایشنر: اصطلاحات قفسهٔ سینه (۲۰۲۴)"
+    },
+    "url": "https://doi.org/10.1148/radiol.232558"
+  },
+  {
+    "title": {
+      "de": "Woodring: historische Röntgenserie, 65 Kavitäten (1980)",
+      "en": "Woodring: historical radiographic series, 65 cavities (1980)",
+      "fa": "وودرینگ: سری قدیمی رادیوگرافی، ۶۵ کاویتی (۱۹۸۰)"
+    },
+    "url": "https://pubmed.ncbi.nlm.nih.gov/6779538/"
+  },
+  {
+    "title": {
+      "de": "Nin: CT-Begleitbefunde bei solitären Kavitäten (2016)",
+      "en": "Nin: associated CT findings in solitary cavities (2016)",
+      "fa": "نین: یافته‌های همراه CT در کاویتی منفرد (۲۰۱۶)"
+    },
+    "url": "https://pubmed.ncbi.nlm.nih.gov/27170221/"
+  },
+  {
+    "title": {
+      "de": "Mascalchi: Verlauf von Tumoren an zystischen Lufträumen (2015)",
+      "en": "Mascalchi: evolution of cancers associated with cystic airspaces (2015)",
+      "fa": "ماسکالکی: سیر تومورهای همراه فضای هوایی کیستیک (۲۰۱۵)"
+    },
+    "url": "https://pubmed.ncbi.nlm.nih.gov/25279848/"
+  },
+  {
+    "title": {
+      "de": "Roberts: CT-Muster des Aspergilloms (1987)",
+      "en": "Roberts: CT appearances of aspergilloma (1987)",
+      "fa": "رابرتس: الگوهای CT آسپرژیلوم (۱۹۸۷)"
+    },
+    "url": "https://pubmed.ncbi.nlm.nih.gov/3628758/"
+  },
+  {
+    "title": {
+      "de": "Woodring: radiografische TB-Muster (1986)",
+      "en": "Woodring: radiographic TB patterns (1986)",
+      "fa": "وودرینگ: الگوهای رادیوگرافیک سل (۱۹۸۶)"
+    },
+    "url": "https://pubmed.ncbi.nlm.nih.gov/3484866/"
+  },
+  {
+    "title": {
+      "de": "Moreira: 252 Aspirationsabszesse (2006)",
+      "en": "Moreira: 252 aspiration lung abscesses (2006)",
+      "fa": "موریرا: ۲۵۲ آبسهٔ ریوی آسپیراسیون (۲۰۰۶)"
+    },
+    "url": "https://pubmed.ncbi.nlm.nih.gov/17273583/"
+  }
+]

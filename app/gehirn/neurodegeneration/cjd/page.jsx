@@ -85,7 +85,7 @@ function Check({ lang }) {
   return <section className={styles.quiz} aria-labelledby="cjd-self-check">
     <h3 id="cjd-self-check">{t}</h3><p>{value(C.assessment.question, lang)}</p>
     <div className={styles.options}>{C.assessment.options.map((option, index) => <button key={index} type="button" aria-pressed={answer === index} onClick={() => setAnswer(index)}>{value(option, lang)}</button>)}</div>
-    {answer !== null ? <p role="status" className={styles.feedback}>{value(answer === C.assessment.correctIndex ? C.assessment.feedback : C.assessment.retry, lang)}</p> : null}
+    {answer !== null ? <p role="status" className={styles.feedback}>{value(C.assessment.optionFeedback?.[answer] ?? (answer === C.assessment.correctIndex ? C.assessment.feedback : C.assessment.retry), lang)}</p> : null}
   </section>
 }
 

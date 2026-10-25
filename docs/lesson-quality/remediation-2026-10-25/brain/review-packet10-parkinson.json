@@ -1,0 +1,49 @@
+{
+  "date": "2026-10-25",
+  "reviewer": "/root; independent of brain_remediation",
+  "status": "ACCEPT_BOUNDED_NEW_ASSESSMENT_POOL_AFTER_RETEST",
+  "scope": "Three actual MCQ/card triads read DE/EN/FA including all alternatives, keys and specific feedback. Actual connected teaching paragraphs read for parity. No original dedicated global pool existed; other generic neurodegeneration pools are not accepted.",
+  "primaryEvidence": [
+    {
+      "url": "https://doi.org/10.1371/journal.pone.0231010",
+      "read": "Fresh actual original Lee2020 results diagnostic-confidence section, motion-artifact figure captions and discussion; no numeric score/accuracy transferred."
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8323030/",
+      "read": "Fresh actual original Prasuhn2021 abstract, methods, acquisition and discussion;44PD/50controls routineSWI limitations, no universal performance inferred."
+    },
+    {
+      "url": "https://www.ema.europa.eu/en/medicines/human/EPAR/datscan",
+      "read": "Current official indication: presynaptic terminals, cannot distinguish PD/MSA/PSP."
+    },
+    {
+      "url": "https://doi.org/10.2967/jnumed.124.268754",
+      "read": "Actual official2024 SNMMI/EANM PDF IV.A.2 regional glucose patterns, treatment effects and complementary role; no particular unseen case PET pattern asserted."
+    }
+  ],
+  "findings": [
+    {
+      "id": "PD10-SRC01",
+      "severity": "minor",
+      "issue": "Motion-specific case initially cited only broader Prasuhn study.",
+      "repair": "Lee2020 original motion/confidence evidence now directly attached to question, card and visible lesson reference.",
+      "status": "CLOSED_RETESTED"
+    },
+    {
+      "id": "PD10-EDU01",
+      "severity": "minor",
+      "issue": "WrongD implied ipsilateral clinical/nigral relation.",
+      "repair": "Wrong alternative now infers unilateral imaging category from clinical asymmetry without a side assertion; feedback explains insufficient imaging evidence.",
+      "status": "CLOSED_RETESTED"
+    },
+    {
+      "id": "PD10-LNG01",
+      "severity": "minor",
+      "issue": "FA technical-indeterminate choice unnatural.",
+      "repair": "Natural FA assessment wording read in actual canonical and inline option.",
+      "status": "CLOSED_RETESTED"
+    }
+  ],
+  "retest": "Six actual inline-language comparisons exactly match stem/options/key/all feedback; technical question/card source and visible lesson reference verified. Basic modality discrimination plus applied technical-confidence/interpretive-limit items; difficulty not psychometrically calibrated.",
+  "limits": "No retained PDF77–78 diagnostic-media acceptance; real browser and production build remain pending."
+}

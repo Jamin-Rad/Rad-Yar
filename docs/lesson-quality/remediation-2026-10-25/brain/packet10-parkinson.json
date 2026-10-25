@@ -1,0 +1,41 @@
+{
+  "date": "2026-10-25",
+  "status": "AUTHOR_READY_INDEPENDENT_REVIEW_PENDING",
+  "route": "/gehirn/neurodegeneration/parkinson",
+  "questionTriads": 3,
+  "cardTriads": 3,
+  "files": [
+    "data/assessmentQuality/brain.js aq-parkinson block",
+    "data/gehirnParkinsonLesson.js two active inline checks"
+  ],
+  "goals": [
+    "Report technically indeterminate nigrosome visibility",
+    "Interpret reduced DAT binding without specific PD/MSA/PSP differentiation",
+    "Distinguish additional FDG metabolic pattern information from transporter/receptor/amyloid measurements"
+  ],
+  "keys": [
+    "technical-confidence:C",
+    "dat-limits:B",
+    "fdg-measurement:A"
+  ],
+  "sourcesRead": [
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8323030/",
+      "scope": "Fresh full original abstract, MRI methods and interpretation/limitations:44PD50controls,standard clinicalSWI poor diagnostic performance. No universal accuracy or exclusion from absent/visible sign inferred."
+    },
+    {
+      "url": "https://www.ema.europa.eu/en/documents/product-information/datscan-epar-product-information_en.pdf",
+      "scope": "Fresh current official product information section4.1 and indication/limits:adult presynaptic terminals; cannot distinguish PD/MSA/PSP. No dose/protocol authored."
+    },
+    {
+      "url": "https://snmmi.org/common/Uploaded%20files/Web/Clinical%20Practice/Procedure%20Standards/2024/SNMMI_EANM%20Brain%20F18%20FDG%20PET%20Imaging%202.0%20JNM.pdf",
+      "scope": "Fresh official2024 sectionIV.A.2:regional glucose patterns complement PD/atypical syndrome differentiation; relative increases/decreases and treatment effects. No specific patient PET pattern or management algorithm authored."
+    }
+  ],
+  "checks": "Actual2 inline checks ×3languages fully equal canonical stem/options/key/each feedback; actual routeSSR3/3.",
+  "limits": [
+    "Allnewcases self-contained text, no image finding claim. Retained PDF77–78 images/case diagnosis not rereviewed and not accepted by this packet.",
+    "Topic had no dedicated global pool; no generic neurodegeneration bank accepted by this addition.",
+    "Independent clinical/language and browser review pending; draft excluded from published snapshot until accepted."
+  ]
+}

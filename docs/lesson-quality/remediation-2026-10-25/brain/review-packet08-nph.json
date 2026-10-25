@@ -1,0 +1,82 @@
+{
+  "date": "2026-10-25",
+  "reviewer": "/root/design_inventory",
+  "author": "/root/brain_remediation",
+  "status": "ACCEPT_BOUNDED_ORIGINAL_POOL_AFTER_RETEST",
+  "scope": {
+    "route": "/gehirn/anatomie/normaldruckhydrozephalus",
+    "questionTriadsRead": 12,
+    "localizedQuestionsRead": 36,
+    "cardTriadsRead": 15,
+    "localizedCardsRead": 45,
+    "lesson": "All clinical data prose, case-caption/structured-analysis text and actual consumer source notes read comparatively DE/EN/FA. No image interpretation acceptance."
+  },
+  "actualSourceHash": "0f951bede3e9305a3498a809b829d7038ac08a08f432373a7b4215ef89a25424",
+  "goals": {
+    "count": 5,
+    "all12QuestionIdsMapped": true,
+    "all15CardIdsMapped": true,
+    "assessment": "Mix of clinical profile/measurement retrieval, pattern differentiation, report interpretation and tap-test selection. Case text self-contained. Supporting signs are explicitly limited; no forced numeric item quota."
+  },
+  "findings": [
+    {
+      "id": "NPH08-LNG-001",
+      "severity": "minor",
+      "issue": "FA flow-void wording could imply absent flow instead of flow-related signal loss.",
+      "status": "CLOSED_ACTUAL_MODULE_RETEST",
+      "evidence": "Actual question09 stem/option, card09 and lesson occurrences now use افت سیگنال ناشی از جریان (flow void). Existing question04 option already clear at baseline."
+    },
+    {
+      "id": "NPH08-SRC-002",
+      "severity": "minor",
+      "issue": "Cingulate posterior/anterior comparison needs explicit guideline attribution and paramedian plane precision.",
+      "status": "CLOSED_ACTUAL_MODULE_AND_CONSUMER_RETEST",
+      "evidence": "Japanese2021 CQ3 explicitly supports posterior narrower than anterior. Actual card/row paramedian; card source single valid CQ3 URL; visible page source note retains Adachi plus CQ3."
+    },
+    {
+      "id": "NPH08-LNG-SRC-003",
+      "severity": "minor",
+      "issue": "Generic appearance row DE/FA did not clearly describe signal loss and added unsupported CISS sequence generalisation.",
+      "status": "CLOSED_ACTUAL_MODULE_RETEST",
+      "evidence": "All three actual appearance cells now flow-related signal loss on sagittal T2. CISS removed from this generic row."
+    }
+  ],
+  "primaryEvidence": [
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7905302/",
+      "read": "Original Japanese2021 guideline CQ3/CQ6/CQ7, standard CA plane, DESH/atrophy, cingulate comparison, negative tap false-negatives, drainage uncertainty and shunt selection/complications read."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/17041793/",
+      "read": "Adachi2006 original abstract: small 10-iNPH sample among comparator groups; posterior tight cingulate sulcus on paramedian sagittal MRI. No stand-alone accuracy claim transferred."
+    },
+    {
+      "url": "https://edoc.unibas.ch/entities/publication/17349cc5-2fa6-4e20-aec2-92803e4edc2c",
+      "read": "Krauss1997 original prospective abstract: qualitative conventional-T2 flow void not a reliable individual shunt-selection predictor; not quantitative PC-MRI or CISS."
+    },
+    {
+      "url": "https://www.aans.org/patients/conditions-treatments/adult-onset-hydrocephalus/",
+      "read": "Official supplementary clinical chronology source: gait often earliest/most evident; not attributed to a new study."
+    }
+  ],
+  "gates": {
+    "SRC": "PASS_BOUNDED_NAMED_CLAIMS",
+    "EDU": "PASS_BOUNDED_POOL",
+    "LNG": "PASS_COMPARATIVE_POOL_AND_LESSON_TEXT",
+    "ASM": "PASS_ACTUAL_MODULE_STRUCTURE_AND_GOAL_MAP",
+    "VIS": "NOT_REVIEWED",
+    "UX": "NOT_REVIEWED",
+    "REV": "INDEPENDENT_READ_ONLY"
+  },
+  "technical": {
+    "actualModuleBundled": true,
+    "keysAndIdsStable": true,
+    "allWrongFeedbackPresent": true,
+    "coverageResolved": true
+  },
+  "limits": [
+    "No independent browser interaction or rendered language/theme QA in this packet; author SSR is not treated as independent browser evidence.",
+    "Retained Radiopaedia73685 frames, CISS/T2 label and midsagittal case label not visually re-adjudicated; no claim of correct scan plane/frame selection or licensing review.",
+    "No complete source-PDF remapping or global scientific certification; physician release approval remains separate."
+  ]
+}

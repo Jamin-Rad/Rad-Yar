@@ -91,6 +91,12 @@ export default function AvnHueftePage() {
     href: 'https://pubmed.ncbi.nlm.nih.gov/31866252/',
     citation: 'Yoon BH et al. J Arthroplasty. 2020;35(4):933–940. doi:10.1016/j.arth.2019.11.029. PMID:31866252.',
     scope: t(L('Primärquelle für den unten separat markierten Vergleich; der Quelltext der PDF wird dadurch nicht stillschweigend umgedeutet.', 'Primary source for the separately marked comparison below; this does not silently reinterpret the PDF source text.', 'منبع اولیه برای مقایسهٔ جداگانهٔ زیر است؛ متن منبع PDF به‌طور ضمنی بازتفسیر نمی‌شود.')),
+  }, {
+    tag: 'JBJS Br · 2000',
+    title: t(L('Primäres MRT-Muster und begleitendes Ödem', 'Primary MRI pattern and associated oedema', 'الگوی اولیهٔ MRI و ادم همراه')),
+    href: 'https://pubmed.ncbi.nlm.nih.gov/10990307/',
+    citation: 'Kim YM et al. J Bone Joint Surg Br. 2000;82(6):837–841. DOI 10.1302/0301-620x.82b6.10740.',
+    scope: t(L('200-Patienten-Studie: ein abnormes Randband war das frühe MRT-Muster; Ödem ist nicht mit dem nekrotischen Herd gleichzusetzen.', '200-patient study: an abnormal interface band was the early MRI pattern; oedema is not equivalent to the necrotic lesion.', 'مطالعهٔ ۲۰۰ بیمار: نوار غیرطبیعی محل تماس، الگوی اولیهٔ MRI بود؛ ادم با خود کانون نکروتیک یکسان نیست.')),
   }]
   return <StandardLessonShell lessonId={lesson.id} lang={lang} title={t(lesson.title)} author="RadYar" heroImageAlt={t(L('Nichtdiagnostisches Schema der im PDF beschriebenen Epiphysennekrose und ARCO-Bildkorrelate.', 'Non-diagnostic schematic of epiphyseal necrosis and the ARCO imaging correlates described in the PDF.', 'شماتیک غیرتشخیصی نکروز اپی‌فیز و همبسته‌های تصویربرداری ARCO توصیف‌شده در PDF.'))} syncHashNavigation
     breadcrumbs={[{ label: 'RadYar', href: langHref('/') }, { label: 'MSK', href: langHref('/lernen/msk') }, { label: t(lesson.title) }]}

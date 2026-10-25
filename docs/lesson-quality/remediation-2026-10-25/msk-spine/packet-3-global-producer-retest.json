@@ -1,0 +1,70 @@
+{
+  "status": "PASS",
+  "records": [
+    {
+      "id": "kreuzbaender-de-03",
+      "status": "EXACT_GLOBAL_PRODUCER_MATCH"
+    },
+    {
+      "id": "kreuzbaender-en-03",
+      "status": "EXACT_GLOBAL_PRODUCER_MATCH"
+    },
+    {
+      "id": "kreuzbaender-fa-03",
+      "status": "EXACT_GLOBAL_PRODUCER_MATCH"
+    },
+    {
+      "id": "kreuzbaender-de-04",
+      "status": "EXACT_GLOBAL_PRODUCER_MATCH"
+    },
+    {
+      "id": "kreuzbaender-en-04",
+      "status": "EXACT_GLOBAL_PRODUCER_MATCH"
+    },
+    {
+      "id": "kreuzbaender-fa-04",
+      "status": "EXACT_GLOBAL_PRODUCER_MATCH"
+    },
+    {
+      "id": "kreuzbaender-de-01",
+      "status": "EXACT_GLOBAL_PRODUCER_MATCH"
+    },
+    {
+      "id": "kreuzbaender-en-01",
+      "status": "EXACT_GLOBAL_PRODUCER_MATCH"
+    },
+    {
+      "id": "kreuzbaender-fa-01",
+      "status": "EXACT_GLOBAL_PRODUCER_MATCH"
+    },
+    {
+      "id": "meniskus-de-18",
+      "status": "EXACT_GLOBAL_PRODUCER_MATCH"
+    },
+    {
+      "id": "meniskus-en-18",
+      "status": "EXACT_GLOBAL_PRODUCER_MATCH"
+    },
+    {
+      "id": "meniskus-fa-18",
+      "status": "EXACT_GLOBAL_PRODUCER_MATCH"
+    },
+    {
+      "id": "meniskus-21",
+      "status": "EXACT_GLOBAL_PRODUCER_MATCH"
+    },
+    {
+      "id": "meniskus-de-10",
+      "status": "EXACT_GLOBAL_PRODUCER_MATCH"
+    },
+    {
+      "id": "meniskus-en-10",
+      "status": "EXACT_GLOBAL_PRODUCER_MATCH"
+    },
+    {
+      "id": "meniskus-fa-10",
+      "status": "EXACT_GLOBAL_PRODUCER_MATCH"
+    }
+  ],
+  "scope": "Fresh actual globalQUESTION_BANK/FLASHCARDS exports exactly equal all16intendedafterobjects.15Q sourceproduceredits plusroot1literalCardedit; no parallel overrides."
+}

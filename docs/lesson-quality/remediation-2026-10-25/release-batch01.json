@@ -1,6 +1,6 @@
 {
   "date": "2026-10-25",
-  "status": "REVIEWED_CHANGES_QUEUED_FOR_FINAL_BUILD_AND_LIVE_CHECK",
+  "status": "PUSHED_AND_DEPLOYED_BOUNDED_BATCH",
   "baseline": "145955752d4d2159e22f2db2280c76ddb2c17256",
   "scope": "First bounded remediation release within the ongoing234-lesson task. This does not declare31wholelessons or the course scientifically complete.",
   "activeSupplementQuestionsPerLanguage": 46,
@@ -65,9 +65,15 @@
     "RemainingThorax/Mammarevisions"
   ],
   "evidence": {
-    "firstProductionBuild": "PASS beforelatestsharedfixes;finalbuildpending",
-    "allRoutesSSR": "702/702 afterPVLrestoration;rerunafterselectedreleasechangespending",
-    "browser": "LungRADS3-questionlink,shuffledwrongfeedbackDE/EN/FA,FAcardflip/explanationvisuallychecked;newreturnlinkfixpendingrebuild"
+    "productionBuild": "PASS remediation-build02.log; unrelated English merge also passes 14 unit tests",
+    "allRoutesSSR": "702/702 actual locale/route renders; no scientific or interactive release inference",
+    "browser": "Local: Lung-RADS DE/EN/FA shuffled feedback, FA card flip/explanation and actual language-preserving back-navigation; Perthes actual image question; trailing-locale explicit question selection. Live: authenticated normal account, Lung-RADS 3-question pool, actual FA question/options, back link and executed return to FA lesson confirmed. No all-bank interaction claim.",
+    "liveScreenshot": "tmp/assessment-quality/release01-live-fa-quiz.png"
   },
-  "publication": "NOT_PUSHED_YET"
+  "publication": {
+    "branch": "main",
+    "commit": "a48df7a4428e284f8cc769acd06a3371d31f440c",
+    "vercelStatus": "success",
+    "scope": "First bounded packet, not whole 234-lesson completion"
+  }
 }

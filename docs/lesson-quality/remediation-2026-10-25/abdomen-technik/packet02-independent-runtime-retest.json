@@ -1,0 +1,723 @@
+{
+  "date": "2026-10-25",
+  "status": "PASS_CURRENT_PRODUCERS",
+  "counts": {
+    "originalLocalizedQuestions": 54,
+    "supplementLocalizedQuestions": 12,
+    "cardTriads": 25,
+    "exactRecords": 91,
+    "seedReviewerQuestionRepairs": 9,
+    "seedReviewerCardRepairs": 1,
+    "ownReviewerQuestionRepairs": 9,
+    "ownReviewerCardRepairs": 1
+  },
+  "evidence": [
+    {
+      "kind": "MCQ",
+      "lang": "de",
+      "id": "divertikulitis-de-definition",
+      "currentExpected": "EXACT",
+      "producer": "global QUESTION_BANK",
+      "manualReading": "stem, all options, key, correct rationale, every wrong rationale, source and topic metadata compared"
+    },
+    {
+      "kind": "MCQ",
+      "lang": "de",
+      "id": "divertikulitis-de-ct-triad",
+      "currentExpected": "EXACT",
+      "producer": "global QUESTION_BANK",
+      "manualReading": "stem, all options, key, correct rationale, every wrong rationale, source and topic metadata compared"
+    },
+    {
+      "kind": "MCQ",
+      "lang": "de",
+      "id": "divertikulitis-de-protocol",
+      "currentExpected": "EXACT",
+      "producer": "global QUESTION_BANK",
+      "manualReading": "stem, all options, key, correct rationale, every wrong rationale, source and topic metadata compared"
+    },
+    {
+      "kind": "MCQ",
+      "lang": "de",
+      "id": "divertikulitis-de-cdd-1b",
+      "currentExpected": "EXACT",
+      "producer": "global QUESTION_BANK",
+      "manualReading": "stem, all options, key, correct rationale, every wrong rationale, source and topic metadata compared"
+    },
+    {
+      "kind": "MCQ",
+      "lang": "de",
+      "id": "divertikulitis-de-cdd-2a",
+      "currentExpected": "EXACT",
+      "producer": "global QUESTION_BANK",
+      "manualReading": "stem, all options, key, correct rationale, every wrong rationale, source and topic metadata compared"
+    },
+    {
+      "kind": "MCQ",
+      "lang": "de",
+      "id": "divertikulitis-de-cdd-3c",
+      "currentExpected": "EXACT",
+      "producer": "global QUESTION_BANK",
+      "manualReading": "stem, all options, key, correct rationale, every wrong rationale, source and topic metadata compared"
+    },
+    {
+      "kind": "MCQ",
+      "lang": "de",
+      "id": "divertikulitis-de-macroabscess",
+      "currentExpected": "EXACT",
+      "producer": "global QUESTION_BANK",
+      "manualReading": "stem, all options, key, correct rationale, every wrong rationale, source and topic metadata compared"
+    },
+    {
+      "kind": "MCQ",
+      "lang": "de",
+      "id": "divertikulitis-de-fistula",
+      "currentExpected": "EXACT",
+      "producer": "global QUESTION_BANK",
+      "manualReading": "stem, all options, key, correct rationale, every wrong rationale, source and topic metadata compared"
+    },
+    {
+      "kind": "MCQ",
+      "lang": "de",
+      "id": "divertikulitis-de-free-perforation",
+      "currentExpected": "EXACT",
+      "producer": "global QUESTION_BANK",
+      "manualReading": "stem, all options, key, correct rationale, every wrong rationale, source and topic metadata compared"
+    },
+    {
+      "kind": "MCQ",
+      "lang": "de",
+      "id": "divertikulitis-de-cancer-differential",
+      "currentExpected": "EXACT",
+      "producer": "global QUESTION_BANK",
+      "manualReading": "stem, all options, key, correct rationale, every wrong rationale, source and topic metadata compared"
+    },
+    {
+      "kind": "MCQ",
+      "lang": "de",
+      "id": "divertikulitis-de-reporting",
+      "currentExpected": "EXACT",
+      "producer": "global QUESTION_BANK",
+      "manualReading": "stem, all options, key, correct rationale, every wrong rationale, source and topic metadata compared"
+    },
+    {
+      "kind": "MCQ",
+      "lang": "de",
+      "id": "abdomen-appendizitis-de-01",
+      "currentExpected": "EXACT",
+      "producer": "global QUESTION_BANK",
+      "manualReading": "stem, all options, key, correct rationale, every wrong rationale, source and topic metadata compared"
+    },
+    {
+      "kind": "MCQ",
+      "lang": "de",
+      "id": "fmd-multifocal-pattern-de",
+      "currentExpected": "EXACT",
+      "producer": "global QUESTION_BANK",
+      "manualReading": "stem, all options, key, correct rationale, every wrong rationale, source and topic metadata compared"
+    },
+    {
+      "kind": "MCQ",
+      "lang": "de",
+      "id": "fmd-focal-fmd-de",
+      "currentExpected": "EXACT",
+      "producer": "global QUESTION_BANK",
+      "manualReading": "stem, all options, key, correct rationale, every wrong rationale, source and topic metadata compared"
+    },
+    {
+      "kind": "MCQ",
+      "lang": "de",
+      "id": "fmd-imaging-sequence-de",
+      "currentExpected": "EXACT",
+      "producer": "global QUESTION_BANK",
+      "manualReading": "stem, all options, key, correct rationale, every wrong rationale, source and topic metadata compared"
+    },
+    {
+      "kind": "MCQ",
+      "lang": "de",
+      "id": "gist-ct-01",
+      "currentExpected": "EXACT",
+      "producer": "global QUESTION_BANK",
+      "manualReading": "stem, all options, key, correct rationale, every wrong rationale, source and topic metadata compared"
+    },
+    {
+      "kind": "MCQ",
+      "lang": "de",
+      "id": "duodenaldivertikel-communication-de",
+      "currentExpected": "EXACT",
+      "producer": "global QUESTION_BANK",
+      "manualReading": "stem, all options, key, correct rationale, every wrong rationale, source and topic metadata compared"
+    },
+    {
+      "kind": "MCQ",
+      "lang": "de",
+      "id": "duodenaldivertikel-gas-location-de",
+      "currentExpected": "EXACT",
+      "producer": "global QUESTION_BANK",
+      "manualReading": "stem, all options, key, correct rationale, every wrong rationale, source and topic metadata compared"
+    },
+    {
+      "kind": "MCQ",
+      "lang": "de",
+      "id": "aq-atv-appendix-us-pattern-de-application",
+      "currentExpected": "EXACT",
+      "producer": "author supplement (not yet published)",
+      "manualReading": "stem, all options, key, correct rationale, every wrong rationale, source and topic metadata compared"
+    },
+    {
+      "kind": "MCQ",
+      "lang": "de",
+      "id": "aq-atv-appendix-ct-context-de-application",
+      "currentExpected": "EXACT",
+      "producer": "author supplement (not yet published)",
+      "manualReading": "stem, all options, key, correct rationale, every wrong rationale, source and topic metadata compared"
+    },
+    {
+      "kind": "MCQ",
+      "lang": "de",
+      "id": "aq-atv-gist-phase-context-de-application",
+      "currentExpected": "EXACT",
+      "producer": "author supplement (not yet published)",
+      "manualReading": "stem, all options, key, correct rationale, every wrong rationale, source and topic metadata compared"
+    },
+    {
+      "kind": "MCQ",
+      "lang": "de",
+      "id": "aq-atv-gist-internal-structure-de-application",
+      "currentExpected": "EXACT",
+      "producer": "author supplement (not yet published)",
+      "manualReading": "stem, all options, key, correct rationale, every wrong rationale, source and topic metadata compared"
+    },
+    {
+      "kind": "MCQ",
+      "lang": "en",
+      "id": "divertikulitis-en-definition",
+      "currentExpected": "EXACT",
+      "producer": "global QUESTION_BANK",
+      "manualReading": "stem, all options, key, correct rationale, every wrong rationale, source and topic metadata compared"
+    },
+    {
+      "kind": "MCQ",
+      "lang": "en",
+      "id": "divertikulitis-en-ct-triad",
+      "currentExpected": "EXACT",
+      "producer": "global QUESTION_BANK",
+      "manualReading": "stem, all options, key, correct rationale, every wrong rationale, source and topic metadata compared"
+    },
+    {
+      "kind": "MCQ",
+      "lang": "en",
+      "id": "divertikulitis-en-protocol",
+      "currentExpected": "EXACT",
+      "producer": "global QUESTION_BANK",
+      "manualReading": "stem, all options, key, correct rationale, every wrong rationale, source and topic metadata compared"
+    },
+    {
+      "kind": "MCQ",
+      "lang": "en",
+      "id": "divertikulitis-en-cdd-1b",
+      "currentExpected": "EXACT",
+      "producer": "global QUESTION_BANK",
+      "manualReading": "stem, all options, key, correct rationale, every wrong rationale, source and topic metadata compared"
+    },
+    {
+      "kind": "MCQ",
+      "lang": "en",
+      "id": "divertikulitis-en-cdd-2a",
+      "currentExpected": "EXACT",
+      "producer": "global QUESTION_BANK",
+      "manualReading": "stem, all options, key, correct rationale, every wrong rationale, source and topic metadata compared"
+    },
+    {
+      "kind": "MCQ",
+      "lang": "en",
+      "id": "divertikulitis-en-cdd-3c",
+      "currentExpected": "EXACT",
+      "producer": "global QUESTION_BANK",
+      "manualReading": "stem, all options, key, correct rationale, every wrong rationale, source and topic metadata compared"
+    },
+    {
+      "kind": "MCQ",
+      "lang": "en",
+      "id": "divertikulitis-en-macroabscess",
+      "currentExpected": "EXACT",
+      "producer": "global QUESTION_BANK",
+      "manualReading": "stem, all options, key, correct rationale, every wrong rationale, source and topic metadata compared"
+    },
+    {
+      "kind": "MCQ",
+      "lang": "en",
+      "id": "divertikulitis-en-fistula",
+      "currentExpected": "EXACT",
+      "producer": "global QUESTION_BANK",
+      "manualReading": "stem, all options, key, correct rationale, every wrong rationale, source and topic metadata compared"
+    },
+    {
+      "kind": "MCQ",
+      "lang": "en",
+      "id": "divertikulitis-en-free-perforation",
+      "currentExpected": "EXACT",
+      "producer": "global QUESTION_BANK",
+      "manualReading": "stem, all options, key, correct rationale, every wrong rationale, source and topic metadata compared"
+    },
+    {
+      "kind": "MCQ",
+      "lang": "en",
+      "id": "divertikulitis-en-cancer-differential",
+      "currentExpected": "EXACT",
+      "producer": "global QUESTION_BANK",
+      "manualReading": "stem, all options, key, correct rationale, every wrong rationale, source and topic metadata compared"
+    },
+    {
+      "kind": "MCQ",
+      "lang": "en",
+      "id": "divertikulitis-en-reporting",
+      "currentExpected": "EXACT",
+      "producer": "global QUESTION_BANK",
+      "manualReading": "stem, all options, key, correct rationale, every wrong rationale, source and topic metadata compared"
+    },
+    {
+      "kind": "MCQ",
+      "lang": "en",
+      "id": "abdomen-appendizitis-en-01",
+      "currentExpected": "EXACT",
+      "producer": "global QUESTION_BANK",
+      "manualReading": "stem, all options, key, correct rationale, every wrong rationale, source and topic metadata compared"
+    },
+    {
+      "kind": "MCQ",
+      "lang": "en",
+      "id": "fmd-multifocal-pattern-en",
+      "currentExpected": "EXACT",
+      "producer": "global QUESTION_BANK",
+      "manualReading": "stem, all options, key, correct rationale, every wrong rationale, source and topic metadata compared"
+    },
+    {
+      "kind": "MCQ",
+      "lang": "en",
+      "id": "fmd-focal-fmd-en",
+      "currentExpected": "EXACT",
+      "producer": "global QUESTION_BANK",
+      "manualReading": "stem, all options, key, correct rationale, every wrong rationale, source and topic metadata compared"
+    },
+    {
+      "kind": "MCQ",
+      "lang": "en",
+      "id": "fmd-imaging-sequence-en",
+      "currentExpected": "EXACT",
+      "producer": "global QUESTION_BANK",
+      "manualReading": "stem, all options, key, correct rationale, every wrong rationale, source and topic metadata compared"
+    },
+    {
+      "kind": "MCQ",
+      "lang": "en",
+      "id": "gist-ct-01",
+      "currentExpected": "EXACT",
+      "producer": "global QUESTION_BANK",
+      "manualReading": "stem, all options, key, correct rationale, every wrong rationale, source and topic metadata compared"
+    },
+    {
+      "kind": "MCQ",
+      "lang": "en",
+      "id": "duodenaldivertikel-communication-en",
+      "currentExpected": "EXACT",
+      "producer": "global QUESTION_BANK",
+      "manualReading": "stem, all options, key, correct rationale, every wrong rationale, source and topic metadata compared"
+    },
+    {
+      "kind": "MCQ",
+      "lang": "en",
+      "id": "duodenaldivertikel-gas-location-en",
+      "currentExpected": "EXACT",
+      "producer": "global QUESTION_BANK",
+      "manualReading": "stem, all options, key, correct rationale, every wrong rationale, source and topic metadata compared"
+    },
+    {
+      "kind": "MCQ",
+      "lang": "en",
+      "id": "aq-atv-appendix-us-pattern-en-application",
+      "currentExpected": "EXACT",
+      "producer": "author supplement (not yet published)",
+      "manualReading": "stem, all options, key, correct rationale, every wrong rationale, source and topic metadata compared"
+    },
+    {
+      "kind": "MCQ",
+      "lang": "en",
+      "id": "aq-atv-appendix-ct-context-en-application",
+      "currentExpected": "EXACT",
+      "producer": "author supplement (not yet published)",
+      "manualReading": "stem, all options, key, correct rationale, every wrong rationale, source and topic metadata compared"
+    },
+    {
+      "kind": "MCQ",
+      "lang": "en",
+      "id": "aq-atv-gist-phase-context-en-application",
+      "currentExpected": "EXACT",
+      "producer": "author supplement (not yet published)",
+      "manualReading": "stem, all options, key, correct rationale, every wrong rationale, source and topic metadata compared"
+    },
+    {
+      "kind": "MCQ",
+      "lang": "en",
+      "id": "aq-atv-gist-internal-structure-en-application",
+      "currentExpected": "EXACT",
+      "producer": "author supplement (not yet published)",
+      "manualReading": "stem, all options, key, correct rationale, every wrong rationale, source and topic metadata compared"
+    },
+    {
+      "kind": "MCQ",
+      "lang": "fa",
+      "id": "divertikulitis-fa-definition",
+      "currentExpected": "EXACT",
+      "producer": "global QUESTION_BANK",
+      "manualReading": "stem, all options, key, correct rationale, every wrong rationale, source and topic metadata compared"
+    },
+    {
+      "kind": "MCQ",
+      "lang": "fa",
+      "id": "divertikulitis-fa-ct-triad",
+      "currentExpected": "EXACT",
+      "producer": "global QUESTION_BANK",
+      "manualReading": "stem, all options, key, correct rationale, every wrong rationale, source and topic metadata compared"
+    },
+    {
+      "kind": "MCQ",
+      "lang": "fa",
+      "id": "divertikulitis-fa-protocol",
+      "currentExpected": "EXACT",
+      "producer": "global QUESTION_BANK",
+      "manualReading": "stem, all options, key, correct rationale, every wrong rationale, source and topic metadata compared"
+    },
+    {
+      "kind": "MCQ",
+      "lang": "fa",
+      "id": "divertikulitis-fa-cdd-1b",
+      "currentExpected": "EXACT",
+      "producer": "global QUESTION_BANK",
+      "manualReading": "stem, all options, key, correct rationale, every wrong rationale, source and topic metadata compared"
+    },
+    {
+      "kind": "MCQ",
+      "lang": "fa",
+      "id": "divertikulitis-fa-cdd-2a",
+      "currentExpected": "EXACT",
+      "producer": "global QUESTION_BANK",
+      "manualReading": "stem, all options, key, correct rationale, every wrong rationale, source and topic metadata compared"
+    },
+    {
+      "kind": "MCQ",
+      "lang": "fa",
+      "id": "divertikulitis-fa-cdd-3c",
+      "currentExpected": "EXACT",
+      "producer": "global QUESTION_BANK",
+      "manualReading": "stem, all options, key, correct rationale, every wrong rationale, source and topic metadata compared"
+    },
+    {
+      "kind": "MCQ",
+      "lang": "fa",
+      "id": "divertikulitis-fa-macroabscess",
+      "currentExpected": "EXACT",
+      "producer": "global QUESTION_BANK",
+      "manualReading": "stem, all options, key, correct rationale, every wrong rationale, source and topic metadata compared"
+    },
+    {
+      "kind": "MCQ",
+      "lang": "fa",
+      "id": "divertikulitis-fa-fistula",
+      "currentExpected": "EXACT",
+      "producer": "global QUESTION_BANK",
+      "manualReading": "stem, all options, key, correct rationale, every wrong rationale, source and topic metadata compared"
+    },
+    {
+      "kind": "MCQ",
+      "lang": "fa",
+      "id": "divertikulitis-fa-free-perforation",
+      "currentExpected": "EXACT",
+      "producer": "global QUESTION_BANK",
+      "manualReading": "stem, all options, key, correct rationale, every wrong rationale, source and topic metadata compared"
+    },
+    {
+      "kind": "MCQ",
+      "lang": "fa",
+      "id": "divertikulitis-fa-cancer-differential",
+      "currentExpected": "EXACT",
+      "producer": "global QUESTION_BANK",
+      "manualReading": "stem, all options, key, correct rationale, every wrong rationale, source and topic metadata compared"
+    },
+    {
+      "kind": "MCQ",
+      "lang": "fa",
+      "id": "divertikulitis-fa-reporting",
+      "currentExpected": "EXACT",
+      "producer": "global QUESTION_BANK",
+      "manualReading": "stem, all options, key, correct rationale, every wrong rationale, source and topic metadata compared"
+    },
+    {
+      "kind": "MCQ",
+      "lang": "fa",
+      "id": "abdomen-appendizitis-fa-01",
+      "currentExpected": "EXACT",
+      "producer": "global QUESTION_BANK",
+      "manualReading": "stem, all options, key, correct rationale, every wrong rationale, source and topic metadata compared"
+    },
+    {
+      "kind": "MCQ",
+      "lang": "fa",
+      "id": "fmd-multifocal-pattern-fa",
+      "currentExpected": "EXACT",
+      "producer": "global QUESTION_BANK",
+      "manualReading": "stem, all options, key, correct rationale, every wrong rationale, source and topic metadata compared"
+    },
+    {
+      "kind": "MCQ",
+      "lang": "fa",
+      "id": "fmd-focal-fmd-fa",
+      "currentExpected": "EXACT",
+      "producer": "global QUESTION_BANK",
+      "manualReading": "stem, all options, key, correct rationale, every wrong rationale, source and topic metadata compared"
+    },
+    {
+      "kind": "MCQ",
+      "lang": "fa",
+      "id": "fmd-imaging-sequence-fa",
+      "currentExpected": "EXACT",
+      "producer": "global QUESTION_BANK",
+      "manualReading": "stem, all options, key, correct rationale, every wrong rationale, source and topic metadata compared"
+    },
+    {
+      "kind": "MCQ",
+      "lang": "fa",
+      "id": "gist-ct-01",
+      "currentExpected": "EXACT",
+      "producer": "global QUESTION_BANK",
+      "manualReading": "stem, all options, key, correct rationale, every wrong rationale, source and topic metadata compared"
+    },
+    {
+      "kind": "MCQ",
+      "lang": "fa",
+      "id": "duodenaldivertikel-communication-fa",
+      "currentExpected": "EXACT",
+      "producer": "global QUESTION_BANK",
+      "manualReading": "stem, all options, key, correct rationale, every wrong rationale, source and topic metadata compared"
+    },
+    {
+      "kind": "MCQ",
+      "lang": "fa",
+      "id": "duodenaldivertikel-gas-location-fa",
+      "currentExpected": "EXACT",
+      "producer": "global QUESTION_BANK",
+      "manualReading": "stem, all options, key, correct rationale, every wrong rationale, source and topic metadata compared"
+    },
+    {
+      "kind": "MCQ",
+      "lang": "fa",
+      "id": "aq-atv-appendix-us-pattern-fa-application",
+      "currentExpected": "EXACT",
+      "producer": "author supplement (not yet published)",
+      "manualReading": "stem, all options, key, correct rationale, every wrong rationale, source and topic metadata compared"
+    },
+    {
+      "kind": "MCQ",
+      "lang": "fa",
+      "id": "aq-atv-appendix-ct-context-fa-application",
+      "currentExpected": "EXACT",
+      "producer": "author supplement (not yet published)",
+      "manualReading": "stem, all options, key, correct rationale, every wrong rationale, source and topic metadata compared"
+    },
+    {
+      "kind": "MCQ",
+      "lang": "fa",
+      "id": "aq-atv-gist-phase-context-fa-application",
+      "currentExpected": "EXACT",
+      "producer": "author supplement (not yet published)",
+      "manualReading": "stem, all options, key, correct rationale, every wrong rationale, source and topic metadata compared"
+    },
+    {
+      "kind": "MCQ",
+      "lang": "fa",
+      "id": "aq-atv-gist-internal-structure-fa-application",
+      "currentExpected": "EXACT",
+      "producer": "author supplement (not yet published)",
+      "manualReading": "stem, all options, key, correct rationale, every wrong rationale, source and topic metadata compared"
+    },
+    {
+      "kind": "card",
+      "id": "appendizitis-ultrasound-pattern",
+      "currentExpected": "EXACT",
+      "producer": "global FLASHCARDS",
+      "manualReading": "front, answer, explanation, any diagram/category/source across DE/EN/FA compared"
+    },
+    {
+      "kind": "card",
+      "id": "appendizitis-ct-secondary-signs",
+      "currentExpected": "EXACT",
+      "producer": "global FLASHCARDS",
+      "manualReading": "front, answer, explanation, any diagram/category/source across DE/EN/FA compared"
+    },
+    {
+      "kind": "card",
+      "id": "appendizitis-nonvisualised",
+      "currentExpected": "EXACT",
+      "producer": "global FLASHCARDS",
+      "manualReading": "front, answer, explanation, any diagram/category/source across DE/EN/FA compared"
+    },
+    {
+      "kind": "card",
+      "id": "gist-ct-origin",
+      "currentExpected": "EXACT",
+      "producer": "global FLASHCARDS",
+      "manualReading": "front, answer, explanation, any diagram/category/source across DE/EN/FA compared"
+    },
+    {
+      "kind": "card",
+      "id": "gist-ct-heterogeneity",
+      "currentExpected": "EXACT",
+      "producer": "global FLASHCARDS",
+      "manualReading": "front, answer, explanation, any diagram/category/source across DE/EN/FA compared"
+    },
+    {
+      "kind": "card",
+      "id": "gist-ct-phase",
+      "currentExpected": "EXACT",
+      "producer": "global FLASHCARDS",
+      "manualReading": "front, answer, explanation, any diagram/category/source across DE/EN/FA compared"
+    },
+    {
+      "kind": "card",
+      "id": "gist-ct-differential",
+      "currentExpected": "EXACT",
+      "producer": "global FLASHCARDS",
+      "manualReading": "front, answer, explanation, any diagram/category/source across DE/EN/FA compared"
+    },
+    {
+      "kind": "card",
+      "id": "fmd-multifocal-pattern",
+      "currentExpected": "EXACT",
+      "producer": "global FLASHCARDS",
+      "manualReading": "front, answer, explanation, any diagram/category/source across DE/EN/FA compared"
+    },
+    {
+      "kind": "card",
+      "id": "fmd-focal-vs-multifocal",
+      "currentExpected": "EXACT",
+      "producer": "global FLASHCARDS",
+      "manualReading": "front, answer, explanation, any diagram/category/source across DE/EN/FA compared"
+    },
+    {
+      "kind": "card",
+      "id": "fmd-imaging-limits",
+      "currentExpected": "EXACT",
+      "producer": "global FLASHCARDS",
+      "manualReading": "front, answer, explanation, any diagram/category/source across DE/EN/FA compared"
+    },
+    {
+      "kind": "card",
+      "id": "duodenaldivertikel-communication",
+      "currentExpected": "EXACT",
+      "producer": "global FLASHCARDS",
+      "manualReading": "front, answer, explanation, any diagram/category/source across DE/EN/FA compared"
+    },
+    {
+      "kind": "card",
+      "id": "duodenaldivertikel-gas-location",
+      "currentExpected": "EXACT",
+      "producer": "global FLASHCARDS",
+      "manualReading": "front, answer, explanation, any diagram/category/source across DE/EN/FA compared"
+    },
+    {
+      "kind": "card",
+      "id": "divertikulitis-definition",
+      "currentExpected": "EXACT",
+      "producer": "global FLASHCARDS",
+      "manualReading": "front, answer, explanation, any diagram/category/source across DE/EN/FA compared"
+    },
+    {
+      "kind": "card",
+      "id": "divertikulitis-ct-triad",
+      "currentExpected": "EXACT",
+      "producer": "global FLASHCARDS",
+      "manualReading": "front, answer, explanation, any diagram/category/source across DE/EN/FA compared"
+    },
+    {
+      "kind": "card",
+      "id": "divertikulitis-protocol",
+      "currentExpected": "EXACT",
+      "producer": "global FLASHCARDS",
+      "manualReading": "front, answer, explanation, any diagram/category/source across DE/EN/FA compared"
+    },
+    {
+      "kind": "card",
+      "id": "divertikulitis-cdd-1",
+      "currentExpected": "EXACT",
+      "producer": "global FLASHCARDS",
+      "manualReading": "front, answer, explanation, any diagram/category/source across DE/EN/FA compared"
+    },
+    {
+      "kind": "card",
+      "id": "divertikulitis-cdd-2",
+      "currentExpected": "EXACT",
+      "producer": "global FLASHCARDS",
+      "manualReading": "front, answer, explanation, any diagram/category/source across DE/EN/FA compared"
+    },
+    {
+      "kind": "card",
+      "id": "divertikulitis-cdd-3",
+      "currentExpected": "EXACT",
+      "producer": "global FLASHCARDS",
+      "manualReading": "front, answer, explanation, any diagram/category/source across DE/EN/FA compared"
+    },
+    {
+      "kind": "card",
+      "id": "divertikulitis-abscess",
+      "currentExpected": "EXACT",
+      "producer": "global FLASHCARDS",
+      "manualReading": "front, answer, explanation, any diagram/category/source across DE/EN/FA compared"
+    },
+    {
+      "kind": "card",
+      "id": "divertikulitis-perforation",
+      "currentExpected": "EXACT",
+      "producer": "global FLASHCARDS",
+      "manualReading": "front, answer, explanation, any diagram/category/source across DE/EN/FA compared"
+    },
+    {
+      "kind": "card",
+      "id": "divertikulitis-fistula",
+      "currentExpected": "EXACT",
+      "producer": "global FLASHCARDS",
+      "manualReading": "front, answer, explanation, any diagram/category/source across DE/EN/FA compared"
+    },
+    {
+      "kind": "card",
+      "id": "divertikulitis-stenosis",
+      "currentExpected": "EXACT",
+      "producer": "global FLASHCARDS",
+      "manualReading": "front, answer, explanation, any diagram/category/source across DE/EN/FA compared"
+    },
+    {
+      "kind": "card",
+      "id": "divertikulitis-cancer",
+      "currentExpected": "EXACT",
+      "producer": "global FLASHCARDS",
+      "manualReading": "front, answer, explanation, any diagram/category/source across DE/EN/FA compared"
+    },
+    {
+      "kind": "card",
+      "id": "divertikulitis-report",
+      "currentExpected": "EXACT",
+      "producer": "global FLASHCARDS",
+      "manualReading": "front, answer, explanation, any diagram/category/source across DE/EN/FA compared"
+    },
+    {
+      "kind": "card",
+      "id": "divertikulitis-summary",
+      "currentExpected": "EXACT",
+      "producer": "global FLASHCARDS",
+      "manualReading": "front, answer, explanation, any diagram/category/source across DE/EN/FA compared"
+    }
+  ],
+  "limits": [
+    "Author supplement12 locale records intentionally not yet in publishedBank; publication snapshot integration is a separate root task.",
+    "Source compilation/deep equality does not constitute browser or clinical release approval."
+  ]
+}

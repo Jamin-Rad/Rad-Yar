@@ -1,0 +1,771 @@
+{
+  "date": "2026-10-25",
+  "status": "EXACT_PROPOSALS_ROOT_APPLY_PEER_RETEST_PENDING",
+  "source": "https://www.dgvs.de/leitlinien/unterer-gi-trakt/divertikelkrankheit-divertikulitis/?digital=1",
+  "patches": [
+    {
+      "id": "divertikulitis-de-definition",
+      "sourceFile": "data/questions.js",
+      "currentBefore": {
+        "id": "divertikulitis-de-definition",
+        "tags": [
+          "divertikulitis",
+          "kolon",
+          "abdomen"
+        ],
+        "fach": "abdomen",
+        "question": "Ein asymptomatischer Patient hat Kolondivertikel ohne Wandentzündung oder perikolische Reaktion. Welche Einordnung passt?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Asymptomatische Divertikulose"
+          },
+          {
+            "id": "B",
+            "text": "Akute unkomplizierte Divertikulitis"
+          },
+          {
+            "id": "C",
+            "text": "Akute Divertikulitis mit Mikroabszess"
+          },
+          {
+            "id": "D",
+            "text": "Symptomatische unkomplizierte Divertikelkrankheit"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Divertikulose beschreibt Divertikel ohne entzündliche Begleitreaktion. Erst die Entzündung eines Divertikels mit Darmwand- und Fettgewebsreaktion entspricht einer Divertikulitis.",
+        "wrongExplanations": {
+          "B": "Die beschriebene Konstellation enthält keine akuten Entzündungszeichen.",
+          "C": "Ein Abszess oder eine entzündliche Kollektion ist nicht beschrieben.",
+          "D": "Für eine symptomatische Kategorie fehlen hier Symptome."
+        },
+        "source": "https://www.dgvs.de/leitlinien/unterer-gi-trakt/divertikelkrankheit-divertikulitis/?digital=1"
+      },
+      "after": {
+        "id": "divertikulitis-de-definition",
+        "tags": [
+          "divertikulitis",
+          "kolon",
+          "abdomen"
+        ],
+        "fach": "abdomen",
+        "question": "Ein asymptomatischer Patient hat Kolondivertikel ohne Wandentzündung oder perikolische Reaktion. Welche Einordnung passt?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Asymptomatische Divertikulose"
+          },
+          {
+            "id": "B",
+            "text": "Akute unkomplizierte Divertikulitis"
+          },
+          {
+            "id": "C",
+            "text": "Akute Divertikulitis mit Mikroabszess"
+          },
+          {
+            "id": "D",
+            "text": "Symptomatische unkomplizierte Divertikelkrankheit"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Divertikulose bezeichnet das Vorhandensein von Divertikeln ohne deren Entzündung. Divertikulitis ist die Entzündung eines oder mehrerer Divertikel, gegebenenfalls mit Reaktion der Darmwand und des umgebenden Gewebes.",
+        "wrongExplanations": {
+          "B": "Die beschriebene Konstellation enthält keine akuten Entzündungszeichen.",
+          "C": "Ein Abszess oder eine entzündliche Kollektion ist nicht beschrieben.",
+          "D": "Für eine symptomatische Kategorie fehlen hier Symptome."
+        },
+        "source": "https://www.dgvs.de/leitlinien/unterer-gi-trakt/divertikelkrankheit-divertikulitis/?digital=1"
+      },
+      "reason": "ATV02 peer review: inflammation can extend to bowel wall/adjacent tissue; complete CT triad not mandatory for definition."
+    },
+    {
+      "id": "divertikulitis-de-cdd-2a",
+      "sourceFile": "data/questions.js",
+      "currentBefore": {
+        "id": "divertikulitis-de-cdd-2a",
+        "tags": [
+          "divertikulitis",
+          "kolon",
+          "abdomen"
+        ],
+        "fach": "abdomen",
+        "question": "Ein nachgewiesener perikolischer Abszess bei Sigmadivertikulitis misst 2 cm. Welcher CDD-Typ passt?",
+        "options": [
+          {
+            "id": "A",
+            "text": "CDD 1a"
+          },
+          {
+            "id": "B",
+            "text": "CDD 2a"
+          },
+          {
+            "id": "C",
+            "text": "CDD 2c"
+          },
+          {
+            "id": "D",
+            "text": "CDD 2b"
+          }
+        ],
+        "correct": "B",
+        "explanation": "Ein Mikroabszess beziehungsweise eine gedeckte Perforation mit einer Kollektion bis 3 cm entspricht CDD Typ 2a.",
+        "wrongExplanations": {
+          "A": "Typ 1a beschreibt keine abszedierende komplizierte Divertikulitis.",
+          "C": "Die kleine umschriebene Kollektion allein belegt keine freie Perforation vom Typ 2c.",
+          "D": "2 cm liegt im genannten CDD-System unter der Makroabszessgrenze von über 3 cm."
+        },
+        "source": "https://www.dgvs.de/leitlinien/unterer-gi-trakt/divertikelkrankheit-divertikulitis/?digital=1"
+      },
+      "after": {
+        "id": "divertikulitis-de-cdd-2a",
+        "tags": [
+          "divertikulitis",
+          "kolon",
+          "abdomen"
+        ],
+        "fach": "abdomen",
+        "question": "Ein nachgewiesener perikolischer Abszess bei Sigmadivertikulitis misst 2 cm. Welcher CDD-Typ passt nach S3/DGVS 2021?",
+        "options": [
+          {
+            "id": "A",
+            "text": "CDD 1a"
+          },
+          {
+            "id": "B",
+            "text": "CDD 2a"
+          },
+          {
+            "id": "C",
+            "text": "CDD 2c"
+          },
+          {
+            "id": "D",
+            "text": "CDD 2b"
+          }
+        ],
+        "correct": "B",
+        "explanation": "Ein Mikroabszess beziehungsweise eine gedeckte Perforation mit einer Kollektion bis 3 cm entspricht CDD Typ 2a.",
+        "wrongExplanations": {
+          "A": "Typ 1a beschreibt keine abszedierende komplizierte Divertikulitis.",
+          "C": "Die kleine umschriebene Kollektion allein belegt keine freie Perforation vom Typ 2c.",
+          "D": "2 cm liegt im genannten CDD-System unter der Makroabszessgrenze von über 3 cm."
+        },
+        "source": "https://www.dgvs.de/leitlinien/unterer-gi-trakt/divertikelkrankheit-divertikulitis/?digital=1"
+      },
+      "reason": "ATV02 peer review: name S3/DGVS2021 edition explicitly and use exact 3-cm classification boundary."
+    },
+    {
+      "id": "divertikulitis-de-macroabscess",
+      "sourceFile": "data/questions.js",
+      "currentBefore": {
+        "id": "divertikulitis-de-macroabscess",
+        "tags": [
+          "divertikulitis",
+          "kolon",
+          "abdomen"
+        ],
+        "fach": "abdomen",
+        "question": "Ab welcher Abszessgröße wird in der CDD-Klassifikation von einem Makroabszess gesprochen?",
+        "options": [
+          {
+            "id": "A",
+            "text": "> 1 cm"
+          },
+          {
+            "id": "B",
+            "text": "> 2 cm"
+          },
+          {
+            "id": "C",
+            "text": "> 3 cm"
+          },
+          {
+            "id": "D",
+            "text": "> 4 cm"
+          }
+        ],
+        "correct": "C",
+        "explanation": "CDD Typ 2b bezeichnet einen Makroabszess über 3 cm. Die Abszessgröße sollte im Befund in drei Dimensionen angegeben werden.",
+        "wrongExplanations": {
+          "A": "Die alte 1-cm-Grenze wurde im genannten CDD-Update durch etwa3 cm ersetzt.",
+          "B": "2 cm liegt nicht über der genannten3 cm-Grenze.",
+          "D": "Die benannte Grenze liegt bereits bei über 3 cm, nicht erst bei über 4 cm."
+        },
+        "source": "https://www.dgvs.de/leitlinien/unterer-gi-trakt/divertikelkrankheit-divertikulitis/?digital=1"
+      },
+      "after": {
+        "id": "divertikulitis-de-macroabscess",
+        "tags": [
+          "divertikulitis",
+          "kolon",
+          "abdomen"
+        ],
+        "fach": "abdomen",
+        "question": "Ab welcher Abszessgröße wird nach der CDD-Klassifikation der S3/DGVS-Leitlinie 2021 von einem Makroabszess gesprochen?",
+        "options": [
+          {
+            "id": "A",
+            "text": "> 1 cm"
+          },
+          {
+            "id": "B",
+            "text": "> 2 cm"
+          },
+          {
+            "id": "C",
+            "text": "> 3 cm"
+          },
+          {
+            "id": "D",
+            "text": "> 4 cm"
+          }
+        ],
+        "correct": "C",
+        "explanation": "CDD Typ 2b bezeichnet einen Makroabszess über 3 cm. Die Abszessgröße sollte im Befund in drei Dimensionen angegeben werden.",
+        "wrongExplanations": {
+          "A": "Nach S3/DGVS 2021 liegt die Grenze zwischen Mikro- und Makroabszess bei 3 cm: bis einschließlich 3 cm CDD 2a, darüber CDD 2b.",
+          "B": "2 cm liegt nicht über der angegebenen Grenze von 3 cm.",
+          "D": "Die benannte Grenze liegt bereits bei über 3 cm, nicht erst bei über 4 cm."
+        },
+        "source": "https://www.dgvs.de/leitlinien/unterer-gi-trakt/divertikelkrankheit-divertikulitis/?digital=1"
+      },
+      "reason": "ATV02 peer review: name S3/DGVS2021 edition explicitly and use exact 3-cm classification boundary."
+    },
+    {
+      "id": "divertikulitis-en-definition",
+      "sourceFile": "data/questions.js",
+      "currentBefore": {
+        "id": "divertikulitis-en-definition",
+        "tags": [
+          "divertikulitis",
+          "kolon",
+          "abdomen"
+        ],
+        "fach": "abdomen",
+        "question": "An asymptomatic patient has colonic diverticula without mural inflammation or pericolic reaction. Which classification fits?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Asymptomatic diverticulosis"
+          },
+          {
+            "id": "B",
+            "text": "Acute uncomplicated diverticulitis"
+          },
+          {
+            "id": "C",
+            "text": "Acute diverticulitis with microabscess"
+          },
+          {
+            "id": "D",
+            "text": "Symptomatic uncomplicated diverticular disease"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Diverticulosis describes diverticula without surrounding inflammation. Diverticulitis requires inflammation involving a diverticulum, the bowel wall and adjacent fat.",
+        "wrongExplanations": {
+          "B": "The described findings contain no acute inflammatory signs.",
+          "C": "No abscess or inflammatory collection is described.",
+          "D": "Symptoms are absent, so a symptomatic category does not fit."
+        },
+        "source": "https://www.dgvs.de/leitlinien/unterer-gi-trakt/divertikelkrankheit-divertikulitis/?digital=1"
+      },
+      "after": {
+        "id": "divertikulitis-en-definition",
+        "tags": [
+          "divertikulitis",
+          "kolon",
+          "abdomen"
+        ],
+        "fach": "abdomen",
+        "question": "An asymptomatic patient has colonic diverticula without mural inflammation or pericolic reaction. Which classification fits?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Asymptomatic diverticulosis"
+          },
+          {
+            "id": "B",
+            "text": "Acute uncomplicated diverticulitis"
+          },
+          {
+            "id": "C",
+            "text": "Acute diverticulitis with microabscess"
+          },
+          {
+            "id": "D",
+            "text": "Symptomatic uncomplicated diverticular disease"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Diverticulosis denotes the presence of diverticula without inflammation of them. Diverticulitis is inflammation of one or more diverticula, which may be accompanied by a reaction of the bowel wall and surrounding tissue.",
+        "wrongExplanations": {
+          "B": "The described findings contain no acute inflammatory signs.",
+          "C": "No abscess or inflammatory collection is described.",
+          "D": "Symptoms are absent, so a symptomatic category does not fit."
+        },
+        "source": "https://www.dgvs.de/leitlinien/unterer-gi-trakt/divertikelkrankheit-divertikulitis/?digital=1"
+      },
+      "reason": "ATV02 peer review: inflammation can extend to bowel wall/adjacent tissue; complete CT triad not mandatory for definition."
+    },
+    {
+      "id": "divertikulitis-en-cdd-2a",
+      "sourceFile": "data/questions.js",
+      "currentBefore": {
+        "id": "divertikulitis-en-cdd-2a",
+        "tags": [
+          "divertikulitis",
+          "kolon",
+          "abdomen"
+        ],
+        "fach": "abdomen",
+        "question": "A confirmed pericolic abscess in sigmoid diverticulitis measures 2 cm. Which CDD type fits?",
+        "options": [
+          {
+            "id": "A",
+            "text": "CDD 1a"
+          },
+          {
+            "id": "B",
+            "text": "CDD 2a"
+          },
+          {
+            "id": "C",
+            "text": "CDD 2c"
+          },
+          {
+            "id": "D",
+            "text": "CDD 2b"
+          }
+        ],
+        "correct": "B",
+        "explanation": "A microabscess or contained perforation with a collection up to 3 cm corresponds to CDD type 2a.",
+        "wrongExplanations": {
+          "A": "Type 1a does not describe complicated diverticulitis with an abscess.",
+          "C": "A small localised collection alone does not demonstrate free perforation of type 2c.",
+          "D": "In the stated CDD system, 2 cm is below the macroabscess boundary of over 3 cm."
+        },
+        "source": "https://www.dgvs.de/leitlinien/unterer-gi-trakt/divertikelkrankheit-divertikulitis/?digital=1"
+      },
+      "after": {
+        "id": "divertikulitis-en-cdd-2a",
+        "tags": [
+          "divertikulitis",
+          "kolon",
+          "abdomen"
+        ],
+        "fach": "abdomen",
+        "question": "A confirmed pericolic abscess in sigmoid diverticulitis measures 2 cm. Which CDD type fits according to S3/DGVS 2021?",
+        "options": [
+          {
+            "id": "A",
+            "text": "CDD 1a"
+          },
+          {
+            "id": "B",
+            "text": "CDD 2a"
+          },
+          {
+            "id": "C",
+            "text": "CDD 2c"
+          },
+          {
+            "id": "D",
+            "text": "CDD 2b"
+          }
+        ],
+        "correct": "B",
+        "explanation": "A microabscess or contained perforation with a collection up to 3 cm corresponds to CDD type 2a.",
+        "wrongExplanations": {
+          "A": "Type 1a does not describe complicated diverticulitis with an abscess.",
+          "C": "A small localised collection alone does not demonstrate free perforation of type 2c.",
+          "D": "In the stated CDD system, 2 cm is below the macroabscess boundary of over 3 cm."
+        },
+        "source": "https://www.dgvs.de/leitlinien/unterer-gi-trakt/divertikelkrankheit-divertikulitis/?digital=1"
+      },
+      "reason": "ATV02 peer review: name S3/DGVS2021 edition explicitly and use exact 3-cm classification boundary."
+    },
+    {
+      "id": "divertikulitis-en-macroabscess",
+      "sourceFile": "data/questions.js",
+      "currentBefore": {
+        "id": "divertikulitis-en-macroabscess",
+        "tags": [
+          "divertikulitis",
+          "kolon",
+          "abdomen"
+        ],
+        "fach": "abdomen",
+        "question": "At what abscess size does the CDD classification define a macroabscess?",
+        "options": [
+          {
+            "id": "A",
+            "text": "> 1 cm"
+          },
+          {
+            "id": "B",
+            "text": "> 2 cm"
+          },
+          {
+            "id": "C",
+            "text": "> 3 cm"
+          },
+          {
+            "id": "D",
+            "text": "> 4 cm"
+          }
+        ],
+        "correct": "C",
+        "explanation": "CDD type 2b denotes a macroabscess larger than 3 cm. Report abscess size in three dimensions.",
+        "wrongExplanations": {
+          "A": "The previous1 cm boundary was replaced by about3 cm in the stated CDD update.",
+          "B": "2 cm is not above the specified3 cm boundary.",
+          "D": "The stated boundary is already over 3 cm, not only over 4 cm."
+        },
+        "source": "https://www.dgvs.de/leitlinien/unterer-gi-trakt/divertikelkrankheit-divertikulitis/?digital=1"
+      },
+      "after": {
+        "id": "divertikulitis-en-macroabscess",
+        "tags": [
+          "divertikulitis",
+          "kolon",
+          "abdomen"
+        ],
+        "fach": "abdomen",
+        "question": "At what abscess size does the CDD classification in the S3/DGVS 2021 guideline define a macroabscess?",
+        "options": [
+          {
+            "id": "A",
+            "text": "> 1 cm"
+          },
+          {
+            "id": "B",
+            "text": "> 2 cm"
+          },
+          {
+            "id": "C",
+            "text": "> 3 cm"
+          },
+          {
+            "id": "D",
+            "text": "> 4 cm"
+          }
+        ],
+        "correct": "C",
+        "explanation": "CDD type 2b denotes a macroabscess larger than 3 cm. Report abscess size in three dimensions.",
+        "wrongExplanations": {
+          "A": "In S3/DGVS 2021, the boundary between microabscess and macroabscess is 3 cm: up to and including 3 cm is CDD 2a, above 3 cm is CDD 2b.",
+          "B": "2 cm is not above the specified boundary of 3 cm.",
+          "D": "The stated boundary is already over 3 cm, not only over 4 cm."
+        },
+        "source": "https://www.dgvs.de/leitlinien/unterer-gi-trakt/divertikelkrankheit-divertikulitis/?digital=1"
+      },
+      "reason": "ATV02 peer review: name S3/DGVS2021 edition explicitly and use exact 3-cm classification boundary."
+    },
+    {
+      "id": "divertikulitis-fa-definition",
+      "sourceFile": "data/questions.js",
+      "currentBefore": {
+        "id": "divertikulitis-fa-definition",
+        "tags": [
+          "divertikulitis",
+          "kolon",
+          "abdomen"
+        ],
+        "fach": "abdomen",
+        "question": "بیمار بدون علامت، دیورتیکول‌های کولون بدون التهاب دیواره یا واکنش اطراف کولون دارد. کدام طبقه‌بندی مناسب است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "دیورتیکولوز بدون علامت"
+          },
+          {
+            "id": "B",
+            "text": "دیورتیکولیت حاد بدون عارضه"
+          },
+          {
+            "id": "C",
+            "text": "دیورتیکولیت حاد همراه با آبسهٔ کوچک"
+          },
+          {
+            "id": "D",
+            "text": "بیماری دیورتیکولیِ علامت‌دار بدون عارضه"
+          }
+        ],
+        "correct": "A",
+        "explanation": "دیورتیکولوز وجود دیورتیکول بدون التهاب اطراف است. دیورتیکولیت نیازمند التهاب دیورتیکول، دیواره روده و چربی مجاور است.",
+        "wrongExplanations": {
+          "B": "مجموعهٔ توصیف‌شده نشانهٔ التهاب حاد ندارد.",
+          "C": "آبسه یا کالکشن التهابی توصیف نشده است.",
+          "D": "علامتی وجود ندارد؛ بنابراین دستهٔ علامت‌دار مناسب نیست."
+        },
+        "source": "https://www.dgvs.de/leitlinien/unterer-gi-trakt/divertikelkrankheit-divertikulitis/?digital=1"
+      },
+      "after": {
+        "id": "divertikulitis-fa-definition",
+        "tags": [
+          "divertikulitis",
+          "kolon",
+          "abdomen"
+        ],
+        "fach": "abdomen",
+        "question": "بیمار بدون علامت، دیورتیکول‌های کولون بدون التهاب دیواره یا واکنش اطراف کولون دارد. کدام طبقه‌بندی مناسب است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "دیورتیکولوز بدون علامت"
+          },
+          {
+            "id": "B",
+            "text": "دیورتیکولیت حاد بدون عارضه"
+          },
+          {
+            "id": "C",
+            "text": "دیورتیکولیت حاد همراه با آبسهٔ کوچک"
+          },
+          {
+            "id": "D",
+            "text": "بیماری دیورتیکولیِ علامت‌دار بدون عارضه"
+          }
+        ],
+        "correct": "A",
+        "explanation": "دیورتیکولوز به وجود دیورتیکول‌ها بدون التهاب خود آن‌ها گفته می‌شود. دیورتیکولیت التهاب یک یا چند دیورتیکول است که می‌تواند با واکنش دیوارهٔ روده و بافت اطراف همراه باشد.",
+        "wrongExplanations": {
+          "B": "مجموعهٔ توصیف‌شده نشانهٔ التهاب حاد ندارد.",
+          "C": "آبسه یا کالکشن التهابی توصیف نشده است.",
+          "D": "علامتی وجود ندارد؛ بنابراین دستهٔ علامت‌دار مناسب نیست."
+        },
+        "source": "https://www.dgvs.de/leitlinien/unterer-gi-trakt/divertikelkrankheit-divertikulitis/?digital=1"
+      },
+      "reason": "ATV02 peer review: inflammation can extend to bowel wall/adjacent tissue; complete CT triad not mandatory for definition."
+    },
+    {
+      "id": "divertikulitis-fa-cdd-2a",
+      "sourceFile": "data/questions.js",
+      "currentBefore": {
+        "id": "divertikulitis-fa-cdd-2a",
+        "tags": [
+          "divertikulitis",
+          "kolon",
+          "abdomen"
+        ],
+        "fach": "abdomen",
+        "question": "اندازهٔ یک آبسهٔ تأییدشدهٔ اطراف کولون در دیورتیکولیت سیگموئید ۲ سانتی‌متر است. کدام نوع CDD مناسب است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "CDD 1a"
+          },
+          {
+            "id": "B",
+            "text": "CDD 2a"
+          },
+          {
+            "id": "C",
+            "text": "CDD 2c"
+          },
+          {
+            "id": "D",
+            "text": "CDD 2b"
+          }
+        ],
+        "correct": "B",
+        "explanation": "میکروآبسه یا پرفوراسیون مهارشده با تجمع تا ۳ سانتی‌متر مطابق CDD نوع 2a است.",
+        "wrongExplanations": {
+          "A": "نوع 1a دیورتیکولیت عارضه‌دارِ همراه با آبسه را توصیف نمی‌کند.",
+          "C": "کالکشن کوچک و محدود به‌تنهایی پرفوراسیون آزاد نوع 2c را ثابت نمی‌کند.",
+          "D": "در نظام CDD ذکرشده،۲ سانتی‌متر کمتر از مرز آبسهٔ بزرگ، یعنی بیش از۳ سانتی‌متر، است."
+        },
+        "source": "https://www.dgvs.de/leitlinien/unterer-gi-trakt/divertikelkrankheit-divertikulitis/?digital=1"
+      },
+      "after": {
+        "id": "divertikulitis-fa-cdd-2a",
+        "tags": [
+          "divertikulitis",
+          "kolon",
+          "abdomen"
+        ],
+        "fach": "abdomen",
+        "question": "اندازهٔ یک آبسهٔ تأییدشدهٔ اطراف کولون در دیورتیکولیت سیگموئید ۲ سانتی‌متر است. بر اساس S3/DGVS 2021 کدام نوع CDD مناسب است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "CDD 1a"
+          },
+          {
+            "id": "B",
+            "text": "CDD 2a"
+          },
+          {
+            "id": "C",
+            "text": "CDD 2c"
+          },
+          {
+            "id": "D",
+            "text": "CDD 2b"
+          }
+        ],
+        "correct": "B",
+        "explanation": "میکروآبسه یا پرفوراسیون مهارشده با تجمع تا ۳ سانتی‌متر مطابق CDD نوع 2a است.",
+        "wrongExplanations": {
+          "A": "نوع 1a دیورتیکولیت عارضه‌دارِ همراه با آبسه را توصیف نمی‌کند.",
+          "C": "کالکشن کوچک و محدود به‌تنهایی پرفوراسیون آزاد نوع 2c را ثابت نمی‌کند.",
+          "D": "در نظام CDD ذکرشده،۲ سانتی‌متر کمتر از مرز آبسهٔ بزرگ، یعنی بیش از۳ سانتی‌متر، است."
+        },
+        "source": "https://www.dgvs.de/leitlinien/unterer-gi-trakt/divertikelkrankheit-divertikulitis/?digital=1"
+      },
+      "reason": "ATV02 peer review: name S3/DGVS2021 edition explicitly and use exact 3-cm classification boundary."
+    },
+    {
+      "id": "divertikulitis-fa-macroabscess",
+      "sourceFile": "data/questions.js",
+      "currentBefore": {
+        "id": "divertikulitis-fa-macroabscess",
+        "tags": [
+          "divertikulitis",
+          "kolon",
+          "abdomen"
+        ],
+        "fach": "abdomen",
+        "question": "در طبقه‌بندی CDD از چه اندازه‌ای آبسه ماکروآبسه محسوب می‌شود؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "بیش از ۱ سانتی‌متر"
+          },
+          {
+            "id": "B",
+            "text": "بیش از ۲ سانتی‌متر"
+          },
+          {
+            "id": "C",
+            "text": "بیش از ۳ سانتی‌متر"
+          },
+          {
+            "id": "D",
+            "text": "بیش از ۴ سانتی‌متر"
+          }
+        ],
+        "correct": "C",
+        "explanation": "CDD نوع 2b ماکروآبسه بزرگ‌تر از ۳ سانتی‌متر است. اندازه آبسه باید در سه بعد گزارش شود.",
+        "wrongExplanations": {
+          "A": "در به‌روزرسانی CDD ذکرشده، مرز قدیمی۱ سانتی‌متر با حدود۳ سانتی‌متر جایگزین شد.",
+          "B": "۲ سانتی‌متر از مرز۳ سانتی‌متر ذکرشده بیشتر نیست.",
+          "D": "مرز ذکرشده از بیش از۳ سانتی‌متر شروع می‌شود، نه فقط بیش از۴ سانتی‌متر."
+        },
+        "source": "https://www.dgvs.de/leitlinien/unterer-gi-trakt/divertikelkrankheit-divertikulitis/?digital=1"
+      },
+      "after": {
+        "id": "divertikulitis-fa-macroabscess",
+        "tags": [
+          "divertikulitis",
+          "kolon",
+          "abdomen"
+        ],
+        "fach": "abdomen",
+        "question": "در طبقه‌بندی CDD راهنمای S3/DGVS 2021، آبسه از چه اندازه‌ای ماکروآبسه محسوب می‌شود؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "بیش از ۱ سانتی‌متر"
+          },
+          {
+            "id": "B",
+            "text": "بیش از ۲ سانتی‌متر"
+          },
+          {
+            "id": "C",
+            "text": "بیش از ۳ سانتی‌متر"
+          },
+          {
+            "id": "D",
+            "text": "بیش از ۴ سانتی‌متر"
+          }
+        ],
+        "correct": "C",
+        "explanation": "CDD نوع 2b ماکروآبسه بزرگ‌تر از ۳ سانتی‌متر است. اندازه آبسه باید در سه بعد گزارش شود.",
+        "wrongExplanations": {
+          "A": "در S3/DGVS 2021 مرز آبسهٔ کوچک و بزرگ ۳ سانتی‌متر است: تا و شامل ۳ سانتی‌متر CDD 2a و بیش از ۳ سانتی‌متر CDD 2b است.",
+          "B": "۲ سانتی‌متر از مرز تعیین‌شدهٔ ۳ سانتی‌متر بیشتر نیست.",
+          "D": "مرز ذکرشده از بیش از۳ سانتی‌متر شروع می‌شود، نه فقط بیش از۴ سانتی‌متر."
+        },
+        "source": "https://www.dgvs.de/leitlinien/unterer-gi-trakt/divertikelkrankheit-divertikulitis/?digital=1"
+      },
+      "reason": "ATV02 peer review: name S3/DGVS2021 edition explicitly and use exact 3-cm classification boundary."
+    }
+  ],
+  "limits": [
+    "Original41 after-value evidence preserved unchanged.",
+    "No source mutation by proposer in root-owned banks.",
+    "Classification edition named2021; not claimed latest renewed management guideline."
+  ],
+  "cardPatches": [
+    {
+      "id": "divertikulitis-cdd-2",
+      "sourceFile": "data/flashcards.js",
+      "currentBefore": {
+        "id": "divertikulitis-cdd-2",
+        "topicId": "divertikulitis",
+        "category": {
+          "de": "CDD",
+          "en": "CDD",
+          "fa": "CDD"
+        },
+        "front": {
+          "de": "Wie werden CDD Typ 2a, 2b und 2c unterschieden?",
+          "en": "How are CDD types 2a, 2b and 2c distinguished?",
+          "fa": "CDD انواع 2a، 2b و 2c چگونه از هم جدا می‌شوند؟"
+        },
+        "answer": {
+          "de": "2a: Mikroabszess bis 3 cm. 2b: Makroabszess >3 cm. 2c: freie Perforation.",
+          "en": "2a: microabscess up to 3 cm. 2b: macroabscess >3 cm. 2c: free perforation.",
+          "fa": "2a: میکروآبسه تا ۳ سانتی‌متر. 2b: ماکروآبسه بیش از ۳ سانتی‌متر. 2c: پرفوراسیون آزاد."
+        },
+        "explanation": {
+          "de": "CDD Typ 2 bezeichnet eine akut komplizierte Divertikulitis. Die genaue Einordnung beeinflusst das weitere Management.",
+          "en": "CDD type 2 is acute complicated diverticulitis. Subclassification affects subsequent management.",
+          "fa": "CDD نوع ۲ دیورتیکولیت حاد پیچیده است و زیرگروه آن بر درمان اثر دارد."
+        },
+        "diagram": {
+          "de": "≤3 cm → 2a\n>3 cm → 2b\nfreie Perforation → 2c",
+          "en": "≤3 cm → 2a\n>3 cm → 2b\nfree perforation → 2c",
+          "fa": "≤۳ سانتی‌متر → 2a\n>۳ سانتی‌متر → 2b\nپرفوراسیون آزاد → 2c"
+        }
+      },
+      "after": {
+        "id": "divertikulitis-cdd-2",
+        "topicId": "divertikulitis",
+        "category": {
+          "de": "CDD",
+          "en": "CDD",
+          "fa": "CDD"
+        },
+        "front": {
+          "de": "Wie werden CDD Typ 2a, 2b und 2c nach S3/DGVS 2021 unterschieden?",
+          "en": "How are CDD types 2a, 2b and 2c distinguished according to S3/DGVS 2021?",
+          "fa": "بر اساس S3/DGVS 2021، انواع CDD 2a، 2b و 2c چگونه از هم جدا می‌شوند؟"
+        },
+        "answer": {
+          "de": "2a: Mikroabszess bis 3 cm. 2b: Makroabszess >3 cm. 2c: freie Perforation.",
+          "en": "2a: microabscess up to 3 cm. 2b: macroabscess >3 cm. 2c: free perforation.",
+          "fa": "2a: میکروآبسه تا ۳ سانتی‌متر. 2b: ماکروآبسه بیش از ۳ سانتی‌متر. 2c: پرفوراسیون آزاد."
+        },
+        "explanation": {
+          "de": "CDD Typ 2 bezeichnet eine akut komplizierte Divertikulitis. Die genaue Einordnung beeinflusst das weitere Management.",
+          "en": "CDD type 2 is acute complicated diverticulitis. Subclassification affects subsequent management.",
+          "fa": "CDD نوع ۲ دیورتیکولیت حاد پیچیده است و زیرگروه آن بر درمان اثر دارد."
+        },
+        "diagram": {
+          "de": "≤3 cm → 2a\n>3 cm → 2b\nfreie Perforation → 2c",
+          "en": "≤3 cm → 2a\n>3 cm → 2b\nfree perforation → 2c",
+          "fa": "≤۳ سانتی‌متر → 2a\n>۳ سانتی‌متر → 2b\nپرفوراسیون آزاد → 2c"
+        },
+        "source": "https://www.dgvs.de/leitlinien/unterer-gi-trakt/divertikelkrankheit-divertikulitis/?digital=1"
+      },
+      "reason": "Peer review: standalone numerical classification needs explicit named edition and source; values/meaning unchanged."
+    }
+  ]
+}

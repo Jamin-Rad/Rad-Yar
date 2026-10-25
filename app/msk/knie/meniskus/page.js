@@ -248,7 +248,7 @@ const CONTENT = {
       title: 'Discoider Meniskus',
       lead: 'Der discoide Meniskus ist eine angeborene anatomische Variante mit übermäßig breitem, scheibenförmigem Meniskuskörper.\n\nEr betrifft fast ausschließlich den Außenmeniskus und reißt häufiger als ein normal geformter Meniskus.',
       stats: [
-        { value: '3–5 %', label: 'Inzidenz', text: 'häufig Zufallsbefund im Knie-MRT' },
+        { value: "4,5 %", label: "MRT-Befundhäufigkeit", text: "in einer retrospektiven Serie von 1.250 Knie-MRTs; keine jährliche Inzidenz" },
         { value: '~50 %', label: 'bilateral', text: 'nicht selten beidseitig vorhanden' },
         { value: 'fast ausschließlich', label: 'Außenmeniskus', qualitative: true },
       ],
@@ -266,7 +266,7 @@ const CONTENT = {
       mriHeaders: ['Ebene', 'Kriterium', 'Schwellenwert'],
       mriRows: [
         ['Koronal', 'absolute Meniskusbreite', '≥ 15 mm'],
-        ['Koronal', 'Meniskusbreite / maximale Tibiabreite', '> 20 %'],
+        ['Koronal', 'Meniskusbreite / maximale Tibiabreite', "≥ 20 %"],
         ['Sagittal', 'kontinuierliche Corpus-Darstellung', '≥ 3 aufeinanderfolgende 5-mm-Schichten'],
       ],
       sagittalTitle: 'Sagittales Zeichen',
@@ -484,7 +484,7 @@ const CONTENT = {
       title: 'Discoid meniscus',
       lead: 'A discoid meniscus is a congenital anatomic variant with an abnormally wide, disc-shaped meniscal body.\n\nIt almost exclusively affects the lateral meniscus and is more prone to tears than a normally shaped meniscus.',
       stats: [
-        { value: '3–5%', label: 'incidence', text: 'often incidental on knee MRI' },
+        { value: "4.5%", label: "MRI finding frequency", text: "in one retrospective series of 1,250 knee MRIs; not annual incidence" },
         { value: '~50%', label: 'bilateral', text: 'not uncommonly present on both sides' },
         { value: 'almost exclusively', label: 'Lateral meniscus', qualitative: true },
       ],
@@ -502,7 +502,7 @@ const CONTENT = {
       mriHeaders: ['Plane', 'Criterion', 'Threshold'],
       mriRows: [
         ['Coronal', 'absolute meniscal width', '≥ 15 mm'],
-        ['Coronal', 'meniscal width / maximal tibial width', '> 20%'],
+        ['Coronal', 'meniscal width / maximal tibial width', "≥ 20%"],
         ['Sagittal', 'continuous body visualization', '≥ 3 consecutive 5-mm slices'],
       ],
       sagittalTitle: 'Sagittal sign',
@@ -720,7 +720,7 @@ const CONTENT = {
       title: 'منیسک دیسکوئید',
       lead: 'منیسک دیسکوئید یک واریانت مادرزادی است که در آن تنه منیسک پهن‌تر و شبیه دیسک است.\n\nاین حالت تقریباً همیشه منیسک خارجی را درگیر می‌کند و نسبت به منیسک طبیعی بیشتر مستعد پارگی است.',
       stats: [
-        { value: '۳–۵٪', label: 'شیوع', text: 'اغلب یافته اتفاقی در MRI زانو' },
+        { value: "۴٫۵٪", label: "فراوانی در MRI", text: "در یک مجموعهٔ گذشته‌نگر شامل ۱۲۵۰ MRI زانو؛ نه بروز سالانه" },
         { value: '~۵۰٪', label: 'دوطرفه', text: 'می‌تواند در هر دو زانو دیده شود' },
         { value: 'تقریباً همیشه', label: 'منیسک خارجی', qualitative: true },
       ],
@@ -738,7 +738,7 @@ const CONTENT = {
       mriHeaders: ['صفحه', 'معیار', 'حد آستانه'],
       mriRows: [
         ['کرونال', 'عرض مطلق منیسک', '≥ ۱۵ میلی‌متر'],
-        ['کرونال', 'عرض منیسک / حداکثر عرض تیبیا', '> ۲۰٪'],
+        ['کرونال', 'عرض منیسک / حداکثر عرض تیبیا', "≥ ۲۰٪"],
         ['ساژیتال', 'دیده شدن مداوم تنه منیسک', '≥ ۳ برش متوالی با ضخامت ۵ میلی‌متر'],
       ],
       sagittalTitle: 'علامت ساژیتال',
@@ -979,6 +979,8 @@ function ImageFigure({ src, alt, caption, aiNotice, zoomable = false, zoomLabel 
 }
 
 const SOURCES = [
+  { label: 'Kise et al. · Exercise therapy versus arthroscopic partial meniscectomy (BMJ, 2016; randomized trial)', href: 'https://www.bmj.com/content/354/bmj.i3740' },
+  { label: 'Rohren et al. · Discoid lateral meniscus and the frequency of meniscal tears (Skeletal Radiology, 2001)', href: 'https://pubmed.ncbi.nlm.nih.gov/11465771/' },
   { label: 'Yu et al. · Meniscal flounce MR imaging (Radiology, 1997)', href: 'https://pubs.rsna.org/doi/10.1148/radiology.203.2.9114114' },
   { label: 'MRI study of medial meniscus degeneration · Jerosch grades 0–4 (2022)', href: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC9054988/' },
   { label: 'Dillon et al. · Clinical significance of stage 2 meniscal abnormalities (1990)', href: 'https://pubmed.ncbi.nlm.nih.gov/2392029/' },
@@ -990,7 +992,7 @@ const SOURCES = [
   { label: 'Haims et al. · The flipped meniscus sign (Radiology, 1993)', href: 'https://pubmed.ncbi.nlm.nih.gov/8316871/' },
   { label: 'Schweitzer et al. · Potential pitfalls of a double PCL sign (2009)', href: 'https://pubmed.ncbi.nlm.nih.gov/19234702/' },
   { label: 'Nguyen et al. · MR Imaging–based Diagnosis and Classification of Meniscal Tears (RadioGraphics, 2014)', href: 'https://pubs.rsna.org/doi/10.1148/rg.344125202' },
-  { label: 'Samato et al. · MRI criteria for discoid lateral meniscus', href: 'https://pubmed.ncbi.nlm.nih.gov/11973030/' },
+  { label: "Samoto et al. · MRI criteria for discoid lateral meniscus", href: 'https://pubmed.ncbi.nlm.nih.gov/11973030/' },
   { label: 'SSR consensus · Standardized MRI nomenclature for knee meniscal lesions (2026)', href: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/' },
   { label: 'Allaire et al. · Biomechanical consequences of a medial posterior root tear (2008)', href: MENISCUS_PDF_GAP_ADDENDUM.rootTear.evidence },
   { label: 'Kim et al. · Discoid lateral meniscus: diagnosis and treatment (review)', href: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC7550551/' },

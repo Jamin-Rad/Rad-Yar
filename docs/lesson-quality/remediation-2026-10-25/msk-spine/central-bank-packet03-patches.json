@@ -1,0 +1,1313 @@
+[
+  {
+    "file": "data/questions.js",
+    "id": "kreuzbaender-de-03",
+    "before": {
+      "id": "kreuzbaender-de-03",
+      "tags": [
+        "kreuzbaender",
+        "knieligamente",
+        "knie"
+      ],
+      "fach": "msk",
+      "question": "Wofür ist das Arcuate Sign eine Red Flag?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Schwere Verletzung des posterolateralen Eckpunkts"
+        },
+        {
+          "id": "B",
+          "text": "Isolierte Patellarsehnenruptur"
+        },
+        {
+          "id": "C",
+          "text": "Chronische mukoide VKB-Degeneration"
+        },
+        {
+          "id": "D",
+          "text": "Unkomplizierte Grad-I-MCL-Zerrung"
+        }
+      ],
+      "correct": "A",
+      "explanation": "Das Arcuate Sign ist eine Avulsionsfraktur am Apex des Fibulaköpfchens und spricht stark für eine relevante PLC-Verletzung."
+    },
+    "after": {
+      "id": "kreuzbaender-de-03",
+      "tags": [
+        "kreuzbaender",
+        "knieligamente",
+        "knie"
+      ],
+      "fach": "msk",
+      "question": "Nach Knietrauma zeigt sich ein knöcherner Ausriss am Fibulastyloid (Arcuate Sign). Welcher Verletzungskomplex muss gezielt mitbeurteilt werden?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Posterolaterale Stabilisatoren und Kreuzbänder."
+        },
+        {
+          "id": "B",
+          "text": "Medialer patellofemoraler Halteapparat."
+        },
+        {
+          "id": "C",
+          "text": "Distaler Streckapparat an der Tuberositas tibiae."
+        },
+        {
+          "id": "D",
+          "text": "Posteromediale Kapsel und Semimembranosusansatz."
+        }
+      ],
+      "correct": "A",
+      "explanation": "Das Arcuate Sign weist auf eine Verletzung von Strukturen hin, die am Fibulakopf/-styloid ansetzen. Posterolaterale Strukturen und Kreuzbänder gezielt prüfen; das Zeichen allein bestimmt nicht den gesamten Verletzungsumfang oder eine Therapie.",
+      "wrongExplanations": {
+        "B": "Ein fibulärer Ausriss liegt nicht am patellaren oder femoralen Ansatz des MPFL.",
+        "C": "Die Tuberositas tibiae ist der Patellarsehnenansatz; sie liegt nicht am Fibulastyloid.",
+        "D": "Diese Strukturen gehören zur posteromedialen Seite; der fibuläre Ausriss lenkt zunächst auf den posterolateralen Komplex."
+      },
+      "source": "https://pubmed.ncbi.nlm.nih.gov/12540438/; https://pubmed.ncbi.nlm.nih.gov/14520502/"
+    },
+    "reason": "Packet3: replace off-organ distractors and overgeneralized severity wording with homogeneous relevant knee structures and source-qualified associations."
+  },
+  {
+    "file": "data/questions.js",
+    "id": "kreuzbaender-en-03",
+    "before": {
+      "id": "kreuzbaender-en-03",
+      "tags": [
+        "kreuzbaender",
+        "knieligamente",
+        "knie"
+      ],
+      "fach": "msk",
+      "question": "What is the arcuate sign a red flag for?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Severe posterolateral corner injury"
+        },
+        {
+          "id": "B",
+          "text": "Isolated patellar tendon rupture"
+        },
+        {
+          "id": "C",
+          "text": "Chronic mucoid ACL degeneration"
+        },
+        {
+          "id": "D",
+          "text": "Uncomplicated grade I MCL sprain"
+        }
+      ],
+      "correct": "A",
+      "explanation": "The arcuate sign is an avulsion fracture at the fibular head apex and is highly characteristic of a significant PLC injury."
+    },
+    "after": {
+      "id": "kreuzbaender-en-03",
+      "tags": [
+        "kreuzbaender",
+        "knieligamente",
+        "knie"
+      ],
+      "fach": "msk",
+      "question": "After knee trauma, a fibular styloid avulsion (arcuate sign) is seen. Which injury complex requires targeted assessment?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Posterolateral stabilizers and cruciate ligaments."
+        },
+        {
+          "id": "B",
+          "text": "Medial patellofemoral restraints."
+        },
+        {
+          "id": "C",
+          "text": "Distal extensor mechanism at the tibial tuberosity."
+        },
+        {
+          "id": "D",
+          "text": "Posteromedial capsule and semimembranosus insertion."
+        }
+      ],
+      "correct": "A",
+      "explanation": "The arcuate sign indicates injury to structures inserting at the fibular head/styloid. Assess posterolateral structures and cruciate ligaments; the sign alone does not determine the entire injury extent or treatment.",
+      "wrongExplanations": {
+        "B": "A fibular avulsion is not at a patellar or femoral MPFL attachment.",
+        "C": "The tibial tuberosity is the patellar tendon attachment, not the fibular styloid.",
+        "D": "These structures are posteromedial; fibular avulsion first directs attention to the posterolateral complex."
+      },
+      "source": "https://pubmed.ncbi.nlm.nih.gov/12540438/; https://pubmed.ncbi.nlm.nih.gov/14520502/"
+    },
+    "reason": "Packet3: replace off-organ distractors and overgeneralized severity wording with homogeneous relevant knee structures and source-qualified associations."
+  },
+  {
+    "file": "data/questions.js",
+    "id": "kreuzbaender-fa-03",
+    "before": {
+      "id": "kreuzbaender-fa-03",
+      "tags": [
+        "kreuzbaender",
+        "knieligamente",
+        "knie"
+      ],
+      "fach": "msk",
+      "question": "علامت آرکوات (Arcuate sign) هشدار مهم برای چیست؟",
+      "options": [
+        {
+          "id": "A",
+          "text": "آسیب شدید گوشه خلفی-لترال زانو"
+        },
+        {
+          "id": "B",
+          "text": "پارگی منفرد تاندون پاتلا"
+        },
+        {
+          "id": "C",
+          "text": "دژنراسیون موکوئید مزمن ACL"
+        },
+        {
+          "id": "D",
+          "text": "کشیدگی ساده MCL درجه I"
+        }
+      ],
+      "correct": "A",
+      "explanation": "علامت آرکوات (Arcuate sign) یک شکستگی کندگی در رأس سر فیبولاست و به نفع آسیب مهم کمپلکس PLC است."
+    },
+    "after": {
+      "id": "kreuzbaender-fa-03",
+      "tags": [
+        "kreuzbaender",
+        "knieligamente",
+        "knie"
+      ],
+      "fach": "msk",
+      "question": "پس از ترومای زانو، کندگی استخوانی زائدهٔ استیلوئید فیبولا (علامت آرکوات) دیده می‌شود. کدام مجموعهٔ آسیب باید هدفمند ارزیابی شود؟",
+      "options": [
+        {
+          "id": "A",
+          "text": "پایدارکننده‌های خلفی‌ـ‌خارجی و رباط‌های صلیبی."
+        },
+        {
+          "id": "B",
+          "text": "ساختارهای مهارکنندهٔ کشککی‌ـ‌رانی داخلی."
+        },
+        {
+          "id": "C",
+          "text": "مکانیسم اکستانسور دیستال در برجستگی درشت‌نی."
+        },
+        {
+          "id": "D",
+          "text": "کپسول خلفی‌ـ‌داخلی و اتصال نیم‌غشایی."
+        }
+      ],
+      "correct": "A",
+      "explanation": "علامت آرکوات به آسیب ساختارهای متصل به سر/استیلوئید فیبولا اشاره دارد. ساختارهای خلفی‌ـ‌خارجی و رباط‌های صلیبی را هدفمند بررسی کنید؛ این علامت به‌تنهایی وسعت کامل آسیب یا درمان را تعیین نمی‌کند.",
+      "wrongExplanations": {
+        "B": "کندگی فیبولا در محل اتصال کشککی یا رانی MPFL نیست.",
+        "C": "برجستگی درشت‌نی محل اتصال تاندون کشککی است، نه استیلوئید فیبولا.",
+        "D": "این ساختارها در سمت خلفی‌ـ‌داخلی‌اند؛ کندگی فیبولا ابتدا توجه را به مجموعهٔ خلفی‌ـ‌خارجی معطوف می‌کند."
+      },
+      "source": "https://pubmed.ncbi.nlm.nih.gov/12540438/; https://pubmed.ncbi.nlm.nih.gov/14520502/"
+    },
+    "reason": "Packet3: replace off-organ distractors and overgeneralized severity wording with homogeneous relevant knee structures and source-qualified associations."
+  },
+  {
+    "file": "data/questions.js",
+    "id": "kreuzbaender-de-04",
+    "before": {
+      "id": "kreuzbaender-de-04",
+      "tags": [
+        "kreuzbaender",
+        "knieligamente",
+        "knie"
+      ],
+      "fach": "msk",
+      "question": "Welche Struktur sollte bei jeder MCL-Verletzung gezielt mitbeurteilt werden?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Posterior Oblique Ligament (POL)"
+        },
+        {
+          "id": "B",
+          "text": "Ligamentum flavum"
+        },
+        {
+          "id": "C",
+          "text": "Ligamentum teres"
+        },
+        {
+          "id": "D",
+          "text": "Retinaculum extensorum"
+        }
+      ],
+      "correct": "A",
+      "explanation": "MCL und POL bilden funktionell eine mediale Stabilitätseinheit; kombinierte Läsionen sind häufig und dürfen nicht übersehen werden."
+    },
+    "after": {
+      "id": "kreuzbaender-de-04",
+      "tags": [
+        "kreuzbaender",
+        "knieligamente",
+        "knie"
+      ],
+      "fach": "msk",
+      "question": "Bei einer akuten MCL-Verletzung soll auch die posteromediale Stabilisierung beurteilt werden. Welche Bandstruktur gehört gezielt zu dieser Beurteilung?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Posterior Oblique Ligament (POL)."
+        },
+        {
+          "id": "B",
+          "text": "Popliteofibulares Ligament."
+        },
+        {
+          "id": "C",
+          "text": "Mediales patellofemorales Ligament (MPFL)."
+        },
+        {
+          "id": "D",
+          "text": "Vorderes Kreuzband (VKB)."
+        }
+      ],
+      "correct": "A",
+      "explanation": "Das POL ist ein eigenständig beurteilbarer Teil des posteromedialen Komplexes. Die primäre MRT-Studie zeigte eine Assoziation mit MCL- und weiteren posteromedialen Verletzungen; eine MCL-Verletzung beweist aber keine POL-Ruptur.",
+      "wrongExplanations": {
+        "B": "Das popliteofibulare Ligament gehört zum posterolateralen, nicht zum gesuchten posteromedialen Komplex.",
+        "C": "Das MPFL stabilisiert die Patella medial; es ist nicht das hier gesuchte POL der posteromedialen Kapselregion.",
+        "D": "Das VKB ist intraartikulär und kein Ersatz für die gezielte POL-Beurteilung; Begleitverletzungen werden zusätzlich geprüft."
+      },
+      "source": "https://pubmed.ncbi.nlm.nih.gov/34626207/"
+    },
+    "reason": "Packet3: replace off-organ distractors and overgeneralized severity wording with homogeneous relevant knee structures and source-qualified associations."
+  },
+  {
+    "file": "data/questions.js",
+    "id": "kreuzbaender-en-04",
+    "before": {
+      "id": "kreuzbaender-en-04",
+      "tags": [
+        "kreuzbaender",
+        "knieligamente",
+        "knie"
+      ],
+      "fach": "msk",
+      "question": "Which structure should be assessed deliberately in every MCL injury?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Posterior oblique ligament (POL)"
+        },
+        {
+          "id": "B",
+          "text": "Ligamentum flavum"
+        },
+        {
+          "id": "C",
+          "text": "Ligamentum teres"
+        },
+        {
+          "id": "D",
+          "text": "Extensor retinaculum"
+        }
+      ],
+      "correct": "A",
+      "explanation": "The MCL and POL form a functional medial stabilising unit; combined lesions are common and should not be missed."
+    },
+    "after": {
+      "id": "kreuzbaender-en-04",
+      "tags": [
+        "kreuzbaender",
+        "knieligamente",
+        "knie"
+      ],
+      "fach": "msk",
+      "question": "An acute MCL injury also requires assessment of posteromedial stabilization. Which ligament belongs in this targeted assessment?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Posterior oblique ligament (POL)."
+        },
+        {
+          "id": "B",
+          "text": "Popliteofibular ligament."
+        },
+        {
+          "id": "C",
+          "text": "Medial patellofemoral ligament (MPFL)."
+        },
+        {
+          "id": "D",
+          "text": "Anterior cruciate ligament (ACL)."
+        }
+      ],
+      "correct": "A",
+      "explanation": "The POL is an independently assessable part of the posteromedial complex. The primary MRI study found association with MCL and other posteromedial injuries; an MCL injury does not itself prove a POL tear.",
+      "wrongExplanations": {
+        "B": "The popliteofibular ligament is posterolateral rather than part of the requested posteromedial complex.",
+        "C": "The MPFL restrains the patella medially; it is not the requested POL of the posteromedial capsular region.",
+        "D": "The ACL is intra-articular and does not replace targeted POL assessment; associated injuries are assessed separately."
+      },
+      "source": "https://pubmed.ncbi.nlm.nih.gov/34626207/"
+    },
+    "reason": "Packet3: replace off-organ distractors and overgeneralized severity wording with homogeneous relevant knee structures and source-qualified associations."
+  },
+  {
+    "file": "data/questions.js",
+    "id": "kreuzbaender-fa-04",
+    "before": {
+      "id": "kreuzbaender-fa-04",
+      "tags": [
+        "kreuzbaender",
+        "knieligamente",
+        "knie"
+      ],
+      "fach": "msk",
+      "question": "در هر آسیب MCL کدام ساختار باید هدفمند ارزیابی شود؟",
+      "options": [
+        {
+          "id": "A",
+          "text": "رباط مایل خلفی (POL)"
+        },
+        {
+          "id": "B",
+          "text": "لیگامنتوم فلاووم"
+        },
+        {
+          "id": "C",
+          "text": "لیگامنتوم ترس"
+        },
+        {
+          "id": "D",
+          "text": "رتیناکولوم اکستانسور"
+        }
+      ],
+      "correct": "A",
+      "explanation": "MCL و POL یک واحد پایداری مدیال می‌سازند؛ ضایعات ترکیبی شایع‌اند و نباید نادیده گرفته شوند."
+    },
+    "after": {
+      "id": "kreuzbaender-fa-04",
+      "tags": [
+        "kreuzbaender",
+        "knieligamente",
+        "knie"
+      ],
+      "fach": "msk",
+      "question": "در آسیب حاد MCL، پایداری خلفی‌ـ‌داخلی نیز باید ارزیابی شود. کدام رباط باید در این ارزیابی هدفمند بررسی شود؟",
+      "options": [
+        {
+          "id": "A",
+          "text": "رباط مایل خلفی (POL)."
+        },
+        {
+          "id": "B",
+          "text": "رباط پوپلیته‌ـ‌فیبولار."
+        },
+        {
+          "id": "C",
+          "text": "رباط کشککی‌ـ‌رانی داخلی (MPFL)."
+        },
+        {
+          "id": "D",
+          "text": "رباط صلیبی قدامی (ACL)."
+        }
+      ],
+      "correct": "A",
+      "explanation": "POL جزء قابل ارزیابیِ مستقلِ مجموعهٔ خلفی‌ـ‌داخلی است. مطالعهٔ اولیهٔ MRI ارتباط آن را با آسیب MCL و دیگر ساختارهای خلفی‌ـ‌داخلی نشان داد؛ اما آسیب MCL به‌خودی‌خود پارگی POL را ثابت نمی‌کند.",
+      "wrongExplanations": {
+        "B": "رباط پوپلیته‌ـ‌فیبولار مربوط به مجموعهٔ خلفی‌ـ‌خارجی است، نه خلفی‌ـ‌داخلی مورد سؤال.",
+        "C": "MPFL کشکک را از سمت داخلی مهار می‌کند؛ این رباط، POL ناحیهٔ کپسولی خلفی‌ـ‌داخلی مورد سؤال نیست.",
+        "D": "ACL داخل‌مفصلی است و جای بررسی هدفمند POL را نمی‌گیرد؛ آسیب‌های همراه جداگانه ارزیابی می‌شوند."
+      },
+      "source": "https://pubmed.ncbi.nlm.nih.gov/34626207/"
+    },
+    "reason": "Packet3: replace off-organ distractors and overgeneralized severity wording with homogeneous relevant knee structures and source-qualified associations."
+  },
+  {
+    "file": "data/questions.js",
+    "id": "kreuzbaender-de-01",
+    "before": {
+      "id": "kreuzbaender-de-01",
+      "tags": [
+        "kreuzbaender",
+        "knieligamente",
+        "knie"
+      ],
+      "fach": "msk",
+      "question": "Welcher MRT-Befund passt am besten zu einer Bandverletzung Grad I?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Erhaltene Bandkontur mit periligamentösem Ödem"
+        },
+        {
+          "id": "B",
+          "text": "Komplette Diskontinuität mit welligen Bandstümpfen"
+        },
+        {
+          "id": "C",
+          "text": "Knöcherne Avulsion am Fibulaköpfchen"
+        },
+        {
+          "id": "D",
+          "text": "Deutliche anteriore Tibiasubluxation über 7 mm"
+        }
+      ],
+      "correct": "A",
+      "explanation": "Grad I entspricht einer Zerrung: Die Bandkontur ist erhalten, das Leitsignal ist ein Flüssigkeitssaum bzw. periligamentöses Ödem."
+    },
+    "after": {
+      "id": "kreuzbaender-de-01",
+      "tags": [
+        "kreuzbaender",
+        "knieligamente",
+        "knie"
+      ],
+      "fach": "msk",
+      "question": "Welche Beobachtung am medialen Kollateralband beschreibt das gezeigte Bildpaar am treffendsten?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Initial deutliches Umgebungsödem bei erhaltener Bandkontinuität; im zweiten Bild rückläufig."
+        },
+        {
+          "id": "B",
+          "text": "Initial flüssigkeitsgefüllte vollständige Bandlücke; im zweiten Bild weiterhin fehlende Kontinuität."
+        },
+        {
+          "id": "C",
+          "text": "Initial knöcherner Bandausriss; im zweiten Bild überbrückender Kallus."
+        },
+        {
+          "id": "D",
+          "text": "In beiden Bildern unauffälliges Band ohne sichtbare Umgebungsreaktion."
+        }
+      ],
+      "correct": "A",
+      "explanation": "Links ist periligamentäres Ödem bei kontinuierlich dargestelltem MCL sichtbar, rechts nimmt die Umgebungsreaktion ab. Die Quelle bezeichnet dies als Grad-I-Zerrung. Die eingeblendeten zwei Wochen beschreiben diesen Quellverlauf, keine allgemeine Heilungsfrist oder Freigabe zur Belastung.",
+      "wrongExplanations": {
+        "B": "Ein vollständiger flüssigkeitsgefüllter Defekt mit getrennten Bandstümpfen ist in diesem Quellpaar nicht das gezeigte Leitmuster.",
+        "C": "Das Paar demonstriert eine Weichteilreaktion um das Band, nicht einen knöchernen Ausriss mit Kallusverlauf.",
+        "D": "Im linken Bild ist eine deutliche helle Umgebungsreaktion sichtbar; beide Bilder sind daher nicht gleichermaßen unauffällig."
+      },
+      "image": {
+        "src": "/knieligamente/mcl-sprain-followup.png",
+        "alt": "Koronares MRT-Bildpaar des Knies aus MSK.pdf Seite61; links „Trauma“, rechts „nach2Wochen“.",
+        "caption": "Originales Quellpaar ohne zusätzliche Markierungen.",
+        "credit": "MSK.pdf · PDF-Seite61 /Druck60 · Beitragender auf der Seite nicht genannt."
+      },
+      "source": "MSK.pdf physical61 /printed60; original page and retained MRI pair actually visually inspected2026-10-25"
+    },
+    "reason": "Replace existing text-only grade recognition with actual source-image evidence interpretation; same ID/key, no added duplicate-question quota, source timeline bounded."
+  },
+  {
+    "file": "data/questions.js",
+    "id": "kreuzbaender-en-01",
+    "before": {
+      "id": "kreuzbaender-en-01",
+      "tags": [
+        "kreuzbaender",
+        "knieligamente",
+        "knie"
+      ],
+      "fach": "msk",
+      "question": "Which MRI finding best matches a grade I ligament injury?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Preserved ligament contour with periligamentous oedema"
+        },
+        {
+          "id": "B",
+          "text": "Complete discontinuity with wavy ligament ends"
+        },
+        {
+          "id": "C",
+          "text": "Bony avulsion at the fibular head"
+        },
+        {
+          "id": "D",
+          "text": "Marked anterior tibial subluxation over 7 mm"
+        }
+      ],
+      "correct": "A",
+      "explanation": "Grade I is a sprain: the ligament contour remains intact; the key finding is surrounding fluid or periligamentous oedema."
+    },
+    "after": {
+      "id": "kreuzbaender-en-01",
+      "tags": [
+        "kreuzbaender",
+        "knieligamente",
+        "knie"
+      ],
+      "fach": "msk",
+      "question": "Which observation of the medial collateral ligament best describes the displayed image pair?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Initially prominent surrounding oedema with preserved ligament continuity; reduced on the second image."
+        },
+        {
+          "id": "B",
+          "text": "Initially a fluid-filled complete ligament gap, with persistent discontinuity on the second image."
+        },
+        {
+          "id": "C",
+          "text": "Initially an osseous ligament avulsion, with bridging callus on the second image."
+        },
+        {
+          "id": "D",
+          "text": "An unremarkable ligament without visible surrounding reaction on either image."
+        }
+      ],
+      "correct": "A",
+      "explanation": "The left image shows periligamentous oedema around a continuously depicted MCL; the surrounding reaction decreases on the right. The source labels this a grade-I sprain. The displayed two weeks describe this source follow-up, not a universal healing or return-to-load deadline.",
+      "wrongExplanations": {
+        "B": "A complete fluid-filled gap with separated ligament ends is not the predominant pattern in this source pair.",
+        "C": "The pair demonstrates a soft-tissue reaction around the ligament, not an osseous avulsion with callus evolution.",
+        "D": "The left image shows a prominent bright surrounding reaction; the two images are not both unremarkable."
+      },
+      "image": {
+        "src": "/knieligamente/mcl-sprain-followup.png",
+        "alt": "Coronal knee MRI pair from MSK.pdf page61; left labelled “Trauma”, right “after2weeks”.",
+        "caption": "Original source pair without added overlays.",
+        "credit": "MSK.pdf · PDF page61 /printed60 · no contributor named on the page."
+      },
+      "source": "MSK.pdf physical61 /printed60; original page and retained MRI pair actually visually inspected2026-10-25"
+    },
+    "reason": "Replace existing text-only grade recognition with actual source-image evidence interpretation; same ID/key, no added duplicate-question quota, source timeline bounded."
+  },
+  {
+    "file": "data/questions.js",
+    "id": "kreuzbaender-fa-01",
+    "before": {
+      "id": "kreuzbaender-fa-01",
+      "tags": [
+        "kreuzbaender",
+        "knieligamente",
+        "knie"
+      ],
+      "fach": "msk",
+      "question": "کدام یافته MRI بیشتر با آسیب رباط درجه I تطابق دارد؟",
+      "options": [
+        {
+          "id": "A",
+          "text": "حفظ کانتور رباط همراه با ادم اطراف رباط"
+        },
+        {
+          "id": "B",
+          "text": "قطع کامل همراه با حالت موج‌دار انتهای رباط"
+        },
+        {
+          "id": "C",
+          "text": "کندگی استخوانی در رأس سر فیبولا"
+        },
+        {
+          "id": "D",
+          "text": "سابلوکساسیون قدامی تیبیا بیش از ۷ میلی‌متر"
+        }
+      ],
+      "correct": "A",
+      "explanation": "درجه I همان کشیدگی است: کانتور رباط حفظ می‌شود و یافته اصلی مایع/ادم اطراف رباط است."
+    },
+    "after": {
+      "id": "kreuzbaender-fa-01",
+      "tags": [
+        "kreuzbaender",
+        "knieligamente",
+        "knie"
+      ],
+      "fach": "msk",
+      "question": "کدام مشاهده دربارهٔ رباط جانبی داخلی، جفت تصاویر نشان‌داده‌شده را بهتر توصیف می‌کند؟",
+      "options": [
+        {
+          "id": "A",
+          "text": "ادم واضح اولیه در اطراف رباط با حفظ پیوستگی آن؛ کاهش ادم در تصویر دوم."
+        },
+        {
+          "id": "B",
+          "text": "شکاف کامل رباط با محتوای مایع در ابتدا و تداوم گسستگی در تصویر دوم."
+        },
+        {
+          "id": "C",
+          "text": "کندگی استخوانی محل اتصال رباط در ابتدا و کالوس پل‌زننده در تصویر دوم."
+        },
+        {
+          "id": "D",
+          "text": "رباط بدون تغییر و بدون واکنش قابل مشاهدهٔ اطراف، در هر دو تصویر."
+        }
+      ],
+      "correct": "A",
+      "explanation": "در تصویر چپ ادم پیرارباطی در اطراف MCL با پیوستگی قابل مشاهده وجود دارد و در سمت راست واکنش اطراف کاهش یافته است. منبع این وضعیت را کشیدگی درجهٔ I می‌نامد. فاصلهٔ دو هفتهٔ درج‌شده مربوط به پیگیری همین منبع است، نه مهلت همگانی ترمیم یا بازگشت به بارگذاری.",
+      "wrongExplanations": {
+        "B": "نقص کامل پر از مایع با انتهای جداشدهٔ رباط، الگوی اصلیِ نشان‌داده‌شده در این جفت تصاویر منبع نیست.",
+        "C": "این جفت تصاویر واکنش بافت نرم اطراف رباط را نشان می‌دهد، نه کندگی استخوانی با سیر تشکیل کالوس.",
+        "D": "در تصویر چپ واکنش پرسیگنال واضح اطراف دیده می‌شود؛ بنابراین هر دو تصویر به یکسان طبیعی نیستند."
+      },
+      "image": {
+        "src": "/knieligamente/mcl-sprain-followup.png",
+        "alt": "جفت تصاویر کرونال MRI زانو از صفحهٔ ۶۱ MSK.pdf؛ برچسب چپ «تروما» و راست «پس از دو هفته».",
+        "caption": "جفت تصاویر اصلی منبع، بدون علامت‌گذاری افزوده.",
+        "credit": "MSK.pdf · صفحهٔ PDF۶۱ /چاپی۶۰ · نام مشارکت‌کننده در صفحه ذکر نشده است."
+      },
+      "source": "MSK.pdf physical61 /printed60; original page and retained MRI pair actually visually inspected2026-10-25"
+    },
+    "reason": "Replace existing text-only grade recognition with actual source-image evidence interpretation; same ID/key, no added duplicate-question quota, source timeline bounded."
+  },
+  {
+    "file": "data/questions.js",
+    "id": "meniskus-de-18",
+    "before": {
+      "id": "meniskus-de-18",
+      "tags": [
+        "meniskus",
+        "knie"
+      ],
+      "fach": "msk",
+      "question": "Welche quantitative koronale Messung unterstützt einen discoiden Außenmeniskus?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Körperbreite ≥15 mm oder Verhältnis minimaler Meniskusbreite zu maximaler Tibiabreite >20 %"
+        },
+        {
+          "id": "B",
+          "text": "Extrusion >3 mm als einziges Formkriterium"
+        },
+        {
+          "id": "C",
+          "text": "Risslänge >15 mm"
+        },
+        {
+          "id": "D",
+          "text": "Vorder- plus Hinterhornbreite / Meniskusdurchmesser >75 % als koronale Messung"
+        }
+      ],
+      "correct": "A",
+      "explanation": "Diese Breitenkriterien unterstützen die Diagnose und werden mit sagittaler Ausdehnung und Gesamtform kombiniert. Messung und Ebene müssen angegeben werden.",
+      "wrongExplanations": {
+        "B": "Extrusion zeigt Verlagerung, nicht die discoide Form.",
+        "C": "Die Messung bezieht sich auf die Körperbreite, nicht die Risslänge.",
+        "D": "Dieses Verhältnis wird sagittal gemessen, nicht koronal."
+      },
+      "sources": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC7571514/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC4766355/",
+        "https://pubmed.ncbi.nlm.nih.gov/12185036/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC9514523/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC10132882/",
+        "https://pubmed.ncbi.nlm.nih.gov/11973030/",
+        "https://pubmed.ncbi.nlm.nih.gov/12719929/",
+        "https://pubmed.ncbi.nlm.nih.gov/8316871/",
+        "https://pubmed.ncbi.nlm.nih.gov/19234702/",
+        "https://www.aaos.org/quality/quality-programs/acute-isolated-meniscal-pathology/",
+        "https://esskajournals.onlinelibrary.wiley.com/doi/10.1002/ksa.12689"
+      ]
+    },
+    "after": {
+      "id": "meniskus-de-18",
+      "tags": [
+        "meniskus",
+        "knie"
+      ],
+      "fach": "msk",
+      "question": "Welche quantitative koronale Messung unterstützt einen discoiden Außenmeniskus?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Körperbreite ≥15 mm oder Verhältnis minimaler Meniskusbreite zu maximaler Tibiabreite ≥20 %."
+        },
+        {
+          "id": "B",
+          "text": "Extrusion >3 mm als einziges Formkriterium"
+        },
+        {
+          "id": "C",
+          "text": "Risslänge >15 mm"
+        },
+        {
+          "id": "D",
+          "text": "Vorder- plus Hinterhornbreite / Meniskusdurchmesser ≥75 % als koronale Messung"
+        }
+      ],
+      "correct": "A",
+      "explanation": "Diese Breitenkriterien unterstützen die Diagnose und werden mit sagittaler Ausdehnung und Gesamtform kombiniert. Messung und Ebene müssen angegeben werden.",
+      "wrongExplanations": {
+        "B": "Extrusion beschreibt die Verlagerung über den Tibiaplateaurand, nicht die koronale Körperbreite zur Discoidform.",
+        "C": "Eine Risslänge ist keine Messung der gesamten Meniskuskörperbreite.",
+        "D": "Dieser Deckungsquotient wird im ursprünglichen Samoto-Protokoll sagittal gemessen; er ist keine koronale Messung."
+      },
+      "sources": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC7571514/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC4766355/",
+        "https://pubmed.ncbi.nlm.nih.gov/12185036/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC9514523/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC10132882/",
+        "https://pubmed.ncbi.nlm.nih.gov/11973030/",
+        "https://pubmed.ncbi.nlm.nih.gov/12719929/",
+        "https://pubmed.ncbi.nlm.nih.gov/8316871/",
+        "https://pubmed.ncbi.nlm.nih.gov/19234702/",
+        "https://www.aaos.org/quality/quality-programs/acute-isolated-meniscal-pathology/",
+        "https://esskajournals.onlinelibrary.wiley.com/doi/10.1002/ksa.12689"
+      ],
+      "source": "https://pubmed.ncbi.nlm.nih.gov/11973030/"
+    },
+    "reason": "Restore original-study inclusive20%cutoff; preserve supportive not diagnostic-alone role, clarify plane-specific homogeneous alternatives."
+  },
+  {
+    "file": "data/questions.js",
+    "id": "meniskus-en-18",
+    "before": {
+      "id": "meniskus-en-18",
+      "tags": [
+        "meniskus",
+        "knie"
+      ],
+      "fach": "msk",
+      "question": "Which quantitative coronal measurement supports a discoid lateral meniscus?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Body width ≥15 mm or minimum meniscal/maximum tibial width ratio >20%"
+        },
+        {
+          "id": "B",
+          "text": "Extrusion >3 mm as the only shape criterion"
+        },
+        {
+          "id": "C",
+          "text": "Tear length >15 mm"
+        },
+        {
+          "id": "D",
+          "text": "Anterior-plus-posterior horn widths / meniscal diameter >75% as a coronal measurement"
+        }
+      ],
+      "correct": "A",
+      "explanation": "These width criteria support diagnosis and are combined with sagittal extent and overall shape. Specify the measurement and plane.",
+      "wrongExplanations": {
+        "B": "Extrusion indicates displacement, not discoid shape.",
+        "C": "The measurement refers to body width, not tear length.",
+        "D": "This ratio is measured sagittally, not coronally."
+      },
+      "sources": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC7571514/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC4766355/",
+        "https://pubmed.ncbi.nlm.nih.gov/12185036/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC9514523/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC10132882/",
+        "https://pubmed.ncbi.nlm.nih.gov/11973030/",
+        "https://pubmed.ncbi.nlm.nih.gov/12719929/",
+        "https://pubmed.ncbi.nlm.nih.gov/8316871/",
+        "https://pubmed.ncbi.nlm.nih.gov/19234702/",
+        "https://www.aaos.org/quality/quality-programs/acute-isolated-meniscal-pathology/",
+        "https://esskajournals.onlinelibrary.wiley.com/doi/10.1002/ksa.12689"
+      ]
+    },
+    "after": {
+      "id": "meniskus-en-18",
+      "tags": [
+        "meniskus",
+        "knie"
+      ],
+      "fach": "msk",
+      "question": "Which quantitative coronal measurement supports a discoid lateral meniscus?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Body width ≥15 mm or minimum meniscal-to-maximum tibial width ratio ≥20%."
+        },
+        {
+          "id": "B",
+          "text": "Extrusion >3 mm as the only shape criterion"
+        },
+        {
+          "id": "C",
+          "text": "Tear length >15 mm"
+        },
+        {
+          "id": "D",
+          "text": "Anterior-plus-posterior horn width / meniscal diameter ≥75% as a coronal measurement"
+        }
+      ],
+      "correct": "A",
+      "explanation": "These width criteria support diagnosis and are combined with sagittal extent and overall shape. Specify the measurement and plane.",
+      "wrongExplanations": {
+        "B": "Extrusion describes displacement beyond the tibial plateau margin, not coronal body width for discoid shape.",
+        "C": "Tear length is not a measurement of overall meniscal body width.",
+        "D": "This coverage ratio is measured sagittally in the original Samoto protocol; it is not a coronal measurement."
+      },
+      "sources": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC7571514/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC4766355/",
+        "https://pubmed.ncbi.nlm.nih.gov/12185036/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC9514523/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC10132882/",
+        "https://pubmed.ncbi.nlm.nih.gov/11973030/",
+        "https://pubmed.ncbi.nlm.nih.gov/12719929/",
+        "https://pubmed.ncbi.nlm.nih.gov/8316871/",
+        "https://pubmed.ncbi.nlm.nih.gov/19234702/",
+        "https://www.aaos.org/quality/quality-programs/acute-isolated-meniscal-pathology/",
+        "https://esskajournals.onlinelibrary.wiley.com/doi/10.1002/ksa.12689"
+      ],
+      "source": "https://pubmed.ncbi.nlm.nih.gov/11973030/"
+    },
+    "reason": "Restore original-study inclusive20%cutoff; preserve supportive not diagnostic-alone role, clarify plane-specific homogeneous alternatives."
+  },
+  {
+    "file": "data/questions.js",
+    "id": "meniskus-fa-18",
+    "before": {
+      "id": "meniskus-fa-18",
+      "tags": [
+        "meniskus",
+        "knie"
+      ],
+      "fach": "msk",
+      "question": "کدام اندازه‌گیری کمی کرونال به نفع منیسک خارجی دیسکویید است؟",
+      "options": [
+        {
+          "id": "A",
+          "text": "پهنای تنه ≥۱۵ میلی‌متر یا نسبت حداقل پهنای منیسک به حداکثر پهنای تیبیا >۲۰٪"
+        },
+        {
+          "id": "B",
+          "text": "اکستروژن >۳ میلی‌متر به‌عنوان تنها معیار شکل"
+        },
+        {
+          "id": "C",
+          "text": "طول پارگی >۱۵ میلی‌متر"
+        },
+        {
+          "id": "D",
+          "text": "مجموع پهنای شاخ‌ها / قطر منیسک >۷۵٪ به‌عنوان اندازه‌گیری کرونال"
+        }
+      ],
+      "correct": "A",
+      "explanation": "این معیارهای پهنا مؤید تشخیص هستند و با امتداد ساژیتال و شکل کلی ترکیب می‌شوند؛ اندازه‌گیری و صفحه باید مشخص باشند.",
+      "wrongExplanations": {
+        "B": "اکستروژن جابه‌جایی را نشان می‌دهد، نه شکل دیسکویید.",
+        "C": "اندازه‌گیری پهنای تنه است، نه طول پارگی.",
+        "D": "این نسبت در ساژیتال اندازه‌گیری می‌شود، نه کرونال."
+      },
+      "sources": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC7571514/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC4766355/",
+        "https://pubmed.ncbi.nlm.nih.gov/12185036/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC9514523/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC10132882/",
+        "https://pubmed.ncbi.nlm.nih.gov/11973030/",
+        "https://pubmed.ncbi.nlm.nih.gov/12719929/",
+        "https://pubmed.ncbi.nlm.nih.gov/8316871/",
+        "https://pubmed.ncbi.nlm.nih.gov/19234702/",
+        "https://www.aaos.org/quality/quality-programs/acute-isolated-meniscal-pathology/",
+        "https://esskajournals.onlinelibrary.wiley.com/doi/10.1002/ksa.12689"
+      ]
+    },
+    "after": {
+      "id": "meniskus-fa-18",
+      "tags": [
+        "meniskus",
+        "knie"
+      ],
+      "fach": "msk",
+      "question": "کدام اندازه‌گیری کمی کرونال به نفع منیسک خارجی دیسکویید است؟",
+      "options": [
+        {
+          "id": "A",
+          "text": "پهنای تنه ≥۱۵ میلی‌متر یا نسبت حداقل پهنای منیسک به حداکثر پهنای تیبیا ≥۲۰٪."
+        },
+        {
+          "id": "B",
+          "text": "اکستروژن >۳ میلی‌متر به‌عنوان تنها معیار شکل"
+        },
+        {
+          "id": "C",
+          "text": "طول پارگی >۱۵ میلی‌متر"
+        },
+        {
+          "id": "D",
+          "text": "مجموع پهنای شاخ قدامی و خلفی / قطر منیسک ≥۷۵٪ به‌عنوان اندازه‌گیری کرونال"
+        }
+      ],
+      "correct": "A",
+      "explanation": "این معیارهای پهنا مؤید تشخیص هستند و با امتداد ساژیتال و شکل کلی ترکیب می‌شوند؛ اندازه‌گیری و صفحه باید مشخص باشند.",
+      "wrongExplanations": {
+        "B": "اکستروژن جابه‌جایی فراتر از حاشیهٔ پلاتوی تیبیا را توصیف می‌کند، نه پهنای کرونال تنه برای شکل دیسکویید.",
+        "C": "طول پارگی، اندازه‌گیری پهنای کلی تنهٔ منیسک نیست.",
+        "D": "این نسبت پوشش در پروتکل اصلی ساموتو در صفحهٔ ساژیتال اندازه‌گیری می‌شود؛ اندازه‌گیری کرونال نیست."
+      },
+      "sources": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC7571514/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC4766355/",
+        "https://pubmed.ncbi.nlm.nih.gov/12185036/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC9514523/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC10132882/",
+        "https://pubmed.ncbi.nlm.nih.gov/11973030/",
+        "https://pubmed.ncbi.nlm.nih.gov/12719929/",
+        "https://pubmed.ncbi.nlm.nih.gov/8316871/",
+        "https://pubmed.ncbi.nlm.nih.gov/19234702/",
+        "https://www.aaos.org/quality/quality-programs/acute-isolated-meniscal-pathology/",
+        "https://esskajournals.onlinelibrary.wiley.com/doi/10.1002/ksa.12689"
+      ],
+      "source": "https://pubmed.ncbi.nlm.nih.gov/11973030/"
+    },
+    "reason": "Restore original-study inclusive20%cutoff; preserve supportive not diagnostic-alone role, clarify plane-specific homogeneous alternatives."
+  },
+  {
+    "file": "data/flashcards.js",
+    "id": "meniskus-21",
+    "before": {
+      "id": "meniskus-21",
+      "topicId": "meniskus",
+      "category": {
+        "de": "Discoider Meniskus",
+        "en": "Discoid meniscus",
+        "fa": "منیسک دیسکویید"
+      },
+      "front": {
+        "de": "Welche koronalen Breitenkriterien unterstützen einen discoiden Außenmeniskus?",
+        "en": "Which coronal width criteria support a discoid lateral meniscus?",
+        "fa": "کدام معیارهای پهنای کرونال به نفع دیسکویید خارجی هستند؟"
+      },
+      "answer": {
+        "de": "Körperbreite ≥15 mm oder minimale Meniskusbreite / maximale Tibiabreite >20 %.",
+        "en": "Body width ≥15 mm or minimum meniscal / maximum tibial width >20%.",
+        "fa": "پهنای تنه ≥۱۵ میلی‌متر یا حداقل پهنای منیسک / حداکثر پهنای تیبیا >۲۰٪."
+      },
+      "explanation": {
+        "de": "Die Messungen stützen die Diagnose und werden mit Gesamtform und sagittaler Ausdehnung kombiniert. Extrusion ist ein anderer Parameter und kein Ersatz für die Körperbreite.",
+        "en": "These measurements support diagnosis and are combined with overall shape and sagittal extent. Extrusion is a different parameter, not a substitute for body width.",
+        "fa": "اندازه‌گیری‌ها مؤید تشخیص‌اند و با شکل کلی و امتداد ساژیتال ترکیب می‌شوند؛ اکستروژن پارامتر دیگری است و جای پهنای تنه را نمی‌گیرد."
+      }
+    },
+    "after": {
+      "id": "meniskus-21",
+      "topicId": "meniskus",
+      "category": {
+        "de": "Discoider Meniskus",
+        "en": "Discoid meniscus",
+        "fa": "منیسک دیسکویید"
+      },
+      "front": {
+        "de": "Welche koronalen Breitenkriterien unterstützen einen discoiden Außenmeniskus?",
+        "en": "Which coronal width criteria support a discoid lateral meniscus?",
+        "fa": "کدام معیارهای پهنای کرونال از منیسک خارجی دیسکویید حمایت می‌کنند؟"
+      },
+      "answer": {
+        "de": "Körperbreite ≥15 mm oder minimale Meniskusbreite / maximale Tibiabreite ≥20 %.",
+        "en": "Body width ≥15 mm or minimum meniscal / maximum tibial width ≥20%.",
+        "fa": "پهنای تنه ≥۱۵ میلی‌متر یا حداقل پهنای منیسک / حداکثر پهنای تیبیا ≥۲۰٪."
+      },
+      "explanation": {
+        "de": "Die Messungen stützen die Diagnose und werden mit Gesamtform und sagittaler Ausdehnung kombiniert. Extrusion ist ein anderer Parameter und kein Ersatz für die Körperbreite.",
+        "en": "These measurements support diagnosis and are combined with overall shape and sagittal extent. Extrusion is a different parameter, not a substitute for body width.",
+        "fa": "اندازه‌گیری‌ها مؤید تشخیص‌اند و با شکل کلی و امتداد ساژیتال ترکیب می‌شوند؛ اکستروژن پارامتر دیگری است و جای پهنای تنه را نمی‌گیرد."
+      },
+      "source": "https://pubmed.ncbi.nlm.nih.gov/11973030/"
+    },
+    "reason": "Match source-study inclusive20%boundary to corresponding MCQ/lesson, retain morphology/context caveat."
+  },
+  {
+    "file": "data/questions.js",
+    "id": "meniskus-de-10",
+    "before": {
+      "id": "meniskus-de-10",
+      "tags": [
+        "meniskus",
+        "knie"
+      ],
+      "fach": "msk",
+      "question": "Eine 58-jährige Person hat einen degenerativen Horizontalriss, keine echte Blockade und keine akute Verletzung. Welche Aussage ist am besten?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Der MRT-Riss allein verpflichtet zur Operation."
+        },
+        {
+          "id": "B",
+          "text": "Jeder Horizontalriss muss vollständig reseziert werden."
+        },
+        {
+          "id": "C",
+          "text": "Der MRT-Befund wird klinisch korreliert; eine konservative Behandlung ist in der Regel der erste Ansatz."
+        },
+        {
+          "id": "D",
+          "text": "Ohne Trauma kann kein Meniskusriss vorliegen."
+        }
+      ],
+      "correct": "C",
+      "explanation": "Bei degenerativen Läsionen ohne echte Blockade steht meist konservative Therapie einschließlich Physiotherapie im Vordergrund. Symptome und Begleitbefunde bestimmen das weitere Vorgehen.",
+      "wrongExplanations": {
+        "A": "Eine degenerative MRT-Läsion allein ist keine OP-Indikation.",
+        "B": "Meniskusgewebe soll erhalten werden; eine pauschale Totalresektion ist nicht angezeigt.",
+        "D": "Degenerative Risse entstehen auch ohne erinnerliches Trauma."
+      },
+      "sources": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC7571514/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC4766355/",
+        "https://pubmed.ncbi.nlm.nih.gov/12185036/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC9514523/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC10132882/",
+        "https://pubmed.ncbi.nlm.nih.gov/11973030/",
+        "https://pubmed.ncbi.nlm.nih.gov/12719929/",
+        "https://pubmed.ncbi.nlm.nih.gov/8316871/",
+        "https://pubmed.ncbi.nlm.nih.gov/19234702/",
+        "https://www.aaos.org/quality/quality-programs/acute-isolated-meniscal-pathology/",
+        "https://esskajournals.onlinelibrary.wiley.com/doi/10.1002/ksa.12689"
+      ]
+    },
+    "after": {
+      "id": "meniskus-de-10",
+      "tags": [
+        "meniskus",
+        "knie"
+      ],
+      "fach": "msk",
+      "question": "Eine 58-jährige Person hat einen degenerativen Horizontalriss ohne echte Blockade, akutes Trauma oder fortgeschrittene Arthrose. Ein strukturiertes Übungsprogramm wurde noch nicht versucht. Welcher initiale Ansatz ist am besten begründet?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Arthroskopische Teilmeniskektomie als erste Maßnahme"
+        },
+        {
+          "id": "B",
+          "text": "Arthroskopische Meniskusnaht als erste Maßnahme"
+        },
+        {
+          "id": "C",
+          "text": "Angeleitetes Übungsprogramm mit klinischer Verlaufskontrolle"
+        },
+        {
+          "id": "D",
+          "text": "Ruhigstellung in einer Knieorthese als primäre Behandlungsstrategie"
+        }
+      ],
+      "correct": "C",
+      "explanation": "Ein primärer RCT bei mittelalten Personen mit degenerativem Meniskusriss und überwiegend fehlender radiographischer Arthrose fand nach zwei Jahren keine klinisch relevante Funktionsdifferenz zwischen Übungstherapie und Teilmeniskektomie. Ein angeleitetes Übungsprogramm ist hier ein begründeter erster Ansatz. Das ist keine Aussage gegen jede Operation; echte Blockade, akute reparable Verletzung und Beschwerden trotz angemessener Vorbehandlung sind gesondert zu beurteilen.",
+      "wrongExplanations": {
+        "A": "Der degenerative MRT-Riss begründet in dieser nicht blockierten, noch nicht aktiv vorbehandelten Situation keine vorrangige Teilresektion.",
+        "B": "Eine degenerative Horizontalspalte ist nicht mit einem frischen reparablen peripheren Längsriss gleichzusetzen. Die Naht ist hier keine aus dem MRT allein abgeleitete Erstmaßnahme.",
+        "D": "Eine Orthesenruhigstellung ersetzt nicht die hier begründete aktive Übungstherapie. Belastungsanpassung kann individuell ergänzen, ist aber nicht mit immobilisierender Hauptbehandlung gleichzusetzen."
+      },
+      "sources": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC7571514/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC4766355/",
+        "https://pubmed.ncbi.nlm.nih.gov/12185036/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC9514523/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC10132882/",
+        "https://pubmed.ncbi.nlm.nih.gov/11973030/",
+        "https://pubmed.ncbi.nlm.nih.gov/12719929/",
+        "https://pubmed.ncbi.nlm.nih.gov/8316871/",
+        "https://pubmed.ncbi.nlm.nih.gov/19234702/",
+        "https://www.aaos.org/quality/quality-programs/acute-isolated-meniscal-pathology/",
+        "https://esskajournals.onlinelibrary.wiley.com/doi/10.1002/ksa.12689"
+      ],
+      "source": "https://www.bmj.com/content/354/bmj.i3740"
+    },
+    "reason": "Replace obvious mandatory-surgery/no-trauma-excludes-tear distractors with homogeneous initial management options and explicit clinical eligibility; preserve correctC/IDs."
+  },
+  {
+    "file": "data/questions.js",
+    "id": "meniskus-en-10",
+    "before": {
+      "id": "meniskus-en-10",
+      "tags": [
+        "meniskus",
+        "knie"
+      ],
+      "fach": "msk",
+      "question": "A 58-year-old has a degenerative horizontal tear, no true locking and no acute injury. Which statement is best?",
+      "options": [
+        {
+          "id": "A",
+          "text": "The MRI tear alone mandates surgery."
+        },
+        {
+          "id": "B",
+          "text": "Every horizontal tear requires total resection."
+        },
+        {
+          "id": "C",
+          "text": "Correlate MRI clinically; non-operative treatment is generally the first approach."
+        },
+        {
+          "id": "D",
+          "text": "A meniscal tear cannot occur without trauma."
+        }
+      ],
+      "correct": "C",
+      "explanation": "For degenerative lesions without true locking, non-operative care including physiotherapy is usually first-line. Symptoms and associated findings guide subsequent management.",
+      "wrongExplanations": {
+        "A": "A degenerative MRI lesion alone is not a surgical indication.",
+        "B": "Meniscal tissue should be preserved; routine total resection is not indicated.",
+        "D": "Degenerative tears can develop without recalled trauma."
+      },
+      "sources": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC7571514/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC4766355/",
+        "https://pubmed.ncbi.nlm.nih.gov/12185036/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC9514523/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC10132882/",
+        "https://pubmed.ncbi.nlm.nih.gov/11973030/",
+        "https://pubmed.ncbi.nlm.nih.gov/12719929/",
+        "https://pubmed.ncbi.nlm.nih.gov/8316871/",
+        "https://pubmed.ncbi.nlm.nih.gov/19234702/",
+        "https://www.aaos.org/quality/quality-programs/acute-isolated-meniscal-pathology/",
+        "https://esskajournals.onlinelibrary.wiley.com/doi/10.1002/ksa.12689"
+      ]
+    },
+    "after": {
+      "id": "meniskus-en-10",
+      "tags": [
+        "meniskus",
+        "knie"
+      ],
+      "fach": "msk",
+      "question": "A 58-year-old has a degenerative horizontal tear without true locking, acute trauma or advanced osteoarthritis. No structured exercise programme has been tried. Which initial approach is best supported?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Arthroscopic partial meniscectomy as the first intervention"
+        },
+        {
+          "id": "B",
+          "text": "Arthroscopic meniscal repair as the first intervention"
+        },
+        {
+          "id": "C",
+          "text": "Supervised exercise with clinical follow-up"
+        },
+        {
+          "id": "D",
+          "text": "Immobilisation in a knee brace as the primary treatment strategy"
+        }
+      ],
+      "correct": "C",
+      "explanation": "A primary RCT in middle-aged people with degenerative meniscal tears and mostly no radiographic osteoarthritis found no clinically important two-year functional difference between exercise and partial meniscectomy. Supervised exercise is a supported first approach here. This does not oppose every operation; true locking, an acute repairable injury and symptoms despite appropriate prior care require separate assessment.",
+      "wrongExplanations": {
+        "A": "In this nonlocked case without prior structured exercise, the degenerative MRI tear does not justify partial resection as the preferred first step.",
+        "B": "A degenerative horizontal split is not the same as an acute repairable peripheral longitudinal tear. MRI alone does not establish repair as the first step here.",
+        "D": "Brace immobilisation does not substitute for the supported active exercise approach. Activity modification may be an adjunct, but is not equivalent to immobilisation as the main treatment."
+      },
+      "sources": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC7571514/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC4766355/",
+        "https://pubmed.ncbi.nlm.nih.gov/12185036/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC9514523/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC10132882/",
+        "https://pubmed.ncbi.nlm.nih.gov/11973030/",
+        "https://pubmed.ncbi.nlm.nih.gov/12719929/",
+        "https://pubmed.ncbi.nlm.nih.gov/8316871/",
+        "https://pubmed.ncbi.nlm.nih.gov/19234702/",
+        "https://www.aaos.org/quality/quality-programs/acute-isolated-meniscal-pathology/",
+        "https://esskajournals.onlinelibrary.wiley.com/doi/10.1002/ksa.12689"
+      ],
+      "source": "https://www.bmj.com/content/354/bmj.i3740"
+    },
+    "reason": "Replace obvious mandatory-surgery/no-trauma-excludes-tear distractors with homogeneous initial management options and explicit clinical eligibility; preserve correctC/IDs."
+  },
+  {
+    "file": "data/questions.js",
+    "id": "meniskus-fa-10",
+    "before": {
+      "id": "meniskus-fa-10",
+      "tags": [
+        "meniskus",
+        "knie"
+      ],
+      "fach": "msk",
+      "question": "فرد ۵۸ ساله پارگی افقی دژنراتیو دارد؛ قفل‌شدن واقعی یا آسیب حاد ندارد. بهترین عبارت چیست؟",
+      "options": [
+        {
+          "id": "A",
+          "text": "پارگی در MRI به‌تنهایی جراحی را الزامی می‌کند."
+        },
+        {
+          "id": "B",
+          "text": "هر پارگی افقی باید کامل برداشته شود."
+        },
+        {
+          "id": "C",
+          "text": "MRI با بالین تطبیق داده شود؛ درمان غیرجراحی معمولاً رویکرد نخست است."
+        },
+        {
+          "id": "D",
+          "text": "بدون تروما پارگی منیسک ممکن نیست."
+        }
+      ],
+      "correct": "C",
+      "explanation": "در ضایعات دژنراتیو بدون قفل‌شدن واقعی، درمان غیرجراحی از جمله فیزیوتراپی معمولاً مقدم است؛ علائم و یافته‌های همراه مسیر بعدی را تعیین می‌کنند.",
+      "wrongExplanations": {
+        "A": "ضایعهٔ دژنراتیو MRI به‌تنهایی اندیکاسیون جراحی نیست.",
+        "B": "بافت منیسک باید حفظ شود؛ برداشت کامل روتین مناسب نیست.",
+        "D": "پارگی دژنراتیو بدون ترومای به‌یادمانده هم ایجاد می‌شود."
+      },
+      "sources": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC7571514/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC4766355/",
+        "https://pubmed.ncbi.nlm.nih.gov/12185036/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC9514523/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC10132882/",
+        "https://pubmed.ncbi.nlm.nih.gov/11973030/",
+        "https://pubmed.ncbi.nlm.nih.gov/12719929/",
+        "https://pubmed.ncbi.nlm.nih.gov/8316871/",
+        "https://pubmed.ncbi.nlm.nih.gov/19234702/",
+        "https://www.aaos.org/quality/quality-programs/acute-isolated-meniscal-pathology/",
+        "https://esskajournals.onlinelibrary.wiley.com/doi/10.1002/ksa.12689"
+      ]
+    },
+    "after": {
+      "id": "meniskus-fa-10",
+      "tags": [
+        "meniskus",
+        "knie"
+      ],
+      "fach": "msk",
+      "question": "فردی ۵۸ ساله پارگی افقی دژنراتیو دارد، بدون قفل‌شدگی واقعی، ترومای حاد یا آرتروز پیشرفته. هنوز برنامهٔ تمرینی ساختاریافته امتحان نشده است. کدام رویکرد اولیه پشتوانهٔ بهتری دارد؟",
+      "options": [
+        {
+          "id": "A",
+          "text": "منیسککتومی جزئی آرتروسکوپیک به‌عنوان اقدام نخست"
+        },
+        {
+          "id": "B",
+          "text": "ترمیم منیسک با بخیهٔ آرتروسکوپیک به‌عنوان اقدام نخست"
+        },
+        {
+          "id": "C",
+          "text": "برنامهٔ تمرینی هدایت‌شده همراه پیگیری بالینی"
+        },
+        {
+          "id": "D",
+          "text": "بی‌حرکت‌سازی با بریس زانو به‌عنوان راهبرد اصلی درمان"
+        }
+      ],
+      "correct": "C",
+      "explanation": "یک کارآزمایی تصادفی اولیه در افراد میانسال با پارگی دژنراتیو منیسک و عمدتاً بدون آرتروز رادیوگرافیک، پس از دو سال تفاوت عملکردیِ مهم از نظر بالینی میان تمرین‌درمانی و منیسککتومی جزئی نیافت. برنامهٔ تمرینی هدایت‌شده در اینجا رویکرد نخستِ دارای پشتوانه است. این به معنی مخالفت با تمام جراحی‌ها نیست؛ قفل‌شدگی واقعی، آسیب حادِ قابل ترمیم و تداوم علائم با وجود درمان اولیهٔ مناسب، جداگانه ارزیابی می‌شوند.",
+      "wrongExplanations": {
+        "A": "در این وضعیت بدون قفل‌شدگی و بدون تمرین ساختاریافتهٔ قبلی، پارگی دژنراتیو در MRI، برداشت جزئی را به اقدام نخستِ ترجیحی تبدیل نمی‌کند.",
+        "B": "شکاف افقی دژنراتیو با پارگی طولی محیطی حاد و قابل ترمیم یکسان نیست. MRI به‌تنهایی بخیه را به اقدام نخست در اینجا تبدیل نمی‌کند.",
+        "D": "بی‌حرکت‌سازی با بریس جای رویکرد تمرینی فعالِ دارای پشتوانه را نمی‌گیرد. تعدیل فعالیت می‌تواند به‌صورت فردی مکمل باشد، اما معادل بی‌حرکت‌سازی به‌عنوان درمان اصلی نیست."
+      },
+      "sources": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC7571514/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC4766355/",
+        "https://pubmed.ncbi.nlm.nih.gov/12185036/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC9514523/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC10132882/",
+        "https://pubmed.ncbi.nlm.nih.gov/11973030/",
+        "https://pubmed.ncbi.nlm.nih.gov/12719929/",
+        "https://pubmed.ncbi.nlm.nih.gov/8316871/",
+        "https://pubmed.ncbi.nlm.nih.gov/19234702/",
+        "https://www.aaos.org/quality/quality-programs/acute-isolated-meniscal-pathology/",
+        "https://esskajournals.onlinelibrary.wiley.com/doi/10.1002/ksa.12689"
+      ],
+      "source": "https://www.bmj.com/content/354/bmj.i3740"
+    },
+    "reason": "Replace obvious mandatory-surgery/no-trauma-excludes-tear distractors with homogeneous initial management options and explicit clinical eligibility; preserve correctC/IDs."
+  }
+]

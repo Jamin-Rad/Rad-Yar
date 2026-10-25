@@ -1,0 +1,96 @@
+{
+  "date": "2026-10-25",
+  "reviewer": "/root/brain_remediation",
+  "author": "/root",
+  "status": "ACCEPT_BOUNDED_FULL_ASSESSMENT_POOL_AFTER_RETEST",
+  "route": "/thorax/hrct/dichteminderung",
+  "scope": {
+    "questionTriadsActuallyRead": 12,
+    "cardTriadsActuallyRead": 15,
+    "languages": [
+      "de",
+      "en",
+      "fa"
+    ],
+    "lessonScope": "Actual connected definition, hero cards, sections and take-home read for assessment teaching parity; retained diagnostic images/PDF not rereviewed or accepted.",
+    "canonicalProbe": "tmp/brain-cavity-probe-entry.mjs: all36 global question objects and15 global card objects deepEqual actual HRCT producer exports; fresh snapshot tmp/brain-cavity-actual.json."
+  },
+  "findings": [
+    {
+      "id": "HRCT03-LNG-001",
+      "severity": "minor",
+      "field": "Q01/Q02 DE mass wording",
+      "observed": "English Mass retained in German clinical stems/options.",
+      "repair": "Raumforderung replaces Mass.",
+      "retest": "Actual hrctCavityCases.js after-values read; global producer equality confirmed.",
+      "status": "CLOSED"
+    },
+    {
+      "id": "HRCT03-LNG-002",
+      "severity": "minor",
+      "field": "Q02 FA stem",
+      "observed": "پارانشیم غیرقابل‌توجه is an unnatural rendering of otherwise unremarkable lung.",
+      "repair": "پارانشیم بدون یافتهٔ غیرطبیعی دیگر",
+      "retest": "Actual source and fresh global snapshot read.",
+      "status": "CLOSED"
+    },
+    {
+      "id": "HRCT03-SRC-003",
+      "severity": "moderate",
+      "field": "Q12 triad/card12",
+      "observed": "Bronchiectasis label originally inferred from one-time morphology without established chronicity; Fleischner2024 recommends bronchial dilatation until chronicity is established.",
+      "repair": "Q12 now persistent unchanged findings over years in all3 languages; card12 explicitly checks prior persistence and names bronchial dilatation if chronicity unestablished.",
+      "retest": "All3 actual question after-values, card answers/explanations read; all global objects match producer.",
+      "status": "CLOSED"
+    }
+  ],
+  "sourceChecks": [
+    {
+      "url": "https://pubs.rsna.org/doi/full/10.1148/radiol.232558",
+      "actuallyRead": "Original2024 glossary indexed full text: bulla/cavity/cyst/cystic overlap, bronchiectasis chronicity/tapering, air crescent, mycetoma. No absolute wall cutoff imported."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/6779538/",
+      "actuallyRead": "Complete original65-case abstract, thickest versus thinnest measurement and overlap in historical wall groups; old radiographic modality kept separate from CT management."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/27170221/",
+      "actuallyRead": "Complete original96-patient CT abstract, maximum wall measurement, perilesional centrilobular/consolidation association; no universal diagnostic certainty from study thresholds."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/25279848/",
+      "actuallyRead": "Complete original24-cancer abstract including serial cystic-airspace changes, mural nodule emergence/growth and progressive thickening. Question06/card06 use the supported progression warning, not a management interval or diagnosis from morphology alone."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/3628758/",
+      "actuallyRead": "Complete original26-patient aspergilloma abstract; classic position-change pattern plus fixed spongework variants supports mobility caveat."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/3484866/",
+      "actuallyRead": "Complete original update abstract: postprimary apicoposterior and bronchogenic spread pattern; legacy frequencies not extrapolated. This source is an author update/review rather than a modern prospective diagnostic cohort."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/17273583/",
+      "actuallyRead": "Complete original252-case aspiration abscess abstract: impaired consciousness and dependent posterior/superior distribution. No frequency or treatment regimen added."
+    }
+  ],
+  "assessmentJudgment": {
+    "keys": "No incorrect clinical key, DE/EN/FA polarity change or option-specific feedback mismatch identified in this bounded pool.",
+    "plausibility": "Homogeneous morphological alternatives and clinically related infection/tumour/vascular differentials; no off-topic absurd option retained. Some introductory recognition and measurement questions intentionally remain alongside longitudinal, context and diagnostic-limit cases.",
+    "coverage": "Three mapped goals cover all12 original questions and15 cards. Count is sufficient for these stated goals without an artificial quota; difficulty values are author labels, not psychometrically validated.",
+    "retrieval": "Card fronts and answers aligned; last3 retained synthesis cards are concise and clinically compatible. No image-question claim is made by the self-contained written vignettes."
+  },
+  "gates": {
+    "SRC": "PASS_BOUNDED_ASSESSMENT_CLAIMS",
+    "ASM": "PASS_AFTER_RETEST",
+    "LNG": "PASS_AFTER_RETEST",
+    "EDU": "PASS_STATED_ASSESSMENT_GOALS",
+    "VIS": "NOT_REVIEWED_RETAINED_MEDIA",
+    "UX": "NOT_REVIEWED_BROWSER"
+  },
+  "limits": [
+    "Acceptance applies to this full original assessment pool and its checked teaching parity, not all HRCT banks or the whole Thorax PDF.",
+    "No fresh retained-case/image/PDF provenance acceptance, browser/visual acceptance, empirical difficulty calibration, or Dr. Zia scientific release approval.",
+    "Passing canonical integration checks does not replace the independent semantic/source review above."
+  ]
+}

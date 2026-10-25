@@ -1,0 +1,46 @@
+{
+  "date": "2026-10-25",
+  "reviewer": "/root; independent of brain_remediation author",
+  "status": "ACCEPT_BOUNDED_ASSESSMENT_PACKET_AFTER_RETEST",
+  "scope": "All three new MCQ triads and three card triads actually read DE/EN/FA, including options, keys, specific feedback, negations and source scope. Inline/canonical retest and repairs pending. No unchanged PDF/media or full lesson release approval.",
+  "gates": {
+    "SRC": "PASS_BOUNDED_TEXT_CLAIMS",
+    "EDU": "PASS_BOUNDED_POOL",
+    "LNG": "PASS_BOUNDED_TRIADS",
+    "ASM": "PASS_BOUNDED_POOL",
+    "VIS": "NOT_APPLICABLE_NO_NEW_MEDIA",
+    "UX": "PENDING_REBUILD_BROWSER",
+    "REV": "INDEPENDENT_CONTENT_ACCEPTED_BROWSER_PENDING"
+  },
+  "findings": [
+    {
+      "id": "HIV05-EDU01",
+      "severity": "moderate",
+      "anchor": "aq-hiv-enzephalopathie/diffuse-pattern options",
+      "observed": "Overqualified wrong diagnoses directly contradict the stem while correct diagnosis alone has a prudent qualification.",
+      "impact": "Answer cue reduces useful differential assessment.",
+      "required": "Four parallel diagnosis labels, preserve appropriate caveats in rationale and synchronize inline.",
+      "status": "CLOSED_RETESTED",
+      "retest": "Root read actual repaired DE/EN/FA fields; canonical and inline question/options/correct and three wrong rationales exactly matched for all three languages. See tmp/assessment-quality/brain050607-retest-diff.log."
+    },
+    {
+      "id": "HIV05-LNG01",
+      "severity": "moderate",
+      "anchor": "FA pml-differential and PML-IRIS feedback/cards",
+      "observed": "Generic signal increase is used for enhancement, ambiguous alongside FLAIR.",
+      "impact": "May confuse native T2/FLAIR signal with contrast uptake.",
+      "required": "Explicit uniform postcontrast wording in all affected FA triads and inline counterparts.",
+      "status": "CLOSED_RETESTED",
+      "retest": "Root read actual repaired DE/EN/FA fields; canonical and inline question/options/correct and three wrong rationales exactly matched for all three languages. See tmp/assessment-quality/brain050607-retest-diff.log."
+    }
+  ],
+  "primaryEvidenceRead": [
+    "Original Chrysikopoulos1990 24 autopsy-correlated cases: complete original indexed abstract read fresh, PMID2315479.",
+    "Official NIH PML guideline reviewed2026: diagnosis, contrast, PCR-negative limitations and PML-IRIS sections read fresh."
+  ],
+  "retest": {
+    "read": "All changed fields reread, including final HIV ring-enhancing FA feedback and natural DE bilateral pulvinar comparison.",
+    "inline": "Nine actual language/inline comparisons passed",
+    "limits": "No full retained PDF/media review or measured difficulty validation; production and browser checks remain separate."
+  }
+}

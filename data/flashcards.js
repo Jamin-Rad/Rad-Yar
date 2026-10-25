@@ -567,13 +567,34 @@ export const FLASHCARD_TOPICS = [
 
 const DIVERTICULITIS_FLASHCARD_CONTENT = [
   {
-    id: 'definition',
-    category: { de: 'Grundlagen', en: 'Basics', fa: 'مبانی' },
-    front: { de: 'Was unterscheidet Divertikulose von Divertikulitis?', en: 'What distinguishes diverticulosis from diverticulitis?', fa: 'تفاوت دیورتیکولوز و دیورتیکولیت چیست؟' },
-    answer: { de: 'Divertikulose: Divertikel ohne Entzündung. Divertikulitis: entzündetes Divertikel mit Wand- und Umgebungsreaktion.', en: 'Diverticulosis: diverticula without inflammation. Diverticulitis: an inflamed diverticulum with bowel wall and surrounding inflammatory change.', fa: 'دیورتیکولوز: دیورتیکول بدون التهاب. دیورتیکولیت: دیورتیکول ملتهب همراه واکنش دیواره و بافت اطراف.' },
-    explanation: { de: 'Divertikel allein beweisen keine akute Divertikulitis. Entscheidend ist die entzündliche Reaktion am Divertikel und im perikolischen Fett.', en: 'Diverticula alone do not establish acute diverticulitis. Inflammation centred on a diverticulum and the pericolic fat is required.', fa: 'وجود دیورتیکول به‌تنهایی دیورتیکولیت حاد را ثابت نمی‌کند؛ التهاب دیورتیکول و چربی پریکولیک لازم است.' },
-    diagram: { de: 'Divertikel ohne Entzündung → Divertikulose\nDivertikel + Entzündung → Divertikulitis', en: 'Diverticulum without inflammation → diverticulosis\nDiverticulum + inflammation → diverticulitis', fa: 'دیورتیکول بدون التهاب → دیورتیکولوز\nدیورتیکول + التهاب → دیورتیکولیت' },
+  "id": "definition",
+  "category": {
+    "de": "Grundlagen",
+    "en": "Basics",
+    "fa": "مبانی"
   },
+  "front": {
+    "de": "Was unterscheidet Divertikulose von Divertikulitis?",
+    "en": "What distinguishes diverticulosis from diverticulitis?",
+    "fa": "تفاوت دیورتیکولوز و دیورتیکولیت چیست؟"
+  },
+  "answer": {
+    "de": "Divertikulose: Divertikel ohne akute Entzündung. Divertikulitis: entzündete Divertikel; Wand- und Umgebungsreaktion nach Ausmaß beschreiben.",
+    "en": "Diverticulosis: diverticula without acute inflammation. Diverticulitis: inflamed diverticula; describe the extent of mural and surrounding reaction.",
+    "fa": "دیورتیکولوز: دیورتیکول بدون التهاب حاد. دیورتیکولیت: دیورتیکول ملتهب؛ میزان واکنش دیواره و اطراف را توصیف کنید."
+  },
+  "explanation": {
+    "de": "Divertikel allein beweisen keine akute Divertikulitis. Divertikelzentrierte Wandbefunde und Umgebungsreaktion gemeinsam beurteilen; eine ausgeprägte phlegmonöse Reaktion ist nicht für jede Form erforderlich (CDD 1a versus 1b).",
+    "en": "Diverticula alone do not establish acute diverticulitis. Assess diverticulum-centred wall findings with surrounding reaction; marked phlegmonous inflammation is not required in every form (CDD 1a versus 1b).",
+    "fa": "وجود دیورتیکول به‌تنهایی دیورتیکولیت حاد را ثابت نمی‌کند. یافته‌های دیواره با مرکزیت دیورتیکول و واکنش اطراف را با هم بررسی کنید؛ التهاب فلگمونی واضح در همهٔ شکل‌ها لازم نیست (CDD 1a در برابر 1b)."
+  },
+  "diagram": {
+    "de": "Divertikel ohne Entzündung → Divertikulose\nDivertikel + Entzündung → Divertikulitis",
+    "en": "Diverticulum without inflammation → diverticulosis\nDiverticulum + inflammation → diverticulitis",
+    "fa": "دیورتیکول بدون التهاب → دیورتیکولوز\nدیورتیکول + التهاب → دیورتیکولیت"
+  },
+  "source": "https://www.dgvs.de/leitlinien/unterer-gi-trakt/divertikelkrankheit-divertikulitis/?digital=1"
+},
   {
     id: 'ct-triad',
     category: { de: 'CT-Leitbefunde', en: 'Core CT findings', fa: 'یافته‌های اصلی CT' },
@@ -583,37 +604,121 @@ const DIVERTICULITIS_FLASHCARD_CONTENT = [
     diagram: { de: 'Divertikel → Wandverdickung → perikolisches Stranding', en: 'Diverticulum → wall thickening → pericolic stranding', fa: 'دیورتیکول → ضخیم‌شدگی دیواره → التهاب پریکولیک' },
   },
   {
-    id: 'protocol',
-    category: { de: 'CT-Technik', en: 'CT technique', fa: 'تکنیک CT' },
-    front: { de: 'Welches CT-Protokoll reicht bei akuter Divertikulitis meist aus?', en: 'Which CT protocol is usually sufficient for acute diverticulitis?', fa: 'کدام پروتکل CT معمولاً برای دیورتیکولیت حاد کافی است؟' },
-    answer: { de: 'Kontrastverstärkte CT in portalvenöser Phase.', en: 'Portal venous phase contrast-enhanced CT.', fa: 'CT با کنتراست در فاز پورتال‌ونوس.' },
-    explanation: { de: 'Damit lassen sich Darmwand, Fettgewebsreaktion, Abszesse und freie Flüssigkeit beurteilen. Enterales Kontrastmittel ist routinemäßig meist nicht nötig.', en: 'This assesses the bowel wall, inflammatory fat change, abscesses and free fluid. Routine enteric contrast is usually unnecessary.', fa: 'این روش دیواره روده، التهاب چربی، آبسه و مایع آزاد را ارزیابی می‌کند. کنتراست گوارشی روتین معمولاً لازم نیست.' },
-    diagram: { de: 'CT C+ portalvenös → Diagnose + Ausdehnung + Komplikationen', en: 'Portal venous C+ CT → diagnosis + extent + complications', fa: 'CT پورتال‌ونوس با کنتراست → تشخیص + وسعت + عوارض' },
+  "id": "protocol",
+  "category": {
+    "de": "CT-Technik",
+    "en": "CT technique",
+    "fa": "تکنیک CT"
   },
+  "front": {
+    "de": "Welches CT-Protokoll reicht bei akuter Divertikulitis meist aus?",
+    "en": "Which CT protocol is usually sufficient for acute diverticulitis?",
+    "fa": "کدام پروتکل CT معمولاً برای دیورتیکولیت حاد کافی است؟"
+  },
+  "answer": {
+    "de": "Kontrastverstärkte CT in portalvenöser Phase.",
+    "en": "Portal venous phase contrast-enhanced CT.",
+    "fa": "CT با کنتراست در فاز پورتال‌ونوس."
+  },
+  "explanation": {
+    "de": "Damit lassen sich Darmwand, Fettgewebsreaktion, Abszesse und freie Flüssigkeit beurteilen. Enterales Kontrastmittel ist routinemäßig meist nicht nötig.",
+    "en": "This assesses the bowel wall, inflammatory fat change, abscesses and free fluid. Routine enteric contrast is usually unnecessary.",
+    "fa": "این روش دیواره روده، التهاب چربی، آبسه و مایع آزاد را ارزیابی می‌کند. کنتراست گوارشی روتین معمولاً لازم نیست."
+  },
+  "diagram": {
+    "de": "CT C+ portalvenös → Diagnose + Ausdehnung + Komplikationen",
+    "en": "Portal venous C+ CT → diagnosis + extent + complications",
+    "fa": "CT پورتال‌ونوس با کنتراست → تشخیص + وسعت + عوارض"
+  },
+  "source": "https://www.dgvs.de/leitlinien/unterer-gi-trakt/divertikelkrankheit-divertikulitis/?digital=1; https://acsearch.acr.org/docs/69356/Narrative/"
+},
   {
-    id: 'cdd-1',
-    category: { de: 'CDD', en: 'CDD', fa: 'CDD' },
-    front: { de: 'Was unterscheidet CDD Typ 1a und 1b?', en: 'What distinguishes CDD type 1a from 1b?', fa: 'تفاوت CDD نوع 1a و 1b چیست؟' },
-    answer: { de: '1a: Wandverdickung ohne relevante Umgebungsreaktion. 1b: phlegmonöse perikolische Reaktion ohne Abszess.', en: '1a: wall thickening without relevant surrounding inflammation. 1b: phlegmonous pericolic inflammation without abscess.', fa: '1a: ضخیم‌شدگی دیواره بدون التهاب قابل توجه اطراف. 1b: التهاب فلگمونوس پریکولیک بدون آبسه.' },
-    explanation: { de: 'Beide Formen gelten als akut unkompliziert, solange keine Kollektion, freie Perforation, Fistel oder Stenose vorliegt.', en: 'Both are acute uncomplicated disease as long as there is no collection, free perforation, fistula or stenosis.', fa: 'هر دو بدون عارضه‌اند، تا زمانی که تجمع، پرفوراسیون آزاد، فیستول یا تنگی وجود نداشته باشد.' },
-    diagram: { de: 'CDD 1a → Wand\nCDD 1b → Wand + Phlegmone\nkein Abszess', en: 'CDD 1a → wall\nCDD 1b → wall + phlegmon\nno abscess', fa: 'CDD 1a → دیواره\nCDD 1b → دیواره + فلگمون\nبدون آبسه' },
+  "id": "cdd-1",
+  "category": {
+    "de": "CDD",
+    "en": "CDD",
+    "fa": "CDD"
   },
+  "front": {
+    "de": "Was unterscheidet CDD Typ 1a und 1b?",
+    "en": "What distinguishes CDD type 1a from 1b?",
+    "fa": "تفاوت CDD نوع 1a و 1b چیست؟"
+  },
+  "answer": {
+    "de": "1a: Wandverdickung ohne relevante Umgebungsreaktion. 1b: phlegmonöse perikolische Reaktion ohne Abszess.",
+    "en": "1a: wall thickening without relevant surrounding inflammation. 1b: phlegmonous pericolic inflammation without abscess.",
+    "fa": "1a: ضخیم‌شدگی دیواره بدون التهاب قابل توجه اطراف. 1b: التهاب فلگمونوس پریکولیک بدون آبسه."
+  },
+  "explanation": {
+    "de": "Typ 1a und 1b gehören zur unkomplizierten Kategorie. Bei 1b können Flüssigkeitsstraßen ohne Luft vorkommen; ein Abszess ist davon abzugrenzen. Freie Perforation oder Fistel sind Komplikationen.",
+    "en": "Types 1a and 1b belong to the uncomplicated category. Type 1b may include fluid tracks without gas; distinguish these from an abscess. Free perforation or fistula are complications.",
+    "fa": "انواع 1a و 1b در دستهٔ بدون عارضه‌اند. در نوع 1b ممکن است مسیرهای مایع بدون گاز دیده شود؛ آن‌ها را از آبسه جدا کنید. پرفوراسیون آزاد یا فیستول، عارضه هستند."
+  },
+  "diagram": {
+    "de": "CDD 1a → Wand\nCDD 1b → Wand + Phlegmone\nkein Abszess",
+    "en": "CDD 1a → wall\nCDD 1b → wall + phlegmon\nno abscess",
+    "fa": "CDD 1a → دیواره\nCDD 1b → دیواره + فلگمون\nبدون آبسه"
+  },
+  "source": "https://www.dgvs.de/leitlinien/unterer-gi-trakt/divertikelkrankheit-divertikulitis/?digital=1"
+},
   {
-    id: 'cdd-2',
-    category: { de: 'CDD', en: 'CDD', fa: 'CDD' },
-    front: { de: 'Wie werden CDD Typ 2a, 2b und 2c unterschieden?', en: 'How are CDD types 2a, 2b and 2c distinguished?', fa: 'CDD انواع 2a، 2b و 2c چگونه از هم جدا می‌شوند؟' },
-    answer: { de: '2a: Mikroabszess bis 3 cm. 2b: Makroabszess >3 cm. 2c: freie Perforation.', en: '2a: microabscess up to 3 cm. 2b: macroabscess >3 cm. 2c: free perforation.', fa: '2a: میکروآبسه تا ۳ سانتی‌متر. 2b: ماکروآبسه بیش از ۳ سانتی‌متر. 2c: پرفوراسیون آزاد.' },
-    explanation: { de: 'CDD Typ 2 bezeichnet eine akut komplizierte Divertikulitis. Die genaue Einordnung beeinflusst das weitere Management.', en: 'CDD type 2 is acute complicated diverticulitis. Subclassification affects subsequent management.', fa: 'CDD نوع ۲ دیورتیکولیت حاد پیچیده است و زیرگروه آن بر درمان اثر دارد.' },
-    diagram: { de: '≤3 cm → 2a\n>3 cm → 2b\nfreie Perforation → 2c', en: '≤3 cm → 2a\n>3 cm → 2b\nfree perforation → 2c', fa: '≤۳ سانتی‌متر → 2a\n>۳ سانتی‌متر → 2b\nپرفوراسیون آزاد → 2c' },
+  "id": "cdd-2",
+  "category": {
+    "de": "CDD",
+    "en": "CDD",
+    "fa": "CDD"
   },
+  "front": {
+    "de": "Wie werden CDD Typ 2a, 2b und 2c nach S3/DGVS 2021 unterschieden?",
+    "en": "How are CDD types 2a, 2b and 2c distinguished according to S3/DGVS 2021?",
+    "fa": "بر اساس S3/DGVS 2021، انواع CDD 2a، 2b و 2c چگونه از هم جدا می‌شوند؟"
+  },
+  "answer": {
+    "de": "2a: Mikroabszess bis 3 cm. 2b: Makroabszess >3 cm. 2c: freie Perforation.",
+    "en": "2a: microabscess up to 3 cm. 2b: macroabscess >3 cm. 2c: free perforation.",
+    "fa": "2a: میکروآبسه تا ۳ سانتی‌متر. 2b: ماکروآبسه بیش از ۳ سانتی‌متر. 2c: پرفوراسیون آزاد."
+  },
+  "explanation": {
+    "de": "CDD Typ 2 bezeichnet eine akut komplizierte Divertikulitis. Die genaue Einordnung beeinflusst das weitere Management.",
+    "en": "CDD type 2 is acute complicated diverticulitis. Subclassification affects subsequent management.",
+    "fa": "CDD نوع ۲ دیورتیکولیت حاد پیچیده است و زیرگروه آن بر درمان اثر دارد."
+  },
+  "diagram": {
+    "de": "≤3 cm → 2a\n>3 cm → 2b\nfreie Perforation → 2c",
+    "en": "≤3 cm → 2a\n>3 cm → 2b\nfree perforation → 2c",
+    "fa": "≤۳ سانتی‌متر → 2a\n>۳ سانتی‌متر → 2b\nپرفوراسیون آزاد → 2c"
+  },
+  "source": "https://www.dgvs.de/leitlinien/unterer-gi-trakt/divertikelkrankheit-divertikulitis/?digital=1"
+},
   {
-    id: 'cdd-3',
-    category: { de: 'CDD', en: 'CDD', fa: 'CDD' },
-    front: { de: 'Wie unterscheiden sich CDD 3a, 3b und 3c?', en: 'How do CDD types 3a, 3b and 3c differ?', fa: 'تفاوت CDD نوع 3a، 3b و 3c چیست؟' },
-    answer: { de: '3a: symptomatische unkomplizierte Divertikelkrankheit (SUDD). 3b: rezidivierende Divertikulitis ohne Komplikation. 3c: rezidivierende Divertikulitis mit Komplikation.', en: '3a: symptomatic uncomplicated diverticular disease (SUDD). 3b: recurrent diverticulitis without complications. 3c: recurrent diverticulitis with complications.', fa: '3a: بیماری دیورتیکولی علامت‌دار بدون عارضه (SUDD). 3b: دیورتیکولیت عودکننده بدون عارضه. 3c: دیورتیکولیت عودکننده همراه عارضه.' },
-    explanation: { de: 'Die PDF-Übersicht nennt Stenose, Fistel oder entzündliches Konglomerat als Komplikationen von Typ 3c. Abszess oder freie Perforation sind dagegen akute Komplikationen und gehören zu Typ 2.', en: 'The PDF overview lists stenosis, fistula or an inflammatory conglomerate as complications of type 3c. An abscess or free perforation is an acute complication classified under type 2.', fa: 'در نمای کلی PDF، تنگی، فیستول یا توده التهابی از عوارض نوع 3c هستند. آبسه یا پرفوراسیون آزاد عارضه حاد است و در نوع ۲ طبقه‌بندی می‌شود.' },
-    diagram: { de: '3a → SUDD\n3b → Rezidive ohne Komplikation\n3c → Rezidive mit Komplikation', en: '3a → SUDD\n3b → recurrence without complications\n3c → recurrence with complications', fa: '3a → SUDD\n3b → عود بدون عارضه\n3c → عود همراه عارضه' },
+  "id": "cdd-3",
+  "category": {
+    "de": "CDD",
+    "en": "CDD",
+    "fa": "CDD"
   },
+  "front": {
+    "de": "Wie unterscheiden sich CDD 3a, 3b und 3c?",
+    "en": "How do CDD types 3a, 3b and 3c differ?",
+    "fa": "تفاوت CDD نوع 3a، 3b و 3c چیست؟"
+  },
+  "answer": {
+    "de": "3a: symptomatische unkomplizierte Divertikelkrankheit (SUDD). 3b: rezidivierende Divertikulitis ohne Komplikation. 3c: rezidivierende Divertikulitis mit Komplikation.",
+    "en": "3a: symptomatic uncomplicated diverticular disease (SUDD). 3b: recurrent diverticulitis without complications. 3c: recurrent diverticulitis with complications.",
+    "fa": "3a: بیماری دیورتیکولی علامت‌دار بدون عارضه (SUDD). 3b: دیورتیکولیت عودکننده بدون عارضه. 3c: دیورتیکولیت عودکننده همراه عارضه."
+  },
+  "explanation": {
+    "de": "Typ 3c umfasst rezidivierende Divertikulitis mit Komplikationen wie Stenose oder Fistel. Ein akuter Abszess oder eine freie Perforation wird als akute Komplikation im Typ 2-System beschrieben.",
+    "en": "Type 3c includes recurrent diverticulitis with complications such as stenosis or fistula. An acute abscess or free perforation is described as an acute complication in the type 2 system.",
+    "fa": "نوع 3c دیورتیکولیت عودکننده همراه با عوارضی مانند تنگی یا فیستول را شامل می‌شود. آبسهٔ حاد یا پرفوراسیون آزاد به‌عنوان عارضهٔ حاد در نظام نوع 2 توصیف می‌شود."
+  },
+  "diagram": {
+    "de": "3a → SUDD\n3b → Rezidive ohne Komplikation\n3c → Rezidive mit Komplikation",
+    "en": "3a → SUDD\n3b → recurrence without complications\n3c → recurrence with complications",
+    "fa": "3a → SUDD\n3b → عود بدون عارضه\n3c → عود همراه عارضه"
+  },
+  "source": "https://www.dgvs.de/leitlinien/unterer-gi-trakt/divertikelkrankheit-divertikulitis/?digital=1"
+},
   {
     id: 'abscess',
     category: { de: 'Komplikationen', en: 'Complications', fa: 'عوارض' },
@@ -623,13 +728,34 @@ const DIVERTICULITIS_FLASHCARD_CONTENT = [
     diagram: { de: 'Flüssigkeit + Randenhancement ± Gas → Abszess', en: 'Fluid + rim enhancement ± gas → abscess', fa: 'مایع + تقویت حاشیه‌ای ± گاز → آبسه' },
   },
   {
-    id: 'perforation',
-    category: { de: 'Komplikationen', en: 'Complications', fa: 'عوارض' },
-    front: { de: 'Gedeckte versus freie Perforation: Was ist der CT-Unterschied?', en: 'Contained versus free perforation: what is the CT difference?', fa: 'تفاوت CT پرفوراسیون مهارشده و آزاد چیست؟' },
-    answer: { de: 'Gedeckt: lokalisierte perikolische Gasbläschen. Frei: freie intraperitoneale Luft und Flüssigkeit mit Peritonitiszeichen.', en: 'Contained: localised pericolic gas bubbles. Free: free intraperitoneal gas and fluid with signs of peritonitis.', fa: 'مهارشده: حباب‌های گاز موضعی پریکولیک. آزاد: گاز و مایع آزاد داخل صفاقی همراه علائم پریتونیت.' },
-    explanation: { de: 'Die freie Perforation entspricht CDD 2c und ist eine wesentliche Notfallinformation.', en: 'Free perforation corresponds to CDD 2c and is critical emergency information.', fa: 'پرفوراسیون آزاد مطابق CDD 2c و یک یافته مهم اورژانسی است.' },
-    diagram: { de: 'lokales Gas → gedeckt\nfreies Gas + Flüssigkeit → frei', en: 'local gas → contained\nfree gas + fluid → free', fa: 'گاز موضعی → مهارشده\nگاز آزاد + مایع → آزاد' },
+  "id": "perforation",
+  "category": {
+    "de": "Komplikationen",
+    "en": "Complications",
+    "fa": "عوارض"
   },
+  "front": {
+    "de": "Welche Verteilung kann gedeckte von freier Perforation unterscheiden?",
+    "en": "Which distribution can help distinguish contained from free perforation?",
+    "fa": "کدام توزیع می‌تواند به افتراق پرفوراسیون محدودشده از آزاد کمک کند؟"
+  },
+  "answer": {
+    "de": "Gedeckt: lokalisierte perikolische Gasbläschen. Frei: freie intraperitoneale Luft und Flüssigkeit im passenden Gesamtbild; Peritonitis klinisch beurteilen.",
+    "en": "Contained: localised pericolic gas bubbles. Free: free intraperitoneal gas and fluid in a compatible overall pattern; assess peritonitis clinically.",
+    "fa": "محدودشده: حباب‌های موضعی گاز اطراف کولون. آزاد: گاز و مایع آزاد داخل صفاق در الگوی کلی سازگار؛ پریتونیت را بالینی ارزیابی کنید."
+  },
+  "explanation": {
+    "de": "Freie Perforation entspricht CDD 2c und ist eine wesentliche Notfallinformation. Bildverteilung und klinischen Befund zusammenführen; die CT allein ersetzt die klinische Peritonitisbeurteilung nicht.",
+    "en": "Free perforation corresponds to CDD 2c and is critical emergency information. Integrate imaging distribution and clinical findings; CT alone does not replace clinical assessment for peritonitis.",
+    "fa": "پرفوراسیون آزاد با CDD 2c مطابقت دارد و اطلاعات مهم اورژانسی است. توزیع تصویری و بالین را جمع‌بندی کنید؛ CT به‌تنهایی جای ارزیابی بالینی پریتونیت را نمی‌گیرد."
+  },
+  "diagram": {
+    "de": "lokales Gas → gedeckt\nfreies Gas + Flüssigkeit → frei",
+    "en": "local gas → contained\nfree gas + fluid → free",
+    "fa": "گاز موضعی → مهارشده\nگاز آزاد + مایع → آزاد"
+  },
+  "source": "https://www.dgvs.de/leitlinien/unterer-gi-trakt/divertikelkrankheit-divertikulitis/?digital=1; https://acsearch.acr.org/docs/69356/Narrative/"
+},
   {
     id: 'fistula',
     category: { de: 'Komplikationen', en: 'Complications', fa: 'عوارض' },
@@ -680,6 +806,7 @@ const DIVERTICULITIS_FLASHCARDS = DIVERTICULITIS_FLASHCARD_CONTENT.map(item => (
   answer: item.answer,
   explanation: item.explanation,
   diagram: item.diagram,
+  ...(item.source ? { source: item.source } : {}),
 }))
 
 const PANCREATITIS_FLASHCARD_CONTENT = [
@@ -1455,29 +1582,30 @@ const LEGACY_FLASHCARDS = [
     }
   },
   {
-    "id": "meniskus-21",
-    "topicId": "meniskus",
-    "category": {
-      "de": "Discoider Meniskus",
-      "en": "Discoid meniscus",
-      "fa": "منیسک دیسکویید"
-    },
-    "front": {
-      "de": "Welche koronalen Breitenkriterien unterstützen einen discoiden Außenmeniskus?",
-      "en": "Which coronal width criteria support a discoid lateral meniscus?",
-      "fa": "کدام معیارهای پهنای کرونال به نفع دیسکویید خارجی هستند؟"
-    },
-    "answer": {
-      "de": "Körperbreite ≥15 mm oder minimale Meniskusbreite / maximale Tibiabreite >20 %.",
-      "en": "Body width ≥15 mm or minimum meniscal / maximum tibial width >20%.",
-      "fa": "پهنای تنه ≥۱۵ میلی‌متر یا حداقل پهنای منیسک / حداکثر پهنای تیبیا >۲۰٪."
-    },
-    "explanation": {
-      "de": "Die Messungen stützen die Diagnose und werden mit Gesamtform und sagittaler Ausdehnung kombiniert. Extrusion ist ein anderer Parameter und kein Ersatz für die Körperbreite.",
-      "en": "These measurements support diagnosis and are combined with overall shape and sagittal extent. Extrusion is a different parameter, not a substitute for body width.",
-      "fa": "اندازه‌گیری‌ها مؤید تشخیص‌اند و با شکل کلی و امتداد ساژیتال ترکیب می‌شوند؛ اکستروژن پارامتر دیگری است و جای پهنای تنه را نمی‌گیرد."
-    }
+  "id": "meniskus-21",
+  "topicId": "meniskus",
+  "category": {
+    "de": "Discoider Meniskus",
+    "en": "Discoid meniscus",
+    "fa": "منیسک دیسکویید"
   },
+  "front": {
+    "de": "Welche koronalen Breitenkriterien unterstützen einen discoiden Außenmeniskus?",
+    "en": "Which coronal width criteria support a discoid lateral meniscus?",
+    "fa": "کدام معیارهای پهنای کرونال از منیسک خارجی دیسکویید حمایت می‌کنند؟"
+  },
+  "answer": {
+    "de": "Körperbreite ≥15 mm oder minimale Meniskusbreite / maximale Tibiabreite ≥20 %.",
+    "en": "Body width ≥15 mm or minimum meniscal / maximum tibial width ≥20%.",
+    "fa": "پهنای تنه ≥۱۵ میلی‌متر یا حداقل پهنای منیسک / حداکثر پهنای تیبیا ≥۲۰٪."
+  },
+  "explanation": {
+    "de": "Die Messungen stützen die Diagnose und werden mit Gesamtform und sagittaler Ausdehnung kombiniert. Extrusion ist ein anderer Parameter und kein Ersatz für die Körperbreite.",
+    "en": "These measurements support diagnosis and are combined with overall shape and sagittal extent. Extrusion is a different parameter, not a substitute for body width.",
+    "fa": "اندازه‌گیری‌ها مؤید تشخیص‌اند و با شکل کلی و امتداد ساژیتال ترکیب می‌شوند؛ اکستروژن پارامتر دیگری است و جای پهنای تنه را نمی‌گیرد."
+  },
+  "source": "https://pubmed.ncbi.nlm.nih.gov/11973030/"
+},
   {
     "id": "meniskus-22",
     "topicId": "meniskus",

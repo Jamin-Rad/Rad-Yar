@@ -1,0 +1,90 @@
+{
+  "date": "2026-10-25",
+  "reviewer": "/root/design_inventory",
+  "author": "/root/brain_remediation",
+  "status": "ACCEPT_BOUNDED_ORIGINAL_POOL_AFTER_RETEST",
+  "scope": {
+    "route": "/gehirn/vaskulaer/dva",
+    "questionTriadsRead": 12,
+    "localizedQuestions": 36,
+    "cardTriadsRead": 15,
+    "localizedCards": 45,
+    "lesson": "Clinical authored prose/CT-MRI terminology/case-caption text and management mirror read comparatively. Actual retained diagnostic frames not independently interpreted."
+  },
+  "actualHash": "65ad1cef726173a90990f38a0b58f0e5e15015e7ae3f83d79a7ab1918c198297",
+  "findings": [
+    {
+      "id": "DVA11-EDU-001",
+      "severity": "minor",
+      "key": "question03.prompt",
+      "issue": "Stem specified contrast-enhanced while only keyed option used contrast; this cued response without choosing the architecture-mapping sequence.",
+      "status": "CLOSED_ACTUAL_TRIAD_RETEST",
+      "correction": "All stems now ask preferred reference for detailed venous architecture in the clinical planning context, without revealing contrast requirement."
+    },
+    {
+      "id": "DVA11-LNG-002",
+      "severity": "minor",
+      "key": "question04.explanation",
+      "issue": "DE Großteil was stronger than EN/FA many, and the linked morphology guideline did not supply that comparative magnitude.",
+      "status": "CLOSED_ACTUAL_TRIAD_RETEST",
+      "correction": "All three now say associated cavernoma can explain haemorrhagic events, prompting targeted search without unsupported magnitude."
+    },
+    {
+      "id": "DVA11-SRC-003",
+      "severity": "minor",
+      "key": "card15.answer/explanation, lesson.management.cave",
+      "issue": "Absolute complete-DVA preservation wording lacked current source nuance on individualized planning and limited controlled surgical evidence.",
+      "status": "CLOSED_ACTUAL_TRIAD_AND_LESSON_MIRROR_RETEST",
+      "correction": "Preserve essential normal-parenchymal drainage/collector, map individual anatomy, and state lack of controlled DVA-resection data; linked current2025 CM consensus surgical section."
+    }
+  ],
+  "primaryEvidence": [
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/19390075/",
+      "read": "Complete original abstract and indexed original discussion: prospective population cohort93 adults, mostly incidental benign course. No universal zero lifetime risk, annual event statistic or mandatory interval imported."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/18988912/",
+      "read": "Complete original17-patient institutional plus51-case literature abstract: selected symptomatic inflow/outflow mechanisms and preserve functional DVA integrity. No symptomatic-cohort frequency extrapolation."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40512378/",
+      "read": "Complete original200-patient CCM-associated-DVA abstract plus actual PMC12494666 results/conclusion: CE-T1 reference and small-vessel SWI limitations. Not all-patient sensitivity claim."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/28667359/",
+      "read": "Complete original57-child study abstract: SWI useful for associated CM/microhaemorrhages; CE-T1 comparator. No paediatric numeric accuracy exported as adult general rule."
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12680281/",
+      "read": "Actual current consensus diagnostic MRI criteria and surgical associated-DVA section read: reticulated blood-product core/rim, acute haemorrhage may obscure lesions, surgical planning and evidence limitations."
+    }
+  ],
+  "coverage": {
+    "goals": 4,
+    "all12OriginalQuestionsMapped": true,
+    "all15OriginalCardsMapped": true,
+    "interpretation": "Useful foundational recall retained alongside venous architecture mapping, associated lesion interpretation, symptomatic outflow evaluation, reporting and planning. No additional quantity quota needed."
+  },
+  "technical": {
+    "actualModuleBundle": true,
+    "allOriginalIdsAndKeysStable": true,
+    "allThreeSpecificWrongExplanationsPresent": true,
+    "allLocalizedCardFieldsNonempty": true
+  },
+  "gates": {
+    "SRC": "PASS_BOUNDED_NAMED_CLAIMS",
+    "EDU": "PASS_BOUNDED_ORIGINAL_POOL",
+    "LNG": "PASS_COMPARATIVE_ASSESSMENTS_AND_NARROW_LESSON_MIRROR",
+    "ASM": "PASS_ACTUAL_MODULE_AND_GOAL_MAP",
+    "VIS": "NOT_REVIEWED",
+    "UX": "NOT_REVIEWED",
+    "REV": "INDEPENDENT_READ_ONLY"
+  },
+  "limits": [
+    "Not global lesson scientific release or physician sign-off.",
+    "No fresh PDF30/Radiopaedia91621 frame, scan plane, licensing or diagnostic truth verification. Existing case image filename/plane label not inferred from filename.",
+    "No browser interaction or fresh rendered theme/mobile review in this packet; author SSR not substituted for independent browser evidence.",
+    "Clinical claims grouped against named evidence; not every background pathogenesis detail or all references independently recertified."
+  ]
+}

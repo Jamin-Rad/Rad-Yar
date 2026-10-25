@@ -1,0 +1,43 @@
+{
+  "date": "2026-10-25",
+  "status": "AUTHOR_READY_INDEPENDENT_REVIEW_PENDING",
+  "route": "/gehirn/neurodegeneration/cjd",
+  "files": [
+    "data/assessmentQuality/brain.js aq-cjd block only",
+    "data/gehirnCjdMusterLesson.js assessment and Collie bibliography",
+    "app/gehirn/neurodegeneration/cjd/page.jsx individual feedback consumer"
+  ],
+  "questionTriads": 3,
+  "cardTriads": 3,
+  "goals": [
+    "Applied cortical/striatal DWI-ADC pattern in rapid decline",
+    "Limbic FLAIR-predominant pattern and treatable mimics",
+    "Pulvinar reference definition and vCJD versus sCJD interpretation"
+  ],
+  "keys": [
+    "clinical-pattern:A",
+    "limbic-mimic:C",
+    "pulvinar-comparator:A"
+  ],
+  "sources": [
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3100134/",
+      "read": "Original90-patient cohort abstract/results/discussion: DWI/FLAIR/ADC and regional patterns; isolated limbic mimic, thalamic patterns and artifact-related false positives. No universal sensitivity or diagnostic proof inferred."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/13679271/",
+      "read": "Original86-neuropathology-confirmedvCJD series abstract/results and precise definition discussion: pulvinar brighter than anterior putamen, distinction from mere thalamic contrast. No universal accuracy or DWI-only definition inferred."
+    },
+    {
+      "url": "https://www.cdc.gov/creutzfeldt-jakob/hcp/clinical-overview/index.html",
+      "read": "Current2026 diagnostic criteria: MRI component distinct from full probable/definite diagnosis; no teaching of MRI-alone definite CJD."
+    }
+  ],
+  "teachingParity": "All3goals already explicitly taught by existing3chapter prose; original simplistic/absolute inline choices replaced with clinical pattern case and specific wrong feedback. No new unviewed image case claimed.",
+  "checks": "26Q/lang27cards module structuralPASS; own actual-route3/3SSR; original toplevel lesson fields preserved versusHEAD. Independent clinical/language review and browser pending.",
+  "limits": [
+    "Existing PDF75/76 diagnostic figures/captions unchanged and not rereviewed in this bounded text-assessment packet.",
+    "No full-lesson clinical acceptance or measured item difficulty inferred.",
+    "Draft excluded from published snapshot until independent acceptance."
+  ]
+}

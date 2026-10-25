@@ -1162,7 +1162,7 @@ export const newCards=[
       "en": "The lesson separates the undated PDF table from ARCO 2019. Assess the necrotic lesion and its interface pattern rather than labelling every oedema as necrosis.",
       "fa": "درس، جدول بدون تاریخ PDF را از ARCO ۲۰۱۹ جدا می‌کند. کانون نکروتیک و الگوی حاشیهٔ آن را ارزیابی کنید، نه آنکه هر ادمی نکروز تلقی شود."
     },
-    "source": "https://pubmed.ncbi.nlm.nih.gov/31866252/"
+    "source": "https://pubmed.ncbi.nlm.nih.gov/31866252/; https://pubmed.ncbi.nlm.nih.gov/10990307/; https://pubmed.ncbi.nlm.nih.gov/15145483/"
   },
   {
     "id": "aq-msk-avn-structural-stage",
@@ -1263,6 +1263,46 @@ export const newCards=[
       "fa": "گزارهٔ مطلق «نبود ادم» در PDF با مجموعهٔ اولیهٔ تصویربرداری تعدیل می‌شود: ادم ممکن است همراه باشد و آزمون کلی برای رد بیماری نیست."
     },
     "source": "https://onlinelibrary.wiley.com/doi/full/10.1002/jbm4.10472"
+  },
+  {
+    "id": "aq-msk-knee-medial-report",
+    "topicId": "kreuzbaender",
+    "front": {
+      "de": "MCL-Verletzung mit posteromedialem Ödem: Welche Angaben ergänzen eine bloße Gradzahl im Befund?",
+      "en": "MCL injury with posteromedial oedema: which findings add value beyond a grade number?",
+      "fa": "آسیب MCL همراه ادم خلفی‌ـ‌داخلی: کدام اطلاعات، گزارش را فراتر از ذکر یک درجه تکمیل می‌کنند؟"
+    },
+    "answer": {
+      "de": "Ort und Kontinuität der MCL-Anteile beschreiben und das POL sowie weitere posteromediale Strukturen gezielt prüfen; Ödem allein nicht als bewiesene POL-Ruptur bezeichnen.",
+      "en": "Describe the site and continuity of MCL components and assess the POL and other posteromedial structures directly; oedema alone does not establish a POL tear.",
+      "fa": "محل و پیوستگی اجزای MCL را توصیف و POL و دیگر ساختارهای خلفی‌ـ‌داخلی را هدفمند بررسی کنید؛ ادم به‌تنهایی پارگی POL را اثبات نمی‌کند."
+    },
+    "explanation": {
+      "de": "Die primäre MRT-Serie fand POL-Verletzungen häufig im Rahmen komplexer Bandverletzungen. Die Assoziation begründet eine gezielte Suche, nicht die automatische Diagnose einer Begleitruptur.",
+      "en": "The primary MRI series found POL injury frequently within complex ligament injuries. Association supports targeted assessment, not automatic diagnosis of an associated tear.",
+      "fa": "مجموعهٔ اولیهٔ MRI، آسیب POL را اغلب در چارچوب آسیب‌های پیچیدهٔ رباطی یافت. این ارتباط، بررسی هدفمند را توجیه می‌کند، نه تشخیص خودکار پارگی همراه را."
+    },
+    "source": "https://pubmed.ncbi.nlm.nih.gov/34626207/"
+  },
+  {
+    "id": "aq-msk-infarct-report",
+    "topicId": "knocheninfarkt",
+    "front": {
+      "de": "Verdacht auf medullären Knocheninfarkt: Welche drei Beschreibungsaspekte gehören in einen nützlichen Befund?",
+      "en": "Suspected medullary bone infarct: which three descriptive dimensions belong in a useful report?",
+      "fa": "شک به انفارکت مدولاری استخوان: کدام سه محور توصیفی باید در گزارش مفید ذکر شوند؟"
+    },
+    "answer": {
+      "de": "Lokalisation/Markraumkompartiment, Randmuster und zentrales Fettmark getrennt beschreiben; Ödem, Weichteilreaktion und klinische Warnzeichen zusätzlich einordnen.",
+      "en": "Describe location/marrow compartment, border pattern and central fatty marrow separately; additionally assess oedema, soft-tissue reaction and clinical warning signs.",
+      "fa": "محل/کمپارتمان مغز استخوان، الگوی حاشیه و مغز استخوان چرب مرکزی را جداگانه توصیف کنید؛ ادم، واکنش بافت نرم و علائم هشدار بالینی را نیز ارزیابی کنید."
+    },
+    "explanation": {
+      "de": "Der Begriff allein ersetzt keine morphologische Beschreibung. Ein fehlendes Double-Line-Zeichen schließt Osteonekrose nicht aus, und ein Infarktmuster schließt eine zusätzliche Infektion nicht aus.",
+      "en": "The label alone does not replace morphologic description. An absent double-line sign does not exclude osteonecrosis, and an infarct pattern does not exclude superimposed infection.",
+      "fa": "نام‌گذاری به‌تنهایی جای توصیف مورفولوژیک را نمی‌گیرد. نبود علامت خط دوگانه، استئونکروز را رد نمی‌کند و الگوی انفارکت نیز عفونت افزوده را رد نمی‌کند."
+    },
+    "source": "https://pubmed.ncbi.nlm.nih.gov/8508844/; https://pubmed.ncbi.nlm.nih.gov/10745133/"
   }
 ]
 export const topics=[
@@ -2195,5 +2235,354 @@ export const routeCoverage=[
       }
     ],
     "status": "AUTHOR_PACKET_2_IN_PROGRESS"
+  },
+  {
+    "route": "/msk/knie/kreuzbaender",
+    "topicId": "kreuzbaender",
+    "learningGoals": [
+      {
+        "id": "mri-continuity",
+        "text": {
+          "de": "Periligamentäres Ödem und sichtbare Bandkontinuität in einem Quellbildpaar beschreiben.",
+          "en": "Describe periligamentous oedema and visible ligament continuity in a source image pair.",
+          "fa": "ادم پیرارباطی و پیوستگی قابل مشاهدهٔ رباط را در جفت تصاویر منبع توصیف کنید."
+        },
+        "questionIds": [
+          "kreuzbaender-de-01"
+        ],
+        "cardIds": [
+          "kreuzbaender-01"
+        ]
+      },
+      {
+        "id": "acl-pattern",
+        "text": {
+          "de": "Direkte und indirekte VKB-Zeichen mit Degenerationsmimik abgleichen.",
+          "en": "Integrate direct and indirect ACL signs with degenerative mimics.",
+          "fa": "علائم مستقیم و غیرمستقیم ACL را با مقلدهای دژنراتیو تطبیق دهید."
+        },
+        "questionIds": [
+          "kreuzbaender-de-05",
+          "kreuzbaender-de-06"
+        ],
+        "cardIds": [
+          "kreuzbaender-04",
+          "kreuzbaender-05"
+        ]
+      },
+      {
+        "id": "pcl-mechanism",
+        "text": {
+          "de": "Den anterioren Tibiaprall am gebeugten Knie der HKB-Verletzung zuordnen.",
+          "en": "Associate anterior tibial impact at a flexed knee with PCL injury.",
+          "fa": "ضربهٔ قدامی به تیبیا در زانوی خم را به آسیب PCL مرتبط کنید."
+        },
+        "questionIds": [
+          "kreuzbaender-de-07"
+        ],
+        "cardIds": [
+          "kreuzbaender-06"
+        ]
+      },
+      {
+        "id": "associated-complexes",
+        "text": {
+          "de": "Fibuläre und mediale Verletzungshinweise für eine gezielte PLC-/POL-Beurteilung und Befundbeschreibung nutzen.",
+          "en": "Use fibular and medial injury clues for targeted PLC/POL assessment and reporting.",
+          "fa": "از سرنخ‌های آسیب فیبولا و سمت داخلی برای ارزیابی هدفمند PLC/POL و گزارش استفاده کنید."
+        },
+        "questionIds": [
+          "kreuzbaender-de-02",
+          "kreuzbaender-de-03",
+          "kreuzbaender-de-04",
+          "kreuzbaender-de-08"
+        ],
+        "cardIds": [
+          "kreuzbaender-02",
+          "kreuzbaender-03",
+          "kreuzbaender-07",
+          "aq-msk-knee-medial-report"
+        ]
+      }
+    ],
+    "status": "AUTHOR_PACKET_3_BOUNDED_DELTA_READY_FULL_EXISTING_POOL_REVIEW_PENDING",
+    "existingPoolReview": "Not fully reread or independently accepted; mapped unchanged IDs do not imply their pedagogic acceptance."
+  },
+  {
+    "route": "/msk/knie/meniskus",
+    "topicId": "meniskus",
+    "learningGoals": [
+      {
+        "id": "normal-tear",
+        "text": {
+          "de": "Normale Anatomie und intrameniskales Signal von einem morphologisch gestützten Riss abgrenzen.",
+          "en": "Distinguish normal anatomy and intrameniscal signal from a morphologically supported tear.",
+          "fa": "آناتومی طبیعی و سیگنال داخل منیسک را از پارگی دارای شواهد مورفولوژیک جدا کنید."
+        },
+        "questionIds": [
+          "meniskus-de-01",
+          "meniskus-de-02",
+          "meniskus-de-04",
+          "meniskus-de-07",
+          "meniskus-de-08",
+          "meniskus-de-11",
+          "meniskus-de-22"
+        ],
+        "cardIds": [
+          "meniskus-01",
+          "meniskus-02",
+          "meniskus-03",
+          "meniskus-04",
+          "meniskus-05",
+          "meniskus-06",
+          "meniskus-07",
+          "meniskus-09",
+          "meniskus-10",
+          "meniskus-27",
+          "meniskus-28",
+          "meniskus-35"
+        ]
+      },
+      {
+        "id": "tear-patterns",
+        "text": {
+          "de": "Rissverlauf und Fragmentverlagerung anatomisch beschreiben.",
+          "en": "Describe tear orientation and fragment displacement anatomically.",
+          "fa": "جهت پارگی و جابه‌جایی قطعه را به‌صورت آناتومیک توصیف کنید."
+        },
+        "questionIds": [
+          "meniskus-de-12",
+          "meniskus-de-13",
+          "meniskus-de-14",
+          "meniskus-de-15",
+          "meniskus-de-16",
+          "meniskus-de-36",
+          "meniskus-de-37"
+        ],
+        "cardIds": [
+          "meniskus-15",
+          "meniskus-16",
+          "meniskus-22",
+          "meniskus-23",
+          "meniskus-24",
+          "meniskus-29",
+          "meniskus-30",
+          "meniskus-31",
+          "meniskus-33",
+          "meniskus-36",
+          "meniskus-37"
+        ]
+      },
+      {
+        "id": "discoid",
+        "text": {
+          "de": "Die Discoidform mit koronaler Breite und protokollabhängiger sagittaler Ausdehnung beurteilen.",
+          "en": "Assess discoid shape using coronal width and protocol-dependent sagittal extent.",
+          "fa": "شکل دیسکویید را با پهنای کرونال و امتداد ساژیتال وابسته به پروتکل ارزیابی کنید."
+        },
+        "questionIds": [
+          "meniskus-de-17",
+          "meniskus-de-18"
+        ],
+        "cardIds": [
+          "meniskus-18",
+          "meniskus-19",
+          "meniskus-20",
+          "meniskus-21"
+        ]
+      },
+      {
+        "id": "clinical-management",
+        "text": {
+          "de": "Biologische Reparabilität und klinischen Kontext von einem automatischen Operationsschluss trennen.",
+          "en": "Distinguish biologic repair potential and clinical context from an automatic surgery conclusion.",
+          "fa": "ظرفیت زیستی ترمیم و زمینهٔ بالینی را از نتیجه‌گیری خودکار جراحی جدا کنید."
+        },
+        "questionIds": [
+          "meniskus-de-03",
+          "meniskus-de-10",
+          "meniskus-de-23"
+        ],
+        "cardIds": [
+          "meniskus-11",
+          "meniskus-12",
+          "meniskus-13",
+          "meniskus-14"
+        ]
+      },
+      {
+        "id": "useful-report",
+        "text": {
+          "de": "Wurzelbezug, Extrusion, Knorpel und normale Rissmimiken im Bericht berücksichtigen.",
+          "en": "Include root relationship, extrusion, cartilage and normal tear mimics in reporting.",
+          "fa": "رابطه با ریشه، اکستروژن، غضروف و مقلدهای طبیعی پارگی را در گزارش لحاظ کنید."
+        },
+        "questionIds": [
+          "meniskus-de-19",
+          "meniskus-de-20",
+          "meniskus-de-21"
+        ],
+        "cardIds": [
+          "meniskus-32",
+          "meniskus-34"
+        ]
+      }
+    ],
+    "status": "AUTHOR_PACKET_3_BOUNDED_DELTA_READY_FULL_EXISTING_POOL_REVIEW_PENDING",
+    "existingPoolReview": "Not fully reread or independently accepted; mapped unchanged IDs do not imply their pedagogic acceptance."
+  },
+  {
+    "route": "/msk/knochennekrosen/avn-huefte",
+    "topicId": "avn-huefte",
+    "learningGoals": [
+      {
+        "id": "diagnostic-specificity",
+        "text": {
+          "de": "Unspezifisches Ödem von einem osteonekrosetypischen MRT-Befund unterscheiden.",
+          "en": "Distinguish nonspecific oedema from an MRI pattern of osteonecrosis.",
+          "fa": "ادم غیراختصاصی را از الگوی MRI استئونکروز جدا کنید."
+        },
+        "questionIds": [],
+        "cardIds": [
+          "aq-msk-avn-imaging-specificity"
+        ]
+      },
+      {
+        "id": "arco-version",
+        "text": {
+          "de": "Fraktur, Einsenkung und Arthrose der expliziten ARCO-Version2019 zuordnen.",
+          "en": "Assign fracture, depression and osteoarthritis to the explicit ARCO2019 version.",
+          "fa": "شکستگی، فرورفتگی و آرتروز را بر اساس نسخهٔ مشخص ARCO۲۰۱۹ مرحله‌بندی کنید."
+        },
+        "questionIds": [
+          "aq-msk-avn-huefte-de-arco2019-depression"
+        ],
+        "cardIds": [
+          "aq-msk-avn-structural-stage"
+        ]
+      },
+      {
+        "id": "structural-report",
+        "text": {
+          "de": "Die strukturellen Merkmale und Klassifikationsversion nachvollziehbar berichten.",
+          "en": "Report structural findings and the classification version traceably.",
+          "fa": "یافته‌های ساختاری و نسخهٔ طبقه‌بندی را به‌صورت قابل پیگیری گزارش کنید."
+        },
+        "questionIds": [],
+        "cardIds": [
+          "aq-msk-avn-report-fracture"
+        ]
+      }
+    ],
+    "status": "AUTHOR_PACKET_3_BOUNDED_DELTA_READY_FULL_EXISTING_POOL_REVIEW_PENDING",
+    "existingPoolReview": "Not fully reread or independently accepted; mapped unchanged IDs do not imply their pedagogic acceptance."
+  },
+  {
+    "route": "/msk/knochennekrosen/knocheninfarkt",
+    "topicId": "knocheninfarkt",
+    "learningGoals": [
+      {
+        "id": "location",
+        "text": {
+          "de": "Medullären Meta-/Diaphyseninfarkt topographisch einordnen.",
+          "en": "Localize medullary metaphyseal/diaphyseal infarction.",
+          "fa": "انفارکت مدولاری متافیز/دیافیز را از نظر محل ارزیابی کنید."
+        },
+        "questionIds": [
+          "knocheninfarkt-de-location"
+        ],
+        "cardIds": [
+          "knocheninfarkt-location"
+        ]
+      },
+      {
+        "id": "border-centre",
+        "text": {
+          "de": "Serpiginösen Rand und zentrales Fettmark gemeinsam interpretieren.",
+          "en": "Interpret a serpiginous border and central fatty marrow together.",
+          "fa": "حاشیهٔ مارپیچی و مغز استخوان چرب مرکزی را با هم تفسیر کنید."
+        },
+        "questionIds": [
+          "knocheninfarkt-de-pattern"
+        ],
+        "cardIds": [
+          "knocheninfarkt-border-centre"
+        ]
+      },
+      {
+        "id": "infection",
+        "text": {
+          "de": "Infarktmuster bei klinischen Warnzeichen nicht als Infektionsausschluss behandeln.",
+          "en": "Avoid treating an infarct pattern as an infection exclusion when clinical warning signs exist.",
+          "fa": "در حضور علائم هشدار بالینی، الگوی انفارکت را معادل رد عفونت تلقی نکنید."
+        },
+        "questionIds": [
+          "knocheninfarkt-de-infection"
+        ],
+        "cardIds": [
+          "knocheninfarkt-infection"
+        ]
+      },
+      {
+        "id": "report",
+        "text": {
+          "de": "Lage, Rand, Zentrum und Begleitreaktion getrennt im Befund dokumentieren.",
+          "en": "Document location, border, centre and associated reaction separately.",
+          "fa": "محل، حاشیه، مرکز و واکنش همراه را جداگانه گزارش کنید."
+        },
+        "questionIds": [],
+        "cardIds": [
+          "aq-msk-infarct-report"
+        ]
+      }
+    ],
+    "status": "AUTHOR_PACKET_3_BOUNDED_DELTA_READY_FULL_EXISTING_POOL_REVIEW_PENDING",
+    "existingPoolReview": "Not fully reread or independently accepted; mapped unchanged IDs do not imply their pedagogic acceptance."
+  },
+  {
+    "route": "/msk/knochenstoffwechsel/melorheostose",
+    "topicId": "melorheostose",
+    "learningGoals": [
+      {
+        "id": "source-pattern",
+        "text": {
+          "de": "Längsverlaufende kortikale Hyperostose im tatsächlichen Quellbild erkennen.",
+          "en": "Recognize longitudinal cortical hyperostosis in the actual source image.",
+          "fa": "هیپراستوز قشری با امتداد طولی را در تصویر واقعی منبع بشناسید."
+        },
+        "questionIds": [
+          "aq-msk-melorheostose-de-source-cortical-pattern"
+        ],
+        "cardIds": [
+          "aq-msk-melor-morphology"
+        ]
+      },
+      {
+        "id": "complementary-imaging",
+        "text": {
+          "de": "CT-Knochenbeurteilung und gezielte MRT-Ergänzung für Weichteile unterscheiden.",
+          "en": "Distinguish CT bone assessment from targeted MRI soft-tissue evaluation.",
+          "fa": "ارزیابی استخوان با CT را از بررسی تکمیلی هدفمند بافت نرم با MRI جدا کنید."
+        },
+        "questionIds": [],
+        "cardIds": [
+          "aq-msk-melor-mri-role"
+        ]
+      },
+      {
+        "id": "reactive-findings",
+        "text": {
+          "de": "Signalarmen sklerotischen Kern von möglichem begleitendem Ödem trennen.",
+          "en": "Distinguish low-signal sclerotic core from possible associated oedema.",
+          "fa": "هستهٔ اسکلروتیک کم‌سیگنال را از ادم همراهِ احتمالی جدا کنید."
+        },
+        "questionIds": [],
+        "cardIds": [
+          "aq-msk-melor-edema-limit"
+        ]
+      }
+    ],
+    "status": "AUTHOR_PACKET_3_BOUNDED_DELTA_READY_FULL_EXISTING_POOL_REVIEW_PENDING",
+    "existingPoolReview": "Not fully reread or independently accepted; mapped unchanged IDs do not imply their pedagogic acceptance."
   }
 ]

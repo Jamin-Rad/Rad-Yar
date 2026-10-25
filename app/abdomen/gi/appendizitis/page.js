@@ -2,6 +2,7 @@
 
 import { useLanguage } from '@/providers/LanguageProvider'
 import LessonReferenceShell from '@/components/LessonReferenceShell'
+import { appendixCoverage } from '@/data/assessmentQuality/appendixSupplement'
 import styles from '../divertikulitis/page.module.css'
 
 const appendixImage = 'https://prod-images-static.radiopaedia.org/images/62194749/80d37d32b610533d4d3358b48267767a5b03b6c32a886e8b203d5f90bbbbb06a_big_gallery.jpeg'
@@ -96,7 +97,7 @@ const C = {
 export default function AppendicitisPage() {
   const { lang } = useLanguage()
   const c = C[lang] || C.de
-  return <LessonReferenceShell lessonId="abdomen-appendizitis" lang={lang} title={c.title} diagram="appendix" copy={c} goals={[c.goal]} summary={c.summary} quizHref="/ueben/quiz?fach=abdomen&n=1&themen=appendizitis" flashcardsHref="/flashcards/appendizitis">
+  return <LessonReferenceShell lessonId="abdomen-appendizitis" lang={lang} title={c.title} diagram="appendix" copy={c} goals={appendixCoverage.learningGoals.map(goal => goal.text[lang])} summary={c.summary} quizHref="/ueben/quiz?fach=abdomen&n=1&themen=appendizitis" flashcardsHref="/flashcards/appendizitis">
       <div className={styles.main} lang={lang} dir={lang === 'fa' ? 'rtl' : 'ltr'} style={{ maxWidth: 1080, margin: '2rem auto', padding: '0 1rem' }}>
         <section className={styles.section}><h2>{c.usTitle}</h2><p className={styles.lead}>{c.intro}</p><p>{c.mechanism}</p><div className={styles.cardsGrid}>{c.us.map(([title, text]) => <article className={styles.infoCard} key={title}><h3>{title}</h3><p>{text}</p></article>)}</div><figure style={{ maxWidth: 630, margin: '1.5rem auto', padding: '0.75rem', border: '1px solid var(--border)', borderRadius: 16, background: 'var(--bg-card)' }}><img src={appendixImage} width="630" height="386" alt={c.caseAlt} loading="lazy" style={{ display: 'block', width: '100%', height: 'auto', borderRadius: 10 }} /><figcaption style={{ padding: '0.75rem 0.25rem 0.1rem', color: 'var(--text-soft)', lineHeight: 1.6 }}>{c.caseCaption}<br /><a href="https://radiopaedia.org/cases/acute-appendicitis-on-ultrasound-3?lang=us" target="_blank" rel="noreferrer">{c.caseCredit} ↗</a><br /><a href="https://radiopaedia.org/articles/cases-4?lang=us" target="_blank" rel="noreferrer">{c.caseLicense}</a> · <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank" rel="noreferrer">{c.caseCc}</a></figcaption></figure></section>
         <section className={styles.section}><h2>{c.ctTitle}</h2><div className={styles.cardsGrid}>{c.ct.map(([title, text]) => <article className={styles.infoCard} key={title}><h3>{title}</h3><p>{text}</p></article>)}</div></section>

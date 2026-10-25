@@ -1,0 +1,232 @@
+{
+  "date": "2026-10-25",
+  "reviewer": "/root/remove_lesson_notice",
+  "role": "Independent read-only reviewer of author design_inventory and root canonical integration",
+  "status": "ACCEPT_FULL_ASSESSMENT_POOL_AFTER_INDEPENDENT_RETEST",
+  "scope": {
+    "routes": [
+      {
+        "route": "/abdomen/gi/appendizitis",
+        "topicId": "appendizitis"
+      },
+      {
+        "route": "/abdomen/gi/gist",
+        "topicId": "gist"
+      },
+      {
+        "route": "/abdomen/gefaesse/fmd",
+        "topicId": "fibromuskulaere-dysplasie"
+      },
+      {
+        "route": "/abdomen/gi/duodenaldivertikel",
+        "topicId": "duodenaldivertikel"
+      },
+      {
+        "route": "/abdomen/gi/divertikulitis",
+        "topicId": "divertikulitis"
+      }
+    ],
+    "originalMcqTriads": 18,
+    "newMcqTriads": 4,
+    "allMcqTriadsRead": 22,
+    "allCardTriadsRead": 25,
+    "localeItemUnits": 141,
+    "fieldsRead": "Every actual authored question stem, all options, correct key, explanation, wrong feedback and source; every card front/answer/explanation/diagram/category/source DE/EN/FA;16blueprint goals and mappings.",
+    "notClaimed": [
+      "Whole supplied PDF read or pixel-level figure verification for these5routes",
+      "Full lesson prose/image/accessibility/browser acceptance",
+      "Empirical question difficulty/discrimination calibration",
+      "Clinical release approval by Dr.Zia"
+    ]
+  },
+  "gates": {
+    "SRC": "PASS_FOR_ASSESSMENT_CLAIMS_WITH_EXPLICIT_SOURCE_ACCESS_LIMITS",
+    "EDU": "PASS_BOUNDED_BLUEPRINT_AND_FULL_ASSESSMENT_POOL",
+    "ASM": "PASS_AFTER_INDEPENDENT_RETEST",
+    "LNG": "PASS_BOUNDED_ALL47_ITEM_TRIADS",
+    "VIS": "NOT_REVIEWED_NO_NEW_ASSESSMENT_IMAGE_CLAIM",
+    "UX": "NOT_REVIEWED_IN_THIS_SOURCE_REVIEW",
+    "REV": "INDEPENDENT_READ_COMPLETE"
+  },
+  "findings": [
+    {
+      "id": "ATV02-SRC-01",
+      "severity": "moderate",
+      "location": "divertikulitis-*-definition.explanation; related lesson basics",
+      "observed": "A typical mural/pericolic reaction was stated as required in every diverticulitis, conflicting with the mild CDD1a distinction.",
+      "impact": "Could falsely reject mild diverticular inflammation without marked pericolic reaction.",
+      "required": "Define inflammation of diverticulum/diverticula; qualify variable wall/surrounding response. Mirror narrowly in existing lesson definition.",
+      "status": "CLOSED_AFTER_INDEPENDENT_RETEST",
+      "retest": "Nine seed-repair objects compiled globally and exact; definition DE/EN/FA compared manually against DGVS2021 definition and CDD1a/1b. Current12 lesson fields read DE/EN/FA and present in actual source; obsolete mandatory-triad fields absent."
+    },
+    {
+      "id": "ATV02-SRC-02",
+      "severity": "minor",
+      "location": "divertikulitis-*-cdd-2a; divertikulitis-*-macroabscess; divertikulitis-cdd-2 card",
+      "observed": "Standalone size items omitted classification edition and one distractor explanation approximated the exact3cm boundary.",
+      "impact": "Version-dependent1cm versus3cm boundaries could be conflated.",
+      "required": "Name S3/DGVS2021 and retain exact up-to-and-including3 versus greater-than3 distinction.",
+      "status": "CLOSED_AFTER_INDEPENDENT_RETEST",
+      "retest": "All six revised question locale rows plus card front/source exact in current global producer; ≤3/>3 unchanged and supported by cited edition."
+    },
+    {
+      "id": "ATV02-ASM-01",
+      "severity": "moderate",
+      "location": "aq-atv-gist-phase-context-*-application optionD and wrong feedback",
+      "observed": "Hepatobiliary phase was an off-modality distractor in a CT crop question.",
+      "impact": "Answer could be rejected without applying CT timing reasoning.",
+      "required": "Use plausible same-modality timing alternative and specific feedback.",
+      "status": "CLOSED_AFTER_INDEPENDENT_RETEST",
+      "retest": "DE/EN/FA now delayed CT alternative; no inference of timing from tumour brightness, keyB unchanged."
+    },
+    {
+      "id": "ATV02-ASM-02",
+      "severity": "moderate",
+      "location": "aq-atv-gist-internal-structure-*-application options/feedback",
+      "observed": "Wrong options explicitly announced false reasoning or impossible histological proof, cueing the answer.",
+      "impact": "Tested recognition of giveaway wording rather than appropriate morphologic reporting.",
+      "required": "Parallel report/material interpretations with specific evidence limitations.",
+      "status": "CLOSED_AFTER_INDEPENDENT_RETEST",
+      "retest": "All3 locales now compare nonenhancing degeneration/necrosis versus macroscopic fat, fresh bleeding and enhancing solid tissue. Explanation preserves nonspecificity and does not prove grade or histology."
+    },
+    {
+      "id": "ATV02-ASM-03",
+      "severity": "moderate",
+      "location": "aq-atv-appendix-ct-context-*-application options/feedback",
+      "observed": "Wrong options relied on only/without-assessment cues instead of comparable added findings.",
+      "impact": "Weak discrimination of direct/indirect CT information.",
+      "required": "Parallel additional findings and source-qualified feedback.",
+      "status": "CLOSED_AFTER_INDEPENDENT_RETEST",
+      "retest": "Current3 locales compare periappendiceal stranding, small regional nodes, limited free pelvic fluid and intraluminal gas. Park2014 selected retrospective cohort supports strongest stated association without claiming universal diagnostic proof."
+    },
+    {
+      "id": "ATV02-ASM-04",
+      "severity": "moderate",
+      "location": "duodenaldivertikel-gas-location card explanation",
+      "observed": "Standalone card rationale referred to an absent vignette and its unprovided negative findings.",
+      "impact": "Independent retrieval card depended on unseen context.",
+      "required": "General intradiverticular-versus-extraluminal gas/inflammation/biliary-obstruction rationale.",
+      "status": "CLOSED_AFTER_INDEPENDENT_RETEST",
+      "retest": "Actual global card read in DE/EN/FA; no missing vignette premise remains, clinical front/answer preserved."
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.dgvs.de/leitlinien/unterer-gi-trakt/divertikelkrankheit-divertikulitis/?digital=1",
+      "type": "Official S3/DGVS2021 guideline",
+      "read": "Targeted original digital definition, CDD table, CT protocol and abscess recommendation passages.",
+      "support": "Inflammation may extend beyond diverticulum; CDD1b phlegmon/noabscess;2a ≤3cm;2b >3cm;2c freeperforation;3c recurrent complications. Collection size/location matter.",
+      "limit": "Not a reading of every guideline paragraph or original supplied PDF."
+    },
+    {
+      "url": "https://journals.sagepub.com/doi/10.1177/1358863X18821816",
+      "type": "International FMD2019 consensus",
+      "read": "Original morphology definitions, focal/multifocal diagnosis, renal initial imaging and haemodynamic assessment passages.",
+      "support": "Focal/multifocal lesion needed; dissection/tortuosity alone insufficient. CTAinitial, CE-MRAalternative; selective catheterangiography; visual morphology alone insufficient haemodynamics."
+    },
+    {
+      "url": "https://doi.org/10.1186/s13017-020-00306-3",
+      "type": "WSES2020 original guideline",
+      "read": "Original diagnostic recommendations, ultrasound/nonvisualisation and equivocalCT passages.",
+      "support": "Combine clinical risk and imaging; noncompressibility/wall vascularity relevant; inconclusive US is not automatic exclusion or mandatoryCT for every population."
+    },
+    {
+      "url": "https://acsearch.acr.org/docs/69357/Narrative/",
+      "type": "Official ACR RLQ2022",
+      "read": "Indexed official narrative excerpts/variants; direct legacy PDF URL returned403.",
+      "support": "Clinical/patient context and variable US performance/nonvisualisation require interpretation, not blanket end-of-workup."
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4194577/",
+      "type": "Park2014 original retrospective cohort",
+      "read": "Methods,224selected operated patients, CT-feature table and discussion.",
+      "support": "Enlargement and periappendiceal stranding associated with pathology in this selected equivocal/negativeCT cohort; diameter alone insufficient.",
+      "limit": "No universal sensitivity or independent proof inferred from selected surgical cohort."
+    },
+    {
+      "url": "https://doi.org/10.1177/17588359231192388",
+      "type": "GEIS2023 guideline",
+      "read": "Original retrieved diagnostic-imaging/biopsy section.",
+      "support": "Exoluminal heterogeneous gastric mass may suggest GIST; arterial+portal CT, possible necrotic/haemorrhagic/degenerative components; doubtful diagnosis needs clarification.",
+      "limit": "Unlabelled-crop timing limitation is reviewer inference from absence of series context, not a GEIS-validated diagnostic rule."
+    },
+    {
+      "url": "https://academic.oup.com/bjrcr/article/5/2/20180109/7243985",
+      "type": "Sullivan2019 original7-case gastric lipoma series",
+      "read": "Original methods/results and CT fat-attenuation discussion.",
+      "support": "Macroscopic fat attenuation supports lipoma; nonspecific hypoattenuation alone is insufficient. No size/HU threshold added to question."
+    },
+    {
+      "url": "https://doi.org/10.2214/ajr.180.1.1800195",
+      "type": "Macari2003 original7-case series",
+      "read": "Original publisher indexed abstract, methods, discussion and figure captions; direct DOI request initially403.",
+      "support": "Fluid-filled periampullary diverticula can mimic pancreatic cystic masses; gas/follow-up and characteristic location help.",
+      "limit": "No new question image or pixel-level patient diagnosis approved."
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4829126/",
+      "type": "Original3-case periampullary diverticula report",
+      "read": "Indexed original discussion describing communication, debris, changing filling and priorCT; directPMC request hit recaptcha.",
+      "support": "Bowel continuity and contextual gas/contents/prior imaging support localisation; fluid signal alone insufficient."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/36660561/",
+      "type": "ElHoussni2023 original2-case Lemmel report",
+      "read": "Complete original indexed abstract.",
+      "support": "Lemmel requires diverticulum-related biliary obstruction, not merely incidental periampullary pouch.",
+      "limit": "Did not claim fullarticle or pixels independently read."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/3873806/",
+      "type": "Goldman1985 original20-fistula series",
+      "read": "Complete original indexed abstract; original-paper indexed methods excerpt on avoiding iatrogenic vesicalair.",
+      "support": "Intravesicalair, adjacentbowel/bladderwallchange and extravesicaldisease support fistula; not an absolute standalonegas diagnosis."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/10207426/",
+      "type": "Chintapalli1999 original diagnostic study",
+      "read": "Complete original indexed abstract.",
+      "support": "Segment pattern/inflammation versus luminalmass/nodes informs cancer differential; not universally decisiveCT."
+    },
+    {
+      "url": "https://acsearch.acr.org/docs/69356/Narrative/",
+      "type": "Official ACR LLQ2023",
+      "read": "Indexed official oral/rectalcontrast and recommendation excerpts; directURL403.",
+      "support": "Routine oral/rectalcontrast not required; IVcontrastCT appropriate in adult nonpregnant suspecteddiverticulitis/complications."
+    }
+  ],
+  "runtime": {
+    "report": "packet02-independent-runtime-retest.json",
+    "status": "PASS_CURRENT_PRODUCERS",
+    "counts": {
+      "originalLocalizedQuestions": 54,
+      "supplementLocalizedQuestions": 12,
+      "cardTriads": 25,
+      "exactRecords": 91,
+      "seedReviewerQuestionRepairs": 9,
+      "seedReviewerCardRepairs": 1,
+      "ownReviewerQuestionRepairs": 9,
+      "ownReviewerCardRepairs": 1
+    },
+    "originalPoolCompleteness": "All18originaltriads and25cards exactly account for current5topic pools; no extra unseen original item found.",
+    "publication": "Four new supplementtriads independently read/tested at actual author producer; not yet in publishedBank, root integration remains separate."
+  },
+  "lessonParity": {
+    "status": "PASS_NARROW_12_FIELD_MIRROR",
+    "file": "app/abdomen/gi/divertikulitis/page.js",
+    "requestedFields": [
+      "basics.lead",
+      "basics.items Divertikulitis",
+      "basics.key",
+      "cdd.lead"
+    ],
+    "limit": "Only parity of repaired assertion, not full lesson review.",
+    "retest": "Exact12 current source after-values present; old fields absent; all3locale definitions preserve variable mural/pericolic reaction and named2021CDD edition. No IDs, threshold values or design changes.",
+    "evidence": "packet02-diverticulitis-lesson-mirror.json"
+  },
+  "limits": [
+    "No Next build/server/commit/push by reviewer.",
+    "All correct keys and option IDs preserved in repair retest.",
+    "Question source key distribution not penalised: actual quiz shuffles options and remaps feedback."
+  ]
+}

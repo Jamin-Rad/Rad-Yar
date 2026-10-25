@@ -1,0 +1,137 @@
+{
+  "date": "2026-10-25",
+  "status": "PASS_BOUNDED_CANONICAL_INTEGRATION",
+  "records": [
+    {
+      "id": "abdomen-pancreatic-cysts-de-01",
+      "status": "ACTUAL_GLOBAL_DEEP_EQUAL",
+      "actual": {
+        "id": "abdomen-pancreatic-cysts-de-01",
+        "tags": [
+          "ipmn"
+        ],
+        "fach": "abdomen",
+        "question": "Eine Pankreaszyste kommuniziert mit dem Pankreasgang. Welche Bedeutung hat dieser Befund für die Abgrenzung von IPMN und Pseudozyste?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Kommunikation ist bei beiden möglich; Morphologie und Pankreatitis-/Traumaanamnese gemeinsam beurteilen."
+          },
+          {
+            "id": "B",
+            "text": "Kommunikation ordnet die Zyste der IPMN zu und schließt eine Pseudozyste aus."
+          },
+          {
+            "id": "C",
+            "text": "Kommunikation ordnet die Zyste einer Pseudozyste zu und schließt IPMN aus."
+          },
+          {
+            "id": "D",
+            "text": "Kommunikation spricht gegen beide Diagnosen, weil beide typischerweise vom Gang getrennt sind."
+          }
+        ],
+        "correct": "A",
+        "explanation": "Kyoto2024 beschreibt die Gangkommunikation bei BD-IPMN und als häufig bei Pseudozysten. Bei Pankreatitis oder Trauma muss deshalb eine Pseudozyste abgegrenzt werden. Kommunikation allein ist kein exklusives Unterscheidungsmerkmal; Zystenmorphologie, Gangveränderungen und Anamnese zusammenführen.",
+        "source": "https://doi.org/10.1016/j.pan.2023.12.009",
+        "wrongExplanations": {
+          "B": "Pseudozysten können ebenfalls mit dem Pankreasgang kommunizieren.",
+          "C": "Gangkommunikation ist ein Merkmal der BD-IPMN; sie schließt IPMN daher nicht aus.",
+          "D": "Die behauptete Trennung trifft für BD-IPMN und kommunizierende Pseudozysten nicht zu."
+        }
+      }
+    },
+    {
+      "id": "abdomen-pancreatic-cysts-en-01",
+      "status": "ACTUAL_GLOBAL_DEEP_EQUAL",
+      "actual": {
+        "id": "abdomen-pancreatic-cysts-en-01",
+        "tags": [
+          "ipmn"
+        ],
+        "fach": "abdomen",
+        "question": "A pancreatic cyst communicates with the pancreatic duct. What does this finding contribute to distinguishing IPMN from a pseudocyst?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Communication can occur in both; assess morphology together with pancreatitis/trauma history."
+          },
+          {
+            "id": "B",
+            "text": "Communication assigns the cyst to IPMN and excludes a pseudocyst."
+          },
+          {
+            "id": "C",
+            "text": "Communication assigns the cyst to a pseudocyst and excludes IPMN."
+          },
+          {
+            "id": "D",
+            "text": "Communication argues against both because both are typically separate from the duct."
+          }
+        ],
+        "correct": "A",
+        "explanation": "Kyoto2024 describes duct communication in BD-IPMN and as common in pseudocysts. A pseudocyst must therefore be considered with pancreatitis or trauma. Communication alone is not an exclusive discriminator; integrate cyst morphology, duct changes and history.",
+        "source": "https://doi.org/10.1016/j.pan.2023.12.009",
+        "wrongExplanations": {
+          "B": "Pseudocysts may also communicate with the pancreatic duct.",
+          "C": "Duct communication is a feature of BD-IPMN, so it does not exclude IPMN.",
+          "D": "The claimed separation does not apply to BD-IPMN or communicating pseudocysts."
+        }
+      }
+    },
+    {
+      "id": "abdomen-pancreatic-cysts-fa-01",
+      "status": "ACTUAL_GLOBAL_DEEP_EQUAL",
+      "actual": {
+        "id": "abdomen-pancreatic-cysts-fa-01",
+        "tags": [
+          "ipmn"
+        ],
+        "fach": "abdomen",
+        "question": "یک کیست پانکراس با مجرای پانکراس ارتباط دارد. این یافته برای افتراق IPMN از پسودوسیست چه ارزشی دارد؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "ارتباط در هر دو ممکن است؛ مورفولوژی را همراه با سابقهٔ پانکراتیت یا تروما بررسی کنید."
+          },
+          {
+            "id": "B",
+            "text": "ارتباط، کیست را IPMN طبقه‌بندی و پسودوسیست را رد می‌کند."
+          },
+          {
+            "id": "C",
+            "text": "ارتباط، کیست را پسودوسیست طبقه‌بندی و IPMN را رد می‌کند."
+          },
+          {
+            "id": "D",
+            "text": "ارتباط به زیان هر دو تشخیص است، چون هر دو معمولاً از مجرا جدا هستند."
+          }
+        ],
+        "correct": "A",
+        "explanation": "Kyoto۲۰۲۴ ارتباط مجرایی را در BD-IPMN و به‌صورت شایع در پسودوسیست توصیف می‌کند. بنابراین در سابقهٔ پانکراتیت یا تروما باید پسودوسیست را نیز افتراق داد. ارتباط به‌تنهایی ویژگی افتراقی انحصاری نیست؛ مورفولوژی کیست، تغییرات مجرا و شرح‌حال را با هم جمع‌بندی کنید.",
+        "source": "https://doi.org/10.1016/j.pan.2023.12.009",
+        "wrongExplanations": {
+          "B": "پسودوسیست‌ها نیز می‌توانند با مجرای پانکراس ارتباط داشته باشند.",
+          "C": "ارتباط مجرایی ویژگی BD-IPMN است؛ بنابراین IPMN را رد نمی‌کند.",
+          "D": "جدایی ادعاشده دربارهٔ BD-IPMN یا پسودوسیست‌های مرتبط با مجرا درست نیست."
+        }
+      }
+    }
+  ],
+  "unrelatedRegistrationsPreserved": 42,
+  "unrelatedLocaleRowsPreserved": 126,
+  "sourceFormatException": "Root explicitly authorized replacing proposal semicolon-combined URL with the single Kyoto DOI in active source; no clinical wording difference.",
+  "sources": [
+    {
+      "url": "https://doi.org/10.1016/j.pan.2023.12.009",
+      "read": "Original Kyoto2024 section3 classification and table2 read: BD-IPMN communicates with MPD; pseudocyst communication common, pancreatitis/trauma caveat."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/1913122/",
+      "read": "Original prospective83-patient classification abstract read; communication frequency varies by pancreatitis/duct subgroup. No obsolete drainage recommendations transferred."
+    }
+  ],
+  "limits": [
+    "Not whole IPMN lesson or all pancreatic-cyst assessments acceptance.",
+    "Root independent clinical acceptance supplied separately; this is integration verification."
+  ]
+}

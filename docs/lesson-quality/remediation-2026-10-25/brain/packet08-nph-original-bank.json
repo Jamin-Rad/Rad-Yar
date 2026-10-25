@@ -1,0 +1,164 @@
+{
+  "date": "2026-10-25",
+  "status": "AUTHOR_FULL_ORIGINAL_BANK_REVIEW_READY",
+  "route": "/gehirn/anatomie/normaldruckhydrozephalus",
+  "questionTriadsRead": 12,
+  "cardTriadsRead": 15,
+  "questionsRewritten": [
+    "04",
+    "05",
+    "06",
+    "09",
+    "10",
+    "11",
+    "12(previouspacket)"
+  ],
+  "questionsRetainedWithSpecificWrongFeedback": [
+    "01",
+    "02",
+    "03",
+    "07",
+    "08"
+  ],
+  "cardsRevised": [
+    "desh",
+    "cingulate",
+    "tap",
+    "drainage",
+    "shunt",
+    "evans",
+    "callosal"
+  ],
+  "scienceCorrection": "Cingulate sign posterior/anterior sulcus comparison replaces marginal-branch-only shortcut in lesson and card. Drainage is conditional; no proven blanket superiority. DESH card now includes ventriculomegaly.",
+  "sources": [
+    "https://pmc.ncbi.nlm.nih.gov/articles/PMC7905302/",
+    "https://pubmed.ncbi.nlm.nih.gov/17041793/",
+    "https://doi.org/10.1097/00006123-199701000-00015"
+  ],
+  "limits": [
+    "Author review, not independent acceptance. All12Q/15cardtriads inspected, but unchanged diagnostic images not part of this assessment-only scope.",
+    "Some retained foundational recognition/measurement questions deliberately remain; clinical/reporting/tap-test applications complement them.",
+    "No new question quota, empiric difficulty claim, or full-lesson scientific release."
+  ],
+  "files": [
+    "data/normaldruckhydrozephalus.js entire original assessment bank and named cingulate lesson row",
+    "app/gehirn/anatomie/normaldruckhydrozephalus/page.js two visible source notes",
+    "data/assessmentQuality/brain.js NPH coverage only"
+  ],
+  "coverage": {
+    "route": "/gehirn/anatomie/normaldruckhydrozephalus",
+    "topicId": "normaldruckhydrozephalus",
+    "learningGoals": [
+      {
+        "id": "ventriculomegaly-pattern",
+        "text": {
+          "de": "Ventrikulomegalie und DESH von proportionaler Atrophie abgrenzen und angemessen berichten.",
+          "en": "Distinguish ventriculomegaly/DESH from proportional atrophy and report appropriately.",
+          "fa": "بزرگی بطن و DESH را از آتروفی متناسب تفکیک و مناسب گزارش کنید."
+        },
+        "questionIds": [
+          "normaldruckhydrozephalus-de-04",
+          "normaldruckhydrozephalus-de-05",
+          "normaldruckhydrozephalus-de-08",
+          "normaldruckhydrozephalus-de-12"
+        ],
+        "cardIds": [
+          "normaldruckhydrozephalus-06-desh",
+          "normaldruckhydrozephalus-07-atrophie",
+          "normaldruckhydrozephalus-15-befund"
+        ]
+      },
+      {
+        "id": "standard-measurement",
+        "text": {
+          "de": "Evans-Index und Balkenwinkel in standardisierten Ebenen beurteilen.",
+          "en": "Assess Evans index and callosal angle in standardised planes.",
+          "fa": "شاخص ایوانز و زاویهٔ کالوزال را در صفحات استاندارد ارزیابی کنید."
+        },
+        "questionIds": [
+          "normaldruckhydrozephalus-de-03",
+          "normaldruckhydrozephalus-de-06",
+          "normaldruckhydrozephalus-de-07"
+        ],
+        "cardIds": [
+          "normaldruckhydrozephalus-04-evans",
+          "normaldruckhydrozephalus-05-callosal"
+        ]
+      },
+      {
+        "id": "supporting-imaging-limits",
+        "text": {
+          "de": "Flusszeichen, periventrikuläres Signal und Cingulum-Morphologie als unterstützend und begrenzt einordnen.",
+          "en": "Interpret flow signs, periventricular signal and cingulate morphology as supportive and limited.",
+          "fa": "نشانه‌های جریان، سیگنال پیرابطنی و مورفولوژی سینگولیت را حمایتی و دارای محدودیت تفسیر کنید."
+        },
+        "questionIds": [
+          "normaldruckhydrozephalus-de-09"
+        ],
+        "cardIds": [
+          "normaldruckhydrozephalus-08-polkappen",
+          "normaldruckhydrozephalus-09-flowvoid",
+          "normaldruckhydrozephalus-10-cingulate"
+        ]
+      },
+      {
+        "id": "clinical-profile",
+        "text": {
+          "de": "Das typische Gang-/Triasprofil und die klinisch-radiologische Definition nennen.",
+          "en": "Recall the typical gait/triad profile and clinical-radiological definition.",
+          "fa": "الگوی معمول راه‌رفتن/تریاد و تعریف بالینی‌ـ‌تصویری را بیان کنید."
+        },
+        "questionIds": [
+          "normaldruckhydrozephalus-de-01",
+          "normaldruckhydrozephalus-de-02"
+        ],
+        "cardIds": [
+          "normaldruckhydrozephalus-01-definition",
+          "normaldruckhydrozephalus-02-trias",
+          "normaldruckhydrozephalus-03-gang"
+        ]
+      },
+      {
+        "id": "functional-selection",
+        "text": {
+          "de": "Tap-Test methodisch bewerten und Nutzen/Risiko der individuellen Shunt-Auswahl einordnen.",
+          "en": "Evaluate tap-test methodology and interpret benefit/risk in individual shunt selection.",
+          "fa": "روش آزمون تخلیه را ارزیابی و سود و خطر را در انتخاب فردی شانت تفسیر کنید."
+        },
+        "questionIds": [
+          "normaldruckhydrozephalus-de-10",
+          "normaldruckhydrozephalus-de-11",
+          "normaldruckhydrozephalus-de-12"
+        ],
+        "cardIds": [
+          "normaldruckhydrozephalus-11-tap",
+          "normaldruckhydrozephalus-12-drainage",
+          "normaldruckhydrozephalus-13-shunt",
+          "normaldruckhydrozephalus-14-komplikation"
+        ]
+      }
+    ],
+    "status": "AUTHOR_FULL_ORIGINAL_BANK_REVIEW_READY"
+  },
+  "checks": {
+    "localizedQuestions": 36,
+    "localizedCards": 45,
+    "questionCardGoalMap": "All12question/15cardstableIDs covered by5observablegoals",
+    "individualWrongFeedback": "36/36questionrows have3wrongrationales",
+    "actualRouteSSR": "3/3PASS; report nph-packet08-ssr.json"
+  },
+  "sourceReads": [
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7905302/",
+      "read": "Actual diagnostic/imaging sections and CQ6/7tap-test timing, limited sensitivity and drainage controversy. No new dose/volume threshold."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/17041793/",
+      "read": "Complete original preliminary study abstract:21controls,10iNPH,11AD,5PSP; posterior cingulate tightness on paramedian sagittal images, not marginal-branch-only definition. No generalised sensitivity taught."
+    },
+    {
+      "url": "https://edoc.unibas.ch/entities/publication/17349cc5-2fa6-4e20-aec2-92803e4edc2c",
+      "read": "Complete original37patient/37control1997T2flowvoid abstract includingresults/conclusion: isolated aqueductflowvoid occurrence did not distinguishgroups and degree/extent poorlypredicted shuntoutcome. Not conflated with quantitative PC-MRI."
+    }
+  ]
+}

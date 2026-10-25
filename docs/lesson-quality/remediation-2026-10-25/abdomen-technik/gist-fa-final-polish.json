@@ -1,0 +1,33 @@
+{
+  "date": "2026-10-25",
+  "author": "/root",
+  "status": "ACCEPT_BOUNDED_TWO_FA_LANGUAGE_FIELDS",
+  "item": "aq-atv-gist-phase-context-fa-application",
+  "scope": "Two localized prose fields only; no key, option identity, source, clinical meaning or count change.",
+  "reason": "Actual browser read showed unnatural literal bright enhancement/acquisition wording.",
+  "repairs": [
+    {
+      "before": "یک برش CT از تودهٔ دیوارهٔ معده تقویت روشن نشان می‌دهد، اما برچسب سری یا زمان ندارد. کدام گزارهٔ گزارش قابل اتکاست؟",
+      "after": "در یک برش CT از تودهٔ دیوارهٔ معده، جذب واضح مادهٔ حاجب دیده می‌شود، اما سری یا زمان تصویربرداری مشخص نیست. کدام گزاره برای گزارش قابل اتکاست؟"
+    },
+    {
+      "before": "بخش‌های روشن تومور، فاز تأخیری برداشت CT را مشخص می‌کنند.",
+      "after": "روشن‌بودن بخش‌هایی از تومور، فاز تأخیری CT را مشخص می‌کند."
+    }
+  ],
+  "independentReview": {
+    "reviewer": "/root/design_inventory",
+    "date": "2026-10-25",
+    "actualAuthorProducerAndPublishedSnapshotChecked": true,
+    "fieldsRead": [
+      "gastroRows gist-phase-context question.fa versus question.en",
+      "gastroRows gist-phase-context options[3].fa versus options[3].en"
+    ],
+    "semanticResult": "FA stem naturally expresses visible contrast enhancement and unavailable series/acquisition timing, matching EN. FA optionD naturally retains the same incorrect inference from brightness to delayed CT timing; no polarity/key change.",
+    "retest": "Actual2/2 producer values and2/2 published snapshot values deep-equal author after strings; optionD stillD, keyB.",
+    "limits": [
+      "Only these two language fields independently accepted.",
+      "No additional clinical/figure/browser acceptance inferred from this bounded retest."
+    ]
+  }
+}

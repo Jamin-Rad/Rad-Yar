@@ -1612,6 +1612,630 @@
         "sources": [
           "https://pubmed.ncbi.nlm.nih.gov/18552309/"
         ]
+      },
+      {
+        "id": "aq-brain-aq-hiv-enzephalopathie-de-diffuse-pattern",
+        "fach": "gehirn",
+        "tags": [
+          "aq-hiv-enzephalopathie"
+        ],
+        "question": "Bei HIV und langsam zunehmender kognitiver Verlangsamung zeigt die MRT relativ symmetrische tiefe/periventrikuläre FLAIR-Veränderungen und diffuse Atrophie ohne expansiven Herd. Welches Muster passt am ehesten?",
+        "options": [
+          {
+            "id": "A",
+            "text": "HIV-assoziierte Enzephalopathie"
+          },
+          {
+            "id": "B",
+            "text": "Zerebrale Toxoplasmose"
+          },
+          {
+            "id": "C",
+            "text": "Primäres ZNS-Lymphom"
+          },
+          {
+            "id": "D",
+            "text": "Progressive multifokale Leukenzephalopathie"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Ein symmetrisches tiefes Marklagermuster mit Volumenverlust kann zu HIV-assoziierter Enzephalopathie passen. Es ist unspezifisch; andere infektiöse, vaskuläre und metabolische Ursachen sowie die klinische Funktion müssen mitbeurteilt werden.",
+        "wrongExplanations": {
+          "B": "Toxoplasmose zeigt eher fokale, häufig ringförmig anreichernde Läsionen mit Ödem; ein solcher Herd ist nicht beschrieben.",
+          "C": "Ein solider expansiver Herd ist hier nicht vorhanden; ein Lymphom darf nicht aus diffuser Atrophie allein abgeleitet werden.",
+          "D": "PML bleibt eine Differenzialdiagnose, ist klassisch aber fokal/asymmetrischer als das beschriebene diffuse Muster."
+        },
+        "source": "https://pubmed.ncbi.nlm.nih.gov/2315479/"
+      },
+      {
+        "id": "aq-brain-aq-hiv-enzephalopathie-de-pml-differential",
+        "fach": "gehirn",
+        "tags": [
+          "aq-hiv-enzephalopathie"
+        ],
+        "question": "Bei fortgeschrittenem HIV nehmen fokale Ausfälle über Wochen zu. MRT: asymmetrische subkortikale FLAIR-Läsionen mit U-Faser-Beteiligung, wenig Masseneffekt und kaum Enhancement. Welche Ursache muss gezielt geprüft werden?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Diffuse HIV-assoziierte Enzephalopathie"
+          },
+          {
+            "id": "B",
+            "text": "Progressive multifokale Leukenzephalopathie"
+          },
+          {
+            "id": "C",
+            "text": "Zerebrale Toxoplasmose"
+          },
+          {
+            "id": "D",
+            "text": "Primäres ZNS-Lymphom"
+          }
+        ],
+        "correct": "B",
+        "explanation": "Der subakut progrediente fokale Verlauf und das asymmetrische Marklagermuster sind PML-verdächtig. JCV-PCR im Liquor kann die Diagnose im passenden Kontext stützen; ein negatives Ergebnis schließt sie nicht sicher aus.",
+        "wrongExplanations": {
+          "A": "Die fokale Progression mit asymmetrischer subkortikaler Beteiligung passt besser zu PML als zum typischen diffusen HIV-Muster.",
+          "C": "Toxoplasmose bildet typischerweise fokale Herde mit mehr Ödem/Masseneffekt und Kontrastierung als hier beschrieben.",
+          "D": "Ein Lymphom zeigt eher eine expansive, häufig anreichernde Läsion; das nicht expansive subkortikale Muster spricht hier stärker für PML."
+        },
+        "source": "https://clinicalinfo.hiv.gov/en/guidelines/hiv-clinical-guidelines-adult-and-adolescent-opportunistic-infections/progressive?view=full"
+      },
+      {
+        "id": "aq-brain-aq-hiv-enzephalopathie-de-pml-iris",
+        "fach": "gehirn",
+        "tags": [
+          "aq-hiv-enzephalopathie"
+        ],
+        "question": "Bei bekannter PML treten nach Beginn wirksamer ART neue klinische Verschlechterung, Enhancement und Ödem an den bekannten Läsionen auf. Welche Erklärung muss vorrangig erwogen werden?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Nichtentzündliche Progression der klassischen PML"
+          },
+          {
+            "id": "B",
+            "text": "Diffuse HIV-Enzephalopathie"
+          },
+          {
+            "id": "C",
+            "text": "PML-assoziiertes Immunrekonstitutionssyndrom (PML-IRIS)"
+          },
+          {
+            "id": "D",
+            "text": "Zusätzliche zerebrale Toxoplasmose"
+          }
+        ],
+        "correct": "C",
+        "explanation": "PML-IRIS kann nach ART mit entzündlicher Kontrastmittelaufnahme, Ödem und Masseneffekt auftreten. Die zeitliche Beziehung und bekannte PML sind entscheidend; die Einordnung bleibt klinisch und schließt eine zusätzliche Erkrankung nicht aus.",
+        "wrongExplanations": {
+          "A": "Neue Entzündungszeichen nach wirksamer ART verlangen die Prüfung auf IRIS statt einer rein nichtentzündlichen Erklärung.",
+          "B": "Diffuse HIV-Enzephalopathie erklärt diese entzündliche Veränderung bekannter PML-Herde nicht gut.",
+          "D": "Eine zusätzliche Infektion bleibt möglich; die neue Entzündung an bereits bekannten PML-Herden nach Immunrekonstitution passt jedoch unmittelbarer zu PML-IRIS."
+        },
+        "source": "https://clinicalinfo.hiv.gov/en/guidelines/hiv-clinical-guidelines-adult-and-adolescent-opportunistic-infections/progressive?view=full"
+      },
+      {
+        "id": "aq-brain-aq-meningitis-enzephalitis-de-compartments",
+        "fach": "gehirn",
+        "tags": [
+          "aq-meningitis-enzephalitis"
+        ],
+        "question": "Ein Erwachsener mit Fieber und Verwirrtheit hat dünne sulkale Kontrastmittelaufnahme und zusätzliche intraparenchymale temporale FLAIR-Herde. Welche Beschreibung erfasst beide Kompartimente?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Meningeale und parenchymale Beteiligung"
+          },
+          {
+            "id": "B",
+            "text": "Isolierte meningeale Beteiligung"
+          },
+          {
+            "id": "C",
+            "text": "Isolierte parenchymale Beteiligung"
+          },
+          {
+            "id": "D",
+            "text": "Ausschließlich pachymeningeale Durabeteiligung"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Sulkale Aufnahme betrifft den leptomeningealen Raum; die ausdrücklich intraparenchymalen Herde liegen im Hirngewebe. Das ist eine anatomische Musterbeschreibung, kein Nachweis einer infektiösen Ursache oder eines bestimmten Erregers.",
+        "wrongExplanations": {
+          "B": "Die temporalen Parenchymherde fehlen in dieser Beschreibung.",
+          "C": "Die zusätzliche sulkale Aufnahme gehört ebenfalls in den Befund.",
+          "D": "Sulkale Aufnahme folgt den Leptomeningen; außerdem sind Parenchymherde beschrieben."
+        },
+        "source": "https://pubmed.ncbi.nlm.nih.gov/14716235/"
+      },
+      {
+        "id": "aq-brain-aq-meningitis-enzephalitis-de-normal-mri",
+        "fach": "gehirn",
+        "tags": [
+          "aq-meningitis-enzephalitis"
+        ],
+        "question": "Ein Erwachsener mit Fieber und Meningismus hat unauffällige FLAIR- und kontrastverstärkte T1-Bilder. Welche Schlussfolgerung ist angemessen?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Eine bakterielle Ursache ist ausgeschlossen, eine virale bleibt möglich"
+          },
+          {
+            "id": "B",
+            "text": "Eine virale Ursache ist ausgeschlossen, eine bakterielle bleibt möglich"
+          },
+          {
+            "id": "C",
+            "text": "Keine entsprechenden MRT-Zeichen; Meningitis bleibt klinisch und im Liquor zu prüfen"
+          },
+          {
+            "id": "D",
+            "text": "Die Beschwerden sind damit als nichtentzündlich einzuordnen"
+          }
+        ],
+        "correct": "C",
+        "explanation": "Die kleine Originalstudie enthielt normale MRT bei viraler und bakterieller Meningitis. Eine normale MRT schließt die Erkrankung nicht aus und bestimmt ihre Ursache nicht; Klinik und Liquor bleiben wesentlich.",
+        "wrongExplanations": {
+          "A": "Auch bakterielle Meningitis kann ohne diese MRT-Zeichen vorliegen.",
+          "B": "Auch virale Meningitis kann bei unauffälliger MRT vorliegen.",
+          "D": "Fehlende MRT-Zeichen legen keine nichtentzündliche Ursache fest."
+        },
+        "source": "https://pubmed.ncbi.nlm.nih.gov/14716235/"
+      },
+      {
+        "id": "aq-brain-aq-meningitis-enzephalitis-de-ventricular-complication",
+        "fach": "gehirn",
+        "tags": [
+          "aq-meningitis-enzephalitis"
+        ],
+        "question": "Bei bakterieller Meningitis und klinischer Verschlechterung zeigt die MRT neu unregelmäßig sedimentierendes Material in den Hinterhörnern, ependymale Aufnahme und zunehmende Ventrikelweite. Welche Komplikation ist besonders verdächtig?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Kommunizierender Hydrozephalus ohne intraventrikuläre Entzündung"
+          },
+          {
+            "id": "B",
+            "text": "Pyogene Ventrikulitis mit begleitendem Hydrozephalus"
+          },
+          {
+            "id": "C",
+            "text": "Subependymale Tumoraussaat"
+          },
+          {
+            "id": "D",
+            "text": "Ex-vacuo-Erweiterung bei chronischer Hirnatrophie"
+          }
+        ],
+        "correct": "B",
+        "explanation": "Unregelmäßiger ventrikulärer Debris ist im passenden Infektionskontext verdächtig auf Ventrikulitis. Ependymale Aufnahme und Hydrozephalus können begleiten. Material und Differenzialdiagnosen einschließlich Blutprodukte in der gesamten Untersuchung prüfen und den Komplikationsverdacht rasch kommunizieren.",
+        "wrongExplanations": {
+          "A": "Die Erweiterung allein erklärt den neuen Debris und die ependymale Aufnahme nicht ausreichend.",
+          "C": "Tumorbefall kann ependymale Befunde verursachen; akute Infektion und sedimentierender Debris sprechen hier stärker für die infektiöse Komplikation.",
+          "D": "Atrophie erklärt weder neuen Debris noch entzündungsverdächtige Aufnahme."
+        },
+        "source": "https://pubmed.ncbi.nlm.nih.gov/11559498/"
+      },
+      {
+        "id": "aq-brain-aq-cjd-de-clinical-pattern",
+        "fach": "gehirn",
+        "tags": [
+          "aq-cjd"
+        ],
+        "question": "Ein Erwachsener entwickelt über Wochen kognitiven Abbau und Myoklonien. MRT: multifokales kortikales Ribboning und Caudatussignal, auf DWI deutlicher als auf FLAIR, mit korrespondierend niedrigem ADC und ohne Gefäßterritorium. Welche Diagnose sollte vorrangig abgeklärt werden?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Sporadische Creutzfeldt-Jakob-Krankheit"
+          },
+          {
+            "id": "B",
+            "text": "Hypoxisch-ischaemische Hirnschädigung"
+          },
+          {
+            "id": "C",
+            "text": "Autoimmune Enzephalitis"
+          },
+          {
+            "id": "D",
+            "text": "Periiktale Signalveränderungen"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Rascher Verlauf und nichtterritoriale kortiko-striatale Restriktion sind CJK-verdächtig. MRT ist ein diagnostischer Baustein; Klinik, weitere Diagnostik und behandelbare Differenzialdiagnosen bleiben erforderlich.",
+        "wrongExplanations": {
+          "B": "Hypoxie kann kortiko-striatale Restriktion verursachen. Ohne berichtetes hypoxisches Ereignis und bei über Wochen progredientem Abbau mit Myoklonien ist hier CJK vorrangig abzuklären.",
+          "C": "Autoimmune Enzephalitis bleibt eine behandelbare Differenzialdiagnose. Das DWI-betonte kortiko-striatale Muster mit niedrigem ADC und raschem Abbau stützt hier stärker den CJK-Verdacht; klinisch weiter abklären.",
+          "D": "Anfälle können kortikale Diffusionsveränderungen imitieren. Der fortschreitende Verlauf über Wochen mit multifokaler kortiko-striataler Beteiligung verlangt hier vorrangig CJK-Abklärung; Anfallsanamnese und EEG bleiben relevant."
+        },
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3100134/"
+      },
+      {
+        "id": "aq-brain-aq-cjd-de-limbic-mimic",
+        "fach": "gehirn",
+        "tags": [
+          "aq-cjd"
+        ],
+        "question": "Bei rasch progredienter Demenz wird sporadische CJK diskutiert. Welches MRT-Muster sollte besonders zur Prüfung limbischer entzündlicher oder periiktaler Alternativen führen?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Caudatus und Putamen DWI-betont hyperintens mit korrespondierend niedrigem ADC"
+          },
+          {
+            "id": "B",
+            "text": "Parietales und okzipitales kortikales Ribboning mit niedrigem ADC"
+          },
+          {
+            "id": "C",
+            "text": "Isoliert mesiotemporale FLAIR-Betonung bei nicht erniedrigtem ADC"
+          },
+          {
+            "id": "D",
+            "text": "Multifokale kortikale und striatale DWI-Betonung mit ADC-Abfall"
+          }
+        ],
+        "correct": "C",
+        "explanation": "Isolierte limbische FLAIR-Betonung ohne ADC-Abfall verlangt andere Ursachen, darunter autoimmune oder infektiöse Enzephalitis und Anfallsfolgen. Bildgebung allein trennt diese nicht sicher; DWI-Helligkeit ist nicht automatisch Restriktion.",
+        "wrongExplanations": {
+          "A": "Striatale DWI-Betonung mit ADC-Abfall kann ein CJK-verdächtiges Muster stützen; sie ist nicht der hier gesuchte isoliert limbische FLAIR-Befund.",
+          "B": "Mehrregionale neokortikale Restriktion kann im passenden Verlauf CJK-verdächtig sein. Gesucht ist das hiervon abweichende isolierte limbische Muster.",
+          "D": "Die Kombination aus kortikaler und striataler Restriktion kann CJK stützen, beweist sie aber nicht. Sie entspricht nicht dem isoliert limbischen Vergleichsmuster."
+        },
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3100134/"
+      },
+      {
+        "id": "aq-brain-aq-cjd-de-pulvinar-comparator",
+        "fach": "gehirn",
+        "tags": [
+          "aq-cjd"
+        ],
+        "question": "In einer Prion-Abklärung wird ein klassisches Pulvinar-Zeichen auf FLAIR beschrieben. Welcher Signalvergleich gehört zur Definition dieses besonders mit vCJK verbundenen Zeichens?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Pulvinar beidseits heller als das vordere Putamen"
+          },
+          {
+            "id": "B",
+            "text": "Pulvinar heller als der Caudatus als definierende Referenz"
+          },
+          {
+            "id": "C",
+            "text": "Pulvinar heller als das übrige Thalamusgewebe allein"
+          },
+          {
+            "id": "D",
+            "text": "Caudatus heller als der Pulvinar"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Der beidseitige Pulvinar-Vergleich mit dem vorderen Putamen präzisiert das klassische Zeichen. Ein hellerer Pulvinar gegenüber anderen Thalamuskernen allein ist damit nicht gleichzusetzen. Das Zeichen gehört in den klinischen vCJK-Kontext, nicht als allgemeines sCJK-Leitzeichen.",
+        "wrongExplanations": {
+          "B": "Der Caudatus ist nicht der definierende Referenzvergleich; die klassische Definition vergleicht beidseitigen Pulvinar mit dem vorderen Putamen.",
+          "C": "Dieser Vergleich kann auffälliges Thalamussignal beschreiben, erfüllt aber nicht die präzisierte Definition gegenüber dem vorderen Putamen.",
+          "D": "Das Verhältnis ist umgekehrt formuliert und benutzt zudem Caudatus statt vorderem Putamen als Referenz."
+        },
+        "source": "https://pubmed.ncbi.nlm.nih.gov/13679271/"
+      },
+      {
+        "id": "aq-msk-avn-huefte-de-arco2019-depression",
+        "fach": "msk",
+        "tags": [
+          "avn-huefte"
+        ],
+        "question": "Bei gesicherter Femurkopfosteonekrose zeigt CT eine subchondrale Fraktur mit 3 mm Einsenkung. Der Gelenkspalt ist erhalten, Arthrosezeichen fehlen. Welches Stadium der ARCO-Revision 2019 passt?",
+        "options": [
+          {
+            "id": "A",
+            "text": "II"
+          },
+          {
+            "id": "B",
+            "text": "IIIA"
+          },
+          {
+            "id": "C",
+            "text": "IIIB"
+          },
+          {
+            "id": "D",
+            "text": "IV"
+          }
+        ],
+        "correct": "C",
+        "explanation": "ARCO 2019 ordnet die subchondrale oder nekrotische Fraktur Stadium III zu: IIIA bei Depression ≤2 mm, IIIB bei >2 mm. Stadium IV erfordert radiographische Arthrosezeichen; die Depression allein macht kein Stadium IV.",
+        "wrongExplanations": {
+          "A": "Stadium II hat keine subchondrale/nekrotische Fraktur und keine Abflachung; hier liegt beides strukturell fortgeschritten vor.",
+          "B": "IIIA gilt für Depression ≤2 mm. Die angegebenen 3 mm überschreiten diese Grenze.",
+          "D": "Erhaltene Gelenkweite ohne Arthrosezeichen erfüllt die hier geforderte Stadium-IV-Konstellation nicht."
+        },
+        "sources": [
+          "https://pubmed.ncbi.nlm.nih.gov/31866252/"
+        ]
+      },
+      {
+        "id": "aq-msk-melorheostose-de-source-cortical-pattern",
+        "fach": "msk",
+        "tags": [
+          "melorheostose"
+        ],
+        "question": "Welches Knochenmuster steht in der gezeigten Handaufnahme im Vordergrund?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Umschriebene runde Skleroseinsel im Markraum."
+          },
+          {
+            "id": "B",
+            "text": "Mehrere ring- und bogenförmige Matrixverkalkungen."
+          },
+          {
+            "id": "C",
+            "text": "Irregulär längsverlaufende kortikale Hyperostose."
+          },
+          {
+            "id": "D",
+            "text": "Diffuse Verminderung der Knochendichte ohne umschriebene Sklerose."
+          }
+        ],
+        "correct": "C",
+        "explanation": "Die Aufnahme zeigt eine längsverlaufende dichte kortikale Knochenanlagerung. Dieses Muster stützt im Quellfall eine Melorheostose. Die sichtbare Morphologie beschreiben; ein einzelner Ausschnitt erfasst nicht die gesamte Ausdehnung oder Weichteilbeteiligung.",
+        "wrongExplanations": {
+          "A": "Die sichtbare dichte Veränderung folgt längs der Kortikalis statt als einzelne runde Markrauminsel zu erscheinen.",
+          "B": "Ring- und Bogenverkalkungen sind hier nicht das vorherrschende Muster; es handelt sich um kompakte kortikale Knochenanlagerung.",
+          "D": "Das Leitmerkmal ist eine lokal verdichtete Kortikalis, nicht allein eine generalisierte Dichteminderung."
+        },
+        "image": {
+          "src": "/educational/melorheostose/pdf-case-p133.jpg",
+          "alt": "Originaler Röntgenbildausschnitt der linken Hand aus MSK.pdf, Seite133; rID199384.",
+          "caption": "Quellbild ohne ergänzte Markierungen.",
+          "credit": "Radiopaedia rID199384 · Bild aus der Nutzer-PDF; kein Beitragender auf der Quellseite genannt."
+        },
+        "sources": [
+          "MSK.pdf physical133 /printed132; original page and retained image visually inspected2026-10-25",
+          "https://doi.org/10.53347/rID-199384",
+          "https://onlinelibrary.wiley.com/doi/full/10.1002/jbm4.10472"
+        ]
+      },
+      {
+        "id": "aq-brain-aq-parkinson-de-technical-confidence",
+        "fach": "gehirn",
+        "tags": [
+          "aq-parkinson"
+        ],
+        "question": "Bei einem Erwachsenen mit klinischem Parkinson-Syndrom verwischt Bewegung die dorsolaterale Substantia nigra auf SWI. Nigrosom 1 lässt sich beidseits nicht sicher abgrenzen. Welche Befundkategorie passt?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Beidseitig pathologischer Nigrosom-Befund"
+          },
+          {
+            "id": "B",
+            "text": "Regelrechte Nigrosom-Sichtbarkeit ohne relevante Seitendifferenz"
+          },
+          {
+            "id": "C",
+            "text": "Technisch eingeschränkte, nicht sicher klassifizierbare Nigrosom-Sichtbarkeit"
+          },
+          {
+            "id": "D",
+            "text": "Aus klinischer Asymmetrie abgeleiteter einseitig pathologischer Nigrosom-Befund"
+          }
+        ],
+        "correct": "C",
+        "explanation": "Nicht sicher sichtbar ist bei Bewegungsunschärfe nicht gleichbedeutend mit sicher fehlend. Technische Einschränkung dokumentieren; aus diesem Befund keine positive oder negative Parkinson-Diagnose ableiten. Auch bei guter Qualität bleibt die Aussage eines isolierten Nigrosom-Zeichens begrenzt.",
+        "wrongExplanations": {
+          "A": "Für eine beidseitig pathologische Klassifikation müsste die Struktur bei ausreichender Bildqualität beurteilbar sein; hier verhindert Bewegung diese Zuordnung.",
+          "B": "Fehlende sicher erkennbare Asymmetrie unter Bewegungsunschärfe belegt keine regelrechte Struktur. Beide Seiten sind technisch unsicher.",
+          "D": "Die klinische Seitigkeit kann den bildgebenden Nachweis nicht ersetzen; aus beidseits unzureichender Sichtbarkeit lässt sich keine einseitige Läsion zuordnen."
+        },
+        "source": "https://doi.org/10.1371/journal.pone.0231010"
+      },
+      {
+        "id": "aq-brain-aq-parkinson-de-dat-limits",
+        "fach": "gehirn",
+        "tags": [
+          "aq-parkinson"
+        ],
+        "question": "Bei einem Erwachsenen mit unklarem Parkinson-Syndrom zeigt eine technisch adäquate DaTSCAN-SPECT reduzierte striatale Bindung. Welche Aussage beantwortet diese Untersuchung am ehesten?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Das Bindungsmuster unterscheidet idiopathischen Parkinson von MSA und PSP"
+          },
+          {
+            "id": "B",
+            "text": "Es spricht für ein präsynaptisches dopaminerges Defizit; PD, MSA und PSP werden damit nicht zuverlässig voneinander getrennt"
+          },
+          {
+            "id": "C",
+            "text": "Es beschreibt primär die postsynaptische Dopaminrezeptorverfügbarkeit"
+          },
+          {
+            "id": "D",
+            "text": "Es beschreibt primär das regionale Glukosestoffwechselmuster"
+          }
+        ],
+        "correct": "B",
+        "explanation": "DaTSCAN beurteilt funktionelle präsynaptische dopaminerge Endigungen. Die zugelassene Aussage umfasst nicht die Trennung von PD, MSA und PSP. Klinisches Syndrom, Verlauf und ergänzende Untersuchungen bleiben entscheidend.",
+        "wrongExplanations": {
+          "A": "Alle drei Syndrome können eine reduzierte striatale DAT-Bindung zeigen; die EMA-Produktinformation schließt diese spezifische Trennung ausdrücklich aus.",
+          "C": "Ioflupan bindet an den Dopamintransporter an präsynaptischen Endigungen; ein postsynaptischer Rezeptortracer beantwortet eine andere Frage.",
+          "D": "Regionale Glukosestoffwechselmuster werden mit FDG-PET beurteilt; sie sind nicht die Messgröße der DaTSCAN-SPECT."
+        },
+        "source": "https://www.ema.europa.eu/en/documents/product-information/datscan-epar-product-information_en.pdf"
+      },
+      {
+        "id": "aq-brain-aq-parkinson-de-fdg-measurement",
+        "fach": "gehirn",
+        "tags": [
+          "aq-parkinson"
+        ],
+        "question": "Trotz reduzierter DAT-Bindung bleibt die klinische Abgrenzung von PD gegenüber atypischem Parkinson-Syndrom offen. Eine ergänzende FDG-PET wird diskutiert. Welche zusätzliche Messgröße kann diese Untersuchung für die Differenzialdiagnose liefern?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Regionale Verteilung des Glukosestoffwechsels"
+          },
+          {
+            "id": "B",
+            "text": "Regionale Verfügbarkeit präsynaptischer Dopamintransporter"
+          },
+          {
+            "id": "C",
+            "text": "Regionale Verfügbarkeit postsynaptischer D2-Rezeptoren"
+          },
+          {
+            "id": "D",
+            "text": "Regionale Amyloidablagerung"
+          }
+        ],
+        "correct": "A",
+        "explanation": "FDG-PET beurteilt regionale Glukosestoffwechselmuster und kann die klinische Differenzialdiagnose von PD und atypischen Syndromen ergänzen. Relative Zu- und Abnahmen sind möglich; Therapie und klinischer Kontext beeinflussen die Einordnung. Sie wiederholt keine DAT-Messung.",
+        "wrongExplanations": {
+          "B": "Das ist die Zielgröße einer DAT-Untersuchung, nicht der FDG-PET. Ein zweiter Tracer muss nach seiner eigenen Zielstruktur interpretiert werden.",
+          "C": "D2-Rezeptorverfügbarkeit erfordert einen dafür geeigneten Rezeptortracer; FDG misst keine D2-Bindung.",
+          "D": "Amyloid-PET verwendet eigene Tracer. FDG zeigt Stoffwechselverteilung, nicht direkt Amyloidablagerung."
+        },
+        "source": "https://doi.org/10.2967/jnumed.124.268754"
+      },
+      {
+        "id": "aq-atv-appendix-us-pattern-de-application",
+        "fach": "abdomen",
+        "tags": [
+          "appendizitis"
+        ],
+        "question": "Welche sonographische Kombination stützt bei passenden Beschwerden eine akute Appendizitis am stärksten?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Nicht komprimierbare, blind endende Appendix mit Wandhyperämie und entzündlicher Umgebung."
+          },
+          {
+            "id": "B",
+            "text": "Gut komprimierbare Appendix mit dünner Wand und unauffälliger Umgebung."
+          },
+          {
+            "id": "C",
+            "text": "Nur ein grenzwertiger Durchmesser ohne Beurteilung von Kompression, Wand oder Umgebung."
+          },
+          {
+            "id": "D",
+            "text": "Nicht dargestellte Appendix ohne dokumentierte Sekundärzeichen."
+          }
+        ],
+        "correct": "A",
+        "explanation": "Die Kombination direkter Appendixzeichen und Umgebungsreaktion ist stärker als ein isolierter Durchmesser. Sonographie und Klinik gemeinsam werten; die Nichtvisualisierung ist kein Nachweis einer entzündeten Appendix.",
+        "wrongExplanations": {
+          "B": "Kompressibilität und fehlende Entzündungsreaktion stützen hier keine akute Appendizitis.",
+          "C": "Ein Grenzwert allein ersetzt die übrigen morphologischen und klinischen Kriterien nicht.",
+          "D": "Nichtvisualisierung ist nicht diagnostisch; sie beweist weder Appendizitis noch deren Ausschluss."
+        },
+        "source": "https://doi.org/10.1186/s13017-020-00306-3"
+      },
+      {
+        "id": "aq-atv-appendix-ct-context-de-application",
+        "fach": "abdomen",
+        "tags": [
+          "appendizitis"
+        ],
+        "question": "Bei rechtsseitigen Unterbauchschmerzen ist die Appendix im CT grenzwertig weit. Welche zusätzliche Information erhöht die Aussagekraft für Appendizitis?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Periappendikuläres Fettgewebsstranding im Zusammenhang mit dem direkten Appendixbefund."
+          },
+          {
+            "id": "B",
+            "text": "Einige kleine mesenteriale Lymphknoten im rechten Unterbauch."
+          },
+          {
+            "id": "C",
+            "text": "Eine geringe Menge freier Flüssigkeit im kleinen Becken."
+          },
+          {
+            "id": "D",
+            "text": "Gas im Lumen der dargestellten Appendix."
+          }
+        ],
+        "correct": "A",
+        "explanation": "Bei unklaren CT-Befunden helfen kombinierte direkte und indirekte Zeichen. Die zitierte retrospektive Kohorte fand einen Zusammenhang insbesondere von Erweiterung und Fettgewebsstranding mit Appendizitis; einzelne Sekundärzeichen beweisen sie nicht.",
+        "wrongExplanations": {
+          "B": "Kleine regionale Lymphknoten sind unspezifisch und hier weniger gezielt als eine direkte periappendikuläre Entzündungsreaktion.",
+          "C": "Geringe freie Beckenflüssigkeit hat mehrere mögliche Ursachen und ist kein gezielter Nachweis einer Appendixentzündung.",
+          "D": "Luminales Gas ist kein positiver Entzündungsnachweis; direkte Wandzeichen und Umgebung bleiben entscheidend."
+        },
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4194577/"
+      },
+      {
+        "id": "aq-atv-gist-phase-context-de-application",
+        "fach": "abdomen",
+        "tags": [
+          "gist"
+        ],
+        "question": "Ein einzelner CT-Ausschnitt einer Magenwandmasse ist hell kontrastiert, aber ohne Serien- oder Zeitangabe. Welche Befundaussage ist belastbar?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Die Helligkeit sichert eine früharterielle Aufnahme."
+          },
+          {
+            "id": "B",
+            "text": "Die Aufnahmephase bleibt ohne Protokoll-/Serienkontext unklar; Kontrastierung beschreiben und Kontext nachsehen."
+          },
+          {
+            "id": "C",
+            "text": "Eine helle Magenwandmasse ist als portalvenöse Aufnahme zu beschriften."
+          },
+          {
+            "id": "D",
+            "text": "Helle Tumoranteile legen eine verzögerte CT-Aufnahmephase fest."
+          }
+        ],
+        "correct": "B",
+        "explanation": "Die gemessene bzw. sichtbare Kontrastierung ersetzt die Serieninformation nicht. Für GIST empfiehlt GEIS kontrastierte arterielle und portalvenöse CT zur Orts- und Ausdehnungsbeurteilung; daraus lässt sich die Phase eines unbeschrifteten Einzelbildes nicht rückwirkend beweisen.",
+        "wrongExplanations": {
+          "A": "Tumorhelligkeit allein legt die arterielle Zeitlage nicht fest.",
+          "C": "Die portalvenöse Phase braucht ebenfalls Serien-/Protokollinformation.",
+          "D": "Auch eine verzögerte CT-Phase lässt sich nicht aus der Tumorhelligkeit allein ableiten; Serienzeit und Protokoll prüfen."
+        },
+        "source": "https://doi.org/10.1177/17588359231192388"
+      },
+      {
+        "id": "aq-atv-gist-internal-structure-de-application",
+        "fach": "abdomen",
+        "tags": [
+          "gist"
+        ],
+        "question": "Eine große exophytische Magenwandmasse enthält nicht anreichernde hypodense Areale. Wie sollten diese ohne histologische Sicherung beschrieben werden?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Nicht anreichernde hypodense Binnenanteile, vereinbar mit degenerativen/nekrotischen Veränderungen."
+          },
+          {
+            "id": "B",
+            "text": "Makroskopisch fetthaltige Binnenanteile, vereinbar mit einer lipomatösen Tumorkomponente."
+          },
+          {
+            "id": "C",
+            "text": "Frische hämorrhagische Binnenanteile, vereinbar mit einer akuten Einblutung."
+          },
+          {
+            "id": "D",
+            "text": "Kräftig anreichernde solide Binnenanteile, vereinbar mit hypervaskulärem Tumorgewebe."
+          }
+        ],
+        "correct": "A",
+        "explanation": "GIST können heterogen mit degenerativen, nekrotischen oder hämorrhagischen Arealen erscheinen. Im Bericht zunächst die beobachtbare Struktur und fehlende Anreicherung festhalten; aus dem Ausschnitt weder exakten Inhalt noch Histologie oder Grad beweisen.",
+        "wrongExplanations": {
+          "B": "Hypodensität allein weist kein makroskopisches Fett nach; dafür fehlen geeignete Dichtewerte und Vergleichsinformationen.",
+          "C": "Blutung kann bei GIST vorkommen, ist durch diese Beschreibung aber nicht gesichert; insbesondere fehlen native Dichte- und Vergleichsinformationen.",
+          "D": "Die beschriebenen Areale reichern nicht an; kräftig anreicherndes hypervaskuläres Gewebe entspricht dieser Beobachtung nicht."
+        },
+        "source": "https://doi.org/10.1177/17588359231192388"
       }
     ],
     "en": [
@@ -3225,6 +3849,630 @@
         "sources": [
           "https://pubmed.ncbi.nlm.nih.gov/18552309/"
         ]
+      },
+      {
+        "id": "aq-brain-aq-hiv-enzephalopathie-en-diffuse-pattern",
+        "fach": "gehirn",
+        "tags": [
+          "aq-hiv-enzephalopathie"
+        ],
+        "question": "In HIV with gradually progressive cognitive slowing, MRI shows relatively symmetric deep/periventricular FLAIR change and diffuse atrophy without an expansile lesion. Which pattern fits best?",
+        "options": [
+          {
+            "id": "A",
+            "text": "HIV-associated encephalopathy"
+          },
+          {
+            "id": "B",
+            "text": "Cerebral toxoplasmosis"
+          },
+          {
+            "id": "C",
+            "text": "Primary CNS lymphoma"
+          },
+          {
+            "id": "D",
+            "text": "Progressive multifocal leukoencephalopathy"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Symmetric deep white-matter change with volume loss may fit HIV-associated encephalopathy. It is nonspecific; assess other infectious, vascular, and metabolic causes and clinical function.",
+        "wrongExplanations": {
+          "B": "Toxoplasmosis more often produces focal, frequently ring-enhancing lesions with oedema; none is described.",
+          "C": "No solid expansile lesion is described; lymphoma cannot be inferred from diffuse atrophy alone.",
+          "D": "PML remains a differential but is classically more focal/asymmetric than the described diffuse pattern."
+        },
+        "source": "https://pubmed.ncbi.nlm.nih.gov/2315479/"
+      },
+      {
+        "id": "aq-brain-aq-hiv-enzephalopathie-en-pml-differential",
+        "fach": "gehirn",
+        "tags": [
+          "aq-hiv-enzephalopathie"
+        ],
+        "question": "In advanced HIV, focal deficits progress over weeks. MRI shows asymmetric subcortical FLAIR lesions involving U-fibres, with little mass effect and enhancement. Which cause should be specifically evaluated?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Diffuse HIV-associated encephalopathy"
+          },
+          {
+            "id": "B",
+            "text": "Progressive multifocal leukoencephalopathy"
+          },
+          {
+            "id": "C",
+            "text": "Cerebral toxoplasmosis"
+          },
+          {
+            "id": "D",
+            "text": "Primary CNS lymphoma"
+          }
+        ],
+        "correct": "B",
+        "explanation": "The subacute progressive focal course and asymmetric white-matter pattern raise concern for PML. CSF JCV PCR can support diagnosis in context; a negative result does not reliably exclude it.",
+        "wrongExplanations": {
+          "A": "Focal progression with asymmetric subcortical involvement fits PML better than the typical diffuse HIV pattern.",
+          "C": "Toxoplasmosis typically forms focal lesions with more oedema/mass effect and enhancement than described here.",
+          "D": "Lymphoma more often produces an expansile, frequently enhancing lesion; the nonexpansile subcortical pattern here favours PML."
+        },
+        "source": "https://clinicalinfo.hiv.gov/en/guidelines/hiv-clinical-guidelines-adult-and-adolescent-opportunistic-infections/progressive?view=full"
+      },
+      {
+        "id": "aq-brain-aq-hiv-enzephalopathie-en-pml-iris",
+        "fach": "gehirn",
+        "tags": [
+          "aq-hiv-enzephalopathie"
+        ],
+        "question": "With known PML, new clinical deterioration, enhancement, and oedema develop at established lesions after effective ART begins. Which explanation must be prioritised?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Non-inflammatory progression of classic PML"
+          },
+          {
+            "id": "B",
+            "text": "Diffuse HIV encephalopathy"
+          },
+          {
+            "id": "C",
+            "text": "PML-associated immune reconstitution inflammatory syndrome (PML-IRIS)"
+          },
+          {
+            "id": "D",
+            "text": "Concurrent cerebral toxoplasmosis"
+          }
+        ],
+        "correct": "C",
+        "explanation": "PML-IRIS can occur after ART with inflammatory enhancement, oedema, and mass effect. Timing and established PML are essential; interpretation remains clinical and does not exclude concurrent disease.",
+        "wrongExplanations": {
+          "A": "New inflammatory features after effective ART require assessment for IRIS rather than a purely non-inflammatory explanation.",
+          "B": "Diffuse HIV encephalopathy poorly explains inflammatory change at known PML lesions.",
+          "D": "Concurrent infection remains possible, but new inflammation at known PML lesions after immune reconstitution fits PML-IRIS more directly."
+        },
+        "source": "https://clinicalinfo.hiv.gov/en/guidelines/hiv-clinical-guidelines-adult-and-adolescent-opportunistic-infections/progressive?view=full"
+      },
+      {
+        "id": "aq-brain-aq-meningitis-enzephalitis-en-compartments",
+        "fach": "gehirn",
+        "tags": [
+          "aq-meningitis-enzephalitis"
+        ],
+        "question": "An adult with fever and confusion has thin sulcal enhancement and additional intraparenchymal temporal FLAIR lesions. Which description captures both compartments?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Meningeal and parenchymal involvement"
+          },
+          {
+            "id": "B",
+            "text": "Isolated meningeal involvement"
+          },
+          {
+            "id": "C",
+            "text": "Isolated parenchymal involvement"
+          },
+          {
+            "id": "D",
+            "text": "Exclusively pachymeningeal dural involvement"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Sulcal enhancement involves the leptomeningeal space; the explicitly intraparenchymal lesions lie in brain tissue. This is anatomical pattern description, not proof of infection or a particular pathogen.",
+        "wrongExplanations": {
+          "B": "This description omits the temporal parenchymal lesions.",
+          "C": "The additional sulcal enhancement also belongs in the report.",
+          "D": "Sulcal enhancement follows the leptomeninges; parenchymal lesions are also described."
+        },
+        "source": "https://pubmed.ncbi.nlm.nih.gov/14716235/"
+      },
+      {
+        "id": "aq-brain-aq-meningitis-enzephalitis-en-normal-mri",
+        "fach": "gehirn",
+        "tags": [
+          "aq-meningitis-enzephalitis"
+        ],
+        "question": "An adult with fever and meningism has unremarkable FLAIR and contrast-enhanced T1 images. Which conclusion is appropriate?",
+        "options": [
+          {
+            "id": "A",
+            "text": "A bacterial cause is excluded while a viral cause remains possible"
+          },
+          {
+            "id": "B",
+            "text": "A viral cause is excluded while a bacterial cause remains possible"
+          },
+          {
+            "id": "C",
+            "text": "No corresponding MRI signs; meningitis still requires clinical and CSF assessment"
+          },
+          {
+            "id": "D",
+            "text": "The symptoms can therefore be classified as non-inflammatory"
+          }
+        ],
+        "correct": "C",
+        "explanation": "The small original study included normal MRI in viral and bacterial meningitis. Normal MRI neither excludes the disease nor determines its cause; clinical and CSF findings remain essential.",
+        "wrongExplanations": {
+          "A": "Bacterial meningitis can also occur without these MRI signs.",
+          "B": "Viral meningitis can also occur with unremarkable MRI.",
+          "D": "Absent MRI signs do not establish a non-inflammatory cause."
+        },
+        "source": "https://pubmed.ncbi.nlm.nih.gov/14716235/"
+      },
+      {
+        "id": "aq-brain-aq-meningitis-enzephalitis-en-ventricular-complication",
+        "fach": "gehirn",
+        "tags": [
+          "aq-meningitis-enzephalitis"
+        ],
+        "question": "With bacterial meningitis and clinical deterioration, MRI shows new irregular dependent material in the occipital horns, ependymal enhancement and increasing ventricular size. Which complication is particularly concerning?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Communicating hydrocephalus without intraventricular inflammation"
+          },
+          {
+            "id": "B",
+            "text": "Pyogenic ventriculitis with accompanying hydrocephalus"
+          },
+          {
+            "id": "C",
+            "text": "Subependymal tumour spread"
+          },
+          {
+            "id": "D",
+            "text": "Ex-vacuo enlargement in chronic brain atrophy"
+          }
+        ],
+        "correct": "B",
+        "explanation": "Irregular ventricular debris is suspicious for ventriculitis in the appropriate infectious context. Ependymal enhancement and hydrocephalus may accompany it. Assess the material and alternatives including blood products across the examination and communicate concern promptly.",
+        "wrongExplanations": {
+          "A": "Enlargement alone does not adequately explain the new debris and ependymal enhancement.",
+          "C": "Tumour can cause ependymal findings, but acute infection and dependent debris here favour an infectious complication.",
+          "D": "Atrophy explains neither new debris nor enhancement suspicious for inflammation."
+        },
+        "source": "https://pubmed.ncbi.nlm.nih.gov/11559498/"
+      },
+      {
+        "id": "aq-brain-aq-cjd-en-clinical-pattern",
+        "fach": "gehirn",
+        "tags": [
+          "aq-cjd"
+        ],
+        "question": "An adult develops cognitive decline and myoclonus over weeks. MRI shows multifocal cortical ribboning and caudate signal, more conspicuous on DWI than FLAIR, with corresponding low ADC and no vascular territory. Which diagnosis should be prioritised for evaluation?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Sporadic Creutzfeldt–Jakob disease"
+          },
+          {
+            "id": "B",
+            "text": "Hypoxic–ischaemic brain injury"
+          },
+          {
+            "id": "C",
+            "text": "Autoimmune encephalitis"
+          },
+          {
+            "id": "D",
+            "text": "Peri-ictal signal changes"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Rapid progression and nonterritorial cortical-striatal restriction raise concern for CJD. MRI is one diagnostic component; clinical assessment, further testing and treatable alternatives remain essential.",
+        "wrongExplanations": {
+          "B": "Hypoxia can cause cortical–striatal restriction. Without a reported hypoxic event, progressive decline over weeks with myoclonus prioritises CJD evaluation here.",
+          "C": "Autoimmune encephalitis remains a treatable differential. DWI-predominant cortical–striatal change with low ADC and rapid decline more strongly supports CJD suspicion here; continue clinical evaluation.",
+          "D": "Seizures can mimic cortical diffusion changes. Progressive decline over weeks with multifocal cortical–striatal involvement prioritises CJD evaluation here; seizure history and EEG remain relevant."
+        },
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3100134/"
+      },
+      {
+        "id": "aq-brain-aq-cjd-en-limbic-mimic",
+        "fach": "gehirn",
+        "tags": [
+          "aq-cjd"
+        ],
+        "question": "Sporadic CJD is considered in rapidly progressive dementia. Which MRI pattern should particularly prompt evaluation of limbic inflammatory or peri-ictal alternatives?",
+        "options": [
+          {
+            "id": "A",
+            "text": "DWI-predominant caudate and putamen hyperintensity with corresponding low ADC"
+          },
+          {
+            "id": "B",
+            "text": "Parietal and occipital cortical ribboning with low ADC"
+          },
+          {
+            "id": "C",
+            "text": "Isolated mesial temporal FLAIR predominance without reduced ADC"
+          },
+          {
+            "id": "D",
+            "text": "Multifocal cortical and striatal DWI predominance with ADC reduction"
+          }
+        ],
+        "correct": "C",
+        "explanation": "Isolated limbic FLAIR predominance without ADC reduction requires consideration of other causes, including autoimmune or infectious encephalitis and seizure effects. Imaging alone does not reliably separate these; bright DWI is not automatically restriction.",
+        "wrongExplanations": {
+          "A": "Striatal DWI predominance with low ADC can support a CJD-suspicious pattern; it is not the isolated limbic FLAIR finding asked for.",
+          "B": "Multiregional neocortical restriction may raise concern for CJD in context. The question asks for the differing isolated limbic pattern.",
+          "D": "Combined cortical and striatal restriction can support CJD but does not prove it. It differs from the isolated limbic comparison pattern."
+        },
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3100134/"
+      },
+      {
+        "id": "aq-brain-aq-cjd-en-pulvinar-comparator",
+        "fach": "gehirn",
+        "tags": [
+          "aq-cjd"
+        ],
+        "question": "During a prion workup, a classic pulvinar sign is described on FLAIR. Which signal comparison belongs to the definition of this sign particularly associated with vCJD?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Bilateral pulvinar brighter than the anterior putamen"
+          },
+          {
+            "id": "B",
+            "text": "Pulvinar brighter than the caudate as the defining reference"
+          },
+          {
+            "id": "C",
+            "text": "Pulvinar brighter than the remaining thalamus alone"
+          },
+          {
+            "id": "D",
+            "text": "Caudate brighter than the pulvinar"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Bilateral pulvinar comparison with the anterior putamen defines the classic sign more precisely. Pulvinar brightness relative only to other thalamic nuclei is not equivalent. Interpret it in the clinical vCJD context rather than as a general sCJD hallmark.",
+        "wrongExplanations": {
+          "B": "The caudate is not the defining reference; the classic definition compares bilateral pulvinar with anterior putamen.",
+          "C": "This may describe conspicuous thalamic signal but does not meet the more precise comparison with anterior putamen.",
+          "D": "This reverses the relationship and uses caudate rather than anterior putamen as reference."
+        },
+        "source": "https://pubmed.ncbi.nlm.nih.gov/13679271/"
+      },
+      {
+        "id": "aq-msk-avn-huefte-en-arco2019-depression",
+        "fach": "msk",
+        "tags": [
+          "avn-huefte"
+        ],
+        "question": "In established femoral-head osteonecrosis, CT shows a subchondral fracture with 3 mm depression. Joint space is preserved, without osteoarthritis. Which 2019 revised ARCO stage fits?",
+        "options": [
+          {
+            "id": "A",
+            "text": "II"
+          },
+          {
+            "id": "B",
+            "text": "IIIA"
+          },
+          {
+            "id": "C",
+            "text": "IIIB"
+          },
+          {
+            "id": "D",
+            "text": "IV"
+          }
+        ],
+        "correct": "C",
+        "explanation": "ARCO 2019 assigns subchondral or necrotic-zone fracture to stage III: IIIA for depression ≤2 mm and IIIB for >2 mm. Stage IV requires radiographic osteoarthritis; depression alone does not make stage IV.",
+        "wrongExplanations": {
+          "A": "Stage II has no subchondral/necrotic-zone fracture or flattening; the described structural findings exceed it.",
+          "B": "IIIA applies to depression ≤2 mm. The specified 3 mm exceeds that boundary.",
+          "D": "Preserved joint space without osteoarthritis does not meet the stage-IV setting described here."
+        },
+        "sources": [
+          "https://pubmed.ncbi.nlm.nih.gov/31866252/"
+        ]
+      },
+      {
+        "id": "aq-msk-melorheostose-en-source-cortical-pattern",
+        "fach": "msk",
+        "tags": [
+          "melorheostose"
+        ],
+        "question": "Which bone pattern predominates in the displayed hand radiograph?",
+        "options": [
+          {
+            "id": "A",
+            "text": "A circumscribed round medullary sclerotic island."
+          },
+          {
+            "id": "B",
+            "text": "Multiple ring-and-arc matrix calcifications."
+          },
+          {
+            "id": "C",
+            "text": "Irregular longitudinal cortical hyperostosis."
+          },
+          {
+            "id": "D",
+            "text": "Diffuse reduced bone density without focal sclerosis."
+          }
+        ],
+        "correct": "C",
+        "explanation": "The image shows longitudinal dense cortical bone overgrowth. In the source case, this pattern supports melorheostosis. Describe visible morphology; a single crop does not establish total extent or soft-tissue involvement.",
+        "wrongExplanations": {
+          "A": "The visible dense abnormality follows the cortex longitudinally rather than forming a solitary round medullary island.",
+          "B": "Ring-and-arc calcifications are not the predominant pattern here; the finding is compact cortical bone overgrowth.",
+          "D": "The key finding is locally dense cortex rather than generalized reduced density alone."
+        },
+        "image": {
+          "src": "/educational/melorheostose/pdf-case-p133.jpg",
+          "alt": "Original left-hand radiograph crop from MSK.pdf, page133; rID199384.",
+          "caption": "Source image without added overlays.",
+          "credit": "Radiopaedia rID199384 · image from the user-provided PDF; no contributor named on the source page."
+        },
+        "sources": [
+          "MSK.pdf physical133 /printed132; original page and retained image visually inspected2026-10-25",
+          "https://doi.org/10.53347/rID-199384",
+          "https://onlinelibrary.wiley.com/doi/full/10.1002/jbm4.10472"
+        ]
+      },
+      {
+        "id": "aq-brain-aq-parkinson-en-technical-confidence",
+        "fach": "gehirn",
+        "tags": [
+          "aq-parkinson"
+        ],
+        "question": "In an adult with clinical parkinsonism, motion blurs the dorsolateral substantia nigra on SWI. Nigrosome 1 cannot be confidently delineated on either side. Which reporting category fits?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Bilateral abnormal nigrosome finding"
+          },
+          {
+            "id": "B",
+            "text": "Normal nigrosome visibility without relevant asymmetry"
+          },
+          {
+            "id": "C",
+            "text": "Technically limited nigrosome visibility that cannot be confidently classified"
+          },
+          {
+            "id": "D",
+            "text": "Unilateral abnormal nigrosome finding inferred from clinical asymmetry"
+          }
+        ],
+        "correct": "C",
+        "explanation": "Not confidently visible under motion blur does not mean confirmed absence. Document the technical limitation; derive neither a positive nor a negative Parkinson diagnosis from this finding. Even at adequate quality, an isolated nigrosome sign has limited interpretation.",
+        "wrongExplanations": {
+          "A": "A bilateral abnormal classification requires adequate image quality for assessment; motion prevents that classification here.",
+          "B": "Lack of confidently seen asymmetry under motion blur does not establish normal structure. Both sides are technically uncertain.",
+          "D": "Clinical laterality cannot replace imaging evidence; bilateral inadequate visibility cannot assign a unilateral abnormality."
+        },
+        "source": "https://doi.org/10.1371/journal.pone.0231010"
+      },
+      {
+        "id": "aq-brain-aq-parkinson-en-dat-limits",
+        "fach": "gehirn",
+        "tags": [
+          "aq-parkinson"
+        ],
+        "question": "In an adult with uncertain parkinsonism, technically adequate DaTSCAN SPECT shows reduced striatal binding. Which statement best describes what the examination establishes?",
+        "options": [
+          {
+            "id": "A",
+            "text": "The binding pattern distinguishes idiopathic Parkinson disease from MSA and PSP"
+          },
+          {
+            "id": "B",
+            "text": "It supports a presynaptic dopaminergic deficit; it does not reliably distinguish PD, MSA and PSP"
+          },
+          {
+            "id": "C",
+            "text": "It primarily describes postsynaptic dopamine receptor availability"
+          },
+          {
+            "id": "D",
+            "text": "It primarily describes the regional glucose metabolism pattern"
+          }
+        ],
+        "correct": "B",
+        "explanation": "DaTSCAN assesses functional presynaptic dopaminergic terminals. Its approved interpretation does not include distinguishing PD, MSA and PSP. Clinical syndrome, course and additional tests remain essential.",
+        "wrongExplanations": {
+          "A": "All three syndromes can show reduced striatal DAT binding; the EMA product information explicitly excludes this specific distinction.",
+          "C": "Ioflupane binds dopamine transporters at presynaptic terminals; a postsynaptic receptor tracer addresses a different question.",
+          "D": "Regional glucose metabolism patterns are assessed with FDG PET; they are not the measurement made by DaTSCAN SPECT."
+        },
+        "source": "https://www.ema.europa.eu/en/documents/product-information/datscan-epar-product-information_en.pdf"
+      },
+      {
+        "id": "aq-brain-aq-parkinson-en-fdg-measurement",
+        "fach": "gehirn",
+        "tags": [
+          "aq-parkinson"
+        ],
+        "question": "Despite reduced DAT binding, clinical differentiation of PD from atypical parkinsonism remains uncertain. Complementary FDG PET is discussed. Which additional measurement can it provide for the differential?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Regional distribution of glucose metabolism"
+          },
+          {
+            "id": "B",
+            "text": "Regional availability of presynaptic dopamine transporters"
+          },
+          {
+            "id": "C",
+            "text": "Regional availability of postsynaptic D2 receptors"
+          },
+          {
+            "id": "D",
+            "text": "Regional amyloid deposition"
+          }
+        ],
+        "correct": "A",
+        "explanation": "FDG PET assesses regional glucose metabolism patterns and may complement clinical differentiation of PD and atypical syndromes. Relative increases and decreases can occur; treatment and clinical context affect interpretation. It does not repeat a DAT measurement.",
+        "wrongExplanations": {
+          "B": "That is the target of DAT imaging, not FDG PET. Interpret a second tracer according to its own target.",
+          "C": "D2 receptor availability requires an appropriate receptor tracer; FDG does not measure D2 binding.",
+          "D": "Amyloid PET uses dedicated tracers. FDG shows metabolic distribution rather than directly depicting amyloid deposition."
+        },
+        "source": "https://doi.org/10.2967/jnumed.124.268754"
+      },
+      {
+        "id": "aq-atv-appendix-us-pattern-en-application",
+        "fach": "abdomen",
+        "tags": [
+          "appendizitis"
+        ],
+        "question": "Which ultrasound combination most strongly supports acute appendicitis in a compatible clinical setting?",
+        "options": [
+          {
+            "id": "A",
+            "text": "A non-compressible blind-ending appendix with wall hyperaemia and inflammatory surrounding changes."
+          },
+          {
+            "id": "B",
+            "text": "A readily compressible appendix with a thin wall and normal surrounding tissues."
+          },
+          {
+            "id": "C",
+            "text": "A borderline diameter alone, without assessment of compression, wall or surrounding tissues."
+          },
+          {
+            "id": "D",
+            "text": "A non-visualised appendix without documented secondary signs."
+          }
+        ],
+        "correct": "A",
+        "explanation": "A combination of direct appendiceal signs and surrounding inflammation is stronger than diameter alone. Interpret ultrasound with clinical findings; non-visualisation does not demonstrate an inflamed appendix.",
+        "wrongExplanations": {
+          "B": "Compressibility and absent inflammation do not support acute appendicitis here.",
+          "C": "A borderline measurement alone does not replace morphological and clinical criteria.",
+          "D": "Non-visualisation is non-diagnostic; it proves neither appendicitis nor its exclusion."
+        },
+        "source": "https://doi.org/10.1186/s13017-020-00306-3"
+      },
+      {
+        "id": "aq-atv-appendix-ct-context-en-application",
+        "fach": "abdomen",
+        "tags": [
+          "appendizitis"
+        ],
+        "question": "In a patient with right lower quadrant pain, CT shows a borderline enlarged appendix. Which additional information improves assessment for appendicitis?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Periappendiceal fat stranding in conjunction with the direct appendiceal findings."
+          },
+          {
+            "id": "B",
+            "text": "A few small mesenteric lymph nodes in the right lower quadrant."
+          },
+          {
+            "id": "C",
+            "text": "A small amount of free pelvic fluid."
+          },
+          {
+            "id": "D",
+            "text": "Gas within the lumen of the visualised appendix."
+          }
+        ],
+        "correct": "A",
+        "explanation": "Combined direct and indirect signs help in equivocal CT. The cited retrospective cohort found an association particularly of enlargement and fat stranding with appendicitis; individual secondary signs do not prove it.",
+        "wrongExplanations": {
+          "B": "Small regional nodes are nonspecific and less targeted here than direct periappendiceal inflammation.",
+          "C": "A small amount of free pelvic fluid has several possible causes and is not targeted evidence of appendiceal inflammation.",
+          "D": "Luminal gas is not positive evidence of inflammation; direct mural findings and surrounding tissues remain important."
+        },
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4194577/"
+      },
+      {
+        "id": "aq-atv-gist-phase-context-en-application",
+        "fach": "abdomen",
+        "tags": [
+          "gist"
+        ],
+        "question": "A single CT crop of a gastric-wall mass shows bright enhancement but has no series or timing label. Which reporting statement is defensible?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Brightness establishes early arterial timing."
+          },
+          {
+            "id": "B",
+            "text": "The phase remains uncertain without protocol/series context; describe enhancement and check the context."
+          },
+          {
+            "id": "C",
+            "text": "A bright gastric-wall mass should be labelled portal venous."
+          },
+          {
+            "id": "D",
+            "text": "Bright tumour components establish a delayed CT acquisition phase."
+          }
+        ],
+        "correct": "B",
+        "explanation": "Visible or measured enhancement does not replace series information. GEIS recommends arterial and portal contrast CT to assess GIST location and extent; that does not retrospectively prove the phase of an unlabelled single image.",
+        "wrongExplanations": {
+          "A": "Tumour brightness alone does not establish arterial timing.",
+          "C": "Portal timing also requires series/protocol information.",
+          "D": "A delayed CT phase also cannot be inferred from tumour brightness alone; check acquisition timing and protocol."
+        },
+        "source": "https://doi.org/10.1177/17588359231192388"
+      },
+      {
+        "id": "aq-atv-gist-internal-structure-en-application",
+        "fach": "abdomen",
+        "tags": [
+          "gist"
+        ],
+        "question": "A large exophytic gastric-wall mass contains non-enhancing hypoattenuating areas. How should these be described without histological confirmation?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Non-enhancing hypoattenuating internal components, compatible with degenerative/necrotic changes."
+          },
+          {
+            "id": "B",
+            "text": "Macroscopic fatty internal components, compatible with a lipomatous tumour component."
+          },
+          {
+            "id": "C",
+            "text": "Fresh haemorrhagic internal components, compatible with acute intratumoral bleeding."
+          },
+          {
+            "id": "D",
+            "text": "Avidly enhancing solid internal components, compatible with hypervascular tumour tissue."
+          }
+        ],
+        "correct": "A",
+        "explanation": "GIST may be heterogeneous with degenerative, necrotic or haemorrhagic areas. Report the observable structure and absent enhancement first; a crop cannot prove exact contents, histology or grade.",
+        "wrongExplanations": {
+          "B": "Hypoattenuation alone does not demonstrate macroscopic fat; appropriate attenuation values and comparison information are missing.",
+          "C": "Haemorrhage can occur in GIST but is not established by this description; unenhanced attenuation and comparison information are missing.",
+          "D": "The described areas do not enhance; avidly enhancing hypervascular tissue does not match that observation."
+        },
+        "source": "https://doi.org/10.1177/17588359231192388"
       }
     ],
     "fa": [
@@ -4838,6 +6086,630 @@
         "sources": [
           "https://pubmed.ncbi.nlm.nih.gov/18552309/"
         ]
+      },
+      {
+        "id": "aq-brain-aq-hiv-enzephalopathie-fa-diffuse-pattern",
+        "fach": "gehirn",
+        "tags": [
+          "aq-hiv-enzephalopathie"
+        ],
+        "question": "در HIV همراه با کندی شناختی تدریجی، MRI تغییرات نسبتاً متقارن FLAIR در مادهٔ سفید عمقی/پیرابطنی و آتروفی منتشر را بدون ضایعهٔ فضاگیر نشان می‌دهد. کدام الگو مناسب‌تر است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "آنسفالوپاتی مرتبط با HIV"
+          },
+          {
+            "id": "B",
+            "text": "توکسوپلاسموز مغزی"
+          },
+          {
+            "id": "C",
+            "text": "لنفوم اولیهٔ دستگاه عصبی مرکزی"
+          },
+          {
+            "id": "D",
+            "text": "لکوانسفالوپاتی چندکانونی پیشرونده"
+          }
+        ],
+        "correct": "A",
+        "explanation": "تغییرات متقارن مادهٔ سفید عمقی همراه با کاهش حجم می‌تواند با آنسفالوپاتی مرتبط با HIV سازگار باشد. این الگو غیراختصاصی است؛ علل عفونی، عروقی و متابولیک دیگر و عملکرد بالینی نیز باید بررسی شوند.",
+        "wrongExplanations": {
+          "B": "توکسوپلاسموز بیشتر ضایعات کانونی، اغلب با افزایش سیگنال حلقوی پس از تزریق و همراه با ادم ایجاد می‌کند؛ چنین ضایعه‌ای توصیف نشده است.",
+          "C": "ضایعهٔ جامد فضاگیر توصیف نشده است؛ لنفوم را نمی‌توان فقط از آتروفی منتشر نتیجه گرفت.",
+          "D": "PML همچنان یک افتراق است، ولی به‌طور کلاسیک از الگوی منتشر توصیف‌شده کانونی‌تر/نامتقارن‌تر است."
+        },
+        "source": "https://pubmed.ncbi.nlm.nih.gov/2315479/"
+      },
+      {
+        "id": "aq-brain-aq-hiv-enzephalopathie-fa-pml-differential",
+        "fach": "gehirn",
+        "tags": [
+          "aq-hiv-enzephalopathie"
+        ],
+        "question": "در HIV پیشرفته، نقص‌های کانونی طی هفته‌ها پیشرفت می‌کنند. MRI ضایعات نامتقارن زیرقشری FLAIR با درگیری فیبرهای U، اثر فشاری اندک و افزایش سیگنال اندک پس از تزریق را نشان می‌دهد. کدام علت باید به‌طور هدفمند بررسی شود؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "آنسفالوپاتی منتشر مرتبط با HIV"
+          },
+          {
+            "id": "B",
+            "text": "لکوانسفالوپاتی چندکانونی پیشرونده"
+          },
+          {
+            "id": "C",
+            "text": "توکسوپلاسموز مغزی"
+          },
+          {
+            "id": "D",
+            "text": "لنفوم اولیهٔ دستگاه عصبی مرکزی"
+          }
+        ],
+        "correct": "B",
+        "explanation": "سیر کانونی پیشروندهٔ زیرحاد و الگوی نامتقارن مادهٔ سفید شک به PML را مطرح می‌کنند. PCR ویروس JCV در مایع مغزی‌نخاعی می‌تواند در زمینهٔ مناسب از تشخیص حمایت کند؛ نتیجهٔ منفی آن را با اطمینان رد نمی‌کند.",
+        "wrongExplanations": {
+          "A": "پیشرفت کانونی همراه درگیری نامتقارن زیرقشری بیشتر با PML سازگار است تا الگوی منتشر معمول HIV.",
+          "C": "توکسوپلاسموز معمولاً ضایعات کانونی با ادم/اثر فشاری و افزایش سیگنال بیشتری پس از تزریق از آنچه اینجا توصیف شده ایجاد می‌کند.",
+          "D": "لنفوم بیشتر ضایعه‌ای فضاگیر و اغلب دارای افزایش سیگنال پس از تزریق ایجاد می‌کند؛ الگوی زیرقشری بدون اثر فشاری در اینجا بیشتر به نفع PML است."
+        },
+        "source": "https://clinicalinfo.hiv.gov/en/guidelines/hiv-clinical-guidelines-adult-and-adolescent-opportunistic-infections/progressive?view=full"
+      },
+      {
+        "id": "aq-brain-aq-hiv-enzephalopathie-fa-pml-iris",
+        "fach": "gehirn",
+        "tags": [
+          "aq-hiv-enzephalopathie"
+        ],
+        "question": "در PML شناخته‌شده، پس از شروع ART مؤثر، بدترشدن بالینی همراه با افزایش سیگنال پس از تزریق و ادم در ضایعات قبلی ایجاد می‌شود. کدام توضیح باید در اولویت بررسی باشد؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "پیشرفت غیرالتهابی PML کلاسیک"
+          },
+          {
+            "id": "B",
+            "text": "آنسفالوپاتی منتشر HIV"
+          },
+          {
+            "id": "C",
+            "text": "سندرم التهابی بازسازی ایمنی مرتبط با PML (PML-IRIS)"
+          },
+          {
+            "id": "D",
+            "text": "توکسوپلاسموز مغزی هم‌زمان"
+          }
+        ],
+        "correct": "C",
+        "explanation": "PML-IRIS می‌تواند پس از ART با افزایش سیگنال التهابی پس از تزریق، ادم و اثر فشاری رخ دهد. رابطهٔ زمانی و PML شناخته‌شده مهم‌اند؛ تفسیر بالینی است و بیماری هم‌زمان را رد نمی‌کند.",
+        "wrongExplanations": {
+          "A": "نشانه‌های التهابی جدید پس از ART مؤثر به بررسی IRIS نیاز دارند، نه توضیح صرفاً غیرالتهابی.",
+          "B": "آنسفالوپاتی منتشر HIV تغییرات التهابی در ضایعات شناخته‌شدهٔ PML را خوب توضیح نمی‌دهد.",
+          "D": "عفونت هم‌زمان ممکن است؛ بااین‌حال التهاب جدید در ضایعات شناخته‌شدهٔ PML پس از بازسازی ایمنی مستقیماً بیشتر با PML-IRIS سازگار است."
+        },
+        "source": "https://clinicalinfo.hiv.gov/en/guidelines/hiv-clinical-guidelines-adult-and-adolescent-opportunistic-infections/progressive?view=full"
+      },
+      {
+        "id": "aq-brain-aq-meningitis-enzephalitis-fa-compartments",
+        "fach": "gehirn",
+        "tags": [
+          "aq-meningitis-enzephalitis"
+        ],
+        "question": "بزرگسالی با تب و گیجی، افزایش سیگنال نازک پس از تزریق در شیارها و ضایعات FLAIR تمپورال داخل پارانشیم دارد. کدام توصیف هر دو بخش را بیان می‌کند؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "درگیری مننژی و پارانشیمی"
+          },
+          {
+            "id": "B",
+            "text": "درگیری منفرد مننژی"
+          },
+          {
+            "id": "C",
+            "text": "درگیری منفرد پارانشیمی"
+          },
+          {
+            "id": "D",
+            "text": "درگیری صرفاً پاکی‌مننژیال سخت‌شامه"
+          }
+        ],
+        "correct": "A",
+        "explanation": "افزایش سیگنال پس از تزریق در شیارها به فضای لپتومننژی مربوط است؛ ضایعات داخل پارانشیم در بافت مغز قرار دارند. این توصیف آناتومیک الگو است، نه اثبات عفونت یا عامل مشخص.",
+        "wrongExplanations": {
+          "B": "این توصیف ضایعات پارانشیمی تمپورال را حذف می‌کند.",
+          "C": "افزایش سیگنال اضافهٔ پس از تزریق در شیارها نیز باید گزارش شود.",
+          "D": "افزایش سیگنال پس از تزریق در شیارها از لپتومننژ پیروی می‌کند؛ ضایعات پارانشیمی نیز توصیف شده‌اند."
+        },
+        "source": "https://pubmed.ncbi.nlm.nih.gov/14716235/"
+      },
+      {
+        "id": "aq-brain-aq-meningitis-enzephalitis-fa-normal-mri",
+        "fach": "gehirn",
+        "tags": [
+          "aq-meningitis-enzephalitis"
+        ],
+        "question": "بزرگسالی با تب و علائم مننژی، تصاویر طبیعی FLAIR و T1 پس از تزریق دارد. کدام نتیجه مناسب است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "علت باکتریایی رد شده ولی علت ویروسی ممکن است"
+          },
+          {
+            "id": "B",
+            "text": "علت ویروسی رد شده ولی علت باکتریایی ممکن است"
+          },
+          {
+            "id": "C",
+            "text": "نشانهٔ مربوط در MRI وجود ندارد؛ مننژیت همچنان با ارزیابی بالینی و مایع مغزی‌نخاعی بررسی شود"
+          },
+          {
+            "id": "D",
+            "text": "بر این اساس علائم غیرالتهابی طبقه‌بندی می‌شوند"
+          }
+        ],
+        "correct": "C",
+        "explanation": "مطالعهٔ اصلی کوچک، MRI طبیعی را در مننژیت ویروسی و باکتریایی گزارش کرد. MRI طبیعی نه بیماری را رد و نه علت را تعیین می‌کند؛ یافته‌های بالینی و مایع مغزی‌نخاعی همچنان ضروری‌اند.",
+        "wrongExplanations": {
+          "A": "مننژیت باکتریایی نیز می‌تواند بدون این نشانه‌های MRI وجود داشته باشد.",
+          "B": "مننژیت ویروسی نیز می‌تواند با MRI طبیعی وجود داشته باشد.",
+          "D": "نبود نشانه در MRI علت غیرالتهابی را تعیین نمی‌کند."
+        },
+        "source": "https://pubmed.ncbi.nlm.nih.gov/14716235/"
+      },
+      {
+        "id": "aq-brain-aq-meningitis-enzephalitis-fa-ventricular-complication",
+        "fach": "gehirn",
+        "tags": [
+          "aq-meningitis-enzephalitis"
+        ],
+        "question": "در مننژیت باکتریایی همراه بدترشدن بالینی، MRI مواد رسوب‌کردهٔ نامنظم جدید در شاخ‌های پس‌سری، افزایش سیگنال اپاندیمی پس از تزریق و افزایش اندازهٔ بطن‌ها نشان می‌دهد. کدام عارضه به‌ویژه مطرح است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "هیدروسفالی ارتباطی بدون التهاب داخل بطن"
+          },
+          {
+            "id": "B",
+            "text": "ونتریکولیت چرکی همراه با هیدروسفالی"
+          },
+          {
+            "id": "C",
+            "text": "انتشار تومور زیر اپاندیم"
+          },
+          {
+            "id": "D",
+            "text": "اتساع اکس‌واکو در آتروفی مزمن مغز"
+          }
+        ],
+        "correct": "B",
+        "explanation": "دبری نامنظم داخل بطن در زمینهٔ عفونی مناسب شک به ونتریکولیت را مطرح می‌کند. افزایش سیگنال اپاندیمی پس از تزریق و هیدروسفالی ممکن است همراه باشند. مواد و افتراق‌ها از جمله فرآورده‌های خونی در کل بررسی ارزیابی و احتمال عارضه سریع اطلاع داده شود.",
+        "wrongExplanations": {
+          "A": "اتساع به‌تنهایی دبری جدید و افزایش سیگنال اپاندیمی پس از تزریق را کافی توضیح نمی‌دهد.",
+          "C": "تومور می‌تواند یافتهٔ اپاندیمی ایجاد کند، ولی عفونت حاد و دبری رسوب‌کرده در اینجا بیشتر به نفع عارضهٔ عفونی‌اند.",
+          "D": "آتروفی نه دبری جدید و نه افزایش سیگنال پس از تزریق مشکوک به التهاب را توضیح می‌دهد."
+        },
+        "source": "https://pubmed.ncbi.nlm.nih.gov/11559498/"
+      },
+      {
+        "id": "aq-brain-aq-cjd-fa-clinical-pattern",
+        "fach": "gehirn",
+        "tags": [
+          "aq-cjd"
+        ],
+        "question": "بزرگسالی طی هفته‌ها دچار افت شناختی و میوکلونوس می‌شود. MRI افزایش سیگنال نواری چندکانونی قشر و سیگنال هستهٔ دمی را نشان می‌دهد که در DWI از FLAIR واضح‌تر است، ADC متناظر پایین دارد و از قلمرو عروقی پیروی نمی‌کند. کدام تشخیص در اولویت بررسی است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "بیماری کروتزفلد–یاکوب اسپورادیک"
+          },
+          {
+            "id": "B",
+            "text": "آسیب هیپوکسیک‌ـ‌ایسکمیک مغز"
+          },
+          {
+            "id": "C",
+            "text": "آنسفالیت خودایمنی"
+          },
+          {
+            "id": "D",
+            "text": "تغییرات سیگنال پری‌ایکتال"
+          }
+        ],
+        "correct": "A",
+        "explanation": "سیر سریع و محدودیت انتشار قشری‌ـ‌استریاتال خارج از قلمرو عروقی شک به CJD را مطرح می‌کنند. MRI بخشی از تشخیص است؛ ارزیابی بالینی، بررسی تکمیلی و افتراق علل قابل درمان همچنان ضروری‌اند.",
+        "wrongExplanations": {
+          "B": "هیپوکسی می‌تواند محدودیت انتشار قشری‌ـ‌استریاتال ایجاد کند. بدون رویداد هیپوکسیک گزارش‌شده و با افت پیشرونده طی هفته‌ها همراه میوکلونوس، بررسی CJD در اینجا در اولویت است.",
+          "C": "آنسفالیت خودایمنی همچنان افتراقی قابل درمان است. الگوی قشری‌ـ‌استریاتال غالب در DWI با ADC پایین و افت سریع در اینجا بیشتر از شک به CJD حمایت می‌کند؛ بررسی بالینی ادامه یابد.",
+          "D": "تشنج می‌تواند تغییرات انتشار قشری را تقلید کند. سیر پیشرونده طی هفته‌ها با درگیری چندکانونی قشری‌ـ‌استریاتال، بررسی CJD را در اینجا در اولویت قرار می‌دهد؛ شرح حال تشنج و EEG همچنان مهم‌اند."
+        },
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3100134/"
+      },
+      {
+        "id": "aq-brain-aq-cjd-fa-limbic-mimic",
+        "fach": "gehirn",
+        "tags": [
+          "aq-cjd"
+        ],
+        "question": "در دمانس سریع‌پیشرونده، CJD اسپورادیک مطرح است. کدام الگوی MRI باید به‌ویژه به بررسی علل التهابی لیمبیک یا پری‌ایکتال منجر شود؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "هایپرسیگنال غالب در DWI هستهٔ دمی و پوتامن با ADC متناظر پایین"
+          },
+          {
+            "id": "B",
+            "text": "افزایش سیگنال نواری قشر آهیانه‌ای و پس‌سری با ADC پایین"
+          },
+          {
+            "id": "C",
+            "text": "غلبهٔ منفرد FLAIR تمپورال داخلی بدون کاهش ADC"
+          },
+          {
+            "id": "D",
+            "text": "غلبهٔ چندکانونی DWI قشری و استریاتال با افت ADC"
+          }
+        ],
+        "correct": "C",
+        "explanation": "غلبهٔ منفرد FLAIR لیمبیک بدون افت ADC نیازمند بررسی علل دیگر، از جمله آنسفالیت خودایمنی یا عفونی و پیامد تشنج است. تصویربرداری به‌تنهایی این‌ها را با اطمینان جدا نمی‌کند؛ DWI روشن لزوماً محدودیت انتشار نیست.",
+        "wrongExplanations": {
+          "A": "غلبهٔ DWI استریاتال با ADC پایین می‌تواند از الگوی مشکوک به CJD حمایت کند؛ یافتهٔ منفرد لیمبیک FLAIR مورد پرسش نیست.",
+          "B": "محدودیت انتشار چندناحیه‌ای نئوکورتکس در سیر مناسب می‌تواند مشکوک به CJD باشد. الگوی متفاوت و منفرد لیمبیک مورد پرسش است.",
+          "D": "ترکیب محدودیت انتشار قشری و استریاتال می‌تواند از CJD حمایت کند ولی آن را ثابت نمی‌کند. با الگوی مقایسه‌ای منفرد لیمبیک متفاوت است."
+        },
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3100134/"
+      },
+      {
+        "id": "aq-brain-aq-cjd-fa-pulvinar-comparator",
+        "fach": "gehirn",
+        "tags": [
+          "aq-cjd"
+        ],
+        "question": "در بررسی بیماری پریونی، علامت کلاسیک پول‌وینار در FLAIR توصیف می‌شود. کدام مقایسهٔ سیگنال در تعریف این علامت، که به‌ویژه با vCJD مرتبط است، قرار دارد؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "پول‌وینار دوطرفه روشن‌تر از پوتامن قدامی"
+          },
+          {
+            "id": "B",
+            "text": "پول‌وینار روشن‌تر از هستهٔ دمی به‌عنوان مرجع تعریف‌کننده"
+          },
+          {
+            "id": "C",
+            "text": "پول‌وینار صرفاً روشن‌تر از سایر بافت تالاموس"
+          },
+          {
+            "id": "D",
+            "text": "هستهٔ دمی روشن‌تر از پول‌وینار"
+          }
+        ],
+        "correct": "A",
+        "explanation": "مقایسهٔ پول‌وینار دوطرفه با پوتامن قدامی علامت کلاسیک را دقیق‌تر تعریف می‌کند. روشن‌بودن پول‌وینار صرفاً نسبت به سایر هسته‌های تالاموس معادل آن نیست. علامت در زمینهٔ بالینی vCJD تفسیر می‌شود، نه به‌عنوان نشانهٔ عمومی sCJD.",
+        "wrongExplanations": {
+          "B": "هستهٔ دمی مرجع تعریف‌کننده نیست؛ تعریف کلاسیک پول‌وینار دوطرفه را با پوتامن قدامی مقایسه می‌کند.",
+          "C": "این مقایسه می‌تواند سیگنال برجستهٔ تالاموس را توصیف کند، ولی تعریف دقیق‌تر مقایسه با پوتامن قدامی را برآورده نمی‌کند.",
+          "D": "رابطه برعکس بیان شده و هستهٔ دمی به‌جای پوتامن قدامی مرجع قرار گرفته است."
+        },
+        "source": "https://pubmed.ncbi.nlm.nih.gov/13679271/"
+      },
+      {
+        "id": "aq-msk-avn-huefte-fa-arco2019-depression",
+        "fach": "msk",
+        "tags": [
+          "avn-huefte"
+        ],
+        "question": "در استئونکروز اثبات‌شدهٔ سر فمور، CT شکستگی زیرغضروفی همراه فرورفتگی ۳ میلی‌متری را نشان می‌دهد. فضای مفصلی حفظ شده و نشانه‌ای از آرتروز وجود ندارد. کدام مرحلهٔ ARCO بازنگری ۲۰۱۹ مناسب است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "II"
+          },
+          {
+            "id": "B",
+            "text": "IIIA"
+          },
+          {
+            "id": "C",
+            "text": "IIIB"
+          },
+          {
+            "id": "D",
+            "text": "IV"
+          }
+        ],
+        "correct": "C",
+        "explanation": "ARCO ۲۰۱۹ شکستگی زیرغضروفی یا ناحیهٔ نکروتیک را در مرحلهٔ III قرار می‌دهد: IIIA برای فرورفتگی ≤۲ میلی‌متر و IIIB برای >۲ میلی‌متر. مرحلهٔ IV به نشانه‌های رادیوگرافیک آرتروز نیاز دارد؛ فرورفتگی به‌تنهایی مرحلهٔ IV ایجاد نمی‌کند.",
+        "wrongExplanations": {
+          "A": "در مرحلهٔ II شکستگی زیرغضروفی/ناحیهٔ نکروتیک و صاف‌شدن وجود ندارد؛ یافته‌های ساختاری توصیف‌شده فراتر از آن‌اند.",
+          "B": "IIIA برای فرورفتگی ≤۲ میلی‌متر است؛ ۳ میلی‌مترِ ذکرشده از این مرز بیشتر است.",
+          "D": "فضای مفصلی حفظ‌شده بدون نشانهٔ آرتروز، وضعیت لازم برای مرحلهٔ IV در اینجا را برآورده نمی‌کند."
+        },
+        "sources": [
+          "https://pubmed.ncbi.nlm.nih.gov/31866252/"
+        ]
+      },
+      {
+        "id": "aq-msk-melorheostose-fa-source-cortical-pattern",
+        "fach": "msk",
+        "tags": [
+          "melorheostose"
+        ],
+        "question": "کدام الگوی استخوانی در رادیوگرافی دستِ نشان‌داده‌شده برجسته‌تر است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "جزیرهٔ اسکلروتیک گرد و محدود در مغز استخوان."
+          },
+          {
+            "id": "B",
+            "text": "چند کلسیفیکاسیون ماتریکس به‌شکل حلقه و قوس."
+          },
+          {
+            "id": "C",
+            "text": "هیپراستوز قشری نامنظم با امتداد طولی."
+          },
+          {
+            "id": "D",
+            "text": "کاهش منتشر دانسیتهٔ استخوان بدون اسکلروز کانونی."
+          }
+        ],
+        "correct": "C",
+        "explanation": "تصویر رشد اضافی استخوان متراکم را در قشر و با امتداد طولی نشان می‌دهد. این الگو در کیس منبع از ملوره‌اوستوز حمایت می‌کند. مورفولوژی قابل مشاهده را توصیف کنید؛ یک برش تصویر، وسعت کامل یا درگیری بافت نرم را تعیین نمی‌کند.",
+        "wrongExplanations": {
+          "A": "تغییر متراکم قابل مشاهده در امتداد طولی قشر است، نه به‌شکل یک جزیرهٔ گرد منفرد در مغز استخوان.",
+          "B": "کلسیفیکاسیون حلقه‌ای و قوسی الگوی غالب اینجا نیست؛ یافته رشد اضافی استخوان قشری متراکم است.",
+          "D": "ویژگی اصلی، قشر با دانسیتهٔ موضعی افزایش‌یافته است، نه صرفاً کاهش دانسیتهٔ منتشر."
+        },
+        "image": {
+          "src": "/educational/melorheostose/pdf-case-p133.jpg",
+          "alt": "برش اصلی رادیوگرافی دست چپ از صفحهٔ ۱۳۳ MSK.pdf؛ rID199384.",
+          "caption": "تصویر منبع بدون علامت‌گذاری افزوده.",
+          "credit": "Radiopaedia rID199384 · تصویر از PDF ارائه‌شدهٔ کاربر؛ نام مشارکت‌کننده در صفحهٔ منبع ذکر نشده است."
+        },
+        "sources": [
+          "MSK.pdf physical133 /printed132; original page and retained image visually inspected2026-10-25",
+          "https://doi.org/10.53347/rID-199384",
+          "https://onlinelibrary.wiley.com/doi/full/10.1002/jbm4.10472"
+        ]
+      },
+      {
+        "id": "aq-brain-aq-parkinson-fa-technical-confidence",
+        "fach": "gehirn",
+        "tags": [
+          "aq-parkinson"
+        ],
+        "question": "در بزرگسالی با سندرم پارکینسونی بالینی، حرکت ناحیهٔ دورسولترال جسم سیاه را در SWI محو کرده است. نیگروزوم ۱ در هیچ‌یک از دو سمت با اطمینان قابل تفکیک نیست. کدام طبقه‌بندی برای گزارش مناسب است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "یافتهٔ غیرطبیعی دوطرفهٔ نیگروزوم"
+          },
+          {
+            "id": "B",
+            "text": "دیده‌شدن طبیعی نیگروزوم بدون عدم تقارن مهم"
+          },
+          {
+            "id": "C",
+            "text": "ارزیابی نیگروزوم از نظر فنی محدود است و طبقه‌بندی قطعی ممکن نیست"
+          },
+          {
+            "id": "D",
+            "text": "استنباط یافتهٔ غیرطبیعی یک‌طرفهٔ نیگروزوم از عدم تقارن بالینی"
+          }
+        ],
+        "correct": "C",
+        "explanation": "دیده‌نشدن با اطمینان در حضور محوشدگی حرکتی معادل نبودِ تأییدشده نیست. محدودیت فنی را ثبت کنید و از این یافته نه تشخیص مثبت و نه منفی پارکینسون نتیجه بگیرید. حتی با کیفیت مناسب نیز تفسیر نشانهٔ منفرد نیگروزوم محدودیت دارد.",
+        "wrongExplanations": {
+          "A": "طبقه‌بندی غیرطبیعی دوطرفه نیازمند کیفیت کافی برای ارزیابی ساختار است؛ حرکت در اینجا مانع آن است.",
+          "B": "نبودِ عدم تقارن قابل تشخیص با اطمینان در محوشدگی حرکتی، ساختار طبیعی را ثابت نمی‌کند؛ ارزیابی هر دو سمت از نظر فنی نامطمئن است.",
+          "D": "سمت درگیری بالینی جای شواهد تصویری را نمی‌گیرد؛ دیده‌شدن ناکافی دوطرفه، ضایعهٔ یک‌طرفه را تعیین نمی‌کند."
+        },
+        "source": "https://doi.org/10.1371/journal.pone.0231010"
+      },
+      {
+        "id": "aq-brain-aq-parkinson-fa-dat-limits",
+        "fach": "gehirn",
+        "tags": [
+          "aq-parkinson"
+        ],
+        "question": "در بزرگسالی با سندرم پارکینسونی نامشخص، DaTSCAN-SPECT با کیفیت فنی مناسب کاهش اتصال استریاتال نشان می‌دهد. کدام عبارت بهتر بیانگر نتیجهٔ این بررسی است؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "الگوی اتصال، پارکینسون ایدیوپاتیک را از MSA و PSP تفکیک می‌کند"
+          },
+          {
+            "id": "B",
+            "text": "از نقص دوپامینرژیک پیش‌سیناپسی حمایت می‌کند؛ PD، MSA و PSP را با اطمینان از هم جدا نمی‌کند"
+          },
+          {
+            "id": "C",
+            "text": "عمدتاً دسترسی گیرندهٔ دوپامین پس‌سیناپسی را توصیف می‌کند"
+          },
+          {
+            "id": "D",
+            "text": "عمدتاً الگوی منطقه‌ای متابولیسم گلوکز را توصیف می‌کند"
+          }
+        ],
+        "correct": "B",
+        "explanation": "DaTSCAN پایانه‌های عملکردی دوپامینرژیک پیش‌سیناپسی را ارزیابی می‌کند. کاربرد تأییدشدهٔ آن شامل تفکیک PD، MSA و PSP نیست. سندرم بالینی، سیر بیماری و بررسی‌های تکمیلی همچنان تعیین‌کننده‌اند.",
+        "wrongExplanations": {
+          "A": "هر سه سندرم می‌توانند کاهش اتصال DAT استریاتال داشته باشند؛ اطلاعات فرآوردهٔ EMA صراحتاً این تفکیک مشخص را خارج از توان بررسی می‌داند.",
+          "C": "یوفلوپان به ناقل دوپامین در پایانهٔ پیش‌سیناپسی متصل می‌شود؛ ردیاب گیرندهٔ پس‌سیناپسی پرسش دیگری را بررسی می‌کند.",
+          "D": "الگوهای منطقه‌ای متابولیسم گلوکز با FDG-PET ارزیابی می‌شوند؛ کمیت اندازه‌گیری‌شده در DaTSCAN-SPECT نیستند."
+        },
+        "source": "https://www.ema.europa.eu/en/documents/product-information/datscan-epar-product-information_en.pdf"
+      },
+      {
+        "id": "aq-brain-aq-parkinson-fa-fdg-measurement",
+        "fach": "gehirn",
+        "tags": [
+          "aq-parkinson"
+        ],
+        "question": "با وجود کاهش اتصال DAT، افتراق بالینی PD از سندرم پارکینسونی غیرمعمول همچنان نامشخص است. FDG-PET تکمیلی مطرح می‌شود. این بررسی کدام کمیت تکمیلی را برای افتراق ارائه می‌کند؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "توزیع منطقه‌ای متابولیسم گلوکز"
+          },
+          {
+            "id": "B",
+            "text": "دسترسی منطقه‌ای ناقل‌های دوپامین پیش‌سیناپسی"
+          },
+          {
+            "id": "C",
+            "text": "دسترسی منطقه‌ای گیرنده‌های D2 پس‌سیناپسی"
+          },
+          {
+            "id": "D",
+            "text": "رسوب منطقه‌ای آمیلوئید"
+          }
+        ],
+        "correct": "A",
+        "explanation": "FDG-PET الگوهای منطقه‌ای متابولیسم گلوکز را ارزیابی می‌کند و می‌تواند افتراق بالینی PD و سندرم‌های غیرمعمول را تکمیل کند. افزایش و کاهش نسبی ممکن‌اند؛ درمان و زمینهٔ بالینی بر تفسیر اثر می‌گذارند. این روش تکرار اندازه‌گیری DAT نیست.",
+        "wrongExplanations": {
+          "B": "این کمیت هدف تصویربرداری DAT است، نه FDG-PET. ردیاب دوم باید بر اساس هدف خودش تفسیر شود.",
+          "C": "دسترسی گیرندهٔ D2 به ردیاب مناسب گیرنده نیاز دارد؛ FDG اتصال D2 را اندازه نمی‌گیرد.",
+          "D": "PET آمیلوئید از ردیاب‌های مخصوص استفاده می‌کند؛ FDG توزیع متابولیسم را نشان می‌دهد، نه رسوب مستقیم آمیلوئید."
+        },
+        "source": "https://doi.org/10.2967/jnumed.124.268754"
+      },
+      {
+        "id": "aq-atv-appendix-us-pattern-fa-application",
+        "fach": "abdomen",
+        "tags": [
+          "appendizitis"
+        ],
+        "question": "در زمینهٔ علائم سازگار، کدام ترکیب سونوگرافیک بیش از همه از آپاندیسیت حاد حمایت می‌کند؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "آپاندیس انتها‌بسته و غیرقابل‌فشردن همراه با پرخونی دیواره و تغییرات التهابی اطراف."
+          },
+          {
+            "id": "B",
+            "text": "آپاندیس به‌آسانی قابل‌فشردن با دیوارهٔ نازک و بافت اطراف طبیعی."
+          },
+          {
+            "id": "C",
+            "text": "فقط قطر مرزی، بدون ارزیابی فشرده‌شدن، دیواره یا بافت اطراف."
+          },
+          {
+            "id": "D",
+            "text": "آپاندیس دیده‌نشده بدون ثبت نشانه‌های ثانویه."
+          }
+        ],
+        "correct": "A",
+        "explanation": "ترکیب نشانه‌های مستقیم آپاندیس و التهاب اطراف از قطر منفرد قوی‌تر است. سونوگرافی را همراه با بالین تفسیر کنید؛ دیده‌نشدن، آپاندیس ملتهب را نشان نمی‌دهد.",
+        "wrongExplanations": {
+          "B": "قابل‌فشردن‌بودن و نبود التهاب در اینجا از آپاندیسیت حاد حمایت نمی‌کنند.",
+          "C": "اندازهٔ مرزی به‌تنهایی جای معیارهای مورفولوژیک و بالینی دیگر را نمی‌گیرد.",
+          "D": "دیده‌نشدن غیرتشخیصی است؛ نه آپاندیسیت را ثابت می‌کند و نه آن را رد می‌کند."
+        },
+        "source": "https://doi.org/10.1186/s13017-020-00306-3"
+      },
+      {
+        "id": "aq-atv-appendix-ct-context-fa-application",
+        "fach": "abdomen",
+        "tags": [
+          "appendizitis"
+        ],
+        "question": "در بیمار با درد پایین راست شکم، CT قطر مرزیِ بزرگ‌شدهٔ آپاندیس نشان می‌دهد. کدام اطلاعات اضافه ارزیابی آپاندیسیت را بهتر می‌کند؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "التهاب چربی اطراف آپاندیس در کنار یافته‌های مستقیم آپاندیس."
+          },
+          {
+            "id": "B",
+            "text": "چند غدهٔ لنفاوی کوچک مزانتریک در پایین راست شکم."
+          },
+          {
+            "id": "C",
+            "text": "مقدار کمی مایع آزاد در لگن."
+          },
+          {
+            "id": "D",
+            "text": "گاز در لومن آپاندیس مشاهده‌شده."
+          }
+        ],
+        "correct": "A",
+        "explanation": "در CT نامشخص، ترکیب نشانه‌های مستقیم و غیرمستقیم کمک می‌کند. در کوهورت گذشته‌نگرِ مورد استناد، به‌ویژه بزرگی و التهاب چربی با آپاندیسیت ارتباط داشتند؛ نشانهٔ ثانویهٔ منفرد آن را ثابت نمی‌کند.",
+        "wrongExplanations": {
+          "B": "غدد کوچک ناحیه‌ای غیراختصاصی‌اند و در اینجا از واکنش التهابی مستقیم اطراف آپاندیس اختصاص کمتری دارند.",
+          "C": "مایع آزاد کم لگنی علت‌های گوناگون دارد و شاهد هدفمند التهاب آپاندیس نیست.",
+          "D": "گاز داخل لومن شاهد مثبت التهاب نیست؛ نشانه‌های مستقیم دیواره و بافت اطراف همچنان مهم‌اند."
+        },
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4194577/"
+      },
+      {
+        "id": "aq-atv-gist-phase-context-fa-application",
+        "fach": "abdomen",
+        "tags": [
+          "gist"
+        ],
+        "question": "در یک برش CT از تودهٔ دیوارهٔ معده، جذب واضح مادهٔ حاجب دیده می‌شود، اما سری یا زمان تصویربرداری مشخص نیست. کدام گزاره برای گزارش قابل اتکاست؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "روشنایی، زمان شریانی زودرس را قطعی می‌کند."
+          },
+          {
+            "id": "B",
+            "text": "بدون زمینهٔ پروتکل یا سری، فاز نامشخص است؛ تقویت را توصیف و زمینه را بررسی کنید."
+          },
+          {
+            "id": "C",
+            "text": "تودهٔ روشن دیوارهٔ معده باید با برچسب فاز پورتال مشخص شود."
+          },
+          {
+            "id": "D",
+            "text": "روشن‌بودن بخش‌هایی از تومور، فاز تأخیری CT را مشخص می‌کند."
+          }
+        ],
+        "correct": "B",
+        "explanation": "تقویت دیده‌شده یا اندازه‌گیری‌شده جای اطلاعات سری را نمی‌گیرد. GEIS برای محل و وسعت GIST، ‏CT شریانی و پورتال با تزریق توصیه می‌کند؛ این توصیه فاز تصویر منفرد بدون برچسب را پس از مشاهده ثابت نمی‌کند.",
+        "wrongExplanations": {
+          "A": "روشنایی تومور به‌تنهایی زمان شریانی را مشخص نمی‌کند.",
+          "C": "فاز پورتال نیز به اطلاعات سری یا پروتکل نیاز دارد.",
+          "D": "فاز تأخیری CT نیز از روشنایی تومور به‌تنهایی قابل نتیجه‌گیری نیست؛ زمان برداشت و پروتکل را بررسی کنید."
+        },
+        "source": "https://doi.org/10.1177/17588359231192388"
+      },
+      {
+        "id": "aq-atv-gist-internal-structure-fa-application",
+        "fach": "abdomen",
+        "tags": [
+          "gist"
+        ],
+        "question": "تودهٔ بزرگ و برون‌گرای دیوارهٔ معده نواحی کم‌دانسیته و بدون تقویت دارد. بدون تأیید بافت‌شناسی چگونه باید آن‌ها را توصیف کرد؟",
+        "options": [
+          {
+            "id": "A",
+            "text": "بخش‌های داخلی کم‌دانسیته و بدون تقویت، سازگار با تغییرات دژنراتیو یا نکروتیک."
+          },
+          {
+            "id": "B",
+            "text": "بخش‌های داخلی دارای چربی ماکروسکوپی، سازگار با جزء لیپوماتوز تومور."
+          },
+          {
+            "id": "C",
+            "text": "بخش‌های داخلی خونریزی‌دهندهٔ تازه، سازگار با خونریزی حاد داخل تومور."
+          },
+          {
+            "id": "D",
+            "text": "بخش‌های داخلی توپر با تقویت شدید، سازگار با بافت توموری پرعروق."
+          }
+        ],
+        "correct": "A",
+        "explanation": "GIST ممکن است با نواحی دژنراتیو، نکروتیک یا خونریزی‌دهنده ناهمگن باشد. ابتدا ساختار قابل مشاهده و نبود تقویت را گزارش کنید؛ یک برش محتوای دقیق، بافت‌شناسی یا درجه را ثابت نمی‌کند.",
+        "wrongExplanations": {
+          "B": "کم‌دانسیته‌بودن به‌تنهایی چربی ماکروسکوپی را نشان نمی‌دهد؛ مقادیر دانسیته و اطلاعات مقایسه‌ای مناسب ارائه نشده‌اند.",
+          "C": "خونریزی در GIST ممکن است، اما با این توصیف قطعی نیست؛ به‌ویژه دانسیتهٔ بدون تزریق و اطلاعات مقایسه‌ای ارائه نشده‌اند.",
+          "D": "نواحی توصیف‌شده تقویت ندارند؛ بافت پرعروق با تقویت شدید با این مشاهده مطابقت ندارد."
+        },
+        "source": "https://doi.org/10.1177/17588359231192388"
       }
     ]
   },
@@ -6231,6 +8103,526 @@
         "fa": "مطالعهٔ اولیهٔ گذشته‌نگر، افزایش سیگنال T2 پروگزیمال را اغلب بدون تندینوپاتی بالینی همراه یافت. این موضوع یافته‌های بالینی و ساختاری هم‌خوان را نفی نمی‌کند، اما تفسیر سیگنال منفرد را محدود می‌کند."
       },
       "source": "https://pubmed.ncbi.nlm.nih.gov/30903258/"
+    },
+    {
+      "id": "aq-brain-aq-hiv-enzephalopathie-diffuse-pattern",
+      "topicId": "aq-hiv-enzephalopathie",
+      "category": {
+        "de": "HIV-assoziierte Hirnveränderungen",
+        "en": "HIV-associated brain changes",
+        "fa": "تغییرات مغزی مرتبط با HIV"
+      },
+      "front": {
+        "de": "Wie ordnet man symmetrische Marklagerveränderungen mit Atrophie bei HIV ein?",
+        "en": "How should symmetric white-matter change with atrophy in HIV be interpreted?",
+        "fa": "تغییرات متقارن مادهٔ سفید همراه آتروفی در HIV چگونه تفسیر می‌شوند؟"
+      },
+      "answer": {
+        "de": "Das Muster ist kompatibel mit HIV-Enzephalopathie, aber unspezifisch; klinische Einordnung und Ausschluss anderer Ursachen sind nötig.",
+        "en": "The pattern is compatible with HIV encephalopathy but nonspecific; clinical assessment and exclusion of other causes are required.",
+        "fa": "الگو با آنسفالوپاتی HIV سازگار ولی غیراختصاصی است؛ ارزیابی بالینی و رد علل دیگر لازم‌اند."
+      },
+      "explanation": {
+        "de": "Ein symmetrisches tiefes Marklagermuster mit Volumenverlust kann zu HIV-assoziierter Enzephalopathie passen. Es ist unspezifisch; andere infektiöse, vaskuläre und metabolische Ursachen sowie die klinische Funktion müssen mitbeurteilt werden.",
+        "en": "Symmetric deep white-matter change with volume loss may fit HIV-associated encephalopathy. It is nonspecific; assess other infectious, vascular, and metabolic causes and clinical function.",
+        "fa": "تغییرات متقارن مادهٔ سفید عمقی همراه با کاهش حجم می‌تواند با آنسفالوپاتی مرتبط با HIV سازگار باشد. این الگو غیراختصاصی است؛ علل عفونی، عروقی و متابولیک دیگر و عملکرد بالینی نیز باید بررسی شوند."
+      },
+      "diagram": {
+        "de": "",
+        "en": "",
+        "fa": ""
+      },
+      "source": "https://pubmed.ncbi.nlm.nih.gov/2315479/"
+    },
+    {
+      "id": "aq-brain-aq-hiv-enzephalopathie-pml-differential",
+      "topicId": "aq-hiv-enzephalopathie",
+      "category": {
+        "de": "HIV-assoziierte Hirnveränderungen",
+        "en": "HIV-associated brain changes",
+        "fa": "تغییرات مغزی مرتبط با HIV"
+      },
+      "front": {
+        "de": "Welches MRT-Muster sollte bei HIV fokale PML-Abklärung auslösen?",
+        "en": "Which MRI pattern should prompt focal PML workup in HIV?",
+        "fa": "کدام الگوی MRI در HIV باید بررسی هدفمند PML را مطرح کند؟"
+      },
+      "answer": {
+        "de": "Subakut progrediente, asymmetrische subkortikale Marklagerläsionen, oft mit wenig Masseneffekt; JCV-Diagnostik im Kontext.",
+        "en": "Subacute progressive asymmetric subcortical white-matter lesions, often with little mass effect; assess JCV in context.",
+        "fa": "ضایعات زیرحاد پیشرونده و نامتقارن زیرقشری مادهٔ سفید، اغلب با اثر فشاری اندک؛ JCV در زمینه بررسی شود."
+      },
+      "explanation": {
+        "de": "Der subakut progrediente fokale Verlauf und das asymmetrische Marklagermuster sind PML-verdächtig. JCV-PCR im Liquor kann die Diagnose im passenden Kontext stützen; ein negatives Ergebnis schließt sie nicht sicher aus.",
+        "en": "The subacute progressive focal course and asymmetric white-matter pattern raise concern for PML. CSF JCV PCR can support diagnosis in context; a negative result does not reliably exclude it.",
+        "fa": "سیر کانونی پیشروندهٔ زیرحاد و الگوی نامتقارن مادهٔ سفید شک به PML را مطرح می‌کنند. PCR ویروس JCV در مایع مغزی‌نخاعی می‌تواند در زمینهٔ مناسب از تشخیص حمایت کند؛ نتیجهٔ منفی آن را با اطمینان رد نمی‌کند."
+      },
+      "diagram": {
+        "de": "",
+        "en": "",
+        "fa": ""
+      },
+      "source": "https://clinicalinfo.hiv.gov/en/guidelines/hiv-clinical-guidelines-adult-and-adolescent-opportunistic-infections/progressive?view=full"
+    },
+    {
+      "id": "aq-brain-aq-hiv-enzephalopathie-pml-iris",
+      "topicId": "aq-hiv-enzephalopathie",
+      "category": {
+        "de": "HIV-assoziierte Hirnveränderungen",
+        "en": "HIV-associated brain changes",
+        "fa": "تغییرات مغزی مرتبط با HIV"
+      },
+      "front": {
+        "de": "Welche entzündliche Veränderung kann nach wirksamer ART bei bekannter PML auftreten, und wie wird sie eingeordnet?",
+        "en": "Which inflammatory change may occur after effective ART in established PML, and how is it interpreted?",
+        "fa": "پس از ART مؤثر در PML شناخته‌شده، کدام تغییر التهابی ممکن است رخ دهد و چگونه تفسیر می‌شود؟"
+      },
+      "answer": {
+        "de": "Bei PML-IRIS nach Immunrekonstitution sind entzündliches Enhancement, Ödem und Masseneffekt möglich.",
+        "en": "PML-IRIS after immune reconstitution may cause inflammatory enhancement, oedema, and mass effect.",
+        "fa": "در PML-IRIS پس از بازسازی ایمنی، افزایش سیگنال التهابی پس از تزریق، ادم و اثر فشاری ممکن است."
+      },
+      "explanation": {
+        "de": "PML-IRIS kann nach ART mit entzündlicher Kontrastmittelaufnahme, Ödem und Masseneffekt auftreten. Die zeitliche Beziehung und bekannte PML sind entscheidend; die Einordnung bleibt klinisch und schließt eine zusätzliche Erkrankung nicht aus.",
+        "en": "PML-IRIS can occur after ART with inflammatory enhancement, oedema, and mass effect. Timing and established PML are essential; interpretation remains clinical and does not exclude concurrent disease.",
+        "fa": "PML-IRIS می‌تواند پس از ART با افزایش سیگنال التهابی پس از تزریق، ادم و اثر فشاری رخ دهد. رابطهٔ زمانی و PML شناخته‌شده مهم‌اند؛ تفسیر بالینی است و بیماری هم‌زمان را رد نمی‌کند."
+      },
+      "diagram": {
+        "de": "",
+        "en": "",
+        "fa": ""
+      },
+      "source": "https://clinicalinfo.hiv.gov/en/guidelines/hiv-clinical-guidelines-adult-and-adolescent-opportunistic-infections/progressive?view=full"
+    },
+    {
+      "id": "aq-brain-aq-meningitis-enzephalitis-compartments",
+      "topicId": "aq-meningitis-enzephalitis",
+      "category": {
+        "de": "Meningitis und Enzephalitis",
+        "en": "Meningitis and encephalitis",
+        "fa": "مننژیت و آنسفالیت"
+      },
+      "front": {
+        "de": "Welche Kompartimente beschreibt man bei einem Meningoenzephalitis-Muster getrennt?",
+        "en": "Which compartments are described separately in a meningoencephalitic pattern?",
+        "fa": "در الگوی مننگوآنسفالیت کدام بخش‌ها جداگانه توصیف می‌شوند؟"
+      },
+      "answer": {
+        "de": "Meningen/Liquorräume und Hirnparenchym; Verteilung, Sequenzen und Enhancement angeben, ohne daraus allein einen Erreger abzuleiten.",
+        "en": "Meninges/CSF spaces and brain parenchyma; state distribution, sequences and enhancement without inferring a pathogen from these alone.",
+        "fa": "مننژ/فضاهای مایع مغزی‌نخاعی و پارانشیم مغز؛ توزیع، سکانس‌ها و افزایش سیگنال پس از تزریق را بیان کنید، بدون تعیین عامل صرفاً بر اساس آن‌ها."
+      },
+      "explanation": {
+        "de": "Sulkale Aufnahme betrifft den leptomeningealen Raum; die ausdrücklich intraparenchymalen Herde liegen im Hirngewebe. Das ist eine anatomische Musterbeschreibung, kein Nachweis einer infektiösen Ursache oder eines bestimmten Erregers.",
+        "en": "Sulcal enhancement involves the leptomeningeal space; the explicitly intraparenchymal lesions lie in brain tissue. This is anatomical pattern description, not proof of infection or a particular pathogen.",
+        "fa": "افزایش سیگنال پس از تزریق در شیارها به فضای لپتومننژی مربوط است؛ ضایعات داخل پارانشیم در بافت مغز قرار دارند. این توصیف آناتومیک الگو است، نه اثبات عفونت یا عامل مشخص."
+      },
+      "diagram": {
+        "de": "",
+        "en": "",
+        "fa": ""
+      },
+      "source": "https://pubmed.ncbi.nlm.nih.gov/14716235/"
+    },
+    {
+      "id": "aq-brain-aq-meningitis-enzephalitis-normal-mri",
+      "topicId": "aq-meningitis-enzephalitis",
+      "category": {
+        "de": "Meningitis und Enzephalitis",
+        "en": "Meningitis and encephalitis",
+        "fa": "مننژیت و آنسفالیت"
+      },
+      "front": {
+        "de": "Welche diagnostische Grenze hat eine normale MRT bei Meningitisverdacht?",
+        "en": "What diagnostic limit does normal MRI have in suspected meningitis?",
+        "fa": "MRI طبیعی در شک به مننژیت چه محدودیت تشخیصی دارد؟"
+      },
+      "answer": {
+        "de": "Sie schließt Meningitis nicht aus und bestimmt keinen Erreger; klinische und Liquorbefunde bleiben entscheidend.",
+        "en": "It does not exclude meningitis or identify a pathogen; clinical and CSF findings remain essential.",
+        "fa": "مننژیت را رد نمی‌کند و عامل را تعیین نمی‌کند؛ یافته‌های بالینی و مایع مغزی‌نخاعی همچنان ضروری‌اند."
+      },
+      "explanation": {
+        "de": "Die kleine Originalstudie enthielt normale MRT bei viraler und bakterieller Meningitis. Eine normale MRT schließt die Erkrankung nicht aus und bestimmt ihre Ursache nicht; Klinik und Liquor bleiben wesentlich.",
+        "en": "The small original study included normal MRI in viral and bacterial meningitis. Normal MRI neither excludes the disease nor determines its cause; clinical and CSF findings remain essential.",
+        "fa": "مطالعهٔ اصلی کوچک، MRI طبیعی را در مننژیت ویروسی و باکتریایی گزارش کرد. MRI طبیعی نه بیماری را رد و نه علت را تعیین می‌کند؛ یافته‌های بالینی و مایع مغزی‌نخاعی همچنان ضروری‌اند."
+      },
+      "diagram": {
+        "de": "",
+        "en": "",
+        "fa": ""
+      },
+      "source": "https://pubmed.ncbi.nlm.nih.gov/14716235/"
+    },
+    {
+      "id": "aq-brain-aq-meningitis-enzephalitis-ventricular-complication",
+      "topicId": "aq-meningitis-enzephalitis",
+      "category": {
+        "de": "Meningitis und Enzephalitis",
+        "en": "Meningitis and encephalitis",
+        "fa": "مننژیت و آنسفالیت"
+      },
+      "front": {
+        "de": "Welche ventrikulären MRT-Befunde lassen bei ZNS-Infektion an Ventrikulitis denken?",
+        "en": "Which ventricular MRI findings raise concern for ventriculitis in CNS infection?",
+        "fa": "در عفونت دستگاه عصبی مرکزی، کدام یافته‌های بطنی MRI شک به ونتریکولیت را مطرح می‌کنند؟"
+      },
+      "answer": {
+        "de": "Besonders unregelmäßig sedimentierender Debris; ependymale Aufnahme und Hydrozephalus können hinzukommen. Blutprodukte differenzieren; kein Einzelzeichen ist obligat.",
+        "en": "Especially irregular dependent debris; ependymal enhancement and hydrocephalus may accompany it. Differentiate blood products; no single sign is required.",
+        "fa": "به‌ویژه دبری رسوب‌کردهٔ نامنظم؛ افزایش سیگنال اپاندیمی پس از تزریق و هیدروسفالی ممکن است همراه باشند. فرآورده‌های خونی افتراق داده شوند؛ هیچ علامت منفردی الزامی نیست."
+      },
+      "explanation": {
+        "de": "Unregelmäßiger ventrikulärer Debris ist im passenden Infektionskontext verdächtig auf Ventrikulitis. Ependymale Aufnahme und Hydrozephalus können begleiten. Material und Differenzialdiagnosen einschließlich Blutprodukte in der gesamten Untersuchung prüfen und den Komplikationsverdacht rasch kommunizieren.",
+        "en": "Irregular ventricular debris is suspicious for ventriculitis in the appropriate infectious context. Ependymal enhancement and hydrocephalus may accompany it. Assess the material and alternatives including blood products across the examination and communicate concern promptly.",
+        "fa": "دبری نامنظم داخل بطن در زمینهٔ عفونی مناسب شک به ونتریکولیت را مطرح می‌کند. افزایش سیگنال اپاندیمی پس از تزریق و هیدروسفالی ممکن است همراه باشند. مواد و افتراق‌ها از جمله فرآورده‌های خونی در کل بررسی ارزیابی و احتمال عارضه سریع اطلاع داده شود."
+      },
+      "diagram": {
+        "de": "",
+        "en": "",
+        "fa": ""
+      },
+      "source": "https://pubmed.ncbi.nlm.nih.gov/11559498/"
+    },
+    {
+      "id": "aq-brain-aq-cjd-clinical-pattern",
+      "topicId": "aq-cjd",
+      "category": {
+        "de": "CJK: Diffusionsmuster",
+        "en": "CJD diffusion patterns",
+        "fa": "الگوهای انتشار در CJD"
+      },
+      "front": {
+        "de": "Wie formuliert man ein CJK-verdächtiges MRT-Muster, ohne die Diagnose allein bildgebend festzulegen?",
+        "en": "How do you report a CJD-suspicious MRI pattern without establishing diagnosis from imaging alone?",
+        "fa": "الگوی MRI مشکوک به CJD چگونه بدون تعیین تشخیص صرفاً با تصویر گزارش می‌شود؟"
+      },
+      "answer": {
+        "de": "DWI/ADC-korrelierte kortikale und/oder striatale Verteilung beschreiben und bei rascher Progression CJK-Abklärung anregen; MRT allein ist keine definitive Diagnose.",
+        "en": "Describe DWI/ADC-concordant cortical and/or striatal distribution and suggest CJD evaluation in rapid progression; MRI alone is not a definitive diagnosis.",
+        "fa": "توزیع قشری و/یا استریاتال با تطابق DWI/ADC توصیف و در سیر سریع بررسی CJD پیشنهاد شود؛ MRI به‌تنهایی تشخیص قطعی نیست."
+      },
+      "explanation": {
+        "de": "Rascher Verlauf und nichtterritoriale kortiko-striatale Restriktion sind CJK-verdächtig. MRT ist ein diagnostischer Baustein; Klinik, weitere Diagnostik und behandelbare Differenzialdiagnosen bleiben erforderlich.",
+        "en": "Rapid progression and nonterritorial cortical-striatal restriction raise concern for CJD. MRI is one diagnostic component; clinical assessment, further testing and treatable alternatives remain essential.",
+        "fa": "سیر سریع و محدودیت انتشار قشری‌ـ‌استریاتال خارج از قلمرو عروقی شک به CJD را مطرح می‌کنند. MRI بخشی از تشخیص است؛ ارزیابی بالینی، بررسی تکمیلی و افتراق علل قابل درمان همچنان ضروری‌اند."
+      },
+      "diagram": {
+        "de": "",
+        "en": "",
+        "fa": ""
+      },
+      "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3100134/"
+    },
+    {
+      "id": "aq-brain-aq-cjd-limbic-mimic",
+      "topicId": "aq-cjd",
+      "category": {
+        "de": "CJK: Diffusionsmuster",
+        "en": "CJD diffusion patterns",
+        "fa": "الگوهای انتشار در CJD"
+      },
+      "front": {
+        "de": "Warum ist DWI-Helligkeit bei rascher Demenz kein ausreichender CJK-Nachweis?",
+        "en": "Why is bright DWI in rapid dementia insufficient to establish CJD?",
+        "fa": "چرا DWI روشن در دمانس سریع برای اثبات CJD کافی نیست؟"
+      },
+      "answer": {
+        "de": "ADC-Korrelation, Verteilung und Klinik prüfen; Anfälle, Enzephalitis, Ischämie oder Stoffwechselstörungen können imitieren.",
+        "en": "Check ADC, distribution and clinical context; seizures, encephalitis, ischaemia or metabolic disorders may mimic it.",
+        "fa": "ADC، توزیع و زمینهٔ بالینی بررسی شوند؛ تشنج، آنسفالیت، ایسکمی یا اختلال متابولیک می‌توانند تقلیدکننده باشند."
+      },
+      "explanation": {
+        "de": "Isolierte limbische FLAIR-Betonung ohne ADC-Abfall verlangt andere Ursachen, darunter autoimmune oder infektiöse Enzephalitis und Anfallsfolgen. Bildgebung allein trennt diese nicht sicher; DWI-Helligkeit ist nicht automatisch Restriktion.",
+        "en": "Isolated limbic FLAIR predominance without ADC reduction requires consideration of other causes, including autoimmune or infectious encephalitis and seizure effects. Imaging alone does not reliably separate these; bright DWI is not automatically restriction.",
+        "fa": "غلبهٔ منفرد FLAIR لیمبیک بدون افت ADC نیازمند بررسی علل دیگر، از جمله آنسفالیت خودایمنی یا عفونی و پیامد تشنج است. تصویربرداری به‌تنهایی این‌ها را با اطمینان جدا نمی‌کند؛ DWI روشن لزوماً محدودیت انتشار نیست."
+      },
+      "diagram": {
+        "de": "",
+        "en": "",
+        "fa": ""
+      },
+      "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3100134/"
+    },
+    {
+      "id": "aq-brain-aq-cjd-pulvinar-comparator",
+      "topicId": "aq-cjd",
+      "category": {
+        "de": "CJK: Diffusionsmuster",
+        "en": "CJD diffusion patterns",
+        "fa": "الگوهای انتشار در CJD"
+      },
+      "front": {
+        "de": "Welche Referenz und welcher klinische Kontext definieren das klassische Pulvinar-Zeichen?",
+        "en": "Which reference and clinical context define the classic pulvinar sign?",
+        "fa": "کدام مرجع و زمینهٔ بالینی علامت کلاسیک پول‌وینار را تعریف می‌کنند؟"
+      },
+      "answer": {
+        "de": "Beidseitiges Pulvinar-Signal höher als im vorderen Putamen, besonders im vCJK-Kontext; nicht jede thalamische Hyperintensität ist dieses Zeichen.",
+        "en": "Bilateral pulvinar signal higher than anterior putamen, particularly in vCJD context; not every thalamic hyperintensity is this sign.",
+        "fa": "سیگنال پول‌وینار دوطرفه بالاتر از پوتامن قدامی، به‌ویژه در زمینهٔ vCJD؛ هر هایپرسیگنال تالاموس این علامت نیست."
+      },
+      "explanation": {
+        "de": "Der beidseitige Pulvinar-Vergleich mit dem vorderen Putamen präzisiert das klassische Zeichen. Ein hellerer Pulvinar gegenüber anderen Thalamuskernen allein ist damit nicht gleichzusetzen. Das Zeichen gehört in den klinischen vCJK-Kontext, nicht als allgemeines sCJK-Leitzeichen.",
+        "en": "Bilateral pulvinar comparison with the anterior putamen defines the classic sign more precisely. Pulvinar brightness relative only to other thalamic nuclei is not equivalent. Interpret it in the clinical vCJD context rather than as a general sCJD hallmark.",
+        "fa": "مقایسهٔ پول‌وینار دوطرفه با پوتامن قدامی علامت کلاسیک را دقیق‌تر تعریف می‌کند. روشن‌بودن پول‌وینار صرفاً نسبت به سایر هسته‌های تالاموس معادل آن نیست. علامت در زمینهٔ بالینی vCJD تفسیر می‌شود، نه به‌عنوان نشانهٔ عمومی sCJD."
+      },
+      "diagram": {
+        "de": "",
+        "en": "",
+        "fa": ""
+      },
+      "source": "https://pubmed.ncbi.nlm.nih.gov/13679271/"
+    },
+    {
+      "id": "aq-msk-avn-imaging-specificity",
+      "topicId": "avn-huefte",
+      "front": {
+        "de": "Hüftschmerz, normales Röntgen und Knochenmarködem im MRT: Reicht das Ödem allein zur AVN-Diagnose und zu ARCO I?",
+        "en": "Hip pain, normal radiographs and MRI marrow oedema: is oedema alone sufficient to diagnose AVN and ARCO I?",
+        "fa": "درد مفصل ران، رادیوگرافی طبیعی و ادم مغز استخوان در MRI: آیا ادم به‌تنهایی برای تشخیص AVN و مرحلهٔ ARCO I کافی است؟"
+      },
+      "answer": {
+        "de": "Nein. Ein für Osteonekrose positiver MRT-/Szintigrafiebefund ist gefordert; Ödem allein ist unspezifisch.",
+        "en": "No. A positive MRI/bone-scan finding for osteonecrosis is required; oedema alone is nonspecific.",
+        "fa": "خیر. یافتهٔ مثبت MRI/اسکن استخوان به نفع استئونکروز لازم است؛ ادم به‌تنهایی غیراختصاصی است."
+      },
+      "explanation": {
+        "de": "Die Lektion trennt die undatierte PDF-Tabelle von ARCO 2019. Den nekrotischen Herd und sein Randmuster beurteilen, nicht jedes Ödem als Nekrose einstufen.",
+        "en": "The lesson separates the undated PDF table from ARCO 2019. Assess the necrotic lesion and its interface pattern rather than labelling every oedema as necrosis.",
+        "fa": "درس، جدول بدون تاریخ PDF را از ARCO ۲۰۱۹ جدا می‌کند. کانون نکروتیک و الگوی حاشیهٔ آن را ارزیابی کنید، نه آنکه هر ادمی نکروز تلقی شود."
+      },
+      "source": "https://pubmed.ncbi.nlm.nih.gov/31866252/; https://pubmed.ncbi.nlm.nih.gov/10990307/; https://pubmed.ncbi.nlm.nih.gov/15145483/"
+    },
+    {
+      "id": "aq-msk-avn-structural-stage",
+      "topicId": "avn-huefte",
+      "front": {
+        "de": "ARCO 2019: Welche Strukturmerkmale trennen Stadium II, III und IV?",
+        "en": "ARCO 2019: which structural findings distinguish stages II, III and IV?",
+        "fa": "ARCO ۲۰۱۹: کدام یافته‌های ساختاری مراحل II، III و IV را از هم جدا می‌کنند؟"
+      },
+      "answer": {
+        "de": "II: Röntgenveränderungen ohne Fraktur/Abflachung. III: subchondrale/nekrotische Fraktur; Depression ≤2 oder >2 mm trennt IIIA/IIIB. IV: Arthrosezeichen.",
+        "en": "II: radiographic abnormality without fracture/flattening. III: subchondral/necrotic-zone fracture; depression ≤2 or >2 mm separates IIIA/IIIB. IV: osteoarthritis.",
+        "fa": "II: تغییر رادیوگرافیک بدون شکستگی/صاف‌شدن. III: شکستگی زیرغضروفی/ناحیهٔ نکروتیک؛ فرورفتگی ≤۲ یا >۲ میلی‌متر IIIA/IIIB را جدا می‌کند. IV: آرتروز."
+      },
+      "explanation": {
+        "de": "ARCO 2019 ordnet die subchondrale oder nekrotische Fraktur Stadium III zu: IIIA bei Depression ≤2 mm, IIIB bei >2 mm. Stadium IV erfordert radiographische Arthrosezeichen; die Depression allein macht kein Stadium IV.",
+        "en": "ARCO 2019 assigns subchondral or necrotic-zone fracture to stage III: IIIA for depression ≤2 mm and IIIB for >2 mm. Stage IV requires radiographic osteoarthritis; depression alone does not make stage IV.",
+        "fa": "ARCO ۲۰۱۹ شکستگی زیرغضروفی یا ناحیهٔ نکروتیک را در مرحلهٔ III قرار می‌دهد: IIIA برای فرورفتگی ≤۲ میلی‌متر و IIIB برای >۲ میلی‌متر. مرحلهٔ IV به نشانه‌های رادیوگرافیک آرتروز نیاز دارد؛ فرورفتگی به‌تنهایی مرحلهٔ IV ایجاد نمی‌کند."
+      },
+      "source": "https://pubmed.ncbi.nlm.nih.gov/31866252/"
+    },
+    {
+      "id": "aq-msk-avn-report-fracture",
+      "topicId": "avn-huefte",
+      "front": {
+        "de": "Femurkopfosteonekrose mit Kollaps: Welche Befundangaben machen das Staging nachvollziehbar?",
+        "en": "Femoral-head osteonecrosis with collapse: which report findings make staging traceable?",
+        "fa": "استئونکروز سر فمور همراه فروریزش: کدام اطلاعات گزارش، مرحله‌بندی را قابل پیگیری می‌کنند؟"
+      },
+      "answer": {
+        "de": "Fraktur/Kontureinbruch, gemessene Depression und Gelenkspalt-/Arthrosezeichen angeben; verwendete ARCO-Version nennen.",
+        "en": "State fracture/contour collapse, measured depression and joint-space/osteoarthritis findings; identify the ARCO version.",
+        "fa": "شکستگی/فروریزش کانتور، فرورفتگی اندازه‌گیری‌شده و وضعیت فضای مفصلی/نشانه‌های آرتروز را ذکر و نسخهٔ ARCO را مشخص کنید."
+      },
+      "explanation": {
+        "de": "Die Version und die strukturellen Merkmale sind aussagekräftiger als eine alleinige Stufenzahl oder Ödembeschreibung; daraus folgt kein automatischer Therapiebefehl.",
+        "en": "The version and structural findings are more informative than a stage number or oedema description alone; they do not impose an automatic treatment instruction.",
+        "fa": "نسخه و یافته‌های ساختاری از شمارهٔ مرحله یا توصیف ادم به‌تنهایی گویاترند؛ این اطلاعات دستور درمانی خودکار ایجاد نمی‌کنند."
+      },
+      "source": "https://pubmed.ncbi.nlm.nih.gov/31866252/"
+    },
+    {
+      "id": "aq-msk-melor-morphology",
+      "topicId": "melorheostose",
+      "front": {
+        "de": "Welches klassische Röntgenmuster verbindet Melorheostose mit „tropfendem Kerzenwachs“?",
+        "en": "Which classic radiographic pattern links melorheostosis with “dripping candlewax”?",
+        "fa": "کدام الگوی کلاسیک رادیوگرافی، ملوره‌اوستوز را به «موم شمعِ چکیده» مرتبط می‌کند؟"
+      },
+      "answer": {
+        "de": "Irreguläre, fließende kortikale Hyperostose entlang eines Knochens; die tatsächliche Verteilung und Ausdehnung beschreiben.",
+        "en": "Irregular flowing cortical hyperostosis along a bone; describe the actual distribution and extent.",
+        "fa": "هیپراستوز قشری نامنظم و پیوسته در امتداد استخوان؛ توزیع و وسعت واقعی را توصیف کنید."
+      },
+      "explanation": {
+        "de": "Das ist ein klassisches, aber nicht obligatorisches Muster jedes Falls. Andere radiographische Erscheinungsformen sind beschrieben.",
+        "en": "This is a classic pattern, not a required appearance of every case. Other radiographic patterns are described.",
+        "fa": "این یک الگوی کلاسیک است، نه نمای الزامی تمام موارد. الگوهای رادیوگرافیک دیگری نیز توصیف شده‌اند."
+      },
+      "source": "https://onlinelibrary.wiley.com/doi/full/10.1002/jbm4.10472"
+    },
+    {
+      "id": "aq-msk-melor-mri-role",
+      "topicId": "melorheostose",
+      "front": {
+        "de": "Bei Melorheostose erklärt die sichtbare Knochenverteilung die Beschwerden nicht ausreichend. Welche ergänzende Frage kann MRT klären?",
+        "en": "In melorheostosis, visible bone distribution does not fully explain symptoms. Which complementary question can MRI address?",
+        "fa": "در ملوره‌اوستوز، توزیع استخوانی قابل مشاهده علائم را به‌طور کامل توضیح نمی‌دهد. MRI کدام پرسش تکمیلی را می‌تواند بررسی کند؟"
+      },
+      "answer": {
+        "de": "Begleitende Weichteilveränderungen, Ödem und Knochenmarkreaktion prüfen; CT beschreibt die knöcherne Ausdehnung und Ossifikationen besonders gut.",
+        "en": "Assess associated soft-tissue abnormalities, oedema and marrow reaction; CT particularly defines osseous extent and ossifications.",
+        "fa": "تغییرات همراه بافت نرم، ادم و واکنش مغز استخوان را بررسی کند؛ CT وسعت استخوانی و استخوانی‌شدن‌ها را به‌خوبی مشخص می‌کند."
+      },
+      "explanation": {
+        "de": "In der 40-Fälle-Serie ergänzte MRT vor allem Weichteil- und reaktive Befunde. Das ist eine gezielte Ergänzung, keine automatische MRT-Pflicht jedes Zufallsbefunds.",
+        "en": "In the 40-case series, MRI mainly added soft-tissue and reactive findings. This is a targeted complement, not mandatory MRI for every incidental finding.",
+        "fa": "در مجموعهٔ ۴۰ موردی، MRI عمدتاً یافته‌های بافت نرم و واکنشی را تکمیل کرد. این بررسی تکمیلی هدفمند است، نه الزام MRI برای هر یافتهٔ اتفاقی."
+      },
+      "source": "https://onlinelibrary.wiley.com/doi/full/10.1002/jbm4.10472"
+    },
+    {
+      "id": "aq-msk-melor-edema-limit",
+      "topicId": "melorheostose",
+      "front": {
+        "de": "Schließt Ödem neben einer typischen sklerotischen Melorheostose-Komponente die Erkrankung aus?",
+        "en": "Does oedema adjacent to a typical sclerotic melorheostosis component exclude the disease?",
+        "fa": "آیا ادم مجاور جزء اسکلروتیک تیپیک ملوره‌اوستوز، بیماری را رد می‌کند؟"
+      },
+      "answer": {
+        "de": "Nein. Den signalarmen sklerotischen Kern von begleitenden reaktiven Weichteil-/Markveränderungen unterscheiden.",
+        "en": "No. Distinguish the low-signal sclerotic core from associated reactive soft-tissue or marrow changes.",
+        "fa": "خیر. هستهٔ اسکلروتیک کم‌سیگنال را از تغییرات واکنشی همراهِ بافت نرم یا مغز استخوان جدا کنید."
+      },
+      "explanation": {
+        "de": "Die absolute PDF-Aussage „kein Ödem“ wird durch die primäre Bildgebungsserie begrenzt: Ödem kann als Begleitbefund vorkommen und ist kein pauschaler Ausschlusstest.",
+        "en": "The PDF’s absolute “no oedema” statement is qualified by the primary imaging series: oedema can coexist and is not a blanket exclusion test.",
+        "fa": "گزارهٔ مطلق «نبود ادم» در PDF با مجموعهٔ اولیهٔ تصویربرداری تعدیل می‌شود: ادم ممکن است همراه باشد و آزمون کلی برای رد بیماری نیست."
+      },
+      "source": "https://onlinelibrary.wiley.com/doi/full/10.1002/jbm4.10472"
+    },
+    {
+      "id": "aq-msk-knee-medial-report",
+      "topicId": "kreuzbaender",
+      "front": {
+        "de": "MCL-Verletzung mit posteromedialem Ödem: Welche Angaben ergänzen eine bloße Gradzahl im Befund?",
+        "en": "MCL injury with posteromedial oedema: which findings add value beyond a grade number?",
+        "fa": "آسیب MCL همراه ادم خلفی‌ـ‌داخلی: کدام اطلاعات، گزارش را فراتر از ذکر یک درجه تکمیل می‌کنند؟"
+      },
+      "answer": {
+        "de": "Ort und Kontinuität der MCL-Anteile beschreiben und das POL sowie weitere posteromediale Strukturen gezielt prüfen; Ödem allein nicht als bewiesene POL-Ruptur bezeichnen.",
+        "en": "Describe the site and continuity of MCL components and assess the POL and other posteromedial structures directly; oedema alone does not establish a POL tear.",
+        "fa": "محل و پیوستگی اجزای MCL را توصیف و POL و دیگر ساختارهای خلفی‌ـ‌داخلی را هدفمند بررسی کنید؛ ادم به‌تنهایی پارگی POL را اثبات نمی‌کند."
+      },
+      "explanation": {
+        "de": "Die primäre MRT-Serie fand POL-Verletzungen häufig im Rahmen komplexer Bandverletzungen. Die Assoziation begründet eine gezielte Suche, nicht die automatische Diagnose einer Begleitruptur.",
+        "en": "The primary MRI series found POL injury frequently within complex ligament injuries. Association supports targeted assessment, not automatic diagnosis of an associated tear.",
+        "fa": "مجموعهٔ اولیهٔ MRI، آسیب POL را اغلب در چارچوب آسیب‌های پیچیدهٔ رباطی یافت. این ارتباط، بررسی هدفمند را توجیه می‌کند، نه تشخیص خودکار پارگی همراه را."
+      },
+      "source": "https://pubmed.ncbi.nlm.nih.gov/34626207/"
+    },
+    {
+      "id": "aq-msk-infarct-report",
+      "topicId": "knocheninfarkt",
+      "front": {
+        "de": "Verdacht auf medullären Knocheninfarkt: Welche drei Beschreibungsaspekte gehören in einen nützlichen Befund?",
+        "en": "Suspected medullary bone infarct: which three descriptive dimensions belong in a useful report?",
+        "fa": "شک به انفارکت مدولاری استخوان: کدام سه محور توصیفی باید در گزارش مفید ذکر شوند؟"
+      },
+      "answer": {
+        "de": "Lokalisation/Markraumkompartiment, Randmuster und zentrales Fettmark getrennt beschreiben; Ödem, Weichteilreaktion und klinische Warnzeichen zusätzlich einordnen.",
+        "en": "Describe location/marrow compartment, border pattern and central fatty marrow separately; additionally assess oedema, soft-tissue reaction and clinical warning signs.",
+        "fa": "محل/کمپارتمان مغز استخوان، الگوی حاشیه و مغز استخوان چرب مرکزی را جداگانه توصیف کنید؛ ادم، واکنش بافت نرم و علائم هشدار بالینی را نیز ارزیابی کنید."
+      },
+      "explanation": {
+        "de": "Der Begriff allein ersetzt keine morphologische Beschreibung. Ein fehlendes Double-Line-Zeichen schließt Osteonekrose nicht aus, und ein Infarktmuster schließt eine zusätzliche Infektion nicht aus.",
+        "en": "The label alone does not replace morphologic description. An absent double-line sign does not exclude osteonecrosis, and an infarct pattern does not exclude superimposed infection.",
+        "fa": "نام‌گذاری به‌تنهایی جای توصیف مورفولوژیک را نمی‌گیرد. نبود علامت خط دوگانه، استئونکروز را رد نمی‌کند و الگوی انفارکت نیز عفونت افزوده را رد نمی‌کند."
+      },
+      "source": "https://pubmed.ncbi.nlm.nih.gov/8508844/; https://pubmed.ncbi.nlm.nih.gov/10745133/"
+    },
+    {
+      "id": "aq-brain-aq-parkinson-technical-confidence",
+      "topicId": "aq-parkinson",
+      "category": {
+        "de": "Parkinson-Bildgebung",
+        "en": "Imaging in parkinsonism",
+        "fa": "تصویربرداری سندرم پارکینسونی"
+      },
+      "front": {
+        "de": "Wie wird ein bewegungsbedingt nicht sicher sichtbares Nigrosom-Zeichen berichtet?",
+        "en": "How is a nigrosome sign that cannot be confidently seen because of motion reported?",
+        "fa": "نشانهٔ نیگروزوم که به‌علت حرکت با اطمینان دیده نمی‌شود چگونه گزارش می‌شود؟"
+      },
+      "answer": {
+        "de": "Als technisch nicht sicher beurteilbar, nicht als bestätigt fehlend oder normal; Bildqualität und klinischen Kontext nennen.",
+        "en": "As technically indeterminate, rather than confirmed absent or normal; state image quality and clinical context.",
+        "fa": "به‌صورت غیرقابل ارزیابی با اطمینان به‌دلایل فنی، نه غایبِ تأییدشده یا طبیعی؛ کیفیت تصویر و زمینهٔ بالینی ذکر شوند."
+      },
+      "explanation": {
+        "de": "Nicht sicher sichtbar ist bei Bewegungsunschärfe nicht gleichbedeutend mit sicher fehlend. Technische Einschränkung dokumentieren; aus diesem Befund keine positive oder negative Parkinson-Diagnose ableiten. Auch bei guter Qualität bleibt die Aussage eines isolierten Nigrosom-Zeichens begrenzt.",
+        "en": "Not confidently visible under motion blur does not mean confirmed absence. Document the technical limitation; derive neither a positive nor a negative Parkinson diagnosis from this finding. Even at adequate quality, an isolated nigrosome sign has limited interpretation.",
+        "fa": "دیده‌نشدن با اطمینان در حضور محوشدگی حرکتی معادل نبودِ تأییدشده نیست. محدودیت فنی را ثبت کنید و از این یافته نه تشخیص مثبت و نه منفی پارکینسون نتیجه بگیرید. حتی با کیفیت مناسب نیز تفسیر نشانهٔ منفرد نیگروزوم محدودیت دارد."
+      },
+      "diagram": {
+        "de": "",
+        "en": "",
+        "fa": ""
+      },
+      "source": "https://doi.org/10.1371/journal.pone.0231010"
+    },
+    {
+      "id": "aq-brain-aq-parkinson-dat-limits",
+      "topicId": "aq-parkinson",
+      "category": {
+        "de": "Parkinson-Bildgebung",
+        "en": "Imaging in parkinsonism",
+        "fa": "تصویربرداری سندرم پارکینسونی"
+      },
+      "front": {
+        "de": "Welche zentrale Aussagegrenze hat ein pathologischer DaTSCAN bei Parkinson-Syndrom?",
+        "en": "What is the central interpretive limitation of an abnormal DaTSCAN in parkinsonism?",
+        "fa": "محدودیت اصلی تفسیر DaTSCAN غیرطبیعی در سندرم پارکینسونی چیست؟"
+      },
+      "answer": {
+        "de": "Ein präsynaptisches dopaminerges Defizit stützt keine sichere Trennung von PD, MSA und PSP; die Syndromzuordnung bleibt klinisch.",
+        "en": "A presynaptic dopaminergic deficit does not reliably distinguish PD, MSA and PSP; syndrome classification remains clinical.",
+        "fa": "نقص دوپامینرژیک پیش‌سیناپسی PD، MSA و PSP را با اطمینان از هم جدا نمی‌کند؛ طبقه‌بندی سندرم همچنان بالینی است."
+      },
+      "explanation": {
+        "de": "DaTSCAN beurteilt funktionelle präsynaptische dopaminerge Endigungen. Die zugelassene Aussage umfasst nicht die Trennung von PD, MSA und PSP. Klinisches Syndrom, Verlauf und ergänzende Untersuchungen bleiben entscheidend.",
+        "en": "DaTSCAN assesses functional presynaptic dopaminergic terminals. Its approved interpretation does not include distinguishing PD, MSA and PSP. Clinical syndrome, course and additional tests remain essential.",
+        "fa": "DaTSCAN پایانه‌های عملکردی دوپامینرژیک پیش‌سیناپسی را ارزیابی می‌کند. کاربرد تأییدشدهٔ آن شامل تفکیک PD، MSA و PSP نیست. سندرم بالینی، سیر بیماری و بررسی‌های تکمیلی همچنان تعیین‌کننده‌اند."
+      },
+      "diagram": {
+        "de": "",
+        "en": "",
+        "fa": ""
+      },
+      "source": "https://www.ema.europa.eu/en/documents/product-information/datscan-epar-product-information_en.pdf"
+    },
+    {
+      "id": "aq-brain-aq-parkinson-fdg-measurement",
+      "topicId": "aq-parkinson",
+      "category": {
+        "de": "Parkinson-Bildgebung",
+        "en": "Imaging in parkinsonism",
+        "fa": "تصویربرداری سندرم پارکینسونی"
+      },
+      "front": {
+        "de": "Was ergänzt FDG-PET gegenüber DAT-SPECT in der Parkinson-Differenzialdiagnostik?",
+        "en": "What does FDG PET add to DAT SPECT in the parkinsonian differential?",
+        "fa": "FDG-PET در افتراق سندرم‌های پارکینسونی چه چیزی به DAT-SPECT اضافه می‌کند؟"
+      },
+      "answer": {
+        "de": "Regionale Glukosestoffwechselmuster statt Transporterbindung; als Ergänzung zu Klinik und MRT, unter Beachtung von Therapieeinflüssen.",
+        "en": "Regional glucose metabolism patterns rather than transporter binding; as a complement to clinical assessment and MRI, accounting for treatment effects.",
+        "fa": "الگوهای منطقه‌ای متابولیسم گلوکز به‌جای اتصال ناقل؛ مکمل بالین و MRI، با توجه به اثر درمان."
+      },
+      "explanation": {
+        "de": "FDG-PET beurteilt regionale Glukosestoffwechselmuster und kann die klinische Differenzialdiagnose von PD und atypischen Syndromen ergänzen. Relative Zu- und Abnahmen sind möglich; Therapie und klinischer Kontext beeinflussen die Einordnung. Sie wiederholt keine DAT-Messung.",
+        "en": "FDG PET assesses regional glucose metabolism patterns and may complement clinical differentiation of PD and atypical syndromes. Relative increases and decreases can occur; treatment and clinical context affect interpretation. It does not repeat a DAT measurement.",
+        "fa": "FDG-PET الگوهای منطقه‌ای متابولیسم گلوکز را ارزیابی می‌کند و می‌تواند افتراق بالینی PD و سندرم‌های غیرمعمول را تکمیل کند. افزایش و کاهش نسبی ممکن‌اند؛ درمان و زمینهٔ بالینی بر تفسیر اثر می‌گذارند. این روش تکرار اندازه‌گیری DAT نیست."
+      },
+      "diagram": {
+        "de": "",
+        "en": "",
+        "fa": ""
+      },
+      "source": "https://doi.org/10.2967/jnumed.124.268754"
     }
   ],
   "topics": [
@@ -6325,6 +8717,66 @@
       "href": "/flashcards/aq-hirnabszess"
     },
     {
+      "id": "aq-hiv-enzephalopathie",
+      "title": {
+        "de": "HIV-assoziierte Hirnveränderungen",
+        "en": "HIV-associated brain changes",
+        "fa": "تغییرات مغزی مرتبط با HIV"
+      },
+      "subject": "gehirn",
+      "description": {
+        "de": "Klinische Bildinterpretation und Befundentscheidungen",
+        "en": "Clinical image interpretation and reporting decisions",
+        "fa": "تفسیر بالینی تصاویر و تصمیم‌های گزارش‌نویسی"
+      },
+      "href": "/flashcards/aq-hiv-enzephalopathie"
+    },
+    {
+      "id": "aq-meningitis-enzephalitis",
+      "title": {
+        "de": "Meningitis und Enzephalitis",
+        "en": "Meningitis and encephalitis",
+        "fa": "مننژیت و آنسفالیت"
+      },
+      "subject": "gehirn",
+      "description": {
+        "de": "Klinische Bildinterpretation und Befundentscheidungen",
+        "en": "Clinical image interpretation and reporting decisions",
+        "fa": "تفسیر بالینی تصاویر و تصمیم‌های گزارش‌نویسی"
+      },
+      "href": "/flashcards/aq-meningitis-enzephalitis"
+    },
+    {
+      "id": "aq-cjd",
+      "title": {
+        "de": "CJK: Diffusionsmuster",
+        "en": "CJD diffusion patterns",
+        "fa": "الگوهای انتشار در CJD"
+      },
+      "subject": "gehirn",
+      "description": {
+        "de": "Klinische Bildinterpretation und Befundentscheidungen",
+        "en": "Clinical image interpretation and reporting decisions",
+        "fa": "تفسیر بالینی تصاویر و تصمیم‌های گزارش‌نویسی"
+      },
+      "href": "/flashcards/aq-cjd"
+    },
+    {
+      "id": "aq-parkinson",
+      "title": {
+        "de": "Parkinson-Bildgebung",
+        "en": "Imaging in parkinsonism",
+        "fa": "تصویربرداری سندرم پارکینسونی"
+      },
+      "subject": "gehirn",
+      "description": {
+        "de": "Klinische Bildinterpretation und Befundentscheidungen",
+        "en": "Clinical image interpretation and reporting decisions",
+        "fa": "تفسیر بالینی تصاویر و تصمیم‌های گزارش‌نویسی"
+      },
+      "href": "/flashcards/aq-parkinson"
+    },
+    {
       "id": "morbus-perthes",
       "subject": "msk",
       "title": {
@@ -6383,6 +8835,36 @@
         "fa": "اصطلاح کلی، آسیب حاد صفحهٔ رشد و کاربرد در بزرگسالان"
       },
       "href": "/flashcards/weitere-osteochondrosen"
+    },
+    {
+      "id": "avn-huefte",
+      "title": {
+        "de": "Avaskuläre Femurkopfnekrose",
+        "en": "Femoral-head osteonecrosis",
+        "fa": "استئونکروز سر فمور"
+      },
+      "subject": "msk",
+      "description": {
+        "de": "Bildmuster · ARCO 2019 · strukturierter Befund",
+        "en": "Imaging pattern · ARCO 2019 · structured reporting",
+        "fa": "الگوی تصویری · ARCO ۲۰۱۹ · گزارش ساختاریافته"
+      },
+      "href": "/flashcards/avn-huefte"
+    },
+    {
+      "id": "melorheostose",
+      "title": {
+        "de": "Melorheostose",
+        "en": "Melorheostosis",
+        "fa": "ملوره‌اوستوز"
+      },
+      "subject": "msk",
+      "description": {
+        "de": "Kortikale Hyperostose · ergänzende MRT · Befundgrenzen",
+        "en": "Cortical hyperostosis · complementary MRI · interpretation limits",
+        "fa": "هیپراستوز قشری · MRI تکمیلی · محدودیت تفسیر"
+      },
+      "href": "/flashcards/melorheostose"
     },
     {
       "id": "aq-atv-intervention",
@@ -6769,6 +9251,379 @@
         }
       ],
       "status": "AUTHORED_REVIEW_PENDING"
+    },
+    {
+      "route": "/gehirn/infektionen/hiv-enzephalopathie",
+      "topicId": "aq-hiv-enzephalopathie",
+      "learningGoals": [
+        {
+          "id": "diffuse-pattern",
+          "text": {
+            "de": "Ein diffuses HIV-kompatibles Muster von fokalen opportunistischen Läsionen abgrenzen.",
+            "en": "Distinguish a diffuse HIV-compatible pattern from focal opportunistic lesions.",
+            "fa": "الگوی منتشر سازگار با HIV را از ضایعات کانونی فرصت‌طلب تفکیک کنید."
+          },
+          "questionIds": [
+            "aq-brain-aq-hiv-enzephalopathie-de-diffuse-pattern"
+          ],
+          "cardIds": [
+            "aq-brain-aq-hiv-enzephalopathie-diffuse-pattern"
+          ]
+        },
+        {
+          "id": "pml-differential",
+          "text": {
+            "de": "Asymmetrische subkortikale Veränderungen bei HIV als PML-verdächtig erkennen.",
+            "en": "Recognise asymmetric subcortical changes in HIV as suspicious for PML.",
+            "fa": "تغییرات نامتقارن زیرقشری در HIV را مشکوک به PML بشناسید."
+          },
+          "questionIds": [
+            "aq-brain-aq-hiv-enzephalopathie-de-pml-differential"
+          ],
+          "cardIds": [
+            "aq-brain-aq-hiv-enzephalopathie-pml-differential"
+          ]
+        },
+        {
+          "id": "pml-iris",
+          "text": {
+            "de": "Entzündliche PML nach Immunrekonstitution als Ausnahme zum typischen Muster einordnen.",
+            "en": "Recognise inflammatory PML after immune reconstitution as an exception to the typical pattern.",
+            "fa": "PML التهابی پس از بازسازی ایمنی را استثنایی بر الگوی معمول بدانید."
+          },
+          "questionIds": [
+            "aq-brain-aq-hiv-enzephalopathie-de-pml-iris"
+          ],
+          "cardIds": [
+            "aq-brain-aq-hiv-enzephalopathie-pml-iris"
+          ]
+        }
+      ],
+      "status": "AUTHORED_REVIEW_PENDING"
+    },
+    {
+      "route": "/gehirn/infektionen/meningitis-enzephalitis",
+      "topicId": "aq-meningitis-enzephalitis",
+      "learningGoals": [
+        {
+          "id": "compartments",
+          "text": {
+            "de": "Meningeale und parenchymale Befunde anatomisch zuordnen.",
+            "en": "Localise meningeal and parenchymal findings anatomically.",
+            "fa": "یافته‌های مننژی و پارانشیمی را از نظر آناتومیک تعیین محل کنید."
+          },
+          "questionIds": [
+            "aq-brain-aq-meningitis-enzephalitis-de-compartments"
+          ],
+          "cardIds": [
+            "aq-brain-aq-meningitis-enzephalitis-compartments"
+          ]
+        },
+        {
+          "id": "normal-mri",
+          "text": {
+            "de": "Eine normale MRT bei Meningitisverdacht korrekt begrenzen.",
+            "en": "State the limits of normal MRI in suspected meningitis.",
+            "fa": "محدودیت MRI طبیعی در شک به مننژیت را بیان کنید."
+          },
+          "questionIds": [
+            "aq-brain-aq-meningitis-enzephalitis-de-normal-mri"
+          ],
+          "cardIds": [
+            "aq-brain-aq-meningitis-enzephalitis-normal-mri"
+          ]
+        },
+        {
+          "id": "ventricular-complication",
+          "text": {
+            "de": "Ventrikulären Debris im Infektionskontext als Komplikationshinweis erkennen.",
+            "en": "Recognise ventricular debris in infectious context as a complication clue.",
+            "fa": "دبری بطنی در زمینهٔ عفونی را سرنخ عارضه بدانید."
+          },
+          "questionIds": [
+            "aq-brain-aq-meningitis-enzephalitis-de-ventricular-complication"
+          ],
+          "cardIds": [
+            "aq-brain-aq-meningitis-enzephalitis-ventricular-complication"
+          ]
+        }
+      ],
+      "status": "AUTHORED_REVIEW_PENDING"
+    },
+    {
+      "route": "/gehirn/neurodegeneration/cjd",
+      "topicId": "aq-cjd",
+      "learningGoals": [
+        {
+          "id": "clinical-pattern",
+          "text": {
+            "de": "Ein CJK-verdächtiges Grau-Substanz-Muster klinisch einordnen.",
+            "en": "Interpret a CJD-suspicious grey-matter pattern clinically.",
+            "fa": "الگوی مشکوک به CJD در مادهٔ خاکستری را در زمینهٔ بالینی تفسیر کنید."
+          },
+          "questionIds": [
+            "aq-brain-aq-cjd-de-clinical-pattern"
+          ],
+          "cardIds": [
+            "aq-brain-aq-cjd-clinical-pattern"
+          ]
+        },
+        {
+          "id": "limbic-mimic",
+          "text": {
+            "de": "Ein vorwiegend limbisches FLAIR-Muster als Anlass zur Differenzialdiagnose erkennen.",
+            "en": "Recognise a predominantly limbic FLAIR pattern as a reason to broaden the differential.",
+            "fa": "الگوی عمدتاً لیمبیک FLAIR را دلیلی برای گسترش افتراق بدانید."
+          },
+          "questionIds": [
+            "aq-brain-aq-cjd-de-limbic-mimic"
+          ],
+          "cardIds": [
+            "aq-brain-aq-cjd-limbic-mimic"
+          ]
+        },
+        {
+          "id": "pulvinar-comparator",
+          "text": {
+            "de": "Das klassische Pulvinar-Zeichen der vCJK von unspezifischem Thalamussignal abgrenzen.",
+            "en": "Distinguish the classic vCJD pulvinar sign from nonspecific thalamic signal.",
+            "fa": "علامت کلاسیک پول‌وینار vCJD را از سیگنال غیراختصاصی تالاموس جدا کنید."
+          },
+          "questionIds": [
+            "aq-brain-aq-cjd-de-pulvinar-comparator"
+          ],
+          "cardIds": [
+            "aq-brain-aq-cjd-pulvinar-comparator"
+          ]
+        }
+      ],
+      "status": "AUTHORED_REVIEW_PENDING"
+    },
+    {
+      "route": "/gehirn/neurodegeneration/parkinson",
+      "topicId": "aq-parkinson",
+      "learningGoals": [
+        {
+          "id": "technical-confidence",
+          "text": {
+            "de": "Technisch eingeschränkte Nigrosom-Sichtbarkeit angemessen berichten.",
+            "en": "Report technically limited nigrosome visibility appropriately.",
+            "fa": "دیده‌شدن نیگروزوم با محدودیت فنی را مناسب گزارش کنید."
+          },
+          "questionIds": [
+            "aq-brain-aq-parkinson-de-technical-confidence"
+          ],
+          "cardIds": [
+            "aq-brain-aq-parkinson-technical-confidence"
+          ]
+        },
+        {
+          "id": "dat-limits",
+          "text": {
+            "de": "Eine reduzierte DAT-Bindung von einer spezifischen Parkinson-Syndromdiagnose trennen.",
+            "en": "Separate reduced DAT binding from a specific parkinsonian syndrome diagnosis.",
+            "fa": "کاهش اتصال DAT را از تشخیص سندرم پارکینسونی مشخص جدا کنید."
+          },
+          "questionIds": [
+            "aq-brain-aq-parkinson-de-dat-limits"
+          ],
+          "cardIds": [
+            "aq-brain-aq-parkinson-dat-limits"
+          ]
+        },
+        {
+          "id": "fdg-measurement",
+          "text": {
+            "de": "FDG-PET als ergänzende Stoffwechselmuster-Beurteilung einordnen.",
+            "en": "Interpret FDG PET as complementary metabolic-pattern assessment.",
+            "fa": "FDG-PET را بررسی تکمیلی الگوی متابولیسم بدانید."
+          },
+          "questionIds": [
+            "aq-brain-aq-parkinson-de-fdg-measurement"
+          ],
+          "cardIds": [
+            "aq-brain-aq-parkinson-fdg-measurement"
+          ]
+        }
+      ],
+      "status": "AUTHORED_REVIEW_PENDING"
+    },
+    {
+      "route": "/gehirn/anatomie/normaldruckhydrozephalus",
+      "topicId": "normaldruckhydrozephalus",
+      "learningGoals": [
+        {
+          "id": "ventriculomegaly-pattern",
+          "text": {
+            "de": "Ventrikulomegalie und DESH von proportionaler Atrophie abgrenzen und angemessen berichten.",
+            "en": "Distinguish ventriculomegaly/DESH from proportional atrophy and report appropriately.",
+            "fa": "بزرگی بطن و DESH را از آتروفی متناسب تفکیک و مناسب گزارش کنید."
+          },
+          "questionIds": [
+            "normaldruckhydrozephalus-de-04",
+            "normaldruckhydrozephalus-de-05",
+            "normaldruckhydrozephalus-de-08",
+            "normaldruckhydrozephalus-de-12"
+          ],
+          "cardIds": [
+            "normaldruckhydrozephalus-06-desh",
+            "normaldruckhydrozephalus-07-atrophie",
+            "normaldruckhydrozephalus-15-befund"
+          ]
+        },
+        {
+          "id": "standard-measurement",
+          "text": {
+            "de": "Evans-Index und Balkenwinkel in standardisierten Ebenen beurteilen.",
+            "en": "Assess Evans index and callosal angle in standardised planes.",
+            "fa": "شاخص ایوانز و زاویهٔ کالوزال را در صفحات استاندارد ارزیابی کنید."
+          },
+          "questionIds": [
+            "normaldruckhydrozephalus-de-03",
+            "normaldruckhydrozephalus-de-06",
+            "normaldruckhydrozephalus-de-07"
+          ],
+          "cardIds": [
+            "normaldruckhydrozephalus-04-evans",
+            "normaldruckhydrozephalus-05-callosal"
+          ]
+        },
+        {
+          "id": "supporting-imaging-limits",
+          "text": {
+            "de": "Flusszeichen, periventrikuläres Signal und Cingulum-Morphologie als unterstützend und begrenzt einordnen.",
+            "en": "Interpret flow signs, periventricular signal and cingulate morphology as supportive and limited.",
+            "fa": "نشانه‌های جریان، سیگنال پیرابطنی و مورفولوژی سینگولیت را حمایتی و دارای محدودیت تفسیر کنید."
+          },
+          "questionIds": [
+            "normaldruckhydrozephalus-de-09"
+          ],
+          "cardIds": [
+            "normaldruckhydrozephalus-08-polkappen",
+            "normaldruckhydrozephalus-09-flowvoid",
+            "normaldruckhydrozephalus-10-cingulate"
+          ]
+        },
+        {
+          "id": "clinical-profile",
+          "text": {
+            "de": "Das typische Gang-/Triasprofil und die klinisch-radiologische Definition nennen.",
+            "en": "Recall the typical gait/triad profile and clinical-radiological definition.",
+            "fa": "الگوی معمول راه‌رفتن/تریاد و تعریف بالینی‌ـ‌تصویری را بیان کنید."
+          },
+          "questionIds": [
+            "normaldruckhydrozephalus-de-01",
+            "normaldruckhydrozephalus-de-02"
+          ],
+          "cardIds": [
+            "normaldruckhydrozephalus-01-definition",
+            "normaldruckhydrozephalus-02-trias",
+            "normaldruckhydrozephalus-03-gang"
+          ]
+        },
+        {
+          "id": "functional-selection",
+          "text": {
+            "de": "Tap-Test methodisch bewerten und Nutzen/Risiko der individuellen Shunt-Auswahl einordnen.",
+            "en": "Evaluate tap-test methodology and interpret benefit/risk in individual shunt selection.",
+            "fa": "روش آزمون تخلیه را ارزیابی و سود و خطر را در انتخاب فردی شانت تفسیر کنید."
+          },
+          "questionIds": [
+            "normaldruckhydrozephalus-de-10",
+            "normaldruckhydrozephalus-de-11",
+            "normaldruckhydrozephalus-de-12"
+          ],
+          "cardIds": [
+            "normaldruckhydrozephalus-11-tap",
+            "normaldruckhydrozephalus-12-drainage",
+            "normaldruckhydrozephalus-13-shunt",
+            "normaldruckhydrozephalus-14-komplikation"
+          ]
+        }
+      ],
+      "status": "AUTHOR_FULL_ORIGINAL_BANK_REVIEW_READY"
+    },
+    {
+      "route": "/gehirn/vaskulaer/dva",
+      "topicId": "dva",
+      "status": "AUTHOR_FULL_ORIGINAL_BANK_REVIEW_READY",
+      "learningGoals": [
+        {
+          "id": "recognise-architecture",
+          "text": {
+            "de": "Die typische venöse Architektur erkennen und von Shuntläsionen abgrenzen.",
+            "en": "Recognise typical venous architecture and distinguish shunting lesions.",
+            "fa": "معماری وریدی تیپیک را بشناسید و از ضایعات شانت‌دار تفکیک کنید."
+          },
+          "questionIds": [
+            "dva-de-01",
+            "dva-de-02",
+            "dva-de-08"
+          ],
+          "cardIds": [
+            "dva-01-definition",
+            "dva-02-häufigkeit",
+            "dva-03-caput",
+            "dva-08-avm"
+          ]
+        },
+        {
+          "id": "choose-complementary-sequences",
+          "text": {
+            "de": "Postkontrast-T1, SWI und DWI ihren unterschiedlichen diagnostischen Aufgaben zuordnen.",
+            "en": "Assign postcontrast T1, SWI and DWI to their distinct diagnostic tasks.",
+            "fa": "T1 پس از تزریق، SWI و DWI را به نقش‌های تشخیصی متفاوتشان مرتبط کنید."
+          },
+          "questionIds": [
+            "dva-de-03",
+            "dva-de-04",
+            "dva-de-09"
+          ],
+          "cardIds": [
+            "dva-04-sequenz",
+            "dva-05-swi",
+            "dva-06-kavernom",
+            "dva-07-dwi"
+          ]
+        },
+        {
+          "id": "evaluate-symptomatic-dva",
+          "text": {
+            "de": "Bei neuen Symptomen oder Blutung Begleitläsion und venösen Abfluss gezielt prüfen.",
+            "en": "Evaluate associated lesions and venous outflow with new symptoms or haemorrhage.",
+            "fa": "در علائم یا خونریزی جدید، ضایعات همراه و خروج وریدی را هدفمند بررسی کنید."
+          },
+          "questionIds": [
+            "dva-de-07",
+            "dva-de-10"
+          ],
+          "cardIds": [
+            "dva-09-symptome",
+            "dva-10-thrombose"
+          ]
+        },
+        {
+          "id": "report-and-preserve-drainage",
+          "text": {
+            "de": "Eine unkomplizierte DVA angemessen berichten und notwendige Drainage bei Eingriffen berücksichtigen.",
+            "en": "Report uncomplicated DVA appropriately and account for essential drainage during interventions.",
+            "fa": "DVA بدون عارضه را مناسب گزارش کنید و در مداخلات تخلیهٔ ضروری را لحاظ کنید."
+          },
+          "questionIds": [
+            "dva-de-05",
+            "dva-de-06",
+            "dva-de-11",
+            "dva-de-12"
+          ],
+          "cardIds": [
+            "dva-11-therapie",
+            "dva-12-sammelvene",
+            "dva-13-dsa",
+            "dva-14-befund",
+            "dva-15-operation"
+          ]
+        }
+      ]
     },
     {
       "route": "/msk/trauma/radiuskoepfchenfraktur",
@@ -7609,6 +10464,355 @@
       "status": "AUTHOR_PACKET_2_IN_PROGRESS"
     },
     {
+      "route": "/msk/knie/kreuzbaender",
+      "topicId": "kreuzbaender",
+      "learningGoals": [
+        {
+          "id": "mri-continuity",
+          "text": {
+            "de": "Periligamentäres Ödem und sichtbare Bandkontinuität in einem Quellbildpaar beschreiben.",
+            "en": "Describe periligamentous oedema and visible ligament continuity in a source image pair.",
+            "fa": "ادم پیرارباطی و پیوستگی قابل مشاهدهٔ رباط را در جفت تصاویر منبع توصیف کنید."
+          },
+          "questionIds": [
+            "kreuzbaender-de-01"
+          ],
+          "cardIds": [
+            "kreuzbaender-01"
+          ]
+        },
+        {
+          "id": "acl-pattern",
+          "text": {
+            "de": "Direkte und indirekte VKB-Zeichen mit Degenerationsmimik abgleichen.",
+            "en": "Integrate direct and indirect ACL signs with degenerative mimics.",
+            "fa": "علائم مستقیم و غیرمستقیم ACL را با مقلدهای دژنراتیو تطبیق دهید."
+          },
+          "questionIds": [
+            "kreuzbaender-de-05",
+            "kreuzbaender-de-06"
+          ],
+          "cardIds": [
+            "kreuzbaender-04",
+            "kreuzbaender-05"
+          ]
+        },
+        {
+          "id": "pcl-mechanism",
+          "text": {
+            "de": "Den anterioren Tibiaprall am gebeugten Knie der HKB-Verletzung zuordnen.",
+            "en": "Associate anterior tibial impact at a flexed knee with PCL injury.",
+            "fa": "ضربهٔ قدامی به تیبیا در زانوی خم را به آسیب PCL مرتبط کنید."
+          },
+          "questionIds": [
+            "kreuzbaender-de-07"
+          ],
+          "cardIds": [
+            "kreuzbaender-06"
+          ]
+        },
+        {
+          "id": "associated-complexes",
+          "text": {
+            "de": "Fibuläre und mediale Verletzungshinweise für eine gezielte PLC-/POL-Beurteilung und Befundbeschreibung nutzen.",
+            "en": "Use fibular and medial injury clues for targeted PLC/POL assessment and reporting.",
+            "fa": "از سرنخ‌های آسیب فیبولا و سمت داخلی برای ارزیابی هدفمند PLC/POL و گزارش استفاده کنید."
+          },
+          "questionIds": [
+            "kreuzbaender-de-02",
+            "kreuzbaender-de-03",
+            "kreuzbaender-de-04",
+            "kreuzbaender-de-08"
+          ],
+          "cardIds": [
+            "kreuzbaender-02",
+            "kreuzbaender-03",
+            "kreuzbaender-07",
+            "aq-msk-knee-medial-report"
+          ]
+        }
+      ],
+      "status": "AUTHOR_PACKET_3_BOUNDED_DELTA_READY_FULL_EXISTING_POOL_REVIEW_PENDING",
+      "existingPoolReview": "Not fully reread or independently accepted; mapped unchanged IDs do not imply their pedagogic acceptance."
+    },
+    {
+      "route": "/msk/knie/meniskus",
+      "topicId": "meniskus",
+      "learningGoals": [
+        {
+          "id": "normal-tear",
+          "text": {
+            "de": "Normale Anatomie und intrameniskales Signal von einem morphologisch gestützten Riss abgrenzen.",
+            "en": "Distinguish normal anatomy and intrameniscal signal from a morphologically supported tear.",
+            "fa": "آناتومی طبیعی و سیگنال داخل منیسک را از پارگی دارای شواهد مورفولوژیک جدا کنید."
+          },
+          "questionIds": [
+            "meniskus-de-01",
+            "meniskus-de-02",
+            "meniskus-de-04",
+            "meniskus-de-07",
+            "meniskus-de-08",
+            "meniskus-de-11",
+            "meniskus-de-22"
+          ],
+          "cardIds": [
+            "meniskus-01",
+            "meniskus-02",
+            "meniskus-03",
+            "meniskus-04",
+            "meniskus-05",
+            "meniskus-06",
+            "meniskus-07",
+            "meniskus-09",
+            "meniskus-10",
+            "meniskus-27",
+            "meniskus-28",
+            "meniskus-35"
+          ]
+        },
+        {
+          "id": "tear-patterns",
+          "text": {
+            "de": "Rissverlauf und Fragmentverlagerung anatomisch beschreiben.",
+            "en": "Describe tear orientation and fragment displacement anatomically.",
+            "fa": "جهت پارگی و جابه‌جایی قطعه را به‌صورت آناتومیک توصیف کنید."
+          },
+          "questionIds": [
+            "meniskus-de-12",
+            "meniskus-de-13",
+            "meniskus-de-14",
+            "meniskus-de-15",
+            "meniskus-de-16",
+            "meniskus-de-36",
+            "meniskus-de-37"
+          ],
+          "cardIds": [
+            "meniskus-15",
+            "meniskus-16",
+            "meniskus-22",
+            "meniskus-23",
+            "meniskus-24",
+            "meniskus-29",
+            "meniskus-30",
+            "meniskus-31",
+            "meniskus-33",
+            "meniskus-36",
+            "meniskus-37"
+          ]
+        },
+        {
+          "id": "discoid",
+          "text": {
+            "de": "Die Discoidform mit koronaler Breite und protokollabhängiger sagittaler Ausdehnung beurteilen.",
+            "en": "Assess discoid shape using coronal width and protocol-dependent sagittal extent.",
+            "fa": "شکل دیسکویید را با پهنای کرونال و امتداد ساژیتال وابسته به پروتکل ارزیابی کنید."
+          },
+          "questionIds": [
+            "meniskus-de-17",
+            "meniskus-de-18"
+          ],
+          "cardIds": [
+            "meniskus-18",
+            "meniskus-19",
+            "meniskus-20",
+            "meniskus-21"
+          ]
+        },
+        {
+          "id": "clinical-management",
+          "text": {
+            "de": "Biologische Reparabilität und klinischen Kontext von einem automatischen Operationsschluss trennen.",
+            "en": "Distinguish biologic repair potential and clinical context from an automatic surgery conclusion.",
+            "fa": "ظرفیت زیستی ترمیم و زمینهٔ بالینی را از نتیجه‌گیری خودکار جراحی جدا کنید."
+          },
+          "questionIds": [
+            "meniskus-de-03",
+            "meniskus-de-10",
+            "meniskus-de-23"
+          ],
+          "cardIds": [
+            "meniskus-11",
+            "meniskus-12",
+            "meniskus-13",
+            "meniskus-14"
+          ]
+        },
+        {
+          "id": "useful-report",
+          "text": {
+            "de": "Wurzelbezug, Extrusion, Knorpel und normale Rissmimiken im Bericht berücksichtigen.",
+            "en": "Include root relationship, extrusion, cartilage and normal tear mimics in reporting.",
+            "fa": "رابطه با ریشه، اکستروژن، غضروف و مقلدهای طبیعی پارگی را در گزارش لحاظ کنید."
+          },
+          "questionIds": [
+            "meniskus-de-19",
+            "meniskus-de-20",
+            "meniskus-de-21"
+          ],
+          "cardIds": [
+            "meniskus-32",
+            "meniskus-34"
+          ]
+        }
+      ],
+      "status": "AUTHOR_PACKET_3_BOUNDED_DELTA_READY_FULL_EXISTING_POOL_REVIEW_PENDING",
+      "existingPoolReview": "Not fully reread or independently accepted; mapped unchanged IDs do not imply their pedagogic acceptance."
+    },
+    {
+      "route": "/msk/knochennekrosen/avn-huefte",
+      "topicId": "avn-huefte",
+      "learningGoals": [
+        {
+          "id": "diagnostic-specificity",
+          "text": {
+            "de": "Unspezifisches Ödem von einem osteonekrosetypischen MRT-Befund unterscheiden.",
+            "en": "Distinguish nonspecific oedema from an MRI pattern of osteonecrosis.",
+            "fa": "ادم غیراختصاصی را از الگوی MRI استئونکروز جدا کنید."
+          },
+          "questionIds": [],
+          "cardIds": [
+            "aq-msk-avn-imaging-specificity"
+          ]
+        },
+        {
+          "id": "arco-version",
+          "text": {
+            "de": "Fraktur, Einsenkung und Arthrose der expliziten ARCO-Version2019 zuordnen.",
+            "en": "Assign fracture, depression and osteoarthritis to the explicit ARCO2019 version.",
+            "fa": "شکستگی، فرورفتگی و آرتروز را بر اساس نسخهٔ مشخص ARCO۲۰۱۹ مرحله‌بندی کنید."
+          },
+          "questionIds": [
+            "aq-msk-avn-huefte-de-arco2019-depression"
+          ],
+          "cardIds": [
+            "aq-msk-avn-structural-stage"
+          ]
+        },
+        {
+          "id": "structural-report",
+          "text": {
+            "de": "Die strukturellen Merkmale und Klassifikationsversion nachvollziehbar berichten.",
+            "en": "Report structural findings and the classification version traceably.",
+            "fa": "یافته‌های ساختاری و نسخهٔ طبقه‌بندی را به‌صورت قابل پیگیری گزارش کنید."
+          },
+          "questionIds": [],
+          "cardIds": [
+            "aq-msk-avn-report-fracture"
+          ]
+        }
+      ],
+      "status": "AUTHOR_PACKET_3_BOUNDED_DELTA_READY_FULL_EXISTING_POOL_REVIEW_PENDING",
+      "existingPoolReview": "Not fully reread or independently accepted; mapped unchanged IDs do not imply their pedagogic acceptance."
+    },
+    {
+      "route": "/msk/knochennekrosen/knocheninfarkt",
+      "topicId": "knocheninfarkt",
+      "learningGoals": [
+        {
+          "id": "location",
+          "text": {
+            "de": "Medullären Meta-/Diaphyseninfarkt topographisch einordnen.",
+            "en": "Localize medullary metaphyseal/diaphyseal infarction.",
+            "fa": "انفارکت مدولاری متافیز/دیافیز را از نظر محل ارزیابی کنید."
+          },
+          "questionIds": [
+            "knocheninfarkt-de-location"
+          ],
+          "cardIds": [
+            "knocheninfarkt-location"
+          ]
+        },
+        {
+          "id": "border-centre",
+          "text": {
+            "de": "Serpiginösen Rand und zentrales Fettmark gemeinsam interpretieren.",
+            "en": "Interpret a serpiginous border and central fatty marrow together.",
+            "fa": "حاشیهٔ مارپیچی و مغز استخوان چرب مرکزی را با هم تفسیر کنید."
+          },
+          "questionIds": [
+            "knocheninfarkt-de-pattern"
+          ],
+          "cardIds": [
+            "knocheninfarkt-border-centre"
+          ]
+        },
+        {
+          "id": "infection",
+          "text": {
+            "de": "Infarktmuster bei klinischen Warnzeichen nicht als Infektionsausschluss behandeln.",
+            "en": "Avoid treating an infarct pattern as an infection exclusion when clinical warning signs exist.",
+            "fa": "در حضور علائم هشدار بالینی، الگوی انفارکت را معادل رد عفونت تلقی نکنید."
+          },
+          "questionIds": [
+            "knocheninfarkt-de-infection"
+          ],
+          "cardIds": [
+            "knocheninfarkt-infection"
+          ]
+        },
+        {
+          "id": "report",
+          "text": {
+            "de": "Lage, Rand, Zentrum und Begleitreaktion getrennt im Befund dokumentieren.",
+            "en": "Document location, border, centre and associated reaction separately.",
+            "fa": "محل، حاشیه، مرکز و واکنش همراه را جداگانه گزارش کنید."
+          },
+          "questionIds": [],
+          "cardIds": [
+            "aq-msk-infarct-report"
+          ]
+        }
+      ],
+      "status": "AUTHOR_PACKET_3_BOUNDED_DELTA_READY_FULL_EXISTING_POOL_REVIEW_PENDING",
+      "existingPoolReview": "Not fully reread or independently accepted; mapped unchanged IDs do not imply their pedagogic acceptance."
+    },
+    {
+      "route": "/msk/knochenstoffwechsel/melorheostose",
+      "topicId": "melorheostose",
+      "learningGoals": [
+        {
+          "id": "source-pattern",
+          "text": {
+            "de": "Längsverlaufende kortikale Hyperostose im tatsächlichen Quellbild erkennen.",
+            "en": "Recognize longitudinal cortical hyperostosis in the actual source image.",
+            "fa": "هیپراستوز قشری با امتداد طولی را در تصویر واقعی منبع بشناسید."
+          },
+          "questionIds": [
+            "aq-msk-melorheostose-de-source-cortical-pattern"
+          ],
+          "cardIds": [
+            "aq-msk-melor-morphology"
+          ]
+        },
+        {
+          "id": "complementary-imaging",
+          "text": {
+            "de": "CT-Knochenbeurteilung und gezielte MRT-Ergänzung für Weichteile unterscheiden.",
+            "en": "Distinguish CT bone assessment from targeted MRI soft-tissue evaluation.",
+            "fa": "ارزیابی استخوان با CT را از بررسی تکمیلی هدفمند بافت نرم با MRI جدا کنید."
+          },
+          "questionIds": [],
+          "cardIds": [
+            "aq-msk-melor-mri-role"
+          ]
+        },
+        {
+          "id": "reactive-findings",
+          "text": {
+            "de": "Signalarmen sklerotischen Kern von möglichem begleitendem Ödem trennen.",
+            "en": "Distinguish low-signal sclerotic core from possible associated oedema.",
+            "fa": "هستهٔ اسکلروتیک کم‌سیگنال را از ادم همراهِ احتمالی جدا کنید."
+          },
+          "questionIds": [],
+          "cardIds": [
+            "aq-msk-melor-edema-limit"
+          ]
+        }
+      ],
+      "status": "AUTHOR_PACKET_3_BOUNDED_DELTA_READY_FULL_EXISTING_POOL_REVIEW_PENDING",
+      "existingPoolReview": "Not fully reread or independently accepted; mapped unchanged IDs do not imply their pedagogic acceptance."
+    },
+    {
       "route": "/technik/interventionelle-radiologie",
       "topicId": "aq-atv-intervention",
       "learningGoals": [
@@ -7987,6 +11191,282 @@
         }
       ],
       "status": "AUTHOR_PACKET_READY_REVIEW_PENDING"
+    },
+    {
+      "route": "/abdomen/gi/appendizitis",
+      "topicId": "appendizitis",
+      "status": "AUTHOR_REPAIR_PENDING_SHARED_ORIGINAL",
+      "learningGoals": [
+        {
+          "id": "us",
+          "text": {
+            "de": "Eine kombinierte sonographische Entzündungskonstellation statt eines isolierten Durchmessers erkennen.",
+            "en": "Recognise combined sonographic inflammation rather than relying on diameter alone.",
+            "fa": "ترکیب نشانه‌های التهاب سونوگرافیک را به‌جای تکیه بر قطر منفرد شناسایی کنید."
+          },
+          "questionIds": [
+            "aq-atv-appendix-us-pattern-de-application"
+          ],
+          "cardIds": [
+            "appendizitis-ultrasound-pattern"
+          ]
+        },
+        {
+          "id": "ct",
+          "text": {
+            "de": "Direkte und sekundäre CT-Zeichen gemeinsam interpretieren.",
+            "en": "Interpret direct and secondary CT signs together.",
+            "fa": "نشانه‌های مستقیم و ثانویهٔ CT را با هم تفسیر کنید."
+          },
+          "questionIds": [
+            "aq-atv-appendix-ct-context-de-application"
+          ],
+          "cardIds": [
+            "appendizitis-ct-secondary-signs"
+          ]
+        },
+        {
+          "id": "limits",
+          "text": {
+            "de": "Nichtvisualisierung als nichtdiagnostisch einordnen und den nächsten Schritt klinisch abstimmen.",
+            "en": "Interpret non-visualisation as non-diagnostic and coordinate the next step clinically.",
+            "fa": "دیده‌نشدن را غیرتشخیصی بدانید و گام بعدی را با بالین هماهنگ کنید."
+          },
+          "questionIds": [
+            "abdomen-appendizitis-de-01"
+          ],
+          "cardIds": [
+            "appendizitis-nonvisualised"
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/abdomen/gi/gist",
+      "topicId": "gist",
+      "status": "AUTHOR_READY_REVIEW_PENDING",
+      "learningGoals": [
+        {
+          "id": "origin",
+          "text": {
+            "de": "Eine exophytische Magenwandmasse morphologisch einordnen, ohne CT als Histologiebeweis zu verwenden.",
+            "en": "Interpret an exophytic gastric-wall mass morphologically without treating CT as histological proof.",
+            "fa": "تودهٔ برون‌گرای دیوارهٔ معده را مورفولوژیک تفسیر کنید، بدون استفاده از CT به‌عنوان اثبات بافت‌شناسی."
+          },
+          "questionIds": [
+            "gist-ct-01"
+          ],
+          "cardIds": [
+            "gist-ct-origin",
+            "gist-ct-differential"
+          ]
+        },
+        {
+          "id": "heterogeneity",
+          "text": {
+            "de": "Hypodense Binnenanteile mit angemessener diagnostischer Zurückhaltung beschreiben.",
+            "en": "Describe hypoattenuating internal components with appropriate diagnostic caution.",
+            "fa": "بخش‌های داخلی کم‌دانسیته را با احتیاط تشخیصی مناسب توصیف کنید."
+          },
+          "questionIds": [
+            "aq-atv-gist-internal-structure-de-application"
+          ],
+          "cardIds": [
+            "gist-ct-heterogeneity"
+          ]
+        },
+        {
+          "id": "phase",
+          "text": {
+            "de": "Aufnahmephase anhand des Protokolls statt der Tumorhelligkeit prüfen.",
+            "en": "Verify acquisition phase from the protocol rather than tumour brightness.",
+            "fa": "فاز برداشت را از پروتکل بررسی کنید، نه روشنایی تومور."
+          },
+          "questionIds": [
+            "aq-atv-gist-phase-context-de-application"
+          ],
+          "cardIds": [
+            "gist-ct-phase"
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/abdomen/gefaesse/fmd",
+      "topicId": "fibromuskulaere-dysplasie",
+      "status": "AUTHOR_READY_REVIEW_PENDING",
+      "learningGoals": [
+        {
+          "id": "pattern",
+          "text": {
+            "de": "Multifokales Beading von atherosklerotischem Plaquemuster unterscheiden.",
+            "en": "Distinguish multifocal beading from atherosclerotic plaque.",
+            "fa": "الگوی مهره‌ای چندکانونی را از پلاک آترواسکلروتیک جدا کنید."
+          },
+          "questionIds": [
+            "fmd-multifocal-pattern-de"
+          ],
+          "cardIds": [
+            "fmd-multifocal-pattern"
+          ]
+        },
+        {
+          "id": "focal",
+          "text": {
+            "de": "Fehlendes Beading bei fokaler FMD und die Grenzen isolierter Begleitbefunde einordnen.",
+            "en": "Interpret absent beading in focal FMD and limits of isolated associated findings.",
+            "fa": "نبود الگوی مهره‌ای در FMD فوکال و محدودیت یافته‌های همراه منفرد را تفسیر کنید."
+          },
+          "questionIds": [
+            "fmd-focal-fmd-de"
+          ],
+          "cardIds": [
+            "fmd-focal-vs-multifocal"
+          ]
+        },
+        {
+          "id": "imaging",
+          "text": {
+            "de": "Initiale nichtinvasive Bildgebung von selektiver DSA und hämodynamischer Messung unterscheiden.",
+            "en": "Distinguish initial non-invasive imaging from selective DSA and haemodynamic measurement.",
+            "fa": "تصویربرداری غیرتهاجمی اولیه را از DSA انتخابی و سنجش همودینامیک جدا کنید."
+          },
+          "questionIds": [
+            "fmd-imaging-sequence-de"
+          ],
+          "cardIds": [
+            "fmd-imaging-limits"
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/abdomen/gi/duodenaldivertikel",
+      "topicId": "duodenaldivertikel",
+      "status": "AUTHOR_READY_REVIEW_PENDING",
+      "learningGoals": [
+        {
+          "id": "origin",
+          "text": {
+            "de": "Eine Struktur neben dem Pankreaskopf anhand ihrer Verbindung zum Darm lokalisieren.",
+            "en": "Localise a structure near the pancreatic head by its connection to bowel.",
+            "fa": "ساختار کنار سر پانکراس را با ارتباط آن با روده مکان‌یابی کنید."
+          },
+          "questionIds": [
+            "duodenaldivertikel-communication-de"
+          ],
+          "cardIds": [
+            "duodenaldivertikel-communication"
+          ]
+        },
+        {
+          "id": "fluid-pitfall",
+          "text": {
+            "de": "Flüssigkeitssignal und fehlendes Enhancement als unzureichende Differenzierungskriterien erkennen.",
+            "en": "Recognise fluid signal and absent enhancement as insufficient discriminators.",
+            "fa": "سیگنال مایع و نبود تقویت را برای افتراق ناکافی بدانید."
+          },
+          "questionIds": [
+            "duodenaldivertikel-communication-de"
+          ],
+          "cardIds": [
+            "duodenaldivertikel-communication"
+          ]
+        },
+        {
+          "id": "gas",
+          "text": {
+            "de": "Intradivertikuläres Gas von extraluminaler Luft und Komplikationszeichen trennen.",
+            "en": "Distinguish intradiverticular gas from extraluminal air and complication signs.",
+            "fa": "گاز داخل دیورتیکول را از هوای خارج لومن و نشانه‌های عارضه جدا کنید."
+          },
+          "questionIds": [
+            "duodenaldivertikel-gas-location-de"
+          ],
+          "cardIds": [
+            "duodenaldivertikel-gas-location"
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/abdomen/gi/divertikulitis",
+      "topicId": "divertikulitis",
+      "status": "AUTHOR_REPAIR_PENDING_SHARED_ORIGINAL",
+      "learningGoals": [
+        {
+          "id": "inflammation",
+          "text": {
+            "de": "Divertikulose von akuter Entzündung unterscheiden und passende CT-Zeichen/Technik einordnen.",
+            "en": "Distinguish diverticulosis from acute inflammation and interpret relevant CT signs/technique.",
+            "fa": "دیورتیکولوز را از التهاب حاد جدا و نشانه‌ها و روش مناسب CT را تفسیر کنید."
+          },
+          "questionIds": [
+            "divertikulitis-de-definition",
+            "divertikulitis-de-ct-triad",
+            "divertikulitis-de-protocol"
+          ],
+          "cardIds": [
+            "divertikulitis-definition",
+            "divertikulitis-ct-triad",
+            "divertikulitis-protocol"
+          ]
+        },
+        {
+          "id": "cdd",
+          "text": {
+            "de": "Phlegmone, Abszess und rezidivierende Komplikationen im genannten CDD-System unterscheiden.",
+            "en": "Distinguish phlegmon, abscess and recurrent complications within the stated CDD system.",
+            "fa": "فلگمون، آبسه و عوارض عودکننده را در نظام CDD ذکرشده جدا کنید."
+          },
+          "questionIds": [
+            "divertikulitis-de-cdd-1b",
+            "divertikulitis-de-cdd-2a",
+            "divertikulitis-de-cdd-3c",
+            "divertikulitis-de-macroabscess"
+          ],
+          "cardIds": [
+            "divertikulitis-cdd-1",
+            "divertikulitis-cdd-2",
+            "divertikulitis-cdd-3",
+            "divertikulitis-abscess",
+            "divertikulitis-stenosis",
+            "divertikulitis-summary"
+          ]
+        },
+        {
+          "id": "complications",
+          "text": {
+            "de": "Fistel- und freie Perforationszeichen erkennen und Abszesse planungsrelevant beschreiben.",
+            "en": "Recognise fistula/free-perforation signs and describe abscesses for planning.",
+            "fa": "نشانه‌های فیستول و پرفوراسیون آزاد را شناسایی و آبسه را برای برنامه‌ریزی توصیف کنید."
+          },
+          "questionIds": [
+            "divertikulitis-de-fistula",
+            "divertikulitis-de-free-perforation",
+            "divertikulitis-de-reporting"
+          ],
+          "cardIds": [
+            "divertikulitis-fistula",
+            "divertikulitis-perforation",
+            "divertikulitis-report"
+          ]
+        },
+        {
+          "id": "differential",
+          "text": {
+            "de": "Bei fokal suspekter Wand-/Lymphknotenkonstellation eine Karzinomdifferenzialdiagnose erwägen.",
+            "en": "Consider carcinoma when focal wall/nodal findings are suspicious.",
+            "fa": "در مجموعهٔ مشکوک دیوارهٔ کانونی و غدد، افتراق سرطان را در نظر بگیرید."
+          },
+          "questionIds": [
+            "divertikulitis-de-cancer-differential"
+          ],
+          "cardIds": [
+            "divertikulitis-cancer"
+          ]
+        }
+      ]
     },
     {
       "route": "/thorax/lung-rads",

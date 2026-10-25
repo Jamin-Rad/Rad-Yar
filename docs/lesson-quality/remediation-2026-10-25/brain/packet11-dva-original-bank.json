@@ -1,0 +1,127 @@
+{
+  "date": "2026-10-25",
+  "status": "AUTHOR_FULL_ORIGINAL_BANK_REVIEW_READY",
+  "route": "/gehirn/vaskulaer/dva",
+  "questionTriadsRead": 12,
+  "cardTriadsRead": 15,
+  "files": [
+    "data/dva.js original literal question/card seeds and producer-specific feedback/source fields; bounded adjacent FA terminology",
+    "data/assessmentQuality/brain.js DVA goal map only"
+  ],
+  "scope": "All existing12questions/15cards inspected DE/EN/FA; original IDs and keys preserved; weak original distractors replaced with relevant competing interpretations, real clinical context added,3specific wrong explanations for each question. No supplemental DVA duplicate bank.",
+  "coverage": {
+    "route": "/gehirn/vaskulaer/dva",
+    "topicId": "dva",
+    "status": "AUTHOR_FULL_ORIGINAL_BANK_REVIEW_READY",
+    "learningGoals": [
+      {
+        "id": "recognise-architecture",
+        "text": {
+          "de": "Die typische venöse Architektur erkennen und von Shuntläsionen abgrenzen.",
+          "en": "Recognise typical venous architecture and distinguish shunting lesions.",
+          "fa": "معماری وریدی تیپیک را بشناسید و از ضایعات شانت‌دار تفکیک کنید."
+        },
+        "questionIds": [
+          "dva-de-01",
+          "dva-de-02",
+          "dva-de-08"
+        ],
+        "cardIds": [
+          "dva-01-definition",
+          "dva-02-häufigkeit",
+          "dva-03-caput",
+          "dva-08-avm"
+        ]
+      },
+      {
+        "id": "choose-complementary-sequences",
+        "text": {
+          "de": "Postkontrast-T1, SWI und DWI ihren unterschiedlichen diagnostischen Aufgaben zuordnen.",
+          "en": "Assign postcontrast T1, SWI and DWI to their distinct diagnostic tasks.",
+          "fa": "T1 پس از تزریق، SWI و DWI را به نقش‌های تشخیصی متفاوتشان مرتبط کنید."
+        },
+        "questionIds": [
+          "dva-de-03",
+          "dva-de-04",
+          "dva-de-09"
+        ],
+        "cardIds": [
+          "dva-04-sequenz",
+          "dva-05-swi",
+          "dva-06-kavernom",
+          "dva-07-dwi"
+        ]
+      },
+      {
+        "id": "evaluate-symptomatic-dva",
+        "text": {
+          "de": "Bei neuen Symptomen oder Blutung Begleitläsion und venösen Abfluss gezielt prüfen.",
+          "en": "Evaluate associated lesions and venous outflow with new symptoms or haemorrhage.",
+          "fa": "در علائم یا خونریزی جدید، ضایعات همراه و خروج وریدی را هدفمند بررسی کنید."
+        },
+        "questionIds": [
+          "dva-de-07",
+          "dva-de-10"
+        ],
+        "cardIds": [
+          "dva-09-symptome",
+          "dva-10-thrombose"
+        ]
+      },
+      {
+        "id": "report-and-preserve-drainage",
+        "text": {
+          "de": "Eine unkomplizierte DVA angemessen berichten und notwendige Drainage bei Eingriffen berücksichtigen.",
+          "en": "Report uncomplicated DVA appropriately and account for essential drainage during interventions.",
+          "fa": "DVA بدون عارضه را مناسب گزارش کنید و در مداخلات تخلیهٔ ضروری را لحاظ کنید."
+        },
+        "questionIds": [
+          "dva-de-05",
+          "dva-de-06",
+          "dva-de-11",
+          "dva-de-12"
+        ],
+        "cardIds": [
+          "dva-11-therapie",
+          "dva-12-sammelvene",
+          "dva-13-dsa",
+          "dva-14-befund",
+          "dva-15-operation"
+        ]
+      }
+    ]
+  },
+  "originalBoundaries": "tmp/brain-dva-original.json before seed snapshot",
+  "sourcesRead": [
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/19390075/",
+      "scope": "Entire original prospective population-based study/systematic review abstract:mostlyincidentaladultDVAs and low eventrates; no universalannualriskor surveillanceinterval authored."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/18988912/",
+      "scope": "Entire original17-patientinstitutional series plus51literature cases abstract, inflow/outflowmechanisms and preservationofnormaldrainage; noincidenceextrapolation fromsymptomaticselectedcohort."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40512378/",
+      "scope": "Entire original200patient CCM-associated-DVA study indexedabstract and originalPMC12494666 results:CE-T1reference,SWI/GREcanmisssmallDVAvessels; no universal sensitivity stated."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/28667359/",
+      "scope": "Entire original57child study abstract:SWI identifiesassociatedCM/microhaemorrhage; no pediatric sensitivity extrapolated to adultpopulation."
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12680281/",
+      "scope": "Current2025published/2026print consensus guideline actualMRIdiagnosticcriteria and bloodproductmorphology:reticulatedmixedcoreplushemosiderinrim supportsCM; acutehematomacanobscurelesions. No newtreatmentalgorithm authored."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/38782528/",
+      "scope": "Current2024publishedauthorreviewabstract supporting DVA benignnature,drainagepreservation and associatedhaemorrhagecauses; distinguishedfromoriginalresearchabove."
+    }
+  ],
+  "checks": "12Q/lang,15cardtriads,3wrongfeedback each,all4goals cover actual stableIDs; own actual routeSSR3/3.",
+  "limits": [
+    "No new imagecase: allnewvignettes self-contained. ExistingPDF30/Radiopaedia91621 figures and diagnosis not rereviewed in this assessmentbankpacket.",
+    "No wholelesson scientific release, independent acceptance, browser test or psychometricdifficulty validation claimed.",
+    "Some useful foundational pattern/definition questions deliberately retained alongside applied planning/reporting/complicationcases."
+  ]
+}

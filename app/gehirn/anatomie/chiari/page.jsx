@@ -16,7 +16,7 @@ function ChiariDiagram({lang}){
 }
 function ChiariCheck({ lang }) {
   const [answer, setAnswer] = useState(null)
-  return <div className={design.check}><p className={design.lead}>{pick(lesson.assessment.question, lang)}</p><div className={design.options}>{lesson.assessment.options.map((option, index) => <button key={index} type="button" aria-pressed={answer === index} onClick={() => setAnswer(index)}>{pick(option, lang)}</button>)}</div>{answer !== null ? <p role="status" className={design.feedback}>{answer === lesson.assessment.correctIndex ? pick(lesson.assessment.feedback, lang) : pick(lesson.assessment.retry, lang)}</p> : null}</div>
+  return <div className={design.check}><p className={design.lead}>{pick(lesson.assessment.question, lang)}</p><div className={design.options}>{lesson.assessment.options.map((option, index) => <button key={index} type="button" aria-pressed={answer === index} onClick={() => setAnswer(index)}>{pick(option, lang)}</button>)}</div>{answer !== null ? <p role="status" className={design.feedback}>{lesson.assessment.optionFeedback?.[answer] ? pick(lesson.assessment.optionFeedback[answer], lang) : (answer === lesson.assessment.correctIndex ? pick(lesson.assessment.feedback, lang) : pick(lesson.assessment.retry, lang))}</p> : null}</div>
 }
 export default function ChiariLessonPage() {
   const { lang } = useLanguage()

@@ -1,0 +1,41 @@
+{
+  "date": "2026-10-25",
+  "status": "AUTHOR_READY_INDEPENDENT_REVIEW_PENDING",
+  "routes": [
+    "/gehirn/infektionen/hiv-enzephalopathie"
+  ],
+  "files": [
+    "data/assessmentQuality/brain.js only aq-hiv-enzephalopathie block",
+    "data/gehirnHivEnzephalopathieLesson.js check and added PML-IRIS warning sentences"
+  ],
+  "newQuestionTriads": 3,
+  "newCardTriads": 3,
+  "goals": [
+    "Interpret nonspecific diffuse symmetric white-matter/atrophy pattern with clinical context",
+    "Recognise subacute focal asymmetric subcortical pattern as PML-suspicious and understand JCV-PCR context",
+    "Recognise post-ART inflammatory changes in established PML as possible IRIS"
+  ],
+  "keys": [
+    "diffuse-pattern:A",
+    "pml-differential:B",
+    "pml-iris:C"
+  ],
+  "sourceEvidence": [
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/2315479/",
+      "read": "Complete original indexed1990 autopsy-correlated24-patient abstract: atrophy and symmetric periventricular/diffuse WM change suggest HIVE but appearances can have multiple etiologies. No modern prevalence/sensitivity or treatment-response extrapolation."
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3657494/",
+      "read": "MindExchange2013 consensus diagnostic-assessment table: clinical/neuropsych assessment and MRI evaluation/exclusion of opportunistic and other causes. Exact MRI morphology instead sourced to1990 original study."
+    },
+    {
+      "url": "https://clinicalinfo.hiv.gov/en/guidelines/hiv-clinical-guidelines-adult-and-adolescent-opportunistic-infections/progressive?view=full",
+      "read": "Official NIH adult/adolescent guideline updated2022 reviewed2026: subacute focal PML, WM/T2FLAIR pattern and typical limited mass/enhancement; JCV-PCR context/negative-result limits; new inflammatory enhancement/oedema/mass after ART in PML-IRIS."
+    }
+  ],
+  "originalScope": "Untouched PDF64 image and detailed U-fibre/parietooccipital source descriptions not rereviewed in this assessment packet; new stems are explicitly written cases, no unseen visual case implied.",
+  "checks": "All20 questions/lang21 cards in current author module structurally valid; own actual HIV route graph SSR3/3. Adjacent lesson fields preserved.",
+  "independentReview": "PENDING",
+  "production": "Draft excluded by root snapshot allowlist until independent acceptance."
+}
