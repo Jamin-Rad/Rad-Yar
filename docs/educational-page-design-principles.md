@@ -20,6 +20,11 @@ The title identifies the topic or diagnostic task. Every lesson header must incl
 
 Match CAA's polished medical-atlas illustration quality. A simple icon, flat SVG placeholder or generic `ClinicalPatternDiagram` is not an acceptable header substitute. Precise code diagrams remain useful inside the teaching chapters. Inspect the actual illustration for topic fit and keep its silhouette and relevant inset inside the header column. Header artwork is conceptual, not diagnostic patient evidence. Existing approved topic illustrations may be retained.
 
+Header artwork must have genuine transparent surroundings, including retained
+illustrations. Inspect it composited over the lesson backdrop; an alpha-channel
+flag alone does not prove that a rectangular matte has been removed. Check
+actual transparent pixel coverage as well as the rendered silhouette.
+
 Use the shared `components/LessonHero.jsx` for the header, with a required topic image and translated alt text. It deliberately accepts no subtitle or explanatory text. **Do not add a description beneath the title.** Definitions, clinical promises and introductory explanations belong at the beginning of the first chapter.
 
 ## 2. Orientation before detail
@@ -33,6 +38,10 @@ Navigation position and learning progress are separate states. Opening or jumpin
 Long lessons use focused accordion chapters. Opening a chapter closes the previous one. The sidebar, URL hash, and chapter state stay synchronised.
 
 Chapters are identified by their own meaningful icon, not by a visible sequence number. The same icon is reused in the chapter header and in the learning path so both navigation surfaces stay visually connected.
+
+Keep a visible gap between chapter cards: 16px on desktop and 12px on mobile
+in the shared standard shell. This also applies when an authored language or
+content wrapper contains several chapters; spacing must reach those cards.
 
 ## 4. Teach the decision path
 

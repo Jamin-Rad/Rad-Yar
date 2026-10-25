@@ -100,7 +100,9 @@
 .sidebar .activeSideItem { background: linear-gradient(90deg,color-mix(in srgb,var(--lesson-accent) 17%,transparent),color-mix(in srgb,var(--lesson-secondary) 12%,transparent)); color: var(--lesson-accent-strong); }
 .sidebar .activeSideItem .sideIcon { border-color: var(--lesson-accent-strong); background: var(--lesson-accent-strong); color: #fff; }
 .lessonColumn { min-width: 0; display: grid; gap: 10px; }
-.lesson { min-width: 0; display: grid; gap: 10px; }
+.lesson { --lesson-chapter-gap:16px; min-width:0; display:grid; gap:var(--lesson-chapter-gap); }
+/* Some authored families retain a language/content wrapper around chapter cards. */
+.lesson :where(div):has(> .section) { min-width:0; display:grid; gap:var(--lesson-chapter-gap); }
 .section { scroll-margin-top: 90px; overflow: hidden; border: 1px solid var(--line); border-radius: 10px; background: rgba(255,255,255,.92); box-shadow: 0 12px 30px rgba(12,9,17,.07); content-visibility: auto; contain-intrinsic-size: 74px 520px; }
 .sectionOpen { box-shadow: 0 18px 42px rgba(12,9,17,.1); content-visibility: visible; }
 .sectionHeader { width: 100%; min-height: 76px; display: grid; grid-template-columns: 46px minmax(0,1fr) 36px; align-items: center; gap: 14px; padding: 13px 22px; border: 0; background: transparent; color: var(--ink); font-family: inherit; text-align: start; cursor: pointer; }
@@ -230,3 +232,5 @@
 /* Preserve contrast when an active navigation item is hovered in dark mode. */
 
 .takeHomeStatic { display:grid; grid-template-columns:36px minmax(0,1fr); align-items:start; gap:16px; padding:18px 20px; color:var(--ink); line-height:1.7; }
+
+@media(max-width:760px) { .lesson { --lesson-chapter-gap:12px; } }

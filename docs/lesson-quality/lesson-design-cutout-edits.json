@@ -1,0 +1,161 @@
+{
+  "date": "2026-10-25",
+  "mode": "built-in image_gen edit",
+  "transparent_background": true,
+  "purpose": "Remove rectangular mattes from all 25 older topic header illustrations; preserve conceptual subject and professional atlas style.",
+  "promptSummary": "Remove entire solid navy/teal/blue background with genuine alpha transparency; preserve anatomy/teaching concept and color identity; contain the subject with transparent margins, no rectangular panel or baked checkerboard. Concept illustration, not diagnostic patient evidence.",
+  "bulkEditPromptTemplate": "Edit the attached existing medical-atlas concept illustration for the RadYar lesson \"{route}\". Remove the entire solid navy/teal/blue background and all rectangular matte, with a genuinely transparent alpha canvas. Preserve the subject's anatomical teaching concept, existing depicted pathology or equipment, color identity and professional medical-atlas rendering. This is a schematic concept, never a diagnostic patient image. Reframe or reconstruct only cropped peripheral illustration edges as needed so the whole main subject is contained inside the canvas with 5–10 percent transparent margin on every side. Retain internal translucency and relevant small anatomical structures, avoid a surrounding opaque glow. No background panel, no dark rectangle, no baked checkerboard, no text, no labels. Keep the existing subject recognizable; do not add diagnoses or unrelated organs.",
+  "mrMyelographyPrompt": "Edit this medical educational illustration for the RadYar MR-myelography lesson header. Remove the ENTIRE navy/blue rectangular background and surrounding glow so the subject is a clean alpha-transparent isolated cutout. Preserve the existing vertebral bone and translucent blue CSF/dural sac/nerve root teaching concept and professional medical atlas quality; do not add diagnostic findings or labels. Reframe so the illustrated lumbar spine and sacrum are fully contained with a modest transparent margin on every edge, without clipped upper vertebra or lower sacrum. Transparent empty canvas around the isolated subject, no solid background, no colored rectangle, no checkerboard pixels, no words. This is a schematic concept illustration, not a diagnostic scan.",
+  "edits": [
+    {
+      "route": "/abdomen/gi/duodenaldivertikel",
+      "original": "/educational/abdomen-gi-completion/diverticulum-hero.webp",
+      "replacement": "/educational/lesson-design/abdomen--gi--duodenaldivertikel.webp",
+      "generatorFile": "exec-e9601580-a395-4e45-8ca0-02a6fa41d721.png"
+    },
+    {
+      "route": "/abdomen/gi/ulkuserkrankung",
+      "original": "/educational/abdomen-gi-completion/ulcer-hero.webp",
+      "replacement": "/educational/lesson-design/abdomen--gi--ulkuserkrankung.webp",
+      "generatorFile": "exec-37a6c53b-4a10-44d1-9607-ff0ec6dff365.png"
+    },
+    {
+      "route": "/abdomen/leber/fibrolamellaeres-karzinom",
+      "original": "/educational/abdomen-flc/hero.png",
+      "replacement": "/educational/lesson-design/abdomen--leber--fibrolamellaeres-karzinom.webp",
+      "generatorFile": "exec-b2ba76c7-7b8d-4782-b885-c5f2b01c18b2.png"
+    },
+    {
+      "route": "/abdomen/leber/zirrhose",
+      "original": "/educational/abdomen-cirrhosis/hero.png",
+      "replacement": "/educational/lesson-design/abdomen--leber--zirrhose.webp",
+      "generatorFile": "exec-6455b24d-3d18-4c68-ada0-555fbf6e207e.png"
+    },
+    {
+      "route": "/abdomen/niere/fornixruptur",
+      "original": "/educational/abdomen-fornix/hero.webp",
+      "replacement": "/educational/lesson-design/abdomen--niere--fornixruptur.webp",
+      "generatorFile": "exec-89712496-f919-490a-8d97-c0ea2355869c.png"
+    },
+    {
+      "route": "/abdomen/niere/renaltrauma",
+      "original": "/educational/nierentrauma/hero-v2.webp",
+      "replacement": "/educational/lesson-design/abdomen--niere--renaltrauma.webp",
+      "generatorFile": "exec-cc90df57-151d-4fb9-b0d7-9b9e6a8c81cf.png"
+    },
+    {
+      "route": "/gefaesse/anatomie-obere-extremitaet",
+      "original": "/educational/upper-limb-arteries/hero.png",
+      "replacement": "/educational/lesson-design/gefaesse--anatomie-obere-extremitaet.webp",
+      "generatorFile": "exec-aee565a4-e44b-4ab5-be73-8bfe2b7cd626.png"
+    },
+    {
+      "route": "/gehirn/hals-nnh/paragangliome",
+      "original": "/educational/carotid-body-paraganglioma/hero-v2.webp",
+      "replacement": "/educational/lesson-design/gehirn--hals-nnh--paragangliome.webp",
+      "generatorFile": "exec-9918effc-dfba-4d60-87c7-ea831273be43.png"
+    },
+    {
+      "route": "/gehirn/tumoren/diffuse-gliome",
+      "original": "/educational/diffuse-glioma/hero.png",
+      "replacement": "/educational/lesson-design/gehirn--tumoren--diffuse-gliome.webp",
+      "generatorFile": "exec-52b7b380-a27a-4270-a60d-bc88a45e5c66.png"
+    },
+    {
+      "route": "/msk/postop/osteosynthese",
+      "original": "/educational/osteosynthese-postop/hero-v2.webp",
+      "replacement": "/educational/lesson-design/msk--postop--osteosynthese.webp",
+      "generatorFile": "exec-afcc48d2-fcd6-44a4-b38f-c11320ed7b07.png"
+    },
+    {
+      "route": "/msk/schulter/arthrose",
+      "original": "/educational/glenohumeral-oa/hero.png",
+      "replacement": "/educational/lesson-design/msk--schulter--arthrose.webp",
+      "generatorFile": "exec-32b75629-00bd-49dd-b19f-7db21393e53d.png"
+    },
+    {
+      "route": "/msk/trauma/sternum-rippen",
+      "original": "/educational/sternum-rippen/hero.png",
+      "replacement": "/educational/lesson-design/msk--trauma--sternum-rippen.webp",
+      "generatorFile": "exec-d6b89fb7-50b6-4ff2-bd4c-50a7b8cba25e.png"
+    },
+    {
+      "route": "/technik/mr-myelographie",
+      "original": "/educational/mr-myelography/hero.png",
+      "replacement": "/educational/lesson-design/technik--mr-myelographie.webp",
+      "generatorFile": "exec-a327e7b8-d2b7-4422-bf1c-f3b1bec485d2.png"
+    },
+    {
+      "route": "/thorax/bronchiolitis",
+      "original": "/educational/thorax-bronchiolitis/hero.png",
+      "replacement": "/educational/lesson-design/thorax--bronchiolitis.webp",
+      "generatorFile": "exec-05105f3c-7cd1-410c-ae4d-09d0c5b15b1e.png"
+    },
+    {
+      "route": "/thorax/hypersensitivitaetspneumonitis",
+      "original": "/educational/thorax-hp/hero.png",
+      "replacement": "/educational/lesson-design/thorax--hypersensitivitaetspneumonitis.webp",
+      "generatorFile": "exec-e4d085d8-ca8b-4f0a-a881-635979761765.png"
+    },
+    {
+      "route": "/thorax/lch-lunge",
+      "original": "/educational/thorax-lch/hero.png",
+      "replacement": "/educational/lesson-design/thorax--lch-lunge.webp",
+      "generatorFile": "exec-3954faa2-14c1-42cc-a8d7-cae2ef1825c2.png"
+    },
+    {
+      "route": "/thorax/lungenzysten-differentialdiagnose",
+      "original": "/educational/thorax-cysts/hero.png",
+      "replacement": "/educational/lesson-design/thorax--lungenzysten-differentialdiagnose.webp",
+      "generatorFile": "exec-c63f411c-4bb2-4a8b-a352-f8eaa1208eba.png"
+    },
+    {
+      "route": "/thorax/mukoviszidose",
+      "original": "/educational/thorax-cf/hero.png",
+      "replacement": "/educational/lesson-design/thorax--mukoviszidose.webp",
+      "generatorFile": "exec-0a01bfe5-2e33-454e-93d5-7bf496962932.png"
+    },
+    {
+      "route": "/thorax/pectus-excavatum",
+      "original": "/educational/pectus-excavatum/hero.png",
+      "replacement": "/educational/lesson-design/thorax--pectus-excavatum.webp",
+      "generatorFile": "exec-9676e56f-8862-43ac-a4d5-836180541125.png"
+    },
+    {
+      "route": "/wirbelsaeule/degenerative/ligamentossifikation",
+      "original": "/educational/spine-ossification/hero.png",
+      "replacement": "/educational/lesson-design/wirbelsaeule--degenerative--ligamentossifikation.webp",
+      "generatorFile": "exec-7e82f7f3-436f-45c9-a4b3-c2b4008763ea.png"
+    },
+    {
+      "route": "/wirbelsaeule/degenerative/spondylolisthesis",
+      "original": "/educational/spine-spondylolisthesis/hero.png",
+      "replacement": "/educational/lesson-design/wirbelsaeule--degenerative--spondylolisthesis.webp",
+      "generatorFile": "exec-6d735540-d9f8-4b67-8c89-b1096d8ab866.png"
+    },
+    {
+      "route": "/wirbelsaeule/entzuendlich/leptomeningitis",
+      "original": "/educational/spine-leptomeningitis/hero.png",
+      "replacement": "/educational/lesson-design/wirbelsaeule--entzuendlich--leptomeningitis.webp",
+      "generatorFile": "exec-b1d33dad-b2c9-4fd3-b649-866d30c0b4a8.png"
+    },
+    {
+      "route": "/wirbelsaeule/entzuendlich/neuroborreliose",
+      "original": "/educational/spine-neuroborreliose/hero.png",
+      "replacement": "/educational/lesson-design/wirbelsaeule--entzuendlich--neuroborreliose.webp",
+      "generatorFile": "exec-ff2bc8dd-6cb4-4bde-a023-abbb1dfbcecb.png"
+    },
+    {
+      "route": "/wirbelsaeule/metabolisch/osteoporose",
+      "original": "/educational/spine-osteoporosis/hero.png",
+      "replacement": "/educational/lesson-design/wirbelsaeule--metabolisch--osteoporose.webp",
+      "generatorFile": "exec-892ee3d1-232c-4bae-a5ba-da3fd2909f11.png"
+    },
+    {
+      "route": "/wirbelsaeule/metabolisch/renale-osteodystrophie",
+      "original": "/educational/spine-renal-osteodystrophy/hero.png",
+      "replacement": "/educational/lesson-design/wirbelsaeule--metabolisch--renale-osteodystrophie.webp",
+      "generatorFile": "exec-24c63814-eaf8-4b35-9386-67f297c61467.png"
+    }
+  ]
+}
