@@ -1,3 +1,4 @@
+import { lessonThree, lessonThreeRows } from './lessonThree.js'
 import { lessonOneExtra } from './lessonOneExtra.js'
 import { lessonTwo, lessonTwoRows } from './lessonTwo.js'
 export const lesson = {
@@ -28,7 +29,7 @@ export const lesson = {
     ['از معنی موقعیت تصمیم بگیر', 'در متن، کار معمول سام در خانه است؛ حضور امروز او در دفتر موقتی است. کلمه‌های usually و at the moment کمک می‌کنند، اما معنی جمله تعیین‌کننده است.', 'I normally work from home, but today I am visiting the office.']
   ]
 }
-export const categories = { reading: 'درک متن', vocabulary: 'واژگان', grammar: 'گرامر', conversation: 'پاسخ در مکالمه' }
+export const categories = { reading: 'Reading', vocabulary: 'Vocabulary', grammar: 'Grammar', conversation: 'Conversation' }
 // Each concept has an independently authored transfer question for mistake review.
 const rows = [
   ['reading', 'Why is Maya helping the training team?', ['It is her temporary task this week.', 'She has left her job in IT.', 'She works from home every day.', 'She is taking an English course.'], 'مایا می‌گوید this week؛ کمک به تیم آموزش کار موقتی این هفتهٔ اوست.', 'Which sentence describes Maya’s usual job?', ['She deals with customer questions.', 'She teaches English every evening.', 'She visits customers every Monday.', 'She repairs the office computers.'], 'کار معمول مایا رسیدگی به سؤال‌های مشتریان است؛ کمک به آموزش موقتی است.'],
@@ -65,12 +66,19 @@ function fromRows(rows, lessonId, prefix) {
  return rows.map((r,i)=>({id:prefix+(i+1),lessonId,category:r[0],variants:[r[1],r[2]].map(v=>({prompt:v[0],options:v.slice(1),answer:0,explanation:r[3]}))}))
 }
 lesson.goal = 'آشنایی با همکار، هماهنگی زمان و تشخیص کار معمول از وضعیت موقتی.'
-export const lessons = [lesson, lessonTwo]
+lesson.titleEn = 'A new colleague'
+lesson.grammarEn = 'Present simple & continuous'
+lesson.goalEn = 'Meet a colleague, arrange a chat and talk about everyday routines.'
+lessonTwo.titleEn = 'When plans go wrong'
+lessonTwo.grammarEn = 'Past simple & continuous'
+lessonTwo.goalEn = 'Explain a delay, describe past events and handle a change of plan.'
+export const lessons = [lesson, lessonTwo, lessonThree]
 export const lessonMap = Object.fromEntries(lessons.map(l=>[l.id,l]))
 export const questions = [
  ...originalQuestions.map(q=>({...q,lessonId:lesson.id})),
  ...fromRows(lessonOneExtra,lesson.id,'l1extra'),
- ...fromRows(lessonTwoRows,lessonTwo.id,'l2q')
+ ...fromRows(lessonTwoRows,lessonTwo.id,'l2q'),
+ ...fromRows(lessonThreeRows,lessonThree.id,'l3q')
 ]
 export const questionMap = Object.fromEntries(questions.map(q=>[q.id,q]))
 export const flashcards = lessons.flatMap(l=>l.words.map(([term,meaning,example],i)=>({id:l.id+'-word-'+i,lessonId:l.id,term,meaning,example})))

@@ -7,7 +7,7 @@ export const emptyState = () => ({ version: 2, updatedAt: 0, attempts: 0, mistak
 const validTime = n => Number.isSafeInteger(n) && n >= 0 && n < 9000000000000
 const validAnswer = n => Number.isInteger(n) && n >= 0 && n < 4
 const stamp = (state, now) => Math.max(now, state.updatedAt + 1)
-export const activeMistakes = (state, lessonId, category) => questions.filter(q => (!lessonId || q.lessonId === lessonId) && (!category || q.category === category) && state.mistakes[q.id] && !state.mistakes[q.id].resolved)
+export const activeMistakes = (state, lessonId, category) => questions.filter(q => (!lessonId || lessonId === 'all' || q.lessonId === lessonId) && (!category || q.category === category) && state.mistakes[q.id] && !state.mistakes[q.id].resolved)
 export function shuffle(items, seed) {
   const a = [...items]
   let h = [...String(seed)].reduce((n,c) => (Math.imul(n,31)+c.charCodeAt(0))>>>0, 7)
@@ -34,17 +34,17 @@ export function readState(raw) {
     if(entry&&validTime(entry.due)&&Number.isInteger(entry.box)&&entry.box>=0&&entry.box<=5)
       clean.cards[c.id]={due:entry.due,box:entry.box,updatedAt:validTime(entry.updatedAt)?entry.updatedAt:1}
   }
-  clean.history=Array.isArray(raw.history)?raw.history.filter(h=>h&&['test','review'].includes(h.mode)&&validTime(h.at)&&Number.isInteger(h.correct)&&Number.isInteger(h.total)&&h.total>0&&h.total<=80&&h.correct>=0&&h.correct<=h.total).slice(-100).map(h=>({
-    id:typeof h.id==='string'?h.id.slice(0,120):'legacy-'+h.at,mode:h.mode,at:h.at,lessonId:lessonMap[h.lessonId]?h.lessonId:'b1-01',
+  clean.history=Array.isArray(raw.history)?raw.history.filter(h=>h&&['test','review','random'].includes(h.mode)&&validTime(h.at)&&Number.isInteger(h.correct)&&Number.isInteger(h.total)&&h.total>0&&h.total<=120&&h.correct>=0&&h.correct<=h.total).slice(-100).map(h=>({
+    id:typeof h.id==='string'?h.id.slice(0,120):'legacy-'+h.at,mode:h.mode,at:h.at,lessonId:h.lessonId==='all'?'all':Object.hasOwn(lessonMap,h.lessonId)?h.lessonId:'b1-01',
     category:['reading','grammar','vocabulary','conversation'].includes(h.category)?h.category:'mixed',correct:h.correct,total:h.total
   })):[]
   const s=raw.session
-  if(s&&typeof s.id==='string'&&['test','review'].includes(s.mode)&&Array.isArray(s.ids)&&s.ids.length>0&&s.ids.length<=80&&
+  if(s&&typeof s.id==='string'&&['test','review','random'].includes(s.mode)&&Array.isArray(s.ids)&&s.ids.length>0&&s.ids.length<=120&&
     new Set(s.ids).size===s.ids.length&&s.ids.every(id=>Object.hasOwn(questionMap,id))&&
     Number.isInteger(s.index)&&s.index>=0&&s.index<=s.ids.length&&[0,1].includes(s.variant)){
     const answers=Object.fromEntries(s.ids.filter(id=>validAnswer(s.answers?.[id])).map(id=>[id,s.answers[id]]))
     const lessonId=legacy?'b1-01':s.lessonId
-    if(lessonMap[lessonId]&&s.ids.every(id=>questionMap[id].lessonId===lessonId)&&s.ids.slice(0,s.index).every(id=>validAnswer(answers[id]))&&s.ids.slice(s.index+1).every(id=>answers[id]===undefined))
+    if((Object.hasOwn(lessonMap,lessonId)||lessonId==='all')&&(lessonId==='all'?s.mode!=='test':s.ids.every(id=>questionMap[id].lessonId===lessonId))&&(s.mode!=='random'||(lessonId==='all'&&['grammar','vocabulary'].includes(s.category)&&s.ids.length<=10&&s.ids.every(id=>questionMap[id].category===s.category)))&&s.ids.slice(0,s.index).every(id=>validAnswer(answers[id]))&&s.ids.slice(s.index+1).every(id=>answers[id]===undefined))
       clean.session={id:s.id.slice(0,120),mode:s.mode,lessonId,category:['reading','grammar','vocabulary','conversation'].includes(s.category)?s.category:'mixed',ids:s.ids,index:s.index,variant:s.variant,variants:Object.fromEntries(s.ids.filter(id=>[0,1].includes(s.variants?.[id])).map(id=>[id,s.variants[id]])),answers}
   }
   if(legacy){clean.updatedAt=Math.max(clean.updatedAt,...clean.history.map(h=>h.at),clean.attempts?1:0);clean.sessionUpdatedAt=clean.session?clean.updatedAt:0}
@@ -61,12 +61,22 @@ export function mergeState(left,right) {
     history:[...new Map([...a.history,...b.history].map(h=>[h.id,h])).values()].sort((x,y)=>x.at-y.at).slice(-100)
   })
 }
+
 export function startSession(state,{mode='test',lessonId='b1-01',category='reading'},now=Date.now()) {
-  if(!lessonMap[lessonId]||!['test','review'].includes(mode))return state
-  const pool=mode==='review'?activeMistakes(state,lessonId,category==='mixed'?null:category):questions.filter(q=>q.lessonId===lessonId&&q.category===category)
+  if((!Object.hasOwn(lessonMap,lessonId)&&lessonId!=='all')||!['test','review','random'].includes(mode))return state
+  if(mode==='test'&&lessonId==='all')return state
+  if(mode==='random'&&(lessonId!=='all'||!['grammar','vocabulary'].includes(category)))return state
+  let pool=mode==='review'?activeMistakes(state,lessonId,category==='mixed'?null:category):questions.filter(q=>(lessonId==='all'||q.lessonId===lessonId)&&q.category===category)
   if(!pool.length)return state
   const updatedAt=stamp(state,now),attempts=state.attempts+1
   const id=globalThis.crypto?.randomUUID?.()||`${updatedAt}-${attempts}-${Math.random().toString(36).slice(2)}`
+  if(mode==='random'){
+    // Interleave independently shuffled lesson pools, then take ten unique concepts.
+    const groups=shuffle(Object.keys(lessonMap),id).map(l=>shuffle(pool.filter(q=>q.lessonId===l),id+l))
+    const balanced=[]
+    while(balanced.length<10&&groups.some(g=>g.length))for(const group of groups)if(group.length&&balanced.length<10)balanced.push(group.shift())
+    pool=balanced
+  }
   return {...state,updatedAt,attempts,sessionUpdatedAt:updatedAt,session:{id,mode,lessonId,category,ids:shuffle(pool.map(q=>q.id),id),index:0,variant:mode==='review'?1:(attempts-1)%2,variants:mode==='review'?Object.fromEntries(pool.map(q=>[q.id,1-(state.mistakes[q.id].lastVariant||0)])):{},answers:{}}}
 }
 export function currentQuestion(session) {
@@ -98,7 +108,7 @@ export function advance(state,now=Date.now()) {
   return {...state,updatedAt,sessionUpdatedAt:updatedAt,session:next,history}
 }
 export function dueCards(state,lessonId,now=Date.now()) {
-  return flashcards.filter(c=>c.lessonId===lessonId&&(!state.cards[c.id]||state.cards[c.id].due<=now))
+  return flashcards.filter(c=>(lessonId==='all'||c.lessonId===lessonId)&&(!state.cards[c.id]||state.cards[c.id].due<=now))
 }
 export function rateCard(state,id,remembered,now=Date.now()) {
   if(!Object.hasOwn(flashcardMap,id))return state

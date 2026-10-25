@@ -648,3 +648,18 @@
  .audioSettings{gap:14px}.audioSettings label{flex:1 1 100px}
  .flashcard h3{font-size:29px}
 }
+/* English-first UI; Persian is reserved for meanings and explanations. */
+.app {font-family:var(--font-manrope,Arial),Arial,sans-serif}
+.app .intro h1 {font-family:var(--font-fraunces,Georgia),Georgia,serif;font-weight:500;line-height:1.2;letter-spacing:-1.2px}
+.persian {font-family:var(--font-persian,Tahoma),Tahoma,sans-serif!important;line-height:2!important;text-align:right;letter-spacing:0!important}
+.word .persian {display:block}
+.word strong {text-align:left}
+.questionSource {display:block;margin-top:6px;color:var(--muted);font-size:12px}
+.deckSelect {display:flex;align-items:center;gap:14px;margin:20px 0;font-size:14px}
+.deckSelect select {font:inherit;color:var(--forest);background:white;border:1px solid var(--line);border-radius:6px;padding:10px;max-width:100%;min-height:44px}
+.homeApp {padding:0 48px 0}
+.homeShell {max-width:1340px}
+.header .brand {cursor:pointer}
+.option small {font-family:var(--font-manrope,Arial),Arial,sans-serif;white-space:normal}
+@media(max-width:760px){.homeApp{padding:0 16px}.deckSelect{align-items:flex-start;flex-direction:column}.app .intro h1{font-size:32px}.nav{gap:4px}.nav button{font-size:13px;padding:10px 12px}}
+.header .brand {border:0;background:transparent;padding:0;text-align:left}

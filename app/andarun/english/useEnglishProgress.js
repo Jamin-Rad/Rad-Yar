@@ -49,7 +49,7 @@ export default function useEnglishProgress() {
    try {
      const raw=localStorage.getItem(STORAGE_KEY)||localStorage.getItem(LEGACY_STORAGE_KEY)
      if(raw)update(readState(JSON.parse(raw)))
-   }catch{setStorageWarning('نسخهٔ محلی خوانده نشد؛ نسخهٔ آنلاین بررسی می‌شود.')}
+   }catch{setStorageWarning('Local progress could not be read. Checking your online copy.')}
    setLoaded(true)
    const timer=setTimeout(sync,0),interval=setInterval(sync,30000)
    const focus=()=>{if(document.visibilityState==='visible')sync()}
@@ -59,7 +59,7 @@ export default function useEnglishProgress() {
  useEffect(()=>{
    if(!loaded)return
    try {localStorage.setItem(STORAGE_KEY,JSON.stringify(state))}
-   catch{setStorageWarning('ذخیرهٔ محلی ممکن نیست؛ وضعیت ذخیرهٔ آنلاین را بررسی کن.')}
+   catch{setStorageWarning('Local storage is unavailable. Please check your online save status.')}
    const timer=setTimeout(sync,700)
    return ()=>clearTimeout(timer)
  },[state,loaded,sync])

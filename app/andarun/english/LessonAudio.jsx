@@ -40,47 +40,47 @@ export default function LessonAudio({ lesson, onActive }) {
        if(p.token!==token)return
        const audio=new Audio(url);p.audio=audio;audio.playbackRate=rateRef.current
        audio.onended=ended
-       audio.onerror=()=>{if(p.token===token){setStatus('idle');setMessage('پخش فایل ممکن نشد؛ صدای مرورگر را انتخاب کن.');onActive(-1)}}
+       audio.onerror=()=>{if(p.token===token){setStatus('idle');setMessage('Audio playback failed. Try the browser voice.');onActive(-1)}}
        await audio.play()
-       if(p.token===token){setStatus('playing');setMessage('صدای طبیعی آماده')}
+       if(p.token===token){setStatus('playing');setMessage('Natural voice')}
        return
      }catch(error){
        if(p.token!==token||error.name==='AbortError')return
        p.remote=false
-       setMessage('فایل صوتی در دسترس نیست؛ پخش با صدای مرورگر.')
+       setMessage('Audio file unavailable. Using the browser voice.')
      }
    }
-   if(!window.speechSynthesis||!window.SpeechSynthesisUtterance){setStatus('idle');onActive(-1);setMessage('این مرورگر پخش گفتار را پشتیبانی نمی‌کند.');return}
+   if(!window.speechSynthesis||!window.SpeechSynthesisUtterance){setStatus('idle');onActive(-1);setMessage('Speech playback is unavailable in this browser.');return}
    const utterance=new SpeechSynthesisUtterance(lesson.paragraphs[i].replaceAll('**',''))
    utterance.lang='en-GB';utterance.rate=rateRef.current
    const selected=voices.find(v=>v.voiceURI===voice)||voices.find(v=>v.lang==='en-GB')||voices[0]
    if(selected)utterance.voice=selected
    p.utterance=utterance;utterance.onend=ended
-   utterance.onerror=event=>{if(p.token===token&&event.error!=='interrupted'&&event.error!=='canceled'){setStatus('idle');onActive(-1);setMessage('پخش مرورگر انجام نشد؛ یک صدای انگلیسی دیگر را امتحان کن.')}}
+   utterance.onerror=event=>{if(p.token===token&&event.error!=='interrupted'&&event.error!=='canceled'){setStatus('idle');onActive(-1);setMessage('Browser speech failed. Try another English voice.')}}
    window.speechSynthesis.speak(utterance);setStatus('playing')
-   if(source==='browser')setMessage('صدای مرورگر')
+   if(source==='browser')setMessage('Browser voice')
  }
  runRef.current=run
  function toggle(){
    const p=playback.current
    if(status==='playing'){if(p.audio)p.audio.pause();else window.speechSynthesis?.pause();setStatus('paused')}
    else if(status==='paused'){
-     if(p.audio)p.audio.play().then(()=>setStatus('playing')).catch(()=>{setStatus('idle');setMessage('برای پخش دوباره دکمهٔ شروع را بزن.')})
+     if(p.audio)p.audio.play().then(()=>setStatus('playing')).catch(()=>{setStatus('idle');setMessage('Press Play to try again.')})
      else {window.speechSynthesis?.resume();setStatus('playing')}
    }else run(index)
  }
- return <section className={styles.audioPlayer} aria-label="پخش متن درس">
+ return <section className={styles.audioPlayer} aria-label="Lesson audio">
    <div className={styles.actions}>
-     <button className={styles.primary} onClick={toggle} disabled={status==='loading'}>{status==='playing'?'مکث':status==='paused'?'ادامهٔ پخش':status==='loading'?'آماده‌سازی صدا…':'پخش متن'}</button>
-     <button className={styles.secondary} onClick={()=>stop()}>توقف</button>
-     <button className={styles.secondary} onClick={()=>run(index)}>تکرار بند</button>
+     <button className={styles.primary} onClick={toggle} disabled={status==='loading'}>{status==='playing'?'Pause':status==='paused'?'Resume':status==='loading'?'Loading audio…':'Play text'}</button>
+     <button className={styles.secondary} onClick={()=>stop()}>Stop</button>
+     <button className={styles.secondary} onClick={()=>run(index)}>Repeat paragraph</button>
    </div>
    <div className={styles.audioSettings}>
-     <label>بند متن<select aria-label="بند متن" value={index} onChange={e=>{stop();setIndex(Number(e.target.value))}}>{lesson.paragraphs.map((_,i)=><option key={i} value={i}>بند {i+1}</option>)}</select></label>
-     <label>سرعت<select aria-label="سرعت" value={rate} onChange={e=>{const value=Number(e.target.value);setRate(value);rateRef.current=value;if(playback.current.audio)playback.current.audio.playbackRate=value;else stop()}}>{[0.75,0.9,1,1.15].map(r=><option key={r} value={r}>{r}×</option>)}</select></label>
-     <label>نوع صدا<select aria-label="نوع صدا" value={source} onChange={e=>{stop();setSource(e.target.value)}}><option value="auto">صدای طبیعی با جایگزین مرورگر</option><option value="browser">صدای مرورگر</option></select></label>
-     {source==='browser'&&voices.length?<label>صدای انگلیسی<select aria-label="صدای انگلیسی" value={voice} onChange={e=>{stop();setVoice(e.target.value)}}><option value="">انتخاب خودکار</option>{voices.map(v=><option key={v.voiceURI} value={v.voiceURI}>{v.name}</option>)}</select></label>:null}
+     <label>Paragraph<select aria-label="Paragraph" value={index} onChange={e=>{stop();setIndex(Number(e.target.value))}}>{lesson.paragraphs.map((_,i)=><option key={i} value={i}>Paragraph {i+1}</option>)}</select></label>
+     <label>Speed<select aria-label="Speed" value={rate} onChange={e=>{const value=Number(e.target.value);setRate(value);rateRef.current=value;if(playback.current.audio)playback.current.audio.playbackRate=value;else stop()}}>{[0.75,0.9,1,1.15].map(r=><option key={r} value={r}>{r}×</option>)}</select></label>
+     <label>Voice source<select aria-label="Voice source" value={source} onChange={e=>{stop();setSource(e.target.value)}}><option value="auto">Natural voice (browser fallback)</option><option value="browser">Browser voice</option></select></label>
+     {source==='browser'&&voices.length?<label>English voice<select aria-label="English voice" value={voice} onChange={e=>{stop();setVoice(e.target.value)}}><option value="">Automatic</option>{voices.map(v=><option key={v.voiceURI} value={v.voiceURI}>{v.name}</option>)}</select></label>:null}
    </div>
-   <p className={styles.muted} role="status">{message||'پخش بندبه‌بند؛ بند فعال در متن مشخص می‌شود.'}</p>
+   <p className={styles.muted} role="status">{message||'Listen paragraph by paragraph. The current paragraph is highlighted.'}</p>
  </section>
 }

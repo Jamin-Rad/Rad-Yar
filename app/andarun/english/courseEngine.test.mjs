@@ -6,9 +6,9 @@ import { readFileSync, statSync } from 'node:fs'
 import { createHash } from 'node:crypto'
 import { createEnglishHandlers } from '../../../lib/englishApi.js'
 
-test('two complete B1 lessons: independent 5/15/15/5 tests, 160 prompts and 20 flashcards',()=>{
- assert.equal(lessons.length,2);assert.equal(questions.length,80);assert.equal(flashcards.length,20)
- assert.equal(new Set(questions.map(q=>q.id)).size,80)
+test('three complete B1 lessons: independent 5/15/15/5 tests, 240 prompts and 30 flashcards',()=>{
+ assert.equal(lessons.length,3);assert.equal(questions.length,120);assert.equal(flashcards.length,30)
+ assert.equal(new Set(questions.map(q=>q.id)).size,120)
  for(const l of lessons){
   const count=l.paragraphs.join(' ').split(/\s+/).length
   assert(count>=180&&count<=250,count);assert.equal(l.words.length,10);assert.equal(l.grammarNotes.length,3)
@@ -21,7 +21,7 @@ test('two complete B1 lessons: independent 5/15/15/5 tests, 160 prompts and 20 f
   for(const v of q.variants){assert.equal(v.options.length,4,q.id);assert.equal(new Set(v.options).size,4,q.id);assert(v.options[v.answer]);assert(v.explanation.length>30)}
  }
  const prompts=questions.flatMap(q=>q.variants.map(v=>v.prompt+JSON.stringify(v.options)))
- assert.equal(new Set(prompts).size,160,'Every prompt is separately authored')
+ assert.equal(new Set(prompts).size,240,'Every prompt is separately authored')
 })
 
 test('each lesson/category starts only its own questions and locks/scorers first answers',()=>{
@@ -113,11 +113,50 @@ test('review changes form when a test used variant one and resumes the chosen fo
  const restored=readState(JSON.parse(JSON.stringify(s)))
  assert.deepEqual(currentQuestion(restored.session),currentQuestion(s.session))
 })
-test('all ten natural-voice files match the exact displayed lesson text',()=>{
+test('all fifteen natural-voice files match the exact displayed lesson text',()=>{
  for(const l of lessons)for(let i=0;i<l.paragraphs.length;i++){
   const file=new URL('../../../public/english/'+l.id+'/paragraph-'+(i+1)+'.mp3',import.meta.url)
   const metadata=JSON.parse(readFileSync(new URL(file.href+'.json'),'utf8'))
   assert.equal(metadata.textSha256,createHash('sha256').update(l.paragraphs[i].replaceAll('**','')).digest('hex'))
   assert(statSync(file).size>1000)
  }
+})
+
+test('random practice samples ten distinct questions with balanced lesson coverage',()=>{
+ for(const category of ['grammar','vocabulary']){
+  const s=startSession(emptyState(),{mode:'random',lessonId:'all',category},1000)
+  assert.equal(s.session.ids.length,10);assert.equal(new Set(s.session.ids).size,10)
+  assert(s.session.ids.every(id=>questionMap[id].category===category))
+  const counts=lessons.map(l=>s.session.ids.filter(id=>questionMap[id].lessonId===l.id).length)
+  assert(counts.every(n=>n>=3&&n<=4))
+  assert.deepEqual(readState(JSON.parse(JSON.stringify(s))),s)
+  const next=startSession(s,{mode:'random',lessonId:'all',category},2000)
+  assert.notDeepEqual(next.session.ids,s.session.ids)
+ }
+ assert.equal(startSession(emptyState(),{mode:'random',lessonId:'all',category:'reading'}).session,null)
+})
+test('mixed-lesson random scores and mistakes survive online-state normalization',()=>{
+ let s=startSession(emptyState(),{mode:'random',lessonId:'all',category:'grammar'},1000)
+ const first=currentQuestion(s.session),prompt=first.prompt
+ s=answer(s,1,1001);s=advance(s,1002)
+ while(currentQuestion(s.session))s=advance(answer(s,0,1003),1004)
+ assert.equal(result(s.session).correct,9);assert.equal(s.history[0].mode,'random');assert.equal(s.history[0].lessonId,'all')
+ s=readState(JSON.parse(JSON.stringify(s)))
+ assert.equal(s.history[0].mode,'random')
+ s=startSession(s,{mode:'review',lessonId:'all',category:'grammar'},1005)
+ assert.equal(s.session.ids.length,1);assert.notEqual(currentQuestion(s.session).prompt,prompt)
+ assert.equal(currentQuestion(s.session).lessonId,first.lessonId)
+})
+test('the all-lessons flashcard deck uses every lesson without resetting due dates',()=>{
+ const state=rateCard(emptyState(),'b1-03-word-0',true,1000)
+ assert.equal(dueCards(state,'all',2000).length,29)
+ assert.equal(dueCards(state,'b1-03',2000).length,9)
+})
+test('server merge preserves another device data omitted by an older client',async()=>{
+ let stored={state:rateCard(emptyState(),'b1-03-word-0',true,1000),revision:'2026-10-25T00:00:00Z'}
+ const storage={available:true,read:async()=>structuredClone(stored),write:async(owner,state,revision)=>{assert.equal(revision,stored.revision);stored={state,revision:'2026-10-25T00:00:01Z'};return stored}}
+ const api=createEnglishHandlers(async()=>({ownerId:'test-owner'}),storage)
+ const response=await api.PUT(new Request('http://local',{method:'PUT',body:JSON.stringify({state:emptyState(),revision:stored.revision})}))
+ assert.equal(response.status,200)
+ assert.equal((await response.json()).state.cards['b1-03-word-0'].box,1)
 })
