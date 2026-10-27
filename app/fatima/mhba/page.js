@@ -6,7 +6,7 @@ import './studio.css'
 import './portal.css'
 
 export const metadata = {
-  title: 'MBH',
+  title: 'MHBA',
   description: 'دفتر مطالعهٔ شخصی فاطمه؛ درس‌های MHBA، هایلایت، مرور و تمرین امتحان.',
   robots: { index: false, follow: false },
 }
