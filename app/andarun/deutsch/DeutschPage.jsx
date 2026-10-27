@@ -3,6 +3,12 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import Link from 'next/link'
 import styles from './page.module.css'
+import { getPractice } from './practice'
+import ListeningPlayer from './ListeningPlayer'
+import { normalizeDeutschState as normalizeState } from '@/lib/deutsch/state'
+import { createDeutschSync } from '@/lib/deutsch/sync'
+import { getQuestionBank, makePracticeSession } from './sessions'
+import CourseHome from './CourseHome'
 
 const DAY = 24 * 60 * 60 * 1000
 const INTERVALS = [0, 1, 3, 7, 14, 30]
@@ -17,6 +23,7 @@ const emptyState = {
   reviews: [],
   writings: [],
   answers: {},
+  lessonStatus: {},
 }
 
 const sampleLesson = {
@@ -176,6 +183,7 @@ Schema:
   “reading”: {
     “title”: “...”,
     “text”: “170-230 Wörter auf Deutsch mit B2-Satzbau”,
+    “audioUrl”: “Pfad zur vorbereiteten Aufnahme des vollständigen Lesetextes, falls vorhanden”,
     “vocabulary”: [
       { “term”: “exakte Form aus dem Lesetext”, “de”: “klare Bedeutung auf Deutsch”, “fa”: “präzise persische Übersetzung”, “example”: “natürlicher deutscher Beispielsatz mit dem Begriff” }
     ],
@@ -192,6 +200,7 @@ Schema:
   “listening”: {
     “title”: “...”,
     “text”: “ähnlicher Text mit ähnlichen Wörtern, aber nicht identisch”,
+    “audioUrl”: “Pfad zur vorbereiteten Audiodatei, falls vorhanden”,
     “questions”: [
       { “question”: “...”, “options”: [“...”, “...”, “...”, “...”], “answer”: 0, “explanation”: “...” }
     ]
@@ -215,16 +224,17 @@ REGELN FÜR READING QUESTIONS:
 - genau 5 Fragen
 - Schwierig: Bedeutung, Schlussfolgerung, Haltung, indirekte Aussage — keine einfache Wortsuche
 
-REGELN FÜR VOCABULARY_QUIZ (5 Fragen):
-- Jede Frage testet die Bedeutung eines Wortes oder einer Wendung aus dem vocabulary
-- Frageformat: „Was bedeutet ‚X'?” oder „Welche Bedeutung hat ‚X' in diesem Kontext?” oder „Was ist das Gegenteil von ‚X'?”
-- Die 4 Optionen sind kurze deutsche Bedeutungserklärungen (nicht Übersetzungen)
-- KEIN Regelwissen abfragen — nur Wortbedeutung und Verwendung
+REGELN FÜR VOCABULARY_QUIZ (15 bis 20 Fragen):
+- Für jedes Lernwort einen neuen natürlichen Satz mit genau einer Lücke ___ schreiben.
+- question enthält nur den Satz. Keine Frage nach Definition, Übersetzung oder Bedeutung.
+- Die vier Optionen sind Wörter oder Wendungen, die in die Lücke eingesetzt werden können. Genau eine ist im Kontext richtig.
+- Den Lesetext und die Beispiele nicht kopieren. Die Bedeutung wird durch die Verwendung im neuen Kontext geprüft.
+- Die richtige Antwort gleichmäßig auf alle vier Positionen verteilen.
 
-REGELN FÜR GRAMMAR (5 Fragen):
+REGELN FÜR GRAMMAR (15 Fragen):
 - Praktische Lückentext- oder Wahlaufgaben aus echten Sätzen des Lesetextes
 - KEIN Format „Welche grammatische Funktion hat X?” oder „Warum steht Y?”
-- Stattdessen: „Ergänze: ...”, „Wähle die richtige Form:”, „Welche Präposition passt?”, „Welcher Artikel ist korrekt?”
+- question enthält ausschließlich einen natürlichen Satz mit ___. Keine Einleitung wie „Ergänze“, „Wähle“ oder „Fülle die Lücke“.
 - Pflichtthemen (mindestens eines von jedem):
   * Artikel mit korrektem Kasus — z.B. „Wähle: mit ___ Kollegin (dem/der/die/den)”
   * Präposition + richtiger Kasus — z.B. „Welche Präposition? ___ dem Arzt sprechen (mit/bei/von/für)”
@@ -241,6 +251,7 @@ REGELN FÜR GRAMMAR EXPLANATIONS (explanation-Feld):
 - Erkläre auch, warum die anderen Optionen falsch sind, wenn es lehrreich ist
 
 REGELN FÜR LISTENING:
+- Die fertige Audiodatei wird vorab bereitgestellt. audioUrl nur mit einem echten Dateipfad befüllen, sonst weglassen. Keine Sprachsynthese beim Abspielen.
 - genau 5 Fragen
 - Ähnliche Situation wie Lesetext, aber ein anderer Text und eine andere Perspektive
 
@@ -252,20 +263,10 @@ Pflichtprüfung vor der Ausgabe:
 1. Zähle 15 bis 20 vocabulary-Einträge — zu wenig = Fehler.
 2. Prüfe jeden vocabulary.term exakt im reading.text.
 3. Prüfe de, fa, example bei jeder Karte.
-4. Zähle genau 5 vocabulary_quiz Fragen.
-5. Zähle genau 5 grammar Fragen. Prüfe: keine Frage fragt nach grammatischer Funktion oder Regelname.
+4. Zähle 15 bis 20 vocabulary_quiz Sätze mit jeweils einer Lücke.
+5. Zähle genau 15 grammar Fragen. Prüfe: keine Frage fragt nach grammatischer Funktion oder Regelname.
 6. Prüfe alle explanation-Felder bei grammar: Sind sie ausführlich? Wird der Kasus bei Präpositionen genannt?
 7. Gib ausschließlich valides JSON aus, ohne Kommentar und ohne Markdown.`
-
-function normalizeState(value) {
-  return {
-    lessons: Array.isArray(value?.lessons) ? value.lessons : [],
-    cards: Array.isArray(value?.cards) ? value.cards : [],
-    reviews: Array.isArray(value?.reviews) ? value.reviews : [],
-    writings: Array.isArray(value?.writings) ? value.writings : [],
-    answers: value?.answers && typeof value.answers === 'object' ? value.answers : {},
-  }
-}
 
 function dueDateForBox(box) {
   const date = new Date()
@@ -276,26 +277,6 @@ function dueDateForBox(box) {
 
 function isDue(card) {
   return !card.dueAt || new Date(card.dueAt) <= new Date()
-}
-
-function isToday(value) {
-  return typeof value === 'string' && value.slice(0, 10) === todayIso()
-}
-
-function getLessonQuestions(lesson) {
-  return [
-    ...(lesson?.reading?.questions || []).map((_, index) => `${lesson.id}-reading-${index}`),
-    ...(lesson?.vocabulary_quiz || []).map((_, index) => `${lesson.id}-vocabquiz-${index}`),
-    ...(lesson?.grammar || []).map((_, index) => `${lesson.id}-grammar-${index}`),
-    ...(lesson?.listening?.questions || []).map((_, index) => `${lesson.id}-listening-${index}`),
-  ]
-}
-
-function getLessonProgress(lesson, answers) {
-  const keys = getLessonQuestions(lesson)
-  if (!keys.length) return 0
-  const done = keys.filter(key => typeof answers[key] === 'number').length
-  return Math.round((done / keys.length) * 100)
 }
 
 function speak(text) {
@@ -336,15 +317,29 @@ function tokenizeText(text, vocabulary, onWordClick) {
 }
 
 function QuestionBlock({ id, items, answers, onAnswer, onReset }) {
-  const hasAnswers = Object.keys(answers).some(key => key.startsWith(`${id}-`))
+  const [cursor, setCursor] = useState(0)
+  const [finished, setFinished] = useState(false)
+  const keyFor = (item, index) => item.answerKey || `${id}-${index}`
+  const hasAnswers = items.some((item, index) => typeof answers[keyFor(item, index)] === 'number')
+  const score = items.filter((item, index) => answers[keyFor(item, index)] === item.answer).length
+  if (!items.length) return <p>Für diesen Bereich sind noch keine Fragen vorhanden.</p>
+  if (finished) return <div className={styles.questionCard} role="status">
+    <h2>Test abgeschlossen</h2><p>{score} von {items.length} richtig</p>
+    <button type="button" className={styles.primaryBtn} onClick={() => { onReset(); setCursor(0); setFinished(false) }}>Noch einmal üben</button>
+  </div>
   return (
     <div className={styles.questionList}>
-      {items.map((item, index) => {
-        const key = `${id}-${index}`
+      <div className={styles.quizProgress} aria-live="polite"><span>Frage {cursor + 1} von {items.length}</span><span>{items[cursor]?.section || ''}</span></div>
+      <progress className={styles.quizMeter} value={cursor + 1} max={items.length} aria-label="Testfortschritt" />
+      {items.slice(cursor, cursor + 1).map((item) => {
+        const index = cursor
+        const key = keyFor(item, index)
         const selected = answers[key]
         const answered = typeof selected === 'number'
         return (
           <article className={styles.questionCard} key={key}>
+            {item.audio && <ListeningPlayer key={key} listening={item.audio} />}
+            {item.reading && <details className={styles.transcript}><summary>Lesetext anzeigen</summary><p>{item.reading.text}</p></details>}
             <div className={styles.questionTop}>
               <span>{String(index + 1).padStart(2, '0')}</span>
               <strong>{item.question}</strong>
@@ -381,8 +376,12 @@ function QuestionBlock({ id, items, answers, onAnswer, onReset }) {
           </article>
         )
       })}
+      <div className={styles.quizNavigation}>
+        <button type="button" className={styles.ghostBtn} disabled={cursor === 0} onClick={() => setCursor(index => index - 1)}>← Zurück</button>
+        <button type="button" className={styles.primaryBtn} disabled={typeof answers[keyFor(items[cursor], cursor)] !== 'number'} onClick={() => cursor + 1 < items.length ? setCursor(index => index + 1) : setFinished(true)}>{cursor + 1 < items.length ? 'Weiter →' : 'Ergebnis anzeigen'}</button>
+      </div>
       {hasAnswers && (
-        <button type="button" className={styles.resetAnswers} onClick={onReset}>
+        <button type="button" className={styles.resetAnswers} onClick={() => { onReset(); setCursor(0) }}>
           Antworten zurücksetzen <span aria-hidden="true">↻</span>
         </button>
       )}
@@ -418,7 +417,6 @@ export default function DeutschPage({
   lessonMode = false,
   apiBase = '/api/andarun/deutsch',
   correctEndpoint = '/api/andarun/deutsch/correct',
-  speechEndpoint = '/api/andarun/deutsch/speech',
   homeHref = '/andarun',
   homeLabel = 'Privat',
   courseHref = '/andarun/deutsch',
@@ -428,7 +426,8 @@ export default function DeutschPage({
 }) {
   const [state, setState] = useState(emptyState)
   const [loading, setLoading] = useState(true)
-  const [saving, setSaving] = useState(false)
+  const [syncStatus, setSyncStatus] = useState('loading')
+  const [practiceSession, setPracticeSession] = useState(null)
   const [activeLessonId, setActiveLessonId] = useState('')
   const [activeTab, setActiveTab] = useState(lessonMode ? 'lesen' : 'home')
   const [selectedWord, setSelectedWord] = useState(null)
@@ -436,231 +435,87 @@ export default function DeutschPage({
   const [writingText, setWritingText] = useState('')
   const [correction, setCorrection] = useState(null)
   const [correcting, setCorrecting] = useState(false)
-  const [speechLoading, setSpeechLoading] = useState(false)
-  const [isPlaying, setIsPlaying] = useState(false)
-  const [isPaused, setIsPaused] = useState(false)
   const [message, setMessage] = useState('')
   const [importOpen, setImportOpen] = useState(false)
   const [flashOpen, setFlashOpen] = useState(false)
   const [flashView, setFlashView] = useState({ mode: 'boxes', box: 0, practice: false })
   const [showBack, setShowBack] = useState(false)
   const [practiceIndex, setPracticeIndex] = useState(0)
-  const [visualTheme, setVisualTheme] = useState(theme)
-  const saveTimer = useRef(null)
-  const activeAudio = useRef(null)
-  const activeUtterance = useRef(null)
-  const speechText = useRef('')
-  const speechCharIndex = useRef(0)
-  const speechCache = useRef(new Map())
+  const [visualTheme, setVisualTheme] = useState(lessonMode ? theme : 'light')
+  const syncRef = useRef(null)
   const localStorageKey = `deutsch_state_${apiBase.replace(/[^a-z0-9]/gi, '_')}`
-
-  function readLocalState() {
-    try {
-      const local = window.localStorage.getItem(localStorageKey)
-      return local ? normalizeState(JSON.parse(local)) : null
-    } catch {
-      return null
-    }
-  }
-
-  function writeLocalState(nextState) {
-    try {
-      window.localStorage.setItem(localStorageKey, JSON.stringify(normalizeState(nextState)))
-      return true
-    } catch {
-      return false
-    }
-  }
 
   useEffect(() => {
     let ignore = false
-    fetch(apiBase)
-      .then(res => res.ok ? res.json() : Promise.reject(new Error('load failed')))
-      .then(data => {
+    const controller = createDeutschSync({
+      key: localStorageKey,
+      storage: window.localStorage,
+      onState: next => setState({ ...next, lessons: next.lessons.map(lesson => enrichLessonVocabulary(lesson.id === sampleLesson.id ? upgradedSampleLesson : lesson)) }),
+      onStatus: setSyncStatus,
+      request: async changes => {
+        const response = await fetch(apiBase, { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ changes }), keepalive: true, signal: AbortSignal.timeout(15000) })
+        if (!response.ok) throw new Error('sync failed')
+        return response.json()
+      },
+    })
+    syncRef.current = controller
+    fetch(apiBase, { cache: 'no-store', signal: AbortSignal.timeout(15000) })
+      .then(response => response.ok ? response.json() : Promise.reject(new Error('load failed')))
+      .then(data => { if (!ignore) controller.hydrate(data.state) })
+      .catch(() => { if (!ignore) controller.offline() })
+      .finally(() => {
         if (ignore) return
-        const loaded = normalizeState(data.state)
-        loaded.lessons = loaded.lessons.map(lesson => enrichLessonVocabulary(
-          lesson.id === sampleLesson.id ? upgradedSampleLesson : lesson
-        ))
-        if (!loaded.lessons.length) {
-          loaded.lessons = [upgradedSampleLesson]
-        }
-        setState(loaded)
-        const preferredLesson = loaded.lessons.find(lesson => lesson.id === initialLessonId)
-        setActiveLessonId(preferredLesson?.id || loaded.lessons[0]?.id || upgradedSampleLesson.id)
+        const loaded = controller.getState()
+        if (!loaded.lessons.length) loaded.lessons = [enrichLessonVocabulary(upgradedSampleLesson)]
+        setState({ ...loaded, lessons: loaded.lessons.map(lesson => enrichLessonVocabulary(lesson.id === sampleLesson.id ? upgradedSampleLesson : lesson)) })
+        setActiveLessonId(initialLessonId || loaded.lessons[0]?.id || upgradedSampleLesson.id)
+        setLoading(false)
       })
-      .catch(() => {
-        const fallback = readLocalState() || { ...emptyState, lessons: [upgradedSampleLesson] }
-        if (!fallback.lessons.length) fallback.lessons = [upgradedSampleLesson]
-        fallback.lessons = fallback.lessons.map(enrichLessonVocabulary)
-        setState(fallback)
-        setActiveLessonId(initialLessonId || fallback.lessons[0]?.id || upgradedSampleLesson.id)
-        setMessage('Online-Speicherung ist gerade nicht erreichbar. Dein Fortschritt wird lokal auf diesem Gerät gespeichert.')
-      })
-      .finally(() => !ignore && setLoading(false))
-    return () => { ignore = true }
-  }, [initialLessonId, lessonMode, apiBase])
+    const retry = () => { void controller.flush() }
+    window.addEventListener('online', retry)
+    window.addEventListener('pagehide', retry)
+    return () => {
+      ignore = true
+      controller.stop()
+      window.removeEventListener('online', retry)
+      window.removeEventListener('pagehide', retry)
+    }
+  }, [initialLessonId, apiBase, localStorageKey])
 
   useEffect(() => {
-    const stored = window.localStorage.getItem('andarun-deutsch-theme')
+    const stored = window.localStorage.getItem(lessonMode ? 'andarun-deutsch-theme' : 'andarun-deutsch-course-theme-v2')
     if (stored === 'dark' || stored === 'light') setVisualTheme(stored)
   }, [])
 
   function toggleVisualTheme() {
     const next = visualTheme === 'dark' ? 'light' : 'dark'
     setVisualTheme(next)
-    window.localStorage.setItem('andarun-deutsch-theme', next)
+    window.localStorage.setItem(lessonMode ? 'andarun-deutsch-theme' : 'andarun-deutsch-course-theme-v2', next)
   }
 
-  function stopAudio() {
-    if (activeAudio.current) {
-      activeAudio.current.pause()
-      activeAudio.current.currentTime = 0
-      activeAudio.current = null
-    }
-    window.speechSynthesis?.cancel()
-    activeUtterance.current = null
-    speechCharIndex.current = 0
-    setIsPlaying(false)
-    setIsPaused(false)
-  }
-
-  function pauseAudio() {
-    if (activeAudio.current) activeAudio.current.pause()
-    else window.speechSynthesis?.pause()
-    setIsPlaying(false)
-    setIsPaused(true)
-  }
-
-  async function resumeAudio() {
-    if (activeAudio.current) {
-      await activeAudio.current.play()
-    } else if (activeUtterance.current) {
-      window.speechSynthesis?.resume()
-      setIsPlaying(true)
-      setIsPaused(false)
-    }
-  }
-
-  function startDeviceSpeech(text, startIndex = 0) {
-    if (!('speechSynthesis' in window)) return false
-    window.speechSynthesis.cancel()
-    const utterance = new SpeechSynthesisUtterance(text.slice(startIndex))
-    utterance.lang = 'de-DE'
-    utterance.rate = 0.88
-    utterance.pitch = 1
-    utterance.onstart = () => { setIsPlaying(true); setIsPaused(false) }
-    utterance.onpause = () => { setIsPlaying(false); setIsPaused(true) }
-    utterance.onresume = () => { setIsPlaying(true); setIsPaused(false) }
-    utterance.onboundary = event => { speechCharIndex.current = startIndex + event.charIndex }
-    utterance.onend = () => { activeUtterance.current = null; setIsPlaying(false); setIsPaused(false) }
-    utterance.onerror = () => { activeUtterance.current = null; setIsPlaying(false); setIsPaused(false) }
-    speechText.current = text
-    speechCharIndex.current = startIndex
-    activeUtterance.current = utterance
-    window.speechSynthesis.speak(utterance)
-    return true
-  }
-
-  function skipBackward(seconds = 10) {
-    if (activeAudio.current) {
-      activeAudio.current.currentTime = Math.max(0, activeAudio.current.currentTime - seconds)
-      return
-    }
-    if (activeUtterance.current && speechText.current) {
-      const approximateCharacters = seconds * 10
-      let nextIndex = Math.max(0, speechCharIndex.current - approximateCharacters)
-      while (nextIndex > 0 && speechText.current[nextIndex - 1] !== ' ') nextIndex -= 1
-      startDeviceSpeech(speechText.current, nextIndex)
-    }
-  }
-
-  async function speakListeningText(text) {
-    if (!text || speechLoading) return
-    activeAudio.current?.pause()
-    window.speechSynthesis?.cancel()
-    activeAudio.current = null
-    activeUtterance.current = null
-    setIsPlaying(false)
-    setIsPaused(false)
-    setSpeechLoading(true)
-
-    try {
-      let audioUrl = speechCache.current.get(text)
-      if (!audioUrl) {
-        const response = await fetch(speechEndpoint, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ text }),
-        })
-        if (!response.ok) {
-          const error = await response.json().catch(() => ({}))
-          throw new Error(error.error || 'Google-Stimme nicht verfügbar')
-        }
-        audioUrl = URL.createObjectURL(await response.blob())
-        speechCache.current.set(text, audioUrl)
-      }
-
-      const audio = new Audio(audioUrl)
-      audio.addEventListener('ended', () => { activeAudio.current = null; setIsPlaying(false); setIsPaused(false) })
-      audio.addEventListener('pause', () => { setIsPlaying(false); if (!audio.ended && audio.currentTime > 0) setIsPaused(true) })
-      audio.addEventListener('play', () => { setIsPlaying(true); setIsPaused(false) })
-      activeAudio.current = audio
-      await audio.play()
-    } catch (error) {
-      activeAudio.current = null
-      const fallbackStarted = startDeviceSpeech(text)
-      setMessage(fallbackStarted
-        ? `${error.message}. Die Gerätestimme wird als Ersatz verwendet.`
-        : `${error.message}. Auf diesem Gerät ist keine Ersatzstimme verfügbar.`)
-    } finally {
-      setSpeechLoading(false)
-    }
-  }
-
-  useEffect(() => () => {
-    activeAudio.current?.pause()
-    window.speechSynthesis?.cancel()
-    speechCache.current.forEach(url => URL.revokeObjectURL(url))
-  }, [])
-
-  function persist(nextState) {
-    setState(nextState)
-    window.clearTimeout(saveTimer.current)
-    saveTimer.current = window.setTimeout(async () => {
-      setSaving(true)
-      try {
-        const res = await fetch(apiBase, {
-          method: 'PATCH',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ state: nextState }),
-        })
-        if (!res.ok) throw new Error('save failed')
-        const data = await res.json()
-        setState(normalizeState(data.state))
-        setMessage('')
-      } catch {
-        const stored = writeLocalState(nextState)
-        setMessage(stored ? 'Lokal gespeichert. Online-Speicherung ist gerade nicht erreichbar.' : 'Speichern ist gerade nicht möglich.')
-      } finally {
-        setSaving(false)
-      }
-    }, 450)
+  function persist(update) {
+    syncRef.current?.update(update)
   }
 
   const activeLesson = useMemo(
     () => state.lessons.find(lesson => lesson.id === activeLessonId) || state.lessons[0] || upgradedSampleLesson,
     [state.lessons, activeLessonId]
   )
+  const practice = useMemo(() => getPractice(activeLesson), [activeLesson])
+  const testItems = useMemo(() => [
+    ...practice.vocabulary.map((item, index) => ({ ...item, answerKey: `${activeLesson.id}-test-v2-${index}`, section: 'Wörter im Kontext' })),
+    ...practice.grammar.map((item, index) => ({ ...item, answerKey: `${activeLesson.id}-test-v2-${practice.vocabulary.length + index}`, section: 'Grammatik' })),
+  ], [practice, activeLesson.id])
   const sortedLessons = useMemo(
     () => [...state.lessons].sort((a, b) => `${b.date || ''}`.localeCompare(`${a.date || ''}`)),
     [state.lessons]
   )
+  const questionBank = useMemo(() => getQuestionBank(state.lessons), [state.lessons])
+  const wrongCount = questionBank.filter(item => Number.isInteger(state.answers[item.answerKey]) && state.answers[item.answerKey] !== item.answer).length
+  const startPractice = mode => setPracticeSession(makePracticeSession(questionBank, state.answers, mode))
   const dueCards = useMemo(() => state.cards.filter(isDue), [state.cards])
-  const nextCard = dueCards[0]
   const learnedWords = new Set(state.cards.map(card => card.term.toLowerCase()))
   const selectedWordSaved = selectedWord ? learnedWords.has(selectedWord.term.toLowerCase()) : false
-  const dueDoneToday = useMemo(() => state.reviews.filter(review => isToday(review.at)).length, [state.reviews])
   const flashCards = useMemo(() => {
     if (flashView.practice) return state.cards
     return state.cards.filter(card => (card.box || 0) === flashView.box && isDue(card))
@@ -671,16 +526,17 @@ export default function DeutschPage({
     [state.writings, activeLesson.id]
   )
 
+  function toggleRead(lessonId) {
+    persist(current => ({ ...current, lessonStatus: { ...current.lessonStatus, [lessonId]: { readAt: current.lessonStatus[lessonId]?.readAt ? null : new Date().toISOString(), updatedAt: new Date().toISOString() } } }))
+  }
+
   function answerQuestion(key, optionIndex) {
-    persist({ ...state, answers: { ...state.answers, [key]: optionIndex } })
+    persist(current => ({ ...current, answers: { ...current.answers, [key]: optionIndex } }))
   }
 
   function resetSectionAnswers(section) {
     const prefix = `${activeLesson.id}-${section}-`
-    const answers = Object.fromEntries(
-      Object.entries(state.answers).filter(([key]) => !key.startsWith(prefix))
-    )
-    persist({ ...state, answers })
+    persist(current => ({ ...current, answers: Object.fromEntries(Object.entries(current.answers).filter(([key]) => !key.startsWith(prefix))) }))
     setMessage('Antworten zurückgesetzt.')
   }
 
@@ -708,7 +564,7 @@ export default function DeutschPage({
       dueAt: new Date().toISOString(),
       createdAt: new Date().toISOString(),
     }
-    persist({ ...state, cards: [card, ...state.cards] })
+    persist(current => ({ ...current, cards: [card, ...current.cards.filter(item => item.id !== card.id)] }))
     setMessage(`"${word.term}" wurde als Flashcard gespeichert.`)
   }
 
@@ -717,11 +573,11 @@ export default function DeutschPage({
     const box = knew ? Math.min((card.box || 0) + 1, INTERVALS.length - 1) : 0
     const nextCardState = { ...card, box, dueAt: dueDateForBox(box), lastReviewedAt: new Date().toISOString() }
     setShowBack(false)
-    persist({
-      ...state,
-      cards: state.cards.map(item => item.id === card.id ? nextCardState : item),
-      reviews: [...state.reviews, { id: uid('review'), cardId: card.id, quality, at: new Date().toISOString() }],
-    })
+    persist(current => ({
+      ...current,
+      cards: current.cards.map(item => item.id === card.id ? nextCardState : item),
+      reviews: [...current.reviews, { id: uid('review'), cardId: card.id, quality, at: new Date().toISOString() }],
+    }))
   }
 
   function importLesson() {
@@ -729,8 +585,7 @@ export default function DeutschPage({
       const lesson = JSON.parse(importText)
       if (!lesson.id || !lesson.title || !lesson.reading?.text) throw new Error('bad lesson')
       const enrichedLesson = enrichLessonVocabulary(lesson)
-      const lessons = [enrichedLesson, ...state.lessons.filter(item => item.id !== lesson.id)]
-      persist({ ...state, lessons })
+      persist(current => ({ ...current, lessons: [enrichedLesson, ...current.lessons.filter(item => item.id !== lesson.id)] }))
       setActiveLessonId(enrichedLesson.id)
       setActiveTab('home')
       setImportText('')
@@ -743,8 +598,8 @@ export default function DeutschPage({
 
   function saveWritingDraft() {
     if (!writingText.trim()) return
-    persist({
-      ...state,
+    persist(current => ({
+      ...current,
       writings: [{
         id: uid('writing'),
         lessonId: activeLesson.id,
@@ -752,8 +607,8 @@ export default function DeutschPage({
         text: writingText.trim(),
         correction,
         createdAt: new Date().toISOString(),
-      }, ...state.writings],
-    })
+      }, ...current.writings],
+    }))
     setMessage('Schreibtext gespeichert.')
   }
 
@@ -778,8 +633,8 @@ export default function DeutschPage({
       if (!res.ok) throw new Error(data.error || 'KI nicht verfügbar')
       const nextCorrection = data.result
       setCorrection(nextCorrection)
-      persist({
-        ...state,
+      persist(current => ({
+        ...current,
         writings: [{
           id: uid('writing'),
           lessonId: activeLesson.id,
@@ -788,42 +643,14 @@ export default function DeutschPage({
           text: writingText.trim(),
           correction: nextCorrection,
           createdAt: new Date().toISOString(),
-        }, ...state.writings],
-      })
+        }, ...current.writings],
+      }))
       setMessage('KI-Korrektur ist fertig und gespeichert.')
     } catch (error) {
       setMessage(error.message || 'KI-Korrektur ist gerade nicht verfügbar.')
     } finally {
       setCorrecting(false)
     }
-  }
-
-  function addAllVocabCards() {
-    const vocab = activeLesson.reading?.vocabulary || []
-    let added = 0
-    let next = { ...state, cards: [...state.cards] }
-    for (const word of vocab) {
-      if (word.incomplete) continue
-      const cardId = `${activeLesson.id}-${word.term.toLowerCase().replace(/\s+/g, '-')}`
-      if (next.cards.some(card => card.id === cardId)) continue
-      next.cards = [{
-        id: cardId,
-        lessonId: activeLesson.id,
-        type: 'word',
-        term: word.term,
-        front: word.term,
-        back: `${word.de}\n\nPersisch: ${word.fa}`,
-        de: word.de,
-        fa: word.fa,
-        example: word.example || '',
-        box: 0,
-        dueAt: new Date().toISOString(),
-        createdAt: new Date().toISOString(),
-      }, ...next.cards]
-      added++
-    }
-    if (added > 0) { persist(next); setMessage(`${added} neue Flashcard${added > 1 ? 's' : ''} gespeichert.`) }
-    else setMessage('Alle Vokabeln sind bereits als Flashcards gespeichert.')
   }
 
   function addMistakeCard(mistake) {
@@ -841,7 +668,7 @@ export default function DeutschPage({
       dueAt: new Date().toISOString(),
       createdAt: new Date().toISOString(),
     }
-    persist({ ...state, cards: [card, ...state.cards] })
+    persist(current => ({ ...current, cards: [card, ...current.cards.filter(item => item.id !== card.id)] }))
     setMessage('Fehler wurde als Wiederholungskarte gespeichert.')
   }
 
@@ -857,30 +684,26 @@ export default function DeutschPage({
   }
 
   return (
-    <main className={`${styles.shell} ${visualTheme === 'light' ? styles.lightShell : ''}`}>
-      <header className={`${styles.hero} ${!lessonMode ? styles.heroSimple : ''}`}>
-        <div>
-          <div className={styles.heroNav}>
-            {(lessonMode || homeLabel) && (
-              <Link className={styles.backLink} href={lessonMode ? courseHref : homeHref}>← {lessonMode ? 'Kurs' : homeLabel}</Link>
-            )}
-            <button type="button" className={styles.themeToggle} onClick={toggleVisualTheme} aria-label="Farbschema wechseln">
-              <span>{visualTheme === 'dark' ? '☾' : '☼'}</span>
-              {visualTheme === 'dark' ? 'Galaxy' : 'Heaven'}
-            </button>
+    <main className={`${styles.shell} ${!lessonMode ? styles.courseShell : ''} ${visualTheme === 'light' ? styles.lightShell : ''}`}>
+      {lessonMode && (
+        <header className={styles.hero}>
+          <div>
+            <div className={styles.heroNav}>
+              <Link className={styles.backLink} href={courseHref}>← Kurs</Link>
+              <button type="button" className={styles.themeToggle} onClick={toggleVisualTheme} aria-label="Farbschema wechseln">
+                <span>{visualTheme === 'dark' ? '☾' : '☼'}</span>
+                {visualTheme === 'dark' ? 'Galaxy' : 'Heaven'}
+              </button>
+            </div>
+            <span className={styles.kicker}>{activeLesson.level} · Lektion</span>
+            <h1>{activeLesson.title}</h1>
+            <p>{activeLesson.topic}</p>
           </div>
-          <span className={styles.kicker}>{lessonMode ? `${activeLesson.level} · Lektion` : 'Deutsch · B2'}</span>
-          <h1>{lessonMode ? activeLesson.title : <>Deutsch<br/><em>lernen.</em></>}</h1>
-          <p>{lessonMode ? activeLesson.topic : 'Lesen. Testen. Sprechen.'}</p>
-          {!lessonMode && canImport && (
-            <button type="button" className={styles.importMiniBtn} onClick={() => setImportOpen(true)}>
-              Import
-            </button>
-          )}
-        </div>
-      </header>
+        </header>
+      )}
 
-      {message && <div className={styles.status}>{message} {saving ? 'Speichert...' : ''}</div>}
+      {message && <div className={styles.status}>{message}</div>}
+      {(syncStatus === 'offline' || syncStatus === 'storage-error') && <div className={styles.syncNotice} role="status">{syncStatus === 'storage-error' ? 'Lokaler Speicher nicht verfügbar. Bitte diese Seite noch nicht schließen.' : 'Auf diesem Gerät gesichert · Synchronisierung ausstehend'}<button type="button" onClick={() => syncRef.current?.flush()}>Erneut versuchen</button></div>}
 
       {lessonMode && (
         <>
@@ -900,61 +723,15 @@ export default function DeutschPage({
         </>
       )}
 
-      {!lessonMode && activeTab === 'home' && (
-        <section className={styles.homeGrid}>
-          <article className={styles.textPanel}>
-            <div className={styles.panelHead}>
-              <span>Dein Kurs</span>
-              <strong>{state.lessons.length} Lektionen</strong>
-            </div>
-            <div className={styles.lessonRows}>
-              {sortedLessons.map((lesson, index) => {
-                const progress = getLessonProgress(lesson, state.answers)
-                return (
-                  <Link
-                    className={styles.lessonRow}
-                    key={lesson.id}
-                    href={`${lessonBase}/${lesson.id}`}
-                  >
-                    <span className={styles.lessonNumber}>{String(index + 1).padStart(2, '0')}</span>
-                    <div>
-                      <span>{lesson.level}</span>
-                      <strong>{lesson.title}</strong>
-                      <small>{lesson.topic}</small>
-                    </div>
-                    <div className={styles.progressWrap} aria-label={progress ? 'Gespeicherter Fortschritt' : 'Noch nicht begonnen'}>
-                      <b>{progress ? '✓ Gespeichert' : 'Start →'}</b>
-                    </div>
-                  </Link>
-                )
-              })}
-            </div>
-          </article>
-
-          <aside className={styles.flashPanel}>
-            <div className={styles.panelHead}>
-              <span>Quick Practice</span>
-              <strong>Flashcards</strong>
-            </div>
-            <div className={styles.flashNumbers}>
-              <span><strong>{dueCards.length}</strong>fällig</span>
-              <span><strong>{dueDoneToday}</strong>erledigt</span>
-              <span><strong>{state.cards.length}</strong>gesamt</span>
-            </div>
-            <button
-              type="button"
-              className={styles.primaryBtn}
-              onClick={() => {
-                setFlashView({ mode: 'boxes', box: 0, practice: false })
-                setShowBack(false)
-                setFlashOpen(true)
-              }}
-            >
-              Training starten →
-            </button>
-          </aside>
-        </section>
-      )}
+      {!lessonMode && activeTab === 'home' && <CourseHome
+        lessons={sortedLessons} lessonStatus={state.lessonStatus} loading={loading}
+        lessonBase={lessonBase} homeHref={homeHref} homeLabel={homeLabel || 'Jaminova'} canImport={canImport}
+        dark={visualTheme === 'dark'} onTheme={toggleVisualTheme}
+        onImport={() => setImportOpen(true)} wrongCount={wrongCount}
+        onPractice={startPractice} onRead={toggleRead}
+        cardCount={state.cards.length} dueCount={dueCards.length}
+        onFlashcards={() => { setFlashView({ mode: 'boxes', box: 0, practice: false }); setShowBack(false); setFlashOpen(true) }}
+      />}
 
       {activeTab === 'lesen' && (
         <section className={styles.lessonGrid}>
@@ -963,48 +740,29 @@ export default function DeutschPage({
               <span>{activeLesson.level} · {activeLesson.topic}</span>
               <strong>{activeLesson.reading.title}</strong>
             </div>
+            <div aria-label="Lesetext anhören">
+              <ListeningPlayer key={`${activeLesson.id}-reading-${activeLesson.reading.text}`} listening={activeLesson.reading} />
+            </div>
             <p className={styles.readingText}>
               {tokenizeText(activeLesson.reading.text, activeLesson.reading.vocabulary || [], setSelectedWord)}
             </p>
-            <div className={styles.wordShelfWrap}>
-              <div className={styles.wordShelf}>
-                {(activeLesson.reading.vocabulary || []).map(word => (
-                  <button type="button" key={word.term} onClick={() => setSelectedWord(word)} className={learnedWords.has(word.term.toLowerCase()) ? styles.savedWord : ''}>
-                    {word.term}
-                  </button>
-                ))}
-              </div>
-              {(activeLesson.reading.vocabulary || []).length > 0 && (
-                <button type="button" className={styles.saveAllBtn} onClick={addAllVocabCards}>
-                  Alle {(activeLesson.reading.vocabulary || []).length} Vokabeln als Flashcard speichern
-                </button>
-              )}
-            </div>
+            <button type="button" className={styles.readToggle} aria-pressed={!!state.lessonStatus[activeLesson.id]?.readAt} onClick={() => toggleRead(activeLesson.id)}>{state.lessonStatus[activeLesson.id]?.readAt ? '✓ Gelesen · Markierung aufheben' : 'Als gelesen markieren'}</button>
           </article>
-          <QuestionBlock id={`${activeLesson.id}-reading`} items={activeLesson.reading.questions || []} answers={state.answers} onAnswer={answerQuestion} onReset={() => resetSectionAnswers('reading')} />
+          <QuestionBlock key={`${activeLesson.id}-reading`} id={`${activeLesson.id}-reading`} items={activeLesson.reading.questions || []} answers={state.answers} onAnswer={answerQuestion} onReset={() => resetSectionAnswers('reading')} />
         </section>
       )}
 
       {activeTab === 'grammatik' && (
         <section className={styles.singleSection}>
           <div className={styles.sectionIntro}>
-            <span>10 Fragen · Wörter & Grammatik</span>
+            <span>{practice.vocabulary.length + practice.grammar.length} Fragen · Wörter & Grammatik</span>
             <h2>Tagestest</h2>
           </div>
-          {(activeLesson.vocabulary_quiz || []).length > 0 && (
-            <>
-              <div className={styles.testSubHead}>
-                <span className={styles.testSubLabel}>Teil 1 · Wortbedeutung</span>
-                <span className={styles.testSubCount}>{(activeLesson.vocabulary_quiz || []).length} Fragen</span>
-              </div>
-              <QuestionBlock id={`${activeLesson.id}-vocabquiz`} items={activeLesson.vocabulary_quiz || []} answers={state.answers} onAnswer={answerQuestion} onReset={() => resetSectionAnswers('vocabquiz')} />
-            </>
-          )}
-          <div className={styles.testSubHead}>
-            <span className={styles.testSubLabel}>Teil 2 · Grammatik</span>
-            <span className={styles.testSubCount}>{(activeLesson.grammar || []).length} Fragen</span>
+          <div className={styles.practiceActions}>
+            <button type="button" onClick={() => setPracticeSession(makePracticeSession(testItems, state.answers, 'random'))}>Zufallstest</button>
+            <button type="button" disabled={!testItems.some(item => Number.isInteger(state.answers[item.answerKey]) && state.answers[item.answerKey] !== item.answer)} onClick={() => setPracticeSession(makePracticeSession(testItems, state.answers, 'mistakes'))}>Fehler wiederholen</button>
           </div>
-          <QuestionBlock id={`${activeLesson.id}-grammar`} items={activeLesson.grammar || []} answers={state.answers} onAnswer={answerQuestion} onReset={() => resetSectionAnswers('grammar')} />
+          <QuestionBlock key={`${activeLesson.id}-test-v2`} id={`${activeLesson.id}-test-v2`} items={testItems} answers={state.answers} onAnswer={answerQuestion} onReset={() => resetSectionAnswers('test-v2')} />
         </section>
       )}
 
@@ -1016,42 +774,13 @@ export default function DeutschPage({
               <strong>{activeLesson.listening.title}</strong>
             </div>
             <p className={styles.listeningHint}>Höre zuerst ohne mitzulesen. Danach kannst du den Text öffnen und die Fragen beantworten.</p>
-            <div className={styles.audioControls}>
-              {!isPlaying && !isPaused ? (
-                <button
-                  type="button"
-                  className={styles.primaryBtn}
-                  onClick={() => speakListeningText(activeLesson.listening.text)}
-                  disabled={speechLoading}
-                >
-                  {speechLoading ? 'Google-Stimme wird vorbereitet …' : '▶ Anhören'}
-                </button>
-              ) : (
-                <>
-                  <button type="button" className={styles.skipBtn} onClick={() => skipBackward(10)}>
-                    ↶ 10 Sek.
-                  </button>
-                  {isPlaying ? (
-                    <button type="button" className={styles.primaryBtn} onClick={pauseAudio}>
-                      ⏸ Pause
-                    </button>
-                  ) : (
-                    <button type="button" className={styles.primaryBtn} onClick={resumeAudio}>
-                      ▶ Weiter
-                    </button>
-                  )}
-                  <button type="button" className={styles.skipBtn} onClick={stopAudio}>
-                    ⏹ Stoppen
-                  </button>
-                </>
-              )}
-            </div>
+            <ListeningPlayer key={`${activeLesson.id}-${activeTab}-${activeLesson.listening.text}`} listening={activeLesson.listening} />
             <details className={styles.transcript}>
               <summary>Transkript anzeigen</summary>
               <p>{activeLesson.listening.text}</p>
             </details>
           </article>
-          <QuestionBlock id={`${activeLesson.id}-listening`} items={activeLesson.listening.questions || []} answers={state.answers} onAnswer={answerQuestion} onReset={() => resetSectionAnswers('listening')} />
+          <QuestionBlock key={`${activeLesson.id}-listening`} id={`${activeLesson.id}-listening`} items={activeLesson.listening.questions || []} answers={state.answers} onAnswer={answerQuestion} onReset={() => resetSectionAnswers('listening')} />
         </section>
       )}
 
@@ -1169,6 +898,19 @@ export default function DeutschPage({
             ) : null}
           </article>
         </section>
+      )}
+
+      {practiceSession && (
+        <div className={styles.modalBackdrop} role="presentation" onMouseDown={() => setPracticeSession(null)}>
+          <section className={`${styles.importModal} ${styles.practiceModal}`} role="dialog" aria-modal="true" aria-label={practiceSession.mode === 'mistakes' ? 'Fehler wiederholen' : 'Zufallstest'} onMouseDown={event => event.stopPropagation()}>
+            <button type="button" className={styles.closeBtn} onClick={() => setPracticeSession(null)}>Schließen</button>
+            <h2>{practiceSession.mode === 'mistakes' ? 'Fehler wiederholen' : 'Zufallstest'}</h2>
+            <QuestionBlock key={practiceSession.id} id={practiceSession.id} items={practiceSession.items} answers={practiceSession.answers} onAnswer={(key, answer) => {
+              setPracticeSession(current => ({ ...current, answers: { ...current.answers, [key]: answer } }))
+              answerQuestion(key, answer)
+            }} onReset={() => setPracticeSession(current => ({ ...current, answers: {} }))} />
+          </section>
+        </div>
       )}
 
       {importOpen && (

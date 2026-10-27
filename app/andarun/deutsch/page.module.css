@@ -2609,3 +2609,125 @@
 .lessonBoot p { margin: 0; }
 @keyframes lessonSpin { to { transform: rotate(360deg); } }
 @media (prefers-reduced-motion: reduce) { .lessonBoot span { animation: none; } }
+
+.quizProgress, .quizNavigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+.quizProgress { color: var(--d-muted); font-size: .85rem; }
+.quizMeter { width: 100%; height: 6px; accent-color: var(--d-accent); }
+.quizNavigation { margin-top: 18px; }
+.quizNavigation button:disabled, .audioControls button:disabled { opacity: .4; cursor: default; }
+.recordingPlayer { display: grid; gap: 16px; margin: 24px 0; min-width: 0; }
+.recordingPlayer audio { width: 100%; }
+.playbackRate { display: flex; align-items: center; gap: 8px; font-size: .85rem; }
+.playbackRate select { font: inherit; padding: 6px; border-radius: 8px; }
+
+/* Quiet course overview; lesson screens retain their existing theme. */
+.shell.courseShell {
+  background: var(--d-bg);
+  padding: 52px 0 64px;
+}
+.courseShell::before { display: none; }
+.courseHeader, .courseContent {
+  position: relative;
+  z-index: 1;
+  width: min(960px, calc(100% - 64px));
+  margin-inline: auto;
+}
+.courseHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 40px;
+}
+.courseHeader h1 {
+  margin: 0;
+  font-size: clamp(30px, 3.5vw, 42px);
+  font-weight: 650;
+  line-height: 1.2;
+  letter-spacing: -.045em;
+}
+.courseHeader p { margin: 10px 0 0; font-size: 14px; line-height: 1.6; color: var(--d-muted); }
+.courseBack { display: inline-block; margin-bottom: 18px; color: var(--d-muted); font-size: 13px; text-decoration: none; }
+.courseTools { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+.courseTools button, .courseFlashButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 42px;
+  padding: 10px 16px;
+  border: 1px solid var(--d-border);
+  border-radius: 10px;
+  background: transparent;
+  color: var(--d-text);
+  font: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.4;
+  cursor: pointer;
+}
+.courseTools .courseTheme { width: 42px; padding: 0; font-size: 22px; }
+.courseTools button:hover, .courseFlashButton:hover { background: color-mix(in srgb, var(--d-accent) 8%, transparent); border-color: var(--d-accent); }
+.courseSectionHead { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 16px; }
+.courseSectionHead h2, .courseFlashcards h2 { margin: 0; font-size: 16px; font-weight: 650; letter-spacing: -.015em; }
+.courseSectionHead > span { color: var(--d-muted); font-size: 12px; }
+.courseList { list-style: none; margin: 0; padding: 0; border: 1px solid var(--d-border); border-radius: 16px; overflow: hidden; background: color-mix(in srgb, var(--d-surface-strong) 55%, var(--d-bg)); }
+.courseList li + li { border-top: 1px solid var(--d-border); }
+.courseLessonLink {
+  display: grid;
+  grid-template-columns: 32px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 22px;
+  padding: 25px 26px;
+  color: var(--d-text);
+  text-decoration: none;
+  transition: background .18s ease;
+}
+.courseLessonLink:hover { background: color-mix(in srgb, var(--d-accent) 7%, transparent); }
+.courseNumber { font-size: 13px; font-variant-numeric: tabular-nums; color: var(--d-muted); }
+.courseLessonCopy { min-width: 0; }
+.courseLessonCopy h3 { margin: 0; font-size: 17px; font-weight: 600; letter-spacing: -.02em; line-height: 1.45; }
+.courseLessonCopy p { margin: 5px 0 0; color: var(--d-muted); font-size: 12px; line-height: 1.65; }
+.courseLessonAction { display: flex; align-items: center; gap: 12px; color: var(--d-accent); }
+.courseLessonAction > span { font-size: 11px; white-space: nowrap; }
+.courseLessonAction svg { flex-shrink: 0; }
+.courseFlashcards { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 26px 0; margin-top: 14px; }
+.courseFlashcards p { margin: 6px 0 0; color: var(--d-muted); font-size: 12px; line-height: 1.6; }
+.courseLoading { padding: 40px 0; color: var(--d-muted); font-size: 14px; }
+.courseShell .status { width: min(960px, calc(100% - 64px)); margin: 0 auto 28px; }
+.courseLessonLink:focus-visible, .courseTools button:focus-visible, .courseFlashButton:focus-visible { outline: 2px solid var(--d-accent); outline-offset: -3px; }
+@media (max-width: 620px) {
+  .shell.courseShell { padding: 30px 0 40px; }
+  .courseHeader, .courseContent { width: calc(100% - 36px); }
+  .courseHeader { flex-wrap: wrap; align-items: flex-start; gap: 22px; margin-bottom: 30px; }
+  .courseHeader h1 { font-size: 32px; }
+  .courseHeader p { font-size: 13px; margin-top: 8px; }
+  .courseTools { width: 100%; justify-content: space-between; }
+  .courseLessonLink { grid-template-columns: 23px minmax(0, 1fr) auto; gap: 12px; padding: 21px 16px; }
+  .courseLessonCopy h3 { font-size: 15px; }
+  .courseLessonCopy p { font-size: 11px; line-height: 1.7; }
+  .courseLessonAction { flex-direction: column-reverse; gap: 7px; max-width: 76px; }
+  .courseLessonAction > span { font-size: 9px; }
+  .courseFlashcards { gap: 12px; padding: 24px 0; }
+  .courseFlashButton { padding-inline: 12px; font-size: 11px; }
+  .courseShell .status { width: calc(100% - 36px); margin: 0 auto 24px; }
+}
+@media (prefers-reduced-motion: reduce) { .courseLessonLink { transition: none; } }
+
+/* Editorial course home; progress is a reading state, never a save receipt. */
+.shell.courseShell{padding:0;background:#f7f4ed;--d-text:#1d302a;--d-muted:#747973;--d-border:#deded5;--d-bg:#f7f4ed;--d-accent:#bd5e3c;}
+.shell.courseShell:not(.lightShell){background:#14251f;--d-text:#f5f0e4;--d-muted:#bac6ba;--d-border:#3b4b40;--d-bg:#14251f;--d-accent:#edaa87;}
+.syncNotice{position:relative;z-index:2;display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;padding:12px 20px;color:var(--d-text);background:var(--d-bg);border-bottom:1px solid var(--d-border);font-size:12px;}
+.syncNotice button,.readToggle,.practiceActions button{font:inherit;font-size:13px;min-height:44px;padding:10px 16px;color:var(--d-text);background:transparent;border:1px solid var(--d-border);border-radius:10px;cursor:pointer;}
+.readToggle{margin-top:22px;}
+.readToggle[aria-pressed=true]{color:var(--d-accent);border-color:var(--d-accent);}
+.practiceActions{display:flex;gap:12px;flex-wrap:wrap;margin:0 0 24px;}
+.practiceActions button:disabled{opacity:.45;cursor:default;}
+.practiceModal{width:min(800px,calc(100vw - 32px));}
+.practiceModal>h2{margin:24px 0;}
+.practiceModal .questionCard{margin-top:12px;}

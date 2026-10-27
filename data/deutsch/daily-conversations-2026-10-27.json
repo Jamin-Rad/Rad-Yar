@@ -1,0 +1,1136 @@
+[
+  {
+    "id": "deutsch-2026-10-27-reklamation-im-geschaeft",
+    "date": "2026-10-27",
+    "level": "B2",
+    "title": "Das funktioniert leider nicht",
+    "topic": "Alltagsgespräche · Im Geschäft reklamieren und eine Lösung vereinbaren",
+    "reading": {
+      "title": "Mit dem kaputten Wasserkocher zurück ins Geschäft",
+      "text": "Nora hat vor einer Woche einen Wasserkocher gekauft. Schon beim zweiten Gebrauch schaltet sich das Gerät nach wenigen Sekunden aus. Im Geschäft spricht sie einen Mitarbeiter an.\nNora: Guten Tag. Ich möchte diesen Wasserkocher reklamieren. Er schaltet sich sofort wieder aus, obwohl noch kaltes Wasser darin ist.\nMitarbeiter: Das ist ärgerlich. Haben Sie den Kassenbon dabei?\nNora: Ja, hier. Die Originalverpackung habe ich allerdings nicht mehr. Ist das ein Problem?\nMitarbeiter: Für die Prüfung brauchen wir sie in diesem Fall nicht. Können Sie den Mangel etwas genauer beschreiben?\nNora: Ich habe verschiedene Steckdosen ausprobiert. Es liegt offenbar am Gerät. Ich hätte am liebsten ein Ersatzgerät, weil ich den Wasserkocher täglich brauche.\nMitarbeiter: Ich schaue nach, ob das Modell vorrätig ist. Einen Moment bitte. Leider haben wir gerade keines mehr. Wir können Ihnen ein anderes Modell anbieten oder den Kaufpreis erstatten.\nNora: Worin unterscheiden sich die Modelle? Müsste ich einen Aufpreis zahlen?\nMitarbeiter: Das andere Modell ist etwas größer und kostet zehn Euro mehr.\nNora: Dann würde ich lieber eine Rückerstattung nehmen. Wie läuft das ab?\nMitarbeiter: Wir buchen den Betrag auf Ihre Karte zurück. Sie erhalten eine Bestätigung. Bitte prüfen Sie den Zahlungseingang in den nächsten Tagen.\nNora: Gut, danke. Falls nichts ankommt, melde ich mich noch einmal.",
+      "vocabulary": [
+        {
+          "term": "reklamieren",
+          "de": "einen Fehler an einer gekauften Ware melden und um eine Lösung bitten",
+          "fa": "گزارش ایراد کالا و درخواست رسیدگی",
+          "example": "Ich möchte die beschädigte Lampe reklamieren."
+        },
+        {
+          "term": "Kassenbon",
+          "de": "Beleg, der einen Einkauf und den bezahlten Betrag bestätigt",
+          "fa": "رسید خرید",
+          "example": "Bitte bewahren Sie den Kassenbon auf."
+        },
+        {
+          "term": "Originalverpackung",
+          "de": "Verpackung, in der ein Produkt ursprünglich verkauft wurde",
+          "fa": "بسته‌بندی اصلی",
+          "example": "Die Originalverpackung liegt noch im Keller."
+        },
+        {
+          "term": "Mangel",
+          "de": "Fehler, durch den eine Sache nicht richtig funktioniert oder unvollständig ist",
+          "fa": "عیب، نقص",
+          "example": "Der Techniker konnte den Mangel sofort erkennen."
+        },
+        {
+          "term": "offenbar",
+          "de": "so, wie es nach den erkennbaren Umständen wahrscheinlich ist",
+          "fa": "ظاهراً",
+          "example": "Der Anschluss ist offenbar beschädigt."
+        },
+        {
+          "term": "Ersatzgerät",
+          "de": "anderes Gerät, das ein defektes oder fehlendes Gerät ersetzt",
+          "fa": "دستگاه جایگزین",
+          "example": "Während der Reparatur bekomme ich ein Ersatzgerät."
+        },
+        {
+          "term": "vorrätig",
+          "de": "im Geschäft oder Lager vorhanden und verfügbar",
+          "fa": "موجود در انبار یا فروشگاه",
+          "example": "Die gewünschte Größe ist noch vorrätig."
+        },
+        {
+          "term": "anbieten",
+          "de": "jemandem etwas zur Auswahl oder Nutzung vorschlagen",
+          "fa": "پیشنهاد دادن، ارائه کردن",
+          "example": "Wir können Ihnen einen anderen Termin anbieten."
+        },
+        {
+          "term": "erstatten",
+          "de": "bereits bezahltes Geld zurückzahlen",
+          "fa": "بازپرداخت کردن",
+          "example": "Das Hotel wird die zusätzlichen Kosten erstatten."
+        },
+        {
+          "term": "unterscheiden sich",
+          "de": "haben verschiedene Eigenschaften oder Merkmale",
+          "fa": "با هم تفاوت دارند",
+          "example": "Die beiden Tarife unterscheiden sich deutlich."
+        },
+        {
+          "term": "Aufpreis",
+          "de": "zusätzlicher Betrag für eine teurere Variante oder Leistung",
+          "fa": "هزینهٔ اضافه، مابه‌التفاوت",
+          "example": "Für die Lieferung am Samstag fällt ein Aufpreis an."
+        },
+        {
+          "term": "Rückerstattung",
+          "de": "Rückzahlung eines bereits bezahlten Betrags",
+          "fa": "بازپرداخت مبلغ",
+          "example": "Ich warte noch auf die Rückerstattung."
+        },
+        {
+          "term": "Betrag",
+          "de": "bestimmte Geldsumme",
+          "fa": "مبلغ",
+          "example": "Bitte überweisen Sie den offenen Betrag."
+        },
+        {
+          "term": "Bestätigung",
+          "de": "Nachricht oder Dokument, das eine Vereinbarung oder einen Vorgang festhält",
+          "fa": "تأییدیه",
+          "example": "Sie bekommen nach der Buchung eine Bestätigung."
+        },
+        {
+          "term": "Zahlungseingang",
+          "de": "Ankunft einer Zahlung auf einem Konto",
+          "fa": "وصول وجه به حساب",
+          "example": "Nach dem Zahlungseingang verschicken wir die Ware."
+        }
+      ],
+      "questions": [
+        {
+          "question": "Warum beschreibt Nora ihre Versuche mit verschiedenen Steckdosen?",
+          "options": [
+            "Sie möchte zusätzliche Steckdosen kaufen.",
+            "Sie will erklären, warum sie einen Gerätefehler vermutet.",
+            "Sie möchte das Geschäft für ihre Stromkosten verantwortlich machen.",
+            "Sie hat den Kassenbon verloren."
+          ],
+          "answer": 1,
+          "explanation": "Mehrere Steckdosen führen zum gleichen Problem. Nora zeigt damit, dass sie andere mögliche Ursachen bereits geprüft hat."
+        },
+        {
+          "question": "Warum entscheidet sich Nora am Ende für eine Rückzahlung?",
+          "options": [
+            "Sie braucht überhaupt keinen Wasserkocher mehr.",
+            "Der Mitarbeiter lehnt jede andere Lösung ab.",
+            "Ihr Modell ist nicht verfügbar, und die Alternative kostet mehr.",
+            "Sie möchte auf einen Reparaturtermin warten."
+          ],
+          "answer": 2,
+          "explanation": "Zuerst wünscht sie ein Ersatzgerät. Erst als das Modell fehlt und die Alternative teurer ist, entscheidet sie sich für die Rückerstattung."
+        },
+        {
+          "question": "Wie wirkt Noras Gesprächsführung?",
+          "options": [
+            "Sachlich und lösungsorientiert.",
+            "Drohend und beleidigend.",
+            "Unsicher, weil sie den Defekt nicht beschreiben kann.",
+            "Gleichgültig gegenüber der angebotenen Lösung."
+          ],
+          "answer": 0,
+          "explanation": "Sie beschreibt den Fehler konkret, fragt nach Möglichkeiten und trifft dann eine klare Entscheidung."
+        },
+        {
+          "question": "Welche Aussage über die Verpackung lässt sich aus diesem Gespräch ableiten?",
+          "options": [
+            "Sie ist bei jeder Reklamation zwingend erforderlich.",
+            "Nora muss eine neue Verpackung kaufen.",
+            "Der Mitarbeiter hat sie noch nicht angesprochen.",
+            "Für die Prüfung dieses Geräts wird sie hier nicht gebraucht."
+          ],
+          "answer": 3,
+          "explanation": "Der Mitarbeiter sagt ausdrücklich „in diesem Fall“. Daraus ergibt sich keine allgemeine Regel für alle Geschäfte oder Produkte."
+        },
+        {
+          "question": "Wozu dient Noras letzter Satz?",
+          "options": [
+            "Sie kündigt an, bei ausbleibender Zahlung erneut Kontakt aufzunehmen.",
+            "Sie möchte sofort ein weiteres Gerät bestellen.",
+            "Sie verlangt eine Barauszahlung.",
+            "Sie bestätigt, dass das Geld bereits angekommen ist."
+          ],
+          "answer": 0,
+          "explanation": "„Falls nichts ankommt“ bezieht sich auf die erwartete Rückzahlung. Nora klärt, was sie bei einer Verzögerung tun wird."
+        }
+      ],
+      "audioUrl": "https://rqqywyollxbcbzeodpto.supabase.co/storage/v1/object/public/deutsch-audio/501815a20fe76ecbb9c6.wav"
+    },
+    "listening": {
+      "title": "Am Telefon nach einer Rückzahlung fragen",
+      "text": "Kundin: Guten Tag, mein Name ist Sara Ahmadi. Ich rufe wegen einer Rückerstattung an. Ich habe letzte Woche einen defekten Toaster bei Ihnen zurückgegeben.\nMitarbeiter: Haben Sie die Vorgangsnummer zur Hand?\nKundin: Ja, sie lautet vier sieben zwei sechs. Mir wurde gesagt, dass der Betrag auf meine Karte zurückgebucht wird. Bisher sehe ich aber keinen Zahlungseingang.\nMitarbeiter: Ich prüfe das kurz. Die Rückzahlung wurde gestern veranlasst. Es kann noch etwas dauern, bis Ihre Bank sie anzeigt.\nKundin: Verstehe. Könnten Sie mir bitte eine schriftliche Bestätigung schicken? Dann kann ich den Vorgang besser nachvollziehen.\nMitarbeiter: Natürlich. Ist Ihre E-Mail-Adresse noch dieselbe?\nKundin: Ja. Und ab wann sollte ich mich wieder melden, falls das Geld nicht da ist?\nMitarbeiter: Bitte warten Sie noch bis Freitag. Wenn Sie dann keinen Eingang sehen, antworten Sie direkt auf unsere E-Mail.\nKundin: Gut, dann mache ich das so. Danke für Ihre Hilfe.",
+      "questions": [
+        {
+          "question": "Warum ruft Sara an?",
+          "options": [
+            "Sie möchte einen Toaster reservieren.",
+            "Sie wartet auf eine zugesagte Rückzahlung.",
+            "Sie möchte ihre E-Mail-Adresse ändern.",
+            "Sie hat eine falsche Ware erhalten."
+          ],
+          "answer": 1,
+          "explanation": "Sie hat das defekte Gerät schon zurückgegeben, sieht aber noch keinen Zahlungseingang."
+        },
+        {
+          "question": "Was erfährt Sara über den Stand des Vorgangs?",
+          "options": [
+            "Die Rückzahlung wurde abgelehnt.",
+            "Sie muss persönlich ins Geschäft kommen.",
+            "Die Rückzahlung wurde gestern veranlasst.",
+            "Ihre Bank hat das Geld zurückgeschickt."
+          ],
+          "answer": 2,
+          "explanation": "Der Mitarbeiter findet im System, dass die Rückzahlung am Vortag veranlasst wurde."
+        },
+        {
+          "question": "Warum bittet Sara um eine schriftliche Bestätigung?",
+          "options": [
+            "Sie möchte den Vorgang nachvollziehen können.",
+            "Sie möchte die Rechnung für ein neues Gerät bezahlen.",
+            "Sie will eine neue Kundennummer beantragen.",
+            "Sie möchte den Toaster wieder abholen."
+          ],
+          "answer": 0,
+          "explanation": "Die Bestätigung dokumentiert, dass die Rückzahlung bearbeitet wurde."
+        },
+        {
+          "question": "Was soll Sara tun, wenn bis Freitag kein Geld eingegangen ist?",
+          "options": [
+            "Eine neue Bestellung aufgeben.",
+            "Den Kassenbon vernichten.",
+            "Ihre Karte sperren lassen.",
+            "Auf die E-Mail des Geschäfts antworten."
+          ],
+          "answer": 3,
+          "explanation": "Der Mitarbeiter nennt die Antwort auf die Bestätigungs-E-Mail als nächsten Kontaktweg."
+        },
+        {
+          "question": "Welche Haltung zeigt Sara im Gespräch?",
+          "options": [
+            "Sie bleibt höflich und klärt einen konkreten nächsten Schritt.",
+            "Sie akzeptiert keine Erklärung.",
+            "Sie möchte sofort das Thema wechseln.",
+            "Sie erklärt, dass sie auf die Rückzahlung verzichtet."
+          ],
+          "answer": 0,
+          "explanation": "Sie fragt sachlich nach einem Nachweis und einem Zeitpunkt für eine mögliche erneute Kontaktaufnahme."
+        }
+      ],
+      "audioUrl": "https://rqqywyollxbcbzeodpto.supabase.co/storage/v1/object/public/deutsch-audio/50fa7f0020e86e396831.wav"
+    },
+    "writing": {
+      "prompt": "Du hast einen defekten Kopfhörer zurückgegeben. Die vereinbarte Rückzahlung ist noch nicht angekommen. Schreibe eine höfliche Nachricht an das Geschäft, beschreibe den Vorgang und bitte um einen konkreten nächsten Schritt. Begründe kurz, warum du eine schriftliche Bestätigung möchtest.",
+      "checklist": [
+        "Produkt und Rückgabedatum nennen",
+        "Problem sachlich beschreiben",
+        "Vorgangsnummer angeben",
+        "um Bestätigung und Zeitrahmen bitten",
+        "höflicher Abschluss"
+      ]
+    },
+    "vocabulary_quiz": [
+      {
+        "question": "Ich möchte die neue Kaffeemaschine ___, weil sie schon nach zwei Tagen undicht ist.",
+        "options": [
+          "reklamieren",
+          "reservieren",
+          "aufladen",
+          "verlängern"
+        ],
+        "answer": 0,
+        "explanation": "Hier passt „reklamieren“. einen Fehler an einer gekauften Ware melden und um eine Lösung bitten."
+      },
+      {
+        "question": "Auf dem ___ stehen das Kaufdatum und der Preis des Regals.",
+        "options": [
+          "Stundenplan",
+          "Kassenbon",
+          "Briefkasten",
+          "Fahrplan"
+        ],
+        "answer": 1,
+        "explanation": "Hier passt „Kassenbon“. Beleg, der einen Einkauf und den bezahlten Betrag bestätigt."
+      },
+      {
+        "question": "Der Karton, in dem das Handy verkauft wurde, heißt auch ___.",
+        "options": [
+          "Gebrauchsanweisung",
+          "Versicherung",
+          "Originalverpackung",
+          "Kundenkarte"
+        ],
+        "answer": 2,
+        "explanation": "Hier passt „Originalverpackung“. Verpackung, in der ein Produkt ursprünglich verkauft wurde."
+      },
+      {
+        "question": "Der Riss im neuen Display ist ein deutlich sichtbarer ___.",
+        "options": [
+          "Vorteil",
+          "Rabatt",
+          "Termin",
+          "Mangel"
+        ],
+        "answer": 3,
+        "explanation": "Hier passt „Mangel“. Fehler, durch den eine Sache nicht richtig funktioniert oder unvollständig ist."
+      },
+      {
+        "question": "Die Kontrolllampe bleibt aus; das Gerät bekommt ___ keinen Strom.",
+        "options": [
+          "offenbar",
+          "absichtlich",
+          "freiwillig",
+          "höflicherweise"
+        ],
+        "answer": 0,
+        "explanation": "Hier passt „offenbar“. so, wie es nach den erkennbaren Umständen wahrscheinlich ist."
+      },
+      {
+        "question": "Damit ich während der Reparatur weiterarbeiten kann, leiht mir die Firma ein ___.",
+        "options": [
+          "Preisschild",
+          "Ersatzgerät",
+          "Kundenkonto",
+          "Versandetikett"
+        ],
+        "answer": 1,
+        "explanation": "Hier passt „Ersatzgerät“. anderes Gerät, das ein defektes oder fehlendes Gerät ersetzt."
+      },
+      {
+        "question": "Sie können den Drucker sofort mitnehmen; er ist in unserer Filiale ___.",
+        "options": [
+          "ausverkauft",
+          "unterwegs",
+          "vorrätig",
+          "verliehen"
+        ],
+        "answer": 2,
+        "explanation": "Hier passt „vorrätig“. im Geschäft oder Lager vorhanden und verfügbar."
+      },
+      {
+        "question": "Das gewünschte Zimmer ist belegt, aber wir können Ihnen ein größeres ___.",
+        "options": [
+          "unterschreiben",
+          "abholen",
+          "kündigen",
+          "anbieten"
+        ],
+        "answer": 3,
+        "explanation": "Hier passt „anbieten“. jemandem etwas zur Auswahl oder Nutzung vorschlagen."
+      },
+      {
+        "question": "Die doppelt abgebuchte Liefergebühr werden wir Ihnen vollständig ___.",
+        "options": [
+          "erstatten",
+          "berechnen",
+          "erhöhen",
+          "schulden"
+        ],
+        "answer": 0,
+        "explanation": "Hier passt „erstatten“. bereits bezahltes Geld zurückzahlen."
+      },
+      {
+        "question": "Die beiden Angebote ___ vor allem bei den monatlichen Kosten.",
+        "options": [
+          "melden sich",
+          "unterscheiden sich",
+          "entschuldigen sich",
+          "verspäten sich"
+        ],
+        "answer": 1,
+        "explanation": "Hier passt „unterscheiden sich“. haben verschiedene Eigenschaften oder Merkmale."
+      },
+      {
+        "question": "Das Basismodell kostet 80 Euro; für die größere Variante zahlen Sie einen ___ von 15 Euro.",
+        "options": [
+          "Gutschein",
+          "Verlust",
+          "Aufpreis",
+          "Rückruf"
+        ],
+        "answer": 2,
+        "explanation": "Hier passt „Aufpreis“. zusätzlicher Betrag für eine teurere Variante oder Leistung."
+      },
+      {
+        "question": "Statt eines Umtauschs habe ich mich für eine ___ des Kaufpreises entschieden.",
+        "options": [
+          "Verlängerung",
+          "Reservierung",
+          "Lieferung",
+          "Rückerstattung"
+        ],
+        "answer": 3,
+        "explanation": "Hier passt „Rückerstattung“. Rückzahlung eines bereits bezahlten Betrags."
+      },
+      {
+        "question": "Der noch offene ___ auf der Rechnung beträgt 24 Euro.",
+        "options": [
+          "Betrag",
+          "Mangel",
+          "Zustand",
+          "Vorrat"
+        ],
+        "answer": 0,
+        "explanation": "Hier passt „Betrag“. bestimmte Geldsumme."
+      },
+      {
+        "question": "Nach der Stornierung schickt das Hotel eine schriftliche ___.",
+        "options": [
+          "Steckdose",
+          "Bestätigung",
+          "Verpackung",
+          "Verspätung"
+        ],
+        "answer": 1,
+        "explanation": "Hier passt „Bestätigung“. Nachricht oder Dokument, das eine Vereinbarung oder einen Vorgang festhält."
+      },
+      {
+        "question": "Die Bestellung wird erst verschickt, wenn der ___ auf unserem Konto verbucht ist.",
+        "options": [
+          "Stromausfall",
+          "Warenbestand",
+          "Zahlungseingang",
+          "Liefertermin"
+        ],
+        "answer": 2,
+        "explanation": "Hier passt „Zahlungseingang“. Ankunft einer Zahlung auf einem Konto."
+      }
+    ],
+    "grammar": [
+      {
+        "question": "Ich möchte mit ___ zuständigen Mitarbeiterin sprechen.",
+        "options": [
+          "der",
+          "die",
+          "den",
+          "dem"
+        ],
+        "answer": 0,
+        "explanation": "„Mit“ verlangt den Dativ. „Mitarbeiterin“ ist feminin, deshalb heißt es „mit der zuständigen Mitarbeiterin“."
+      },
+      {
+        "question": "Ich bitte Sie ___ eine schriftliche Bestätigung.",
+        "options": [
+          "an",
+          "um",
+          "mit",
+          "von"
+        ],
+        "answer": 1,
+        "explanation": "Die feste Verbindung lautet „bitten um + Akkusativ“. Ein weiteres Beispiel ist: Ich bitte um eine Rückmeldung."
+      },
+      {
+        "question": "Könnten Sie den Betrag bitte auf meine Karte ___?",
+        "options": [
+          "zurückgebucht",
+          "zurückgebucht haben",
+          "zurückbuchen",
+          "zurückbucht"
+        ],
+        "answer": 2,
+        "explanation": "Nach dem Modalverb „könnten“ steht der Infinitiv ohne „zu“. Das trennbare Verb bleibt im Infinitiv zusammen: zurückbuchen."
+      },
+      {
+        "question": "Ich bringe das Gerät zurück, weil es nicht mehr ___.",
+        "options": [
+          "funktioniert es",
+          "es funktioniert",
+          "zu funktionieren",
+          "funktioniert"
+        ],
+        "answer": 3,
+        "explanation": "„Weil“ leitet einen Nebensatz ein. Das konjugierte Verb steht deshalb am Ende: weil es nicht mehr funktioniert."
+      },
+      {
+        "question": "___ ich den Kassenbon dabei habe, dauert die Prüfung länger.",
+        "options": [
+          "Obwohl",
+          "Trotzdem",
+          "Wegen",
+          "Deshalb"
+        ],
+        "answer": 0,
+        "explanation": "„Obwohl“ verbindet zwei Aussagen, die in einem unerwarteten Gegensatz stehen. Es leitet einen Nebensatz mit dem Verb am Ende ein."
+      },
+      {
+        "question": "Wenn das Modell verfügbar ___, würde ich es direkt mitnehmen.",
+        "options": [
+          "ist gewesen",
+          "wäre",
+          "waren",
+          "sein"
+        ],
+        "answer": 1,
+        "explanation": "Die hypothetische Bedingung steht im Konjunktiv II. Zu „das Modell“ passt die Singularform „wäre“."
+      },
+      {
+        "question": "Der Kaufpreis ___ auf Ihre Karte zurückgebucht.",
+        "options": [
+          "hat",
+          "werden",
+          "wird",
+          "haben"
+        ],
+        "answer": 2,
+        "explanation": "Das Vorgangspassiv besteht aus „werden“ und Partizip II. „Der Kaufpreis“ steht im Singular, daher heißt es „wird zurückgebucht“."
+      },
+      {
+        "question": "Ich habe das Gerät ___ einer Woche gekauft.",
+        "options": [
+          "seit",
+          "bis",
+          "nach",
+          "vor"
+        ],
+        "answer": 3,
+        "explanation": "„Vor“ bezeichnet hier den Abstand eines abgeschlossenen Ereignisses zur Gegenwart und verlangt den Dativ. „Seit“ würde einen bis heute andauernden Zeitraum bezeichnen."
+      },
+      {
+        "question": "Das ist das Modell, ___ ich letzte Woche gekauft habe.",
+        "options": [
+          "das",
+          "der",
+          "dem",
+          "den"
+        ],
+        "answer": 0,
+        "explanation": "Das Relativpronomen bezieht sich auf das neutrale Nomen „Modell“. Im Relativsatz ist es das Akkusativobjekt zu „gekauft habe“, deshalb lautet es „das“."
+      },
+      {
+        "question": "Bitte teilen Sie mir mit, ___ die Rückzahlung bereits veranlasst wurde.",
+        "options": [
+          "weil",
+          "ob",
+          "trotzdem",
+          "damit"
+        ],
+        "answer": 1,
+        "explanation": "„Ob“ leitet eine indirekte Ja-Nein-Frage ein. Das konjugierte Verb steht am Ende: ob die Rückzahlung bereits veranlasst wurde."
+      },
+      {
+        "question": "Ich habe versucht, den Fehler selbst ___.",
+        "options": [
+          "beheben zu",
+          "behebt",
+          "zu beheben",
+          "behoben"
+        ],
+        "answer": 2,
+        "explanation": "Nach „versuchen“ steht hier eine Infinitivgruppe mit „zu“. Bei „beheben“ steht „zu“ vor dem ganzen Infinitiv: zu beheben."
+      },
+      {
+        "question": "Das neue Modell ist teurer ___ das alte.",
+        "options": [
+          "wie",
+          "wenn",
+          "ob",
+          "als"
+        ],
+        "answer": 3,
+        "explanation": "Bei einem Vergleich mit dem Komparativ verwendet man „als“. Bei Gleichheit heißt es dagegen „genauso teuer wie“."
+      },
+      {
+        "question": "___ des fehlenden Belegs konnte der Kauf im System gefunden werden.",
+        "options": [
+          "Trotz",
+          "Obwohl",
+          "Trotzdem",
+          "Damit"
+        ],
+        "answer": 0,
+        "explanation": "„Trotz“ steht hier vor einer Nominalgruppe im Genitiv: trotz des fehlenden Belegs. „Obwohl“ würde einen vollständigen Nebensatz verlangen."
+      },
+      {
+        "question": "Sobald das Geld angekommen ist, ___ ich Ihnen Bescheid.",
+        "options": [
+          "ich gebe",
+          "gebe",
+          "gegeben",
+          "zu geben"
+        ],
+        "answer": 1,
+        "explanation": "Der vorangestellte Nebensatz besetzt die erste Position im Satz. Im anschließenden Hauptsatz folgt deshalb direkt das finite Verb: gebe ich."
+      },
+      {
+        "question": "Ich hätte gern ___ anderes Modell ohne Aufpreis.",
+        "options": [
+          "einen",
+          "einem",
+          "ein",
+          "eines"
+        ],
+        "answer": 2,
+        "explanation": "„Modell“ ist neutral und steht hier als Objekt im Akkusativ. Der unbestimmte Artikel lautet deshalb „ein“: ein anderes Modell."
+      }
+    ]
+  },
+  {
+    "id": "deutsch-2026-10-27-reparaturtermin-vereinbaren",
+    "date": "2026-10-27",
+    "level": "B2",
+    "title": "Wann könnte jemand vorbeikommen?",
+    "topic": "Alltagsgespräche · Hausverwaltung anrufen und Reparaturen koordinieren",
+    "reading": {
+      "title": "Die Heizung bleibt kalt",
+      "text": "Seit Montag wird die Heizung in Amirs Wohnzimmer nicht richtig warm. Er ruft bei der Hausverwaltung an, statt weiter auf eine Antwort auf seine Nachricht zu warten.\nAmir: Guten Morgen. Ich wohne in der Gartenstraße acht, im zweiten Stock. Ich möchte eine Störung an der Heizung melden.\nMitarbeiterin: Betrifft das die ganze Wohnung oder nur einen Heizkörper?\nAmir: Nur das Wohnzimmer. Ich habe die Einstellung überprüft, aber es hat sich nichts geändert. Außerdem höre ich ein ungewöhnliches Geräusch.\nMitarbeiterin: Ich gebe das an unseren Hausmeister weiter. Wann wären Sie erreichbar?\nAmir: Tagsüber bin ich bei der Arbeit. Könnten wir einen Termin am späten Nachmittag vereinbaren?\nMitarbeiterin: Ich kann zunächst nur ein Zeitfenster zwischen zwölf und sechzehn Uhr anbieten.\nAmir: Das lässt sich mit meiner Arbeitszeit schwer vereinbaren. Könnte mich der Techniker wenigstens eine halbe Stunde vorher anrufen?\nMitarbeiterin: Ich kann um einen Rückruf bitten, aber die genaue Uhrzeit nicht garantieren. Der Zugang zur Wohnung muss möglich sein.\nAmir: Meine Nachbarin könnte aufschließen. Ich kläre kurz mit ihr ab, ob sie Zeit hat, und gebe Ihnen bis heute Mittag Bescheid.\nMitarbeiterin: Gut. Bitte nennen Sie dabei die Vorgangsnummer, damit wir Ihre Rückmeldung zuordnen können.\nAmir: Mache ich. Falls der Termin ausfällt, informieren Sie mich bitte rechtzeitig. Dann muss meine Nachbarin nicht umsonst warten.",
+      "vocabulary": [
+        {
+          "term": "Hausverwaltung",
+          "de": "Stelle, die sich um die Organisation und Betreuung eines Wohnhauses kümmert",
+          "fa": "مدیریت ساختمان",
+          "example": "Die Hausverwaltung kümmert sich um die Beleuchtung im Treppenhaus."
+        },
+        {
+          "term": "Störung",
+          "de": "Problem, durch das eine Anlage nicht wie vorgesehen funktioniert",
+          "fa": "اختلال، خرابی",
+          "example": "Bitte melden Sie die Störung möglichst genau."
+        },
+        {
+          "term": "Heizkörper",
+          "de": "Teil der Heizung, der Wärme an einen Raum abgibt",
+          "fa": "رادیاتور، شوفاژ",
+          "example": "Der Heizkörper im Schlafzimmer bleibt kalt."
+        },
+        {
+          "term": "überprüft",
+          "de": "kontrolliert, ob etwas richtig eingestellt ist oder funktioniert",
+          "fa": "بررسی کرده است",
+          "example": "Die Fachkraft hat alle Anschlüsse überprüft."
+        },
+        {
+          "term": "Geräusch",
+          "de": "etwas Hörbares, dessen Ursache zum Beispiel eine Maschine ist",
+          "fa": "صدا",
+          "example": "Beim Einschalten entsteht ein ungewöhnliches Geräusch."
+        },
+        {
+          "term": "Hausmeister",
+          "de": "Person, die ein Gebäude betreut und sich um praktische Aufgaben kümmert",
+          "fa": "سرایدار، مسئول فنی ساختمان",
+          "example": "Der Hausmeister hat die Lampe im Flur ausgetauscht."
+        },
+        {
+          "term": "erreichbar",
+          "de": "so verfügbar, dass andere Kontakt aufnehmen können",
+          "fa": "در دسترس",
+          "example": "Morgen bin ich ab neun Uhr telefonisch erreichbar."
+        },
+        {
+          "term": "vereinbaren",
+          "de": "mit einer anderen Person eine gemeinsame Regelung oder einen Termin festlegen",
+          "fa": "هماهنگ و تعیین کردن",
+          "example": "Wir sollten einen festen Zeitpunkt vereinbaren."
+        },
+        {
+          "term": "Zeitfenster",
+          "de": "begrenzter Zeitraum, innerhalb dessen etwas stattfinden kann",
+          "fa": "بازهٔ زمانی",
+          "example": "Für die Lieferung wurde ein Zeitfenster von zwei Stunden genannt."
+        },
+        {
+          "term": "Rückruf",
+          "de": "Telefonanruf als Antwort auf einen vorherigen Kontaktversuch",
+          "fa": "تماس برگشتی",
+          "example": "Ich warte auf einen Rückruf vom Kundendienst."
+        },
+        {
+          "term": "Zugang",
+          "de": "Möglichkeit, einen Ort oder Raum zu betreten",
+          "fa": "دسترسی، امکان ورود",
+          "example": "Für die Reparatur ist der Zugang zum Keller nötig."
+        },
+        {
+          "term": "aufschließen",
+          "de": "eine verschlossene Tür mit einem Schlüssel öffnen",
+          "fa": "با کلید باز کردن",
+          "example": "Kannst du dem Handwerker bitte die Haustür aufschließen?"
+        },
+        {
+          "term": "Bescheid",
+          "de": "Information über eine Entscheidung oder den Stand einer Sache, oft in „Bescheid geben“",
+          "fa": "خبر، اطلاع",
+          "example": "Sobald ich mehr weiß, gebe ich dir Bescheid."
+        },
+        {
+          "term": "zuordnen",
+          "de": "etwas mit der passenden Person oder dem passenden Vorgang verbinden",
+          "fa": "مرتبط کردن، به مورد درست نسبت دادن",
+          "example": "Mit der Nummer können wir Ihre Nachricht eindeutig zuordnen."
+        },
+        {
+          "term": "rechtzeitig",
+          "de": "früh genug, damit man noch reagieren kann",
+          "fa": "به‌موقع",
+          "example": "Bitte sagen Sie den Termin rechtzeitig ab."
+        }
+      ],
+      "questions": [
+        {
+          "question": "Warum ruft Amir an, obwohl er schon eine Nachricht geschrieben hat?",
+          "options": [
+            "Er möchte das Problem nun direkt klären.",
+            "Er hat eine neue Wohnung gefunden.",
+            "Die Heizung funktioniert inzwischen wieder.",
+            "Er möchte sich über seine Nachbarin beschweren."
+          ],
+          "answer": 0,
+          "explanation": "Er wartet nicht länger auf eine schriftliche Antwort, sondern sucht eine direkte Vereinbarung."
+        },
+        {
+          "question": "Worin liegt die Schwierigkeit bei dem angebotenen Termin?",
+          "options": [
+            "Die Nachbarin hat keinen Schlüssel.",
+            "Das Zeitfenster überschneidet sich mit Amirs Arbeitszeit.",
+            "Der Techniker kann nur nachts kommen.",
+            "Amir möchte grundsätzlich niemanden in die Wohnung lassen."
+          ],
+          "answer": 1,
+          "explanation": "Das Zeitfenster liegt zwischen zwölf und sechzehn Uhr. Amir ist tagsüber bei der Arbeit."
+        },
+        {
+          "question": "Was ist nach dem Gespräch noch nicht sicher?",
+          "options": [
+            "In welchem Stock Amir wohnt.",
+            "Welche Störung Amir meldet.",
+            "Ob die Nachbarin tatsächlich Zeit hat.",
+            "Ob Amir eine Vorgangsnummer erhalten soll."
+          ],
+          "answer": 2,
+          "explanation": "Amir muss die Verfügbarkeit der Nachbarin erst abklären und bis Mittag Bescheid geben."
+        },
+        {
+          "question": "Welche Zusage macht die Mitarbeiterin zum Anruf des Technikers?",
+          "options": [
+            "Er wird garantiert genau dreißig Minuten vorher anrufen.",
+            "Er wird überhaupt nicht anrufen.",
+            "Er wird nur die Nachbarin anrufen.",
+            "Sie kann einen Rückruf erbitten, aber keine genaue Uhrzeit garantieren."
+          ],
+          "answer": 3,
+          "explanation": "Sie unterscheidet zwischen einer Bitte um Rückruf und einer verbindlichen Zusage."
+        },
+        {
+          "question": "Warum bittet Amir um eine rechtzeitige Absage?",
+          "options": [
+            "Er möchte vermeiden, dass die Nachbarin unnötig wartet.",
+            "Er will die Reparatur endgültig absagen.",
+            "Er braucht eine neue Vorgangsnummer.",
+            "Er möchte seine Arbeitszeit verlängern."
+          ],
+          "answer": 0,
+          "explanation": "Er berücksichtigt den Aufwand der Nachbarin und möchte ihr unnötiges Warten ersparen."
+        }
+      ],
+      "audioUrl": "https://rqqywyollxbcbzeodpto.supabase.co/storage/v1/object/public/deutsch-audio/a5c38ef0de92eff889ee.wav"
+    },
+    "listening": {
+      "title": "Ein Reparaturtermin muss verschoben werden",
+      "text": "Hausverwaltung: Guten Tag, hier ist Frau Berger von der Hausverwaltung. Ich rufe wegen Ihres Reparaturtermins für morgen an.\nBewohnerin: Guten Tag. Gibt es eine Änderung?\nHausverwaltung: Leider ist unser Techniker krank geworden. Wir müssten den Termin auf Donnerstag verschieben. Würde Ihnen das zwischen vierzehn und siebzehn Uhr passen?\nBewohnerin: Da bin ich noch unterwegs. Wäre auch Freitagvormittag möglich?\nHausverwaltung: Freitag kann ich Ihnen ein Zeitfenster zwischen acht und elf Uhr anbieten.\nBewohnerin: Das passt besser. Ich habe allerdings um halb zwölf einen anderen Termin und muss spätestens um elf Uhr los.\nHausverwaltung: Ich vermerke das. Bitte halten Sie den Bereich vor dem Heizkörper frei, damit der Techniker gut arbeiten kann.\nBewohnerin: Mache ich. Könnten Sie mir den neuen Termin bitte per E-Mail bestätigen? Und kann der Techniker kurz vorher anrufen?\nHausverwaltung: Die Bestätigung schicke ich Ihnen gleich. Einen kurzen Anruf notiere ich als Wunsch; fest zusagen kann ich ihn nicht.\nBewohnerin: Danke. Falls sich noch etwas ändert, erreichen Sie mich unter der Handynummer, die bei Ihnen hinterlegt ist.",
+      "questions": [
+        {
+          "question": "Warum kann der ursprüngliche Termin nicht stattfinden?",
+          "options": [
+            "Die Bewohnerin hat ihn vergessen.",
+            "Der Techniker ist krank geworden.",
+            "Die Heizung wurde schon repariert.",
+            "Die Hausverwaltung hat die Adresse verloren."
+          ],
+          "answer": 1,
+          "explanation": "Die Hausverwaltung erklärt, dass der Techniker krank ist."
+        },
+        {
+          "question": "Auf welchen Termin einigen sich beide am Ende?",
+          "options": [
+            "Donnerstag zwischen vierzehn und siebzehn Uhr.",
+            "Freitag ab halb zwölf.",
+            "Freitag zwischen acht und elf Uhr.",
+            "Morgen zwischen acht und elf Uhr."
+          ],
+          "answer": 2,
+          "explanation": "Die Bewohnerin lehnt Donnerstag ab und nimmt das Zeitfenster am Freitagvormittag an."
+        },
+        {
+          "question": "Warum nennt die Bewohnerin ihre späteste Abfahrtszeit?",
+          "options": [
+            "Sie muss rechtzeitig zu einem weiteren Termin los.",
+            "Sie möchte den Techniker persönlich abholen.",
+            "Sie will die Reparatur in ein anderes Haus verlegen.",
+            "Sie darf vor elf Uhr nicht zu Hause sein."
+          ],
+          "answer": 0,
+          "explanation": "Sie hat um halb zwölf einen weiteren Termin und muss spätestens um elf Uhr die Wohnung verlassen."
+        },
+        {
+          "question": "Was soll die Bewohnerin vor dem Besuch vorbereiten?",
+          "options": [
+            "Alle Heizkörper ausschalten.",
+            "Den Wohnungsschlüssel per Post schicken.",
+            "Eine neue Heizung bestellen.",
+            "Den Platz vor dem Heizkörper freiräumen."
+          ],
+          "answer": 3,
+          "explanation": "Der Techniker soll gut an den Heizkörper herankommen können."
+        },
+        {
+          "question": "Welche Information ist zugesagt, welche bleibt ein Wunsch?",
+          "options": [
+            "Die E-Mail-Bestätigung ist zugesagt; der vorherige Anruf bleibt ein Wunsch.",
+            "Der Anruf ist zugesagt; eine E-Mail wird abgelehnt.",
+            "Beides wird ausdrücklich ausgeschlossen.",
+            "Beides ist für Donnerstag fest zugesagt."
+          ],
+          "answer": 0,
+          "explanation": "Die Mitarbeiterin schickt die Bestätigung gleich. Den kurzen Anruf notiert sie nur als Wunsch."
+        }
+      ],
+      "audioUrl": "https://rqqywyollxbcbzeodpto.supabase.co/storage/v1/object/public/deutsch-audio/deb23c3a2c99104efd1a.wav"
+    },
+    "writing": {
+      "prompt": "Die Hausverwaltung hat dir für eine Reparatur ein Zeitfenster angeboten, in dem du arbeiten musst. Schreibe eine höfliche Antwort. Begründe, warum du den Termin nicht wahrnehmen kannst, schlage zwei Alternativen vor und kläre den Zugang zur Wohnung.",
+      "checklist": [
+        "Störung und bisherigen Termin nennen",
+        "Absage kurz begründen",
+        "zwei konkrete Alternativen vorschlagen",
+        "Zugang zur Wohnung klären",
+        "um schriftliche Bestätigung bitten"
+      ]
+    },
+    "vocabulary_quiz": [
+      {
+        "question": "Für eine neue Klingel wenden Sie sich bitte an die ___, die unser Wohnhaus betreut.",
+        "options": [
+          "Hausverwaltung",
+          "Krankenkasse",
+          "Buchhandlung",
+          "Fahrschule"
+        ],
+        "answer": 0,
+        "explanation": "Hier passt „Hausverwaltung“. Stelle, die sich um die Organisation und Betreuung eines Wohnhauses kümmert."
+      },
+      {
+        "question": "Wegen einer technischen ___ funktioniert der Aufzug heute nicht.",
+        "options": [
+          "Einladung",
+          "Störung",
+          "Ermäßigung",
+          "Bestellung"
+        ],
+        "answer": 1,
+        "explanation": "Hier passt „Störung“. Problem, durch das eine Anlage nicht wie vorgesehen funktioniert."
+      },
+      {
+        "question": "Die Heizung läuft, aber der ___ im Bad gibt keine Wärme ab.",
+        "options": [
+          "Briefkasten",
+          "Wasserhahn",
+          "Heizkörper",
+          "Türgriff"
+        ],
+        "answer": 2,
+        "explanation": "Hier passt „Heizkörper“. Teil der Heizung, der Wärme an einen Raum abgibt."
+      },
+      {
+        "question": "Die Elektrikerin hat die Sicherung ___ und dabei einen Fehler gefunden.",
+        "options": [
+          "bestellt",
+          "reserviert",
+          "gekündigt",
+          "überprüft"
+        ],
+        "answer": 3,
+        "explanation": "Hier passt „überprüft“. kontrolliert, ob etwas richtig eingestellt ist oder funktioniert."
+      },
+      {
+        "question": "Seit gestern macht die Waschmaschine beim Schleudern ein lautes ___.",
+        "options": [
+          "Geräusch",
+          "Licht",
+          "Loch",
+          "Angebot"
+        ],
+        "answer": 0,
+        "explanation": "Hier passt „Geräusch“. etwas Hörbares, dessen Ursache zum Beispiel eine Maschine ist."
+      },
+      {
+        "question": "Der ___ betreut unser Gebäude und tauscht defekte Lampen im Flur aus.",
+        "options": [
+          "Fahrgast",
+          "Hausmeister",
+          "Verkäufer",
+          "Dolmetscher"
+        ],
+        "answer": 1,
+        "explanation": "Hier passt „Hausmeister“. Person, die ein Gebäude betreut und sich um praktische Aufgaben kümmert."
+      },
+      {
+        "question": "Zwischen zehn und zwölf Uhr können Sie mich anrufen; dann bin ich ___.",
+        "options": [
+          "abwesend",
+          "unterwegs",
+          "erreichbar",
+          "beschäftigt"
+        ],
+        "answer": 2,
+        "explanation": "Hier passt „erreichbar“. so verfügbar, dass andere Kontakt aufnehmen können."
+      },
+      {
+        "question": "Damit wir nicht wieder aneinander vorbeireden, sollten wir eine genaue Uhrzeit ___.",
+        "options": [
+          "verpassen",
+          "vergessen",
+          "ablehnen",
+          "vereinbaren"
+        ],
+        "answer": 3,
+        "explanation": "Hier passt „vereinbaren“. mit einer anderen Person eine gemeinsame Regelung oder einen Termin festlegen."
+      },
+      {
+        "question": "Der Lieferdienst nennt keine genaue Uhrzeit, sondern ein ___ zwischen neun und dreizehn Uhr.",
+        "options": [
+          "Zeitfenster",
+          "Treppenhaus",
+          "Kundenkonto",
+          "Ersatzteil"
+        ],
+        "answer": 0,
+        "explanation": "Hier passt „Zeitfenster“. begrenzter Zeitraum, innerhalb dessen etwas stattfinden kann."
+      },
+      {
+        "question": "Ich habe meine Nummer hinterlassen und um einen ___ gebeten.",
+        "options": [
+          "Aufpreis",
+          "Rückruf",
+          "Kassenbon",
+          "Umzug"
+        ],
+        "answer": 1,
+        "explanation": "Hier passt „Rückruf“. Telefonanruf als Antwort auf einen vorherigen Kontaktversuch."
+      },
+      {
+        "question": "Ohne Schlüssel hat der Handwerker keinen ___ zum abgeschlossenen Technikraum.",
+        "options": [
+          "Vorrat",
+          "Auftrag",
+          "Zugang",
+          "Vertrag"
+        ],
+        "answer": 2,
+        "explanation": "Hier passt „Zugang“. Möglichkeit, einen Ort oder Raum zu betreten."
+      },
+      {
+        "question": "Meine Schwester hat einen Schlüssel und kann die Wohnungstür für Sie ___.",
+        "options": [
+          "ausdrucken",
+          "überweisen",
+          "aufladen",
+          "aufschließen"
+        ],
+        "answer": 3,
+        "explanation": "Hier passt „aufschließen“. eine verschlossene Tür mit einem Schlüssel öffnen."
+      },
+      {
+        "question": "Wenn du den Termin bestätigt bekommst, gib mir bitte kurz ___.",
+        "options": [
+          "Bescheid",
+          "Ausgang",
+          "Aufpreis",
+          "Zugang"
+        ],
+        "answer": 0,
+        "explanation": "Hier passt „Bescheid“. Information über eine Entscheidung oder den Stand einer Sache, oft in „Bescheid geben“."
+      },
+      {
+        "question": "Ohne Kundennummer können wir Ihre Überweisung leider keinem Auftrag ___.",
+        "options": [
+          "aufschließen",
+          "zuordnen",
+          "reparieren",
+          "verlängern"
+        ],
+        "answer": 1,
+        "explanation": "Hier passt „zuordnen“. etwas mit der passenden Person oder dem passenden Vorgang verbinden."
+      },
+      {
+        "question": "Bitte kommen Sie ___, damit wir den Zug nicht verpassen.",
+        "options": [
+          "absichtlich",
+          "versehentlich",
+          "rechtzeitig",
+          "vergeblich"
+        ],
+        "answer": 2,
+        "explanation": "Hier passt „rechtzeitig“. früh genug, damit man noch reagieren kann."
+      }
+    ],
+    "grammar": [
+      {
+        "question": "Ich habe schon mit ___ Hausverwaltung gesprochen.",
+        "options": [
+          "die",
+          "der",
+          "den",
+          "dem"
+        ],
+        "answer": 1,
+        "explanation": "„Mit“ verlangt den Dativ. „Hausverwaltung“ ist feminin, deshalb heißt es „mit der Hausverwaltung“."
+      },
+      {
+        "question": "Seit Montag ___ der Heizkörper nicht richtig warm.",
+        "options": [
+          "wurde gestern",
+          "geworden",
+          "wird",
+          "werden"
+        ],
+        "answer": 2,
+        "explanation": "„Seit“ bezeichnet hier einen Zeitraum, der bis zur Gegenwart reicht. Deshalb steht der Satz im Präsens: Der Heizkörper wird nicht richtig warm."
+      },
+      {
+        "question": "Könnten Sie mich kurz vorher ___?",
+        "options": [
+          "angerufen",
+          "anruft",
+          "zu anrufen",
+          "anrufen"
+        ],
+        "answer": 3,
+        "explanation": "Nach dem Modalverb „könnten“ folgt der Infinitiv ohne „zu“. Das trennbare Verb lautet im Infinitiv „anrufen“."
+      },
+      {
+        "question": "Ich bin nicht zu Hause, ___ ich bis fünf Uhr arbeiten muss.",
+        "options": [
+          "weil",
+          "deshalb",
+          "trotzdem",
+          "wegen"
+        ],
+        "answer": 0,
+        "explanation": "„Weil“ nennt den Grund und leitet einen Nebensatz ein. Das finite Verb steht am Ende: weil ich bis fünf Uhr arbeiten muss."
+      },
+      {
+        "question": "Das Zeitfenster passt mir nicht; deshalb ___ ich einen anderen Termin.",
+        "options": [
+          "ich brauche",
+          "brauche",
+          "gebraucht",
+          "zu brauchen"
+        ],
+        "answer": 1,
+        "explanation": "Nach „deshalb“ steht das finite Verb an zweiter Position. Das Subjekt folgt danach: Deshalb brauche ich einen anderen Termin."
+      },
+      {
+        "question": "Der Techniker kümmert sich ___ die defekte Heizung.",
+        "options": [
+          "für",
+          "an",
+          "um",
+          "mit"
+        ],
+        "answer": 2,
+        "explanation": "Die feste Verbindung lautet „sich kümmern um + Akkusativ“. Ein weiteres Beispiel ist: Sie kümmert sich um die Reparatur."
+      },
+      {
+        "question": "Ich bitte Sie, den Termin schriftlich ___.",
+        "options": [
+          "bestätigen zu",
+          "bestätigt",
+          "bestätigt zu",
+          "zu bestätigen"
+        ],
+        "answer": 3,
+        "explanation": "Nach „jemanden bitten“ steht hier eine Infinitivgruppe mit „zu“. „Bestätigen“ ist nicht trennbar, deshalb steht „zu“ davor: zu bestätigen."
+      },
+      {
+        "question": "Meine Nachbarin könnte öffnen, wenn sie morgen Zeit ___.",
+        "options": [
+          "hätte",
+          "habe gehabt",
+          "hatte gehabt",
+          "haben"
+        ],
+        "answer": 0,
+        "explanation": "Eine hypothetische Möglichkeit wird hier mit dem Konjunktiv II formuliert. Zu „sie“ im Singular passt „hätte“."
+      },
+      {
+        "question": "Die Reparatur ___ am Freitag durchgeführt.",
+        "options": [
+          "hat",
+          "wird",
+          "werden",
+          "haben"
+        ],
+        "answer": 1,
+        "explanation": "Das Vorgangspassiv besteht aus „werden“ und Partizip II. „Die Reparatur“ ist Singular, deshalb lautet das Verb „wird“."
+      },
+      {
+        "question": "Der Heizkörper, ___ überprüft werden muss, steht im Wohnzimmer.",
+        "options": [
+          "den",
+          "dem",
+          "der",
+          "dessen"
+        ],
+        "answer": 2,
+        "explanation": "Das Relativpronomen ist im Relativsatz das Subjekt von „überprüft werden muss“. Es bezieht sich auf den maskulinen „Heizkörper“ und steht deshalb im Nominativ: der."
+      },
+      {
+        "question": "Bitte sagen Sie mir, ___ der Techniker am Freitag noch kommen kann.",
+        "options": [
+          "weil",
+          "damit",
+          "trotzdem",
+          "ob"
+        ],
+        "answer": 3,
+        "explanation": "„Ob“ leitet eine indirekte Ja-Nein-Frage ein. Das konjugierte Verb „kann“ steht am Ende des Nebensatzes."
+      },
+      {
+        "question": "Ich muss spätestens ___ elf Uhr die Wohnung verlassen.",
+        "options": [
+          "um",
+          "am",
+          "im",
+          "seit"
+        ],
+        "answer": 0,
+        "explanation": "Genaue Uhrzeiten stehen mit der Präposition „um“. Man sagt beispielsweise auch: Der Termin beginnt um neun Uhr."
+      },
+      {
+        "question": "Sie können den Schlüssel bei ___ Nachbarin abholen.",
+        "options": [
+          "meine",
+          "meiner",
+          "meinen",
+          "meinem"
+        ],
+        "answer": 1,
+        "explanation": "„Bei“ verlangt den Dativ. Vor dem femininen Nomen „Nachbarin“ lautet der Possessivartikel im Dativ „meiner“."
+      },
+      {
+        "question": "___ der Techniker arbeitet, bleibe ich telefonisch erreichbar.",
+        "options": [
+          "Wegen",
+          "Trotz",
+          "Während",
+          "Deshalb"
+        ],
+        "answer": 2,
+        "explanation": "„Während“ ist hier eine Konjunktion und verbindet zwei gleichzeitige Vorgänge. Es leitet einen Nebensatz mit Verbendstellung ein: während der Techniker arbeitet."
+      },
+      {
+        "question": "Ich räume den Bereich frei, ___ der Techniker an das Ventil kommt.",
+        "options": [
+          "obwohl",
+          "weil nicht",
+          "trotzdem",
+          "damit"
+        ],
+        "answer": 3,
+        "explanation": "„Damit“ beschreibt den Zweck des Freiräumens. Es folgt ein Nebensatz mit dem finiten Verb am Ende."
+      }
+    ]
+  }
+]

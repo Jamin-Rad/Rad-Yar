@@ -28,7 +28,7 @@ export const config = {
   matcher: [
     // Public standalone tools and self-managed learning pages bypass Clerk middleware entirely.
     // Also skip Next.js internals and all static files.
-    '/((?!(?:kaiser-score|fleischner|node-rads|khk-vortestwahrscheinlichkeit|digitda|exam|andarun|mobin/kaenguru)(?:/|$)|api/(?:digitda|personal-calendar|andarun|mobin/kaenguru)(?:/|$)|_next|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)',
+    '/((?!(?:kaiser-score|fleischner|node-rads|khk-vortestwahrscheinlichkeit|digitda|exam|andarun|mobin/kaenguru)(?:/|$)|api/(?:digitda|personal-calendar|andarun|mobin/kaenguru)(?:/|$)|_next|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|wav|mp3|m4a|ogg|aac|flac|csv|docx?|xlsx?|zip|webmanifest)).*)',
     '/api/((?!(?:digitda|personal-calendar|andarun|mobin/kaenguru)(?:/|$)).*)',
     '/trpc(.*)',
   ],

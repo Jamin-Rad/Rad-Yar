@@ -20,7 +20,6 @@ export default async function FatimaDeutschPage() {
     <DeutschPage
       apiBase="/api/fatima/deutsch"
       correctEndpoint="/api/fatima/deutsch/correct"
-      speechEndpoint="/api/fatima/deutsch/speech"
       homeHref="/fatima"
       homeLabel="Fatima"
       courseHref="/fatima/deutsch"
