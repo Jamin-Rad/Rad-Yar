@@ -18,3 +18,11 @@ test('official questions remain separate from authored written and binary lesson
  const lessons={1:{id:1,chapters:[{id:'a',statementIds:[0,1]},{id:'fragen',statementIds:[1]}],cards:[{id:'1.1',source:'official',official:true},{id:'c',source:'concept',chapterId:'a'}]},2:{id:2,chapters:[{id:'a',statementIds:[0]}],cards:[{id:'2.1',source:'official',official:true}]}};
  assert.equal(buildLessonPractice(lessons,[1,2],'official').length,2);const written=buildLessonPractice(lessons,[1],'written');assert.equal(written.length,1);assert.ok(written.every(q=>!q.official&&q.kind==='written'));assert.equal(buildLessonPractice(lessons,[1],'mixed').length,3);assert.equal(buildLessonPractice(lessons,[],'binary').length,0);
 });
+
+test('book pagination fits complete bilingual rows, keeps titles with text and never drops oversized paragraphs',async()=>{
+ const {packBookRows}=await import('./bookPagination.js');
+ assert.deepEqual(packBookRows([50,120,150,100],300),[[0,1],[2,3]]);
+ assert.deepEqual(packBookRows([40,400,80],300,true),[[0,1],[2]]);
+ assert.deepEqual(packBookRows([700,90,90],300),[[0],[1,2]]);
+ assert.deepEqual(packBookRows([],300),[]);
+});

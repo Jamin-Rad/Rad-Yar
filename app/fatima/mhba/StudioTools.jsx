@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useEffect,useState} from 'react';
 import {Icon} from './ui.jsx';
 
 export function StudioIcon({name,size=18}){
@@ -6,11 +6,16 @@ export function StudioIcon({name,size=18}){
  return <svg width={size} height={size} viewBox="0 0 24 24" fill={name==='heart'?'currentColor':'none'} stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{paths[name]||paths.spark}</svg>;
 }
 
-export function StudioToolbar({data,patch,showPersian,onLanguage}){
+export function StudioToolbar({data,patch,showPersian,onLanguage,eraseSelection}){
  const annotation=data.annotation||{tool:'highlight',color:'yellow'};
+ const [selectedMark,setSelectedMark]=useState(false);
+ useEffect(()=>{const changed=()=>{const selection=window.getSelection();if(!selection||selection.isCollapsed||!selection.rangeCount){setSelectedMark(false);return;}const range=selection.getRangeAt(0);const element=range.startContainer.nodeType===1?range.startContainer:range.startContainer.parentElement;const root=element?.closest('[data-highlight-root]');setSelectedMark(!!root&&root.contains(range.endContainer)&&[...root.querySelectorAll('mark')].some(mark=>range.intersectsNode(mark)));};document.addEventListener('selectionchange',changed);return()=>document.removeEventListener('selectionchange',changed);},[]);
+ function erase(){if(selectedMark&&eraseSelection){eraseSelection();setSelectedMark(false);}else patch({annotation:{...annotation,tool:'erase'}});}
+
  return <div className="studio-toolbar" role="toolbar" aria-label="ابزار مطالعه و علامت‌گذاری">
-  <div className="studio-mark-tools" role="group" aria-label="نوع علامت‌گذاری">{[['highlight','هایلایت','pen'],['underline','زیرخط','underline'],['select','فقط انتخاب','cursor'],['erase','پاک‌کن','eraser']].map(([tool,label,icon])=><button key={tool} title={label} aria-label={label} aria-pressed={annotation.tool===tool} className={annotation.tool===tool?'is-active':''} onClick={()=>patch({annotation:{...annotation,tool}})}>{icon==='pen'?<Icon name="pen" size={17}/>:<StudioIcon name={icon}/>}<span>{label}</span></button>)}</div>
-  <div className="studio-swatches" role="group" aria-label="رنگ علامت">{[['yellow','زرد'],['pink','صورتی'],['green','سبز']].map(([color,label])=><button key={color} aria-label={`رنگ ${label}`} aria-pressed={annotation.color===color} className={`studio-swatch highlight-${color} ${annotation.color===color?'is-active':''}`} onClick={()=>patch({annotation:{...annotation,tool:annotation.tool==='underline'?'underline':'highlight',color}})}>{annotation.color===color?<Icon name="check" size={13}/>:null}</button>)}</div>
+  <div className="studio-mark-tools" role="group" aria-label="نوع علامت‌گذاری">{[['highlight','هایلایت','pen'],['underline','زیرخط','underline'],['select','فقط انتخاب','cursor']].map(([tool,label,icon])=><button key={tool} title={label} aria-label={label} aria-pressed={annotation.tool===tool} className={annotation.tool===tool?'is-active':''} onClick={()=>patch({annotation:{...annotation,tool}})}>{icon==='pen'?<Icon name="pen" size={17}/>:<StudioIcon name={icon}/>}<span>{label}</span></button>)}</div>
+  <div className="studio-swatches" role="group" aria-label="رنگ علامت">{[['yellow','زرد'],['pink','صورتی'],['green','سبز']].map(([color,label])=><button key={color} aria-label={`رنگ ${label}`} aria-pressed={annotation.tool!=='erase'&&annotation.color===color} className={`studio-swatch highlight-${color} ${annotation.tool!=='erase'&&annotation.color===color?'is-active':''}`} onClick={()=>patch({annotation:{...annotation,tool:annotation.tool==='underline'?'underline':'highlight',color}})}>{annotation.tool!=='erase'&&annotation.color===color?<Icon name="check" size={13}/>:null}</button>)}<button className={`studio-swatch studio-eraser-swatch ${annotation.tool==='erase'?'is-active':''}`} title="پاک‌کن" aria-label="پاک‌کن" aria-pressed={annotation.tool==='erase'} onPointerDown={e=>e.preventDefault()} onClick={erase}><StudioIcon name="eraser" size={15}/></button></div>
+  {selectedMark&&eraseSelection?<button className="studio-delete-selection" onPointerDown={e=>e.preventDefault()} onClick={()=>{eraseSelection();setSelectedMark(false);}}><StudioIcon name="eraser" size={15}/>پاک کردن انتخاب</button>:null}
   {onLanguage?<button role="switch" aria-checked={showPersian} className="studio-language-switch" onClick={onLanguage}><span className="studio-switch"/><span>ترجمهٔ فارسی</span><small dir="ltr">DE ↔ FA</small></button>:null}
 
  </div>;
