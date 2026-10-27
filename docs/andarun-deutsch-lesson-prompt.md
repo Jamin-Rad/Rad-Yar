@@ -102,3 +102,5 @@ Pflichtprüfung vor der Ausgabe:
 6. Prüfe alle explanation-Felder bei grammar: Sind sie ausführlich? Wird der Kasus bei Präpositionen genannt?
 7. Gib ausschließlich valides JSON aus, ohne Kommentar und ohne Markdown.
 ```
+
+Antwortoptionen: Verwende dieselbe Wortart und passende Flexion. Keine zufälligen Vokabeln als Ablenkung. Genau eine Option passt zum gesamten Kontext. Erkläre den entscheidenden Hinweis und grenze eine plausible falsche Option ab.

@@ -3,11 +3,10 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import Link from 'next/link'
 import styles from './page.module.css'
-import { getPractice } from './practice'
 import ListeningPlayer, { recordingSource } from './ListeningPlayer'
 import { normalizeDeutschState as normalizeState } from '@/lib/deutsch/state'
 import { createDeutschSync } from '@/lib/deutsch/sync'
-import { getQuestionBank, makePracticeSession, isWrongAnswer } from './sessions'
+import { getQuestionBank, getLessonTests, makePracticeSession, getMistakeQuestions } from './sessions'
 import CourseHome from './CourseHome'
 
 const DAY = 24 * 60 * 60 * 1000
@@ -227,7 +226,8 @@ REGELN FÜR READING QUESTIONS:
 REGELN FÜR VOCABULARY_QUIZ (15 bis 20 Fragen):
 - Für jedes Lernwort einen neuen natürlichen Satz mit genau einer Lücke ___ schreiben.
 - question enthält nur den Satz. Keine Frage nach Definition, Übersetzung oder Bedeutung.
-- Die vier Optionen sind Wörter oder Wendungen, die in die Lücke eingesetzt werden können. Genau eine ist im Kontext richtig.
+- Die vier Optionen sind Wörter oder Wendungen derselben Wortart und mit passender Flexion. Alle wirken zunächst plausibel; genau eine passt zum vollständigen Kontext. Keine zufälligen Wörter aus der Vokabelliste als Ablenkung verwenden.
+- explanation nennt den entscheidenden Kontext und grenzt mindestens eine plausible falsche Option von der richtigen Lösung ab.
 - Den Lesetext und die Beispiele nicht kopieren. Die Bedeutung wird durch die Verwendung im neuen Kontext geprüft.
 - Die richtige Antwort gleichmäßig auf alle vier Positionen verteilen.
 
@@ -351,14 +351,17 @@ function QuestionBlock({ id, items, answers, onAnswer, onReset }) {
                     onClick={() => onAnswer(key, optionIndex)}
                   >
                     <span>{option}</span>
-                    {isSelected && <b aria-hidden="true">✓</b>}
+                    {answered && (isSelected || isCorrect) && <b aria-hidden="true">{isCorrect ? '✓' : '✕'}</b>}
                   </button>
                 )
               })}
             </div>
             {answered && (
               <div className={`${styles.answerFeedback} ${selected === item.answer ? styles.feedbackCorrect : styles.feedbackWrong}`}>
-                <strong>{selected === item.answer ? 'Richtig' : 'Noch nicht ganz'}</strong>
+                <strong>{selected === item.answer ? 'Richtig' : 'Richtige Lösung'}</strong>
+                {selected !== item.answer && <p className={styles.selectedAnswer}>Deine Antwort: {item.options[selected]}</p>}
+                <p className={styles.answerSolution}>{item.options[item.answer]}</p>
+                {item.question.includes('___') && <p className={styles.completedSentence}>{item.question.replace('___', item.options[item.answer])}</p>}
                 <p className={styles.explanation}>{item.explanation}</p>
               </div>
             )}
@@ -419,6 +422,7 @@ export default function DeutschPage({
   const [practiceSession, setPracticeSession] = useState(null)
   const [activeLessonId, setActiveLessonId] = useState('')
   const [activeTab, setActiveTab] = useState(lessonMode ? 'lesen' : 'home')
+  const [testCategory, setTestCategory] = useState(null)
   const [selectedWord, setSelectedWord] = useState(null)
   const [importText, setImportText] = useState('')
   const [writingText, setWritingText] = useState('')
@@ -490,17 +494,14 @@ export default function DeutschPage({
     () => state.lessons.find(lesson => lesson.id === activeLessonId) || state.lessons[0] || upgradedSampleLesson,
     [state.lessons, activeLessonId]
   )
-  const practice = useMemo(() => getPractice(activeLesson), [activeLesson])
-  const testItems = useMemo(() => [
-    ...practice.vocabulary.map((item, index) => ({ ...item, answerKey: `${activeLesson.id}-test-v2-${index}`, section: 'Wörter im Kontext' })),
-    ...practice.grammar.map((item, index) => ({ ...item, answerKey: `${activeLesson.id}-test-v2-${practice.vocabulary.length + index}`, section: 'Grammatik' })),
-  ], [practice, activeLesson.id])
+  const lessonTests = useMemo(() => getLessonTests(activeLesson), [activeLesson])
+  const testItems = testCategory ? lessonTests[testCategory] : []
   const sortedLessons = useMemo(
     () => [...state.lessons].sort((a, b) => `${b.date || ''}`.localeCompare(`${a.date || ''}`)),
     [state.lessons]
   )
   const questionBank = useMemo(() => getQuestionBank(state.lessons), [state.lessons])
-  const wrongCount = questionBank.filter(item => isWrongAnswer(item, state.answers)).length
+  const wrongCount = getMistakeQuestions(questionBank, state.answers).length
   const startPractice = mode => setPracticeSession(makePracticeSession(questionBank, state.answers, mode))
   const dueCards = useMemo(() => state.cards.filter(isDue), [state.cards])
   const learnedWords = new Set(state.cards.map(card => card.term.toLowerCase()))
@@ -706,7 +707,7 @@ export default function DeutschPage({
               ['hoeren', '03 · Hören'],
               ['schreiben', '04 · Schreiben'],
             ].map(([id, label]) => (
-              <button type="button" key={id} className={activeTab === id ? styles.activeTab : ''} aria-current={activeTab === id ? 'step' : undefined} onClick={() => setActiveTab(id)}>
+              <button type="button" key={id} className={activeTab === id ? styles.activeTab : ''} aria-current={activeTab === id ? 'step' : undefined} onClick={() => { setActiveTab(id); if (id === 'grammatik') setTestCategory(null) }}>
                 {label}
               </button>
             ))}
@@ -751,16 +752,28 @@ export default function DeutschPage({
       )}
 
       {activeTab === 'grammatik' && (
-        <section className={styles.singleSection}>
-          <div className={styles.sectionIntro}>
-            <span>{practice.vocabulary.length + practice.grammar.length} Fragen · Wörter & Grammatik</span>
-            <h2>Tagestest</h2>
-          </div>
-          <div className={styles.practiceActions}>
-            <button type="button" onClick={() => setPracticeSession(makePracticeSession(testItems, state.answers, 'random'))}>Zufallstest</button>
-            <button type="button" disabled={!testItems.some(item => Number.isInteger(state.answers[item.answerKey]) && state.answers[item.answerKey] !== item.answer)} onClick={() => setPracticeSession(makePracticeSession(testItems, state.answers, 'mistakes'))}>Fehler wiederholen</button>
-          </div>
-          <QuestionBlock key={`${activeLesson.id}-test-v2`} id={`${activeLesson.id}-test-v2`} items={testItems} answers={state.answers} onAnswer={answerQuestion} onReset={() => resetSectionAnswers('test-v2')} />
+        <section className={styles.singleSection} aria-label="Lektionstests">
+          {!testCategory ? <>
+            <div className={styles.sectionIntro}><h2>Was möchtest du üben?</h2></div>
+            <div className={styles.testChoices}>
+              {[
+                ['vocabulary', 'Wortschatz', 'Wörter im Satz verwenden'],
+                ['grammar', 'Grammatik', 'Satzbau und Formen üben'],
+              ].map(([category, title, description]) => <button type="button" key={category} disabled={!lessonTests[category].length} onClick={() => setTestCategory(category)}>
+                <span><strong>{title}</strong><small>{description}</small></span>
+                <span className={styles.testCount}>{lessonTests[category].length} Fragen <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6" /></svg></span>
+              </button>)}
+            </div>
+          </> : <>
+            <div className={styles.testHeading}>
+              <div className={styles.sectionIntro}><h2>{testCategory === 'vocabulary' ? 'Wortschatz' : 'Grammatik'}</h2></div>
+              <button type="button" className={styles.ghostBtn} onClick={() => setTestCategory(null)}>Auswahl ändern</button>
+            </div>
+            <QuestionBlock key={`${activeLesson.id}-${testCategory}`} id={`${activeLesson.id}-${testCategory}`} items={testItems} answers={state.answers} onAnswer={answerQuestion} onReset={() => {
+              const keys = new Set(testItems.map(item => item.answerKey))
+              persist(current => ({ ...current, answers: Object.fromEntries(Object.entries(current.answers).filter(([key]) => !keys.has(key))) }))
+            }} />
+          </>}
         </section>
       )}
 
@@ -898,7 +911,7 @@ export default function DeutschPage({
         </section>
       )}
 
-      {practiceSession && (
+      {!lessonMode && practiceSession && (
         <div className={styles.modalBackdrop} role="presentation" onMouseDown={() => setPracticeSession(null)}>
           <section className={`${styles.importModal} ${styles.practiceModal}`} role="dialog" aria-modal="true" aria-label={practiceSession.mode === 'mistakes' ? 'Fehler wiederholen' : 'Zufallstest'} onMouseDown={event => event.stopPropagation()}>
             <button type="button" className={styles.closeBtn} onClick={() => setPracticeSession(null)}>Schließen</button>

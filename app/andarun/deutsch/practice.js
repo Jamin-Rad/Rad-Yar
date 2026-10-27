@@ -1,3 +1,5 @@
+import { reviseVocabulary, reviseGrammar, getReviewedVocabulary } from './exerciseRevisions'
+
 // Prepared sentence exercises; no generation service is needed during practice.
 const contexts = {
   erreichbar: 'Während der Dienstreise bin ich unter meiner privaten Nummer erreichbar.',
@@ -50,19 +52,22 @@ export function sentenceOnly(question = '') {
   return question.replace(/^(?:Ergänze(?: richtig)?|Wähle(?: die richtige Form)?|Welche (?:Form|Präposition(?: und welcher Kasus)?|Artikel).*?(?:passt|passen|korrekt))\s*:\s*/i, '').replace(/^[„“"]|[“”"]$/g, '')
 }
 
-export function getPractice(lesson) {
+export function getPractice(lesson, { legacy = false } = {}) {
   const words = lesson?.reading?.vocabulary || []
   const supplied = (lesson?.vocabulary_quiz || []).filter(item => item.question?.includes('___'))
   const vocabulary = [...supplied]
   for (const [index, word] of words.entries()) {
     if (supplied.some(item => item.options?.[item.answer]?.toLocaleLowerCase('de') === word.term?.toLocaleLowerCase('de'))) continue
-    const sentence = contexts[word.term] || word.example
+    const reviewed = legacy ? null : getReviewedVocabulary(word.term)
+    if (!legacy && !reviewed) continue
+    const sentence = reviewed?.question ? reviewed.question.replace('___', word.term) : contexts[word.term] || word.example
     if (!sentence || !word.term) continue
     const position = sentence.toLocaleLowerCase('de').indexOf(word.term.toLocaleLowerCase('de'))
     if (position < 0) continue
     const question = `${sentence.slice(0, position)}___${sentence.slice(position + word.term.length)}`
     if (vocabulary.some(item => item.question === question)) continue
-    const distractors = [...new Set(words.filter(other => other.term !== word.term).map(other => other.term))].slice(0, 3)
+    // The old alternatives are only retained for reviewing historical answers.
+    const distractors = legacy ? [...new Set(words.filter(other => other.term !== word.term).map(other => other.term))].slice(0, 3) : reviewed.distractors
     if (distractors.length < 3) continue
     const answer = index % 4
     const options = [...distractors]; options.splice(answer, 0, word.term)
@@ -75,5 +80,5 @@ export function getPractice(lesson) {
     if (!grammar.some(other => other.question === item.question)) grammar.push(item)
     if (grammar.length >= Math.max(15, existing.length)) break
   }
-  return { vocabulary, grammar }
+  return legacy ? { vocabulary, grammar } : { vocabulary: vocabulary.map(reviseVocabulary), grammar: grammar.map(reviseGrammar) }
 }

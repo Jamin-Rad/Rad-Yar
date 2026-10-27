@@ -21,7 +21,7 @@ test('prepared lesson has a contextual vocabulary exercise for each word and 15 
   }
   for (const item of practice.vocabulary) {
     assert.ok(lesson.reading.vocabulary.some(word => word.term === item.options[item.answer]))
-    assert.ok(item.explanation.includes(item.question.replace('___', item.options[item.answer])))
+    assert.ok(item.explanation.length > 50)
   }
   assert.equal(new Set(practice.vocabulary.map(item => item.answer)).size, 4)
 })
@@ -50,4 +50,23 @@ test('every bundled reading and listening text has an actual non-empty neural au
     assert.match(recording.voice, /Chirp 3 HD/)
     assert.ok(statSync(path).size > 20_000)
   }
+})
+
+test('unreviewed example text never receives arbitrary unrelated distractors',()=>{
+ const lesson={id:'custom',reading:{vocabulary:[
+  {term:'abwägen',example:'Wir müssen die Folgen sorgfältig abwägen.'},
+  {term:'der Antrag',example:'Der Antrag ist vollständig.'},
+  {term:'plötzlich',example:'Sie kam plötzlich.'},
+  {term:'vertraulich',example:'Das ist vertraulich.'},
+ ]}}
+ assert.equal(getPractice(lesson).vocabulary.length,0)
+ assert.ok(getPractice(lesson,{legacy:true}).vocabulary.length>0)
+})
+
+test('reviewed phrases use a fresh context even if the imported example uses another inflection',()=>{
+ const practice=getPractice({id:'health',reading:{vocabulary:[{term:'sich eingestehen',example:'Er gestand sich ein, dass er Hilfe braucht.'}]}})
+ assert.equal(practice.vocabulary.length,1)
+ assert.equal(practice.vocabulary[0].options.length,4)
+ assert.equal(practice.vocabulary[0].options[practice.vocabulary[0].answer],'sich eingestehen')
+ assert.match(practice.vocabulary[0].question,/Unterstützung braucht/)
 })

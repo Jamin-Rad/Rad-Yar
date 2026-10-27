@@ -74,8 +74,47 @@ test('legacy mistakes remain reviewable but never enter new random tests',()=>{
  const bank=getQuestionBank([lesson])
  const session=makePracticeSession(bank,{'legacy-grammar-0':2,'legacy-vocabquiz-0':3},'mistakes')
  assert.equal(session.items.length,2)
- assert.ok(session.items.every(item=>item.legacy))
+ assert.ok(session.items.some(item=>item.answerKey==='legacy-vocabquiz-0'&&item.legacy))
  assert.ok(makePracticeSession(bank,{},'random').items.every(item=>!item.legacy))
  const prior=bank.find(item=>item.answerKey==='legacy-grammar-0')
+ assert.ok(session.items.some(item=>item.answerKey===prior.supersededBy&&!item.legacy))
  assert.equal(makePracticeSession(bank,{'legacy-grammar-0':2,[prior.supersededBy]:0},'mistakes').items.length,0)
+})
+
+test('lesson categories share global source keys without mixing vocabulary and grammar', async()=>{
+ const {getLessonTests}=await import('./sessions.js')
+ const lessons=JSON.parse(readFileSync(new URL('../../../data/deutsch/daily-conversations-2026-10-27.json',import.meta.url)))
+ const bank=getQuestionBank(lessons)
+ for(const lesson of lessons){
+  const tests=getLessonTests(lesson)
+  assert.equal(tests.vocabulary.length,15);assert.equal(tests.grammar.length,15)
+  for(const kind of ['vocabulary','grammar']) for(const item of tests[kind]){
+   assert.equal(item.kind,kind)
+   assert.equal(bank.filter(q=>!q.legacy&&q.answerKey===item.answerKey).length,1)
+  }
+  assert.equal(new Set([...tests.vocabulary,...tests.grammar].map(q=>q.answerKey)).size,30)
+ }
+})
+
+test('rewritten alternatives do not reuse old option indexes and old mistakes can be cleared',async()=>{
+ const {getLessonTests,getMistakeQuestions}=await import('./sessions.js')
+ const [lesson]=JSON.parse(readFileSync(new URL('../../../data/deutsch/daily-conversations-2026-10-27.json',import.meta.url)))
+ const tests=getLessonTests(lesson);const bank=getQuestionBank([lesson])
+ const item=tests.vocabulary[0];const old=tests.legacy.find(q=>q.supersededBy===item.answerKey)
+ assert.ok(item.answerKey.includes('test-v3-vocabulary-'));assert.ok(old)
+ const wrong=(old.answer+1)%4
+ assert.equal(getMistakeQuestions(bank,{[old.answerKey]:wrong}).length,1)
+ assert.equal(getMistakeQuestions(bank,{[old.answerKey]:wrong})[0].answerKey,item.answerKey)
+ assert.equal(getMistakeQuestions(bank,{[old.answerKey]:wrong,[item.answerKey]:item.answer}).length,0)
+ const priorDefinition=`${lesson.id}-vocabquiz-0`
+ assert.equal(getMistakeQuestions(bank,{[old.answerKey]:wrong,[priorDefinition]:wrong}).length,1)
+ assert.ok(makePracticeSession(bank,{},'random').items.every(q=>!q.legacy))
+})
+
+test('old definition mistakes reopen the reviewed sentence exercise for that word',()=>{
+ const lesson={id:'definition',reading:{vocabulary:[{term:'erreichbar',example:'Ich bin erreichbar.'}]},vocabulary_quiz:[{question:'Was bedeutet „erreichbar“?',options:['kontaktierbar','müde','nah','spät'],answer:0}]}
+ const bank=getQuestionBank([lesson]);const review=makePracticeSession(bank,{'definition-vocabquiz-0':1},'mistakes')
+ assert.equal(review.items.length,1);assert.equal(review.items[0].legacy,undefined)
+ assert.ok(review.items[0].question.includes('___'));assert.equal(review.items[0].options[review.items[0].answer],'erreichbar')
+ assert.equal(makePracticeSession(bank,{'definition-vocabquiz-0':1,[review.items[0].answerKey]:review.items[0].answer},'mistakes').items.length,0)
 })
