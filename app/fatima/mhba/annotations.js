@@ -42,3 +42,15 @@ export function glossaryParts(text, vocabulary = []) {
   if(end<text.length)parts.push({text:text.slice(end)});
   return parts;
 }
+
+export function eraseAnnotations(highlights,selection){
+ const {lessonId,blockId,start,end,sourceText}=selection;
+ if(!Number.isInteger(start)||!Number.isInteger(end)||end<=start)return highlights;
+ return highlights.flatMap(h=>{
+  if(h.lessonId!==lessonId||h.blockId!==blockId||h.end<=start||h.start>=end)return [h];
+  const fragments=[];
+  if(h.start<start)fragments.push({...h,end:start,text:sourceText.slice(h.start,start)});
+  if(h.end>end)fragments.push({...h,id:fragments.length?`${h.id}-after-${end}`:h.id,start:end,text:sourceText.slice(end,h.end)});
+  return fragments;
+ });
+}

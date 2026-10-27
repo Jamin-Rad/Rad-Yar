@@ -18,3 +18,10 @@ export function buildCustomExam(lessons,selected,type){
  }
  return [...items.values()];
 }
+
+export function buildLessonPractice(lessons,selected,type){
+ const chosen=Object.fromEntries(Object.entries(lessons).filter(([,l])=>selected.includes(l.id)));
+ if(type==='official')return Object.values(chosen).flatMap(l=>l.cards.filter(c=>c.source==='official').map(c=>({...c,id:`qa-${c.id}`,kind:'written'})));
+ const items=buildCustomExam(chosen,examTopics(chosen).map(t=>t.key),type==='written'?'questions':type);
+ return items.filter(q=>!q.official);
+}

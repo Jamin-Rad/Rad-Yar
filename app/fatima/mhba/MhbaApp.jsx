@@ -5,7 +5,7 @@ import {CourseContext,useCourse} from './CourseContext';
 import {useNotebook} from './store.js';
 import {Reader,Original,Question} from './Study.jsx';
 import {Icon,PdfLink,GlossaryProvider} from './ui.jsx';
-import {addAnnotation} from './annotations.js';
+import {addAnnotation,eraseAnnotations} from './annotations.js';
 import LessonStudio from './LessonStudio.jsx';
 import LearningPortal from './LearningPortal.jsx';
 import StudioCards from './StudioCards.jsx';
@@ -24,11 +24,18 @@ function NotebookApp(){
  useEffect(()=>{if(!toast)return;const t=setTimeout(()=>setToast(''),3500);return()=>clearTimeout(t);},[toast]);
  useEffect(()=>{if(lesson)patch(p=>({...p,lastLesson:lesson.id,read:{...p.read,[lesson.id]:p.read[lesson.id]||{section:0}}}));},[lesson?.id]);
  useEffect(()=>{document.title=lesson?`${lesson.fa} | MHBA`:'MHBA';},[lesson]);
- function navigate(to){if(to===route){window.scrollTo(0,0);return;}location.hash=to;}
+ function navigate(to){setRoute(to);if(location.hash.slice(1)!==to)location.hash=to;window.scrollTo(0,0);}
  const annotation=data.annotation||{tool:'highlight',color:'yellow'};
- function pick(){
+ function pick(event){
   if(annotation.tool==='select'||!lesson)return;
-  const sel=window.getSelection();if(!sel||sel.isCollapsed||!sel.rangeCount)return;
+  const sel=window.getSelection();
+  if(annotation.tool==='erase'&&(!sel||sel.isCollapsed)){
+   const mark=event?.target.closest('mark[data-annotation-start]');const root=mark?.closest('[data-highlight-root]');
+   if(root){const page=lesson.pages[Number(root.dataset.highlightRoot.match(/^original-\d+-(\d+)/)?.[1])-1];const sourceText=page?(root.dataset.highlightRoot.endsWith('-fa')?page.fa:page.text):root.textContent;
+    if(sourceText)patch(p=>({...p,highlights:eraseAnnotations(p.highlights,{lessonId:lesson.id,blockId:root.dataset.highlightRoot,start:Number(mark.dataset.annotationStart),end:Number(mark.dataset.annotationEnd),sourceText})}));}
+   return;
+  }
+  if(!sel||sel.isCollapsed||!sel.rangeCount)return;
   const range=sel.getRangeAt(0);const element=range.startContainer.nodeType===1?range.startContainer:range.startContainer.parentElement;
   const root=element?.closest('[data-highlight-root]');if(!root||!root.contains(range.endContainer))return;
   const prefix=range.cloneRange();prefix.selectNodeContents(root);prefix.setEnd(range.startContainer,range.startOffset);
@@ -36,7 +43,7 @@ function NotebookApp(){
   const originalBlock=root.dataset.highlightRoot.match(/^original-(\d+)-(\d+)(-fa)?$/);
   const sourceText=originalBlock?lesson.pages[Number(originalBlock[2])-1][originalBlock[3]?'fa':'text']:root.textContent;
   const next={id:crypto.randomUUID(),lessonId:lesson.id,blockId:root.dataset.highlightRoot,start,end:start+text.length,text,sourceText,tool:annotation.tool,color:annotation.color,note:'',created:Date.now()};
-  patch(p=>({...p,highlights:addAnnotation(p.highlights,next)}));
+  patch(p=>({...p,highlights:annotation.tool==='erase'?eraseAnnotations(p.highlights,next):addAnnotation(p.highlights,next)}));
   sel.removeAllRanges();
  }
  useEffect(()=>{
@@ -46,11 +53,11 @@ function NotebookApp(){
   return()=>{clearTimeout(timer);document.removeEventListener('selectionchange',changed);};
  },[lesson?.id,annotation.tool,annotation.color]);
  function backup(){const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='mhba-notebook.json';a.click();URL.revokeObjectURL(url);setToast('نسخهٔ پشتیبان دفتر دانلود شد.');}
- async function restore(e){try{const file=e.target.files?.[0];if(!file)return;if(file.size>5000000)throw Error();const v=JSON.parse(await file.text());if(v.version!==1||!Array.isArray(v.highlights)||!v.review||typeof v.review!=='object')throw Error();const safe=v.highlights.filter(h=>typeof h.text==='string'&&typeof h.blockId==='string'&&Number.isInteger(h.start)&&Number.isInteger(h.end)&&h.end>h.start&&lessons[h.lessonId]);patch(p=>({...p,highlights:[...p.highlights,...safe.filter(h=>!p.highlights.some(x=>x.id===h.id))],review:{...p.review,...v.review},answers:{...p.answers,...v.answers},read:{...p.read,...v.read},practice:{...p.practice,...v.practice},...(v.customExam&&Array.isArray(v.customExam.topics)&&['binary','questions','mixed'].includes(v.customExam.type)&&v.customExam.answers&&typeof v.customExam.answers==='object'?{customExam:v.customExam}:{})}));setToast('یادداشت‌ها و مرورها به دفتر اضافه شدند.');}catch{setToast('فایل پشتیبان معتبر نیست.');}e.target.value='';}
+ async function restore(e){try{const file=e.target.files?.[0];if(!file)return;if(file.size>5000000)throw Error();const v=JSON.parse(await file.text());if(v.version!==1||!Array.isArray(v.highlights)||!v.review||typeof v.review!=='object')throw Error();const safe=v.highlights.filter(h=>typeof h.text==='string'&&typeof h.blockId==='string'&&Number.isInteger(h.start)&&Number.isInteger(h.end)&&h.end>h.start&&lessons[h.lessonId]);patch(p=>({...p,highlights:[...p.highlights,...safe.filter(h=>!p.highlights.some(x=>x.id===h.id))],review:{...p.review,...v.review},answers:{...p.answers,...v.answers},read:{...p.read,...v.read},practice:{...p.practice,...v.practice},...(v.customExam&&Array.isArray(v.customExam.topics)&&['binary','questions','mixed','official','written'].includes(v.customExam.type)&&v.customExam.answers&&typeof v.customExam.answers==='object'?{customExam:v.customExam}:{})}));setToast('یادداشت‌ها و مرورها به دفتر اضافه شدند.');}catch{setToast('فایل پشتیبان معتبر نیست.');}e.target.value='';}
  const due=Object.values(lessons).flatMap(l=>l.cards).filter(q=>!data.review[q.id]||data.review[q.id].due<=Date.now()).length;
  const active=route==='highlights'?'highlights':route==='review'?'review':'home';
- if(['home','cards','review','exam','highlights'].includes(route)||route.endsWith('/notes'))return <LearningPortal view={['cards','review','exam'].includes(route)?route:'home'} data={data} patch={patch} navigate={navigate} backup={backup} restore={restore} toast={toast} storageError={storageError}/>;
- if(lesson?.id===1)return <LessonStudio lesson={lesson} mode={mode} route={route} data={data} patch={patch} navigate={navigate} pick={pick} storageError={storageError} backup={backup}/>;
+ if(['home','cards','review','exam','official','highlights'].includes(route)||route.endsWith('/notes'))return <LearningPortal view={['cards','review','exam','official'].includes(route)?route:'home'} data={data} patch={patch} navigate={navigate} backup={backup} restore={restore} toast={toast} storageError={storageError}/>;
+ if(lesson)return <LessonStudio key={lesson.id} lesson={lesson} mode={mode} route={route} data={data} patch={patch} navigate={navigate} pick={pick} storageError={storageError} backup={backup}/>;
  return <div className="mhba-scope" lang="fa" dir="rtl" data-mhba-learning data-deutsch-learning><a href="#main-content" className="skip-link" onClick={e=>{e.preventDefault();document.getElementById('main-content')?.focus();}}>رفتن به محتوای اصلی</a><header className="topbar"><button className="brand" onClick={()=>navigate('home')}>MHBA</button><nav aria-label="ناوبری اصلی">{[['home','مدول‌ها'],['review','مرور'],['cards','فلش‌کارت‌ها'],['exam','آزمون']].map(([to,label])=><button key={to} className={active===to?'active':''} onClick={()=>navigate(to)}>{label}</button>)}</nav><Link className="fatima-home" href="/fatima">بازگشت به صفحهٔ فاطمه</Link></header>
  <div className="app-shell"><aside className="sidebar"><div className="sidebar-main">{[['home','book','مدول‌ها'],['cards','book','فلش‌کارت‌ها'],['exam','check','آزمون']].map(([to,icon,label])=><button key={to} className={active===to?'selected':''} onClick={()=>navigate(to)}><Icon name={icon}/><span>{label}</span>{to==='review'?<span className="count">{due}</span>:null}</button>)}</div><div className="sidebar-modules"><p>ترم اول</p><button className={route==='catalog'&&module===1?'module-active':''} onClick={()=>{setModule(1);navigate('catalog');}}>مدول ۱ <span>درس‌های ۱ تا ۱۰</span></button><button className={route==='catalog'&&module===2?'module-active':''} onClick={()=>{setModule(2);navigate('catalog');}}>مدول ۲ <span>درس‌های ۱۱ تا ۲۰</span></button></div><div className="notebook-tools"><p>یادداشت‌ها در همین مرورگر ذخیره می‌شوند.</p><button className="text-button" onClick={backup}><Icon name="download" size={16}/> پشتیبان دفتر</button><button className="text-button" onClick={()=>importRef.current?.click()}>بازیابی پشتیبان</button><input type="file" accept="application/json,.json" ref={importRef} onChange={restore} hidden/></div></aside>
  <main id="main-content" tabIndex={-1} className={'main '+(lesson?'lesson-main':'')} onPointerUp={pick} onKeyUp={e=>{if(e.key==='Shift')pick();}}>

@@ -21,7 +21,7 @@ export function HighlightText({text='',blockId,data,strong=false,vocabulary=[],o
    const underline=run.annotations.some(h=>h.tool==='underline');
    const content=glossaryParts(run.text,vocabulary).map((part,i)=>part.meaning?<span key={i} className="glossary-term" tabIndex={0} data-meaning={part.meaning} aria-label={`${part.text}: ${part.meaning}`} aria-describedby="mhba-word-tip" onMouseEnter={e=>tooltip?.show(e.currentTarget,part.meaning)} onMouseLeave={()=>tooltip?.hide()} onFocus={e=>tooltip?.show(e.currentTarget,part.meaning)} onBlur={()=>tooltip?.hide()} onClick={e=>tooltip?.show(e.currentTarget,part.meaning)}>{part.text}</span>:part.text);
    if(!highlight&&!underline)return <React.Fragment key={run.start}>{content}</React.Fragment>;
-   return <mark key={run.start} className={`${highlight?'highlight-'+(highlight.color||'yellow'):'annotation-clear'} ${underline?'annotation-underline':''}`} title={run.annotations.map(h=>h.note).filter(Boolean).join(' · ')||undefined}>{content}</mark>;
+   return <mark key={run.start} data-annotation-start={partOffset+run.start} data-annotation-end={partOffset+run.end} className={`${highlight?'highlight-'+(highlight.color||'yellow'):'annotation-clear'} ${underline?'annotation-underline':''}`} title={run.annotations.map(h=>h.note).filter(Boolean).join(' · ')||undefined}>{content}</mark>;
  });
  let partOffset=offset;
  const content=reflow?text.split(/(\n[ \t]*\n+)/).map((part,index)=>{const start=partOffset;partOffset+=part.length;return index%2||!part.trim()?part:<span className="studio-source-paragraph" key={index}>{runs(part,start)}</span>;}):runs(text,offset);
