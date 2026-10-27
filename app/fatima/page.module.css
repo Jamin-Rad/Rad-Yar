@@ -162,7 +162,7 @@
 .tileGrid {
   width: min(980px, 100%);
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 14px;
   position: relative;
   z-index: 1;
@@ -255,6 +255,11 @@
 .sky {
   --glow: rgba(186, 230, 253, .86);
   --accent: rgba(56, 189, 248, .5);
+}
+
+.sage {
+  --glow: rgba(204, 229, 211, .9);
+  --accent: rgba(71, 126, 95, .56);
 }
 
 @media (max-width: 760px) {

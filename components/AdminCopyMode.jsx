@@ -36,6 +36,10 @@ export default function AdminCopyMode() {
 
     function blockRestrictedCopy(event) {
       if (canCopy) return
+      // Fatima's private notebook needs text selection for personal highlights.
+      // Keep the existing copy/cut policy and other site pages unchanged.
+      const target = event.target instanceof Element ? event.target : event.target?.parentElement
+      if (event.type === 'selectstart' && target?.closest('[data-mhba-learning] [data-highlight-root]')) return
       event.preventDefault()
       window.getSelection?.()?.removeAllRanges()
     }

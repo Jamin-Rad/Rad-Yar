@@ -7,6 +7,7 @@ const tiles = [
   { title: 'Gesundheit', text: 'Sanfte Erinnerungen fuer dich', href: '/fatima/gesundheit', tone: 'rose' },
   { title: 'ToDo', text: 'Gemeinsame Aufgaben und kleine Plaene', href: '/fatima/todo', tone: 'peach' },
   { title: 'Deutschlernen', text: 'Lernen in deinem eigenen Tempo', href: '/fatima/deutsch', tone: 'sky' },
+  { title: 'MHBA', text: 'جزوه‌ها، هایلایت، مرور و تمرین امتحان', href: '/fatima/mhba', tone: 'sage' },
 ]
 
 export default function FatimaLanding() {
