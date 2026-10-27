@@ -3,9 +3,10 @@ import { hasFatimaSession } from '@/lib/fatimaPasswordAuth'
 import MhbaClient from './MhbaClient'
 import './mhba.css'
 import './studio.css'
+import './portal.css'
 
 export const metadata = {
-  title: 'MHBA | Fatima',
+  title: 'MBH',
   description: 'دفتر مطالعهٔ شخصی فاطمه؛ درس‌های MHBA، هایلایت، مرور و تمرین امتحان.',
   robots: { index: false, follow: false },
 }
