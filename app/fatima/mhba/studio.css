@@ -190,3 +190,4 @@
 .mhba-studio.studio-focus .parallel-reader{position:relative}.book-measure{position:absolute;top:0;left:14px;right:14px;visibility:hidden;pointer-events:none;height:auto;z-index:-1}.book-measure .parallel-row{animation:none!important}.mhba-studio.studio-focus .book-measure .parallel-row{padding-top:28px}.mhba-studio.studio-focus .book-measure .parallel-row:first-child{padding-top:0}
 @media(max-width:720px){.book-measure{left:4px;right:4px}.mhba-studio.studio-focus .book-measure .parallel-row{padding-top:20px}}
 .mhba-studio .studio-delete-selection{position:absolute;top:calc(100% + 8px);left:12px;z-index:30;box-shadow:0 5px 18px #4c283326;border:1px solid #d8b0bc}
+.mhba-studio.studio-focus .studio-paper:has(.parallel-reader.german-only){background:linear-gradient(90deg,#f1e5d2,#fffaf0 5%,#fffaf0 95%,#eddfca)}
