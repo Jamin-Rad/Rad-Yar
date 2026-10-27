@@ -90,18 +90,6 @@ export function scoreStatements(items,answers={}){
  items.forEach((item,i)=>{const a=answers[i];if(typeof a!=='boolean')blank++;else if(a===item.answer)correct++;else wrong++;});
  return {correct,wrong,blank,score:correct-wrong};
 }
-export function examQuestions(lesson){
- const official=lesson.questions.slice(0,5);
- const extra=lesson.id===1?[
-  {id:'1-extra-1',text:'Eine Klinik plant die Auslagerung ihrer Wäscherei. Erläutern Sie, welche Kostenarten bei dieser Entscheidung zu berücksichtigen sind, und nennen Sie Beispiele.',model:'Zu vergleichen sind Produktionskosten und Transaktionskosten. Zu Letzteren zählen etwa Anbietersuche, Vertragsverhandlungen, Qualitätskontrolle und spätere Vertragsanpassungen. Ein niedriger externer Stückpreis allein reicht für die Entscheidung nicht aus.',rubric:'دو گروه هزینه؛ مثال‌های هزینهٔ مبادله؛ نتیجه برای تصمیم برون‌سپاری.'},
-  {id:'1-extra-2',text:'Analysieren Sie die Wettbewerbssituation eines Krankenhauses anhand der fünf Kräfte nach Porter.',model:lesson.questions[7].model,rubric:lesson.questions[7].rubric}
- ]:[
-  {id:'2-extra-1',text:'Vergleichen Sie Handlungsvollmacht und Prokura hinsichtlich Umfang, Grenzen und Handelsregistereintragung.',model:'Handlungsvollmacht betrifft gewöhnliche Geschäfte eines bestimmten Handelsgewerbes und wird nicht in das Handelsregister eingetragen. Prokura hat einen gesetzlich bestimmten weiteren Umfang und ist eintragungspflichtig. Sie wirkt grundsätzlich bereits mit Erteilung. Grundstücksveräußerung oder -belastung erfordert auch bei Prokura eine besondere Befugnis.',rubric:'دامنهٔ هر دو؛ محدودیت‌ها؛ ثبت و زمان اثر پروکورا.'},
-  {id:'2-extra-2',text:'Ein Händler vereinbart den Versand eines Geräts. Unterscheiden Sie Hol-, Bring- und Schickschuld und ordnen Sie den vereinbarten Versand mit Leistungs- und Erfolgsort ein.',model:lesson.questions[6].model,rubric:lesson.questions[6].rubric}
- ];
- return [...official,...extra.map(q=>({...q,official:false}))];
-}
-export function writtenTotal(selected,grades){return selected.reduce((sum,id)=>sum+Math.max(0,Math.min(10,Number(grades[id])||0)),0);}
 export const intervals=[1,3,7,14,30];
 export function nextReview(previous,known,now=Date.now()){
  const level=known?Math.min((previous?.level??-1)+1,intervals.length-1):-1;

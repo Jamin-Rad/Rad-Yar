@@ -1,3 +1,5 @@
+import {createSourceChapters} from './sourceChapters.js';
+import {chapters,extraVocabulary,buildCards} from './studyContent.js';
 
 
 export const catalog = [
@@ -130,9 +132,11 @@ const qa2=[
  ['کارکردهای دفتر ثبت تجاری را نام ببر.','Das Handelsregister erfüllt eine Publikationsfunktion, eine Schutzfunktion, eine Beweisfunktion und eine Kontrollfunktion. Es macht rechtserhebliche Informationen über Kaufleute und Gesellschaften zugänglich.','انتشار؛ حمایت؛ اثبات؛ کنترل.'],
  ['معاملهٔ صوری چیست؟ مثالی بساز.','Bei einem Scheingeschäft sind beide Parteien darüber einig, dass die Erklärung nicht gelten soll. Es ist nach § 117 Abs. 1 BGB nichtig. Beispiel: Bei einem Grundstückskauf wird bewusst ein niedrigerer als der tatsächlich vereinbarte Preis beurkundet. Das verdeckte Geschäft muss gesondert auf seine Wirksamkeit, insbesondere die Form, geprüft werden.','توافق دو طرف بر ظاهر؛ بطلان؛ مثال؛ بررسی جداگانهٔ توافق واقعی.']
 ];
-function questions(materials,n,qa){return materials[n].questions.map((q,i)=>({...q,fa:qa[i][0],model:qa[i][1],rubric:qa[i][2]}));}
-export function createLessons(materials){return {
- 1:{...catalog[0],title:'Wirtschaften und Wirtschaftswissenschaften',subtitle:'مبانی اقتصاد و تفکر اقتصادی',pages:materials[1].pages,sections:one,questions:questions(materials,1,qa1),pdf:'Text_01_Wirtschaften_2026.pdf',solutions:'Text_01_Loesungen_Kontrollfragen_2026.pdf'},
- 2:{...catalog[1],title:'Verträge und Handelsrecht',subtitle:'قراردادها و حقوق تجارت',pages:materials[2].pages,sections:two,questions:questions(materials,2,qa2),pdf:'Text_02_Vertraege_2026.pdf',solutions:'Text_02_Loesungen_Kontrollfragen_2026.pdf'}
+function questions(materials,n,qa){return materials[n].questions.map((q,i)=>({...q,fa:q.fa||qa[i][0],model:qa[i][1],modelFa:q.modelFa||qa[i][2],rubric:qa[i][2]}));}
+export function createLessons(materials){const lessons = {
+ 1:{...catalog[0],title:'Wirtschaften und Wirtschaftswissenschaften',subtitle:'مبانی اقتصاد و تفکر اقتصادی',pages:materials[1].pages,legacySections:one,sections:chapters[1],chapters:chapters[1],vocabulary:extraVocabulary,questions:questions(materials,1,qa1),pdf:'Text_01_Wirtschaften_2026.pdf',solutions:'Text_01_Loesungen_Kontrollfragen_2026.pdf'},
+ 2:{...catalog[1],title:'Verträge und Handelsrecht',subtitle:'قراردادها و حقوق تجارت',pages:materials[2].pages,legacySections:two,sections:chapters[2],chapters:chapters[2],vocabulary:extraVocabulary,questions:questions(materials,2,qa2),pdf:'Text_02_Vertraege_2026.pdf',solutions:'Text_02_Loesungen_Kontrollfragen_2026.pdf'}
 };
+Object.values(lessons).forEach(lesson=>{lesson.chapters=createSourceChapters(lesson.pages,lesson.chapters);lesson.sections=lesson.chapters;lesson.chunks=lesson.chapters.flatMap(c=>c.chunks);lesson.cards=buildCards(lesson)});
+return lessons;
 }

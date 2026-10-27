@@ -1,6 +1,6 @@
 import {useEffect,useState} from 'react';
 const KEY='radyar.fatima.mhba.v1';
-export const defaults={version:1,highlights:[],review:{},answers:{},exams:{},read:{},lastLesson:1,fontSize:19};
+export const defaults={version:1,highlights:[],review:{},answers:{},exams:{},read:{},lastLesson:1,fontSize:19,annotation:{tool:'highlight',color:'yellow'},practice:{}};
 export function useNotebook(){
  const [data,setData]=useState(()=>{try{const v=JSON.parse(localStorage.getItem(KEY));return v?.version===1?{...defaults,...v}:defaults;}catch{return defaults;}});
  const [storageError,setStorageError]=useState(false);

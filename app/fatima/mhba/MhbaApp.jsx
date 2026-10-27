@@ -1,41 +1,63 @@
-import React,{Suspense,lazy,useEffect,useRef,useState} from 'react';
+import React,{Suspense,lazy,useEffect,useMemo,useRef,useState} from 'react';
 import Link from 'next/link';
 import {catalog,createLessons} from './course.js';
 import {CourseContext,useCourse} from './CourseContext';
 import {useNotebook} from './store.js';
 import {Reader,Original,Question,Review,Highlights} from './Study.jsx';
-import {Icon,PdfLink} from './ui.jsx';
+import {Icon,PdfLink,GlossaryProvider} from './ui.jsx';
+import {addAnnotation} from './annotations.js';
 
 const Exam=lazy(()=>import('./Exam.jsx'));
 const parseRoute=()=>location.hash.slice(1)||'home';
 export default function MhbaApp({materials}){
- const [lessons]=useState(()=>createLessons(materials));
- return <CourseContext.Provider value={lessons}><NotebookApp/></CourseContext.Provider>;
+ const lessons=useMemo(()=>createLessons(materials),[materials]);
+ return <CourseContext.Provider value={lessons}><GlossaryProvider><NotebookApp/></GlossaryProvider></CourseContext.Provider>;
 }
 function NotebookApp(){
  const lessons=useCourse();
- const [route,setRoute]=useState(parseRoute);const [data,patch,storageError]=useNotebook();const [module,setModule]=useState(1);const [selection,setSelection]=useState(null);const [color,setColor]=useState('yellow');const [toast,setToast]=useState('');const importRef=useRef(null);
+ const [route,setRoute]=useState(parseRoute);const [data,patch,storageError]=useNotebook();const [module,setModule]=useState(1);const [toast,setToast]=useState('');const importRef=useRef(null);
  const id=Number(route.split('/')[1]);const lesson=lessons[id];const mode=route.split('/')[2]||'read';
- useEffect(()=>{const change=()=>{setRoute(parseRoute());setSelection(null);window.speechSynthesis?.cancel();window.scrollTo(0,0);};window.addEventListener('hashchange',change);return()=>window.removeEventListener('hashchange',change);},[]);
+ useEffect(()=>{const change=()=>{setRoute(parseRoute());window.scrollTo(0,0);};window.addEventListener('hashchange',change);return()=>window.removeEventListener('hashchange',change);},[]);
  useEffect(()=>{if(!toast)return;const t=setTimeout(()=>setToast(''),3500);return()=>clearTimeout(t);},[toast]);
  useEffect(()=>{if(lesson)patch(p=>({...p,lastLesson:lesson.id,read:{...p.read,[lesson.id]:p.read[lesson.id]||{section:0}}}));},[lesson?.id]);
  useEffect(()=>{document.title=lesson?`${lesson.fa} | هم‌درس فاطمه`:'هم‌درس فاطمه | MHBA';},[lesson]);
  function navigate(to){if(to===route){window.scrollTo(0,0);return;}location.hash=to;}
- function pick(){const sel=window.getSelection();if(!sel||sel.isCollapsed||!lesson)return;const range=sel.getRangeAt(0);const element=range.startContainer.nodeType===1?range.startContainer:range.startContainer.parentElement;const root=element?.closest('[data-highlight-root]');if(!root||!root.contains(range.endContainer))return;const prefix=range.cloneRange();prefix.selectNodeContents(root);prefix.setEnd(range.startContainer,range.startOffset);const start=prefix.toString().length;const selected=range.toString();if(selected.trim().length<2)return;setSelection({blockId:root.dataset.highlightRoot,start,end:start+selected.length,text:selected,lessonId:lesson.id});}
- function saveHighlight(){if(!selection)return;const overlap=data.highlights.some(h=>h.blockId===selection.blockId&&selection.start<h.end&&selection.end>h.start);if(overlap){setToast('این بخش قبلاً هایلایت شده؛ از صفحهٔ هایلایت‌ها ویرایشش کن.');setSelection(null);return;}patch(p=>({...p,highlights:[...p.highlights,{...selection,id:crypto.randomUUID(),color,note:'',created:Date.now()}]}));setSelection(null);window.getSelection()?.removeAllRanges();setToast('هایلایت در دفترت ذخیره شد.');}
+ const annotation=data.annotation||{tool:'highlight',color:'yellow'};
+ function pick(){
+  if(annotation.tool==='select'||!lesson)return;
+  const sel=window.getSelection();if(!sel||sel.isCollapsed||!sel.rangeCount)return;
+  const range=sel.getRangeAt(0);const element=range.startContainer.nodeType===1?range.startContainer:range.startContainer.parentElement;
+  const root=element?.closest('[data-highlight-root]');if(!root||!root.contains(range.endContainer))return;
+  const prefix=range.cloneRange();prefix.selectNodeContents(root);prefix.setEnd(range.startContainer,range.startOffset);
+  const start=Number(root.dataset.highlightOffset||0)+prefix.toString().length;const text=range.toString();if(text.trim().length<2)return;
+  const originalBlock=root.dataset.highlightRoot.match(/^original-(\d+)-(\d+)(-fa)?$/);
+  const sourceText=originalBlock?lesson.pages[Number(originalBlock[2])-1][originalBlock[3]?'fa':'text']:root.textContent;
+  const next={id:crypto.randomUUID(),lessonId:lesson.id,blockId:root.dataset.highlightRoot,start,end:start+text.length,text,sourceText,tool:annotation.tool,color:annotation.color,note:'',created:Date.now()};
+  patch(p=>({...p,highlights:addAnnotation(p.highlights,next)}));
+  sel.removeAllRanges();
+ }
+ useEffect(()=>{
+  // Mobile selection handles may move after pointerup; debounce until they settle.
+  let timer;const changed=()=>{clearTimeout(timer);if(window.getSelection()?.isCollapsed)return;timer=setTimeout(pick,700);};
+  document.addEventListener('selectionchange',changed);
+  return()=>{clearTimeout(timer);document.removeEventListener('selectionchange',changed);};
+ },[lesson?.id,annotation.tool,annotation.color]);
  function backup(){const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='hamdars-notebook.json';a.click();URL.revokeObjectURL(url);setToast('نسخهٔ پشتیبان دفتر دانلود شد.');}
  async function restore(e){try{const file=e.target.files?.[0];if(!file)return;if(file.size>5000000)throw Error();const v=JSON.parse(await file.text());if(v.version!==1||!Array.isArray(v.highlights)||!v.review||typeof v.review!=='object')throw Error();const safe=v.highlights.filter(h=>typeof h.text==='string'&&typeof h.blockId==='string'&&Number.isInteger(h.start)&&Number.isInteger(h.end)&&h.end>h.start&&lessons[h.lessonId]);patch(p=>({...p,highlights:[...p.highlights,...safe.filter(h=>!p.highlights.some(x=>x.id===h.id))],review:{...p.review,...v.review},answers:{...p.answers,...v.answers},read:{...p.read,...v.read}}));setToast('یادداشت‌ها و مرورها به دفتر اضافه شدند.');}catch{setToast('فایل معتبرِ پشتیبان هم‌درس نیست.');}e.target.value='';}
- const due=[...Object.values(lessons).flatMap(l=>l.questions),...data.highlights.filter(h=>h.reviewEnabled).map(h=>({id:`highlight-${h.id}`}))].filter(q=>!data.review[q.id]||data.review[q.id].due<=Date.now()).length;
+ const due=[...Object.values(lessons).flatMap(l=>l.cards),...data.highlights.filter(h=>h.reviewEnabled).map(h=>({id:`highlight-${h.id}`}))].filter(q=>!data.review[q.id]||data.review[q.id].due<=Date.now()).length;
  const active=route==='highlights'?'highlights':route==='review'?'review':'home';
  return <div className="mhba-scope" lang="fa" dir="rtl" data-mhba-learning data-deutsch-learning><a href="#main-content" className="skip-link" onClick={e=>{e.preventDefault();document.getElementById('main-content')?.focus();}}>رفتن به محتوای اصلی</a><header className="topbar"><button className="brand" onClick={()=>navigate('home')}>هم‌درس <span>MHBA</span></button><nav aria-label="ناوبری اصلی">{[['home','درس‌ها'],['review','مرور'],['highlights','هایلایت‌ها']].map(([to,label])=><button key={to} className={active===to?'active':''} onClick={()=>navigate(to)}>{label}</button>)}</nav><Link className="fatima-home" href="/fatima">بازگشت به صفحهٔ فاطمه</Link></header>
  <div className="app-shell"><aside className="sidebar"><div className="sidebar-main">{[['home','book','درس‌ها'],['review','review','مرور'],['highlights','bookmark','هایلایت‌ها']].map(([to,icon,label])=><button key={to} className={active===to?'selected':''} onClick={()=>navigate(to)}><Icon name={icon}/><span>{label}</span>{to==='review'?<span className="count">{due}</span>:null}</button>)}</div><div className="sidebar-modules"><p>ترم اول</p><button className={route==='home'&&module===1?'module-active':''} onClick={()=>{setModule(1);navigate('home');}}>مدول ۱ <span>درس‌های ۱ تا ۱۰</span></button><button className={route==='home'&&module===2?'module-active':''} onClick={()=>{setModule(2);navigate('home');}}>مدول ۲ <span>درس‌های ۱۱ تا ۲۰</span></button></div><div className="notebook-tools"><p>یادداشت‌ها در همین مرورگر ذخیره می‌شوند.</p><button className="text-button" onClick={backup}><Icon name="download" size={16}/> پشتیبان دفتر</button><button className="text-button" onClick={()=>importRef.current?.click()}>بازیابی پشتیبان</button><input type="file" accept="application/json,.json" ref={importRef} onChange={restore} hidden/></div></aside>
- <main id="main-content" tabIndex={-1} className={'main '+(lesson?'lesson-main':'')} onMouseUp={pick} onTouchEnd={pick}>
+ <main id="main-content" tabIndex={-1} className={'main '+(lesson?'lesson-main':'')} onPointerUp={pick} onKeyUp={e=>{if(e.key==='Shift')pick();}}>
  {storageError?<p className="notice" role="alert">ذخیره در مرورگر ممکن نشد. برای حفظ یادداشت‌ها نسخهٔ پشتیبان بگیر.</p>:null}
- {lesson?<><button className="breadcrumb" onClick={()=>navigate('home')}><Icon name="chevron" size={15}/> درس‌ها / مدول ۱ / درس {lesson.id}</button><div className="lesson-heading"><h1 className="de" dir="ltr">{lesson.de}</h1><p>{lesson.subtitle}</p></div><nav className="lesson-tabs" aria-label="بخش‌های درس">{[['read','مطالعه'],['questions','سؤال‌های جزوه'],['exam','تمرین امتحان'],['review','مرور'],['original','جزوهٔ اصلی']].map(([to,title])=><button key={to} className={mode===to?'active':''} onClick={()=>navigate(`lesson/${lesson.id}/${to}`)}>{title}</button>)}</nav>
- {mode==='read'?<Reader key={lesson.id} lesson={lesson} data={data} patch={patch}/>:mode==='questions'?<section className="questions-view"><div className="section-top"><div><h2>۱۰ سؤال خود جزوه</h2><p className="muted">اول خودت به آلمانی جواب بده؛ بعد با پاسخ نمونه مقایسه کن.</p></div><PdfLink file={lesson.solutions}>پاسخ‌های رسمی PDF</PdfLink></div>{lesson.questions.map(q=><Question key={q.id} q={q} lesson={lesson} data={data} patch={patch}/>)}</section>:mode==='exam'?<Suspense fallback={<p>در حال باز کردن تمرین…</p>}><Exam key={lesson.id} lesson={lesson} data={data} patch={patch}/></Suspense>:mode==='review'?<Review key={lesson.id} lessonId={lesson.id} data={data} patch={patch}/>:<Original key={`${lesson.id}-${route.split('/')[3]||1}`} lesson={lesson} data={data} initialPage={Number(route.split('/')[3])||1}/>}</>:route==='review'?<Review data={data} patch={patch}/>:route==='highlights'?<Highlights data={data} patch={patch} navigate={navigate}/>:<Home module={module} setModule={setModule} data={data} navigate={navigate}/>}
+ {lesson?<><button className="breadcrumb" onClick={()=>navigate('home')}><Icon name="chevron" size={15}/> درس‌ها / مدول ۱ / درس {lesson.id}</button><div className="lesson-heading"><h1 className="de" dir="ltr">{lesson.de}</h1><p>{lesson.subtitle}</p></div><nav className="lesson-tabs" aria-label="بخش‌های درس">{[['read','مطالعهٔ جزوه'],['questions','سؤال‌های جزوه'],['exam','صحیح / غلط'],['review','فلش‌کارت‌ها'],['original','نمای PDF']].map(([to,title])=><button key={to} className={mode===to?'active':''} onClick={()=>navigate(`lesson/${lesson.id}/${to}`)}>{title}</button>)}</nav>
+ {['read','questions'].includes(mode)?<div className="annotation-toolbar" role="toolbar" aria-label="ابزار علامت‌گذاری متن">
+ <div className="annotation-modes">{[['highlight','هایلایت'],['underline','زیرخط'],['select','فقط انتخاب']].map(([tool,label])=><button key={tool} className={annotation.tool===tool?'outline active':'outline'} aria-pressed={annotation.tool===tool} onClick={()=>patch({annotation:{...annotation,tool}})}>{label}</button>)}</div>
+ <div className="color-choices">{[['yellow','زرد'],['green','سبز'],['pink','صورتی']].map(([color,label])=><button key={color} className={`swatch highlight-${color} ${annotation.color===color?'selected':''}`} aria-label={`رنگ ${label}`} aria-pressed={annotation.color===color} onClick={()=>patch({annotation:{...annotation,color}})}>{annotation.color===color?<Icon name="check" size={15}/>:null}</button>)}</div><span className="auto-save-label" aria-label="ذخیرهٔ خودکار"><span className="autosave-prefix">ذخیرهٔ </span>خودکار</span>
+ </div>:null}
+ {mode==='read'?<Reader key={lesson.id} lesson={lesson} data={data} patch={patch}/>:mode==='questions'?<section className="questions-view"><div className="section-top"><div><h2>۱۰ سؤال خود جزوه</h2><p className="muted">سؤال‌های رسمی به آلمانی و فارسی؛ پاسخ کامل دانشگاه را زیر هر سؤال باز کن.</p></div><PdfLink file={lesson.solutions}>پاسخ‌های رسمی PDF</PdfLink></div>{lesson.questions.map(q=><Question key={q.id} q={q} lesson={lesson} data={data} patch={patch}/>)}</section>:mode==='exam'?<Suspense fallback={<p>در حال باز کردن تمرین…</p>}><Exam key={`${lesson.id}-${route.split('/')[3]||'all'}`} lesson={lesson} chapterId={route.split('/')[3]} data={data} patch={patch}/></Suspense>:mode==='review'?<Review key={lesson.id} lessonId={lesson.id} data={data} patch={patch}/>:<Original key={`${lesson.id}-${route.split('/')[3]||1}`} lesson={lesson} data={data} initialPage={Number(route.split('/')[3])||data.read[lesson.id]?.page||3}/>}</>:route==='review'?<Review data={data} patch={patch}/>:route==='highlights'?<Highlights data={data} patch={patch} navigate={navigate}/>:<Home module={module} setModule={setModule} data={data} navigate={navigate}/>}
  <div className="mobile-backup"><span>ذخیره در همین مرورگر</span><button className="text-button" onClick={backup}>پشتیبان دفتر</button><button className="text-button" onClick={()=>importRef.current?.click()}>بازیابی</button></div><footer className="page-footer"><span>هم‌درس فاطمه</span><span>بر اساس جزوه‌های MHBA · ورودی ۲۰۲۶</span><a href="https://www.mhba.de/faq/" target="_blank" rel="noreferrer">راهنمای رسمی امتحان</a></footer>
  </main></div>
- {selection?<div className="selection-toolbar" role="dialog" aria-label="هایلایت متن انتخاب‌شده" onMouseDown={e=>e.preventDefault()}><span>رنگ هایلایت</span><div className="color-choices">{[['yellow','زرد'],['green','سبز'],['pink','صورتی']].map(([c,label])=><button className={`swatch highlight-${c} ${color===c?'selected':''}`} key={c} aria-label={label} aria-pressed={color===c} onClick={()=>setColor(c)}>{color===c?<Icon name="check" size={15}/>:null}</button>)}</div><button className="primary" onClick={saveHighlight}>ذخیرهٔ هایلایت <Icon name="pen" size={17}/></button><button className="icon-button" aria-label="بستن نوار هایلایت" onClick={()=>setSelection(null)}><Icon name="close"/></button></div>:null}
  {toast?<div className="toast" role="status">{toast}</div>:null}</div>;
 }
 function Home({module,setModule,data,navigate}){
@@ -46,5 +68,5 @@ function Home({module,setModule,data,navigate}){
  <div className="course-list">{rows.map(l=><button className={'course-row '+(!l.ready?'not-ready':'')} key={l.id} disabled={!l.ready} onClick={()=>navigate(`lesson/${l.id}/read`)}><span className="lesson-number">{String(l.id).padStart(2,'0')}</span><div className="course-name"><h3 className="de" dir="ltr">{l.de}</h3><p>{l.fa}</p></div><span className="row-state">{l.ready?(data.read[l.id]?.complete?'مطالعه‌شده':data.read[l.id]?'ادامهٔ مطالعه':'آمادهٔ مطالعه'):'هنوز ساخته نشده'}</span>{l.ready?<Icon name="arrow"/>:<span className="row-dash">—</span>}</button>)}</div>
  {rows.length===0?<p className="empty">درسی با این نام پیدا نشد.</p>:null}
  <div className="catalog-note"><p>در این نسخه، درس‌های ۱ و ۲ مدول اول برای مطالعه آماده‌اند. عنوان همهٔ درس‌ها از پنل رسمی گرفته شده است.</p>{module===1?<a href="https://www.mhba.de/mein-studium/lehre/lehrtexte-modul-1/0-einfuehrung/" target="_blank" rel="noreferrer">مقدمهٔ دوره در سایت دانشگاه <Icon name="external" size={14}/></a>:null}</div>
- <section className="exam-note"><Icon name="pen" size={24}/><div><h3>برای امتحان کتبی آماده شو.</h3><p>۴۰ درست/غلط + پاسخ به ۶ سؤال از ۷ سؤال تشریحی، در ۱۲۰ دقیقه. سؤال‌های خود جزوه در همه‌جا <b>بولد</b> هستند.</p></div><button className="text-button" onClick={()=>navigate('lesson/1/exam')}>تمرین درس اول <Icon name="arrow" size={17}/></button></section></div>;
+ <section className="exam-note"><Icon name="pen" size={24}/><div><h3>برای امتحان کتبی آماده شو.</h3><p>تمرین هر فصل فقط شامل گزاره‌های صحیح و غلط است. سؤال‌های خود جزوه در مطالعه و فلش‌کارت‌ها <b>بولد</b> هستند.</p></div><button className="text-button" onClick={()=>navigate('lesson/1/exam')}>تمرین درس اول <Icon name="arrow" size={17}/></button></section></div>;
 }
