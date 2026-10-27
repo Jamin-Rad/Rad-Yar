@@ -1,0 +1,19 @@
+.player {padding:20px 22px;border:1px solid var(--d-border,#deded5);border-radius:10px;background:var(--d-surface,#fdfbf7);color:var(--d-text,#1d302a);font-family:var(--font-manrope,Arial),sans-serif;}
+.main {display:flex;align-items:center;gap:18px;}
+.play {display:grid;place-items:center;flex-shrink:0;width:48px;height:48px;border:0;border-radius:50%;color:#fffaf1;background:#bd5e3c;cursor:pointer;}
+.play:hover {background:#a54e31;}
+.timeline {min-width:0;flex:1;}
+.caption {display:flex;align-items:baseline;justify-content:space-between;gap:16px;font-size:12px;line-height:1.5;margin-bottom:8px;}
+.caption>span:first-child {font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.caption>span:last-child {white-space:nowrap;color:var(--d-muted,#747973);font-variant-numeric:tabular-nums;font-size:11px;}
+.timeline input {display:block;width:100%;height:20px;margin:0;accent-color:var(--d-accent,#bd5e3c);cursor:pointer;}
+.controls {display:flex;align-items:center;justify-content:space-between;gap:14px;padding-top:12px;margin-top:12px;border-top:1px solid var(--d-border,#deded5);}
+.skipGroup {display:flex;gap:4px;}
+.skipGroup button {display:flex;align-items:center;justify-content:center;gap:5px;min-width:48px;min-height:40px;padding:6px;border:0;border-radius:5px;background:transparent;color:var(--d-text,#1d302a);font:500 12px var(--font-manrope,Arial),sans-serif;cursor:pointer;}
+.skipGroup button:hover:not(:disabled) {background:var(--accentSoft,#f0e1d5);}
+.skipGroup button:disabled {opacity:.4;cursor:default;}
+.speed {display:flex;align-items:center;gap:8px;font-size:11px;color:var(--d-muted,#747973);}
+.speed select {min-height:40px;border:0;border-radius:5px;background:transparent;color:var(--d-text,#1d302a);font:600 12px var(--font-manrope,Arial),sans-serif;cursor:pointer;}
+.player :is(button,input,select):focus-visible {outline:2px solid var(--d-accent,#bd5e3c);outline-offset:3px;}
+.error,.missing {font-size:13px;line-height:1.6;color:var(--d-muted,#747973);}
+@media(max-width:520px) {.player{padding:16px 14px}.main{gap:12px}.play{width:44px;height:44px}.caption{align-items:flex-start;flex-direction:column;gap:2px;margin-bottom:5px}.caption>span:first-child{font-size:11px;white-space:normal}.controls{gap:6px;flex-wrap:wrap}.skipGroup{gap:0}.skipGroup button{min-width:44px}.speed{gap:4px}}

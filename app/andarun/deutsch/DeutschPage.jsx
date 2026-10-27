@@ -4,7 +4,7 @@ import { useEffect, useMemo, useRef, useState } from 'react'
 import Link from 'next/link'
 import styles from './page.module.css'
 import { getPractice } from './practice'
-import ListeningPlayer from './ListeningPlayer'
+import ListeningPlayer, { recordingSource } from './ListeningPlayer'
 import { normalizeDeutschState as normalizeState } from '@/lib/deutsch/state'
 import { createDeutschSync } from '@/lib/deutsch/sync'
 import { getQuestionBank, makePracticeSession, isWrongAnswer } from './sessions'
@@ -279,21 +279,10 @@ function isDue(card) {
   return !card.dueAt || new Date(card.dueAt) <= new Date()
 }
 
-function speak(text) {
-  if (typeof window === 'undefined' || !('speechSynthesis' in window)) return false
-  window.speechSynthesis.cancel()
-  const utterance = new SpeechSynthesisUtterance(text)
-  utterance.lang = 'de-DE'
-  utterance.rate = 0.88
-  utterance.pitch = 1
-  window.speechSynthesis.speak(utterance)
-  return true
-}
-
 function tokenizeText(text, vocabulary, onWordClick) {
   const terms = [...vocabulary].sort((a, b) => b.term.length - a.term.length)
   const pattern = terms.length
-    ? new RegExp(`(${terms.map(item => item.term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|')})`, 'gi')
+    ? new RegExp(`(?<![\\p{L}\\p{N}])(${terms.map(item => item.term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|')})(?![\\p{L}\\p{N}])`, 'giu')
     : null
   const wordPattern = /^([\p{L}ÄÖÜäöüß-]{3,})$/u
 
@@ -441,7 +430,7 @@ export default function DeutschPage({
   const [flashView, setFlashView] = useState({ mode: 'boxes', box: 0, practice: false })
   const [showBack, setShowBack] = useState(false)
   const [practiceIndex, setPracticeIndex] = useState(0)
-  const [visualTheme, setVisualTheme] = useState(lessonMode ? theme : 'light')
+  const [visualTheme, setVisualTheme] = useState('light')
   const syncRef = useRef(null)
   const localStorageKey = `deutsch_state_${apiBase.replace(/[^a-z0-9]/gi, '_')}`
 
@@ -483,14 +472,14 @@ export default function DeutschPage({
   }, [initialLessonId, apiBase, localStorageKey])
 
   useEffect(() => {
-    const stored = window.localStorage.getItem(lessonMode ? 'andarun-deutsch-theme' : 'andarun-deutsch-course-theme-v2')
+    const stored = window.localStorage.getItem('andarun-deutsch-course-theme-v2')
     if (stored === 'dark' || stored === 'light') setVisualTheme(stored)
   }, [])
 
   function toggleVisualTheme() {
     const next = visualTheme === 'dark' ? 'light' : 'dark'
     setVisualTheme(next)
-    window.localStorage.setItem(lessonMode ? 'andarun-deutsch-theme' : 'andarun-deutsch-course-theme-v2', next)
+    window.localStorage.setItem('andarun-deutsch-course-theme-v2', next)
   }
 
   function persist(update) {
@@ -674,7 +663,7 @@ export default function DeutschPage({
 
   if (lessonMode && loading) {
     return (
-      <main lang="de" dir="ltr" data-deutsch-learning className={`${styles.shell} ${visualTheme === 'light' ? styles.lightShell : ''}`}>
+      <main lang="de" dir="ltr" data-deutsch-learning className={`${styles.shell} ${visualTheme === 'light' ? styles.lightShell : ''} ${lessonMode ? styles.lessonShell : ''}`}>
         <div className={styles.lessonBoot} role="status" aria-live="polite">
           <span aria-hidden="true" />
           <p>Lektion wird geladen</p>
@@ -684,22 +673,25 @@ export default function DeutschPage({
   }
 
   return (
-    <main lang="de" dir="ltr" data-deutsch-learning className={`${styles.shell} ${!lessonMode ? styles.courseShell : ''} ${visualTheme === 'light' ? styles.lightShell : ''}`}>
+    <main lang="de" dir="ltr" data-deutsch-learning className={`${styles.shell} ${!lessonMode ? styles.courseShell : ''} ${visualTheme === 'light' ? styles.lightShell : ''} ${lessonMode ? styles.lessonShell : ''}`}>
       {lessonMode && (
-        <header className={styles.hero}>
-          <div>
-            <div className={styles.heroNav}>
-              <Link className={styles.backLink} href={courseHref}>← Kurs</Link>
-              <button type="button" className={styles.themeToggle} onClick={toggleVisualTheme} aria-label="Farbschema wechseln">
-                <span>{visualTheme === 'dark' ? '☾' : '☼'}</span>
-                {visualTheme === 'dark' ? 'Galaxy' : 'Heaven'}
-              </button>
+        <>
+          <header className={styles.lessonHeader}>
+            <Link className={styles.courseBrand} href={courseHref}>Deutsch im Alltag<span>.</span></Link>
+            <div className={styles.lessonTools}>
+              <Link href={courseHref}>← Alle Lektionen</Link>
+              <button type="button" onClick={toggleVisualTheme} aria-label="Farbschema wechseln" title={visualTheme === 'dark' ? 'Helles Design' : 'Dunkles Design'}>{visualTheme === 'dark' ? '☼' : '☾'}</button>
             </div>
-            <span className={styles.kicker}>{activeLesson.level} · Lektion</span>
-            <h1>{activeLesson.title}</h1>
-            <p>{activeLesson.topic}</p>
-          </div>
-        </header>
+          </header>
+          <section className={styles.lessonTitle} aria-labelledby="lesson-title">
+            <div>
+              <p className={styles.lessonMeta}>{activeLesson.level} · Lektion {String(sortedLessons.findIndex(item => item.id === activeLesson.id) + 1).padStart(2, '0')}</p>
+              <h1 id="lesson-title">{activeLesson.title}{!/[.!?…]$/.test(activeLesson.title) && <span>.</span>}</h1>
+              <p className={styles.lessonTopic}>{activeLesson.topic}</p>
+            </div>
+            <img src="/andarun/deutsch/neighborhood.png" alt="" width="1536" height="1024" />
+          </section>
+        </>
       )}
 
       {message && <div className={styles.status}>{message}</div>}
@@ -714,7 +706,7 @@ export default function DeutschPage({
               ['hoeren', '03 · Hören'],
               ['schreiben', '04 · Schreiben'],
             ].map(([id, label]) => (
-              <button type="button" key={id} className={activeTab === id ? styles.activeTab : ''} onClick={() => setActiveTab(id)}>
+              <button type="button" key={id} className={activeTab === id ? styles.activeTab : ''} aria-current={activeTab === id ? 'step' : undefined} onClick={() => setActiveTab(id)}>
                 {label}
               </button>
             ))}
@@ -737,15 +729,21 @@ export default function DeutschPage({
         <section className={styles.lessonGrid}>
           <article className={styles.textPanel}>
             <div className={styles.panelHead}>
-              <span>{activeLesson.level} · {activeLesson.topic}</span>
-              <strong>{activeLesson.reading.title}</strong>
+              <h2>{activeLesson.reading.title}</h2>
+              <span>Lesen & verstehen</span>
             </div>
             <div aria-label="Lesetext anhören">
               <ListeningPlayer key={`${activeLesson.id}-reading-${activeLesson.reading.text}`} listening={activeLesson.reading} />
             </div>
-            <p className={styles.readingText}>
-              {tokenizeText(activeLesson.reading.text, activeLesson.reading.vocabulary || [], setSelectedWord)}
-            </p>
+            <div className={styles.readingText}>
+              {activeLesson.reading.text.split(/\n+/).filter(Boolean).map((paragraph, index) => {
+                const turn = paragraph.match(/^([\p{L} .-]{2,35}):\s*(.+)$/u)
+                return <p key={index} className={turn ? styles.dialogueTurn : undefined}>
+                  {turn && <strong className={styles.speaker}>{turn[1]}</strong>}
+                  {tokenizeText(turn ? turn[2] : paragraph, activeLesson.reading.vocabulary || [], setSelectedWord)}
+                </p>
+              })}
+            </div>
             <button type="button" className={styles.readToggle} aria-pressed={!!state.lessonStatus[activeLesson.id]?.readAt} onClick={() => toggleRead(activeLesson.id)}>{state.lessonStatus[activeLesson.id]?.readAt ? '✓ Gelesen · Markierung aufheben' : 'Als gelesen markieren'}</button>
           </article>
           <QuestionBlock key={`${activeLesson.id}-reading`} id={`${activeLesson.id}-reading`} items={activeLesson.reading.questions || []} answers={state.answers} onAnswer={answerQuestion} onReset={() => resetSectionAnswers('reading')} />
@@ -770,8 +768,8 @@ export default function DeutschPage({
         <section className={styles.lessonGrid}>
           <article className={styles.textPanel}>
             <div className={styles.panelHead}>
-              <span>Hören</span>
-              <strong>{activeLesson.listening.title}</strong>
+              <h2>{activeLesson.listening.title}</h2>
+              <span>Hören & verstehen</span>
             </div>
             <p className={styles.listeningHint}>Höre zuerst ohne mitzulesen. Danach kannst du den Text öffnen und die Fragen beantworten.</p>
             <ListeningPlayer key={`${activeLesson.id}-${activeTab}-${activeLesson.listening.text}`} listening={activeLesson.listening} />
@@ -788,14 +786,14 @@ export default function DeutschPage({
         <section className={styles.writingGrid}>
           <article className={styles.textPanel}>
             <div className={styles.panelHead}>
+              <h2>Tagesaufgabe</h2>
               <span>Schreiben</span>
-              <strong>Tagesaufgabe</strong>
             </div>
             <p className={styles.taskText}>{activeLesson.writing?.prompt}</p>
             <ul className={styles.checklist}>
               {(activeLesson.writing?.checklist || []).map(item => <li key={item}>{item}</li>)}
             </ul>
-            <textarea value={writingText} onChange={event => setWritingText(event.target.value)} placeholder="Schreibe hier deinen Text..." />
+            <textarea aria-label="Dein Text" value={writingText} onChange={event => setWritingText(event.target.value)} placeholder="Schreibe hier deinen Text..." />
             <div className={styles.actionRow}>
               <button type="button" className={styles.primaryBtn} onClick={correctWriting} disabled={correcting}>{correcting ? 'Korrigiert...' : 'Mit KI korrigieren'}</button>
               <button type="button" onClick={saveWritingDraft}>Speichern</button>
@@ -824,8 +822,8 @@ export default function DeutschPage({
 
           <article className={styles.correctionPanel}>
             <div className={styles.panelHead}>
-              <span>KI-Rückmeldung</span>
-              <strong>{correction ? 'Korrektur' : 'Bereit'}</strong>
+              <h2>Rückmeldung</h2>
+              <span>{correction ? 'Korrektur' : 'Bereit'}</span>
             </div>
             {correction ? (
               <>
@@ -1009,9 +1007,7 @@ export default function DeutschPage({
                               <span>Beispiel</span>
                               <p>{activeFlashCard.example}</p>
                             </div>
-                            <button type="button" className={styles.listenExampleBtn} onClick={() => speak(activeFlashCard.example)}>
-                              <span aria-hidden="true">◖))</span> Anhören
-                            </button>
+                            {recordingSource({ text: activeFlashCard.example }) && <ListeningPlayer key={activeFlashCard.example} listening={{ text: activeFlashCard.example, title: 'Beispiel anhören' }} />}
                           </div>
                         )}
                       </div>
@@ -1065,9 +1061,7 @@ export default function DeutschPage({
                   <span>Beispiel</span>
                   <p>{selectedWord.example}</p>
                 </div>
-                <button type="button" className={styles.listenExampleBtn} onClick={() => speak(selectedWord.example)}>
-                  <span aria-hidden="true">◖))</span> Anhören
-                </button>
+                {recordingSource({ text: selectedWord.example }) && <ListeningPlayer key={selectedWord.example} listening={{ text: selectedWord.example, title: 'Beispiel anhören' }} />}
               </div>
             )}
             <div className={styles.actionRow}>

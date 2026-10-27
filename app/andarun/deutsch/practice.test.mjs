@@ -38,15 +38,16 @@ test('grammar prompt cleanup preserves only the sentence', () => {
   assert.equal(sentenceOnly('Wähle die richtige Form: mit ___ Kollegin'), 'mit ___ Kollegin')
 })
 
-test('every bundled reading and listening text has an actual non-empty WAV recording', () => {
+test('every bundled reading and listening text has an actual non-empty neural audio recording', () => {
   const recordings = JSON.parse(readFileSync(new URL('../../../data/deutschRecordings.json', import.meta.url)))
   for (const section of lessons.flatMap(lesson => [lesson.reading, lesson.listening])) {
     const recording = recordings.find(item => item.text === section.text)
     assert.ok(recording?.src)
     const path = new URL(`../../../public${recording.src}`, import.meta.url)
     const header = readFileSync(path).subarray(0, 12)
-    assert.equal(header.toString('ascii', 0, 4), 'RIFF')
-    assert.equal(header.toString('ascii', 8, 12), 'WAVE')
-    assert.ok(statSync(path).size > 100_000)
+    assert.equal(header.toString('ascii', 4, 8), 'ftyp')
+    assert.match(recording.src, /\.m4a$/)
+    assert.match(recording.voice, /Chirp 3 HD/)
+    assert.ok(statSync(path).size > 20_000)
   }
 })
