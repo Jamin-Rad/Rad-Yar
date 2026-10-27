@@ -1068,9 +1068,7 @@ export default function DeutschPage({
               <button type="button" className={styles.primaryBtn} disabled={selectedWordSaved} onClick={() => addWordCard(selectedWord)}>
                 {selectedWordSaved ? '✓ Bereits gespeichert' : 'Als Flashcard speichern'}
               </button>
-              {!selectedWord.example && (
-                <button type="button" onClick={() => speak(selectedWord.term)}>Anhören</button>
-              )}
+
             </div>
           </section>
         </div>

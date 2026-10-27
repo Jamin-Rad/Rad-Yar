@@ -2836,3 +2836,9 @@
   .shell.lessonShell .optionBtn {padding:14px;min-height:54px;font-size:14px;}
   .shell.lessonShell .status {width:100%;}
 }
+
+/* Audio examples stay below their sentence, including inside narrow word cards. */
+.shell:is(.lessonShell,.courseShell) .wordModal {grid-template-columns:minmax(0,1fr);}
+.shell:is(.lessonShell,.courseShell) :is(.flashAnswer,.flashMeaning,.flashExample,.flashExample>div) {min-width:0;max-width:100%;}
+.shell:is(.lessonShell,.courseShell) .flashExample {display:grid;grid-template-columns:minmax(0,1fr);gap:18px;border-radius:10px;}
+.shell:is(.lessonShell,.courseShell) .flashMeaning {border-radius:10px;overflow-wrap:anywhere;}

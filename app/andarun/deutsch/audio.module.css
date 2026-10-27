@@ -17,3 +17,6 @@
 .player :is(button,input,select):focus-visible {outline:2px solid var(--d-accent,#bd5e3c);outline-offset:3px;}
 .error,.missing {font-size:13px;line-height:1.6;color:var(--d-muted,#747973);}
 @media(max-width:520px) {.player{padding:16px 14px}.main{gap:12px}.play{width:44px;height:44px}.caption{align-items:flex-start;flex-direction:column;gap:2px;margin-bottom:5px}.caption>span:first-child{font-size:11px;white-space:normal}.controls{gap:6px;flex-wrap:wrap}.skipGroup{gap:0}.skipGroup button{min-width:44px}.speed{gap:4px}}
+
+.player .caption>span {text-transform:none;letter-spacing:0;color:var(--d-text,#1d302a);font-size:12px;font-weight:500;}
+.player .caption>span:last-child {color:var(--d-muted,#747973);font-size:11px;font-weight:400;}
