@@ -1,10 +1,10 @@
 import { getWritingExercises } from './shortExercises'
-import { getQuestionBank } from './sessions'
+import { getQuestionBank, answerForQuestion } from './sessions'
 
 const fraction = value => Math.max(0, Math.min(1, Number(value) || 0))
 export function lessonProgress(lesson, state, bank = getQuestionBank([lesson])) {
   const questions = bank.filter(item => !item.legacy && item.lessonId === lesson.id)
-  const completed = items => items.length ? items.filter(item => Number.isInteger(state.answers?.[item.answerKey])).length / items.length : 0
+  const completed = items => items.length ? items.filter(item => Number.isInteger(answerForQuestion(item, state.answers))).length / items.length : 0
   const status = state.lessonStatus?.[lesson.id] || {}
   const reading = Math.max(status.readAt ? 1 : 0, fraction(status.readProgress))
   const audio = fraction(status.listenProgress)

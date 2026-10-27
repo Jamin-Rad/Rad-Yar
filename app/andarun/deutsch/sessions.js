@@ -16,6 +16,7 @@ export function getLessonTests(lesson) {
   const practice = getPractice(lesson)
   const current = { ...practice, grammar: [...practice.grammar, ...getOrderingExercises(lesson)] }
   const previous = getPractice(lesson, { legacy: true })
+  const published = getPractice(lesson, { fullPhrases: true })
   const legacy = []
   const result = { vocabulary: [], grammar: [], legacy }
   for (const kind of ['vocabulary', 'grammar']) {
@@ -30,7 +31,10 @@ export function getLessonTests(lesson) {
       const changed = !prior || questionSignature(item) !== questionSignature(prior)
       const answerKey = changed ? `${lesson.id}-test-v3-${kind}-${exerciseId(item)}` : priorKey
       if (changed && prior) legacy.push({ ...prior, answerKey: priorKey, section: kind === 'grammar' ? 'Grammatik · frühere Aufgabe' : 'Wörter · frühere Aufgabe', kind, legacy: true, supersededBy: answerKey })
-      return { ...item, answerKey, kind, section: kind === 'grammar' ? 'Grammatik' : 'Wörter im Kontext' }
+      const priorPublished = published[kind][index]
+      const sameTask = kind === 'grammar' && !item.type && priorPublished && item.question !== priorPublished.question && sentenceOnly(priorPublished.question) === item.question && item.answer === priorPublished.answer && JSON.stringify(item.options) === JSON.stringify(priorPublished.options)
+      const publishedKey = sameTask ? (prior && questionSignature(priorPublished) === questionSignature(prior) ? priorKey : `${lesson.id}-test-v3-${kind}-${exerciseId(priorPublished)}`) : null
+      return { ...item, answerKey, answerAliases: publishedKey && publishedKey !== answerKey ? [publishedKey] : [], kind, section: kind === 'grammar' ? 'Grammatik' : 'Wörter im Kontext' }
     })
     previous[kind].forEach((item, index) => {
       if (!matched.has(index)) legacy.push({ ...item, answerKey: `${lesson.id}-test-v2-${kind === 'grammar' ? previous.vocabulary.length + index : index}`, kind, section: kind === 'grammar' ? 'Grammatik · frühere Aufgabe' : 'Wörter · frühere Aufgabe', legacy: true })
@@ -56,6 +60,15 @@ export function getLessonTests(lesson) {
     }
   }
   return result
+}
+
+// Only cosmetic prompt cleanup gets aliases: the option order and correct
+// index must be identical, so an old saved answer is safe to display directly.
+export function answerForQuestion(item, answers = {}) {
+  for (const key of [item.answerKey, ...(item.answerAliases || [])]) {
+    if (Number.isInteger(answers[key])) return answers[key]
+  }
+  return undefined
 }
 
 function normalizedPhrase(text = '') {

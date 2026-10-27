@@ -2,7 +2,7 @@ import test from 'node:test'
 import assert from 'node:assert/strict'
 import {getWritingExercises,getOrderingExercises,checkTranslation,checkWordOrder,shuffledTokens,normalizeSentence,acceptedWordOrders} from './shortExercises.js'
 import {lessonIllustrations} from './lessonIllustrations.js'
-import {getLessonTests,getQuestionBank,recordQuestionAnswer,getReviewSummary,clearQuestionAnswers} from './sessions.js'
+import {getLessonTests,getQuestionBank,recordQuestionAnswer,getReviewSummary,clearQuestionAnswers,answerForQuestion} from './sessions.js'
 import {lessonProgress} from './progress.js'
 import {normalizeDeutschState,applyDeutschChanges,diffDeutschState} from '../../../lib/deutsch/state.js'
 import {sentenceOnly,getPractice} from './practice.js'
@@ -106,4 +106,18 @@ test('valid fronted clauses and objects are accepted without changing published 
  assert.deepEqual(because.solutions,original)
  const digital=getOrderingExercises({id:'deutsch-001-digitale-erreichbarkeit'})[0]
  assert.ok(checkWordOrder(digital,'Ich schalte mein Handy nach Feierabend aus'.split(' ')))
+})
+
+test('removing a redundant cloze instruction preserves the prior saved answer and newer answers take precedence',()=>{
+ const lesson={id:'cosmetic',grammar:[{question:'Fülle die Lücke aus: Wir sprechen mit ___ Kollegin.',options:['der','die','den','dem'],answer:0}]}
+ const tests=getLessonTests(lesson);const item=tests.grammar[0]
+ assert.equal(item.question,'Wir sprechen mit ___ Kollegin.')
+ assert.equal(item.answerAliases.length,1)
+ const old=tests.legacy.find(q=>q.answerKey===item.answerAliases[0])
+ assert.ok(old);assert.deepEqual(old.options,item.options)
+ assert.equal(answerForQuestion(item,{[old.answerKey]:0}),0)
+ assert.equal(answerForQuestion(item,{[old.answerKey]:0,[item.answerKey]:1}),1)
+ const answers=Object.fromEntries(tests.grammar.filter(q=>q.type!=='ordering').map(q=>[(q.answerAliases[0]||q.answerKey),q.answer]))
+ const state=normalizeDeutschState({answers})
+ assert.equal(lessonProgress(lesson,state,getQuestionBank([lesson])).sections.Test,0.75)
 })

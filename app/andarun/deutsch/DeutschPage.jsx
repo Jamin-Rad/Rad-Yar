@@ -6,7 +6,7 @@ import styles from './page.module.css'
 import ListeningPlayer, { recordingSource } from './ListeningPlayer'
 import { normalizeDeutschState as normalizeState } from '@/lib/deutsch/state'
 import { createDeutschSync } from '@/lib/deutsch/sync'
-import { getQuestionBank, getLessonTests, makePracticeSession, getReviewSummary, recordQuestionAnswer, clearQuestionAnswers } from './sessions'
+import { getQuestionBank, getLessonTests, makePracticeSession, getReviewSummary, recordQuestionAnswer, clearQuestionAnswers, answerForQuestion } from './sessions'
 import { lessonProgress } from './progress'
 import CourseHome from './CourseHome'
 import ShortWriting from './ShortWriting'
@@ -320,8 +320,16 @@ function tokenizeText(text, vocabulary, onWordClick) {
   })
 }
 
-export function QuestionBlock({ id, items, answers, onAnswer, onReset, reviewProgress = {} }) {
+export function QuestionBlock({ id, items, answers: savedAnswers, onAnswer, onReset, reviewProgress = {} }) {
   const allItems = useMemo(() => items.map((item, index) => ({ ...item, answerKey: item.answerKey || `${id}-${index}` })), [id, items])
+  const answers = useMemo(() => {
+    const resolved = { ...savedAnswers }
+    for (const item of allItems) {
+      const answer = answerForQuestion(item, savedAnswers)
+      if (Number.isInteger(answer)) resolved[item.answerKey] = answer
+    }
+    return resolved
+  }, [allItems, savedAnswers])
   const [queueKeys, setQueueKeys] = useState(() => allItems.filter(item => !Number.isInteger(answers[item.answerKey])).map(item => item.answerKey))
   const [reviewing, setReviewing] = useState(false)
   const byKey = useMemo(() => new Map(allItems.map(item => [item.answerKey, item])), [allItems])
