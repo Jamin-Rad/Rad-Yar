@@ -1,40 +1,62 @@
-'use client'
-
+import Image from 'next/image'
 import Link from 'next/link'
 import styles from './page.module.css'
 
-const tiles = [
-  { title: 'Gesundheit', text: 'Sanfte Erinnerungen fuer dich', href: '/fatima/gesundheit', tone: 'rose' },
-  { title: 'ToDo', text: 'Gemeinsame Aufgaben und kleine Plaene', href: '/fatima/todo', tone: 'peach' },
-  { title: 'Deutschlernen', text: 'Lernen in deinem eigenen Tempo', href: '/fatima/deutsch', tone: 'sky' },
-  { title: 'MHBA', text: 'جزوه‌ها، هایلایت، مرور و تمرین امتحان', href: '/fatima/mhba', tone: 'sage' },
+const destinations = [
+  { title: 'Gesundheit', text: 'Für dein Wohlbefinden.', href: '/fatima/gesundheit', icon: 'heart' },
+  { title: 'ToDo', text: 'Kleine Pläne, gemeinsam.', href: '/fatima/todo', icon: 'check' },
+  { title: 'Deutschlernen', text: 'Mit jedem Wort ein Stück weiter.', href: '/fatima/deutsch', icon: 'language' },
+  { title: 'MHBA', text: 'Dein Studium, in deinem Tempo.', href: '/fatima/mhba', icon: 'book' },
 ]
+
+function Icon({ name, className }) {
+  return (
+    <svg className={className} width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.35" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      {name === 'heart' && <path d="M16 27S3.5 19.1 3.5 10.8A6.7 6.7 0 0 1 16 7.6a6.7 6.7 0 0 1 12.5 3.2C28.5 19.1 16 27 16 27Z" />}
+      {name === 'check' && <><rect x="5" y="5" width="22" height="22" rx="4" /><path d="m10 16 4 4 8-9" /></>}
+      {name === 'language' && <><path d="M3 8h17M11 4v4M7 8c1 7 5 11 11 14M17 8c-1 7-6 12-13 15M18 28l6-16 6 16M20 23h8" /></>}
+      {name === 'book' && <><path d="M16 8c-4-3-8-3-13-1v20c5-2 9-2 13 1 4-3 8-3 13-1V7c-5-2-9-2-13 1ZM16 8v20" /></>}
+      {name === 'arrow' && <path d="M5 16h21m-7-7 7 7-7 7" />}
+    </svg>
+  )
+}
 
 export default function FatimaLanding() {
   return (
-    <main className={styles.shell}>
-      <div className={styles.hearts} aria-hidden="true">
-        <i />
-        <i />
-        <i />
-        <i />
-        <i />
+    <main className={styles.shell} data-fatima-home lang="de" dir="ltr">
+      <div className={styles.page}>
+        <header className={styles.masthead}>
+          <span className={styles.monogram} aria-hidden="true">F.</span>
+          <span className={styles.dedication} lang="de">Nur für dich <Icon name="heart" /></span>
+        </header>
+        <div className={styles.composition}>
+          <div className={styles.portrait} aria-hidden="true">
+            <Image src="/fatima/roses-in-the-light.webp" alt="" fill priority sizes="(max-width: 700px) 38vw, 48vw" />
+          </div>
+          <div className={styles.letter} lang="de">
+            <section className={styles.greeting} aria-labelledby="fatima-title" lang="de">
+              <h1 id="fatima-title" lang="de">Für dich,<em>Fatima.</em></h1>
+              <p lang="de">Ein kleiner Ort für alles, was dir guttut.</p>
+            </section>
+            <nav className={styles.destinations} aria-label="Fatimas Bereiche" lang="de">
+              {destinations.map(destination => (
+                <Link className={styles.destination} href={destination.href} key={destination.href} lang="de">
+                  <Icon name={destination.icon} className={styles.destinationIcon} />
+                  <span className={styles.destinationText} lang="de">
+                    <span className={styles.destinationTitle} lang="de">{destination.title}</span>
+                    <span className={styles.destinationDescription} lang="de">{destination.text}</span>
+                  </span>
+                  <Icon name="arrow" className={styles.arrow} />
+                </Link>
+              ))}
+            </nav>
+            <footer className={styles.loveNote}>
+              <div className={styles.flourish} aria-hidden="true"><span /><Icon name="heart" /><span /></div>
+              <p lang="fa" dir="rtl">با عشق، برای تو</p>
+            </footer>
+          </div>
+        </div>
       </div>
-
-      <section className={styles.hero} aria-labelledby="fatima-title">
-        <span>Privater Lieblingsort</span>
-        <h1 id="fatima-title">Fatima</h1>
-        <p>Ein warmer Ort fuer deine Tage, kleine Schritte, Plaene und alles, was dir gut tut.</p>
-      </section>
-
-      <section className={styles.tileGrid} aria-label="Fatima Bereiche">
-        {tiles.map(tile => (
-          <Link className={`${styles.tile} ${styles[tile.tone]}`} href={tile.href} key={tile.title}>
-            <small>{tile.text}</small>
-            <strong>{tile.title}</strong>
-          </Link>
-        ))}
-      </section>
     </main>
   )
 }
