@@ -2,6 +2,7 @@ import { redirect } from 'next/navigation'
 import { hasFatimaSession } from '@/lib/fatimaPasswordAuth'
 import MhbaClient from './MhbaClient'
 import './mhba.css'
+import './studio.css'
 
 export const metadata = {
   title: 'MHBA | Fatima',
