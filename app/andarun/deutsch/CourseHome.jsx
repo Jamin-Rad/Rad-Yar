@@ -7,8 +7,8 @@ function Icon({ kind = 'arrow', ...props }) {
   </svg>
 }
 
-export default function CourseHome({ lessons, lessonStatus = {}, loading, lessonBase, homeHref, homeLabel, canImport, dark, onTheme, onImport, wrongCount, onPractice, onRead, cardCount, dueCount, onFlashcards }) {
-  const next = lessons.find(lesson => !lessonStatus[lesson.id]?.readAt) || lessons[0]
+export default function CourseHome({ lessons, progressByLesson = {}, loading, lessonBase, homeHref, homeLabel, canImport, dark, onTheme, onImport, reviewSummary = { active: [], due: [] }, onPractice, cardCount, dueCount, onFlashcards }) {
+  const next = lessons.find(lesson => (progressByLesson[lesson.id]?.percent || 0) < 100) || lessons[0]
   return <div className={`${styles.page} ${dark ? styles.dark : ''}`}>
     <header className={styles.header}>
       <h1>Deutsch im Alltag<span>.</span></h1>
@@ -32,10 +32,14 @@ export default function CourseHome({ lessons, lessonStatus = {}, loading, lesson
         <div className={styles.sectionHeading}><h2 id="course-lessons-title">Deine Lektionen</h2><p>{loading ? 'Wird geladen …' : `${lessons.length} ${lessons.length === 1 ? 'Lektion' : 'Lektionen'}`}</p></div>
         <ol className={styles.list}>
           {lessons.map((lesson, index) => {
-            const read = !!lessonStatus[lesson.id]?.readAt
+            const progress = progressByLesson[lesson.id] || { percent: 0, sections: {} }
+            const details = Object.entries(progress.sections).map(([name, value]) => `${name} ${Math.round(value * 100)}%`).join(' · ')
             return <li key={lesson.id}>
               <Link href={`${lessonBase}/${lesson.id}`} className={styles.lessonLink}><span className={styles.number} aria-hidden="true">{String(index + 1).padStart(2, '0')}</span><h3>{lesson.title}</h3></Link>
-              <button className={`${styles.readState} ${read ? styles.isRead : ''}`} type="button" aria-pressed={read} aria-label={`${lesson.title}: ${read ? 'Als ungelesen markieren' : 'Als gelesen markieren'}`} onClick={() => onRead(lesson.id)}><span>{read ? 'Gelesen' : 'Noch nicht gelesen'}</span><i>{read && <Icon kind="check" width="17" height="17" />}</i></button>
+              <div className={styles.lessonProgress} role="progressbar" aria-label={`${lesson.title}: Lernfortschritt`} aria-valuemin={0} aria-valuemax={100} aria-valuenow={progress.percent} title={details}>
+                <strong>{progress.percent}<small>%</small></strong><span>Fortschritt</span>
+                <div className={styles.progressTrack}><i style={{ width: `${progress.percent}%` }} /></div>
+              </div>
             </li>
           })}
         </ol>
@@ -44,8 +48,8 @@ export default function CourseHome({ lessons, lessonStatus = {}, loading, lesson
         <h2 id="course-practice-title">Einfach üben</h2>
         <button type="button" className={styles.random} onClick={() => onPractice('random')} disabled={loading || !lessons.length}><Icon kind="random" /><span>Zufallstest</span><Icon /></button>
         <p className={styles.hint}>20 Fragen aus deinen Lektionen</p>
-        <button type="button" className={styles.mistakes} onClick={() => onPractice('mistakes')} disabled={!wrongCount || loading}><Icon kind="retry" /><span>Fehler wiederholen</span><Icon /></button>
-        <p className={styles.hint}>{wrongCount ? `${wrongCount} ${wrongCount === 1 ? 'Frage' : 'Fragen'} noch einmal üben` : 'Noch keine Fehler'}</p>
+        <button type="button" className={styles.mistakes} onClick={() => onPractice('mistakes')} disabled={!reviewSummary.due.length || loading}><Icon kind="retry" /><span>Fehler wiederholen</span><Icon /></button>
+        <p className={styles.hint}>{reviewSummary.active.length ? `${reviewSummary.due.length} fällig · ${reviewSummary.active.length} in Wiederholung${reviewSummary.nextDueAt ? ` · Nächster Termin: ${new Date(reviewSummary.nextDueAt).toLocaleDateString('de-DE')}` : ''}` : 'Keine offenen Fehler'}</p>
         <div className={styles.cardArea}><button type="button" className={styles.cards} onClick={onFlashcards}><Icon kind="cards" /><span>Karten üben</span><Icon /></button><p className={styles.hint}>{cardCount} {cardCount === 1 ? 'Karte' : 'Karten'} · {dueCount} fällig</p></div>
       </aside>
     </div>

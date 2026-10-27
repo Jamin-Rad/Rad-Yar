@@ -2856,3 +2856,8 @@
 @media(max-width:620px){.testChoices button{padding:22px 18px;gap:12px}.testChoices strong{font-size:25px}.testChoices small{font-size:12px}.testCount{gap:10px;font-size:11px}.testHeading{align-items:flex-start;flex-wrap:wrap}.shell .answerFeedback .completedSentence{font-size:15px}}
 .shell:is(.lessonShell,.courseShell) .optionBtn:is(.correct,.wrong) {color:#102018;}
 .testChoices button:disabled {opacity:.5;cursor:default;}
+
+.quizResult{text-align:center;padding:36px!important;}
+.resultPercent{display:block;font:500 64px/1.1 var(--font-fraunces,Georgia),serif;color:var(--d-accent);margin:20px 0 14px;}
+.resultActions{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:24px;}
+.reviewSchedule{border-top:1px solid var(--d-border);padding-top:12px;margin-top:16px!important;font-size:13px!important;}

@@ -69,7 +69,7 @@ export function getQuestionBank(lessons) {
     const tests = getLessonTests(lesson)
     const previous = getPractice(lesson, { legacy: true })
     return [
-      ...(lesson.reading?.questions || []).map((item, index) => ({ ...item, answerKey: `${lesson.id}-reading-${index}`, section: 'Lesen', reading: lesson.reading })),
+      ...(lesson.reading?.questions || []).map((item, index) => ({ ...item, answerKey: `${lesson.id}-reading-${index}`, kind: 'reading', section: 'Lesen', reading: lesson.reading })),
       ...tests.vocabulary, ...tests.grammar, ...tests.legacy,
       ...(lesson.grammar || []).map((item, index) => {
         const match = previous.grammar.findIndex(current => sentenceOnly(current.question) === sentenceOnly(item.question) && JSON.stringify(current.options) === JSON.stringify(item.options))
@@ -82,8 +82,8 @@ export function getQuestionBank(lessons) {
         const priorIndex = previous.vocabulary.findIndex(prior => normalizedPhrase(prior.options?.[prior.answer]) === normalizedPhrase(vocabularyTerm(match)) && match)
         return { ...item, answerKey: `${lesson.id}-vocabquiz-${index}`, section: 'Wörter · frühere Aufgabe', legacy: true, reading: lesson.reading, supersededBy: match?.answerKey, supersededByHistory: priorIndex >= 0 ? [`${lesson.id}-test-v2-${priorIndex}`] : [] }
       }),
-      ...(lesson.listening?.questions || []).map((item, index) => ({ ...item, answerKey: `${lesson.id}-listening-${index}`, section: 'Hören', audio: lesson.listening })),
-    ].map(item => ({ ...item,
+      ...(lesson.listening?.questions || []).map((item, index) => ({ ...item, answerKey: `${lesson.id}-listening-${index}`, kind: 'listening', section: 'Hören', audio: lesson.listening })),
+    ].map(item => ({ ...item, lessonId: lesson.id,
       supersededByHistory: item.legacy && (item.answerKey.includes('-vocabquiz-') || item.answerKey.startsWith(`${lesson.id}-grammar-`))
         ? [...(item.supersededByHistory || []), ...tests.legacy.filter(q => item.supersededBy && q.supersededBy === item.supersededBy).map(q => q.answerKey)]
         : item.supersededByHistory,
@@ -110,8 +110,66 @@ export function getMistakeQuestions(bank, answers) {
   return mistakes
 }
 
-export function makePracticeSession(bank, answers, mode, random = Math.random) {
-  const items = mode === 'mistakes' ? getMistakeQuestions(bank, answers) : bank.filter(item => !item.legacy)
+export function makePracticeSession(bank, answers, mode, random = Math.random, { mistakeReviews = {}, now = new Date() } = {}) {
+  const items = mode === 'mistakes' ? getReviewSummary(bank, answers, mistakeReviews, now).due : bank.filter(item => !item.legacy)
   for (let i = items.length - 1; i > 0; i--) { const j = Math.floor(random() * (i + 1)); [items[i], items[j]] = [items[j], items[i]] }
   return { id: `practice-${Date.now()}-${Math.random().toString(36).slice(2)}`, mode, items: mode === 'random' ? items.slice(0, 20) : items, answers: {} }
+}
+
+function currentQuestion(item, byKey) {
+  const seen = new Set()
+  while (item?.supersededBy && byKey.has(item.supersededBy) && !seen.has(item.answerKey)) {
+    seen.add(item.answerKey)
+    item = byKey.get(item.supersededBy)
+  }
+  return item
+}
+
+export function getReviewSummary(bank, answers = {}, progress = {}, now = new Date()) {
+  const byKey = new Map(bank.map(item => [item.answerKey, item]))
+  const records = new Map()
+  for (const [key, review] of Object.entries(progress)) {
+    const item = currentQuestion(byKey.get(key), byKey)
+    if (!item || !Number.isInteger(review?.correctCount)) continue
+    const prior = records.get(item.answerKey)
+    if (!prior || Date.parse(review.lastReviewedAt || 0) >= Date.parse(prior.review.lastReviewedAt || 0)) records.set(item.answerKey, { item, review })
+  }
+  // Old mistakes need no destructive migration: they are due immediately until
+  // their first review creates a durable record under the current question key.
+  for (const item of getMistakeQuestions(bank, answers)) {
+    if (!records.has(item.answerKey)) records.set(item.answerKey, { item, review: { correctCount: 0, dueAt: null, lastReviewedAt: null } })
+  }
+  const active = [...records.values()].filter(({ review }) => review.correctCount < 3).map(({ item, review }) => ({ ...item, review, isDue: !review.dueAt || Date.parse(review.dueAt) <= Number(now) }))
+  const due = active.filter(item => item.isDue)
+  const future = active.filter(item => !item.isDue).sort((a, b) => Date.parse(a.review.dueAt) - Date.parse(b.review.dueAt))
+  return { active, due, future, nextDueAt: future[0]?.review.dueAt || null }
+}
+
+export function recordQuestionAnswer(state, bank, key, answer, now = new Date()) {
+  const byKey = new Map(bank.map(item => [item.answerKey, item]))
+  const source = byKey.get(key)
+  const item = currentQuestion(source, byKey)
+  const next = { ...state, answers: { ...state.answers, [key]: answer } }
+  if (!item) return next
+  const summary = getReviewSummary(bank, state.answers, state.mistakeReviews, now)
+  const tracked = summary.active.find(q => q.answerKey === item.answerKey)
+  const correct = answer === source.answer
+  if (correct && (!tracked || !tracked.isDue)) return next
+  const correctCount = correct ? tracked.review.correctCount + 1 : 0
+  const interval = correctCount === 1 ? 3 : correctCount === 2 ? 10 : 0
+  const dueAt = correctCount === 3 ? null : new Date(Number(now) + interval * 86400000).toISOString()
+  const review = { correctCount, dueAt, lastReviewedAt: new Date(now).toISOString() }
+  next.mistakeReviews = { ...state.mistakeReviews, [item.answerKey]: review }
+  return next
+}
+
+export function clearQuestionAnswers(state, bank, items, now = new Date()) {
+  const keys = new Set(items.map(item => item.answerKey))
+  // Clear the old versions too, so deleting a test cannot revive stale answers.
+  const family = new Set(bank.filter(item => keys.has(item.answerKey) || keys.has(item.supersededBy)).map(item => item.answerKey))
+  const mistakeReviews = { ...state.mistakeReviews }
+  for (const item of getReviewSummary(bank, state.answers, mistakeReviews, now).active) {
+    if (!mistakeReviews[item.answerKey]) mistakeReviews[item.answerKey] = { ...item.review, dueAt: item.review.dueAt || new Date(now).toISOString(), lastReviewedAt: item.review.lastReviewedAt || new Date(0).toISOString() }
+  }
+  return { ...state, mistakeReviews, answers: Object.fromEntries(Object.entries(state.answers).filter(([key]) => !family.has(key))) }
 }

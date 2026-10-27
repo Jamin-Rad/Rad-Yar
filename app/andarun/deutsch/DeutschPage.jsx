@@ -6,7 +6,8 @@ import styles from './page.module.css'
 import ListeningPlayer, { recordingSource } from './ListeningPlayer'
 import { normalizeDeutschState as normalizeState } from '@/lib/deutsch/state'
 import { createDeutschSync } from '@/lib/deutsch/sync'
-import { getQuestionBank, getLessonTests, makePracticeSession, getMistakeQuestions } from './sessions'
+import { getQuestionBank, getLessonTests, makePracticeSession, getReviewSummary, recordQuestionAnswer, clearQuestionAnswers } from './sessions'
+import { lessonProgress } from './progress'
 import CourseHome from './CourseHome'
 import { lessonIllustration } from './lessonIllustrations'
 
@@ -24,6 +25,7 @@ const emptyState = {
   writings: [],
   answers: {},
   lessonStatus: {},
+  mistakeReviews: {},
 }
 
 const sampleLesson = {
@@ -310,15 +312,25 @@ function tokenizeText(text, vocabulary, onWordClick) {
   })
 }
 
-export function QuestionBlock({ id, items, answers, onAnswer, onReset }) {
+export function QuestionBlock({ id, items, answers, onAnswer, onReset, reviewProgress = {} }) {
+  const allItems = useMemo(() => items.map((item, index) => ({ ...item, answerKey: item.answerKey || `${id}-${index}` })), [id, items])
+  const [queueKeys, setQueueKeys] = useState(() => allItems.filter(item => !Number.isInteger(answers[item.answerKey])).map(item => item.answerKey))
+  const [reviewing, setReviewing] = useState(false)
+  const byKey = useMemo(() => new Map(allItems.map(item => [item.answerKey, item])), [allItems])
+  const visibleItems = reviewing ? allItems : queueKeys.map(key => byKey.get(key)).filter(Boolean)
+  function resetTest() {
+    onReset()
+    setQueueKeys(allItems.map(item => item.answerKey))
+    setReviewing(false); setCursor(0); setFinished(false)
+  }
   const [cursor, setCursor] = useState(0)
-  const [finished, setFinished] = useState(false)
+  const [finished, setFinished] = useState(() => queueKeys.length === 0)
   const quizRef = useRef(null)
   const nextRef = useRef(null)
-  const currentKey = items[cursor]?.answerKey || `${id}-${cursor}`
+  const currentKey = visibleItems[cursor]?.answerKey
   const canAdvance = Number.isInteger(answers[currentKey])
   useEffect(() => {
-    if (finished || !items.length || !canAdvance) return
+    if (finished || !visibleItems.length || !canAdvance) return
     function onEnter(event) {
       if (event.key !== 'Enter' || event.repeat || event.isComposing || event.defaultPrevented || event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return
       const target = event.target
@@ -330,25 +342,34 @@ export function QuestionBlock({ id, items, answers, onAnswer, onReset }) {
       if (button && button !== nextRef.current && !button.hasAttribute('data-quiz-option')) return
       if (!quizRef.current?.contains(target) && target !== document.body && target !== document.documentElement) return
       event.preventDefault()
-      if (cursor + 1 < items.length) setCursor(cursor + 1)
+      if (cursor + 1 < visibleItems.length) setCursor(cursor + 1)
       else setFinished(true)
     }
     document.addEventListener('keydown', onEnter)
     return () => document.removeEventListener('keydown', onEnter)
-  }, [canAdvance, cursor, finished, items.length])
-  const keyFor = (item, index) => item.answerKey || `${id}-${index}`
-  const hasAnswers = items.some((item, index) => typeof answers[keyFor(item, index)] === 'number')
-  const score = items.filter((item, index) => answers[keyFor(item, index)] === item.answer).length
-  if (!items.length) return <p>Für diesen Bereich sind noch keine Fragen vorhanden.</p>
-  if (finished) return <div className={styles.questionCard} role="status">
-    <h2>Test abgeschlossen</h2><p>{score} von {items.length} richtig</p>
-    <button type="button" className={styles.primaryBtn} onClick={() => { onReset(); setCursor(0); setFinished(false) }}>Noch einmal üben</button>
+  }, [canAdvance, cursor, finished, visibleItems.length])
+  const keyFor = item => item.answerKey
+  const hasAnswers = allItems.some((item, index) => typeof answers[keyFor(item, index)] === 'number')
+  const score = allItems.filter((item, index) => answers[keyFor(item, index)] === item.answer).length
+  const answeredCount = allItems.filter(item => Number.isInteger(answers[item.answerKey])).length
+  const accuracy = allItems.length ? Math.round(score / allItems.length * 100) : 0
+  if (!allItems.length) return <p>Für diesen Bereich sind noch keine Fragen vorhanden.</p>
+  if (finished) return <div className={`${styles.questionCard} ${styles.quizResult}`}>
+    <div role="status"><h2>Test abgeschlossen</h2>
+      <strong className={styles.resultPercent}>{accuracy}%</strong>
+      <p>{score} von {allItems.length} richtig</p>
+      <p>{answeredCount} von {allItems.length} beantwortet · {Math.round(answeredCount / allItems.length * 100)}%</p>
+    </div>
+    <div className={styles.resultActions}>
+      <button type="button" className={styles.primaryBtn} onClick={() => { setReviewing(true); setCursor(0); setFinished(false) }}>Antworten ansehen</button>
+      <button type="button" className={styles.ghostBtn} onClick={resetTest}>Antworten löschen</button>
+    </div>
   </div>
   return (
     <div className={styles.questionList} ref={quizRef}>
-      <div className={styles.quizProgress} aria-live="polite"><span>Frage {cursor + 1} von {items.length}</span><span>{items[cursor]?.section || ''}</span></div>
-      <progress className={styles.quizMeter} value={cursor + 1} max={items.length} aria-label="Testfortschritt" />
-      {items.slice(cursor, cursor + 1).map((item) => {
+      <div className={styles.quizProgress} aria-live="polite"><span>Frage {cursor + 1} von {visibleItems.length}</span><span>{visibleItems[cursor]?.section || ''}</span></div>
+      <progress className={styles.quizMeter} value={cursor + 1} max={visibleItems.length} aria-label="Testfortschritt" />
+      {visibleItems.slice(cursor, cursor + 1).map((item) => {
         const index = cursor
         const key = keyFor(item, index)
         const selected = answers[key]
@@ -392,6 +413,7 @@ export function QuestionBlock({ id, items, answers, onAnswer, onReset }) {
                 <p className={styles.answerSolution}>{item.options[item.answer]}</p>
                 {item.question.includes('___') && <p className={styles.completedSentence}>{item.question.replace('___', item.options[item.answer])}</p>}
                 <p className={styles.explanation}>{item.explanation}</p>
+                {reviewProgress[key] && <p className={styles.reviewSchedule}>{reviewProgress[key].correctCount === 3 ? 'Dreimal richtig · Wiederholung abgeschlossen' : `${reviewProgress[key].correctCount}/3 richtig · ${reviewProgress[key].correctCount ? `Nächste Wiederholung: ${new Date(reviewProgress[key].dueAt).toLocaleDateString('de-DE')}` : 'Wird erneut wiederholt'}`}</p>}
               </div>
             )}
           </article>
@@ -399,10 +421,10 @@ export function QuestionBlock({ id, items, answers, onAnswer, onReset }) {
       })}
       <div className={styles.quizNavigation}>
         <button type="button" className={styles.ghostBtn} disabled={cursor === 0} onClick={() => setCursor(index => index - 1)}>← Zurück</button>
-        <button type="button" ref={nextRef} className={styles.primaryBtn} disabled={typeof answers[keyFor(items[cursor], cursor)] !== 'number'} onClick={() => cursor + 1 < items.length ? setCursor(index => index + 1) : setFinished(true)}>{cursor + 1 < items.length ? 'Weiter →' : 'Ergebnis anzeigen'}</button>
+        <button type="button" ref={nextRef} className={styles.primaryBtn} disabled={typeof answers[keyFor(visibleItems[cursor], cursor)] !== 'number'} onClick={() => cursor + 1 < visibleItems.length ? setCursor(index => index + 1) : setFinished(true)}>{cursor + 1 < visibleItems.length ? 'Weiter →' : 'Ergebnis anzeigen'}</button>
       </div>
       {hasAnswers && (
-        <button type="button" className={styles.resetAnswers} onClick={() => { onReset(); setCursor(0) }}>
+        <button type="button" className={styles.resetAnswers} onClick={resetTest}>
           Antworten zurücksetzen <span aria-hidden="true">↻</span>
         </button>
       )}
@@ -449,6 +471,8 @@ export default function DeutschPage({
   const [loading, setLoading] = useState(true)
   const [syncStatus, setSyncStatus] = useState('loading')
   const [practiceSession, setPracticeSession] = useState(null)
+  const [reviewNow, setReviewNow] = useState(() => new Date())
+  const readingRef = useRef(null)
   const [activeLessonId, setActiveLessonId] = useState('')
   const [activeTab, setActiveTab] = useState(lessonMode ? 'lesen' : 'home')
   const [testCategory, setTestCategory] = useState(null)
@@ -530,8 +554,35 @@ export default function DeutschPage({
     [state.lessons]
   )
   const questionBank = useMemo(() => getQuestionBank(state.lessons), [state.lessons])
-  const wrongCount = getMistakeQuestions(questionBank, state.answers).length
-  const startPractice = mode => setPracticeSession(makePracticeSession(questionBank, state.answers, mode))
+  const reviewSummary = useMemo(() => getReviewSummary(questionBank, state.answers, state.mistakeReviews, reviewNow), [questionBank, state.answers, state.mistakeReviews, reviewNow])
+  const progressByLesson = useMemo(() => Object.fromEntries(state.lessons.map(lesson => [lesson.id, lessonProgress(lesson, state, questionBank)])), [state.lessons, state.answers, state.lessonStatus, state.writings, questionBank])
+  const startPractice = mode => setPracticeSession(makePracticeSession(questionBank, state.answers, mode, Math.random, { mistakeReviews: state.mistakeReviews, now: new Date() }))
+  useEffect(() => {
+    const update = () => setReviewNow(new Date())
+    const timer = window.setInterval(update, 60000)
+    window.addEventListener('focus', update)
+    return () => { window.clearInterval(timer); window.removeEventListener('focus', update) }
+  }, [])
+  useEffect(() => {
+    if (!lessonMode || activeTab !== 'lesen' || loading) return
+    let timer
+    function update() {
+      window.clearTimeout(timer)
+      timer = window.setTimeout(() => {
+        const text = readingRef.current
+        if (!text) return
+        const rect = text.getBoundingClientRect()
+        const viewport = window.innerHeight
+        if (rect.top >= viewport) return
+        const progress = Math.min(1, Math.max(0, (viewport - rect.top) / rect.height))
+        updateLessonProgress('readProgress', Math.floor(progress * 20) / 20)
+      }, 1200)
+    }
+    update()
+    window.addEventListener('scroll', update, { passive: true })
+    window.addEventListener('resize', update)
+    return () => { window.clearTimeout(timer); window.removeEventListener('scroll', update); window.removeEventListener('resize', update) }
+  }, [lessonMode, activeTab, activeLesson.id, loading])
   const dueCards = useMemo(() => state.cards.filter(isDue), [state.cards])
   const learnedWords = new Set(state.cards.map(card => card.term.toLowerCase()))
   const selectedWordSaved = selectedWord ? learnedWords.has(selectedWord.term.toLowerCase()) : false
@@ -546,16 +597,24 @@ export default function DeutschPage({
   )
 
   function toggleRead(lessonId) {
-    persist(current => ({ ...current, lessonStatus: { ...current.lessonStatus, [lessonId]: { readAt: current.lessonStatus[lessonId]?.readAt ? null : new Date().toISOString(), updatedAt: new Date().toISOString() } } }))
+    persist(current => ({ ...current, lessonStatus: { ...current.lessonStatus, [lessonId]: { ...current.lessonStatus[lessonId], readAt: current.lessonStatus[lessonId]?.readAt ? null : new Date().toISOString(), updatedAt: new Date().toISOString() } } }))
   }
 
   function answerQuestion(key, optionIndex) {
-    persist(current => ({ ...current, answers: { ...current.answers, [key]: optionIndex } }))
+    persist(current => recordQuestionAnswer(current, questionBank, key, optionIndex))
+    setReviewNow(new Date())
+  }
+  function updateLessonProgress(field, progress) {
+    persist(current => {
+      const prior = current.lessonStatus[activeLesson.id] || { readAt: null }
+      if (progress <= (prior[field] || 0)) return current
+      return { ...current, lessonStatus: { ...current.lessonStatus, [activeLesson.id]: { ...prior, [field]: progress, updatedAt: new Date().toISOString() } } }
+    })
   }
 
   function resetSectionAnswers(section) {
     const prefix = `${activeLesson.id}-${section}-`
-    persist(current => ({ ...current, answers: Object.fromEntries(Object.entries(current.answers).filter(([key]) => !key.startsWith(prefix))) }))
+    persist(current => clearQuestionAnswers(current, questionBank, questionBank.filter(item => item.answerKey.startsWith(prefix))))
     setMessage('Antworten zurückgesetzt.')
   }
 
@@ -746,11 +805,11 @@ export default function DeutschPage({
       )}
 
       {!lessonMode && activeTab === 'home' && <CourseHome
-        lessons={sortedLessons} lessonStatus={state.lessonStatus} loading={loading}
+        lessons={sortedLessons} progressByLesson={progressByLesson} loading={loading}
         lessonBase={lessonBase} homeHref={homeHref} homeLabel={homeLabel || 'Jaminova'} canImport={canImport}
         dark={visualTheme === 'dark'} onTheme={toggleVisualTheme}
-        onImport={() => setImportOpen(true)} wrongCount={wrongCount}
-        onPractice={startPractice} onRead={toggleRead}
+        onImport={() => setImportOpen(true)} reviewSummary={reviewSummary}
+        onPractice={startPractice}
         cardCount={state.cards.length} dueCount={dueCards.length}
         onFlashcards={() => { setFlashView({ mode: 'boxes', box: 0, practice: false }); setShowBack(false); setFlashOpen(true) }}
       />}
@@ -765,7 +824,7 @@ export default function DeutschPage({
             <div aria-label="Lesetext anhören">
               <ListeningPlayer key={`${activeLesson.id}-reading-${activeLesson.reading.text}`} listening={activeLesson.reading} />
             </div>
-            <div className={styles.readingText}>
+            <div className={styles.readingText} ref={readingRef}>
               {activeLesson.reading.text.split(/\n+/).filter(Boolean).map((paragraph, index) => {
                 const turn = paragraph.match(/^([\p{L} .-]{2,35}):\s*(.+)$/u)
                 return <p key={index} className={turn ? styles.dialogueTurn : undefined}>
@@ -799,8 +858,7 @@ export default function DeutschPage({
               <button type="button" className={styles.ghostBtn} onClick={() => setTestCategory(null)}>Auswahl ändern</button>
             </div>
             <QuestionBlock key={`${activeLesson.id}-${testCategory}`} id={`${activeLesson.id}-${testCategory}`} items={testItems} answers={state.answers} onAnswer={answerQuestion} onReset={() => {
-              const keys = new Set(testItems.map(item => item.answerKey))
-              persist(current => ({ ...current, answers: Object.fromEntries(Object.entries(current.answers).filter(([key]) => !keys.has(key))) }))
+              persist(current => clearQuestionAnswers(current, questionBank, testItems))
             }} />
           </>}
         </section>
@@ -814,7 +872,7 @@ export default function DeutschPage({
               <span>Hören & verstehen</span>
             </div>
             <p className={styles.listeningHint}>Höre zuerst ohne mitzulesen. Danach kannst du den Text öffnen und die Fragen beantworten.</p>
-            <ListeningPlayer key={`${activeLesson.id}-${activeTab}-${activeLesson.listening.text}`} listening={activeLesson.listening} />
+            <ListeningPlayer key={`${activeLesson.id}-${activeTab}-${activeLesson.listening.text}`} listening={activeLesson.listening} onProgress={progress => updateLessonProgress('listenProgress', progress)} />
             <details className={styles.transcript}>
               <summary>Transkript anzeigen</summary>
               <p>{activeLesson.listening.text}</p>
@@ -945,7 +1003,7 @@ export default function DeutschPage({
           <section className={`${styles.importModal} ${styles.practiceModal}`} role="dialog" aria-modal="true" aria-label={practiceSession.mode === 'mistakes' ? 'Fehler wiederholen' : 'Zufallstest'} onMouseDown={event => event.stopPropagation()}>
             <button type="button" className={styles.closeBtn} onClick={() => setPracticeSession(null)}>Schließen</button>
             <h2>{practiceSession.mode === 'mistakes' ? 'Fehler wiederholen' : 'Zufallstest'}</h2>
-            <QuestionBlock key={practiceSession.id} id={practiceSession.id} items={practiceSession.items} answers={practiceSession.answers} onAnswer={(key, answer) => {
+            <QuestionBlock key={practiceSession.id} id={practiceSession.id} items={practiceSession.items} answers={practiceSession.answers} reviewProgress={state.mistakeReviews} onAnswer={(key, answer) => {
               setPracticeSession(current => ({ ...current, answers: { ...current.answers, [key]: answer } }))
               answerQuestion(key, answer)
             }} onReset={() => setPracticeSession(current => ({ ...current, answers: {} }))} />

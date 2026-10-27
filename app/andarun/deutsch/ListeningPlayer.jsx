@@ -11,8 +11,10 @@ const clock = seconds => `${Math.floor(seconds / 60)}:${String(Math.floor(second
 function PlayIcon({ playing }) {
   return <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">{playing ? <><rect x="6" y="5" width="4" height="14" rx="1" /><rect x="14" y="5" width="4" height="14" rx="1" /></> : <path d="M8 4.8a1 1 0 0 1 1.5-.86l11 7.2a1 1 0 0 1 0 1.72l-11 7.2A1 1 0 0 1 8 19.2z" />}</svg>
 }
-export default function ListeningPlayer({ listening }) {
+export default function ListeningPlayer({ listening, onProgress }) {
   const audioRef = useRef(null)
+  const listened = useRef(new Set())
+  const lastTime = useRef(null)
   const [error, setError] = useState(false)
   const [playing, setPlaying] = useState(false)
   const [duration, setDuration] = useState(0)
@@ -35,7 +37,20 @@ export default function ListeningPlayer({ listening }) {
   }
   if (!src) return <p className={styles.missing} role="status">Für diesen Text fehlt noch die Audiodatei.</p>
   return <div className={styles.player} role="group" aria-label={listening.title || 'Text anhören'}>
-    <audio ref={audioRef} src={src} preload="metadata" onLoadedMetadata={event => setDuration(Number.isFinite(event.currentTarget.duration) ? event.currentTarget.duration : 0)} onTimeUpdate={event => setPosition(event.currentTarget.currentTime)} onPlay={() => { setPlaying(true); window.dispatchEvent(new CustomEvent('deutsch-audio-play', { detail: audioRef.current })) }} onPause={() => setPlaying(false)} onEnded={() => setPlaying(false)} onError={() => setError(true)} />
+    <audio ref={audioRef} src={src} preload="metadata" onLoadedMetadata={event => setDuration(Number.isFinite(event.currentTarget.duration) ? event.currentTarget.duration : 0)} onTimeUpdate={event => {
+      const audio = event.currentTarget
+      setPosition(audio.currentTime)
+      const previous = lastTime.current
+      // Count only seconds actually played; seeking to the end earns no progress.
+      if (!audio.paused && previous !== null && audio.currentTime > previous && audio.currentTime - previous < 2) {
+        for (let second = Math.floor(previous); second < Math.floor(audio.currentTime); second++) listened.current.add(second)
+        if (Number.isFinite(audio.duration) && audio.duration > 0) onProgress?.(Math.min(1, Math.floor(listened.current.size / audio.duration * 20) / 20))
+      }
+      lastTime.current = audio.currentTime
+    }} onSeeking={() => { lastTime.current = null }} onPlay={() => { setPlaying(true); window.dispatchEvent(new CustomEvent('deutsch-audio-play', { detail: audioRef.current })) }} onPause={() => setPlaying(false)} onEnded={event => {
+      setPlaying(false)
+      if (listened.current.size >= event.currentTarget.duration - 2) onProgress?.(1)
+    }} onError={() => setError(true)} />
     <div className={styles.main}>
       <button type="button" className={styles.play} onClick={toggle} aria-label={playing ? 'Audio pausieren' : 'Audio abspielen'}><PlayIcon playing={playing} /></button>
       <div className={styles.timeline}>
