@@ -23,12 +23,12 @@ export default function FamilyMenu() {
   }, [open])
 
   return <details className={styles.menu} ref={menu} onToggle={event => setOpen(event.currentTarget.open)}>
-    <summary aria-label="Familie öffnen">
+    <summary aria-label="Familie öffnen" aria-controls="family-navigation">
       <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3" /><path d="M3 21v-3a6 6 0 0 1 12 0v3M16 5a3 3 0 0 1 0 6M17 14a5 5 0 0 1 4 5v2" /></svg>
       <span>Familie</span>
       <svg className={styles.caret} width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6" /></svg>
     </summary>
-    <nav className={styles.dropdown} aria-label="Familienbereiche">
+    <nav id="family-navigation" className={styles.dropdown} aria-label="Familienbereiche">
       <p>Deine Familie</p>
       {FAMILY_SPACES.map(member => <Link key={member.id} href={member.href} aria-label={`${member.name} öffnen`} onClick={() => { if (menu.current) menu.current.open = false }}>
         <span className={styles.avatar} aria-hidden="true">{member.initials}</span>
