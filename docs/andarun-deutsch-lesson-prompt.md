@@ -106,3 +106,6 @@ Pflichtprüfung vor der Ausgabe:
 Antwortoptionen: Verwende dieselbe Wortart und passende Flexion. Keine zufälligen Vokabeln als Ablenkung. Genau eine Option passt zum gesamten Kontext. Erkläre den entscheidenden Hinweis und grenze eine plausible falsche Option ab.
 
 Qualitätsprüfung der Ablenkungen: Alle vier Optionen müssen nach dem Einsetzen syntaktisch passen und aus derselben Alltagssituation stammen. Verwende nahe Bedeutungsunterschiede (z. B. verstehen / billigen / befürworten), nicht drei offensichtliche Gegenteile oder sachfremde Wörter. Ein kurzer Kontext muss eine einzige beste Antwort begründen: Absicht, Zeitpunkt, Verbindlichkeit oder konkrete Handlung. Keine zwei austauschbaren Synonyme als konkurrierende Antworten. Lies jede der vier vollständigen Sätze und begründe, warum die nächstliegende Ablenkung im konkreten Kontext nicht passt. Grammatikoptionen sollen typische Lernfehler prüfen; keine willkürlich zerstückelten Wörter.
+
+Wortschatz variieren: Prüfe einzelne Bestandteile einer Wendung, typische Kollokationen und die Verwendung in neuen Situationen. Nicht nur komplette gelernte Wendungen einsetzen lassen. Der fehlende Bestandteil darf nicht schon im Fragetext stehen.
+Bei Teilantworten enthält vocabulary_quiz.sourceTerm die exakte ursprüngliche vocabulary.term, damit die Aufgabe der gelernten Wendung zugeordnet bleibt.

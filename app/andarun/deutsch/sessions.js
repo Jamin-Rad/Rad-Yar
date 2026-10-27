@@ -1,5 +1,7 @@
 import { getPractice, sentenceOnly } from './practice'
 
+const vocabularyTerm = item => item?.sourceTerm || item?.options?.[item?.answer]
+
 function questionSignature(item) { return JSON.stringify([item.question, item.options, item.answer]) }
 function exerciseId(item) {
   let hash = 2166136261
@@ -17,8 +19,8 @@ export function getLessonTests(lesson) {
   for (const kind of ['vocabulary', 'grammar']) {
     const matched = new Set()
     result[kind] = current[kind].map((item, index) => {
-      const correct = item.options?.[item.answer]
-      const previousIndex = kind === 'grammar' || previous[kind][index]?.options?.[previous[kind][index]?.answer] === correct ? index : previous[kind].findIndex(prior => prior.options?.[prior.answer] === correct)
+      const correct = vocabularyTerm(item)
+      const previousIndex = kind === 'grammar' || vocabularyTerm(previous[kind][index]) === correct ? index : previous[kind].findIndex(prior => vocabularyTerm(prior) === correct)
       if (previousIndex >= 0) matched.add(previousIndex)
       const prior = previous[kind][previousIndex]
       const priorIndex = kind === 'grammar' ? previous.vocabulary.length + previousIndex : previousIndex
@@ -34,20 +36,22 @@ export function getLessonTests(lesson) {
   }
   // Retain the last published v3 bank as well as the original v2 bank.
   // New choices must never reinterpret a previously saved option index.
-  const reviewed = getPractice(lesson, { previous: true })
-  for (const kind of ['vocabulary', 'grammar']) {
-    reviewed[kind].forEach((item, index) => {
-      const correct = item.options?.[item.answer]
-      const target = kind === 'grammar' ? result[kind][index] : result[kind].find(q => q.options?.[q.answer] === correct)
-      const priorIndex = kind === 'grammar' || previous[kind][index]?.options?.[previous[kind][index]?.answer] === correct ? index : previous[kind].findIndex(q => q.options?.[q.answer] === correct)
-      const prior = previous[kind][priorIndex]
-      const originalKey = `${lesson.id}-test-v2-${kind === 'grammar' ? previous.vocabulary.length + priorIndex : priorIndex}`
-      const oldKey = prior && questionSignature(item) === questionSignature(prior) ? originalKey : `${lesson.id}-test-v3-${kind}-${exerciseId(item)}`
-      if (target?.answerKey === oldKey || legacy.some(q => q.answerKey === oldKey)) return
-      legacy.push({ ...item, answerKey: oldKey, kind, section: kind === 'grammar' ? 'Grammatik · frühere Aufgabe' : 'Wörter · frühere Aufgabe', legacy: true, supersededBy: target?.answerKey })
-      const original = legacy.find(q => q.answerKey === originalKey)
-      if (original) original.supersededByHistory = [oldKey]
-    })
+  for (const reviewed of [getPractice(lesson, { previous: true }), getPractice(lesson, { fullPhrases: true })]) {
+    for (const kind of ['vocabulary', 'grammar']) {
+      reviewed[kind].forEach((item, index) => {
+        const correct = vocabularyTerm(item)
+        const target = kind === 'grammar' ? result[kind][index] : result[kind].find(q => vocabularyTerm(q) === correct)
+        const priorIndex = kind === 'grammar' || vocabularyTerm(previous[kind][index]) === correct ? index : previous[kind].findIndex(q => vocabularyTerm(q) === correct)
+        const prior = previous[kind][priorIndex]
+        const originalKey = `${lesson.id}-test-v2-${kind === 'grammar' ? previous.vocabulary.length + priorIndex : priorIndex}`
+        const oldKey = prior && questionSignature(item) === questionSignature(prior) ? originalKey : `${lesson.id}-test-v3-${kind}-${exerciseId(item)}`
+        if (target?.answerKey === oldKey || legacy.some(q => q.answerKey === oldKey)) return
+        legacy.push({ ...item, answerKey: oldKey, kind, section: kind === 'grammar' ? 'Grammatik · frühere Aufgabe' : 'Wörter · frühere Aufgabe', legacy: true, supersededBy: target?.answerKey })
+        for (const older of legacy) {
+          if (older.answerKey !== oldKey && older.supersededBy === target?.answerKey) older.supersededByHistory = [...(older.supersededByHistory || []), oldKey]
+        }
+      })
+    }
   }
   return result
 }
@@ -72,10 +76,10 @@ export function getQuestionBank(lessons) {
         return { ...item, question: sentenceOnly(item.question), answerKey: `${lesson.id}-grammar-${index}`, section: 'Grammatik · frühere Aufgabe', legacy: true, supersededBy: match >= 0 ? tests.grammar[match]?.answerKey : undefined, supersededByHistory: match >= 0 ? [`${lesson.id}-test-v2-${previous.vocabulary.length + match}`] : [] }
       }),
       ...(lesson.vocabulary_quiz || []).map((item, index) => {
-        const correct = item.options?.[item.answer]
+        const correct = vocabularyTerm(item)
         const target = mentionedVocabulary(lesson, item.question)
-        const match = tests.vocabulary.find(current => current.options?.[current.answer] === correct) || tests.vocabulary.find(current => normalizedPhrase(current.options?.[current.answer]) === normalizedPhrase(target?.term) && target)
-        const priorIndex = previous.vocabulary.findIndex(prior => normalizedPhrase(prior.options?.[prior.answer]) === normalizedPhrase(match?.options?.[match?.answer]) && match)
+        const match = tests.vocabulary.find(current => vocabularyTerm(current) === correct) || tests.vocabulary.find(current => normalizedPhrase(vocabularyTerm(current)) === normalizedPhrase(target?.term) && target)
+        const priorIndex = previous.vocabulary.findIndex(prior => normalizedPhrase(prior.options?.[prior.answer]) === normalizedPhrase(vocabularyTerm(match)) && match)
         return { ...item, answerKey: `${lesson.id}-vocabquiz-${index}`, section: 'Wörter · frühere Aufgabe', legacy: true, reading: lesson.reading, supersededBy: match?.answerKey, supersededByHistory: priorIndex >= 0 ? [`${lesson.id}-test-v2-${priorIndex}`] : [] }
       }),
       ...(lesson.listening?.questions || []).map((item, index) => ({ ...item, answerKey: `${lesson.id}-listening-${index}`, section: 'Hören', audio: lesson.listening })),

@@ -8,6 +8,7 @@ import { normalizeDeutschState as normalizeState } from '@/lib/deutsch/state'
 import { createDeutschSync } from '@/lib/deutsch/sync'
 import { getQuestionBank, getLessonTests, makePracticeSession, getMistakeQuestions } from './sessions'
 import CourseHome from './CourseHome'
+import { lessonIllustration } from './lessonIllustrations'
 
 const DAY = 24 * 60 * 60 * 1000
 const INTERVALS = [0, 1, 3, 7, 14, 30]
@@ -259,6 +260,8 @@ REGELN FÜR WRITING:
 - Schreibaufgabe verlangt eine Meinung, Entscheidung oder Argumentation
 - checklist: 5 Punkte
 
+Variiere die Wortschatzaufgaben: Frage auch nach einem Bestandteil einer Wendung, einem passenden Kollokationsverb oder dem präzisen Wort in einem neuen Kontext. Nicht immer die ganze gelernte Wendung als Antwort anbieten. Bei Teilantworten sourceTerm mit der exakten ursprünglichen vocabulary.term angeben. Gib den fehlenden Bestandteil nicht schon im Fragetext vor.
+
 Antwortoptionen: Alle Optionen sollen grammatisch einsetzbar sein und aus derselben Situation stammen. Prüfe nahe Bedeutungsunterschiede statt offensichtlicher Gegenteile. Der Kontext muss genau eine beste Antwort begründen. Keine austauschbaren Synonyme. Erkläre, warum die nächstliegende falsche Option im Kontext nicht passt.
 
 Pflichtprüfung vor der Ausgabe:
@@ -307,9 +310,32 @@ function tokenizeText(text, vocabulary, onWordClick) {
   })
 }
 
-function QuestionBlock({ id, items, answers, onAnswer, onReset }) {
+export function QuestionBlock({ id, items, answers, onAnswer, onReset }) {
   const [cursor, setCursor] = useState(0)
   const [finished, setFinished] = useState(false)
+  const quizRef = useRef(null)
+  const nextRef = useRef(null)
+  const currentKey = items[cursor]?.answerKey || `${id}-${cursor}`
+  const canAdvance = Number.isInteger(answers[currentKey])
+  useEffect(() => {
+    if (finished || !items.length || !canAdvance) return
+    function onEnter(event) {
+      if (event.key !== 'Enter' || event.repeat || event.isComposing || event.defaultPrevented || event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return
+      const target = event.target
+      if (!(target instanceof Element)) return
+      if (target.closest('input, textarea, select, [contenteditable="true"], a, summary, audio, video')) return
+      const dialog = document.querySelector('[role="dialog"][aria-modal="true"]')
+      if (dialog && !dialog.contains(quizRef.current)) return
+      const button = target.closest('button')
+      if (button && button !== nextRef.current && !button.hasAttribute('data-quiz-option')) return
+      if (!quizRef.current?.contains(target) && target !== document.body && target !== document.documentElement) return
+      event.preventDefault()
+      if (cursor + 1 < items.length) setCursor(cursor + 1)
+      else setFinished(true)
+    }
+    document.addEventListener('keydown', onEnter)
+    return () => document.removeEventListener('keydown', onEnter)
+  }, [canAdvance, cursor, finished, items.length])
   const keyFor = (item, index) => item.answerKey || `${id}-${index}`
   const hasAnswers = items.some((item, index) => typeof answers[keyFor(item, index)] === 'number')
   const score = items.filter((item, index) => answers[keyFor(item, index)] === item.answer).length
@@ -319,7 +345,7 @@ function QuestionBlock({ id, items, answers, onAnswer, onReset }) {
     <button type="button" className={styles.primaryBtn} onClick={() => { onReset(); setCursor(0); setFinished(false) }}>Noch einmal üben</button>
   </div>
   return (
-    <div className={styles.questionList}>
+    <div className={styles.questionList} ref={quizRef}>
       <div className={styles.quizProgress} aria-live="polite"><span>Frage {cursor + 1} von {items.length}</span><span>{items[cursor]?.section || ''}</span></div>
       <progress className={styles.quizMeter} value={cursor + 1} max={items.length} aria-label="Testfortschritt" />
       {items.slice(cursor, cursor + 1).map((item) => {
@@ -348,6 +374,7 @@ function QuestionBlock({ id, items, answers, onAnswer, onReset }) {
                   <button
                     type="button"
                     className={className}
+                    data-quiz-option
                     key={option}
                     disabled={answered}
                     onClick={() => onAnswer(key, optionIndex)}
@@ -372,7 +399,7 @@ function QuestionBlock({ id, items, answers, onAnswer, onReset }) {
       })}
       <div className={styles.quizNavigation}>
         <button type="button" className={styles.ghostBtn} disabled={cursor === 0} onClick={() => setCursor(index => index - 1)}>← Zurück</button>
-        <button type="button" className={styles.primaryBtn} disabled={typeof answers[keyFor(items[cursor], cursor)] !== 'number'} onClick={() => cursor + 1 < items.length ? setCursor(index => index + 1) : setFinished(true)}>{cursor + 1 < items.length ? 'Weiter →' : 'Ergebnis anzeigen'}</button>
+        <button type="button" ref={nextRef} className={styles.primaryBtn} disabled={typeof answers[keyFor(items[cursor], cursor)] !== 'number'} onClick={() => cursor + 1 < items.length ? setCursor(index => index + 1) : setFinished(true)}>{cursor + 1 < items.length ? 'Weiter →' : 'Ergebnis anzeigen'}</button>
       </div>
       {hasAnswers && (
         <button type="button" className={styles.resetAnswers} onClick={() => { onReset(); setCursor(0) }}>
@@ -692,7 +719,7 @@ export default function DeutschPage({
               <h1 id="lesson-title">{activeLesson.title}{!/[.!?…]$/.test(activeLesson.title) && <span>.</span>}</h1>
               <p className={styles.lessonTopic}>{activeLesson.topic}</p>
             </div>
-            <img src="/andarun/deutsch/neighborhood.png" alt="" width="1536" height="1024" />
+            <img src={lessonIllustration(activeLesson)} alt="" width="900" height="600" />
           </section>
         </>
       )}

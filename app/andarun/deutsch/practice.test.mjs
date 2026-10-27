@@ -20,7 +20,7 @@ test('prepared lesson has a contextual vocabulary exercise for each word and 15 
     assert.doesNotMatch(item.question, /^(Ergänze|Wähle|Was bedeutet|Welche)/)
   }
   for (const item of practice.vocabulary) {
-    assert.ok(lesson.reading.vocabulary.some(word => word.term === item.options[item.answer]))
+    assert.ok(lesson.reading.vocabulary.some(word => word.term === (item.sourceTerm || item.options[item.answer])))
     assert.ok(item.explanation.length > 50)
   }
   assert.equal(new Set(practice.vocabulary.map(item => item.answer)).size, 4)
@@ -67,6 +67,32 @@ test('reviewed phrases use a fresh context even if the imported example uses ano
  const practice=getPractice({id:'health',reading:{vocabulary:[{term:'sich eingestehen',example:'Er gestand sich ein, dass er Hilfe braucht.'}]}})
  assert.equal(practice.vocabulary.length,1)
  assert.equal(practice.vocabulary[0].options.length,4)
- assert.equal(practice.vocabulary[0].options[practice.vocabulary[0].answer],'sich eingestehen')
- assert.match(practice.vocabulary[0].question,/Unterstützung braucht/)
+ assert.equal(practice.vocabulary[0].sourceTerm,'sich eingestehen')
+ assert.equal(practice.vocabulary[0].options[practice.vocabulary[0].answer],'eingestehen')
+ assert.match(practice.vocabulary[0].question,/Kraft/)
+})
+
+test('phrase exercises assess meaningful components without revealing the missing word',()=>{
+ const terms=['Verantwortung trägt','sich eingestehen','Einzelheiten preiszugeben','auf zusätzliche Aufgaben zu verzichten','unterscheiden sich']
+ const practice=getPractice({reading:{vocabulary:terms.map(term=>({term}))}})
+ assert.equal(practice.vocabulary.length,terms.length)
+ for(const item of practice.vocabulary){
+  const answer=item.options[item.answer]
+  assert.ok(terms.includes(item.sourceTerm))
+  assert.notEqual(answer,item.sourceTerm)
+  assert.equal(item.question.split('___').length,2)
+  assert.equal(new Set(item.options).size,4)
+  assert.ok(!item.question.toLowerCase().includes(answer.toLowerCase()))
+ }
+ const responsibility=practice.vocabulary.find(q=>q.sourceTerm==='Verantwortung trägt')
+ assert.match(responsibility.question.replace('___',responsibility.options[responsibility.answer]),/trägt sie weiterhin die Verantwortung/)
+ const verzichten=practice.vocabulary.find(q=>q.sourceTerm==='auf zusätzliche Aufgaben zu verzichten')
+ assert.match(verzichten.question.replace('___',verzichten.options[verzichten.answer]),/auf zusätzliche Aufgaben verzichten/)
+})
+
+test('an imported fragment linked to a vocabulary term does not get a duplicate whole-phrase exercise',()=>{
+ const term='Verantwortung trägt'
+ const practice=getPractice({reading:{vocabulary:[{term}]},vocabulary_quiz:[{sourceTerm:term,question:'Sie trägt die ___.',options:['Verantwortung','Planung','Befugnis','Aufsicht'],answer:0}]})
+ assert.equal(practice.vocabulary.length,1)
+ assert.equal(practice.vocabulary[0].sourceTerm,term)
 })

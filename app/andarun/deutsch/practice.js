@@ -1,3 +1,4 @@
+import { refineVocabulary } from './vocabularyExercises'
 import * as currentRevision from './exerciseRevisions'
 import * as previousRevision from './exerciseRevisions.previous'
 
@@ -53,13 +54,13 @@ export function sentenceOnly(question = '') {
   return question.replace(/^(?:Ergänze(?: richtig)?|Wähle(?: die richtige Form)?|Welche (?:Form|Präposition(?: und welcher Kasus)?|Artikel).*?(?:passt|passen|korrekt))\s*:\s*/i, '').replace(/^[„“"]|[“”"]$/g, '')
 }
 
-export function getPractice(lesson, { legacy = false, previous = false } = {}) {
+export function getPractice(lesson, { legacy = false, previous = false, fullPhrases = false } = {}) {
   const { reviseVocabulary, reviseGrammar, getReviewedVocabulary } = previous ? previousRevision : currentRevision
   const words = lesson?.reading?.vocabulary || []
   const supplied = (lesson?.vocabulary_quiz || []).filter(item => item.question?.includes('___'))
   const vocabulary = [...supplied]
   for (const [index, word] of words.entries()) {
-    if (supplied.some(item => item.options?.[item.answer]?.toLocaleLowerCase('de') === word.term?.toLocaleLowerCase('de'))) continue
+    if (supplied.some(item => (item.sourceTerm || item.options?.[item.answer])?.toLocaleLowerCase('de') === word.term?.toLocaleLowerCase('de'))) continue
     const reviewed = legacy ? null : getReviewedVocabulary(word.term)
     if (!legacy && !reviewed) continue
     const sentence = reviewed?.question ? reviewed.question.replace('___', word.term) : contexts[word.term] || word.example
@@ -82,5 +83,5 @@ export function getPractice(lesson, { legacy = false, previous = false } = {}) {
     if (!grammar.some(other => other.question === item.question)) grammar.push(item)
     if (grammar.length >= Math.max(15, existing.length)) break
   }
-  return legacy ? { vocabulary, grammar } : { vocabulary: vocabulary.map(reviseVocabulary), grammar: grammar.map(reviseGrammar) }
+  return legacy ? { vocabulary, grammar } : { vocabulary: vocabulary.map(reviseVocabulary).map(item => previous || fullPhrases ? item : refineVocabulary(item)), grammar: grammar.map(reviseGrammar) }
 }

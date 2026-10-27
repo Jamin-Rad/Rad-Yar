@@ -160,3 +160,19 @@ test('last published v3 choices keep their own indexes and migrate mistakes to t
  assert.equal(getMistakeQuestions(bank,oldAnswers).length,0)
  assert.equal(new Set(bank.map(q=>q.answerKey)).size,bank.length)
 })
+
+test('full-expression mistakes migrate to fragment exercises without reviving corrected history',async()=>{
+ const {getPractice}=await import('./practice.js');const {getLessonTests,getMistakeQuestions}=await import('./sessions.js')
+ const lesson={id:'phrase-migration',reading:{vocabulary:[{term:'sich eingestehen',example:'Er muss sich eingestehen, dass er Hilfe braucht.'}]},vocabulary_quiz:[{question:'Was bedeutet sich eingestehen?',options:['etwas anerkennen','etwas planen','etwas prüfen','etwas erledigen'],answer:0}]}
+ const bank=getQuestionBank([lesson]);const tests=getLessonTests(lesson);const current=tests.vocabulary[0]
+ assert.equal(current.options[current.answer],'eingestehen')
+ const full=getPractice(lesson,{fullPhrases:true}).vocabulary[0]
+ const recent=tests.legacy.find(q=>q.question===full.question)
+ const older=tests.legacy.find(q=>q.answerKey!==recent.answerKey&&q.options[q.answer]==='sich eingestehen')
+ assert.ok(recent);assert.ok(older);assert.equal(recent.supersededBy,current.answerKey)
+ const wrong=(recent.answer+1)%4
+ assert.deepEqual(getMistakeQuestions(bank,{[recent.answerKey]:wrong}).map(q=>q.answerKey),[current.answerKey])
+ assert.equal(getMistakeQuestions(bank,{[recent.answerKey]:wrong,[current.answerKey]:current.answer}).length,0)
+ assert.equal(getMistakeQuestions(bank,{[older.answerKey]:(older.answer+1)%4,[recent.answerKey]:recent.answer,'phrase-migration-vocabquiz-0':1}).length,0)
+ assert.equal(new Set(bank.map(q=>q.answerKey)).size,bank.length)
+})
