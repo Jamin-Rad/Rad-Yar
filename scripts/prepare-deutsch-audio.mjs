@@ -25,6 +25,7 @@ mkdirSync(outputDir, { recursive: true })
 const key = process.env.GOOGLE_TTS_API_KEY
 if (!key) throw new Error('Google Cloud TTS key is not configured.')
 const voices = ['de-DE-Chirp3-HD-Sulafat', 'de-DE-Chirp3-HD-Charon']
+const speakerVoices = { Nora: 0, Kundin: 0, Mitarbeiter: 1, Amir: 1, Mitarbeiterin: 0, Hausverwaltung: 1, Bewohnerin: 0 }
 const cleanText = text => text.replaceAll('Gefuehl','Gefühl').replaceAll('muessten','müssten').replaceAll('Notfaellen','Notfällen').replaceAll('Rueckfragen','Rückfragen').replaceAll('staendig','ständig').replaceAll('naechsten','nächsten')
 
 async function synthesize(text, voice) {
@@ -50,7 +51,8 @@ function wavFile(pcm) {
   return Buffer.concat([h, pcm])
 }
 for (const [index, recording] of recordings.entries()) {
-  const id = createHash('sha256').update(`chirp3-dialogue-v1:${recording.text}`).digest('hex').slice(0, 20)
+  const revision = /^(Amir|Mitarbeiterin|Hausverwaltung|Bewohnerin):/m.test(recording.text) ? 'chirp3-dialogue-v2' : 'chirp3-dialogue-v1'
+  const id = createHash('sha256').update(`${revision}:${recording.text}`).digest('hex').slice(0, 20)
   const filename = `${id}.m4a`
   const destination = new URL(filename, outputDir)
   if (!existsSync(destination) || statSync(destination).size < 1000) {
@@ -62,7 +64,7 @@ for (const [index, recording] of recordings.entries()) {
     for (const line of lines) {
       const match = line.match(/^([\p{L} .-]{2,35}):\s*(.+)$/u)
       if (match && !speakerMap.has(match[1])) speakerMap.set(match[1], speakerMap.size % 2)
-      const voice = voices[match ? speakerMap.get(match[1]) : 0]
+      const voice = voices[match ? (speakerVoices[match[1]] ?? speakerMap.get(match[1])) : 0]
       parts.push(await synthesize(match ? match[2] : line, voice), Buffer.alloc(14400))
     }
     writeFileSync(temporary, wavFile(Buffer.concat(parts)))
