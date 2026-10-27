@@ -9,6 +9,8 @@ import { createDeutschSync } from '@/lib/deutsch/sync'
 import { getQuestionBank, getLessonTests, makePracticeSession, getReviewSummary, recordQuestionAnswer, clearQuestionAnswers } from './sessions'
 import { lessonProgress } from './progress'
 import CourseHome from './CourseHome'
+import ShortWriting from './ShortWriting'
+import WordOrder from './WordOrder'
 import { lessonIllustration } from './lessonIllustrations'
 
 const DAY = 24 * 60 * 60 * 1000
@@ -207,9 +209,13 @@ Schema:
       { “question”: “...”, “options”: [“...”, “...”, “...”, “...”], “answer”: 0, “explanation”: “...” }
     ]
   },
+  “grammar_ordering”: [
+    { “fa”: “معنی فارسی جمله”, “answers”: [“Ein kurzer deutscher Satz.”] }
+  ],
   “writing”: {
-    “prompt”: “konkrete Schreibaufgabe”,
-    “checklist”: [“...”, “...”, “...”]
+    “sentences”: [
+      { “fa”: “یک جملهٔ کوتاه فارسی مرتبط با درس”, “answers”: [“Kurze natürliche Übersetzung.”, “Weitere passende Übersetzung.”] }
+    ]
   }
 }
 
@@ -259,8 +265,10 @@ REGELN FÜR LISTENING:
 - Ähnliche Situation wie Lesetext, aber ein anderer Text und eine andere Perspektive
 
 REGELN FÜR WRITING:
-- Schreibaufgabe verlangt eine Meinung, Entscheidung oder Argumentation
-- checklist: 5 Punkte
+- Genau 5 kurze persische Sätze mit natürlichen deutschen Musterübersetzungen in writing.sentences.
+- Pro Satz 1 bis 3 sinnvolle Varianten in answers; höchstens 12 deutsche Wörter. Keine Aufsätze, E-Mails oder Meinungsbeiträge.
+- Zusätzlich genau 5 grammar_ordering Einträge: fa gibt den Sinn, answers die richtige Wortfolge. Varianten müssen dieselben Wörter verwenden.
+- Grammatikfragen enthalten nur den Satz, keine Aufforderungen wie „Fülle die Lücke aus“.
 
 Variiere die Wortschatzaufgaben: Frage auch nach einem Bestandteil einer Wendung, einem passenden Kollokationsverb oder dem präzisen Wort in einem neuen Kontext. Nicht immer die ganze gelernte Wendung als Antwort anbieten. Bei Teilantworten sourceTerm mit der exakten ursprünglichen vocabulary.term angeben. Gib den fehlenden Bestandteil nicht schon im Fragetext vor.
 
@@ -380,9 +388,9 @@ export function QuestionBlock({ id, items, answers, onAnswer, onReset, reviewPro
             {item.reading && <details className={styles.transcript}><summary>Lesetext anzeigen</summary><p>{item.reading.text}</p></details>}
             <div className={styles.questionTop}>
               <span>{String(index + 1).padStart(2, '0')}</span>
-              <strong>{item.question}</strong>
+              <strong lang={item.questionLanguage} dir={item.questionLanguage === 'fa' ? 'rtl' : undefined}>{item.question}</strong>
             </div>
-            <div className={styles.optionsGrid}>
+            {item.type === 'ordering' ? <WordOrder key={key} item={item} answered={answered} onAnswer={value => onAnswer(key, value)} /> : <div className={styles.optionsGrid}>
               {(item.options || []).map((option, optionIndex) => {
                 const isSelected = selected === optionIndex
                 const isCorrect = item.answer === optionIndex
@@ -405,12 +413,12 @@ export function QuestionBlock({ id, items, answers, onAnswer, onReset, reviewPro
                   </button>
                 )
               })}
-            </div>
+            </div>}
             {answered && (
               <div className={`${styles.answerFeedback} ${selected === item.answer ? styles.feedbackCorrect : styles.feedbackWrong}`}>
                 <strong>{selected === item.answer ? 'Richtig' : 'Richtige Lösung'}</strong>
-                {selected !== item.answer && <p className={styles.selectedAnswer}>Deine Antwort: {item.options[selected]}</p>}
-                <p className={styles.answerSolution}>{item.options[item.answer]}</p>
+                {selected !== item.answer && item.type !== 'ordering' && <p className={styles.selectedAnswer}>Deine Antwort: {item.options[selected]}</p>}
+                <p className={styles.answerSolution}>{item.type === 'ordering' ? item.solutions[0] : item.options[item.answer]}</p>
                 {item.question.includes('___') && <p className={styles.completedSentence}>{item.question.replace('___', item.options[item.answer])}</p>}
                 <p className={styles.explanation}>{item.explanation}</p>
                 {reviewProgress[key] && <p className={styles.reviewSchedule}>{reviewProgress[key].correctCount === 3 ? 'Dreimal richtig · Wiederholung abgeschlossen' : `${reviewProgress[key].correctCount}/3 richtig · ${reviewProgress[key].correctCount ? `Nächste Wiederholung: ${new Date(reviewProgress[key].dueAt).toLocaleDateString('de-DE')}` : 'Wird erneut wiederholt'}`}</p>}
@@ -429,29 +437,6 @@ export function QuestionBlock({ id, items, answers, onAnswer, onReset, reviewPro
         </button>
       )}
     </div>
-  )
-}
-
-function MarkedCorrection({ correction }) {
-  const segments = Array.isArray(correction?.annotatedCorrection)
-    ? correction.annotatedCorrection.filter(segment => typeof segment?.text === 'string' && segment.text)
-    : []
-
-  if (!segments.length) return <p>{correction?.corrected || ''}</p>
-
-  return (
-    <p className={styles.markedCorrection}>
-      {segments.map((segment, index) => {
-        const className = segment.type === 'addition'
-          ? styles.markAddition
-          : segment.type === 'correction'
-            ? styles.markCorrection
-            : ''
-        return className
-          ? <span className={className} key={`${segment.text}-${index}`}>{segment.text}</span>
-          : <span key={`${segment.text}-${index}`}>{segment.text}</span>
-      })}
-    </p>
   )
 }
 
@@ -478,9 +463,6 @@ export default function DeutschPage({
   const [testCategory, setTestCategory] = useState(null)
   const [selectedWord, setSelectedWord] = useState(null)
   const [importText, setImportText] = useState('')
-  const [writingText, setWritingText] = useState('')
-  const [correction, setCorrection] = useState(null)
-  const [correcting, setCorrecting] = useState(false)
   const [message, setMessage] = useState('')
   const [importOpen, setImportOpen] = useState(false)
   const [flashOpen, setFlashOpen] = useState(false)
@@ -591,10 +573,6 @@ export default function DeutschPage({
     return state.cards.filter(card => (card.box || 0) === flashView.box && isDue(card))
   }, [flashView, state.cards])
   const activeFlashCard = flashView.practice ? flashCards[practiceIndex % Math.max(flashCards.length, 1)] : flashCards[0]
-  const lessonWritings = useMemo(
-    () => state.writings.filter(item => item.lessonId === activeLesson.id),
-    [state.writings, activeLesson.id]
-  )
 
   function toggleRead(lessonId) {
     persist(current => ({ ...current, lessonStatus: { ...current.lessonStatus, [lessonId]: { ...current.lessonStatus[lessonId], readAt: current.lessonStatus[lessonId]?.readAt ? null : new Date().toISOString(), updatedAt: new Date().toISOString() } } }))
@@ -672,82 +650,6 @@ export default function DeutschPage({
     } catch {
       setMessage('JSON konnte nicht als Lektion gelesen werden.')
     }
-  }
-
-  function saveWritingDraft() {
-    if (!writingText.trim()) return
-    persist(current => ({
-      ...current,
-      writings: [{
-        id: uid('writing'),
-        lessonId: activeLesson.id,
-        task: activeLesson.writing?.prompt || '',
-        text: writingText.trim(),
-        correction,
-        createdAt: new Date().toISOString(),
-      }, ...current.writings],
-    }))
-    setMessage('Schreibtext gespeichert.')
-  }
-
-  async function correctWriting() {
-    if (!writingText.trim()) {
-      setMessage('Schreibe zuerst einen Text.')
-      return
-    }
-    setCorrecting(true)
-    setCorrection(null)
-    try {
-      const res = await fetch(correctEndpoint, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          text: writingText,
-          task: activeLesson.writing?.prompt || '',
-          checklist: activeLesson.writing?.checklist || [],
-        }),
-      })
-      const data = await res.json()
-      if (!res.ok) throw new Error(data.error || 'KI nicht verfügbar')
-      const nextCorrection = data.result
-      setCorrection(nextCorrection)
-      persist(current => ({
-        ...current,
-        writings: [{
-          id: uid('writing'),
-          lessonId: activeLesson.id,
-          task: activeLesson.writing?.prompt || '',
-          checklist: activeLesson.writing?.checklist || [],
-          text: writingText.trim(),
-          correction: nextCorrection,
-          createdAt: new Date().toISOString(),
-        }, ...current.writings],
-      }))
-      setMessage('KI-Korrektur ist fertig und gespeichert.')
-    } catch (error) {
-      setMessage(error.message || 'KI-Korrektur ist gerade nicht verfügbar.')
-    } finally {
-      setCorrecting(false)
-    }
-  }
-
-  function addMistakeCard(mistake) {
-    const card = {
-      id: uid('mistake'),
-      lessonId: activeLesson.id,
-      type: 'mistake',
-      term: mistake.correct || mistake.cardBack || 'Fehlerkarte',
-      front: mistake.cardFront || `Korrigiere: ${mistake.wrong}`,
-      back: mistake.cardBack || mistake.correct,
-      de: mistake.reason || '',
-      fa: '',
-      example: mistake.correct || '',
-      box: 0,
-      dueAt: new Date().toISOString(),
-      createdAt: new Date().toISOString(),
-    }
-    persist(current => ({ ...current, cards: [card, ...current.cards.filter(item => item.id !== card.id)] }))
-    setMessage('Fehler wurde als Wiederholungskarte gespeichert.')
   }
 
   if (lessonMode && loading) {
@@ -884,117 +786,9 @@ export default function DeutschPage({
 
       {activeTab === 'schreiben' && (
         <section className={styles.writingGrid}>
-          <article className={styles.textPanel}>
-            <div className={styles.panelHead}>
-              <h2>Tagesaufgabe</h2>
-              <span>Schreiben</span>
-            </div>
-            <p className={styles.taskText}>{activeLesson.writing?.prompt}</p>
-            <ul className={styles.checklist}>
-              {(activeLesson.writing?.checklist || []).map(item => <li key={item}>{item}</li>)}
-            </ul>
-            <textarea aria-label="Dein Text" value={writingText} onChange={event => setWritingText(event.target.value)} placeholder="Schreibe hier deinen Text..." />
-            <div className={styles.actionRow}>
-              <button type="button" className={styles.primaryBtn} onClick={correctWriting} disabled={correcting}>{correcting ? 'Korrigiert...' : 'Mit KI korrigieren'}</button>
-              <button type="button" onClick={saveWritingDraft}>Speichern</button>
-            </div>
-            {!!lessonWritings.length && (
-              <section className={styles.writingHistory}>
-                <h3>Gespeicherte Texte</h3>
-                {lessonWritings.slice(0, 6).map(item => (
-                  <button
-                    type="button"
-                    key={item.id}
-                    onClick={() => {
-                      setWritingText(item.text || '')
-                      setCorrection(item.correction || null)
-                      setMessage('Gespeicherte Korrektur geladen.')
-                    }}
-                  >
-                    <span>{new Date(item.createdAt).toLocaleString('de-DE', { dateStyle: 'short', timeStyle: 'short' })}</span>
-                    <strong>{item.correction ? 'mit KI-Korrektur' : 'Entwurf'}</strong>
-                    <small>{(item.text || '').slice(0, 120)}{(item.text || '').length > 120 ? '...' : ''}</small>
-                  </button>
-                ))}
-              </section>
-            )}
-          </article>
-
-          <article className={styles.correctionPanel}>
-            <div className={styles.panelHead}>
-              <h2>Rückmeldung</h2>
-              <span>{correction ? 'Korrektur' : 'Bereit'}</span>
-            </div>
-            {correction ? (
-              <>
-                {correction.taskFulfillment && (
-                  <div className={styles.fulfillmentBox}>
-                    <span>{correction.taskFulfillment.status || 'Aufgabenbezug'}</span>
-                    <strong>{typeof correction.taskFulfillment.score === 'number' ? `${correction.taskFulfillment.score}%` : 'Bewertet'}</strong>
-                    <p>{correction.taskFulfillment.feedback}</p>
-                    {!!correction.taskFulfillment.missingPoints?.length && (
-                      <>
-                        <h4>Fehlende Punkte</h4>
-                        <ul>
-                          {correction.taskFulfillment.missingPoints.map((item, index) => <li key={`${item}-${index}`}>{item}</li>)}
-                        </ul>
-                      </>
-                    )}
-                    {!!correction.taskFulfillment.offTopicParts?.length && (
-                      <>
-                        <h4>Nicht passend zur Aufgabe</h4>
-                        <ul>
-                          {correction.taskFulfillment.offTopicParts.map((item, index) => <li key={`${item}-${index}`}>{item}</li>)}
-                        </ul>
-                      </>
-                    )}
-                  </div>
-                )}
-                <h3>Korrigierte Version</h3>
-                <MarkedCorrection correction={correction} />
-                {!!correction.annotatedCorrection?.length && (
-                  <div className={styles.markLegend} aria-label="Markierungslegende">
-                    <span><i className={styles.legendCorrection} /> rot: korrigiert</span>
-                    <span><i className={styles.legendAddition} /> gelb: ergänzt</span>
-                  </div>
-                )}
-                {correction.teacherVersion && (
-                  <>
-                    <h3>Passende Musterlösung</h3>
-                    <p>{correction.teacherVersion}</p>
-                  </>
-                )}
-                {!!correction.grammarErrors?.length && (
-                  <>
-                    <h3>Relevante Grammatikfehler</h3>
-                    <ol className={styles.grammarList}>
-                      {correction.grammarErrors.map((error, index) => (
-                        <li key={`${error.wrong}-${index}`}>
-                          <strong>{error.wrong} → {error.correct}</strong>
-                          <span>{error.rule}</span>
-                          {error.example && <em>{error.example}</em>}
-                        </li>
-                      ))}
-                    </ol>
-                  </>
-                )}
-                <h3>Weitere wichtige Fehler</h3>
-                {(correction.mistakes || []).map((mistake, index) => (
-                  <div className={styles.mistakeRow} key={`${mistake.wrong}-${index}`}>
-                    <strong>{mistake.wrong} → {mistake.correct}</strong>
-                    <span>{mistake.type ? `${mistake.type}: ` : ''}{mistake.reason}</span>
-                    <button type="button" onClick={() => addMistakeCard(mistake)}>Als Karte speichern</button>
-                  </div>
-                ))}
-                {correction.nextStep && (
-                  <>
-                    <h3>Nächster Schritt</h3>
-                    <p>{correction.nextStep}</p>
-                  </>
-                )}
-              </>
-            ) : null}
-          </article>
+          <ShortWriting key={activeLesson.id} lesson={activeLesson} writings={state.writings} onSave={entry => persist(current => ({
+            ...current, writings: [{ ...entry, updatedAt: new Date().toISOString() }, ...current.writings.filter(item => item.id !== entry.id)],
+          }))} />
         </section>
       )}
 

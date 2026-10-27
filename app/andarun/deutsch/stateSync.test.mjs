@@ -87,12 +87,12 @@ test('lesson categories share global source keys without mixing vocabulary and g
  const bank=getQuestionBank(lessons)
  for(const lesson of lessons){
   const tests=getLessonTests(lesson)
-  assert.equal(tests.vocabulary.length,15);assert.equal(tests.grammar.length,15)
+  assert.equal(tests.vocabulary.length,15);assert.equal(tests.grammar.length,20)
   for(const kind of ['vocabulary','grammar']) for(const item of tests[kind]){
    assert.equal(item.kind,kind)
    assert.equal(bank.filter(q=>!q.legacy&&q.answerKey===item.answerKey).length,1)
   }
-  assert.equal(new Set([...tests.vocabulary,...tests.grammar].map(q=>q.answerKey)).size,30)
+  assert.equal(new Set([...tests.vocabulary,...tests.grammar].map(q=>q.answerKey)).size,35)
  }
 })
 

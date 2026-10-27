@@ -39,9 +39,13 @@ Schema:
       { “question”: “...”, “options”: [“...”, “...”, “...”, “...”], “answer”: 0, “explanation”: “...” }
     ]
   },
+  “grammar_ordering”: [
+    { “fa”: “معنی فارسی جمله”, “answers”: [“Ein kurzer deutscher Satz.”] }
+  ],
   “writing”: {
-    “prompt”: “konkrete Schreibaufgabe”,
-    “checklist”: [“...”, “...”, “...”]
+    “sentences”: [
+      { “fa”: “جملهٔ کوتاه فارسی”, “answers”: [“Kurze deutsche Übersetzung.”] }
+    ]
   }
 }
 
@@ -90,8 +94,9 @@ REGELN FÜR LISTENING:
 - Ähnliche Situation wie Lesetext, aber ein anderer Text und eine andere Perspektive
 
 REGELN FÜR WRITING:
-- Schreibaufgabe verlangt eine Meinung, Entscheidung oder Argumentation
-- checklist: 5 Punkte
+- Genau 5 kurze persische Sätze in writing.sentences; je 1 bis 3 natürliche deutsche Übersetzungen in answers, höchstens 12 Wörter. Keine Aufsätze oder E-Mails.
+- Zusätzlich genau 5 grammar_ordering Einträge mit fa und answers. Alternative Wortfolgen müssen dieselben Wörter verwenden.
+- Keine Arbeitsanweisungen vor Lückensätzen; nur den Satz anzeigen.
 
 Pflichtprüfung vor der Ausgabe:
 1. Zähle 15 bis 20 vocabulary-Einträge — zu wenig = Fehler.

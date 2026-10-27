@@ -1,8 +1,9 @@
+import { getOrderingExercises } from './shortExercises'
 import { getPractice, sentenceOnly } from './practice'
 
 const vocabularyTerm = item => item?.sourceTerm || item?.options?.[item?.answer]
 
-function questionSignature(item) { return JSON.stringify([item.question, item.options, item.answer]) }
+function questionSignature(item) { return item.type === 'ordering' ? JSON.stringify(['ordering', item.question, item.tokens, item.solutions]) : JSON.stringify([item.question, item.options, item.answer]) }
 function exerciseId(item) {
   let hash = 2166136261
   for (const char of questionSignature(item)) hash = Math.imul(hash ^ char.codePointAt(0), 16777619)
@@ -12,7 +13,8 @@ function exerciseId(item) {
 // Category selection and global practice share source keys. Revised questions do
 // not reinterpret an old option index; previous mistakes remain reviewable.
 export function getLessonTests(lesson) {
-  const current = getPractice(lesson)
+  const practice = getPractice(lesson)
+  const current = { ...practice, grammar: [...practice.grammar, ...getOrderingExercises(lesson)] }
   const previous = getPractice(lesson, { legacy: true })
   const legacy = []
   const result = { vocabulary: [], grammar: [], legacy }

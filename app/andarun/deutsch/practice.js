@@ -48,10 +48,22 @@ const grammarPractice = [
   ['Je klarer die Regeln sind, ___ leichter fällt die Planung.', ['weil', 'als', 'desto', 'ob'], 2, 'Die zweiteilige Verbindung lautet „je … desto“. Nach „desto leichter“ folgt das Verb „fällt“.'],
 ].map(([question, options, answer, explanation]) => ({ question, options, answer, explanation }))
 
-export function sentenceOnly(question = '') {
+function legacySentenceOnly(question = '') {
   const quote = question.match(/[„“"]([^„“"]*___[^„“"]*)[“”"]/)
   if (quote) return quote[1]
   return question.replace(/^(?:Ergänze(?: richtig)?|Wähle(?: die richtige Form)?|Welche (?:Form|Präposition(?: und welcher Kasus)?|Artikel).*?(?:passt|passen|korrekt))\s*:\s*/i, '').replace(/^[„“"]|[“”"]$/g, '')
+}
+
+export function sentenceOnly(question = '') {
+  const instruction = /^(?:(?:Bitte\s+)?(?:Ergänze|Ergänzen Sie|Fülle|Füllen Sie|Vervollständige|Vervollständigen Sie|Setze|Setzen Sie|Trage|Tragen Sie|Wähle|Wählen Sie)|(?:Welche (?:Form|Präposition|Artikel)))/i
+  const raw = question.trim()
+  let text = instruction.test(raw) || /^[„“\"]/.test(raw) ? legacySentenceOnly(raw) : raw
+  while (instruction.test(text)) {
+    const prefix = text.match(/^([^:.!?\n]+)[:.!?\n]\s*([\s\S]+)$/)
+    if (!prefix || prefix[1].includes('___') || !prefix[2].includes('___')) break
+    text = prefix[2].trim()
+  }
+  return text
 }
 
 export function getPractice(lesson, { legacy = false, previous = false, fullPhrases = false } = {}) {
@@ -76,12 +88,12 @@ export function getPractice(lesson, { legacy = false, previous = false, fullPhra
     const options = [...distractors]; options.splice(answer, 0, word.term)
     vocabulary.push({ question, options, answer, explanation: `${sentence}\n${word.de || ''}` })
   }
-  const existing = (lesson?.id === 'deutsch-001-digitale-erreichbarkeit' ? [] : lesson?.grammar || []).filter(item => item.question?.includes('___')).map(item => ({ ...item, question: sentenceOnly(item.question) }))
+  const existing = (lesson?.id === 'deutsch-001-digitale-erreichbarkeit' ? [] : lesson?.grammar || []).filter(item => item.question?.includes('___')).map(item => ({ ...item, question: (legacy || previous || fullPhrases ? legacySentenceOnly : sentenceOnly)(item.question) }))
   const grammar = [...existing]
   for (const item of grammarPractice) {
     if (grammar.length >= 15) break
     if (!grammar.some(other => other.question === item.question)) grammar.push(item)
     if (grammar.length >= Math.max(15, existing.length)) break
   }
-  return legacy ? { vocabulary, grammar } : { vocabulary: vocabulary.map(reviseVocabulary).map(item => previous || fullPhrases ? item : refineVocabulary(item)), grammar: grammar.map(reviseGrammar) }
+  return legacy ? { vocabulary, grammar } : { vocabulary: vocabulary.map(reviseVocabulary).map(item => previous || fullPhrases ? item : refineVocabulary(item)), grammar: grammar.map(item => { const revised = reviseGrammar(item); return previous || fullPhrases ? revised : { ...revised, question: sentenceOnly(revised.question) } }) }
 }

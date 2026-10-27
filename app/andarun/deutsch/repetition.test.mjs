@@ -1,3 +1,4 @@
+import {getWritingExercises} from './shortExercises.js'
 import test from 'node:test'
 import assert from 'node:assert/strict'
 import {normalizeDeutschState,diffDeutschState,applyDeutschChanges} from '../../../lib/deutsch/state.js'
@@ -91,7 +92,7 @@ test('lesson progress measures all four sections; answering tests never marks a 
  state.answers=Object.fromEntries([...tests.vocabulary,...tests.grammar].map(q=>[q.answerKey,(q.answer+1)%4]))
  assert.equal(lessonProgress(lesson,state,questions).percent,25)
  assert.equal(state.lessonStatus[lesson.id],undefined)
- state={...state,answers:Object.fromEntries(questions.filter(q=>!q.legacy).map(q=>[q.answerKey,q.answer])),lessonStatus:{[lesson.id]:{readAt:null,readProgress:1,listenProgress:1}},writings:[{id:'writing',lessonId:lesson.id}]}
+ state={...state,answers:Object.fromEntries(questions.filter(q=>!q.legacy).map(q=>[q.answerKey,q.answer])),lessonStatus:{[lesson.id]:{readAt:null,readProgress:1,listenProgress:1}},writings:getWritingExercises(lesson).map(exercise=>({id:exercise.id,kind:'translation',lessonId:lesson.id,text:exercise.answers[0],checkedAt:at(0).toISOString()}))}
  assert.equal(lessonProgress(lesson,state,questions).percent,100)
  const reset=clearQuestionAnswers(state,questions,[...tests.vocabulary,...tests.grammar])
  assert.equal(lessonProgress(lesson,reset,questions).percent,75)
