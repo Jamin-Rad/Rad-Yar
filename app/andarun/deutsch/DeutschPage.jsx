@@ -674,7 +674,7 @@ export default function DeutschPage({
 
   if (lessonMode && loading) {
     return (
-      <main className={`${styles.shell} ${visualTheme === 'light' ? styles.lightShell : ''}`}>
+      <main lang="de" dir="ltr" data-deutsch-learning className={`${styles.shell} ${visualTheme === 'light' ? styles.lightShell : ''}`}>
         <div className={styles.lessonBoot} role="status" aria-live="polite">
           <span aria-hidden="true" />
           <p>Lektion wird geladen</p>
@@ -684,7 +684,7 @@ export default function DeutschPage({
   }
 
   return (
-    <main className={`${styles.shell} ${!lessonMode ? styles.courseShell : ''} ${visualTheme === 'light' ? styles.lightShell : ''}`}>
+    <main lang="de" dir="ltr" data-deutsch-learning className={`${styles.shell} ${!lessonMode ? styles.courseShell : ''} ${visualTheme === 'light' ? styles.lightShell : ''}`}>
       {lessonMode && (
         <header className={styles.hero}>
           <div>
