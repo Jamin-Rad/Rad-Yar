@@ -7,7 +7,7 @@ import { getPractice } from './practice'
 import ListeningPlayer from './ListeningPlayer'
 import { normalizeDeutschState as normalizeState } from '@/lib/deutsch/state'
 import { createDeutschSync } from '@/lib/deutsch/sync'
-import { getQuestionBank, makePracticeSession } from './sessions'
+import { getQuestionBank, makePracticeSession, isWrongAnswer } from './sessions'
 import CourseHome from './CourseHome'
 
 const DAY = 24 * 60 * 60 * 1000
@@ -511,7 +511,7 @@ export default function DeutschPage({
     [state.lessons]
   )
   const questionBank = useMemo(() => getQuestionBank(state.lessons), [state.lessons])
-  const wrongCount = questionBank.filter(item => Number.isInteger(state.answers[item.answerKey]) && state.answers[item.answerKey] !== item.answer).length
+  const wrongCount = questionBank.filter(item => isWrongAnswer(item, state.answers)).length
   const startPractice = mode => setPracticeSession(makePracticeSession(questionBank, state.answers, mode))
   const dueCards = useMemo(() => state.cards.filter(isDue), [state.cards])
   const learnedWords = new Set(state.cards.map(card => card.term.toLowerCase()))

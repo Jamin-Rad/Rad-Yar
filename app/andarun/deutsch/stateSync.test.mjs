@@ -68,3 +68,14 @@ test('mistake review only includes wrong answers and clears corrected items',()=
  assert.deepEqual(makePracticeSession(bank,answers,'mistakes').items.map(q=>q.answerKey),['a'])
  assert.equal(makePracticeSession(bank,{...answers,a:0},'mistakes').items.length,0)
 })
+
+test('legacy mistakes remain reviewable but never enter new random tests',()=>{
+ const lesson={id:'legacy',reading:{questions:[]},grammar:[{question:'Ergänze: „Sie bittet ___ Hilfe.“',options:['um','mit','an','für'],answer:0}],vocabulary_quiz:[{question:'Was bedeutet erreichbar?',options:['kontaktierbar','müde','spät','nah'],answer:0}]}
+ const bank=getQuestionBank([lesson])
+ const session=makePracticeSession(bank,{'legacy-grammar-0':2,'legacy-vocabquiz-0':3},'mistakes')
+ assert.equal(session.items.length,2)
+ assert.ok(session.items.every(item=>item.legacy))
+ assert.ok(makePracticeSession(bank,{},'random').items.every(item=>!item.legacy))
+ const prior=bank.find(item=>item.answerKey==='legacy-grammar-0')
+ assert.equal(makePracticeSession(bank,{'legacy-grammar-0':2,[prior.supersededBy]:0},'mistakes').items.length,0)
+})
