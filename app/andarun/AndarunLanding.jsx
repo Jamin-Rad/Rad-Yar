@@ -8,6 +8,7 @@ import { getBadenWuerttembergCalendarEntriesInRange } from '@/utils/germanPublic
 import { todayDuties, todayEvents, todayNutrition } from '@/utils/andarunToday'
 import useTodayDashboard from './useTodayDashboard'
 import styles from './page.module.css'
+import FamilyMenu from './FamilyMenu'
 
 const kcal = new Intl.NumberFormat('de-DE', { maximumFractionDigits: 0 })
 const dateLabel = date => new Date(date + 'T12:00:00Z').toLocaleDateString('de-DE', { timeZone: 'Europe/Berlin', weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })
@@ -28,6 +29,7 @@ export default function AndarunLanding({ initialNow }) {
     <div className={styles.shell}>
       <section className={styles.welcome} aria-labelledby="andarun-title">
         <h1 id="andarun-title">Dein <em>persönlicher</em> Raum.</h1>
+        <FamilyMenu />
       </section>
       <section className={styles.todayPanel} aria-labelledby="today-title">
         <header className={styles.todayHeader}>

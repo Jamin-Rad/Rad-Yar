@@ -1,19 +1,20 @@
 import { clerkMiddleware } from '@clerk/nextjs/server'
 import { NextResponse } from 'next/server'
+import { familyCookiesAllowAccess } from './lib/familySession'
 
 const MOBIN_COOKIE = 'mobin_session'
 
 // Der Middleware-Header stellt den aktuellen Pfad für serverseitige
 // Lernzugriffs-Gates bereit. Öffentliche Rechner bleiben davon ausgenommen.
-// /mobin/* erfordert zusätzlich ein gültiges Mobin-Session-Cookie.
+// /mobin/* accepts the member session or the authenticated Jaminova owner.
 export default clerkMiddleware(async (auth, request) => {
   const { pathname } = request.nextUrl
 
   if ((pathname === '/mobin' || pathname.startsWith('/mobin/')) && !pathname.startsWith('/mobin/login')) {
-    const token = request.cookies.get(MOBIN_COOKIE)?.value
-    const secret = process.env.MOBIN_SESSION_SECRET
+    const secret = process.env.MOBIN_SESSION_SECRET || process.env.ADMIN_SESSION_SECRET
+    const ownerSecret = process.env.ANDARUN_SESSION_SECRET || process.env.ADMIN_SESSION_SECRET
 
-    if (!secret || !token || token !== secret) {
+    if (!familyCookiesAllowAccess(request.cookies, MOBIN_COOKIE, secret, ownerSecret)) {
       const loginUrl = new URL('/mobin/login', request.url)
       return NextResponse.redirect(loginUrl)
     }

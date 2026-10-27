@@ -168,3 +168,7 @@
 @media (prefers-reduced-motion: reduce) {
   .page *, .page *::before, .page *::after { animation: none !important; transition: none !important; }
 }
+
+/* Owner-only family shortcuts, alongside the welcome heading. */
+.welcome { display:flex; align-items:center; justify-content:space-between; gap:24px; }
+@media(max-width:720px){.welcome{flex-wrap:wrap;gap:20px}.welcome>details{margin-inline-start:auto}}
