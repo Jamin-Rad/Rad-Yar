@@ -1,4 +1,5 @@
-import { reviseVocabulary, reviseGrammar, getReviewedVocabulary } from './exerciseRevisions'
+import * as currentRevision from './exerciseRevisions'
+import * as previousRevision from './exerciseRevisions.previous'
 
 // Prepared sentence exercises; no generation service is needed during practice.
 const contexts = {
@@ -52,7 +53,8 @@ export function sentenceOnly(question = '') {
   return question.replace(/^(?:Ergänze(?: richtig)?|Wähle(?: die richtige Form)?|Welche (?:Form|Präposition(?: und welcher Kasus)?|Artikel).*?(?:passt|passen|korrekt))\s*:\s*/i, '').replace(/^[„“"]|[“”"]$/g, '')
 }
 
-export function getPractice(lesson, { legacy = false } = {}) {
+export function getPractice(lesson, { legacy = false, previous = false } = {}) {
+  const { reviseVocabulary, reviseGrammar, getReviewedVocabulary } = previous ? previousRevision : currentRevision
   const words = lesson?.reading?.vocabulary || []
   const supplied = (lesson?.vocabulary_quiz || []).filter(item => item.question?.includes('___'))
   const vocabulary = [...supplied]

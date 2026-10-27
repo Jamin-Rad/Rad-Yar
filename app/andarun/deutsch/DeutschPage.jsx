@@ -259,6 +259,8 @@ REGELN FÜR WRITING:
 - Schreibaufgabe verlangt eine Meinung, Entscheidung oder Argumentation
 - checklist: 5 Punkte
 
+Antwortoptionen: Alle Optionen sollen grammatisch einsetzbar sein und aus derselben Situation stammen. Prüfe nahe Bedeutungsunterschiede statt offensichtlicher Gegenteile. Der Kontext muss genau eine beste Antwort begründen. Keine austauschbaren Synonyme. Erkläre, warum die nächstliegende falsche Option im Kontext nicht passt.
+
 Pflichtprüfung vor der Ausgabe:
 1. Zähle 15 bis 20 vocabulary-Einträge — zu wenig = Fehler.
 2. Prüfe jeden vocabulary.term exakt im reading.text.

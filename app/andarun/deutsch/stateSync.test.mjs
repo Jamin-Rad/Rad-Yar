@@ -136,3 +136,27 @@ test('a previously corrected v2 answer does not revive an older mistake after a 
  const review=makePracticeSession(bank,stillWrong,'mistakes')
  assert.equal(review.items.length,1);assert.equal(review.items[0].answerKey,grammar.supersededBy)
 })
+
+test('last published v3 choices keep their own indexes and migrate mistakes to the new context',async()=>{
+ const {getLessonTests,getMistakeQuestions}=await import('./sessions.js')
+ const {getPractice}=await import('./practice.js')
+ const [lesson]=JSON.parse(readFileSync(new URL('../../../data/deutsch/daily-conversations-2026-10-27.json',import.meta.url)))
+ const bank=getQuestionBank([lesson]);const tests=getLessonTests(lesson)
+ const current=tests.vocabulary.find(q=>q.options[q.answer]==='reklamieren')
+ const published=getPractice(lesson,{previous:true}).vocabulary.find(q=>q.options[q.answer]==='reklamieren')
+ const prior=tests.legacy.find(q=>q.answerKey.includes('-test-v3-')&&q.supersededBy===current.answerKey)
+ assert.ok(prior);assert.notEqual(prior.answerKey,current.answerKey)
+ assert.deepEqual(prior.options,published.options)
+ const wrong=(prior.answer+1)%4
+ assert.deepEqual(getMistakeQuestions(bank,{[prior.answerKey]:wrong}).map(q=>q.answerKey),[current.answerKey])
+ assert.equal(getMistakeQuestions(bank,{[prior.answerKey]:wrong,[current.answerKey]:current.answer}).length,0)
+ // A correction on the last published version must suppress older mistakes too.
+ const v2=tests.legacy.find(q=>q.answerKey.includes('-test-v2-')&&q.supersededBy===current.answerKey)
+ const oldAnswers={
+  [v2.answerKey]:(v2.answer+1)%4,
+  [`${lesson.id}-vocabquiz-0`]:1,
+  [prior.answerKey]:prior.answer,
+ }
+ assert.equal(getMistakeQuestions(bank,oldAnswers).length,0)
+ assert.equal(new Set(bank.map(q=>q.answerKey)).size,bank.length)
+})

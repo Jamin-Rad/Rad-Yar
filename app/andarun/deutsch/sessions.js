@@ -32,6 +32,23 @@ export function getLessonTests(lesson) {
       if (!matched.has(index)) legacy.push({ ...item, answerKey: `${lesson.id}-test-v2-${kind === 'grammar' ? previous.vocabulary.length + index : index}`, kind, section: kind === 'grammar' ? 'Grammatik · frühere Aufgabe' : 'Wörter · frühere Aufgabe', legacy: true })
     })
   }
+  // Retain the last published v3 bank as well as the original v2 bank.
+  // New choices must never reinterpret a previously saved option index.
+  const reviewed = getPractice(lesson, { previous: true })
+  for (const kind of ['vocabulary', 'grammar']) {
+    reviewed[kind].forEach((item, index) => {
+      const correct = item.options?.[item.answer]
+      const target = kind === 'grammar' ? result[kind][index] : result[kind].find(q => q.options?.[q.answer] === correct)
+      const priorIndex = kind === 'grammar' || previous[kind][index]?.options?.[previous[kind][index]?.answer] === correct ? index : previous[kind].findIndex(q => q.options?.[q.answer] === correct)
+      const prior = previous[kind][priorIndex]
+      const originalKey = `${lesson.id}-test-v2-${kind === 'grammar' ? previous.vocabulary.length + priorIndex : priorIndex}`
+      const oldKey = prior && questionSignature(item) === questionSignature(prior) ? originalKey : `${lesson.id}-test-v3-${kind}-${exerciseId(item)}`
+      if (target?.answerKey === oldKey || legacy.some(q => q.answerKey === oldKey)) return
+      legacy.push({ ...item, answerKey: oldKey, kind, section: kind === 'grammar' ? 'Grammatik · frühere Aufgabe' : 'Wörter · frühere Aufgabe', legacy: true, supersededBy: target?.answerKey })
+      const original = legacy.find(q => q.answerKey === originalKey)
+      if (original) original.supersededByHistory = [oldKey]
+    })
+  }
   return result
 }
 
@@ -62,7 +79,11 @@ export function getQuestionBank(lessons) {
         return { ...item, answerKey: `${lesson.id}-vocabquiz-${index}`, section: 'Wörter · frühere Aufgabe', legacy: true, reading: lesson.reading, supersededBy: match?.answerKey, supersededByHistory: priorIndex >= 0 ? [`${lesson.id}-test-v2-${priorIndex}`] : [] }
       }),
       ...(lesson.listening?.questions || []).map((item, index) => ({ ...item, answerKey: `${lesson.id}-listening-${index}`, section: 'Hören', audio: lesson.listening })),
-    ].map(item => ({ ...item, section: `${lesson.title} · ${item.section}` }))
+    ].map(item => ({ ...item,
+      supersededByHistory: item.legacy && (item.answerKey.includes('-vocabquiz-') || item.answerKey.startsWith(`${lesson.id}-grammar-`))
+        ? [...(item.supersededByHistory || []), ...tests.legacy.filter(q => item.supersededBy && q.supersededBy === item.supersededBy).map(q => q.answerKey)]
+        : item.supersededByHistory,
+      section: `${lesson.title} · ${item.section}` }))
   })
 }
 
