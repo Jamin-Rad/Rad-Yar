@@ -1,6 +1,6 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
-import {getWritingExercises,getOrderingExercises,checkTranslation,checkWordOrder,shuffledTokens,normalizeSentence} from './shortExercises.js'
+import {getWritingExercises,getOrderingExercises,checkTranslation,checkWordOrder,shuffledTokens,normalizeSentence,acceptedWordOrders} from './shortExercises.js'
 import {lessonIllustrations} from './lessonIllustrations.js'
 import {getLessonTests,getQuestionBank,recordQuestionAnswer,getReviewSummary,clearQuestionAnswers} from './sessions.js'
 import {lessonProgress} from './progress.js'
@@ -25,7 +25,7 @@ test('each prepared lesson has five short Persian translations and five real wor
    assert.ok(checkWordOrder(item,item.tokens))
    assert.ok(!checkWordOrder(item,shuffledTokens(item)))
    assert.deepEqual(shuffledTokens(item),shuffledTokens(item))
-   for(const solution of item.solutions) assert.deepEqual(words(solution),words(item.tokens.join(' ')))
+   for(const solution of acceptedWordOrders(item)) assert.deepEqual(words(solution),words(item.tokens.join(' ')))
   }
  }
 })
@@ -92,4 +92,18 @@ test('a late older writing draft cannot replace a more recent checked sentence',
  const result=applyDeutschChanges(current,{writings:{upsert:[{id:'sentence',kind:'translation',text:'Der Techniker',checkedAt:null,updatedAt:'2026-10-27T12:00:00Z'}]}})
  assert.equal(result.writings[0].text,'Der Techniker kommt morgen.')
  assert.ok(result.writings[0].checkedAt)
+})
+
+test('valid fronted clauses and objects are accepted without changing published task identities',()=>{
+ const lesson={id:'deutsch-2026-10-27-reparaturtermin-vereinbaren'}
+ const tasks=getOrderingExercises(lesson)
+ const because=tasks.find(item=>item.solutions[0].includes('weil'))
+ const answer='Weil ich arbeite kann ich nicht kommen'.split(' ')
+ assert.ok(checkWordOrder(because,answer))
+ assert.ok(!checkWordOrder(because,'Weil ich arbeite ich kann nicht kommen'.split(' ')))
+ const original=[...because.solutions]
+ acceptedWordOrders(because)
+ assert.deepEqual(because.solutions,original)
+ const digital=getOrderingExercises({id:'deutsch-001-digitale-erreichbarkeit'})[0]
+ assert.ok(checkWordOrder(digital,'Ich schalte mein Handy nach Feierabend aus'.split(' ')))
 })

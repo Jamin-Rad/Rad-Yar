@@ -127,7 +127,32 @@ export function shuffledTokens(item, random) {
   if (result.every((token, index) => token.id === index)) result.push(result.shift())
   return result
 }
+const alternativeOrders = {
+  'Ich habe den Kassenbon dabei.': ['Den Kassenbon habe ich dabei.'],
+  'Ich habe die Verpackung aufgehoben.': ['Die Verpackung habe ich aufgehoben.'],
+  'Dieses Modell ist teurer.': ['Teurer ist dieses Modell.'],
+  'Ich kann nicht kommen, weil ich arbeite.': ['Weil ich arbeite, kann ich nicht kommen.'],
+  'Meine Nachbarin kann die Tür öffnen.': ['Die Tür kann meine Nachbarin öffnen.'],
+  'Nach Feierabend schalte ich mein Handy aus.': ['Ich schalte mein Handy nach Feierabend aus.'],
+  'Wir brauchen klare Grenzen.': ['Klare Grenzen brauchen wir.'],
+  'Ihre Nachricht ist noch unbeantwortet.': ['Noch ist Ihre Nachricht unbeantwortet.'],
+  'Ich antworte später, weil ich eine Besprechung habe.': ['Weil ich eine Besprechung habe, antworte ich später.'],
+  'Wir müssen die Absprachen einhalten.': ['Die Absprachen müssen wir einhalten.'],
+  'Diese Regelung gilt für alle.': ['Für alle gilt diese Regelung.'],
+  'Ich bleibe, weil ich Arbeit habe.': ['Weil ich Arbeit habe, bleibe ich.'],
+  'Alle können die Ergebnisse sehen.': ['Die Ergebnisse können alle sehen.'],
+  'Jonas braucht etwas Ruhe.': ['Etwas Ruhe braucht Jonas.'],
+  'Er muss seine Grenzen ernst nehmen.': ['Seine Grenzen muss er ernst nehmen.'],
+  'Er bleibt zu Hause, weil er müde ist.': ['Weil er müde ist, bleibt er zu Hause.'],
+  'Ich möchte meinen Termin verschieben.': ['Meinen Termin möchte ich verschieben.'],
+  'Ich rufe in der Praxis an.': ['In der Praxis rufe ich an.'],
+}
+export function acceptedWordOrders(item) {
+  const bag = text => normalizeSentence(text).split(' ').sort().join(' ')
+  const tokens = bag(item.tokens.join(' '))
+  return [...new Set([...item.solutions, ...(alternativeOrders[item.solutions[0]] || [])])].filter(solution => bag(solution) === tokens)
+}
 export function checkWordOrder(item, tokens) {
   const text = tokens.map(token => typeof token === 'string' ? token : token.text).join(' ')
-  return item.solutions.some(solution => normalizeSentence(solution) === normalizeSentence(text))
+  return acceptedWordOrders(item).some(solution => normalizeSentence(solution) === normalizeSentence(text))
 }
