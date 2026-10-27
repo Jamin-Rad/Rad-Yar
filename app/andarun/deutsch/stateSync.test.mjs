@@ -118,3 +118,21 @@ test('old definition mistakes reopen the reviewed sentence exercise for that wor
  assert.ok(review.items[0].question.includes('___'));assert.equal(review.items[0].options[review.items[0].answer],'erreichbar')
  assert.equal(makePracticeSession(bank,{'definition-vocabquiz-0':1,[review.items[0].answerKey]:review.items[0].answer},'mistakes').items.length,0)
 })
+
+test('a previously corrected v2 answer does not revive an older mistake after a revision',()=>{
+ const [lesson]=JSON.parse(readFileSync(new URL('../../../data/deutsch/daily-conversations-2026-10-27.json',import.meta.url)))
+ const bank=getQuestionBank([lesson])
+ const vocabulary=bank.find(q=>q.answerKey===`${lesson.id}-test-v2-0`)
+ const grammar=bank.find(q=>q.answerKey===`${lesson.id}-test-v2-20`)
+ assert.ok(vocabulary?.legacy);assert.ok(grammar?.legacy)
+ const answers={
+  [`${lesson.id}-vocabquiz-0`]:1,
+  [vocabulary.answerKey]:vocabulary.answer,
+  [`${lesson.id}-grammar-5`]:0,
+  [grammar.answerKey]:grammar.answer,
+ }
+ assert.equal(makePracticeSession(bank,answers,'mistakes').items.length,0)
+ const stillWrong={...answers,[grammar.answerKey]:(grammar.answer+1)%4}
+ const review=makePracticeSession(bank,stillWrong,'mistakes')
+ assert.equal(review.items.length,1);assert.equal(review.items[0].answerKey,grammar.supersededBy)
+})

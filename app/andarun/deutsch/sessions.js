@@ -52,13 +52,14 @@ export function getQuestionBank(lessons) {
       ...tests.vocabulary, ...tests.grammar, ...tests.legacy,
       ...(lesson.grammar || []).map((item, index) => {
         const match = previous.grammar.findIndex(current => sentenceOnly(current.question) === sentenceOnly(item.question) && JSON.stringify(current.options) === JSON.stringify(item.options))
-        return { ...item, question: sentenceOnly(item.question), answerKey: `${lesson.id}-grammar-${index}`, section: 'Grammatik · frühere Aufgabe', legacy: true, supersededBy: match >= 0 ? tests.grammar[match]?.answerKey : undefined }
+        return { ...item, question: sentenceOnly(item.question), answerKey: `${lesson.id}-grammar-${index}`, section: 'Grammatik · frühere Aufgabe', legacy: true, supersededBy: match >= 0 ? tests.grammar[match]?.answerKey : undefined, supersededByHistory: match >= 0 ? [`${lesson.id}-test-v2-${previous.vocabulary.length + match}`] : [] }
       }),
       ...(lesson.vocabulary_quiz || []).map((item, index) => {
         const correct = item.options?.[item.answer]
         const target = mentionedVocabulary(lesson, item.question)
         const match = tests.vocabulary.find(current => current.options?.[current.answer] === correct) || tests.vocabulary.find(current => normalizedPhrase(current.options?.[current.answer]) === normalizedPhrase(target?.term) && target)
-        return { ...item, answerKey: `${lesson.id}-vocabquiz-${index}`, section: 'Wörter · frühere Aufgabe', legacy: true, reading: lesson.reading, supersededBy: match?.answerKey }
+        const priorIndex = previous.vocabulary.findIndex(prior => normalizedPhrase(prior.options?.[prior.answer]) === normalizedPhrase(match?.options?.[match?.answer]) && match)
+        return { ...item, answerKey: `${lesson.id}-vocabquiz-${index}`, section: 'Wörter · frühere Aufgabe', legacy: true, reading: lesson.reading, supersededBy: match?.answerKey, supersededByHistory: priorIndex >= 0 ? [`${lesson.id}-test-v2-${priorIndex}`] : [] }
       }),
       ...(lesson.listening?.questions || []).map((item, index) => ({ ...item, answerKey: `${lesson.id}-listening-${index}`, section: 'Hören', audio: lesson.listening })),
     ].map(item => ({ ...item, section: `${lesson.title} · ${item.section}` }))
@@ -66,7 +67,7 @@ export function getQuestionBank(lessons) {
 }
 
 export function isWrongAnswer(item, answers) {
-  if (item.supersededBy && Number.isInteger(answers[item.supersededBy])) return false
+  if ([item.supersededBy, ...(item.supersededByHistory || [])].some(key => key && Number.isInteger(answers[key]))) return false
   return Number.isInteger(answers[item.answerKey]) && answers[item.answerKey] !== item.answer
 }
 
