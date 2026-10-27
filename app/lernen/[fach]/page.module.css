@@ -62,7 +62,18 @@
   font-family: inherit;
 }
 
-/* ── FILTER BAR (Verfügbar / Gelesen / Alle) ─────── */
+/* Content readiness and learning progress are independent filters. */
+.filters { padding-bottom: 4px; }
+.filterLabel {
+  flex: 0 0 100px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #64748b;
+}
+@media (max-width: 560px) {
+  .filterLabel { flex-basis: 100%; }
+  .filterBtn { padding: 6px 12px; }
+}
 .filterBar {
   display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
   padding: 0 5vw 12px;
@@ -1014,7 +1025,7 @@ a.topicRow:hover {
   .topicGroups { padding: 14px 14px 18px; }
   .subtopicPopupList { padding: 14px 14px 18px; }
   .topicRow { gap: 9px; padding: 10px; }
-  .topicRowStatus { display: none; }
+  .topicRowStatus { font-size: 10px; white-space: nowrap; }
 }
 
 /* ── UPDATED: clearer main accordion title background ───────────── */
@@ -1412,6 +1423,7 @@ a.topicRow:hover {
 :global(html[data-theme='dark']) .emptyState {
   color: #8fa1ba;
 }
+:global(html[data-theme='dark']) .filterLabel { color: #8fa1ba; }
 :global(html[data-theme='dark']) .filterBtn {
   background: rgba(15,23,42,0.94);
   border-color: rgba(148,163,184,0.18);
