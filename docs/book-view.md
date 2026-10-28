@@ -45,8 +45,10 @@ restored preferences cannot request browser fullscreen without user activation;
 they still open the immersive viewport, with a Fullscreen button when supported.
 If the API is unavailable or rejected, the viewport presentation remains usable.
 The top toolbar provides Windowed/Fullscreen and Back to lesson controls. Escape
-returns to the lesson; leaving an owned native fullscreen session through browser
-Escape also restores Classic. Exiting only the native fullscreen through the
+returns to the lesson when already windowed. Leaving native fullscreen through
+browser Escape, system gestures or application switching keeps the presentation
+open on the same slide, with its scroll position and view preference preserved.
+Exiting only the native fullscreen through the
 Windowed button keeps the immersive presentation open. The reader only exits
 native fullscreen it requested itself, unless the user explicitly presses the
 Windowed control.
@@ -60,9 +62,22 @@ canvas snapshots or React content reparenting occurs.
 Left/Right arrows, Home/End and Previous/Next navigate individual slides.
 Space/Shift+Space, Up/Down and Page Up/Down scroll a long topic before advancing
 at its boundary. Existing form, tab, image/case viewer and nested modal keyboard
-controls keep their own input. Primary finger swipes on reading areas navigate;
-pen/mouse, pinch zoom and interactive component gestures retain their original
-behavior. Reduced motion disables the subtle slide transition.
+controls keep their own input. Tablet/desktop slides have explicit 48×96px
+Previous/Next touch targets in
+reserved side gutters; compact footer controls remain available at every width.
+Their physical positions and arrows follow the lesson's reading direction.
+Tapping the middle of a slide does not navigate.
+
+Primary finger swipes on reading areas and non-interactive card text navigate.
+A native touch listener locks the initial axis: vertical movement always remains
+reading scroll, while a deliberate horizontal swipe turns one slide. Only that
+horizontal movement cancels browser panning. Whole learning cards are no longer
+excluded from swiping. Actual buttons, question-option labels, inputs, tables,
+images, image/case viewers and custom `data-book-gesture-ignore` regions keep
+native gestures. Multi-touch, selection, cancelled gestures, pen/mouse input and
+pinch zoom cannot trigger a slide turn. A completed swipe suppresses its trailing
+compatibility click so a new slide cannot accidentally receive it. Reduced motion
+disables the subtle slide transition.
 
 ## Content and questions
 
@@ -98,7 +113,8 @@ API fallback, every semantic slide and source-text coverage, source text/asset
 fidelity, existing tabs/case slider/image zoom, original MCQ feedback, view and
 chapter restoration, background scroll restoration, keyboard navigation and
 overflow scrolling,
-touch versus pen/control handling, RTL and reduced motion. Viewports include
+native CDP touch versus pen/control handling, swipe cancellation and axis lock,
+fullscreen-exit preservation, RTL and reduced motion. Viewports include
 1440×1000, iPad 820×1180 / 1180×820 / 1024×768 and phone 390×844. An unrelated
 generic fixture checks section boundaries, an
 80-row table with its explanation, a tall image/caption and isolated questions.

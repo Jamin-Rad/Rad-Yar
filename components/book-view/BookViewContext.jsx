@@ -78,7 +78,10 @@ export function LessonViewProvider({ lessonId, enabled = true, children }) {
       setFullscreen(active)
       if (!active && ownedFullscreen.current) {
         ownedFullscreen.current = false
-        if (modeRef.current === 'book') changeMode('classic')
+        // Browser/system exit is independent of leaving the lesson presentation.
+        // Keep the same live slide and scroll position, without requesting a
+        // new fullscreen session or rewriting the user's view preference.
+        if (modeRef.current === 'book') reader.current?.focus?.()
       }
     }
     sync()
@@ -89,7 +92,7 @@ export function LessonViewProvider({ lessonId, enabled = true, children }) {
       document.removeEventListener('webkitfullscreenchange', sync)
       if (ownedFullscreen.current) exitPageFullscreen().catch(() => {})
     }
-  }, [changeMode])
+  }, [])
   const navigate = useCallback(id => reader.current?.goToId(id), [])
   const value = useMemo(() => ({ mode, changeMode, reader, anchor, navigate, lessonId, enabled, fullscreen, fullscreenSupported, toggleFullscreen }), [mode, changeMode, navigate, lessonId, enabled, fullscreen, fullscreenSupported, toggleFullscreen])
   return <Context.Provider value={value}>{children}</Context.Provider>

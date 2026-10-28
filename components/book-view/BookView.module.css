@@ -28,8 +28,14 @@
 .contents > span { position: absolute; width: 1px; height: 1px; clip-path: inset(50%); overflow: hidden; }
 .contents select { box-sizing: border-box; width: 100%; min-width: 0; height: 44px; padding: 8px 12px; border: 0; border-radius: 10px; background: transparent; color: #f3edf6; font-family: inherit; font-size: 12px; font-weight: 500; line-height: 1.5; cursor: pointer; }
 .contents option { background: #262431; color: #f3edf6; }
-.binding { box-sizing: border-box; width: min(1180px,100%); height: 100%; min-height: 0; margin-inline: auto; padding: clamp(20px,3vw,42px); border: 1px solid #ffffff38; border-radius: 16px; background: var(--paper,#fff); box-shadow: 0 20px 60px #0003; }
-.viewport { height: 100%; min-height: 0; overflow: auto; position: relative; touch-action: pan-y pinch-zoom; overscroll-behavior: contain; scrollbar-width: thin; scrollbar-color: #baa8c2 transparent; scrollbar-gutter: stable; outline-offset: 5px; }
+.binding { position: relative; box-sizing: border-box; width: min(1180px,100%); height: 100%; min-height: 0; margin-inline: auto; padding: clamp(20px,3vw,42px) 68px; border: 1px solid #ffffff38; border-radius: 16px; background: var(--paper,#fff); box-shadow: 0 20px 60px #0003; }
+.viewport { height: 100%; min-height: 0; overflow: auto; position: relative; touch-action: auto; overscroll-behavior: contain; scrollbar-width: thin; scrollbar-color: #baa8c2 transparent; scrollbar-gutter: stable; outline-offset: 5px; }
+.edgeButton { position: absolute; top: 50%; transform: translateY(-50%); z-index: 2; display: flex; align-items: center; justify-content: center; width: 48px; height: 96px; padding: 12px; border: 1px solid var(--line,#d8d3df); border-radius: 14px; background: color-mix(in srgb,var(--paper,#fff) 80%,transparent); color: var(--body,#51495b); box-shadow: inset 0 1px 0 #ffffff10; backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); touch-action: manipulation; cursor: pointer; }
+.edgeButton svg { width: 24px; height: 24px; }
+.edgeButton:hover { background: color-mix(in srgb,var(--paper,#fff) 70%,#b797c4 30%); }
+.edgeButton:disabled { opacity: .2; cursor: default; }
+.edgePrevious { inset-inline-start: 8px; }
+.edgeNext { inset-inline-end: 8px; }
 .flow { width: 100%; max-width: 100%; overflow-wrap: anywhere; padding-inline-end: 8px; box-sizing: border-box; }
 .flow :global([data-book-shell]) { display: contents !important; contain: none !important; content-visibility: visible !important; }
 .flow :global([data-book-page]):not(:global([data-book-visible])) { display: none !important; }
@@ -82,14 +88,15 @@
   .runningTitle > span { font-size: 11px; }
   .contents { max-width: 130px; }
   .contents select { font-size: 11px; padding-inline: 5px; }
-  .binding { padding: 22px 16px; border-radius: 12px; }
+  .binding { padding: 22px 60px; border-radius: 12px; }
   .question { padding: 12px; }
   .options label { font-size: 15px; }
 }
 @media (max-width:540px) { .runningTitle strong { display: none; }.runningTitle > span { font-size: 12px; }.contents { max-width: 102px; }.toolbarActions { gap: 0; }.binding { padding: 20px 12px; } }
+@media (max-width:679px) { .edgeButton { display: none; }.binding { padding-inline: 16px; } }
 @media (max-height:650px) { .reader { gap: 8px; padding-block: 8px; }.binding { padding-block: 20px; } }
 @media (prefers-reduced-motion:reduce) { .binding .flow { animation: none !important; }.iconButton,.progress > span { transition: none; } }
-@media print { .reader { position: static; display: block; width: auto; height: auto; padding: 0; overflow: visible; background: none; }.toolbar,.navigation { display: none; }.binding,.viewport,.flow { display: block; height: auto; overflow: visible; padding: 0; border: 0; background: none; box-shadow: none; }.flow :global([data-book-page]):not(:global([data-book-visible])) { display: revert !important; }.switch,.actionToggle { display: none; } }
+@media print { .reader { position: static; display: block; width: auto; height: auto; padding: 0; overflow: visible; background: none; }.toolbar,.navigation,.edgeButton { display: none; }.binding,.viewport,.flow { display: block; height: auto; overflow: visible; padding: 0; border: 0; background: none; box-shadow: none; }.flow :global([data-book-page]):not(:global([data-book-visible])) { display: revert !important; }.switch,.actionToggle { display: none; } }
 .actionToggle { position: relative; z-index: 1; display: inline-flex; align-items: center; justify-content: center; gap: 12px; min-height: 46px; padding: 10px 20px; border: 1px solid #c1a4cc; border-radius: 7px; background: #f6edf8; color: #512556; font: inherit; font-weight: 800; cursor: pointer; box-shadow: 0 8px 22px #27102e24; }
 .actionToggle svg { width: 19px; height: 19px; }
 .actionToggle[aria-pressed='true'] { border-color: #ba8dc6; background: #713574; color: #fff; }

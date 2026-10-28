@@ -5,6 +5,7 @@ import { BOOK_VIEW_PILOTS, BOOK_QUESTION_MAPPINGS, questionIdsForSection } from 
 import { CAA_QUESTIONS } from '../data/caaStudyBank.js'
 import { CAA_CHAPTERS } from '../data/caaLesson.js'
 import { composeSemanticSlides } from '../components/book-view/semanticSlides.mjs'
+import { swipeAxis, swipeStep } from '../components/book-view/touchNavigation.mjs'
 
 test('page geometry handles LTR, RTL, gutters and subpixel roundoff', () => {
   assert.equal(pageForRect({ left: 40 }, { left: 40 }, 564), 0)
@@ -78,4 +79,21 @@ test('a long topic remains complete instead of fragmenting to fill viewport spac
 })
 test('ordinary heading-led prose also creates topic slides without special component markers', () => {
   assert.deepEqual(ids(composeSemanticSlides([item('A', 'heading'), item('A prose'), item('B', 'heading'), item('B prose')])), [['A', 'A prose'], ['B', 'B prose']])
+})
+test('touch navigation distinguishes reading, diagonal motion and intentional horizontal swipes', () => {
+  assert.equal(swipeAxis(5, 8), null)
+  assert.equal(swipeAxis(12, 2), 'horizontal')
+  assert.equal(swipeAxis(8, 30), 'vertical')
+  assert.equal(swipeAxis(30, 28), 'vertical')
+  assert.equal(swipeStep(-80, 4, 350), 1)
+  assert.equal(swipeStep(80, 4, 350), -1)
+  assert.equal(swipeStep(-80, 4, 350, true), -1)
+  assert.equal(swipeStep(80, 4, 350, true), 1)
+})
+test('taps, short drags, diagonal gestures and slow selections never turn a slide', () => {
+  assert.equal(swipeStep(0, 0, 100), 0)
+  assert.equal(swipeStep(30, 3, 250), 0)
+  assert.equal(swipeStep(70, 65, 350), 0)
+  assert.equal(swipeStep(5, 120, 300), 0)
+  assert.equal(swipeStep(90, 2, 1600), 0)
 })

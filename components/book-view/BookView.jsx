@@ -4,9 +4,12 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 import { BOOK_COPY, useLessonView } from './BookViewContext'
 import { spreadStart } from './pagination.mjs'
 import { collectSemanticSlides } from './semanticSlides.mjs'
+import { swipeAxis, swipeStep } from './touchNavigation.mjs'
 import styles from './BookView.module.css'
 
 const INTERACTIVE = 'a,button,input,select,textarea,summary,table,figure,iframe,video,canvas,form,fieldset,details,[role="tab"],[role="slider"],[contenteditable="true"],[data-book-atomic],[data-learning-tool],[data-case-gallery],dialog,[role="dialog"]:not([data-book-mode])'
+// Protect actual controls/viewers, rather than disabling entire learning cards.
+const TOUCH_CONTROL = 'a,button,input,label,select,textarea,summary,[role="button"],[role="tab"],[role="slider"],[role="application"],[contenteditable="true"],table,figure,img,iframe,video,canvas,[data-no-zoom],[data-case-gallery],[data-lesson-print-case-viewport],[data-book-atomic]:not([data-book-question]),[data-book-gesture-ignore],dialog,[role="dialog"]:not([data-book-mode])'
 
 export default function BookView({ children, title, sections = [], lang = 'de' }) {
   const { mode, changeMode, reader, anchor, lessonId, fullscreen, fullscreenSupported, toggleFullscreen } = useLessonView()
@@ -20,6 +23,8 @@ export default function BookView({ children, title, sections = [], lang = 'de' }
   const flow = useRef(null)
   const geometry = useRef({ spread: 1, total: 1, page: 0, slides: [] })
   const pointer = useRef(null)
+  const penContact = useRef(null)
+  const suppressClickUntil = useRef(0)
   const animation = useRef(null)
   const previousFocus = useRef(null)
   const lastAnchor = useRef(null)
@@ -101,7 +106,7 @@ export default function BookView({ children, title, sections = [], lang = 'de' }
   }, [book, elementPage, goToPage])
 
   useEffect(() => {
-    reader.current = { getAnchor: () => book ? lastAnchor.current || getAnchor() : getAnchor(), goToId }
+    reader.current = { getAnchor: () => book ? lastAnchor.current || getAnchor() : getAnchor(), goToId, focus: () => viewport.current?.focus({ preventScroll: true }) }
     return () => { reader.current = null }
   }, [book, getAnchor, goToId, reader])
 
@@ -177,6 +182,9 @@ export default function BookView({ children, title, sections = [], lang = 'de' }
     if (!book || event.defaultPrevented) return
     if (document.querySelector('dialog[open],[role="dialog"][aria-modal="true"]:not([data-book-mode])')) return
     if (event.key === 'Escape') {
+      // Let the browser leave native fullscreen first. A later Escape in the
+      // windowed presentation remains an explicit way back to Classic.
+      if (fullscreen) return
       event.preventDefault()
       changeMode('classic')
       return
@@ -212,21 +220,57 @@ export default function BookView({ children, title, sections = [], lang = 'de' }
     event.preventDefault()
     goToPage(page)
   }
-  const pointerDown = event => {
-    pointer.current = null
-    // Pencil, mouse, controls, image viewers and pinch/zoom retain native input.
-    if (event.pointerType !== 'touch' || !event.isPrimary || event.target.closest(INTERACTIVE)) return
-    pointer.current = { id: event.pointerId, x: event.clientX, y: event.clientY, time: performance.now() }
-  }
-  const pointerUp = event => {
-    const start = pointer.current
-    pointer.current = null
-    if (!start || start.id !== event.pointerId || performance.now() - start.time > 850) return
-    const dx = event.clientX - start.x
-    const dy = event.clientY - start.y
-    if (Math.abs(dx) < 65 || Math.abs(dx) < Math.abs(dy) * 1.7 || window.getSelection()?.toString()) return
-    goToPage(layout.page + (dx < 0 !== rtl ? 1 : -1) * layout.spread)
-  }
+  useEffect(() => {
+    if (!book) return
+    const frame = viewport.current
+    const start = event => {
+      pointer.current = null
+      const touch = event.touches[0]
+      if (event.defaultPrevented || event.touches.length !== 1 || penContact.current !== null || touch?.touchType === 'stylus'
+        || event.target.closest(TOUCH_CONTROL) || window.getSelection()?.toString()) return
+      pointer.current = { id: touch.identifier, x: touch.clientX, y: touch.clientY, time: performance.now(), axis: null }
+    }
+    const move = event => {
+      const gesture = pointer.current
+      if (!gesture) return
+      if (event.defaultPrevented) { pointer.current = null; return }
+      const touch = event.touches[0]
+      if (event.touches.length !== 1 || touch.identifier !== gesture.id) { pointer.current = null; return }
+      gesture.axis ||= swipeAxis(touch.clientX - gesture.x, touch.clientY - gesture.y)
+      if (gesture.axis !== 'horizontal') return
+      // A non-passive native listener is needed here: React's delegated touch
+      // listener cannot reliably cancel browser horizontal panning in Safari.
+      // All vertical, zoom, control and viewer gestures retain native behavior.
+      if (event.cancelable) event.preventDefault()
+      else pointer.current = null
+    }
+    const end = event => {
+      const gesture = pointer.current
+      pointer.current = null
+      if (!gesture || gesture.axis !== 'horizontal' || event.touches.length || window.getSelection()?.toString()) return
+      const touch = Array.from(event.changedTouches).find(item => item.identifier === gesture.id)
+      if (!touch) return
+      const step = swipeStep(touch.clientX - gesture.x, touch.clientY - gesture.y, performance.now() - gesture.time, rtl)
+      if (!step) return
+      suppressClickUntil.current = performance.now() + 350
+      const target = geometry.current.page + step
+      if (target >= 0 && target < geometry.current.total) goToPage(target)
+    }
+    const cancel = () => { pointer.current = null }
+    frame.addEventListener('touchstart', start, { passive: true })
+    frame.addEventListener('touchmove', move, { passive: false })
+    frame.addEventListener('touchend', end, { passive: true })
+    frame.addEventListener('touchcancel', cancel, { passive: true })
+    return () => {
+      frame.removeEventListener('touchstart', start)
+      frame.removeEventListener('touchmove', move)
+      frame.removeEventListener('touchend', end)
+      frame.removeEventListener('touchcancel', cancel)
+      pointer.current = null
+      penContact.current = null
+      suppressClickUntil.current = 0
+    }
+  }, [book, rtl, goToPage])
   const end = Math.min(layout.total, layout.page + layout.spread)
   const range = end === layout.page + 1 ? String(layout.page + 1) : `${layout.page + 1}–${end}`
 
@@ -240,8 +284,17 @@ export default function BookView({ children, title, sections = [], lang = 'de' }
       </div>
     </header> : null}
     <div className={book ? styles.binding : styles.classic} data-spread={layout.spread} data-turn={turn}>
+      {book ? <button type="button" className={`${styles.edgeButton} ${styles.edgePrevious}`} data-book-edge="previous" disabled={layout.page === 0} onClick={() => goToPage(layout.page - 1)} aria-label={copy.previous} title={copy.previous}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" aria-hidden="true"><path d={rtl ? 'm9 6 6 6-6 6' : 'm15 6-6 6 6 6'}/></svg></button> : null}
       <div className={book ? styles.viewport : styles.classic} ref={viewport} tabIndex={book ? 0 : undefined} role={book ? 'region' : undefined} aria-label={book ? `${title} · ${copy.book}` : undefined} aria-busy={book && !layout.ready ? true : undefined}
-        onPointerDown={book ? pointerDown : undefined} onPointerUp={book ? pointerUp : undefined} onPointerCancel={() => { pointer.current = null }}
+        onPointerDownCapture={event => {
+          if (event.pointerType === 'pen') { penContact.current = event.pointerId; pointer.current = null }
+          else if (event.pointerType === 'touch' && !event.isPrimary) pointer.current = null
+        }}
+        onPointerUpCapture={event => { if (event.pointerId === penContact.current) penContact.current = null }}
+        onPointerCancel={event => { if (event.pointerId === penContact.current) penContact.current = null }}
+        onClickCapture={event => {
+          if (book && event.detail > 0 && performance.now() < suppressClickUntil.current) { event.preventDefault(); event.stopPropagation() }
+        }}
         onFocusCapture={event => {
           if (!book || event.target === event.currentTarget) return
           const target = event.target.closest('[data-book-page]') || event.target
@@ -253,6 +306,7 @@ export default function BookView({ children, title, sections = [], lang = 'de' }
         }}>
         <div ref={flow} className={book ? styles.flow : styles.classic} data-book-content>{children}</div>
       </div>
+      {book ? <button type="button" className={`${styles.edgeButton} ${styles.edgeNext}`} data-book-edge="next" disabled={end >= layout.total} onClick={() => goToPage(layout.page + 1)} aria-label={copy.next} title={copy.next}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" aria-hidden="true"><path d={rtl ? 'm15 6-6 6 6 6' : 'm9 6 6 6-6 6'}/></svg></button> : null}
     </div>
     {book ? <footer className={styles.navigation} aria-label={copy.view}>
       <button type="button" className={styles.iconButton} onClick={() => goToPage(layout.page - 1)} disabled={layout.page === 0} aria-label={copy.previous} title={copy.previous}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" aria-hidden="true"><path d={rtl ? 'm9 6 6 6-6 6' : 'm15 6-6 6 6 6'}/></svg></button>
