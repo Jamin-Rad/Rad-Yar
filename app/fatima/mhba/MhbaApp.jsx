@@ -1,3 +1,4 @@
+import {studyCards} from './flashcards.js';
 import {migrateSourceAnnotations,SOURCE_REVISION} from './sourceRevisions.js';
 import React,{Suspense,lazy,useEffect,useMemo,useRef,useState} from 'react';
 import Link from 'next/link';
@@ -66,7 +67,7 @@ function NotebookApp(){
  },[lesson?.id,annotation.tool,annotation.color,data.highlights]);
  function backup(){const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='mhba-notebook.json';a.click();URL.revokeObjectURL(url);setToast('نسخهٔ پشتیبان دفتر دانلود شد.');}
  async function restore(e){try{const file=e.target.files?.[0];if(!file)return;if(file.size>5000000)throw Error();const v=migrateSourceAnnotations(JSON.parse(await file.text()));if(v.version!==1||!Array.isArray(v.highlights)||!v.review||typeof v.review!=='object')throw Error();const safe=v.highlights.filter(h=>typeof h.text==='string'&&typeof h.blockId==='string'&&Number.isInteger(h.start)&&Number.isInteger(h.end)&&h.end>h.start&&lessons[h.lessonId]);patch(p=>({...p,highlights:[...p.highlights,...safe.filter(h=>!p.highlights.some(x=>x.id===h.id))],review:{...p.review,...v.review},answers:{...p.answers,...v.answers},read:{...p.read,...v.read},practice:{...p.practice,...v.practice},...(v.customExam&&Array.isArray(v.customExam.topics)&&['binary','questions','mixed','official','written'].includes(v.customExam.type)&&v.customExam.answers&&typeof v.customExam.answers==='object'?{customExam:v.customExam}:{})}));setToast('یادداشت‌ها و مرورها به دفتر اضافه شدند.');}catch{setToast('فایل پشتیبان معتبر نیست.');}e.target.value='';}
- const due=Object.values(lessons).flatMap(l=>l.cards).filter(q=>!data.review[q.id]||data.review[q.id].due<=Date.now()).length;
+ const due=Object.values(lessons).flatMap(studyCards).filter(q=>!data.review[q.id]||data.review[q.id].due<=Date.now()).length;
  const active=route==='highlights'?'highlights':route==='review'?'review':'home';
  if(['home','cards','review','exam','official','highlights'].includes(route)||route.endsWith('/notes'))return <LearningPortal view={['cards','review','exam','official'].includes(route)?route:'home'} data={data} patch={patch} navigate={navigate} backup={backup} restore={restore} toast={toast} storageError={storageError}/>;
  if(lesson)return <LessonStudio key={lesson.id} lesson={lesson} mode={mode} route={route} data={data} patch={patch} navigate={navigate} pick={pick} annotateRange={annotateRange} eraseSelection={()=>pick(null,'erase')} storageError={storageError} backup={backup}/>;
