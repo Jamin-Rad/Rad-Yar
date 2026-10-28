@@ -1,3 +1,4 @@
+import {lesson5Practice} from './lesson5Practice.js';
 const t=(text,answer,why)=>({text,answer,why,official:false});
 export const statements={
 1:[
@@ -95,3 +96,5 @@ export function nextReview(previous,known,now=Date.now()){
  const level=known?Math.min((previous?.level??-1)+1,intervals.length-1):-1;
  return {level,due:now+(known?intervals[level]*86400000:600000),last:now};
 }
+
+statements[5]=lesson5Practice;

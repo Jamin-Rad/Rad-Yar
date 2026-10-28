@@ -1,3 +1,4 @@
+import {lesson5Chapters} from './lesson5.js';
 // Authored study aids. The original course and its complete translation live in private storage.
 const c=(id,title,fa,start,end,de,summaryFa,statementIds)=>({id,title,fa,start,end,summary:{de,fa:summaryFa},statementIds});
 export const chapters={
@@ -49,3 +50,5 @@ export function buildCards(lesson){
  const words=lesson.legacySections.flatMap(c=>c.vocab).filter(([word],i,all)=>all.findIndex(([w])=>w===word)===i).map(([word,meaning],i)=>({id:`word-${lesson.id}-${i}`,text:`Was bedeutet „${word}“?`,fa:`«${word}» یعنی چه؟`,model:word,modelFa:meaning,rubric:'معنی اصطلاح را به یاد بیاور و در متن آلمانی تشخیص بده.',official:false,lessonId:lesson.id,source:'vocabulary'}));
  return [...official,...summaries,...words];
 }
+
+chapters[5]=lesson5Chapters;

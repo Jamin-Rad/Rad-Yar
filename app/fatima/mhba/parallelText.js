@@ -2,6 +2,9 @@ import {marginOffsets} from './sourceLayout.js';
 // Adjacent translation paragraphs sometimes explain a single source paragraph.
 // Each tuple consumes complete, contiguous source blocks without changing text.
 const plans={
+ '5:5.1:4':[[1,1],[1,1],[2,1],[1,1],[1,1]],
+ '5:5.1:5':[[1,1],[1,1],[1,1],[2,1]],
+ '5:5.2.3.3:30':[[1,1],[1,1],[1,1],[2,1],[1,1],[1,1]],
  '1:1.4:14':[[1,1],[1,1],[1,1],[1,1],[1,1],[2,1]],
  '1:intro:3':[[1,2],[1,1]],'1:1.3:10':[[1,1],[1,1],[1,1],[1,2],[1,1],[1,1]],'1:1.3:11':[[1,2],[1,1],[1,1]],
  '1:1.3:12':[[1,2],[1,1],[1,3],[1,1]],'1:1.5:21':[[1,1],[1,2],[1,1],[1,1]],'1:1.5:22':[[1,1],[1,3],[1,1],[1,1],[1,1]],

@@ -1,3 +1,4 @@
+import {lesson5Practice} from './lesson5Practice.js';
 export const statementTranslations={
 1:[
 'نیازها اصولاً نامحدودند، اما کالاهای در دسترس محدودند.',
@@ -169,3 +170,6 @@ export const explanationsDe={
 'Der Designschutz betrifft die äußere Gestaltung des Erzeugnisses.',
 'Die Verarbeitung von Gesundheitsdaten erfordert besonderen Datenschutz.',
 ]};
+
+statementTranslations[5]=lesson5Practice.map(q=>q.fa);
+explanationsDe[5]=lesson5Practice.map(q=>q.whyDe);
