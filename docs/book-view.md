@@ -22,12 +22,22 @@ works. `?view=classic` explicitly opens the original lesson.
 
 ## Presentation and fullscreen
 
-All widths and orientations use one slide. The engine measures available canvas
-height and width, then uses native CSS fragmentation; no lesson-specific page
-counts, section layouts or hardcoded page breaks exist. Resize, orientation,
-loaded media/fonts and component changes trigger pagination around the current
-content anchor. A clear slide counter, position slider and large Previous/Next
-buttons remain outside the canvas and inside the viewport.
+All widths and orientations use one slide. `semanticSlides.mjs` reads the live
+DOM's sections, headings, teaching groups and interactive tool boundaries. A tool
+keeps its introduction and following explanatory notes; the next topic starts a
+new slide. Viewport size never determines content boundaries, so orientation
+changes preserve the same topic and slide count. There are no lesson IDs, page
+counts, size thresholds or hardcoded page breaks in the planner.
+
+Existing wrapper elements become transparent only in presentation mode. The
+engine assigns the original content elements to slides and changes their CSS
+visibility without moving, cloning or remounting them. Hidden interactive panels
+keep their original visibility. If a topic is taller than the canvas, the whole
+slide scrolls vertically instead of splitting its explanation or truncating its
+media. Only one scroll surface is introduced. A compact glass toolbar holds the
+chapter selector, fullscreen and exit controls. The 52px glass navigation dock
+contains 44px Previous/Next targets, a slide counter and a 2px progress line; no
+persistent range slider or large navigation panel consumes the canvas.
 
 The header action requests native fullscreen synchronously during its click,
 using the app's existing standard/WebKit fullscreen helpers. Direct links and
@@ -47,19 +57,25 @@ It is exposed as a modal dialog; keyboard focus stays inside until exit. The sam
 live content nodes preserve their interactive state. No cloning, HTML rewriting,
 canvas snapshots or React content reparenting occurs.
 
-Arrow keys, Space/Shift+Space, Page Up/Down, Home/End, the slider and Previous/Next
-navigate individual slides. Existing form, tab, image/case viewer and nested modal
-keyboard controls keep their own input. Primary finger swipes on reading areas
-navigate; pen/mouse, pinch zoom and interactive component gestures retain their
-original behavior. Reduced motion disables the subtle slide transition.
+Left/Right arrows, Home/End and Previous/Next navigate individual slides.
+Space/Shift+Space, Up/Down and Page Up/Down scroll a long topic before advancing
+at its boundary. Existing form, tab, image/case viewer and nested modal keyboard
+controls keep their own input. Primary finger swipes on reading areas navigate;
+pen/mouse, pinch zoom and interactive component gestures retain their original
+behavior. Reduced motion disables the subtle slide transition.
 
 ## Content and questions
 
 Mark unusual interactive components `data-book-atomic`. Existing learning tools,
 figures, tables, media, forms and tab groups are detected automatically and stay
-intact. Oversized units use a labeled, keyboard-accessible internal scroll area;
-large tables retain horizontal scrolling. No content is clipped or discarded.
-Off-page keyboard focus brings the corresponding slide into view.
+intact. Semantic HTML headings and sections supply topic structure for future
+lessons; `data-book-slide` can explicitly preserve an unusual standalone unit.
+Original tables, images, captions and explanations remain reachable through the
+slide's scroll surface. No content is clipped or discarded.
+
+Each mapped question is a standalone slide containing only that original
+question, its options and its own feedback. Adjacent questions, lecture text,
+chapter headings and read-progress buttons never share that slide.
 
 `pilots.js` contains only feature flags and explicitly reviewed question-ID
 mappings. `BookCheckpoint` uses 1–3 original localized question objects verbatim,
@@ -78,11 +94,14 @@ Browser QA uses installed Playwright/Chrome (Browser plugin unavailable). It
 covers the real CAA component under its normal root layout through temporary
 local QA routes; production access gates stay unchanged and QA routes are removed
 before deployment. Checks include real native fullscreen entry/exit, fullscreen
-API fallback, every generated slide and atomic-unit boundary, source text/asset
+API fallback, every semantic slide and source-text coverage, source text/asset
 fidelity, existing tabs/case slider/image zoom, original MCQ feedback, view and
-chapter restoration, background scroll restoration, keyboard/Space navigation,
+chapter restoration, background scroll restoration, keyboard navigation and
+overflow scrolling,
 touch versus pen/control handling, RTL and reduced motion. Viewports include
-1440×1000, iPad 820×1180 / 1180×820 / 1024×768 and phone 390×844.
+1440×1000, iPad 820×1180 / 1180×820 / 1024×768 and phone 390×844. An unrelated
+generic fixture checks section boundaries, an
+80-row table with its explanation, a tall image/caption and isolated questions.
 
 The installed browser runtime has no WebKit binary. Physical iPad Safari and
 Apple Pencil behavior, and authenticated cross-device server sync, still require

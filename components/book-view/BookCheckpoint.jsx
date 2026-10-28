@@ -25,7 +25,6 @@ export default function BookCheckpoint({ questions, questionIds, lang = 'de' }) 
   const mapped = mappedQuestions(questions, questionIds)
   if (mode !== 'book' || !mapped.length) return null
   return <aside className={styles.checkpoint} data-book-checkpoint>
-    <h3 className={styles.checkpointTitle}><span aria-hidden="true">✦</span> {copy.checkpoint}</h3>
     {mapped.map(question => <Question key={question.id} question={question} copy={copy} />)}
   </aside>
 }

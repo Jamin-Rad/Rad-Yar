@@ -4,6 +4,7 @@ import { pageForRect, spreadStart, mappedQuestions } from '../components/book-vi
 import { BOOK_VIEW_PILOTS, BOOK_QUESTION_MAPPINGS, questionIdsForSection } from '../components/book-view/pilots.js'
 import { CAA_QUESTIONS } from '../data/caaStudyBank.js'
 import { CAA_CHAPTERS } from '../data/caaLesson.js'
+import { composeSemanticSlides } from '../components/book-view/semanticSlides.mjs'
 
 test('page geometry handles LTR, RTL, gutters and subpixel roundoff', () => {
   assert.equal(pageForRect({ left: 40 }, { left: 40 }, 564), 0)
@@ -49,4 +50,32 @@ test('unmapped, missing and invalid questions are skipped without inventing repl
   assert.deepEqual(mappedQuestions([{ ...bank[0], correct: 'missing' }], [bank[0].id]), [])
   assert.equal(mappedQuestions(bank, [bank[0].id, bank[0].id]).length, 1)
   assert.equal(mappedQuestions(bank, bank.map(question => question.id), 99).length, 3)
+})
+
+// No dimensions or lesson IDs enter the topic planner.
+const item = (id, kind = 'content') => ({ id, kind })
+const group = (...children) => ({ kind: 'group', children })
+const ids = slides => slides.map(slide => slide.map(node => node.id))
+test('headings, introductions, tools and explanatory notes stay together in source order', () => {
+  const tree = [group(item('chapter', 'heading'), group(item('topic', 'heading'), item('intro'), item('diagram', 'tool'), item('note'), item('comparison', 'tool'), item('explanation')), group(item('next topic', 'heading'), item('next tool', 'tool')), item('mark read'))]
+  assert.deepEqual(ids(composeSemanticSlides(tree)), [
+    ['chapter', 'topic', 'intro', 'diagram', 'note'], ['comparison', 'explanation'], ['next topic', 'next tool', 'mark read'],
+  ])
+})
+test('each MCQ is isolated even between nested topic groups and following content', () => {
+  const tree = [group(item('heading', 'heading'), item('lecture'), item('q1', 'question'), item('q2', 'question')), item('following'), group(item('q3', 'question')), item('references', 'standalone')]
+  assert.deepEqual(ids(composeSemanticSlides(tree)), [['heading', 'lecture'], ['q1'], ['q2'], ['following'], ['q3'], ['references']])
+  for (const slide of composeSemanticSlides(tree)) if (slide.some(node => node.kind === 'question')) assert.equal(slide.length, 1)
+})
+test('explicit subsection boundaries stay separate and no heading is orphaned', () => {
+  assert.deepEqual(ids(composeSemanticSlides([group(item('chapter', 'heading'), item('intro'), group(item('A', 'heading'), item('A text')), group(item('B', 'heading'), item('B list')))])), [['chapter', 'intro', 'A', 'A text'], ['B', 'B list']])
+})
+test('a long topic remains complete instead of fragmenting to fill viewport space', () => {
+  const nodes = [item('heading', 'heading'), ...Array.from({ length: 100 }, (_, i) => item('paragraph-' + i))]
+  const slides = composeSemanticSlides(nodes)
+  assert.equal(slides.length, 1)
+  assert.deepEqual(slides.flat(), nodes)
+})
+test('ordinary heading-led prose also creates topic slides without special component markers', () => {
+  assert.deepEqual(ids(composeSemanticSlides([item('A', 'heading'), item('A prose'), item('B', 'heading'), item('B prose')])), [['A', 'A prose'], ['B', 'B prose']])
 })
