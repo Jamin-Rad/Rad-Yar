@@ -7,8 +7,8 @@ one live React tree; the browser fragments it into columns in Book View.
 ## Integration contract
 
 Wrap a lesson in `LessonViewProvider` with a stable lesson ID and an explicit
-`enabled` flag. Render `LessonViewToggle` wherever that lesson exposes its view
-controls. Wrap the existing reading tree in `BookView` and pass the localized
+`enabled` flag. Render `LessonViewToggle` with `variant="action"` in the existing lesson header
+action row, beside Take Home and practice links. Wrap the existing reading tree in `BookView` and pass the localized
 lesson title and ordered section IDs/titles. Mark existing outer sections with
 `data-book-section` and their expandable body with `data-book-body`. Open those
 bodies while `useLessonView().mode === 'book'`; retain the original Classic
@@ -73,7 +73,7 @@ All 45 reader/CAA automated tests and CAA bank wiring checks pass. Rendered QA
 used the installed Playwright/Chrome runtime because the Browser plugin was not
 available. The original production Classic component and the integrated version
 match in section text, asset/reference order, expansion, sizes and spacing; the
-new mode selector adds its own space above the lesson. `ChapterContent` is byte
+mode control is placed in the existing header action row. `ChapterContent` is byte
 identical to production. No data, assets, existing learning tools or shared Classic
 styles changed.
 

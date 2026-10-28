@@ -97,3 +97,8 @@
 .contents select { width: 100%; min-width: 0; box-sizing: border-box; }
 /* The Classic divider is positioned against a continuous section body. */
 .flow :global([data-book-body])::before,.flow :global([data-book-body])::after { display: none !important; }
+
+.actionToggle { position: relative; z-index: 1; display: inline-flex; align-items: center; justify-content: center; gap: 12px; min-height: 46px; padding: 10px 20px; border: 1px solid #c1a4cc; border-radius: 7px; background: #f6edf8; color: #512556; font: inherit; font-weight: 800; cursor: pointer; box-shadow: 0 8px 22px #27102e24; }
+.actionToggle svg { width: 19px; height: 19px; }
+.actionToggle[aria-pressed='true'] { border-color: #ba8dc6; background: #713574; color: #fff; }
+.actionToggle:focus-visible { outline: 3px solid #d9b3e2; outline-offset: 4px; }

@@ -44,9 +44,13 @@ export function LessonViewProvider({ lessonId, enabled = true, children }) {
   return <Context.Provider value={value}>{children}</Context.Provider>
 }
 export const useLessonView = () => useContext(Context)
-export function LessonViewToggle({ lang = 'de' }) {
+export function LessonViewToggle({ lang = 'de', variant = 'segmented' }) {
   const { mode, changeMode } = useLessonView()
   const copy = BOOK_COPY[lang] || BOOK_COPY.de
+  if (variant === 'action') return <button type="button" className={styles.actionToggle} aria-pressed={mode === 'book'} onClick={() => changeMode(mode === 'book' ? 'classic' : 'book')}>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true"><path d="M12 5v16M12 5C9 3 5 3 2 4v15c3-1 7-1 10 2 3-3 7-3 10-2V4c-3-1-7-1-10 1Z"/></svg>
+    {copy.book}
+  </button>
   return <div className={styles.switch} role="group" aria-label={copy.view}>
     <button type="button" aria-pressed={mode === 'classic'} onClick={() => changeMode('classic')}><span aria-hidden="true">☷</span>{copy.classic}</button>
     <button type="button" aria-pressed={mode === 'book'} onClick={() => changeMode('book')}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true"><path d="M12 5v16M12 5C9 3 5 3 2 4v15c3-1 7-1 10 2 3-3 7-3 10-2V4c-3-1-7-1-10 1Z"/></svg>{copy.book}</button>
