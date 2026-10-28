@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server'
+import { sanitizeSavedFinding } from '@/lib/findingCollection'
 import { requireAndarunSession } from '@/lib/andarunPasswordAuth'
 import { requireFatimaSession } from '@/lib/fatimaPasswordAuth'
 import { isSupabaseAdminConfigured, supabaseAdmin } from '@/lib/supabase/server'
@@ -134,33 +135,6 @@ function sanitizeShift(value) {
   }
 }
 
-function sanitizeFinding(value) {
-  return {
-    id: cleanText(value?.id, 80) || `finding-${Date.now()}`,
-    type: cleanText(value?.type, 20) === 'question' ? 'question' : 'case',
-    examDate: cleanDate(value?.examDate),
-    name: cleanText(value?.name, 120),
-    birthDate: cleanDate(value?.birthDate),
-    modality: cleanText(value?.modality, 40),
-    examArea: cleanText(value?.examArea, 80),
-    exam: cleanText(value?.exam, 120),
-    diagnosis: cleanText(value?.diagnosis, 180),
-    vd: cleanText(value?.vd, 160),
-    organ: cleanText(value?.organ, 100),
-    question: cleanText(value?.question, 500),
-    keyFinding: cleanText(value?.keyFinding, 1000),
-    learningPoint: cleanText(value?.learningPoint, 1000),
-    tags: cleanText(value?.tags, 240),
-    dueDate: cleanDate(value?.dueDate),
-    priority: ['normal', 'hoch', 'dringend'].includes(value?.priority) ? value.priority : 'normal',
-    reviewReason: cleanText(value?.reviewReason, 1000),
-    reviewResult: cleanText(value?.reviewResult, 1000),
-    status: cleanText(value?.status, 40) || 'offen',
-    createdAt: value?.createdAt || new Date().toISOString(),
-    updatedAt: new Date().toISOString(),
-  }
-}
-
 function sanitizeFindingTimer(value) {
   const durationMs = Number(value?.durationMs)
   const count = Number(value?.count)
@@ -226,8 +200,8 @@ export async function POST(request) {
     }
 
     if (body.type === 'finding') {
-      const finding = sanitizeFinding(body.finding)
-      if (!finding.examDate && !finding.question && !finding.diagnosis && !finding.reviewReason) {
+      const finding = sanitizeSavedFinding(body.finding)
+      if (!finding.name && !finding.examDate && !finding.question && !finding.diagnosis && !finding.reviewReason) {
         return NextResponse.json({ error: 'Befunddaten fehlen.' }, { status: 400 })
       }
       const next = {

@@ -653,8 +653,7 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
       <header className={styles.header}>
         {showHomeLink ? <Link href="/andarun" className={styles.back}>← Jaminova</Link> : <span />}
         <div>
-          {showFindings && !showShifts ? <span className={styles.kicker}>Befunde</span> : null}
-          <h1>{showFindings && !showShifts ? 'Befunde' : 'Dienstzeiten'}</h1>
+          <h1>{showFindings && !showShifts ? 'Befundtimer' : 'Dienstzeiten'}</h1>
         </div>
         {showShifts ? (
           <button className={styles.printBtn} type="button" onClick={printMonth}>
@@ -662,13 +661,7 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
             <span className={styles.printLabelLong}>PDF drucken</span>
             <span className={styles.printLabelShort}>PDF</span>
           </button>
-        ) : (
-          <nav className={styles.findingsTabs} aria-label="Befunde Bereiche">
-            <span className={styles.findingsTabActive} aria-current="page">Befundtimer</span>
-            <Link className={styles.findingsTab} href="/andarun/befunde/faelle">Interessante Befunde <span aria-hidden="true">↗</span></Link>
-            <Link className={styles.findingsTab} href="/andarun/befunde/kontrolle">Befundkontrolle <span aria-hidden="true">↗</span></Link>
-          </nav>
-        )}
+        ) : null}
       </header>
 
       {message && <div className={styles.message}>{message}</div>}

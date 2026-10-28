@@ -1,24 +1,14 @@
 import { redirect } from 'next/navigation'
 import { hasAndarunSession } from '@/lib/andarunPasswordAuth'
-import WorkPage from '../dienste/WorkPage'
+import FindingCollectionPage from './FindingCollectionPage'
 
 export const metadata = {
-  title: 'Jaminova Befunde',
-  description: 'Befundzeiten erfassen und Tagesarbeitszeit ansehen',
-  robots: {
-    index: false,
-    follow: false,
-  },
+  title: 'Fallsammlung · Jaminova',
+  description: 'Interessante Befunde und Befundkontrollen zum späteren Wiederansehen sammeln.',
+  robots: { index: false, follow: false },
 }
-
 export const dynamic = 'force-dynamic'
-
-export default async function AndarunFindingsPage() {
+export default async function Page() {
   if (!(await hasAndarunSession())) redirect('/andarun/login?next=/andarun/befunde')
-
-  return (
-    <>
-      <WorkPage showHomeLink={false} view="findings" />
-    </>
-  )
+  return <FindingCollectionPage />
 }

@@ -11,7 +11,7 @@ const SECTIONS = [
   ['/andarun/routine', 'Routine'], ['/andarun/todo', 'ToDos'],
   ['/andarun/termine', 'Termine'], ['/andarun/deutsch', 'Deutsch'],
   ['/andarun/gesundheit', 'Gesundheit'], ['/andarun/dienste', 'Dienste'],
-  ['/andarun/befunde', 'Befunde'], ['/andarun/medikamente', 'Medikamente'],
+  ['/andarun/befundtimer', 'Befundtimer'], ['/andarun/befunde', 'Fallsammlung'], ['/andarun/medikamente', 'Medikamente'],
   ['/andarun/test2', 'Test 2'], ['/andarun/test', 'Test'],
 ]
 
@@ -24,7 +24,7 @@ const SURFACES = [
   ['/andarun/gesundheit', 'health'],
   ['/andarun/deutsch', 'german'],
   ['/andarun/dienste', 'work'],
-  ['/andarun/befunde', 'work'],
+  ['/andarun/befundtimer', 'work'], ['/andarun/befunde', 'collection'],
   ['/andarun/test', 'learning'],
 ]
 

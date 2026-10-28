@@ -4,6 +4,7 @@ export const ANDARUN_HOME_GROUPS = [
     { title: 'Aufgaben', href: '/andarun/todo', icon: 'check', tone: 'coral' },
     { title: 'Termine', href: '/andarun/termine', icon: 'calendar' },
     { title: 'Dienste', href: '/andarun/dienste', icon: 'briefcase' },
+    { title: 'Befundtimer', href: '/andarun/befundtimer', icon: 'timer' },
   ] },
   { id: 'gesundheit', title: 'Gesundheit', tone: 'mint', items: [
     { title: 'Gesundheit', href: '/andarun/gesundheit', icon: 'heart' },
@@ -12,7 +13,7 @@ export const ANDARUN_HOME_GROUPS = [
   { id: 'lernen', title: 'Lernen', tone: 'blue', items: [
     { title: 'Deutsch', href: '/andarun/deutsch', icon: 'book' },
     { title: 'English', href: '/andarun/english', icon: 'book' },
-    { title: 'Befunde', href: '/andarun/befunde', icon: 'file' },
+    { title: 'Fallsammlung', href: '/andarun/befunde', icon: 'file' },
     { title: 'Test', href: '/andarun/test', icon: 'test' },
   ] },
   { id: 'finanzen', title: 'Finanzen', tone: 'coral', items: [

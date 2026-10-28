@@ -7,10 +7,10 @@ import { ANDARUN_WEB_APPS, getAndarunPwaMetadata } from '../lib/andarunWebApps.j
 test('four groups retain existing modules and expose finance destinations inline', () => {
   const items = ANDARUN_HOME_GROUPS.flatMap(group => group.items)
   assert.deepEqual(ANDARUN_HOME_GROUPS.map(group => group.title), ['Alltag', 'Gesundheit', 'Lernen', 'Finanzen'])
-  assert.equal(items.length, 15)
-  assert.equal(new Set(items.map(item => item.title)).size, 15)
+  assert.equal(items.length, 16)
+  assert.equal(new Set(items.map(item => item.title)).size, 16)
   assert.deepEqual(items.filter(item => item.href).map(item => item.href).sort(), [
-    '/andarun/routine', '/andarun/todo', '/andarun/termine', '/andarun/dienste',
+    '/andarun/routine', '/andarun/todo', '/andarun/termine', '/andarun/dienste', '/andarun/befundtimer',
     '/andarun/gesundheit', '/andarun/medikamente', '/andarun/deutsch', '/andarun/english', '/andarun/befunde', '/andarun/test',
     '/andarun/finanz', '/andarun/urlaub', '/andarun/finanz/freunde', '/digitda',
   ].sort())
@@ -47,4 +47,15 @@ test('home keeps essential status messages but removes decorative descriptions',
   assert.ok(source.includes('Kein Dienst eingetragen.'))
   assert.ok(css.includes('--home-display: var(--font-fraunces)'))
   assert.ok(css.includes('--home-ui: var(--font-inter)'))
+})
+
+
+test('reporting timer belongs to Alltag and the two collections share one learning entry', () => {
+  const everyday = ANDARUN_HOME_GROUPS.find(group => group.id === 'alltag').items
+  const learning = ANDARUN_HOME_GROUPS.find(group => group.id === 'lernen').items
+  assert.equal(everyday.find(item => item.title === 'Befundtimer')?.href, '/andarun/befundtimer')
+  assert.equal(learning.find(item => item.title === 'Fallsammlung')?.href, '/andarun/befunde')
+  assert.equal(learning.some(item => item.href === '/andarun/befundtimer'), false)
+  assert.equal(ANDARUN_WEB_APPS.befundtimer.startUrl, '/andarun/befundtimer')
+  assert.equal(ANDARUN_WEB_APPS.befunde.shortName, 'Fallsammlung')
 })

@@ -102,6 +102,7 @@ function NutritionSummary({ nutrition }) {
 }
 
 function SpaceIcon({ name }) {
+  if (name === 'timer') return <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="28" r="16"/><path d="M18 5h12M24 5v7m0 7v10l6 4M35 12l4-4"/></svg>
   if (name === 'refresh') return <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M39 18A16 16 0 0 0 11 12l-4 6M7 8v10h10M9 30a16 16 0 0 0 28 6l4-6M41 40V30H31" /></svg>
   if (name === 'food') return <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="25" cy="24" r="13"/><path d="M4 7v12c0 5 6 5 6 0V7M7 7v34M43 7c-4 5-4 14 0 17v17M43 7v17"/></svg>
   if (name === 'people') return <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="18" cy="14" r="6"/><circle cx="34" cy="17" r="4"/><path d="M5 39v-5c0-7 6-11 13-11s13 4 13 11v5ZM30 26c7-1 13 3 13 9v4h-6"/></svg>

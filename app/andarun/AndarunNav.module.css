@@ -81,3 +81,7 @@
   .homeLink svg { width: 19px; height: 19px; }
 }
 @media print { .navShell { display: none !important; } }
+
+.navShell[data-surface='collection'] { --header-bg: #fbfaf8; --header-ink: #172637; --header-muted: #68717b; --header-line: #e1e4e0; --header-accent: #075c50; --header-width: 1380px; --header-gutter: 96px; }
+@media (max-width: 1100px) { .navShell[data-surface='collection'] { --header-gutter: 64px; } }
+@media (max-width: 760px) { .navShell[data-surface='collection'] { --header-gutter: 36px; } }
