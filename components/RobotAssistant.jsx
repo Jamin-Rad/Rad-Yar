@@ -77,6 +77,8 @@ export default function RobotAssistant() {
     pathname?.startsWith('/admin')
     || pathname?.startsWith('/exam')
     || pathname?.startsWith('/andarun')
+    || pathname === '/fatima'
+    || pathname?.startsWith('/fatima/')
     || pathname?.startsWith('/mobin')
     || pathname?.startsWith('/node-rads')
     || pathname?.startsWith('/kaiser-score')

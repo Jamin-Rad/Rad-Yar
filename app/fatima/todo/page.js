@@ -6,15 +6,15 @@ export const metadata = {
   title: 'Fatima Kalender',
   description: 'Gemeinsame Aufgaben und Termine',
   applicationName: 'Fatima Kalender',
-  manifest: '/fatima/todo/manifest.webmanifest?v=1',
+  manifest: '/fatima/todo/manifest.webmanifest?v=2',
   appleWebApp: { capable: true, title: 'Fatima Kalender', statusBarStyle: 'default' },
   icons: {
     icon: [
-      { url: '/fatima/todo/icon-192.png', sizes: '192x192', type: 'image/png' },
-      { url: '/fatima/todo/icon-512.png', sizes: '512x512', type: 'image/png' },
+      { url: '/fatima/heart-192.png', sizes: '192x192', type: 'image/png' },
+      { url: '/fatima/heart-512.png', sizes: '512x512', type: 'image/png' },
     ],
-    shortcut: '/fatima/todo/icon-192.png',
-    apple: [{ url: '/fatima/todo/icon-180.png', sizes: '180x180', type: 'image/png' }],
+    shortcut: '/fatima/heart-192.png',
+    apple: [{ url: '/fatima/heart-180.png', sizes: '180x180', type: 'image/png' }],
   },
   robots: {
     index: false,
