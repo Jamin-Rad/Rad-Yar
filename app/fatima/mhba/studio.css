@@ -244,3 +244,25 @@
 .study-checked-note nav a{font:11px/1.8 Arial,sans-serif;color:#75603b;text-decoration:underline;text-underline-offset:3px}
 .reader-book-mode .study-checked-note{padding:12px 16px}
 @media(max-width:720px){.study-checked-note{padding:14px}.study-checked-note h4{font-size:13px}}
+
+/* iPad reading: native vertical touch scrolling, dedicated Pencil text marks. */
+.parallel-reader{position:relative;touch-action:pan-y pinch-zoom}
+.parallel-reader[data-reader-input=pen]{touch-action:none;-webkit-user-select:none;user-select:none}
+.parallel-reader[data-reader-input=touch]{-webkit-user-select:none;user-select:none}
+.parallel-reader[data-reader-input=mouse]{-webkit-user-select:text;user-select:text}
+.reader-pen-preview{position:absolute;inset:0;pointer-events:none;z-index:8;overflow:hidden}
+.reader-pen-preview span{position:absolute;border-radius:2px;background:#f2d75b80}
+.reader-pen-preview[data-color=pink] span{background:#eaa6bd80}
+.reader-pen-preview[data-color=green] span{background:#a1c6a580}
+.reader-pen-preview[data-tool=underline] span{background:transparent;border-bottom:2px solid #956273;border-radius:0}
+.reader-pen-preview[data-tool=erase] span{background:#fff8;border:1px dashed #a16c7c}
+.mhba-studio.studio-focus .studio-reader{transform-origin:50% 75%;animation:reader-book-open .62s cubic-bezier(.18,.7,.2,1) both}
+.mhba-studio.studio-focus .folio-content{animation:none!important;backface-visibility:hidden;-webkit-backface-visibility:hidden;transform:translate3d(0,0,0)}
+.book-turn-sheet{position:absolute;z-index:6;overflow:hidden;padding:0 14px 18px;box-sizing:border-box;background:linear-gradient(90deg,#f7eedf,#fffaf0 46%,#e2d5bf 50%,#fffaf0 54%,#f7eedf);box-shadow:8px 2px 18px #59412c20;pointer-events:none;backface-visibility:hidden;-webkit-backface-visibility:hidden;will-change:transform,opacity}
+.book-turn-sheet:after{content:'';position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,#6d4e2e18,transparent 18%,transparent 80%,#6d4e2e15)}
+@keyframes reader-book-open{from{opacity:.35;transform:perspective(1600px) translate3d(0,16px,0) rotateX(8deg) rotateY(-9deg) scale(.975)}to{opacity:1;transform:perspective(1600px) translate3d(0,0,0) rotateX(0) rotateY(0) scale(1)}}
+@media(max-width:720px){.book-turn-sheet{padding:0 4px 15px;background:#fffaf0}}
+@media(prefers-reduced-motion:reduce){.mhba-studio.studio-focus .studio-reader{animation:none!important}.mhba-studio.studio-focus .folio-content{transform:none}}
+.mhba-studio .parallel-reader{touch-action:pan-y pinch-zoom}
+.mhba-studio .parallel-reader[data-reader-input=pen]{touch-action:none}
+.parallel-reader[data-reader-input=pen][data-reader-tool=select]{-webkit-user-select:text;user-select:text}

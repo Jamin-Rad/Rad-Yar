@@ -6,7 +6,7 @@ import StudioReader from './StudioReader.jsx';
 import {StudioIcon} from './StudioTools.jsx';
 const fa=value=>value.toLocaleString('fa-IR');
 
-export default function LessonStudio({lesson,mode,route,data,patch,navigate,pick,eraseSelection,storageError,backup}){
+export default function LessonStudio({lesson,mode,route,data,patch,navigate,pick,annotateRange,eraseSelection,storageError,backup}){
  const saved=data.read[lesson.id]||{};
  const [position,setPosition]=useState(()=>findSourceChunk(lesson.chunks,saved.page||4,saved.chapterId,saved.offset,saved.language));
  const [focus,setFocus]=useState(false);const scrollBeforeBook=useRef(0);const previousFocus=useRef(false);
@@ -46,7 +46,7 @@ export default function LessonStudio({lesson,mode,route,data,patch,navigate,pick
    <main className="studio-main" id="studio-content" tabIndex={-1} onPointerUp={pick} onKeyUp={e=>{if(e.key==='Shift')pick();}}>
     <div className="studio-intro"><div className="studio-title"><h1 className="de" lang="de" dir="ltr">{lesson.de}</h1><p>{lesson.fa}</p></div><div className="studio-intro-actions"><button className="studio-breadcrumb" onClick={()=>navigate('home')}>مدول ۱ / درس {fa(lesson.id)}<StudioIcon name="prev" size={16}/></button><div><button className="studio-map-toggle" aria-haspopup="dialog" aria-expanded={mapOpen} onClick={()=>setMapOpen(true)}><StudioIcon name="list"/>فهرست فصل‌ها</button><button className={`studio-focus-toggle ${focus?'is-active':''}`} aria-pressed={focus} onClick={toggleBook}><StudioIcon name="focus"/>{focus?'بستن کتاب':'حالت کتاب'}</button></div></div></div>
     {storageError?<p className="notice" role="alert">ذخیره در مرورگر ممکن نشد؛ برای حفظ یادداشت‌ها پشتیبان بگیر.</p>:null}
-    <StudioReader lesson={lesson} chapter={chapter} current={current} position={position} data={data} patch={patch} go={go} focus={focus} eraseSelection={eraseSelection} completed={completed.includes(chapter.id)} toggleComplete={toggleComplete} navigate={navigate}/>
+    <StudioReader lesson={lesson} chapter={chapter} current={current} position={position} data={data} patch={patch} go={go} focus={focus} annotateRange={annotateRange} eraseSelection={eraseSelection} completed={completed.includes(chapter.id)} toggleComplete={toggleComplete} navigate={navigate}/>
 
     <footer className="studio-footer"><span>MHBA</span><span>جزوهٔ اصلی MHBA · مدول ۱ · درس {fa(lesson.id)}</span><button onClick={backup}>پشتیبان مطالعه <Icon name="download" size={12}/></button></footer>
    </main>

@@ -27,7 +27,16 @@ function NotebookApp(){
  useEffect(()=>{document.title=lesson?`${lesson.fa} | MHBA`:'MHBA';},[lesson]);
  function navigate(to){setRoute(to);if(location.hash.slice(1)!==to)location.hash=to;window.scrollTo(0,0);}
  const annotation=data.annotation||{tool:'highlight',color:'yellow'};
+ function annotateRange({blockId,start,end,range},tool=annotation.tool){
+  if(!lesson||tool==='select'||!Number.isInteger(start)||!Number.isInteger(end)||end<=start)return;
+  const original=blockId.match(/^original-(\d+)-(\d+)(-fa)?$/);
+  const sourceText=original?lesson.pages[Number(original[2])-1]?.[original[3]?'fa':'text']:range?.startContainer.parentElement?.closest('[data-highlight-root]')?.textContent;
+  if(!sourceText||start<0||end>sourceText.length||!sourceText.slice(start,end).trim())return;
+  const next={id:crypto.randomUUID(),sourceRevision:SOURCE_REVISION,lessonId:lesson.id,blockId,start,end,text:sourceText.slice(start,end),sourceText,tool,color:annotation.color,note:'',created:Date.now()};
+  patch(p=>({...p,highlights:tool==='erase'?eraseAnnotations(p.highlights,next):addAnnotation(p.highlights,next)}));
+ }
  function pick(event,tool=annotation.tool){
+  if(event?.pointerType==='pen'||event?.pointerType==='touch')return;
   if(tool==='select'||!lesson)return;
   const sel=window.getSelection();
   if(tool==='erase'&&(!sel||sel.isCollapsed)){
@@ -51,7 +60,7 @@ function NotebookApp(){
  }
  useEffect(()=>{
   // Mobile selection handles may move after pointerup; debounce until they settle.
-  let timer;const changed=()=>{clearTimeout(timer);if(window.getSelection()?.isCollapsed)return;timer=setTimeout(pick,700);};
+  let timer;const changed=()=>{clearTimeout(timer);const selection=window.getSelection();if(selection?.isCollapsed)return;const parent=selection?.anchorNode?.parentElement;const reader=parent?.closest('.parallel-reader');if(reader&&['touch','pen'].includes(reader.dataset.readerInput))return;timer=setTimeout(pick,700);};
   document.addEventListener('selectionchange',changed);
   return()=>{clearTimeout(timer);document.removeEventListener('selectionchange',changed);};
  },[lesson?.id,annotation.tool,annotation.color,data.highlights]);
@@ -60,7 +69,7 @@ function NotebookApp(){
  const due=Object.values(lessons).flatMap(l=>l.cards).filter(q=>!data.review[q.id]||data.review[q.id].due<=Date.now()).length;
  const active=route==='highlights'?'highlights':route==='review'?'review':'home';
  if(['home','cards','review','exam','official','highlights'].includes(route)||route.endsWith('/notes'))return <LearningPortal view={['cards','review','exam','official'].includes(route)?route:'home'} data={data} patch={patch} navigate={navigate} backup={backup} restore={restore} toast={toast} storageError={storageError}/>;
- if(lesson)return <LessonStudio key={lesson.id} lesson={lesson} mode={mode} route={route} data={data} patch={patch} navigate={navigate} pick={pick} eraseSelection={()=>pick(null,'erase')} storageError={storageError} backup={backup}/>;
+ if(lesson)return <LessonStudio key={lesson.id} lesson={lesson} mode={mode} route={route} data={data} patch={patch} navigate={navigate} pick={pick} annotateRange={annotateRange} eraseSelection={()=>pick(null,'erase')} storageError={storageError} backup={backup}/>;
  return <div className="mhba-scope" lang="fa" dir="rtl" data-mhba-learning data-deutsch-learning><a href="#main-content" className="skip-link" onClick={e=>{e.preventDefault();document.getElementById('main-content')?.focus();}}>رفتن به محتوای اصلی</a><header className="topbar"><button className="brand" onClick={()=>navigate('home')}>MHBA</button><nav aria-label="ناوبری اصلی">{[['home','مدول‌ها'],['review','مرور'],['cards','فلش‌کارت‌ها'],['exam','آزمون']].map(([to,label])=><button key={to} className={active===to?'active':''} onClick={()=>navigate(to)}>{label}</button>)}</nav><Link className="fatima-home" href="/fatima">بازگشت به صفحهٔ فاطمه</Link></header>
  <div className="app-shell"><aside className="sidebar"><div className="sidebar-main">{[['home','book','مدول‌ها'],['cards','book','فلش‌کارت‌ها'],['exam','check','آزمون']].map(([to,icon,label])=><button key={to} className={active===to?'selected':''} onClick={()=>navigate(to)}><Icon name={icon}/><span>{label}</span>{to==='review'?<span className="count">{due}</span>:null}</button>)}</div><div className="sidebar-modules"><p>ترم اول</p><button className={route==='catalog'&&module===1?'module-active':''} onClick={()=>{setModule(1);navigate('catalog');}}>مدول ۱ <span>درس‌های ۱ تا ۱۰</span></button><button className={route==='catalog'&&module===2?'module-active':''} onClick={()=>{setModule(2);navigate('catalog');}}>مدول ۲ <span>درس‌های ۱۱ تا ۲۰</span></button></div><div className="notebook-tools"><p>یادداشت‌ها در همین مرورگر ذخیره می‌شوند.</p><button className="text-button" onClick={backup}><Icon name="download" size={16}/> پشتیبان دفتر</button><button className="text-button" onClick={()=>importRef.current?.click()}>بازیابی پشتیبان</button><input type="file" accept="application/json,.json" ref={importRef} onChange={restore} hidden/></div></aside>
  <main id="main-content" tabIndex={-1} className={'main '+(lesson?'lesson-main':'')} onPointerUp={pick} onKeyUp={e=>{if(e.key==='Shift')pick();}}>
