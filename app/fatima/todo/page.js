@@ -3,11 +3,11 @@ import { hasFatimaSession } from '@/lib/fatimaPasswordAuth'
 import TodoPage from '@/app/andarun/todo/TodoPage'
 
 export const metadata = {
-  title: 'Fatemeh ToDo',
+  title: 'Fatima Kalender',
   description: 'Gemeinsame Aufgaben und Termine',
-  applicationName: 'Fatemeh ToDo',
+  applicationName: 'Fatima Kalender',
   manifest: '/fatima/todo/manifest.webmanifest?v=1',
-  appleWebApp: { capable: true, title: 'Fatemeh ToDo', statusBarStyle: 'default' },
+  appleWebApp: { capable: true, title: 'Fatima Kalender', statusBarStyle: 'default' },
   icons: {
     icon: [
       { url: '/fatima/todo/icon-192.png', sizes: '192x192', type: 'image/png' },
@@ -29,5 +29,5 @@ export const viewport = { width: 'device-width', initialScale: 1, viewportFit: '
 export default async function FatimaTodoPage() {
   if (!(await hasFatimaSession())) redirect('/fatima/login')
 
-  return <TodoPage apiBase="/api/andarun/todos" homeHref="/fatima" homeLabel="Fatima" theme="light" />
+  return <TodoPage apiBase="/api/andarun/todos" homeHref="/fatima" homeLabel="Fatima" title="Kalender" theme="light" />
 }
