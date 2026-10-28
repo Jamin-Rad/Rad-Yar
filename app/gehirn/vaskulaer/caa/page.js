@@ -1,6 +1,11 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import BookView from '@/components/book-view/BookView';
+import BookCheckpoint from '@/components/book-view/BookCheckpoint';
+import { LessonViewProvider, LessonViewToggle, useLessonView } from '@/components/book-view/BookViewContext';
+import { BOOK_VIEW_PILOTS, questionIdsForSection } from '@/components/book-view/pilots';
+import { CAA_QUESTIONS } from '@/data/caaStudyBank';
 import { useLessonSectionScroll } from '@/hooks/useLessonSectionScroll';
 import CAACaseGallery from '@/components/CAACaseGallery';
 import LessonTakeHome from '@/components/LessonTakeHome';
@@ -146,6 +151,11 @@ function ChapterContent({ id, lang }) {
   return <LessonTakeHome points={COPY.takehome} lang={lang} idPrefix="caa-take-home" />;
 }
 export default function CAAPage() {
+  return <LessonViewProvider lessonId="caa" enabled={BOOK_VIEW_PILOTS.has('caa')}><CAALesson /></LessonViewProvider>;
+}
+function CAALesson() {
+  const view = useLessonView();
+  const book = view?.mode === 'book';
   const {
     lang
   } = useLanguage();
@@ -161,7 +171,7 @@ export default function CAAPage() {
   const lehrMode = useLehrModeActive();
   const scrollToSection = useLessonSectionScroll();
   const summary = CAA_CHAPTERS.find(section => section.emphasis);
-  const isSectionOpen = section => lehrMode || (section.emphasis ? summaryOpen : openId === section.id);
+  const isSectionOpen = section => book || lehrMode || (section.emphasis ? summaryOpen : openId === section.id);
   const [mobileOpen, setMobileOpen] = useState(false);
   const withLang = href => lang === 'de' ? href : `${href}${href.includes('?') ? '&' : '?'}lang=${lang}`;
   const replaceHash = id => {
@@ -174,8 +184,12 @@ export default function CAAPage() {
       const id = resolveChapter(window.location.hash.slice(1));
       if (id === 'takehome') setSummaryOpen(true);
       else if (id) setOpenId(id);
-      else setOpenId('grundlagen');
-      if (id) scrollToSection(window.location.hash === '#boston' ? 'caa-boston-heading' : id);
+      else if (!view.anchor.current) setOpenId('grundlagen');
+      if (id) {
+        const target = window.location.hash === '#boston' ? 'caa-boston-heading' : id;
+        if (book) requestAnimationFrame(() => view.navigate(target));
+        else scrollToSection(target);
+      }
     };
     syncHash();
     window.addEventListener('hashchange', syncHash);
@@ -184,6 +198,17 @@ export default function CAAPage() {
       window.removeEventListener('hashchange', syncHash);
       window.removeEventListener('popstate', syncHash);
     };
+  }, [scrollToSection, book, view?.navigate]);
+  useEffect(() => {
+    const restore = event => {
+      const id = event.target.closest('[data-book-section]')?.id;
+      if (!id) return;
+      if (id === 'takehome') setSummaryOpen(true);
+      else setOpenId(id);
+      scrollToSection(id);
+    };
+    document.addEventListener('book:restore', restore);
+    return () => document.removeEventListener('book:restore', restore);
   }, [scrollToSection]);
   const selectSection = id => {
     setMobileOpen(false);
@@ -194,9 +219,11 @@ export default function CAAPage() {
       setOpenId(id);
     }
     replaceHash(id);
-    scrollToSection(id);
+    if (book) view.navigate(id);
+    else scrollToSection(id);
   };
   const toggleSummary = () => {
+    if (book) { view.navigate('takehome'); return; }
     const next = !summaryOpen;
     setSummaryOpen(next);
     replaceHash(next ? 'takehome' : openId);
@@ -223,7 +250,8 @@ export default function CAAPage() {
             width: `${readSections.size / CAA_TRACKED_IDS.length * 100}%`
           }} /></div><span>{readSections.size} / {CAA_TRACKED_IDS.length} {c(COPY.read)}</span><div className={reference.progressActions}><button type="button" className={`${reference.lessonCompleteButton} ${isRead ? reference.lessonCompleteButtonDone : ''}`} onClick={toggleLessonRead} aria-pressed={isRead}><Icon name="check" />{c(isRead ? COPY.fullMarked : COPY.fullMark)}</button><button type="button" className={reference.continueButton} onClick={() => selectSection(CAA_TRACKED_IDS[activeIndex + 1])} disabled={activeIndex === CAA_TRACKED_IDS.length - 1}>{c(COPY.continue)}<Icon name="arrow" /></button></div></div>
     {authError ? <p className={styles.auth} role="status">{c(COPY.auth)} <Link href={withLang('/sign-in')}>{c(COPY.login)}</Link></p> : null}</header>
-    <div className={reference.layout}><aside className={reference.sidebar}><h2 className={reference.learningPathHeading}>{c(COPY.path)}</h2><nav aria-label={c(COPY.path)}>{navItems()}</nav></aside><article className={reference.lesson}>{CAA_CHAPTERS.map(section => <section key={section.id} id={section.id} className={`${reference.section} ${isSectionOpen(section) ? reference.sectionOpen : ''} ${section.emphasis ? reference.takeHomeSection : ''}`}><h2 className={styles.chapterHeading}><button type="button" className={reference.sectionHeader} aria-expanded={isSectionOpen(section)} aria-controls={`${section.id}-panel`} onClick={() => section.emphasis ? toggleSummary() : selectSection(section.id)}><span className={reference.sectionIcon}><Icon name={section.icon} /></span><span><strong>{(section.emphasis || section.id === "takehome" ? summaryLabel(lang) : c(section.title))}</strong></span><span className={reference.toggle} aria-hidden="true">{isSectionOpen(section) ? '−' : '+'}</span></button></h2><div id={`${section.id}-panel`} className={reference.sectionBody} hidden={!isSectionOpen(section)}><ChapterContent id={section.id} lang={lang} />{!section.emphasis ? <button type="button" className={`${reference.readButton} ${readSections.has(section.id) ? reference.readButtonDone : ''}`} aria-pressed={readSections.has(section.id)} onClick={() => toggleSectionRead(section.id)}><Icon name="check" />{c(readSections.has(section.id) ? COPY.marked : COPY.mark)}</button> : null}</div></section>)}<details className={styles.sources}><summary>{c(COPY.sources)}</summary>{CAA_SOURCES.map(source => <a key={source.href} href={source.href} target="_blank" rel="noopener noreferrer">{source.label}</a>)}</details></article></div>
-    <div className={styles.mobilePath}><button type="button" className={styles.mobileTrigger} aria-expanded={mobileOpen} aria-controls="caa-mobile-path" onClick={() => setMobileOpen(value => !value)}><Icon name="brain" /><strong>{c(COPY.path)}</strong><span>{readSections.size} / {CAA_TRACKED_IDS.length}</span></button><nav id="caa-mobile-path" className={`${reference.sidebar} ${styles.mobilePanel}`} aria-label={c(COPY.path)} hidden={!mobileOpen}><h2 className={reference.learningPathHeading}>{c(COPY.path)}</h2>{navItems()}<button type="button" onClick={() => selectSection('takehome')}><span className={reference.sideIcon}><Icon name="spark" /></span><strong>{summaryLabel(lang)}</strong></button></nav></div>
+    {view.enabled && !book ? <LessonViewToggle lang={lang} /> : null}
+    <div className={`${reference.layout} ${book ? styles.bookLayout : ''}`}><aside className={reference.sidebar}><h2 className={reference.learningPathHeading}>{c(COPY.path)}</h2><nav aria-label={c(COPY.path)}>{navItems()}</nav></aside><article className={reference.lesson}><BookView title={c(COPY.title)} sections={CAA_CHAPTERS.map(section => ({ id: section.id, title: section.emphasis ? summaryLabel(lang) : c(section.title) }))} lang={lang}>{CAA_CHAPTERS.map(section => <section key={section.id} id={section.id} data-book-section className={`${reference.section} ${isSectionOpen(section) ? reference.sectionOpen : ''} ${section.emphasis ? reference.takeHomeSection : ''}`}><h2 className={styles.chapterHeading}><button type="button" className={reference.sectionHeader} aria-expanded={isSectionOpen(section)} aria-controls={`${section.id}-panel`} onClick={() => section.emphasis ? toggleSummary() : selectSection(section.id)}><span className={reference.sectionIcon}><Icon name={section.icon} /></span><span><strong>{(section.emphasis || section.id === "takehome" ? summaryLabel(lang) : c(section.title))}</strong></span><span className={reference.toggle} aria-hidden="true">{isSectionOpen(section) ? '−' : '+'}</span></button></h2><div id={`${section.id}-panel`} className={reference.sectionBody} data-book-body hidden={!isSectionOpen(section)}><ChapterContent id={section.id} lang={lang} />{!section.emphasis ? <button type="button" className={`${reference.readButton} ${readSections.has(section.id) ? reference.readButtonDone : ''}`} aria-pressed={readSections.has(section.id)} onClick={() => toggleSectionRead(section.id)}><Icon name="check" />{c(readSections.has(section.id) ? COPY.marked : COPY.mark)}</button> : null}</div><BookCheckpoint questions={CAA_QUESTIONS[lang] || CAA_QUESTIONS.de} questionIds={questionIdsForSection('caa', section.id, lang)} lang={lang} /></section>)}<details className={styles.sources}><summary>{c(COPY.sources)}</summary>{CAA_SOURCES.map(source => <a key={source.href} href={source.href} target="_blank" rel="noopener noreferrer">{source.label}</a>)}</details></BookView></article></div>
+    <div className={styles.mobilePath} hidden={book}><button type="button" className={styles.mobileTrigger} aria-expanded={mobileOpen} aria-controls="caa-mobile-path" onClick={() => setMobileOpen(value => !value)}><Icon name="brain" /><strong>{c(COPY.path)}</strong><span>{readSections.size} / {CAA_TRACKED_IDS.length}</span></button><nav id="caa-mobile-path" className={`${reference.sidebar} ${styles.mobilePanel}`} aria-label={c(COPY.path)} hidden={!mobileOpen}><h2 className={reference.learningPathHeading}>{c(COPY.path)}</h2>{navItems()}<button type="button" onClick={() => selectSection('takehome')}><span className={reference.sideIcon}><Icon name="spark" /></span><strong>{summaryLabel(lang)}</strong></button></nav></div>
   </main>;
 }

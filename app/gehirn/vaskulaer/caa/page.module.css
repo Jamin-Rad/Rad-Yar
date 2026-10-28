@@ -113,3 +113,8 @@
 
 .bostonCalculatorLink{display:flex;align-items:center;justify-content:center;width:100%;box-sizing:border-box;gap:16px;margin:24px auto 0;padding:16px 24px;border:1px solid var(--teal-700);border-radius:10px;background:var(--paper);color:var(--teal-700);font-weight:800;text-align:center;text-decoration:none}.bostonCalculatorLink svg{width:22px;height:22px;flex-shrink:0}.bostonCalculatorLink:focus-visible{outline:3px solid var(--accent);outline-offset:4px}
 .pathCalculatorLink{display:grid;grid-template-columns:34px 1fr;align-items:center;gap:8px;min-height:42px;margin-top:10px;padding:9px 8px;border-top:1px solid var(--line);border-radius:7px;color:var(--body);text-align:start;text-decoration:none}.pathCalculatorLink strong{font-size:14px;line-height:1.35}.pathCalculatorLink:hover{background:var(--plum-100);color:var(--plum-900)}.pathCalculatorLink:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+
+/* Only the pilot presentation changes; all Classic selectors stay intact. */
+.bookLayout { grid-template-columns: minmax(0,1fr) !important; }
+.bookLayout > aside { display: none; }
+.mobilePath[hidden] { display: none !important; }
