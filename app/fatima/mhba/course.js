@@ -1,3 +1,4 @@
+import {lesson5QuestionNotes} from './lesson5Audit.js';
 import {answerFigures} from './sourceFigures.js';
 import {lesson5Chapters,lesson5Vocabulary} from './lesson5.js';
 import {createSourceChapters} from './sourceChapters.js';
@@ -139,7 +140,7 @@ export function createLessons(materials){const lessons = {
  1:{...catalog[0],title:'Wirtschaften und Wirtschaftswissenschaften',subtitle:'مبانی اقتصاد و تفکر اقتصادی',pages:materials[1].pages,legacySections:one,sections:chapters[1],chapters:chapters[1],vocabulary:extraVocabulary,questions:questions(materials,1,qa1),pdf:'Text_01_Wirtschaften_2026.pdf',solutions:'Text_01_Loesungen_Kontrollfragen_2026.pdf'},
  2:{...catalog[1],title:'Verträge und Handelsrecht',subtitle:'قراردادها و حقوق تجارت',pages:materials[2].pages,legacySections:two,sections:chapters[2],chapters:chapters[2],vocabulary:extraVocabulary,questions:questions(materials,2,qa2),pdf:'Text_02_Vertraege_2026.pdf',solutions:'Text_02_Loesungen_Kontrollfragen_2026.pdf'}
 };
-if(materials[5])lessons[5]={...catalog[4],title:'Unternehmensrechtsformen',subtitle:'اشکال حقوقی بنگاه',pages:materials[5].pages,tables:materials[5].tables,legacySections:[{vocab:lesson5Vocabulary.map(([word,meaning])=>[word.split('|')[0],meaning])}],sections:lesson5Chapters,chapters:lesson5Chapters,vocabulary:[...lesson5Vocabulary,...extraVocabulary],questions:materials[5].questions.map(q=>({...q,figure:answerFigures[q.id],model:q.officialAnswer,modelFa:q.officialAnswerFa,rubric:'مفهوم، تفاوت‌ها و کاربرد در مثال را توضیح بده.'})),pdf:'Text_05_Rechtsformen_2026.pdf',solutions:'Text_05_Loesungen_Kontrollfragen_2026.pdf'};
+if(materials[5])lessons[5]={...catalog[4],title:'Unternehmensrechtsformen',subtitle:'اشکال حقوقی بنگاه',pages:materials[5].pages,tables:materials[5].tables,legacySections:[{vocab:lesson5Vocabulary.map(([word,meaning])=>[word.split('|')[0],meaning])}],sections:lesson5Chapters,chapters:lesson5Chapters,vocabulary:[...lesson5Vocabulary,['bedarf','نیازمند است؛ مثلاً نیازمند رضایت است'],...extraVocabulary.filter(([term])=>!/^Bedarf(?:\||$)/i.test(term))],questions:materials[5].questions.map(q=>({...q,figure:answerFigures[q.id],studyNotes:lesson5QuestionNotes(q.id),model:q.officialAnswer,modelFa:q.officialAnswerFa,rubric:'مفهوم، تفاوت‌ها و کاربرد در مثال را توضیح بده.'})),pdf:'Text_05_Rechtsformen_2026.pdf',solutions:'Text_05_Loesungen_Kontrollfragen_2026.pdf'};
 Object.values(lessons).forEach(lesson=>{lesson.chapters=createSourceChapters(lesson.pages,lesson.chapters);lesson.sections=lesson.chapters;lesson.chunks=lesson.chapters.flatMap(c=>c.chunks);lesson.cards=buildCards(lesson)});
 return lessons;
 }

@@ -1,3 +1,4 @@
+import {migrateSourceAnnotations,SOURCE_REVISION} from './sourceRevisions.js';
 import React,{Suspense,lazy,useEffect,useMemo,useRef,useState} from 'react';
 import Link from 'next/link';
 import {catalog,createLessons} from './course.js';
@@ -42,7 +43,7 @@ function NotebookApp(){
   const start=Number(root.dataset.highlightOffset||0)+prefix.toString().length;const text=range.toString();if(text.trim().length<2)return;
   const originalBlock=root.dataset.highlightRoot.match(/^original-(\d+)-(\d+)(-fa)?$/);
   const sourceText=originalBlock?lesson.pages[Number(originalBlock[2])-1][originalBlock[3]?'fa':'text']:root.textContent;
-  const next={id:crypto.randomUUID(),lessonId:lesson.id,blockId:root.dataset.highlightRoot,start,end:start+text.length,text,sourceText,tool,color:annotation.color,note:'',created:Date.now()};
+  const next={id:crypto.randomUUID(),sourceRevision:SOURCE_REVISION,lessonId:lesson.id,blockId:root.dataset.highlightRoot,start,end:start+text.length,text,sourceText,tool,color:annotation.color,note:'',created:Date.now()};
   const marked=data.highlights.some(h=>h.lessonId===lesson.id&&h.blockId===next.blockId&&(h.tool||'highlight')===tool&&h.start<=next.start&&h.end>=next.end);
   if(tool!=='erase'&&marked)return;
   patch(p=>({...p,highlights:tool==='erase'?eraseAnnotations(p.highlights,next):addAnnotation(p.highlights,next)}));
@@ -55,7 +56,7 @@ function NotebookApp(){
   return()=>{clearTimeout(timer);document.removeEventListener('selectionchange',changed);};
  },[lesson?.id,annotation.tool,annotation.color,data.highlights]);
  function backup(){const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='mhba-notebook.json';a.click();URL.revokeObjectURL(url);setToast('نسخهٔ پشتیبان دفتر دانلود شد.');}
- async function restore(e){try{const file=e.target.files?.[0];if(!file)return;if(file.size>5000000)throw Error();const v=JSON.parse(await file.text());if(v.version!==1||!Array.isArray(v.highlights)||!v.review||typeof v.review!=='object')throw Error();const safe=v.highlights.filter(h=>typeof h.text==='string'&&typeof h.blockId==='string'&&Number.isInteger(h.start)&&Number.isInteger(h.end)&&h.end>h.start&&lessons[h.lessonId]);patch(p=>({...p,highlights:[...p.highlights,...safe.filter(h=>!p.highlights.some(x=>x.id===h.id))],review:{...p.review,...v.review},answers:{...p.answers,...v.answers},read:{...p.read,...v.read},practice:{...p.practice,...v.practice},...(v.customExam&&Array.isArray(v.customExam.topics)&&['binary','questions','mixed','official','written'].includes(v.customExam.type)&&v.customExam.answers&&typeof v.customExam.answers==='object'?{customExam:v.customExam}:{})}));setToast('یادداشت‌ها و مرورها به دفتر اضافه شدند.');}catch{setToast('فایل پشتیبان معتبر نیست.');}e.target.value='';}
+ async function restore(e){try{const file=e.target.files?.[0];if(!file)return;if(file.size>5000000)throw Error();const v=migrateSourceAnnotations(JSON.parse(await file.text()));if(v.version!==1||!Array.isArray(v.highlights)||!v.review||typeof v.review!=='object')throw Error();const safe=v.highlights.filter(h=>typeof h.text==='string'&&typeof h.blockId==='string'&&Number.isInteger(h.start)&&Number.isInteger(h.end)&&h.end>h.start&&lessons[h.lessonId]);patch(p=>({...p,highlights:[...p.highlights,...safe.filter(h=>!p.highlights.some(x=>x.id===h.id))],review:{...p.review,...v.review},answers:{...p.answers,...v.answers},read:{...p.read,...v.read},practice:{...p.practice,...v.practice},...(v.customExam&&Array.isArray(v.customExam.topics)&&['binary','questions','mixed','official','written'].includes(v.customExam.type)&&v.customExam.answers&&typeof v.customExam.answers==='object'?{customExam:v.customExam}:{})}));setToast('یادداشت‌ها و مرورها به دفتر اضافه شدند.');}catch{setToast('فایل پشتیبان معتبر نیست.');}e.target.value='';}
  const due=Object.values(lessons).flatMap(l=>l.cards).filter(q=>!data.review[q.id]||data.review[q.id].due<=Date.now()).length;
  const active=route==='highlights'?'highlights':route==='review'?'review':'home';
  if(['home','cards','review','exam','official','highlights'].includes(route)||route.endsWith('/notes'))return <LearningPortal view={['cards','review','exam','official'].includes(route)?route:'home'} data={data} patch={patch} navigate={navigate} backup={backup} restore={restore} toast={toast} storageError={storageError}/>;

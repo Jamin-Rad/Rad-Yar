@@ -234,3 +234,13 @@
 .source-table-transcript{font-size:13px;color:#6b7569;border:1px dashed #d9dfd1;border-radius:8px;padding:8px 12px;margin-bottom:16px}
 .source-table-transcript summary{cursor:pointer;font-size:12px;direction:rtl;text-align:right}
 .source-table-transcript[open]{font-size:var(--studio-reading-size)}
+.study-checked-notes{margin:24px 0;display:grid;gap:12px;direction:rtl;text-align:right}
+.study-checked-note{padding:16px 20px;border:1px solid #dfd2ae;border-radius:12px;background:#fcf8ec;color:#635638;font-size:13px;line-height:2}
+.study-checked-note summary{cursor:pointer;font-weight:600;line-height:1.9}
+.study-checked-note h4{font-size:14px;margin:0 0 12px;color:#6d5632}
+.study-checked-note p{margin:12px 0 0!important;font-size:14px!important;line-height:2!important;white-space:normal!important}
+.study-checked-note p[lang=de]{font-family:Arial,sans-serif!important;text-align:left}
+.study-checked-note nav{display:flex;flex-wrap:wrap;gap:8px 16px;margin-top:14px}
+.study-checked-note nav a{font:11px/1.8 Arial,sans-serif;color:#75603b;text-decoration:underline;text-underline-offset:3px}
+.reader-book-mode .study-checked-note{padding:12px 16px}
+@media(max-width:720px){.study-checked-note{padding:14px}.study-checked-note h4{font-size:13px}}

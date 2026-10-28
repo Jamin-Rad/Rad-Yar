@@ -1,3 +1,5 @@
+import StudyNotes from './StudyNotes.jsx';
+import {lesson5PageNotes} from './lesson5Audit.js';
 import React,{useEffect,useLayoutEffect,useRef,useState} from 'react';
 import {HighlightText,Icon,PdfLink} from './ui.jsx';
 import {StudioIcon,StudioToolbar} from './StudioTools.jsx';
@@ -44,6 +46,7 @@ export default function StudioReader({lesson,chapter,current,position,data,patch
      <section className="parallel-de" lang="de" dir="ltr" aria-label="متن اصلی آلمانی">{figuresForRow(lesson.id,current.page,row).map(figure=><SourceFigure key={figure.id} figure={figure} pdf={lesson.pdf}/>)}<SourceParagraphs collapsed={figuresForRow(lesson.id,current.page,row).some(f=>lesson.tables?.[f.id])} part={row.de} blockId={`original-${lesson.id}-${current.page}`} sourceLength={original.text.length} data={data} vocabulary={lesson.vocabulary} official={official}/></section>
      {showPersian?<section className="parallel-fa" lang="fa" dir="rtl" aria-label="ترجمهٔ همان بند">{figuresForRow(lesson.id,current.page,row).filter(f=>lesson.tables?.[f.id]).map(f=><SourceTable key={f.id} table={lesson.tables[f.id]} label={f.label}/>)}<SourceParagraphs collapsed={figuresForRow(lesson.id,current.page,row).some(f=>lesson.tables?.[f.id])} part={row.fa} blockId={`original-${lesson.id}-${current.page}-fa`} sourceLength={original.fa.length} data={data} official={official}/></section>:null}
     </div>)}
+    {lesson.id===5&&(!focus||index===sheets.length-1)?<StudyNotes compact notes={lesson5PageNotes(current.page)}/>:null}
     {focus&&lastInChapter&&index===sheets.length-1?<ChapterSummary key={chapter.id} lesson={lesson} chapter={chapter} data={data} completed={completed} toggleComplete={toggleComplete}/>:null}
     </div>
     {focus?<div className="book-measure" ref={measureRef} aria-hidden="true" inert>{rows.map(row=><div className={`parallel-row ${row.de.margin?'source-margin-row':''}`} key={row.de.start}><section className="parallel-de" lang="de" dir="ltr">{figuresForRow(lesson.id,current.page,row).map(figure=><SourceFigure measure key={figure.id} figure={figure} pdf={lesson.pdf}/>)}<SourceParagraphs measure collapsed={figuresForRow(lesson.id,current.page,row).some(f=>lesson.tables?.[f.id])} part={row.de} official={official}/></section>{showPersian?<section className="parallel-fa" lang="fa" dir="rtl">{figuresForRow(lesson.id,current.page,row).filter(f=>lesson.tables?.[f.id]).map(f=><SourceTable key={f.id} table={lesson.tables[f.id]} label={f.label}/>)}<SourceParagraphs measure collapsed={figuresForRow(lesson.id,current.page,row).some(f=>lesson.tables?.[f.id])} part={row.fa} official={official}/></section>:null}</div>)}</div>:null}

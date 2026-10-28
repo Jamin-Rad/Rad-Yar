@@ -9,7 +9,7 @@ export async function GET() {
     return Response.json({ error: 'Not allowed for Fatima' }, { status: 403 })
   }
   try {
-    const materials = await downloadFatimaMhbaMaterial('materials-bilingual-v3.json')
+    const materials = await downloadFatimaMhbaMaterial('materials-bilingual-v4.json')
     const content = validateFatimaMhbaMaterials(JSON.parse(await materials.text()))
     return new Response(JSON.stringify(content), {
       headers: {
