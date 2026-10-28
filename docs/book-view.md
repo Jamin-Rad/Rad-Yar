@@ -1,93 +1,90 @@
-# Universal lesson Book View
+# Universal lesson presentation view
 
-The CAA route is the first pilot. No lesson, question bank, image, source reference,
-or shared Classic stylesheet is edited by this feature. Both presentations render
-one live React tree; the browser fragments it into columns in Book View.
+CAA is the only enabled pilot. The reader now presents one automatically
+paginated slide at a time in an immersive viewport. Both Classic and presentation
+render the same live React tree. Lesson text, images, references, tables, question
+banks and the existing interaction components are unchanged.
 
-## Integration contract
+## Integration
 
 Wrap a lesson in `LessonViewProvider` with a stable lesson ID and an explicit
-`enabled` flag. Render `LessonViewToggle` with `variant="action"` in the existing lesson header
-action row, beside Take Home and practice links. Wrap the existing reading tree in `BookView` and pass the localized
-lesson title and ordered section IDs/titles. Mark existing outer sections with
-`data-book-section` and their expandable body with `data-book-body`. Open those
-bodies while `useLessonView().mode === 'book'`; retain the original Classic
-expansion state. Route existing section jumps through `navigate(id)` in Book
-View. The `book:restore` event identifies the chapter to reopen on returning to
-Classic View.
+`enabled` flag. Render `LessonViewToggle` with `variant="action"` in its existing
+header action row beside Take Home and practice links. Wrap the existing reading
+tree in `BookView`; supply the localized title and ordered section IDs/titles.
+Mark outer sections `data-book-section` and expandable bodies `data-book-body`.
+Keep those bodies open while `useLessonView().mode === 'book'`, preserving the
+original Classic expansion state. Route section jumps through `navigate(id)` in
+presentation mode. The `book:restore` event reopens the current Classic chapter.
 
-Native CSS fragmentation uses measured column widths and available viewport
-height, with no lesson-specific page counts or breaks. Portrait uses a single
-page; sufficiently wide landscape uses a two-page spread. Resize, orientation,
-font loading, images and interactive content changes trigger measurement. The
-first visible content element anchors repagination. View mode is saved per
-lesson; `?view=book` is a shareable direct entry.
+The internal `book` mode and per-lesson preference key remain compatible with the
+initial pilot. `?view=presentation` is the current direct link; `?view=book` still
+works. `?view=classic` explicitly opens the original lesson.
 
-Mark unusual interactive components `data-book-atomic`. Existing
-`data-learning-tool` components, figures, tables, form controls, tab groups and
-media are detected automatically. Atomic components stay together. Elements
-larger than the reading area have a labeled, keyboard-focusable internal scroll
-area, preserving their original size, content and interaction. They are never
-cropped or shrunk into illegible thumbnails. Wide tables retain internal
-horizontal scrolling. No lesson content is cloned, reparented, serialized into
-HTML, rewritten or drawn onto canvas. Text and interactive controls remain DOM
-content. Off-page keyboard focus brings its page into view.
+## Presentation and fullscreen
 
-Only primary finger swipes on noninteractive reading areas turn pages. Pencil
-and mouse input, pinch zoom, image/case viewers, tabs, forms, sliders, editable
-areas, selected text and dialogs retain their own interactions. Arrow keys,
-Page Up/Down, Home/End, previous/next controls and a position slider navigate the
-book. Reduced-motion preferences disable the decorative leaf-turn animation.
+All widths and orientations use one slide. The engine measures available canvas
+height and width, then uses native CSS fragmentation; no lesson-specific page
+counts, section layouts or hardcoded page breaks exist. Resize, orientation,
+loaded media/fonts and component changes trigger pagination around the current
+content anchor. A clear slide counter, position slider and large Previous/Next
+buttons remain outside the canvas and inside the viewport.
 
-## Existing questions
+The header action requests native fullscreen synchronously during its click,
+using the app's existing standard/WebKit fullscreen helpers. Direct links and
+restored preferences cannot request browser fullscreen without user activation;
+they still open the immersive viewport, with a Fullscreen button when supported.
+If the API is unavailable or rejected, the viewport presentation remains usable.
+The top toolbar provides Windowed/Fullscreen and Back to lesson controls. Escape
+returns to the lesson; leaving an owned native fullscreen session through browser
+Escape also restores Classic. Exiting only the native fullscreen through the
+Windowed button keeps the immersive presentation open. The reader only exits
+native fullscreen it requested itself, unless the user explicitly presses the
+Windowed control.
 
-`pilots.js` is presentation configuration. Its explicitly reviewed section-to-ID
-mapping contains no educational copy. `BookCheckpoint` selects 1–3 existing
-localized bank objects verbatim and uses the original option IDs, correct answer,
-explanation and per-option feedback. Missing section mappings, missing questions
-or invalid schemas produce no checkpoint. These optional in-book exercises do
-not mark sections read or alter the existing scored quiz/progress workflow.
-CAA mappings: vessel distribution after Foundations; TFNE after Clinical;
-Boston/cSS/PVS after MRI; RCVS/cavernoma after Differentials.
+The viewport covers page navigation and background UI, locks background scrolling
+and restores it on exit, and retains the existing higher image/dialog overlays.
+It is exposed as a modal dialog; keyboard focus stays inside until exit. The same
+live content nodes preserve their interactive state. No cloning, HTML rewriting,
+canvas snapshots or React content reparenting occurs.
 
-Future lessons can opt into this same engine and add reliable ID mappings without
-changing the renderer. Until explicitly enabled, their routes remain untouched.
+Arrow keys, Space/Shift+Space, Page Up/Down, Home/End, the slider and Previous/Next
+navigate individual slides. Existing form, tab, image/case viewer and nested modal
+keyboard controls keep their own input. Primary finger swipes on reading areas
+navigate; pen/mouse, pinch zoom and interactive component gestures retain their
+original behavior. Reduced motion disables the subtle slide transition.
+
+## Content and questions
+
+Mark unusual interactive components `data-book-atomic`. Existing learning tools,
+figures, tables, media, forms and tab groups are detected automatically and stay
+intact. Oversized units use a labeled, keyboard-accessible internal scroll area;
+large tables retain horizontal scrolling. No content is clipped or discarded.
+Off-page keyboard focus brings the corresponding slide into view.
+
+`pilots.js` contains only feature flags and explicitly reviewed question-ID
+mappings. `BookCheckpoint` uses 1–3 original localized question objects verbatim,
+including options, correct answer, explanation and per-option feedback. Missing
+mappings/questions are skipped. In-view exercises do not change the existing
+scored quiz or read-progress workflow. Current CAA mappings cover vessel
+location, TFNE, Boston/cSS/PVS, RCVS and cavernoma.
 
 ## Validation
 
-- `node --test scripts/book-view.test.mjs`
-- `node --test scripts/caa-*.test.mjs`
+- `node --test scripts/book-view.test.mjs scripts/caa-*.test.mjs`
 - `node --import tsx scripts/test-gehirn-caa-source-p26-p28.mjs`
 - `npm run build`
 
-Rendered checks should compare the original and integrated Classic component,
-check text/asset/reference order, visit every generated page, exercise existing
-tabs, case viewers and read controls, answer a checkpoint, resize between desktop
-and iPad orientations, check touch/Pencil/keyboard conflicts, and verify RTL and
-reduced motion. Temporary QA routes must be removed before committing/deploying.
-Physical Apple Pencil hardware still needs device validation.
+Browser QA uses installed Playwright/Chrome (Browser plugin unavailable). It
+covers the real CAA component under its normal root layout through temporary
+local QA routes; production access gates stay unchanged and QA routes are removed
+before deployment. Checks include real native fullscreen entry/exit, fullscreen
+API fallback, every generated slide and atomic-unit boundary, source text/asset
+fidelity, existing tabs/case slider/image zoom, original MCQ feedback, view and
+chapter restoration, background scroll restoration, keyboard/Space navigation,
+touch versus pen/control handling, RTL and reduced motion. Viewports include
+1440×1000, iPad 820×1180 / 1180×820 / 1024×768 and phone 390×844.
 
-## Pilot QA (28 October 2026)
-
-All 45 reader/CAA automated tests and CAA bank wiring checks pass. Rendered QA
-used the installed Playwright/Chrome runtime because the Browser plugin was not
-available. The original production Classic component and the integrated version
-match in section text, asset/reference order, expansion, sizes and spacing; the
-mode control is placed in the existing header action row. `ChapterContent` is byte
-identical to production. No data, assets, existing learning tools or shared Classic
-styles changed.
-
-Browser checks covered every generated desktop page, atomic unit boundaries,
-original case selection and image slider, diagram and differential tab keyboards,
-original read-progress persistence, checkpoint feedback, view/URL preference,
-chapter restoration, off-page focus, finger vs pen input, Persian RTL and reduced
-motion. Viewports: 1440×1000, 820×1180, 1180×820, 1024×768 and 390×844. No runtime
-errors or framework overlay; console warnings were limited to the existing local
-Clerk development-key notice. An unrelated fixture confirmed long paragraphs,
-a tall image/caption, an 80-row table with the last row accessible, expandable
-content, preserved input state after resize, and a one-page lesson in a spread.
-
-QA rendered the actual lesson component in temporary routes under the real root
-layout; production access gates were not bypassed or changed. Authenticated
-cross-device server sync was not exercised. The installed runtime has no WebKit
-binary: Safari, physical iPad touch and Apple Pencil require device validation.
+The installed browser runtime has no WebKit binary. Physical iPad Safari and
+Apple Pencil behavior, and authenticated cross-device server sync, still require
+device/account validation. Native fullscreen availability depends on the browser;
+the immersive viewport fallback does not hide unsupported browser chrome.

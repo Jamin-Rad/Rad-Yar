@@ -5,11 +5,11 @@ import { BOOK_COPY, useLessonView } from './BookViewContext'
 import { pageForRect, spreadStart } from './pagination.mjs'
 import styles from './BookView.module.css'
 
-const INTERACTIVE = 'a,button,input,select,textarea,summary,[role="tab"],[role="slider"],[contenteditable="true"],[data-book-keep],dialog,[role="dialog"]'
+const INTERACTIVE = 'a,button,input,select,textarea,summary,[role="tab"],[role="slider"],[contenteditable="true"],[data-book-keep],dialog,[role="dialog"]:not([data-book-mode])'
 const ATOMIC = '[data-book-atomic],[data-learning-tool],figure,table,iframe,video,canvas,form,fieldset,details,aside:not([data-book-checkpoint]),[role="tablist"]'
 
 export default function BookView({ children, title, sections = [], lang = 'de' }) {
-  const { mode, changeMode, reader, anchor, lessonId } = useLessonView()
+  const { mode, changeMode, reader, anchor, lessonId, fullscreen, fullscreenSupported, toggleFullscreen } = useLessonView()
   const book = mode === 'book'
   const rtl = lang === 'fa'
   const copy = BOOK_COPY[lang] || BOOK_COPY.de
@@ -19,10 +19,35 @@ export default function BookView({ children, title, sections = [], lang = 'de' }
   const geometry = useRef({ stride: 1, spread: 1, total: 1, page: 0 })
   const pointer = useRef(null)
   const animation = useRef(null)
+  const previousFocus = useRef(null)
   const lastAnchor = useRef(null)
   const [layout, setLayout] = useState({ page: 0, spread: 1, total: 1, ready: false })
   const [turn, setTurn] = useState('')
   const [chapter, setChapter] = useState('')
+
+  useEffect(() => {
+    if (!book) return
+    const host = root.current.closest('main')
+    const savedHost = host ? { zIndex: host.style.zIndex, position: host.style.position } : null
+    const savedOverflow = document.body.style.overflow
+    const savedHtmlOverflow = document.documentElement.style.overflow
+    previousFocus.current = document.activeElement
+    if (host) {
+      host.style.zIndex = '1000'
+      if (getComputedStyle(host).position === 'static') host.style.position = 'relative'
+    }
+    document.body.style.overflow = 'hidden'
+    document.documentElement.style.overflow = 'hidden'
+    return () => {
+      document.body.style.overflow = savedOverflow
+      document.documentElement.style.overflow = savedHtmlOverflow
+      if (host) {
+        host.style.zIndex = savedHost.zIndex
+        host.style.position = savedHost.position
+      }
+      if (previousFocus.current?.isConnected) previousFocus.current.focus({ preventScroll: true })
+    }
+  }, [book])
 
   const elementPage = useCallback(element => {
     const origin = flow.current.getBoundingClientRect()
@@ -111,8 +136,9 @@ export default function BookView({ children, title, sections = [], lang = 'de' }
       const nextFrameSize = `${width}:${frame.clientHeight}`
       const resized = frameSize !== nextFrameSize
       frameSize = nextFrameSize
-      const spread = width >= 860 && window.innerWidth > window.innerHeight ? 2 : 1
-      const gap = 64
+      const spread = 1
+      root.current.style.setProperty('--book-content-height', `${frame.clientHeight}px`)
+      const gap = 48
       const column = (width - gap * (spread - 1)) / spread
       content.style.setProperty('--book-columns', String(spread))
       content.style.setProperty('--book-column', `${column}px`)
@@ -165,7 +191,8 @@ export default function BookView({ children, title, sections = [], lang = 'de' }
       if (savedAnchor?.isConnected && content.contains(savedAnchor)) lastAnchor.current = savedAnchor
       if (resized) root.current.scrollIntoView({ block: 'start', behavior: 'instant' })
       if (initial) {
-        const hash = decodeURIComponent(window.location.hash.slice(1))
+        let hash = window.location.hash.slice(1)
+        try { hash = decodeURIComponent(hash) } catch {}
         if (hash) goToId(hash)
         root.current.scrollIntoView({ block: 'start', behavior: 'instant' })
         frame.focus({ preventScroll: true })
@@ -210,12 +237,32 @@ export default function BookView({ children, title, sections = [], lang = 'de' }
   }, [book, lang, copy.scroll, anchor, elementPage, goToId, goToPage])
 
   const handleKey = event => {
-    if (!book || event.defaultPrevented || event.altKey || event.ctrlKey || event.metaKey || event.shiftKey
+    if (!book || event.defaultPrevented) return
+    if (document.querySelector('dialog[open],[role="dialog"][aria-modal="true"]:not([data-book-mode])')) return
+    if (event.key === 'Escape') {
+      event.preventDefault()
+      changeMode('classic')
+      return
+    }
+    if (event.key === 'Tab') {
+      const controls = [...root.current.querySelectorAll('button,a[href],input,select,textarea,[tabindex]')]
+        .filter(element => !element.disabled && element.tabIndex >= 0 && !element.closest('[hidden]') && element.getClientRects().length)
+      const first = controls[0]
+      const last = controls[controls.length - 1]
+      if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last?.focus() }
+      else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first?.focus() }
+      return
+    }
+    if (event.altKey || event.ctrlKey || event.metaKey || (event.shiftKey && event.key !== ' ')
+      || (event.key === ' ' && event.target.closest('button,a'))
       || event.target.closest('input,select,textarea,[contenteditable="true"]')
-      || (flow.current?.contains(event.target) && event.target.closest(INTERACTIVE)) || document.querySelector('dialog[open],[role="dialog"][aria-modal="true"]')) return
+      || (flow.current?.contains(event.target) && event.target.closest(INTERACTIVE))) return
     let page
     if (event.key === 'ArrowRight') page = layout.page + (rtl ? -1 : 1) * layout.spread
     else if (event.key === 'ArrowLeft') page = layout.page + (rtl ? 1 : -1) * layout.spread
+    else if (event.key === ' ') page = layout.page + (event.shiftKey ? -1 : 1)
+    else if (event.key === 'ArrowDown') page = layout.page + 1
+    else if (event.key === 'ArrowUp') page = layout.page - 1
     else if (event.key === 'PageDown') page = layout.page + layout.spread
     else if (event.key === 'PageUp') page = layout.page - layout.spread
     else if (event.key === 'Home') page = 0
@@ -242,10 +289,10 @@ export default function BookView({ children, title, sections = [], lang = 'de' }
   const end = Math.min(layout.total, layout.page + layout.spread)
   const range = end === layout.page + 1 ? String(layout.page + 1) : `${layout.page + 1}–${end}`
 
-  return <div ref={root} className={book ? styles.reader : styles.classic} data-book-mode={book ? 'book' : 'classic'} data-book-lesson={lessonId} dir={rtl ? 'rtl' : 'ltr'} onKeyDown={handleKey}>
+  return <div ref={root} className={book ? styles.reader : styles.classic} data-book-mode={book ? 'book' : 'classic'} data-book-lesson={lessonId} role={book ? 'dialog' : undefined} aria-modal={book ? true : undefined} aria-label={book ? title : undefined} dir={rtl ? 'rtl' : 'ltr'} onKeyDown={handleKey}>
     {book ? <div className={styles.toolbar}>
       <div className={styles.runningTitle}><span>RADYAR <i>/</i> {copy.book}</span><strong>{title}</strong></div>
-      <div className={styles.toolbarActions}><button className={styles.returnClassic} type="button" onClick={() => changeMode('classic')}>{copy.classic}</button><label className={styles.contents}><span>{copy.contents}</span><select value={chapter} onChange={event => { setChapter(event.target.value); goToId(event.target.value) }}><option value="" disabled>{copy.contents}</option>{sections.map(section => <option key={section.id} value={section.id}>{section.title}</option>)}</select></label></div>
+      <div className={styles.toolbarActions}>{fullscreenSupported ? <button type="button" className={styles.fullscreenButton} onClick={toggleFullscreen} aria-label={fullscreen ? copy.windowed : copy.fullscreen} title={fullscreen ? copy.windowed : copy.fullscreen}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" aria-hidden="true">{fullscreen ? <path d="M9 3v6H3m12-6v6h6M9 21v-6H3m12 6v-6h6"/> : <path d="M3 9V3h6m6 0h6v6M3 15v6h6m6 0h6v-6"/>}</svg></button> : null}<button className={styles.returnClassic} type="button" onClick={() => changeMode('classic')}><span aria-hidden="true">×</span>{copy.close}</button><label className={styles.contents}><span>{copy.contents}</span><select value={chapter} onChange={event => { setChapter(event.target.value); goToId(event.target.value) }}><option value="" disabled>{copy.contents}</option>{sections.map(section => <option key={section.id} value={section.id}>{section.title}</option>)}</select></label></div>
     </div> : null}
     <div className={book ? styles.binding : styles.classic} data-spread={layout.spread} data-turn={turn}>
       <div className={book ? styles.viewport : styles.classic} ref={viewport} tabIndex={book ? 0 : undefined} role={book ? 'region' : undefined} aria-label={book ? `${title} · ${copy.book}` : undefined} aria-busy={book && !layout.ready ? true : undefined}
@@ -261,12 +308,11 @@ export default function BookView({ children, title, sections = [], lang = 'de' }
         }}>
         <div ref={flow} className={book ? styles.flow : styles.classic} data-book-content>{children}</div>
       </div>
-      {book ? <div className={styles.folios} aria-hidden="true"><span>{layout.page + 1}</span><span>{layout.spread === 2 ? end : 'RADYAR'}</span></div> : null}
     </div>
     {book ? <footer className={styles.navigation}>
-      <button type="button" onClick={() => goToPage(layout.page - layout.spread)} disabled={layout.page === 0} aria-label={copy.previous}><span aria-hidden="true">{rtl ? '→' : '←'}</span></button>
+      <button type="button" onClick={() => goToPage(layout.page - layout.spread)} disabled={layout.page === 0} aria-label={copy.previous}><span aria-hidden="true">{rtl ? '→' : '←'}</span><strong>{copy.previous}</strong></button>
       <div className={styles.position}><span role="status" aria-live="polite" aria-atomic="true">{layout.ready ? `${copy.page} ${range} ${copy.of} ${layout.total}` : copy.preparing}</span><input type="range" min="0" max={Math.max(0, Math.ceil(layout.total / layout.spread) - 1)} value={Math.floor(layout.page / layout.spread)} aria-label={copy.progress} aria-valuetext={`${copy.page} ${range} ${copy.of} ${layout.total}`} onChange={event => goToPage(Number(event.target.value) * layout.spread, false)} /><small>{copy.hint}</small></div>
-      <button type="button" onClick={() => goToPage(layout.page + layout.spread)} disabled={end >= layout.total} aria-label={copy.next}><span aria-hidden="true">{rtl ? '←' : '→'}</span></button>
+      <button type="button" onClick={() => goToPage(layout.page + layout.spread)} disabled={end >= layout.total} aria-label={copy.next}><span aria-hidden="true">{rtl ? '←' : '→'}</span><strong>{copy.next}</strong></button>
     </footer> : null}
   </div>
 }
