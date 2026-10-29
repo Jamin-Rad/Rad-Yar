@@ -4,7 +4,7 @@ import { CONTRAST_TOPICS, CONTRAST_QUESTIONS, CONTRAST_FLASHCARDS, CONTRAST_GROU
 import { CONTRAST_LESSONS } from '../data/contrastLessons.js'
 import { CURRICULUM } from '../data/curriculum.js'
 
-const sourceImage = 'public/kontrastmittel/technik-p128-gadolinium-retention.png'
+const sourceImage = 'public/kontrastmittel/technik-p128-gadolinium-retention-source-v2.png'
 assert.ok(existsSync(sourceImage), 'the source-page crop exists')
 
 const group = CONTRAST_GROUPS.find(item => item.id === 'mrt')
@@ -16,12 +16,12 @@ const section = CONTRAST_LESSONS.mrt.sections.find(item => item.id === 'retentio
 const gallery = section?.blocks.find(item => item.type === 'imageGallery')
 assert.equal(gallery?.images.length, 1, 'the source triptych is presented once as a coherent comparison')
 const image = gallery.images[0]
-assert.equal(image.src, '/kontrastmittel/technik-p128-gadolinium-retention.png')
+assert.equal(image.src, '/kontrastmittel/technik-p128-gadolinium-retention-source-v2.png')
 for (const lang of ['de', 'en', 'fa']) {
   assert.ok(image.alt[lang], `${lang}: accessible image description exists`)
   assert.match(image.caption[lang], /rID 40640/)
   assert.match(image.caption[lang], /128|۱۲۸/)
-  assert.match(image.caption[lang], /klinisch|clinical|بالینی/)
+  assert.match(image.caption[lang], /drei|three|سه/)
   const questions = CONTRAST_QUESTIONS[lang].filter(item => item.tags.includes('km-gadolinium-retention-nsf'))
   assert.equal(questions.length, 3, `${lang}: the visual item augments the two existing registered retrieval questions`)
   assert.ok(questions.every(item => item.question && item.explanation && item.options.length === 4), `${lang}: retrieval content is localized`)

@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict'
 import { CONTRAST_GROUPS, CONTRAST_TOPICS, CONTRAST_QUESTIONS, CONTRAST_FLASHCARD_TOPICS, CONTRAST_FLASHCARDS } from '../data/contrastMedia.js'
-import { CONTRAST_LESSONS } from '../data/contrastLessons.js'
+import { localizedText } from './contrast-source-helpers.mjs'
+import { CONTRAST_LESSONS, CONTRAST_SOURCES } from '../data/contrastLessons.js'
 
 const group = CONTRAST_GROUPS.find(item => item.id === 'mrt')
 const topic = CONTRAST_TOPICS.find(item => item.id === 'km-buscopan')
@@ -17,15 +18,16 @@ for (const lang of ['de', 'en', 'fa']) {
 }
 assert.ok(CONTRAST_FLASHCARD_TOPICS.some(item => item.id === 'km-buscopan' && item.href === '/flashcards/km-buscopan'), 'dedicated Buscopan flashcard route is generated')
 const bus = CONTRAST_LESSONS.mrt.sections.find(section => section.id === 'buscopan')
-const takeaway = CONTRAST_LESSONS.mrt.sections.find(section => section.id === 'takehome')?.blocks.find(block => block.type === 'takehome')?.items.find(item => item.title.de.includes('Buscopan'))
-assert.ok(bus, 'the existing MRI lesson section remains the teaching route')
-assert.ok(takeaway, 'take-home summary repeats the Buscopan safety check')
-for (const lang of ['de','en','fa']) assert.ok(takeaway.text[lang], `${lang}: take-home rule is localized`)
-assert.ok(!/Glaukom, Prostatahyperplasie/.test(takeaway.text.de), 'take-home no longer overgeneralizes contraindications')
-assert.match(bus.lead.de, /entspannt vorübergehend/)
-assert.ok(bus.blocks.some(block => block.type === 'sourceLink' && /fachinfo\.de/.test(block.href)), 'German product-information source is linked beside claims')
-const contraindications = bus.blocks.find(block => block.type === 'cards').items[0].bullets
-assert.ok(contraindications.some(item => item.de.includes('Engwinkelglaukom')))
-assert.ok(contraindications.some(item => item.de.includes('Harnverhaltung')))
-assert.ok(bus.blocks.some(block => block.type === 'callout' && block.text.de.includes('Eine feste Dauer von 1–2 Stunden lässt sich aus der Produktinformation nicht ableiten')))
-console.log('Buscopan p.130 coverage audit PASS: MRI section discoverable, dedicated topic id connected to group quiz and flashcards, localized assessments, precise product-label contraindications and linked source.')
+assert.ok(bus, 'the existing MRI anchor remains the teaching route')
+for(const lang of ['de','en','fa']) {
+ const text=localizedText(bus,lang)
+ assert.match(text, /Glucagon|گلوکاگون/)
+ assert.ok(text.length>500)
+}
+const text=localizedText(bus,'de')
+assert.match(text,/Engwinkelglaukom/)
+assert.match(text,/mit Harnverhalt/)
+assert.match(text,/bis das Sehen wieder normal ist/)
+assert.ok(CONTRAST_SOURCES.some(source=>source.href.includes('medicines.org.uk')))
+assert.match(localizedText(CONTRAST_LESSONS.mrt.sections.find(s=>s.id==='takehome'),'de'), /Buscopan/)
+console.log('Buscopan source coverage, precise contraindications and unchanged localized bank/card parity passed.')

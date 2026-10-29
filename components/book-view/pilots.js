@@ -37,6 +37,7 @@ export const BOOK_QUESTION_MAPPINGS = {
   },
   'ref-kontrastmittel-ultraschall': {
     content: ['km-ultraschall-{lang}-1', 'km-ultraschall-{lang}-3'],
+    anwendungen: ['km-ultraschall-{lang}-2'],
   },
 }
 export function questionIdsForSection(lessonId, sectionId, lang) {

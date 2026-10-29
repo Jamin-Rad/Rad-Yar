@@ -19,12 +19,16 @@ function Question({ question, copy }) {
   </fieldset>
 }
 // Question objects are passed through unchanged. Missing/unverified mappings render nothing.
-export default function BookCheckpoint({ questions, questionIds, lang = 'de' }) {
+export default function BookCheckpoint({ questions, questionIds, lang = 'de', showInClassic = false }) {
   const { mode } = useLessonView()
+  const [expanded, setExpanded] = useState(false)
   const copy = BOOK_COPY[lang] || BOOK_COPY.de
   const mapped = mappedQuestions(questions, questionIds)
-  if (mode !== 'book' || !mapped.length) return null
+  if ((!showInClassic && mode !== 'book') || !mapped.length) return null
   return <aside className={styles.checkpoint} data-book-checkpoint>
-    {mapped.map(question => <Question key={question.id} question={question} copy={copy} />)}
+    {showInClassic && <button className={styles.practiceToggle} type="button" data-book-ignore aria-expanded={expanded} onClick={() => setExpanded(value => !value)}>{copy.checkpoint} · {mapped.length} <span aria-hidden="true">{expanded ? '−' : '+'}</span></button>}
+    <div hidden={mode !== 'book' && !expanded}>
+      {mapped.map(question => <Question key={question.id} question={question} copy={copy} />)}
+    </div>
   </aside>
 }
