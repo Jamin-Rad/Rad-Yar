@@ -5,6 +5,7 @@ import { useUser } from '@clerk/nextjs'
 import { usePathname } from 'next/navigation'
 import { canonicalUserEmail } from '@/lib/emailIdentity'
 import LehrRecordingTools from './LehrRecordingTools'
+import { createLehrInk } from '../utils/lehrInk'
 import styles from './LehrMode.module.css'
 
 const ADMIN_EMAIL = 'drbenjaminzia@gmail.com'
@@ -83,56 +84,6 @@ function ColorPalettes({ toolColors, onSelect }) {
   )
 }
 
-function strokeTouchesPoint(stroke, point, radius, offset = { x: 0, y: 0 }) {
-  const limit = radius * radius
-  return stroke.points.some(candidate => {
-    const dx = candidate.x + offset.x - point.x
-    const dy = candidate.y + offset.y - point.y
-    return (dx * dx) + (dy * dy) <= limit
-  })
-}
-
-function annotationViewport(target) {
-  const targetRoot = target instanceof Element ? target.closest('[data-lehr-scroll-root]') : null
-  const root = targetRoot || document.querySelector('[data-lehr-scroll-root]')
-  if (root instanceof HTMLElement) {
-    const rect = root.getBoundingClientRect()
-    return {
-      root,
-      left: rect.left,
-      top: rect.top,
-      scrollLeft: root.scrollLeft,
-      scrollTop: root.scrollTop,
-    }
-  }
-  return { root: null, left: 0, top: 0, scrollLeft: window.scrollX, scrollTop: window.scrollY }
-}
-
-function setViewportScrollTop(root, value) {
-  if (root instanceof HTMLElement) root.scrollTop = value
-  else window.scrollTo({ top: value, behavior: 'auto' })
-}
-
-function strokeAnchor(target) {
-  if (!(target instanceof Element)) return null
-  return target.closest('[data-lehr-anchor], button, img, p, li, h1, h2, h3, h4, h5, h6')
-}
-
-function anchorOrigin(anchor, viewport) {
-  if (!(anchor instanceof Element)) return null
-  const rect = anchor.getBoundingClientRect()
-  return {
-    x: rect.left - viewport.left + viewport.scrollLeft,
-    y: rect.top - viewport.top + viewport.scrollTop,
-  }
-}
-
-function strokeAnchorOffset(stroke, viewport) {
-  if (!(stroke.anchor instanceof Element) || !stroke.anchor.isConnected || !stroke.anchorOrigin) return { x: 0, y: 0 }
-  const current = anchorOrigin(stroke.anchor, viewport)
-  return { x: current.x - stroke.anchorOrigin.x, y: current.y - stroke.anchorOrigin.y }
-}
-
 export default function LehrMode() {
   const pathname = usePathname()
   const { isLoaded, user } = useUser()
@@ -142,13 +93,8 @@ export default function LehrMode() {
   const [tool, setTool] = useState('pen')
   const [toolColors, setToolColors] = useState(INITIAL_TOOL_COLORS)
   const [canUndo, setCanUndo] = useState(false)
-  const canvasRef = useRef(null)
+  const inkRef = useRef(null)
   const arrowRef = useRef(null)
-  const strokesRef = useRef([])
-  const historyRef = useRef([])
-  const activePointerRef = useRef(null)
-  const eraseSessionRef = useRef(null)
-  const frameRef = useRef(null)
   const toolRef = useRef(tool)
   const activeRef = useRef(false)
   const toolColorsRef = useRef(INITIAL_TOOL_COLORS)
@@ -163,75 +109,10 @@ export default function LehrMode() {
     selectToolColor(toolName, color)
   }, [selectToolColor])
 
-  const renderCanvas = useCallback(() => {
-    frameRef.current = null
-    const canvas = canvasRef.current
-    if (!canvas) return
-
-    const dpr = Math.min(window.devicePixelRatio || 1, 2)
-    const width = window.innerWidth
-    const height = window.innerHeight
-    const pixelWidth = Math.round(width * dpr)
-    const pixelHeight = Math.round(height * dpr)
-    if (canvas.width !== pixelWidth || canvas.height !== pixelHeight) {
-      canvas.width = pixelWidth
-      canvas.height = pixelHeight
-      canvas.style.width = `${width}px`
-      canvas.style.height = `${height}px`
-    }
-
-    const context = canvas.getContext('2d')
-    context.setTransform(dpr, 0, 0, dpr, 0, 0)
-    context.clearRect(0, 0, width, height)
-    context.lineCap = 'round'
-    context.lineJoin = 'round'
-
-    const viewport = annotationViewport()
-    for (const stroke of strokesRef.current) {
-      const points = stroke.points
-      if (!points.length) continue
-      const offset = strokeAnchorOffset(stroke, viewport)
-      context.save()
-      context.strokeStyle = stroke.color
-      context.globalAlpha = stroke.alpha
-      context.lineWidth = stroke.width
-      context.beginPath()
-      const startX = points[0].x + offset.x - viewport.scrollLeft + viewport.left
-      const startY = points[0].y + offset.y - viewport.scrollTop + viewport.top
-      context.moveTo(startX, startY)
-      if (points.length === 1) {
-        context.lineTo(startX + 0.01, startY + 0.01)
-      } else {
-        for (let index = 1; index < points.length - 1; index += 1) {
-          const point = points[index]
-          const next = points[index + 1]
-          context.quadraticCurveTo(
-            point.x + offset.x - viewport.scrollLeft + viewport.left,
-            point.y + offset.y - viewport.scrollTop + viewport.top,
-            ((point.x + next.x) / 2) + offset.x - viewport.scrollLeft + viewport.left,
-            ((point.y + next.y) / 2) + offset.y - viewport.scrollTop + viewport.top,
-          )
-        }
-        const last = points[points.length - 1]
-        context.lineTo(last.x + offset.x - viewport.scrollLeft + viewport.left, last.y + offset.y - viewport.scrollTop + viewport.top)
-      }
-      context.stroke()
-      context.restore()
-    }
-  }, [])
-
-  const scheduleRender = useCallback(() => {
-    if (frameRef.current === null) frameRef.current = window.requestAnimationFrame(renderCanvas)
-  }, [renderCanvas])
-
   const clearAnnotations = useCallback(() => {
-    strokesRef.current = []
-    historyRef.current = []
-    activePointerRef.current = null
-    eraseSessionRef.current = null
+    inkRef.current?.clear()
     setCanUndo(false)
-    scheduleRender()
-  }, [scheduleRender])
+  }, [])
 
   const deactivate = useCallback(() => {
     activeRef.current = false
@@ -245,12 +126,8 @@ export default function LehrMode() {
   }, [])
 
   const undo = useCallback(() => {
-    const previous = historyRef.current.pop()
-    if (!previous) return
-    strokesRef.current = previous
-    setCanUndo(historyRef.current.length > 0)
-    scheduleRender()
-  }, [scheduleRender])
+    inkRef.current?.undo()
+  }, [])
 
   useEffect(() => {
     toolRef.current = tool
@@ -281,7 +158,6 @@ export default function LehrMode() {
     if (active) {
       document.documentElement.dataset.lehrTool = toolRef.current
       document.documentElement.dataset.lehrRecordingReady = 'true'
-      scheduleRender()
     } else {
       delete document.documentElement.dataset.lehrTool
       delete document.documentElement.dataset.lehrRecordingReady
@@ -292,152 +168,65 @@ export default function LehrMode() {
       delete document.documentElement.dataset.lehrTool
       delete document.documentElement.dataset.lehrRecordingReady
     }
-  }, [active, scheduleRender])
+  }, [active])
 
   useEffect(() => {
     if (!active) return undefined
 
-    let suppressClick = false
-    let clickResetTimer = null
-    let touchScroll = null
-
-    const pointFromEvent = event => {
-      const viewport = annotationViewport(event.target)
-      return {
-        x: event.clientX - viewport.left + viewport.scrollLeft,
-        y: event.clientY - viewport.top + viewport.scrollTop,
-        pressure: event.pressure || 0.5,
-      }
-    }
+    const ink = createLehrInk({ className: styles.inkSurface, onHistoryChange: setCanUndo })
+    inkRef.current = ink
+    let penClickUntil = 0
+    let penTarget = null
     const isToolbarEvent = event => event.target instanceof Element && event.target.closest('[data-lehr-ui]')
-    const canDrawWith = event => event.pointerType === 'pen'
 
     function onPointerDown(event) {
-      if (isToolbarEvent(event)) return
-      if (event.pointerType === 'touch') {
-        const viewport = annotationViewport(event.target)
-        touchScroll = {
-          pointerId: event.pointerId,
-          target: event.target,
-          root: viewport.root,
-          startY: event.clientY,
-          startScrollTop: viewport.scrollTop,
-          moved: false,
-        }
-        event.target?.setPointerCapture?.(event.pointerId)
-        return
-      }
-      if (!canDrawWith(event)) return
-
+      if (isToolbarEvent(event) || event.pointerType !== 'pen' || ink.pointerId !== null) return
       event.preventDefault()
       event.stopPropagation()
-      suppressClick = true
-      event.target?.setPointerCapture?.(event.pointerId)
-      activePointerRef.current = event.pointerId
-      const point = pointFromEvent(event)
-
-      if (toolRef.current === 'eraser') {
-        eraseSessionRef.current = { snapshot: strokesRef.current.slice(), changed: false }
-        return
-      }
-
+      penClickUntil = performance.now() + 500
+      penTarget = event.target
       const selected = TOOLS[toolRef.current]
-      const viewport = annotationViewport(event.target)
-      const anchor = strokeAnchor(event.target)
-      historyRef.current.push(strokesRef.current.slice())
-      strokesRef.current = [...strokesRef.current, {
-        tool: toolRef.current,
-        color: toolColorsRef.current[toolRef.current] || selected.color,
-        width: selected.width,
-        alpha: selected.alpha,
-        anchor,
-        anchorOrigin: anchorOrigin(anchor, viewport),
-        points: [point],
-      }]
-      setCanUndo(true)
-      scheduleRender()
+      ink.start(event, { tool: toolRef.current, ...selected, color: toolColorsRef.current[toolRef.current] || selected.color })
     }
 
     function onPointerMove(event) {
-      if (touchScroll?.pointerId === event.pointerId) {
-        const deltaY = touchScroll.startY - event.clientY
-        if (!touchScroll.moved && Math.abs(deltaY) > 4) touchScroll.moved = true
-        if (touchScroll.moved) {
-          event.preventDefault()
-          event.stopPropagation()
-          setViewportScrollTop(touchScroll.root, touchScroll.startScrollTop + deltaY)
-          scheduleRender()
-        }
+      if (ink.pointerId === event.pointerId) {
+        event.preventDefault()
+        event.stopPropagation()
+        ink.move(event)
         return
       }
-
       const arrow = arrowRef.current
       if (event.pointerType === 'mouse' && !isToolbarEvent(event)) {
         arrow?.style.setProperty('transform', `translate3d(${event.clientX}px, ${event.clientY}px, 0)`)
         arrow?.classList.add(styles.arrowVisible)
-      } else {
-        arrow?.classList.remove(styles.arrowVisible)
-      }
-
-      if (activePointerRef.current !== event.pointerId) return
-      event.preventDefault()
-      event.stopPropagation()
-      const coalescedEvents = event.getCoalescedEvents?.()
-      const events = coalescedEvents?.length ? coalescedEvents : [event]
-
-      if (toolRef.current === 'eraser') {
-        const session = eraseSessionRef.current
-        for (const moveEvent of events) {
-          const point = pointFromEvent(moveEvent)
-          const viewport = annotationViewport(moveEvent.target)
-          const remaining = strokesRef.current.filter(stroke => !strokeTouchesPoint(stroke, point, TOOLS.eraser.width / 2, strokeAnchorOffset(stroke, viewport)))
-          if (remaining.length !== strokesRef.current.length) {
-            if (!session.changed) {
-              historyRef.current.push(session.snapshot)
-              session.changed = true
-              setCanUndo(true)
-            }
-            strokesRef.current = remaining
-          }
-        }
-      } else {
-        const strokes = strokesRef.current
-        const current = strokes[strokes.length - 1]
-        if (current) current.points.push(...events.map(pointFromEvent))
-      }
-      scheduleRender()
+      } else arrow?.classList.remove(styles.arrowVisible)
     }
 
     function finishPointer(event) {
-      if (touchScroll?.pointerId === event.pointerId) {
-        if (touchScroll.moved) {
-          event.preventDefault()
-          event.stopPropagation()
-          suppressClick = true
-          clickResetTimer = window.setTimeout(() => {
-            suppressClick = false
-          }, 0)
-        }
-        touchScroll.target?.releasePointerCapture?.(event.pointerId)
-        touchScroll = null
-        return
-      }
-      if (activePointerRef.current !== event.pointerId) return
-      event.preventDefault()
+      if (ink.pointerId !== event.pointerId) return
+      if (event.cancelable) event.preventDefault()
       event.stopPropagation()
-      activePointerRef.current = null
-      eraseSessionRef.current = null
-      event.target?.releasePointerCapture?.(event.pointerId)
-      clickResetTimer = window.setTimeout(() => {
-        suppressClick = false
-      }, 0)
+      ink.finish(event)
+      penClickUntil = performance.now() + 500
+    }
+
+    function onTouchStart(event) {
+      if (isToolbarEvent(event)) return
+      // Safari exposes Pencil contact as a stylus Touch. Cancel that contact
+      // and palm touches during writing, while fingers retain native scrolling.
+      if (ink.pointerId !== null || Array.from(event.changedTouches).some(touch => touch.touchType === 'stylus')) {
+        if (event.cancelable) event.preventDefault()
+      }
     }
 
     function onClick(event) {
-      if (!suppressClick || isToolbarEvent(event)) return
+      if (isToolbarEvent(event)) return
+      const penClick = event.pointerType === 'pen'
+        || (!event.pointerType && event.detail !== 0 && performance.now() < penClickUntil && penTarget?.contains(event.target))
+      if (!penClick) return
       event.preventDefault()
       event.stopPropagation()
-      suppressClick = false
     }
 
     function onKeyDown(event) {
@@ -463,35 +252,29 @@ export default function LehrMode() {
     document.addEventListener('pointerup', finishPointer, { capture: true, passive: false })
     document.addEventListener('pointercancel', finishPointer, { capture: true, passive: false })
     document.addEventListener('click', onClick, { capture: true })
+    document.addEventListener('touchstart', onTouchStart, { capture: true, passive: false })
+    document.addEventListener('lostpointercapture', finishPointer, { capture: true })
     document.addEventListener('pointerleave', hideArrow)
     window.addEventListener('keydown', onKeyDown, { capture: true })
-    window.addEventListener('resize', scheduleRender)
-    document.addEventListener('scroll', scheduleRender, { capture: true, passive: true })
-    const resizeObserver = typeof ResizeObserver === 'undefined' ? null : new ResizeObserver(scheduleRender)
-    document.querySelectorAll('[data-lehr-surface], [data-lehr-scroll-root]').forEach(surface => resizeObserver?.observe(surface))
-
     return () => {
       document.removeEventListener('pointerdown', onPointerDown, { capture: true })
       document.removeEventListener('pointermove', onPointerMove, { capture: true })
       document.removeEventListener('pointerup', finishPointer, { capture: true })
       document.removeEventListener('pointercancel', finishPointer, { capture: true })
       document.removeEventListener('click', onClick, { capture: true })
+      document.removeEventListener('touchstart', onTouchStart, { capture: true })
+      document.removeEventListener('lostpointercapture', finishPointer, { capture: true })
       document.removeEventListener('pointerleave', hideArrow)
       window.removeEventListener('keydown', onKeyDown, { capture: true })
-      window.removeEventListener('resize', scheduleRender)
-      document.removeEventListener('scroll', scheduleRender, { capture: true })
-      resizeObserver?.disconnect()
-      if (frameRef.current !== null) window.cancelAnimationFrame(frameRef.current)
-      if (clickResetTimer !== null) window.clearTimeout(clickResetTimer)
-      frameRef.current = null
+      ink.dispose()
+      if (inkRef.current === ink) inkRef.current = null
     }
-  }, [active, deactivate, scheduleRender, undo])
+  }, [active, deactivate, undo])
 
   if (!isAdmin || isExcluded || !active) return null
 
   return (
     <div className={styles.layer} aria-label="Lehr-Mode">
-      <canvas ref={canvasRef} className={styles.canvas} aria-hidden="true" />
       <div ref={arrowRef} className={styles.arrowPointer} aria-hidden="true">
         <svg viewBox="0 0 88 88">
           <path className={styles.pointerBody} d="M9 6 77 47l-30 6-15 29L9 6Z" />
