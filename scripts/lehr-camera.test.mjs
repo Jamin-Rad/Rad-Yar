@@ -42,7 +42,7 @@ test('camera is preview-only, scoped to admin Lehr-Mode and cleaned up on exit',
   assert.match(recording, /const DEFAULT_CAMERA_ZOOM = 0\.5/)
   assert.match(recording, /max=\{MAX_CAMERA_ZOOM\}/)
   assert.match(recording, /aria-label="Kamera-Zoom einstellen"/)
-  assert.match(recording, /style=\{\{ '--camera-zoom': zoom \/ MIN_CAMERA_ZOOM \}\}/)
+  assert.match(recording, /style=\{\{ '--camera-zoom': zoom \/ DEFAULT_CAMERA_ZOOM \}\}/)
   assert.match(styles, /scaleX\(-1\) scale\(var\(--camera-zoom, 1\)\)/)
   assert.match(recording, /stopCamera\(false\)/)
   assert.match(recording, /addEventListener\('pagehide'/)

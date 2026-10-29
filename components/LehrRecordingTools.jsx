@@ -6,7 +6,7 @@ import { cameraErrorMessage, clampCameraPosition, clampCameraWidth, stopCameraSt
 import styles from './LehrRecordingTools.module.css'
 
 const DEFAULT_CAMERA_ZOOM = 0.5
-const MIN_CAMERA_ZOOM = 0.5
+const MIN_CAMERA_ZOOM = 0.25
 const MAX_CAMERA_ZOOM = 2.4
 
 function Icon({ name }) {
@@ -242,8 +242,8 @@ export default function LehrRecordingTools() {
           <button type="button" className={`${styles.iconButton} ${styles.closeButton}`} onClick={() => stopCamera()} aria-label="Frontkamera ausschalten" title="Kamera schließen"><Icon name="close" /></button>
         </header>
         <div className={styles.videoFrame}>
-          {/* 50% fits the complete camera frame; higher values crop into it. */}
-          <video ref={attachVideo} style={{ '--camera-zoom': zoom / MIN_CAMERA_ZOOM }} autoPlay muted playsInline aria-label="Livebild der Frontkamera" onLoadedMetadata={updateVideoSize} onResize={updateVideoSize} onPlaying={() => setPaused(false)} onPause={() => { if (streamRef.current) setPaused(true) }} />
+          {/* 50% fits the complete frame; lower values shrink it and higher values crop into it. */}
+          <video ref={attachVideo} style={{ '--camera-zoom': zoom / DEFAULT_CAMERA_ZOOM }} autoPlay muted playsInline aria-label="Livebild der Frontkamera" onLoadedMetadata={updateVideoSize} onResize={updateVideoSize} onPlaying={() => setPaused(false)} onPause={() => { if (streamRef.current) setPaused(true) }} />
           {paused && <button type="button" className={styles.resume} onClick={playVideo}>Kamerabild fortsetzen</button>}
         </div>
         <div className={styles.zoomControl} aria-label="Kamera-Zoom">
