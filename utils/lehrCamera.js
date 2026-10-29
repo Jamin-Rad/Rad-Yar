@@ -28,3 +28,23 @@ export function cameraErrorMessage(error) {
 export function stopCameraStream(stream) {
   stream?.getTracks().forEach(track => track.stop())
 }
+
+// Optional source controls: an unavailable capability must never block preview.
+export async function widenCameraTrack(track) {
+  if (typeof track?.applyConstraints !== 'function') return
+  let capabilities
+  try { capabilities = track.getCapabilities?.() || {} } catch { return }
+  const apply = extra => {
+    const current = { ...(track.getConstraints?.() || {}) }
+    delete current.aspectRatio
+    delete current.height
+    return track.applyConstraints({ ...current, ...extra })
+  }
+  if (capabilities.resizeMode?.includes('none')) {
+    try { await apply({ resizeMode: { exact: 'none' } }) } catch { /* Keep the available stream. */ }
+  }
+  const minimumZoom = capabilities.zoom?.min
+  if (Number.isFinite(minimumZoom) && minimumZoom >= 0) {
+    try { await apply({ advanced: [{ zoom: minimumZoom }] }) } catch { /* Zoom may be unavailable or permission-limited. */ }
+  }
+}

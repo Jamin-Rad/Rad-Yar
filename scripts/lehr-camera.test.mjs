@@ -1,7 +1,7 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
-import { cameraErrorMessage, clampCameraPosition, clampCameraWidth, stopCameraStream } from '../utils/lehrCamera.js'
+import { cameraErrorMessage, clampCameraPosition, clampCameraWidth, stopCameraStream, widenCameraTrack } from '../utils/lehrCamera.js'
 
 test('camera movement stays inside portrait, landscape and offset visual viewports', () => {
   assert.deepEqual(clampCameraPosition({ x: -20, y: -50 }, { width: 176, height: 168 }, { width: 390, height: 844 }), { x: 12, y: 12 })
@@ -39,10 +39,10 @@ test('camera is preview-only, scoped to admin Lehr-Mode and cleaned up on exit',
   assert.match(recording, /facingMode: \{ ideal: 'user' \}/)
   assert.match(recording, /autoPlay muted playsInline/)
   assert.match(recording, /request !== requestRef.current/)
-  assert.match(recording, /const DEFAULT_CAMERA_ZOOM = 0\.5/)
+  assert.match(recording, /const DEFAULT_CAMERA_ZOOM = 1/)
   assert.match(recording, /max=\{MAX_CAMERA_ZOOM\}/)
   assert.match(recording, /aria-label="Kamera-Zoom einstellen"/)
-  assert.match(recording, /style=\{\{ '--camera-zoom': zoom \/ DEFAULT_CAMERA_ZOOM \}\}/)
+  assert.match(recording, /style=\{\{ '--camera-zoom': Math\.max\(1, zoom\) \}\}/)
   assert.match(styles, /scaleX\(-1\) scale\(var\(--camera-zoom, 1\)\)/)
   assert.match(recording, /stopCamera\(false\)/)
   assert.match(recording, /addEventListener\('pagehide'/)
@@ -69,4 +69,35 @@ test('camera resizing preserves aspect ratio within desktop, mobile and short vi
   assert.equal(clampCameraWidth(600, 16 / 9, { width: 390, height: 844 }), 366)
   assert.equal(clampCameraWidth(600, 3 / 4, { width: 844, height: 390 }), 274.5)
   assert.equal(clampCameraWidth(600, 16 / 9, { width: 140, height: 100 }), 116)
+})
+
+test('widest source requests native frames and minimum hardware zoom independently', async () => {
+  const calls = []
+  const track = {
+    getCapabilities: () => ({ resizeMode: ['none', 'crop-and-scale'], zoom: { min: 0.5, max: 3 } }),
+    getConstraints: () => ({ facingMode: { ideal: 'user' }, width: { ideal: 1280 }, height: { ideal: 720 }, aspectRatio: { ideal: 16 / 9 } }),
+    applyConstraints: async value => { calls.push(value) },
+  }
+  await widenCameraTrack(track)
+  assert.equal(calls.length, 2)
+  assert.deepEqual(calls[0].resizeMode, { exact: 'none' })
+  assert.deepEqual(calls[1].advanced, [{ zoom: 0.5 }])
+  for (const call of calls) {
+    assert.equal(call.aspectRatio, undefined)
+    assert.equal(call.height, undefined)
+    assert.deepEqual(call.width, { ideal: 1280 })
+    assert.deepEqual(call.facingMode, { ideal: 'user' })
+  }
+})
+
+test('unsupported or rejected source controls do not prevent the preview', async () => {
+  await assert.doesNotReject(() => widenCameraTrack(null))
+  await assert.doesNotReject(() => widenCameraTrack({}))
+  await assert.doesNotReject(() => widenCameraTrack({ applyConstraints() {}, getCapabilities() { throw new Error('unsupported') } }))
+  let attempts = 0
+  await assert.doesNotReject(() => widenCameraTrack({
+    getCapabilities: () => ({ resizeMode: ['none'], zoom: { min: 1 } }),
+    applyConstraints: async () => { attempts++; throw new Error('NotAllowedError') },
+  }))
+  assert.equal(attempts, 2)
 })

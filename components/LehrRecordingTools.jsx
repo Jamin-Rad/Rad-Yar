@@ -2,12 +2,12 @@
 
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
-import { cameraErrorMessage, clampCameraPosition, clampCameraWidth, stopCameraStream } from '../utils/lehrCamera'
+import { cameraErrorMessage, clampCameraPosition, clampCameraWidth, stopCameraStream, widenCameraTrack } from '../utils/lehrCamera'
 import styles from './LehrRecordingTools.module.css'
 
-const DEFAULT_CAMERA_ZOOM = 0.5
-const MIN_CAMERA_ZOOM = 0.25
-const MAX_CAMERA_ZOOM = 2.4
+const DEFAULT_CAMERA_ZOOM = 1
+const MIN_CAMERA_ZOOM = 1
+const MAX_CAMERA_ZOOM = 4.8
 
 function Icon({ name }) {
   let shape = <path d="M6 6l12 12M18 6 6 18" />
@@ -28,7 +28,7 @@ export default function LehrRecordingTools() {
   const [error, setError] = useState('')
   const [paused, setPaused] = useState(false)
   const [zoom, setZoom] = useState(DEFAULT_CAMERA_ZOOM)
-  const [aspectRatio, setAspectRatio] = useState(16 / 9)
+  const [aspectRatio, setAspectRatio] = useState(4 / 3)
   const streamRef = useRef(null)
   const requestRef = useRef(0)
   const mountedRef = useRef(false)
@@ -102,8 +102,7 @@ export default function LehrRecordingTools() {
         video: {
           facingMode: { ideal: 'user' },
           width: { ideal: 1280 },
-          height: { ideal: 720 },
-          aspectRatio: { ideal: 16 / 9 },
+          resizeMode: { ideal: 'none' },
         },
       })
       if (!mountedRef.current || request !== requestRef.current) {
@@ -120,6 +119,12 @@ export default function LehrRecordingTools() {
         track.addEventListener('mute', () => { if (streamRef.current === stream) setPaused(true) })
         track.addEventListener('unmute', () => { if (streamRef.current === stream) { setPaused(false); playVideo() } })
       }
+      await widenCameraTrack(stream.getVideoTracks()[0])
+      if (!mountedRef.current || request !== requestRef.current || streamRef.current !== stream) {
+        stopCameraStream(stream)
+        return
+      }
+      setZoom(DEFAULT_CAMERA_ZOOM)
       setPaused(false)
       setCameraOn(true)
     } catch (failure) {
@@ -242,8 +247,8 @@ export default function LehrRecordingTools() {
           <button type="button" className={`${styles.iconButton} ${styles.closeButton}`} onClick={() => stopCamera()} aria-label="Frontkamera ausschalten" title="Kamera schließen"><Icon name="close" /></button>
         </header>
         <div className={styles.videoFrame}>
-          {/* 50% fits the complete frame; lower values shrink it and higher values crop into it. */}
-          <video ref={attachVideo} style={{ '--camera-zoom': zoom / DEFAULT_CAMERA_ZOOM }} autoPlay muted playsInline aria-label="Livebild der Frontkamera" onLoadedMetadata={updateVideoSize} onResize={updateVideoSize} onPlaying={() => setPaused(false)} onPause={() => { if (streamRef.current) setPaused(true) }} />
+          {/* Weit shows the complete delivered frame. Digital zoom only crops inward. */}
+          <video ref={attachVideo} style={{ '--camera-zoom': Math.max(1, zoom) }} autoPlay muted playsInline aria-label="Livebild der Frontkamera" onLoadedMetadata={updateVideoSize} onResize={updateVideoSize} onPlaying={() => setPaused(false)} onPause={() => { if (streamRef.current) setPaused(true) }} />
           {paused && <button type="button" className={styles.resume} onClick={playVideo}>Kamerabild fortsetzen</button>}
         </div>
         <div className={styles.zoomControl} aria-label="Kamera-Zoom">
@@ -256,11 +261,11 @@ export default function LehrRecordingTools() {
             value={zoom}
             onChange={event => setZoom(Number(event.target.value))}
             aria-label="Kamera-Zoom einstellen"
-            aria-valuetext={`${Math.round(zoom * 100)} Prozent`}
+            aria-valuetext={zoom === MIN_CAMERA_ZOOM ? 'Weit, vollständiges Kamerabild' : `${Math.round(zoom * 100)} Prozent`}
           />
           <Icon name="zoomIn" />
-          <button type="button" className={styles.zoomValue} onClick={() => setZoom(DEFAULT_CAMERA_ZOOM)} title="Zoom zurücksetzen" aria-label={`Zoom ${Math.round(zoom * 100)} Prozent; auf Standard zurücksetzen`}>
-            {Math.round(zoom * 100)}%
+          <button type="button" className={styles.zoomValue} onClick={() => setZoom(DEFAULT_CAMERA_ZOOM)} title="Vollständiges Kamerabild anzeigen" aria-label="Weite Kameraansicht wiederherstellen">
+            {zoom === MIN_CAMERA_ZOOM ? 'Weit' : `${Math.round(zoom * 100)}%`}
           </button>
         </div>
       </section>}
