@@ -85,3 +85,7 @@
 .navShell[data-surface='collection'] { --header-bg: #fbfaf8; --header-ink: #172637; --header-muted: #68717b; --header-line: #e1e4e0; --header-accent: #075c50; --header-width: 1380px; --header-gutter: 96px; }
 @media (max-width: 1100px) { .navShell[data-surface='collection'] { --header-gutter: 64px; } }
 @media (max-width: 760px) { .navShell[data-surface='collection'] { --header-gutter: 36px; } }
+
+.navShell[data-surface='timer'] { --header-bg: #07111f; --header-line: #263950; --header-accent: #8ce8d0; --header-width: 1800px; --header-gutter: 48px; }
+@media (max-width: 999px) { .navShell[data-surface='timer'] { --header-gutter: 40px; } }
+@media (max-width: 760px) { .navShell[data-surface='timer'] { --header-gutter: 32px; } }
