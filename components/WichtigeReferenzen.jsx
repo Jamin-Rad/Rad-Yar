@@ -651,7 +651,7 @@ function MeasurementText({ value, lang }) {
 
 function MeasurementFigure({ image, lang, zoomLabel, onZoom }) {
   return (
-    <figure className={`${styles.measurementImageFigure} ${image.layout === 'wide' ? styles.measurementImageFigureWide : ''}`}>
+    <figure data-no-zoom className={`${styles.measurementImageFigure} ${image.layout === 'wide' ? styles.measurementImageFigureWide : ''}`}>
       <button
         type="button"
         className={styles.measurementImageButton}
@@ -751,6 +751,7 @@ function MesswerteModal({ copy, lang, onClose }) {
         <div className={styles.measurementZoomBackdrop} role="presentation" onClick={() => setZoomImage(null)}>
           <button type="button" className={styles.measurementZoomClose} onClick={() => setZoomImage(null)} aria-label={copy.close}>×</button>
           <div
+            data-no-zoom
             className={zoomImage.layout === 'wide' ? styles.anatomyReferenceZoom : undefined}
             ref={zoomImage.layout === 'wide' ? centerAnatomyZoom : undefined}
             onClick={event => event.stopPropagation()}
