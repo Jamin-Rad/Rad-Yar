@@ -5,8 +5,8 @@ import { createPortal } from 'react-dom'
 import { cameraErrorMessage, clampCameraPosition, stopCameraStream } from '../utils/lehrCamera'
 import styles from './LehrRecordingTools.module.css'
 
-const DEFAULT_CAMERA_ZOOM = 1.4
-const MIN_CAMERA_ZOOM = 1
+const DEFAULT_CAMERA_ZOOM = 0.5
+const MIN_CAMERA_ZOOM = 0.5
 const MAX_CAMERA_ZOOM = 2.4
 
 function Icon({ name }) {
@@ -31,6 +31,7 @@ export default function LehrRecordingTools({ ensureFullscreen }) {
   const [paused, setPaused] = useState(false)
   const [large, setLarge] = useState(false)
   const [zoom, setZoom] = useState(DEFAULT_CAMERA_ZOOM)
+  const [aspectRatio, setAspectRatio] = useState(16 / 9)
   const streamRef = useRef(null)
   const requestRef = useRef(0)
   const mountedRef = useRef(false)
@@ -80,6 +81,11 @@ export default function LehrRecordingTools({ ensureFullscreen }) {
     }
   }, [playVideo])
 
+  const updateVideoSize = event => {
+    const { videoWidth, videoHeight } = event.currentTarget
+    if (videoWidth && videoHeight) setAspectRatio(videoWidth / videoHeight)
+  }
+
   const startCamera = async () => {
     if (pending || streamRef.current) return
     ensureFullscreen?.()
@@ -96,9 +102,9 @@ export default function LehrRecordingTools({ ensureFullscreen }) {
         audio: false,
         video: {
           facingMode: { ideal: 'user' },
-          width: { ideal: 720 },
-          height: { ideal: 900 },
-          aspectRatio: { ideal: 0.8 },
+          width: { ideal: 1280 },
+          height: { ideal: 720 },
+          aspectRatio: { ideal: 16 / 9 },
         },
       })
       if (!mountedRef.current || request !== requestRef.current) {
@@ -188,14 +194,15 @@ export default function LehrRecordingTools({ ensureFullscreen }) {
     </button>
     {(cameraOn || error) && createPortal(<div className={styles.overlays} data-lehr-ui dir="ltr">
       {error && <div className={styles.notice} role="alert"><p>{error}</p><button type="button" onClick={() => setError('')} aria-label="Kamerahinweis schließen">×</button></div>}
-      {cameraOn && <section ref={panelRef} className={`${styles.camera} ${large ? styles.large : ''}`} aria-label="Frontkamera-Vorschau">
+      {cameraOn && <section ref={panelRef} className={`${styles.camera} ${large ? styles.large : ''}`} style={{ '--camera-aspect-ratio': aspectRatio }} aria-label="Frontkamera-Vorschau">
         <header>
-          <button type="button" className={styles.grip} aria-label="Kamerafenster verschieben" title="Ziehen oder mit Pfeiltasten verschieben" onPointerDown={beginDrag} onPointerMove={drag} onPointerUp={endDrag} onPointerCancel={endDrag} onLostPointerCapture={() => { dragRef.current = null }} onKeyDown={moveWithKeyboard}>⠿ <span>Kamera</span></button>
+          <button type="button" className={styles.grip} aria-label="Kamerafenster verschieben" title="Ziehen oder mit Pfeiltasten verschieben" onPointerDown={beginDrag} onPointerMove={drag} onPointerUp={endDrag} onPointerCancel={endDrag} onLostPointerCapture={() => { dragRef.current = null }} onKeyDown={moveWithKeyboard}>⠿</button>
           <button type="button" className={styles.iconButton} onClick={() => setLarge(value => !value)} aria-label={large ? 'Kamerafenster verkleinern' : 'Kamerafenster vergrößern'} title={large ? 'Verkleinern' : 'Vergrößern'}><Icon name={large ? 'collapse' : 'expand'} /></button>
           <button type="button" className={`${styles.iconButton} ${styles.closeButton}`} onClick={() => stopCamera()} aria-label="Frontkamera ausschalten" title="Kamera schließen"><Icon name="close" /></button>
         </header>
         <div className={styles.videoFrame}>
-          <video ref={attachVideo} style={{ '--camera-zoom': zoom }} autoPlay muted playsInline aria-label="Livebild der Frontkamera" onPlaying={() => setPaused(false)} onPause={() => { if (streamRef.current) setPaused(true) }} />
+          {/* 50% fits the complete camera frame; higher values crop into it. */}
+          <video ref={attachVideo} style={{ '--camera-zoom': zoom / MIN_CAMERA_ZOOM }} autoPlay muted playsInline aria-label="Livebild der Frontkamera" onLoadedMetadata={updateVideoSize} onResize={updateVideoSize} onPlaying={() => setPaused(false)} onPause={() => { if (streamRef.current) setPaused(true) }} />
           {paused && <button type="button" className={styles.resume} onClick={playVideo}>Kamerabild fortsetzen</button>}
         </div>
         <div className={styles.zoomControl} aria-label="Kamera-Zoom">
