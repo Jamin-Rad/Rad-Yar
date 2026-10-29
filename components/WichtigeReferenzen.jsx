@@ -332,6 +332,7 @@ export default function WichtigeReferenzen({ mode = 'section' }) {
     if (typeof window === 'undefined') return
     const params = new URLSearchParams(window.location.search)
     if (params.get('ref') === 'anatomie') setModal('anatomie')
+    if (params.get('ref') === 'messwerte') setModal('messwerte')
     if (params.get('ref') === 'klassifikationen') setModal('klassifikationen')
     if (params.get('ref') === 'rechner') setModal('rechner')
   }, [])
@@ -648,6 +649,29 @@ function MeasurementText({ value, lang }) {
   return text
 }
 
+function MeasurementFigure({ image, lang, zoomLabel, onZoom }) {
+  return (
+    <figure className={`${styles.measurementImageFigure} ${image.layout === 'wide' ? styles.measurementImageFigureWide : ''}`}>
+      <button
+        type="button"
+        className={styles.measurementImageButton}
+        onClick={() => onZoom(image)}
+        aria-label={`${zoomLabel}: ${tx(image.alt, lang)}`}
+      >
+        <Image
+          src={image.src}
+          alt={tx(image.alt, lang)}
+          width={image.width || 1448}
+          height={image.height || 1086}
+          className={styles.measurementImage}
+          sizes={image.layout === 'wide' ? '(max-width: 640px) 100vw, 850px' : '240px'}
+        />
+        <span>{zoomLabel}</span>
+      </button>
+    </figure>
+  )
+}
+
 function MesswerteModal({ copy, lang, onClose }) {
   const regions = REF_DATA.messwerte
   const [regionId, setRegionId] = useState(regions[0].id)
@@ -656,7 +680,7 @@ function MesswerteModal({ copy, lang, onClose }) {
   const region = regions.find(r=>r.id===regionId) || regions[0]
   return (
     <Modal title={copy.btnMesswerte} subtitle={showDetail?tx(region.name,lang):null} accent={region.color}
-      copy={copy} onClose={onClose} accentClass={styles.headBlue}>
+      copy={copy} onClose={onClose} accentClass={styles.headBlue} wide={region.groups.some(group => group.image?.layout === 'wide')}>
       <div className={`${styles.split} ${showDetail?styles.showDetail:''}`}>
         <nav className={styles.sidebar}>
           {regions.map(r=>(
@@ -680,6 +704,9 @@ function MesswerteModal({ copy, lang, onClose }) {
           </h2>
           {region.groups.map((group,gi)=>(
             <CollapseGroup key={gi} name={tx(group.name,lang)} color={region.color}>
+              {group.image?.layout === 'wide' && (
+                <MeasurementFigure image={group.image} lang={lang} zoomLabel={copy.zoomImage} onZoom={setZoomImage} />
+              )}
               <div className={styles.tableWrap}>
                 <table className={styles.mTable}>
                   <thead><tr>
@@ -690,7 +717,7 @@ function MesswerteModal({ copy, lang, onClose }) {
                   <tbody>{group.entries.map((e,ei)=>(
                     <tr key={ei}>
                       <td className={styles.tdName}>{tx(e.s,lang)}</td>
-                      <td className={styles.tdVal}>{e.v}</td>
+                      <td className={styles.tdVal}>{tx(e.v, lang)}</td>
                       <td className={styles.tdNote}>
                         <MeasurementText value={e.h} lang={lang} />
                       </td>
@@ -699,26 +726,9 @@ function MesswerteModal({ copy, lang, onClose }) {
                 </table>
               </div>
               {(group.note || group.source || group.image) && (
-                <div className={`${styles.measurementFootnotes} ${group.image ? styles.measurementFootnotesWithImage : ''}`}>
-                  {group.image && (
-                    <figure className={styles.measurementImageFigure}>
-                      <button
-                        type="button"
-                        className={styles.measurementImageButton}
-                        onClick={() => setZoomImage(group.image)}
-                        aria-label={copy.zoomImage}
-                      >
-                        <Image
-                          src={group.image.src}
-                          alt={tx(group.image.alt, lang)}
-                          width={1448}
-                          height={1086}
-                          className={styles.measurementImage}
-                          sizes="240px"
-                        />
-                        <span>{copy.zoomImage}</span>
-                      </button>
-                    </figure>
+                <div className={`${styles.measurementFootnotes} ${group.image && group.image.layout !== 'wide' ? styles.measurementFootnotesWithImage : ''}`}>
+                  {group.image && group.image.layout !== 'wide' && (
+                    <MeasurementFigure image={group.image} lang={lang} zoomLabel={copy.zoomImage} onZoom={setZoomImage} />
                   )}
                   <div className={styles.measurementFootnoteText}>
                     {group.note && <p className={styles.measurementNote}>{tx(group.note, lang)}</p>}
@@ -740,14 +750,23 @@ function MesswerteModal({ copy, lang, onClose }) {
       {zoomImage && (
         <div className={styles.measurementZoomBackdrop} role="presentation" onClick={() => setZoomImage(null)}>
           <button type="button" className={styles.measurementZoomClose} onClick={() => setZoomImage(null)} aria-label={copy.close}>×</button>
-          <Image
-            src={zoomImage.src}
-            alt={tx(zoomImage.alt, lang)}
-            width={1448}
-            height={1086}
-            className={styles.measurementZoomImage}
-            sizes="96vw"
-          />
+          <div
+            className={zoomImage.layout === 'wide' ? styles.anatomyReferenceZoom : undefined}
+            ref={zoomImage.layout === 'wide' ? centerAnatomyZoom : undefined}
+            onClick={event => event.stopPropagation()}
+            tabIndex={zoomImage.layout === 'wide' ? 0 : undefined}
+            role={zoomImage.layout === 'wide' ? 'region' : undefined}
+            aria-label={zoomImage.layout === 'wide' ? tx(zoomImage.alt, lang) : undefined}
+          >
+            <Image
+              src={zoomImage.src}
+              alt={tx(zoomImage.alt, lang)}
+              width={zoomImage.width || 1448}
+              height={zoomImage.height || 1086}
+              className={zoomImage.layout === 'wide' ? styles.anatomyZoomImage : styles.measurementZoomImage}
+              sizes={zoomImage.layout === 'wide' ? '1200px' : '96vw'}
+            />
+          </div>
         </div>
       )}
     </Modal>

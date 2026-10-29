@@ -966,25 +966,78 @@ export const MESSWERTE = [
         name: { de: 'Knie & Patella', en: 'Knee & Patella', fa: 'زانو و کشکک' },
         entries: [
           {
-            s: { de: 'Mechanische femorotibiale Achse (mFTA / HKA)', en: 'Mechanical femorotibial axis (mFTA / HKA)', fa: 'محور مکانیکی فموروتیبیال (mFTA / HKA)' },
-            v: 'ca. 180° / 0° ± 3°',
+            s: { de: 'Mechanischer HKA-Winkel', en: 'Mechanical HKA angle', fa: 'زاویه مکانیکی HKA' },
+            v: '0° (ca. ±3°)',
             h: {
-              de: 'Ganzbeinstandaufnahme: Winkel zwischen mechanischer Femurachse (Hüftkopfzentrum–Kniezentrum) und mechanischer Tibiaachse (Kniezentrum–Sprunggelenkzentrum). Je nach Konvention wird neutral als 180° oder als HKA 0° angegeben; Abweichung nach medial = Varus, nach lateral = Valgus.',
-              en: 'Standing long-leg radiograph: angle between the mechanical femoral axis (femoral head centre to knee centre) and mechanical tibial axis (knee centre to ankle centre). Depending on convention, neutral is reported as 180° or HKA 0°; medial deviation indicates varus, lateral deviation valgus.',
-              fa: 'رادیوگرافی ایستاده تمام اندام: زاویه بین محور مکانیکی فمور (مرکز سر فمور تا مرکز زانو) و محور مکانیکی تیبیا (مرکز زانو تا مرکز مچ). بسته به قرارداد، حالت خنثی به صورت ۱۸۰ درجه یا HKA برابر ۰ درجه گزارش می‌شود؛ انحراف به داخل واروس و به خارج والگوس است.',
+              de: [
+                'Belastete a.-p.-Ganzbeinaufnahme mit vollständig erfasster Hüfte und Sprunggelenk; Knie gestreckt, Patellae nach vorn zentriert.',
+                'H = Hüftkopfzentrum, K = Kniezentrum, A = Zentrum des oberen Sprunggelenks (Taluszentrum). H–K und K–A verbinden.',
+                'H–K über K hinaus nach distal verlängern. Der kleine Winkel α zwischen dieser Verlängerung und K–A ist die Abweichung von der gestreckten Achse.',
+                'Hier gilt: HKA = 0° neutral, Varus negativ, Valgus positiv. Beispiel: −6° = 6° Varus; +6° = 6° Valgus. Neutral kann auch als 180° angegeben werden; Vorzeichenkonvention immer nennen.',
+              ],
+              en: [
+                'Weight-bearing AP full-length radiograph including hip and ankle; knees extended and patellae centred facing forward.',
+                'H = femoral head centre, K = knee centre, A = ankle joint centre (talar centre). Connect H–K and K–A.',
+                'Extend H–K distally beyond K. The small angle α between this extension and K–A measures deviation from straight alignment.',
+                'Convention here: HKA = 0° neutral, varus negative, valgus positive. Example: −6° = 6° varus; +6° = 6° valgus. Neutral may also be reported as 180°; always state the sign convention.',
+              ],
+              fa: [
+                'رادیوگرافی AP تمام‌قد در حالت ایستاده و تحمل وزن، شامل مفصل ران و مچ؛ زانوها باز و کشکک‌ها رو به جلو و در مرکز باشند.',
+                'H = مرکز سر فمور، K = مرکز زانو، A = مرکز مفصل مچ (مرکز تالوس). خطوط H–K و K–A را رسم کنید.',
+                'خط H–K را از زانو به سمت پایین ادامه دهید. زاویه کوچک α بین امتداد این خط و K–A، انحراف از راستای مستقیم را نشان می‌دهد.',
+                'قرارداد اینجا: HKA صفر = خنثی؛ واروس منفی و والگوس مثبت. مثال: −6° یعنی ۶ درجه واروس و +6° یعنی ۶ درجه والگوس. خنثی ممکن است ۱۸۰ درجه هم گزارش شود؛ قرارداد علامت باید ذکر شود.',
+              ],
+            },
+          },
+          {
+            s: { de: 'Genu varum · O-Bein', en: 'Genu varum · Bow leg', fa: 'Genu varum · زانوی پرانتزی' },
+            v: 'HKA < 0°',
+            h: {
+              de: 'Distaler Unterschenkel nach medial gegenüber der verlängerten mechanischen Femurachse. Die Mikulicz-Linie liegt medial des Kniezentrums; das Kniezentrum liegt lateral der Traglinie.',
+              en: 'The distal lower leg deviates medially relative to the extended femoral mechanical axis. The Mikulicz line passes medial to the knee centre; the knee centre lies lateral to the weight-bearing line.',
+              fa: 'بخش دیستال ساق نسبت به امتداد محور مکانیکی فمور به مدیال منحرف می‌شود. خط میکولیچ از سمت مدیال مرکز زانو می‌گذرد و مرکز زانو لترال خط تحمل وزن قرار دارد.',
+            },
+          },
+          {
+            s: { de: 'Genu valgum · X-Bein', en: 'Genu valgum · Knock knee', fa: 'Genu valgum · زانوی ضربدری' },
+            v: 'HKA > 0°',
+            h: {
+              de: 'Distaler Unterschenkel nach lateral gegenüber der verlängerten mechanischen Femurachse. Die Mikulicz-Linie liegt lateral des Kniezentrums; das Kniezentrum liegt medial der Traglinie.',
+              en: 'The distal lower leg deviates laterally relative to the extended femoral mechanical axis. The Mikulicz line passes lateral to the knee centre; the knee centre lies medial to the weight-bearing line.',
+              fa: 'بخش دیستال ساق نسبت به امتداد محور مکانیکی فمور به لترال منحرف می‌شود. خط میکولیچ از سمت لترال مرکز زانو می‌گذرد و مرکز زانو مدیال خط تحمل وزن قرار دارد.',
             },
           },
           {
             s: { de: 'Traglinie / Mikulicz-Linie', en: 'Weight-bearing line / Mikulicz line', fa: 'خط تحمل وزن / خط میکولیچ' },
-            v: 'durch Kniezentrum, leicht medial',
+            v: { de: 'zentral bis leicht medial', en: 'central to slightly medial', fa: 'مرکزی تا کمی مدیال' },
             h: {
-              de: 'Linie vom Hüftkopfzentrum zum Zentrum des oberen Sprunggelenks. Physiologisch verläuft sie durch das Kniezentrum oder gering medial davon; deutliche mediale Verlagerung spricht für Varus-, deutliche laterale Verlagerung für Valgusbelastung.',
-              en: 'Line from the femoral head centre to the centre of the ankle joint. Physiologically it passes through the knee centre or slightly medial to it; marked medial shift suggests varus loading, marked lateral shift valgus loading.',
-              fa: 'خطی از مرکز سر فمور تا مرکز مفصل مچ پا. به طور طبیعی از مرکز زانو یا کمی مدیال آن عبور می‌کند؛ جابه‌جایی واضح به مدیال به نفع بارگذاری واروس و جابه‌جایی واضح به لترال به نفع والگوس است.',
+              de: 'Direkte Linie H–A vom Hüftkopfzentrum zum Sprunggelenkzentrum. Physiologisch nahe dem Kniezentrum, häufig gering medial. Die Verschiebung gegenüber K (MAD) wird in mm gemessen, der HKA-Winkel in Grad.',
+              en: 'Straight H–A line from femoral head centre to ankle centre. Normally near the knee centre, often slightly medial. Displacement relative to K (MAD) is measured in mm; the HKA angle is measured in degrees.',
+              fa: 'خط مستقیم H–A از مرکز سر فمور تا مرکز مچ؛ به‌طور طبیعی نزدیک مرکز زانو و اغلب کمی مدیال آن است. فاصله این خط از K یا MAD بر حسب میلی‌متر و زاویه HKA بر حسب درجه اندازه‌گیری می‌شود.',
             },
           },
           { s: { de: 'Insall-Salvati-Index', en: 'Insall-Salvati index', fa: 'شاخص اینسال-سالواتی' }, v: '0,8–1,2', h: { de: '> 1,2 Patella alta; < 0,8 Patella baja', en: '> 1.2 patella alta; < 0.8 patella baja', fa: '> ۱٫۲ پاتلا آلتا؛ < ۰٫۸ باجا' } },
         ],
+        note: {
+          de: 'Referenz für Erwachsene: mechanisch neutral 0° (= 180°); ca. ±3° wird häufig als neutraler Referenzbereich verwendet. Leichte konstitutionelle Varusstellung kann auch bei Gesunden vorkommen; dies ist keine universelle Krankheitsgrenze und kein Kinder-Normwert. Nicht mit dem anatomischen Winkel zwischen den Schaftachsen verwechseln: Dieser zeigt physiologisch etwa 5–7° Valgus (lateraler Innenwinkel ca. 173–175°). Die Abbildung ist ein vereinfachtes, nicht maßstabsgetreues Schema eines linken Beins; unklare Feinstrukturen sind ausgelassen. Zum Lesen vergrößern und scrollen.',
+          en: 'Adult reference: mechanically neutral 0° (= 180°); approximately ±3° is often used as a neutral reference range. Mild constitutional varus can occur in healthy people; this is neither a universal disease threshold nor a paediatric normal value. Distinguish the anatomical shaft-axis angle: physiological valgus is about 5–7° (lateral internal angle about 173–175°). The illustration is a simplified left-limb schematic, not to scale; uncertain fine structures are omitted. Enlarge and scroll to read.',
+          fa: 'مرجع بزرگسالان: خنثی مکانیکی صفر درجه (= ۱۸۰ درجه)؛ حدود ±۳ درجه اغلب محدوده مرجع خنثی محسوب می‌شود. واروس خفیف سرشتی در افراد سالم هم دیده می‌شود؛ این عدد مرز قطعی بیماری یا مقدار طبیعی کودکان نیست. با زاویه آناتومیک بین محورهای تنه استخوان‌ها اشتباه نشود: حدود ۵–۷ درجه والگوس فیزیولوژیک (زاویه داخلی لترال حدود ۱۷۳–۱۷۵ درجه). تصویر، شماتیک ساده‌شده پای چپ و بدون مقیاس است؛ جزئیات نامطمئن حذف شده‌اند. برای خواندن، تصویر را بزرگ و اسکرول کنید.',
+        },
+        image: {
+          src: '/referenzen/messwerte/knee-varus-valgus-hka-v1.png',
+          width: 1536,
+          height: 1024,
+          layout: 'wide',
+          alt: {
+            de: 'Genu varum, mechanisch neutrale Achse und Genu valgum eines linken Beins im a.-p.-Schema: H Hüftkopfzentrum, K Kniezentrum, A Sprunggelenkzentrum; mechanische Achsen H–K und K–A sowie Mikulicz-Linie H–A. Varus negativ, Valgus positiv.',
+            en: 'AP left-limb schematic comparing genu varum, mechanically neutral alignment and genu valgum: H femoral head centre, K knee centre, A ankle centre; mechanical axes H–K and K–A and Mikulicz line H–A. Varus negative, valgus positive.',
+            fa: 'شماتیک AP پای چپ با مقایسه واروس، خنثی مکانیکی و والگوس؛ H مرکز سر فمور، K مرکز زانو و A مرکز مچ؛ محورهای مکانیکی H–K و K–A و خط میکولیچ H–A. واروس منفی و والگوس مثبت.',
+          },
+        },
+        source: {
+          label: { de: 'EFORT Open Reviews – Radiological assessment of lower limb alignment (2021)', en: 'EFORT Open Reviews – Radiological assessment of lower limb alignment (2021)', fa: 'EFORT Open Reviews – ارزیابی رادیولوژیک راستای اندام تحتانی (۲۰۲۱)' },
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC8246117/',
+        },
       },
       {
         name: { de: 'Unterschenkel & Fuß', en: 'Lower Leg & Foot', fa: 'ساق پا و پا' },

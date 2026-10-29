@@ -538,6 +538,18 @@
   }
 }
 
+/* Wide teaching figures need room for labels and a separate zoom control. */
+.measurementImageFigure.measurementImageFigureWide {
+  width: 100%;
+  background: #fff;
+  margin-bottom: 14px;
+}
+.measurementImageFigureWide .measurementImageButton span {
+  position: static;
+  display: table;
+  margin: 8px 10px 8px auto;
+}
+
 .tdName {
   padding: 11px 14px; border-bottom: 1px solid #f1f5f9;
   font-weight: 600; color: #1e293b; vertical-align: top; line-height: 1.45;

@@ -1,0 +1,44 @@
+{
+  "asset": "public/referenzen/messwerte/knee-varus-valgus-hka-v1.png",
+  "tool": "Built-in image_gen",
+  "useCase": "scientific-educational",
+  "scope": "Original qualitative AP schematic of the left lower limb comparing varus, neutral mechanical alignment and valgus. Not a clinical radiograph and not to scale.",
+  "prompts": [
+    "Use case: scientific-educational.\nAsset type: original medical teaching illustration for Rad-Yar knee measurement reference, landscape 3:2, high resolution, white background, clean navy bilingual German/English labels. Accuracy takes priority over ornament; simplified anatomy only. Do not copy a published figure. No photorealistic X-ray, no 3D decoration.\nCreate THREE equal panels left-to-right: \"Genu varum\" / \"O-Bein · Bow leg\"; \"Neutral\" / \"Mechanisch · Mechanical\"; \"Genu valgum\" / \"X-Bein · Knock knee\".\nEach panel shows ONE LEFT lower limb in frontal AP view, simplified pale gray FEMUR and TIBIA only, complete from femoral head to distal tibial ankle. Omit pelvis, feet, fibula, patella, cartilage, trabeculae and uncertain fine anatomy. Femoral head is medial on VIEWER LEFT with a normal neck to the laterally positioned femoral shaft; never mirror the limb between panels. Small direction labels above the neutral limb: \"medial ←   → lateral\". This is a schematic, not an X-ray and not drawn to scale.\nCritical geometry: in all panels head center H is at the top, knee center K at the joint between femur/tibia, ankle center A at bottom. H-A dashed vertical gray reference is straight. In VARUS K lies visibly to the RIGHT (lateral) of the straight H-A reference, distal tibia slopes from K downward LEFT toward A. In NEUTRAL H,K,A are exactly collinear. In VALGUS K lies visibly to the LEFT (medial) of H-A, distal tibia slopes from K downward RIGHT toward A. Do not swap varus and valgus. No joint destruction or implication of a specific bony disease.\nDraw navy solid mechanical femoral segment H-K and teal solid mechanical tibial segment K-A, accurate centers marked with small circles and letters H K A. Draw a short thin dashed navy continuation of H-K BELOW K in both non-neutral panels. Small orange arc labelled \"α\" at K between THIS DOWNWARD CONTINUATION and K-A: this is the SMALL deviation angle, never a large internal angle. In varus continuation points down-right while tibial ray points down-left. In valgus continuation points down-left while tibial ray points down-right.\nBelow panels, exact large text: left \"HKA < 0°\"; middle \"HKA = 0°\"; right \"HKA > 0°\". No specific nonzero numeric example angles.\nBottom full-width concise legend with colored line samples: \"H–K: mechanische Femurachse / mechanical femoral axis\"; \"K–A: mechanische Tibiaachse / mechanical tibial axis\"; \"H–A: Mikulicz-Linie / weight-bearing line\".\nA clearly readable bottom reference box: \"Neutral: 0° (= 180°)\" and \"Orientierung Erwachsene / Adult reference: ca. ±3°\".\nTop overall title \"Genu varum & Genu valgum\" and subtitle \"HKA · Hip–Knee–Ankle\".\nFooter small but readable \"Schema · Schematic · Nicht maßstabsgetreu / Not to scale\".\nAll labels clear correctly spelled, no overlapping text or lines, generous space for bones; no extra angles or normal values, no watermarks.",
+    "Use case: scientific-educational precise correction. Edit this generated image. Preserve the entire left VARUS panel, middle NEUTRAL panel, title, all typography, bottom legend and normal-reference box EXACTLY. Correct ONLY right \"Genu valgum\" limb and its measurement lines. Current right panel is incorrect: the femoral mechanical axis is kinked and knee K is not medial to H-A; the dashed line does not connect H to A. These are unacceptable.\nReplace the right panel bone silhouettes and lines with correct AP LEFT-leg valgus geometry, medial toward VIEWER LEFT. On the existing 1536x1024 canvas use these reference point pixel positions: H=(1237,242), K=(1180,510), A=(1237,775). A should therefore move LEFT compared with current output, and K should move LEFT compared with current output. Left femoral head remains at H, normal neck extends laterally (viewer right) to proximal femoral shaft; shaft leads smoothly down toward displaced knee K. Tibia descends smoothly down-right from K to A, no fibula, no patella. Keep femur/tibia joint centres aligned at K.\nCritical invariant: RIGHT PANEL solid navy mechanical femoral line is ONE PERFECTLY STRAIGHT H-to-K segment, never bent or kinked. RIGHT PANEL solid teal line is ONE PERFECTLY STRAIGHT K-to-A segment. RIGHT PANEL dashed gray Mikulicz line is ONE PERFECTLY STRAIGHT H-to-A segment at x=1237 and terminates exactly at A. Its course is LATERAL (viewer right) to K. Short dashed navy extension begins at K and continues collinearly with H-K DOWN-LEFT. Small orange α arc below K between the navy downward-left extension and teal downward-right tibial axis. Circle centre markers at precisely H,K,A, their letters readable adjacent to each point. HKA > 0° remains below it.\nDo not introduce any other changes, new labels, angle values, joint destruction, extra bones or decorative details. Accuracy is the primary requirement.",
+    null
+  ],
+  "review": {
+    "rejectedInitialDraft": [
+      "Valgus mechanical femoral line kinked instead of straight.",
+      "Valgus H–A dashed line did not reach A; K was not medial to the load line."
+    ],
+    "checks": [
+      "All panels depict the same left limb: femoral head medial (viewer left).",
+      "Varus K lateral to H–A; tibial ray medial to femoral extension.",
+      "Valgus K medial to H–A; tibial ray lateral to femoral extension.",
+      "Neutral H, K, A collinear.",
+      "Mechanical axis segments join H–K and K–A; H–A is a separate direct line.",
+      "Small α measured between distal extension of H–K and K–A; varus negative / valgus positive explicitly stated.",
+      "Neutral 0° equals straight 180°; approximately ±3° described as a conventional adult neutral reference, with constitutional variation caveat.",
+      "No numerical nonzero example is attached to the not-to-scale drawing.",
+      "Anatomical shaft-axis physiological valgus distinguished from mechanical HKA in the translated text.",
+      "DE / EN image labels and DE / EN / FA explanatory text.",
+      "Illustration checked visually; not an independent clinical certification."
+    ]
+  },
+  "references": [
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8246117/",
+      "use": "Measurement technique; H/K/A landmarks; mechanical vs anatomical axes."
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3889437/",
+      "use": "Explicit negative-varus/positive-valgus HKA convention and commonly used ±3° neutral reference."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/21656315/",
+      "use": "Constitutional varus can occur in asymptomatic adults; neutral reference is not a universal disease threshold."
+    }
+  ]
+}
