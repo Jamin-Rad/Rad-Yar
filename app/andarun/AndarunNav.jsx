@@ -24,7 +24,7 @@ const SURFACES = [
   ['/andarun/gesundheit', 'health'],
   ['/andarun/deutsch', 'german'],
   ['/andarun/dienste', 'work'],
-  ['/andarun/befundtimer', 'timer'], ['/andarun/befunde', 'collection'],
+  ['/andarun/befundtimer', 'work'], ['/andarun/befunde', 'collection'],
   ['/andarun/test', 'learning'],
 ]
 

@@ -1,6 +1,6 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
-import { weekDates, serviceDate, historyRecords, totals, editForm, editedTimer, shiftDescription } from '../app/andarun/befundtimer/timerModel.js'
+import { weekDates, serviceDate, historyRecords, totals, editForm, editedTimer, shiftDescription, compareDays } from '../app/andarun/befundtimer/timerModel.js'
 
 test('the complete history includes old sessions, filters inclusively and uses weighted averages', () => {
   const records = [
@@ -41,4 +41,21 @@ test('typed correction preserves identity and other metadata and validates secon
 test('weekly service context uses the saved plan and assignment', () => {
   assert.equal(shiftDescription({ model: 'S', plannedStart: '11:00', plannedEnd: '19:30', assignment: 'CT' }), 'Spätdienst · 11:00–19:30 · CT')
   assert.equal(shiftDescription({ model: 'U' }), 'Urlaub')
+})
+
+test('day comparisons keep modalities separate and weight each average by report count', () => {
+  const data = [
+    { date: '2026-10-28', modality: 'CT', count: 2, durationMs: 120000 },
+    { date: '2026-10-28', modality: 'CT', count: 1, durationMs: 600000 },
+    { date: '2026-10-29', modality: 'MRT', count: 3, durationMs: 900000 },
+  ]
+  const days = compareDays(data, ['2026-10-28', '2026-10-29', '2026-10-30'])
+  assert.equal(days[0].count, 3)
+  assert.equal(days[0].avg, 240000)
+  assert.equal(days[0].modalities.find(m => m.modality === 'CT').avg, 240000)
+  assert.equal(days[0].modalities.find(m => m.modality === 'MRT').count, 0)
+  assert.equal(days[1].modalities.find(m => m.modality === 'MRT').avg, 300000)
+  assert.equal(days[2].count, 0)
+  assert.equal(days[2].avg, 0)
+  assert.deepEqual(compareDays(data).map(day => day.date), ['2026-10-29', '2026-10-28'])
 })

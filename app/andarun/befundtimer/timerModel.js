@@ -69,3 +69,15 @@ export function editedTimer(timer, form) {
   }
   return { ...timer, date: form.date, modality: form.modality, count, durationMs: (minutes * 60 + seconds) * 1000 }
 }
+
+export function compareDays(timers, dates) {
+  const grouped = new Map()
+  for (const timer of timers) {
+    if (!grouped.has(timer.date)) grouped.set(timer.date, [])
+    grouped.get(timer.date).push(timer)
+  }
+  return (dates || [...grouped.keys()].sort().reverse()).map(date => {
+    const records = grouped.get(date) || []
+    return { date, ...totals(records), modalities: MODALITIES.map(modality => ({ modality, ...totals(records.filter(timer => timer.modality === modality)) })) }
+  })
+}

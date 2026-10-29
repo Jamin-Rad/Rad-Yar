@@ -1,6 +1,6 @@
 import { memo, useMemo, useState } from 'react'
 import { formatWorkHours, summarizeTimerModalities } from '../dienste/findingTimerSummary'
-import { MODALITIES, addDays, dateLabel, duration, historyRecords, shiftsForDate, shiftLabel, shiftShortLabel, shiftDescription, totals, weekDates } from './timerModel'
+import { MODALITIES, addDays, dateLabel, duration, historyRecords, shiftsForDate, shiftLabel, shiftDescription, totals, weekDates, compareDays } from './timerModel'
 import Icon from './TimerIcon'
 import styles from './timer.module.css'
 const PAGE_SIZE = 30
@@ -14,45 +14,46 @@ function RecordTable({ records, shifts, onEdit, showDate = false, busy }) {
     <td><span className={styles.modalityDot} data-modality={timer.modality}/>{timer.modality}</td><td>{timer.count || 1}</td><td>{duration(timer.durationMs)}</td><td>{duration(timer.durationMs / (timer.count || 1))}</td><td><button type="button" className={styles.iconButton} aria-label={`${timer.modality} vom ${dateLabel(timer.date)} bearbeiten`} onClick={() => onEdit(timer)} disabled={busy}><Icon name="edit"/></button></td>
   </tr>)}</tbody></table>{!records.length && <p className={styles.empty}>Keine Befundzeiten für diesen Zeitraum gespeichert.</p>}</div>
 }
+function ComparisonCell({ stat }) {
+  return <><strong>{stat.count ? `${stat.count} ${stat.count === 1 ? 'Befund' : 'Befunde'}` : '—'}</strong><small>Gesamt {stat.count ? duration(stat.totalMs) : '—'}</small><span>Ø {stat.count ? duration(stat.avg) : '—'}</span></>
+}
 function TimerHistory({ timers, shifts, today, onEdit, busy, view, onViewChange, selection, onSelectionChange }) {
-  const [week, setWeek] = useState(today)
+  const [week, setWeek] = useState(selection?.date || today)
   const [from, setFrom] = useState('')
   const [to, setTo] = useState('')
-  const [modality, setModality] = useState('')
+  const [modality, setModality] = useState(selection?.modality || '')
+  const [detail, setDetail] = useState(selection?.modality ? 'sessions' : 'comparison')
   const [page, setPage] = useState(0)
-  const days = useMemo(() => weekDates(selection?.date || week), [week, selection?.date])
-  const weekly = useMemo(() => historyRecords(timers, { from: days[0], to: days[6] }), [timers, days])
-  const all = useMemo(() => historyRecords(timers, { from, to, modality }), [timers, from, to, modality])
-  const day = days.includes(selection?.date) ? selection.date : days.includes(today) ? today : days[0]
-  const selectedModality = selection?.date === day ? selection.modality : ''
-  const daily = weekly.filter(timer => timer.date === day && (!selectedModality || timer.modality === selectedModality))
-  const dayShifts = shiftsForDate(shifts, day)
-  const chart = days.map(date => ({ date, ...totals(weekly.filter(t => t.date === date)), modalities: summarizeTimerModalities(weekly.filter(t => t.date === date), MODALITIES) }))
-  const max = Math.max(1, ...chart.map(day => day.count))
-  const pageCount = Math.max(1, Math.ceil(all.length / PAGE_SIZE))
-  const currentPage = Math.min(page, pageCount - 1)
-  function moveWeek(delta) { const next = addDays(days[0], delta * 7); setWeek(next); onSelectionChange(null) }
-  function updateFilter(setter, value) { setter(value); setPage(0) }
+  const days = useMemo(() => weekDates(week), [week])
+  const records = useMemo(() => historyRecords(timers, { from: view === 'week' ? days[0] : from, to: view === 'week' ? days[6] : to, modality }), [timers, view, days, from, to, modality])
+  const comparisons = useMemo(() => compareDays(records, view === 'week' ? days : undefined), [records, days, view])
+  const summaries = useMemo(() => summarizeTimerModalities(records, MODALITIES), [records])
+  const sessions = selection?.date ? records.filter(timer => timer.date === selection.date) : records
+  const resultCount = detail === 'sessions' ? sessions.length : comparisons.length
+  const pages = Math.max(1, Math.ceil(resultCount / PAGE_SIZE))
+  const currentPage = Math.min(page, pages - 1)
+  const range = [currentPage * PAGE_SIZE, (currentPage + 1) * PAGE_SIZE]
+  function resetSelection() { onSelectionChange(null); setPage(0) }
+  function switchPeriod(next) { onViewChange(next); resetSelection() }
+  function updateFilter(setter, value) { setter(value); resetSelection() }
+  function openDay(date) { onSelectionChange({ date, modality: '' }); setDetail('sessions'); setPage(0) }
   return <section className={styles.history} aria-label="Befundtimer Verlauf">
-    <header className={styles.historyHead}><h2>Verlauf</h2><div className={styles.tabs} aria-label="Verlaufansicht"><button type="button" aria-pressed={view === 'week'} onClick={() => onViewChange('week')}>Diese Woche</button><button type="button" aria-pressed={view === 'all'} onClick={() => onViewChange('all')}>Gesamtverlauf</button></div></header>
-    {view === 'week' ? <>
-      <div className={styles.weekNav}><button type="button" className={styles.iconButton} aria-label="Vorherige Woche" onClick={() => moveWeek(-1)}><Icon name="left"/></button><strong>{dateLabel(days[0], { day: 'numeric', month: 'short' })} – {dateLabel(days[6], { day: 'numeric', month: 'short', year: 'numeric' })}</strong><button type="button" className={styles.iconButton} aria-label="Nächste Woche" onClick={() => moveWeek(1)}><Icon name="right"/></button><button type="button" className={styles.todayButton} onClick={() => { setWeek(today); onSelectionChange(null) }}>Heute</button></div>
-      <MetricSummary records={weekly}/>
-      <div className={styles.legend}>{MODALITIES.map(m => <span key={m}><i className={styles.modalityDot} data-modality={m}/>{m}</span>)}</div>
-      <div className={styles.weekChart} aria-label="Befunde und Dienste pro Wochentag">{chart.map(item => <button key={item.date} type="button" className={styles.chartDay} aria-pressed={item.date === day} aria-label={`${dateLabel(item.date, { weekday: 'long', day: 'numeric', month: 'long' })}: ${item.count} Befunde, ${shiftsForDate(shifts, item.date).map(shiftLabel).join(', ') || 'kein Dienst eingetragen'}`} onClick={() => onSelectionChange({ date: item.date, modality: '' })}>
-        <span className={styles.barArea}><strong>{item.count || ''}</strong><span className={styles.barStack} style={{ height: `${item.count / max * 80}%` }}>{item.modalities.map(stat => stat.count > 0 && <i key={stat.modality} data-modality={stat.modality} style={{ flex: stat.count }}/>)}</span></span>
-        <span className={styles.chartWeekday}>{dateLabel(item.date, { weekday: 'short' })} <b>{dateLabel(item.date, { day: 'numeric' })}</b></span><small title={shiftsForDate(shifts, item.date).map(shiftDescription).join(' / ')}><span className={styles.shiftLong}>{shiftsForDate(shifts, item.date).map(shiftLabel).join(' · ') || '—'}</span><span className={styles.shiftShort}>{shiftsForDate(shifts, item.date).map(shiftShortLabel).join(' · ') || '—'}</span></small>
-      </button>)}</div>
-      <div className={styles.dayHeading}><div><h3>{dateLabel(day, { weekday: 'long', day: 'numeric', month: 'long' })}</h3><p>{dayShifts.length ? dayShifts.map(shiftDescription).join(' / ') : 'Kein Dienst eingetragen'}</p></div>{selectedModality && <button type="button" onClick={() => onSelectionChange({ date: day, modality: '' })}>{selectedModality} · Alle anzeigen</button>}</div>
-      <RecordTable records={daily} shifts={shifts} onEdit={onEdit} busy={busy}/>
-    </> : <>
-      <div className={styles.filters}><label>Von<input type="date" value={from} onChange={e => updateFilter(setFrom, e.target.value)}/></label><label>Bis<input type="date" value={to} onChange={e => updateFilter(setTo, e.target.value)}/></label><label>Modalität<select value={modality} onChange={e => updateFilter(setModality, e.target.value)}><option value="">Alle Modalitäten</option>{MODALITIES.map(m => <option key={m}>{m}</option>)}</select></label>{(from || to || modality) && <button type="button" onClick={() => { setFrom(''); setTo(''); setModality(''); setPage(0) }}>Zurücksetzen</button>}</div>
-      {from && to && from > to && <p className={styles.error} role="alert">„Von“ muss vor „Bis“ liegen.</p>}
-      <MetricSummary records={all}/>
-      <RecordTable records={all.slice(currentPage * PAGE_SIZE, (currentPage + 1) * PAGE_SIZE)} shifts={shifts} onEdit={onEdit} showDate busy={busy}/>
-      <footer className={styles.pagination}><span>{all.length} gespeicherte {all.length === 1 ? 'Zeit' : 'Zeiten'}{all.length > 0 ? ` · ${currentPage * PAGE_SIZE + 1}–${Math.min((currentPage + 1) * PAGE_SIZE, all.length)}` : ''}</span><button type="button" className={styles.iconButton} aria-label="Vorherige Ergebnisse" disabled={!currentPage} onClick={() => setPage(currentPage - 1)}><Icon name="left"/></button><button type="button" className={styles.iconButton} aria-label="Weitere Ergebnisse" disabled={currentPage + 1 >= pageCount} onClick={() => setPage(currentPage + 1)}><Icon name="right"/></button></footer>
+    <div className={styles.historyToolbar}><div className={styles.tabs} aria-label="Zeitraum"><button type="button" aria-pressed={view === 'week'} onClick={() => switchPeriod('week')}>Diese Woche</button><button type="button" aria-pressed={view === 'all'} onClick={() => switchPeriod('all')}>Gesamtverlauf</button></div>
+      {view === 'week' && <div className={styles.weekNav}><button type="button" className={styles.iconButton} aria-label="Vorherige Woche" onClick={() => { setWeek(addDays(days[0], -7)); resetSelection() }}><Icon name="left"/></button><strong>{dateLabel(days[0], { day: 'numeric', month: 'short' })} – {dateLabel(days[6], { day: 'numeric', month: 'short', year: 'numeric' })}</strong><button type="button" className={styles.iconButton} aria-label="Nächste Woche" onClick={() => { setWeek(addDays(days[0], 7)); resetSelection() }}><Icon name="right"/></button><button type="button" className={styles.todayButton} onClick={() => { setWeek(today); resetSelection() }}>Heute</button></div>}
+    </div>
+    {view === 'all' && <div className={styles.filters}><label>Von<input type="date" value={from} onChange={e => updateFilter(setFrom, e.target.value)}/></label><label>Bis<input type="date" value={to} onChange={e => updateFilter(setTo, e.target.value)}/></label><label>Modalität<select value={modality} onChange={e => updateFilter(setModality, e.target.value)}><option value="">Alle Modalitäten</option>{MODALITIES.map(m => <option key={m}>{m}</option>)}</select></label>{(from || to || modality) && <button type="button" onClick={() => { setFrom(''); setTo(''); setModality(''); resetSelection() }}>Zurücksetzen</button>}</div>}
+    {view === 'week' && modality && <button type="button" className={styles.clearDay} onClick={() => { setModality(''); resetSelection() }}>Filter: {modality} · Alle Modalitäten anzeigen</button>}
+    {from && to && from > to && view === 'all' && <p className={styles.error} role="alert">„Von“ muss vor „Bis“ liegen.</p>}
+    <MetricSummary records={records}/>
+    <div className={styles.detailTabs} aria-label="Vergleichsart"><button type="button" aria-pressed={detail === 'comparison'} onClick={() => { setDetail('comparison'); resetSelection() }}>Tage &amp; Modalitäten</button><button type="button" aria-pressed={detail === 'sessions'} onClick={() => { setDetail('sessions'); setPage(0) }}>Einzelzeiten</button></div>
+    {detail === 'comparison' ? <div className={styles.comparisonPane}>
+      <div className={styles.comparisonBlock}><h3>Modalitäten im Zeitraum</h3><div className={styles.tableWrap}><table className={styles.records} aria-label="Modalitäten im Zeitraum"><thead><tr><th>Modalität</th><th>Befunde</th><th>Gesamtzeit</th><th>Ø pro Befund</th></tr></thead><tbody>{summaries.map(stat => <tr key={stat.modality}><td><i className={styles.modalityDot} data-modality={stat.modality}/>{stat.modality}</td><td>{stat.count}</td><td>{stat.count ? duration(stat.totalMs) : '—'}</td><td>{stat.count ? duration(stat.avg) : '—'}</td></tr>)}</tbody></table></div></div>
+      <div className={styles.comparisonBlock}><div className={styles.comparisonHeading}><h3>Tage vergleichen</h3><span>Tag öffnen für Einzelzeiten<span className={styles.comparisonHint}> · Weitere Modalitäten: seitlich wischen</span></span></div><div className={styles.tableWrap}><table className={`${styles.records} ${styles.dayComparison}`} aria-label="Tage und Modalitäten vergleichen"><thead><tr><th>Tag / Dienst</th>{MODALITIES.map(m => <th key={m}><i className={styles.modalityDot} data-modality={m}/>{m}</th>)}<th>Gesamt</th></tr></thead><tbody>{comparisons.slice(...range).map(day => <tr key={day.date}><td><button type="button" className={styles.dateButton} onClick={() => openDay(day.date)} aria-label={`Einzelzeiten vom ${dateLabel(day.date, { day: 'numeric', month: 'long', year: 'numeric' })}`}><strong>{dateLabel(day.date, { day: '2-digit', month: '2-digit', year: 'numeric' })}</strong><Icon name="right"/></button><small>{shiftsForDate(shifts, day.date).map(shiftDescription).join(' / ') || 'Kein Dienst eingetragen'}</small></td>{day.modalities.map(stat => <td key={stat.modality}><ComparisonCell stat={stat}/></td>)}<td><ComparisonCell stat={day}/></td></tr>)}</tbody></table>{!comparisons.length && <p className={styles.empty}>Keine Befundzeiten für diesen Zeitraum gespeichert.</p>}</div></div>
+    </div> : <>
+      {selection?.date && <div className={styles.selectedDay}><strong>{dateLabel(selection.date, { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })}</strong><button type="button" onClick={resetSelection}>Alle Tage anzeigen</button></div>}
+      <RecordTable records={sessions.slice(...range)} shifts={shifts} onEdit={onEdit} showDate busy={busy}/>
     </>}
+    <footer className={styles.pagination}><span>{resultCount} {detail === 'sessions' ? 'gespeicherte Zeiten' : 'Tage'}{resultCount > PAGE_SIZE ? ` · ${range[0] + 1}–${Math.min(range[1], resultCount)}` : ''}</span><button type="button" className={styles.iconButton} aria-label="Vorherige Ergebnisse" disabled={!currentPage} onClick={() => setPage(currentPage - 1)}><Icon name="left"/></button><button type="button" className={styles.iconButton} aria-label="Weitere Ergebnisse" disabled={currentPage + 1 >= pages} onClick={() => setPage(currentPage + 1)}><Icon name="right"/></button></footer>
   </section>
 }
-
 export default memo(TimerHistory)
