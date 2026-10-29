@@ -5,8 +5,7 @@
 .control:focus-visible, .overlays button:focus-visible { outline: 2px solid #7dd3fc; outline-offset: 3px; }
 .overlays { position: relative; z-index: 2147482100; font-family: var(--font-manrope), sans-serif; color: #f8fafc; }
 .camera { position: fixed; top: 150px; left: 12px; width: min(240px, calc(100vw - 24px)); overflow: hidden; padding: 0; border: 0; border-radius: 14px; background: #000; box-shadow: 0 8px 28px #0004; isolation: isolate; }
-.large { width: min(390px, calc(100vw - 24px)); }
-.camera header { position: absolute; inset: 0 0 auto; z-index: 1; display: flex; align-items: center; gap: 2px; padding: 3px 4px 12px; background: linear-gradient(#0009, transparent); }
+.camera header { position: absolute; inset: 0 0 auto; z-index: 1; display: flex; align-items: center; gap: 2px; padding: 3px 4px 12px 36px; background: linear-gradient(#0009, transparent); }
 .camera button { min-width: 32px; border: 0; border-radius: 9px; background: transparent; color: #e2e8f0; font: inherit; cursor: pointer; }
 .camera .grip { flex: 1; display: flex; align-items: center; gap: 6px; text-align: left; cursor: grab; touch-action: none; user-select: none; -webkit-user-select: none; }
 .grip:active { cursor: grabbing; }
@@ -28,13 +27,21 @@
 .notice p { flex: 1; margin: 0; }
 .notice button { align-self: flex-start; border: 0; background: transparent; color: #fff; font-size: 22px; cursor: pointer; }
 :global(html[data-lehr-recording-ready]) .control span { display: none; }
-@media (max-width: 820px) { .control { padding: 0; width: 40px; } .control span { display: none; } .camera { width: min(208px, calc(100vw - 24px)); } .camera.large { width: min(360px, calc(100vw - 24px)); } }
+@media (max-width: 820px) { .control { padding: 0; width: 40px; } .control span { display: none; } .camera { width: min(208px, calc(100vw - 24px)); } }
 @media (prefers-reduced-motion: reduce) { .camera video, .camera .iconButton { transition: none; } }
 
 .camera button:focus-visible, .zoomControl input:focus-visible { outline: 2px solid #7dd3fc; outline-offset: -2px; }
 @media (hover: hover) and (pointer: fine) {
-  .camera header, .zoomControl { opacity: 0; pointer-events: none; transition: opacity .16s ease; }
+  .camera header, .zoomControl, .resizeHandle { opacity: 0; pointer-events: none; transition: opacity .16s ease; }
   .camera:hover header, .camera:hover .zoomControl,
-  .camera:focus-within header, .camera:focus-within .zoomControl { opacity: 1; pointer-events: auto; }
+  .camera:focus-within header, .camera:focus-within .zoomControl,
+  .camera:hover .resizeHandle, .camera:focus-within .resizeHandle { opacity: 1; pointer-events: auto; }
 }
-@media (prefers-reduced-motion: reduce) { .camera header, .zoomControl { transition: none; } }
+@media (prefers-reduced-motion: reduce) { .camera header, .zoomControl, .resizeHandle { transition: none; } }
+
+.camera .resizeHandle { position: absolute; top: 4px; left: 4px; z-index: 2; display: grid; place-items: center; min-width: 28px; width: 28px; height: 28px; padding: 4px; border-radius: 7px; background: #0003; cursor: nwse-resize; touch-action: none; user-select: none; -webkit-user-select: none; }
+.resizeHandle svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.camera .resizeHandle:hover { background: #0006; color: #fff; }
+:global(html.lehr-mode-active) .camera .resizeHandle { cursor: nwse-resize !important; touch-action: none !important; }
+:global(html.lehr-mode-active) .camera .grip { cursor: grab !important; touch-action: none !important; }
+:global(html.lehr-mode-active) .camera .grip:active { cursor: grabbing !important; }

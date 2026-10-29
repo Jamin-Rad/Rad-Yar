@@ -1,7 +1,7 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
-import { cameraErrorMessage, clampCameraPosition, stopCameraStream } from '../utils/lehrCamera.js'
+import { cameraErrorMessage, clampCameraPosition, clampCameraWidth, stopCameraStream } from '../utils/lehrCamera.js'
 
 test('camera movement stays inside portrait, landscape and offset visual viewports', () => {
   assert.deepEqual(clampCameraPosition({ x: -20, y: -50 }, { width: 176, height: 168 }, { width: 390, height: 844 }), { x: 12, y: 12 })
@@ -43,16 +43,12 @@ test('camera is preview-only, scoped to admin Lehr-Mode and cleaned up on exit',
   assert.match(recording, /max=\{MAX_CAMERA_ZOOM\}/)
   assert.match(recording, /aria-label="Kamera-Zoom einstellen"/)
   assert.match(recording, /style=\{\{ '--camera-zoom': zoom \/ MIN_CAMERA_ZOOM \}\}/)
-  assert.match(recording, /Icon name=\{large \? 'collapse' : 'expand'\}/)
   assert.match(styles, /scaleX\(-1\) scale\(var\(--camera-zoom, 1\)\)/)
-  assert.match(recording, /export default function LehrRecordingTools\(\{ ensureFullscreen \}\)/)
-  assert.match(recording, /onPointerDown=\{\(\) => ensureFullscreen\?\.\(\)\}/)
-  assert.ok((recording.match(/ensureFullscreen\?\.\(\)/g) || []).length >= 3)
   assert.match(recording, /stopCamera\(false\)/)
   assert.match(recording, /addEventListener\('pagehide'/)
   assert.doesNotMatch(recording, /new MediaRecorder|fetch\(|localStorage|sessionStorage/)
   assert.match(lehr, /if \(!isAdmin \|\| isExcluded \|\| !active\) return null/)
-  assert.match(lehr, /LehrRecordingTools key=\{pathname\} ensureFullscreen=\{ensureFullscreen\}/)
+  assert.match(lehr, /LehrRecordingTools key=\{pathname\}/)
   assert.match(lehr, /delete document.documentElement.dataset.lehrRecordingReady/)
 })
 
@@ -64,4 +60,13 @@ test('teaching preview reserves answer details so revealing results does not mov
   assert.match(preview, /previewRevealReserved/)
   assert.match(preview, /previewResultSlot/)
   assert.match(styles, /\.previewStatReserved, \.previewRevealReserved \{ visibility: hidden/)
+})
+
+test('camera resizing preserves aspect ratio within desktop, mobile and short viewports', () => {
+  assert.equal(clampCameraWidth(430, 16 / 9, { width: 1365, height: 900 }), 430)
+  assert.equal(clampCameraWidth(900, 16 / 9, { width: 1365, height: 900 }), 720)
+  assert.equal(clampCameraWidth(100, 16 / 9, { width: 1365, height: 900 }), 160)
+  assert.equal(clampCameraWidth(600, 16 / 9, { width: 390, height: 844 }), 366)
+  assert.equal(clampCameraWidth(600, 3 / 4, { width: 844, height: 390 }), 274.5)
+  assert.equal(clampCameraWidth(600, 16 / 9, { width: 140, height: 100 }), 116)
 })

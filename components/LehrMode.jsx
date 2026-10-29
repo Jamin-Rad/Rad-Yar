@@ -4,7 +4,6 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 import { useUser } from '@clerk/nextjs'
 import { usePathname } from 'next/navigation'
 import { canonicalUserEmail } from '@/lib/emailIdentity'
-import { exitPageFullscreen, pageFullscreenElement, requestPageFullscreen } from '@/utils/lehrFullscreen'
 import LehrRecordingTools from './LehrRecordingTools'
 import styles from './LehrMode.module.css'
 
@@ -152,8 +151,6 @@ export default function LehrMode() {
   const frameRef = useRef(null)
   const toolRef = useRef(tool)
   const activeRef = useRef(false)
-  const fullscreenRequestRef = useRef(0)
-  const fullscreenPendingRef = useRef(false)
   const toolColorsRef = useRef(INITIAL_TOOL_COLORS)
 
   const selectToolColor = useCallback((toolName, color) => {
@@ -236,40 +233,16 @@ export default function LehrMode() {
     scheduleRender()
   }, [scheduleRender])
 
-  const ensureFullscreen = useCallback(() => {
-    if (!activeRef.current || pageFullscreenElement() || fullscreenPendingRef.current) return Promise.resolve(false)
-
-    fullscreenPendingRef.current = true
-    const request = ++fullscreenRequestRef.current
-    return requestPageFullscreen()
-      .then(entered => {
-        if (entered && (request !== fullscreenRequestRef.current || !activeRef.current)) {
-          exitPageFullscreen().catch(() => {})
-          return false
-        }
-        return entered
-      })
-      .catch(() => false)
-      .finally(() => {
-        if (request === fullscreenRequestRef.current) fullscreenPendingRef.current = false
-      })
-  }, [])
-
   const deactivate = useCallback(() => {
-    const wasActive = activeRef.current
     activeRef.current = false
-    fullscreenRequestRef.current += 1
-    fullscreenPendingRef.current = false
     setActive(false)
-    if (wasActive) exitPageFullscreen().catch(() => {})
     clearAnnotations()
   }, [clearAnnotations])
 
   const activate = useCallback(() => {
     activeRef.current = true
     setActive(true)
-    ensureFullscreen()
-  }, [ensureFullscreen])
+  }, [])
 
   const undo = useCallback(() => {
     const previous = historyRef.current.pop()
@@ -340,9 +313,6 @@ export default function LehrMode() {
     const canDrawWith = event => event.pointerType === 'pen'
 
     function onPointerDown(event) {
-      // iPadOS may leave native fullscreen while showing camera permission UI.
-      // Re-enter during this trusted gesture before handling Pencil, touch or toolbar input.
-      ensureFullscreen()
       if (isToolbarEvent(event)) return
       if (event.pointerType === 'touch') {
         const viewport = annotationViewport(event.target)
@@ -488,18 +458,12 @@ export default function LehrMode() {
       arrowRef.current?.classList.remove(styles.arrowVisible)
     }
 
-    function keepFullscreenLocked() {
-      if (!pageFullscreenElement()) ensureFullscreen()
-    }
-
     document.addEventListener('pointerdown', onPointerDown, { capture: true, passive: false })
     document.addEventListener('pointermove', onPointerMove, { capture: true, passive: false })
     document.addEventListener('pointerup', finishPointer, { capture: true, passive: false })
     document.addEventListener('pointercancel', finishPointer, { capture: true, passive: false })
     document.addEventListener('click', onClick, { capture: true })
     document.addEventListener('pointerleave', hideArrow)
-    document.addEventListener('fullscreenchange', keepFullscreenLocked)
-    document.addEventListener('webkitfullscreenchange', keepFullscreenLocked)
     window.addEventListener('keydown', onKeyDown, { capture: true })
     window.addEventListener('resize', scheduleRender)
     document.addEventListener('scroll', scheduleRender, { capture: true, passive: true })
@@ -513,8 +477,6 @@ export default function LehrMode() {
       document.removeEventListener('pointercancel', finishPointer, { capture: true })
       document.removeEventListener('click', onClick, { capture: true })
       document.removeEventListener('pointerleave', hideArrow)
-      document.removeEventListener('fullscreenchange', keepFullscreenLocked)
-      document.removeEventListener('webkitfullscreenchange', keepFullscreenLocked)
       window.removeEventListener('keydown', onKeyDown, { capture: true })
       window.removeEventListener('resize', scheduleRender)
       document.removeEventListener('scroll', scheduleRender, { capture: true })
@@ -523,7 +485,7 @@ export default function LehrMode() {
       if (clickResetTimer !== null) window.clearTimeout(clickResetTimer)
       frameRef.current = null
     }
-  }, [active, deactivate, ensureFullscreen, scheduleRender, undo])
+  }, [active, deactivate, scheduleRender, undo])
 
   if (!isAdmin || isExcluded || !active) return null
 
@@ -538,7 +500,7 @@ export default function LehrMode() {
       </div>
       <div className={styles.toolbar} data-lehr-ui role="toolbar" aria-label="Lehr-Mode Werkzeuge">
         <div className={styles.recordingTools} aria-label="Lehr-Mode Einstellungen">
-          <LehrRecordingTools key={pathname} ensureFullscreen={ensureFullscreen} />
+          <LehrRecordingTools key={pathname} />
         </div>
         <div className={styles.modeLabel}><span />Lehr-Mode</div>
         <div className={styles.tools}>

@@ -1,3 +1,9 @@
+export function clampCameraWidth(width, aspectRatio, viewport, padding = 12) {
+  const maxWidth = Math.max(1, Math.min(720, viewport.width - padding * 2, (viewport.height - padding * 2) * aspectRatio))
+  const minWidth = Math.min(160, maxWidth)
+  return Math.min(maxWidth, Math.max(minWidth, width))
+}
+
 export function clampCameraPosition(position, size, viewport, padding = 12) {
   const minX = (viewport.left || 0) + padding
   const minY = (viewport.top || 0) + padding
