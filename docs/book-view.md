@@ -96,20 +96,17 @@ chapter headings and read-progress buttons never share that slide.
 mappings. `BookCheckpoint` uses 1–3 original localized question objects verbatim,
 including options, correct answer, explanation and per-option feedback. Missing
 mappings/questions are skipped. In-view exercises do not change the existing
-scored quiz or read-progress workflow. For rebuilt contrast lessons, optional `showInClassic` exposes collapsible
-practice while keeping the same Question instances mounted in both modes. The
-default CAA checkpoint behavior remains presentation-only. Current CAA mappings cover vessel
+scored quiz or read-progress workflow. Current CAA mappings cover vessel
 location, TFNE, Boston/cSS/PVS, RCVS and cavernoma.
 
 ## Standard lesson integration and contrast media
 
 `StandardLessonShell` opts in only when its stable lesson ID is in the feature
-registry. The rebuilt contrast curriculum uses one shared renderer for all five
-groups and keeps their read IDs; ultrasound retains its presentation/section key
-`ref-kontrastmittel-ultraschall`. Other standard
+registry. The four contrast group pages keep their existing read IDs; the
+ultrasound reference shell keeps `ref-kontrastmittel-ultraschall`. Other standard
 lessons keep their original Classic tree and receive no presentation controls.
 The action sits beside Take Home, MCQ and flashcards. Open chapter and original
-question state survives switching views; read-progress controls stay outside the
+self-check state survive switching views; read-progress controls stay outside the
 presentation. References are retained on a final slide.
 
 Existing card comparisons and workflow lists use `data-book-group` to remain
@@ -127,11 +124,9 @@ chelation, NSF, retention, liver agents, Buscopan, renal protection, dialysis,
 metformin, pregnancy/lactation and CEUS. No question text or answer is copied or
 changed. Topics without a reliable existing mapping add no checkpoint.
 
-The contrast rebuild is documented in
-`docs/lesson-quality/contrast-pdf-rebuild-2026-10-29.md`. The shared source renders
-in DE/EN/FA; DOM text equality verifies view fidelity. All 75 current slides
-(26 iodine, 18 MRI, 13 renal, 9 pregnancy, 9 CEUS) were traversed in the in-app
-browser, checking each question-only boundary.
+The contrast QA run compares the complete original body text and image URLs/alts
+between views in DE/EN/FA. All 91 slides (including original self-checks and
+mapped question-only slides) were traversed at desktop and iPad portrait sizes.
 Additional checks cover landscape/phone layout, original MRI image zoom, RTL
 keyboard navigation, question feedback/state, Classic chapter/answer restoration,
 and fullscreen/windowed preservation. Temporary local routes exercise the real

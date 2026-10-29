@@ -10,7 +10,7 @@ test('contrast checkpoints use existing, localized questions and real section ma
     const seen = new Set()
     for (const group of CONTRAST_GROUPS) {
       const id = group.id === 'ultraschall' ? `ref-${group.readId}` : group.readId
-      const sections = CONTRAST_LESSONS[group.id].sections.map(section => section.id)
+      const sections = group.id === 'ultraschall' ? ['content', 'self-check', 'take-home'] : CONTRAST_LESSONS[group.id].sections.map(section => section.id)
       for (const section of Object.keys(BOOK_QUESTION_MAPPINGS[id])) {
         assert.ok(sections.includes(section), `${id}/${section} exists`)
         const ids = questionIdsForSection(id, section, lang)

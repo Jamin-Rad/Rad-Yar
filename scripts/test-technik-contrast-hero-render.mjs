@@ -8,8 +8,11 @@ import { CONTRAST_GROUPS } from '../data/contrastMedia.js'
 import { CONTRAST_LESSONS, CONTRAST_UI, localizeContrast } from '../data/contrastLessons.js'
 
 const require = createRequire(import.meta.url)
-const escapeHtml = text => text.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('\"','&quot;').replaceAll("'",'&#x27;')
 const styles = new Proxy({}, { get: (_, key) => String(key) })
+const contrastStyles = fs.readFileSync('app/technik/kontrastmittel/page.module.css', 'utf8')
+assert.match(contrastStyles, /\[data-lesson-hero\]\[lang='fa'\][^\{]*\.contrastHeroTitle\s*\{[^}]*font-family:\s*'Vazirmatn',\s*sans-serif;[^}]*font-size:\s*clamp\(34px,\s*4vw,\s*52px\);[^}]*letter-spacing:\s*0;[^}]*line-height:\s*1\.5;/s, 'Persian desktop title uses Vazirmatn with RTL-safe spacing and line height')
+const mobileStyles = contrastStyles.slice(contrastStyles.search(/@media\s*\(max-width:\s*760px\)/))
+assert.match(mobileStyles, /\[data-lesson-hero\]\[lang='fa'\][^\{]*\.contrastHeroTitle\s*\{[^}]*font-size:\s*clamp\(25px,\s*6\.5vw,\s*34px\);[^}]*line-height:\s*1\.55;/s, 'Persian mobile title retains legible sizing and line height')
 // Exercise the real shared shell and presentation integration in their initial
 // Classic state. Only browser routing, persistence and Next media/link adapters
 // are replaced; lesson content and the shell's markup are rendered normally.
@@ -46,32 +49,34 @@ const Page = loadLocal('app/technik/kontrastmittel/ContrastGroupPage.jsx').defau
 
 let currentLang = 'de'
 let currentGroup = 'roentgen'
+const expectedAssets = {
+  roentgen: ['/educational/xray-contrast-attenuation.svg', 'Weichteilgewebe', 'Soft tissue'],
+  nierenfunktion: ['/educational/renal-contrast-pass.svg', 'Applikationsweg und renale Erstpassage', 'Administration route and renal first pass'],
+  mrt: ['/educational/gadolinium-chelate.svg', 'Chelatgeometrie', 'Chelate geometry'],
+  schwangerschaft: ['/educational/pregnancy-contrast-pathways.svg', 'Plazentapassage', 'placental transfer'],
+}
+const groupsUnderTest = CONTRAST_GROUPS.filter(group => Object.hasOwn(expectedAssets, group.id))
+assert.equal(groupsUnderTest.length, 4)
+
 for (const lang of ['de', 'en', 'fa']) {
- currentLang = lang
- for (const group of CONTRAST_GROUPS) {
-  currentGroup = group.id
-  const html = renderToStaticMarkup(React.createElement(Page, {groupId:group.id}))
-  const lesson = CONTRAST_LESSONS[group.id]
-  assert.ok(html.includes('data-contrast-curriculum="2026-pdf-rebuild"'))
-  assert.equal((html.match(/<h1\b/g)||[]).length,1)
-  assert.ok(html.includes(escapeHtml(lesson.title[lang])))
-  assert.ok(html.includes(`dir="${lang === 'fa' ? 'rtl' : 'ltr'}"`))
-  assert.ok(html.includes(CONTRAST_UI[lang].mcq) && html.includes(CONTRAST_UI[lang].flashcards))
-  assert.ok(html.includes(lang==='de'?'Präsentation':lang==='en'?'Presentation':'نمای ارائه'))
-  for(const section of lesson.sections) {
-   assert.ok(html.includes(`id="${section.id}"`),`${group.id}/${lang}: stable chapter anchor`)
-   assert.ok(html.includes(escapeHtml(section.title[lang])))
-   for(const block of section.blocks) {
-    if(block.type==='diagram') assert.ok(fs.existsSync(`public${block.src}`))
-    if(block.type==='imageGallery') for(const image of block.images) {
-     assert.ok(fs.existsSync(`public${image.src}`))
-     assert.ok(html.includes(escapeHtml(image.alt[lang])) && html.includes('figcaption'))
-    }
-   }
+  currentLang = lang
+  for (const group of groupsUnderTest) {
+    currentGroup = group.id
+    const html = renderToStaticMarkup(React.createElement(Page, { groupId: group.id }))
+    const lesson = CONTRAST_LESSONS[group.id]
+    const expected = expectedAssets[group.id]
+    assert.ok(new RegExp(`data-lesson-hero="true"[^>]*lang="${lang}"`).test(html), `${group.id}/${lang}: shared LessonHero`)
+    assert.ok(html.includes(`<h1>${lesson.title[lang]}</h1>`), `${group.id}/${lang}: semantic localized title`)
+    assert.ok(html.includes(expected[0]), `${group.id}/${lang}: topic-specific visual`)
+    assert.ok(html.includes('alt=') && html.includes('figcaption'), `${group.id}/${lang}: accessible visual and caption`)
+    if (lang === 'fa') assert.match(html, /[\u0600-\u06ff]/u, `${group.id}/${lang}: Persian visual text`)
+    else assert.ok(html.includes(expected[lang === 'de' ? 1 : 2]), `${group.id}/${lang}: localized visual explanation`)
+    assert.ok(html.includes(CONTRAST_UI[lang].mcq) && html.includes(CONTRAST_UI[lang].flashcards), `${group.id}/${lang}: assessment actions retained`)
+    assert.equal((html.match(/<h1\b/g) || []).length, 1, `${group.id}/${lang}: exactly one page title`)
+    assert.ok(html.includes(lang === 'de' ? 'Präsentation' : lang === 'en' ? 'Presentation' : 'نمای ارائه'), `${group.id}/${lang}: presentation header action`)
+    assert.ok(!html.includes('data-book-checkpoint'), `${group.id}/${lang}: presentation questions do not alter Classic`)
+    assert.ok(fs.existsSync(`public${expected[0]}`), `${group.id}: hero asset exists`)
   }
-  assert.ok(!html.includes('andarun-galaxy'),'No tall decorative hero')
-  assert.ok(html.includes('data-book-checkpoint'),'Existing questions are available in both views')
- }
 }
 
 const StandardLessonShell = loadLocal('components/lesson-template/StandardLessonShell.jsx').default
@@ -83,4 +88,4 @@ assert.ok(unrelated.includes('Original content'))
 assert.ok(!unrelated.includes('data-book-'), 'Other lessons do not opt in to presentation markup')
 assert.ok(!unrelated.includes('Presentation'), 'Other lessons do not acquire a presentation action')
 
-console.log('Five source-rebuilt contrast routes render in DE/EN/FA; stable anchors, real source assets, assessment actions and unrelated lesson isolation pass.')
+console.log('Contrast-group shared LessonHero, localized topic assets/captions, page titles and assessment actions passed SSR for all four groups in DE/EN/FA.')

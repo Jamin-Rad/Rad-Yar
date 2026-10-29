@@ -116,5 +116,3 @@
 .question legend { padding: 0; margin-bottom: 22px; font-size: 21px; line-height: 1.65; }
 .options label,.feedback { font-size: 16px; }
 .reader .viewport:focus-visible { outline: none; }
-
-.practiceToggle{width:100%;display:flex;justify-content:space-between;align-items:center;border:1px solid var(--km-line,#dce2e1);background:var(--km-paper,#fff);color:var(--km-ink,#202630);padding:14px 18px;border-radius:7px;font:inherit;font-size:14px;font-weight:650;cursor:pointer;margin:18px 0}.practiceToggle:focus-visible{outline:3px solid #237c7e;outline-offset:3px}
