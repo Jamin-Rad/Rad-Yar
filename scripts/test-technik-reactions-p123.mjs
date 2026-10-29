@@ -9,11 +9,6 @@ const locales = ['de', 'en', 'fa']
 const lesson = CONTRAST_LESSONS.roentgen
 const topicId = 'km-jod-reaktionen'
 const visualSrc = '/educational/contrast-media/contrast-reaction-context.svg'
-const questionPatterns = {
-  de: /früherer schwerer unmittelbarer HSR/i,
-  en: /previous severe immediate HSR/i,
-  fa: /واکنش حساسیتی فوریِ شدید/i,
-}
 
 for (const locale of locales) {
   const section = lesson.sections.find(item => item.id === 'reaktionen')
@@ -51,8 +46,10 @@ assert.match(svg, /<text x="723" y="192"[^>]*>1<\/text>[\s\S]*<text x="807" y="1
 assert.doesNotMatch(svg, /Radiopaedia|patient|case study/i, 'visual must remain an original concept schematic without patient material')
 
 const questionByLocale = Object.fromEntries(locales.map(locale => {
-  const question = CONTRAST_QUESTIONS[locale].find(item => item.tags.includes(topicId) && questionPatterns[locale].test(item.question))
+  const question = CONTRAST_QUESTIONS[locale].find(item => item.id === `km-jod-reaktionen-${locale}-4` && item.tags.includes(topicId))
   assert.ok(question, `${locale}: severe prior-reaction assessment exists`)
+  assert.equal(question.source, 'https://pubs.rsna.org/doi/full/10.1148/radiol.240100', `${locale}: severe-reaction question retains the joint consensus source`)
+  assert.match(question.question, /2025|۲۰۲۵/, `${locale}: assessment identifies the consensus year`)
   assert.equal(question.options.length, 4, `${locale}: question has four options`)
   assert.equal(question.options.filter(option => option.id === question.correct).length, 1, `${locale}: exactly one keyed option exists`)
   assert.ok(question.explanation.length > 40, `${locale}: localized explanation is substantive`)
