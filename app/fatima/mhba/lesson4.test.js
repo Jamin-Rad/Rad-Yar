@@ -1,3 +1,4 @@
+import {parallelRows} from './parallelText.js';
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {lesson4Chapters,lesson4Vocabulary} from './lesson4.js';
@@ -40,4 +41,9 @@ test('lesson 4 retains all source and official solution visuals and flags obsole
  const duration=lesson4Notes.find(n=>n.id==='current-duration');assert.ok(duration.questions.includes('4.5'));assert.match(duration.de,/drei Jahre/);assert.match(duration.de,/nicht erforderlich/);
  assert.equal(lesson4Practice.find(q=>q.text.includes('Mindesttilgung von 35')).answer,false);
  assert.equal(lesson4Practice.find(q=>q.text.includes('24 Monate')).answer,true);
+});
+
+test('Ansoff table and source caption stay on the same bilingual book row',()=>{
+ const chunk={key:'4.2.3:29',page:29,deStart:0,faStart:0,text:'Table data\n\nTab. 4.2: caption\n\nPenetration paragraph\n\nDevelopment paragraph',fa:'داده\n\nعنوان جدول\n\nنفوذ\n\nتوسعه'};chunk.deEnd=chunk.text.length;chunk.faEnd=chunk.fa.length;
+ const rows=parallelRows(chunk,4);assert.equal(rows.length,3);assert.match(rows[0].de.text,/Tab. 4.2/);assert.match(rows[0].fa.text,/عنوان جدول/);assert.equal(rows.map(r=>r.de.text).join(''),chunk.text);assert.equal(rows.map(r=>r.fa.text).join(''),chunk.fa);
 });
