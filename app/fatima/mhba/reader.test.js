@@ -30,9 +30,9 @@ test('book pagination fits complete bilingual rows, keeps titles with text and n
 test('original figures have unique allowlisted files and belong to exactly one source row',async()=>{
  const {sourceFigures,sourceFigureFiles,figuresForRow}=await import('./sourceFigures.js');
  assert.equal(sourceFigures[1].length,8);assert.equal(sourceFigures[5].length,3);
- assert.equal(sourceFigureFiles.size,12);
+ assert.equal(sourceFigureFiles.size,24);
  for(const [lesson,figures] of Object.entries(sourceFigures))for(const figure of figures){
-  assert.match(figure.file,/^lesson-[15]-(?:table|figure|intro)[\w.-]*\.webp$/);
+  assert.match(figure.file,/^lesson-[145]-(?:table|figure|intro)[\w.-]*\.webp$/);
   assert.ok(figure.width>0&&figure.height>0&&Number.isInteger(figure.anchor));
   const before={de:{start:0,end:figure.anchor}},after={de:{start:figure.anchor,end:figure.anchor+1}};
   assert.ok(!figuresForRow(lesson,figure.page,before).some(f=>f.id===figure.id));

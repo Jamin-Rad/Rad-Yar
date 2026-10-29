@@ -1,5 +1,95 @@
 // Numeric placements and authored captions only; original images stay in private storage.
 export const sourceFigures={
+  "4":[
+  {
+    "id": "figure-4-1",
+    "pdf": "Text_04_Phasen_2026.pdf",
+    "page": 4,
+    "file": "lesson-4-figure-4-1.webp",
+    "width": 1143,
+    "height": 500,
+    "title": "تأسیس‌ها و انحلال‌ها در آلمان",
+    "label": "شکل 4.1",
+    "anchor": 1210
+  },
+  {
+    "id": "table-4-1",
+    "pdf": "Text_04_Phasen_2026.pdf",
+    "page": 22,
+    "file": "lesson-4-table-4-1.webp",
+    "width": 1140,
+    "height": 642,
+    "title": "عوامل مؤثر بر موفقیت بنگاه",
+    "label": "جدول 4.1",
+    "anchor": 0
+  },
+  {
+    "id": "figure-4-2",
+    "pdf": "Text_04_Phasen_2026.pdf",
+    "page": 23,
+    "file": "lesson-4-figure-4-2.webp",
+    "width": 747,
+    "height": 500,
+    "title": "سه مسیر رشد بنگاه",
+    "label": "شکل 4.2",
+    "anchor": 408
+  },
+  {
+    "id": "figure-4-3",
+    "pdf": "Text_04_Phasen_2026.pdf",
+    "page": 27,
+    "file": "lesson-4-figure-4-3.webp",
+    "width": 1020,
+    "height": 387,
+    "title": "شاخص ادغام و خرید آلمان",
+    "label": "شکل 4.3",
+    "anchor": 0
+  },
+  {
+    "id": "table-4-2",
+    "pdf": "Text_04_Phasen_2026.pdf",
+    "page": 29,
+    "file": "lesson-4-table-4-2.webp",
+    "width": 957,
+    "height": 115,
+    "title": "ماتریس محصول–بازار آنسوف",
+    "label": "جدول 4.2",
+    "anchor": 0
+  },
+  {
+    "id": "table-4-3",
+    "pdf": "Text_04_Phasen_2026.pdf",
+    "page": 35,
+    "file": "lesson-4-table-4-3.webp",
+    "width": 1170,
+    "height": 720,
+    "title": "ورشکستگی‌ها بر اساس شکل حقوقی",
+    "label": "جدول 4.3",
+    "anchor": 766
+  },
+  {
+    "id": "figure-4-4",
+    "pdf": "Text_04_Phasen_2026.pdf",
+    "page": 43,
+    "file": "lesson-4-figure-4-4.webp",
+    "width": 690,
+    "height": 602,
+    "title": "مسیر ورشکستگی مصرف‌کننده",
+    "label": "شکل 4.4",
+    "anchor": 0
+  },
+  {
+    "id": "figure-4-5",
+    "pdf": "Text_04_Phasen_2026.pdf",
+    "page": 46,
+    "file": "lesson-4-figure-4-5.webp",
+    "width": 937,
+    "height": 297,
+    "title": "چرخهٔ عمر بنگاه",
+    "label": "شکل 4.5",
+    "anchor": 990
+  }
+],
   "1": [
     {
       "id": "table-1-1",
@@ -118,6 +208,6 @@ export const sourceFigures={
     }
   ]
 };
-export const answerFigures={"5.9": {"id": "table-answer-9", "file": "lesson-5-table-answer-9.webp", "page": 4, "width": 1189, "height": 195, "label": "جدول پاسخ سؤال ۵.۹", "title": "تقسیم سود OHG با حقوق مدیران", "pdf": "Text_05_Loesungen_Kontrollfragen_2026.pdf"}};
+export const answerFigures={"4.5": {"id": "answer-4-5", "pdf": "Text_04_Loesungen_Kontrollfragen_2026.pdf", "page": 4, "file": "lesson-4-answer-4-5.webp", "width": 750, "height": 652, "label": "نمودار پاسخ سؤال 4.5", "title": "مسیر ورشکستگی مصرف‌کننده"}, "4.8": {"id": "answer-4-8", "pdf": "Text_04_Loesungen_Kontrollfragen_2026.pdf", "page": 6, "file": "lesson-4-answer-4-8.webp", "width": 937, "height": 300, "label": "نمودار پاسخ سؤال 4.8", "title": "چرخهٔ عمر بنگاه"}, "4.9": {"id": "answer-4-9", "pdf": "Text_04_Loesungen_Kontrollfragen_2026.pdf", "page": 7, "file": "lesson-4-answer-4-9.webp", "width": 957, "height": 115, "label": "نمودار پاسخ سؤال 4.9", "title": "ماتریس آنسوف"}, "4.10": {"id": "answer-4-10", "pdf": "Text_04_Loesungen_Kontrollfragen_2026.pdf", "page": 9, "file": "lesson-4-answer-4-10.webp", "width": 750, "height": 500, "label": "نمودار پاسخ سؤال 4.10", "title": "مسیرهای رشد"},"5.9": {"id": "table-answer-9", "file": "lesson-5-table-answer-9.webp", "page": 4, "width": 1189, "height": 195, "label": "جدول پاسخ سؤال ۵.۹", "title": "تقسیم سود OHG با حقوق مدیران", "pdf": "Text_05_Loesungen_Kontrollfragen_2026.pdf"}};
 export const sourceFigureFiles=new Set([...Object.values(sourceFigures).flat(),...Object.values(answerFigures)].map(f=>f.file));
 export function figuresForRow(lessonId,page,row){return (sourceFigures[lessonId]||[]).filter(f=>f.page===page&&f.anchor>=row.de.start&&f.anchor<row.de.end);}

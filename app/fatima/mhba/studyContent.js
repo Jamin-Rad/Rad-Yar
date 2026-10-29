@@ -1,3 +1,4 @@
+import {lesson4Chapters} from './lesson4.js';
 import {lesson5Chapters} from './lesson5.js';
 // Authored study aids. The original course and its complete translation live in private storage.
 const c=(id,title,fa,start,end,de,summaryFa,statementIds)=>({id,title,fa,start,end,summary:{de,fa:summaryFa},statementIds});
@@ -51,4 +52,5 @@ export function buildCards(lesson){
  return [...official,...summaries,...words];
 }
 
+chapters[4]=lesson4Chapters;
 chapters[5]=lesson5Chapters;

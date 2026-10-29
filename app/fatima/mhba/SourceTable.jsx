@@ -1,0 +1,2 @@
+import React from 'react';
+export default function SourceTable({table,label}){return <div className="source-translated-table"><table><caption>{label} · فارسی</caption><thead><tr>{table.head.map((cell,i)=><th scope="col" key={i}>{cell}</th>)}</tr></thead><tbody>{table.rows.map((cells,i)=><tr key={i}>{cells.map((cell,j)=>j===0?<th scope="row" key={j}>{cell}</th>:<td key={j}>{cell}</td>)}</tr>)}</tbody></table></div>;}

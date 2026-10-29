@@ -10,7 +10,7 @@ const fa=n=>n.toLocaleString('fa-IR');
 
 export default function StudioCards({lesson,data,patch}){
  const lessons=useCourse();const choices=Object.values(lessons).filter(l=>!lesson||l.id===lesson.id);
- const [selected,setSelected]=useState(()=>choices.filter(l=>lesson||[1,5].includes(l.id)).map(l=>l.id));const [content,setContent]=useState('core');const [limit,setLimit]=useState('10');const [mode,setMode]=useState('new');const [session,setSession]=useState(null);
+ const [selected,setSelected]=useState(()=>choices.filter(l=>lesson||[1,4,5].includes(l.id)).map(l=>l.id));const [content,setContent]=useState('core');const [limit,setLimit]=useState('10');const [mode,setMode]=useState('new');const [session,setSession]=useState(null);
  const cards=choices.filter(l=>selected.includes(l.id)).flatMap(studyCards).filter(c=>content==='all'||(content==='vocabulary'?c.source==='vocabulary':c.source!=='vocabulary'));const review=data.review||{};
  function start(m){const deck=limitSession(createReviewQueue(selectBoxCards(cards,review,m),review,false),limit);setMode(m);setSession({cards:deck,key:Date.now()});window.scrollTo({top:0,behavior:'instant'});}
  return <section className={`mbh-deck leitner-dashboard ${session?'has-recall-session':''}`}><div className="hub-page-heading"><div><h1>فلش‌کارت‌ها</h1><p>هر کارت، یک نکته · نوبت‌های کوتاه برای یادآوری فعال</p></div>{session?<button className="hub-outline" onClick={()=>setSession(null)}>بازگشت به جعبه‌ها</button>:null}</div>

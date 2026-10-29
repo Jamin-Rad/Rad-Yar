@@ -7,9 +7,9 @@ import {validateFatimaMhbaMaterials} from '../../../lib/fatimaMhbaSchema.js';
 import {extraChapterPractice} from './chapterPractice.js';
 import {chapters} from './studyContent.js';
 const toFa=s=>s.replace(/\d/g,d=>'۰۱۲۳۴۵۶۷۸۹'[Number(d)]);
-const materials=Object.fromEntries([1,2,5].map(n=>[n,{tables:n===5?Object.fromEntries(['table-5-1','table-5-2'].map(id=>[id,{head:['معیار','مقدار'],rows:[['نمونه','ترجمه']]}])):undefined,pages:Array.from({length:({1:45,2:48,5:46})[n]},(_,i)=>{
+const materials=Object.fromEntries([1,2,4,5].map(n=>[n,{tables:[4,5].includes(n)?Object.fromEntries((n===4?['table-4-1','table-4-2','table-4-3']:['table-5-1','table-5-2']).map(id=>[id,{head:['معیار','مقدار'],rows:[['نمونه','ترجمه']]}])):undefined,pages:Array.from({length:({1:45,2:48,4:53,5:46})[n]},(_,i)=>{
  const headings=chapters[n].filter(c=>c.id!=='intro'&&c.start===i+1);
- return {number:i+1,text:'Synthetic source page '+(i+1)+'\n'+headings.map(c=>c.id==='literatur'?'Literaturverzeichnis:':c.id==='fragen'?'Kontrollfragen:':c.id+'. Synthetic heading').join('\n')+'\nSynthetic paragraph.',fa:'صفحهٔ مصنوعی\n'+headings.map(c=>c.id==='literatur'?'فهرست منابع':c.id==='fragen'?'سؤال‌های کنترلیِ خود جزوه':toFa(c.id)+'. عنوان مصنوعی').join('\n')+'\nپاراگراف مصنوعی.'};
+ return {number:i+1,text:'Synthetic source page '+(i+1)+'\n'+headings.map(c=>c.id==='literatur'?'Literaturverzeichnis:':c.id==='fragen'?'Kontrollfragen:':(c.sourceId||c.id)+'. Synthetic heading').join('\n')+'\nSynthetic paragraph.',fa:'صفحهٔ مصنوعی\n'+headings.map(c=>c.id==='literatur'?'فهرست منابع':c.id==='fragen'?'سؤال‌های کنترلیِ خود جزوه':toFa(c.sourceId||c.id)+'. عنوان مصنوعی').join('\n')+'\nپاراگراف مصنوعی.'};
 }),questions:Array.from({length:10},(_,i)=>({id:n+'.'+(i+1),official:true,text:'Synthetic control question '+(i+1),fa:'سؤال رسمی',officialAnswer:'Synthetic official answer',officialAnswerFa:'پاسخ رسمی فارسی'}))}]));
 const lessons=createLessons(materials);
 test('chapter fragments cover every original German and Persian character exactly once',()=>{

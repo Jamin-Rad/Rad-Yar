@@ -2,7 +2,7 @@ const escape=s=>s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
 const persian=s=>s.replace(/\d/g,d=>'۰۱۲۳۴۵۶۷۸۹'[Number(d)]);
 function startOf(pages,id,language){
  if(id==='intro')return {page:1,offset:0};
- const pattern=id==='literatur'?(language==='de'?/^Literaturverzeichnis\s*:/m:/^فهرست منابع/m):id==='fragen'?(language==='de'?/^Kontrollfragen\s*:/m:/^سؤال‌های کنترلیِ خود جزوه/m):new RegExp(`^${escape(language==='de'?id:persian(id))}\\.\\s`,'m');
+ const pattern=id==='literatur'?(language==='de'?/^Literaturverzeichnis\s*:/m:/^فهرست منابع/m):id==='fragen'?(language==='de'?/^Kontrollfragen\s*:/m:/^سؤال‌های کنترلیِ خود جزوه/m):new RegExp(`^${escape(language==='de'?id:persian(id))}\\.?\\s`,'m');
  for(const page of pages){
   if(page.number<3)continue; // exclude the table of contents
   const text=language==='de'?page.text:page.fa;
@@ -13,7 +13,7 @@ function startOf(pages,id,language){
 }
 
 export function createSourceChapters(pages,specs){
- const starts=specs.map(c=>({de:startOf(pages,c.id,'de'),fa:startOf(pages,c.id,'fa')}));
+ const starts=specs.map(c=>({de:startOf(pages,c.sourceId||c.id,'de'),fa:startOf(pages,c.sourceId||c.id,'fa')}));
  return specs.map((spec,i)=>{
   const start=starts[i];const next=starts[i+1];
   if(start.de.page!==start.fa.page||next&&next.de.page!==next.fa.page)throw new Error('Bilingual chapter/page mismatch');

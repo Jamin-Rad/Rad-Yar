@@ -1,3 +1,4 @@
+import {lesson4Practice} from './lesson4Practice.js';
 import {lesson5Practice} from './lesson5Practice.js';
 export const statementTranslations={
 1:[
@@ -173,3 +174,6 @@ export const explanationsDe={
 
 statementTranslations[5]=lesson5Practice.map(q=>q.fa);
 explanationsDe[5]=lesson5Practice.map(q=>q.whyDe);
+
+statementTranslations[4]=lesson4Practice.map(q=>q.fa);
+explanationsDe[4]=lesson4Practice.map(q=>q.whyDe);

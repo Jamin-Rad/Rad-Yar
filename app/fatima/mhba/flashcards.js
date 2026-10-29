@@ -1,5 +1,6 @@
 import {atomicCards} from './flashcardContent.js';
-const definitions={
+import {lesson4Vocabulary} from './lesson4.js';
+const definitions={4:lesson4Vocabulary.map(v=>v[2]),
 1:[
  'Ein empfundenes Mangelgefühl.','Ein durch Kaufkraft gedecktes Bedürfnis.','Am Markt wirksam gewordener Bedarf.','Begrenzte Mittel im Verhältnis zu den Bedürfnissen.','Die finanzielle Fähigkeit, Güter zu kaufen.',
  'Die eingesetzten Ressourcen.','Verbrauchte Mittel oder geleistete Anstrengung.','Das erzielte Ergebnis bzw. der wirtschaftliche Zufluss.','Bereits festgelegt.','Ein günstiges Verhältnis zwischen Aufwand und Ertrag.',

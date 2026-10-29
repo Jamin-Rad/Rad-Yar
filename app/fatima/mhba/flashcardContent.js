@@ -4,7 +4,8 @@ function question(id,chapterId,rows){return rows.map(([key,text,fa,model,modelFa
 function concept(lesson,chapterId,text,fa,model,modelFa){return{id:`concept-${lesson}-${chapterId}`,source:'concept',chapterId,text,fa,model,modelFa};}
 function detail(lesson,key,chapterId,...content){return{...concept(lesson,chapterId,...content),id:`fc-${lesson}-${key}`};}
 
-export const atomicCards={
+import {lesson4Flashcards} from './lesson4Flashcards.js';
+export const atomicCards={4:lesson4Flashcards,
 1:[
  ...question('1.1','1.1',[
  ['need','Was bezeichnet ein Bedürfnis?','Bedürfnis چیست؟','Ein empfundenes Mangelgefühl mit dem Wunsch, es zu beseitigen.','احساس کمبود همراه با میل به برطرف‌کردن آن.'],

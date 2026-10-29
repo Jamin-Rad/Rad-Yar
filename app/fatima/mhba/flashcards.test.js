@@ -14,8 +14,8 @@ function fixture(id){return {id,chapters:chapters[id],cards:[
  ...Array.from({length:id===1?38:28},(_,i)=>({id:`word-${id}-${i}`,source:'vocabulary',text:'term',fa:'واژه',modelFa:'معنی واژه'})),
 ]};}
 
-test('lessons 1 and 5 cover all ten source questions with short bilingual recall units',()=>{
- for(const id of [1,5]){
+test('lessons 1, 4 and 5 cover all ten source questions with short bilingual recall units',()=>{
+ for(const id of [1,4,5]){
   const cards=atomicCards[id];
   assert.equal(new Set(cards.map(c=>c.id)).size,cards.length);
   for(let q=1;q<=10;q++)assert.ok(cards.some(c=>c.sourceQuestionId===`${id}.${q}`));

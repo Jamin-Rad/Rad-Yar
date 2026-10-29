@@ -1,4 +1,5 @@
 import {lesson5Practice} from './lesson5Practice.js';
+import {lesson4Practice} from './lesson4Practice.js';
 const t=(text,answer,why)=>({text,answer,why,official:false});
 export const statements={
 1:[
@@ -97,4 +98,5 @@ export function nextReview(previous,known,now=Date.now()){
  return {level,due:now+(known?intervals[level]*86400000:600000),last:now};
 }
 
+statements[4]=lesson4Practice;
 statements[5]=lesson5Practice;

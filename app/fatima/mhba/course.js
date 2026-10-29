@@ -1,3 +1,5 @@
+import {lesson4Chapters,lesson4Vocabulary} from './lesson4.js';
+import {lesson4QuestionNotes} from './lesson4Audit.js';
 import {buildFlashcards} from './flashcards.js';
 import {lesson5QuestionNotes} from './lesson5Audit.js';
 import {answerFigures} from './sourceFigures.js';
@@ -8,7 +10,7 @@ import {chapters,extraVocabulary,buildCards} from './studyContent.js';
 
 export const catalog = [
  [1,'Wirtschaftswissenschaften','مبانی اقتصاد'],[2,'Verträge','قراردادها و حقوق تجارت'],[3,'Arbeitsrecht','حقوق کار'],[4,'Unternehmensphasen','مراحل عمر بنگاه'],[5,'Unternehmensrechtsformen','اشکال حقوقی بنگاه'],[6,'Zielsetzungen','هدف‌گذاری'],[7,'Beschaffung und Logistik','تأمین و لجستیک'],[8,'Produktion','تولید'],[9,'Marketing','بازاریابی'],[10,'Investition','سرمایه‌گذاری'],[11,'Finanzierung','تأمین مالی'],[12,'Personalwesen','منابع انسانی'],[13,'Bilanzen','ترازنامه‌ها'],[14,'Kostenrechnung','حسابداری بهای تمام‌شده'],[15,'Steuer','مالیات'],[16,'Entscheidungstheorie','نظریهٔ تصمیم‌گیری'],[17,'Unternehmensführung','مدیریت بنگاه'],[18,'Organisation','سازمان‌دهی'],[19,'Kommunikation','ارتباطات'],[20,'Globalisierung','جهانی‌شدن']
-].map(([id,de,fa])=>({id,de,fa,module:id<=10?1:2,ready:[1,2,5].includes(id)}));
+].map(([id,de,fa])=>({id,de,fa,module:id<=10?1:2,ready:[1,2,4,5].includes(id)}));
 
 const s = (id,title,fa,de,explanation,example,vocab,questionIds=[])=>({id,title,fa,de,explanation,example,vocab,questionIds});
 const one = [
@@ -141,6 +143,7 @@ export function createLessons(materials){const lessons = {
  1:{...catalog[0],title:'Wirtschaften und Wirtschaftswissenschaften',subtitle:'مبانی اقتصاد و تفکر اقتصادی',pages:materials[1].pages,legacySections:one,sections:chapters[1],chapters:chapters[1],vocabulary:extraVocabulary,questions:questions(materials,1,qa1),pdf:'Text_01_Wirtschaften_2026.pdf',solutions:'Text_01_Loesungen_Kontrollfragen_2026.pdf'},
  2:{...catalog[1],title:'Verträge und Handelsrecht',subtitle:'قراردادها و حقوق تجارت',pages:materials[2].pages,legacySections:two,sections:chapters[2],chapters:chapters[2],vocabulary:extraVocabulary,questions:questions(materials,2,qa2),pdf:'Text_02_Vertraege_2026.pdf',solutions:'Text_02_Loesungen_Kontrollfragen_2026.pdf'}
 };
+if(materials[4])lessons[4]={...catalog[3],title:'Phasen im Leben einer Unternehmung',subtitle:'مراحل عمر بنگاه',pages:materials[4].pages,tables:materials[4].tables,legacySections:[{vocab:lesson4Vocabulary.map(([word,fa])=>[word.split('|')[0],fa])}],chapters:lesson4Chapters,vocabulary:lesson4Vocabulary,questions:materials[4].questions.map(q=>({...q,figure:answerFigures[q.id],answerTable:materials[4].tables?.[({'4.5':'figure-4-4','4.8':'figure-4-5','4.9':'table-4-2','4.10':'figure-4-2'})[q.id]],studyNotes:lesson4QuestionNotes(q.id),model:q.officialAnswer,modelFa:q.officialAnswerFa,rubric:'تعریف، ارتباط مراحل و کاربرد در مثال را توضیح بده.'})),pdf:'Text_04_Phasen_2026.pdf',solutions:'Text_04_Loesungen_Kontrollfragen_2026.pdf'};
 if(materials[5])lessons[5]={...catalog[4],title:'Unternehmensrechtsformen',subtitle:'اشکال حقوقی بنگاه',pages:materials[5].pages,tables:materials[5].tables,legacySections:[{vocab:lesson5Vocabulary.map(([word,meaning])=>[word.split('|')[0],meaning])}],sections:lesson5Chapters,chapters:lesson5Chapters,vocabulary:[...lesson5Vocabulary,['bedarf','نیازمند است؛ مثلاً نیازمند رضایت است'],...extraVocabulary.filter(([term])=>!/^Bedarf(?:\||$)/i.test(term))],questions:materials[5].questions.map(q=>({...q,figure:answerFigures[q.id],studyNotes:lesson5QuestionNotes(q.id),model:q.officialAnswer,modelFa:q.officialAnswerFa,rubric:'مفهوم، تفاوت‌ها و کاربرد در مثال را توضیح بده.'})),pdf:'Text_05_Rechtsformen_2026.pdf',solutions:'Text_05_Loesungen_Kontrollfragen_2026.pdf'};
 Object.values(lessons).forEach(lesson=>{lesson.chapters=createSourceChapters(lesson.pages,lesson.chapters);lesson.sections=lesson.chapters;lesson.chunks=lesson.chapters.flatMap(c=>c.chunks);lesson.cards=buildCards(lesson);lesson.flashcards=buildFlashcards(lesson)});
 return lessons;
