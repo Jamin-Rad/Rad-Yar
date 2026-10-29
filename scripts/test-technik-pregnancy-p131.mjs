@@ -4,9 +4,9 @@ import { CONTRAST_LESSONS } from '../data/contrastLessons.js'
 import { CONTRAST_FLASHCARDS, CONTRAST_QUESTIONS } from '../data/contrastMedia.js'
 
 const lessonTerms = {
-  de: ['ESUR 2026', 'ersten Lebenswoche', 'ACR 2026', 'keine zusätzliche Kontrolle'],
-  en: ['ESUR 2026', 'first week', 'ACR 2026', 'no additional test'],
-  fa: ['ESUR 2026', 'هفتهٔ اول', 'ACR 2026', 'آزمایش اضافه'],
+  de: ['ESUR 2026', 'ersten Lebenswoche', 'ACR 2026', 'keinen Zusatztest'],
+  en: ['ESUR 2026', 'first-week', 'ACR 2026', 'no extra test'],
+  fa: ['ESUR ۲۰۲۶', 'هفتهٔ اول', 'ACR ۲۰۲۶', 'آزمایش اضافه'],
 }
 const routeSource = readFileSync(new URL('../app/technik/kontrastmittel/ContrastGroupPage.jsx', import.meta.url), 'utf8')
 const diagram = readFileSync(new URL('../public/educational/pregnancy-contrast-pathways.svg', import.meta.url), 'utf8')

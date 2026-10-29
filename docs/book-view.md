@@ -1,6 +1,6 @@
 # Universal lesson presentation view
 
-CAA is the only enabled pilot. The reader now presents one automatically
+CAA and the five contrast-media lessons are enabled. The reader presents one automatically
 paginated slide at a time in an immersive viewport. Both Classic and presentation
 render the same live React tree. Lesson text, images, references, tables, question
 banks and the existing interaction components are unchanged.
@@ -99,14 +99,52 @@ mappings/questions are skipped. In-view exercises do not change the existing
 scored quiz or read-progress workflow. Current CAA mappings cover vessel
 location, TFNE, Boston/cSS/PVS, RCVS and cavernoma.
 
+## Standard lesson integration and contrast media
+
+`StandardLessonShell` opts in only when its stable lesson ID is in the feature
+registry. The four contrast group pages keep their existing read IDs; the
+ultrasound reference shell keeps `ref-kontrastmittel-ultraschall`. Other standard
+lessons keep their original Classic tree and receive no presentation controls.
+The action sits beside Take Home, MCQ and flashcards. Open chapter and original
+self-check state survive switching views; read-progress controls stay outside the
+presentation. References are retained on a final slide.
+
+Existing card comparisons and workflow lists use `data-book-group` to remain
+intact while allowing text-area swipes; interactive tools keep `data-book-atomic`.
+`data-book-note` retains a warning's styling with its related topic, rather than
+flattening it into loose paragraphs. `data-book-heading` marks an existing
+accordion title without rewriting its Classic markup. `data-book-ignore` excludes
+read-progress UI only. Tables retain their own horizontal scroll container and
+keyboard focus; marked image galleries use natural aspect ratios in presentation.
+These are reusable semantic annotations, never lesson-specific page breaks.
+
+Reviewed contrast mappings use original question IDs with a `{lang}` placeholder.
+They cover agent classes and injection concepts, reactions, thyroid and GI use,
+chelation, NSF, retention, liver agents, Buscopan, renal protection, dialysis,
+metformin, pregnancy/lactation and CEUS. No question text or answer is copied or
+changed. Topics without a reliable existing mapping add no checkpoint.
+
+The contrast QA run compares the complete original body text and image URLs/alts
+between views in DE/EN/FA. All 91 slides (including original self-checks and
+mapped question-only slides) were traversed at desktop and iPad portrait sizes.
+Additional checks cover landscape/phone layout, original MRI image zoom, RTL
+keyboard navigation, question feedback/state, Classic chapter/answer restoration,
+and fullscreen/windowed preservation. Temporary local routes exercise the real
+components under the root layout and are removed before publishing. Physical
+iPad Safari/Pencil and authenticated account sync still need device validation.
+
 ## Validation
 
 - `node --test scripts/book-view.test.mjs scripts/caa-*.test.mjs`
+- `node --import tsx --test scripts/contrast-book-view.test.mjs`
+- `npm run test:technik-contrast-hero`
+- `npm run test:technik-pregnancy-p131`
 - `node --import tsx scripts/test-gehirn-caa-source-p26-p28.mjs`
 - `npm run build`
 
-Browser QA uses installed Playwright/Chrome (Browser plugin unavailable). It
-covers the real CAA component under its normal root layout through temporary
+The original CAA browser QA used installed Playwright/Chrome (Browser plugin
+unavailable); contrast rollout QA uses the Codex in-app browser. CAA QA covered
+the real CAA component under its normal root layout through temporary
 local QA routes; production access gates stay unchanged and QA routes are removed
 before deployment. Checks include real native fullscreen entry/exit, fullscreen
 API fallback, every semantic slide and source-text coverage, source text/asset

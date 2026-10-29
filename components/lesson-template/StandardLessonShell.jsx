@@ -8,6 +8,10 @@ import { createContext, useContext, useEffect, useMemo, useState } from 'react'
 import { usePersistedSectionProgress } from '@/hooks/usePersistedSectionProgress'
 import { useLehrModeActive } from '@/hooks/useLehrModeActive'
 import LessonHero from '@/components/LessonHero'
+import BookView from '@/components/book-view/BookView'
+import BookCheckpoint from '@/components/book-view/BookCheckpoint'
+import { LessonViewProvider, LessonViewToggle, useLessonView } from '@/components/book-view/BookViewContext'
+import { BOOK_VIEW_PILOTS, questionIdsForSection } from '@/components/book-view/pilots'
 import { observeLessonHash } from '@/lib/lessonHashNavigation'
 import styles from './StandardLessonShell.module.css'
 
@@ -85,32 +89,34 @@ function MobileLearningPath() {
   </div>
 }
 
-export function LessonSection({ id, title, icon, children, bodyClassName = '' }) {
+export function LessonSection({ id, title, icon, children, bodyClassName = '', presentationQuestion = false }) {
   const context = useContext(LessonShellContext)
   if (!context) throw new Error('LessonSection must be rendered inside StandardLessonShell')
 
-  const { labels, trackedIds, openId, openSection, summaryOpen, toggleSummary, readSections, toggleSectionRead, sections, renderIcon, lehrMode } = context
+  const { labels, trackedIds, openId, openSection, summaryOpen, toggleSummary, readSections, toggleSectionRead, sections, renderIcon, lehrMode, book, presentationEnabled } = context
   const section = sections.find(item => item.id === id)
   const emphasis = Boolean(section?.emphasis)
   const summaryTitle = context.lang === 'fa' ? 'پیام نهایی' : 'Take Home Message'
-  const open = lehrMode || (emphasis ? summaryOpen : openId === id)
+  const open = book || lehrMode || (emphasis ? summaryOpen : openId === id)
   const isRead = readSections.has(id)
 
-  return <section id={id} className={`${styles.section} ${open ? styles.sectionOpen : ''} ${emphasis ? styles.takeHomeSection : ''}`}>
-    <button type="button" className={styles.sectionHeader} onClick={() => { if (!lehrMode) (emphasis ? toggleSummary() : openSection(id)) }} aria-expanded={open} aria-controls={`${id}-panel`} data-lehr-section-managed>
+  return <section id={id} data-book-section={presentationEnabled ? '' : undefined} data-book-question={presentationEnabled && presentationQuestion ? id : undefined} className={`${styles.section} ${open ? styles.sectionOpen : ''} ${emphasis ? styles.takeHomeSection : ''}`}>
+    <button type="button" data-book-heading={presentationEnabled ? '' : undefined} className={styles.sectionHeader} onClick={() => { if (!lehrMode && !book) (emphasis ? toggleSummary() : openSection(id)) }} aria-expanded={open} aria-controls={`${id}-panel`} data-lehr-section-managed>
       <span className={styles.sectionIcon}>{renderIcon(icon || section?.icon || id)}</span>
       <span><strong>{emphasis ? summaryTitle : (title || section?.label)}</strong></span>
       <span className={`${styles.toggle} ${open ? styles.toggleOpen : ''}`} aria-hidden="true"><Icon name="chevron" /></span>
     </button>
-    <div id={`${id}-panel`} hidden={!open} className={`${styles.sectionBody} ${bodyClassName}`}>
+    <div id={`${id}-panel`} data-book-body={presentationEnabled ? '' : undefined} hidden={!open} className={`${styles.sectionBody} ${bodyClassName}`}>
       {children}
-      {(!emphasis || context.progressIncludesSummary) ? <button type="button" className={`${styles.readButton} ${isRead ? styles.readButtonDone : ''}`} aria-pressed={isRead} onClick={() => toggleSectionRead(id)}><Icon name="check" />{isRead ? labels.completed : labels.complete}</button> : null}
+      {!book && (!emphasis || context.progressIncludesSummary) ? <button type="button" className={`${styles.readButton} ${isRead ? styles.readButtonDone : ''}`} aria-pressed={isRead} onClick={() => toggleSectionRead(id)}><Icon name="check" />{isRead ? labels.completed : labels.complete}</button> : null}
     </div>
+    {presentationEnabled && context.presentationQuestions ? <BookCheckpoint questions={context.presentationQuestions} questionIds={questionIdsForSection(context.lessonId, id, context.lang)} lang={context.lang} /> : null}
   </section>
 }
 
 export function TakeHomeList({ items }) {
   const lehrMode = useLehrModeActive()
+  const book = useLessonView()?.mode === 'book'
   const [openItems, setOpenItems] = useState(() => new Set())
   const toggle = index => setOpenItems(previous => {
     const next = new Set(previous)
@@ -120,7 +126,7 @@ export function TakeHomeList({ items }) {
   })
 
   return <ol className={styles.takeHomeList}>{items.map((item, index) => {
-    const open = lehrMode || openItems.has(index)
+    const open = book || lehrMode || openItems.has(index)
     const genericTitle = /^(?:Regel|Rule|قاعده[ٔ‌]*)\s*[0-9۰-۹٠-٩]+[.:]?$/iu.test(String(item.title).trim())
     if (genericTitle && item.detail) return <li key={`${index}-${item.title}`}><div className={styles.takeHomeStatic}><span className={styles.takeHomeNumber}>{String(index + 1).padStart(2, '0')}</span><strong>{item.detail}</strong></div></li>
     if (!item.detail || item.detail === item.title) return <li key={`${index}-${item.title}`}><div className={styles.takeHomeStatic}><span className={styles.takeHomeNumber}>{String(index + 1).padStart(2, '0')}</span><strong>{item.title}</strong></div></li>
@@ -157,7 +163,13 @@ export function LessonSources({ title, items, note, lang: requestedLang }) {
   </aside>
 }
 
-export default function StandardLessonShell({
+export default function StandardLessonShell(props) {
+  const presentationEnabled = BOOK_VIEW_PILOTS.has(props.lessonId)
+  if (!presentationEnabled) return <LessonShell {...props} />
+  return <LessonViewProvider lessonId={props.lessonId}><LessonShell {...props} presentationEnabled /></LessonViewProvider>
+}
+
+function LessonShell({
   lessonId,
   lang,
   title,
@@ -178,7 +190,11 @@ export default function StandardLessonShell({
   progressIncludesSummary = false,
   lessonRead = false,
   syncHashNavigation = false,
+  presentationEnabled = false,
+  presentationQuestions,
 }) {
+  const lessonView = useLessonView()
+  const book = presentationEnabled && lessonView?.mode === 'book'
   const pathname = usePathname()
   const assessmentActions = lessonAssessmentActions(pathname, lang, actions)
   const labels = { ...(DEFAULT_LABELS[lang] || DEFAULT_LABELS.de), ...Object.fromEntries(Object.entries(suppliedLabels || {}).filter(([, value]) => value !== undefined && value !== null)) }
@@ -190,6 +206,19 @@ export default function StandardLessonShell({
   const [readSections, setReadSections] = usePersistedSectionProgress(lessonId, trackedIds, lessonRead)
   const activeIndex = trackedSections.findIndex(section => section.id === openId)
   const summarySection = sections.find(section => section.emphasis)
+
+  useEffect(() => {
+    if (!presentationEnabled) return
+    const restore = event => {
+      const id = event.target.closest('[data-book-section]')?.id
+      if (!sections.some(section => section.id === id)) return
+      if (id === summarySection?.id) setSummaryOpen(true)
+      else setOpenId(id)
+      scrollToLessonSection(id)
+    }
+    document.addEventListener('book:restore', restore)
+    return () => document.removeEventListener('book:restore', restore)
+  }, [presentationEnabled, sections, summarySection?.id])
 
   useEffect(() => {
     if (syncHashNavigation) {
@@ -209,6 +238,7 @@ export default function StandardLessonShell({
   }, [summarySection?.id, trackedSections, trackedIds, syncHashNavigation])
 
   const openSection = id => {
+    if (book) { lessonView.navigate(id); return }
     if (!trackedIds.includes(id)) return
     setOpenId(id)
     replaceLessonHash(id)
@@ -217,6 +247,7 @@ export default function StandardLessonShell({
 
   const openSummary = () => {
     if (!summarySection) return
+    if (book) { lessonView.navigate(summarySection.id); return }
     setSummaryOpen(true)
     replaceLessonHash(summarySection.id)
     scrollToLessonSection(summarySection.id)
@@ -245,7 +276,7 @@ export default function StandardLessonShell({
   const lessonComplete = trackedIds.length > 0 && readSections.size === trackedIds.length
   const toggleLessonComplete = () => setReadSections(lessonComplete ? new Set() : new Set(trackedIds))
   const progress = trackedIds.length ? (readSections.size / trackedIds.length) * 100 : 0
-  const context = { lang, progressIncludesSummary, labels, trackedIds, openId, openSection, summaryOpen, toggleSummary, readSections, toggleSectionRead, sections, trackedSections, renderIcon, lehrMode }
+  const context = { lang, progressIncludesSummary, labels, trackedIds, openId, openSection, summaryOpen, toggleSummary, readSections, toggleSectionRead, sections, trackedSections, renderIcon, lehrMode, book, presentationEnabled, presentationQuestions, lessonId }
   const atmosphereIndex = [...String(heroLessonId)].reduce((value, char) => (value * 31 + char.charCodeAt(0)) >>> 0, 0) % 6
   const atmosphere = ['#3a1e46', '#123a46', '#283d36', '#33254d', '#453028', '#1d304d'][atmosphereIndex]
   const shellStyle = {
@@ -270,7 +301,9 @@ export default function StandardLessonShell({
   const summaryAction = summarySection ? { label: labels.takeHome, onClick: openSummary, trailingIcon: 'down' } : null
   const isAtLastTrackedSection = activeIndex === trackedSections.length - 1
 
-  return <main className={`${styles.page} ${className}`} style={shellStyle} data-lesson-shell={heroLessonId} data-lesson-progress-managed="true" data-lehr-sections-managed="true" dir={lang === 'fa' ? 'rtl' : 'ltr'} lang={lang}>
+  const lessonContent = <><article className={styles.lesson}><LessonShellContext.Provider value={context}>{children}</LessonShellContext.Provider></article>{sources ? (presentationEnabled ? <div className={styles.presentationSources} data-book-slide>{sources}</div> : sources) : null}</>
+
+  return <main className={`${styles.page} ${className} ${book ? styles.presentationPage : ''}`} style={shellStyle} data-lesson-shell={heroLessonId} data-lesson-progress-managed="true" data-lehr-sections-managed="true" dir={lang === 'fa' ? 'rtl' : 'ltr'} lang={lang}>
     <header className={styles.header}>
       <div className={styles.topline}>
         <nav className={styles.breadcrumb} aria-label={labels.contents}>{breadcrumbs.map((item, index) => <span key={`${item.label}-${index}`}>{index ? <i aria-hidden="true">/</i> : null}{item.href ? <Link href={item.href}>{item.label}</Link> : <strong>{item.label}</strong>}</span>)}</nav>
@@ -281,6 +314,7 @@ export default function StandardLessonShell({
         <Action action={summaryAction} className={styles.takeHomeJump} icon="summary" />
         <Action action={assessmentActions.mcq} className={styles.primaryAction} icon="quiz" />
         <Action action={assessmentActions.flashcards} className={styles.secondaryAction} icon="cards" />
+        {presentationEnabled ? <LessonViewToggle lang={lang} variant="action" /> : null}
       </div>
       <div className={styles.progressBar}>
         <div className={styles.progressTrack} role="progressbar" aria-label={labels.progress} aria-valuemin={0} aria-valuemax={trackedIds.length} aria-valuenow={readSections.size}><i style={{ width: `${progress}%` }} /></div>
@@ -298,10 +332,9 @@ export default function StandardLessonShell({
         <nav>{trackedSections.map(section => <button type="button" key={section.id} className={openId === section.id ? styles.activeSideItem : ''} onClick={() => openSection(section.id)} aria-current={openId === section.id ? 'location' : undefined} aria-label={`${labels.open}: ${section.label}`}><span className={styles.sideIcon}>{renderIcon(section.icon || section.id)}</span><strong>{section.label}</strong></button>)}</nav>
       </aside>
       <div className={styles.lessonColumn}>
-        <article className={styles.lesson}><LessonShellContext.Provider value={context}>{children}</LessonShellContext.Provider></article>
-        {sources}
+        {presentationEnabled ? <BookView title={title} sections={sections.map(section => ({ id: section.id, title: section.label }))} lang={lang}>{lessonContent}</BookView> : lessonContent}
       </div>
     </div>
-    <LessonShellContext.Provider value={context}><MobileLearningPath /></LessonShellContext.Provider>
+    {!book ? <LessonShellContext.Provider value={context}><MobileLearningPath /></LessonShellContext.Provider> : null}
   </main>
 }

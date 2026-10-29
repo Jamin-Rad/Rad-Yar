@@ -144,7 +144,7 @@ export default function BookView({ children, title, sections = [], lang = 'de' }
       shells.forEach(element => tag(element, 'data-book-shell'))
       slides.forEach(slide => slide.forEach(({ element }) => {
         tag(element, 'data-book-page')
-        if (element.matches('table') && !element.hasAttribute('tabindex')) tag(element, 'tabindex', '0')
+        if ((element.matches('table') || element.querySelector(':scope > table')) && !element.hasAttribute('tabindex')) tag(element, 'tabindex', '0')
         if (!marked.get(element).has('data-book-visible')) marked.get(element).set('data-book-visible', element.getAttribute('data-book-visible'))
       }))
       geometry.current.slides = slides

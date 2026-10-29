@@ -22,8 +22,8 @@ test('spread navigation never skips the last odd page or leaves the book', () =>
   assert.equal(spreadStart(99, 1, 7), 6)
   assert.equal(spreadStart(2, 2, 1), 0)
 })
-test('only the CAA pilot is enabled', () => {
-  assert.deepEqual([...BOOK_VIEW_PILOTS], ['caa'])
+test('only CAA and the five contrast-media lessons are enabled', () => {
+  assert.deepEqual([...BOOK_VIEW_PILOTS].sort(), ['caa', 'kontrastmittel-roentgen', 'kontrastmittel-mrt', 'kontrastmittel-nierenfunktion', 'kontrastmittel-schwangerschaft', 'ref-kontrastmittel-ultraschall'].sort())
   assert.deepEqual(questionIdsForSection('another-lesson', 'grundlagen', 'de'), [])
   assert.deepEqual(questionIdsForSection('caa', 'unknown-section', 'de'), [])
 })

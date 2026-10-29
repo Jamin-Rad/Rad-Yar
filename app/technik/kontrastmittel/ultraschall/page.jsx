@@ -1,6 +1,7 @@
 'use client'
 
 import LessonReferenceShell from '@/components/LessonReferenceShell'
+import { CONTRAST_QUESTIONS } from '@/data/contrastMedia'
 import { useLanguage } from '@/providers/LanguageProvider'
 
 const L = (de, en, fa) => ({ de, en, fa })
@@ -49,7 +50,7 @@ export default function UltrasoundContrastPage() {
   const from = encodeURIComponent('/technik/kontrastmittel/ultraschall')
   const quizHref = `/ueben/quiz?fach=technik&n=10&themen=km-ultraschall&from=${from}${lang === 'de' ? '' : `&lang=${lang}`}`
   const flashcardsHref = `/flashcards/kontrastmittel-ultraschall${lang === 'de' ? '' : `?lang=${lang}`}`
-  return <LessonReferenceShell lang={lang} lessonId="kontrastmittel-ultraschall" title={title} diagram="ultrasound" goals={goals} check={check} summary={summary} quizHref={quizHref} flashcardsHref={flashcardsHref}>
+  return <LessonReferenceShell lang={lang} lessonId="kontrastmittel-ultraschall" title={title} diagram="ultrasound" goals={goals} check={check} summary={summary} quizHref={quizHref} flashcardsHref={flashcardsHref} presentationQuestions={CONTRAST_QUESTIONS[lang] || CONTRAST_QUESTIONS.de}>
     <section aria-labelledby="ceus-principle">
       <h3 id="ceus-principle">{fa ? 'از میکروحباب تا سیگنال' : en ? 'From microbubble to signal' : 'Vom Mikrobläschen zum Signal'}</h3>
       <p>{fa ? 'میکروحباب گاز را در پوسته‌ای پایدارکننده محصور می‌کند. طبق PDF اندازهٔ معمول حدود ۱ تا ۱۰ میکرومتر است؛ برای SonoVue اطلاعات EMA میانگین حدود ۲٫۵ میکرومتر را گزارش می‌کند. نوسان غیرخطی حباب مؤلفه‌های هارمونیک می‌سازد. روش‌های اختصاصی کنتراست معمولاً با MI پایین به تفکیک سیگنال حباب از بافت کمک می‌کنند و هم‌زمان تخریب حباب را کاهش می‌دهند؛ پاسخ دقیق به دستگاه و فرآورده وابسته است.' : en ? 'A microbubble encloses gas within a stabilising shell. The PDF gives an approximate size of 1–10 micrometres; EMA reports a mean diameter of about 2.5 micrometres for SonoVue. Nonlinear bubble oscillation produces harmonic components. Contrast-specific modes commonly use low MI to help separate bubble from tissue signals while limiting bubble destruction; the exact response depends on the scanner and agent.' : 'Ein Mikrobläschen schließt Gas in einer stabilisierenden Hülle ein. Die PDF nennt eine ungefähre Größe von 1–10 µm; die EMA gibt für SonoVue einen mittleren Durchmesser von etwa 2,5 µm an. Nichtlineare Blasenschwingungen erzeugen harmonische Signalanteile. Kontrastspezifische Modi arbeiten meist mit niedrigem MI, um Bläschen- und Gewebesignale besser zu trennen und die Bläschenzerstörung zu begrenzen; die genaue Antwort hängt von Gerät und Präparat ab.'}</p>

@@ -39,6 +39,15 @@
 .flow { width: 100%; max-width: 100%; overflow-wrap: anywhere; padding-inline-end: 8px; box-sizing: border-box; }
 .flow :global([data-book-shell]) { display: contents !important; contain: none !important; content-visibility: visible !important; }
 .flow :global([data-book-page]):not(:global([data-book-visible])) { display: none !important; }
+.flow :global([data-book-ignore]) { display: none !important; }
+.flow :global([data-book-heading]) { margin: 0 0 22px; padding: 0 0 18px; min-height: auto; border-bottom: 1px solid var(--line); border-radius: 0; grid-template-columns: 30px minmax(0,1fr); background: transparent; }
+.flow :global([data-book-heading]) > span:first-child { width: 28px; height: 28px; }
+.flow :global([data-book-heading]) > span:last-child { display: none; }
+.flow :global([data-book-heading]) strong { font-size: clamp(24px,2.2vw,30px); }
+.flow :global([data-book-overview]) { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 20px; padding: 0 0 22px; border-inline-start: 0; border-bottom: 1px solid var(--line); }
+.flow :global([data-book-overview]) > div { min-width: 0; }
+.flow :global([data-book-overview]) dt { font-size: 15px; }
+.flow :global([data-book-overview]) dd { margin: 8px 0 0; font-size: 14px; line-height: 1.65; }
 .flow :global([data-book-section])::before,.flow :global([data-book-section])::after,.flow :global([data-book-body])::before,.flow :global([data-book-body])::after { display: none !important; }
 .flow :global([data-book-section]) > h2 { margin-block: 0 20px; }
 .flow :global([data-book-section]) > h2 button { min-height: auto; padding: 0 0 16px; grid-template-columns: 30px minmax(0,1fr) 0; border-bottom: 1px solid var(--line); border-radius: 0; }
@@ -49,6 +58,8 @@
 .flow :global([data-book-body]) p { font-size: clamp(16px,1.35vw,19px); line-height: 1.75; }
 .flow :global([data-book-body]) figcaption p { font-size: 12px; line-height: 1.6; }
 .flow img { max-width: 100%; height: auto; object-fit: contain; }
+.flow :global([data-book-image]) > button { height: auto !important; }
+.flow :global([data-book-image]) > button > img { height: auto !important; }
 .flow :is(figure,table,iframe,video,canvas,fieldset) { max-width: 100%; }
 .flow details { padding: 14px; color: var(--body); border-top: 1px solid var(--line); }
 .flow details a { color: var(--teal-700); }
@@ -92,7 +103,7 @@
   .question { padding: 12px; }
   .options label { font-size: 15px; }
 }
-@media (max-width:540px) { .runningTitle strong { display: none; }.runningTitle > span { font-size: 12px; }.contents { max-width: 102px; }.toolbarActions { gap: 0; }.binding { padding: 20px 12px; } }
+@media (max-width:540px) { .runningTitle strong { display: none; }.runningTitle > span { font-size: 12px; }.contents { max-width: 102px; }.toolbarActions { gap: 0; }.binding { padding: 20px 12px; }.flow :global([data-book-overview]) { grid-template-columns: 1fr; gap: 12px; } }
 @media (max-width:679px) { .edgeButton { display: none; }.binding { padding-inline: 16px; } }
 @media (max-height:650px) { .reader { gap: 8px; padding-block: 8px; }.binding { padding-block: 20px; } }
 @media (prefers-reduced-motion:reduce) { .binding .flow { animation: none !important; }.iconButton,.progress > span { transition: none; } }

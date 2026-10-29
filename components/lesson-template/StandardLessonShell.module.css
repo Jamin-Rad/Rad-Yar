@@ -234,3 +234,7 @@
 .takeHomeStatic { display:grid; grid-template-columns:36px minmax(0,1fr); align-items:start; gap:16px; padding:18px 20px; color:var(--ink); line-height:1.7; }
 
 @media(max-width:760px) { .lesson { --lesson-chapter-gap:12px; } }
+.presentationSources { display: contents; }
+.presentationPage > header { display: none; }
+.presentationPage > .layout { grid-template-columns: minmax(0,1fr); }
+.presentationPage > .layout > .sidebar { display: none; }

@@ -44,7 +44,7 @@ function normalizeLegacyLandmarks(nodes) {
   })
 }
 
-export default function LessonReferenceShell({ lang = 'de', lessonId, title, diagram, heroVisual, heroImageSrc, heroImageAlt, goals, check, summary, copy: lessonCopy, quizHref, flashcardsHref, mainLandmark = false, theme, children }) {
+export default function LessonReferenceShell({ lang = 'de', lessonId, title, diagram, heroVisual, heroImageSrc, heroImageAlt, goals, check, summary, copy: lessonCopy, quizHref, flashcardsHref, mainLandmark = false, theme, children, presentationQuestions }) {
   const labels = { ...(COPY[lang] || COPY.de), ...(lessonCopy?.labels?.[lang] || {}) }
   labels.takeHome = COPY[lang]?.takeHome || COPY.de.takeHome
   const lessonGoals = goals || (lessonCopy?.subtitle || lessonCopy?.sub ? [lessonCopy.subtitle || lessonCopy.sub] : [])
@@ -77,7 +77,7 @@ export default function LessonReferenceShell({ lang = 'de', lessonId, title, dia
   })
 
   return <StandardLessonShell lessonId={`ref-${lessonId}`} heroLessonId={lessonId} lang={lang} title={pick(title, lang)} author="Dr. Zia"
-    className={styles.page} sections={sections} labels={labels} syncHashNavigation progressIncludesSummary
+    className={styles.page} sections={sections} labels={labels} syncHashNavigation progressIncludesSummary presentationQuestions={presentationQuestions}
     breadcrumbs={[{ label: labels.home, href: '/' }, { label: labels.subject }, { label: pick(title, lang) }]}
     actions={{ mcq: quizHref ? { label: labels.startQuiz, href: quizHref } : null, flashcards: flashcardsHref ? { label: labels.flashcards, href: flashcardsHref } : null }}
     renderIcon={name => <ChapterIcon name={name} />} theme={{ ...BASE_THEME, ...theme, heroImage: heroImageSrc || theme?.heroImage }}
@@ -86,7 +86,7 @@ export default function LessonReferenceShell({ lang = 'de', lessonId, title, dia
       {lessonGoals.length ? <aside className={styles.goals}><h3>{labels.goals}</h3><ul>{lessonGoals.map((goal, index) => <li key={index}>{pick(goal, lang)}</li>)}</ul></aside> : null}
       {legacyChildren}
     </LessonSection>
-    <LessonSection id="self-check"><ReferenceCheck key={`${lessonId}-${lang}`} lessonId={lessonId} lang={lang} check={lessonCheck} labels={labels} /></LessonSection>
+    <LessonSection id="self-check" presentationQuestion><ReferenceCheck key={`${lessonId}-${lang}`} lessonId={lessonId} lang={lang} check={lessonCheck} labels={labels} /></LessonSection>
     <LessonSection id="take-home"><TakeHomeList items={lessonSummary.map(rule => ({ title: pick(rule, lang), detail: '' }))} /></LessonSection>
   </StandardLessonShell>
 }

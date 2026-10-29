@@ -6,7 +6,7 @@ import Link from 'next/link'
 import StandardLessonShell, { LessonSection, TakeHomeList } from '@/components/lesson-template/StandardLessonShell'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { useLessonReadStatus } from '@/hooks/useLessonReadStatus'
-import { CONTRAST_GROUPS, getContrastGroup } from '@/data/contrastMedia'
+import { CONTRAST_GROUPS, CONTRAST_QUESTIONS, getContrastGroup } from '@/data/contrastMedia'
 import { CONTRAST_LESSONS, CONTRAST_UI, localizeContrast } from '@/data/contrastLessons'
 import styles from './page.module.css'
 import design from './standard-design.module.css'
@@ -19,7 +19,7 @@ const SOURCES = [
 
 function ReadButton({ isRead, toggleRead, authError, ui, withLang }) {
   return (
-    <div className={styles.readControl}>
+    <div className={styles.readControl} data-book-ignore>
       <button type="button" className={`${styles.readButton} ${isRead ? styles.readButtonActive : ''}`} onClick={toggleRead}>
         <span className={styles.readCheck} aria-hidden="true">{isRead ? '✓' : ''}</span>
         <span>{isRead ? ui.read : ui.mark}</span>
@@ -31,7 +31,7 @@ function ReadButton({ isRead, toggleRead, authError, ui, withLang }) {
 
 function TableBlock({ block, lang }) {
   return (
-    <div className={styles.tableWrap}>
+    <div className={styles.tableWrap} data-book-atomic>
       <table className={styles.table}>
         <thead><tr>{block.headers.map((header, index) => <th key={`${index}-${localizeContrast(header, lang)}`}>{localizeContrast(header, lang)}</th>)}</tr></thead>
         <tbody>{block.rows.map((row, rowIndex) => (
@@ -46,7 +46,7 @@ function SelfCheckBlock({ block, lang }) {
   const [selected, setSelected] = useState(null)
   const correct = selected === block.correct
   return (
-    <div className={styles.selfCheck}>
+    <div className={styles.selfCheck} data-book-question>
       <h3>{localizeContrast(block.title, lang)}</h3>
       <p>{localizeContrast(block.question, lang)}</p>
       <div className={styles.selfCheckOptions}>
@@ -63,7 +63,7 @@ function SelfCheckBlock({ block, lang }) {
 
 function CardBlock({ block, lang }) {
   return (
-    <div className={`${styles.cardsGrid} ${block.columns === 2 ? styles.cardsTwo : ''}`}>
+    <div className={`${styles.cardsGrid} ${block.columns === 2 ? styles.cardsTwo : ''}`} data-book-group>
       {block.items.map((item, index) => (
         <article className={styles.infoCard} key={`${index}-${localizeContrast(item.title, lang)}`}>
           <h3>{localizeContrast(item.title, lang)}</h3>
@@ -81,7 +81,7 @@ function ImageGallery({ block, lang, ui, onOpen }) {
       {block.images.map(item => {
         const alt = localizeContrast(item.alt, lang)
         return (
-          <figure className={styles.imageCard} key={item.src}>
+          <figure className={styles.imageCard} key={item.src} data-book-image>
             <button type="button" onClick={() => onOpen({ src: item.src, alt })} aria-label={`${ui.openImage}: ${alt}`}>
               <Image src={item.src} alt={alt} width={520} height={520} sizes={block.images.length === 1 ? '(max-width: 760px) 100vw, 860px' : '(max-width: 760px) 100vw, 33vw'} />
             </button>
@@ -102,7 +102,7 @@ function ContentBlock({ block, lang, ui, withLang, onOpen }) {
   if (block.type === 'table') return <TableBlock block={block} lang={lang} />
   if (block.type === 'imageGallery') return <ImageGallery block={block} lang={lang} ui={ui} onOpen={onOpen} />
   if (block.type === 'callout') return (
-    <div className={`${styles.callout} ${block.variant === 'cave' ? styles.calloutCave : ''}`}>
+    <div className={`${styles.callout} ${block.variant === 'cave' ? styles.calloutCave : ''}`} data-book-note>
       <strong>{localizeContrast(block.title, lang) || (block.variant === 'cave' ? ui.cave : ui.key)}</strong>
       <p>{localizeContrast(block.text, lang)}</p>
     </div>
@@ -120,7 +120,7 @@ function ContentBlock({ block, lang, ui, withLang, onOpen }) {
     </div>
   )
   if (block.type === 'steps') return (
-    <ol className={styles.steps}>
+    <ol className={styles.steps} data-book-group>
       {block.items.map((item, index) => <li key={index}><span>{String(index + 1).padStart(2, '0')}</span><div><h3>{localizeContrast(item.title, lang)}</h3><p>{localizeContrast(item.text, lang)}</p></div></li>)}
     </ol>
   )
@@ -190,13 +190,13 @@ export default function ContrastGroupPage({ groupId }) {
 
   return <>
     <StandardLessonShell lessonId={group.readId} heroLessonId={pagePath} lang={lang} title={localizeContrast(lesson.title, lang)} author={lesson.sourceLabel}
-      sections={sections} labels={sectionLabels} syncHashNavigation renderIcon={renderIcon} heroImageAlt={localizeContrast(lesson.title, lang)}
+      sections={sections} labels={sectionLabels} syncHashNavigation renderIcon={renderIcon} heroImageAlt={localizeContrast(lesson.title, lang)} presentationQuestions={CONTRAST_QUESTIONS[lang] || CONTRAST_QUESTIONS.de}
       breadcrumbs={[{ label: 'RadYar', href: withLang('/') }, { label: ui.breadcrumb, href: withLang('/lernen/technik') }, { label: localizeContrast(lesson.title, lang) }]}
       actions={{ mcq: { label: ui.mcq, href: withLang(`/ueben/quiz?fach=technik&n=10&themen=${topicIds}&from=${encodeURIComponent(pagePath)}`) }, flashcards: { label: ui.flashcards, href: withLang(`/flashcards/${group.flashcardId}?from=${encodeURIComponent(pagePath)}`) } }}
       theme={{ backgroundImage: '/andarun-galaxy-v3.png', accent: '#8c6a9b', accentStrong: '#573763', accentSoft: '#efe5f3', secondary: '#68a5ac', secondaryStrong: '#2f6670', heroBase: '#201829' }}
       sources={<aside className={design.sources}><h2>{ui.sources}</h2><p>{ui.sourceNote}</p>{SOURCES.map(source => <p key={source.href}><a href={source.href} target="_blank" rel="noreferrer">{source.label} ↗</a></p>)}<h3>{ui.otherLessons}</h3><nav aria-label={ui.otherLessons}>{CONTRAST_GROUPS.filter(item => item.id !== group.id).map(item => <Link href={withLang(`/technik/kontrastmittel/${item.id}`)} key={item.id}>{localizeContrast(item.title, lang)} →</Link>)}</nav><ReadButton isRead={isRead} toggleRead={toggleRead} authError={authError} ui={ui} withLang={withLang} /></aside>}>
       {lesson.sections.map((section, index) => <LessonSection id={section.id} key={section.id} bodyClassName={design.content}>
-        {index === 0 ? <><dl className={design.orientation}>{lesson.stats.map(stat => <div key={localizeContrast(stat.value, lang)}><dt>{localizeContrast(stat.value, lang)} · {localizeContrast(stat.label, lang)}</dt><dd>{localizeContrast(stat.text, lang)}</dd></div>)}</dl>{heroImage ? <figure className={design.diagram}><Image src={heroImage.src} alt={localizeContrast(heroImage.alt, lang)} width={heroImage.width} height={heroImage.height} /><figcaption>{localizeContrast(heroImage.caption, lang)}</figcaption><div className={styles.heroVisualLegend}>{heroImage.legend}</div></figure> : null}</> : null}
+        {index === 0 ? <><dl className={design.orientation} data-book-overview>{lesson.stats.map(stat => <div key={localizeContrast(stat.value, lang)}><dt>{localizeContrast(stat.value, lang)} · {localizeContrast(stat.label, lang)}</dt><dd>{localizeContrast(stat.text, lang)}</dd></div>)}</dl>{heroImage ? <figure className={design.diagram}><Image src={heroImage.src} alt={localizeContrast(heroImage.alt, lang)} width={heroImage.width} height={heroImage.height} /><figcaption>{localizeContrast(heroImage.caption, lang)}</figcaption><div className={styles.heroVisualLegend}>{heroImage.legend}</div></figure> : null}</> : null}
         {section.lead ? <p className={design.lead}>{localizeContrast(section.lead, lang)}</p> : null}
         {section.blocks.map((block, blockIndex) => block.type === 'takehome' ? <TakeHomeList key={blockIndex} items={block.items.map(item => ({ title: localizeContrast(item.title, lang), detail: localizeContrast(item.text, lang) }))} /> : <ContentBlock block={block} lang={lang} ui={ui} withLang={withLang} onOpen={setLightbox} key={`${section.id}-${block.type}-${blockIndex}`} />)}
       </LessonSection>)}

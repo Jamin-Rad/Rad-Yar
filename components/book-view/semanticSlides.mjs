@@ -37,7 +37,7 @@ export function composeSemanticSlides(nodes) {
   return slides
 }
 
-const TOOL = '[data-book-atomic],[data-learning-tool],[data-case-gallery],[data-lesson-print-case],figure,table,iframe,video,canvas,form,fieldset,[role="application"]'
+const TOOL = '[data-book-atomic],[data-book-group],[data-learning-tool],[data-case-gallery],[data-lesson-print-case],figure,table,iframe,video,canvas,form,fieldset,[role="application"]'
 const CONTAINER = new Set(['DIV', 'SECTION', 'ARTICLE', 'MAIN'])
 
 // Read the existing DOM without cloning, moving or rewriting React-owned nodes.
@@ -50,12 +50,13 @@ export function collectSemanticSlides(root) {
     return [...parent.children].flatMap(element => {
       // Inactive panels remain owned by their original controls. Never flatten
       // a hidden wrapper, which would accidentally reveal its descendants.
-      if (element.hidden) return []
+      if (element.hidden || element.matches('[data-book-ignore]')) return []
       const node = { element, kind: 'content' }
       if (element.matches('[data-book-question]')) return [{ ...node, kind: 'question' }]
       if (element.matches('details,[data-book-slide]')) return [{ ...node, kind: 'standalone' }]
       if (element.matches(TOOL) || tabRoots.has(element)) return [{ ...node, kind: 'tool' }]
-      if (element.matches('h1,h2,h3,h4,h5,h6,header')) return [{ ...node, kind: 'heading' }]
+      if (element.matches('[data-book-note]')) return [node]
+      if (element.matches('h1,h2,h3,h4,h5,h6,header,[data-book-heading]')) return [{ ...node, kind: 'heading' }]
       const directText = [...element.childNodes].some(child => child.nodeType === 3 && child.textContent.trim())
       if (!CONTAINER.has(element.tagName) && !element.matches('[data-book-checkpoint]')) return [node]
       if (directText || !element.children.length) return [node]
