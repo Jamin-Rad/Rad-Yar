@@ -6,7 +6,7 @@ import styles from '../admin.module.css'
 import FinanceWorkspaceHeader from './FinanceWorkspaceHeader'
 import FinanceOverview, { FinanceSummary } from './FinanceOverview'
 import FinanceSidebar from './FinanceSidebar'
-import { expenseCategory } from './financeOverviewData.mjs'
+import { expenseCategory, entryCategoryNames, entryCategorySubtitle, buildCategoryTotals } from './financeOverviewData.mjs'
 import workspace from './financeWorkspace.module.css'
 import detailStyles from './CategoryDetail.module.css'
 import EntryCategoryPicker from './EntryCategoryPicker'
@@ -1363,17 +1363,7 @@ export default function BudgetPage({ homeHref = '', homeLabel = '', iranOnly = f
     [monthData.entries],
   )
 
-  const categoryTotals = useMemo(() => {
-    const catNames = new Set(visibleCategories.map(c => c.name))
-    const t = {}
-    monthData.entries.filter(i => i.type === 'expense').forEach(i => {
-      // Nur Tags verwenden, die echte Hauptkategorien sind — sonst Subcategory-Namen als Kategorie
-      const validTags = Array.isArray(i.tags) ? i.tags.filter(tag => catNames.has(tag)) : []
-      const keys = validTags.length ? [...new Set(validTags)] : [i.category || 'Ohne Kategorie']
-      keys.forEach(k => { t[k] = (t[k] || 0) + Number(i.amount || 0) })
-    })
-    return Object.entries(t).sort((a, b) => b[1] - a[1])
-  }, [monthData.entries, visibleCategories])
+  const categoryTotals = useMemo(() => buildCategoryTotals(monthData.entries, visibleCategories), [monthData.entries, visibleCategories])
 
   const incomeTotals = useMemo(() => {
     const t = {}
@@ -1502,8 +1492,10 @@ ${manualEntries.length ? `
   const entryCatNames = useMemo(() => (
     entryType === 'income' && incomeSourceMode === 'other'
       ? ['Andere']
-      : [...new Set(selectedItems.map(i => i.catName))]
-  ), [entryType, incomeSourceMode, selectedItems])
+      : entryType === 'expense' && selectedItems.length
+        ? entryCategoryNames({ type: entryType, category: selectedItems[0].catName, tags: selectedItems.map(item => item.catName), catSubtitles: Object.fromEntries(selectedItems.map(item => [item.catName, item.subName || item.catName])) }, categories)
+        : [...new Set(selectedItems.map(i => i.catName))]
+  ), [entryType, incomeSourceMode, selectedItems, categories])
 
   const planTitle = useMemo(() => {
     const firstSub = planSelectedItems.find(i => i.subName)
@@ -1555,20 +1547,17 @@ ${manualEntries.length ? `
 
   const catDetailEntries = useMemo(() => {
     if (!catDetail) return []
-    const { type, key, entryId, primaryOnly } = catDetail
+    const { type, key, entryId } = catDetail
     if (entryId) return monthData.entries.filter(entry => entry.id === entryId)
-    if (primaryOnly) return monthData.entries.filter(entry => entry.type === 'expense' && expenseCategory(entry) === key)
     if (type === 'income') {
       return monthData.entries.filter(e =>
         e.type === 'income' &&
         (e.title === key || (key === 'Kindergeld' && e.title === 'Familienkasse'))
       )
     }
-    const catNames = new Set(visibleCategories.map(c => c.name))
     return monthData.entries.filter(e => {
       if (e.type !== 'expense') return false
-      const validTags = Array.isArray(e.tags) ? e.tags.filter(t => catNames.has(t)) : []
-      const keys = validTags.length ? validTags : [e.category || 'Ohne Kategorie']
+      const keys = entryCategoryNames(e, visibleCategories)
       return keys.includes(key)
     })
   }, [catDetail, monthData.entries, visibleCategories])
@@ -1578,7 +1567,7 @@ ${manualEntries.length ? `
     const ctxKey = catDetail?.key
     catDetailEntries.forEach(e => {
       // Richtigen Untertitel für diese Kategorie anzeigen (z.B. in Mobin → "Kleidung", in Kleidung → "Ernstings Family")
-      const k = (ctxKey && e.catSubtitles?.[ctxKey]) || e.title || 'Sonstiges'
+      const k = entryCategorySubtitle(e, ctxKey, visibleCategories)
       if (!groups[k]) groups[k] = []
       groups[k].push(e)
     })
@@ -1587,7 +1576,7 @@ ${manualEntries.length ? `
         b[1].reduce((s, e) => s + Number(e.amount), 0) -
         a[1].reduce((s, e) => s + Number(e.amount), 0)
     )
-  }, [catDetailEntries])
+  }, [catDetailEntries, catDetail?.key, visibleCategories])
 
   // ── Actions ────────────────────────────────────────────────────────────────
   function selectFinanceMonth(key) { setMonth(key); setYear(Number(key.slice(0, 4))) }
@@ -1598,12 +1587,12 @@ ${manualEntries.length ? `
   }
   function catHasEntries(catName) {
     return allEntries().some(e => {
-      const cats = Array.isArray(e.tags) && e.tags.length ? e.tags : [e.category]
+      const cats = entryCategoryNames(e, categories)
       return cats.includes(catName) || e.title === catName
     }) || recurring.some(r => r.category === catName || r.title === catName)
   }
   function subHasEntries(catName, subName) {
-    return allEntries().some(e => e.category === catName && e.title === subName) ||
+    return allEntries().some(e => entryCategoryNames(e, categories).includes(catName) && entryCategorySubtitle(e, catName, categories) === subName) ||
       recurring.some(r => r.category === catName && r.title === subName)
   }
 
@@ -1675,13 +1664,12 @@ ${manualEntries.length ? `
     const category = categories.find(cat => cat.type === catDetail.type && cat.name === catDetail.key)
     openPopup(catDetail.type)
     if (category) {
-      const sub = category.subs.find(s => s.name === subName)
-      setEntryScope({ catId: category.id, catName: category.name, subId: sub?.id || null, subName: sub?.name || null })
-      if (sub) {
-        setSelectedItems([{ catId: category.id, catName: category.name, subId: sub.id, subName: sub.name }])
-      } else {
-        setSelectedItems([{ catId: category.id, catName: category.name, subId: null, subName: null }])
-      }
+      const directSub = category.subs.find(sub => sub.name === subName)
+      const linkedParent = !directSub && categories.find(parent => parent.type === catDetail.type && parent.name === subName && parent.subs.some(sub => sub.name === category.name))
+      const target = linkedParent || category
+      const sub = linkedParent ? linkedParent.subs.find(sub => sub.name === category.name) : directSub
+      setEntryScope({ catId: target.id, catName: target.name, subId: sub?.id || null, subName: sub?.name || null })
+      setSelectedItems([{ catId: target.id, catName: target.name, subId: sub?.id || null, subName: sub?.name || null }])
     }
   }
 
@@ -1953,9 +1941,9 @@ ${manualEntries.length ? `
     setView('monat')
   }
 
-  function openCatDetail(type, key, label, primaryOnly = false) {
+  function openCatDetail(type, key, label) {
     setShowPopup(false)  // close entry popup if open
-    setCatDetail({ type, key, label, primaryOnly })
+    setCatDetail({ type, key, label })
     setExpandedSubtitles(new Set())
     setEditingEntry(null)
   }
@@ -2026,12 +2014,13 @@ ${manualEntries.length ? `
               <FinanceOverview
                 key={month}
                 entries={monthData.entries}
+                categories={visibleCategories}
                 incomeTotals={incomeTotals}
                 formatMoney={formatMoney}
                 loaded={loaded}
                 fatimaPaid={fatimaPaid}
                 onOpenFatima={() => setShowFatimaDetails(true)}
-                onOpenCategory={name => openCatDetail('expense', name, name, true)}
+                onOpenCategory={name => openCatDetail('expense', name, name)}
                 onOpenIncome={name => openCatDetail('income', name, name)}
                 onOpenEntry={entry => { setShowPopup(false); setCatDetail({ type: entry.type, key: entry.type === 'income' ? entry.title : expenseCategory(entry), label: entry.title || 'Eintrag', entryId: entry.id }); setExpandedSubtitles(new Set()); setEditingEntry(null) }}
                 onAddExpense={() => openPopup('expense')}
@@ -2616,7 +2605,6 @@ ${manualEntries.length ? `
                 {false && (() => {
                   const COLORS = ['#f97316','#0ea5e9','#8b5cf6','#16a34a','#dc2626','#d97706','#ec4899','#14b8a6']
                   const expCats = visibleCategories.filter(c => c.type === 'expense').map(c => c.name)
-                  const catAllNames = new Set(visibleCategories.map(c => c.name))
                   const selectedCats = [...chartCats]
 
                   function getMonthsInRange(from, to) {
@@ -2639,8 +2627,7 @@ ${manualEntries.length ? `
                     selectedCats.forEach(cat => {
                       totals[cat] = md.entries.filter(e => {
                         if (e.type !== 'expense') return false
-                        const vt = Array.isArray(e.tags) ? e.tags.filter(t => catAllNames.has(t)) : []
-                        const keys = vt.length ? vt : [e.category || 'Ohne Kategorie']
+                        const keys = entryCategoryNames(e, visibleCategories)
                         return keys.includes(cat)
                       }).reduce((s, e) => s + Number(e.amount), 0)
                     })
@@ -2835,7 +2822,6 @@ ${manualEntries.length ? `
             {view === 'verlauf' && (() => {
               const COLORS = ['#f97316','#0ea5e9','#8b5cf6','#16a34a','#dc2626','#d97706','#ec4899','#14b8a6']
               const expCats = visibleCategories.filter(c => c.type === 'expense').map(c => c.name)
-              const catAllNames = new Set(visibleCategories.map(c => c.name))
               const selectedCats = [...chartCats]
 
               // Stable color per category (doesn't shift when others are toggled)
@@ -2885,8 +2871,7 @@ ${manualEntries.length ? `
                   const md = monthWithRecurring(key, store, recurring, excludeVacation)
                   return sum + md.entries.filter(e => {
                     if (e.type !== 'expense') return false
-                    const vt = Array.isArray(e.tags) ? e.tags.filter(t => catAllNames.has(t)) : []
-                    const keys = vt.length ? vt : [e.category || 'Ohne Kategorie']
+                    const keys = entryCategoryNames(e, visibleCategories)
                     return keys.includes(cat)
                   }).reduce((s, e) => s + Number(e.amount), 0)
                 }, 0)
@@ -2899,8 +2884,7 @@ ${manualEntries.length ? `
                 selectedCats.forEach(cat => {
                   totals[cat] = md.entries.filter(e => {
                     if (e.type !== 'expense') return false
-                    const vt = Array.isArray(e.tags) ? e.tags.filter(t => catAllNames.has(t)) : []
-                    const keys = vt.length ? vt : [e.category || 'Ohne Kategorie']
+                    const keys = entryCategoryNames(e, visibleCategories)
                     return keys.includes(cat)
                   }).reduce((s, e) => s + Number(e.amount), 0)
                 })
@@ -3152,8 +3136,7 @@ ${manualEntries.length ? `
                     const entries = md.entries.filter(e => e.type === 'expense' && e.paidByFatima)
                     const total = entries.reduce((s, e) => s + Number(e.amount), 0)
                     const cats = [...new Set(entries.flatMap(e => {
-                      const vt = Array.isArray(e.tags) ? e.tags.filter(t => catAllNames.has(t)) : []
-                      return vt.length ? vt : [e.category || '—']
+                      return entryCategoryNames(e, visibleCategories)
                     }))]
                     return { key, total, cats }
                   }).filter(m => m.total > 0)
