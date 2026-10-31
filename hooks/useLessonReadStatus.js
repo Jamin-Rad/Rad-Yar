@@ -4,62 +4,66 @@ import { useEffect, useState } from 'react'
 import { useAuth } from '@clerk/nextjs'
 import { pullReadStatusFromServer } from '@/utils/readStatus'
 import { persistProgressWrite } from '@/utils/progressSync'
+import { activateUserCache, isUserCacheActive } from '@/utils/progressCache'
+import { changeReadStatus, loadReadState, projectReadState } from '@/utils/readProgressStore'
 
 export function useLessonReadStatus(topicId) {
   const { isLoaded, userId } = useAuth()
-  const [isRead, setIsRead] = useState(false)
+  const [readStatus, setReadStatus] = useState(null)
+  const isRead = readStatus?.userId === userId && readStatus?.topicId === topicId && readStatus?.read === true
+  const setIsRead = read => setReadStatus({ userId, topicId, read })
   const [authError, setAuthError] = useState(false)
 
   useEffect(() => {
+    if (!isLoaded) return
+    activateUserCache(userId)
     try {
-      const articles = JSON.parse(localStorage.getItem('radyar_read_articles') || '{}')
+      const { articles } = projectReadState(loadReadState(userId))
       setIsRead(Number(articles[topicId] || 0) >= 1)
     } catch {}
-  }, [topicId])
+  }, [isLoaded, userId, topicId])
+
+  useEffect(() => {
+    const update = event => {
+      if (event.detail?.userId === userId) setIsRead(Number(event.detail.articles?.[topicId] || 0) >= 1)
+    }
+    window.addEventListener('radyar:read-updated', update)
+    return () => window.removeEventListener('radyar:read-updated', update)
+  }, [userId, topicId])
 
   // Beim Login: Lesefortschritt vom Server holen und mit localStorage mergen
   // (Server gewinnt bei Konflikten – damit andere Geräte berücksichtigt werden).
   useEffect(() => {
     if (!isLoaded || !userId) return
     let cancelled = false
-    pullReadStatusFromServer()
+    pullReadStatusFromServer(userId)
       .then(result => {
         if (cancelled || !result) return
-        if (Number(result.articles[topicId] || 0) >= 1) setIsRead(true)
+        setIsRead(Number(result.articles[topicId] || 0) >= 1)
       })
       .catch(() => {})
     return () => { cancelled = true }
   }, [isLoaded, userId, topicId])
 
   const toggleRead = () => {
-    if (!isLoaded || !userId) {
+    if (!isLoaded || !userId || !isUserCacheActive(userId)) {
       setAuthError(true)
       return false
     }
     setAuthError(false)
-    setIsRead(previous => {
-      const next = !previous
-      try {
-        const articles = JSON.parse(localStorage.getItem('radyar_read_articles') || '{}')
-        articles[topicId] = next ? 1 : 0
-        localStorage.setItem('radyar_read_articles', JSON.stringify(articles))
-        const history = JSON.parse(localStorage.getItem('radyar_learning_history') || '[]')
-        const withoutTopic = history.filter(item => item.topicId !== topicId)
-        localStorage.setItem('radyar_learning_history', JSON.stringify(
-          next ? [...withoutTopic, { topicId, learnedAt: new Date().toISOString() }] : withoutTopic
-        ))
-      } catch {}
-      persistProgressWrite(
-        `read:${topicId}`,
-        '/api/progress/read-status',
-        { themaId: topicId, read: next },
-        Boolean(userId)
-      )
-      if (next) {
-        window.dispatchEvent(new CustomEvent('radyar:lesson-read', { detail: { topicId } }))
-      }
-      return next
-    })
+    const next = !isRead
+    let payload
+    try { payload = changeReadStatus(userId, topicId, next) } catch { return false }
+    persistProgressWrite(
+      `read:${topicId}`,
+      '/api/progress/read-status',
+      payload,
+      userId
+    )
+    if (next) {
+      window.dispatchEvent(new CustomEvent('radyar:lesson-read', { detail: { topicId } }))
+    }
+    setIsRead(next)
     return true
   }
 

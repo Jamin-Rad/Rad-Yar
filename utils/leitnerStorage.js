@@ -142,7 +142,7 @@ export function syncLeitnerCardToServer(cardId, record, userId = null) {
       `leitner:${cardId}`,
       '/api/progress/leitner',
       { cardId, record },
-      Boolean(userId)
+      userId
     )
   })
   syncQueues.set(queueKey, next)
@@ -158,7 +158,9 @@ export function syncLeitnerCardToServer(cardId, record, userId = null) {
  */
 export async function pullLeitnerStateFromServer(userId) {
   try {
-    const res = await fetch('/api/progress/leitner')
+    const res = await fetch('/api/progress/leitner', {
+      cache: 'no-store', headers: { 'X-Radyar-User-Id': userId },
+    })
     if (!res.ok) return loadLeitnerState(userId)
     const { cards } = await res.json()
     const local = loadLeitnerState(userId)

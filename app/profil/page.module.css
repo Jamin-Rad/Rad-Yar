@@ -1780,3 +1780,20 @@
 :global(html[data-theme='dark']) .heatLevel2 { background: #9a3412; border-color: #c2410c; }
 :global(html[data-theme='dark']) .heatLevel3 { background: #c2410c; border-color: #ea580c; }
 :global(html[data-theme='dark']) .heatLevel4 { background: #f97316; border-color: #fb923c; }
+
+/* Learning progress sync feedback. */
+.syncStatus { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 44px; margin-bottom: 14px; padding: 10px 14px; border: 1px solid var(--border); border-radius: 12px; color: var(--text-soft); background: var(--bg-card); font-size: 12px; }
+.syncStatus > span { display: flex; align-items: center; gap: 9px; }
+.syncStatus i { width: 8px; height: 8px; flex: 0 0 8px; border-radius: 50%; background: var(--text-muted); }
+.syncStatus[data-state='synced'] i { background: #10b981; }
+.syncStatus[data-state='error'] i { background: #ef4444; }
+.syncStatus[data-state='loading'] i, .syncStatus[data-state='offline'] i { background: #f59e0b; }
+.syncStatus .outlineBtn { padding: 7px 12px; }
+.progressLoading p { color: var(--text-muted); font-size: 13px; }
+.loadingHero, .loadingMetrics > span, .loadingPlan { border-radius: 18px; background: var(--surface-soft); border: 1px solid var(--border); }
+.loadingHero { height: 190px; }
+.loadingMetrics { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin: 16px 0; }
+.loadingMetrics > span { height: 110px; }
+.loadingPlan { height: 260px; }
+
+@media (max-width:560px) { .syncStatus { align-items:flex-start;flex-wrap:wrap; } .loadingMetrics { grid-template-columns:1fr; } }

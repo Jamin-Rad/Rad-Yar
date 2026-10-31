@@ -22,6 +22,9 @@ export function loadSettings(userId) {
 }
 
 export function saveSettings(settings, userId) {
-  if (typeof window === 'undefined') return
-  try { window.localStorage.setItem(keyFor(userId), JSON.stringify(settings)) } catch (_) {}
+  if (typeof window === 'undefined') return false
+  try {
+    window.localStorage.setItem(keyFor(userId), JSON.stringify(settings))
+    return true
+  } catch (_) { return false }
 }

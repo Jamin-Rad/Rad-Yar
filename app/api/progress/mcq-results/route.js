@@ -26,8 +26,8 @@ function toRow(userId, themaId, result) {
   }
 }
 
-export async function GET() {
-  const identity = await getSignedInUserIdentity()
+export async function GET(request) {
+  const identity = await getSignedInUserIdentity(request)
   if (!identity) {
     return NextResponse.json({ error: 'Nicht angemeldet' }, { status: 401 })
   }
@@ -57,7 +57,7 @@ export async function GET() {
 }
 
 export async function POST(request) {
-  const identity = await getSignedInUserIdentity()
+  const identity = await getSignedInUserIdentity(request)
   if (!identity) {
     return NextResponse.json({ error: 'Nicht angemeldet' }, { status: 401 })
   }

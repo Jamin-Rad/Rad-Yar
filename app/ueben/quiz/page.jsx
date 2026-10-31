@@ -408,7 +408,7 @@ function QuizContent() {
       }
       localStorage.setItem('radyar_mcq_scores', JSON.stringify(scores))
       if (user?.id) {
-        persistProgressWrite('mcq:scores', '/api/progress/mcq-results', { bulk: scores }, true)
+        persistProgressWrite('mcq:scores', '/api/progress/mcq-results', { bulk: scores }, user.id)
       }
     } catch {}
   }

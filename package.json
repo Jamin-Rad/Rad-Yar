@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "test:progress": "node --experimental-vm-modules --import tsx scripts/test-progress-account-isolation.mjs && node --experimental-vm-modules --import tsx scripts/test-learning-progress-integrity.mjs",
     "audit:fa": "node scripts/audit-fa-translations.mjs",
     "audit:mcq": "tsx scripts/audit-mcq-bank.mjs",
     "test:fnh-sync": "node --import tsx scripts/test-fnh-sync.mjs",
@@ -34,6 +35,7 @@
   },
   "devDependencies": {
     "@capacitor/cli": "^8.5.0",
+    "@electric-sql/pglite": "0.5.13",
     "dotenv": "^17.4.2",
     "tsx": "^4.22.4"
   }

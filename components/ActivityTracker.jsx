@@ -3,20 +3,19 @@
 import { useEffect, useState } from 'react'
 import { useUser } from '@clerk/nextjs'
 import { usePathname } from 'next/navigation'
-import { addActiveSeconds, IDLE_MS, registerVisit } from '@/utils/activityStorage'
+import { addActiveSeconds, IDLE_MS, registerVisit, syncActivityToServer } from '@/utils/activityStorage'
 import { getActivityCategory } from '@/utils/activityCategory'
-import { syncLocalProgressToServer } from '@/utils/syncProgressToServer'
-import { flushPendingProgress } from '@/utils/progressSync'
+import { createStudyTimer } from '@/utils/studyTimer'
+import { syncLocalProgressToServer, activateUserCache } from '@/utils/syncProgressToServer'
+import { isUserCacheCurrent, getUserCacheToken } from '@/utils/progressCache'
 import { PRIVACY_CHOICE_EVENT, readPrivacyChoice } from '@/components/LegalNotice'
 import { getAnalyticsSessionId, getAnalyticsVisitorId } from '@/utils/calculatorAnalytics'
 
-function sendActivity(payload) {
+function sendAnalytics(payload, userId) {
   if (readPrivacyChoice()?.analytics !== true) return
   fetch('/api/analytics/track', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(payload),
-    keepalive: true,
+    method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Radyar-User-Id': userId || 'anonymous' },
+    body: JSON.stringify(payload), keepalive: true,
   }).catch(() => {})
 }
 
@@ -24,97 +23,97 @@ export default function ActivityTracker() {
   const { user, isLoaded } = useUser()
   const pathname = usePathname()
   const [analyticsEnabled, setAnalyticsEnabled] = useState(false)
+  const userId = user?.id || null
 
   useEffect(() => {
-    const updateChoice = event => setAnalyticsEnabled(event.detail?.analytics === true)
+    const update = event => setAnalyticsEnabled(event.detail?.analytics === true)
     setAnalyticsEnabled(readPrivacyChoice()?.analytics === true)
-    window.addEventListener(PRIVACY_CHOICE_EVENT, updateChoice)
-    return () => window.removeEventListener(PRIVACY_CHOICE_EVENT, updateChoice)
+    window.addEventListener(PRIVACY_CHOICE_EVENT, update)
+    return () => window.removeEventListener(PRIVACY_CHOICE_EVENT, update)
   }, [])
 
   useEffect(() => {
-    if (!isLoaded || !analyticsEnabled) return
-    const userId = user?.id || null
-    const activityCategory = getActivityCategory(pathname)
-    const visitorId = getAnalyticsVisitorId()
-    const isNewSession = !sessionStorage.getItem('radyar_analytics_session')
-    getAnalyticsSessionId()
-    if (userId) {
-      registerVisit(userId)
-      flushPendingProgress().finally(() => {
-        // Einmalig pro Nutzer: bestehenden localStorage-Fortschritt nach Supabase
-        // übernehmen – unabhängig davon, welche Seite nach dem Login zuerst besucht wird.
-        syncLocalProgressToServer(userId)
-      })
+    if (!isLoaded) return
+    activateUserCache(userId)
+    if (!userId) return
+    const token = getUserCacheToken(userId)
+    const sync = () => {
+      if (isUserCacheCurrent(userId, token) && navigator.onLine) void syncLocalProgressToServer(userId, { force: true })
     }
-
-    sendActivity({
-      visitorId,
-      path: pathname,
-      visits: isNewSession ? 1 : 0,
-      pageViews: 1,
-      activeSeconds: 0,
-    })
-
-    let lastInteraction = Date.now()
-    let lastTick = Date.now()
-    let pendingSeconds = 0
-
-    const isActive = () =>
-      document.visibilityState === 'visible' &&
-      document.hasFocus() &&
-      Date.now() - lastInteraction < IDLE_MS
-
-    const flush = () => {
-      const seconds = Math.round(pendingSeconds)
-      if (seconds >= 1) {
-        if (userId) addActiveSeconds(userId, seconds, activityCategory)
-        sendActivity({
-          visitorId,
-          path: pathname,
-          visits: 0,
-          pageViews: 0,
-          activeSeconds: seconds,
-        })
-      }
-      pendingSeconds = 0
-    }
-
-    const tick = () => {
-      const now = Date.now()
-      const elapsed = Math.min((now - lastTick) / 1000, 5)
-      if (isActive()) pendingSeconds += elapsed
-      lastTick = now
-      if (pendingSeconds >= 15) flush()
-    }
-
-    const touch = () => { lastInteraction = Date.now() }
-    const resetTick = () => {
-      lastTick = Date.now()
-      if (document.visibilityState !== 'visible') flush()
-    }
-
-    const interval = window.setInterval(tick, 1000)
-    for (const event of ['pointerdown', 'keydown', 'scroll', 'touchstart']) {
-      window.addEventListener(event, touch, { passive: true })
-    }
-    document.addEventListener('visibilitychange', resetTick)
-    window.addEventListener('focus', resetTick)
-    window.addEventListener('blur', flush)
-    window.addEventListener('pagehide', flush)
-
+    sync()
+    const interval = window.setInterval(sync, 30000)
+    window.addEventListener('online', sync)
+    window.addEventListener('focus', sync)
+    const pending = event => { if (event.detail?.userId === userId) sync() }
+    window.addEventListener('radyar:progress-pending', pending)
     return () => {
-      window.clearInterval(interval)
-      flush()
-      for (const event of ['pointerdown', 'keydown', 'scroll', 'touchstart']) {
-        window.removeEventListener(event, touch)
-      }
-      document.removeEventListener('visibilitychange', resetTick)
-      window.removeEventListener('focus', resetTick)
-      window.removeEventListener('blur', flush)
-      window.removeEventListener('pagehide', flush)
+      clearInterval(interval)
+      window.removeEventListener('online', sync)
+      window.removeEventListener('focus', sync)
+      window.removeEventListener('radyar:progress-pending', pending)
     }
-  }, [analyticsEnabled, isLoaded, pathname, user?.id])
+  }, [isLoaded, userId])
 
+  // Signed-in learning progress is a product feature. It is independent of
+  // optional site analytics, which has its own consent check and endpoint.
+  useEffect(() => {
+    if (!isLoaded || !userId) return
+    registerVisit(userId)
+    const category = getActivityCategory(pathname)
+    const timer = createStudyTimer({
+      foreground: () => document.visibilityState === 'visible' && document.hasFocus(),
+      idleMs: IDLE_MS,
+      onInterval: (seconds, at) => addActiveSeconds(userId, seconds, category, at),
+    })
+    const touch = () => timer.interact()
+    const visibility = () => timer.visibilityChanged()
+    const save = () => { timer.tick(); void syncActivityToServer(userId, { keepalive: true }).catch(() => {}) }
+    const interval = window.setInterval(timer.tick, 1000)
+    for (const name of ['pointerdown', 'keydown', 'scroll', 'touchstart']) window.addEventListener(name, touch, { passive: true })
+    document.addEventListener('visibilitychange', visibility)
+    window.addEventListener('focus', visibility)
+    window.addEventListener('blur', visibility)
+    window.addEventListener('pagehide', save)
+    return () => {
+      clearInterval(interval)
+      timer.stop()
+      void syncActivityToServer(userId, { keepalive: true }).catch(() => {})
+      for (const name of ['pointerdown', 'keydown', 'scroll', 'touchstart']) window.removeEventListener(name, touch)
+      document.removeEventListener('visibilitychange', visibility)
+      window.removeEventListener('focus', visibility)
+      window.removeEventListener('blur', visibility)
+      window.removeEventListener('pagehide', save)
+    }
+  }, [isLoaded, userId, pathname])
+
+  useEffect(() => {
+    if (!isLoaded || !analyticsEnabled) return
+    const visitorId = getAnalyticsVisitorId()
+    const first = !sessionStorage.getItem('radyar_analytics_session')
+    getAnalyticsSessionId()
+    sendAnalytics({ visitorId, path: pathname, visits: first ? 1 : 0, pageViews: 1, activeSeconds: 0 }, userId)
+    let analyticsSeconds = 0
+    const timer = createStudyTimer({
+      foreground: () => document.visibilityState === 'visible' && document.hasFocus(), idleMs: IDLE_MS,
+      onInterval: seconds => { analyticsSeconds += seconds },
+    })
+    const flush = () => {
+      timer.tick()
+      const seconds = Math.floor(analyticsSeconds)
+      if (seconds >= 1) { sendAnalytics({ visitorId, path: pathname, visits: 0, pageViews: 0, activeSeconds: seconds }, userId); analyticsSeconds -= seconds }
+    }
+    const interval = window.setInterval(flush, 15000)
+    const touch = () => timer.interact()
+    const visibility = () => timer.visibilityChanged()
+    for (const name of ['pointerdown','keydown','scroll','touchstart']) window.addEventListener(name,touch,{passive:true})
+    document.addEventListener('visibilitychange',visibility)
+    window.addEventListener('focus',visibility);window.addEventListener('blur',visibility)
+    return () => {
+      clearInterval(interval);flush()
+      for (const name of ['pointerdown','keydown','scroll','touchstart']) window.removeEventListener(name,touch)
+      document.removeEventListener('visibilitychange',visibility)
+      window.removeEventListener('focus',visibility);window.removeEventListener('blur',visibility)
+    }
+  }, [isLoaded, analyticsEnabled, userId, pathname])
   return null
 }

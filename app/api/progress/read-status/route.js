@@ -1,116 +1,69 @@
 import { NextResponse } from 'next/server'
 import { isSupabaseAdminConfigured, supabaseAdmin } from '@/lib/supabase/server'
-import { getSignedInUserIdentity } from '@/lib/userIdentity'
+import { getLearningUserIdentity } from '@/lib/userIdentity'
+import { readVersion } from '@/utils/readProgressStore'
 
-export async function GET() {
-  const identity = await getSignedInUserIdentity()
-  if (!identity) {
-    return NextResponse.json({ error: 'Nicht angemeldet' }, { status: 401 })
+const unavailable = () => NextResponse.json({ error: 'Lesefortschritt nicht verfügbar' }, { status: 503 })
+const validDate = value => typeof value === 'string' && Number.isFinite(Date.parse(value)) && Date.parse(value) <= Date.now() + 300000
+const validVersion = value => value && validDate(value.changedAt) && typeof value.changeId === 'string' && value.changeId.length <= 100
+
+export async function GET(request) {
+  const identity = await getLearningUserIdentity(request)
+  if (!identity) return NextResponse.json({ error: 'Nicht angemeldet' }, { status: 401 })
+  if (identity.storageUnavailable || !isSupabaseAdminConfigured || !supabaseAdmin) return unavailable()
+  const rows = []
+  for (let offset = 0; ; offset += 1000) {
+    const { data, error } = await supabaseAdmin.from('user_progress')
+      .select('user_id,thema_id,read_pct,updated_at,change_id,learned_at')
+      .in('user_id', identity.lookupIds).order('user_id').order('thema_id').range(offset, offset + 999)
+    if (error) return unavailable()
+    rows.push(...data)
+    if (data.length < 1000) break
   }
-  if (!isSupabaseAdminConfigured || !supabaseAdmin) {
-    return NextResponse.json({ error: 'Speicher nicht verfügbar' }, { status: 503 })
+  const resets = await supabaseAdmin.from('learning_progress_resets')
+    .select('changed_at,change_id').in('user_id', identity.lookupIds)
+  if (resets.error) return unavailable()
+  let reset = null
+  for (const row of resets.data || []) {
+    const next = { changedAt: new Date(row.changed_at).toISOString(), changeId: row.change_id }
+    if (readVersion(next) > readVersion(reset)) reset = next
   }
-
-  const { data, error } = await supabaseAdmin
-    .from('user_progress')
-    .select('thema_id,read_pct,updated_at')
-    .in('user_id', identity.lookupIds)
-
-  if (error) {
-    console.error('Lesefortschritt konnte nicht geladen werden:', error)
-    return NextResponse.json({ error: 'Lesefortschritt nicht verfügbar' }, { status: 503 })
+  const records = {}
+  for (const row of rows) {
+    const record = { read: Number(row.read_pct) >= 1, changedAt: new Date(row.updated_at).toISOString(), changeId: row.change_id || '', learnedAt: row.learned_at || row.updated_at }
+    if (!records[row.thema_id] || readVersion(record) > readVersion(records[row.thema_id])) records[row.thema_id] = record
   }
-
-  const read = {}
-  const historyByTopic = new Map()
-  for (const row of data || []) {
-    const isRead = Number(row.read_pct) >= 1
-    read[row.thema_id] = isRead
-    if (isRead) {
-      read[row.thema_id] = true
-      const previous = historyByTopic.get(row.thema_id)
-      if (!previous || new Date(row.updated_at) > new Date(previous.learnedAt)) {
-        historyByTopic.set(row.thema_id, { topicId: row.thema_id, learnedAt: row.updated_at })
-      }
-    }
+  const read = {}, history = []
+  for (const [topicId, record] of Object.entries(records)) {
+    read[topicId] = record.read && (!reset || readVersion(record) > readVersion(reset))
+    if (read[topicId]) history.push({ topicId, learnedAt: record.learnedAt })
   }
-  const history = [...historyByTopic.values()]
-  history.sort((a, b) => new Date(b.learnedAt) - new Date(a.learnedAt))
-
-  return NextResponse.json({ read, history })
+  history.sort((a, b) => Date.parse(b.learnedAt) - Date.parse(a.learnedAt))
+  return NextResponse.json({ version: 2, records, reset, read, history }, { headers: { 'Cache-Control': 'no-store' } })
 }
 
 export async function POST(request) {
-  const identity = await getSignedInUserIdentity()
-  if (!identity) {
-    return NextResponse.json({ error: 'Nicht angemeldet' }, { status: 401 })
-  }
-  if (!isSupabaseAdminConfigured || !supabaseAdmin) {
-    return NextResponse.json({ error: 'Speicher nicht verfügbar' }, { status: 503 })
-  }
-
+  const identity = await getLearningUserIdentity(request)
+  if (!identity) return NextResponse.json({ error: 'Nicht angemeldet' }, { status: 401 })
+  if (identity.storageUnavailable || !isSupabaseAdminConfigured || !supabaseAdmin) return unavailable()
   let payload
-  try {
-    payload = await request.json()
-  } catch {
+  try { payload = await request.json() } catch { return NextResponse.json({ error: 'Ungültige Anfrage' }, { status: 400 }) }
+  if (!payload || typeof payload !== 'object' || Array.isArray(payload) || (Array.isArray(payload.bulk) && payload.bulk.some(item => !item || typeof item !== 'object'))) return NextResponse.json({ error: 'Ungültige Anfrage' }, { status: 400 })
+  const incoming = Array.isArray(payload.bulk) ? payload.bulk : payload.themaId ? [payload] : []
+  const changes = incoming.map(item => ({ ...item, changedAt: item.changedAt || item.learnedAt || new Date().toISOString(), changeId: item.changeId ?? '' }))
+  if (changes.length > 1000 || (!changes.length && !payload.reset) ||
+      (payload.reset && !validVersion(payload.reset)) ||
+      changes.some(item => typeof item.themaId !== 'string' || !item.themaId.length || item.themaId.length > 200 || typeof item.read !== 'boolean' || !validVersion(item) || (item.learnedAt && !validDate(item.learnedAt)))) {
     return NextResponse.json({ error: 'Ungültige Anfrage' }, { status: 400 })
   }
-
-  let rows = []
-  if (Array.isArray(payload.bulk)) {
-    rows = payload.bulk
-      .filter(item => typeof item?.themaId === 'string')
-      .map(item => ({
-        user_id: identity.ownerId,
-        thema_id: item.themaId,
-        read_pct: item.read ? 1 : 0,
-        updated_at: item.learnedAt || new Date().toISOString(),
-      }))
-  } else if (typeof payload.themaId === 'string') {
-    rows = [{
-      user_id: identity.ownerId,
-      thema_id: payload.themaId,
-      read_pct: payload.read ? 1 : 0,
-      updated_at: new Date().toISOString(),
-    }]
-  } else {
-    return NextResponse.json({ error: 'Ungültige Anfrage' }, { status: 400 })
-  }
-
-  if (rows.length === 0) {
-    return NextResponse.json({ ok: true })
-  }
-
-  const { error } = await supabaseAdmin
-    .from('user_progress')
-    .upsert(rows, { onConflict: 'user_id,thema_id' })
-
-  if (error) {
-    console.error('Lesefortschritt konnte nicht gespeichert werden:', error)
-    return NextResponse.json({ error: 'Speichern fehlgeschlagen' }, { status: 503 })
-  }
-
+  const { error } = await supabaseAdmin.rpc('apply_learning_read_progress', {
+    p_user_id: identity.ownerId, p_lookup_ids: identity.lookupIds, p_changes: changes, p_reset: payload.reset || null,
+  })
+  if (error) return unavailable()
   return NextResponse.json({ ok: true })
 }
 
-export async function DELETE() {
-  const identity = await getSignedInUserIdentity()
-  if (!identity) {
-    return NextResponse.json({ error: 'Nicht angemeldet' }, { status: 401 })
-  }
-  if (!isSupabaseAdminConfigured || !supabaseAdmin) {
-    return NextResponse.json({ error: 'Speicher nicht verfügbar' }, { status: 503 })
-  }
-
-  const { error } = await supabaseAdmin
-    .from('user_progress')
-    .delete()
-    .eq('user_id', identity.ownerId)
-
-  if (error) {
-    console.error('Lesefortschritt konnte nicht gelöscht werden:', error)
-    return NextResponse.json({ error: 'Löschen fehlgeschlagen' }, { status: 503 })
-  }
-
-  return NextResponse.json({ ok: true })
+export async function DELETE(request) {
+  const reset = { changedAt: new Date().toISOString(), changeId: crypto.randomUUID() }
+  return POST({ headers: request?.headers, json: async () => ({ reset }) })
 }

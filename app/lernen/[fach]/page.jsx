@@ -8,6 +8,8 @@ import { CURRICULUM, getFach, getFachTitle, getKapitelTitle, getThemaTitle } fro
 import { getContentStatus } from '@/data/lessonStatus'
 import { filterLessonTopics } from '@/utils/lessonFilters'
 import { pullReadStatusFromServer } from '@/utils/readStatus'
+import { activateUserCache } from '@/utils/progressCache'
+import { loadReadState, projectReadState } from '@/utils/readProgressStore'
 import { CONTRAST_GROUPS } from '@/data/contrastMedia'
 import { ChapterIcon } from '@/components/ChapterIcons'
 import { useLanguage } from '@/providers/LanguageProvider'
@@ -200,16 +202,16 @@ export default function LernenFachPage() {
       setContentFilter(defaultStatus || 'all')
       setLearningFilter('all')
     }
-    try {
-      setReadArticles(JSON.parse(localStorage.getItem('radyar_read_articles') || '{}'))
-    } catch {}
   }, [fach])
 
   // Lesefortschritt vom Server holen (geräteübergreifend) und mergen
   useEffect(() => {
-    if (!isLoaded || !userId) return
+    if (!isLoaded) return
+    activateUserCache(userId)
+    try { setReadArticles(projectReadState(loadReadState(userId)).articles) } catch { setReadArticles({}) }
+    if (!userId) return
     let cancelled = false
-    pullReadStatusFromServer()
+    pullReadStatusFromServer(userId)
       .then(result => {
         if (cancelled || !result) return
         setReadArticles(result.articles)
@@ -217,6 +219,12 @@ export default function LernenFachPage() {
       .catch(() => {})
     return () => { cancelled = true }
   }, [isLoaded, userId])
+
+  useEffect(() => {
+    const update = event => { if (event.detail?.userId === userId) setReadArticles(event.detail.articles) }
+    window.addEventListener('radyar:read-updated', update)
+    return () => window.removeEventListener('radyar:read-updated', update)
+  }, [userId])
 
   useEffect(() => {
     if (!visibleKapitel.some(({ kapitel }) => kapitel.id === selectedKapitel)) setSelectedKapitel(null)

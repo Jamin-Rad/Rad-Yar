@@ -6,14 +6,15 @@ import Link from 'next/link'
 import Image from 'next/image'
 import Navbar from '@/components/Navbar'
 import { useLanguage } from '@/providers/LanguageProvider'
-import { resetLeitnerState, filterLeitnerState, isDue, pullLeitnerStateFromServer } from '@/utils/leitnerStorage'
+import { resetLeitnerState, filterLeitnerState, isDue, loadLeitnerState } from '@/utils/leitnerStorage'
 import { syncLocalProgressToServer, activateUserCache } from '@/utils/syncProgressToServer'
-import { flushPendingProgress } from '@/utils/progressSync'
+import { persistProgressWrite } from '@/utils/progressSync'
+import { loadReadState, projectReadState, resetReadProgress } from '@/utils/readProgressStore'
 import { loadSettings, saveSettings } from '@/utils/settingsStorage'
 import { CURRICULUM, getFachTitle, getKapitelTitle, getThemaTitle } from '@/data/curriculum'
 import { MCQ_TOPIC_GROUPS } from '@/data/questions'
 import { FLASHCARDS } from '@/data/flashcards'
-import { getActivitySummary, mergeServerActivity } from '@/utils/activityStorage'
+import { getActivitySummary } from '@/utils/activityStorage'
 import {
   PROMO_MONTHS,
   RENEWAL_MONTHS,
@@ -34,6 +35,12 @@ const localDateKey = () => {
 
 const T = {
   de: {
+    loadingProgress: "Lernfortschritt wird geladen…",
+    syncLoading: "Fortschritt wird synchronisiert…",
+    syncSuccess: "Lernfortschritt synchronisiert",
+    syncError: "Synchronisierung fehlgeschlagen. Lokale Daten werden angezeigt.",
+    syncOffline: "Offline · lokale Daten werden angezeigt",
+    retry: "Erneut versuchen",
     examDeduction: 'Punktabzug',
     overview: 'Übersicht', settings: 'Einstellungen', contact: 'Kontakt', profileLabel: 'Dein Profil',
     exams: 'Prüfungsarchiv', examArchiveTitle: 'Deine Prüfungen', examArchiveSub: 'Alle Prüfungen, Ergebnisse und offenen Feedbacks an einem Ort.',
@@ -110,6 +117,12 @@ const T = {
     subscriptionRequestSaved: 'Anfrage gespeichert. Die E-Mail-Benachrichtigung konnte gerade nicht versendet werden.', subscriptionRequestError: 'Die Anfrage konnte nicht gesendet werden.', requestSending: 'Wird gesendet…',
   },
   en: {
+    loadingProgress: "Loading learning progress…",
+    syncLoading: "Syncing learning progress…",
+    syncSuccess: "Learning progress synced",
+    syncError: "Sync failed. Showing local data.",
+    syncOffline: "Offline · showing local data",
+    retry: "Try again",
     examDeduction: 'Deduction',
     overview: 'Overview', settings: 'Settings', contact: 'Contact', profileLabel: 'Your profile',
     exams: 'Exam archive', examArchiveTitle: 'Your exams', examArchiveSub: 'All exams, results, and pending feedback in one place.',
@@ -183,6 +196,12 @@ const T = {
     subscriptionRequestSaved: 'Request saved. The email notification could not be sent right now.', subscriptionRequestError: 'The request could not be sent.', requestSending: 'Sending…',
   },
   fa: {
+    loadingProgress: "در حال بارگذاری پیشرفت یادگیری…",
+    syncLoading: "در حال همگام‌سازی پیشرفت…",
+    syncSuccess: "پیشرفت یادگیری همگام شد",
+    syncError: "همگام‌سازی ناموفق بود؛ اطلاعات محلی نمایش داده می‌شود.",
+    syncOffline: "آفلاین؛ اطلاعات محلی نمایش داده می‌شود",
+    retry: "تلاش دوباره",
     examDeduction: 'کسر نمره',
     overview: 'نمای کلی', settings: 'تنظیمات', contact: 'تماس', profileLabel: 'پروفایل شما',
     exams: 'آرشیو آزمون‌ها', examArchiveTitle: 'آزمون‌های شما', examArchiveSub: 'همه آزمون‌ها، نتیجه‌ها و نظرسنجی‌های ناتمام در یک‌جا.',
@@ -420,6 +439,10 @@ export default function ProfilPage() {
   const { user, isLoaded } = useUser()
   const { openUserProfile, signOut } = useClerk()
   const [view, setView] = useState('overview')
+  const [syncState, setSyncState] = useState('loading')
+  const [syncAttempt, setSyncAttempt] = useState(0)
+  const [progressReady, setProgressReady] = useState(false)
+  const [progressOwner, setProgressOwner] = useState(null)
   const [leitner, setLeitner] = useState({})
   const [readArticles, setReadArticles] = useState({})
   const [mcqScores, setMcqScores] = useState({})
@@ -453,83 +476,60 @@ export default function ProfilPage() {
 
   useEffect(() => {
     if (!isLoaded || !user) return
-    activateUserCache(user.id)
     setSpitzname(user.firstName ?? '')
     setFach(user.unsafeMetadata?.fachrichtung ?? '')
     setStufe(user.unsafeMetadata?.ausbildungsstufe ?? '')
     setSettings(loadSettings(user.id))
-    let localReadArticles = {}
-    let localMcqScores = {}
-    let localLearningHistory = []
-    try {
-      localReadArticles = JSON.parse(localStorage.getItem('radyar_read_articles') || '{}')
-      localMcqScores = JSON.parse(localStorage.getItem('radyar_mcq_scores') || '{}')
-      localLearningHistory = JSON.parse(localStorage.getItem('radyar_learning_history') || '[]')
-    } catch {}
-    setReadArticles(localReadArticles)
-    setMcqScores(localMcqScores)
-    setLearningHistory(localLearningHistory)
-    setActivitySummary(getActivitySummary(user.id))
+    setSaveState('idle')
+  }, [isLoaded, user?.id])
 
-    const serverReady = flushPendingProgress()
-      .then(() => syncLocalProgressToServer(user.id))
-
-    serverReady
-      .then(() => pullLeitnerStateFromServer(user.id))
-      .then(setLeitner)
-
-    // Lesefortschritt vom Server holen und mergen (Server gewinnt bei "gelesen")
-    serverReady.then(() => fetch('/api/progress/read-status'))
-      .then(res => (res.ok ? res.json() : null))
-      .then(data => {
-        if (!data) return
-        const mergedRead = { ...localReadArticles }
-        for (const [id, read] of Object.entries(data.read || {})) {
-          if (read) mergedRead[id] = 1
-          else delete mergedRead[id]
+  useEffect(() => {
+    if (!isLoaded || !user) return
+    let cancelled = false
+    const userId = user.id
+    function readCache() {
+      activateUserCache(userId)
+      try {
+        const read = projectReadState(loadReadState(userId))
+        setReadArticles(read.articles)
+        setLearningHistory(read.history)
+      } catch {}
+      try { setMcqScores(JSON.parse(localStorage.getItem('radyar_mcq_scores') || '{}')) } catch {}
+      setLeitner(loadLeitnerState(userId))
+      setActivitySummary(getActivitySummary(userId))
+    }
+    setProgressReady(false)
+    setSyncState(navigator.onLine ? 'loading' : 'offline')
+    async function sync() {
+      try {
+        readCache()
+        if (!navigator.onLine) return
+        // Check all sources: a cached session or partial failure must not look synced.
+        const result = await syncLocalProgressToServer(userId, { force: true, throwOnError: true })
+        if (cancelled) return
+        readCache()
+        if (!result) throw new Error('Progress sync interrupted')
+        setSyncState(navigator.onLine ? 'synced' : 'offline')
+      } catch {
+        if (!cancelled) setSyncState(navigator.onLine ? 'error' : 'offline')
+      } finally {
+        if (!cancelled) {
+          setProgressOwner(userId)
+          setProgressReady(true)
         }
-        setReadArticles(mergedRead)
-        localStorage.setItem('radyar_read_articles', JSON.stringify(mergedRead))
-        const historyById = new Map(localLearningHistory.map(item => [item.topicId, item]))
-        for (const [id, read] of Object.entries(data.read || {})) {
-          if (!read) historyById.delete(id)
-        }
-        for (const item of data.history || []) {
-          historyById.set(item.topicId, item)
-        }
-        const mergedHistory = [...historyById.values()]
-        setLearningHistory(mergedHistory)
-        localStorage.setItem('radyar_learning_history', JSON.stringify(mergedHistory))
-      })
-      .catch(() => {})
-
-    // MCQ-Ergebnisse vom Server holen und mergen (neuerer lastDate gewinnt)
-    serverReady.then(() => fetch('/api/progress/mcq-results'))
-      .then(res => (res.ok ? res.json() : null))
-      .then(data => {
-        if (!data) return
-        const merged = { ...localMcqScores }
-        for (const [themaId, serverResult] of Object.entries(data.scores || {})) {
-          const localResult = merged[themaId]
-          if (!localResult || new Date(serverResult.lastDate) > new Date(localResult.lastDate || 0)) {
-            merged[themaId] = serverResult
-          }
-        }
-        setMcqScores(merged)
-        localStorage.setItem('radyar_mcq_scores', JSON.stringify(merged))
-      })
-      .catch(() => {})
-
-    // Aktivitätsdaten vom Server holen (alle Geräte) und mit lokalem Stand mergen
-    serverReady.then(() => fetch('/api/progress/activity'))
-      .then(res => (res.ok ? res.json() : null))
-      .then(data => {
-        if (!data?.days) return
-        mergeServerActivity(user.id, data.days)
-        setActivitySummary(getActivitySummary(user.id))
-      })
-      .catch(() => {})
-  }, [isLoaded, user])
+      }
+    }
+    void sync()
+    const retry = () => setSyncAttempt(attempt => attempt + 1)
+    const offline = () => setSyncState('offline')
+    window.addEventListener('online', retry)
+    window.addEventListener('offline', offline)
+    return () => {
+      cancelled = true
+      window.removeEventListener('online', retry)
+      window.removeEventListener('offline', offline)
+    }
+  }, [isLoaded, user?.id, syncAttempt])
 
   useEffect(() => {
     if (!user) return
@@ -562,14 +562,34 @@ export default function ProfilPage() {
   useEffect(() => {
     if (!user) return
     function handleSynced(event) {
-      const { read, mcqScores: synced, leitnerState } = event.detail || {}
+      const { userId, read, mcqScores: synced, leitnerState } = event.detail || {}
+      if (userId !== user.id) return
       if (read?.articles) setReadArticles(read.articles)
       if (read?.history) setLearningHistory(read.history)
       if (synced) setMcqScores(synced)
       if (leitnerState) setLeitner(leitnerState)
     }
     window.addEventListener('radyar:progress-synced', handleSynced)
-    return () => window.removeEventListener('radyar:progress-synced', handleSynced)
+    const handleSyncState = event => {
+      if (event.detail?.userId === user.id) setSyncState(event.detail.state)
+    }
+    const handlePending = event => {
+      if (event.detail?.userId === user.id) setSyncState(navigator.onLine ? 'loading' : 'offline')
+    }
+    window.addEventListener('radyar:progress-sync-state', handleSyncState)
+    window.addEventListener('radyar:progress-pending', handlePending)
+    const handleRead = event => {
+      if (event.detail?.userId !== user.id) return
+      setReadArticles(event.detail.articles)
+      setLearningHistory(event.detail.history)
+    }
+    window.addEventListener('radyar:read-updated', handleRead)
+    return () => {
+      window.removeEventListener('radyar:progress-synced', handleSynced)
+      window.removeEventListener('radyar:progress-sync-state', handleSyncState)
+      window.removeEventListener('radyar:progress-pending', handlePending)
+      window.removeEventListener('radyar:read-updated', handleRead)
+    }
   }, [user])
 
   const progress = useMemo(() => getProgressData(readArticles), [readArticles])
@@ -689,12 +709,13 @@ export default function ProfilPage() {
 
   async function handleResetLearning() {
     if (!window.confirm(t.resetLearningAsk)) return
-    try { localStorage.removeItem('radyar_read_articles') } catch {}
-    try { localStorage.removeItem('radyar_learning_history') } catch {}
+    let payload
+    try { payload = resetReadProgress(user.id) } catch { setSyncState('error'); return }
     setReadArticles({})
     setLearningHistory([])
     setResetMsg(t.resetDone)
-    try { await fetch('/api/progress/read-status', { method: 'DELETE' }) } catch {}
+    const saved = await persistProgressWrite('read:reset', '/api/progress/read-status', payload, user.id)
+    setSyncState(saved ? 'synced' : navigator.onLine ? 'error' : 'offline')
   }
 
   function selectView(nextView) {
@@ -774,7 +795,15 @@ export default function ProfilPage() {
           </aside>
 
           <main className={styles.dashboardMain}>
-            {view === 'overview' ? (
+            <div className={styles.syncStatus} data-state={syncState}>
+              <span role="status" aria-live="polite"><i aria-hidden="true" />{syncState === 'loading' ? t.syncLoading : syncState === 'synced' ? t.syncSuccess : syncState === 'offline' ? t.syncOffline : t.syncError}</span>
+              {(syncState === 'error' || syncState === 'offline') && <button type="button" className={styles.outlineBtn} onClick={() => setSyncAttempt(attempt => attempt + 1)}>{t.retry}</button>}
+            </div>
+            {(!progressReady || progressOwner !== user.id) && view === 'overview' ? (
+              <div className={styles.progressLoading} role="status" aria-label={t.loadingProgress}>
+                <p>{t.loadingProgress}</p><div className={styles.loadingHero} /><div className={styles.loadingMetrics}><span /><span /><span /></div><div className={styles.loadingPlan} />
+              </div>
+            ) : view === 'overview' ? (
               <>
                 <section className={styles.progressHero}>
                   <div className={styles.heroCopy}>

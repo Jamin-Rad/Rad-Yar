@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { usePathname } from 'next/navigation'
+import { useAuth } from '@clerk/nextjs'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { useLehrModeActive } from '@/hooks/useLehrModeActive'
 import styles from './LessonEnhancer.module.css'
@@ -151,11 +152,12 @@ function ConceptExplorer({ items, copy, sectionTitle }) {
 
 export default function LessonEnhancer() {
   const pathname = usePathname()
+  const { isLoaded, userId } = useAuth()
   const { lang } = useLanguage()
   const copy = COPY[lang] || COPY.de
   const enabled = isLessonPath(pathname)
   const lehrMode = useLehrModeActive()
-  const storageKey = `radyar-lesson-sections:${pathname}`
+  const storageKey = `radyar-lesson-sections:${pathname}:${userId || 'anon'}`
   const [sections, setSections] = useState([])
   const [activeId, setActiveId] = useState('')
   const [readIds, setReadIds] = useState(() => new Set())
@@ -226,7 +228,7 @@ export default function LessonEnhancer() {
   }, [])
 
   useEffect(() => {
-    if (!enabled) return
+    if (!enabled || !isLoaded) return
     try {
       const saved = JSON.parse(window.localStorage.getItem(storageKey) || '[]')
       setReadIds(new Set(Array.isArray(saved) ? saved : []))
@@ -234,12 +236,12 @@ export default function LessonEnhancer() {
       setReadIds(new Set())
     }
     setLoadedKey(storageKey)
-  }, [enabled, storageKey])
+  }, [enabled, isLoaded, storageKey])
 
   useEffect(() => {
-    if (!enabled || loadedKey !== storageKey) return
+    if (!enabled || !isLoaded || loadedKey !== storageKey) return
     window.localStorage.setItem(storageKey, JSON.stringify(Array.from(readIds)))
-  }, [enabled, loadedKey, readIds, storageKey])
+  }, [enabled, isLoaded, loadedKey, readIds, storageKey])
 
   const discover = useCallback(() => {
     if (!enabled) return

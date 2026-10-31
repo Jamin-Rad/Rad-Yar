@@ -1,86 +1,84 @@
-const PENDING_KEY = 'radyar_pending_progress'
+import { getUserCacheToken, isUserCacheActive, isUserCacheCurrent } from './progressCache.js'
 
-function loadPending() {
-  if (typeof window === 'undefined') return {}
-  try {
-    return JSON.parse(localStorage.getItem(PENDING_KEY) || '{}')
-  } catch {
-    return {}
-  }
-}
+const legacyKey = id => `radyar_pending_progress_${id || 'anon'}`
+const prefix = id => `radyar_pending_v2:${encodeURIComponent(id || 'anon')}:`
+const inFlight = new Map()
+function json(key, fallback) { try { return JSON.parse(localStorage.getItem(key) || JSON.stringify(fallback)) } catch { return fallback } }
 
-function savePending(pending) {
-  if (typeof window === 'undefined') return
-  try {
-    if (Object.keys(pending).length === 0) localStorage.removeItem(PENDING_KEY)
-    else localStorage.setItem(PENDING_KEY, JSON.stringify(pending))
-  } catch {}
-}
-
-export function queueProgressWrite(key, endpoint, payload) {
-  const pending = loadPending()
-  pending[key] = { endpoint, payload, queuedAt: new Date().toISOString() }
-  savePending(pending)
-}
-
-async function progressError(response) {
-  let message = `Progress write failed: ${response.status}`
-  try {
-    const body = await response.json()
-    if (body?.error) message = `${message} (${body.error})`
-  } catch {}
-  return new Error(message)
-}
-
-export async function persistProgressWrite(key, endpoint, payload, canSync) {
-  if (!canSync) {
-    queueProgressWrite(key, endpoint, payload)
-    return false
-  }
-
-  try {
-    const response = await fetch(endpoint, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload),
-    })
-    if (!response.ok) throw await progressError(response)
-
-    const pending = loadPending()
-    delete pending[key]
-    savePending(pending)
-    return true
-  } catch (error) {
-    console.error('Fortschritt konnte nicht gespeichert werden:', error.message)
-    queueProgressWrite(key, endpoint, payload)
-    return false
-  }
-}
-
-export async function flushPendingProgress() {
-  const pending = loadPending()
-  const entries = Object.entries(pending)
-  if (entries.length === 0) return true
-
-  let allSucceeded = true
-  for (const [key, item] of entries) {
-    try {
-      const response = await fetch(item.endpoint, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(item.payload),
-      })
-      if (!response.ok) {
-        console.error('Ausstehender Fortschritt konnte nicht gespeichert werden:', (await progressError(response)).message)
-        allSucceeded = false
-        continue
-      }
-      delete pending[key]
-    } catch (error) {
-      console.error('Ausstehender Fortschritt konnte nicht gespeichert werden:', error.message)
-      allSucceeded = false
+export function pendingProgressEntries(userId) {
+  const result = []
+  // Only the explicitly owned old queue is migrated; unowned legacy data is
+  // never attributed to whichever account signs in next.
+  for (const [key, item] of Object.entries(json(legacyKey(userId), {}))) result.push({ storageKey: legacyKey(userId), legacySlot: key, item })
+  for (let i = 0; i < localStorage.length; i++) {
+    const key = localStorage.key(i)
+    if (key?.startsWith(prefix(userId))) {
+      const item = json(key, null)
+      if (item) result.push({ storageKey: key, item })
     }
   }
-  savePending(pending)
-  return allSucceeded
+  return result.sort((a,b) => String(a.item.queuedAt).localeCompare(String(b.item.queuedAt)))
+}
+
+export function queueProgressWrite(key, endpoint, payload, userId) {
+  const id = crypto.randomUUID()
+  // One immutable key per write: simultaneous tabs cannot overwrite another
+  // tab's queue via read/modify/write of a shared JSON object.
+  localStorage.setItem(`${prefix(userId)}${id}`, JSON.stringify({ key, endpoint, payload, id, queuedAt: new Date().toISOString() }))
+  window.dispatchEvent(new CustomEvent('radyar:progress-pending', { detail: { userId } }))
+}
+
+export function discardPendingProgress(userId, key) {
+  for (const entry of pendingProgressEntries(userId)) {
+    if ((entry.legacySlot ?? entry.item.key) !== key) continue
+    if (entry.legacySlot === undefined) localStorage.removeItem(entry.storageKey)
+    else {
+      const latest = json(entry.storageKey, {})
+      delete latest[entry.legacySlot]
+      if (Object.keys(latest).length) localStorage.setItem(entry.storageKey, JSON.stringify(latest))
+      else localStorage.removeItem(entry.storageKey)
+    }
+  }
+}
+
+export async function persistProgressWrite(key, endpoint, payload, userId) {
+  try { queueProgressWrite(key, endpoint, payload, userId) } catch { return false }
+  return flushPendingProgress(userId)
+}
+
+export async function flushPendingProgress(userId) {
+  if (!userId || !isUserCacheActive(userId)) return false
+  const flightKey = `${userId}:${getUserCacheToken(userId)}`
+  if (!inFlight.has(flightKey)) inFlight.set(flightKey, drain(userId).finally(() => inFlight.delete(flightKey)))
+  return inFlight.get(flightKey)
+}
+
+async function drain(userId) {
+  const token = getUserCacheToken(userId)
+  while (isUserCacheCurrent(userId, token)) {
+    const entry = pendingProgressEntries(userId)[0]
+    if (!entry) return true
+    const { storageKey, legacySlot, item } = entry
+    try {
+      let payload = item.payload
+      if (item.endpoint === '/api/progress/read-status' && !payload.reset) {
+        const dated = row => ({ ...row, changedAt: row.changedAt || row.learnedAt || item.queuedAt, changeId: row.changeId || item.id || '' })
+        payload = Array.isArray(payload.bulk) ? { ...payload, bulk: payload.bulk.map(dated) } : dated(payload)
+      }
+      const response = await fetch(item.endpoint, {
+        method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Radyar-User-Id': userId },
+        body: JSON.stringify(payload), keepalive: true,
+      })
+      if (!response.ok) return false
+      if (legacySlot !== undefined) {
+        const latest = json(storageKey, {})
+        if (JSON.stringify(latest[legacySlot]) === JSON.stringify(item)) {
+          delete latest[legacySlot]
+          if (Object.keys(latest).length) localStorage.setItem(storageKey,JSON.stringify(latest))
+          else localStorage.removeItem(storageKey)
+        }
+      } else if (JSON.stringify(json(storageKey,null)) === JSON.stringify(item)) localStorage.removeItem(storageKey)
+    } catch { return false }
+  }
+  return false
 }

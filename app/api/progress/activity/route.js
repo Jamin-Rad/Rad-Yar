@@ -1,51 +1,51 @@
 import { NextResponse } from 'next/server'
 import { isSupabaseAdminConfigured, supabaseAdmin } from '@/lib/supabase/server'
-import { getSignedInUserIdentity } from '@/lib/userIdentity'
-import { getActivityCategory } from '@/utils/activityCategory'
+import { getLearningUserIdentity } from '@/lib/userIdentity'
+import { ACTIVITY_CATEGORIES, activityDay, activityRow, maxActivityDay, aggregateActivity } from '@/utils/learningActivity'
 
-export async function GET() {
-  const identity = await getSignedInUserIdentity()
-  if (!identity) {
-    return NextResponse.json({ error: 'Nicht angemeldet' }, { status: 401 })
+const unavailable=()=>NextResponse.json({error:'Aktivität nicht verfügbar'},{status:503})
+const validCount=value=>Number.isSafeInteger(value)&&value>=0&&value<=86400*365
+const validDay=value=>typeof value==='string'&&/^\d{4}-\d{2}-\d{2}$/.test(value)&&Number.isFinite(Date.parse(value))&&new Date(value).toISOString().slice(0,10)===value&&Date.parse(value)<=Date.now()+86400000
+function validActivity(value){return value&&typeof value==='object'&&validCount(value.visits??0)&&ACTIVITY_CATEGORIES.every(key=>validCount(value.categories?.[key]??0))&&validCount(value.activeSeconds??0)}
+
+export async function GET(request){
+ const identity=await getLearningUserIdentity(request)
+ if(!identity)return NextResponse.json({error:'Nicht angemeldet'},{status:401})
+ if(identity.storageUnavailable||!isSupabaseAdminConfigured||!supabaseAdmin)return unavailable()
+ async function all(table,order){
+  const rows=[]
+  for(let offset=0;;offset+=1000){
+   let query=supabaseAdmin.from(table).select('*').in('user_id',identity.lookupIds).order('user_id')
+   for(const key of order)query=query.order(key)
+   const {data,error}=await query.range(offset,offset+999)
+   if(error)throw error
+   rows.push(...data);if(data.length<1000)return rows
   }
-  if (!isSupabaseAdminConfigured || !supabaseAdmin) {
-    return NextResponse.json({ error: 'Speicher nicht verfügbar' }, { status: 503 })
-  }
+ }
+ try{
+  const [rows,baselines]=await Promise.all([all('learning_activity_sources',['source_id','day']),all('learning_activity_baselines',['day'])])
+  const legacyDays={}
+  for(const row of baselines)legacyDays[row.day]=maxActivityDay(legacyDays[row.day],activityRow(row))
+  // The same source can exist under a historical and canonical owner key.
+  const bySource=new Map()
+  for(const row of rows){const next=activityRow(row),key=`${next.sourceId}:${next.day}`;bySource.set(key,{...next,...maxActivityDay(bySource.get(key),next)})}
+  const sources=[...bySource.values()]
+  return NextResponse.json({version:2,legacyDays,sources,days:aggregateActivity(legacyDays,sources)},{headers:{'Cache-Control':'no-store'}})
+ }catch{return unavailable()}
+}
 
-  const [{ data: daily, error: dailyError }, { data: pages, error: pagesError }] = await Promise.all([
-    supabaseAdmin
-      .from('analytics_daily')
-      .select('day,active_seconds,visits')
-      .in('user_id', identity.lookupIds)
-      .order('day', { ascending: true }),
-    supabaseAdmin
-      .from('analytics_pages')
-      .select('day,path,active_seconds')
-      .in('user_id', identity.lookupIds)
-      .order('day', { ascending: true }),
-  ])
-
-  if (dailyError || pagesError) {
-    console.error('Aktivitätsdaten konnten nicht geladen werden:', dailyError?.message || pagesError?.message)
-    return NextResponse.json({ error: 'Aktivität nicht verfügbar' }, { status: 503 })
-  }
-
-  // Aggregate by day (user may have multiple visitor_ids per day)
-  const byDay = {}
-  for (const row of daily || []) {
-    const key = row.day
-    if (!byDay[key]) byDay[key] = { activeSeconds: 0, visits: 0, categories: {} }
-    byDay[key].activeSeconds += Number(row.active_seconds || 0)
-    byDay[key].visits += Number(row.visits || 0)
-  }
-
-  for (const row of pages || []) {
-    const key = row.day
-    if (!byDay[key]) byDay[key] = { activeSeconds: 0, visits: 0, categories: {} }
-    const category = getActivityCategory(row.path)
-    const seconds = Number(row.active_seconds || 0)
-    byDay[key].categories[category] = Number(byDay[key].categories[category] || 0) + seconds
-  }
-
-  return NextResponse.json({ days: byDay })
+export async function POST(request){
+ const identity=await getLearningUserIdentity(request)
+ if(!identity)return NextResponse.json({error:'Nicht angemeldet'},{status:401})
+ if(identity.storageUnavailable||!isSupabaseAdminConfigured||!supabaseAdmin)return unavailable()
+ let payload
+ try{payload=await request.json()}catch{return NextResponse.json({error:'Ungültige Anfrage'},{status:400})}
+ if(!payload||typeof payload!=='object'||Array.isArray(payload))return NextResponse.json({error:'Ungültige Anfrage'},{status:400})
+ const streams=payload.streams,legacy=payload.legacyDays||{}
+ if(!Array.isArray(streams)||streams.length>200||!legacy||Array.isArray(legacy)||typeof legacy!=='object'||Object.keys(legacy).length>5000||
+  streams.some(row=>!row||typeof row.sourceId!=='string'||! /^[a-zA-Z0-9_-]{12,80}$/.test(row.sourceId)||!validDay(row.day)||!validActivity(row)||activityDay(row).activeSeconds>86400)||
+  Object.entries(legacy).some(([day,value])=>!validDay(day)||!validActivity(value))){return NextResponse.json({error:'Ungültige Anfrage'},{status:400})}
+ const {error}=await supabaseAdmin.rpc('sync_learning_activity',{p_user_id:identity.ownerId,p_streams:streams,p_legacy_days:legacy})
+ if(error)return unavailable()
+ return NextResponse.json({ok:true})
 }

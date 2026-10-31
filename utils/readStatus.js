@@ -2,28 +2,19 @@
 // (Server gewinnt bei "gelesen" – für geräteübergreifende Konsistenz).
 // Wird von useLessonReadStatus und der Lernpfad-Übersicht (/lernen/[fach]) genutzt.
 
-export async function pullReadStatusFromServer() {
-  const res = await fetch('/api/progress/read-status')
+import { activateUserCache, getUserCacheToken, isUserCacheCurrent } from './progressCache.js'
+import { mergeReadState } from './readProgressStore.js'
+
+export async function pullReadStatusFromServer(userId) {
+  if (!userId) return null
+  activateUserCache(userId)
+  const token = getUserCacheToken(userId)
+  const res = await fetch('/api/progress/read-status', {
+    cache: 'no-store', headers: { 'X-Radyar-User-Id': userId },
+  })
   if (!res.ok) return null
   const data = await res.json()
+  if (!isUserCacheCurrent(userId, token)) return null
 
-  const articles = JSON.parse(localStorage.getItem('radyar_read_articles') || '{}')
-  for (const [id, read] of Object.entries(data.read || {})) {
-    if (read) articles[id] = 1
-    else delete articles[id]
-  }
-  localStorage.setItem('radyar_read_articles', JSON.stringify(articles))
-
-  const history = JSON.parse(localStorage.getItem('radyar_learning_history') || '[]')
-  const historyById = new Map(history.map(item => [item.topicId, item]))
-  for (const [id, read] of Object.entries(data.read || {})) {
-    if (!read) historyById.delete(id)
-  }
-  for (const item of data.history || []) {
-    historyById.set(item.topicId, item)
-  }
-  const mergedHistory = [...historyById.values()]
-  localStorage.setItem('radyar_learning_history', JSON.stringify(mergedHistory))
-
-  return { articles, history: mergedHistory }
+  return mergeReadState(userId, data)
 }

@@ -12,6 +12,7 @@ export function getActivityCategory(pathname = '/') {
     path.startsWith('/technik') ||
     path.startsWith('/thorax') ||
     path.startsWith('/wirbelsaeule')
+    || path.startsWith('/mamma/bildgebung')
   ) return 'lessons'
 
   return 'other'
