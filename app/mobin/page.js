@@ -9,11 +9,18 @@ const pages = [
     tilt: '-2.5deg',
     speed: '6.8s',
   },
+  {
+    href: '/mobin/mathepruefung',
+    title: 'Matheprüfung',
+    meta: 'Klasse 6 · Üben, testen & Fehler verstehen',
+    tilt: '1.5deg',
+    speed: '7.6s',
+  },
 ]
 
 export const metadata = {
   title: 'Mobin',
-  description: 'Mobins privater Tagesplan für Ziele, Routinen und Fortschritt.',
+  description: 'Mobins privater Bereich für Tagesplan, Ziele und die Vorbereitung auf die Matheprüfung.',
 }
 
 export default function MobinPage() {
@@ -39,7 +46,7 @@ export default function MobinPage() {
             </p>
           </div>
 
-          <nav className={styles.buttonField} aria-label="Mobin Seiten">
+          <nav className={`${styles.buttonField} ${styles.homePages}`} aria-label="Mobin Seiten">
             {pages.map((page) => (
               <Link
                 className={styles.glassButton}

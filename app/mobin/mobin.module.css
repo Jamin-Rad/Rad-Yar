@@ -169,6 +169,10 @@
   width: min(620px, 100%);
 }
 
+.homePages {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
 .glassButton {
   min-height: 154px;
   position: relative;
