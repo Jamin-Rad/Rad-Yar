@@ -1,3 +1,4 @@
+import { PROSTATE_QUESTIONS } from './prostateCancer'
 // ── RADYAR QUESTION BANK ────────────────────────────────────────────────────
 
 import { CONTRAST_QUESTIONS, CONTRAST_TOPICS } from './contrastMedia'
@@ -564,6 +565,7 @@ export const QUESTION_BANK = {
     ...MOYAMOYA_QUESTIONS.de,
     ...HMA_QUESTIONS.de,
     ...CAA_QUESTIONS.de,
+    ...PROSTATE_QUESTIONS.de,
     ...CADASIL_QUESTIONS.de,
     ...DVA_QUESTIONS.de,
     ...KAVERNOM_QUESTIONS.de,
@@ -1931,6 +1933,7 @@ export const QUESTION_BANK = {
     ...MOYAMOYA_QUESTIONS.en,
     ...HMA_QUESTIONS.en,
     ...CAA_QUESTIONS.en,
+    ...PROSTATE_QUESTIONS.en,
     ...CADASIL_QUESTIONS.en,
     ...DVA_QUESTIONS.en,
     ...KAVERNOM_QUESTIONS.en,
@@ -3293,6 +3296,7 @@ export const QUESTION_BANK = {
     ...MOYAMOYA_QUESTIONS.fa,
     ...HMA_QUESTIONS.fa,
     ...CAA_QUESTIONS.fa,
+    ...PROSTATE_QUESTIONS.fa,
     ...CADASIL_QUESTIONS.fa,
     ...DVA_QUESTIONS.fa,
     ...KAVERNOM_QUESTIONS.fa,
@@ -4638,6 +4642,11 @@ export const QUESTION_BANK = {
 }
 
 export const MCQ_TOPIC_GROUPS = [
+  {
+    fachId: 'becken-m', kapitelId: 'becken-m-prostata',
+    title: { de: '3. Prostata', en: '3. Prostate', fa: '۳. پروستات' },
+    topics: [{ id: 'prostatakarzinom', title: { de: 'Prostatakarzinom', en: 'Prostate carcinoma', fa: 'کارسینوم پروستات' } }],
+  },
   {
     fachId: 'mamma',
     kapitelId: 'mamma-bildgebung',

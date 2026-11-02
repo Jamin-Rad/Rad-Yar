@@ -1,0 +1,37 @@
+.trainer { margin-block: 28px; padding: 24px; background: var(--canvas); border: 1px solid var(--line); border-radius: 10px; }
+.eyebrow { color: var(--teal); font-size: 11px; font-weight: 800; }
+.trainer h3 { font-size: 22px; margin-block: 8px; }
+.trainer > p:not(.eyebrow),.diagram p { color: var(--copy); font-size: 13px; line-height: 1.9; }
+.controls { display: grid; grid-template-columns: repeat(auto-fit,minmax(150px,1fr)); gap: 16px; margin-block: 22px; }
+.controls label { display: grid; gap: 7px; color: var(--copy); font-size: 12px; font-weight: 700; }
+.controls select { width: 100%; min-width: 0; min-height: 44px; padding: 9px; background: var(--paper); color: var(--ink); border: 1px solid var(--line); border-radius: 6px; }
+.criteria { display: grid; grid-template-columns: auto minmax(0,1fr); gap: 10px 14px; font-size: 13px; line-height: 1.9; margin-block: 18px; }
+.criteria dt { color: var(--teal); font-weight: 800; }
+.criteria dd { color: var(--copy); margin: 0; }
+.result { padding: 20px; background: var(--teal-soft); border-inline-start: 3px solid var(--teal); border-radius: 6px; }
+.result > span { color: var(--teal); font-size: 16px; display: inline-block; }
+.result b { font-size: 35px; margin-inline-start: 8px; }
+.result p { color: var(--copy); font-size: 13px; line-height: 1.9; margin-top: 8px; }
+.diagram { margin-block: 28px; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+.diagram svg { display: block; width: 100% !important; height: auto !important; max-height: 360px; background: #f7f6f8; }
+.diagram text { font-family: system-ui,sans-serif; font-size: 18px; font-weight: 600; fill: #403445; }
+.diagram figcaption { padding: 20px; }
+.diagram strong { color: var(--ink); font-size: 14px; }
+.examples { margin-block: 28px; }
+.examples h3 { font-size: 20px; margin-bottom: 14px; }
+.imageChoices { border: 0; padding: 0; display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 18px; }
+.imageChoices legend { color: var(--copy); font-size: 12px; margin-bottom: 10px; }
+.imageChoices label { display: flex; gap: 8px; align-items: center; min-height: 44px; color: var(--ink); font-size: 13px; cursor: pointer; }
+.imageChoices input { accent-color: var(--teal); }
+.imageButton { display: block; width: 100%; padding: 0; background: #050505; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+.imageButton img { display: block; max-width: 100%; width: 100%; height: auto; }
+.imageButton span { display: block; padding: 12px; background: var(--plum-soft); color: var(--plum); font-size: 13px; }
+.examples figcaption { color: var(--copy); font-size: 12px; line-height: 1.9; padding-top: 14px; }
+.examples figcaption p { margin-block: 6px; }
+.examples figcaption a { color: var(--teal); text-decoration: underline; display: inline-block; }
+.imageDialog { width: min(1000px, 95vw); max-height: 94dvh; margin: auto; border: 1px solid var(--line); border-radius: 10px; background: var(--paper); color: var(--ink); padding: 16px; }
+.imageDialog::backdrop { background: #000c; }
+.imageDialog > button { position: sticky; top: 0; display: block; margin-inline-start: auto; margin-bottom: 12px; min-height: 44px; padding: 8px 16px; border: 1px solid var(--line); background: var(--paper); color: var(--ink); border-radius: 6px; }
+.imageDialog img { display: block; width: 100%; height: auto; }
+.imageDialog p { font-size: 13px; padding-top: 12px; line-height: 1.9; }
+@media(max-width:760px) { .trainer { padding: 17px 14px; } .controls { grid-template-columns: 1fr; } }
