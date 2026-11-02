@@ -51,6 +51,7 @@ export default function InvestmentWorkspace() {
   const store = useFamilyPortfolio(setToast)
   const state = store.state
   const ledger = useTransactionLedger(!!state)
+  useEffect(()=>{if(ledger.loaded&&store.cloud&&!store.offline&&!store.conflict)store.synchronizeLedger(ledger.transactions)},[ledger.loaded,ledger.transactions,store.cloud,store.offline,store.conflict])
   const marketData = useMarketData(state)
   const visit = useVisitChanges(state, marketData.markets)
   const account = state?.accounts.find(a => a.id === accountId)

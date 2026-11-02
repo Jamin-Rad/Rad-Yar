@@ -12,7 +12,7 @@ export function DataWorkspace({state,store,onBackup,download,onAccount,onLedger}
  function csv(){
   const safe=(value,column)=>{let output=String(value??'');if(!(column>=4&&column<=6&&/^-?\d+(\.\d+)?$/.test(output)))output=output.replace(/^[=+@-]/,"'$&");return '"'+output.replaceAll('"','""')+'"'}
   const rows=[['Account','Asset','Symbol','ISIN','Quantity','Recorded value EUR','Displayed gain EUR','As of','Source']]
-  for(const account of state.accounts)for(const p of account.positions)rows.push([account.owner,p.name,p.symbol,p.isin,p.quantity,(p.valueCents/100).toFixed(2),p.gainCents==null?'':(p.gainCents/100).toFixed(2),p.asOf||account.snapshotDate||'',p.source])
+  for(const account of state.accounts)for(const p of account.positions)rows.push([account.owner,p.name,p.symbol,p.isin,p.quantity,p.valueCents==null?'':(p.valueCents/100).toFixed(2),p.gainCents==null?'':(p.gainCents/100).toFixed(2),p.asOf||account.snapshotDate||'',p.source])
   download('\ufeff'+rows.map(row=>row.map(safe).join(',')).join('\r\n'),'family-holdings.csv','text/csv')
  }
  return <div className={styles.sectionStack}><section className={styles.panel}><div className={styles.panelHead}><div><h2>پشتیبان و محل ذخیره</h2><p>{store.cloud?'ذخیره خودکار خصوصی سرور فعال است؛ نسخه مرورگر هم حفظ می‌شود.':'نسخه مرورگر در دسترس است؛ برای همگام‌سازی، اتصال سرور را بررسی کن.'}</p></div><Icon name="source" size={24}/></div>

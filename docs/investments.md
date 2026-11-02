@@ -57,3 +57,13 @@ FIFO uses the full earlier history, before display filters, with purchase costs 
 CSV exports cover all filtered rows, independently of screen pagination, with formula-like text escaped. The page also supports full-detail printing/PDF via the browser, a selected Markdown summary/ChatGPT context and a JSON ledger backup. Source CSVs are archived separately from that JSON export. Portfolio JSON and ledger JSON are different backups and are labeled accordingly.
 
 Run `node --test lib/investments/*.test.mjs`; fixtures are synthetic, including PostgreSQL-engine tests for atomicity, duplicates, conflicts, ownership and denied client access. Actual import totals must also reconcile independently against the original CSVs and the saved database records.
+
+## Automatic holdings from transactions
+
+The main account holdings are now materialized from the ledger, separately from tax FIFO. BUY/SELL and signed corporate share movements (including cancellations, ISIN replacements and worthless removals) update the share balance. Fully closed, supported balances leave the active list. Matching a previous row by exact ISIN or a unique name preserves its stable ID, decisions and market mappings; ambiguous matches and unmatched manual rows are preserved for review.
+
+Missing opening inventory, unsupported share events or a dividend quantity inconsistent with the available balance suppress automatic replacement of that instrument's count. Dividend shares refer to an earlier record date and are never added to the inventory or treated as current holdings. If a prior position exists, its count stays with `prior-record` provenance; otherwise it remains in the reconciliation list. Quantity confidence and cost-basis confidence are separate, so a corporate-action quantity can be reconstructed while its tax basis remains unknown.
+
+GET derives holdings from the authenticated ledger. PUT reapplies the ledger before an optimistic save, so stale or empty portfolio drafts cannot erase imported holdings. The client reconciles after a successful ledger load or import and saves the materialized positions through the existing revision checks. Ledger failure returns an error rather than an empty replacement. Original journals, snapshots, reviews, XTB records and the transaction ledger remain intact.
+
+New or quantity-changed positions have unknown market value rather than zero or purchase cost. The UI shows the priced portion and unpriced row counts; cost is a separate column. A dated broker-value snapshot requires every row's value. Asset quantities and snapshots retain ten decimal places, while the independent XTB execution precision stays at eight.

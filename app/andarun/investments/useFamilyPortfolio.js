@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { choosePortfolioVersion } from '@/lib/investments/sync.mjs'
 import { assertHistoryPreserved, normalizeFamilyState } from '@/lib/investments/family.mjs'
+import { reconcileHoldings } from '@/lib/investments/holdings.mjs'
 
 export const FAMILY_STORAGE_KEY = 'andarun:investments:family:v3'
 const OLD_KEYS = ['andarun:investments:family:v2', 'andarun:investments:personal:v1']
@@ -85,6 +86,7 @@ export default function useFamilyPortfolio(notify) {
       if (!response.ok) { if (response.status === 409) setConflict(true); throw new Error(result.error || 'ذخیره سرور انجام نشد؛ نسخه مرورگر حفظ شد.') }
       revisionRef.current = result.revision; setRevision(result.revision); setOffline(false); setError('')
       const pending = version.current !== requestVersion
+      if(!pending&&result.state){current.current=normalizeFamilyState(result.state);setState(current.current)}
       cache(current.current, result.revision, pending, false)
       if (!pending) setDirty(false)
     } catch (err) { setError(err.message); notify(err.message) }
@@ -107,5 +109,10 @@ export default function useFamilyPortfolio(notify) {
     cache(remoteRef.current.state, remoteRef.current.revision, false, false)
     window.location.reload()
   }
-  return { state, change, changeAccount, save, revision, cloud, dirty, saving, error, storageError, conflict, offline, discardDraft }
+  function synchronizeLedger(transactions) {
+    if(!current.current||!cloudRef.current||offline||conflict)return
+    const next=normalizeFamilyState(reconcileHoldings(current.current,transactions))
+    if(JSON.stringify(next)!==JSON.stringify(current.current))change(next)
+  }
+  return { state, change, changeAccount, save, revision, cloud, dirty, saving, error, storageError, conflict, offline, discardDraft, synchronizeLedger }
 }

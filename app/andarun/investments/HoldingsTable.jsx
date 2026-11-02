@@ -10,6 +10,7 @@ export default function HoldingsTable({ positions, totalCents, onEdit, onOpen, m
   const [category, setCategory] = useState('all')
   const [sort, setSort] = useState({ key: 'valueCents', direction: -1 })
   const rows = useMemo(() => positions.filter(p => (category === 'all' || category === p.category) && `${p.name} ${p.symbol || ''} ${p.isin || ''} ${p.note}`.toLocaleLowerCase().includes(query.trim().toLocaleLowerCase())).sort((a, b) => {
+    if (a[sort.key] === null && b[sort.key] === null) return 0
     if (a[sort.key] === null) return 1
     if (b[sort.key] === null) return -1
     return (sort.key === 'name' ? a.name.localeCompare(b.name) : Number(a[sort.key]) - Number(b[sort.key])) * sort.direction
@@ -26,13 +27,14 @@ export default function HoldingsTable({ positions, totalCents, onEdit, onOpen, m
     </div>
     <div className={styles.tableScroll}>
       <table className={styles.table}>
-        <thead><tr>{columns.map(([key, label]) => <th key={key} scope="col" aria-sort={sort.key === key ? sort.direction === 1 ? 'ascending' : 'descending' : 'none'}><button onClick={() => changeSort(key)} type="button">{label}<Icon name="sort" size={12} /></button></th>)}<th scope="col">سهم از سبد ثبت‌شده</th><th scope="col">وضعیت داده</th><th scope="col"><span className={styles.srOnly}>ویرایش</span></th></tr></thead>
+        <thead><tr>{columns.map(([key, label]) => <th key={key} scope="col" aria-sort={sort.key === key ? sort.direction === 1 ? 'ascending' : 'descending' : 'none'}><button onClick={() => changeSort(key)} type="button">{label}<Icon name="sort" size={12} /></button></th>)}<th scope="col">هزینه خرید باقی‌مانده</th><th scope="col">سهم از بخش دارای قیمت</th><th scope="col">وضعیت داده</th><th scope="col"><span className={styles.srOnly}>ویرایش</span></th></tr></thead>
         <tbody>{rows.map(p => <tr key={p.id}>
           <td><button type="button" className={styles.assetName} onClick={() => onOpen(p)}><span className={styles.monogram} style={{ '--asset-color': CATEGORY_COLORS[p.category] }} lang="en">{p.name.split(/[^a-zA-Z0-9]+/).filter(Boolean).slice(0, 2).map(word => word[0]).join('').toUpperCase()}</span><span><strong lang="en" dir="ltr">{p.name}</strong><small>{p.symbol ? <bdi lang="en">{p.symbol}</bdi> : CATEGORY_LABELS[p.category]}{p.isin ? <> · <bdi lang="en">{p.isin}</bdi></> : null}</small>{p.marketConfirmed && markets[p.marketSymbol] && <small className={styles.marketInline}><bdi>{new Intl.NumberFormat('de-DE',{maximumSignificantDigits:8}).format(markets[p.marketSymbol].quote.price)} {markets[p.marketSymbol].quote.currency} · {markets[p.marketSymbol].quote.asOf.slice(0,10)}</bdi></small>}</span></button></td>
-          <td><span lang="en" dir="ltr" className={styles.numeric}>{new Intl.NumberFormat('de-DE', { maximumFractionDigits: 8 }).format(Number(p.quantity))}</span></td>
+          <td><span lang="en" dir="ltr" className={styles.numeric}>{new Intl.NumberFormat('de-DE', { maximumFractionDigits: 10 }).format(Number(p.quantity))}</span>{p.ledger&&<small className={styles.holdingSource}>{p.ledger.quantityStatus==='transactions'?'محاسبه از تراکنش‌ها':'تعداد قبلی؛ نیازمند تطبیق'}</small>}</td>
           <td><strong lang="en" dir="ltr" className={styles.numeric}>{money(p.valueCents)}</strong></td>
           <td>{p.gainCents == null ? <span className={styles.unknown}>رقم ناقص</span> : <span lang="en" dir="ltr" className={`${styles.numeric} ${p.gainCents >= 0 ? styles.positive : styles.negative}`}>{signedMoney(p.gainCents)}</span>}</td>
-          <td><div className={styles.weight}><span>{percent(totalCents ? p.valueCents / totalCents * 100 : 0)}</span><span className={styles.weightTrack}><span style={{ width: `${totalCents ? p.valueCents / totalCents * 100 : 0}%` }} /></span></div></td>
+          <td><bdi>{money(p.ledger?.costCents)}</bdi><small className={styles.holdingSource}>{p.ledger?.costCents!=null?'FIFO با هزینه خرید؛ قیمت روز نیست':'بهای خرید کافی نیست'}</small></td>
+          <td>{p.valueCents==null||!totalCents?<span>—</span>:<div className={styles.weight}><span>{percent(p.valueCents / totalCents * 100)}</span><span className={styles.weightTrack}><span style={{ width: `${p.valueCents / totalCents * 100}%` }} /></span></div>}</td>
           <td><button className={`${styles.quality} ${p.verified ? styles.qualityVerified : ''}`} type="button" onClick={() => onEdit(p)}><Icon name={p.verified ? 'check' : 'edit'} size={12} />{p.verified ? 'تأییدشده' : 'نیازمند تأیید'}</button></td>
           <td><button type="button" className={styles.iconButton} onClick={() => onEdit(p)} aria-label={`ویرایش ${p.name}`}><Icon name="edit" size={16} /></button></td>
         </tr>)}</tbody>
