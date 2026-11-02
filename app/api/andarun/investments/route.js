@@ -45,6 +45,18 @@ export async function PUT(request) {
   ])
   if (stored.error||ledger.error||!Array.isArray(ledger.data?.transactions)) return json({ error: 'ذخیره ابری در دسترس نیست؛ تغییرات در این مرورگر باقی مانده‌اند.' }, 503)
   if ((stored.data?.updated_at || null) !== body.revision) return json({ error: 'نسخه سرور تغییر کرده است؛ ابتدا پشتیبان بگیر و آخرین نسخه را بارگذاری کن.' }, 409)
+  // Older open tabs omit these fields. Preserve stored cash anchors and price
+  // consent unless a current client explicitly supplies a value (including null).
+  if (stored.data) {
+    state = {...state, settings:{...state.settings, isinPricesEnabled:Object.hasOwn(body.state.settings || {},'isinPricesEnabled') ? state.settings.isinPricesEnabled : stored.data.state.settings?.isinPricesEnabled === true}, accounts:state.accounts.map(account=>{
+      const raw=body.state.accounts.find(a=>a.id===account.id), previous=stored.data.state.accounts.find(a=>a.id===account.id)
+      const positions=account.positions.map(position=>{
+        const submitted=raw?.positions.find(p=>p.id===position.id), anchor=previous?.positions.find(p=>p.id===position.id)
+        return submitted?.ledger && !Object.hasOwn(submitted.ledger,'quantityConfirmed') && anchor?.ledger ? {...position,quantity:anchor.quantity,ledger:anchor.ledger} : position
+      })
+      return {...account,positions,...(raw && !Object.hasOwn(raw,'cashOpening') && !Object.hasOwn(raw,'cashCheckpoint') ? {cashOpening:previous?.cashOpening || null,cashCheckpoint:previous?.cashCheckpoint || null} : {})}
+    })}
+  }
   try { state=normalizeFamilyState(reconcileHoldings(state,ledger.data.transactions));if (stored.data) assertHistoryPreserved(stored.data.state, state) }
   catch (error) { return json({ error: error.message }, 409) }
   const revision = new Date().toISOString()

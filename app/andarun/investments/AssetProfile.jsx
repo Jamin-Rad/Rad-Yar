@@ -1,7 +1,7 @@
 'use client'
 import {useEffect,useState} from 'react'
 import {money,signedMoney,percent,number} from '@/lib/investments/portfolio.mjs'
-import {marketImpact} from '@/lib/investments/market.mjs'
+import {marketImpact,marketKey,marketForPosition,marketTrusted} from '@/lib/investments/market.mjs'
 import {DECISION_ACTIONS} from '@/lib/investments/family.mjs'
 import Icon from './InvestmentIcon'
 import TradingViewChart from './TradingViewChart'
@@ -9,6 +9,7 @@ import styles from './investments.module.css'
 const price=value=>new Intl.NumberFormat('de-DE',{maximumSignificantDigits:10}).format(value)
 function PriceChart({market}){
  const [days,setDays]=useState(90)
+ if(market.history.length<2)return <p className={styles.muted}>برای قیمت مرجع این منبع، تاریخچه هم‌بورس و هم‌ارز در دسترس نیست؛ نمودار مستقل TradingView در پایین قرار دارد.</p>
  const end=market.history.at(-1)?.date
  const start=new Date(end).getTime()-days*86400000
  const rows=market.history.filter(p=>new Date(p.date).getTime()>=start)
@@ -27,9 +28,10 @@ function MarketConnection({position,marketData,onConnect}){
  <form onSubmit={connect}><label className={styles.field}>نماد دقیق در منبع بازار<input value={symbol} onChange={e=>setSymbol(e.target.value)} dir="ltr" required maxLength={35} placeholder="مثلاً نماد تأییدشده در Yahoo Finance"/></label><label className={styles.checkbox}><input type="checkbox" required/>این نماد را با ابزار، کلاس سهم و بورس مورد نظرم تطبیق داده‌ام؛ ارز منبع ممکن است با حساب یورویی متفاوت باشد.</label><button className={styles.primaryButton} type="submit" disabled={busy}>{busy?'در حال بررسی…':'اتصال قیمت و تاریخچه'}</button></form>{error&&<p role="alert" className={styles.error}>{error}</p>}</div>
 }
 export default function AssetProfile({account,position,state,marketData,onEdit,onConnect,onChartConnect,onDecision,onOpenDecision,onEvent,onReport}){
- const [connectOpen,setConnectOpen]=useState(!position?.marketConfirmed)
- const market=marketData.markets[position?.marketSymbol]
- useEffect(()=>{if(position?.marketSymbol)marketData.load(position.marketSymbol,position.name)},[position?.marketSymbol,position?.name,marketData.load])
+ const [connectOpen,setConnectOpen]=useState(!position?.marketConfirmed&&!state.settings?.isinPricesEnabled)
+ const key=position ? marketKey(position) : ''
+ const market=position ? marketForPosition(position,marketData.markets) : null
+ useEffect(()=>{if(key&&(position?.marketConfirmed||state.settings?.isinPricesEnabled))marketData.load(key,position.name)},[key,position?.marketConfirmed,position?.name,state.settings?.isinPricesEnabled,marketData.load])
  if(!position)return <section className={styles.panel}><h2>این دارایی در فهرست فعلی حساب نیست.</h2><p>تصمیم‌ها و ثبت‌های تاریخی قبلی همچنان در دفتر تصمیم‌ها حفظ شده‌اند.</p></section>
  const week=marketImpact(position,market,7),month=marketImpact(position,market,30)
  const related=state.decisions.filter(d=>d.accountId===account.id&&d.positionId===position.id)
@@ -44,8 +46,8 @@ export default function AssetProfile({account,position,state,marketData,onEdit,o
  </section>
  <section className={styles.panel}><div className={styles.panelHead}><div><h2>قیمت و تاریخچه بازار</h2><p>قیمت مرجع مستقل از گزارش بروکر است؛ ارزش‌های ثبت‌شده را تغییر نمی‌دهد.</p></div><button className={styles.textButton} type="button" onClick={()=>setConnectOpen(v=>!v)}>{connectOpen?'بستن تنظیم اتصال':'تغییر نماد بازار'}</button></div>
  {connectOpen&&<MarketConnection position={position} marketData={marketData} onConnect={symbol=>{onConnect(symbol);setConnectOpen(false)}}/>}
- {marketData.loading[position.marketSymbol]&&<p role="status" className={styles.muted}>دریافت داده واقعی بازار…</p>}{marketData.errors[position.marketSymbol]&&<p role="alert" className={styles.error}>{marketData.errors[position.marketSymbol]}</p>}
- {market&&<><p className={styles.marketSource}><a href={market.quote.sourceUrl} target="_blank" rel="noreferrer">{market.quote.source}</a> · <bdi>{market.quote.symbol} · {market.quote.exchange}</bdi> · زمان قیمت: <time><bdi>{new Date(market.quote.asOf).toLocaleString('de-DE',{timeZone:'Europe/Berlin'})}</bdi></time> · {market.quote.delay}</p>{!position.marketConfirmed&&<p className={styles.error}>تطبیق نماد تأیید نشده؛ در برآورد اثر سبد استفاده نمی‌شود.</p>}<PriceChart market={market}/><div className={styles.periodGrid}>{[['هفته',week],['ماه',month]].map(([label,value])=><div key={label}><h3>تغییر {label}</h3><strong><bdi>{value?percent(value.nativePercent):'—'}</bdi></strong><p>اثر برآوردی با تعداد فعلی: <bdi>{signedMoney(value?.deltaCents)}</bdi></p>{value&&<small><bdi>{value.previous} تا {value.latest}</bdi> · تاریخ تبدیل ارز: <bdi>{value.fxDate||'نامشخص'}</bdi></small>}</div>)}</div><p className={styles.footnote}>این برآورد، بازده واقعی حساب نیست؛ تعداد فعلی ثابت فرض شده و جریان پول، معاملات، سود نقدی و هزینه‌ها لحاظ نشده‌اند. در بازه دارای تجزیه سهم، برآورد نمایش داده نمی‌شود. تبدیل ارز با نرخ مرجع Frankfurter انجام می‌شود؛ برای نبود نرخ، مبلغ یورویی ساخته نمی‌شود.</p><button type="button" className={styles.secondaryButton} disabled={marketData.loading[position.marketSymbol]} onClick={()=>marketData.load(position.marketSymbol,position.name,true)}>بررسی دوباره داده بازار</button></>}
+ {marketData.loading[key]&&<p role="status" className={styles.muted}>دریافت داده واقعی بازار…</p>}{marketData.errors[key]&&<p role="alert" className={styles.error}>{marketData.errors[key]}</p>}
+ {market&&<><p className={styles.marketSource}><a href={market.quote.sourceUrl} target="_blank" rel="noreferrer">{market.quote.source}</a> · <bdi>{market.quote.symbol} · {market.quote.exchange}</bdi> · زمان قیمت: <time><bdi>{new Date(market.quote.asOf).toLocaleString('de-DE',{timeZone:'Europe/Berlin'})}</bdi></time> · {market.quote.delay}</p>{!marketTrusted(position,market)&&<p className={styles.error}>تطبیق نماد تأیید نشده؛ در برآورد اثر سبد استفاده نمی‌شود.</p>}<PriceChart market={market}/><div className={styles.periodGrid}>{[['هفته',week],['ماه',month]].map(([label,value])=><div key={label}><h3>تغییر {label}</h3><strong><bdi>{value?percent(value.nativePercent):'—'}</bdi></strong><p>اثر برآوردی با تعداد فعلی: <bdi>{signedMoney(value?.deltaCents)}</bdi></p>{value&&<small><bdi>{value.previous} تا {value.latest}</bdi> · تاریخ تبدیل ارز: <bdi>{value.fxDate||'نامشخص'}</bdi></small>}</div>)}</div><p className={styles.footnote}>این برآورد، بازده واقعی حساب نیست؛ تعداد فعلی ثابت فرض شده و جریان پول، معاملات، سود نقدی و هزینه‌ها لحاظ نشده‌اند. در بازه دارای تجزیه سهم، برآورد نمایش داده نمی‌شود. تبدیل ارز با نرخ مرجع Frankfurter انجام می‌شود؛ برای نبود نرخ، مبلغ یورویی ساخته نمی‌شود.</p><button type="button" className={styles.secondaryButton} disabled={marketData.loading[key]} onClick={()=>marketData.load(key,position.name,true)}>بررسی دوباره داده بازار</button></>}
  </section>
  <TradingViewChart position={position} onConnect={onChartConnect}/>
  <div className={styles.overviewBottom}><section className={styles.panel}><div className={styles.panelHead}><h2>خبرهای مرتبط</h2><Icon name="report"/></div>{market?.news?.length?<div className={styles.newsList}>{market.news.map(n=><article key={n.url}><a href={n.url} target="_blank" rel="noreferrer" dir="auto">{n.title}</a><small><bdi>{n.publisher} · {n.date.slice(0,10)}</bdi>{n.important?' · واژه‌های رویداد مهم؛ نیازمند بررسی':''}</small></article>)}</div>:<p className={styles.muted}>{market?.newsError||'پس از اتصال نماد، خبرهای عمومی مرتبط دریافت می‌شوند؛ نبود خبر به معنی نبود ریسک نیست.'}</p>}<p className={styles.footnote}>منبع گردآوری: Google News RSS. ارتباط و اهمیت عنوان‌ها باید از متن خبر و اطلاعیه رسمی شرکت بررسی شود.</p></section>

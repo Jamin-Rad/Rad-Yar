@@ -1,7 +1,7 @@
 'use client'
 import {useState} from 'react'
 import {reviewQueue,nextReviewDate,todayBerlin} from '@/lib/investments/family.mjs'
-import {attentionQueue} from '@/lib/investments/market.mjs'
+import {marketForPosition,marketTrusted,attentionQueue} from '@/lib/investments/market.mjs'
 import {signedMoney,percent,number} from '@/lib/investments/portfolio.mjs'
 import {decisionDue} from './DecisionWorkspace'
 import Icon from './InvestmentIcon'
@@ -14,7 +14,7 @@ export default function WeeklyReview({state,marketData,onTrade,onDecision,onAsse
  const plans=[...reviewQueue(state).map(t=>({id:t.id,name:t.plan.name,owner:'XTB',date:nextReviewDate(t),kind:'trade'})),...state.decisions.filter(d=>decisionDue(d)&&decisionDue(d)<=today).map(d=>({id:d.id,name:d.name,owner:state.accounts.find(a=>a.id===d.accountId)?.owner,date:decisionDue(d),kind:'decision'}))].sort((a,b)=>a.date.localeCompare(b.date))
  const upcoming=state.events.filter(e=>!e.done&&e.date<=new Date(Date.now()+30*86400000).toISOString().slice(0,10)).sort((a,b)=>a.date.localeCompare(b.date))
  const count=state.accounts.flatMap(a=>a.positions).length
- const matched=state.accounts.flatMap(a=>a.positions).filter(p=>p.marketConfirmed&&marketData.markets[p.marketSymbol]).length
+ const matched=state.accounts.flatMap(a=>a.positions).filter(p=>marketTrusted(p,marketForPosition(p,marketData.markets))).length
  return <div className={styles.sectionStack}>
  <section className={styles.panel}><div className={styles.panelHead}><div><h2>این هفته کجا را دقیق‌تر بررسی کنم؟</h2><p>{number(matched)} از {number(count)} دارایی با داده بازار دریافت‌شده · {number(plans.length)} تصمیم سررسیدشده</p></div><button type="button" className={styles.primaryButton} onClick={onReport}>آماده‌سازی مرور در ChatGPT</button></div><p className={styles.footnote}>اولویت‌ها براساس قواعد قابل مشاهده‌اند؛ سیگنال خرید یا فروش نیستند. اثر پولی، برآوردی با تعداد فعلی است. دارایی بدون نماد تطبیق‌شده در رتبه‌بندی حرکت بازار وارد نمی‌شود.</p>
  <div className={styles.weeklyFilters}><div className={styles.segmented}>{[['all','همه'],['movement','حرکت بازار'],['news','خبر مهم احتمالی'],['quality','تکمیل اطلاعات']].map(([key,label])=><button key={key} type="button" aria-pressed={filter===key} onClick={()=>setFilter(key)}>{label}</button>)}</div><label className={styles.field}>حساب<select value={owner} onChange={e=>setOwner(e.target.value)}><option value="all">همه حساب‌ها</option>{state.accounts.map(a=><option key={a.id} value={a.id}>{a.owner}</option>)}</select></label></div>

@@ -1,5 +1,6 @@
 'use client'
 import { useCallback, useEffect, useRef, useState } from 'react'
+import { marketKey } from '@/lib/investments/market.mjs'
 
 export default function useMarketData(state) {
   const [markets, setMarkets] = useState({})
@@ -15,7 +16,7 @@ export default function useMarketData(state) {
     const task = (async () => {
       if (mounted.current) setLoading(v => ({ ...v, [symbol]: true }))
       try {
-        const params = new URLSearchParams({ symbol, name: name || symbol })
+        const params = new URLSearchParams(symbol.startsWith('ISIN:') ? {isin:symbol.slice(5)} : { symbol, name: name || symbol })
         if (force) params.set('refresh', '1')
         const response = await fetch(`/api/andarun/investments/market?${params}`, { cache: 'no-store' })
         const result = await response.json()
@@ -29,7 +30,7 @@ export default function useMarketData(state) {
     pending.current.set(symbol, task)
     return task
   }, [])
-  const keys = JSON.stringify(state?.accounts.flatMap(a => a.positions.filter(p => p.marketConfirmed && p.marketSymbol).map(p => ({ symbol: p.marketSymbol, name: p.name }))) || [])
+  const keys = JSON.stringify(state?.accounts.flatMap(a => a.positions.filter(p => (p.marketConfirmed && p.marketSymbol) || state.settings?.isinPricesEnabled && p.isin).map(p => ({ symbol: marketKey(p), name: p.name }))) || [])
   const refreshAll = useCallback(async () => {
     if (batchLock.current) return
     const rows = [...new Map(JSON.parse(keys).map(row => [row.symbol, row])).values()]

@@ -26,6 +26,7 @@ export default function PositionDialog({ position, account, onClose, onSave, onD
         category: data.get('category'), valueCents: parseMoney(data.get('value'),true),
         gainCents: parseMoney(data.get('gain'), true), note: String(data.get('note')).trim(),
         verified: data.get('verified') === 'on', source: 'manual',
+        ...(position?.ledger ? {ledger:{...position.ledger,quantityConfirmed:data.get('quantityConfirmed')==='on'}} : {}),
         tradingViewSymbol: position?.isin === String(data.get('isin') || '').trim().toUpperCase() && position?.name === String(data.get('name')).trim() ? position.tradingViewSymbol : '',
         marketConfirmed: position?.marketConfirmed === true && String(data.get('isin') || '').trim().toUpperCase() === position.isin && String(data.get('name')).trim() === position.name,
       })
@@ -45,6 +46,7 @@ export default function PositionDialog({ position, account, onClose, onSave, onD
         <label className={styles.field}>سود یا زیان نمایش‌داده‌شده (€)<input name="gain" defaultValue={position?.gainCents != null ? (position.gainCents / 100).toFixed(2) : ''} inputMode="text" dir="ltr" placeholder="نامشخص: خالی بگذار" /><small>زیان با علامت منفی؛ مثل ‎−166.30</small></label>
       </div>
       <label className={styles.field}>تاریخ ارزش این ردیف، اگر مشخص است<input type="date" name="asOf" defaultValue={position?.asOf || account.snapshotDate || ''} max={new Date().toLocaleDateString('en-CA',{timeZone:'Europe/Berlin'})} dir="ltr" /></label>
+      {position?.ledger?.quantityStatus==='prior-record'&&<label className={styles.checkbox}><input type="checkbox" name="quantityConfirmed" defaultChecked={position.ledger.quantityConfirmed===true}/>فقط تعداد فعلی سهم را با حساب بروکر تطبیق دادم؛ تراکنش‌های بعدی از همین تعداد ادامه پیدا کنند.</label>}
       <label className={styles.field}>یادداشت و ابهام منبع<textarea name="note" rows={3} maxLength={1000} defaultValue={position?.note || ''} /></label>
       <label className={styles.checkbox}><input type="checkbox" name="verified" defaultChecked={position?.verified || false} />نام، تعداد و مبالغ این ردیف را با سند اصلی بررسی کرده‌ام.</label>
       {error && <p className={styles.error} role="alert">{error}</p>}

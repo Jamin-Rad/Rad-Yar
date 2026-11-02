@@ -1,4 +1,5 @@
 'use client'
+import {marketKey,marketForPosition,marketTrusted} from '@/lib/investments/market.mjs'
 import { useState } from 'react'
 import { visitChanges } from '@/lib/investments/visit.mjs'
 import { reviewQueue } from '@/lib/investments/family.mjs'
@@ -13,7 +14,7 @@ export default function VisitChanges({ state, markets, visit, onAsset, onWeekly 
   const result = visitChanges(state, markets, visit.previous)
   const due = reviewQueue(state).length + state.decisions.filter(d => decisionDue(d) && decisionDue(d) <= todayBerlin()).length
   const newsCount = new Set(result.rows.flatMap(r => r.news.map(n => n.url))).size
-  const unavailableNews = new Set(state.accounts.flatMap(a => a.positions.filter(p => p.marketConfirmed && markets[p.marketSymbol]?.newsError).map(p => p.marketSymbol))).size
+  const unavailableNews = new Set(state.accounts.flatMap(a => a.positions.filter(p => marketTrusted(p,marketForPosition(p,markets)) && marketForPosition(p,markets)?.newsError).map(p => marketKey(p)))).size
   const rows = result.rows.slice(0, expanded ? result.rows.length : 5)
   return <section className={`${styles.panel} ${styles.visitPanel}`} aria-labelledby="visit-changes-title">
     <div className={styles.panelHead}><div><h2 id="visit-changes-title">از آخرین بازدید چه تغییر کرده؟</h2><p>{visit.previous ? <>مبنا: <bdi>{new Date(visit.previous.reviewedAt).toLocaleString('de-DE', { timeZone: 'Europe/Berlin' })}</bdi> · همین مرورگر</> : 'اولین بازدید در این مرورگر؛ پس از دریافت قیمت‌ها، مبنا را ثبت کن.'}</p></div><button type="button" className={styles.secondaryButton} onClick={visit.markReviewed}>{visit.previous ? 'بررسی شد؛ ثبت مبنای جدید' : 'ثبت مبنای اولین بررسی'}</button></div>

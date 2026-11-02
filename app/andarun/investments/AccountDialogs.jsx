@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { createSnapshot, todayBerlin, normalizeFamilyState, MAX_BACKUP_BYTES } from '@/lib/investments/family.mjs'
-import { number, money } from '@/lib/investments/portfolio.mjs'
+import { number, money, parseMoney } from '@/lib/investments/portfolio.mjs'
 import { JournalDialog } from './TradeDialogs'
 import styles from './investments.module.css'
 
@@ -22,18 +22,26 @@ export function SnapshotDialog({ account, onClose, onSave }) {
   </JournalDialog>
 }
 
-export function AccountDetailsDialog({ account, onClose, onSave }) {
+export function AccountDetailsDialog({ account, firstDate, onClose, onSave }) {
   const [error, setError] = useState('')
+  const [cashMode, setCashMode] = useState(account.cashCheckpoint ? 'checkpoint' : 'opening')
   function submit(event) {
     event.preventDefault()
     const form = new FormData(event.currentTarget)
-    try { onSave({ ...account, snapshotDate: form.get('snapshotDate') || null, complete: form.get('complete') === 'on' }) }
+    try {
+      const value = String(form.get('cashAmount')).trim()
+      const cashOpening = cashMode==='opening' && value ? {date:form.get('cashOpeningDate'),balanceCents:parseMoney(value)} : undefined
+      const cashCheckpoint = cashMode==='checkpoint' ? value ? {asOf:new Date().toISOString(),balanceCents:parseMoney(value)} : account.cashCheckpoint : undefined
+      onSave({ ...account, snapshotDate: form.get('snapshotDate') || null, complete: form.get('complete') === 'on', cashOpening, cashCheckpoint })
+    }
     catch (err) { setError(err.message) }
   }
   return <JournalDialog title={`مشخصات حساب ${account.owner}`} description="مالکیت حساب ثابت است؛ تاریخ و پوشش اطلاعات را مشخص کن." onClose={onClose} onSubmit={submit} error={error}>
     <label className={styles.field}>تاریخ داده‌های فعلی، اگر مشخص است<input type="date" name="snapshotDate" max={todayBerlin()} defaultValue={account.snapshotDate || ''} dir="ltr" /></label>
     <label className={styles.checkbox}><input type="checkbox" name="complete" defaultChecked={account.complete} />همه دارایی‌های این حساب وارد شده‌اند.</label>
-    <p className={styles.footnote}>وجه نقد، واریز و برداشت و معاملات بسته‌شده در ارزش فعلی دارایی‌ها محاسبه نمی‌شوند.</p>
+    <label className={styles.field}>روش تعیین مبنای نقد<select value={cashMode} onChange={e=>setCashMode(e.target.value)}><option value="opening">مانده قبل از شروع تراکنش‌ها</option><option value="checkpoint">مانده واقعی نقد همین حالا</option></select></label>
+    <label className={styles.field}>{cashMode==='checkpoint'?'موجودی Cash که همین حالا در بروکر می‌بینی (€)':'مانده نقد قبل از تراکنش‌های تاریخ مبنا (€)'}<input key={cashMode} name="cashAmount" inputMode="decimal" dir="ltr" defaultValue={cashMode==='opening'&&account.cashOpening ? (account.cashOpening.balanceCents/100).toFixed(2) : ''} placeholder={cashMode==='checkpoint'?'مانده واقعی فعلی؛ تعداد و ارزش سهام را وارد نکن':'اگر حساب از صفر شروع شده، 0 وارد کن'}/></label>
+    {cashMode==='opening'?<><label className={styles.field}>تاریخ مبنای مانده افتتاحیه<input type="date" name="cashOpeningDate" max={todayBerlin()} defaultValue={account.cashOpening?.date || firstDate || ''} dir="ltr"/></label><p className={styles.footnote}>مانده بالا قبل از همه تراکنش‌های همین تاریخ است؛ تراکنش‌های این تاریخ و بعد به آن اضافه می‌شوند.</p></>:<><p className={styles.footnote}>عدد فعلی، مبنای نقد در زمان ثبت می‌شود. فقط تراکنش‌های پس از این لحظه به آن اضافه می‌شوند؛ ورود دوباره تراکنش‌های قدیمی، مانده را دوباره تغییر نمی‌دهد.</p>{account.cashCheckpoint&&<p className={styles.footnote}>مبنای ثبت‌شده: <bdi>{money(account.cashCheckpoint.balanceCents)} · {new Date(account.cashCheckpoint.asOf).toLocaleString('de-DE',{timeZone:'Europe/Berlin'})}</bdi>. خالی‌گذاشتن فیلد، همین مبنا را حفظ می‌کند.</p>}</>}
   </JournalDialog>
 }
 

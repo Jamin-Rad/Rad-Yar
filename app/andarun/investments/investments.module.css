@@ -658,3 +658,16 @@
  .ledgerPrintArea thead { display:table-header-group; }
  .ledgerPrintArea tr { break-inside:avoid; }
 }
+
+.balancePanel { background:#19232b; border:1px solid #405663; border-radius:9px; padding:20px; margin-bottom:20px; }
+.balanceGrid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:20px; }
+.balanceGrid > div { min-width:0; border-left:1px solid #405361; padding-left:15px; }
+.balanceGrid > div:last-child { border:0; }
+.balanceGrid span,.balanceGrid small { display:block; color:#aabdc9; font-size:12px; }
+.balanceGrid strong { display:block; font-size:25px; margin:9px 0; overflow-wrap:anywhere; }
+.balanceGrid small { margin-top:6px; line-height:1.8 !important; }
+.balanceGrid button { margin-top:8px; }
+@media(max-width:680px) { .balancePanel { padding:17px; } .balancePanel .panelHead { flex-wrap:wrap; } .balanceGrid { grid-template-columns:1fr; gap:17px; } .balanceGrid > div { border-left:0; padding:0 0 15px; border-bottom:1px solid #405361; } }
+
+.previousBroker { margin-bottom:16px; }
+.previousBroker > summary { color:#b9c8d4; font-size:12px; cursor:pointer; padding:10px 0; }

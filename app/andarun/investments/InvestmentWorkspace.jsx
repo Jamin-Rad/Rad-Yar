@@ -63,6 +63,9 @@ export default function InvestmentWorkspace() {
 
   function navigate(next) { setSection(next); window.scrollTo({ top: 0, behavior: 'instant' }) }
   function openLedger(id = 'all', view = 'transactions') { setLedgerAccountId(id); setLedgerView(view); navigate('ledger') }
+  function enableIsinPrices() {
+    if (window.confirm('برای دریافت قیمت، فقط شناسه عمومی ISIN ابزارهای سبد به Onvista ارسال می‌شود؛ نام صاحبان حساب، تعداد و مبالغ ارسال نمی‌شوند. دریافت خودکار فعال شود؟')) store.change({...state,settings:{...state.settings,isinPricesEnabled:true}})
+  }
   function openAccount(id, add = false) { setAccountId(id); navigate('account'); if (add) setDialog({ kind: 'position', accountId: id, position: null }) }
   function newTrade() { setTradeId(null); setCreateTrade(true); navigate('trades') }
   function openTrade(id) { setTradeId(id); setCreateTrade(false); navigate('trades') }
@@ -100,7 +103,7 @@ export default function InvestmentWorkspace() {
         {section!=='accounts'&&<MarketRefresh marketData={marketData} state={state} />}
         {section==='weekly' && <VisitChanges state={state} markets={marketData.markets} visit={visit} onAsset={openAsset} onWeekly={() => navigate('weekly')} />}
         {section === 'ledger' && <LedgerWorkspace key={`${ledgerAccountId}:${ledgerView}`} ledger={ledger} initialAccount={ledgerAccountId} initialView={ledgerView} download={download} notify={setToast}/>}
-        {section === 'accounts' && <FamilyOverview onAsset={openAsset} ledger={ledger} onLedger={openLedger} state={state} onAccount={openAccount} onNewTrade={newTrade} onTrades={() => navigate('trades')} onReview={openTrade} onWeekly={() => navigate('weekly')} />}
+        {section === 'accounts' && <FamilyOverview onEnablePrices={enableIsinPrices} marketData={marketData} onAsset={openAsset} ledger={ledger} onLedger={openLedger} state={state} onAccount={openAccount} onNewTrade={newTrade} onTrades={() => navigate('trades')} onReview={openTrade} onWeekly={() => navigate('weekly')} />}
         {section === 'account' && <AccountWorkspace key={accountId} account={account} ledger={ledger} onLedger={() => openLedger(accountId)} markets={marketData.markets} onEdit={position => setDialog({ kind: 'position', accountId, position })} onAdd={() => setDialog({ kind: 'position', accountId, position: null })} onDetails={() => setDialog({ kind: 'details', accountId })} onSnapshot={() => setDialog({ kind: 'snapshot', accountId })} onReport={() => openReport(accountId)} onOpen={p => openAsset(accountId,p.id)} onImport={() => setDialog({kind:'csv',accountId})} />}
         {section === 'trades' && <TradeWorkspace trades={state.trades} settings={state.settings} onSettings={settings => store.change({...state,settings})} dueCount={due.length} selectedId={tradeId} onSelect={setTradeId} createOpen={createTrade} onCreateOpen={setCreateTrade} onCreate={addTrade} onExecution={kind => setDialog({ kind: 'execution', executionKind: kind })} onReview={() => setDialog({ kind: 'review' })} />}
         {section === 'journal' && <DecisionJournal state={state} onSelect={openTrade} onDecision={openDecision} onNew={() => newDecision()} onNewTrade={newTrade} />}
@@ -118,7 +121,7 @@ export default function InvestmentWorkspace() {
     {dialog?.kind === 'decisionReview' && decision && <TradeReviewDialog investment trade={decision} onClose={()=>setDialog(null)} onSave={value=>{store.change({...state,decisions:state.decisions.map(d=>d.id===decisionId?{...d,reviews:[...d.reviews,value]}:d)});setDialog(null);setToast('بازبینی به پرونده تصمیم اضافه شد.')}} />}
     {dialog?.kind === 'position' && <PositionDialog account={state.accounts.find(a => a.id === dialog.accountId)} position={dialog.position} onClose={() => setDialog(null)} onSave={savePosition} onDelete={id => { store.changeAccount(dialog.accountId, a => ({ ...a, positions: a.positions.filter(p => p.id !== id) })); setDialog(null); setToast('دارایی از همین حساب حذف شد؛ ثبت‌های تاریخی حفظ شدند.') }} />}
     {dialog?.kind === 'snapshot' && <SnapshotDialog account={account} onClose={() => setDialog(null)} onSave={snapshot => { store.changeAccount(accountId, a => ({ ...a, snapshotDate: snapshot.asOf, positions: a.positions.map(p=>({...p,asOf:snapshot.asOf})), snapshots: [...a.snapshots, snapshot] })); setDialog(null); setToast('وضعیت تاریخ‌دار حساب ثبت شد.') }} />}
-    {dialog?.kind === 'details' && <AccountDetailsDialog account={account} onClose={() => setDialog(null)} onSave={next => { store.changeAccount(accountId, () => next); setDialog(null); setToast('مشخصات همین حساب به‌روز شد.') }} />}
+    {dialog?.kind === 'details' && <AccountDetailsDialog firstDate={ledger.transactions.filter(t=>t.accountId===account.id).map(t=>t.date).sort()[0]} account={account} onClose={() => setDialog(null)} onSave={next => { store.changeAccount(accountId, () => next); setDialog(null); setToast('مشخصات همین حساب به‌روز شد.') }} />}
     {dialog?.kind === 'execution' && trade && <ExecutionDialog trade={trade} kind={dialog.executionKind} onClose={() => setDialog(null)} onSave={event => addJournalRecord('executions', event)} />}
     {dialog?.kind === 'review' && trade && <TradeReviewDialog trade={trade} onClose={() => setDialog(null)} onSave={event => addJournalRecord('reviews', event)} />}
     {dialog?.kind === 'backup' && <BackupDialog state={state} onClose={() => setDialog(null)} download={download} onImport={next => { store.change(next); setDialog(null); setToast('پشتیبان با حفظ سابقه وارد شد.') }} />}
