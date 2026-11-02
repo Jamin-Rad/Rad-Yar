@@ -36,6 +36,8 @@ export default function AndarunNav() {
   if (matchesPath(pathname, '/andarun/test')) return null
   // The English app provides its own navigation and return link.
   if (matchesPath(pathname, '/andarun/english')) return null
+  // Investments has its own complete navigation and return link.
+  if (matchesPath(pathname, '/andarun/investments')) return null
   const isHome = pathname === '/andarun'
   const section = SECTIONS.find(([prefix]) => matchesPath(pathname, prefix))?.[1]
   const surface = SURFACES.find(([prefix]) => matchesPath(pathname, prefix))?.[1] || 'home'

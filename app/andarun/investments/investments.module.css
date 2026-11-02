@@ -573,6 +573,56 @@
 .ledgerDetail p { font-size:13px; line-height:2; margin-bottom:10px; overflow-wrap:anywhere; }
 .ledgerDetail h3 { margin:20px 0 10px; }
 .holdingSource { display:block; font-size:11px; color:#afbdca; line-height:1.9; max-width:180px; margin-top:5px; }
+.mobileBack { display:none; }
+.overviewMode { background:#f5f7fa; color:#142335; color-scheme:light; }
+.overviewMode .sidebar { width:216px; background:#102033; border-color:#263b4d; padding:25px 16px; }
+.overviewMode .brand { color:#f4f8fb; font-size:29px; padding-inline:10px; }
+.overviewMode .brand span { display:none; }
+.overviewMode .navigation { margin-top:30px; gap:5px; }
+.overviewMode .navigation button { color:#e5edf3; font-size:13px; min-height:44px; padding:10px; }
+.overviewMode .navigation .navActive { background:#245c53; color:white; box-shadow:none; border-radius:8px; }
+.overviewMode .sidebarAccounts { border-color:#456070; margin-top:25px; padding-top:20px; gap:9px; }
+.overviewMode .sidebarAccounts > p { display:none; }
+.overviewMode .sidebarAccounts button { color:#e2eaf2; }
+.overviewMode .sidebarAccounts button > span { width:27px; height:27px; background:none; border:1px solid #6b8293; color:#e1eaf1; font-size:12px; }
+.overviewMode .xtbNav { color:#d9e4ed; }
+.overviewMode .sidebarBottom { border-color:#456070; }
+.overviewMode .content { margin-right:216px; max-width:1800px; padding:28px 30px 20px; }
+.overviewMode .header { margin-bottom:25px; align-items:flex-start; }
+.overviewMode .header h1 { color:#142335; font-size:30px; font-weight:850; }
+.overviewMode .header p { color:#647081; font-size:13px; margin-top:4px; }
+.overviewMode .headerActions { direction:ltr; padding-top:7px; }
+.overviewMode .headerActions button { direction:rtl; }
+.overviewMode .primaryButton { background:#176b56; color:white !important; border-color:#176b56; min-height:41px; padding-inline:16px; }
+.overviewMode .primaryButton:hover { background:#237e66; }
+.overviewMode .outlineButton { background:#fff; border-color:#397e6c; color:#142335; min-height:41px; }
+.overviewMode .secondaryButton { background:#e8edf2; color:#22374b; border-color:#b9c8d5; }
+.overviewMode .footer { color:#647081; padding-top:17px; }
+.overviewMode .footer button,.overviewMode .footer > span { color:#647081; }
+.overviewMode .loading h2 { color:#142335; }
+.overviewMode .conflictNotice { background:#fff5e6; border-color:#d4a761; color:#79551d; }
+@media(max-width:1000px) {
+ .overviewMode .sidebar { position:static; width:100%; padding:10px 20px; border:0; flex-direction:row; align-items:center; gap:18px; }
+ .overviewMode .brand { font-size:24px; }
+ .overviewMode .mobileBack { display:inline-flex; align-items:center; min-height:44px; color:#176b56; }
+ .overviewMode .navigation { display:flex; flex-wrap:nowrap; overflow-x:auto; margin-top:0; padding-bottom:3px; flex:1; }
+ .overviewMode .navigation button { white-space:nowrap; min-height:38px; font-size:12px; padding:7px 12px; }
+ .overviewMode .sidebarAccounts,.overviewMode .sidebarBottom,.overviewMode .xtbNav { display:none; }
+ .overviewMode .content { margin-right:0; padding:24px 22px 20px; }
+ .overviewMode .header h1 { font-size:27px; }
+}
+@media(max-width:680px) {
+ .overviewMode .sidebar { padding-inline:16px; }
+ .overviewMode .sidebar { flex-direction:column; align-items:stretch; gap:8px; }
+ .overviewMode .content { padding:21px 14px 18px; }
+ .overviewMode .header { flex-direction:column; gap:13px; margin-bottom:18px; }
+ .overviewMode .header h1 { font-size:26px; }
+ .overviewMode .header p { font-size:12px; }
+ .overviewMode .headerActions { direction:rtl; width:100%; padding:0; display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+ .overviewMode .headerActions button { font-size:12px !important; }
+ .overviewMode .navigation button { font-size:11px; padding-inline:10px; }
+ .overviewMode .footer > span:nth-child(2) { display:none; }
+}
 .ledgerAccountLink { display:flex; justify-content:space-between; align-items:center; gap:18px; border:1px solid #465340; background:#1c291f; border-radius:8px; padding:16px; margin-bottom:20px; }
 .ledgerAccountLink p { font-size:13px; line-height:1.9; color:#c4d2bf; }
 .ledgerPrintHeading { display:none; }

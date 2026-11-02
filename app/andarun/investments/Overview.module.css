@@ -1,0 +1,75 @@
+.home { --ink:#142335; --muted:#647081; --edge:#dce3e9; --green:#176b56; color:var(--ink); display:grid; gap:20px; }
+.home button { font-family:inherit; font-size:13px; font-weight:650; }
+.home button:focus-visible { outline:3px solid #2d9277; outline-offset:4px; }
+.summary { display:grid; grid-template-columns:1fr 1fr 1.12fr; background:#fff; border:1px solid var(--edge); border-radius:11px; padding:23px 25px; min-height:110px; }
+.summaryMetric { display:flex; align-items:flex-start; gap:13px; padding-inline:20px; border-left:1px solid var(--edge); }
+.summaryMetric > svg { color:var(--green); margin-top:4px; flex-shrink:0; }
+.summaryMetric strong { display:block; font-size:23px; font-weight:800; color:var(--ink); }
+.summaryMetric span { display:block; color:var(--muted); font-size:13px; margin-top:4px; }
+.coverage { padding-inline:20px 0; display:flex; flex-direction:column; align-items:flex-start; justify-content:center; gap:6px; }
+.coverage > div { display:flex; align-items:center; gap:9px; color:#8d5d14; }
+.coverage strong { font-size:16px; font-weight:750; }
+.coverage button,.financialIntro button,.weekly button { display:inline-flex; align-items:center; gap:9px; padding:0; border:0; background:none; color:var(--green); text-decoration:underline; text-underline-offset:5px; }
+.coverage button { margin-inline-start:32px; }
+.coverage button > svg,.financialIntro button > svg,.weekly button > svg,.assetsButton > svg,.attentionRow > svg { transform:rotate(180deg); }
+.mainGrid { display:grid; grid-template-columns:minmax(0,1.85fr) minmax(270px,1fr); gap:20px; align-items:stretch; }
+.accounts,.attention { background:#fff; border:1px solid var(--edge); border-radius:11px; min-width:0; }
+.accounts { padding:21px 20px 15px; }
+.sectionHead { display:flex; align-items:center; justify-content:space-between; gap:12px; padding-bottom:17px; border-bottom:1px solid var(--edge); }
+.sectionHead > svg { color:var(--green); }
+.home .sectionTitle { display:flex; align-items:center; gap:9px; color:var(--ink); font-size:20px; font-weight:800; margin:0; }
+.sectionHead p { color:var(--muted); font-size:12px; margin-top:3px; }
+.accountList { display:grid; }
+.accountRow { display:grid; grid-template-columns:minmax(115px,1.05fr) minmax(140px,1.4fr) 55px minmax(112px,1fr); align-items:center; gap:13px; min-height:92px; padding:14px 0; border-bottom:1px solid #e7ebef; }
+.identity { display:flex; align-items:center; gap:12px; min-width:0; }
+.avatar { display:grid; place-items:center; width:40px; height:40px; flex-shrink:0; background:color-mix(in srgb,var(--avatar-color) 40%,white); color:#243e3a; border-radius:50%; font-weight:750; font-size:17px; }
+.home .owner { color:var(--ink); font-size:17px; font-weight:750; margin:0; }
+.identity span:not(.avatar) { color:var(--muted); font-size:12px; }
+.accountStatus strong { display:flex; align-items:center; gap:7px; color:#245344; font-size:11px; font-weight:650; }
+.accountStatus svg { flex-shrink:0; }
+.accountStatus small,.transactionCount small { display:block; color:var(--muted); font-size:11px; margin-top:4px; }
+.accountStatus.needsReview strong { color:#916016; }
+.transactionCount { text-align:center; }
+.transactionCount strong { font-size:17px; font-weight:750; color:var(--ink); }
+.accountActions { display:flex; flex-direction:column; align-items:stretch; gap:7px; }
+.home .assetsButton { display:flex; align-items:center; justify-content:center; gap:9px; min-height:35px; border:1px solid #397e6c; border-radius:6px; color:var(--green); background:#fff; font-size:12px; padding:6px 10px; }
+.assetsButton:hover { background:#eaf5f1; }
+.home .accountReport { border:0; padding:0; color:var(--green); background:transparent; font-size:11px; text-align:center; }
+.accountReport:hover { text-decoration:underline; }
+.accountFootnote { color:var(--muted); font-size:11px; padding-top:12px; }
+.attention { padding:21px 17px 15px; display:flex; flex-direction:column; }
+.attention .sectionHead > svg { color:#95621a; }
+.attentionList { flex:1; }
+.attentionRow { display:flex; align-items:center; justify-content:space-between; width:100%; gap:15px; padding:18px 0; text-align:right; border:0; border-bottom:1px solid #e7ebef; background:none; color:var(--ink); }
+.attentionRow:hover strong { color:var(--green); }
+.attentionRow strong { display:block; font-size:14px; font-weight:750; }
+.attentionRow small { display:block; color:var(--muted); font-size:11px; font-weight:400; margin-top:6px; }
+.attentionRow > svg { flex-shrink:0; color:var(--green); }
+.quiet { padding:22px 0; color:var(--muted); font-size:13px; }
+.weekly { margin-top:15px; display:flex; align-items:flex-start; gap:12px; padding:16px 14px; background:#ecf6f2; border-radius:8px; color:var(--green); }
+.weekly > svg { flex-shrink:0; margin-top:2px; }
+.home .weeklyTitle { font-size:15px; font-weight:750; color:var(--ink); margin:0; }
+.weekly p { font-size:11px; color:#526c63; margin-top:5px; }
+.weekly button { margin-top:9px; font-size:12px; }
+.financial { display:grid; grid-template-columns:1.6fr repeat(3,1fr); align-items:center; gap:20px; padding:23px 25px; background:#fff; border:1px solid var(--edge); border-radius:11px; }
+.financialIntro .sectionTitle { font-size:18px; }
+.financialIntro .sectionTitle > svg { color:var(--green); }
+.financialIntro p { color:var(--muted); font-size:11px; margin:7px 0 10px; }
+.financeMetric { text-align:center; padding-inline:12px; border-right:1px solid var(--edge); }
+.financeMetric span { display:block; color:#536171; font-size:12px; }
+.financeMetric strong { display:block; color:var(--ink); font-size:23px; font-weight:800; margin-top:9px; white-space:nowrap; font-variant-numeric:tabular-nums; }
+.trading { display:flex; align-items:center; justify-content:space-between; gap:20px; background:#102338; border-radius:10px; padding:21px 25px; color:#fff; }
+.tradingIdentity { display:flex; align-items:center; gap:22px; }
+.tradingIdentity > strong { font-size:32px; font-weight:850; letter-spacing:-1px; padding-left:22px; border-left:1px solid #526475; }
+.home .tradingTitle { font-size:19px; color:#fff; font-weight:750; margin:0; }
+.tradingIdentity p { font-size:12px; color:#b8c6d2; margin-top:3px; }
+.tradingActions { display:flex; align-items:center; gap:12px; }
+.tradeEnter,.tradeNew { display:flex; justify-content:center; align-items:center; gap:9px; padding:10px 15px; border:1px solid #a1b5c4; border-radius:6px; background:none; color:#f3f7fa; min-height:39px; }
+.tradeEnter { background:#176b56; border-color:#176b56; }
+.tradeEnter:hover { background:#237f66; }
+.tradeNew:hover { background:#253d52; }
+@media(min-width:1500px) { .accountActions { flex-direction:row; align-items:center; gap:14px; justify-content:flex-end; } .accountRow { grid-template-columns:1fr 1.5fr 60px 185px; } }
+@media(max-width:1200px) { .mainGrid { grid-template-columns:minmax(0,1fr); } .accountRow { min-height:88px; padding-block:13px; } .summary { min-height:98px; padding-block:18px; } .attention { display:block; } .attentionList { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; } .attentionRow { align-items:flex-start; } .weekly { align-items:center; } .weekly > div { display:flex; align-items:center; flex-wrap:wrap; gap:8px 18px; } .weekly p,.weekly button { margin:0; } .financial { grid-template-columns:repeat(3,1fr); } .financialIntro { grid-column:1/-1; display:flex; align-items:center; justify-content:space-between; gap:12px; } .financialIntro p { margin:0; } .financeMetric { border:0; padding:10px 0 0; } }
+@media(max-width:680px) { .home { gap:14px; } .summary { padding:17px 12px; grid-template-columns:1fr 1fr; gap:16px 0; } .summaryMetric { padding-inline:10px; gap:9px; } .summaryMetric:nth-child(2) { border:0; } .summaryMetric > svg { width:20px; } .summaryMetric strong { font-size:19px; } .summaryMetric span { font-size:11px; } .coverage { grid-column:1/-1; flex-direction:row; align-items:center; justify-content:space-between; padding:13px 10px 0; border-top:1px solid var(--edge); } .coverage strong { font-size:12px; } .coverage > div { gap:7px; } .coverage > div > svg { width:18px; } .coverage button { margin:0; font-size:11px; } .mainGrid { gap:14px; } .accounts { padding:17px 14px 13px; } .home .sectionTitle { font-size:18px; } .accountRow { grid-template-columns:1fr 1fr auto; gap:12px 10px; padding:17px 0; min-height:118px; } .identity { gap:10px; } .avatar { width:36px; height:36px; } .home .owner { font-size:16px; } .accountStatus { grid-row:2; grid-column:1/3; } .accountStatus strong { font-size:11px; } .accountStatus small { display:none; } .transactionCount { grid-row:1; grid-column:2; justify-self:end; text-align:left; } .accountActions { grid-column:3; grid-row:1/3; min-width:88px; } .transactionCount strong { font-size:15px; } .accountFootnote { font-size:10px; } .attentionList { grid-template-columns:1fr; gap:0; } .attentionRow { padding:16px 0; align-items:center; } .attentionRow small { font-size:12px; } .weekly > div { display:block; } .weekly p { margin-top:5px; } .weekly button { margin-top:9px; } .financial { padding:18px 14px; gap:15px 9px; } .financialIntro { display:block; } .financialIntro p { margin:7px 0; } .financeMetric { padding:0; } .financeMetric span { font-size:10px; } .financeMetric strong { font-size:17px; margin-top:6px; } .trading { flex-direction:column; align-items:stretch; padding:20px 17px; } .tradingIdentity { gap:17px; } .tradingIdentity > strong { font-size:28px; padding-left:17px; } .home .tradingTitle { font-size:17px; } .tradingActions { display:grid; grid-template-columns:1fr 1fr; } .home .tradeEnter,.home .tradeNew { font-size:11px; padding:9px; } }
+@media(max-width:680px) { .home .assetsButton,.home .accountReport { min-height:44px; } .accountActions { gap:2px; } .coverage button,.financialIntro button,.weekly button { min-height:36px; } }
+@media(prefers-reduced-motion:no-preference) { .assetsButton,.attentionRow strong,.tradeEnter,.tradeNew { transition:background-color .15s,color .15s; } }
