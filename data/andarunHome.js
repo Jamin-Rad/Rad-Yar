@@ -17,6 +17,7 @@ export const ANDARUN_HOME_GROUPS = [
     { title: 'Test', href: '/andarun/test', icon: 'test' },
   ] },
   { id: 'finanzen', title: 'Finanzen', tone: 'coral', items: [
+    { title: 'Investments', href: '/andarun/investments', icon: 'coins', tone: 'mint' },
     { title: 'Monatliche Ausgaben', href: '/andarun/finanz', icon: 'coins' },
     { title: 'Hilfe für Gefangene', icon: 'people', disabled: true },
     { title: 'Reisen & Urlaub', href: '/andarun/urlaub', icon: 'plane', tone: 'blue' },

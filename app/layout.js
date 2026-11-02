@@ -1,4 +1,4 @@
-import { Fraunces, Inter, Manrope, Newsreader } from 'next/font/google'
+import localFont from 'next/font/local'
 import { ClerkProvider } from '@clerk/nextjs'
 import './globals.css'
 import { ThemeProvider } from '@/providers/ThemeProvider'
@@ -12,30 +12,42 @@ import ImageLightbox from '@/components/ImageLightbox'
 import LessonEnhancer from '@/components/LessonEnhancer'
 import LessonPdfExport from '@/components/LessonPdfExport'
 
-const fraunces = Fraunces({
-  subsets: ['latin'],
-  weight: ['400', '700', '900'],
+const fraunces = localFont({
+  src: [
+    { path: '../public/fonts/Fraunces-normal.woff2', weight: '100 900', style: 'normal' },
+    { path: '../public/fonts/Fraunces-italic.woff2', weight: '100 900', style: 'italic' }
+  ],
   variable: '--font-fraunces',
-  style: ['normal', 'italic'],
+  display: 'swap',
+  adjustFontFallback: 'Times New Roman',
 })
 
-const manrope = Manrope({
-  subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700', '800'],
+const manrope = localFont({
+  src: [
+    { path: '../public/fonts/Manrope-normal.woff2', weight: '200 800', style: 'normal' }
+  ],
   variable: '--font-manrope',
+  display: 'swap',
+  adjustFontFallback: 'Arial',
 })
 
-const newsreader = Newsreader({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700', '800'],
+const newsreader = localFont({
+  src: [
+    { path: '../public/fonts/Newsreader-normal.woff2', weight: '200 800', style: 'normal' },
+    { path: '../public/fonts/Newsreader-italic.woff2', weight: '200 800', style: 'italic' }
+  ],
   variable: '--font-newsreader',
-  style: ['normal', 'italic'],
+  display: 'swap',
+  adjustFontFallback: 'Times New Roman',
 })
 
-const inter = Inter({
-  subsets: ['latin'],
-  weight: 'variable',
+const inter = localFont({
+  src: [
+    { path: '../public/fonts/Inter-normal.woff2', weight: '100 900', style: 'normal' }
+  ],
   variable: '--font-inter',
+  display: 'swap',
+  adjustFontFallback: 'Arial',
 })
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL
@@ -89,10 +101,6 @@ export default function RootLayout({ children }) {
     >
       <html lang="de" data-theme="dark" data-scroll-behavior="smooth" suppressHydrationWarning>
         <head>
-          <link
-            href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap"
-            rel="stylesheet"
-          />
           {/*
             Blocking Script: läuft synchron VOR dem ersten Paint.
             - Liest ein gespeichertes Theme aus localStorage

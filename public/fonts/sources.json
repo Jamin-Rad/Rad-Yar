@@ -1,0 +1,88 @@
+[
+  {
+    "file": "Fraunces-italic.woff2",
+    "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/fraunces/Fraunces-Italic%5BSOFT%2CWONK%2Copsz%2Cwght%5D.ttf",
+    "gitBlobSha": "2ddf59a11b89a3d6b2816ea6ae7965026c08143a",
+    "bytes": 414904,
+    "sourceFile": "Fraunces-italic.ttf",
+    "compressedBytes": 236016
+  },
+  {
+    "file": "Fraunces-normal.woff2",
+    "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/fraunces/Fraunces%5BSOFT%2CWONK%2Copsz%2Cwght%5D.ttf",
+    "gitBlobSha": "8210f9488d3c732359a9292dd09aca3f2bae830e",
+    "bytes": 360440,
+    "sourceFile": "Fraunces-normal.ttf",
+    "compressedBytes": 195012
+  },
+  {
+    "file": "Fraunces-OFL.txt",
+    "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/fraunces/OFL.txt",
+    "gitBlobSha": "22fa7ce5733434d0c634f6e55116f410858e938c",
+    "bytes": 4391
+  },
+  {
+    "file": "Manrope-normal.woff2",
+    "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/manrope/Manrope%5Bwght%5D.ttf",
+    "gitBlobSha": "75274da58537d6123b14f2cd0c355ad4681fc2b3",
+    "bytes": 164700,
+    "sourceFile": "Manrope-normal.ttf",
+    "compressedBytes": 53892
+  },
+  {
+    "file": "Manrope-OFL.txt",
+    "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/manrope/OFL.txt",
+    "gitBlobSha": "e271172a9ed0cddc895aabb6509f1c7d880b492d",
+    "bytes": 4387
+  },
+  {
+    "file": "Inter-normal.woff2",
+    "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/inter/Inter%5Bopsz%2Cwght%5D.ttf",
+    "gitBlobSha": "047c92f6e2212473dc436020afed689527076d44",
+    "bytes": 876576,
+    "sourceFile": "Inter-normal.ttf",
+    "compressedBytes": 350460
+  },
+  {
+    "file": "Inter-OFL.txt",
+    "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/inter/OFL.txt",
+    "gitBlobSha": "21f6aff961064c2e429f570995e446bcdd555422",
+    "bytes": 4377
+  },
+  {
+    "file": "Newsreader-italic.woff2",
+    "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/newsreader/Newsreader-Italic%5Bopsz%2Cwght%5D.ttf",
+    "gitBlobSha": "d25879656a601d44c49836f9e773d100190c62e1",
+    "bytes": 495684,
+    "sourceFile": "Newsreader-italic.ttf",
+    "compressedBytes": 239360
+  },
+  {
+    "file": "Newsreader-normal.woff2",
+    "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/newsreader/Newsreader%5Bopsz%2Cwght%5D.ttf",
+    "gitBlobSha": "ad4a9a8c44ec328c80b61c773f1ba02f6b5ed292",
+    "bytes": 451664,
+    "sourceFile": "Newsreader-normal.ttf",
+    "compressedBytes": 214960
+  },
+  {
+    "file": "Newsreader-OFL.txt",
+    "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/newsreader/OFL.txt",
+    "gitBlobSha": "d2d4f407109e9c74b8ab502fc79b912408ab8e41",
+    "bytes": 4394
+  },
+  {
+    "file": "Vazirmatn-OFL.txt",
+    "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/vazirmatn/OFL.txt",
+    "gitBlobSha": "be66b3824e9772e75141e631695c5256f105fb57",
+    "bytes": 4391
+  },
+  {
+    "file": "Vazirmatn-normal.woff2",
+    "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/vazirmatn/Vazirmatn%5Bwght%5D.ttf",
+    "gitBlobSha": "b02ceb054d5f1f9ac563e79248ce1bf8e35d60ca",
+    "bytes": 241328,
+    "sourceFile": "Vazirmatn-normal.ttf",
+    "compressedBytes": 111152
+  }
+]
