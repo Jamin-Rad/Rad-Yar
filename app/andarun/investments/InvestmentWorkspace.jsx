@@ -6,6 +6,8 @@ import { ACCOUNT_DEFINITIONS, reviewQueue } from '@/lib/investments/family.mjs'
 import { number } from '@/lib/investments/portfolio.mjs'
 import useFamilyPortfolio from './useFamilyPortfolio'
 import useMarketData from './useMarketData'
+import useTransactionLedger from './useTransactionLedger'
+import LedgerWorkspace from './LedgerWorkspace'
 import useVisitChanges from './useVisitChanges'
 import VisitChanges from './VisitChanges'
 import MarketRefresh from './MarketRefresh'
@@ -25,7 +27,7 @@ import { DecisionJournal, DataWorkspace } from './WorkspaceExtras'
 import Icon from './InvestmentIcon'
 import styles from './investments.module.css'
 
-const SECTIONS = [['accounts', 'حساب‌ها', 'wallet'], ['weekly', 'مرور هفتگی', 'calendar'], ['journal', 'دفتر تصمیم‌ها', 'journal'], ['report', 'گزارش برای ChatGPT', 'report']]
+const SECTIONS = [['accounts', 'حساب‌ها', 'wallet'], ['ledger', 'تراکنش‌ها', 'source'], ['weekly', 'مرور هفتگی', 'calendar'], ['journal', 'دفتر تصمیم‌ها', 'journal'], ['report', 'گزارش برای ChatGPT', 'report']]
 
 export function download(content, name, type) {
   const url = URL.createObjectURL(new Blob([content], { type: `${type};charset=utf-8` }))
@@ -36,6 +38,7 @@ export function download(content, name, type) {
 
 export default function InvestmentWorkspace() {
   const [section, setSection] = useState('accounts')
+  const [ledgerAccountId, setLedgerAccountId] = useState('all')
   const [accountId, setAccountId] = useState('self')
   const [tradeId, setTradeId] = useState(null)
   const [createTrade, setCreateTrade] = useState(false)
@@ -47,6 +50,7 @@ export default function InvestmentWorkspace() {
   const [decisionId, setDecisionId] = useState(null)
   const store = useFamilyPortfolio(setToast)
   const state = store.state
+  const ledger = useTransactionLedger(!!state)
   const marketData = useMarketData(state)
   const visit = useVisitChanges(state, marketData.markets)
   const account = state?.accounts.find(a => a.id === accountId)
@@ -56,6 +60,7 @@ export default function InvestmentWorkspace() {
   useEffect(() => { if (!toast) return; const timer = setTimeout(() => setToast(''), 5500); return () => clearTimeout(timer) }, [toast])
 
   function navigate(next) { setSection(next); window.scrollTo({ top: 0, behavior: 'instant' }) }
+  function openLedger(id = 'all') { setLedgerAccountId(id); navigate('ledger') }
   function openAccount(id, add = false) { setAccountId(id); navigate('account'); if (add) setDialog({ kind: 'position', accountId: id, position: null }) }
   function newTrade() { setTradeId(null); setCreateTrade(true); navigate('trades') }
   function openTrade(id) { setTradeId(id); setCreateTrade(false); navigate('trades') }
@@ -81,7 +86,7 @@ export default function InvestmentWorkspace() {
 
   return <main id="investment-workspace" className={styles.workspace} dir="rtl" lang="fa">
     <aside className={styles.sidebar} aria-label="ناوبری سرمایه"><Link href="/andarun/investments" className={styles.brand}>سرمایه<span lang="en">FAMILY & TRADING</span></Link>
-      <nav className={styles.navigation}>{SECTIONS.map(([key, label, icon]) => <button type="button" key={key} aria-current={section === key ? 'page' : undefined} className={section === key ? styles.navActive : ''} onClick={() => key === 'report' ? openReport() : navigate(key)}><Icon name={icon} size={19} /><span>{label}</span>{key === 'weekly' && due.length > 0 && <small>{number(due.length)}</small>}</button>)}</nav>
+      <nav className={styles.navigation}>{SECTIONS.map(([key, label, icon]) => <button type="button" key={key} aria-current={section === key ? 'page' : undefined} className={section === key ? styles.navActive : ''} onClick={() => key === 'report' ? openReport() : key === 'ledger' ? openLedger() : navigate(key)}><Icon name={icon} size={19} /><span>{label}</span>{key === 'weekly' && due.length > 0 && <small>{number(due.length)}</small>}</button>)}</nav>
       <div className={styles.sidebarAccounts}><p>حساب‌های خانواده</p>{ACCOUNT_DEFINITIONS.map(definition => <button type="button" key={definition.id} className={['account','asset'].includes(section) && accountId === definition.id ? styles.accountNavActive : ''} onClick={() => openAccount(definition.id)}><span style={{ '--account-color': definition.color }}>{definition.initials}</span>{definition.owner}</button>)}</div>
       <button type="button" className={`${styles.xtbNav} ${section === 'trades' ? styles.navActive : ''}`} onClick={() => navigate('trades')}><Icon name="trading" size={20} /><span>معاملات <bdi lang="en">XTB</bdi></span><Icon name="arrow" size={15} /></button>
       <div className={styles.sidebarBottom}><button type="button" className={styles.dataLink} onClick={() => navigate('data')}><Icon name="source" size={15} />داده و پشتیبان</button><Link href="/andarun" className={styles.backLink}><Icon name="arrow" size={16} />بازگشت به Andarun</Link></div>
@@ -92,15 +97,16 @@ export default function InvestmentWorkspace() {
         {store.conflict && <section className={styles.conflictNotice} role="alert"><p>نسخه سرور با پیش‌نویس این مرورگر متفاوت است. ابتدا از تغییراتت پشتیبان بگیر.</p><button type="button" className={styles.secondaryButton} onClick={() => download(JSON.stringify(state, null, 2), 'family-local-draft.json', 'application/json')}>دانلود پیش‌نویس</button><button type="button" className={styles.secondaryButton} onClick={() => { if (window.confirm('پس از پشتیبان، پیش‌نویس مرورگر کنار گذاشته و نسخه سرور بارگذاری شود؟')) store.discardDraft() }}>بارگذاری نسخه سرور</button></section>}
         <MarketRefresh marketData={marketData} state={state} />
         {['accounts', 'weekly'].includes(section) && <VisitChanges state={state} markets={marketData.markets} visit={visit} onAsset={openAsset} onWeekly={() => navigate('weekly')} />}
-        {section === 'accounts' && <FamilyOverview state={state} onAccount={openAccount} onNewTrade={newTrade} onTrades={() => navigate('trades')} onReview={openTrade} onWeekly={() => navigate('weekly')} />}
-        {section === 'account' && <AccountWorkspace key={accountId} account={account} markets={marketData.markets} onEdit={position => setDialog({ kind: 'position', accountId, position })} onAdd={() => setDialog({ kind: 'position', accountId, position: null })} onDetails={() => setDialog({ kind: 'details', accountId })} onSnapshot={() => setDialog({ kind: 'snapshot', accountId })} onReport={() => openReport(accountId)} onOpen={p => openAsset(accountId,p.id)} onImport={() => setDialog({kind:'csv',accountId})} />}
+        {section === 'ledger' && <LedgerWorkspace key={ledgerAccountId} ledger={ledger} initialAccount={ledgerAccountId} download={download} notify={setToast}/>}
+        {section === 'accounts' && <FamilyOverview ledger={ledger} onLedger={openLedger} state={state} onAccount={openAccount} onNewTrade={newTrade} onTrades={() => navigate('trades')} onReview={openTrade} onWeekly={() => navigate('weekly')} />}
+        {section === 'account' && <AccountWorkspace key={accountId} account={account} ledger={ledger} onLedger={() => openLedger(accountId)} markets={marketData.markets} onEdit={position => setDialog({ kind: 'position', accountId, position })} onAdd={() => setDialog({ kind: 'position', accountId, position: null })} onDetails={() => setDialog({ kind: 'details', accountId })} onSnapshot={() => setDialog({ kind: 'snapshot', accountId })} onReport={() => openReport(accountId)} onOpen={p => openAsset(accountId,p.id)} onImport={() => setDialog({kind:'csv',accountId})} />}
         {section === 'trades' && <TradeWorkspace trades={state.trades} settings={state.settings} onSettings={settings => store.change({...state,settings})} dueCount={due.length} selectedId={tradeId} onSelect={setTradeId} createOpen={createTrade} onCreateOpen={setCreateTrade} onCreate={addTrade} onExecution={kind => setDialog({ kind: 'execution', executionKind: kind })} onReview={() => setDialog({ kind: 'review' })} />}
         {section === 'journal' && <DecisionJournal state={state} onSelect={openTrade} onDecision={openDecision} onNew={() => newDecision()} onNewTrade={newTrade} />}
         {section === 'decision' && decision && <DecisionWorkspace decision={decision} state={state} onAsset={openAsset} onReview={() => setDialog({kind:'decisionReview'})} onReport={() => openReport(decision.accountId,decision.positionId)} />}
         {section === 'asset' && <AssetProfile key={`${accountId}:${positionId}`} account={account} position={position} state={state} marketData={marketData} onEdit={p => setDialog({kind:'position',accountId,position:p})} onConnect={symbol => store.changeAccount(accountId,a=>({...a,positions:a.positions.map(p=>p.id===positionId?{...p,marketSymbol:symbol,marketConfirmed:true}:p)}))} onChartConnect={symbol => store.changeAccount(accountId,a=>({...a,positions:a.positions.map(p=>p.id===positionId?{...p,tradingViewSymbol:symbol}:p)}))} onDecision={() => newDecision(accountId,positionId)} onOpenDecision={openDecision} onEvent={() => setDialog({kind:'event'})} onReport={() => openReport(accountId,positionId)} />}
         {section === 'weekly' && <WeeklyReview state={state} marketData={marketData} onTrade={openTrade} onDecision={openDecision} onAsset={openAsset} onAccount={openAccount} onNewTrade={newTrade} onReport={() => openReport()} onEventDone={id=>store.change({...state,events:state.events.map(e=>e.id===id?{...e,done:true}:e)})} />}
         {section === 'report' && <FamilyReport key={`${reportAccountId || 'all'}:${reportPositionId || 'all'}`} state={state} initialAccountId={reportAccountId} initialPositionId={reportPositionId} markets={marketData.markets} download={download} notify={setToast} />}
-        {section === 'data' && <DataWorkspace state={state} store={store} onAccount={openAccount} onBackup={() => setDialog({ kind: 'backup' })} download={download} />}
+        {section === 'data' && <DataWorkspace onLedger={() => openLedger()} state={state} store={store} onAccount={openAccount} onBackup={() => setDialog({ kind: 'backup' })} download={download} />}
         <footer className={styles.footer}><button type="button" onClick={() => navigate('data')}><span className={store.cloud ? styles.onlineDot : styles.localDot} />{store.storageError ? 'ذخیره مرورگر مشکل دارد؛ پشتیبان بگیر' : store.saving ? 'در حال ذخیره خودکار…' : store.dirty && store.cloud ? 'نسخه مرورگر محفوظ؛ در انتظار سرور' : store.cloud ? 'ذخیره خصوصی در سرور' : 'ذخیره محلی مرورگر'}</button><span>ارزش بروکر ثبت‌شده · قیمت مرجع مطابق زمان منبع</span><span><Icon name="lock" size={12} />فضای خصوصی Andarun</span></footer>
       </>}
     </div>

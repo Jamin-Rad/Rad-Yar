@@ -39,3 +39,19 @@ XTB supports multiple actual entry/exit fills, exact quantities to eight decimal
 ## Checks
 
 Run `node --test lib/investments/*.test.mjs`. Fixtures are synthetic. Verify auth, server reload, stale-revision rejection, immutable plans/reviews, partial fills, CSV ownership/units and provider timestamps before releasing. Do not put QA trades or decisions in the personal owner's row.
+
+## Transaction ledger and financial reports
+
+The append-only transaction ledger is stored separately from version-3 portfolio state, so a stale portfolio save cannot remove imported transactions. Migration `20261102132950_investment_transaction_ledger.sql` was scaffolded with the official Supabase CLI and applied through the connected project. Both ledger tables have RLS enabled and no public/client grants. Only server-side service-role reads/inserts and two security-invoker RPCs are allowed; updates/deletes are not granted to the app. The read RPC uses a single PostgreSQL statement snapshot.
+
+`/api/andarun/investments/ledger` authenticates with the existing Andarun session and binds the owner on the server. Imports require the supplied broker CSV columns, EUR cash values, exact cent amounts and a compatible DEFAULT/JUNIOR account class. Children still need an explicit account selection: their CSVs contain no reliable child-owner identifier. Monetary amount, fee and tax are separate signed components; BUY/SELL gross amounts reconcile to absolute quantity × price before import. The source booking date is preserved independently of UTC time. Quantities retain ten decimal places.
+
+An import serializes per owner and records the original CSV with a SHA-256 file identity. Its normalized transaction IDs are unique within owner/account. Identical re-uploads are no-ops, overlapping files add only new rows, and changed content for an existing transaction rejects the whole import. Original CSVs can be downloaded from the private sources view. No personal records, account numbers or exports belong in Git.
+
+Reports filter by account, booking date, transaction type/group and search. Monthly/annual income, signed fees, taxes withheld and refunds reconcile to the source records. Transfers/gifts remain cash flows rather than investment returns; summing family transfers includes both legs of transfers between family accounts. Cash flow is not an account balance because opening cash is not supplied.
+
+FIFO uses the full earlier history, before display filters, with purchase costs and sale fees/tax. It is an estimate from available buys and assumes no unrecorded opening inventory for a matched instrument. Earlier income revealing unrecorded holdings, oversells, invalid identifiers and corporate actions suppress the affected instrument's basis. Corporate allocation to parent/other securities is not reconstructed from ambiguous records. Liquidation proceeds without verified basis remain unknown. The matched subtotal is not total portfolio profit, a certified tax basis or an official broker tax certificate; current unrealized returns require current holdings/prices. Holdings reconstruction is scoped to account/end date rather than a transaction-type/search slice.
+
+CSV exports cover all filtered rows, independently of screen pagination, with formula-like text escaped. The page also supports full-detail printing/PDF via the browser, a selected Markdown summary/ChatGPT context and a JSON ledger backup. Source CSVs are archived separately from that JSON export. Portfolio JSON and ledger JSON are different backups and are labeled accordingly.
+
+Run `node --test lib/investments/*.test.mjs`; fixtures are synthetic, including PostgreSQL-engine tests for atomicity, duplicates, conflicts, ownership and denied client access. Actual import totals must also reconcile independently against the original CSVs and the saved database records.
