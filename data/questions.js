@@ -89,6 +89,7 @@ import { DWI_ADC_QUESTIONS } from './technikDwiAdcLesson'
 import { WIRBELMETASTASEN_QUESTIONS, WIRBELMETASTASEN_TOPIC_GROUP } from './wirbelmetastasenAssessment'
 import { SPINAL_INTRAMEDULLARY_TUMOR_QUESTIONS, SPINAL_INTRAMEDULLARY_TUMOR_TOPIC_GROUP, SPINAL_EXTRAMEDULLARY_QUESTIONS, SPINAL_EXTRAMEDULLARY_TOPIC_GROUP } from './spinalIntramedullaryTumorAssessments'
 import { TECHNIK_ENTRANCE_KERMA_QUESTIONS, TECHNIK_ENTRANCE_KERMA_TOPIC_GROUP } from './technikEntranceKermaAssessment'
+import { PROSTATE_QUESTIONS } from './prostateCancer'
 // ── RADYAR QUESTION BANK ────────────────────────────────────────────────────
 
 import { CONTRAST_QUESTIONS, CONTRAST_TOPICS } from './contrastMedia'
@@ -1676,6 +1677,7 @@ const LEGACY_QUESTION_BANK = {
     ...HMA_QUESTIONS.de,
     ...CAA_QUESTIONS.de,
     ...MIGRAINE_QUESTIONS.de,
+    ...PROSTATE_QUESTIONS.de,
     ...CADASIL_QUESTIONS.de,
     ...DVA_QUESTIONS.de,
     ...KAVERNOM_QUESTIONS.de,
@@ -3800,6 +3802,7 @@ const LEGACY_QUESTION_BANK = {
     ...HMA_QUESTIONS.en,
     ...CAA_QUESTIONS.en,
     ...MIGRAINE_QUESTIONS.en,
+    ...PROSTATE_QUESTIONS.en,
     ...CADASIL_QUESTIONS.en,
     ...DVA_QUESTIONS.en,
     ...KAVERNOM_QUESTIONS.en,
@@ -5914,6 +5917,7 @@ const LEGACY_QUESTION_BANK = {
     ...HMA_QUESTIONS.fa,
     ...CAA_QUESTIONS.fa,
     ...MIGRAINE_QUESTIONS.fa,
+    ...PROSTATE_QUESTIONS.fa,
     ...CADASIL_QUESTIONS.fa,
     ...DVA_QUESTIONS.fa,
     ...KAVERNOM_QUESTIONS.fa,
@@ -8233,6 +8237,11 @@ export const MCQ_TOPIC_GROUPS = [
       { id: 'kardiomyopathien', title: { de: 'Kardiomyopathien: Kardio-MRT', en: 'Cardiomyopathies: cardiac MRI', fa: 'کاردیومیوپاتی‌ها: MRI قلب' } },
       { id: 'arvc', title: { de: 'Arrhythmogene Kardiomyopathie', en: 'Arrhythmogenic cardiomyopathy', fa: 'کاردیومیوپاتی آریتموژنیک' } },
     ],
+  },
+  {
+    fachId: 'becken-m', kapitelId: 'becken-m-prostata',
+    title: { de: '3. Prostata', en: '3. Prostate', fa: '۳. پروستات' },
+    topics: [{ id: 'prostatakarzinom', title: { de: 'Prostatakarzinom', en: 'Prostate carcinoma', fa: 'کارسینوم پروستات' } }],
   },
   {
     fachId: 'mamma',

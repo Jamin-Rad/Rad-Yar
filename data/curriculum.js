@@ -1122,6 +1122,9 @@ export const CURRICULUM = [
           { id: 'prostatitis', title: { de: 'Prostatitis', en: 'Prostatitis', fa: 'پروستاتیت' }, tags: ['MRT','Sono'], diff: 2 },
           {
             id: 'prostatakarzinom',
+            link: '/becken-m/prostata/prostatakarzinom', ready: true,
+            mcqLink: '/ueben/quiz?fach=becken-m&n=12&themen=prostatakarzinom',
+            flashcardLink: '/flashcards/prostatakarzinom', updatedAt: '2026-11-02',
             title: { de: 'Prostatakarzinom', en: 'Prostate Cancer', fa: 'سرطان پروستات' },
             tags: ['MRT','CT'], diff: 3,
             sub: [

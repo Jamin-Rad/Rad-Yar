@@ -6,6 +6,7 @@ const NON_LESSON_PATH_PREFIXES = [
 ]
 
 const COMPLETED_LESSON_PATHS = new Set([
+  '/becken-m/prostata/prostatakarzinom',
   '/thorax/kardio/arvc',
   '/gehirn/vaskulaer/caa',
   '/mamma/bildgebung/mammographie/verkalkungen',
