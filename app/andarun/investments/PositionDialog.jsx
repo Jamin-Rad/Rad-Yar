@@ -26,6 +26,7 @@ export default function PositionDialog({ position, account, onClose, onSave, onD
         category: data.get('category'), valueCents: parseMoney(data.get('value')),
         gainCents: parseMoney(data.get('gain'), true), note: String(data.get('note')).trim(),
         verified: data.get('verified') === 'on', source: 'manual',
+        tradingViewSymbol: position?.isin === String(data.get('isin') || '').trim().toUpperCase() && position?.name === String(data.get('name')).trim() ? position.tradingViewSymbol : '',
         marketConfirmed: position?.marketConfirmed === true && String(data.get('isin') || '').trim().toUpperCase() === position.isin && String(data.get('name')).trim() === position.name,
       })
     } catch (err) { setError(err.message) }

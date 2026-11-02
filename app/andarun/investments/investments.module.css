@@ -517,3 +517,31 @@
   .footnote, .panelHead p { font-size: 12px; }
 }
 .marketInline { color: #c7e99a !important; font-size: 11px !important; margin-top: 4px; }
+
+.marketRefresh { border: 1px solid #3a493d; border-radius: 10px; padding: 16px 20px; margin-bottom: 22px; background: #1b251f; }
+.marketRefresh > div:first-child { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+.marketRefresh p { color: #bfccbf; font-size: 12px; margin: 10px 0 0; line-height: 1.8; }
+.marketRefresh progress { width: 100%; margin-top: 14px; height: 7px; accent-color: #c7e99a; }
+.visitPanel { margin-bottom: 24px; }
+.visitSummary { display: flex; align-items: center; flex-wrap: wrap; gap: 12px 24px; padding: 0 0 15px; border-bottom: 1px solid #35424d; color: #b9c6d3; font-size: 13px; }
+.visitSummary strong { color: #e4efdf; font-size: 20px; margin-inline-end: 5px; }
+.visitRows article { display: grid; grid-template-columns: minmax(120px,1.3fr) minmax(150px,1fr) minmax(120px,.8fr); gap: 14px; align-items: center; padding-block: 16px; border-bottom: 1px solid #34404b; }
+.visitRows small { display: block; font-size: 12px; color: #a6b0bd; line-height: 1.8; margin-top: 6px; }
+.visitAsset { background: transparent; border: 0; color: #edf1f5; text-align: start; cursor: pointer; padding: 8px 0; }
+.visitAsset strong { display: block; font-size: 14px; }
+.visitAsset:hover strong { color: #c7e99a; }
+.visitNews { grid-column: 1/-1; display: grid; gap: 12px; padding: 12px; background: #19242c; border-radius: 6px; }
+.visitNews a { color: #d2e8b3; font-size: 13px; line-height: 1.8; text-decoration: underline; text-underline-offset: 3px; }
+.tradingViewFrame { display: block; width: 100%; height: 540px; border: 1px solid #35424d; border-radius: 8px; margin-top: 18px; background: #131722; }
+@media(max-width:550px) {
+ .marketRefresh { padding: 14px; }
+ .marketRefresh > div:first-child { gap: 12px; }
+ .marketRefresh > div:first-child > button { width: 100%; }
+ .visitRows article { grid-template-columns: 1fr 1fr; }
+ .visitAsset { grid-column: 1/-1; }
+ .visitSummary { gap: 12px; }
+ .tradingViewFrame { height: 450px; }
+}
+
+.visitRows article > div { min-width: 0; overflow-wrap: anywhere; }
+.visitNews a { overflow-wrap: anywhere; }

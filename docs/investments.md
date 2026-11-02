@@ -20,6 +20,16 @@ The user explicitly matches a provider symbol and exchange to the broker instrum
 
 Week/month estimates apply current quantity to reference price changes with historical/current FX, not actual investment returns. Cash flows, trades, dividends and costs are excluded. Periods with share splits suppress the estimate. Quotes older than four days receive a freshness warning. The attention queue explains its thresholds (5% native movement or estimated 0.5% of recorded portfolio value); keyword news flags need human review.
 
+## Manual refresh, charts, and visit changes
+
+The global refresh button requests all distinct confirmed portfolio symbols with at most three concurrent requests. `refresh=1` bypasses the browser and server's normal 15-minute quote/news/latest-FX cache; a 15-second server cooldown coalesces rapid repeated clicks. Failed requests keep the previous displayed data and expose the failed instruments. The request completion time is separate from the provider's actual quote time, which can remain unchanged while a market is closed. XTB plans are not automatically valued from stock quotes.
+
+Each holding can store a separately confirmed `tradingViewSymbol` including its exchange, such as `NASDAQ:AAPL`. Yahoo symbols are never guessed into TradingView mappings. Changing a holding's name/ISIN clears this mapping. The official Advanced Chart embed is loaded only on request in an isolated sandbox, with a direct TradingView chart link available independently. Only the public instrument symbol is provided, not quantities or account values. TradingView chart availability and delay depend on the market; an existing personal subscription does not turn the widget into a quote API or synchronize personal saved layouts.
+
+The account overview and weekly review show changes since the previous visit in the **same browser**, using a private localStorage checkpoint (`andarun:investments:visit:v1`). The in-session baseline remains fixed during price refreshes. Leaving/hiding the page prepares the next visit's checkpoint; the explicit reviewed button adopts a new baseline immediately. SPA navigation also saves a checkpoint. An unloaded quote retains its earlier matching baseline rather than erasing it during a short visit. This checkpoint is not a confirmed broker snapshot and is not synced across devices or included in portfolio JSON exports.
+
+Comparisons use provider quote timestamps and current quantities, with both checkpoint/current EUR FX rates. Changed mappings/ISINs/currencies, backward timestamps, splits and quotes older than four days suppress misleading comparisons. Missing FX suppresses only the EUR estimate. Important-news candidates must be newly published after the checkpoint and absent from the previously seen URLs; the source covers at most the past 14 days. Due family and XTB decisions link to the weekly queue.
+
 ## Decisions and XTB
 
 Trade Republic decisions are linked to their account and holding. Reviews preserve the original reasoning and can store the user's pasted ChatGPT response and explicitly documented actual/no-action outcomes. No ChatGPT API call or automatic order submission occurs.

@@ -10,6 +10,7 @@ export default function InvestmentIcon({ name, size = 20, ...props }) {
     watch: <path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2-5.6-3-5.6 3 1.1-6.2L3 9.6l6.2-.9Z" />,
     report: <><path d="M14 3H5v18h14V8Z" /><path d="M14 3v6h5M8 13h8M8 17h5" /></>,
     source: <><ellipse cx="12" cy="5" rx="8" ry="3" /><path d="M4 5v7c0 4 16 4 16 0V5M4 12v7c0 4 16 4 16 0v-7" /></>,
+    refresh: <><path d="M20 7v5h-5M4 17v-5h5" /><path d="M6.1 7a7 7 0 0 1 11.6-1L20 9M4 15l2.3 3A7 7 0 0 0 17.9 17" /></>,
     plus: <path d="M12 5v14M5 12h14" />,
     download: <><path d="M12 3v12m-5-5 5 5 5-5M4 16v5h16v-5" /></>,
     arrow: <path d="M5 12h14m-5-5 5 5-5 5" />,

@@ -6,6 +6,9 @@ import { ACCOUNT_DEFINITIONS, reviewQueue } from '@/lib/investments/family.mjs'
 import { number } from '@/lib/investments/portfolio.mjs'
 import useFamilyPortfolio from './useFamilyPortfolio'
 import useMarketData from './useMarketData'
+import useVisitChanges from './useVisitChanges'
+import VisitChanges from './VisitChanges'
+import MarketRefresh from './MarketRefresh'
 import AssetProfile from './AssetProfile'
 import DecisionWorkspace, { DecisionDialog } from './DecisionWorkspace'
 import HoldingsImportDialog from './HoldingsImportDialog'
@@ -45,6 +48,7 @@ export default function InvestmentWorkspace() {
   const store = useFamilyPortfolio(setToast)
   const state = store.state
   const marketData = useMarketData(state)
+  const visit = useVisitChanges(state, marketData.markets)
   const account = state?.accounts.find(a => a.id === accountId)
   const trade = state?.trades.find(t => t.id === tradeId)
   const position = account?.positions.find(p => p.id === positionId)
@@ -86,12 +90,14 @@ export default function InvestmentWorkspace() {
       {!state ? <section className={styles.loading} role="status"><Icon name={store.error ? 'warning' : 'wallet'} size={35} /><h2>{store.error || 'در حال بارگذاری حساب‌های خصوصی…'}</h2>{store.error && <Link href="/andarun/login" className={styles.primaryButton}>ورود به Andarun</Link>}</section> : <>
         {store.offline && <section className={styles.conflictNotice} role="status"><p>{store.error || 'نسخه ذخیره‌شده مرورگر نمایش داده می‌شود؛ اتصال سرور در حال بررسی است.'}</p><button type="button" className={styles.secondaryButton} onClick={() => window.location.reload()}>بررسی دوباره اتصال</button></section>}
         {store.conflict && <section className={styles.conflictNotice} role="alert"><p>نسخه سرور با پیش‌نویس این مرورگر متفاوت است. ابتدا از تغییراتت پشتیبان بگیر.</p><button type="button" className={styles.secondaryButton} onClick={() => download(JSON.stringify(state, null, 2), 'family-local-draft.json', 'application/json')}>دانلود پیش‌نویس</button><button type="button" className={styles.secondaryButton} onClick={() => { if (window.confirm('پس از پشتیبان، پیش‌نویس مرورگر کنار گذاشته و نسخه سرور بارگذاری شود؟')) store.discardDraft() }}>بارگذاری نسخه سرور</button></section>}
+        <MarketRefresh marketData={marketData} state={state} />
+        {['accounts', 'weekly'].includes(section) && <VisitChanges state={state} markets={marketData.markets} visit={visit} onAsset={openAsset} onWeekly={() => navigate('weekly')} />}
         {section === 'accounts' && <FamilyOverview state={state} onAccount={openAccount} onNewTrade={newTrade} onTrades={() => navigate('trades')} onReview={openTrade} onWeekly={() => navigate('weekly')} />}
         {section === 'account' && <AccountWorkspace key={accountId} account={account} markets={marketData.markets} onEdit={position => setDialog({ kind: 'position', accountId, position })} onAdd={() => setDialog({ kind: 'position', accountId, position: null })} onDetails={() => setDialog({ kind: 'details', accountId })} onSnapshot={() => setDialog({ kind: 'snapshot', accountId })} onReport={() => openReport(accountId)} onOpen={p => openAsset(accountId,p.id)} onImport={() => setDialog({kind:'csv',accountId})} />}
         {section === 'trades' && <TradeWorkspace trades={state.trades} settings={state.settings} onSettings={settings => store.change({...state,settings})} dueCount={due.length} selectedId={tradeId} onSelect={setTradeId} createOpen={createTrade} onCreateOpen={setCreateTrade} onCreate={addTrade} onExecution={kind => setDialog({ kind: 'execution', executionKind: kind })} onReview={() => setDialog({ kind: 'review' })} />}
         {section === 'journal' && <DecisionJournal state={state} onSelect={openTrade} onDecision={openDecision} onNew={() => newDecision()} onNewTrade={newTrade} />}
         {section === 'decision' && decision && <DecisionWorkspace decision={decision} state={state} onAsset={openAsset} onReview={() => setDialog({kind:'decisionReview'})} onReport={() => openReport(decision.accountId,decision.positionId)} />}
-        {section === 'asset' && <AssetProfile key={`${accountId}:${positionId}`} account={account} position={position} state={state} marketData={marketData} onEdit={p => setDialog({kind:'position',accountId,position:p})} onConnect={symbol => store.changeAccount(accountId,a=>({...a,positions:a.positions.map(p=>p.id===positionId?{...p,marketSymbol:symbol,marketConfirmed:true}:p)}))} onDecision={() => newDecision(accountId,positionId)} onOpenDecision={openDecision} onEvent={() => setDialog({kind:'event'})} onReport={() => openReport(accountId,positionId)} />}
+        {section === 'asset' && <AssetProfile key={`${accountId}:${positionId}`} account={account} position={position} state={state} marketData={marketData} onEdit={p => setDialog({kind:'position',accountId,position:p})} onConnect={symbol => store.changeAccount(accountId,a=>({...a,positions:a.positions.map(p=>p.id===positionId?{...p,marketSymbol:symbol,marketConfirmed:true}:p)}))} onChartConnect={symbol => store.changeAccount(accountId,a=>({...a,positions:a.positions.map(p=>p.id===positionId?{...p,tradingViewSymbol:symbol}:p)}))} onDecision={() => newDecision(accountId,positionId)} onOpenDecision={openDecision} onEvent={() => setDialog({kind:'event'})} onReport={() => openReport(accountId,positionId)} />}
         {section === 'weekly' && <WeeklyReview state={state} marketData={marketData} onTrade={openTrade} onDecision={openDecision} onAsset={openAsset} onAccount={openAccount} onNewTrade={newTrade} onReport={() => openReport()} onEventDone={id=>store.change({...state,events:state.events.map(e=>e.id===id?{...e,done:true}:e)})} />}
         {section === 'report' && <FamilyReport key={`${reportAccountId || 'all'}:${reportPositionId || 'all'}`} state={state} initialAccountId={reportAccountId} initialPositionId={reportPositionId} markets={marketData.markets} download={download} notify={setToast} />}
         {section === 'data' && <DataWorkspace state={state} store={store} onAccount={openAccount} onBackup={() => setDialog({ kind: 'backup' })} download={download} />}
