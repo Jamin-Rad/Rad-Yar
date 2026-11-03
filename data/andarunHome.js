@@ -9,6 +9,7 @@ export const ANDARUN_HOME_GROUPS = [
   { id: 'gesundheit', title: 'Gesundheit', tone: 'mint', items: [
     { title: 'Gesundheit', href: '/andarun/gesundheit', icon: 'heart' },
     { title: 'Medikamente', href: '/andarun/medikamente', icon: 'pill' },
+    { title: 'همراه سلامت', href: '/hamrah-e-salamat', icon: 'heart', lang: 'fa', prefetch: false },
   ] },
   { id: 'lernen', title: 'Lernen', tone: 'blue', items: [
     { title: 'Deutsch', href: '/andarun/deutsch', icon: 'book' },

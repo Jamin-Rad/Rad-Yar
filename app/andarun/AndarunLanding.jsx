@@ -65,7 +65,7 @@ export default function AndarunLanding({ initialNow }) {
           <h3 id={'group-' + group.id}>{group.title}</h3>
           <ul>{group.items.map(item => <li key={item.title}>
             {item.disabled ? <button type="button" disabled className={styles.directoryLink}><SpaceIcon name={item.icon} /><span>{item.title}</span><small>Inaktiv</small></button> :
-              <Link href={item.href} className={[styles.directoryLink, item.tone ? styles[item.tone] : ''].join(' ')}><SpaceIcon name={item.icon} /><span>{item.title}</span><ChevronIcon /></Link>}
+              <Link href={item.href} prefetch={item.prefetch} className={[styles.directoryLink, item.tone ? styles[item.tone] : ''].join(' ')}><SpaceIcon name={item.icon} /><span lang={item.lang} dir={item.lang === 'fa' ? 'rtl' : undefined}>{item.title}</span><ChevronIcon /></Link>}
           </li>)}</ul>
         </nav>)}</div>
       </section>

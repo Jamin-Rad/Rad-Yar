@@ -7,20 +7,21 @@ import { ANDARUN_WEB_APPS, getAndarunPwaMetadata } from '../lib/andarunWebApps.j
 test('four groups retain existing modules and expose finance destinations inline', () => {
   const items = ANDARUN_HOME_GROUPS.flatMap(group => group.items)
   assert.deepEqual(ANDARUN_HOME_GROUPS.map(group => group.title), ['Alltag', 'Gesundheit', 'Lernen', 'Finanzen'])
-  assert.equal(items.length, 16)
-  assert.equal(new Set(items.map(item => item.title)).size, 16)
+  assert.equal(items.length, 18)
+  assert.equal(new Set(items.map(item => item.title)).size, 18)
   assert.deepEqual(items.filter(item => item.href).map(item => item.href).sort(), [
     '/andarun/routine', '/andarun/todo', '/andarun/termine', '/andarun/dienste', '/andarun/befundtimer',
-    '/andarun/gesundheit', '/andarun/medikamente', '/andarun/deutsch', '/andarun/english', '/andarun/befunde', '/andarun/test',
-    '/andarun/finanz', '/andarun/urlaub', '/andarun/finanz/freunde', '/digitda',
+    '/andarun/gesundheit', '/andarun/medikamente', '/hamrah-e-salamat', '/andarun/deutsch', '/andarun/english', '/andarun/befunde', '/andarun/test',
+    '/andarun/investments', '/andarun/finanz', '/andarun/urlaub', '/andarun/finanz/freunde', '/digitda',
   ].sort())
   assert.equal(items.some(item => item.action), false)
   assert.equal(items.some(item => /kaenguru|kang/i.test(item.href || item.title)), false)
 })
 
-test('all module titles are German and prisoner help has no active destination', () => {
+test('module titles retain German labels and the Persian health companion brand', () => {
   const items = ANDARUN_HOME_GROUPS.flatMap(group => group.items)
-  assert.equal(items.some(item => /[\u0600-\u06ff]|ToDos/.test(item.title)), false)
+  assert.equal(items.filter(item => item.href !== '/hamrah-e-salamat').some(item => /[\u0600-\u06ff]|ToDos/.test(item.title)), false)
+  assert.deepEqual(items.find(item => item.href === '/hamrah-e-salamat'), { title: 'همراه سلامت', href: '/hamrah-e-salamat', icon: 'heart', lang: 'fa', prefetch: false })
   assert.deepEqual(items.filter(item => item.disabled), [{ title: 'Hilfe für Gefangene', icon: 'people', disabled: true }])
   assert.equal(items.some(item => item.href === '/andarun/finanz/gefangene'), false)
 })
