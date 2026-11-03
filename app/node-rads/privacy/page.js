@@ -25,7 +25,7 @@ export default function NodeRadsPrivacyPage() {
           <p className={styles.eyebrow}>RadYar · iOS app</p>
           <h1>Privacy Policy</h1>
           <p className={styles.lead}>The Node-RADS app calculates assessments on your device. RadYar does not collect your entered findings or reports.</p>
-          <p className={styles.updated}>Last updated: 22 September 2026</p>
+          <p className={styles.updated}>Last updated: 3 November 2026</p>
         </div>
 
         <article className={styles.document} lang="en">
@@ -47,7 +47,7 @@ export default function NodeRadsPrivacyPage() {
           <div className={styles.languageHeading}>
             <p className={styles.eyebrow}>Deutsche Fassung</p>
             <h2>Datenschutzerklärung</h2>
-            <p className={styles.updated}>Stand: 22. September 2026</p>
+            <p className={styles.updated}>Stand: 3. November 2026</p>
           </div>
           <section>
             <h3>Datenverarbeitung in der App</h3>
