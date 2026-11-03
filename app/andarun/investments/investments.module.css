@@ -574,6 +574,7 @@
 .ledgerDetail h3 { margin:20px 0 10px; }
 .holdingSource { display:block; font-size:11px; color:#afbdca; line-height:1.9; max-width:180px; margin-top:5px; }
 .mobileBack { display:none; }
+.navigation .mobileTrading { display:none; }
 .overviewMode { background:#f5f7fa; color:#142335; color-scheme:light; }
 .overviewMode .sidebar { width:216px; background:#102033; border-color:#263b4d; padding:25px 16px; }
 .overviewMode .brand { color:#f4f8fb; font-size:29px; padding-inline:10px; }
@@ -588,7 +589,7 @@
 .overviewMode .xtbNav { color:#d9e4ed; }
 .overviewMode .sidebarBottom { border-color:#456070; }
 .overviewMode .content { margin-right:216px; max-width:1800px; padding:28px 30px 20px; }
-.overviewMode .header { margin-bottom:25px; align-items:flex-start; }
+.overviewMode .header { margin-bottom:20px; align-items:flex-start; }
 .overviewMode .header h1 { color:#142335; font-size:30px; font-weight:850; }
 .overviewMode .header p { color:#647081; font-size:13px; margin-top:4px; }
 .overviewMode .headerActions { direction:ltr; padding-top:7px; }
@@ -608,6 +609,7 @@
  .overviewMode .navigation { display:flex; flex-wrap:nowrap; overflow-x:auto; margin-top:0; padding-bottom:3px; flex:1; }
  .overviewMode .navigation button { white-space:nowrap; min-height:38px; font-size:12px; padding:7px 12px; }
  .overviewMode .sidebarAccounts,.overviewMode .sidebarBottom,.overviewMode .xtbNav { display:none; }
+ .overviewMode .navigation .mobileTrading { display:flex; }
  .overviewMode .content { margin-right:0; padding:24px 22px 20px; }
  .overviewMode .header h1 { font-size:27px; }
 }
@@ -618,7 +620,7 @@
  .overviewMode .header { flex-direction:column; gap:13px; margin-bottom:18px; }
  .overviewMode .header h1 { font-size:26px; }
  .overviewMode .header p { font-size:12px; }
- .overviewMode .headerActions { direction:rtl; width:100%; padding:0; display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+ .overviewMode .headerActions { direction:rtl; padding:0; display:flex; gap:10px; }
  .overviewMode .headerActions button { font-size:12px !important; }
  .overviewMode .navigation button { font-size:11px; padding-inline:10px; }
  .overviewMode .footer > span:nth-child(2) { display:none; }
