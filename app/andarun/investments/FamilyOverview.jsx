@@ -25,7 +25,7 @@ export default function FamilyOverview({ state, onAccount, ledger, onLedger, mar
         <p>ارزش دارایی‌ها + موجودی نقد</p>
       </div>
       <div className={styles.metric}>
-        <h2>{result.complete ? 'سود و زیان دارایی‌ها' : 'سود و زیان محاسبه‌شده'}</h2>
+        <h2>سود و زیان دارایی‌ها {!result.complete && <small>ناقص</small>}</h2>
         <strong className={resultClass(result.knownGainCents)}><bdi>{result.knownGainCents == null ? '—' : signedMoney(result.knownGainCents)}</bdi></strong>
         <button type="button" className={styles.resultDetail} onClick={() => onLedger?.('all', result.complete ? 'annual' : 'issues')}>دارایی‌های فعلی · {result.complete ? 'از زمان خرید' : `${number(result.knownCount)} از ${number(result.count)} دارایی`}</button>
       </div>
@@ -51,7 +51,7 @@ export default function FamilyOverview({ state, onAccount, ledger, onLedger, mar
           return <button type="button" key={account.id} className={styles.accountRow} onClick={() => onAccount(account.id)} aria-label={`حساب ${account.owner}، کل دارایی ${money(equity)}`}>
             <span className={styles.identity}><span className={styles.avatar} style={{ '--avatar-color':definition?.color }}>{definition?.initials}</span><span><strong>{account.owner}</strong><small>{number(account.positions.length)} دارایی</small></span></span>
             <span className={styles.accountValue}><bdi>{equity == null ? '—' : money(equity)}</bdi>{current.equityEstimated && equity != null && <small>برآوردی</small>}</span>
-            <span className={`${styles.accountResult} ${resultClass(gain)}`}><bdi>{gain == null ? '—' : signedMoney(gain)}</bdi>{!current.unrealized.complete && <small>{number(current.unrealized.knownCount)} از {number(current.unrealized.count)} دارایی</small>}</span>
+            <span className={`${styles.accountResult} ${resultClass(gain)}`}><bdi>{gain == null ? '—' : signedMoney(gain)}</bdi>{!current.unrealized.complete && <small>ناقص · {number(current.unrealized.knownCount)} از {number(current.unrealized.count)} دارایی</small>}</span>
             <Icon name="arrow" size={18}/>
           </button>
         })}
