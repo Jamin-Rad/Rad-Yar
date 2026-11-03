@@ -241,3 +241,5 @@
 .mhba-studio .studio-page-controls,.mhba-studio .studio-page-footer{direction:ltr}
 
 .mhba-studio .studio-page-footer button+button{border-right:0;border-left:1px solid #ece4f1}
+.source-translated-table .source-table-number{white-space:nowrap;direction:ltr;unicode-bidi:isolate;font-variant-numeric:tabular-nums}
+.source-translated-table thead th{word-break:normal;overflow-wrap:normal;padding-left:6px;padding-right:6px}
