@@ -662,7 +662,7 @@
 }
 
 .balancePanel { background:#19232b; border:1px solid #405663; border-radius:9px; padding:20px; margin-bottom:20px; }
-.balanceGrid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:20px; }
+.balanceGrid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:20px; }
 .balanceGrid > div { min-width:0; border-left:1px solid #405361; padding-left:15px; }
 .balanceGrid > div:last-child { border:0; }
 .balanceGrid span,.balanceGrid small { display:block; color:#aabdc9; font-size:12px; }
@@ -685,3 +685,5 @@
 .cashPlans article { display:flex; align-items:center; justify-content:space-between; gap:16px; border:1px solid var(--line); border-radius:12px; padding:16px; background:var(--panel); flex-wrap:wrap; }
 .cashPlans strong,.cashPlans span { display:block; }
 .cashPlans span { color:var(--muted); margin-top:4px; font-size:13px; }
+
+@media(min-width:681px) and (max-width:1150px) { .balanceGrid { grid-template-columns:repeat(2,minmax(0,1fr)); } }

@@ -10,14 +10,14 @@ import {CashPlans} from './CashPlans'
 import Icon from './InvestmentIcon'
 import styles from './investments.module.css'
 
-export default function AccountWorkspace({ account, onEdit, onAdd, onSnapshot, onDetails, onReport, onOpen, onImport, markets, onLedger, ledger, onEntry, cashPlans=[],onPlan,onPostPlan }) {
+export default function AccountWorkspace({ account, onEdit, onAdd, onSnapshot, onDetails, onReport, onOpen, onImport, markets, onLedger, ledger, onEntry, cashPlans=[],onPlan,onPostPlan, profitSelection, onProfitSelection, profitPeriod }) {
   const summary = summarize(account.positions)
   const comparison = snapshotComparison(account)
   const [tab, setTab] = useState('holdings')
   const review=useMemo(()=>ledger?.loaded?holdingsReview({accounts:[account]},ledger.transactions,account.id):[],[ledger?.loaded,ledger?.transactions,account])
   const calculated=account.positions.filter(p=>p.ledger?.quantityStatus==='transactions'||p.ledger?.quantityConfirmed).length
   return <>
-    <AccountBalancePanel account={account} ledger={ledger} markets={markets} onDetails={onDetails}/>
+    <AccountBalancePanel account={account} ledger={ledger} markets={markets} onDetails={onDetails} profitSelection={profitSelection} onProfitSelection={onProfitSelection} profitPeriod={profitPeriod}/>
     <div className={styles.accountActions}><div className={styles.segmented}>{[['holdings', 'دارایی‌ها'], ['history', 'ثبت‌های تاریخی']].map(([key, label]) => <button type="button" key={key} aria-pressed={tab === key} onClick={() => setTab(key)}>{label}</button>)}</div><div className={styles.buttonRow}><button type="button" className={styles.primaryButton} onClick={()=>onEntry(account.id,'BUY')}>خرید</button><button type="button" className={styles.secondaryButton} onClick={()=>onEntry(account.id,'SELL')}>فروش</button><button type="button" className={styles.secondaryButton} onClick={()=>onEntry(account.id,'DEPOSIT')}>واریز از بانک</button><button type="button" className={styles.secondaryButton} onClick={()=>onEntry(account.id,'TRANSFER')}>انتقال بین حساب‌ها</button><button type="button" className={styles.secondaryButton} onClick={onLedger}>گزارش مالی</button></div></div>
 <CashPlans plans={cashPlans.filter(p=>p.accountId===account.id)} ledger={ledger} onEdit={onPlan} onPost={onPostPlan}/>
     <details className={styles.previousBroker}><summary>تنظیمات و اطلاعات قبلی</summary><button type="button" className={styles.textButton} onClick={()=>onPlan(null,account.id)}>واریز ماهانه جدید</button><div className={styles.buttonRow}><button type="button" className={styles.secondaryButton} onClick={onDetails}>مشخصات حساب</button><button type="button" className={styles.secondaryButton} onClick={onImport}>فایل دارایی‌ها</button><button type="button" className={styles.secondaryButton} onClick={onSnapshot} disabled={!account.positions.length||summary.unvaluedCount>0}>ثبت وضعیت تاریخی</button><button type="button" className={styles.secondaryButton} onClick={onAdd}>اصلاح دستی دارایی</button></div>{review.length>0&&<p>{number(review.length)} دارایی با مبنای تعداد قبلی.</p>}</details>

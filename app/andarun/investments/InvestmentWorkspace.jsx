@@ -6,6 +6,7 @@ import { ACCOUNT_DEFINITIONS, reviewQueue } from '@/lib/investments/family.mjs'
 import { number } from '@/lib/investments/portfolio.mjs'
 import useFamilyPortfolio from './useFamilyPortfolio'
 import useMarketData from './useMarketData'
+import usePeriodProfit from './usePeriodProfit'
 import useTransactionLedger from './useTransactionLedger'
 import LedgerWorkspace from './LedgerWorkspace'
 import EntryDialog from './EntryDialog'
@@ -40,6 +41,7 @@ export function download(content, name, type) {
 
 export default function InvestmentWorkspace() {
   const [section, setSection] = useState('accounts')
+  const [profitSelection, setProfitSelection] = useState({mode:'current'})
   const [ledgerAccountId, setLedgerAccountId] = useState('all')
   const [ledgerView, setLedgerView] = useState('transactions')
   const [accountId, setAccountId] = useState('self')
@@ -56,6 +58,7 @@ export default function InvestmentWorkspace() {
   const ledger = useTransactionLedger(!!state)
   useEffect(()=>{if(ledger.loaded&&store.cloud&&!store.offline&&!store.conflict)store.synchronizeLedger(ledger.transactions)},[ledger.loaded,ledger.transactions,store.cloud,store.offline,store.conflict])
   const marketData = useMarketData(state)
+  const profitPeriod = usePeriodProfit(state?.accounts,ledger,marketData,profitSelection,!!state?.settings?.isinPricesEnabled && ['accounts','account'].includes(section))
   const visit = useVisitChanges(state, marketData.markets)
   const account = state?.accounts.find(a => a.id === accountId)
   const trade = state?.trades.find(t => t.id === tradeId)
@@ -108,8 +111,8 @@ export default function InvestmentWorkspace() {
         {section!=='accounts'&&<MarketRefresh marketData={marketData} state={state} />}
         {section==='weekly' && <VisitChanges state={state} markets={marketData.markets} visit={visit} onAsset={openAsset} onWeekly={() => navigate('weekly')} />}
         {section === 'ledger' && <LedgerWorkspace state={state} onPlan={editCashPlan} onPostPlan={postCashPlan} onEntry={newEntry} key={`${ledgerAccountId}:${ledgerView}`} ledger={ledger} initialAccount={ledgerAccountId} initialView={ledgerView} download={download} notify={setToast}/>}
-        {section === 'accounts' && <FamilyOverview onEnablePrices={enableIsinPrices} marketData={marketData} ledger={ledger} onLedger={openLedger} state={state} onAccount={openAccount} />}
-        {section === 'account' && <AccountWorkspace cashPlans={state.settings.cashPlans} onPlan={editCashPlan} onPostPlan={postCashPlan} onEntry={newEntry} key={accountId} account={account} ledger={ledger} onLedger={() => openLedger(accountId)} markets={marketData.markets} onEdit={position => setDialog({ kind: 'position', accountId, position })} onAdd={() => setDialog({ kind: 'position', accountId, position: null })} onDetails={() => setDialog({ kind: 'details', accountId })} onSnapshot={() => setDialog({ kind: 'snapshot', accountId })} onReport={() => openReport(accountId)} onOpen={p => openAsset(accountId,p.id)} onImport={() => setDialog({kind:'csv',accountId})} />}
+        {section === 'accounts' && <FamilyOverview profitSelection={profitSelection} onProfitSelection={setProfitSelection} profitPeriod={profitPeriod} onEnablePrices={enableIsinPrices} marketData={marketData} ledger={ledger} onLedger={openLedger} state={state} onAccount={openAccount} />}
+        {section === 'account' && <AccountWorkspace profitSelection={profitSelection} onProfitSelection={setProfitSelection} profitPeriod={profitPeriod} cashPlans={state.settings.cashPlans} onPlan={editCashPlan} onPostPlan={postCashPlan} onEntry={newEntry} key={accountId} account={account} ledger={ledger} onLedger={() => openLedger(accountId)} markets={marketData.markets} onEdit={position => setDialog({ kind: 'position', accountId, position })} onAdd={() => setDialog({ kind: 'position', accountId, position: null })} onDetails={() => setDialog({ kind: 'details', accountId })} onSnapshot={() => setDialog({ kind: 'snapshot', accountId })} onReport={() => openReport(accountId)} onOpen={p => openAsset(accountId,p.id)} onImport={() => setDialog({kind:'csv',accountId})} />}
         {section === 'trades' && <TradeWorkspace trades={state.trades} settings={state.settings} onSettings={settings => store.change({...state,settings})} dueCount={due.length} selectedId={tradeId} onSelect={setTradeId} createOpen={createTrade} onCreateOpen={setCreateTrade} onCreate={addTrade} onExecution={kind => setDialog({ kind: 'execution', executionKind: kind })} onReview={() => setDialog({ kind: 'review' })} />}
         {section === 'journal' && <DecisionJournal state={state} onSelect={openTrade} onDecision={openDecision} onNew={() => newDecision()} onNewTrade={newTrade} />}
         {section === 'decision' && decision && <DecisionWorkspace decision={decision} state={state} onAsset={openAsset} onReview={() => setDialog({kind:'decisionReview'})} onReport={() => openReport(decision.accountId,decision.positionId)} />}
