@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server'
 import { requireAndarunSession } from '@/lib/andarunPasswordAuth'
 import { searchInstruments, loadMarket } from '@/lib/investments/market.server'
 import { loadIsinMarket } from '@/lib/investments/isin-market.server'
-import { validIsin } from '@/lib/investments/family.mjs'
+import { validIsin, isDate, todayBerlin } from '@/lib/investments/family.mjs'
 export const dynamic = 'force-dynamic'
 const headers = { 'Cache-Control': 'private, no-store', Vary: 'Cookie' }
 export async function GET(request) {
@@ -14,7 +14,9 @@ export async function GET(request) {
   try {
     if (isin) {
       if (!validIsin(isin)) return NextResponse.json({error:'شناسه ابزار معتبر نیست.'},{status:400,headers})
-      return NextResponse.json(await loadIsinMarket(isin,params.get('refresh') === '1',params.get('history') === '1'),{headers})
+      const historyDates=params.getAll('historyDate')
+      if(historyDates.length>2||historyDates.some(date=>!isDate(date)||date>=todayBerlin()))return NextResponse.json({error:'تاریخ مرجع بازار معتبر نیست.'},{status:400,headers})
+      return NextResponse.json(await loadIsinMarket(isin,params.get('refresh') === '1',params.get('history') === '1',historyDates),{headers})
     }
     if(query && query.length<=160) return NextResponse.json({results:await searchInstruments(query)},{headers})
     if(!symbol || !/^[A-Z0-9^][A-Z0-9.^=\-]{0,34}$/.test(symbol)) return NextResponse.json({error:'نماد بازار معتبر نیست.'},{status:400,headers})

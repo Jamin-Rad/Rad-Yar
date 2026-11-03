@@ -7,7 +7,7 @@ export default function usePeriodProfit(accounts, ledger, marketData, selection,
   const today = todayBerlin()
   const range = useMemo(()=>profitRange(selection,today),[selection,today])
   const plan = useMemo(()=>periodPlan(accounts||[],ledger?.loaded?ledger.transactions:null,range),[accounts,ledger?.loaded,ledger?.transactions,range])
-  const instruments = useMemo(()=>periodInstruments(plan),[plan])
+  const instruments = useMemo(()=>periodInstruments(plan,today),[plan,today])
   const keys = JSON.stringify(instruments)
   const [retry, setRetry] = useState(0)
   const reload = useCallback(()=>setRetry(v=>v+1),[])
@@ -18,7 +18,7 @@ export default function usePeriodProfit(accounts, ledger, marketData, selection,
     async function worker() {
       while (active && index<rows.length) {
         const row = rows[index++]
-        await marketData.load('ISIN:'+row.isin,row.name,retry>0,true)
+        await marketData.load('ISIN:'+row.isin,row.name,retry>0,true,row.historyDates)
       }
     }
     Promise.all(Array.from({length:Math.min(3,rows.length)},worker))
