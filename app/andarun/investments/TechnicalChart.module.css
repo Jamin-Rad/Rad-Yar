@@ -1,0 +1,31 @@
+.chart { background:#111c27; border:1px solid #33424e; border-radius:10px; padding:18px; margin-top:18px; color:#e1e8ee; }
+.toolbar { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; }
+.toolbar h3 { margin:0; font-size:15px; color:#e1e8ee; }
+.ranges { display:flex; gap:3px; }
+.chart button { font-family:inherit; cursor:pointer; }
+.ranges button,.mode { color:#b9c7d4; background:none; border:1px solid transparent; padding:8px 12px; border-radius:5px; font-size:12px; min-height:38px; }
+.ranges button[aria-pressed=true],.mode { border-color:#516673; color:#e7f3e9; background:#21333c; }
+.ranges button:disabled { opacity:.35; cursor:default; }
+.chart button:focus-visible,.chart input:focus-visible { outline:2px solid #c7e99a; outline-offset:3px; }
+.indicators { display:flex; flex-wrap:wrap; gap:8px 18px; padding:18px 0; border-bottom:1px solid #2e3b47; }
+.indicators label { display:flex; align-items:center; gap:7px; color:var(--series); font-size:12px; cursor:pointer; min-height:30px; }
+.indicators input { accent-color:var(--series); width:15px; height:15px; }
+.readout { display:flex; flex-wrap:wrap; gap:8px 16px; align-items:center; min-height:55px; padding-top:12px; font-size:12px; font-variant-numeric:tabular-nums; }
+.readout time { color:#b9c7d4; }
+.plot { display:block; width:100%; direction:ltr; touch-action:pan-y; }
+.study { border-top:1px solid #2e3b47; padding-top:11px; }
+.study > div { display:flex; gap:18px; align-items:center; font-size:12px; color:#c1cad7; }
+.study strong { color:#e2e9f0; font-variant-numeric:tabular-nums; }
+.study small { color:#98a6b8; }
+.study p { color:#aebdcb; font-size:11px; }
+.slider { display:flex; align-items:center; gap:18px; color:#aebdcb; font-size:11px; margin:12px 0; }
+.slider input { flex:1; min-width:0; accent-color:#8cbdab; }
+.caption { font-size:11px; color:#a6b5c4; margin:10px 0 0; line-height:1.9; }
+.error { font-size:12px; color:#efb5b8; }
+.data { margin-top:12px; color:#a6b5c4; font-size:11px; }
+.data summary { cursor:pointer; padding:8px 0; }
+.data p { max-width:750px; line-height:1.9; }
+.data > div { overflow:auto; max-height:310px; }
+.data table { border-collapse:collapse; width:100%; min-width:640px; font-size:11px; }
+.data th,.data td { padding:8px; text-align:start; border-bottom:1px solid #2e3b47; }
+@media(max-width:680px) { .chart { padding:12px 8px; } .toolbar { gap:8px; } .toolbar h3 { font-size:13px; } .ranges button,.mode { padding:7px 8px; font-size:10px; min-height:40px; } .indicators { gap:3px 13px; padding:12px 0; } .indicators label { font-size:11px; min-height:38px; } .readout { font-size:10px; gap:5px 10px; padding-block:8px; } .slider { gap:10px; } }

@@ -14,7 +14,7 @@ export async function GET(request) {
   try {
     if (isin) {
       if (!validIsin(isin)) return NextResponse.json({error:'شناسه ابزار معتبر نیست.'},{status:400,headers})
-      return NextResponse.json(await loadIsinMarket(isin,params.get('refresh') === '1'),{headers})
+      return NextResponse.json(await loadIsinMarket(isin,params.get('refresh') === '1',params.get('history') === '1'),{headers})
     }
     if(query && query.length<=160) return NextResponse.json({results:await searchInstruments(query)},{headers})
     if(!symbol || !/^[A-Z0-9^][A-Z0-9.^=\-]{0,34}$/.test(symbol)) return NextResponse.json({error:'نماد بازار معتبر نیست.'},{status:400,headers})

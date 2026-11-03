@@ -8,26 +8,33 @@ export default function useMarketData(state) {
   const [loading, setLoading] = useState({})
   const [batch, setBatch] = useState({ running: false, done: 0, total: 0, failed: 0, completedAt: null })
   const data = useRef({}), pending = useRef(new Map()), mounted = useRef(true), batchLock = useRef(false)
+  const historyRequests=useRef(new Set())
   useEffect(() => { mounted.current = true; return () => { mounted.current = false } }, [])
-  const load = useCallback(async (symbol, name, force = false) => {
+  const load = useCallback(async (symbol, name, force = false, withHistory = false) => {
     if (!symbol) return null
-    if (pending.current.has(symbol)) return pending.current.get(symbol)
-    if (!force && data.current[symbol] && Date.now() - new Date(data.current[symbol].fetchedAt).getTime() < 15 * 60000) return data.current[symbol]
+    if(withHistory)historyRequests.current.add(symbol)
+    withHistory=withHistory||historyRequests.current.has(symbol)
+    const requestKey=withHistory?`${symbol}:history`:symbol
+    if (pending.current.has(requestKey)) return pending.current.get(requestKey)
+    if (!force && data.current[symbol] && (!withHistory || !symbol.startsWith('ISIN:') || data.current[symbol].historyMeta?.verified && Date.now()-Date.parse(data.current[symbol].historyMeta.fetchedAt)<15*60000) && Date.now() - new Date(data.current[symbol].fetchedAt).getTime() < 15 * 60000) return data.current[symbol]
     const task = (async () => {
       if (mounted.current) setLoading(v => ({ ...v, [symbol]: true }))
       try {
         const params = new URLSearchParams(symbol.startsWith('ISIN:') ? {isin:symbol.slice(5)} : { symbol, name: name || symbol })
         if (force) params.set('refresh', '1')
+        if (withHistory) params.set('history', '1')
         const response = await fetch(`/api/andarun/investments/market?${params}`, { cache: 'no-store' })
-        const result = await response.json()
+        let result = await response.json()
         if (!response.ok) throw Error(result.error || 'دریافت قیمت انجام نشد.')
+        const previous=data.current[symbol]
+        if(!result.historyMeta&&previous?.historyMeta?.verified&&result.identity?.isin===previous.identity?.isin&&result.quote.idNotation===previous.historyMeta.idNotation&&result.quote.currency===previous.historyMeta.currency)result={...result,history:previous.history,historyMeta:previous.historyMeta}
         data.current[symbol] = result
         if (mounted.current) { setMarkets(v => ({ ...v, [symbol]: result })); setErrors(v => ({ ...v, [symbol]: '' })) }
         return result
       } catch (err) { if (mounted.current) setErrors(v => ({ ...v, [symbol]: err.message })); return null }
-      finally { pending.current.delete(symbol); if (mounted.current) setLoading(v => ({ ...v, [symbol]: false })) }
+      finally { pending.current.delete(requestKey); if (mounted.current) setLoading(v => ({ ...v, [symbol]: pending.current.has(symbol)||pending.current.has(`${symbol}:history`) })) }
     })()
-    pending.current.set(symbol, task)
+    pending.current.set(requestKey, task)
     return task
   }, [])
   const keys = JSON.stringify(state?.accounts.flatMap(a => a.positions.filter(p => (p.marketConfirmed && p.marketSymbol) || state.settings?.isinPricesEnabled && p.isin).map(p => ({ symbol: marketKey(p), name: p.name }))) || [])

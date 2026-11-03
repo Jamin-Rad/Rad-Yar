@@ -532,7 +532,7 @@
 .visitAsset:hover strong { color: #c7e99a; }
 .visitNews { grid-column: 1/-1; display: grid; gap: 12px; padding: 12px; background: #19242c; border-radius: 6px; }
 .visitNews a { color: #d2e8b3; font-size: 13px; line-height: 1.8; text-decoration: underline; text-underline-offset: 3px; }
-.tradingViewFrame { display: block; width: 100%; height: 540px; border: 1px solid #35424d; border-radius: 8px; margin-top: 18px; background: #131722; }
+.tradingViewFrame { display: block; width: 100%; height: 680px; border: 1px solid #35424d; border-radius: 8px; margin-top: 18px; background: #131722; }
 @media(max-width:550px) {
  .marketRefresh { padding: 14px; }
  .marketRefresh > div:first-child { gap: 12px; }
@@ -540,7 +540,7 @@
  .visitRows article { grid-template-columns: 1fr 1fr; }
  .visitAsset { grid-column: 1/-1; }
  .visitSummary { gap: 12px; }
- .tradingViewFrame { height: 450px; }
+ .tradingViewFrame { height: 560px; }
 }
 
 .visitRows article > div { min-width: 0; overflow-wrap: anywhere; }
