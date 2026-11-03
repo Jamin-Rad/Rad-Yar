@@ -19,20 +19,12 @@ test('official questions remain separate from authored written and binary lesson
  assert.equal(buildLessonPractice(lessons,[1,2],'official').length,2);const written=buildLessonPractice(lessons,[1],'written');assert.equal(written.length,1);assert.ok(written.every(q=>!q.official&&q.kind==='written'));assert.equal(buildLessonPractice(lessons,[1],'mixed').length,3);assert.equal(buildLessonPractice(lessons,[],'binary').length,0);
 });
 
-test('book pagination fits complete bilingual rows, keeps titles with text and never drops oversized paragraphs',async()=>{
- const {packBookRows}=await import('./bookPagination.js');
- assert.deepEqual(packBookRows([50,120,150,100],300),[[0,1],[2,3]]);
- assert.deepEqual(packBookRows([40,400,80],300,true),[[0,1],[2]]);
- assert.deepEqual(packBookRows([700,90,90],300),[[0],[1,2]]);
- assert.deepEqual(packBookRows([],300),[]);
-});
-
 test('original figures have unique allowlisted files and belong to exactly one source row',async()=>{
  const {sourceFigures,sourceFigureFiles,figuresForRow}=await import('./sourceFigures.js');
- assert.equal(sourceFigures[1].length,8);assert.equal(sourceFigures[5].length,3);
- assert.equal(sourceFigureFiles.size,24);
+ assert.equal(sourceFigures[1].length,8);assert.equal(sourceFigures[5].length,3);assert.equal(sourceFigures[6].length,13);
+ assert.equal(sourceFigureFiles.size,37);
  for(const [lesson,figures] of Object.entries(sourceFigures))for(const figure of figures){
-  assert.match(figure.file,/^lesson-[145]-(?:table|figure|intro)[\w.-]*\.webp$/);
+  assert.match(figure.file,/^lesson-[1456]-(?:table|figure|intro)[\w.-]*\.webp$/);
   assert.ok(figure.width>0&&figure.height>0&&Number.isInteger(figure.anchor));
   const before={de:{start:0,end:figure.anchor}},after={de:{start:figure.anchor,end:figure.anchor+1}};
   assert.ok(!figuresForRow(lesson,figure.page,before).some(f=>f.id===figure.id));

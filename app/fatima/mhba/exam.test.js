@@ -7,7 +7,7 @@ import {validateFatimaMhbaMaterials} from '../../../lib/fatimaMhbaSchema.js';
 import {extraChapterPractice} from './chapterPractice.js';
 import {chapters} from './studyContent.js';
 const toFa=s=>s.replace(/\d/g,d=>'۰۱۲۳۴۵۶۷۸۹'[Number(d)]);
-const materials=Object.fromEntries([1,2,4,5].map(n=>[n,{tables:[4,5].includes(n)?Object.fromEntries((n===4?['table-4-1','table-4-2','table-4-3']:['table-5-1','table-5-2']).map(id=>[id,{head:['معیار','مقدار'],rows:[['نمونه','ترجمه']]}])):undefined,pages:Array.from({length:({1:45,2:48,4:53,5:46})[n]},(_,i)=>{
+const materials=Object.fromEntries([1,2,4,5,6].map(n=>[n,{tables:[4,5,6].includes(n)?Object.fromEntries((n===4?['table-4-1','table-4-2','table-4-3']:n===5?['table-5-1','table-5-2']:['table-6-1','table-6-2','table-6-3','table-6-4']).map(id=>[id,{head:['معیار','مقدار'],rows:[['نمونه','ترجمه']]}])):undefined,pages:Array.from({length:({1:45,2:48,4:53,5:46,6:48})[n]},(_,i)=>{
  const headings=chapters[n].filter(c=>c.id!=='intro'&&c.start===i+1);
  return {number:i+1,text:'Synthetic source page '+(i+1)+'\n'+headings.map(c=>c.id==='literatur'?'Literaturverzeichnis:':c.id==='fragen'?'Kontrollfragen:':(c.sourceId||c.id)+'. Synthetic heading').join('\n')+'\nSynthetic paragraph.',fa:'صفحهٔ مصنوعی\n'+headings.map(c=>c.id==='literatur'?'فهرست منابع':c.id==='fragen'?'سؤال‌های کنترلیِ خود جزوه':toFa(c.sourceId||c.id)+'. عنوان مصنوعی').join('\n')+'\nپاراگراف مصنوعی.'};
 }),questions:Array.from({length:10},(_,i)=>({id:n+'.'+(i+1),official:true,text:'Synthetic control question '+(i+1),fa:'سؤال رسمی',officialAnswer:'Synthetic official answer',officialAnswerFa:'پاسخ رسمی فارسی'}))}]));
@@ -55,4 +55,14 @@ test('private payload validation refuses missing translations or changed page/qu
  const missingTable=structuredClone(materials);delete missingTable[5].tables['table-5-2'];assert.throws(()=>validateFatimaMhbaMaterials(missingTable),/table/);
  const wrong=structuredClone(materials);wrong[1].questions[0].id='2.1';
  assert.throws(()=>validateFatimaMhbaMaterials(wrong),/questions/);
+});
+
+
+test('lesson 6 makes every authored item reachable and rejects incomplete private source or tables',()=>{
+ const lesson=lessons[6];assert.equal(lesson.chapters.length,33);
+ assert.deepEqual([...new Set(lesson.chapters.flatMap(c=>c.statementIds))].sort((a,b)=>a-b),Array.from({length:44},(_,i)=>i));
+ assert.equal(lesson.cards.filter(c=>c.source==='official').length,10);
+ const missing=structuredClone(materials);delete missing[6];assert.throws(()=>validateFatimaMhbaMaterials(missing),/Incomplete/);
+ const table=structuredClone(materials);table[6].tables['table-6-4'].rows[0]=['incomplete'];assert.throws(()=>validateFatimaMhbaMaterials(table),/table/);
+ const untranslated=structuredClone(materials);untranslated[6].questions[9].officialAnswerFa='';assert.throws(()=>validateFatimaMhbaMaterials(untranslated),/questions/);
 });

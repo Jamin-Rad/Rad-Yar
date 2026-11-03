@@ -1,3 +1,4 @@
+import {lesson6Practice} from './lesson6Practice.js';
 import {lesson5Practice} from './lesson5Practice.js';
 import {lesson4Practice} from './lesson4Practice.js';
 const t=(text,answer,why)=>({text,answer,why,official:false});
@@ -100,3 +101,5 @@ export function nextReview(previous,known,now=Date.now()){
 
 statements[4]=lesson4Practice;
 statements[5]=lesson5Practice;
+
+statements[6]=lesson6Practice;

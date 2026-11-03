@@ -1,3 +1,4 @@
+import {lesson6Figures} from './lesson6Figures.js';
 // Numeric placements and authored captions only; original images stay in private storage.
 export const sourceFigures={
   "4":[
@@ -209,5 +210,7 @@ export const sourceFigures={
   ]
 };
 export const answerFigures={"4.5": {"id": "answer-4-5", "pdf": "Text_04_Loesungen_Kontrollfragen_2026.pdf", "page": 4, "file": "lesson-4-answer-4-5.webp", "width": 750, "height": 652, "label": "نمودار پاسخ سؤال 4.5", "title": "مسیر ورشکستگی مصرف‌کننده"}, "4.8": {"id": "answer-4-8", "pdf": "Text_04_Loesungen_Kontrollfragen_2026.pdf", "page": 6, "file": "lesson-4-answer-4-8.webp", "width": 937, "height": 300, "label": "نمودار پاسخ سؤال 4.8", "title": "چرخهٔ عمر بنگاه"}, "4.9": {"id": "answer-4-9", "pdf": "Text_04_Loesungen_Kontrollfragen_2026.pdf", "page": 7, "file": "lesson-4-answer-4-9.webp", "width": 957, "height": 115, "label": "نمودار پاسخ سؤال 4.9", "title": "ماتریس آنسوف"}, "4.10": {"id": "answer-4-10", "pdf": "Text_04_Loesungen_Kontrollfragen_2026.pdf", "page": 9, "file": "lesson-4-answer-4-10.webp", "width": 750, "height": 500, "label": "نمودار پاسخ سؤال 4.10", "title": "مسیرهای رشد"},"5.9": {"id": "table-answer-9", "file": "lesson-5-table-answer-9.webp", "page": 4, "width": 1189, "height": 195, "label": "جدول پاسخ سؤال ۵.۹", "title": "تقسیم سود OHG با حقوق مدیران", "pdf": "Text_05_Loesungen_Kontrollfragen_2026.pdf"}};
+sourceFigures[6]=lesson6Figures;
+Object.assign(answerFigures,{'6.1':{...lesson6Figures.find(f=>f.id==='figure-6-1'),pdf:'Text_06_Ziele_2026.pdf'},'6.6':{...lesson6Figures.find(f=>f.id==='figure-6-2'),pdf:'Text_06_Ziele_2026.pdf'},'6.10':{...lesson6Figures.find(f=>f.id==='table-6-3'),pdf:'Text_06_Ziele_2026.pdf'}});
 export const sourceFigureFiles=new Set([...Object.values(sourceFigures).flat(),...Object.values(answerFigures)].map(f=>f.file));
 export function figuresForRow(lessonId,page,row){return (sourceFigures[lessonId]||[]).filter(f=>f.page===page&&f.anchor>=row.de.start&&f.anchor<row.de.end);}

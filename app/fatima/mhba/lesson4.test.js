@@ -43,7 +43,7 @@ test('lesson 4 retains all source and official solution visuals and flags obsole
  assert.equal(lesson4Practice.find(q=>q.text.includes('24 Monate')).answer,true);
 });
 
-test('Ansoff table and source caption stay on the same bilingual book row',()=>{
+test('Ansoff table and source caption stay on the same bilingual source row',()=>{
  const chunk={key:'4.2.3:29',page:29,deStart:0,faStart:0,text:'Table data\n\nTab. 4.2: caption\n\nPenetration paragraph\n\nDevelopment paragraph',fa:'داده\n\nعنوان جدول\n\nنفوذ\n\nتوسعه'};chunk.deEnd=chunk.text.length;chunk.faEnd=chunk.fa.length;
  const rows=parallelRows(chunk,4);assert.equal(rows.length,3);assert.match(rows[0].de.text,/Tab. 4.2/);assert.match(rows[0].fa.text,/عنوان جدول/);assert.equal(rows.map(r=>r.de.text).join(''),chunk.text);assert.equal(rows.map(r=>r.fa.text).join(''),chunk.fa);
 });
