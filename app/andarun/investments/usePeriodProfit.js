@@ -1,5 +1,6 @@
 'use client'
 import { useEffect, useMemo, useState, useCallback } from 'react'
+import { realizedProfit } from '@/lib/investments/realized-profit.mjs'
 import { todayBerlin } from '@/lib/investments/family.mjs'
 import { profitRange, periodPlan, periodProfit, periodInstruments } from '@/lib/investments/period-profit.mjs'
 
@@ -26,5 +27,6 @@ export default function usePeriodProfit(accounts, ledger, marketData, selection,
   },[keys,range,enabled,marketData?.load,retry])
   const result = useMemo(()=>periodProfit(plan,marketData?.markets,Date.now(),today),[plan,marketData?.markets,today])
   const loading = instruments.some(i=>marketData?.loading?.['ISIN:'+i.isin])
-  return {range,result,loading,reload}
+  const realized=useMemo(()=>realizedProfit(accounts||[],ledger?.loaded?ledger.transactions:null,Date.now(),today),[accounts,ledger?.loaded,ledger?.transactions,today])
+  return {range,result,realized,loading,reload}
 }

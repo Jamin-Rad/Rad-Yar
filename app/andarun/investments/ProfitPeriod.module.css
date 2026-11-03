@@ -20,3 +20,14 @@
 .dark.details { border-color:#405663; }
 .dark.details summary,.dark .account strong { color:#dbe8ec; }
 .dark .error { color:#ff9499; }
+
+.scopes { display:flex; flex-wrap:wrap; gap:4px; padding:3px; border:1px solid #d9e2e3; border-radius:8px; background:#f5f8f7; }
+.scopes button { font:inherit; border:0; border-radius:5px; background:transparent; color:#52645f; padding:8px 12px; min-height:38px; cursor:pointer; }
+.scopes button[aria-pressed="true"] { background:#176b56; color:#fff; }
+.scopes button:focus-visible { outline:3px solid #2d9277; outline-offset:3px; }
+.saleRows { margin:6px 0; }
+.saleRow { display:grid; grid-template-columns:100px 1fr auto; gap:10px; padding:8px 0; border-bottom:1px solid #e3e8ed; }
+.dark .saleRow { border-color:#405663; }
+@media(max-width:680px) { .scopes { width:100%; } .scopes button { flex:1; padding:8px 6px; } .saleRow { grid-template-columns:1fr auto; } .saleRow>bdi:first-child { grid-column:1/-1; font-size:10px; } }
+.details.details > summary,.details .saleRows > summary { color:#344b46; }
+.dark.details > summary,.dark.details .saleRows > summary { color:#dbe8ec; }
