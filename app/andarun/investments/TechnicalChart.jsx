@@ -6,7 +6,8 @@ import styles from './TechnicalChart.module.css'
 
 const LEFT=12
 const format=new Intl.NumberFormat('de-DE',{maximumFractionDigits:2})
-const display=value=>value==null?'—':format.format(value)
+const smallFormat=new Intl.NumberFormat('de-DE',{maximumSignificantDigits:4})
+const display=value=>value==null?'—':value!==0&&Math.abs(value)<1?smallFormat.format(value):format.format(value)
 const OPTIONS=[['sma20','SMA 20','#e9bc62'],['sma50','SMA 50','#79a8ff'],['sma200','SMA 200','#d89bf5'],['ema20','EMA 20','#f28f8f'],['bb','Bollinger 20,2','#8dabb7'],['rsi','RSI 14','#b8a0fa'],['macd','MACD 12,26,9','#76c8e0'],['volume','حجم معاملات','#689693']]
 function path(rows,key,x,y){let connected=false;return rows.map((row,i)=>{if(row[key]==null){connected=false;return ''}const move=connected?'L':'M';connected=true;return `${move}${x(i).toFixed(2)},${y(row[key]).toFixed(2)}`}).join(' ')}
 function extent(values){const min=Math.min(...values),max=Math.max(...values),pad=(max-min)*.08||Math.abs(max)*.01||1;return [min-pad,max+pad]}
