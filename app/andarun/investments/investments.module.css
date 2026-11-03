@@ -687,3 +687,8 @@
 .cashPlans span { color:var(--muted); margin-top:4px; font-size:13px; }
 
 @media(min-width:681px) and (max-width:1150px) { .balanceGrid { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+
+/* Consistent right navigation on every investment screen. */
+.workspace .content { margin-right:252px; }
+@media(max-width:1000px) { .workspace .content { margin-right:0; } }
+@media print { .workspace .content { margin-right:0; } }

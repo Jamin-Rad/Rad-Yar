@@ -2,18 +2,18 @@
 import { useEffect, useMemo, useState, useCallback } from 'react'
 import { realizedProfit } from '@/lib/investments/realized-profit.mjs'
 import { todayBerlin } from '@/lib/investments/family.mjs'
-import { profitRange, periodPlan, periodProfit, periodInstruments } from '@/lib/investments/period-profit.mjs'
+import { profitRange, periodPlan, periodProfit, periodInstruments, openPeriodPlan } from '@/lib/investments/period-profit.mjs'
 
 export default function usePeriodProfit(accounts, ledger, marketData, selection, enabled) {
   const today = todayBerlin()
   const range = useMemo(()=>profitRange(selection,today),[selection,today])
-  const plan = useMemo(()=>periodPlan(accounts||[],ledger?.loaded?ledger.transactions:null,range),[accounts,ledger?.loaded,ledger?.transactions,range])
+  const plan = useMemo(()=>openPeriodPlan(periodPlan(accounts||[],ledger?.loaded?ledger.transactions:null,range)),[accounts,ledger?.loaded,ledger?.transactions,range])
   const instruments = useMemo(()=>periodInstruments(plan,today),[plan,today])
   const keys = JSON.stringify(instruments)
   const [retry, setRetry] = useState(0)
   const reload = useCallback(()=>setRetry(v=>v+1),[])
   useEffect(()=>{
-    if (!enabled || !marketData?.load || !range || range.error) return
+    if (selection.scope==='realized' || !enabled || !marketData?.load || !range || range.error) return
     let active = true, index = 0
     const rows = JSON.parse(keys)
     async function worker() {
@@ -24,9 +24,9 @@ export default function usePeriodProfit(accounts, ledger, marketData, selection,
     }
     Promise.all(Array.from({length:Math.min(3,rows.length)},worker))
     return ()=>{active=false}
-  },[keys,range,enabled,marketData?.load,retry])
-  const result = useMemo(()=>periodProfit(plan,marketData?.markets,Date.now(),today),[plan,marketData?.markets,today])
+  },[keys,range,enabled,marketData?.load,retry,selection.scope])
+  const result = useMemo(()=>{const value=periodProfit(plan,marketData?.markets,Date.now(),today);return value?{...value,scope:'open'}:null},[plan,marketData?.markets,today])
   const loading = instruments.some(i=>marketData?.loading?.['ISIN:'+i.isin])
-  const realized=useMemo(()=>realizedProfit(accounts||[],ledger?.loaded?ledger.transactions:null,Date.now(),today),[accounts,ledger?.loaded,ledger?.transactions,today])
+  const realized=useMemo(()=>realizedProfit(accounts||[],ledger?.loaded?ledger.transactions:null,Date.now(),today,range),[accounts,ledger?.loaded,ledger?.transactions,today,range])
   return {range,result,realized,loading,reload}
 }

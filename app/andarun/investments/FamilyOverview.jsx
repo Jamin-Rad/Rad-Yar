@@ -12,11 +12,11 @@ function resultClass(value) { return value == null || value === 0 ? '' : value >
 export default function FamilyOverview({ state, onAccount, ledger, onLedger, marketData, onEnablePrices, profitSelection={mode:'current'}, onProfitSelection, profitPeriod }) {
   const balance = familyBalance(state.accounts, ledger?.loaded ? ledger.transactions : null, marketData?.markets)
   const isPeriod = profitSelection.mode !== 'current'
-  const isRealized = !isPeriod && profitSelection.scope==='realized'
-  const result = isPeriod ? profitPeriod?.result : isRealized ? profitPeriod?.realized : balance.unrealized
-  const resultTitle = isPeriod?'سود و زیان بازه':isRealized?'سود و زیان فروش‌ها':'سود و زیان دارایی‌ها'
+  const isRealized = profitSelection.scope==='realized'
+  const result = isRealized ? profitPeriod?.realized : isPeriod ? profitPeriod?.result : balance.unrealized
+  const resultTitle = isRealized?'سود و زیان فروش‌ها':'سود و زیان دارایی‌های فعلی'
   const resultUnit = isRealized?'فروش':'دارایی'
-  const gainValue = isPeriod ? result?.gainCents : result?.knownGainCents
+  const gainValue = isPeriod && !isRealized ? result?.gainCents : result?.knownGainCents
   const priceErrors = Object.values(marketData?.errors || {}).some(Boolean)
   const refreshing = marketData?.batch?.running
   function refreshPrices() {
@@ -32,9 +32,9 @@ export default function FamilyOverview({ state, onAccount, ledger, onLedger, mar
         <p>ارزش دارایی‌ها + موجودی نقد</p>
       </div>
       <div className={styles.metric}>
-        <h2>{resultTitle} {result && !result.complete && <small>{profitPeriod?.loading&&isPeriod?'دریافت قیمت…':'ناقص'}</small>}</h2>
+        <h2>{resultTitle} {result && !result.complete && <small>{profitPeriod?.loading&&isPeriod&&!isRealized?'دریافت قیمت…':'ناقص'}</small>}</h2>
         <strong className={resultClass(gainValue)}><bdi>{gainValue == null ? '—' : signedMoney(gainValue)}</bdi></strong>
-        {isPeriod ? <p>{result?.complete?'پس از مالیات و کارمزد':result?`پوشش ${number(result.knownCount)} از ${number(result.count)} دارایی`:'در انتظار اطلاعات'}</p> : isRealized ? <p>{!result?'در انتظار تراکنش‌ها':result.complete?'از زمان خرید تا الان · پس از مالیات و کارمزد':`بخش محاسبه‌شده · ${number(result.knownCount)} از ${number(result.count)} فروش`}</p> : <button type="button" className={styles.resultDetail} onClick={() => onLedger?.('all', result.complete ? 'annual' : 'issues')}>دارایی‌های فعلی · {result.complete ? 'از زمان خرید' : `${number(result.knownCount)} از ${number(result.count)} دارایی`}</button>}
+        {isRealized ? <p>{!result?'در انتظار تراکنش‌ها':result.complete?'فروش‌های همین بازه · پس از مالیات و کارمزد':`بخش محاسبه‌شده · ${number(result.knownCount)} از ${number(result.count)} فروش`}</p> : isPeriod ? <p>{result?.complete?'بخش باقی‌مانده در پایان بازه':result?`پوشش ${number(result.knownCount)} از ${number(result.count)} دارایی`:'در انتظار اطلاعات'}</p> : <button type="button" className={styles.resultDetail} onClick={() => onLedger?.('all', result.complete ? 'annual' : 'issues')}>دارایی‌های فعلی · {result.complete ? 'از زمان خرید' : `${number(result.knownCount)} از ${number(result.count)} دارایی`}</button>}
       </div>
       <div className={styles.metric}>
         <h2>موجودی نقد {balance.cashEstimated && balance.cashCents != null && <small>برآوردی</small>}</h2>
@@ -42,7 +42,7 @@ export default function FamilyOverview({ state, onAccount, ledger, onLedger, mar
         <p>مجموع حساب‌های خانواده</p>
       </div>
     </section>
-    <ProfitPeriodDetails period={isPeriod?profitPeriod:null}/>
+    <ProfitPeriodDetails period={isPeriod&&!isRealized?profitPeriod:null}/>
     {isRealized&&<RealizedProfitDetails result={result}/>}
 
     <section className={styles.accounts} aria-labelledby="family-accounts-title">
@@ -56,7 +56,7 @@ export default function FamilyOverview({ state, onAccount, ledger, onLedger, mar
           const current = balance.accounts[index]
           const equity = current.equityCents ?? current.estimatedEquityCents
           const accountResult = isPeriod || isRealized ? result?.accounts.find(a=>a.accountId===account.id) : current.unrealized
-          const gain = isPeriod ? accountResult?.gainCents : accountResult?.knownGainCents
+          const gain = isPeriod && !isRealized ? accountResult?.gainCents : accountResult?.knownGainCents
           const definition = ACCOUNT_DEFINITIONS.find(d => d.id === account.id)
           return <button type="button" key={account.id} className={styles.accountRow} onClick={() => onAccount(account.id)} aria-label={`حساب ${account.owner}، کل دارایی ${money(equity)}، ${resultTitle} ${gain==null?'نامشخص':signedMoney(gain)}${accountResult&&!accountResult.complete?'، ناقص':''}`}>
             <span className={styles.identity}><span className={styles.avatar} style={{ '--avatar-color':definition?.color }}>{definition?.initials}</span><span><strong>{account.owner}</strong><small>{number(account.positions.length)} دارایی</small></span></span>

@@ -1,5 +1,8 @@
 export default function InvestmentIcon({ name, size = 20, ...props }) {
   const paths = {
+    menu: <path d="M4 6h16M4 12h16M4 18h16" />,
+    transfer: <><path d="M4 7h15m-4-4 4 4-4 4M20 17H5m4-4-4 4 4 4" /></>,
+    chat: <path d="M5 4h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-8l-6 4v-4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2ZM8 11h.01M12 11h.01M16 11h.01" />,
     wallet: <><rect x="3" y="5" width="18" height="15" rx="2" /><path d="M3 8h18M16 12h5v5h-5Z" /></>,
     calendar: <><rect x="3" y="5" width="18" height="16" rx="2" /><path d="M7 3v4M17 3v4M3 10h18M8 14h2M14 14h2M8 17h2" /></>,
     journal: <><path d="M6 3h11l3 3v15H6ZM6 6H3v15h14M10 9h6M10 13h6M10 17h3" /></>,

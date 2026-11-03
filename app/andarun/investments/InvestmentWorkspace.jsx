@@ -2,8 +2,7 @@
 
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
-import { ACCOUNT_DEFINITIONS, reviewQueue } from '@/lib/investments/family.mjs'
-import { number } from '@/lib/investments/portfolio.mjs'
+import { reviewQueue } from '@/lib/investments/family.mjs'
 import useFamilyPortfolio from './useFamilyPortfolio'
 import useMarketData from './useMarketData'
 import usePeriodProfit from './usePeriodProfit'
@@ -28,6 +27,7 @@ import { ExecutionDialog, TradeReviewDialog } from './TradeDialogs'
 import { SnapshotDialog, AccountDetailsDialog, BackupDialog } from './AccountDialogs'
 import { DecisionJournal, DataWorkspace } from './WorkspaceExtras'
 import Icon from './InvestmentIcon'
+import InvestmentNavigation from './InvestmentNavigation'
 import styles from './investments.module.css'
 
 const SECTIONS = [['accounts', 'نمای کلی', 'overview'], ['ledger', 'تراکنش‌ها', 'source'], ['weekly', 'مرور هفتگی', 'calendar'], ['journal', 'دفتر تصمیم‌ها', 'journal'], ['report', 'گزارش برای ChatGPT', 'report']]
@@ -98,12 +98,7 @@ export default function InvestmentWorkspace() {
   const due = state ? reviewQueue(state) : []
 
   return <main id="investment-workspace" className={`${styles.workspace} ${section==='accounts'?styles.overviewMode:''}`} dir="rtl" lang="fa">
-    <aside className={styles.sidebar} aria-label="ناوبری سرمایه"><Link href="/andarun/investments" className={styles.brand}>سرمایه<span lang="en">FAMILY & TRADING</span></Link>
-      <nav className={styles.navigation}>{SECTIONS.map(([key, label, icon]) => <button type="button" key={key} aria-current={section === key ? 'page' : undefined} className={section === key ? styles.navActive : ''} onClick={() => key === 'report' ? openReport() : key === 'ledger' ? openLedger() : navigate(key)}><Icon name={icon} size={19} /><span>{label}</span>{key === 'weekly' && due.length > 0 && <small>{number(due.length)}</small>}</button>)}{section==='accounts' && <button type="button" className={styles.mobileTrading} onClick={() => navigate('trades')}><Icon name="trading" size={19}/><span>معاملات XTB</span></button>}</nav>
-      <div className={styles.sidebarAccounts}><p>حساب‌های خانواده</p>{ACCOUNT_DEFINITIONS.map(definition => <button type="button" key={definition.id} className={['account','asset'].includes(section) && accountId === definition.id ? styles.accountNavActive : ''} onClick={() => openAccount(definition.id)}><span style={{ '--account-color': definition.color }}>{definition.initials}</span>{definition.owner}</button>)}</div>
-      <button type="button" className={`${styles.xtbNav} ${section === 'trades' ? styles.navActive : ''}`} onClick={() => navigate('trades')}><Icon name="trading" size={20} /><span>معاملات <bdi lang="en">XTB</bdi></span><Icon name="arrow" size={15} /></button>
-      <div className={styles.sidebarBottom}><button type="button" className={styles.dataLink} onClick={() => navigate('data')}><Icon name="source" size={15} />داده و پشتیبان</button><Link href="/andarun" className={styles.backLink}><Icon name="arrow" size={16} />بازگشت به Andarun</Link></div>
-    </aside>
+    <InvestmentNavigation section={section} accountId={accountId} dueCount={due.length} onAccount={openAccount} onNavigate={key=>key==='report'?openReport():key==='ledger'?openLedger():navigate(key)}/>
     <div className={styles.content}><header className={styles.header}><div><h1>{title}</h1><p>{subtitle}</p></div><div className={styles.headerActions}>{state && <>{section==='accounts'?<button type="button" className={styles.primaryButton} onClick={()=>newEntry('self')}><Icon name="plus" size={17}/>ثبت تراکنش</button>:section === 'trades' ? <button type="button" className={styles.primaryButton} onClick={newTrade}><Icon name="plus" size={16} />ثبت برنامه معامله</button> : <button type="button" className={styles.outlineButton} onClick={() => download(JSON.stringify(state, null, 2), 'family-investment-backup.json', 'application/json')}><Icon name="download" size={15} />خروجی پشتیبان</button>}{store.dirty && <button type="button" className={styles.secondaryButton} disabled={store.saving || store.conflict} onClick={store.save}>{store.saving ? 'در حال ذخیره…' : 'ذخیره تغییرات'}</button>}</>}</div></header>
       {!state ? <section className={styles.loading} role="status"><Icon name={store.error ? 'warning' : 'wallet'} size={35} /><h2>{store.error || 'در حال بارگذاری حساب‌های خصوصی…'}</h2>{store.error && <Link href="/andarun/login" className={styles.primaryButton}>ورود به Andarun</Link>}</section> : <>
         {store.offline && <section className={styles.conflictNotice} role="status"><p>{store.error || 'نسخه ذخیره‌شده مرورگر نمایش داده می‌شود؛ اتصال سرور در حال بررسی است.'}</p><button type="button" className={styles.secondaryButton} onClick={() => window.location.reload()}>بررسی دوباره اتصال</button></section>}
