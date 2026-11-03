@@ -48,13 +48,15 @@ export async function PUT(request) {
   // Older open tabs omit these fields. Preserve stored cash anchors and price
   // consent unless a current client explicitly supplies a value (including null).
   if (stored.data) {
+    if(!Object.hasOwn(body.state.settings || {},'cashPlans'))state.settings.cashPlans=stored.data.state.settings?.cashPlans || []
     state = {...state, settings:{...state.settings, isinPricesEnabled:Object.hasOwn(body.state.settings || {},'isinPricesEnabled') ? state.settings.isinPricesEnabled : stored.data.state.settings?.isinPricesEnabled === true}, accounts:state.accounts.map(account=>{
       const raw=body.state.accounts.find(a=>a.id===account.id), previous=stored.data.state.accounts.find(a=>a.id===account.id)
       const positions=account.positions.map(position=>{
         const submitted=raw?.positions.find(p=>p.id===position.id), anchor=previous?.positions.find(p=>p.id===position.id)
-        return submitted?.ledger && !Object.hasOwn(submitted.ledger,'quantityConfirmed') && anchor?.ledger ? {...position,quantity:anchor.quantity,ledger:anchor.ledger} : position
+        const next=submitted?.ledger && !Object.hasOwn(submitted.ledger,'quantityConfirmed') && anchor?.ledger ? {...position,quantity:anchor.quantity,ledger:anchor.ledger} : position
+        return anchor?.brokerBasis&&!Object.hasOwn(submitted || {},'brokerBasis')&&next.isin===anchor.isin?{...next,brokerBasis:anchor.brokerBasis}:next
       })
-      return {...account,positions,...(raw && !Object.hasOwn(raw,'cashOpening') && !Object.hasOwn(raw,'cashCheckpoint') ? {cashOpening:previous?.cashOpening || null,cashCheckpoint:previous?.cashCheckpoint || null} : {})}
+      return {...account,positions,...(previous?.inventoryCheckpoint&&!Object.hasOwn(raw || {},'inventoryCheckpoint')?{inventoryCheckpoint:previous.inventoryCheckpoint}:{}),...(raw && !Object.hasOwn(raw,'cashOpening') && !Object.hasOwn(raw,'cashCheckpoint') ? {cashOpening:previous?.cashOpening || null,cashCheckpoint:previous?.cashCheckpoint || null} : {})}
     })}
   }
   try { state=normalizeFamilyState(reconcileHoldings(state,ledger.data.transactions));if (stored.data) assertHistoryPreserved(stored.data.state, state) }

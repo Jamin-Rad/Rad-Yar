@@ -671,3 +671,15 @@
 
 .previousBroker { margin-bottom:16px; }
 .previousBroker > summary { color:#b9c8d4; font-size:12px; cursor:pointer; padding:10px 0; }
+
+.entryFields { border:0; padding:0; margin:0; display:grid; gap:16px; min-width:0; }
+.entryFields details > summary { cursor:pointer; margin-bottom:10px; color:var(--muted); }
+
+.balanceDetails { color:var(--muted); font-size:12px; margin-top:16px; }
+.balanceDetails summary { cursor:pointer; }
+.balanceDetails p { margin-block:8px; }
+
+.cashPlans { display:grid; gap:12px; margin-block:16px; }
+.cashPlans article { display:flex; align-items:center; justify-content:space-between; gap:16px; border:1px solid var(--line); border-radius:12px; padding:16px; background:var(--panel); flex-wrap:wrap; }
+.cashPlans strong,.cashPlans span { display:block; }
+.cashPlans span { color:var(--muted); margin-top:4px; font-size:13px; }

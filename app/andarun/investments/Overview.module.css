@@ -82,3 +82,8 @@
 @media(min-width:681px) { .accountRow { grid-template-columns:minmax(100px,1fr) minmax(200px,2fr) 48px minmax(100px,1fr); } }
 @media(min-width:1500px) { .accountRow { grid-template-columns:1fr 2fr 60px 185px; } }
 @media(max-width:680px) { .accountStatus { grid-column:1/-1; } .accountActions { grid-row:1; } .accountMoney dd { font-size:14px; } .accountStatus small { display:block; } .accountStatus small:first-of-type { display:none; } }
+
+.mainGrid { grid-template-columns:minmax(0,1fr); }
+.attention { display:block; padding:14px 20px; }
+.attention > summary { cursor:pointer; color:var(--muted); font-size:12px; }
+.coverage > div { color:var(--green); }
