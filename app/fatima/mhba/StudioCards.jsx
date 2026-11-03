@@ -1,3 +1,4 @@
+import SourceTable from './SourceTable.jsx';
 import React,{useEffect,useReducer,useRef,useState} from 'react';
 import {useCourse} from './CourseContext';
 import {boxDays,scheduleCard,selectBoxCards} from './leitner.js';
@@ -55,6 +56,7 @@ function CardSession({cards,data,patch,showAll}){
  const source=card.sourceQuestionId?`از سؤال جزوهٔ ${card.sourceQuestionId}`:card.source==='official'?'سؤال خود جزوه':card.source==='vocabulary'?'واژهٔ کلیدی':'یک نکتهٔ مهم';
  return <div className="recall-session">
   <div className="recall-progress" aria-live="polite"><span>کارت {fa(state.position+1)} از {fa(deck.length)}</span><small>{fa(count)} ارزیابی شده</small><div role="progressbar" aria-label="کارت‌های ارزیابی‌شده" aria-valuenow={count} aria-valuemin={0} aria-valuemax={deck.length}><i style={{width:`${count/deck.length*100}%`}}/></div></div>
+  {!state.revealed&&card.questionTable?<SourceTable table={card.questionTable} label="داده‌های سؤال"/>:null}
   <div ref={stage} className={`recall-stage ${state.revealed?'is-revealed':''}`} role="button" tabIndex={0} aria-label={`${state.revealed?'پاسخ':'سؤال'}: ${state.revealed?card.model:card.text} — ${state.revealed?card.modelFa:card.fa}`} aria-describedby="recall-keys" onClick={()=>{if(performance.now()>=quietClick.current&&!window.getSelection()?.toString())flip();}} onPointerDown={swipeStart} onPointerUp={swipeEnd} onPointerCancel={()=>{gesture.current=null;}}>
    <div className="recall-rotor" key={card.id}>
     <article className="recall-face recall-front" aria-hidden={state.revealed} inert={state.revealed}>

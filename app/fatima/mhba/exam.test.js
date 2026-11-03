@@ -7,7 +7,8 @@ import {validateFatimaMhbaMaterials} from '../../../lib/fatimaMhbaSchema.js';
 import {extraChapterPractice} from './chapterPractice.js';
 import {chapters} from './studyContent.js';
 const toFa=s=>s.replace(/\d/g,d=>'۰۱۲۳۴۵۶۷۸۹'[Number(d)]);
-const materials=Object.fromEntries([1,2,4,5,6].map(n=>[n,{tables:[4,5,6].includes(n)?Object.fromEntries((n===4?['table-4-1','table-4-2','table-4-3']:n===5?['table-5-1','table-5-2']:['table-6-1','table-6-2','table-6-3','table-6-4']).map(id=>[id,{head:['معیار','مقدار'],rows:[['نمونه','ترجمه']]}])):undefined,pages:Array.from({length:({1:45,2:48,4:53,5:46,6:48})[n]},(_,i)=>{
+const tableIds={4:['table-4-1','table-4-2','table-4-3'],5:['table-5-1','table-5-2'],6:['table-6-1','table-6-2','table-6-3','table-6-4'],7:['table-7-1','table-7-2','table-7-3','table-7-4','table-7-5','table-7-6','table-7-7','table-7-question','table-7-answer']};
+const materials=Object.fromEntries([1,2,4,5,6,7].map(n=>[n,{tables:tableIds[n]?Object.fromEntries(tableIds[n].map(id=>[id,{head:['معیار','مقدار'],rows:[['نمونه','ترجمه']]}])):undefined,pages:Array.from({length:({1:45,2:48,4:53,5:46,6:48,7:41})[n]},(_,i)=>{
  const headings=chapters[n].filter(c=>c.id!=='intro'&&c.start===i+1);
  return {number:i+1,text:'Synthetic source page '+(i+1)+'\n'+headings.map(c=>c.id==='literatur'?'Literaturverzeichnis:':c.id==='fragen'?'Kontrollfragen:':(c.sourceId||c.id)+'. Synthetic heading').join('\n')+'\nSynthetic paragraph.',fa:'صفحهٔ مصنوعی\n'+headings.map(c=>c.id==='literatur'?'فهرست منابع':c.id==='fragen'?'سؤال‌های کنترلیِ خود جزوه':toFa(c.sourceId||c.id)+'. عنوان مصنوعی').join('\n')+'\nپاراگراف مصنوعی.'};
 }),questions:Array.from({length:10},(_,i)=>({id:n+'.'+(i+1),official:true,text:'Synthetic control question '+(i+1),fa:'سؤال رسمی',officialAnswer:'Synthetic official answer',officialAnswerFa:'پاسخ رسمی فارسی'}))}]));
@@ -65,4 +66,13 @@ test('lesson 6 makes every authored item reachable and rejects incomplete privat
  const missing=structuredClone(materials);delete missing[6];assert.throws(()=>validateFatimaMhbaMaterials(missing),/Incomplete/);
  const table=structuredClone(materials);table[6].tables['table-6-4'].rows[0]=['incomplete'];assert.throws(()=>validateFatimaMhbaMaterials(table),/table/);
  const untranslated=structuredClone(materials);untranslated[6].questions[9].officialAnswerFa='';assert.throws(()=>validateFatimaMhbaMaterials(untranslated),/questions/);
+});
+
+test('lesson 7 keeps ABC input available before revealing answers and covers every practice item',()=>{
+ const lesson=lessons[7];assert.equal(lesson.chapters.length,26);
+ assert.deepEqual([...new Set(lesson.chapters.flatMap(c=>c.statementIds))].sort((a,b)=>a-b),Array.from({length:46},(_,i)=>i));
+ const abc=lesson.cards.find(c=>c.id==='7.7');assert.equal(abc.questionTable,materials[7].tables['table-7-question']);assert.equal(abc.answerTable,materials[7].tables['table-7-answer']);
+ const missing=structuredClone(materials);delete missing[7];assert.throws(()=>validateFatimaMhbaMaterials(missing),/Incomplete/);
+ const table=structuredClone(materials);delete table[7].tables['table-7-question'];assert.throws(()=>validateFatimaMhbaMaterials(table),/table/);
+ const untranslated=structuredClone(materials);untranslated[7].questions[9].officialAnswerFa='';assert.throws(()=>validateFatimaMhbaMaterials(untranslated),/questions/);
 });
