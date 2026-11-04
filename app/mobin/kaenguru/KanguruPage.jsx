@@ -599,7 +599,7 @@ function QuizView({ session, attempts, onRecord, onToggleReview, onExit }) {
       <AnnotationSurface title={teaching ? LEHR_LABELS.mode : 'Auf der Aufgabe lösen'} resetKey={question.id}>
         <article className={styles.questionCard}>
         <header className={styles.questionHeading}>
-          <strong>Aufgabe {question.part}{question.number}</strong>
+          <strong>{question.year} · Aufgabe {question.part}{question.number}</strong>
           <div className={styles.questionMeta}>
             <span>Klassen {question.gradeGroup.replace('-', '/')}</span>
             <span>{question.points} Punkte</span>
