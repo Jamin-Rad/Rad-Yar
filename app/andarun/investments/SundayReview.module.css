@@ -1,0 +1,271 @@
+.root {
+  --ink: #142335;
+  --muted: #647081;
+  --green: #176b56;
+  --line: #e3e8ed;
+  color: var(--ink);
+  display: grid;
+  gap: 22px;
+  font-size: 14px;
+  line-height: 1.8;
+  color-scheme: light;
+}
+.root * {
+  box-sizing: border-box;
+}
+.root button,
+.root input,
+.root select,
+.root textarea {
+  font: inherit;
+}
+.root button {
+  cursor: pointer;
+}
+.root button:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+.root :is(button, input, select, textarea, a):focus-visible {
+  outline: 3px solid #72bca7;
+  outline-offset: 3px;
+}
+.toolbar,
+.actions,
+.heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.actions {
+  justify-content: flex-start;
+}
+.root button,
+.root select,
+.root input,
+.root textarea {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--ink);
+  padding: 8px 13px;
+}
+.root textarea,
+.root input:not([type="checkbox"]),
+.root select {
+  max-width: 100%;
+}
+.root textarea {
+  resize: vertical;
+  width: 100%;
+  min-height: 88px;
+}
+.root input[type="date"] {
+  min-height: 42px;
+}
+.root button.primary {
+  background: var(--green);
+  border-color: var(--green);
+  color: #fff;
+  font-weight: 650;
+}
+.root button:hover:not(:disabled) {
+  border-color: var(--green);
+}
+.root .tabs {
+  display: flex;
+  border-bottom: 1px solid var(--line);
+  gap: 24px;
+  overflow: auto;
+  white-space: nowrap;
+}
+.tabs button {
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  padding: 12px 4px;
+  border-bottom: 3px solid transparent;
+}
+.tabs button[aria-selected="true"] {
+  color: var(--green);
+  border-bottom-color: var(--green);
+  font-weight: 750;
+}
+.panel {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 22px;
+  min-width: 0;
+}
+.panel h2 {
+  font-size: 19px;
+  margin: 0 0 14px;
+}
+.panel h3 {
+  font-size: 15px;
+  margin: 16px 0 6px;
+}
+.panel p {
+  margin: 6px 0;
+  white-space: pre-wrap;
+}
+.muted {
+  color: var(--muted);
+  font-size: 13px;
+}
+.empty {
+  color: var(--muted);
+  padding: 20px 0;
+}
+.field {
+  display: grid;
+  gap: 6px;
+  font-weight: 550;
+  min-width: 0;
+}
+.field small {
+  font-weight: 400;
+  color: var(--muted);
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+.scroll {
+  overflow-x: auto;
+}
+.root table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: right;
+  font-size: 13px;
+}
+.root th {
+  background: #f5f6f9;
+  color: var(--muted);
+  font-size: 12px;
+  white-space: nowrap;
+}
+.root th,
+.root td {
+  padding: 12px 10px;
+  border-bottom: 1px solid var(--line);
+  vertical-align: middle;
+}
+.root td:first-child {
+  min-width: 150px;
+}
+.root td small {
+  display: block;
+  color: var(--muted);
+}
+.root td button {
+  white-space: nowrap;
+  padding: 5px 12px;
+  font-size: 12px;
+}
+.root td p {
+  max-width: 380px;
+}
+.positive {
+  color: #176b56;
+}
+.negative {
+  color: #ba3c42;
+}
+.metric {
+  padding: 15px 0;
+}
+.metric strong {
+  display: block;
+  font-size: 23px;
+  direction: ltr;
+  text-align: right;
+}
+.metric span {
+  color: var(--muted);
+  font-size: 12px;
+}
+.history {
+  display: grid;
+  gap: 0;
+}
+.history article {
+  padding: 20px 0;
+  border-bottom: 1px solid var(--line);
+}
+.history article:last-child {
+  border: 0;
+}
+.consult {
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+}
+.consult summary {
+  cursor: pointer;
+  color: var(--green);
+  font-weight: 650;
+}
+.consult textarea {
+  margin: 10px 0;
+  font-size: 13px;
+}
+.root a {
+  color: var(--green);
+}
+.root pre {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  font: inherit;
+  max-height: 280px;
+  overflow: auto;
+}
+.error {
+  color: #ba3c42;
+}
+.root .closed {
+  color: var(--green);
+  font-weight: 650;
+}
+.root .compact {
+  min-height: 64px;
+}
+.root .note {
+  padding-inline-start: 12px;
+  border-inline-start: 3px solid var(--line);
+}
+@media (max-width: 700px) {
+  .root {
+    gap: 16px;
+  }
+  .panel {
+    padding: 16px;
+  }
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  .toolbar {
+    align-items: stretch;
+  }
+  .toolbar > .actions {
+    width: 100%;
+  }
+  .tabs {
+    gap: 16px;
+  }
+  .root th,
+  .root td {
+    padding: 10px 8px;
+  }
+  .panel h2 {
+    font-size: 17px;
+  }
+  .metric strong {
+    font-size: 20px;
+  }
+}

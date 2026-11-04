@@ -7,7 +7,7 @@ import Icon from './InvestmentIcon'
 import styles from './InvestmentNavigation.module.css'
 
 const PRIMARY=[['accounts','نمای کلی','overview']]
-const ANALYSIS=[['journal','دفتر تصمیم‌ها','journal'],['report','گزارش برای ChatGPT','chat']]
+const ANALYSIS=[['journal','تصمیم‌ها و نتیجه‌ها','journal']]
 export default function InvestmentNavigation({section,accountId,dueCount=0,onNavigate,onAccount,xtbOwnerId='self',onXtbAccount}) {
   const [expanded,setExpanded]=useState(section==='trades'?'xtb':section==='wallet'?'wallet':'tr')
   useEffect(()=>{if(['account','asset'].includes(section))setExpanded('tr');else if(section==='trades')setExpanded('xtb');else if(section==='wallet')setExpanded('wallet')},[section,accountId,xtbOwnerId])
@@ -59,7 +59,7 @@ export default function InvestmentNavigation({section,accountId,dueCount=0,onNav
         <button type="button" className={`${styles.item} ${styles.broker}`} aria-expanded={expanded==='wallet'} aria-controls="wallet-accounts" onClick={()=>setExpanded(expanded==='wallet'?null:'wallet')}><Icon name="wallet" size={19}/><span>کیف پول دیجیتال</span><Icon name="chevron" size={16}/></button>
         {expanded==='wallet'&&<div id="wallet-accounts" className={styles.children}>{item(['wallet','رمزارزها','assets'])}</div>}
       </nav>
-      <nav className={styles.group} aria-label="تحلیل و تصمیم">{item(['weekly','مرور هفتگی','calendar'])}{ANALYSIS.map(item)}</nav>
+      <nav className={styles.group} aria-label="تحلیل و تصمیم">{item(['weekly','مرور یکشنبه','calendar'])}{ANALYSIS.map(item)}</nav>
       <div className={styles.utilities}>{item(['data','داده و پشتیبان','source'])}<Link href="/andarun" className={`${styles.item} ${styles.back}`}><Icon name="arrow" size={18}/><span>بازگشت به Andarun</span></Link></div>
     </aside>
   </>

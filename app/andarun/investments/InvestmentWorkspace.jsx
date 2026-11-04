@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
-import { reviewQueue } from '@/lib/investments/family.mjs'
+import { reviewQueue, todayBerlin } from '@/lib/investments/family.mjs'
 import useFamilyPortfolio from './useFamilyPortfolio'
 import useMarketData from './useMarketData'
 import usePeriodProfit from './usePeriodProfit'
@@ -10,27 +10,24 @@ import useTransactionLedger from './useTransactionLedger'
 import LedgerWorkspace from './LedgerWorkspace'
 import EntryDialog from './EntryDialog'
 import {CashPlanDialog} from './CashPlans'
-import useVisitChanges from './useVisitChanges'
-import VisitChanges from './VisitChanges'
 import MarketRefresh from './MarketRefresh'
 import AssetProfile from './AssetProfile'
-import DecisionWorkspace, { DecisionDialog } from './DecisionWorkspace'
+import DecisionWorkspace, { DecisionDialog, DecisionReviewDialog, decisionDue } from './DecisionWorkspace'
 import HoldingsImportDialog from './HoldingsImportDialog'
 import MarketEventDialog from './MarketEventDialog'
 import FamilyOverview from './FamilyOverview'
 import AccountWorkspace from './AccountWorkspace'
 import XtbAccountWorkspace, {XtbEntryDialog,DigitalWalletWorkspace} from './XtbAccountWorkspace'
 import WeeklyReview from './WeeklyReview'
-import FamilyReport from './FamilyReport'
 import PositionDialog from './PositionDialog'
 import { ExecutionDialog, TradeReviewDialog } from './TradeDialogs'
 import { SnapshotDialog, AccountDetailsDialog, BackupDialog } from './AccountDialogs'
-import { DecisionJournal, DataWorkspace } from './WorkspaceExtras'
+import { DataWorkspace } from './WorkspaceExtras'
 import Icon from './InvestmentIcon'
 import InvestmentNavigation from './InvestmentNavigation'
 import styles from './investments.module.css'
 
-const SECTIONS = [['accounts', 'نمای کلی', 'overview'], ['ledger', 'تراکنش‌ها', 'source'], ['weekly', 'مرور هفتگی', 'calendar'], ['journal', 'دفتر تصمیم‌ها', 'journal'], ['report', 'گزارش برای ChatGPT', 'report']]
+const SECTIONS = [['accounts', 'نمای کلی', 'overview'], ['ledger', 'تراکنش‌ها', 'source'], ['weekly', 'مرور یکشنبه', 'calendar'], ['journal', 'تصمیم‌ها و نتیجه‌ها', 'journal']]
 
 export function download(content, name, type) {
   const url = URL.createObjectURL(new Blob([content], { type: `${type};charset=utf-8` }))
@@ -50,8 +47,6 @@ export default function InvestmentWorkspace() {
   const [createTrade, setCreateTrade] = useState(false)
   const [dialog, setDialog] = useState(null)
   const [toast, setToast] = useState('')
-  const [reportAccountId, setReportAccountId] = useState(null)
-  const [reportPositionId, setReportPositionId] = useState(null)
   const [positionId, setPositionId] = useState(null)
   const [decisionId, setDecisionId] = useState(null)
   const store = useFamilyPortfolio(setToast)
@@ -60,7 +55,6 @@ export default function InvestmentWorkspace() {
   useEffect(()=>{if(ledger.loaded&&store.cloud&&!store.offline&&!store.conflict)store.synchronizeLedger(ledger.transactions)},[ledger.loaded,ledger.transactions,store.cloud,store.offline,store.conflict])
   const marketData = useMarketData(state)
   const profitPeriod = usePeriodProfit(state?.accounts,ledger,marketData,profitSelection,!!state?.settings?.isinPricesEnabled && ['accounts','account'].includes(section))
-  const visit = useVisitChanges(state, marketData.markets)
   const account = state?.accounts.find(a => a.id === accountId)
   const trade = state?.trades.find(t => t.id === tradeId)
   const position = account?.positions.find(p => p.id === positionId)
@@ -79,7 +73,6 @@ export default function InvestmentWorkspace() {
   function openXtbAccount(id){setXtbOwnerId(id);setTradeId(null);setCreateTrade(false);navigate('trades')}
   function newTrade() { setTradeId(null); setCreateTrade(true); navigate('trades') }
   function openTrade(id) { const selected=state.trades.find(t=>t.id===id);if(selected?.ownerId)setXtbOwnerId(selected.ownerId);setTradeId(id); setCreateTrade(false); navigate('trades') }
-  function openReport(id = null, asset = null) { setReportAccountId(id); setReportPositionId(asset); navigate('report') }
   function openAsset(owner, asset) { setAccountId(owner); setPositionId(asset); navigate('asset') }
   function openDecision(id) { setDecisionId(id); navigate('decision') }
   function newDecision(owner = accountId, asset = null) { setDialog({ kind: 'decision', accountId: owner, positionId: asset }) }
@@ -96,11 +89,11 @@ export default function InvestmentWorkspace() {
     setDialog(null); setToast(field === 'reviews' ? 'بازبینی به سابقه تصمیم اضافه شد.' : 'سابقه اجرای واقعی ثبت شد.')
   }
   const title = section === 'asset' ? 'پرونده دارایی' : section === 'decision' ? 'پرونده تصمیم' : section === 'account' ? `حساب ${account?.owner || ''}` : section === 'wallet' ? 'کیف پول دیجیتال' : section === 'trades' ? `حساب ${xtbOwnerId==='self'?'من':'فاطمه'}` : section === 'data' ? 'داده و پشتیبان' : section === 'accounts' ? 'نمای کلی سرمایه' : SECTIONS.find(([key]) => key === section)?.[1]
-  const subtitle = section === 'asset' ? `${account?.owner || ''} · ${position?.name || ''}` : section === 'accounts' ? 'حساب‌های خانواده' : section === 'account' ? 'Trade Republic · EUR' : section === 'wallet' ? 'رمزارزها' : section === 'trades' ? 'XTB · EUR' : section === 'report' ? 'بسته انتخابی برای گفت‌وگو در حساب شخصی‌ات' : 'سابقه روشن برای تصمیم‌های بعدی'
+  const subtitle = section === 'asset' ? `${account?.owner || ''} · ${position?.name || ''}` : section === 'accounts' ? 'حساب‌های خانواده' : section === 'account' ? 'Trade Republic · EUR' : section === 'wallet' ? 'رمزارزها' : section === 'trades' ? 'XTB · EUR' : 'سابقه روشن برای تصمیم‌های بعدی'
   const due = state ? reviewQueue(state) : []
 
-  return <main id="investment-workspace" className={`${styles.workspace} ${section==='accounts'?styles.overviewMode:''} ${['account','trades','wallet'].includes(section)?styles.cleanMode:''}`} dir="rtl" lang="fa">
-    <InvestmentNavigation section={section} accountId={accountId} dueCount={due.length} onAccount={openAccount} xtbOwnerId={xtbOwnerId} onXtbAccount={openXtbAccount} onNavigate={key=>key==='report'?openReport():key==='ledger'?openLedger():navigate(key)}/>
+  return <main id="investment-workspace" className={`${styles.workspace} ${section==='accounts'?styles.overviewMode:''} ${['account','trades','wallet','weekly','journal','decision'].includes(section)?styles.cleanMode:''}`} dir="rtl" lang="fa">
+    <InvestmentNavigation section={section} accountId={accountId} dueCount={due.length+(state?.decisions.filter(d=>decisionDue(d)&&decisionDue(d)<=todayBerlin()).length||0)} onAccount={openAccount} xtbOwnerId={xtbOwnerId} onXtbAccount={openXtbAccount} onNavigate={key=>key==='ledger'?openLedger():navigate(key)}/>
     <div className={styles.content}><header className={styles.header}><div><h1>{title}</h1><p>{subtitle}</p></div><div className={styles.headerActions}>{state&&<>
       {section==='account'?<><button type="button" className={styles.primaryButton} onClick={()=>newEntry(accountId)}><Icon name="plus" size={17}/>ثبت تراکنش</button><button type="button" className={styles.secondaryButton} disabled={marketData.batch.running||!marketData.symbolCount} onClick={marketData.refreshAll}><Icon name="refresh" size={16}/>{marketData.batch.running?'دریافت قیمت‌ها…':'به‌روزرسانی قیمت‌ها'}</button></>:section==='trades'?<button type="button" className={styles.primaryButton} disabled={!state.settings.xtbAccounts.find(a=>a.id===xtbOwnerId)} onClick={()=>setDialog({kind:'xtbEntry',accountId:xtbOwnerId})}><Icon name="plus" size={17}/>ثبت تراکنش</button>:section==='ledger'&&ledgerAccountId!=='all'?<button type="button" className={styles.secondaryButton} onClick={()=>openAccount(ledgerAccountId)}>بازگشت به حساب</button>:section==='accounts'?<button type="button" className={styles.primaryButton} onClick={()=>newEntry('self')}><Icon name="plus" size={17}/>ثبت تراکنش</button>:null}
       {store.dirty&&<button type="button" className={styles.secondaryButton} disabled={store.saving||store.conflict} onClick={store.save}>{store.saving?'در حال ذخیره…':'ذخیره تغییرات'}</button>}
@@ -108,18 +101,16 @@ export default function InvestmentWorkspace() {
       {!state ? <section className={styles.loading} role="status"><Icon name={store.error ? 'warning' : 'wallet'} size={35} /><h2>{store.error || 'در حال بارگذاری حساب‌های خصوصی…'}</h2>{store.error && <Link href="/andarun/login" className={styles.primaryButton}>ورود به Andarun</Link>}</section> : <>
         {store.offline && <section className={styles.conflictNotice} role="status"><p>{store.error || 'نسخه ذخیره‌شده مرورگر نمایش داده می‌شود؛ اتصال سرور در حال بررسی است.'}</p><button type="button" className={styles.secondaryButton} onClick={() => window.location.reload()}>بررسی دوباره اتصال</button></section>}
         {store.conflict && <section className={styles.conflictNotice} role="alert"><p>نسخه سرور با پیش‌نویس این مرورگر متفاوت است. ابتدا از تغییراتت پشتیبان بگیر.</p><button type="button" className={styles.secondaryButton} onClick={() => download(JSON.stringify(state, null, 2), 'family-local-draft.json', 'application/json')}>دانلود پیش‌نویس</button><button type="button" className={styles.secondaryButton} onClick={() => { if (window.confirm('پس از پشتیبان، پیش‌نویس مرورگر کنار گذاشته و نسخه سرور بارگذاری شود؟')) store.discardDraft() }}>بارگذاری نسخه سرور</button></section>}
-        {['asset','weekly'].includes(section)&&<MarketRefresh marketData={marketData} state={state} />}
-        {section==='weekly' && <VisitChanges state={state} markets={marketData.markets} visit={visit} onAsset={openAsset} onWeekly={() => navigate('weekly')} />}
+        {section==='asset'&&<MarketRefresh marketData={marketData} state={state} />}
         {section === 'ledger' && <LedgerWorkspace state={state} onPlan={editCashPlan} onPostPlan={postCashPlan} onEntry={newEntry} key={`${ledgerAccountId}:${ledgerView}`} ledger={ledger} initialAccount={ledgerAccountId} initialView={ledgerView} download={download} notify={setToast}/>}
         {section === 'accounts' && <FamilyOverview onXtbAccount={openXtbAccount} onWallet={()=>navigate('wallet')} profitSelection={profitSelection} onProfitSelection={setProfitSelection} profitPeriod={profitPeriod} onEnablePrices={enableIsinPrices} marketData={marketData} ledger={ledger} onLedger={openLedger} state={state} onAccount={openAccount} />}
-        {section === 'account' && <AccountWorkspace download={download} profitSelection={profitSelection} onProfitSelection={setProfitSelection} profitPeriod={profitPeriod} cashPlans={state.settings.cashPlans} onPlan={editCashPlan} onPostPlan={postCashPlan} onEntry={newEntry} key={accountId} account={account} ledger={ledger} onLedger={() => openLedger(accountId)} markets={marketData.markets} onEdit={position => setDialog({ kind: 'position', accountId, position })} onAdd={() => setDialog({ kind: 'position', accountId, position: null })} onDetails={() => setDialog({ kind: 'details', accountId })} onSnapshot={() => setDialog({ kind: 'snapshot', accountId })} onReport={() => openReport(accountId)} onOpen={p => openAsset(accountId,p.id)} onImport={() => setDialog({kind:'csv',accountId})} />}
+        {section === 'account' && <AccountWorkspace download={download} profitSelection={profitSelection} onProfitSelection={setProfitSelection} profitPeriod={profitPeriod} cashPlans={state.settings.cashPlans} onPlan={editCashPlan} onPostPlan={postCashPlan} onEntry={newEntry} key={accountId} account={account} ledger={ledger} onLedger={() => openLedger(accountId)} markets={marketData.markets} onEdit={position => setDialog({ kind: 'position', accountId, position })} onAdd={() => setDialog({ kind: 'position', accountId, position: null })} onDetails={() => setDialog({ kind: 'details', accountId })} onSnapshot={() => setDialog({ kind: 'snapshot', accountId })} onOpen={p => openAsset(accountId,p.id)} onImport={() => setDialog({kind:'csv',accountId})} />}
         {section==='trades'&&<XtbAccountWorkspace key={xtbOwnerId} account={state.settings.xtbAccounts.find(a=>a.id===xtbOwnerId)} owner={xtbOwnerId==='self'?'من':'فاطمه'} trades={state.trades} tradeProps={{dueCount:due.length,selectedId:tradeId,onSelect:setTradeId,createOpen:createTrade,onCreateOpen:setCreateTrade,onCreate:addTrade,onExecution:kind=>setDialog({kind:'execution',executionKind:kind}),onReview:()=>setDialog({kind:'review'})}}/>}
         {section==='wallet'&&<DigitalWalletWorkspace/>}
-        {section === 'journal' && <DecisionJournal state={state} onSelect={openTrade} onDecision={openDecision} onNew={() => newDecision()} onNewTrade={newTrade} />}
-        {section === 'decision' && decision && <DecisionWorkspace decision={decision} state={state} onAsset={openAsset} onReview={() => setDialog({kind:'decisionReview'})} onReport={() => openReport(decision.accountId,decision.positionId)} />}
-        {section === 'asset' && <AssetProfile key={`${accountId}:${positionId}`} account={account} position={position} state={state} marketData={marketData} onEdit={p => setDialog({kind:'position',accountId,position:p})} onConnect={symbol => store.changeAccount(accountId,a=>({...a,positions:a.positions.map(p=>p.id===positionId?{...p,marketSymbol:symbol,marketConfirmed:true}:p)}))} onChartConnect={symbol => store.changeAccount(accountId,a=>({...a,positions:a.positions.map(p=>p.id===positionId?{...p,tradingViewSymbol:symbol}:p)}))} onDecision={() => newDecision(accountId,positionId)} onOpenDecision={openDecision} onEvent={() => setDialog({kind:'event'})} onReport={() => openReport(accountId,positionId)} />}
-        {section === 'weekly' && <WeeklyReview state={state} marketData={marketData} onTrade={openTrade} onDecision={openDecision} onAsset={openAsset} onAccount={openAccount} onNewTrade={newTrade} onReport={() => openReport()} onEventDone={id=>store.change({...state,events:state.events.map(e=>e.id===id?{...e,done:true}:e)})} />}
-        {section === 'report' && <FamilyReport key={`${reportAccountId || 'all'}:${reportPositionId || 'all'}`} state={state} initialAccountId={reportAccountId} initialPositionId={reportPositionId} markets={marketData.markets} download={download} notify={setToast} />}
+        {section === 'journal' && <WeeklyReview key="archive" archive state={state} ledger={ledger} marketData={marketData} onTrade={openTrade} onDecision={openDecision} onAsset={openAsset} onNewTrade={newTrade} onNewDecision={newDecision} onSaveSession={value=>store.change({...state,weeklySessions:[...state.weeklySessions.filter(s=>s.date!==value.date),value]})} />}
+        {section === 'decision' && decision && <DecisionWorkspace decision={decision} state={state} ledger={ledger} marketData={marketData} onAsset={openAsset} onReview={() => setDialog({kind:'decisionReview'})} />}
+        {section === 'asset' && <AssetProfile key={`${accountId}:${positionId}`} account={account} position={position} state={state} marketData={marketData} onEdit={p => setDialog({kind:'position',accountId,position:p})} onConnect={symbol => store.changeAccount(accountId,a=>({...a,positions:a.positions.map(p=>p.id===positionId?{...p,marketSymbol:symbol,marketConfirmed:true}:p)}))} onChartConnect={symbol => store.changeAccount(accountId,a=>({...a,positions:a.positions.map(p=>p.id===positionId?{...p,tradingViewSymbol:symbol}:p)}))} onDecision={() => newDecision(accountId,positionId)} onOpenDecision={openDecision} onEvent={() => setDialog({kind:'event'})} />}
+        {section === 'weekly' && <WeeklyReview key="weekly" state={state} ledger={ledger} marketData={marketData} onTrade={openTrade} onDecision={openDecision} onAsset={openAsset} onNewTrade={newTrade} onNewDecision={newDecision} onSaveSession={value=>store.change({...state,weeklySessions:[...state.weeklySessions.filter(s=>s.date!==value.date),value]})} />}
         {section === 'data' && <DataWorkspace onLedger={() => openLedger()} state={state} store={store} onAccount={openAccount} onBackup={() => setDialog({ kind: 'backup' })} download={download} />}
         <footer className={styles.footer}><button type="button" onClick={() => navigate('data')}><span className={store.cloud ? styles.onlineDot : styles.localDot} />{store.storageError ? 'ذخیره مرورگر مشکل دارد؛ پشتیبان بگیر' : store.saving ? 'در حال ذخیره خودکار…' : store.dirty && store.cloud ? 'نسخه مرورگر محفوظ؛ در انتظار سرور' : store.cloud ? 'ذخیره خصوصی در سرور' : 'ذخیره محلی مرورگر'}</button>{section === 'accounts' && <Link href="/andarun" className={styles.mobileBack}>بازگشت به Andarun</Link>}</footer>
       </>}
@@ -129,8 +120,8 @@ export default function InvestmentWorkspace() {
     {dialog?.kind === 'entry' && <EntryDialog state={state} ledger={ledger} initialAccount={dialog.accountId} initialKind={dialog.entryKind} initialAmount={dialog.amount} plan={dialog.plan} onClose={()=>setDialog(null)} onSaved={async result=>{setDialog(null);setToast(result.added?'تراکنش ثبت شد.':'این تراکنش قبلاً ثبت شده است.');const fresh=await ledger.reload();if(fresh)store.synchronizeLedger(fresh.transactions)}}/>}
     {dialog?.kind === 'csv' && <HoldingsImportDialog account={state.accounts.find(a=>a.id===dialog.accountId)} onClose={()=>setDialog(null)} download={download} onSave={next=>{store.changeAccount(dialog.accountId,()=>next);setDialog(null);setToast('دارایی‌های CSV در همین حساب ثبت شدند.')}} />}
     {dialog?.kind === 'event' && position && <MarketEventDialog accountId={accountId} position={position} onClose={()=>setDialog(null)} onSave={event=>{store.change({...state,events:[...state.events,event]});setDialog(null);setToast('رویداد در مرور هفتگی قرار گرفت.')}} />}
-    {dialog?.kind === 'decision' && <DecisionDialog state={state} accountId={dialog.accountId} positionId={dialog.positionId} onClose={()=>setDialog(null)} onSave={value=>{store.change({...state,decisions:[...state.decisions,value]});setDialog(null);openDecision(value.id);setToast('تصمیم اولیه ثبت شد.')}} />}
-    {dialog?.kind === 'decisionReview' && decision && <TradeReviewDialog investment trade={decision} onClose={()=>setDialog(null)} onSave={value=>{store.change({...state,decisions:state.decisions.map(d=>d.id===decisionId?{...d,reviews:[...d.reviews,value]}:d)});setDialog(null);setToast('بازبینی به پرونده تصمیم اضافه شد.')}} />}
+    {dialog?.kind === 'decision' && <DecisionDialog state={state} ledger={ledger} marketData={marketData} accountId={dialog.accountId} positionId={dialog.positionId} onClose={()=>setDialog(null)} onSave={value=>{store.change({...state,decisions:[...state.decisions,value]});setDialog(null);openDecision(value.id);setToast('تصمیم اولیه ثبت شد.')}} />}
+    {dialog?.kind === 'decisionReview' && decision && <DecisionReviewDialog decision={decision} state={state} ledger={ledger} marketData={marketData} onClose={()=>setDialog(null)} onSave={value=>{store.change({...state,decisions:state.decisions.map(d=>d.id===decisionId?{...d,reviews:[...d.reviews,value]}:d)});setDialog(null);setToast('بازبینی به پرونده تصمیم اضافه شد.')}} />}
     {dialog?.kind === 'position' && <PositionDialog account={state.accounts.find(a => a.id === dialog.accountId)} position={dialog.position} onClose={() => setDialog(null)} onSave={savePosition} onDelete={id => { store.changeAccount(dialog.accountId, a => ({ ...a, positions: a.positions.filter(p => p.id !== id) })); setDialog(null); setToast('دارایی از همین حساب حذف شد؛ ثبت‌های تاریخی حفظ شدند.') }} />}
     {dialog?.kind === 'snapshot' && <SnapshotDialog account={account} onClose={() => setDialog(null)} onSave={snapshot => { store.changeAccount(accountId, a => ({ ...a, snapshotDate: snapshot.asOf, positions: a.positions.map(p=>({...p,asOf:snapshot.asOf})), snapshots: [...a.snapshots, snapshot] })); setDialog(null); setToast('وضعیت تاریخ‌دار حساب ثبت شد.') }} />}
     {dialog?.kind === 'details' && <AccountDetailsDialog firstDate={ledger.transactions.filter(t=>t.accountId===account.id).map(t=>t.date).sort()[0]} account={account} onClose={() => setDialog(null)} onSave={next => { store.changeAccount(accountId, () => next); setDialog(null); setToast('مشخصات همین حساب به‌روز شد.') }} />}

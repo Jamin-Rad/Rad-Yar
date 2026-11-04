@@ -44,7 +44,7 @@ export default function useMarketData(state) {
     pending.current.set(requestKey, task)
     return task
   }, [])
-  const keys = JSON.stringify(state?.accounts.flatMap(a => a.positions.filter(p => (p.marketConfirmed && p.marketSymbol) || state.settings?.isinPricesEnabled && p.isin).map(p => ({ symbol: marketKey(p), name: p.name }))) || [])
+  const keys = JSON.stringify([...(state?.accounts.flatMap(a => a.positions.filter(p => (p.marketConfirmed && p.marketSymbol) || state.settings?.isinPricesEnabled && p.isin).map(p => ({ symbol: marketKey(p), name: p.name }))) || []),...(state?.settings?.isinPricesEnabled ? state.decisions.filter(d=>d.baseline).map(d=>({symbol:'ISIN:'+d.baseline.isin,name:d.name})) : [])])
   const refreshAll = useCallback(async () => {
     if (batchLock.current) return
     const rows = [...new Map(JSON.parse(keys).map(row => [row.symbol, row])).values()]

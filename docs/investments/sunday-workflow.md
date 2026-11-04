@@ -1,0 +1,11 @@
+# Sunday workspace
+
+The Sunday concept uses a pale #f5f6fb canvas, white sections, #142335 text, #647081 secondary text, #176b56 actions and #e3e8ed borders. Existing Persian typography and outline icon family remain. Spacing is 8/12/20/28px; panels use 14px radii and controls 8px. No raster assets are needed in the product.
+
+Order: Sunday selector and decision/refresh actions; session/archive/history tabs; editable weekly objective; due reviews; market candidates; decisions made in the session; save/close session. Empty states contain one direct sentence and an action. Tables scroll within their panel on small screens, with the existing mobile navigation. Decision detail extends this system with 7/30 day comparisons, the immutable initial thesis, integrated consultation and an append-only review timeline. The decision form and review dialog are functional continuations of the same controls.
+
+Visible labels: مرور یکشنبه، جلسه این یکشنبه، تصمیم‌ها و نتیجه‌ها، جلسه‌های قبلی، هدف این هفته، بازبینی‌های این هفته، برای تصمیم این هفته، تصمیم‌های این جلسه، ثبت تصمیم، به‌روزرسانی قیمت‌ها، ذخیره جلسه، پایان جلسه، مشورت با ChatGPT. No independent ChatGPT report page or navigation entry.
+
+A session is the calendar week beginning Sunday in Europe/Berlin. Draft objectives and notes are editable; closing preserves the notes; later decisions can still be recorded independently in the same calendar week. A decision has a broker/owner, thesis, success criterion, invalidation, review date and captured baseline if verified data exists. Consultation is copied to the user's own ChatGPT; an optional pasted answer is saved alongside the decision or review. No model call or automatic account transmission occurs.
+
+Price/transaction effects are measured from the recorded baseline, independently of original purchase profit. They include recorded net buy/sell cash and exclude distributions and interest, which are outside this comparison. No execution is inferred from an intention. Corporate actions, missing quantities, unsupported currency and missing quotes withhold results. Review snapshots preserve the measurement available when the review was recorded. Existing decisions and XTB plans remain accessible; no user decision or session is invented during release.
