@@ -38,3 +38,8 @@
 @media print { .sidebar,.mobileHeader,.overlay { display:none !important; } }
 .sidebar .item { font-size:13px; }
 .sidebar .item:focus-visible,.sidebar .brand:focus-visible,.sidebar .close:focus-visible { outline:3px solid #28876d; outline-offset:2px; }
+
+.children { display:grid; gap:3px; padding:3px 14px 10px 0; }
+.sidebar .broker { min-height:48px; font-weight:650; }
+.broker>svg:last-child { margin-right:auto; transition:transform 140ms ease; transform:rotate(90deg); }
+.broker[aria-expanded=true]>svg:last-child { transform:rotate(0); }

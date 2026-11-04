@@ -19,7 +19,7 @@ import HoldingsImportDialog from './HoldingsImportDialog'
 import MarketEventDialog from './MarketEventDialog'
 import FamilyOverview from './FamilyOverview'
 import AccountWorkspace from './AccountWorkspace'
-import TradeWorkspace from './TradeWorkspace'
+import XtbAccountWorkspace, {XtbEntryDialog,DigitalWalletWorkspace} from './XtbAccountWorkspace'
 import WeeklyReview from './WeeklyReview'
 import FamilyReport from './FamilyReport'
 import PositionDialog from './PositionDialog'
@@ -45,6 +45,7 @@ export default function InvestmentWorkspace() {
   const [ledgerAccountId, setLedgerAccountId] = useState('all')
   const [ledgerView, setLedgerView] = useState('transactions')
   const [accountId, setAccountId] = useState('self')
+  const [xtbOwnerId,setXtbOwnerId]=useState('self')
   const [tradeId, setTradeId] = useState(null)
   const [createTrade, setCreateTrade] = useState(false)
   const [dialog, setDialog] = useState(null)
@@ -75,8 +76,9 @@ export default function InvestmentWorkspace() {
     if (window.confirm('برای دریافت قیمت، فقط شناسه عمومی ISIN ابزارهای سبد به Onvista ارسال می‌شود؛ نام صاحبان حساب، تعداد و مبالغ ارسال نمی‌شوند. دریافت خودکار فعال شود؟')) store.change({...state,settings:{...state.settings,isinPricesEnabled:true}})
   }
   function openAccount(id, add = false) { setAccountId(id); navigate('account'); if (add) setDialog({ kind: 'position', accountId: id, position: null }) }
+  function openXtbAccount(id){setXtbOwnerId(id);setTradeId(null);setCreateTrade(false);navigate('trades')}
   function newTrade() { setTradeId(null); setCreateTrade(true); navigate('trades') }
-  function openTrade(id) { setTradeId(id); setCreateTrade(false); navigate('trades') }
+  function openTrade(id) { const selected=state.trades.find(t=>t.id===id);if(selected?.ownerId)setXtbOwnerId(selected.ownerId);setTradeId(id); setCreateTrade(false); navigate('trades') }
   function openReport(id = null, asset = null) { setReportAccountId(id); setReportPositionId(asset); navigate('report') }
   function openAsset(owner, asset) { setAccountId(owner); setPositionId(asset); navigate('asset') }
   function openDecision(id) { setDecisionId(id); navigate('decision') }
@@ -86,29 +88,33 @@ export default function InvestmentWorkspace() {
     setDialog(null); setToast('دارایی در حساب خودش ثبت شد.')
   }
   function addTrade(value) {
-    store.change({ ...state, trades: [...state.trades, value] })
+    store.change({ ...state, trades: [...state.trades, {...value,ownerId:xtbOwnerId}] })
     setTradeId(value.id); setCreateTrade(false); setToast('برنامه اولیه ثبت شد؛ اجرا و بازبینی را جدا به آن اضافه کن.')
   }
   function addJournalRecord(field, value) {
     store.change({ ...state, trades: state.trades.map(t => t.id === tradeId ? { ...t, [field]: [...t[field], value] } : t) })
     setDialog(null); setToast(field === 'reviews' ? 'بازبینی به سابقه تصمیم اضافه شد.' : 'سابقه اجرای واقعی ثبت شد.')
   }
-  const title = section === 'asset' ? 'پرونده دارایی' : section === 'decision' ? 'پرونده تصمیم' : section === 'account' ? `حساب ${account?.owner || ''}` : section === 'trades' ? 'معاملات XTB' : section === 'data' ? 'داده و پشتیبان' : section === 'accounts' ? 'نمای کلی سرمایه' : SECTIONS.find(([key]) => key === section)?.[1]
-  const subtitle = section === 'asset' ? `${account?.owner || ''} · ${position?.name || ''}` : section === 'accounts' ? 'حساب‌های خانواده · Trade Republic' : section === 'account' ? 'Trade Republic · EUR' : section === 'trades' ? 'برنامه، اجرا، بازبینی' : section === 'report' ? 'بسته انتخابی برای گفت‌وگو در حساب شخصی‌ات' : 'سابقه روشن برای تصمیم‌های بعدی'
+  const title = section === 'asset' ? 'پرونده دارایی' : section === 'decision' ? 'پرونده تصمیم' : section === 'account' ? `حساب ${account?.owner || ''}` : section === 'wallet' ? 'کیف پول دیجیتال' : section === 'trades' ? `حساب ${xtbOwnerId==='self'?'من':'فاطمه'}` : section === 'data' ? 'داده و پشتیبان' : section === 'accounts' ? 'نمای کلی سرمایه' : SECTIONS.find(([key]) => key === section)?.[1]
+  const subtitle = section === 'asset' ? `${account?.owner || ''} · ${position?.name || ''}` : section === 'accounts' ? 'حساب‌های خانواده' : section === 'account' ? 'Trade Republic · EUR' : section === 'wallet' ? 'رمزارزها' : section === 'trades' ? 'XTB · EUR' : section === 'report' ? 'بسته انتخابی برای گفت‌وگو در حساب شخصی‌ات' : 'سابقه روشن برای تصمیم‌های بعدی'
   const due = state ? reviewQueue(state) : []
 
-  return <main id="investment-workspace" className={`${styles.workspace} ${section==='accounts'?styles.overviewMode:''}`} dir="rtl" lang="fa">
-    <InvestmentNavigation section={section} accountId={accountId} dueCount={due.length} onAccount={openAccount} onNavigate={key=>key==='report'?openReport():key==='ledger'?openLedger():navigate(key)}/>
-    <div className={styles.content}><header className={styles.header}><div><h1>{title}</h1><p>{subtitle}</p></div><div className={styles.headerActions}>{state && <>{section==='accounts'?<button type="button" className={styles.primaryButton} onClick={()=>newEntry('self')}><Icon name="plus" size={17}/>ثبت تراکنش</button>:section === 'trades' ? <button type="button" className={styles.primaryButton} onClick={newTrade}><Icon name="plus" size={16} />ثبت برنامه معامله</button> : <button type="button" className={styles.outlineButton} onClick={() => download(JSON.stringify(state, null, 2), 'family-investment-backup.json', 'application/json')}><Icon name="download" size={15} />خروجی پشتیبان</button>}{store.dirty && <button type="button" className={styles.secondaryButton} disabled={store.saving || store.conflict} onClick={store.save}>{store.saving ? 'در حال ذخیره…' : 'ذخیره تغییرات'}</button>}</>}</div></header>
+  return <main id="investment-workspace" className={`${styles.workspace} ${section==='accounts'?styles.overviewMode:''} ${['account','trades','wallet'].includes(section)?styles.cleanMode:''}`} dir="rtl" lang="fa">
+    <InvestmentNavigation section={section} accountId={accountId} dueCount={due.length} onAccount={openAccount} xtbOwnerId={xtbOwnerId} onXtbAccount={openXtbAccount} onNavigate={key=>key==='report'?openReport():key==='ledger'?openLedger():navigate(key)}/>
+    <div className={styles.content}><header className={styles.header}><div><h1>{title}</h1><p>{subtitle}</p></div><div className={styles.headerActions}>{state&&<>
+      {section==='account'?<><button type="button" className={styles.primaryButton} onClick={()=>newEntry(accountId)}><Icon name="plus" size={17}/>ثبت تراکنش</button><button type="button" className={styles.secondaryButton} disabled={marketData.batch.running||!marketData.symbolCount} onClick={marketData.refreshAll}><Icon name="refresh" size={16}/>{marketData.batch.running?'دریافت قیمت‌ها…':'به‌روزرسانی قیمت‌ها'}</button></>:section==='trades'?<button type="button" className={styles.primaryButton} disabled={!state.settings.xtbAccounts.find(a=>a.id===xtbOwnerId)} onClick={()=>setDialog({kind:'xtbEntry',accountId:xtbOwnerId})}><Icon name="plus" size={17}/>ثبت تراکنش</button>:section==='ledger'&&ledgerAccountId!=='all'?<button type="button" className={styles.secondaryButton} onClick={()=>openAccount(ledgerAccountId)}>بازگشت به حساب</button>:section==='accounts'?<button type="button" className={styles.primaryButton} onClick={()=>newEntry('self')}><Icon name="plus" size={17}/>ثبت تراکنش</button>:null}
+      {store.dirty&&<button type="button" className={styles.secondaryButton} disabled={store.saving||store.conflict} onClick={store.save}>{store.saving?'در حال ذخیره…':'ذخیره تغییرات'}</button>}
+    </>}</div></header>
       {!state ? <section className={styles.loading} role="status"><Icon name={store.error ? 'warning' : 'wallet'} size={35} /><h2>{store.error || 'در حال بارگذاری حساب‌های خصوصی…'}</h2>{store.error && <Link href="/andarun/login" className={styles.primaryButton}>ورود به Andarun</Link>}</section> : <>
         {store.offline && <section className={styles.conflictNotice} role="status"><p>{store.error || 'نسخه ذخیره‌شده مرورگر نمایش داده می‌شود؛ اتصال سرور در حال بررسی است.'}</p><button type="button" className={styles.secondaryButton} onClick={() => window.location.reload()}>بررسی دوباره اتصال</button></section>}
         {store.conflict && <section className={styles.conflictNotice} role="alert"><p>نسخه سرور با پیش‌نویس این مرورگر متفاوت است. ابتدا از تغییراتت پشتیبان بگیر.</p><button type="button" className={styles.secondaryButton} onClick={() => download(JSON.stringify(state, null, 2), 'family-local-draft.json', 'application/json')}>دانلود پیش‌نویس</button><button type="button" className={styles.secondaryButton} onClick={() => { if (window.confirm('پس از پشتیبان، پیش‌نویس مرورگر کنار گذاشته و نسخه سرور بارگذاری شود؟')) store.discardDraft() }}>بارگذاری نسخه سرور</button></section>}
-        {section!=='accounts'&&<MarketRefresh marketData={marketData} state={state} />}
+        {['asset','weekly'].includes(section)&&<MarketRefresh marketData={marketData} state={state} />}
         {section==='weekly' && <VisitChanges state={state} markets={marketData.markets} visit={visit} onAsset={openAsset} onWeekly={() => navigate('weekly')} />}
         {section === 'ledger' && <LedgerWorkspace state={state} onPlan={editCashPlan} onPostPlan={postCashPlan} onEntry={newEntry} key={`${ledgerAccountId}:${ledgerView}`} ledger={ledger} initialAccount={ledgerAccountId} initialView={ledgerView} download={download} notify={setToast}/>}
-        {section === 'accounts' && <FamilyOverview profitSelection={profitSelection} onProfitSelection={setProfitSelection} profitPeriod={profitPeriod} onEnablePrices={enableIsinPrices} marketData={marketData} ledger={ledger} onLedger={openLedger} state={state} onAccount={openAccount} />}
-        {section === 'account' && <AccountWorkspace profitSelection={profitSelection} onProfitSelection={setProfitSelection} profitPeriod={profitPeriod} cashPlans={state.settings.cashPlans} onPlan={editCashPlan} onPostPlan={postCashPlan} onEntry={newEntry} key={accountId} account={account} ledger={ledger} onLedger={() => openLedger(accountId)} markets={marketData.markets} onEdit={position => setDialog({ kind: 'position', accountId, position })} onAdd={() => setDialog({ kind: 'position', accountId, position: null })} onDetails={() => setDialog({ kind: 'details', accountId })} onSnapshot={() => setDialog({ kind: 'snapshot', accountId })} onReport={() => openReport(accountId)} onOpen={p => openAsset(accountId,p.id)} onImport={() => setDialog({kind:'csv',accountId})} />}
-        {section === 'trades' && <TradeWorkspace trades={state.trades} settings={state.settings} onSettings={settings => store.change({...state,settings})} dueCount={due.length} selectedId={tradeId} onSelect={setTradeId} createOpen={createTrade} onCreateOpen={setCreateTrade} onCreate={addTrade} onExecution={kind => setDialog({ kind: 'execution', executionKind: kind })} onReview={() => setDialog({ kind: 'review' })} />}
+        {section === 'accounts' && <FamilyOverview onXtbAccount={openXtbAccount} onWallet={()=>navigate('wallet')} profitSelection={profitSelection} onProfitSelection={setProfitSelection} profitPeriod={profitPeriod} onEnablePrices={enableIsinPrices} marketData={marketData} ledger={ledger} onLedger={openLedger} state={state} onAccount={openAccount} />}
+        {section === 'account' && <AccountWorkspace download={download} profitSelection={profitSelection} onProfitSelection={setProfitSelection} profitPeriod={profitPeriod} cashPlans={state.settings.cashPlans} onPlan={editCashPlan} onPostPlan={postCashPlan} onEntry={newEntry} key={accountId} account={account} ledger={ledger} onLedger={() => openLedger(accountId)} markets={marketData.markets} onEdit={position => setDialog({ kind: 'position', accountId, position })} onAdd={() => setDialog({ kind: 'position', accountId, position: null })} onDetails={() => setDialog({ kind: 'details', accountId })} onSnapshot={() => setDialog({ kind: 'snapshot', accountId })} onReport={() => openReport(accountId)} onOpen={p => openAsset(accountId,p.id)} onImport={() => setDialog({kind:'csv',accountId})} />}
+        {section==='trades'&&<XtbAccountWorkspace key={xtbOwnerId} account={state.settings.xtbAccounts.find(a=>a.id===xtbOwnerId)} owner={xtbOwnerId==='self'?'من':'فاطمه'} trades={state.trades} tradeProps={{dueCount:due.length,selectedId:tradeId,onSelect:setTradeId,createOpen:createTrade,onCreateOpen:setCreateTrade,onCreate:addTrade,onExecution:kind=>setDialog({kind:'execution',executionKind:kind}),onReview:()=>setDialog({kind:'review'})}}/>}
+        {section==='wallet'&&<DigitalWalletWorkspace/>}
         {section === 'journal' && <DecisionJournal state={state} onSelect={openTrade} onDecision={openDecision} onNew={() => newDecision()} onNewTrade={newTrade} />}
         {section === 'decision' && decision && <DecisionWorkspace decision={decision} state={state} onAsset={openAsset} onReview={() => setDialog({kind:'decisionReview'})} onReport={() => openReport(decision.accountId,decision.positionId)} />}
         {section === 'asset' && <AssetProfile key={`${accountId}:${positionId}`} account={account} position={position} state={state} marketData={marketData} onEdit={p => setDialog({kind:'position',accountId,position:p})} onConnect={symbol => store.changeAccount(accountId,a=>({...a,positions:a.positions.map(p=>p.id===positionId?{...p,marketSymbol:symbol,marketConfirmed:true}:p)}))} onChartConnect={symbol => store.changeAccount(accountId,a=>({...a,positions:a.positions.map(p=>p.id===positionId?{...p,tradingViewSymbol:symbol}:p)}))} onDecision={() => newDecision(accountId,positionId)} onOpenDecision={openDecision} onEvent={() => setDialog({kind:'event'})} onReport={() => openReport(accountId,positionId)} />}
@@ -118,6 +124,7 @@ export default function InvestmentWorkspace() {
         <footer className={styles.footer}><button type="button" onClick={() => navigate('data')}><span className={store.cloud ? styles.onlineDot : styles.localDot} />{store.storageError ? 'ذخیره مرورگر مشکل دارد؛ پشتیبان بگیر' : store.saving ? 'در حال ذخیره خودکار…' : store.dirty && store.cloud ? 'نسخه مرورگر محفوظ؛ در انتظار سرور' : store.cloud ? 'ذخیره خصوصی در سرور' : 'ذخیره محلی مرورگر'}</button>{section === 'accounts' && <Link href="/andarun" className={styles.mobileBack}>بازگشت به Andarun</Link>}</footer>
       </>}
     </div>
+    {dialog?.kind==='xtbEntry'&&<XtbEntryDialog account={state.settings.xtbAccounts.find(a=>a.id===dialog.accountId)} onClose={()=>setDialog(null)} onSave={entry=>{store.change({...state,settings:{...state.settings,xtbAccounts:state.settings.xtbAccounts.map(a=>a.id===dialog.accountId?{...a,entries:[...a.entries,entry]}:a)}});setDialog(null);setToast('تراکنش XTB ثبت شد.')}}/>}
     {dialog?.kind === 'cashPlan' && <CashPlanDialog plan={dialog.plan} accountId={dialog.accountId} onClose={()=>setDialog(null)} onSave={plan=>{store.change({...state,settings:{...state.settings,cashPlans:[...state.settings.cashPlans.filter(p=>p.id!==plan.id),plan]}});setDialog(null);setToast('برنامه واریز ذخیره شد.')}}/>}
     {dialog?.kind === 'entry' && <EntryDialog state={state} ledger={ledger} initialAccount={dialog.accountId} initialKind={dialog.entryKind} initialAmount={dialog.amount} plan={dialog.plan} onClose={()=>setDialog(null)} onSaved={async result=>{setDialog(null);setToast(result.added?'تراکنش ثبت شد.':'این تراکنش قبلاً ثبت شده است.');const fresh=await ledger.reload();if(fresh)store.synchronizeLedger(fresh.transactions)}}/>}
     {dialog?.kind === 'csv' && <HoldingsImportDialog account={state.accounts.find(a=>a.id===dialog.accountId)} onClose={()=>setDialog(null)} download={download} onSave={next=>{store.changeAccount(dialog.accountId,()=>next);setDialog(null);setToast('دارایی‌های CSV در همین حساب ثبت شدند.')}} />}

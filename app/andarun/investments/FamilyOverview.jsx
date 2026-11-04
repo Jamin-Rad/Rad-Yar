@@ -2,6 +2,7 @@
 import { ACCOUNT_DEFINITIONS } from '@/lib/investments/family.mjs'
 import { familyBalance } from '@/lib/investments/balances.mjs'
 import { money, signedMoney, number } from '@/lib/investments/portfolio.mjs'
+import {xtbBalance} from '@/lib/investments/xtb.mjs'
 import Icon from './InvestmentIcon'
 import {ProfitPeriodControl, ProfitPeriodDetails, RealizedProfitDetails} from './ProfitPeriod'
 import styles from './Overview.module.css'
@@ -9,7 +10,7 @@ import styles from './Overview.module.css'
 const quoteDate = new Intl.DateTimeFormat('fa-IR', { month:'short', day:'numeric', hour:'2-digit', minute:'2-digit', timeZone:'Europe/Berlin' })
 function resultClass(value) { return value == null || value === 0 ? '' : value > 0 ? styles.positive : styles.negative }
 
-export default function FamilyOverview({ state, onAccount, ledger, onLedger, marketData, onEnablePrices, profitSelection={mode:'current'}, onProfitSelection, profitPeriod }) {
+export default function FamilyOverview({ state, onAccount, ledger, onLedger, marketData, onEnablePrices, profitSelection={mode:'current'}, onProfitSelection, profitPeriod, onXtbAccount, onWallet }) {
   const balance = familyBalance(state.accounts, ledger?.loaded ? ledger.transactions : null, marketData?.markets)
   const isPeriod = profitSelection.mode !== 'current'
   const isRealized = profitSelection.scope==='realized'
@@ -27,7 +28,7 @@ export default function FamilyOverview({ state, onAccount, ledger, onLedger, mar
     <ProfitPeriodControl selection={profitSelection} onChange={onProfitSelection} period={profitPeriod}/>
     <section className={styles.summary} aria-label="خلاصه سرمایه خانواده">
       <div className={styles.total}>
-        <h2>کل دارایی فعلی خانواده {balance.estimated && balance.equityCents != null && <small>برآوردی</small>}</h2>
+        <h2>کل دارایی Trade Republic {balance.estimated && balance.equityCents != null && <small>برآوردی</small>}</h2>
         <strong><bdi>{balance.equityCents == null ? '—' : money(balance.equityCents)}</bdi></strong>
         <p>ارزش دارایی‌ها + موجودی نقد</p>
       </div>
@@ -39,7 +40,7 @@ export default function FamilyOverview({ state, onAccount, ledger, onLedger, mar
       <div className={styles.metric}>
         <h2>موجودی نقد {balance.cashEstimated && balance.cashCents != null && <small>برآوردی</small>}</h2>
         <strong><bdi>{balance.cashCents == null ? '—' : money(balance.cashCents)}</bdi></strong>
-        <p>مجموع حساب‌های خانواده</p>
+        <p>حساب‌های Trade Republic</p>
       </div>
     </section>
     <ProfitPeriodDetails period={isPeriod&&!isRealized?profitPeriod:null}/>
@@ -68,5 +69,7 @@ export default function FamilyOverview({ state, onAccount, ledger, onLedger, mar
       </div>
       <p className={styles.priceStatus} role="status">{priceErrors ? 'دریافت بعضی قیمت‌ها ناموفق بود؛ دوباره به‌روزرسانی کن.' : balance.missingPriceCount ? `در انتظار قیمت ${number(balance.missingPriceCount)} دارایی` : balance.oldestPrice ? `قدیمی‌ترین قیمت مرجع: ${quoteDate.format(new Date(balance.oldestPrice))}` : 'هنوز دارایی ثبت نشده است.'}</p>
     </section>
+    <section className={styles.accounts} aria-labelledby="xtb-accounts-title"><div className={styles.sectionHead}><h2 id="xtb-accounts-title" lang="en">XTB</h2><span>سود بسته‌شده از ابتدا</span></div>{ACCOUNT_DEFINITIONS.slice(0,2).map(def=>{const current=xtbBalance(state.settings?.xtbAccounts?.find(a=>a.id===def.id),state.trades);return <button type="button" className={styles.accountRow} key={def.id} onClick={()=>onXtbAccount(def.id)}><span className={styles.identity}><span className={styles.avatar} style={{'--avatar-color':def.color}}>{def.initials}</span><strong>{def.owner}</strong></span><span className={styles.accountValue}><bdi>{money(current?.balanceCents??null)}</bdi></span><span className={`${styles.accountResult} ${resultClass(current?.profitCents)}`}><bdi>{current?signedMoney(current.profitCents):'—'}</bdi></span><Icon name="arrow" size={18}/></button>})}</section>
+    <section className={styles.accounts}><div className={styles.sectionHead}><div><h2>کیف پول دیجیتال</h2><span>موجودی هنوز وارد نشده است</span></div><button type="button" className={styles.refresh} onClick={onWallet}>رمزارزها<Icon name="arrow" size={16}/></button></div></section>
   </div>
 }

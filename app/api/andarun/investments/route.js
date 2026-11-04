@@ -48,6 +48,8 @@ export async function PUT(request) {
   // Older open tabs omit these fields. Preserve stored cash anchors and price
   // consent unless a current client explicitly supplies a value (including null).
   if (stored.data) {
+    if(!Object.hasOwn(body.state.settings || {},'xtbAccounts'))state.settings.xtbAccounts=stored.data.state.settings?.xtbAccounts || []
+    state.trades=state.trades.map(trade=>Object.hasOwn(body.state.trades.find(t=>t.id===trade.id) || {},'ownerId')?trade:{...trade,ownerId:stored.data.state.trades.find(t=>t.id===trade.id)?.ownerId ?? null})
     if(!Object.hasOwn(body.state.settings || {},'cashPlans'))state.settings.cashPlans=stored.data.state.settings?.cashPlans || []
     state = {...state, settings:{...state.settings, isinPricesEnabled:Object.hasOwn(body.state.settings || {},'isinPricesEnabled') ? state.settings.isinPricesEnabled : stored.data.state.settings?.isinPricesEnabled === true}, accounts:state.accounts.map(account=>{
       const raw=body.state.accounts.find(a=>a.id===account.id), previous=stored.data.state.accounts.find(a=>a.id===account.id)

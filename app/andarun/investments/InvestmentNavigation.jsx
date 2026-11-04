@@ -6,9 +6,11 @@ import { number } from '@/lib/investments/portfolio.mjs'
 import Icon from './InvestmentIcon'
 import styles from './InvestmentNavigation.module.css'
 
-const PRIMARY=[['accounts','نمای کلی','overview'],['ledger','تراکنش‌ها','transfer'],['weekly','مرور هفتگی','calendar']]
+const PRIMARY=[['accounts','نمای کلی','overview']]
 const ANALYSIS=[['journal','دفتر تصمیم‌ها','journal'],['report','گزارش برای ChatGPT','chat']]
-export default function InvestmentNavigation({section,accountId,dueCount=0,onNavigate,onAccount}) {
+export default function InvestmentNavigation({section,accountId,dueCount=0,onNavigate,onAccount,xtbOwnerId='self',onXtbAccount}) {
+  const [expanded,setExpanded]=useState(section==='trades'?'xtb':section==='wallet'?'wallet':'tr')
+  useEffect(()=>{if(['account','asset'].includes(section))setExpanded('tr');else if(section==='trades')setExpanded('xtb');else if(section==='wallet')setExpanded('wallet')},[section,accountId,xtbOwnerId])
   const [open,setOpen]=useState(false),panel=useRef(null),trigger=useRef(null)
   useEffect(()=>{
     const desktop=window.matchMedia('(min-width:1001px)')
@@ -34,6 +36,7 @@ export default function InvestmentNavigation({section,accountId,dueCount=0,onNav
     return ()=>{document.body.style.overflow=overflow;document.removeEventListener('keydown',keys);if(previous?.isConnected)previous.focus()}
   },[open])
   function go(key){setOpen(false);onNavigate(key)}
+  function xtbAccount(id){setOpen(false);onXtbAccount(id)}
   function account(id){setOpen(false);onAccount(id)}
   function item([key,label,icon]){
     const active=section===key||section==='decision'&&key==='journal'
@@ -45,12 +48,18 @@ export default function InvestmentNavigation({section,accountId,dueCount=0,onNav
     <aside ref={panel} id="investment-navigation" aria-label="منوی سرمایه" role={open?'dialog':undefined} aria-modal={open?'true':undefined} className={`${styles.sidebar} ${open?styles.open:''}`}>
       <div className={styles.brandRow}><Link href="/andarun/investments" className={styles.brand} onClick={event=>{if(!event.metaKey&&!event.ctrlKey){event.preventDefault();go('accounts')}}}><span className={styles.brandMark}><Icon name="wallet" size={24}/></span><span><strong>سرمایه</strong><small>حساب‌های خانواده</small></span></Link><button type="button" className={styles.close} aria-label="بستن منو" onClick={()=>setOpen(false)}><Icon name="close" size={20}/></button></div>
       <nav className={styles.group} aria-label="دسترسی‌های اصلی">{PRIMARY.map(item)}</nav>
-      <nav className={styles.group} aria-label="حساب‌های خانواده"><h2>حساب‌ها <span lang="en">Trade Republic</span></h2>{ACCOUNT_DEFINITIONS.map(definition=>{
-        const active=['account','asset'].includes(section)&&accountId===definition.id
-        return <button type="button" key={definition.id} aria-current={active?'page':undefined} className={`${styles.item} ${styles.account} ${active?styles.active:''}`} onClick={()=>account(definition.id)}><span className={styles.avatar} style={{'--avatar-color':definition.color}}>{definition.initials}</span><span>{definition.owner}</span></button>
-      })}</nav>
-      <nav className={styles.group} aria-label="تحلیل و تصمیم"><h2>تحلیل و تصمیم</h2>{ANALYSIS.map(item)}</nav>
-      <nav className={styles.group} aria-label="معاملات کوتاه‌مدت"><button type="button" aria-current={section==='trades'?'page':undefined} className={`${styles.item} ${section==='trades'?styles.active:''}`} onClick={()=>go('trades')}><span className={styles.xtb} lang="en">XTB</span><span>معاملات <bdi lang="en">XTB</bdi></span></button></nav>
+      <nav className={styles.group} aria-label="حساب‌های سرمایه">
+        <button type="button" className={`${styles.item} ${styles.broker}`} aria-expanded={expanded==='tr'} aria-controls="tr-accounts" onClick={()=>setExpanded(expanded==='tr'?null:'tr')}><Icon name="trading" size={19}/><span lang="en">Trade Republic</span><Icon name="chevron" size={16}/></button>
+        {expanded==='tr'&&<div id="tr-accounts" className={styles.children}>{ACCOUNT_DEFINITIONS.map(definition=>{
+          const active=['account','asset'].includes(section)&&accountId===definition.id
+          return <button type="button" key={definition.id} aria-current={active?'page':undefined} className={`${styles.item} ${styles.account} ${active?styles.active:''}`} onClick={()=>account(definition.id)}><span className={styles.avatar} style={{'--avatar-color':definition.color}}>{definition.initials}</span><span>{definition.owner}</span></button>
+        })}</div>}
+        <button type="button" className={`${styles.item} ${styles.broker}`} aria-expanded={expanded==='xtb'} aria-controls="xtb-accounts" onClick={()=>setExpanded(expanded==='xtb'?null:'xtb')}><span className={styles.xtb} lang="en">XTB</span><span lang="en">XTB</span><Icon name="chevron" size={16}/></button>
+        {expanded==='xtb'&&<div id="xtb-accounts" className={styles.children}>{ACCOUNT_DEFINITIONS.slice(0,2).map(definition=><button type="button" key={definition.id} aria-current={section==='trades'&&xtbOwnerId===definition.id?'page':undefined} className={`${styles.item} ${styles.account} ${section==='trades'&&xtbOwnerId===definition.id?styles.active:''}`} onClick={()=>xtbAccount(definition.id)}><span className={styles.avatar} style={{'--avatar-color':definition.color}}>{definition.initials}</span><span>{definition.owner}</span></button>)}</div>}
+        <button type="button" className={`${styles.item} ${styles.broker}`} aria-expanded={expanded==='wallet'} aria-controls="wallet-accounts" onClick={()=>setExpanded(expanded==='wallet'?null:'wallet')}><Icon name="wallet" size={19}/><span>کیف پول دیجیتال</span><Icon name="chevron" size={16}/></button>
+        {expanded==='wallet'&&<div id="wallet-accounts" className={styles.children}>{item(['wallet','رمزارزها','assets'])}</div>}
+      </nav>
+      <nav className={styles.group} aria-label="تحلیل و تصمیم">{item(['weekly','مرور هفتگی','calendar'])}{ANALYSIS.map(item)}</nav>
       <div className={styles.utilities}>{item(['data','داده و پشتیبان','source'])}<Link href="/andarun" className={`${styles.item} ${styles.back}`}><Icon name="arrow" size={18}/><span>بازگشت به Andarun</span></Link></div>
     </aside>
   </>

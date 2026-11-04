@@ -692,3 +692,49 @@
 .workspace .content { margin-right:252px; }
 @media(max-width:1000px) { .workspace .content { margin-right:0; } }
 @media print { .workspace .content { margin-right:0; } }
+
+/* Quiet account surfaces: summary, one tab, one primary action. */
+.cleanMode { --bg:#f5f6fb; --panel:#fff; --line:#e3e8ed; --text:#142335; --muted:#647081; --accent:#176b56; color-scheme:light; }
+.cleanMode h1,.cleanMode h2,.cleanMode h3 { color:#142335; }
+.cleanMode .header p,.cleanMode .footer button { color:#647081; }
+.cleanMode .primaryButton { background:#176b56; border-color:#176b56; color:#fff!important; }
+.cleanMode .primaryButton:hover { background:#125844; }
+.cleanMode .secondaryButton,.cleanMode .outlineButton { background:#fff; border-color:#d5dfda; color:#176b56; }
+.cleanMode .textButton { color:#176b56; }
+.cleanMode .positive { color:#176b56!important; }
+.cleanMode .negative { color:#b83943!important; }
+.cleanMode .tablePanel,.cleanMode .panel,.cleanMode .planPanel,.cleanMode .tradeListPanel { background:#fff; border-color:#e3e8ed; }
+.cleanMode .tableToolbar { padding:18px 20px; }
+.cleanMode .tableTitle h2 { font-size:15px; }
+.cleanMode .tableTitle>span,.cleanMode .assetName small,.cleanMode .holdingSource,.cleanMode .footnote,.cleanMode .panelHead p { color:#647081; }
+.cleanMode .filters button { color:#647081; background:#f3f5f7; border-color:transparent; }
+.cleanMode .filters .filterActive { background:#eaf5f0; color:#176b56; }
+.cleanMode .search { background:#fff; border-color:#dce3e9; color:#647081; }
+.cleanMode .search input { color:#142335; }
+.cleanMode .table th { background:#f6f8fa; color:#536579; border-color:#e3e8ed; }
+.cleanMode .table th button { color:#536579; }
+.cleanMode .table td { border-color:#e3e8ed; }
+.cleanMode .table tr:hover td { background:#f8faf9; }
+.cleanMode .assetName { color:#142335; }
+.cleanMode .assetName strong { font-weight:650; }
+.cleanMode .monogram { background:#edf4ef; color:#176b56; }
+.cleanMode .weight { color:#647081; }
+.cleanMode .weightTrack { background:#edf1f4; }
+.cleanMode .weightTrack>span { background:#80b3a0; }
+.cleanMode .balanceDetails { border-color:#e3e8ed; color:#647081; }
+.cleanMode .balanceDetails>summary,.cleanMode .previousBroker>summary { color:#647081; }
+.cleanMode .accountStats { background:#f6f8fa; border-color:#e3e8ed; }
+.cleanMode .accountStats span,.cleanMode .accountStats small { color:#647081; }
+.cleanMode .historyList article { border-color:#e3e8ed; }
+.cleanMode .historyList p,.cleanMode .historyList small { color:#647081; }
+.cleanMode .iconButton { color:#647081; }
+.cleanMode .field input,.cleanMode .field select,.cleanMode .field textarea { color:#142335; background:#fff; border-color:#dce3e9; }
+.cleanMode .field { color:#536579; }
+.cleanMode .tradeList button { color:#142335; background:#fff; border-color:#e3e8ed; }
+.cleanMode .tradeList .selectedTrade { background:#eaf5f0; border-color:#176b56; }
+.cleanMode .tradeList small,.cleanMode .tradeList p,.cleanMode .calmEmpty p { color:#647081; }
+.cleanMode .segmented { background:#f4f6f8; border-color:#e3e8ed; }
+.cleanMode .segmented button { color:#647081; }
+.cleanMode .segmented button[aria-pressed=true] { background:#176b56; color:#fff; }
+.cleanMode .thesis,.cleanMode .journalHistory article,.cleanMode .planLocked { color:#536579; background:#f7f9fa; border-color:#e3e8ed; }
+.cleanMode :focus-visible { outline-color:#28876d; }

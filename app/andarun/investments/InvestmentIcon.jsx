@@ -1,5 +1,6 @@
 export default function InvestmentIcon({ name, size = 20, ...props }) {
   const paths = {
+    chevron: <path d="m6 9 6 6 6-6" />,
     menu: <path d="M4 6h16M4 12h16M4 18h16" />,
     transfer: <><path d="M4 7h15m-4-4 4 4-4 4M20 17H5m4-4-4 4 4 4" /></>,
     chat: <path d="M5 4h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-8l-6 4v-4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2ZM8 11h.01M12 11h.01M16 11h.01" />,
