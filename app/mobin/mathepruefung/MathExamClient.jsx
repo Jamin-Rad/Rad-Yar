@@ -3,7 +3,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import { MATH_CHAPTERS, MATH_QUESTIONS, MATH_QUESTION_MAP, MATH_TOPICS, MATH_TOPIC_MAP } from '@/data/mobinMathExam'
+import { MATH_CHAPTERS, MATH_EXAM_COLLECTIONS, MATH_QUESTIONS, MATH_QUESTION_MAP, MATH_TOPICS, MATH_TOPIC_MAP } from '@/data/mobinMathExam'
 import { createMathSession, finishMathSession, gradeMathResponse, MATH_SESSION_KEY, recordMathResponse, sessionStudySeconds, summarizeMathProgress } from '@/lib/mobinMath'
 import MathQuestion, { ArrowIcon } from './MathQuestion'
 import MathResults, { MODE_NAMES, duration } from './MathResults'
@@ -22,6 +22,7 @@ const dateLabel = value => new Intl.DateTimeFormat('de-DE', { timeZone: 'Europe/
 export default function MathExamClient() {
   const { progress, setProgress, ready, status, localAvailable, retrySync } = useMathProgress()
   const [active, setActive] = useState(null)
+  const [collection, setCollection] = useState('new')
   const [scope, setScope] = useState('all'), [level, setLevel] = useState('all'), [count, setCount] = useState('5')
   const restored = useRef(false)
   const summary = useMemo(() => summarizeMathProgress(progress), [progress])
@@ -44,10 +45,13 @@ export default function MathExamClient() {
     } catch {}
   }, [active, ready])
 
-  const filtered = useMemo(() => MATH_QUESTIONS.filter(question => {
-    const topic = MATH_TOPIC_MAP.get(question.topicId)
-    return (scope === 'all' || scope === question.topicId || scope === topic.chapter) && (level === 'all' || level === question.difficulty)
-  }), [scope, level])
+  const filtered = useMemo(() => {
+    const ids = new Set(MATH_EXAM_COLLECTIONS.find(item => item.id === collection).questionIds)
+    return MATH_QUESTIONS.filter(question => {
+      const topic = MATH_TOPIC_MAP.get(question.topicId)
+      return ids.has(question.id) && (scope === 'all' || scope === question.topicId || scope === topic.chapter) && (level === 'all' || level === question.difficulty)
+    })
+  }, [collection, scope, level])
   const reviewIds = filtered.filter(question => summary.reviewIds.includes(question.id)).map(question => question.id)
   const practiceIds = [...filtered].sort((a, b) => Number(Boolean(summary.latest[a.id])) - Number(Boolean(summary.latest[b.id]))).slice(0, count === 'all' ? filtered.length : Number(count)).map(q => q.id)
   const unfinished = summary.sessions.find(item => !item.finishedAt)
@@ -114,19 +118,20 @@ export default function MathExamClient() {
       <section className={styles.filterPanel} aria-labelledby="selection-title">
         <div><span className={styles.eyebrow}>Deine nächste Runde</span><h2 id="selection-title">Was möchtest du üben?</h2></div>
         <div className={styles.filters}>
+          <label>Aufgabensammlung<select value={collection} onChange={event => setCollection(event.target.value)}>{MATH_EXAM_COLLECTIONS.map(item => <option value={item.id} key={item.id}>{item.title}</option>)}</select></label>
           <label>Themenauswahl<select value={scope} onChange={event => setScope(event.target.value)}><option value="all">Alle 14 Themen</option>{MATH_CHAPTERS.map(chapter => <optgroup label={`Kapitel ${chapter.number} · ${chapter.title}`} key={chapter.id}><option value={chapter.id}>Ganzes Kapitel {chapter.number}</option>{MATH_TOPICS.filter(topic => topic.chapter === chapter.id).map(topic => <option value={topic.id} key={topic.id}>{topic.title}</option>)}</optgroup>)}</select></label>
           <label>Schwierigkeit<select value={level} onChange={event => setLevel(event.target.value)}><option value="all">Mittel & schwer</option><option value="medium">Mittel</option><option value="hard">Schwer</option></select></label>
           <label>Übungsrunde<select value={count} onChange={event => setCount(event.target.value)}><option value="5">Bis zu 5 Aufgaben</option><option value="10">Bis zu 10 Aufgaben</option><option value="all">Alle ausgewählten Aufgaben</option></select></label>
         </div>
-        <p className={styles.selectionNote}>Die Probeprüfung enthält alle {filtered.length} Aufgaben deiner Themen- und Schwierigkeitsauswahl. Beim Üben kommen unbearbeitete Aufgaben zuerst.</p><button className={styles.primaryButton} type="button" disabled={!ready || !practiceIds.length} onClick={() => start('practice', practiceIds)}>Übungsrunde starten<ArrowIcon /></button>
+        <p className={styles.selectionNote}>Deine Auswahl enthält {filtered.length} Aufgaben. Sammlung, Thema und Schwierigkeit gelten auch für die Probeprüfung und das Fehlertraining. Beim Üben kommen unbearbeitete Aufgaben zuerst.</p><button className={styles.primaryButton} type="button" disabled={!ready || !practiceIds.length} onClick={() => start('practice', practiceIds)}>Übungsrunde starten<ArrowIcon /></button>
       </section>
       {unfinished ? <section className={styles.resumePanel}><div><strong>Du hast eine Runde begonnen.</strong><p>{MODE_NAMES[unfinished.mode]} · {Object.keys(unfinished.responses).length} von {unfinished.questionIds.length} Antworten gespeichert</p></div><button className={styles.secondaryButton} type="button" onClick={() => resume(unfinished)}>Fortsetzen<ArrowIcon /></button></section> : null}
       <section className={styles.summaryPanel} aria-labelledby="progress-title">
         <div className={styles.summaryHeading}><h2 id="progress-title">Dein Fortschritt</h2><span>{ready ? `${summary.attempted} / ${MATH_QUESTIONS.length} bearbeitet` : 'Wird geladen …'}</span></div><div className={journey.progressTrack} role="progressbar" aria-label="Bearbeitete Aufgaben" aria-valuenow={summary.attempted} aria-valuemin={0} aria-valuemax={MATH_QUESTIONS.length}><span style={{ width: `${summary.attempted / MATH_QUESTIONS.length * 100}%` }} /></div>
         <dl className={styles.summaryStats}><div><dt>Zuletzt richtig</dt><dd>{summary.correct}</dd></div><div><dt>Zum Wiederholen</dt><dd>{summary.reviewIds.length}</dd></div><div><dt>Aktive Lernzeit</dt><dd>{duration(summary.seconds)}</dd></div><div><dt>Runden abgeschlossen</dt><dd>{summary.completed}</dd></div></dl><p className={styles.selectionNote}>Ein richtig gelöstes Fehlertraining entfernt die Aufgabe aus der Fehlerliste. Abgebrochene Probeprüfungen werden erst nach der Abgabe ausgewertet.</p>
       </section>
-      <section className={styles.curriculum} aria-labelledby="topics-title"><span className={styles.eyebrow}>Dein Stoff für die Klassenarbeit</span><h2 id="topics-title">Zwei Kapitel. Dein nächster Schritt.</h2><p>Eigene Übungsaufgaben passend zu deinem Inhaltsverzeichnis. Jedes Thema hat eine mittlere und eine schwere Aufgabe.</p>
-        <div className={styles.chapterGrid}>{MATH_CHAPTERS.map(chapter => <section className={styles.chapterCard} key={chapter.id}><header><span>{chapter.number}</span><h3>{chapter.title}</h3></header><ul>{summary.topics.filter(topic => topic.chapter === chapter.id).map(topic => <li key={topic.id}><button className={scope === topic.id ? styles.topicSelected : ''} type="button" aria-pressed={scope === topic.id} onClick={() => { setScope(topic.id); setLevel('all'); document.getElementById('selection-title')?.scrollIntoView({ block: 'center', behavior: 'smooth' }) }}><span><strong>{topic.title}</strong><small>Buch S. {topic.page} · {topic.correct}/{topic.total} zuletzt richtig{topic.review ? ` · ${topic.review} zum Wiederholen` : ''}</small></span><span className={styles.topicArrow} aria-hidden="true">↗</span></button></li>)}</ul></section>)}</div>
+      <section className={styles.curriculum} aria-labelledby="topics-title"><span className={styles.eyebrow}>Dein Stoff für die Klassenarbeit</span><h2 id="topics-title">Zwei Kapitel. Dein nächster Schritt.</h2><p>48 eigene Übungsaufgaben passend zu deinem Inhaltsverzeichnis. Die neue Runde ergänzt 20 mittlere bis schwere Aufgaben zu allen 14 Themen.</p>
+        <div className={styles.chapterGrid}>{MATH_CHAPTERS.map(chapter => <section className={styles.chapterCard} key={chapter.id}><header><span>{chapter.number}</span><h3>{chapter.title}</h3></header><ul>{summary.topics.filter(topic => topic.chapter === chapter.id).map(topic => <li key={topic.id}><button className={scope === topic.id ? styles.topicSelected : ''} type="button" aria-pressed={scope === topic.id} onClick={() => { setCollection('all'); setScope(topic.id); setLevel('all'); document.getElementById('selection-title')?.scrollIntoView({ block: 'center', behavior: 'smooth' }) }}><span><strong>{topic.title}</strong><small>Buch S. {topic.page} · {topic.correct}/{topic.total} zuletzt richtig{topic.review ? ` · ${topic.review} zum Wiederholen` : ''}</small></span><span className={styles.topicArrow} aria-hidden="true">↗</span></button></li>)}</ul></section>)}</div>
       </section>
       <details className={styles.report}><summary>Lernbericht & Verlauf<span>Was du gelernt hast und wie es läuft</span></summary><div>
         <p>{summary.attempted ? `Beim ersten Versuch richtig: ${summary.firstCorrect} von ${summary.attempted} Aufgaben (${Math.round(summary.firstCorrect / summary.attempted * 100)} %). Zuletzt richtig: ${summary.correct} von ${summary.attempted}.` : 'Dein Bericht beginnt mit deiner ersten Antwort.'}</p>

@@ -1,0 +1,596 @@
+{
+  "sourceFile": "kaenguru2022_56.pdf",
+  "sourceSha256": "ee487891fb24d2adb49da87c58593f5f289ff8f08e3eb2726e68e951aa7b8060",
+  "answerKey": "https://www.mathe-kaenguru.de/wettbewerb/loesung/kaenguru_loesungen_alle.pdf#page=5",
+  "crops": [
+    {
+      "file": "a1-prompt.png",
+      "page": 1,
+      "boxPoints": [
+        477,
+        275,
+        564,
+        361
+      ],
+      "sizePixels": [
+        348,
+        344
+      ],
+      "excludedAdjacentTextPoints": []
+    },
+    {
+      "file": "a2-prompt.png",
+      "page": 1,
+      "boxPoints": [
+        378,
+        452,
+        563,
+        569
+      ],
+      "sizePixels": [
+        740,
+        468
+      ],
+      "excludedAdjacentTextPoints": []
+    },
+    {
+      "file": "a5-prompt.png",
+      "page": 1,
+      "boxPoints": [
+        407,
+        682,
+        564,
+        800
+      ],
+      "sizePixels": [
+        628,
+        472
+      ],
+      "excludedAdjacentTextPoints": []
+    },
+    {
+      "file": "a7-prompt.png",
+      "page": 2,
+      "boxPoints": [
+        424,
+        141,
+        564,
+        198
+      ],
+      "sizePixels": [
+        560,
+        228
+      ],
+      "excludedAdjacentTextPoints": []
+    },
+    {
+      "file": "a8-prompt.png",
+      "page": 2,
+      "boxPoints": [
+        116,
+        239,
+        206,
+        275
+      ],
+      "sizePixels": [
+        360,
+        144
+      ],
+      "excludedAdjacentTextPoints": [
+        [
+          185,
+          258,
+          206,
+          275
+        ]
+      ]
+    },
+    {
+      "file": "b1-prompt.png",
+      "page": 2,
+      "boxPoints": [
+        445,
+        354,
+        564,
+        470
+      ],
+      "sizePixels": [
+        476,
+        464
+      ],
+      "excludedAdjacentTextPoints": []
+    },
+    {
+      "file": "b2-prompt.png",
+      "page": 2,
+      "boxPoints": [
+        432,
+        480,
+        563,
+        612
+      ],
+      "sizePixels": [
+        524,
+        528
+      ],
+      "excludedAdjacentTextPoints": []
+    },
+    {
+      "file": "b4-prompt.png",
+      "page": 2,
+      "boxPoints": [
+        357,
+        687,
+        565,
+        800
+      ],
+      "sizePixels": [
+        832,
+        452
+      ],
+      "excludedAdjacentTextPoints": []
+    },
+    {
+      "file": "b5-prompt.png",
+      "page": 3,
+      "boxPoints": [
+        424,
+        40,
+        564,
+        166
+      ],
+      "sizePixels": [
+        560,
+        504
+      ],
+      "excludedAdjacentTextPoints": []
+    },
+    {
+      "file": "b7-prompt.png",
+      "page": 3,
+      "boxPoints": [
+        341,
+        250,
+        564,
+        323
+      ],
+      "sizePixels": [
+        892,
+        292
+      ],
+      "excludedAdjacentTextPoints": []
+    },
+    {
+      "file": "c1-prompt.png",
+      "page": 3,
+      "boxPoints": [
+        59,
+        511,
+        563,
+        643
+      ],
+      "sizePixels": [
+        2016,
+        528
+      ],
+      "excludedAdjacentTextPoints": []
+    },
+    {
+      "file": "c2-prompt.png",
+      "page": 3,
+      "boxPoints": [
+        470,
+        699,
+        564,
+        793
+      ],
+      "sizePixels": [
+        376,
+        376
+      ],
+      "excludedAdjacentTextPoints": []
+    },
+    {
+      "file": "c3-prompt.png",
+      "page": 4,
+      "boxPoints": [
+        344,
+        65,
+        564,
+        153
+      ],
+      "sizePixels": [
+        880,
+        352
+      ],
+      "excludedAdjacentTextPoints": []
+    },
+    {
+      "file": "c4-prompt.png",
+      "page": 4,
+      "boxPoints": [
+        408,
+        173,
+        564,
+        202
+      ],
+      "sizePixels": [
+        624,
+        116
+      ],
+      "excludedAdjacentTextPoints": []
+    },
+    {
+      "file": "c5-prompt.png",
+      "page": 4,
+      "boxPoints": [
+        323,
+        274,
+        565,
+        389
+      ],
+      "sizePixels": [
+        968,
+        460
+      ],
+      "excludedAdjacentTextPoints": [
+        [
+          323,
+          274,
+          355,
+          339
+        ]
+      ]
+    },
+    {
+      "file": "c6-prompt.png",
+      "page": 4,
+      "boxPoints": [
+        510,
+        405,
+        563,
+        438
+      ],
+      "sizePixels": [
+        212,
+        132
+      ],
+      "excludedAdjacentTextPoints": []
+    },
+    {
+      "file": "a1-a.png",
+      "page": 1,
+      "boxPoints": [
+        80.0,
+        371,
+        151.0,
+        435
+      ],
+      "sizePixels": [
+        284,
+        256
+      ],
+      "excludedAdjacentTextPoints": [
+        [
+          80.0,
+          420,
+          85.1,
+          435
+        ]
+      ]
+    },
+    {
+      "file": "a1-b.png",
+      "page": 1,
+      "boxPoints": [
+        182.06,
+        371,
+        253.06,
+        435
+      ],
+      "sizePixels": [
+        284,
+        256
+      ],
+      "excludedAdjacentTextPoints": [
+        [
+          182.06,
+          420,
+          187.16,
+          435
+        ]
+      ]
+    },
+    {
+      "file": "a1-c.png",
+      "page": 1,
+      "boxPoints": [
+        284.12,
+        371,
+        355.12,
+        435
+      ],
+      "sizePixels": [
+        284,
+        256
+      ],
+      "excludedAdjacentTextPoints": [
+        [
+          284.12,
+          420,
+          289.22,
+          435
+        ]
+      ]
+    },
+    {
+      "file": "a1-d.png",
+      "page": 1,
+      "boxPoints": [
+        386.18,
+        371,
+        457.18,
+        435
+      ],
+      "sizePixels": [
+        284,
+        256
+      ],
+      "excludedAdjacentTextPoints": [
+        [
+          386.18,
+          420,
+          391.28,
+          435
+        ]
+      ]
+    },
+    {
+      "file": "a1-e.png",
+      "page": 1,
+      "boxPoints": [
+        488.24,
+        371,
+        559.24,
+        435
+      ],
+      "sizePixels": [
+        284,
+        256
+      ],
+      "excludedAdjacentTextPoints": [
+        [
+          488.24,
+          420,
+          493.34000000000003,
+          435
+        ]
+      ]
+    },
+    {
+      "file": "a8-a.png",
+      "page": 2,
+      "boxPoints": [
+        86,
+        279,
+        139,
+        325
+      ],
+      "sizePixels": [
+        212,
+        184
+      ],
+      "excludedAdjacentTextPoints": []
+    },
+    {
+      "file": "a8-b.png",
+      "page": 2,
+      "boxPoints": [
+        190,
+        288,
+        248,
+        324
+      ],
+      "sizePixels": [
+        232,
+        144
+      ],
+      "excludedAdjacentTextPoints": []
+    },
+    {
+      "file": "a8-c.png",
+      "page": 2,
+      "boxPoints": [
+        291,
+        275,
+        340,
+        325
+      ],
+      "sizePixels": [
+        196,
+        200
+      ],
+      "excludedAdjacentTextPoints": []
+    },
+    {
+      "file": "a8-d.png",
+      "page": 2,
+      "boxPoints": [
+        393,
+        281,
+        443,
+        326
+      ],
+      "sizePixels": [
+        200,
+        180
+      ],
+      "excludedAdjacentTextPoints": []
+    },
+    {
+      "file": "a8-e.png",
+      "page": 2,
+      "boxPoints": [
+        496,
+        274,
+        547,
+        325
+      ],
+      "sizePixels": [
+        204,
+        204
+      ],
+      "excludedAdjacentTextPoints": []
+    },
+    {
+      "file": "b2-a.png",
+      "page": 2,
+      "boxPoints": [
+        64.5,
+        529,
+        118,
+        584
+      ],
+      "sizePixels": [
+        214,
+        220
+      ],
+      "excludedAdjacentTextPoints": []
+    },
+    {
+      "file": "b2-b.png",
+      "page": 2,
+      "boxPoints": [
+        138.5,
+        529,
+        192,
+        584
+      ],
+      "sizePixels": [
+        214,
+        220
+      ],
+      "excludedAdjacentTextPoints": []
+    },
+    {
+      "file": "b2-c.png",
+      "page": 2,
+      "boxPoints": [
+        212.5,
+        529,
+        266,
+        584
+      ],
+      "sizePixels": [
+        214,
+        220
+      ],
+      "excludedAdjacentTextPoints": []
+    },
+    {
+      "file": "b2-d.png",
+      "page": 2,
+      "boxPoints": [
+        286.5,
+        529,
+        340,
+        584
+      ],
+      "sizePixels": [
+        214,
+        220
+      ],
+      "excludedAdjacentTextPoints": []
+    },
+    {
+      "file": "b2-e.png",
+      "page": 2,
+      "boxPoints": [
+        360.5,
+        529,
+        414,
+        584
+      ],
+      "sizePixels": [
+        214,
+        220
+      ],
+      "excludedAdjacentTextPoints": []
+    },
+    {
+      "file": "c6-a.png",
+      "page": 4,
+      "boxPoints": [
+        86,
+        424,
+        182,
+        474
+      ],
+      "sizePixels": [
+        384,
+        200
+      ],
+      "excludedAdjacentTextPoints": []
+    },
+    {
+      "file": "c6-b.png",
+      "page": 4,
+      "boxPoints": [
+        256,
+        424,
+        351,
+        474
+      ],
+      "sizePixels": [
+        380,
+        200
+      ],
+      "excludedAdjacentTextPoints": []
+    },
+    {
+      "file": "c6-c.png",
+      "page": 4,
+      "boxPoints": [
+        86,
+        473,
+        182,
+        552
+      ],
+      "sizePixels": [
+        384,
+        316
+      ],
+      "excludedAdjacentTextPoints": []
+    },
+    {
+      "file": "c6-d.png",
+      "page": 4,
+      "boxPoints": [
+        256,
+        489,
+        321,
+        552
+      ],
+      "sizePixels": [
+        260,
+        252
+      ],
+      "excludedAdjacentTextPoints": []
+    },
+    {
+      "file": "c6-e.png",
+      "page": 4,
+      "boxPoints": [
+        426,
+        489,
+        492,
+        552
+      ],
+      "sizePixels": [
+        264,
+        252
+      ],
+      "excludedAdjacentTextPoints": []
+    }
+  ]
+}

@@ -4,7 +4,7 @@ import MathExamClient from './MathExamClient'
 
 export const metadata = {
   title: 'Matheprüfung | Mobin',
-  description: '28 Aufgaben zu rationalen Zahlen für Klasse 6: einzeln üben, eine Probeprüfung lösen und Fehler verstehen.',
+  description: '48 Aufgaben zu rationalen Zahlen für Klasse 6: einzeln üben, eine Probeprüfung lösen und Fehler verstehen. Mit 20 neuen Prüfungsaufgaben.',
   robots: { index: false, follow: false },
 }
 
