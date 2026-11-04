@@ -7,10 +7,11 @@ import {validateFatimaMhbaMaterials} from '../../../lib/fatimaMhbaSchema.js';
 import {extraChapterPractice} from './chapterPractice.js';
 import {chapters} from './studyContent.js';
 const toFa=s=>s.replace(/\d/g,d=>'۰۱۲۳۴۵۶۷۸۹'[Number(d)]);
-const tableIds={4:['table-4-1','table-4-2','table-4-3'],5:['table-5-1','table-5-2'],6:['table-6-1','table-6-2','table-6-3','table-6-4'],7:['table-7-1','table-7-2','table-7-3','table-7-4','table-7-5','table-7-6','table-7-7','table-7-question','table-7-answer']};
-const materials=Object.fromEntries([1,2,4,5,6,7].map(n=>[n,{tables:tableIds[n]?Object.fromEntries(tableIds[n].map(id=>[id,{head:['معیار','مقدار'],rows:[['نمونه','ترجمه']]}])):undefined,pages:Array.from({length:({1:45,2:48,4:53,5:46,6:48,7:41})[n]},(_,i)=>{
+const tableIds={4:['table-4-1','table-4-2','table-4-3'],5:['table-5-1','table-5-2'],6:['table-6-1','table-6-2','table-6-3','table-6-4'],7:['table-7-1','table-7-2','table-7-3','table-7-4','table-7-5','table-7-6','table-7-7','table-7-question','table-7-answer'],8:['table-8-1','table-8-2','figure-8-1','figure-8-4','figure-8-9','figure-8-10','table-8-answer-5']};
+const heading=(c,lang)=>c.sourceHeadings?.[lang]||(c.id==='literatur'?(lang==='de'?'Literaturverzeichnis:':'فهرست منابع'):c.id==='fragen'?(lang==='de'?'Kontrollfragen:':'سؤال‌های کنترلیِ خود جزوه'):(lang==='de'?(c.sourceId||c.id):toFa(c.sourceId||c.id))+'. Synthetic heading');
+const materials=Object.fromEntries([1,2,4,5,6,7,8].map(n=>[n,{tables:tableIds[n]?Object.fromEntries(tableIds[n].map(id=>[id,{head:['معیار','مقدار'],rows:[['نمونه','ترجمه']]}])):undefined,pages:Array.from({length:({1:45,2:48,4:53,5:46,6:48,7:41,8:48})[n]},(_,i)=>{
  const headings=chapters[n].filter(c=>c.id!=='intro'&&c.start===i+1);
- return {number:i+1,text:'Synthetic source page '+(i+1)+'\n'+headings.map(c=>c.id==='literatur'?'Literaturverzeichnis:':c.id==='fragen'?'Kontrollfragen:':(c.sourceId||c.id)+'. Synthetic heading').join('\n')+'\nSynthetic paragraph.',fa:'صفحهٔ مصنوعی\n'+headings.map(c=>c.id==='literatur'?'فهرست منابع':c.id==='fragen'?'سؤال‌های کنترلیِ خود جزوه':toFa(c.sourceId||c.id)+'. عنوان مصنوعی').join('\n')+'\nپاراگراف مصنوعی.'};
+ return {number:i+1,text:'Synthetic source page '+(i+1)+'\n'+headings.map(c=>heading(c,'de')).join('\n')+'\nSynthetic paragraph.',fa:'صفحهٔ مصنوعی\n'+headings.map(c=>heading(c,'fa')).join('\n')+'\nپاراگراف مصنوعی.'};
 }),questions:Array.from({length:10},(_,i)=>({id:n+'.'+(i+1),official:true,text:'Synthetic control question '+(i+1),fa:'سؤال رسمی',officialAnswer:'Synthetic official answer',officialAnswerFa:'پاسخ رسمی فارسی'}))}]));
 const lessons=createLessons(materials);
 test('chapter fragments cover every original German and Persian character exactly once',()=>{
@@ -75,4 +76,15 @@ test('lesson 7 keeps ABC input available before revealing answers and covers eve
  const missing=structuredClone(materials);delete missing[7];assert.throws(()=>validateFatimaMhbaMaterials(missing),/Incomplete/);
  const table=structuredClone(materials);delete table[7].tables['table-7-question'];assert.throws(()=>validateFatimaMhbaMaterials(table),/table/);
  const untranslated=structuredClone(materials);untranslated[7].questions[9].officialAnswerFa='';assert.throws(()=>validateFatimaMhbaMaterials(untranslated),/questions/);
+});
+
+test('lesson 8 preserves diagram-only answers, calculations and its nonstandard bibliography heading',()=>{
+ const lesson=lessons[8];assert.equal(lesson.chapters.length,32);
+ assert.deepEqual([...new Set(lesson.chapters.flatMap(c=>c.statementIds))].sort((a,b)=>a-b),Array.from({length:54},(_,i)=>i));
+ for(const id of ['8.2','8.5','8.9','8.10'])assert.ok(lesson.questions.find(q=>q.id===id).figure);
+ assert.equal(lesson.questions.find(q=>q.id==='8.5').answerTable,materials[8].tables['table-8-answer-5']);
+ assert.equal(lesson.chapters.find(c=>c.id==='literatur').start,47);
+ const missing=structuredClone(materials);delete missing[8];assert.throws(()=>validateFatimaMhbaMaterials(missing),/Incomplete/);
+ const untranslated=structuredClone(materials);untranslated[8].questions[1].officialAnswerFa='';assert.throws(()=>validateFatimaMhbaMaterials(untranslated),/questions/);
+ const heading=structuredClone(materials);heading[8].pages[46].fa='عنوان نامرتبط';assert.throws(()=>createLessons(heading),/Missing fa source chapter/);
 });

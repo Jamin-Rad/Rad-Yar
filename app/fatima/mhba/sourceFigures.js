@@ -1,3 +1,4 @@
+import {lesson8Figures,lesson8CalculationFigure} from './lesson8Figures.js';
 import {lesson7Figures} from './lesson7Figures.js';
 import {lesson6Figures} from './lesson6Figures.js';
 // Numeric placements and authored captions only; original images stay in private storage.
@@ -215,5 +216,8 @@ sourceFigures[6]=lesson6Figures;
 Object.assign(answerFigures,{'6.1':{...lesson6Figures.find(f=>f.id==='figure-6-1'),pdf:'Text_06_Ziele_2026.pdf'},'6.6':{...lesson6Figures.find(f=>f.id==='figure-6-2'),pdf:'Text_06_Ziele_2026.pdf'},'6.10':{...lesson6Figures.find(f=>f.id==='table-6-3'),pdf:'Text_06_Ziele_2026.pdf'}});
 sourceFigures[7]=lesson7Figures;
 Object.assign(answerFigures,{'7.7':{id:'answer-7-7',page:8,file:'lesson-7-answer-7-7.webp',width:1138,height:1513,pdf:'Text_07_Loesungen_Kontrollfragen_2026.pdf',label:'جدول پاسخ سؤال ۷.۷',title:'مراحل محاسبه، طبقه‌بندی و تفسیر ABC'},'7.10':{...lesson7Figures.find(f=>f.id==='figure-7-9'),pdf:'Text_07_Logistik_2026.pdf'}});
+sourceFigures[8]=lesson8Figures;
+Object.assign(answerFigures,Object.fromEntries(Object.entries({'8.2':'figure-8-1','8.6':'figure-8-2','8.7':'figure-8-6','8.9':'figure-8-9','8.10':'figure-8-10'}).map(([id,figure])=>[id,{...lesson8Figures.find(f=>f.id===figure),pdf:'Text_08_Produktion_2026.pdf'}])));
+answerFigures['8.5']=lesson8CalculationFigure;
 export const sourceFigureFiles=new Set([...Object.values(sourceFigures).flat(),...Object.values(answerFigures)].map(f=>f.file));
 export function figuresForRow(lessonId,page,row){return (sourceFigures[lessonId]||[]).filter(f=>f.page===page&&f.anchor>=row.de.start&&f.anchor<row.de.end);}
