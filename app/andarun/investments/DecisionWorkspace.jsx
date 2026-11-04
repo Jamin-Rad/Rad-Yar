@@ -90,6 +90,7 @@ export function DecisionDialog({
   }
   return (
     <JournalDialog
+      className={styles.dialog}
       title="ثبت تصمیم این هفته"
       onClose={onClose}
       onSubmit={submit}
@@ -295,6 +296,7 @@ export function DecisionReviewDialog({
   }
   return (
     <JournalDialog
+      className={styles.dialog}
       title={`بازبینی ${decision.name}`}
       onClose={onClose}
       onSubmit={submit}

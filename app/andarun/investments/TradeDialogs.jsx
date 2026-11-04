@@ -6,10 +6,10 @@ import { decimal, todayBerlin, tradePosition } from '@/lib/investments/family.mj
 import Icon from './InvestmentIcon'
 import styles from './investments.module.css'
 
-export function JournalDialog({ title, description, onClose, children, onSubmit, error, busy=false, submitLabel="ثبت در سابقه" }) {
+export function JournalDialog({ title, description, onClose, children, onSubmit, error, busy=false, className='', submitLabel="ثبت در سابقه" }) {
   const dialog = useRef(null)
   useEffect(() => { const element = dialog.current; element.showModal(); return () => element.close() }, [])
-  return <dialog id="investment-dialog" ref={dialog} className={styles.dialog} aria-labelledby="investment-dialog-title" dir="rtl" lang="fa" onCancel={event=>{if(busy)event.preventDefault();else onClose()}} onClick={event => { if (!busy&&event.target === dialog.current) onClose() }}><form onSubmit={onSubmit}><div className={styles.dialogHead}><div><h2 id="investment-dialog-title">{title}</h2>{description&&<p>{description}</p>}</div><button type="button" className={styles.iconButton} onClick={onClose} disabled={busy} aria-label="بستن"><Icon name="close" /></button></div>{children}{error && <p className={styles.error} role="alert">{error}</p>}<div className={styles.dialogActions}><button type="submit" disabled={busy} className={styles.primaryButton}><Icon name="check" size={16} />{submitLabel}</button><button type="button" disabled={busy} className={styles.secondaryButton} onClick={onClose}>انصراف</button></div></form></dialog>
+  return <dialog id="investment-dialog" ref={dialog} className={`${styles.dialog} ${className}`} aria-labelledby="investment-dialog-title" dir="rtl" lang="fa" onCancel={event=>{if(busy)event.preventDefault();else onClose()}} onClick={event => { if (!busy&&event.target === dialog.current) onClose() }}><form onSubmit={onSubmit}><div className={styles.dialogHead}><div><h2 id="investment-dialog-title">{title}</h2>{description&&<p>{description}</p>}</div><button type="button" className={styles.iconButton} onClick={onClose} disabled={busy} aria-label="بستن"><Icon name="close" /></button></div>{children}{error && <p className={styles.error} role="alert">{error}</p>}<div className={styles.dialogActions}><button type="submit" disabled={busy} className={styles.primaryButton}><Icon name="check" size={16} />{submitLabel}</button><button type="button" disabled={busy} className={styles.secondaryButton} onClick={onClose}>انصراف</button></div></form></dialog>
 }
 
 export function ExecutionDialog({ trade, kind, onClose, onSave }) {

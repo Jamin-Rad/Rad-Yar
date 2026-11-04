@@ -282,6 +282,28 @@ export default function WeeklyReview({
           <button
             key={key}
             role="tab"
+            id={`sunday-tab-${key}`}
+            aria-controls="sunday-tab-panel"
+            tabIndex={tab === key ? 0 : -1}
+            onKeyDown={(event) => {
+              if (
+                !["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)
+              )
+                return;
+              event.preventDefault();
+              const keys = ["session", "archive", "history"],
+                index = keys.indexOf(tab),
+                next =
+                  event.key === "Home"
+                    ? 0
+                    : event.key === "End"
+                      ? 2
+                      : (index + (event.key === "ArrowLeft" ? 1 : 2)) % 3;
+              setTab(keys[next]);
+              event.currentTarget.parentElement
+                .querySelectorAll("[role=tab]")
+                [next].focus();
+            }}
             type="button"
             aria-selected={tab === key}
             onClick={() => setTab(key)}
@@ -290,62 +312,179 @@ export default function WeeklyReview({
           </button>
         ))}
       </div>
-      {tab === "session" && (
-        <>
-          <section className={styles.panel}>
-            <div className={styles.grid}>
-              <label className={styles.field}>
-                هدف این هفته
-                <input
-                  value={goal}
-                  maxLength={1000}
-                  onChange={(e) => setGoal(e.target.value)}
-                  readOnly={session?.status === "closed"}
-                  placeholder="این هفته درباره چه چیزی تصمیم می‌گیرم؟"
-                />
-              </label>
-              <label className={styles.field}>
-                یادداشت جلسه
-                <textarea
-                  className={styles.compact}
-                  value={notes}
-                  maxLength={4000}
-                  onChange={(e) => setNotes(e.target.value)}
-                  readOnly={session?.status === "closed"}
-                />
-              </label>
-            </div>
-            {session?.status === "closed" && (
-              <p className={styles.closed}>
-                جلسه پایان یافته · <bdi>{session.closedAt.slice(0, 10)}</bdi>
-              </p>
-            )}
-          </section>
-          <section className={styles.panel}>
-            <h2>بازبینی‌های این هفته</h2>
-            <DecisionRows
-              decisions={due}
-              {...{ state, ledger, marketData, onDecision }}
-            />
-            {xtbPlans.map((t) => (
-              <div className={styles.heading} key={t.id}>
-                <span dir="auto">
-                  {t.plan.name} · XTB ·{" "}
-                  {t.ownerId
-                    ? state.accounts.find((a) => a.id === t.ownerId)?.owner
-                    : "مالک تعیین نشده"}
-                </span>
-                <button type="button" onClick={() => onTrade(t.id)}>
-                  بازبینی برنامه
+      <div
+        role="tabpanel"
+        id="sunday-tab-panel"
+        aria-labelledby={`sunday-tab-${tab}`}
+        className={styles.root}
+      >
+        {tab === "session" && (
+          <>
+            <section className={styles.panel}>
+              <div className={styles.grid}>
+                <label className={styles.field}>
+                  هدف این هفته
+                  <input
+                    value={goal}
+                    maxLength={1000}
+                    onChange={(e) => setGoal(e.target.value)}
+                    readOnly={session?.status === "closed"}
+                    placeholder="این هفته درباره چه چیزی تصمیم می‌گیرم؟"
+                  />
+                </label>
+                <label className={styles.field}>
+                  یادداشت جلسه
+                  <textarea
+                    className={styles.compact}
+                    value={notes}
+                    maxLength={4000}
+                    onChange={(e) => setNotes(e.target.value)}
+                    readOnly={session?.status === "closed"}
+                  />
+                </label>
+              </div>
+              {session?.status === "closed" && (
+                <p className={styles.closed}>
+                  جلسه پایان یافته · <bdi>{session.closedAt.slice(0, 10)}</bdi>
+                </p>
+              )}
+            </section>
+            <section className={styles.panel}>
+              <h2>بازبینی‌های این هفته</h2>
+              <DecisionRows
+                decisions={due}
+                {...{ state, ledger, marketData, onDecision }}
+              />
+              {xtbPlans.map((t) => (
+                <div className={styles.heading} key={t.id}>
+                  <span dir="auto">
+                    {t.plan.name} · XTB ·{" "}
+                    {t.ownerId
+                      ? state.accounts.find((a) => a.id === t.ownerId)?.owner
+                      : "مالک تعیین نشده"}
+                  </span>
+                  <button type="button" onClick={() => onTrade(t.id)}>
+                    بازبینی برنامه
+                  </button>
+                </div>
+              ))}
+            </section>
+            <section className={styles.panel}>
+              <div className={styles.heading}>
+                <h2>برای تصمیم این هفته</h2>
+                <select
+                  aria-label="حساب موارد قابل بررسی"
+                  value={owner}
+                  onChange={(e) => setOwner(e.target.value)}
+                >
+                  <option value="all">همه حساب‌ها</option>
+                  {state.accounts.map((a) => (
+                    <option key={a.id} value={a.id}>
+                      {a.owner}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              {candidates.length ? (
+                <div className={styles.scroll}>
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>دارایی / حساب</th>
+                        <th>تغییر هفتگی قیمت</th>
+                        <th>دلیل توجه</th>
+                        <th />
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {candidates.map((r) => (
+                        <tr key={`${r.accountId}:${r.positionId}`}>
+                          <td>
+                            <button
+                              type="button"
+                              onClick={() => onAsset(r.accountId, r.positionId)}
+                              dir="auto"
+                            >
+                              {r.name}
+                            </button>
+                            <small>{r.owner}</small>
+                          </td>
+                          <td>
+                            <bdi>
+                              {r.movement
+                                ? percent(r.movement.nativePercent)
+                                : "—"}
+                            </bdi>
+                          </td>
+                          <td>
+                            {r.reasons.map((reason, i) => (
+                              <p key={i}>{reason.text}</p>
+                            ))}
+                          </td>
+                          <td>
+                            <button
+                              type="button"
+                              disabled={date !== currentSunday}
+                              onClick={() =>
+                                newDecision(r.accountId, r.positionId)
+                              }
+                            >
+                              ثبت تصمیم
+                            </button>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              ) : (
+                <p className={styles.empty}>
+                  فعلاً موردی برای بررسی نمایش داده نشده است.
+                </p>
+              )}
+              <div className={styles.actions}>
+                <button type="button" onClick={onNewTrade}>
+                  برنامه معاملاتی XTB
                 </button>
               </div>
-            ))}
-          </section>
-          <section className={styles.panel}>
-            <div className={styles.heading}>
-              <h2>برای تصمیم این هفته</h2>
+            </section>
+            <section className={styles.panel}>
+              <h2>تصمیم‌های این جلسه</h2>
+              <DecisionRows
+                decisions={decisions}
+                {...{ state, ledger, marketData, onDecision }}
+              />
+            </section>
+            <div className={styles.actions}>
+              {session?.status !== "closed" && (
+                <>
+                  <button
+                    type="button"
+                    className={styles.primary}
+                    onClick={() => save()}
+                  >
+                    ذخیره جلسه
+                  </button>
+                  <button type="button" onClick={() => save(true)}>
+                    پایان جلسه
+                  </button>
+                </>
+              )}
+              {message && <span role="status">{message}</span>}
+            </div>
+          </>
+        )}
+        {tab === "archive" && (
+          <>
+            <div className={styles.actions}>
+              <input
+                aria-label="جست‌وجوی تصمیم"
+                placeholder="جست‌وجوی دارایی یا دلیل…"
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+              />
               <select
-                aria-label="حساب موارد قابل بررسی"
+                aria-label="حساب تصمیم‌ها"
                 value={owner}
                 onChange={(e) => setOwner(e.target.value)}
               >
@@ -356,205 +495,96 @@ export default function WeeklyReview({
                   </option>
                 ))}
               </select>
+              <select
+                aria-label="وضعیت پیگیری"
+                value={status}
+                onChange={(e) => setStatus(e.target.value)}
+              >
+                <option value="all">همه تصمیم‌ها</option>
+                <option value="active">در حال پیگیری</option>
+                <option value="closed">پایان پیگیری</option>
+              </select>
             </div>
-            {candidates.length ? (
-              <div className={styles.scroll}>
-                <table>
-                  <thead>
-                    <tr>
-                      <th>دارایی / حساب</th>
-                      <th>تغییر هفتگی قیمت</th>
-                      <th>دلیل توجه</th>
-                      <th />
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {candidates.map((r) => (
-                      <tr key={`${r.accountId}:${r.positionId}`}>
-                        <td>
-                          <button
-                            type="button"
-                            onClick={() => onAsset(r.accountId, r.positionId)}
-                            dir="auto"
-                          >
-                            {r.name}
-                          </button>
-                          <small>{r.owner}</small>
-                        </td>
-                        <td>
-                          <bdi>
-                            {r.movement
-                              ? percent(r.movement.nativePercent)
-                              : "—"}
-                          </bdi>
-                        </td>
-                        <td>
-                          {r.reasons.map((reason, i) => (
-                            <p key={i}>{reason.text}</p>
-                          ))}
-                        </td>
-                        <td>
-                          <button
-                            type="button"
-                            disabled={date !== currentSunday}
-                            onClick={() =>
-                              newDecision(r.accountId, r.positionId)
-                            }
-                          >
-                            ثبت تصمیم
-                          </button>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            ) : (
+            <section className={styles.panel}>
+              <DecisionRows
+                decisions={filtered}
+                {...{ state, ledger, marketData, onDecision }}
+              />
+            </section>
+            {state.trades.length > 0 && (
+              <section className={styles.panel}>
+                <h2>برنامه‌های معاملاتی XTB</h2>
+                {state.trades
+                  .filter((t) => owner === "all" || t.ownerId === owner)
+                  .map((t) => (
+                    <div className={styles.heading} key={t.id}>
+                      <span dir="auto">
+                        {t.plan.name} · {t.plan.planDate} · نتیجه خروج‌ها:{" "}
+                        <bdi>
+                          {tradePosition(t).hasRealized
+                            ? signedMoney(tradePosition(t).netResultCents)
+                            : "—"}
+                        </bdi>
+                      </span>
+                      <button type="button" onClick={() => onTrade(t.id)}>
+                        برنامه و سابقه
+                      </button>
+                    </div>
+                  ))}
+              </section>
+            )}
+          </>
+        )}
+        {tab === "history" && (
+          <section className={styles.panel}>
+            <h2>جلسه‌های قبلی</h2>
+            {dates
+              .filter(
+                (d) =>
+                  state.weeklySessions.some((s) => s.date === d) ||
+                  state.decisions.some((item) => item.sessionDate === d),
+              )
+              .map((d) => {
+                const item = state.weeklySessions.find((s) => s.date === d);
+                return (
+                  <article className={styles.heading} key={d}>
+                    <div>
+                      <strong>
+                        <bdi>{d}</bdi>
+                      </strong>
+                      <p>{item?.goal || "مرور تصمیم‌های این هفته"}</p>
+                      <small>
+                        {
+                          state.decisions.filter(
+                            (item) => item.sessionDate === d,
+                          ).length
+                        }{" "}
+                        تصمیم ·{" "}
+                        {item?.status === "closed"
+                          ? "پایان یافته"
+                          : "در حال تکمیل"}
+                      </small>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setDate(d);
+                        setTab("session");
+                      }}
+                    >
+                      باز کردن جلسه
+                    </button>
+                  </article>
+                );
+              })}
+            {!state.weeklySessions.length && !state.decisions.length && (
               <p className={styles.empty}>
-                فعلاً موردی برای بررسی نمایش داده نشده است.
+                اولین جلسه را ذخیره کن تا اینجا بماند.
               </p>
             )}
-            <div className={styles.actions}>
-              <button type="button" onClick={onNewTrade}>
-                برنامه معاملاتی XTB
-              </button>
-            </div>
           </section>
-          <section className={styles.panel}>
-            <h2>تصمیم‌های این جلسه</h2>
-            <DecisionRows
-              decisions={decisions}
-              {...{ state, ledger, marketData, onDecision }}
-            />
-          </section>
-          <div className={styles.actions}>
-            {session?.status !== "closed" && (
-              <>
-                <button
-                  type="button"
-                  className={styles.primary}
-                  onClick={() => save()}
-                >
-                  ذخیره جلسه
-                </button>
-                <button type="button" onClick={() => save(true)}>
-                  پایان جلسه
-                </button>
-              </>
-            )}
-            {message && <span role="status">{message}</span>}
-          </div>
-        </>
-      )}
-      {tab === "archive" && (
-        <>
-          <div className={styles.actions}>
-            <input
-              aria-label="جست‌وجوی تصمیم"
-              placeholder="جست‌وجوی دارایی یا دلیل…"
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-            />
-            <select
-              aria-label="حساب تصمیم‌ها"
-              value={owner}
-              onChange={(e) => setOwner(e.target.value)}
-            >
-              <option value="all">همه حساب‌ها</option>
-              {state.accounts.map((a) => (
-                <option key={a.id} value={a.id}>
-                  {a.owner}
-                </option>
-              ))}
-            </select>
-            <select
-              aria-label="وضعیت پیگیری"
-              value={status}
-              onChange={(e) => setStatus(e.target.value)}
-            >
-              <option value="all">همه تصمیم‌ها</option>
-              <option value="active">در حال پیگیری</option>
-              <option value="closed">پایان پیگیری</option>
-            </select>
-          </div>
-          <section className={styles.panel}>
-            <DecisionRows
-              decisions={filtered}
-              {...{ state, ledger, marketData, onDecision }}
-            />
-          </section>
-          {state.trades.length > 0 && (
-            <section className={styles.panel}>
-              <h2>برنامه‌های معاملاتی XTB</h2>
-              {state.trades
-                .filter((t) => owner === "all" || t.ownerId === owner)
-                .map((t) => (
-                  <div className={styles.heading} key={t.id}>
-                    <span dir="auto">
-                      {t.plan.name} · {t.plan.planDate} · نتیجه خروج‌ها:{" "}
-                      <bdi>
-                        {tradePosition(t).hasRealized
-                          ? signedMoney(tradePosition(t).netResultCents)
-                          : "—"}
-                      </bdi>
-                    </span>
-                    <button type="button" onClick={() => onTrade(t.id)}>
-                      برنامه و سابقه
-                    </button>
-                  </div>
-                ))}
-            </section>
-          )}
-        </>
-      )}
-      {tab === "history" && (
-        <section className={styles.panel}>
-          <h2>جلسه‌های قبلی</h2>
-          {dates
-            .filter(
-              (d) =>
-                state.weeklySessions.some((s) => s.date === d) ||
-                state.decisions.some((item) => item.sessionDate === d),
-            )
-            .map((d) => {
-              const item = state.weeklySessions.find((s) => s.date === d);
-              return (
-                <article className={styles.heading} key={d}>
-                  <div>
-                    <strong>
-                      <bdi>{d}</bdi>
-                    </strong>
-                    <p>{item?.goal || "مرور تصمیم‌های این هفته"}</p>
-                    <small>
-                      {
-                        state.decisions.filter((item) => item.sessionDate === d)
-                          .length
-                      }{" "}
-                      تصمیم ·{" "}
-                      {item?.status === "closed"
-                        ? "پایان یافته"
-                        : "در حال تکمیل"}
-                    </small>
-                  </div>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setDate(d);
-                      setTab("session");
-                    }}
-                  >
-                    باز کردن جلسه
-                  </button>
-                </article>
-              );
-            })}
-          {!state.weeklySessions.length && !state.decisions.length && (
-            <p className={styles.empty}>
-              اولین جلسه را ذخیره کن تا اینجا بماند.
-            </p>
-          )}
-        </section>
-      )}
+        )}
+      </div>
     </div>
   );
 }

@@ -269,3 +269,27 @@
     font-size: 20px;
   }
 }
+
+.dialog.dialog {
+  background: #fff;
+  color: #142335;
+  color-scheme: light;
+  border: 1px solid #e3e8ed;
+  --panel: #fff;
+  --line: #e3e8ed;
+  --text: #142335;
+  --muted: #647081;
+  --accent: #176b56;
+}
+.dialog.dialog > form > div:last-child {
+  background: #fff;
+  border-color: #e3e8ed;
+}
+.dialog.dialog > form > div:first-child > button {
+  color: #647081;
+}
+.dialog.dialog button[type="submit"] {
+  background: #176b56;
+  border-color: #176b56;
+  color: #fff !important;
+}
