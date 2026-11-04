@@ -16,6 +16,8 @@ export const lesson7Notes=[
  {id:'fedex-history',pages:[36],questions:['7.10'],title:'مثال FedEx، شرح الگوی تاریخی جزوه است',
  de:'Das Beispiel erläutert den historischen Aufbau des Netzes mit einem zentralen Hub in Memphis. Es ist ein Lernbeispiel für Vorlauf, Hauptlauf und Nachlauf, keine Beschreibung des heutigen weltweiten FedEx-Netzes. Auch die genannte Zahl von Packstationen ist als zeitgebundene Angabe des Lehrtexts einzuordnen.',
  fa:'این مثال، شکل‌گیری تاریخی شبکه با یک مرکز اصلی در ممفیس را توضیح می‌دهد. هدف آن فهم جمع‌آوری، مسیر اصلی و توزیع نهایی است و توصیف شبکهٔ جهانی امروز FedEx نیست. تعداد ایستگاه‌های دریافت بسته در همین صفحه هم باید به‌عنوان آمار مربوط به دورهٔ متن خوانده شود.',sources:[]}
+,
+{id:'ranking-reference',pages:[16],questions:[],title:'جملهٔ متن با ترتیب جدول یکسان نیست',de:'Der Fließtext nennt DHL, Maersk und Deutsche Bahn als führend; Tabelle 7.4 ordnet dagegen DHL, Deutsche Bahn und La Poste an die ersten drei Positionen und Maersk auf Position neun ein. Für die konkrete Rangfolge ist die angezeigte Tabelle maßgeblich; beide Angaben bleiben als Quelleninhalt erkennbar.',fa:'متن از DHL، Maersk و Deutsche Bahn به‌عنوان رهبران یاد می‌کند، اما جدول ۷.۴ سه رتبهٔ اول را DHL، Deutsche Bahn و La Poste و رتبهٔ نهم را Maersk نشان می‌دهد. برای ترتیب مشخص، باید جدول نمایش‌داده‌شده را مبنا گرفت؛ هر دو بیان جزوه حفظ شده‌اند.',sources:[]}
 ];
 export const lesson7PageNotes=page=>lesson7Notes.filter(note=>note.pages.includes(page));
 export const lesson7QuestionNotes=id=>lesson7Notes.filter(note=>note.questions.includes(id));

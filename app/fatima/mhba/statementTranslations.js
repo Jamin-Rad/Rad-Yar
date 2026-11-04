@@ -1,3 +1,5 @@
+import {lesson9Practice} from './lesson9Practice.js';
+import {lesson10Practice} from './lesson10Practice.js';
 import {lesson8Practice} from './lesson8Practice.js';
 import {lesson7Practice} from './lesson7Practice.js';
 import {lesson6Practice} from './lesson6Practice.js';
@@ -189,3 +191,9 @@ explanationsDe[7]=lesson7Practice.map(p=>p.whyDe);
 
 statementTranslations[8]=lesson8Practice.map(p=>p.fa);
 explanationsDe[8]=lesson8Practice.map(p=>p.whyDe);
+
+statementTranslations[9]=lesson9Practice.map(p=>p.fa);
+explanationsDe[9]=lesson9Practice.map(p=>p.whyDe);
+
+statementTranslations[10]=lesson10Practice.map(p=>p.fa);
+explanationsDe[10]=lesson10Practice.map(p=>p.whyDe);

@@ -1,3 +1,5 @@
+import {lesson9PageNotes} from './lesson9Audit.js';
+import {lesson10PageNotes} from './lesson10Audit.js';
 import SourceTable from './SourceTable.jsx';
 import StudyNotes from './StudyNotes.jsx';
 import {lesson4PageNotes} from './lesson4Audit.js';
@@ -38,7 +40,7 @@ export default function StudioReader({lesson,chapter,current,position,data,patch
      <section className="parallel-de" lang="de" dir="ltr" aria-label="متن اصلی آلمانی">{figuresForRow(lesson.id,current.page,row).map(figure=><SourceFigure key={figure.id} figure={figure} pdf={lesson.pdf}/>)}<SourceParagraphs collapsed={figuresForRow(lesson.id,current.page,row).some(f=>lesson.tables?.[f.id])} part={row.de} blockId={`original-${lesson.id}-${current.page}`} sourceLength={original.text.length} data={data} vocabulary={lesson.vocabulary} official={official}/></section>
      {showPersian?<section className="parallel-fa" lang="fa" dir="rtl" aria-label="ترجمهٔ همان بند">{figuresForRow(lesson.id,current.page,row).filter(f=>lesson.tables?.[f.id]).map(f=><SourceTable key={f.id} table={lesson.tables[f.id]} label={f.label}/>)}<SourceParagraphs collapsed={figuresForRow(lesson.id,current.page,row).some(f=>lesson.tables?.[f.id])} part={row.fa} blockId={`original-${lesson.id}-${current.page}-fa`} sourceLength={original.fa.length} data={data} official={official}/></section>:null}
     </div>)}
-    {[4,5,7,8].includes(lesson.id)?<StudyNotes compact notes={({4:lesson4PageNotes,5:lesson5PageNotes,7:lesson7PageNotes,8:lesson8PageNotes})[lesson.id](current.page)}/>:null}
+    {[4,5,7,8,9,10].includes(lesson.id)?<StudyNotes compact notes={({4:lesson4PageNotes,5:lesson5PageNotes,7:lesson7PageNotes,8:lesson8PageNotes,9:lesson9PageNotes,10:lesson10PageNotes})[lesson.id](current.page)}/>:null}
     </div>
     <div ref={previewRef} className="reader-pen-preview" aria-hidden="true"/>
    </div>

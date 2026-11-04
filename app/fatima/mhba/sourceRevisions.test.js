@@ -19,7 +19,7 @@ test('legacy and restored marks migrate once without touching other lessons or s
  const edit=sourceEdits[0],mark={id:'old',lessonId:5,blockId:edit.blockId,start:edit.start+10,end:edit.start+14,text:'test',note:'saved'};
  const unrelated={...mark,id:'other',lessonId:1};const review={'5.4':{box:3,due:12345}};
  const original={version:1,highlights:[mark,unrelated],review};const migrated=migrateSourceAnnotations(original);
- assert.equal(migrated.highlights[0].start,mark.start-edit.remove);assert.equal(migrated.highlights[0].sourceRevision,SOURCE_REVISION);
+ assert.equal(migrated.highlights[0].start,mark.start-edit.remove);assert.equal(migrated.highlights[0].sourceRevision,edit.revision);
  assert.equal(migrated.highlights[1],unrelated);assert.equal(migrated.review,review);assert.equal(migrateSourceAnnotations(migrated),migrated);assert.equal(original.highlights[0],mark);
 });
 
@@ -29,4 +29,14 @@ test('audited notes accompany every contradictory official answer and each binar
  assert.ok(lesson5PracticePages.every(pages=>pages.length&&pages.every(p=>Number.isInteger(p)&&p>=3&&p<=44)));
  assert.equal(new Set(lesson5Notes.map(n=>n.id)).size,lesson5Notes.length);
  for(const note of lesson5Notes){assert.ok(note.de&&note.fa&&note.title);assert.ok(note.sources.every(s=>s.url.startsWith('https://')&&s.title));}
+});
+
+test('restored lesson 6 answer prefixes preserve old German and Persian marks without repeating earlier repairs',()=>{
+ const prefixEdits=sourceEdits.filter(e=>e.blockId.startsWith('official-answer-6.7'));assert.equal(prefixEdits.length,2);
+ const marks=prefixEdits.map((edit,i)=>({id:'answer-'+i,lessonId:6,blockId:edit.blockId,start:0,end:4,text:'word',sourceRevision:2,note:'saved',reviewEnabled:true}));
+ const repairedFive={lessonId:5,blockId:sourceEdits[0].blockId,start:2000,end:2004,text:'keep',sourceRevision:2};
+ const notebook={version:1,highlights:[...marks,repairedFive],review:{'6.7':{box:3,due:123}}};const migrated=migrateSourceAnnotations(notebook);
+ for(let i=0;i<2;i++){assert.equal(migrated.highlights[i].start,prefixEdits[i].insertLength);assert.equal(migrated.highlights[i].end,prefixEdits[i].insertLength+4);assert.equal(migrated.highlights[i].text,'word');assert.equal(migrated.highlights[i].note,'saved');assert.equal(migrated.highlights[i].reviewEnabled,true);}
+ assert.equal(migrated.highlights[2],repairedFive);assert.equal(migrated.review,notebook.review);assert.equal(migrateSourceAnnotations(migrated),migrated);
+ const current={...marks[0],sourceRevision:SOURCE_REVISION};assert.equal(migrateSourceAnnotations({highlights:[current]}).highlights[0],current);
 });

@@ -21,10 +21,10 @@ test('official questions remain separate from authored written and binary lesson
 
 test('original figures have unique allowlisted files and belong to exactly one source row',async()=>{
  const {sourceFigures,sourceFigureFiles,figuresForRow}=await import('./sourceFigures.js');
- assert.equal(sourceFigures[1].length,8);assert.equal(sourceFigures[5].length,3);assert.equal(sourceFigures[6].length,13);assert.equal(sourceFigures[7].length,19);assert.equal(sourceFigures[8].length,28);
- assert.equal(sourceFigureFiles.size,86);
+ assert.equal(sourceFigures[1].length,8);assert.equal(sourceFigures[5].length,3);assert.equal(sourceFigures[6].length,13);assert.equal(sourceFigures[7].length,19);assert.equal(sourceFigures[8].length,28);assert.equal(sourceFigures[9].length,11);assert.equal(sourceFigures[10].length,38);
+ assert.equal(sourceFigureFiles.size,139);
  for(const [lesson,figures] of Object.entries(sourceFigures))for(const figure of figures){
-  assert.match(figure.file,/^lesson-[145678]-(?:table|figure|intro)[\w.-]*\.webp$/);
+  assert.match(figure.file,/^lesson-(?:[1456789]|10)-(?:table|figure|intro|formula)[\w.-]*\.webp$/);
   assert.ok(figure.width>0&&figure.height>0&&Number.isInteger(figure.anchor));
   const before={de:{start:0,end:figure.anchor}},after={de:{start:figure.anchor,end:figure.anchor+1}};
   assert.ok(!figuresForRow(lesson,figure.page,before).some(f=>f.id===figure.id));

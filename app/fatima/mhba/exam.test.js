@@ -7,9 +7,9 @@ import {validateFatimaMhbaMaterials} from '../../../lib/fatimaMhbaSchema.js';
 import {extraChapterPractice} from './chapterPractice.js';
 import {chapters} from './studyContent.js';
 const toFa=s=>s.replace(/\d/g,d=>'۰۱۲۳۴۵۶۷۸۹'[Number(d)]);
-const tableIds={4:['table-4-1','table-4-2','table-4-3'],5:['table-5-1','table-5-2'],6:['table-6-1','table-6-2','table-6-3','table-6-4'],7:['table-7-1','table-7-2','table-7-3','table-7-4','table-7-5','table-7-6','table-7-7','table-7-question','table-7-answer'],8:['table-8-1','table-8-2','figure-8-1','figure-8-4','figure-8-9','figure-8-10','table-8-answer-5']};
+const tableIds={4:['table-4-1','table-4-2','table-4-3'],5:['table-5-1','table-5-2'],6:['table-6-1','table-6-2','table-6-3','table-6-4','figure-6-3','figure-6-4'],7:['table-7-1','table-7-2','table-7-3','table-7-4','table-7-5','table-7-6','table-7-7','table-7-question','table-7-answer'],8:['table-8-1','table-8-2','figure-8-1','figure-8-4','figure-8-9','figure-8-10','table-8-answer-5'],9:["table-9-1", "table-9-2", "table-9-3", "table-9-4", "table-9-5", "figure-9-1", "figure-9-2", "figure-9-3", "figure-9-4", "figure-9-5", "figure-9-6", "table-9-answer-7"],10:["figure-10-1", "figure-10-2", "table-10-1", "table-10-2", "table-10-7", "table-10-8", "table-10-9", "table-10-question", "figure-10-5", "table-10-answer-3", "table-10-answer-4", "table-10-answer-7", "table-10-answer-10", "table-10-6"]};
 const heading=(c,lang)=>c.sourceHeadings?.[lang]||(c.id==='literatur'?(lang==='de'?'Literaturverzeichnis:':'فهرست منابع'):c.id==='fragen'?(lang==='de'?'Kontrollfragen:':'سؤال‌های کنترلیِ خود جزوه'):(lang==='de'?(c.sourceId||c.id):toFa(c.sourceId||c.id))+'. Synthetic heading');
-const materials=Object.fromEntries([1,2,4,5,6,7,8].map(n=>[n,{tables:tableIds[n]?Object.fromEntries(tableIds[n].map(id=>[id,{head:['معیار','مقدار'],rows:[['نمونه','ترجمه']]}])):undefined,pages:Array.from({length:({1:45,2:48,4:53,5:46,6:48,7:41,8:48})[n]},(_,i)=>{
+const materials=Object.fromEntries([1,2,4,5,6,7,8,9,10].map(n=>[n,{tables:tableIds[n]?Object.fromEntries(tableIds[n].map(id=>[id,{head:['معیار','مقدار'],rows:[['نمونه','ترجمه']]}])):undefined,pages:Array.from({length:({1:45,2:48,4:53,5:46,6:48,7:41,8:48,9:44,10:43})[n]},(_,i)=>{
  const headings=chapters[n].filter(c=>c.id!=='intro'&&c.start===i+1);
  return {number:i+1,text:'Synthetic source page '+(i+1)+'\n'+headings.map(c=>heading(c,'de')).join('\n')+'\nSynthetic paragraph.',fa:'صفحهٔ مصنوعی\n'+headings.map(c=>heading(c,'fa')).join('\n')+'\nپاراگراف مصنوعی.'};
 }),questions:Array.from({length:10},(_,i)=>({id:n+'.'+(i+1),official:true,text:'Synthetic control question '+(i+1),fa:'سؤال رسمی',officialAnswer:'Synthetic official answer',officialAnswerFa:'پاسخ رسمی فارسی'}))}]));
@@ -87,4 +87,17 @@ test('lesson 8 preserves diagram-only answers, calculations and its nonstandard 
  const missing=structuredClone(materials);delete missing[8];assert.throws(()=>validateFatimaMhbaMaterials(missing),/Incomplete/);
  const untranslated=structuredClone(materials);untranslated[8].questions[1].officialAnswerFa='';assert.throws(()=>validateFatimaMhbaMaterials(untranslated),/questions/);
  const heading=structuredClone(materials);heading[8].pages[46].fa='عنوان نامرتبط';assert.throws(()=>createLessons(heading),/Missing fa source chapter/);
+});
+
+test('lessons 9 and 10 keep every chapter practice reachable and calculation inputs visible',()=>{
+ for(const [id,count,chapterCount] of [[9,50,28],[10,78,42]]){
+  const lesson=lessons[id];assert.equal(lesson.chapters.length,chapterCount);
+  assert.deepEqual([...new Set(lesson.chapters.flatMap(c=>c.statementIds))].sort((a,b)=>a-b),Array.from({length:count},(_,i)=>i));
+  assert.equal(lesson.questions.filter(q=>q.official).length,10);
+  const missing=structuredClone(materials);delete missing[id];assert.throws(()=>validateFatimaMhbaMaterials(missing),/Incomplete/);
+  const noTable=structuredClone(materials);delete noTable[id].tables[tableIds[id][0]];assert.throws(()=>validateFatimaMhbaMaterials(noTable),/table/);
+ }
+ const choice=lessons[10].cards.find(c=>c.id==='10.10');assert.equal(choice.questionTable,materials[10].tables['table-10-question']);assert.equal(choice.answerTable,materials[10].tables['table-10-answer-10']);
+ assert.ok(lessons[10].questions.find(q=>q.id==='10.7').studyNotes.length);
+ assert.ok(lessons[9].questions.find(q=>q.id==='9.7').studyNotes.length);
 });

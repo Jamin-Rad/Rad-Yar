@@ -1,3 +1,5 @@
+import {lesson9Figures,lesson9AnswerFigures} from './lesson9Figures.js';
+import {lesson10Figures,lesson10AnswerFigures} from './lesson10Figures.js';
 import {lesson8Figures,lesson8CalculationFigure} from './lesson8Figures.js';
 import {lesson7Figures} from './lesson7Figures.js';
 import {lesson6Figures} from './lesson6Figures.js';
@@ -219,5 +221,9 @@ Object.assign(answerFigures,{'7.7':{id:'answer-7-7',page:8,file:'lesson-7-answer
 sourceFigures[8]=lesson8Figures;
 Object.assign(answerFigures,Object.fromEntries(Object.entries({'8.2':'figure-8-1','8.6':'figure-8-2','8.7':'figure-8-6','8.9':'figure-8-9','8.10':'figure-8-10'}).map(([id,figure])=>[id,{...lesson8Figures.find(f=>f.id===figure),pdf:'Text_08_Produktion_2026.pdf'}])));
 answerFigures['8.5']=lesson8CalculationFigure;
+sourceFigures[9]=lesson9Figures;
+sourceFigures[10]=lesson10Figures;
+Object.assign(answerFigures,lesson10AnswerFigures);
+Object.assign(answerFigures,Object.fromEntries(Object.entries({'9.1':'figure-9-3','9.5':'figure-9-6','9.9':'table-9-1'}).map(([id,figure])=>[id,{...lesson9Figures.find(f=>f.id===figure),pdf:'Text_09_Marketing_2026.pdf'}])));
 export const sourceFigureFiles=new Set([...Object.values(sourceFigures).flat(),...Object.values(answerFigures)].map(f=>f.file));
 export function figuresForRow(lessonId,page,row){return (sourceFigures[lessonId]||[]).filter(f=>f.page===page&&f.anchor>=row.de.start&&f.anchor<row.de.end);}

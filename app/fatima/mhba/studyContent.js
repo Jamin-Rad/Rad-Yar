@@ -1,3 +1,5 @@
+import {lesson9Chapters} from './lesson9.js';
+import {lesson10Chapters} from './lesson10.js';
 import {lesson8Chapters} from './lesson8.js';
 import {lesson7Chapters} from './lesson7.js';
 import {lesson6Chapters} from './lesson6.js';
@@ -61,3 +63,5 @@ chapters[5]=lesson5Chapters;
 chapters[6]=lesson6Chapters;
 chapters[7]=lesson7Chapters;
 chapters[8]=lesson8Chapters;
+chapters[9]=lesson9Chapters;
+chapters[10]=lesson10Chapters;

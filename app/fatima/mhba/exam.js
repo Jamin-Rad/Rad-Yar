@@ -1,3 +1,5 @@
+import {lesson9Practice} from './lesson9Practice.js';
+import {lesson10Practice} from './lesson10Practice.js';
 import {lesson8Practice} from './lesson8Practice.js';
 import {lesson7Practice} from './lesson7Practice.js';
 import {lesson6Practice} from './lesson6Practice.js';
@@ -107,3 +109,5 @@ statements[5]=lesson5Practice;
 statements[6]=lesson6Practice;
 statements[7]=lesson7Practice;
 statements[8]=lesson8Practice;
+statements[9]=lesson9Practice;
+statements[10]=lesson10Practice;
