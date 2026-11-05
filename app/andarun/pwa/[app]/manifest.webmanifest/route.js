@@ -1,4 +1,11 @@
-import { getAndarunWebApp } from '@/lib/andarunWebApps'
+import { ANDARUN_WEB_APPS, getAndarunWebApp } from '@/lib/andarunWebApps'
+
+// These manifests contain only checked-in metadata, never session data.
+export const dynamic = 'force-static'
+
+export function generateStaticParams() {
+  return Object.keys(ANDARUN_WEB_APPS).map(app => ({ app }))
+}
 
 export async function GET(_request, { params }) {
   const { app: appKey } = await params

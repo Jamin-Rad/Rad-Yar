@@ -280,10 +280,8 @@ export default function HealthPage({ apiBase = '/api/andarun/health', homeHref =
   async function loadAll() {
     setLoading(true)
     try {
-      const [data, settings] = await Promise.all([
-        api('/'),
-        api('/settings').catch(() => ({})),
-      ])
+      // The health response already includes the plan from the same store.
+      const data = await api('/')
       setRecords(data.records || [])
       setCustomSports(data.customSports || [])
       setDeletedSports(data.deletedSports || [])
@@ -297,8 +295,8 @@ export default function HealthPage({ apiBase = '/api/andarun/health', homeHref =
       } else {
         lastSavedRef.current = JSON.stringify(EMPTY_FORM)
       }
-      const loadedPlan = settings.caloriePlan && typeof settings.caloriePlan === 'object'
-        ? { ...DEFAULT_CALORIE_PLAN, ...settings.caloriePlan }
+      const loadedPlan = data.caloriePlan && typeof data.caloriePlan === 'object'
+        ? { ...DEFAULT_CALORIE_PLAN, ...data.caloriePlan }
         : DEFAULT_CALORIE_PLAN
       setCaloriePlan(loadedPlan)
       lastSavedSettingsRef.current = JSON.stringify(loadedPlan)

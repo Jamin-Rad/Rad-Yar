@@ -17,6 +17,9 @@ export default function AdminCopyMode() {
 
     setCanCopy(hasCopyAllowedEmail(user?.emailAddresses))
 
+    // Signed-out visitors cannot have a server-side copy permission.
+    if (!user?.id) return () => { active = false }
+
     fetch('/api/copy-permission', { cache: 'no-store' })
       .then(response => response.json())
       .then(data => {

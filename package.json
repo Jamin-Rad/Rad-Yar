@@ -18,7 +18,8 @@
     "start": "next start",
     "test:english": "node --import tsx --test app/andarun/english/courseEngine.test.mjs",
     "android:sync": "cap sync android",
-    "android:apk": "cd android && ./gradlew assembleDebug"
+    "android:apk": "cd android && ./gradlew assembleDebug",
+    "test:resources": "node --test scripts/resource-usage.test.cjs"
   },
   "dependencies": {
     "@capacitor/android": "^8.5.0",

@@ -111,8 +111,18 @@ async function reconcileProgress(userId) {
   for (let offset = 0; offset < Math.max(reset ? 1 : 0, readBulk.length); offset += 1000) {
     uploads.push(postJson('/api/progress/read-status', { bulk: readBulk.slice(offset, offset + 1000), reset }, userId))
   }
-  if (mcqResult.status === 'fulfilled' && Object.keys(mcqScores).length) uploads.push(postJson('/api/progress/mcq-results', { bulk: mcqScores }, userId))
-  if (leitnerResult.status === 'fulfilled' && Object.keys(leitnerState).length) uploads.push(postJson('/api/progress/leitner', { bulk: leitnerState }, userId))
+  // Merge functions retain the exact remote record when its timestamp is at
+  // least as recent. Only local records that differ need to be written back.
+  const changedMcq = mcqResult.status === 'fulfilled'
+    ? Object.fromEntries(Object.entries(mcqScores).filter(([id, value]) =>
+        JSON.stringify(value) !== JSON.stringify(mcqResult.value.scores?.[id])))
+    : {}
+  const changedCards = leitnerResult.status === 'fulfilled'
+    ? Object.fromEntries(Object.entries(leitnerState).filter(([id, value]) =>
+        JSON.stringify(value) !== JSON.stringify(leitnerResult.value.cards?.[id])))
+    : {}
+  if (Object.keys(changedMcq).length) uploads.push(postJson('/api/progress/mcq-results', { bulk: changedMcq }, userId))
+  if (Object.keys(changedCards).length) uploads.push(postJson('/api/progress/leitner', { bulk: changedCards }, userId))
   const uploadResults = await Promise.allSettled(uploads)
   if (!isUserCacheCurrent(userId, token)) return null
   const failedUpload = uploadResults.find(result => result.status === 'rejected')
