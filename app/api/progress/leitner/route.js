@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server'
 import { isSupabaseAdminConfigured, supabaseAdmin } from '@/lib/supabase/server'
-import { getSignedInUserIdentity } from '@/lib/userIdentity'
+import { getPracticeUserIdentity } from '@/lib/userIdentity'
 
 function toClient(row) {
   return {
@@ -34,41 +34,46 @@ function toRow(userId, cardId, record) {
 }
 
 export async function GET(request) {
-  const identity = await getSignedInUserIdentity(request)
+  const identity = await getPracticeUserIdentity(request)
   if (!identity) {
     return NextResponse.json({ error: 'Nicht angemeldet' }, { status: 401 })
   }
-  if (!isSupabaseAdminConfigured || !supabaseAdmin) {
+  if (identity.storageUnavailable || !isSupabaseAdminConfigured || !supabaseAdmin) {
     return NextResponse.json({ error: 'Speicher nicht verfügbar' }, { status: 503 })
   }
 
-  const { data, error } = await supabaseAdmin
-    .from('leitner_cards')
-    .select('*')
-    .in('user_id', identity.lookupIds)
-
-  if (error) {
-    console.error('Leitner-Fortschritt konnte nicht geladen werden:', error)
-    return NextResponse.json({ error: 'Fortschritt nicht verfügbar' }, { status: 503 })
+  const rows = []
+  for (let offset = 0; ;) {
+    const { data, error, count } = await supabaseAdmin
+      .from('leitner_cards').select('*', { count: 'exact' })
+      .in('user_id', identity.lookupIds).order('user_id').order('card_id')
+      .range(offset, offset + 999)
+    if (error) {
+      console.error('Leitner-Fortschritt konnte nicht geladen werden:', error)
+      return NextResponse.json({ error: 'Fortschritt nicht verfügbar' }, { status: 503 })
+    }
+    rows.push(...data)
+    offset += data.length
+    if (!data.length || (count !== null && count !== undefined ? offset >= count : data.length < 1000)) break
   }
 
   const cards = {}
-  for (const row of data || []) {
+  for (const row of rows) {
     const next = toClient(row)
     const previous = cards[row.card_id]
     const nextTime = new Date(next.lastReviewedAt || next.lastSeenAt || next.addedAt || 0).getTime()
     const previousTime = new Date(previous?.lastReviewedAt || previous?.lastSeenAt || previous?.addedAt || 0).getTime()
     if (!previous || nextTime >= previousTime) cards[row.card_id] = next
   }
-  return NextResponse.json({ cards })
+  return NextResponse.json({ cards }, { headers: { 'Cache-Control': 'no-store' } })
 }
 
 export async function POST(request) {
-  const identity = await getSignedInUserIdentity(request)
+  const identity = await getPracticeUserIdentity(request)
   if (!identity) {
     return NextResponse.json({ error: 'Nicht angemeldet' }, { status: 401 })
   }
-  if (!isSupabaseAdminConfigured || !supabaseAdmin) {
+  if (identity.storageUnavailable || !isSupabaseAdminConfigured || !supabaseAdmin) {
     return NextResponse.json({ error: 'Speicher nicht verfügbar' }, { status: 503 })
   }
 
@@ -79,6 +84,9 @@ export async function POST(request) {
     return NextResponse.json({ error: 'Ungültige Anfrage' }, { status: 400 })
   }
 
+  if (!payload || typeof payload !== 'object' || Array.isArray(payload)) {
+    return NextResponse.json({ error: 'Ungültige Anfrage' }, { status: 400 })
+  }
   let rows = []
   if (payload.bulk && typeof payload.bulk === 'object') {
     rows = Object.entries(payload.bulk)
@@ -106,19 +114,19 @@ export async function POST(request) {
   return NextResponse.json({ ok: true })
 }
 
-export async function DELETE() {
-  const identity = await getSignedInUserIdentity()
+export async function DELETE(request) {
+  const identity = await getPracticeUserIdentity(request)
   if (!identity) {
     return NextResponse.json({ error: 'Nicht angemeldet' }, { status: 401 })
   }
-  if (!isSupabaseAdminConfigured || !supabaseAdmin) {
+  if (identity.storageUnavailable || !isSupabaseAdminConfigured || !supabaseAdmin) {
     return NextResponse.json({ error: 'Speicher nicht verfügbar' }, { status: 503 })
   }
 
   const { error } = await supabaseAdmin
     .from('leitner_cards')
     .delete()
-    .eq('user_id', identity.ownerId)
+    .in('user_id', identity.lookupIds)
 
   if (error) {
     console.error('Leitner-Fortschritt konnte nicht gelöscht werden:', error)
