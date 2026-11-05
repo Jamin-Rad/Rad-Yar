@@ -21,7 +21,10 @@ export default function FamilyOverview({ state, onAccount, ledger, onLedger, mar
   const priceErrors = Object.values(marketData?.errors || {}).some(Boolean)
   const refreshing = marketData?.batch?.running
   function refreshPrices() {
-    if (!state.settings?.isinPricesEnabled) onEnablePrices?.()
+    if (!state.settings?.isinPricesEnabled) {
+      const nextState = onEnablePrices?.()
+      if (nextState) marketData?.refreshAll(nextState)
+    }
     else marketData?.refreshAll()
   }
   return <div className={styles.home}>
@@ -67,7 +70,7 @@ export default function FamilyOverview({ state, onAccount, ledger, onLedger, mar
           </button>
         })}
       </div>
-      <p className={styles.priceStatus} role="status">{priceErrors ? 'دریافت بعضی قیمت‌ها ناموفق بود؛ دوباره به‌روزرسانی کن.' : balance.missingPriceCount ? `در انتظار قیمت ${number(balance.missingPriceCount)} دارایی` : balance.oldestPrice ? `قدیمی‌ترین قیمت مرجع: ${quoteDate.format(new Date(balance.oldestPrice))}` : 'هنوز دارایی ثبت نشده است.'}</p>
+      <p className={styles.priceStatus} role="status">{priceErrors ? 'دریافت بعضی قیمت‌ها ناموفق بود؛ دوباره به‌روزرسانی کن.' : balance.missingPriceCount ? `برای دریافت قیمت ${number(balance.missingPriceCount)} دارایی، دکمه به‌روزرسانی قیمت‌ها را بزن.` : balance.oldestPrice ? `قدیمی‌ترین قیمت مرجع: ${quoteDate.format(new Date(balance.oldestPrice))}` : 'هنوز دارایی ثبت نشده است.'} قیمت‌ها فقط با درخواست دستی به‌روز می‌شوند.</p>
     </section>
     <section className={styles.accounts} aria-labelledby="xtb-accounts-title"><div className={styles.sectionHead}><h2 id="xtb-accounts-title" lang="en">XTB</h2><span>سود بسته‌شده از ابتدا</span></div>{ACCOUNT_DEFINITIONS.slice(0,2).map(def=>{const current=xtbBalance(state.settings?.xtbAccounts?.find(a=>a.id===def.id),state.trades);return <button type="button" className={styles.accountRow} key={def.id} onClick={()=>onXtbAccount(def.id)}><span className={styles.identity}><span className={styles.avatar} style={{'--avatar-color':def.color}}>{def.initials}</span><strong>{def.owner}</strong></span><span className={styles.accountValue}><bdi>{money(current?.balanceCents??null)}</bdi></span><span className={`${styles.accountResult} ${resultClass(current?.profitCents)}`}><bdi>{current?signedMoney(current.profitCents):'—'}</bdi></span><Icon name="arrow" size={18}/></button>})}</section>
     <section className={styles.accounts}><div className={styles.sectionHead}><div><h2>کیف پول دیجیتال</h2><span>موجودی هنوز وارد نشده است</span></div><button type="button" className={styles.refresh} onClick={onWallet}>رمزارزها<Icon name="arrow" size={16}/></button></div></section>

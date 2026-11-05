@@ -67,7 +67,10 @@ export default function InvestmentWorkspace() {
   function editCashPlan(plan=null,id=accountId){setDialog({kind:'cashPlan',plan,accountId:id})}
   function postCashPlan(plan){newEntry(plan.accountId,'DEPOSIT',(plan.amountCents/100).toFixed(2),plan)}
   function enableIsinPrices() {
-    if (window.confirm('برای دریافت قیمت، فقط شناسه عمومی ISIN ابزارهای سبد به Onvista ارسال می‌شود؛ نام صاحبان حساب، تعداد و مبالغ ارسال نمی‌شوند. دریافت خودکار فعال شود؟')) store.change({...state,settings:{...state.settings,isinPricesEnabled:true}})
+    if (!window.confirm('برای دریافت قیمت، فقط شناسه عمومی ISIN ابزارهای سبد به Onvista ارسال می‌شود؛ نام صاحبان حساب، تعداد و مبالغ ارسال نمی‌شوند. قیمت‌ها فقط با زدن دکمه به‌روزرسانی دریافت می‌شوند. دریافت قیمت‌ها انجام شود؟')) return
+    const nextState = {...state,settings:{...state.settings,isinPricesEnabled:true}}
+    store.change(nextState)
+    return nextState
   }
   function openAccount(id, add = false) { setAccountId(id); navigate('account'); if (add) setDialog({ kind: 'position', accountId: id, position: null }) }
   function openXtbAccount(id){setXtbOwnerId(id);setTradeId(null);setCreateTrade(false);navigate('trades')}
