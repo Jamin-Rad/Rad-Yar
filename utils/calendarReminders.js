@@ -1,9 +1,12 @@
 // The calendar is fixed to Europe/Berlin, independently of the device's timezone.
+let berlinFormatter
+
 export function berlinEventInstant(date, time) {
   if (!/^\d{4}-\d{2}-\d{2}$/.test(date || '') || !/^([01]\d|2[0-3]):[0-5]\d$/.test(time || '')) return null
   const wall = Date.parse(`${date}T${time}:00Z`)
   if (!Number.isFinite(wall)) return null
-  const format = new Intl.DateTimeFormat('sv-SE', { timeZone: 'Europe/Berlin', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', hourCycle: 'h23' })
+  // Reuse only the formatter, never private event data or a timezone offset (DST varies by date).
+  const format = berlinFormatter ??= new Intl.DateTimeFormat('sv-SE', { timeZone: 'Europe/Berlin', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', hourCycle: 'h23' })
   // Resolve both offsets. Invalid spring-gap times are rejected; the first autumn occurrence wins.
   for (const offset of [120, 60]) {
     const instant = wall - offset * 60000

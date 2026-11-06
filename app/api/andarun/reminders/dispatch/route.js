@@ -16,19 +16,26 @@ export async function GET(request) {
   if (!pushConfigured()) return reply({ error: 'Push not configured' }, 503)
   const now = Date.now()
   const devices = await supabaseAdmin.from('calendar_push_subscriptions').select('*').eq('owner_id', ANDARUN_OWNER_ID).limit(20)
-  const events = await supabaseAdmin.from('andarun_todos').select('*').in('owner_id', [ANDARUN_OWNER_ID, ...ANDARUN_LEGACY_OWNER_IDS]).eq('done', false)
+  if (devices.error) return reply({ error: 'Storage unavailable' }, 503)
+  const activeDevices = (devices.data || []).filter(device => validPushSubscription(device.subscription) && device.leads.length > 0)
+  const events = activeDevices.length ? await supabaseAdmin.from('andarun_todos').select('*').in('owner_id', [ANDARUN_OWNER_ID, ...ANDARUN_LEGACY_OWNER_IDS]).eq('done', false)
     .gte('deadline', new Date(now).toISOString().slice(0, 10)).lte('deadline', new Date(now + 2 * 86400000).toISOString().slice(0, 10))
-  if (devices.error || events.error) return reply({ error: 'Storage unavailable' }, 503)
+    : { data: [], error: null }
+  if (events.error) return reply({ error: 'Storage unavailable' }, 503)
   if (authorization === 'signed') {
     const heartbeat = await supabaseAdmin.from('calendar_push_health').upsert({ id: 1, last_run: new Date(now).toISOString() })
     if (heartbeat.error) return reply({ error: 'Scheduler storage unavailable' }, 503)
   }
+  // Decode schedules and resolve Berlin/DST once per event, rather than once per device.
+  // This is request-local; delivery still re-reads the current appointment and device below.
+  const leads = [...new Set(activeDevices.flatMap(device => device.leads))]
+  const candidates = (events.data || []).map(row => ({ row, reminders: dueReminders(eventFromRow(row), leads, now) }))
+    .filter(candidate => candidate.reminders.length > 0)
   let sent = 0, failed = 0
-  for (const device of devices.data || []) {
-    if (!validPushSubscription(device.subscription)) continue
-    for (const row of events.data || []) {
-      const event = eventFromRow(row)
-      for (const reminder of dueReminders(event, device.leads, now)) {
+  for (const device of activeDevices) {
+    for (const { row, reminders } of candidates) {
+      for (const reminder of reminders) {
+        if (!device.leads.includes(reminder.lead)) continue
         if (Date.parse(device.enabled_at) > reminder.due) continue
         const claimed = await supabaseAdmin.rpc('claim_calendar_push', { p_owner: device.owner_id, p_endpoint: device.endpoint_hash, p_key: reminder.key })
         if (claimed.error || !claimed.data) continue
