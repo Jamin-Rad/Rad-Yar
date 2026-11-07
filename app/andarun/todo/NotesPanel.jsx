@@ -4,6 +4,8 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 import styles from './notes.module.css'
 
 const API = '/api/andarun/notes'
+const characters = new Intl.Segmenter('de', { granularity: 'grapheme' })
+const fitsNote = text => [...characters.segment(text)].length <= 500 && new TextEncoder().encode(text).length <= 65536
 const seconds = value => `${Math.floor(value / 60)}:${String(Math.floor(value % 60)).padStart(2, '0')}`
 const merge = (notes, note) => [...notes.filter(item => item.id !== note.id), ...(note.deleted ? [] : [note])]
 
@@ -79,7 +81,7 @@ export default function NotesPanel() {
   }
   async function add(event) {
     event.preventDefault()
-    if (!text.trim() || text.trim().length > 500) return
+    if (!text.trim() || !fitsNote(text.trim())) return
     if (!draftIdentity.current) draftIdentity.current = { id: crypto.randomUUID(), createdAt: Date.now() / 1000 }
     const saved = await write({ ...draftIdentity.current, text: text.trim(), done: false })
     if (saved) { setText(''); draftIdentity.current = null }
@@ -125,7 +127,7 @@ export default function NotesPanel() {
     </header>
     <form onSubmit={add} className={styles.composer}>
       <label htmlFor="new-jaminova-note" className={styles.srOnly}>Neue Notiz</label>
-      <textarea id="new-jaminova-note" placeholder="Was möchtest du festhalten?" value={text} maxLength={500} rows={2} onChange={event => setText(event.target.value)} disabled={busy} />
+      <textarea id="new-jaminova-note" placeholder="Was möchtest du festhalten?" value={text} rows={2} onChange={event => { if (fitsNote(event.target.value)) setText(event.target.value) }} disabled={busy} />
       <button type="submit" disabled={busy || loading || !text.trim()}>Notiz hinzufügen</button>
     </form>
     <div className={styles.audioImport}>
@@ -154,7 +156,7 @@ export default function NotesPanel() {
       {editing ? <form onSubmit={event => { event.preventDefault(); write(editing, { text: editing.draft.trim() }) }}>
         <h3 id="note-dialog-title">{editing.voice ? 'Titel bearbeiten' : 'Notiz bearbeiten'}</h3>
         <label htmlFor="note-edit-text">{editing.voice ? 'Titel der Aufnahme' : 'Deine Notiz'}</label>
-        <textarea autoFocus id="note-edit-text" rows={5} maxLength={500} value={editing.draft} onChange={event => setEditing(current => ({ ...current, draft: event.target.value }))} disabled={busy} />
+        <textarea autoFocus id="note-edit-text" rows={5} value={editing.draft} onChange={event => { if (fitsNote(event.target.value)) setEditing(current => ({ ...current, draft: event.target.value })) }} disabled={busy} />
         {editing.conflict ? <p role="status">Auf einem anderen Gerät geändert. Wähle, welche Fassung du verwenden möchtest.{editing.conflict.deleted ? ' Die ursprüngliche Notiz wurde gelöscht; dein Text kann als neue Notiz gespeichert werden.' : ''}</p> : null}
         <div className={styles.actions}>
           <button type="button" disabled={busy} onClick={() => setEditing(null)}>Schließen</button>

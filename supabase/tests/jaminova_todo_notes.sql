@@ -19,5 +19,7 @@ begin
   if n->'note'->>'text' <> '' then raise exception 'Deleted text retained'; end if;
   n := public.jaminova_write_todo_note('qa:notes-owner-a',v_note,3,gen_random_uuid(),'Resurrection',false,now(),null,null,false);
   if not (n->>'conflict')::boolean then raise exception 'Deleted note resurrected'; end if;
+  n := public.jaminova_write_todo_note('qa:notes-unicode',gen_random_uuid(),0,gen_random_uuid(),repeat('👨‍👩‍👧‍👦',500),false,now(),null,null,false);
+  if n->'note'->>'text' <> repeat('👨‍👩‍👧‍👦',500) then raise exception 'Unicode content changed'; end if;
   if (select text from public.jaminova_todo_notes where owner_id='qa:notes-owner-b' and jaminova_todo_notes.id=v_note) <> 'Other owner' then raise exception 'Other owner modified'; end if;
 end $$;
