@@ -43,6 +43,11 @@ async function write(request, deleting) {
         const { error: removeError } = await supabaseAdmin.storage.from(NOTES_BUCKET).remove([removal])
         if (removeError) throw removeError
       }
+      const { data: tombstone, error: cleanupError } = await supabaseAdmin.from('jaminova_todo_notes')
+        .update({ text: '', done: false, voice_object: null, voice_duration: null })
+        .eq('owner_id', identity.ownerId).eq('id', value.id).not('deleted_at', 'is', null).select('*').single()
+      if (cleanupError) throw cleanupError
+      data.note = tombstone
     }
     return notesJSON({ conflict: data.conflict, note: clientNote(data.note) })
   } catch { return notesUnavailable() }

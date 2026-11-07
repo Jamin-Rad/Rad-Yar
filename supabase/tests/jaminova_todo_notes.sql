@@ -16,6 +16,7 @@ begin
   if (n->>'conflict')::boolean then raise exception 'Owner isolation'; end if;
   n := public.jaminova_write_todo_note('qa:notes-owner-a',v_note,2,gen_random_uuid(),'',false,now(),null,null,true);
   if n->'note'->>'deleted_at' is null then raise exception 'Delete tombstone'; end if;
+  if n->'note'->>'text' <> '' then raise exception 'Deleted text retained'; end if;
   n := public.jaminova_write_todo_note('qa:notes-owner-a',v_note,3,gen_random_uuid(),'Resurrection',false,now(),null,null,false);
   if not (n->>'conflict')::boolean then raise exception 'Deleted note resurrected'; end if;
   if (select text from public.jaminova_todo_notes where owner_id='qa:notes-owner-b' and jaminova_todo_notes.id=v_note) <> 'Other owner' then raise exception 'Other owner modified'; end if;
