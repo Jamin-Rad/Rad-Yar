@@ -10,6 +10,9 @@
 .composer { display:flex; align-items:center; gap:14px; }
 .composer textarea,.dialog textarea { resize:vertical; font:inherit; color:#30213f; border:1px solid #dfd5ea; border-radius:16px; background:white; padding:16px; width:100%; min-width:0; box-sizing:border-box; }
 .composer button,.actions button:last-child { background:#7846b5; color:white; border-color:#7846b5; white-space:nowrap; }
+.audioImport { display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin-top:14px; }
+.audioImport button { font-size:12px; }
+.audioImport span { font-size:11px; color:#857390; }
 .status { color:#756483; font-size:12px; line-height:1.7; margin:16px 0 24px; }
 .list { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; list-style:none; padding:0; margin:0; }
 .note { background:#fff; border:1px solid #eee8f4; border-radius:20px; padding:18px; min-width:0; }

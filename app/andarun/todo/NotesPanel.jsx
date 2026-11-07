@@ -13,6 +13,14 @@ async function request(path, method = 'GET', body) {
   if (!response.ok) throw new Error(response.status === 403 ? 'Bitte erneut bei Jaminova anmelden.' : result.error || 'Nicht gespeichert. Bitte erneut versuchen.')
   return result
 }
+function durationOf(file) {
+  return new Promise((resolve, reject) => {
+    const url = URL.createObjectURL(file), player = new Audio()
+    const done = (error) => { clearTimeout(timer); URL.revokeObjectURL(url); error ? reject(error) : resolve(player.duration) }
+    const timer = setTimeout(() => done(new Error('Die Aufnahme konnte nicht gelesen werden.')), 10000)
+    player.preload = 'metadata'; player.onloadedmetadata = () => done(); player.onerror = () => done(new Error('Bitte eine gültige M4A-Aufnahme auswählen.')); player.src = url
+  })
+}
 
 export default function NotesPanel() {
   const [notes, setNotes] = useState([])
@@ -25,6 +33,8 @@ export default function NotesPanel() {
   const [audio, setAudio] = useState({})
   const sequence = useRef(0), mounted = useRef(true), working = useRef(false), dialog = useRef(null)
   const draftIdentity = useRef(null)
+  const fileInput = useRef(null), audioDraft = useRef(null)
+  const [uploadPending, setUploadPending] = useState(false)
   const load = useCallback(async () => {
     if (working.current) return
     const version = ++sequence.current
@@ -81,6 +91,32 @@ export default function NotesPanel() {
       if (mounted.current) setAudio(current => ({ ...current, [note.id]: result.url }))
     } catch (error) { if (mounted.current) setMessage(error.message) }
   }
+  async function uploadAudio(file) {
+    if (working.current) return
+    working.current = true; setBusy(true); sequence.current++; setMessage('')
+    try {
+      if (file) {
+        if (!/\.m4a$/i.test(file.name) || file.size <= 0 || file.size > 8 * 1024 * 1024) throw new Error('Bitte eine M4A-Aufnahme bis 8 MB auswählen.')
+        const duration = await durationOf(file)
+        if (!Number.isFinite(duration) || duration <= 0 || duration > 601) throw new Error('Aufnahmen können bis zu 10 Minuten lang sein.')
+        const id = crypto.randomUUID()
+        audioDraft.current = { file, note: { id, text: file.name.replace(/\.m4a$/i, '').slice(0,500) || 'Sprachnotiz', done: false, createdAt: Date.now() / 1000, voice: { fileName: `${id}.m4a`, duration } } }
+        setUploadPending(true)
+      }
+      const draft = audioDraft.current
+      if (!draft) return
+      const target = await request(`${API}/audio`, 'POST', { action: 'upload', id: draft.note.id, fileName: draft.note.voice.fileName, size: draft.file.size })
+      if (!target.uploaded) {
+        const url = new URL(target.url)
+        if (url.protocol !== 'https:' || url.hostname !== 'rqqywyollxbcbzeodpto.supabase.co' || !url.pathname.startsWith('/storage/v1/object/upload/sign/jaminova-notes-audio/')) throw new Error('Ungültiges Upload-Ziel.')
+        const response = await fetch(url, { method: 'PUT', credentials: 'omit', headers: { 'Content-Type': 'audio/mp4' }, body: draft.file })
+        if (!response.ok) throw new Error('Aufnahme noch nicht hochgeladen. Bitte erneut versuchen.')
+      }
+      working.current = false; setBusy(false)
+      if (await write(draft.note)) { audioDraft.current = null; setUploadPending(false) }
+    } catch (error) { if (mounted.current) setMessage(error.message) }
+    finally { working.current = false; if (mounted.current) setBusy(false); if (fileInput.current) fileInput.current.value = '' }
+  }
   const ordered = [...notes].sort((a, b) => Number(a.done) - Number(b.done) || b.createdAt - a.createdAt)
   return <section className={styles.panel} aria-label="Notizen">
     <header className={styles.header}>
@@ -92,7 +128,13 @@ export default function NotesPanel() {
       <textarea id="new-jaminova-note" placeholder="Was möchtest du festhalten?" value={text} maxLength={500} rows={2} onChange={event => setText(event.target.value)} disabled={busy} />
       <button type="submit" disabled={busy || loading || !text.trim()}>Notiz hinzufügen</button>
     </form>
-    <p className={styles.status} role="status">{message || (loading ? 'Notizen werden geladen …' : busy ? 'Wird gespeichert …' : 'Privat mit Jaminova synchronisiert · Sprachnotizen nimmst du in der iPhone-App auf.')}</p>
+    <div className={styles.audioImport}>
+      <input ref={fileInput} className={styles.srOnly} type="file" accept=".m4a,audio/mp4,audio/x-m4a" aria-label="M4A-Aufnahme auswählen" onChange={event => { const file = event.target.files?.[0]; if (file) uploadAudio(file) }} />
+      <button type="button" onClick={() => fileInput.current?.click()} disabled={busy || loading}>Audio hinzufügen</button>
+      {uploadPending ? <button type="button" onClick={() => uploadAudio()} disabled={busy}>Upload erneut versuchen</button> : null}
+      <span>M4A · bis 10 Minuten. Direkt aufnehmen kannst du in der iPhone-App.</span>
+    </div>
+    <p className={styles.status} role="status">{message || (loading ? 'Notizen werden geladen …' : busy ? 'Wird gespeichert …' : 'Privat mit Jaminova synchronisiert.')}</p>
     {!loading && !notes.length ? <p className={styles.empty}>Platz für deinen nächsten Gedanken.</p> : null}
     <ul className={styles.list}>
       {ordered.map(note => <li key={note.id} className={styles.note}>
