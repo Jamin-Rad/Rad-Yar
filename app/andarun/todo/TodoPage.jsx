@@ -9,6 +9,7 @@ import CalendarDay from './CalendarDay'
 import EventNoteFields from './EventNoteFields'
 import { splitEventNote, combineEventNote } from '@/utils/eventLocation'
 import styles from './page.module.css'
+import NotesPanel from './NotesPanel'
 
 const STORAGE_KEY = 'andarun_todos_fallback_v1'
 
@@ -279,7 +280,7 @@ function displayLane(todo) {
   return LANES.some(lane => lane.id === todo.lane) ? todo.lane : effectiveLane(todo)
 }
 
-export default function TodoPage({ apiBase = '/api/andarun/todos', homeHref = '/andarun', homeLabel = 'Jaminova', theme = 'dark', showHomeLink = true, view = 'all', title }) {
+export default function TodoPage({ apiBase = '/api/andarun/todos', homeHref = '/andarun', homeLabel = 'Jaminova', theme = 'dark', showHomeLink = true, showNotes = false, view = 'all', title }) {
   const [todos, setTodos] = useState([])
   const [workShifts, setWorkShifts] = useState([])
   const [workMessage, setWorkMessage] = useState('')
@@ -934,6 +935,7 @@ export default function TodoPage({ apiBase = '/api/andarun/todos', homeHref = '/
         ))}
       </section>}
 
+      {showNotes ? <NotesPanel /> : null}
       {showEvents && <section className={styles.monthPanel} aria-label="Termin month view">
         <header className={styles.monthHeader}>
           <div className={styles.monthNavigation}>

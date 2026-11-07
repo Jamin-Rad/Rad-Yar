@@ -18,7 +18,7 @@ export default async function AndarunTodoPage() {
 
   return (
     <>
-      <TodoPage showHomeLink={false} view="todos" />
+      <TodoPage showHomeLink={false} view="todos" showNotes />
     </>
   )
 }
