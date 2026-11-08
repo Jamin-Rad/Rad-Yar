@@ -1,7 +1,7 @@
 {
   "name": "Node-RADS",
   "short_name": "Node-RADS",
-  "description": "Node-RADS 1.0 lymph-node assessment by region, size and configuration.",
+  "description": "Interactive educational reference to the published Node-RADS 1.0 criteria.",
   "id": "/node-rads",
   "start_url": "/node-rads",
   "scope": "/node-rads",

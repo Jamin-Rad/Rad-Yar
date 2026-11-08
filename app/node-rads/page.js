@@ -47,17 +47,17 @@ const SPECIAL_REGIONS = [
 
 const COPY = {
   de: {
-    brand: 'NODE-RADS', by: 'Ein Tool von', steps: ['Region', 'Größe', 'Konfiguration', 'Ergebnis'],
-    regionTitle: 'Wo liegt der Lymphknoten?', regionText: 'Wählen Sie die Region, um den korrekten Größenschwellenwert festzulegen.',
+    brand: 'NODE-RADS', by: 'Ein Tool von', steps: ['Region', 'Größe', 'Konfiguration', 'Kategorie'],
+    regionTitle: 'Beispielregion auswählen', regionText: 'Erkunden Sie die veröffentlichten regionsspezifischen Größenschwellenwerte.',
     regions: {
       general: { title: 'Allgemein', desc: 'Für die meisten Lymphknotenregionen' },
       specific: { title: 'Besondere Region', desc: 'Inguinal oder Region mit 5-mm-Grenzwert' },
     },
     specialTitle: 'Welche besondere Region?', regionalThreshold: 'Grenzwert nach Auswahl', shortAxis: 'Kurzachse', currentThreshold: 'Aktueller Schwellenwert',
-    sizeTitle: 'Wie groß ist der Lymphknoten?',
+    sizeTitle: 'Beispielmaße eingeben',
     shortValue: 'Kurze Achse', longestValue: 'Längste Achse', millimetres: 'Millimeter', growth: 'Zunahme ≥ 2 mm im Verlauf', growthHint: 'Gilt als vergrößert, auch unterhalb des regionalen Grenzwerts.',
     sizeNormal: 'Normal groß', sizeEnlarged: 'Vergrößert', sizeBulk: 'Bulk', anyAxis: 'beliebige Achse',
-    configTitle: 'Wie ist der Lymphknoten konfiguriert?', configText: 'Wählen Sie je ein Merkmal für Textur, Rand und Form.',
+    configTitle: 'Beispielmerkmale auswählen', configText: 'Erkunden Sie, wie Textur, Rand und Form die veröffentlichte Kategorie verändern.',
     texture: 'Textur', border: 'Rand', shape: 'Form', configScore: 'Konfigurationsscore',
     textures: ['Homogen', 'Heterogen', 'Fokale Nekrose', 'Grobe oder neue Nekrose', 'Entitätsspezifischer Befund'],
     reportTextures: ['homogen', 'heterogen', 'mit fokaler Nekrose', 'mit grober oder neu aufgetretener Nekrose', 'mit entitätsspezifischem Befund'],
@@ -66,36 +66,36 @@ const COPY = {
     shapes: ['Jede Form bei erhaltenem Fetthilus', 'Nierenförmig / oval ohne Fetthilus', 'Rund ohne Fetthilus'],
     reportBorders: ['glatt', 'unregelmäßig bzw. unscharf'],
     reportShapes: ['bei erhaltenem Fetthilus', 'nierenförmig / oval ohne erhaltenen Fetthilus', 'rund ohne erhaltenen Fetthilus'],
-    resultTitle: 'Ihre Node-RADS Einstufung', resultText: 'Größe und Konfiguration werden nach Node-RADS 1.0 zusammengeführt.',
+    resultTitle: 'Node-RADS Referenzkategorie', resultText: 'Die ausgewählten Beispielkriterien werden mit der veröffentlichten Node-RADS-1.0-Tabelle verglichen.',
     levels: ['Sehr geringe Wahrscheinlichkeit', 'Geringe Wahrscheinlichkeit', 'Unklar / äquivokal', 'Hohe Wahrscheinlichkeit', 'Sehr hohe Wahrscheinlichkeit'],
     resultSignals: ['LK−', 'eher LK−', 'LK±', 'LK+', 'LK+'],
-    sizeCategory: 'Größenkategorie', finding: 'Befund', assessment: 'Beurteilung', copy: 'Befundtext kopieren', copied: 'Kopiert',
-    reportNormal: 'Größenunauffälliger Lymphknoten mit einer Kurzachse von {short} mm.',
-    reportEnlarged: 'Pathologisch vergrößerter Lymphknoten mit einer Kurzachse von {short} mm.',
-    reportGrowth: 'Im Verlauf größenprogredienter Lymphknoten mit einer Zunahme der Kurzachse um mindestens 2 mm.',
-    reportBulk: 'Bulky Lymphknotenmanifestation mit einer maximalen Langachse von {long} mm.',
-    reportMorphology: 'Morphologisch zeigt sich der Lymphknoten {texture}, {border} begrenzt und {shape}.',
+    sizeCategory: 'Größenkategorie', selectedCriteria: 'Ausgewählte Kriterien', publishedInterpretation: 'Veröffentlichte Einordnung',
+    reportNormal: 'Die gewählte Kurzachse von {short} mm liegt unter dem regionsspezifischen Grenzwert und entspricht der Größenkategorie Normal.',
+    reportEnlarged: 'Die gewählte Kurzachse von {short} mm erreicht den regionsspezifischen Grenzwert und entspricht der Größenkategorie Vergrößert.',
+    reportGrowth: 'Das gewählte Beispiel enthält eine Kurzachsenzunahme von mindestens 2 mm und erfüllt damit das veröffentlichte Kriterium für die Größenkategorie Vergrößert.',
+    reportBulk: 'Die gewählten Beispielmaße entsprechen der Größenkategorie Bulk (maximale Langachse {long} mm).',
+    reportMorphology: 'Ausgewählte Beispielmorphologie: {texture}, {border} begrenzt und {shape}.',
     assessmentStatements: ['Ein maligner Lymphknotenbefall ist sehr unwahrscheinlich.', 'Ein maligner Lymphknotenbefall ist eher unwahrscheinlich.', 'Ein maligner Lymphknotenbefall bleibt unklar beziehungsweise äquivokal.', 'Es besteht eine hohe Wahrscheinlichkeit für einen malignen Lymphknotenbefall.', 'Es besteht eine sehr hohe Wahrscheinlichkeit für einen malignen Lymphknotenbefall.'],
-    reportAssessment: 'Node-RADS {score} ({signal}). {statement} Die abschließende onkologische Einordnung erfolgt unter Berücksichtigung des Primärtumors, des nodalen Verteilungsmusters und der tumorspezifischen TNM-Kriterien.',
+    reportAssessment: 'In der veröffentlichten Node-RADS-1.0-Tabelle entspricht diese Kriterienkombination der Kategorie {score} ({signal}). {statement}',
     next: 'Weiter', back: 'Zurück', restart: 'Neu beginnen', required: 'Bitte treffen Sie eine Auswahl.',
-    info: 'Node-RADS ist für die Beurteilung von Lymphknoten in kontrastverstärkter CT oder MRT konzipiert.',
-    disclaimer: 'Orientierungshilfe nach Node-RADS 1.0 · ersetzt nicht die ärztliche Gesamtbeurteilung oder tumorspezifische TNM-Kriterien.',
+    info: 'Die Node-RADS-1.0-Klassifikation wurde für Lymphknoten in kontrastverstärkter CT oder MRT veröffentlicht.',
+    disclaimer: 'Interaktive Lern- und Referenzdarstellung der veröffentlichten Node-RADS-1.0-Kriterien · keine Bildanalyse, Diagnose oder Therapieempfehlung · keine Patientendaten eingeben.',
     source: 'Elsholtz et al. · European Radiology · 2021', developerCredit: 'Entwickelt von Dr. Zia',
     recommend: 'Weiterempfehlen', recommendHint: 'Node-RADS mit Kolleginnen und Kollegen teilen', shareTitle: 'Node-RADS weitergeben',
-    shareText: 'QR-Code scannen oder den direkten Link versenden.', scanLabel: 'Direkt zum Node-RADS Rechner', whatsapp: 'Über WhatsApp teilen', copyLink: 'Link kopieren', linkCopied: 'Link kopiert',
+    shareText: 'QR-Code scannen oder den direkten Link versenden.', scanLabel: 'Direkt zur Node-RADS Lernreferenz', whatsapp: 'Über WhatsApp teilen', copyLink: 'Link kopieren', linkCopied: 'Link kopiert',
   },
   en: {
-    brand: 'NODE-RADS', by: 'A tool by', steps: ['Region', 'Size', 'Configuration', 'Result'],
-    regionTitle: 'Where is the lymph node located?', regionText: 'Choose the region to apply the correct size threshold.',
+    brand: 'NODE-RADS', by: 'A tool by', steps: ['Region', 'Size', 'Configuration', 'Category'],
+    regionTitle: 'Select an example region', regionText: 'Explore the published region-specific size thresholds.',
     regions: {
       general: { title: 'General', desc: 'For most lymph-node regions' },
       specific: { title: 'Special region', desc: 'Inguinal or a region with a 5 mm threshold' },
     },
     specialTitle: 'Which special region?', regionalThreshold: 'Threshold after selection', shortAxis: 'short axis', currentThreshold: 'Current threshold',
-    sizeTitle: 'How large is the lymph node?',
+    sizeTitle: 'Enter example measurements',
     shortValue: 'Short axis', longestValue: 'Longest axis', millimetres: 'Millimetres', growth: 'Interval increase ≥ 2 mm', growthHint: 'Counts as enlarged even below the regional threshold.',
     sizeNormal: 'Normal size', sizeEnlarged: 'Enlarged', sizeBulk: 'Bulk', anyAxis: 'any axis',
-    configTitle: 'What is the node configuration?', configText: 'Select one feature each for texture, border and shape.',
+    configTitle: 'Select example features', configText: 'Explore how texture, border and shape change the published category.',
     texture: 'Texture', border: 'Border', shape: 'Shape', configScore: 'Configuration score',
     textures: ['Homogeneous', 'Heterogeneous', 'Focal necrosis', 'Gross or new necrosis', 'Entity-specific finding'],
     reportTextures: ['homogeneous', 'heterogeneous', 'with focal necrosis', 'with gross or newly developed necrosis', 'with an entity-specific finding'],
@@ -104,23 +104,23 @@ const COPY = {
     shapes: ['Any shape with preserved fatty hilum', 'Kidney-bean / oval without fatty hilum', 'Spherical without fatty hilum'],
     reportBorders: ['with a smooth margin', 'with an irregular or ill-defined margin'],
     reportShapes: ['with preserved fatty hilum', 'kidney-bean / oval without preserved fatty hilum', 'spherical without preserved fatty hilum'],
-    resultTitle: 'Your Node-RADS assessment', resultText: 'Size and configuration are combined according to Node-RADS 1.0.',
+    resultTitle: 'Node-RADS reference category', resultText: 'The selected example criteria are compared with the published Node-RADS 1.0 table.',
     levels: ['Very low likelihood', 'Low likelihood', 'Equivocal', 'High likelihood', 'Very high likelihood'],
     resultSignals: ['LN−', 'likely LN−', 'LN±', 'LN+', 'LN+'],
-    sizeCategory: 'Size category', finding: 'Findings', assessment: 'Assessment', copy: 'Copy report text', copied: 'Copied',
-    reportNormal: 'Size-normal lymph node with a short-axis diameter of {short} mm.',
-    reportEnlarged: 'Pathologically enlarged lymph node with a short-axis diameter of {short} mm.',
-    reportGrowth: 'Interval progression of the lymph node with an increase in short-axis diameter of at least 2 mm.',
-    reportBulk: 'Bulky nodal disease with a maximum long-axis diameter of {long} mm.',
-    reportMorphology: 'Morphologically, the lymph node is {texture}, {border} and {shape}.',
+    sizeCategory: 'Size category', selectedCriteria: 'Selected criteria', publishedInterpretation: 'Published interpretation',
+    reportNormal: 'The selected short-axis diameter of {short} mm is below the region-specific threshold and corresponds to the normal-size category.',
+    reportEnlarged: 'The selected short-axis diameter of {short} mm reaches the region-specific threshold and corresponds to the enlarged-size category.',
+    reportGrowth: 'The selected example includes a short-axis increase of at least 2 mm and therefore meets the published enlarged-size criterion.',
+    reportBulk: 'The selected example measurements correspond to the bulk size category (maximum long-axis diameter {long} mm).',
+    reportMorphology: 'Selected example morphology: {texture}, {border} and {shape}.',
     assessmentStatements: ['Malignant lymph-node involvement is very unlikely.', 'Malignant lymph-node involvement is considered unlikely.', 'Malignant lymph-node involvement remains indeterminate or equivocal.', 'There is a high likelihood of malignant lymph-node involvement.', 'There is a very high likelihood of malignant lymph-node involvement.'],
-    reportAssessment: 'Node-RADS {score} ({signal}). {statement} Final oncological interpretation should account for the primary tumour, nodal distribution pattern and tumour-specific TNM criteria.',
+    reportAssessment: 'In the published Node-RADS 1.0 table, this combination of criteria corresponds to category {score} ({signal}). {statement}',
     next: 'Continue', back: 'Back', restart: 'Start again', required: 'Please make a selection.',
-    info: 'Node-RADS is designed for lymph-node assessment on contrast-enhanced CT or MRI.',
-    disclaimer: 'Decision aid based on Node-RADS 1.0 · does not replace integrated physician assessment or tumour-specific TNM criteria.',
+    info: 'The Node-RADS 1.0 classification was published for lymph nodes on contrast-enhanced CT or MRI.',
+    disclaimer: 'Interactive educational reference to the published Node-RADS 1.0 criteria · no image analysis, diagnosis, or treatment recommendation · do not enter patient data.',
     source: 'Elsholtz et al. · European Radiology · 2021', developerCredit: 'Developed by Dr. Zia',
     recommend: 'Recommend', recommendHint: 'Share Node-RADS with colleagues', shareTitle: 'Share Node-RADS',
-    shareText: 'Scan the QR code or send the direct link.', scanLabel: 'Open the Node-RADS calculator', whatsapp: 'Share via WhatsApp', copyLink: 'Copy link', linkCopied: 'Link copied',
+    shareText: 'Scan the QR code or send the direct link.', scanLabel: 'Open the Node-RADS educational reference', whatsapp: 'Share via WhatsApp', copyLink: 'Copy link', linkCopied: 'Link copied',
   },
 }
 
@@ -231,7 +231,7 @@ function ConfigStep({ texture, setTexture, border, setBorder, shape, setShape, u
   </div>
 }
 
-function ResultStep({ score, sizeCategory, configScore, shortAxis, longAxis, growth, texture, border, shape, ui, copied, setCopied }) {
+function ResultStep({ score, sizeCategory, configScore, shortAxis, longAxis, growth, texture, border, shape, ui }) {
   const [shareOpen, setShareOpen] = useState(false)
   const [linkCopied, setLinkCopied] = useState(false)
   const color = RESULT_COLORS[score - 1]
@@ -247,16 +247,6 @@ function ResultStep({ score, sizeCategory, configScore, shortAxis, longAxis, gro
     : ''
   const findingText = [sizeFinding, morphologyFinding].filter(Boolean).join(' ')
   const assessmentText = ui.reportAssessment.replace('{score}', score).replace('{signal}', ui.resultSignals[score - 1]).replace('{statement}', ui.assessmentStatements[score - 1])
-  const reportText = `${ui.finding}: ${findingText}\n\n${ui.assessment}: ${assessmentText}`
-  const copyReport = async () => {
-    try {
-      await navigator.clipboard.writeText(reportText)
-      setCopied(true)
-      window.setTimeout(() => setCopied(false), 1800)
-    } catch {
-      setCopied(false)
-    }
-  }
   const copyLink = async () => {
     try {
       await navigator.clipboard.writeText(NODE_RADS_SHARE_URLS.copy)
@@ -280,9 +270,8 @@ function ResultStep({ score, sizeCategory, configScore, shortAxis, longAxis, gro
       {sizeCategory !== 'bulk' ? <div><dt>{ui.configScore}</dt><dd>{configScore} / 5</dd></div> : null}
     </dl>
     <div className={styles.reportBox}>
-      <div><strong>{ui.finding}</strong><p>{findingText}</p></div>
-      <div><strong>{ui.assessment}</strong><p>{assessmentText}</p></div>
-      <button type="button" onClick={copyReport}>{copied ? ui.copied : ui.copy}<span>{copied ? '✓' : '⧉'}</span></button>
+      <div><strong>{ui.selectedCriteria}</strong><p>{findingText}</p></div>
+      <div><strong>{ui.publishedInterpretation}</strong><p>{assessmentText}</p></div>
     </div>
     <section className={`${styles.shareCard} ${shareOpen ? styles.shareCardOpen : ''}`}>
       <button type="button" className={styles.shareToggle} onClick={toggleShare} aria-expanded={shareOpen}>
@@ -340,7 +329,6 @@ export default function NodeRadsPage() {
   const [border, setBorder] = useState(null)
   const [shape, setShape] = useState(null)
   const [error, setError] = useState('')
-  const [copied, setCopied] = useState(false)
 
   useEffect(() => {
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
@@ -406,7 +394,7 @@ export default function NodeRadsPage() {
           {step === 0 ? <RegionStep region={region} setRegion={setRegion} specialRegion={specialRegion} setSpecialRegion={setSpecialRegion} ui={ui} lang={activeLang}/> : null}
           {step === 1 ? <SizeStep shortAxis={shortAxis} setShortAxis={setShortAxis} longAxis={longAxis} setLongAxis={setLongAxis} growth={growth} setGrowth={setGrowth} sizeCategory={sizeCategory} threshold={threshold} ui={ui}/> : null}
           {step === 2 ? <ConfigStep texture={texture} setTexture={setTexture} border={border} setBorder={setBorder} shape={shape} setShape={setShape} ui={ui}/> : null}
-          {step === 3 && score ? <ResultStep score={score} sizeCategory={sizeCategory} configScore={configScore} shortAxis={shortAxis} longAxis={longAxis} growth={growth} texture={texture} border={border} shape={shape} ui={ui} copied={copied} setCopied={setCopied}/> : null}
+          {step === 3 && score ? <ResultStep score={score} sizeCategory={sizeCategory} configScore={configScore} shortAxis={shortAxis} longAxis={longAxis} growth={growth} texture={texture} border={border} shape={shape} ui={ui}/> : null}
         </div>
         {error ? <p className={styles.footerError} role="alert">{error}</p> : null}
         <footer className={styles.actionBar}>

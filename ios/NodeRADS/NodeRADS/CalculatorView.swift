@@ -1,5 +1,4 @@
 import SwiftUI
-import UIKit
 
 private struct Region: Identifiable {
     let id: String
@@ -119,7 +118,6 @@ struct CalculatorView: View {
     @State private var border: Int? = nil
     @State private var shape: Int? = nil
     @State private var showRequired = false
-    @State private var copied = false
     @State private var showLanding = true
     @State private var showStartConfirmation = false
     @State private var landingInfo: LandingInfo?
@@ -188,11 +186,11 @@ struct CalculatorView: View {
         .background(Color(red: 0.012, green: 0.04, blue: 0.07))
         .foregroundStyle(.white)
         .preferredColorScheme(.dark)
-        .alert(language.text("Hinweis zur Anwendung", "Clinical use notice"), isPresented: $showStartConfirmation) {
+        .alert(language.text("Hinweis zur Lern- und Referenznutzung", "Educational reference notice"), isPresented: $showStartConfirmation) {
             Button(language.text("Abbrechen", "Cancel"), role: .cancel) { }
             Button(language.text("Bestätigen und starten", "Confirm and start")) { showLanding = false }
         } message: {
-            Text(clinicalNotice)
+            Text(educationalNotice)
         }
         .sheet(item: $landingInfo) { info in
             landingInfoSheet(info)
@@ -204,10 +202,10 @@ struct CalculatorView: View {
         }
     }
 
-    private var clinicalNotice: String {
+    private var educationalNotice: String {
         language.text(
-            "Für medizinisches Fachpersonal: Node-RADS ist eine Orientierungshilfe und ersetzt weder die ärztliche Gesamtbeurteilung noch tumorspezifische TNM-Kriterien. Bitte bestätigen Sie diesen Hinweis, um fortzufahren.",
-            "For medical professionals: Node-RADS is a decision aid and does not replace clinical judgment or tumour-specific TNM criteria. Please confirm this notice to continue."
+            "Node-RADS ist eine interaktive Lern- und Referenzdarstellung der veröffentlichten Node-RADS-1.0-Kriterien. Die App analysiert keine Bilder, stellt keine Diagnose und gibt keine Therapieempfehlung. Geben Sie keine patientenidentifizierenden Daten ein. Bitte bestätigen Sie diesen Hinweis, um fortzufahren.",
+            "Node-RADS is an interactive educational reference to the published Node-RADS 1.0 criteria. The app does not analyse images, diagnose disease, or recommend treatment. Do not enter patient-identifying information. Please confirm this notice to continue."
         )
     }
 
@@ -216,7 +214,7 @@ struct CalculatorView: View {
             VStack(alignment: .leading, spacing: 20) {
                 Spacer(minLength: 20)
 
-                    Label(language.text("KLINISCHE ENTSCHEIDUNGSHILFE", "CLINICAL DECISION SUPPORT"), systemImage: "waveform.path.ecg")
+                    Label(language.text("INTERAKTIVE LERNREFERENZ", "INTERACTIVE EDUCATIONAL REFERENCE"), systemImage: "book.pages")
                         .font(.system(size: 11, weight: .bold))
                         .tracking(1.15)
                         .foregroundStyle(Color(red: 0.61, green: 0.84, blue: 1))
@@ -236,7 +234,7 @@ struct CalculatorView: View {
                                     endPoint: .trailing
                                 )
                             )
-                        Text(language.text("Strukturierte Lymphknotenbeurteilung", "Structured lymph node assessment"))
+                        Text(language.text("Node-RADS-1.0-Kriterien interaktiv erkunden", "Explore the published Node-RADS 1.0 criteria"))
                             .font(.system(size: 22, weight: .semibold, design: .rounded))
                             .foregroundStyle(.white.opacity(0.88))
                             .fixedSize(horizontal: false, vertical: true)
@@ -246,7 +244,7 @@ struct CalculatorView: View {
                         showStartConfirmation = true
                     } label: {
                         HStack(spacing: 12) {
-                            Text(language.text("Beurteilung starten", "Start assessment"))
+                            Text(language.text("Kriterien erkunden", "Explore criteria"))
                             Spacer()
                             Image(systemName: "arrow.right")
                                 .font(.system(size: 15, weight: .bold))
@@ -271,7 +269,7 @@ struct CalculatorView: View {
                     }
                     .buttonStyle(.plain)
 
-                    Label(language.text("AUSSCHLIESSLICH FÜR ÄRZTLICHES FACHPERSONAL", "FOR MEDICAL PROFESSIONALS ONLY"), systemImage: "cross.case.fill")
+                    Label(language.text("FÜR LERNEN UND REFERENZ", "FOR EDUCATION AND REFERENCE"), systemImage: "books.vertical.fill")
                         .font(.system(size: 11, weight: .bold))
                         .tracking(0.65)
                         .foregroundStyle(Color(red: 0.70, green: 0.84, blue: 1))
@@ -332,7 +330,7 @@ struct CalculatorView: View {
                         .fill(index <= step ? violet : .white.opacity(0.16))
                         .frame(width: 25, height: 25)
                         .overlay(Text(index < step ? "✓" : "\(index + 1)").font(.caption.bold()))
-                    Text([language.text("Region", "Region"), language.text("Größe", "Size"), language.text("Konfiguration", "Configuration"), language.text("Ergebnis", "Result")][index])
+                    Text([language.text("Region", "Region"), language.text("Größe", "Size"), language.text("Konfiguration", "Configuration"), language.text("Kategorie", "Category")][index])
                         .font(.system(size: 10)).foregroundStyle(index <= step ? .white : .gray)
                 }
                 .frame(maxWidth: .infinity)
@@ -349,8 +347,8 @@ struct CalculatorView: View {
             stepHeading(
                 number: "01",
                 icon: "mappin.and.ellipse",
-                title: language.text("Wo liegt der Lymphknoten?", "Where is the lymph node located?"),
-                detail: language.text("Die Region bestimmt den Schwellenwert der Kurzachse.", "The region determines the short-axis threshold.")
+                title: language.text("Beispielregion auswählen", "Select an example region"),
+                detail: language.text("Die veröffentlichten Kriterien verwenden regionsspezifische Kurzachsengrenzen.", "The published criteria use region-specific short-axis thresholds.")
             )
             selectionCard(language.text("Allgemeine Region", "General region"), detail: language.text("Die meisten Lymphknotenstationen", "Most lymph-node stations"), badge: language.text("< 10 mm", "< 10 mm"), icon: "scope", selected: !special) {
                 special = false; regionID = ""
@@ -373,8 +371,8 @@ struct CalculatorView: View {
             stepHeading(
                 number: "02",
                 icon: "ruler",
-                title: language.text("Wie groß ist der Lymphknoten?", "How large is the lymph node?"),
-                detail: language.text("Tragen Sie die Messwerte in Millimetern ein.", "Enter the measurements in millimetres.")
+                title: language.text("Beispielmaße eingeben", "Enter example measurements"),
+                detail: language.text("Erkunden Sie die Größenkategorien mit hypothetischen Werten in Millimetern.", "Explore the size categories using hypothetical values in millimetres.")
             )
             HStack(spacing: 9) {
                 Image(systemName: "scope")
@@ -430,8 +428,8 @@ struct CalculatorView: View {
             stepHeading(
                 number: "03",
                 icon: "slider.horizontal.3",
-                title: language.text("Wie ist der Lymphknoten konfiguriert?", "What is the node configuration?"),
-                detail: language.text("Wählen Sie Textur, Rand und Form.", "Select texture, border and shape.")
+                title: language.text("Beispielmerkmale auswählen", "Select example features"),
+                detail: language.text("Erkunden Sie, wie Textur, Rand und Form den veröffentlichten Score verändern.", "Explore how texture, border, and shape affect the published score.")
             )
             HStack(spacing: 7) {
                 configurationMarker(1, language.text("Textur", "Texture"), selected: texture != nil) { withAnimation { scrollProxy.scrollTo("texture", anchor: .top) } }
@@ -517,15 +515,15 @@ struct CalculatorView: View {
                     }
 
                     VStack(alignment: .leading, spacing: 10) {
-                        Label(language.text("ERGEBNIS", "RESULT"), systemImage: "checkmark.seal.fill")
+                        Label(language.text("REFERENZKATEGORIE", "REFERENCE CATEGORY"), systemImage: "book.closed.fill")
                             .font(.system(size: 11, weight: .bold))
                             .tracking(1.1)
                             .foregroundStyle(color)
-                        Text(levelLabel(score))
+                        Text("Node-RADS \(score)")
                             .font(.system(size: 22, weight: .bold, design: .rounded))
                             .foregroundStyle(.white)
                             .fixedSize(horizontal: false, vertical: true)
-                        Text(signalLabel(score))
+                        Text(levelLabel(score))
                             .font(.system(size: 15, weight: .bold, design: .rounded))
                             .foregroundStyle(color)
                             .padding(.horizontal, 11)
@@ -554,7 +552,7 @@ struct CalculatorView: View {
                         .stroke(LinearGradient(colors: [color.opacity(0.62), .white.opacity(0.08)], startPoint: .topLeading, endPoint: .bottomTrailing), lineWidth: 1)
                 }
                 .shadow(color: color.opacity(0.12), radius: 20, y: 8)
-                report(size: size, score: score, color: color)
+                referenceSummary(size: size, score: score, color: color)
                 nodeRADSTableButton
             }
         }
@@ -571,32 +569,44 @@ struct CalculatorView: View {
         return colors[max(0, min(score - 1, 4))]
     }
 
-    private func report(size: NodeSize, score: Int, color: Color) -> some View {
+    private func referenceSummary(size: NodeSize, score: Int, color: Color) -> some View {
         let short = min(shortAxis, longAxis)
         let long = max(shortAxis, longAxis)
         let finding: String
         if size == .bulk {
-            finding = language.text("Bulky Lymphknotenmanifestation mit einer maximalen Langachse von \(long) mm.", "Bulky nodal disease with a maximum long-axis diameter of \(long) mm.")
+            finding = language.text("Die gewählten Beispielmaße entsprechen der Größenkategorie Bulk (maximale Langachse \(long) mm).", "The selected example measurements correspond to the bulk size category (maximum long-axis diameter \(long) mm).")
         } else {
-            let measure = growth ? language.text("Im Verlauf größenprogredienter Lymphknoten mit einer Zunahme der Kurzachse um mindestens 2 mm.", "Interval progression of the lymph node with an increase in short-axis diameter of at least 2 mm.") : size == .enlarged ? language.text("Pathologisch vergrößerter Lymphknoten mit einer Kurzachse von \(short) mm.", "Pathologically enlarged lymph node with a short-axis diameter of \(short) mm.") : language.text("Größenunauffälliger Lymphknoten mit einer Kurzachse von \(short) mm.", "Size-normal lymph node with a short-axis diameter of \(short) mm.")
+            let measure = growth ? language.text("Das gewählte Beispiel enthält eine Kurzachsenzunahme von mindestens 2 mm und erfüllt damit das veröffentlichte Kriterium für die Größenkategorie Vergrößert.", "The selected example includes a short-axis increase of at least 2 mm and therefore meets the published enlarged-size criterion.") : size == .enlarged ? language.text("Die gewählte Kurzachse von \(short) mm erreicht den regionsspezifischen Grenzwert und entspricht der Größenkategorie Vergrößert.", "The selected short-axis diameter of \(short) mm reaches the region-specific threshold and corresponds to the enlarged-size category.") : language.text("Die gewählte Kurzachse von \(short) mm liegt unter dem regionsspezifischen Grenzwert und entspricht der Größenkategorie Normal.", "The selected short-axis diameter of \(short) mm is below the region-specific threshold and corresponds to the normal-size category.")
             let textures = language == .german ? ["homogen", "heterogen", "mit fokaler Nekrose", "mit grober oder neu aufgetretener Nekrose", "mit entitätsspezifischem Befund"] : ["homogeneous", "heterogeneous", "with focal necrosis", "with gross or newly developed necrosis", "with an entity-specific finding"]
             let borders = language == .german ? ["glatt", "unregelmäßig bzw. unscharf"] : ["with a smooth margin", "with an irregular or ill-defined margin"]
             let shapes = language == .german ? ["bei erhaltenem Fetthilus", "nierenförmig / oval ohne erhaltenen Fetthilus", "rund ohne erhaltenen Fetthilus"] : ["with preserved fatty hilum", "kidney-bean / oval without preserved fatty hilum", "spherical without preserved fatty hilum"]
-            finding = measure + " " + language.text("Morphologisch zeigt sich der Lymphknoten \(textures[texture ?? 0]), \(borders[border ?? 0]) begrenzt und \(shapes[shape ?? 0]).", "Morphologically, the lymph node is \(textures[texture ?? 0]), \(borders[border ?? 0]) and \(shapes[shape ?? 0]).")
+            finding = measure + " " + language.text("Ausgewählte Beispielmorphologie: \(textures[texture ?? 0]), \(borders[border ?? 0]) begrenzt und \(shapes[shape ?? 0]).", "Selected example morphology: \(textures[texture ?? 0]), \(borders[border ?? 0]) and \(shapes[shape ?? 0]).")
         }
         let statementsDE = ["Ein maligner Lymphknotenbefall ist sehr unwahrscheinlich.", "Ein maligner Lymphknotenbefall ist eher unwahrscheinlich.", "Ein maligner Lymphknotenbefall bleibt unklar beziehungsweise äquivokal.", "Es besteht eine hohe Wahrscheinlichkeit für einen malignen Lymphknotenbefall.", "Es besteht eine sehr hohe Wahrscheinlichkeit für einen malignen Lymphknotenbefall."]
         let statementsEN = ["Malignant lymph-node involvement is very unlikely.", "Malignant lymph-node involvement is considered unlikely.", "Malignant lymph-node involvement remains indeterminate or equivocal.", "There is a high likelihood of malignant lymph-node involvement.", "There is a very high likelihood of malignant lymph-node involvement."]
-        let assessment = "Node-RADS \(score) (\(signalLabel(score))). \((language == .german ? statementsDE : statementsEN)[score - 1])"
-        let text = "\(language.text("Befund", "Findings")): \(finding)\n\n\(language.text("Beurteilung", "Assessment")): \(assessment)"
+        let assessment = language.text(
+            "In der veröffentlichten Node-RADS-1.0-Tabelle entspricht diese Kriterienkombination der Kategorie \(score) (\(signalLabel(score))). \(statementsDE[score - 1])",
+            "In the published Node-RADS 1.0 table, this combination of criteria corresponds to category \(score) (\(signalLabel(score))). \(statementsEN[score - 1])"
+        )
         return VStack(alignment: .leading, spacing: 15) {
-            Text(text).textSelection(.enabled)
-            Button {
-                UIPasteboard.general.string = text
-                copied = true
-            } label: {
-                Label(copied ? language.text("Kopiert", "Copied") : language.text("Befundtext kopieren", "Copy report text"), systemImage: copied ? "checkmark" : "doc.on.doc")
+            VStack(alignment: .leading, spacing: 6) {
+                Text(language.text("AUSGEWÄHLTE KRITERIEN", "SELECTED CRITERIA"))
+                    .font(.system(size: 10, weight: .bold))
+                    .tracking(1)
+                    .foregroundStyle(color)
+                Text(finding)
             }
-            .buttonStyle(.borderedProminent).tint(color)
+            Divider().overlay(.white.opacity(0.12))
+            VStack(alignment: .leading, spacing: 6) {
+                Text(language.text("PUBLIZIERTE INTERPRETATION", "PUBLISHED INTERPRETATION"))
+                    .font(.system(size: 10, weight: .bold))
+                    .tracking(1)
+                    .foregroundStyle(color)
+                Text(assessment)
+            }
+            Text(language.text("Lern- und Referenzausgabe · keine Diagnose oder Therapieempfehlung", "Educational reference output · not a diagnosis or treatment recommendation"))
+                .font(.caption)
+                .foregroundStyle(.white.opacity(0.52))
         }
         .padding().frame(maxWidth: .infinity, alignment: .leading)
         .background(panel, in: RoundedRectangle(cornerRadius: 16))
@@ -743,7 +753,7 @@ struct CalculatorView: View {
 
             tableSectionTitle(language.text("Referenz", "Reference"))
             referenceLink("Elsholtz et al. · European Radiology (2021)\nNode-RADS 1.0", doi: "10.1007/s00330-020-07572-4")
-            Text(language.text("Darstellung nach Node-RADS 1.0. Die abschließende Beurteilung bleibt eine ärztliche Gesamtentscheidung.", "Adapted from Node-RADS 1.0. Final interpretation remains an integrated clinical decision."))
+            Text(language.text("Interaktive Lern- und Referenzdarstellung nach Node-RADS 1.0. Keine Diagnose oder Therapieempfehlung.", "Interactive educational reference adapted from Node-RADS 1.0. Not a diagnosis or treatment recommendation."))
                 .font(.caption)
                 .foregroundStyle(.white.opacity(0.52))
         }
@@ -948,7 +958,7 @@ struct CalculatorView: View {
 
     private func reset() {
         step = 0; completed = 0; special = false; regionID = ""; shortAxis = 0; longAxis = 0
-        growth = false; texture = nil; border = nil; shape = nil; copied = false; showRequired = false
+        growth = false; texture = nil; border = nil; shape = nil; showRequired = false
     }
 
     private func title(_ heading: String, _ detail: String) -> some View {

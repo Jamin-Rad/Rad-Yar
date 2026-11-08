@@ -1,6 +1,6 @@
 export const metadata = {
-  title: 'Node-RADS Rechner | RadYar',
-  description: 'Interaktive Node-RADS-1.0-Einstufung von Lymphknoten nach Region, Größe und Konfiguration.',
+  title: 'Node-RADS Lernreferenz | RadYar',
+  description: 'Interaktive Lern- und Referenzdarstellung der veröffentlichten Node-RADS-1.0-Kriterien.',
   applicationName: 'Node-RADS',
   manifest: '/node-rads/manifest.webmanifest',
   appleWebApp: {
