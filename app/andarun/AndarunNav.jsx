@@ -36,6 +36,8 @@ export default function AndarunNav() {
   if (matchesPath(pathname, '/andarun/test')) return null
   // The English app provides its own navigation and return link.
   if (matchesPath(pathname, '/andarun/english')) return null
+  // To Do provides the same quiet navigation as the iPhone app.
+  if (pathname === '/andarun/todo' || pathname?.startsWith('/andarun/todo/')) return null
   // Investments has its own complete navigation and return link.
   if (matchesPath(pathname, '/andarun/investments')) return null
   const isHome = pathname === '/andarun'

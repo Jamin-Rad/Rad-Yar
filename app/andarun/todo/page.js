@@ -1,9 +1,9 @@
 import { redirect } from 'next/navigation'
 import { hasAndarunSession } from '@/lib/andarunPasswordAuth'
-import TodoPage from './TodoPage'
+import PlannerPage from './PlannerPage'
 
 export const metadata = {
-  title: 'Jaminova ToDo',
+  title: 'Jaminova To Do',
   description: 'Private tasks',
   robots: {
     index: false,
@@ -18,7 +18,7 @@ export default async function AndarunTodoPage() {
 
   return (
     <>
-      <TodoPage showHomeLink={false} view="todos" showNotes />
+      <PlannerPage />
     </>
   )
 }

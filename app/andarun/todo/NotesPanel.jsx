@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from 'react'
 import styles from './notes.module.css'
+import TodoIcon from './TodoIcon'
 
 const API = '/api/andarun/notes'
 const characters = new Intl.Segmenter('de', { granularity: 'grapheme' })
@@ -122,41 +123,37 @@ export default function NotesPanel() {
   const ordered = [...notes].sort((a, b) => Number(a.done) - Number(b.done) || b.createdAt - a.createdAt)
   return <section className={styles.panel} aria-label="Notizen">
     <header className={styles.header}>
-      <div><span className={styles.eyebrow}>DEINE GEDANKEN</span><h2>Notizen</h2><p>Text und Stimme. Auf dem iPhone und hier.</p></div>
-      <button type="button" onClick={load} disabled={busy || loading} aria-label="Notizen aktualisieren">↻</button>
+      <div><TodoIcon name="note" size={21}/><h2>Notizen</h2><span>{notes.filter(note => !note.done).length}</span></div>
+      <button type="button" onClick={() => fileInput.current?.click()} disabled={busy || loading} aria-label="Sprachnotiz hinzufügen" title="M4A importieren · bis 10 Minuten. Aufnehmen in der iPhone-App."><TodoIcon name="audio" size={22}/></button>
     </header>
-    <form onSubmit={add} className={styles.composer}>
-      <label htmlFor="new-jaminova-note" className={styles.srOnly}>Neue Notiz</label>
-      <textarea id="new-jaminova-note" placeholder="Was möchtest du festhalten?" value={text} rows={2} onChange={event => { if (fitsNote(event.target.value)) setText(event.target.value) }} disabled={busy} />
-      <button type="submit" disabled={busy || loading || !text.trim()}>Notiz hinzufügen</button>
-    </form>
-    <div className={styles.audioImport}>
+    <div className={styles.surface}>
+      <form onSubmit={add} className={styles.composer}>
+        <label htmlFor="new-jaminova-note" className={styles.srOnly}>Neue Notiz</label>
+        <textarea id="new-jaminova-note" dir="auto" placeholder="Einen Gedanken festhalten …" value={text} rows={1} onChange={event => { if (fitsNote(event.target.value)) setText(event.target.value) }} disabled={busy} />
+        <button type="submit" aria-label="Notiz hinzufügen" disabled={busy || loading || !text.trim()}><TodoIcon name="plus" size={18}/></button>
+      </form>
       <input ref={fileInput} className={styles.srOnly} type="file" accept=".m4a,audio/mp4,audio/x-m4a" aria-label="M4A-Aufnahme auswählen" onChange={event => { const file = event.target.files?.[0]; if (file) uploadAudio(file) }} />
-      <button type="button" onClick={() => fileInput.current?.click()} disabled={busy || loading}>Audio hinzufügen</button>
-      {uploadPending ? <button type="button" onClick={() => uploadAudio()} disabled={busy}>Upload erneut versuchen</button> : null}
-      <span>M4A · bis 10 Minuten. Direkt aufnehmen kannst du in der iPhone-App.</span>
+      {!loading && !notes.length ? <p className={styles.empty}>Platz für deinen nächsten Gedanken.</p> : null}
+      <ul className={styles.list}>
+        {ordered.map(note => <li key={note.id} className={styles.note}>
+          <div className={styles.noteTop}>
+            <button type="button" className={styles.title} disabled={busy} onClick={() => setEditing({ ...note, draft: note.text })}><span dir="auto">{note.text}</span></button>
+            <button type="button" className={`${styles.check} ${note.done ? styles.checked : ''}`} aria-label={`${note.done ? 'Wieder öffnen' : 'Abhaken'}: ${note.text}`} aria-pressed={note.done} disabled={busy} onClick={() => write(note, { done: !note.done })}><span>{note.done ? <TodoIcon name="check" size={14}/> : null}</span></button>
+          </div>
+          {note.voice ? <div className={styles.recording}>
+            {audio[note.id] ? <audio controls autoPlay preload="metadata" src={audio[note.id]} aria-label={`Aufnahme: ${note.text}`} onError={() => { setAudio(current => ({ ...current, [note.id]: null })); setMessage('Aufnahme bitte erneut öffnen; der private Link ist möglicherweise abgelaufen.') }} /> : <button type="button" onClick={() => play(note)} aria-label={`Aufnahme abspielen: ${note.text}`}><TodoIcon name="play" size={16}/><span className={styles.wave} aria-hidden="true">{[8,15,11,23,16,28,20,13,24,17,9,15,21,13,8,19,11,23,15,9].map((height,index)=><i key={index} style={{height}}/>)}</span><span>{seconds(note.voice.duration)}</span></button>}
+          </div> : null}
+          <div className={styles.noteBottom}><time dateTime={new Date(note.createdAt * 1000).toISOString()}>{new Date(note.createdAt * 1000).toLocaleDateString('de-DE', { day: 'numeric', month: 'short' })}{note.done ? ' · Abgehakt' : ''}</time><button type="button" className={styles.delete} disabled={busy} onClick={() => setDeleting(note)} aria-label={`Löschen: ${note.text}`}><TodoIcon name="trash" size={14}/></button></div>
+        </li>)}
+      </ul>
     </div>
-    <p className={styles.status} role="status">{message || (loading ? 'Notizen werden geladen …' : busy ? 'Wird gespeichert …' : 'Privat mit Jaminova synchronisiert.')}</p>
-    {!loading && !notes.length ? <p className={styles.empty}>Platz für deinen nächsten Gedanken.</p> : null}
-    <ul className={styles.list}>
-      {ordered.map(note => <li key={note.id} className={styles.note}>
-        <div className={styles.noteTop}>
-          <button type="button" className={`${styles.check} ${note.done ? styles.checked : ''}`} aria-label={`${note.done ? 'Wieder öffnen' : 'Abhaken'}: ${note.text}`} aria-pressed={note.done} disabled={busy} onClick={() => write(note, { done: !note.done })}>{note.done ? '✓' : ''}</button>
-          <button type="button" className={styles.title} disabled={busy} onClick={() => setEditing({ ...note, draft: note.text })}>{note.text}</button>
-          <button type="button" className={styles.delete} disabled={busy} onClick={() => setDeleting(note)} aria-label={`Löschen: ${note.text}`}>×</button>
-        </div>
-        {note.voice ? <div className={styles.recording}>
-          <span>◖ Sprachnotiz · {seconds(note.voice.duration)}</span>
-          {audio[note.id] ? <audio controls autoPlay preload="metadata" src={audio[note.id]} aria-label={`Aufnahme: ${note.text}`} onError={() => { setAudio(current => ({ ...current, [note.id]: null })); setMessage('Aufnahme bitte erneut öffnen; der private Link ist möglicherweise abgelaufen.') }} /> : <button type="button" onClick={() => play(note)}>Aufnahme abspielen</button>}
-        </div> : null}
-        <time dateTime={new Date(note.createdAt * 1000).toISOString()}>{new Date(note.createdAt * 1000).toLocaleDateString('de-DE', { day: 'numeric', month: 'short' })}{note.done ? ' · Abgehakt' : ''}</time>
-      </li>)}
-    </ul>
+    <footer className={styles.footer}><p role="status">{message || (loading ? 'Notizen werden geladen …' : busy ? 'Wird gespeichert …' : 'Mit Jaminova synchronisiert.')}</p><button type="button" onClick={load} disabled={busy || loading} aria-label="Notizen aktualisieren"><TodoIcon name="refresh" size={13}/></button></footer>
+    {uploadPending ? <button type="button" onClick={() => uploadAudio()} disabled={busy}>Upload erneut versuchen</button> : null}
     <dialog ref={dialog} className={styles.dialog} onCancel={event => { if (busy) event.preventDefault(); else { setEditing(null); setDeleting(null) } }} aria-labelledby="note-dialog-title">
       {editing ? <form onSubmit={event => { event.preventDefault(); write(editing, { text: editing.draft.trim() }) }}>
         <h3 id="note-dialog-title">{editing.voice ? 'Titel bearbeiten' : 'Notiz bearbeiten'}</h3>
         <label htmlFor="note-edit-text">{editing.voice ? 'Titel der Aufnahme' : 'Deine Notiz'}</label>
-        <textarea autoFocus id="note-edit-text" rows={5} value={editing.draft} onChange={event => { if (fitsNote(event.target.value)) setEditing(current => ({ ...current, draft: event.target.value })) }} disabled={busy} />
+        <textarea autoFocus dir="auto" id="note-edit-text" rows={5} value={editing.draft} onChange={event => { if (fitsNote(event.target.value)) setEditing(current => ({ ...current, draft: event.target.value })) }} disabled={busy} />
         {editing.conflict ? <p role="status">Auf einem anderen Gerät geändert. Wähle, welche Fassung du verwenden möchtest.{editing.conflict.deleted ? ' Die ursprüngliche Notiz wurde gelöscht; dein Text kann als neue Notiz gespeichert werden.' : ''}</p> : null}
         <div className={styles.actions}>
           <button type="button" disabled={busy} onClick={() => setEditing(null)}>Schließen</button>
