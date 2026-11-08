@@ -972,10 +972,6 @@ struct CalculatorView: View {
         .buttonStyle(.plain)
         .padding(.horizontal, 18)
         .padding(.vertical, 14)
-        .background(.ultraThinMaterial)
-        .overlay(alignment: .top) {
-            Rectangle().fill(.white.opacity(0.14)).frame(height: 1)
-        }
     }
 
     private func reset() {
