@@ -173,7 +173,13 @@ export default function PlannerPage() {
     );
   }
   return (
-    <div className={s.shell} data-theme={theme} dir="ltr">
+    <div
+      className={s.shell}
+      data-theme={theme}
+      data-todo-planner
+      lang="de"
+      dir="ltr"
+    >
       <aside className={s.sidebar}>
         <Link
           href="/andarun"
