@@ -15,6 +15,7 @@ export const ANDARUN_HOME_GROUPS = [
     { title: 'Deutsch', href: '/andarun/deutsch', icon: 'book' },
     { title: 'English', href: '/andarun/english', icon: 'book' },
     { title: 'Fallsammlung', href: '/andarun/befunde', icon: 'file' },
+    { title: 'Fallarchiv', href: '/andarun/fallarchiv', icon: 'file' },
     { title: 'Test', href: '/andarun/test', icon: 'test' },
   ] },
   { id: 'finanzen', title: 'Finanzen', tone: 'coral', items: [

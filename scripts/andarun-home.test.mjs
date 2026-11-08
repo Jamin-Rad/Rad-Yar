@@ -7,11 +7,11 @@ import { ANDARUN_WEB_APPS, getAndarunPwaMetadata } from '../lib/andarunWebApps.j
 test('four groups retain existing modules and expose finance destinations inline', () => {
   const items = ANDARUN_HOME_GROUPS.flatMap(group => group.items)
   assert.deepEqual(ANDARUN_HOME_GROUPS.map(group => group.title), ['Alltag', 'Gesundheit', 'Lernen', 'Finanzen'])
-  assert.equal(items.length, 18)
-  assert.equal(new Set(items.map(item => item.title)).size, 18)
+  assert.equal(items.length, 19)
+  assert.equal(new Set(items.map(item => item.title)).size, 19)
   assert.deepEqual(items.filter(item => item.href).map(item => item.href).sort(), [
     '/andarun/routine', '/andarun/todo', '/andarun/termine', '/andarun/dienste', '/andarun/befundtimer',
-    '/andarun/gesundheit', '/andarun/medikamente', '/hamrah-e-salamat', '/andarun/deutsch', '/andarun/english', '/andarun/befunde', '/andarun/test',
+    '/andarun/gesundheit', '/andarun/medikamente', '/hamrah-e-salamat', '/andarun/deutsch', '/andarun/english', '/andarun/befunde', '/andarun/fallarchiv', '/andarun/test',
     '/andarun/investments', '/andarun/finanz', '/andarun/urlaub', '/andarun/finanz/freunde', '/digitda',
   ].sort())
   assert.equal(items.some(item => item.action), false)
@@ -56,6 +56,7 @@ test('reporting timer belongs to Alltag and the two collections share one learni
   const learning = ANDARUN_HOME_GROUPS.find(group => group.id === 'lernen').items
   assert.equal(everyday.find(item => item.title === 'Befundtimer')?.href, '/andarun/befundtimer')
   assert.equal(learning.find(item => item.title === 'Fallsammlung')?.href, '/andarun/befunde')
+  assert.equal(learning.find(item => item.title === 'Fallarchiv')?.href, '/andarun/fallarchiv')
   assert.equal(learning.some(item => item.href === '/andarun/befundtimer'), false)
   assert.equal(ANDARUN_WEB_APPS.befundtimer.startUrl, '/andarun/befundtimer')
   assert.equal(ANDARUN_WEB_APPS.befunde.shortName, 'Fallsammlung')
