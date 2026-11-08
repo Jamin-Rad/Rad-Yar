@@ -28,7 +28,7 @@ export const config = {
   matcher: [
     // Öffentliche Standalone-Rechner umgehen Clerk vollständig.
     // Also skip Next.js internals and all static files.
-    '/((?!(?:kaiser-score|khk-vortestwahrscheinlichkeit)(?:/|$)|_next|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)',
+    '/((?!(?:kaiser-score|node-rads|khk-vortestwahrscheinlichkeit)(?:/|$)|_next|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|wav|mp3|m4a|ogg|aac|flac|csv|docx?|xlsx?|zip|webmanifest)).*)',
     '/(api|trpc)(.*)',
   ],
 }
