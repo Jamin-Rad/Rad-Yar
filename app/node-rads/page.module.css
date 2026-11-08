@@ -251,6 +251,10 @@
 .reportBox > div + div { margin-top: 13px; padding-top: 13px; border-top: 1px solid var(--line); }
 .reportBox > div > strong { color: var(--score-color); font-size: 9px; text-transform: uppercase; letter-spacing: .09em; }
 .reportBox p { margin: 6px 0 0; color: #b9c7d1; font-size: 10px; line-height: 1.6; }
+.criteriaList { display: grid; gap: 11px; margin-top: 9px; }
+.criteriaList > div { padding-inline-start: 10px; border-inline-start: 2px solid color-mix(in srgb, var(--score-color) 52%, transparent); }
+.criteriaList span { color: color-mix(in srgb, var(--score-color) 82%, #fff); font-size: 8px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+.criteriaList p { margin-top: 4px; }
 .reportBox button { min-height: 34px; margin-top: 10px; padding: 0; border: 0; background: none; color: var(--score-color); cursor: pointer; font-size: 10px; font-weight: 700; }
 .reportBox button span { margin-inline-start: 7px; }
 

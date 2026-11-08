@@ -204,8 +204,8 @@ struct CalculatorView: View {
 
     private var educationalNotice: String {
         language.text(
-            "Node-RADS ist eine interaktive Lern- und Referenzdarstellung der veröffentlichten Node-RADS-1.0-Kriterien. Die App analysiert keine Bilder, stellt keine Diagnose und gibt keine Therapieempfehlung. Geben Sie keine patientenidentifizierenden Daten ein. Bitte bestätigen Sie diesen Hinweis, um fortzufahren.",
-            "Node-RADS is an interactive educational reference to the published Node-RADS 1.0 criteria. The app does not analyse images, diagnose disease, or recommend treatment. Do not enter patient-identifying information. Please confirm this notice to continue."
+            "Node-RADS ist eine Lern- und Referenzdarstellung der veröffentlichten Node-RADS-1.0-Kriterien. Die App analysiert keine Bilder, stellt keine Diagnose und gibt keine Therapieempfehlung. Bitte bestätigen Sie diesen Hinweis, um fortzufahren.",
+            "Node-RADS is an educational reference to the published Node-RADS 1.0 criteria. The app does not analyse images, diagnose disease, or recommend treatment. Please confirm this notice to continue."
         )
     }
 
@@ -213,15 +213,6 @@ struct CalculatorView: View {
         GeometryReader { geometry in
             VStack(alignment: .leading, spacing: 20) {
                 Spacer(minLength: 20)
-
-                    Label(language.text("INTERAKTIVE LERNREFERENZ", "INTERACTIVE EDUCATIONAL REFERENCE"), systemImage: "book.pages")
-                        .font(.system(size: 11, weight: .bold))
-                        .tracking(1.15)
-                        .foregroundStyle(Color(red: 0.61, green: 0.84, blue: 1))
-                        .padding(.horizontal, 13)
-                        .padding(.vertical, 9)
-                        .background(.ultraThinMaterial, in: Capsule())
-                        .overlay(Capsule().stroke(.white.opacity(0.2), lineWidth: 1))
 
                     VStack(alignment: .leading, spacing: 10) {
                         Text("NODE-RADS")
@@ -235,8 +226,8 @@ struct CalculatorView: View {
                                 )
                             )
                         Text(language.text("Node-RADS-1.0-Kriterien interaktiv erkunden", "Explore the published Node-RADS 1.0 criteria"))
-                            .font(.system(size: 22, weight: .semibold, design: .rounded))
-                            .foregroundStyle(.white.opacity(0.88))
+                            .font(.system(size: 15, weight: .regular, design: .rounded))
+                            .foregroundStyle(.white.opacity(0.68))
                             .fixedSize(horizontal: false, vertical: true)
                     }
 
@@ -572,15 +563,27 @@ struct CalculatorView: View {
     private func referenceSummary(size: NodeSize, score: Int, color: Color) -> some View {
         let short = min(shortAxis, longAxis)
         let long = max(shortAxis, longAxis)
-        let finding: String
+        let sizeCriterion: String
+        let morphologyCriterion: String?
         if size == .bulk {
-            finding = language.text("Die gewählten Beispielmaße entsprechen der Größenkategorie Bulk (maximale Langachse \(long) mm).", "The selected example measurements correspond to the bulk size category (maximum long-axis diameter \(long) mm).")
+            sizeCriterion = language.text(
+                "Bulk-Grenzwert: ≥ 30 mm in einer beliebigen Achse. Gewählte längste Achse: \(long) mm → Bulk.",
+                "Bulk threshold: ≥ 30 mm in any axis. Selected longest axis: \(long) mm → Bulk."
+            )
+            morphologyCriterion = nil
         } else {
-            let measure = growth ? language.text("Das gewählte Beispiel enthält eine Kurzachsenzunahme von mindestens 2 mm und erfüllt damit das veröffentlichte Kriterium für die Größenkategorie Vergrößert.", "The selected example includes a short-axis increase of at least 2 mm and therefore meets the published enlarged-size criterion.") : size == .enlarged ? language.text("Die gewählte Kurzachse von \(short) mm erreicht den regionsspezifischen Grenzwert und entspricht der Größenkategorie Vergrößert.", "The selected short-axis diameter of \(short) mm reaches the region-specific threshold and corresponds to the enlarged-size category.") : language.text("Die gewählte Kurzachse von \(short) mm liegt unter dem regionsspezifischen Grenzwert und entspricht der Größenkategorie Normal.", "The selected short-axis diameter of \(short) mm is below the region-specific threshold and corresponds to the normal-size category.")
             let textures = language == .german ? ["homogen", "heterogen", "mit fokaler Nekrose", "mit grober oder neu aufgetretener Nekrose", "mit entitätsspezifischem Befund"] : ["homogeneous", "heterogeneous", "with focal necrosis", "with gross or newly developed necrosis", "with an entity-specific finding"]
             let borders = language == .german ? ["glatt", "unregelmäßig bzw. unscharf"] : ["with a smooth margin", "with an irregular or ill-defined margin"]
             let shapes = language == .german ? ["bei erhaltenem Fetthilus", "nierenförmig / oval ohne erhaltenen Fetthilus", "rund ohne erhaltenen Fetthilus"] : ["with preserved fatty hilum", "kidney-bean / oval without preserved fatty hilum", "spherical without preserved fatty hilum"]
-            finding = measure + " " + language.text("Ausgewählte Beispielmorphologie: \(textures[texture ?? 0]), \(borders[border ?? 0]) begrenzt und \(shapes[shape ?? 0]).", "Selected example morphology: \(textures[texture ?? 0]), \(borders[border ?? 0]) and \(shapes[shape ?? 0]).")
+            sizeCriterion = growth
+                ? language.text("Regionsspezifischer Kurzachsengrenzwert: < \(threshold) mm. Gewählte Verlaufszunahme: ≥ 2 mm → Vergrößert.", "Regional short-axis threshold: < \(threshold) mm. Selected interval increase: ≥ 2 mm → Enlarged.")
+                : size == .enlarged
+                    ? language.text("Regionsspezifischer Kurzachsengrenzwert: < \(threshold) mm. Gewählte Kurzachse: \(short) mm → Vergrößert.", "Regional short-axis threshold: < \(threshold) mm. Selected short axis: \(short) mm → Enlarged.")
+                    : language.text("Regionsspezifischer Kurzachsengrenzwert: < \(threshold) mm. Gewählte Kurzachse: \(short) mm → Normal.", "Regional short-axis threshold: < \(threshold) mm. Selected short axis: \(short) mm → Normal.")
+            morphologyCriterion = language.text(
+                "\(textures[texture ?? 0]), \(borders[border ?? 0]) begrenzt und \(shapes[shape ?? 0]).",
+                "\(textures[texture ?? 0]), \(borders[border ?? 0]) and \(shapes[shape ?? 0])."
+            )
         }
         let statementsDE = ["Ein maligner Lymphknotenbefall ist sehr unwahrscheinlich.", "Ein maligner Lymphknotenbefall ist eher unwahrscheinlich.", "Ein maligner Lymphknotenbefall bleibt unklar beziehungsweise äquivokal.", "Es besteht eine hohe Wahrscheinlichkeit für einen malignen Lymphknotenbefall.", "Es besteht eine sehr hohe Wahrscheinlichkeit für einen malignen Lymphknotenbefall."]
         let statementsEN = ["Malignant lymph-node involvement is very unlikely.", "Malignant lymph-node involvement is considered unlikely.", "Malignant lymph-node involvement remains indeterminate or equivocal.", "There is a high likelihood of malignant lymph-node involvement.", "There is a very high likelihood of malignant lymph-node involvement."]
@@ -594,11 +597,16 @@ struct CalculatorView: View {
                     .font(.system(size: 10, weight: .bold))
                     .tracking(1)
                     .foregroundStyle(color)
-                Text(finding)
+                VStack(alignment: .leading, spacing: 11) {
+                    criterionRow(language.text("GRÖSSE / GRENZWERT", "SIZE / THRESHOLD"), sizeCriterion, color: color)
+                    if let morphologyCriterion {
+                        criterionRow(language.text("MORPHOLOGIE", "MORPHOLOGY"), morphologyCriterion, color: color)
+                    }
+                }
             }
             Divider().overlay(.white.opacity(0.12))
             VStack(alignment: .leading, spacing: 6) {
-                Text(language.text("PUBLIZIERTE INTERPRETATION", "PUBLISHED INTERPRETATION"))
+                Text(language.text("INTERPRETATION", "INTERPRETATION"))
                     .font(.system(size: 10, weight: .bold))
                     .tracking(1)
                     .foregroundStyle(color)
@@ -611,6 +619,20 @@ struct CalculatorView: View {
         .padding().frame(maxWidth: .infinity, alignment: .leading)
         .background(panel, in: RoundedRectangle(cornerRadius: 16))
         .overlay(RoundedRectangle(cornerRadius: 16).stroke(color.opacity(0.42)))
+    }
+
+    private func criterionRow(_ label: String, _ value: String, color: Color) -> some View {
+        VStack(alignment: .leading, spacing: 4) {
+            Text(label)
+                .font(.system(size: 9, weight: .bold))
+                .tracking(0.8)
+                .foregroundStyle(color.opacity(0.82))
+            Text(value)
+        }
+        .padding(.leading, 11)
+        .overlay(alignment: .leading) {
+            Capsule().fill(color.opacity(0.50)).frame(width: 2)
+        }
     }
 
     private func signalLabel(_ score: Int) -> String {

@@ -69,17 +69,17 @@ const COPY = {
     resultTitle: 'Node-RADS Referenzkategorie', resultText: 'Die ausgewählten Beispielkriterien werden mit der veröffentlichten Node-RADS-1.0-Tabelle verglichen.',
     levels: ['Sehr geringe Wahrscheinlichkeit', 'Geringe Wahrscheinlichkeit', 'Unklar / äquivokal', 'Hohe Wahrscheinlichkeit', 'Sehr hohe Wahrscheinlichkeit'],
     resultSignals: ['LK−', 'eher LK−', 'LK±', 'LK+', 'LK+'],
-    sizeCategory: 'Größenkategorie', selectedCriteria: 'Ausgewählte Kriterien', publishedInterpretation: 'Veröffentlichte Einordnung',
-    reportNormal: 'Die gewählte Kurzachse von {short} mm liegt unter dem regionsspezifischen Grenzwert und entspricht der Größenkategorie Normal.',
-    reportEnlarged: 'Die gewählte Kurzachse von {short} mm erreicht den regionsspezifischen Grenzwert und entspricht der Größenkategorie Vergrößert.',
-    reportGrowth: 'Das gewählte Beispiel enthält eine Kurzachsenzunahme von mindestens 2 mm und erfüllt damit das veröffentlichte Kriterium für die Größenkategorie Vergrößert.',
-    reportBulk: 'Die gewählten Beispielmaße entsprechen der Größenkategorie Bulk (maximale Langachse {long} mm).',
-    reportMorphology: 'Ausgewählte Beispielmorphologie: {texture}, {border} begrenzt und {shape}.',
+    sizeCategory: 'Größenkategorie', selectedCriteria: 'Ausgewählte Kriterien', sizeThreshold: 'Größe / Grenzwert', morphology: 'Morphologie', interpretation: 'Interpretation',
+    reportNormal: 'Regionsspezifischer Kurzachsengrenzwert: < {threshold} mm. Gewählte Kurzachse: {short} mm → Normal.',
+    reportEnlarged: 'Regionsspezifischer Kurzachsengrenzwert: < {threshold} mm. Gewählte Kurzachse: {short} mm → Vergrößert.',
+    reportGrowth: 'Regionsspezifischer Kurzachsengrenzwert: < {threshold} mm. Gewählte Verlaufszunahme: ≥ 2 mm → Vergrößert.',
+    reportBulk: 'Bulk-Grenzwert: ≥ 30 mm in einer beliebigen Achse. Gewählte längste Achse: {long} mm → Bulk.',
+    reportMorphology: '{texture}, {border} begrenzt und {shape}.',
     assessmentStatements: ['Ein maligner Lymphknotenbefall ist sehr unwahrscheinlich.', 'Ein maligner Lymphknotenbefall ist eher unwahrscheinlich.', 'Ein maligner Lymphknotenbefall bleibt unklar beziehungsweise äquivokal.', 'Es besteht eine hohe Wahrscheinlichkeit für einen malignen Lymphknotenbefall.', 'Es besteht eine sehr hohe Wahrscheinlichkeit für einen malignen Lymphknotenbefall.'],
     reportAssessment: 'In der veröffentlichten Node-RADS-1.0-Tabelle entspricht diese Kriterienkombination der Kategorie {score} ({signal}). {statement}',
     next: 'Weiter', back: 'Zurück', restart: 'Neu beginnen', required: 'Bitte treffen Sie eine Auswahl.',
     info: 'Die Node-RADS-1.0-Klassifikation wurde für Lymphknoten in kontrastverstärkter CT oder MRT veröffentlicht.',
-    disclaimer: 'Interaktive Lern- und Referenzdarstellung der veröffentlichten Node-RADS-1.0-Kriterien · keine Bildanalyse, Diagnose oder Therapieempfehlung · keine Patientendaten eingeben.',
+    disclaimer: 'Lern- und Referenzdarstellung der veröffentlichten Node-RADS-1.0-Kriterien · keine Bildanalyse, Diagnose oder Therapieempfehlung.',
     source: 'Elsholtz et al. · European Radiology · 2021', developerCredit: 'Entwickelt von Dr. Zia',
     recommend: 'Weiterempfehlen', recommendHint: 'Node-RADS mit Kolleginnen und Kollegen teilen', shareTitle: 'Node-RADS weitergeben',
     shareText: 'QR-Code scannen oder den direkten Link versenden.', scanLabel: 'Direkt zur Node-RADS Lernreferenz', whatsapp: 'Über WhatsApp teilen', copyLink: 'Link kopieren', linkCopied: 'Link kopiert',
@@ -107,17 +107,17 @@ const COPY = {
     resultTitle: 'Node-RADS reference category', resultText: 'The selected example criteria are compared with the published Node-RADS 1.0 table.',
     levels: ['Very low likelihood', 'Low likelihood', 'Equivocal', 'High likelihood', 'Very high likelihood'],
     resultSignals: ['LN−', 'likely LN−', 'LN±', 'LN+', 'LN+'],
-    sizeCategory: 'Size category', selectedCriteria: 'Selected criteria', publishedInterpretation: 'Published interpretation',
-    reportNormal: 'The selected short-axis diameter of {short} mm is below the region-specific threshold and corresponds to the normal-size category.',
-    reportEnlarged: 'The selected short-axis diameter of {short} mm reaches the region-specific threshold and corresponds to the enlarged-size category.',
-    reportGrowth: 'The selected example includes a short-axis increase of at least 2 mm and therefore meets the published enlarged-size criterion.',
-    reportBulk: 'The selected example measurements correspond to the bulk size category (maximum long-axis diameter {long} mm).',
-    reportMorphology: 'Selected example morphology: {texture}, {border} and {shape}.',
+    sizeCategory: 'Size category', selectedCriteria: 'Selected criteria', sizeThreshold: 'Size / threshold', morphology: 'Morphology', interpretation: 'Interpretation',
+    reportNormal: 'Regional short-axis threshold: < {threshold} mm. Selected short axis: {short} mm → Normal.',
+    reportEnlarged: 'Regional short-axis threshold: < {threshold} mm. Selected short axis: {short} mm → Enlarged.',
+    reportGrowth: 'Regional short-axis threshold: < {threshold} mm. Selected interval increase: ≥ 2 mm → Enlarged.',
+    reportBulk: 'Bulk threshold: ≥ 30 mm in any axis. Selected longest axis: {long} mm → Bulk.',
+    reportMorphology: '{texture}, {border} and {shape}.',
     assessmentStatements: ['Malignant lymph-node involvement is very unlikely.', 'Malignant lymph-node involvement is considered unlikely.', 'Malignant lymph-node involvement remains indeterminate or equivocal.', 'There is a high likelihood of malignant lymph-node involvement.', 'There is a very high likelihood of malignant lymph-node involvement.'],
     reportAssessment: 'In the published Node-RADS 1.0 table, this combination of criteria corresponds to category {score} ({signal}). {statement}',
     next: 'Continue', back: 'Back', restart: 'Start again', required: 'Please make a selection.',
     info: 'The Node-RADS 1.0 classification was published for lymph nodes on contrast-enhanced CT or MRI.',
-    disclaimer: 'Interactive educational reference to the published Node-RADS 1.0 criteria · no image analysis, diagnosis, or treatment recommendation · do not enter patient data.',
+    disclaimer: 'Educational reference to the published Node-RADS 1.0 criteria · no image analysis, diagnosis, or treatment recommendation.',
     source: 'Elsholtz et al. · European Radiology · 2021', developerCredit: 'Developed by Dr. Zia',
     recommend: 'Recommend', recommendHint: 'Share Node-RADS with colleagues', shareTitle: 'Share Node-RADS',
     shareText: 'Scan the QR code or send the direct link.', scanLabel: 'Open the Node-RADS educational reference', whatsapp: 'Share via WhatsApp', copyLink: 'Copy link', linkCopied: 'Link copied',
@@ -231,7 +231,7 @@ function ConfigStep({ texture, setTexture, border, setBorder, shape, setShape, u
   </div>
 }
 
-function ResultStep({ score, sizeCategory, configScore, shortAxis, longAxis, growth, texture, border, shape, ui }) {
+function ResultStep({ score, sizeCategory, configScore, shortAxis, longAxis, growth, texture, border, shape, threshold, ui }) {
   const [shareOpen, setShareOpen] = useState(false)
   const [linkCopied, setLinkCopied] = useState(false)
   const color = RESULT_COLORS[score - 1]
@@ -240,12 +240,11 @@ function ResultStep({ score, sizeCategory, configScore, shortAxis, longAxis, gro
   const sizeFinding = sizeCategory === 'bulk'
     ? ui.reportBulk.replace('{long}', longAxis)
     : growth
-      ? ui.reportGrowth
-      : ui[sizeCategory === 'enlarged' ? 'reportEnlarged' : 'reportNormal'].replace('{short}', shortAxis)
+      ? ui.reportGrowth.replace('{threshold}', threshold)
+      : ui[sizeCategory === 'enlarged' ? 'reportEnlarged' : 'reportNormal'].replace('{threshold}', threshold).replace('{short}', shortAxis)
   const morphologyFinding = sizeCategory !== 'bulk'
     ? ui.reportMorphology.replace('{texture}', ui.reportTextures[texture]).replace('{border}', ui.reportBorders[border]).replace('{shape}', ui.reportShapes[shape])
     : ''
-  const findingText = [sizeFinding, morphologyFinding].filter(Boolean).join(' ')
   const assessmentText = ui.reportAssessment.replace('{score}', score).replace('{signal}', ui.resultSignals[score - 1]).replace('{statement}', ui.assessmentStatements[score - 1])
   const copyLink = async () => {
     try {
@@ -270,8 +269,11 @@ function ResultStep({ score, sizeCategory, configScore, shortAxis, longAxis, gro
       {sizeCategory !== 'bulk' ? <div><dt>{ui.configScore}</dt><dd>{configScore} / 5</dd></div> : null}
     </dl>
     <div className={styles.reportBox}>
-      <div><strong>{ui.selectedCriteria}</strong><p>{findingText}</p></div>
-      <div><strong>{ui.publishedInterpretation}</strong><p>{assessmentText}</p></div>
+      <div><strong>{ui.selectedCriteria}</strong><div className={styles.criteriaList}>
+        <div><span>{ui.sizeThreshold}</span><p>{sizeFinding}</p></div>
+        {morphologyFinding ? <div><span>{ui.morphology}</span><p>{morphologyFinding}</p></div> : null}
+      </div></div>
+      <div><strong>{ui.interpretation}</strong><p>{assessmentText}</p></div>
     </div>
     <section className={`${styles.shareCard} ${shareOpen ? styles.shareCardOpen : ''}`}>
       <button type="button" className={styles.shareToggle} onClick={toggleShare} aria-expanded={shareOpen}>
@@ -394,7 +396,7 @@ export default function NodeRadsPage() {
           {step === 0 ? <RegionStep region={region} setRegion={setRegion} specialRegion={specialRegion} setSpecialRegion={setSpecialRegion} ui={ui} lang={activeLang}/> : null}
           {step === 1 ? <SizeStep shortAxis={shortAxis} setShortAxis={setShortAxis} longAxis={longAxis} setLongAxis={setLongAxis} growth={growth} setGrowth={setGrowth} sizeCategory={sizeCategory} threshold={threshold} ui={ui}/> : null}
           {step === 2 ? <ConfigStep texture={texture} setTexture={setTexture} border={border} setBorder={setBorder} shape={shape} setShape={setShape} ui={ui}/> : null}
-          {step === 3 && score ? <ResultStep score={score} sizeCategory={sizeCategory} configScore={configScore} shortAxis={shortAxis} longAxis={longAxis} growth={growth} texture={texture} border={border} shape={shape} ui={ui}/> : null}
+          {step === 3 && score ? <ResultStep score={score} sizeCategory={sizeCategory} configScore={configScore} shortAxis={shortAxis} longAxis={longAxis} growth={growth} texture={texture} border={border} shape={shape} threshold={threshold} ui={ui}/> : null}
         </div>
         {error ? <p className={styles.footerError} role="alert">{error}</p> : null}
         <footer className={styles.actionBar}>
