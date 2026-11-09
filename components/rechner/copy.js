@@ -1,0 +1,32 @@
+export const COPY = {
+  de: {
+    title: 'Radiologische', titleAccent: 'Rechner', subtitle: 'Scores, Volumina und Klassifikationen. Ein Ort für Ihre Berechnungen.',
+    directory: 'Rechner', all: 'Alle Rechner', home: 'Zur Startseite', menu: 'Fachgebiete', closeMenu: 'Menü schließen',
+    search: 'Rechner, Organ oder Stichwort suchen …', clear: 'Suche löschen', featured: 'Direkt starten', open: 'Rechner öffnen',
+    allHint: 'Alle Fachgebiete auf einen Blick', results: 'Suchergebnisse', tools: 'Rechner',
+    psa: 'Volumen bestimmen. PSA-Dichte berechnen.', pirads: 'Prostata-MRT strukturiert einordnen.',
+    empty: 'Kein passender Rechner gefunden.', emptyHint: 'Versuchen Sie einen anderen Begriff oder durchsuchen Sie alle Fachgebiete.', clearFilters: 'Alle Rechner anzeigen',
+    back: 'Zur Übersicht', reset: 'Zurücksetzen', related: 'Weitere Rechner in diesem Fachgebiet',
+    disclaimer: 'Zum Lernen und Üben. Kein Ersatz für eine ärztliche Beurteilung.', privacy: 'Ihre Eingaben werden nicht gespeichert.', loading: 'Rechner wird geladen …',
+  },
+  en: {
+    title: 'Radiology', titleAccent: 'calculators', subtitle: 'Scores, volumes and classifications. One place for your calculations.',
+    directory: 'Calculators', all: 'All calculators', home: 'Back to RadYar', menu: 'Specialties', closeMenu: 'Close menu',
+    search: 'Search a calculator, organ or keyword …', clear: 'Clear search', featured: 'Start here', open: 'Open calculator',
+    allHint: 'Every specialty at a glance', results: 'Search results', tools: 'calculators',
+    psa: 'Measure volume. Calculate PSA density.', pirads: 'Structured prostate MRI assessment.',
+    empty: 'No matching calculator found.', emptyHint: 'Try another term or search across all specialties.', clearFilters: 'Show all calculators',
+    back: 'Back to overview', reset: 'Reset', related: 'More calculators in this specialty',
+    disclaimer: 'For learning and practice. Does not replace professional medical assessment.', privacy: 'Your inputs are not saved.', loading: 'Loading calculator …',
+  },
+  fa: {
+    title: 'محاسبه‌گرهای', titleAccent: 'رادیولوژی', subtitle: 'امتیازها، حجم‌ها و طبقه‌بندی‌ها؛ همه در یک صفحه.',
+    directory: 'محاسبه‌گرها', all: 'همه محاسبه‌گرها', home: 'بازگشت به رادیار', menu: 'دسته‌بندی‌ها', closeMenu: 'بستن منو',
+    search: 'جستجوی محاسبه‌گر، اندام یا کلیدواژه …', clear: 'پاک کردن جستجو', featured: 'دسترسی سریع', open: 'باز کردن محاسبه‌گر',
+    allHint: 'همه گروه‌ها در یک نگاه', results: 'نتایج جستجو', tools: 'محاسبه‌گر',
+    psa: 'محاسبه حجم پروستات و چگالی PSA.', pirads: 'ارزیابی ساختاریافته MRI پروستات.',
+    empty: 'محاسبه‌گری پیدا نشد.', emptyHint: 'واژه دیگری جستجو کنید یا همه دسته‌بندی‌ها را ببینید.', clearFilters: 'نمایش همه محاسبه‌گرها',
+    back: 'بازگشت به فهرست', reset: 'بازنشانی', related: 'محاسبه‌گرهای دیگر این گروه',
+    disclaimer: 'برای یادگیری و تمرین؛ جایگزین ارزیابی پزشک نیست.', privacy: 'ورودی‌های شما ذخیره نمی‌شوند.', loading: 'در حال بارگذاری محاسبه‌گر …',
+  },
+}

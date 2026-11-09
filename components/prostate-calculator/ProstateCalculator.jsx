@@ -151,13 +151,13 @@ export default function ProstateCalculator({ tool }) {
   const suffix = lang === 'de' ? '' : `?lang=${lang}`
   return <main className={`${base.page} ${styles.page}`} dir={lang === 'fa' ? 'rtl' : 'ltr'} lang={lang}>
     <header className={base.header}>
-      <Link className={base.wordmark} href={`/?ref=rechner${lang === 'de' ? '' : `&lang=${lang}`}`}>{ui.brand}</Link>
+      <Link className={base.wordmark} href={`/rechner?lang=${lang}`}>{ui.brand}</Link>
       <div className={base.headerActions}><Link href="/" className={base.radyarLink}><strong>RadYar</strong><span aria-hidden="true">↗</span></Link><div className={base.languages} aria-label="Language">{['de', 'en', 'fa'].map(language => <button key={language} type="button" onClick={() => setLang(language)} aria-pressed={lang === language} className={lang === language ? base.languageActive : ''}>{language === 'fa' ? 'فا' : language.toUpperCase()}</button>)}</div></div>
     </header>
     <div className={`${base.stage} ${styles.stage}`}>
       <div className={`${base.workspace} ${styles.workspace}`}>
         <nav className={`${base.toolNav} ${styles.nav}`} aria-label={ui.brand}>
-          <Link href={`/?ref=rechner${lang === 'de' ? '' : `&lang=${lang}`}`}><span aria-hidden="true">↗</span>{ui.back}</Link>
+          <Link href={`/rechner?lang=${lang}`}><span aria-hidden="true">↗</span>{ui.back}</Link>
           <Link href={`/prostata-psa${suffix}`} className={tool === 'psa' ? base.navActive : ''} aria-current={tool === 'psa' ? 'page' : undefined}>{ui.psaTitle}</Link>
           <Link href={`/pi-rads${suffix}`} className={tool === 'pirads' ? base.navActive : ''} aria-current={tool === 'pirads' ? 'page' : undefined}>PI-RADS v2.1</Link>
         </nav>

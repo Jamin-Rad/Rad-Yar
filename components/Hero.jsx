@@ -1,5 +1,6 @@
 'use client'
 import Image from 'next/image'
+import Link from 'next/link'
 import RadYarIcon from './RadYarIcon'
 import { useState, useEffect, useRef } from 'react'
 import { useRouter } from 'next/navigation'
@@ -463,6 +464,7 @@ export default function Hero() {
   }
 
   const openReferenceCard = (modal) => {
+    if (modal === 'rechner') { router.push(`/rechner?lang=${lang}`); return }
     window.dispatchEvent(new CustomEvent('radyar:open-reference-modal', { detail: { modal } }))
   }
 
@@ -588,13 +590,16 @@ export default function Hero() {
 
         <div className={`${styles.cardColumn} ${styles.cardColumnRight} ${mobilePanel === 'references' ? styles.cardColumnMobileOpen : ''}`} aria-label={referenceCopy.sectionLabel}>
           <span className={styles.columnLabel}>{referenceCopy.sectionLabel}</span>
-          {REFERENCE_CARDS.map((card, index) => (
-            <button
+          {REFERENCE_CARDS.map((card, index) => {
+            const Card = card.key === 'rechner' ? Link : 'button'
+            return (
+            <Card
               key={card.key}
-              type="button"
+              type={card.key === 'rechner' ? undefined : 'button'}
+              href={card.key === 'rechner' ? `/rechner?lang=${lang}` : undefined}
               className={`${styles.floatCard} ${styles[`floatRight${index}`] || ''}`}
               style={{ '--card-color': card.color }}
-              onClick={() => openReferenceCard(card.key)}
+              onClick={card.key === 'rechner' ? undefined : () => openReferenceCard(card.key)}
             >
               <span className={styles.floatIcon}>
                 <Image src={card.image} alt="" width={62} height={62} />
@@ -603,8 +608,8 @@ export default function Hero() {
                 <strong>{referenceCopy[card.title]}</strong>
                 <small>{referenceCopy[card.desc]}</small>
               </span>
-            </button>
-          ))}
+            </Card>
+          )})}
         </div>
       </div>
 

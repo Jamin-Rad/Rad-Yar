@@ -1,5 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  async redirects() {
+    return [
+      { source: '/', has: [{ type: 'query', key: 'ref', value: 'rechner' }, { type: 'query', key: 'calc', value: '(?<calculator>[^/]+)' }], destination: '/rechner/:calculator', permanent: false },
+      { source: '/', has: [{ type: 'query', key: 'ref', value: 'rechner' }], destination: '/rechner', permanent: false },
+    ];
+  },
   // Browser-local Hamrah preview is a static document, independent of Clerk and the RadYar layout.
   async rewrites() {
     return [{source:'/hamrah-e-salamat',destination:'/hamrah-e-salamat/index.html'}];

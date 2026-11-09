@@ -40,7 +40,7 @@ const ALIASES = {
   'take-home': 'takehome'
 };
 const resolveChapter = hash => CAA_CHAPTERS.some(s => s.id === hash) ? hash : ALIASES[hash];
-const bostonHref = lang => `/?ref=rechner&calc=boston-v2&lang=${lang}#referenzen`;
+const bostonHref = lang => `/rechner/boston-v2?lang=${lang}`;
 function Icon({
   name
 }) {

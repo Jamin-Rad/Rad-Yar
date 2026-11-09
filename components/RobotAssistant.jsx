@@ -80,6 +80,7 @@ export default function RobotAssistant() {
     || pathname === '/fatima'
     || pathname?.startsWith('/fatima/')
     || pathname?.startsWith('/mobin')
+    || pathname?.startsWith('/rechner')
     || pathname?.startsWith('/prostata-psa')
     || pathname?.startsWith('/pi-rads')
     || pathname?.startsWith('/node-rads')
