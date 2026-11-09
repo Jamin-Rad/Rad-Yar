@@ -997,6 +997,19 @@ const MAMMA_TOOL_LINKS = [
   },
 ]
 
+const PROSTATE_TOOL_LINKS = [
+  {
+    id: 'prostata-psa', href: '/prostata-psa', mark: 'PSA', color: '#0891a3',
+    name: { de: 'PSA & PSA-Dichte', en: 'PSA & PSA Density', fa: 'PSA و چگالی PSA' },
+    text: { de: 'Prostatavolumen und PSA-Dichte aus Durchmessern oder bekanntem Volumen berechnen.', en: 'Calculate prostate volume and PSA density from diameters or known volume.', fa: 'محاسبه حجم پروستات و چگالی PSA با ابعاد یا حجم مشخص.' },
+  },
+  {
+    id: 'pi-rads', href: '/pi-rads', mark: 'PI', color: '#0d9488',
+    name: { de: 'PI-RADS v2.1', en: 'PI-RADS v2.1', fa: 'PI-RADS v2.1' },
+    text: { de: 'Prostata-MRT nach Zone, T2, DWI und DCE strukturiert einordnen.', en: 'Assess prostate MRI by zone, T2, DWI and DCE.', fa: 'ارزیابی ساختاریافته MRI پروستات بر اساس زون، T2، DWI و DCE.' },
+  },
+]
+
 /* ── Rechner-Modal ────────────────────────────── */
 function RechnerModal({ copy, lang, onClose }) {
   const [groupId, setGroupId] = useState(RECHNER_GROUPS[0].id)
@@ -1041,10 +1054,10 @@ function RechnerModal({ copy, lang, onClose }) {
             </span>
             <span style={{color: group.color}}>{tx(group.name, lang)}</span>
           </h2>
-          {group.id === 'mamma' ? (
+          {['mamma', 'urogenital'].includes(group.id) ? (
             <div className={styles.mammaToolGrid}>
-              {MAMMA_TOOL_LINKS.map(tool => (
-                <Link key={tool.id} href={tool.href} className={styles.mammaToolCard} style={{'--tool-color': tool.color}}>
+              {(group.id === 'mamma' ? MAMMA_TOOL_LINKS : PROSTATE_TOOL_LINKS).map(tool => (
+                <Link key={tool.id} href={`${tool.href}${lang === 'de' ? '' : `?lang=${lang}`}`} className={styles.mammaToolCard} style={{'--tool-color': tool.color}}>
                   <span className={`${styles.mammaToolMark} ${tool.icon ? styles.mammaToolIconMark : ''}`}>
                     {tool.icon ? <Image src={tool.icon} alt="" width={44} height={44} className={styles.mammaToolIcon}/> : tool.mark}
                   </span>

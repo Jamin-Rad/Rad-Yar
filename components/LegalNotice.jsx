@@ -9,6 +9,8 @@ export const PRIVACY_CHOICE_VERSION = '2026-09-05'
 export const PRIVACY_CHOICE_EVENT = 'radyar:privacy-choice'
 
 const AUTOMATIC_NOTICE_EXCLUDED_PREFIXES = [
+  '/prostata-psa',
+  '/pi-rads',
   '/mamma/rechner',
   '/design-lab',
   '/andarun',
