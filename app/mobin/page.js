@@ -16,17 +16,31 @@ const pages = [
     tone: 'planCard',
   },
   {
-    href: '/mobin/mathepruefung',
-    title: 'Mathe',
+    href: '/mobin/kalender',
+    title: 'Kalender',
     iconPosition: '66.666667%',
-    tone: 'mathCard',
+    tone: 'calendarCard',
   },
   {
-    href: '/mobin/english',
-    title: 'English',
+    href: '/mobin/persisch',
+    title: 'Persisch',
     iconPosition: '100%',
-    tone: 'englishCard',
+    tone: 'persianCard',
   },
+]
+
+const subjects = [
+  ['NWT', '/mobin/fach/nwt', 'subjectBlue'],
+  ['Physik', '/mobin/fach/physik', 'subjectViolet'],
+  ['Biologie', '/mobin/fach/biologie', 'subjectGreen'],
+  ['Geographie', '/mobin/fach/geographie', 'subjectAmber'],
+  ['Sport', '/mobin/fach/sport', 'subjectCoral'],
+  ['Spanisch', '/mobin/fach/spanisch', 'subjectRose'],
+  ['Latein', '/mobin/fach/latein', 'subjectGold'],
+  ['Französisch', '/mobin/fach/franzoesisch', 'subjectBlue'],
+  ['Englisch', '/mobin/english', 'subjectTeal'],
+  ['Mathe', '/mobin/mathepruefung', 'subjectPurple'],
+  ['Reli', '/mobin/fach/religion', 'subjectPink'],
 ]
 
 export const metadata = {
@@ -57,6 +71,17 @@ export default function MobinPage() {
                 <span className={styles.homeArrow} aria-hidden="true">›</span>
               </Link>
             ))}
+            <section className={styles.schoolCard} aria-labelledby="school-title">
+              <Link className={styles.schoolTitleLink} href="/mobin/schule" id="school-title">
+                <span className={styles.schoolTitle}>Schule</span>
+                <span className={styles.homeArrow} aria-hidden="true">›</span>
+              </Link>
+              <nav className={styles.subjectLinks} aria-label="Schulfächer">
+                {subjects.map(([title, href, tone]) => (
+                  <Link className={`${styles.subjectLink} ${styles[tone]}`} href={href} key={title}>{title}</Link>
+                ))}
+              </nav>
+            </section>
           </nav>
         </section>
 
