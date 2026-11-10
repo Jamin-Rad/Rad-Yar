@@ -1,16 +1,21 @@
 import { NextResponse } from 'next/server'
 import { hasMobinSession } from '@/lib/mobinAuth'
 import { supabaseAdmin } from '@/lib/supabase/server'
-import { validStudySession } from '@/lib/mobinStudyTime'
+import { normalizeLegacyMathSessions, validStudySession } from '@/lib/mobinStudyTime'
 
 export async function GET() {
   if (!(await hasMobinSession())) return NextResponse.json({ error: 'Nicht eingeloggt' }, { status: 401 })
-  if (!supabaseAdmin) return NextResponse.json({ sessions: [] })
+  if (!supabaseAdmin) return NextResponse.json({ sessions: [], mathSessions: [] })
 
-  const { data, error } = await supabaseAdmin.from('mobin_progress').select('id,data')
-    .like('id', 'study-time:%').order('id', { ascending: false }).limit(2000)
-  if (error) return NextResponse.json({ error: 'Lernzeit konnte nicht geladen werden' }, { status: 500 })
-  return NextResponse.json({ sessions: (data || []).map(row => ({ ...row.data, id: row.id })).filter(validStudySession) })
+  const [studyResult, mathResult] = await Promise.all([
+    supabaseAdmin.from('mobin_progress').select('id,data').like('id', 'study-time:%').order('id', { ascending: false }).limit(2000),
+    supabaseAdmin.from('mobin_progress').select('data').eq('id', 'mobin-math-exam-v1').maybeSingle(),
+  ])
+  if (studyResult.error || mathResult.error) return NextResponse.json({ error: 'Lernzeit konnte nicht geladen werden' }, { status: 500 })
+  return NextResponse.json({
+    sessions: (studyResult.data || []).map(row => ({ ...row.data, id: row.id })).filter(validStudySession),
+    mathSessions: normalizeLegacyMathSessions(mathResult.data?.data),
+  }, { headers: { 'Cache-Control': 'no-store' } })
 }
 
 export async function POST(request) {
