@@ -76,3 +76,11 @@ npm run build
 ```
 
 `supabase/tests/case_archive.sql` tests import idempotency, preservation of the original source and patient linkage, access restrictions and stale revisions in a rolled-back transaction. Browser fixture scripts/screenshots live outside the repository; never use real patient information in preview fixtures.
+
+## Temporary MRI intake
+
+At the top of the archive, “Vorläufig erfassen” offers Mamma, Knie, Schulter and Prostata presets. Each creates a private case with an MRT examination; no image, final diagnosis or Radiopaedia link is required. Original patient details and findings remain editable. Available modalities are selectable separately and searchable with the modality filter. Prostate intake includes optional PSA in ng/ml and the laboratory date; comma decimals are accepted.
+
+The first successful temporary save allocates a permanent, per-owner image number in a database transaction. Number allocation is serialized via a private counter row and protected by a unique index. Client-supplied numbers are ignored. Completion, report edits and subsequent examinations keep the same number. The number appears in table/gallery/detail, can be copied, and is searchable. Use this number as the local image folder name; allocation does not itself create or move local files. Existing unnumbered archive entries and Fallsammlung are not renumbered or modified. “Erfassung” filters temporary/completed cases; older entries count as completed.
+
+Verification: `node --test lib/caseArchive/*.test.mjs`; run `supabase/tests/case_archive_temporary.sql` transactionally to check allocation, preservation, summary/search and counter access. The SQL test rolls back all synthetic data and its counter.
