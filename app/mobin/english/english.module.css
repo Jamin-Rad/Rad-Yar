@@ -40,6 +40,25 @@
   letter-spacing: .1em;
   box-shadow: 5px 5px 0 #c6533d16;
 }
+.overviewUnit { color: #8f4a3d; font-size: 12px; font-weight: 950; letter-spacing: .13em; }
+.categorySection { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; padding-top: 36px; }
+.categoryCard { position: relative; display: flex; flex-direction: column; align-items: flex-start; min-height: 230px; padding: 29px; border: 1px solid #9eafbd; border-radius: 9px; background: #fffdf8; color: #102541; text-align: left; font: inherit; cursor: pointer; box-shadow: 7px 7px 0 #d9e3e4; transition: transform .18s, box-shadow .18s; }
+.categoryCard:hover { transform: translate(-3px, -3px); box-shadow: 10px 10px 0 #c5d9de; border-color: #245ab4; }
+.categoryIndex { color: #b94e3b; font-size: 11px; font-weight: 950; letter-spacing: .14em; }
+.categoryCard strong { margin: 22px 0 10px; font-family: var(--font-display); font-size: clamp(34px, 4vw, 51px); letter-spacing: -.04em; }
+.categoryCard > span:not(.categoryIndex) { max-width: 350px; color: #4e5e72; font-size: 16px; line-height: 1.5; }
+.categoryCard b { position: absolute; right: 27px; bottom: 24px; color: #235cb1; font-size: 26px; }
+.modalBackdrop { position: fixed; z-index: 20; inset: 0; display: grid; place-items: center; padding: 20px; background: #0c1e36a8; backdrop-filter: blur(7px); }
+.dateModal { position: relative; width: min(540px, 100%); padding: clamp(24px, 5vw, 42px); border: 1px solid #b9c7cf; border-radius: 12px; background: #fffdf8; box-shadow: 0 30px 80px #08172d66; }
+.modalClose { position: absolute; top: 15px; right: 18px; width: 35px; height: 35px; border: 0; border-radius: 50%; background: #e8edf0; color: #24384e; font: inherit; font-size: 27px; line-height: 1; cursor: pointer; }
+.modalLabel { color: #b94e3b; font-size: 11px; font-weight: 950; letter-spacing: .15em; }
+.dateModal h2 { margin: 10px 0 26px; font-family: var(--font-display); font-size: clamp(34px, 5vw, 48px); letter-spacing: -.045em; }
+.dateRow { display: flex; align-items: center; gap: 18px; min-height: 100px; padding: 14px; border: 1px solid #b6c4ce; border-radius: 8px; color: #142b47; text-decoration: none; }
+.dateRow:hover { border-color: #255cb4; background: #f1f6fe; }
+.dateBlock { display: grid; place-items: center; width: 72px; height: 71px; flex: none; border-radius: 5px; background: #c4513c; color: white; }
+.dateBlock strong { font-family: var(--font-display); font-size: 35px; line-height: 1; }.dateBlock small { font-size: 10px; font-weight: 950; }
+.dateRow > span:nth-child(2) { display: grid; gap: 6px; }.dateRow > span:nth-child(2) b { font-size: 16px; }.dateRow > span:nth-child(2) small { color: #52657b; font-size: 13px; }
+.dateArrow { margin-left: auto; color: #245ab4; font-size: 24px; }.emptyDates { margin: 0; padding: 22px; border: 1px dashed #aab8c5; border-radius: 8px; color: #52647b; line-height: 1.5; }
 
 .hero {
   position: relative;
@@ -192,6 +211,7 @@
   .testGrid { grid-template-columns: 1fr; }
 }
 @media (max-width: 640px) {
+  .categorySection { grid-template-columns: 1fr; gap: 13px; padding-top: 24px; }.categoryCard { min-height: 180px; padding: 23px; }.categoryCard strong { margin-top: 15px; font-size: 38px; }.categoryCard > span:not(.categoryIndex) { padding-right: 24px; font-size: 14px; }.dateRow { gap: 12px; }.dateRow > span:nth-child(2) b { font-size: 14px; }
   .page, .quizPage { width: min(100% - 24px, 1240px); padding-top: 14px; }
   .topbar { flex-wrap: wrap; }.brand { order: -1; width: 100%; }.dateTicket { font-size: 10px; padding: 9px 11px; }
   .hero { grid-template-columns: 1fr; min-height: 0; }.heroCopy { padding: 30px 0 10px; }.hero h1 { font-size: clamp(68px, 19vw, 106px); }.hero p { font-size: 17px; }.skyline { height: 160px; background-position: center bottom; }

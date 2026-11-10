@@ -2,52 +2,41 @@
 
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
-import { challengeAnswered, challengeComplete, readEnglishHistory } from '@/lib/mobinEnglishProgress'
 import styles from './english.module.css'
 
 export default function EnglishHome() {
-  const [history, setHistory] = useState({})
-  const [ready, setReady] = useState(false)
+  const [open, setOpen] = useState(null)
   useEffect(() => {
-    const refresh = () => { setHistory(readEnglishHistory()); setReady(true) }
-    refresh()
-    window.addEventListener('storage', refresh)
-    window.addEventListener('mobin-english-progress', refresh)
-    return () => { window.removeEventListener('storage', refresh); window.removeEventListener('mobin-english-progress', refresh) }
-  }, [])
-
-  const answered = challengeAnswered(history)
-  const unlocked = challengeComplete(history)
-  const percent = answered / 30 * 100
+    if (!open) return undefined
+    const closeOnEscape = event => { if (event.key === 'Escape') setOpen(null) }
+    window.addEventListener('keydown', closeOnEscape)
+    return () => window.removeEventListener('keydown', closeOnEscape)
+  }, [open])
 
   return <main className={styles.shell}>
     <div className={styles.page}>
-      <nav className={styles.topbar} aria-label="Navigation"><Link href="/mobin" className={styles.backLink}>← Mobin</Link><span className={styles.brand}>M<span>.</span> Mobin</span><span className={styles.dateTicket}>TEST · 11. NOVEMBER 2026</span></nav>
+      <nav className={styles.topbar} aria-label="Navigation"><Link href="/mobin" className={styles.backLink}>← Mobin</Link><span className={styles.brand}>M<span>.</span> Mobin</span><span className={styles.overviewUnit}>ENGLISH · KLASSE 6</span></nav>
       <header className={styles.hero}>
-        <div className={styles.heroCopy}><h1>English<span>.</span></h1><p>Erst die Wörter meistern. Dann zeigst du in zwei Probetests, was du kannst.</p></div>
+        <div className={styles.heroCopy}><h1>English<span>.</span></h1><p>Wähle aus, wofür du lernen möchtest.</p></div>
         <div className={styles.skyline} aria-hidden="true" />
       </header>
-
-      <section className={styles.path} aria-label="Dein Lernweg">
-        <article className={styles.trainingCard}>
-          <div className={styles.stageNumber}>01</div>
-          <div className={styles.trainingCopy}><span className={styles.stageLabel}>DEIN ERSTER SCHRITT</span><h2>Worttraining</h2><p>30 Fragen zu Bedeutung und Rechtschreibung. Nach jeder Antwort siehst du sofort die Lösung.</p></div>
-          <div className={styles.trainingAction}><div className={styles.progressCircle} style={{ '--progress': `${percent}%` }} role="progressbar" aria-label="Worttraining" aria-valuenow={answered} aria-valuemin={0} aria-valuemax={30}><strong>{ready ? answered : '–'}<span>/30</span></strong></div><Link className={styles.actionLink} href="/mobin/english/vokabeltest?mode=word-challenge">{unlocked ? 'Noch einmal üben' : answered > 0 ? 'Training fortsetzen' : '30 Fragen üben'} <span aria-hidden="true">→</span></Link></div>
-        </article>
-
-        <div className={styles.stageTwoHead}><span className={styles.stageNumberSmall}>02</span><div><h2>Probetests</h2><p>{unlocked ? 'Wähle einen Test und schreibe die Antworten selbst.' : 'Nach den 30 Trainingsfragen werden beide Tests freigeschaltet.'}</p></div></div>
-        <div className={styles.testGrid}>
-          {['a', 'b'].map(letter => {
-            const id = `probe-${letter}`
-            const test = history[id]
-            return <article className={`${styles.testCard} ${!unlocked ? styles.testLocked : ''}`} key={id}>
-              <div className={styles.testIcon} aria-hidden="true">{unlocked ? '✎' : '⌁'}</div>
-              <div><h3>Probetest {letter.toUpperCase()}</h3><p>10 Aufgaben · Übersetzen, Lückensätze und Verbformen</p>{test?.date && <small>Zuletzt {test.last}/10 richtig</small>}</div>
-              {unlocked ? <Link href={`/mobin/english/vokabeltest?mode=${id}`} className={styles.testAction} aria-label={`Probetest ${letter.toUpperCase()} starten`}>→</Link> : <span className={styles.lockLabel}>Nach Schritt 01</span>}
-            </article>
-          })}
-        </div>
+      <section className={styles.categorySection} aria-label="Englisch lernen">
+        <button type="button" className={styles.categoryCard} onClick={() => setOpen('vocabulary')}>
+          <span className={styles.categoryIndex}>01 / WÖRTER</span><strong>Vokabeltest</strong><span>Wörter üben, Schreibweise prüfen und Probetests schreiben.</span><b aria-hidden="true">→</b>
+        </button>
+        <button type="button" className={styles.categoryCard} onClick={() => setOpen('classwork')}>
+          <span className={styles.categoryIndex}>02 / UNTERRICHT</span><strong>Klassenarbeit</strong><span>Bereite dich auf die nächste Englischarbeit vor.</span><b aria-hidden="true">→</b>
+        </button>
       </section>
     </div>
+    {open && <div className={styles.modalBackdrop} onMouseDown={event => { if (event.target === event.currentTarget) setOpen(null) }}>
+      <div className={styles.dateModal} role="dialog" aria-modal="true" aria-labelledby="english-dates-title">
+        <button type="button" className={styles.modalClose} onClick={() => setOpen(null)} aria-label="Schließen">×</button>
+        <span className={styles.modalLabel}>{open === 'vocabulary' ? 'VOKABELTESTS' : 'KLASSENARBEITEN'}</span>
+        <h2 id="english-dates-title">{open === 'vocabulary' ? 'Wähle deinen Test.' : 'Termine'}</h2>
+        {open === 'vocabulary' ? <Link className={styles.dateRow} href="/mobin/english/vokabeltest/11-november"><span className={styles.dateBlock}><strong>11</strong><small>NOV 2026</small></span><span><b>Vokabeltest · Unit 2 London</b><small>30 Übungen und zwei Probetests</small></span><span className={styles.dateArrow} aria-hidden="true">→</span></Link>
+          : <p className={styles.emptyDates}>Für die nächste Klassenarbeit ist noch kein Termin eingetragen.</p>}
+      </div>
+    </div>}
   </main>
 }

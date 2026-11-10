@@ -36,7 +36,8 @@ export default function StudyTimeTracker() {
         day = today
         session = { id: `study-time:${day}:${crypto.randomUUID()}`, day, section, seconds: 0 }
       }
-      if (visible && now - lastActivity <= 120000) {
+      // Reading a question is study time too; a short pause should not stop the clock.
+      if (visible && now - lastActivity <= 600000) {
         const seconds = Math.min(5, Math.floor((now - previous) / 1000))
         if (seconds > 0) { session.seconds += seconds; dirty = true }
       }

@@ -55,12 +55,10 @@ export default function MobinPage() {
 
         <section className={styles.main}>
           <div className={styles.hero}>
-            <span className={styles.eyebrow}>Milchstraße und Andromeda</span>
             <h1 className={styles.title}>Mobin</h1>
-            <p className={styles.lead}>
-              Dein Platz im Universum für Ziele, Routinen und sichtbaren Fortschritt.
-            </p>
           </div>
+
+          <MobinStudyDashboard />
 
           <nav className={`${styles.buttonField} ${styles.homePages}`} aria-label="Mobin Seiten">
             {pages.map((page) => (
@@ -76,7 +74,6 @@ export default function MobinPage() {
               </Link>
             ))}
           </nav>
-          <MobinStudyDashboard />
         </section>
 
         <footer className={styles.footer}>Für Mobin gemacht.</footer>

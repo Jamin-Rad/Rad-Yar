@@ -90,7 +90,7 @@ export default function VokabeltestClient({ requestedMode }) {
 
   return <main className={styles.shell}>
     <div className={styles.quizPage}>
-      <nav className={styles.quizNav}><Link href="/mobin/english">← English</Link><span>Unit 2 · London</span></nav>
+      <nav className={styles.quizNav}><Link href="/mobin/english/vokabeltest/11-november">← Vokabeltest</Link><span>Unit 2 · London</span></nav>
       {!ready ? <div className={styles.loading}>Training wird geladen …</div> : null}
 
       {ready && !mode && unlocked ? <section className={styles.chooseTests}>
@@ -116,7 +116,7 @@ export default function VokabeltestClient({ requestedMode }) {
       {ready && finished ? <section className={styles.resultPanel}>
         <span className={styles.successStamp}>RUNDE ABGESCHLOSSEN</span><div className={styles.resultScore}>{score}<span> / {questions.length}</span></div>
         <h1>{isMcq && !reviewOnly ? 'Die Probetests sind frei.' : 'Gut gemacht!'}</h1><p>{score} von {questions.length} richtig. {history[mode]?.missedIds?.length ? 'Deine Fehler kannst du jederzeit wiederholen.' : 'Du hast alles richtig gelöst.'}</p>
-        <div className={styles.resultActions}>{isMcq ? <button className={styles.actionLink} type="button" onClick={() => setMode(null)}>Zu den Probetests <span aria-hidden="true">→</span></button> : <button className={styles.actionLink} type="button" onClick={() => openMode(mode === 'probe-a' ? 'probe-b' : 'probe-a')}>{mode === 'probe-a' ? 'Probetest B starten' : 'Probetest A starten'} <span aria-hidden="true">→</span></button>}<Link href="/mobin/english" className={styles.textButton}>Zur Übersicht</Link></div>
+        <div className={styles.resultActions}>{isMcq ? <button className={styles.actionLink} type="button" onClick={() => setMode(null)}>Zu den Probetests <span aria-hidden="true">→</span></button> : <button className={styles.actionLink} type="button" onClick={() => openMode(mode === 'probe-a' ? 'probe-b' : 'probe-a')}>{mode === 'probe-a' ? 'Probetest B starten' : 'Probetest A starten'} <span aria-hidden="true">→</span></button>}<Link href="/mobin/english/vokabeltest/11-november" className={styles.textButton}>Zur Übersicht</Link></div>
       </section> : null}
     </div>
   </main>

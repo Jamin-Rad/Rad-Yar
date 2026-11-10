@@ -4,7 +4,7 @@ import EnglishHome from './EnglishHome'
 
 export const metadata = {
   title: 'English | Mobin',
-  description: 'Worttraining und Probetests für den Vokabeltest am 11. November.',
+  description: 'Vokabeltests und Klassenarbeiten für Mobin.',
   robots: { index: false, follow: false },
 }
 
