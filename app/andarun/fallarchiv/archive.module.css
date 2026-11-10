@@ -27,3 +27,4 @@
 .numberPanel strong { display: block; font-size: 36px; font-variant-numeric: tabular-nums; }
 .numberPanel p { line-height: 1.6; }
 @media (max-width: 600px) { .quickIntake { padding: 18px; } .quickButtons { display: grid; grid-template-columns: 1fr 1fr; } }
+.numberHelp { font-size: 13px; color: #53645b; line-height: 1.6; align-self: center; margin: 0; }

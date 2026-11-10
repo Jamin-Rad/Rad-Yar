@@ -7,7 +7,7 @@ begin
   values ('synthetic-intake-test','one','{"intakeStatus":"temporary","intakeArea":"Prostata","archiveNumber":999,"psa":{"value":"5.2","date":"2026-11-10"}}','{}')
   returning archive_number into first_num;
   insert into public.andarun_case_archive(owner_id,id,document,summary)
-  values ('synthetic-intake-test','two','{"intakeStatus":"temporary"}','{}')
+  values ('synthetic-intake-test','two','{"intakeStatus":"temporary","intakeArea":"Prostata"}','{}')
   returning archive_number into second_num;
   if first_num <> 1 or second_num <> 2 then raise exception 'Numbers must start at 1 and increase'; end if;
   update public.andarun_case_archive set document = document || '{"intakeStatus":"complete","archiveNumber":999}', archive_number = 999
