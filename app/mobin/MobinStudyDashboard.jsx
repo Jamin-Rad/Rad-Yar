@@ -66,7 +66,7 @@ export default function MobinStudyDashboard() {
 
   return <section className={styles.panel} aria-labelledby="study-dashboard-title">
     <div className={styles.header}>
-      <div className={styles.heading}><span className={styles.calendarIcon} aria-hidden="true"><svg viewBox="0 0 48 48" fill="none"><rect x="7" y="10" width="34" height="31" rx="5" stroke="currentColor" strokeWidth="2.5"/><path d="M7 19h34M16 6v8M32 6v8M16 27h6m-6 7h6m5-7h6" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"/></svg></span><div><h2 id="study-dashboard-title">Deine tägliche Lernzeit</h2><p>So viel hast du in den letzten {range === 'all' ? 'Tagen' : `${range} Tagen`} gelernt.</p></div></div>
+      <div className={styles.heading}><span className={styles.calendarIcon} aria-hidden="true"><svg viewBox="0 0 48 48" fill="none"><rect x="7" y="10" width="34" height="31" rx="5" stroke="currentColor" strokeWidth="2.5"/><path d="M7 19h34M16 6v8M32 6v8M16 27h6m-6 7h6m5-7h6" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"/></svg></span><div><h2 id="study-dashboard-title">Kalender</h2><p>So viel hast du in den letzten {range === 'all' ? 'Tagen' : `${range} Tagen`} gelernt.</p></div></div>
       <div className={styles.rangeButtons} aria-label="Zeitraum wählen">{[14, 30, 'all'].map(value => <button type="button" key={value} onClick={() => setRange(value)} className={range === value ? styles.rangeActive : ''} aria-pressed={range === value}>{value === 'all' ? 'Alle' : `${value} Tage`}</button>)}</div>
     </div>
     <div className={styles.overview}>

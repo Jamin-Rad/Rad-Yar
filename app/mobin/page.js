@@ -17,7 +17,7 @@ const pages = [
   },
   {
     href: '/mobin/mathepruefung',
-    title: 'Matheprüfung',
+    title: 'Mathe',
     iconPosition: '66.666667%',
     tone: 'mathCard',
   },
