@@ -1,0 +1,12 @@
+Jaminova Kalender 0.2.0 (2)
+
+Mit dem bestehenden Jaminova-Webpasswort anmelden — auf iPhone und iPad dasselbe Passwort verwenden.
+
+• Dauerhafte, geschützte Speicherung auf dem Gerät.
+• Gemeinsame Termine mit Webkalender und bestehendem ChatGPT-Zugang.
+• Offline Änderungen erfassen; automatischer Abgleich beim Öffnen und während der Nutzung.
+• Konflikte vergleichen, statt Änderungen unbemerkt zu überschreiben.
+• Ganztägige und mehrtägige Termine, Absagen und Wiederöffnen.
+
+Profil: Synchronisierungsstatus, ausstehende Änderungen und „Jetzt synchronisieren“.
+Die App benötigt für den Abgleich eine Internetverbindung und muss geöffnet sein. Noch keine Push-Erinnerungen.

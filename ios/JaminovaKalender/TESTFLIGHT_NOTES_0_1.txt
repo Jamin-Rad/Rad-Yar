@@ -1,0 +1,5 @@
+Jaminova Kalender 0.1.0 (1) — private Designvorschau
+
+Bitte auf iPhone und iPad testen: Tagesansicht, Wochenansicht mit Details, Monatsnavigation sowie Termine anlegen und bearbeiten.
+
+Wichtig: Diese Version enthält ausschließlich Beispieldaten für 9.–15. November 2026. Änderungen werden nur im Arbeitsspeicher gehalten und gehen beim Beenden verloren. Keine Verbindung zur Website und keine echten Erinnerungen. Bitte keine echten Termine eintragen.
