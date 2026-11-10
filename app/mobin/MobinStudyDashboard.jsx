@@ -61,12 +61,12 @@ export default function MobinStudyDashboard() {
   const totals = studySummary(sessions, days.map(day => day.key), mathSessions)
   const today = totals[todayKey]?.total || 0
   const period = Object.values(totals).reduce((sum, day) => sum + day.total, 0)
-  const max = Math.max(60, ...Object.values(totals).map(day => day.total))
+  const max = Math.ceil(Math.max(240, ...Object.values(totals).map(day => day.total)) / 240) * 240
   const sections = SECTION_ORDER.map(key => ({ key, name: STUDY_SECTIONS[key], seconds: Object.values(totals).reduce((sum, day) => sum + day.sections[key], 0) }))
 
   return <section className={styles.panel} aria-labelledby="study-dashboard-title">
     <div className={styles.header}>
-      <div><h2 id="study-dashboard-title">Deine tägliche Lernzeit</h2><p>Alle Lernbereiche, Tag für Tag.</p></div>
+      <div className={styles.heading}><span className={styles.calendarIcon} aria-hidden="true"><svg viewBox="0 0 48 48" fill="none"><rect x="7" y="10" width="34" height="31" rx="5" stroke="currentColor" strokeWidth="2.5"/><path d="M7 19h34M16 6v8M32 6v8M16 27h6m-6 7h6m5-7h6" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"/></svg></span><div><h2 id="study-dashboard-title">Deine tägliche Lernzeit</h2><p>So viel hast du in den letzten {range === 'all' ? 'Tagen' : `${range} Tagen`} gelernt.</p></div></div>
       <div className={styles.rangeButtons} aria-label="Zeitraum wählen">{[14, 30, 'all'].map(value => <button type="button" key={value} onClick={() => setRange(value)} className={range === value ? styles.rangeActive : ''} aria-pressed={range === value}>{value === 'all' ? 'Alle' : `${value} Tage`}</button>)}</div>
     </div>
     <div className={styles.overview}>
@@ -74,6 +74,7 @@ export default function MobinStudyDashboard() {
       <div className={styles.legend}>{sections.map(item => <div className={styles.legendItem} key={item.key}><i className={styles[item.key]} /><span>{item.name}</span><strong>{duration(item.seconds)}</strong></div>)}</div>
     </div>
     <div className={styles.chartScroll}><div className={styles.chart} style={{ '--day-count': count }} role="img" aria-label={`Lernzeit der letzten ${count} Tage: ${days.map(day => `${DATE_LABEL.format(day.date)} ${duration(totals[day.key]?.total || 0)}`).join(', ')}`}>
+      <div className={styles.axis}>{[1, .75, .5, .25, 0].map(fraction => <span key={fraction}>{Math.round(max * fraction / 60)} Min.</span>)}</div>
       <div className={styles.plot}>
         {days.map(day => {
           const data = totals[day.key]

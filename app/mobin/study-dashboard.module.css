@@ -8,6 +8,9 @@
   backdrop-filter: blur(20px);
 }
 .header { display: flex; align-items: start; justify-content: space-between; gap: 20px; }
+.heading { display: flex; align-items: center; gap: 19px; }
+.calendarIcon { display: grid; place-items: center; width: 62px; height: 62px; flex: none; border: 1px solid #84b7ff87; border-radius: 15px; background: linear-gradient(145deg, #386fc58c, #18315f); color: #bfe4ff; box-shadow: 0 7px 24px #4590e14a; }
+.calendarIcon svg { width: 37px; height: 37px; filter: drop-shadow(0 0 5px #5fb6ff); }
 .header h2 { margin: 0; font-family: var(--font-display); font-size: clamp(26px, 3vw, 37px); letter-spacing: -.035em; }
 .header p { margin: 5px 0 0; color: #bfd2e9; font-size: 14px; }
 .rangeButtons { display: flex; flex: none; padding: 4px; border: 1px solid #8eb5e454; border-radius: 12px; background: #071832a8; }
@@ -25,15 +28,17 @@
 .legendItem strong { grid-column: 2; margin-top: 5px; color: #bdcde4; font-size: 14px; font-weight: 750; }
 .english { background: #61bdff; }.kangaroo { background: #f8c65d; }.math { background: #b590f6; }.preparation { background: #70ddb1; }
 .chartScroll { overflow-x: auto; scrollbar-color: #679ce0 #0b1d3e; }
-.chart { min-width: max(100%, calc(var(--day-count) * 59px)); padding: 10px 0 2px; }
-.plot { display: grid; grid-template-columns: repeat(var(--day-count), minmax(0, 1fr)); gap: 6px; }
-.day { display: flex; flex-direction: column; align-items: center; min-width: 0; text-align: center; }
+.chart { display: grid; grid-template-columns: 54px minmax(0, 1fr); gap: 10px; min-width: max(100%, calc(var(--day-count) * 59px)); padding: 10px 0 2px; }
+.axis { display: flex; flex-direction: column; justify-content: space-between; align-items: flex-end; height: 172px; margin-top: 24px; padding-bottom: 1px; color: #b7cee9; font-size: 11px; white-space: nowrap; }
+.plot { position: relative; display: grid; grid-template-columns: repeat(var(--day-count), minmax(0, 1fr)); gap: 6px; }
+.plot::before { content: ""; position: absolute; inset: 24px 0 auto; height: 172px; background: repeating-linear-gradient(to top, #a8c5ea50 0 1px, transparent 1px 25%); border-top: 1px solid #a8c5ea50; pointer-events: none; }
+.day { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; min-width: 0; text-align: center; }
 .dayValue { display: block; height: 24px; color: #e9f4ff; font-size: 10px; font-weight: 850; white-space: nowrap; }
-.barTrack { display: flex; flex-direction: column-reverse; width: 100%; height: 172px; align-items: center; justify-content: flex-start; background: repeating-linear-gradient(to top, #9fbbdf29 0 1px, transparent 1px 25%); border-bottom: 1px solid #b3c9e777; }
+.barTrack { display: flex; flex-direction: column-reverse; width: 100%; height: 172px; align-items: center; justify-content: flex-start; border-bottom: 1px solid #b3c9e777; }
 .segment { display: block; width: min(34px, 74%); flex: none; min-height: 0; }
 .segment:first-child { border-radius: 0 0 3px 3px; }.segment:last-child:not([style*="height: 0%"]) { border-radius: 4px 4px 0 0; }
 .dayName { margin-top: 9px; color: #e5effd; font-size: 12px; font-weight: 850; }.dayDate { margin-top: 2px; color: #aebed6; font-size: 11px; }
 .todayDay .dayDate { padding: 2px 6px; border-radius: 5px; background: #448ce365; color: white; }
 .footnote { margin: 16px 0 0; color: #aebfd5; font-size: 11px; line-height: 1.5; }
 @media (max-width: 850px) { .overview { grid-template-columns: 1fr; }.legend { min-height: 86px; } }
-@media (max-width: 640px) { .panel { padding: 20px 16px; border-radius: 19px; }.header { flex-direction: column; }.rangeButtons { width: 100%; }.rangeButtons button { flex: 1; }.legend { grid-template-columns: repeat(2, 1fr); row-gap: 16px; }.todayCard { min-height: 100px; }.barTrack { height: 145px; } }
+@media (max-width: 640px) { .panel { padding: 20px 16px; border-radius: 19px; }.header { flex-direction: column; }.heading { gap: 12px; }.calendarIcon { width: 46px; height: 46px; border-radius: 11px; }.calendarIcon svg { width: 29px; height: 29px; }.rangeButtons { width: 100%; }.rangeButtons button { flex: 1; }.legend { grid-template-columns: repeat(2, 1fr); row-gap: 16px; }.todayCard { min-height: 100px; }.barTrack, .axis, .plot::before { height: 145px; } }

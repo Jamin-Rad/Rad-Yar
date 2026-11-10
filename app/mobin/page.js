@@ -6,31 +6,26 @@ const pages = [
   {
     href: '/mobin/kaenguru',
     title: 'Känguru',
-    meta: 'Mathe üben, auf Aufgaben schreiben & deine Lernserie wachsen lassen',
-    tilt: '2deg',
-    speed: '7.2s',
+    icon: '🦘',
+    tone: 'kangarooCard',
   },
   {
     href: '/mobin/tagesplan',
     title: 'Tagesplan',
-    meta: 'Ziele planen, eintragen & auswerten',
-    tilt: '-2.5deg',
-    speed: '6.8s',
+    icon: '▣',
+    tone: 'planCard',
   },
   {
     href: '/mobin/mathepruefung',
     title: 'Matheprüfung',
-    meta: 'Klasse 6 · Üben, testen & Fehler verstehen',
-    tilt: '1.5deg',
-    speed: '7.6s',
+    icon: '▦',
+    tone: 'mathCard',
   },
   {
     href: '/mobin/english',
     title: 'English',
-    meta: 'Vokabeltest am 11. November · Unit 2 London',
-    tilt: '-1.5deg',
-    speed: '7s',
-    featured: true,
+    icon: '🇬🇧',
+    tone: 'englishCard',
   },
 ]
 
@@ -42,19 +37,9 @@ export const metadata = {
 export default function MobinPage() {
   return (
     <main className={styles.shell}>
-      <div className={styles.wrap}>
-        <header className={styles.topbar}>
-          <Link className={styles.brand} href="/mobin" aria-label="Mobin Startseite">
-            <span className={styles.mark}>M</span>
-            <span className={styles.brandText}>
-              <span className={styles.brandName}>Mobin</span>
-              <span className={styles.brandSub}>Privates Sternenbuch</span>
-            </span>
-          </Link>
-        </header>
-
-        <section className={styles.main}>
-          <div className={styles.hero}>
+      <div className={`${styles.wrap} ${styles.homeWrap}`}>
+        <section className={`${styles.main} ${styles.homeMain}`}>
+          <div className={`${styles.hero} ${styles.homeHero}`}>
             <h1 className={styles.title}>Mobin</h1>
           </div>
 
@@ -63,14 +48,13 @@ export default function MobinPage() {
           <nav className={`${styles.buttonField} ${styles.homePages}`} aria-label="Mobin Seiten">
             {pages.map((page) => (
               <Link
-                className={`${styles.glassButton} ${page.featured ? styles.englishButton : ''}`}
+                className={`${styles.homeCard} ${styles[page.tone]}`}
                 href={page.href}
                 key={page.href}
-                style={{ '--tilt': page.tilt, '--speed': page.speed }}
               >
+                <span className={styles.homeIcon} aria-hidden="true">{page.icon}</span>
                 <span className={styles.buttonTitle}>{page.title}</span>
-                {page.featured && <span className={styles.examTag}>11 NOV · VOKABELTEST</span>}
-                <span className={styles.buttonMeta}>{page.meta}</span>
+                <span className={styles.homeArrow} aria-hidden="true">›</span>
               </Link>
             ))}
           </nav>
