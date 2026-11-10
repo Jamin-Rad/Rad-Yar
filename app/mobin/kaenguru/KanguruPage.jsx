@@ -369,7 +369,7 @@ function DailyStreak({ progress }) {
 function JourneyMap({ progressPercent }) {
   return (
     <div className={styles.map} aria-label={`Fortschritt: ${progressPercent} Prozent`}>
-      <Image className={styles.mascot} src="/kanguru/kangaroo-explorer.png" alt="Känguru mit Rucksack und Karte" width={1024} height={1536} priority />
+      <Image data-no-zoom draggable={false} className={styles.mascot} src="/kanguru/kangaroo-explorer.png" alt="Känguru mit Rucksack und Karte" width={1024} height={1536} priority />
       <div className={`${styles.mapMarker} ${styles.markerStart}`}><b>Start</b><span /></div>
       <div className={`${styles.mapMarker} ${styles.markerMiddle}`}><b>Unterwegs</b><span /></div>
       <div className={`${styles.mapMarker} ${styles.markerFinish}`}><b>Geschafft</b><span /></div>
@@ -780,7 +780,7 @@ export default function KanguruPage() {
       </header>
 
       <section className={styles.journeyStage}>
-        <Image className={styles.journeyBackdrop} src="/kanguru/journey-landscape-v2.png" alt="" fill sizes="100vw" priority />
+        <Image data-no-zoom draggable={false} aria-hidden="true" className={styles.journeyBackdrop} src="/kanguru/journey-landscape-v2.png" alt="" fill sizes="100vw" priority />
         <div className={styles.hero}>
           <div className={styles.titleBlock}>
             <h1>Dein Känguru-Weg</h1>

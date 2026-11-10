@@ -20,11 +20,11 @@ export default function EnglishTestPrep() {
   const unlocked = challengeComplete(history)
   const percent = answered / 30 * 100
 
-  return <main className={styles.shell}>
+  return <main className={`${styles.shell} ${styles.prepShell}`}>
     <div className={styles.page}>
       <nav className={styles.topbar} aria-label="Navigation"><Link href="/mobin/english" className={styles.backLink}>← English</Link><span className={styles.brand}>M<span>.</span> Mobin</span><span className={styles.dateTicket}>TEST · 11. NOVEMBER 2026</span></nav>
       <header className={styles.hero}>
-        <div className={styles.heroCopy}><h1>English<span>.</span></h1><p>Erst die Wörter meistern. Dann zeigst du in zwei Probetests, was du kannst.</p></div>
+        <div className={styles.heroCopy}><span className={styles.heroEyebrow}>UNIT 2 · LONDON</span><h1>Vokabeltest<span>.</span></h1><p>Erst die Wörter meistern. Dann zeigst du in zwei Probetests, was du kannst.</p></div>
         <div className={styles.skyline} aria-hidden="true" />
       </header>
 
@@ -41,7 +41,7 @@ export default function EnglishTestPrep() {
             const id = `probe-${letter}`
             const test = history[id]
             return <article className={`${styles.testCard} ${!unlocked ? styles.testLocked : ''}`} key={id}>
-              <div className={styles.testIcon} aria-hidden="true">{unlocked ? '✎' : '⌁'}</div>
+              <div className={styles.testIcon} aria-hidden="true">{letter.toUpperCase()}</div>
               <div><h3>Probetest {letter.toUpperCase()}</h3><p>10 Aufgaben · Übersetzen, Lückensätze und Verbformen</p>{test?.date && <small>Zuletzt {test.last}/10 richtig</small>}</div>
               {unlocked ? <Link href={`/mobin/english/vokabeltest?mode=${id}`} className={styles.testAction} aria-label={`Probetest ${letter.toUpperCase()} starten`}>→</Link> : <span className={styles.lockLabel}>Nach Schritt 01</span>}
             </article>
