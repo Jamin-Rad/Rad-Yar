@@ -1,9 +1,11 @@
 'use client'
 
 import Link from 'next/link'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { MOCK_TESTS, WORD_CHALLENGE, isTypedAnswerCorrect } from '@/lib/mobinEnglish'
 import { canOpenEnglishMode, challengeComplete, englishRunPosition, readEnglishHistory, saveEnglishHistory } from '@/lib/mobinEnglishProgress'
+import { loadEnglishHistory, syncEnglishHistory } from '@/lib/mobinEnglishOnline'
+import { stampEnglishHistory } from '@/lib/mobinEnglishSync'
 import styles from '../english.module.css'
 
 const TESTS = [
@@ -14,11 +16,35 @@ const TESTS = [
 export default function VokabeltestClient({ requestedMode }) {
   const [history, setHistory] = useState({})
   const [ready, setReady] = useState(false)
-  const [saveFailed, setSaveFailed] = useState(false)
+  const [saveStatus, setSaveStatus] = useState('loading')
+  const saveVersion = useRef(0)
 
-  function persist(updated) {
-    setHistory(updated)
-    setSaveFailed(!saveEnglishHistory(updated))
+  function restoreRun(saved, currentMode) {
+    const run = saved[currentMode]?.run
+    if (!run) return
+    const position = englishRunPosition(run)
+    setResults(position.results)
+    setIndex(position.index)
+    setFeedback(position.feedback)
+    setReviewOnly(Boolean(run.reviewOnly))
+    setReviewQuestionIds(run.questionIds || [])
+  }
+
+  async function persist(updated, currentMode = mode) {
+    const version = ++saveVersion.current
+    const stamped = stampEnglishHistory(history, updated)
+    setHistory(stamped)
+    const localSaved = saveEnglishHistory(stamped)
+    setSaveStatus('saving')
+    try {
+      const synced = await syncEnglishHistory(stamped)
+      if (version !== saveVersion.current) return
+      setHistory(synced)
+      restoreRun(synced, currentMode)
+      setSaveStatus('synced')
+    } catch {
+      if (version === saveVersion.current) setSaveStatus(localSaved ? 'offline' : 'error')
+    }
   }
   const [mode, setMode] = useState(null)
   const [index, setIndex] = useState(0)
@@ -29,7 +55,7 @@ export default function VokabeltestClient({ requestedMode }) {
   const [reviewQuestionIds, setReviewQuestionIds] = useState([])
 
   function openMode(nextMode, onlyMissed = false, saved = history, restart = false) {
-    if (!canOpenEnglishMode(nextMode, saved)) return
+    if (saveStatus === 'saving' || !canOpenEnglishMode(nextMode, saved)) return
     const savedRun = onlyMissed || restart ? null : saved[nextMode]?.run
     const restored = englishRunPosition(savedRun)
     const resumingReview = onlyMissed || Boolean(savedRun?.reviewOnly)
@@ -42,19 +68,34 @@ export default function VokabeltestClient({ requestedMode }) {
     setTypedAnswer(restored.feedback?.chosen || '')
     setFeedback(restored.feedback)
     if (onlyMissed || restart) {
-      persist({ ...saved, [nextMode]: { ...saved[nextMode], run: { results: [], index: 0, ...(resumingReview ? { reviewOnly: true, questionIds: ids } : {}) } } })
+      persist({ ...saved, [nextMode]: { ...saved[nextMode], run: { id: crypto.randomUUID(), startedAt: new Date().toISOString(), results: [], index: 0, ...(resumingReview ? { reviewOnly: true, questionIds: ids } : {}) } } }, nextMode)
     }
   }
 
   useEffect(() => {
-    const saved = readEnglishHistory()
-    setHistory(saved)
-    const next = !challengeComplete(saved) ? 'word-challenge' : ['word-challenge', 'probe-a', 'probe-b'].includes(requestedMode) ? requestedMode : null
-    if (next) openMode(next, false, saved)
-    setReady(true)
-    // The requested route determines the initial lesson; later mode changes stay in client state.
+    let disposed = false
+    setReady(false)
+    setSaveStatus('loading')
+    const initialize = (saved, status) => {
+      if (disposed) return
+      setHistory(saved)
+      const next = !challengeComplete(saved) ? 'word-challenge' : ['word-challenge', 'probe-a', 'probe-b'].includes(requestedMode) ? requestedMode : null
+      if (next) openMode(next, false, saved)
+      setSaveStatus(status)
+      setReady(true)
+    }
+    loadEnglishHistory().then(saved => initialize(saved, 'synced')).catch(() => initialize(readEnglishHistory(), 'offline'))
+    return () => { disposed = true }
+    // Initial restoration must wait for the server before opening a question.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [requestedMode])
+
+  useEffect(() => {
+    const retry = () => { if (ready && saveStatus !== 'saving') persist(history) }
+    window.addEventListener('online', retry)
+    return () => window.removeEventListener('online', retry)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [ready, saveStatus, history])
 
   const allQuestions = mode === 'word-challenge' ? WORD_CHALLENGE : MOCK_TESTS.find(test => test.id === mode)?.questions || []
   const reviewIds = new Set(reviewQuestionIds)
@@ -72,7 +113,7 @@ export default function VokabeltestClient({ requestedMode }) {
     const nextResults = [...results, result]
     const completeNow = nextResults.length === questions.length
     const previous = history[mode] || {}
-    let entry = { ...previous, run: { results: nextResults, index, ...(reviewOnly ? { reviewOnly: true, questionIds: reviewQuestionIds } : {}) } }
+    let entry = { ...previous, run: { ...previous.run, results: nextResults, index, ...(reviewOnly ? { reviewOnly: true, questionIds: reviewQuestionIds } : {}) } }
     if (completeNow) {
       const missed = new Set(reviewOnly ? previous.missedIds || [] : [])
       nextResults.forEach(item => item.correct ? missed.delete(item.id) : missed.add(item.id))
@@ -82,7 +123,7 @@ export default function VokabeltestClient({ requestedMode }) {
         completed: previous.completed || mode === 'word-challenge' && !reviewOnly,
         missedIds: [...missed],
       }
-      entry.run = { results: nextResults, index, ...(reviewOnly ? { reviewOnly: true, questionIds: reviewQuestionIds } : {}) }
+      entry.run = { ...previous.run, results: nextResults, index, ...(reviewOnly ? { reviewOnly: true, questionIds: reviewQuestionIds } : {}) }
     }
     const updated = { ...history, [mode]: entry }
     persist(updated)
@@ -112,7 +153,7 @@ export default function VokabeltestClient({ requestedMode }) {
         {history['word-challenge']?.missedIds?.length > 0 && <button type="button" className={styles.textButton} onClick={() => openMode('word-challenge', true)}>Fehler wiederholen ({history['word-challenge'].missedIds.length})</button>}
       </section> : null}
 
-      {ready && mode ? <p className={styles.saveNotice} role="status">{saveFailed ? 'Speichern nicht möglich. Bitte lasse diese Seite geöffnet.' : `${results.length} Antworten gespeichert · Du kannst jederzeit auf diesem Gerät weiterlernen.`}{saveFailed && <button type="button" className={styles.textButton} onClick={() => persist(history)}>Erneut speichern</button>}</p> : null}
+      {ready ? <p className={styles.saveNotice} role="status">{saveStatus === 'synced' ? `${results.length} Antworten · Online gespeichert. Auf jedem Gerät fortsetzen.` : saveStatus === 'saving' ? 'Wird online gespeichert …' : saveStatus === 'error' ? 'Speichern nicht möglich. Bitte lasse diese Seite geöffnet.' : 'Nur auf diesem Gerät gespeichert. Internetverbindung prüfen und online synchronisieren.'}{['offline', 'error'].includes(saveStatus) && <button type="button" className={styles.textButton} onClick={() => persist(history)}>Erneut synchronisieren</button>}</p> : null}
       {ready && mode && !finished && question ? <section className={styles.quizPanel}>
         <div className={styles.quizTop}><span>{reviewOnly ? 'FEHLERTRAINING' : isMcq ? '01 / WORTTRAINING' : `02 / ${TESTS.find(test => test.id === mode)?.title.toUpperCase()}`}</span><span>{index + 1} / {questions.length}</span></div>
         <div className={styles.progressRail}><span style={{ width: `${((index + (feedback ? 1 : 0)) / questions.length) * 100}%` }} /></div>
@@ -121,7 +162,7 @@ export default function VokabeltestClient({ requestedMode }) {
         {isMcq ? <div className={styles.optionGrid}>{question.options.map((option, optionIndex) => <button type="button" key={optionIndex} disabled={!!feedback} onClick={() => recordAnswer(optionIndex)} className={`${styles.optionButton} ${feedback && optionIndex === question.correct ? styles.correctOption : ''} ${feedback && optionIndex === feedback.chosen && !feedback.correct ? styles.wrongOption : ''}`}><span>{'ABCD'[optionIndex]}</span>{option}</button>)}</div>
           : <form onSubmit={event => { event.preventDefault(); recordAnswer(typedAnswer) }} className={styles.answerForm}><label htmlFor="vocabulary-answer">Deine Antwort auf Englisch</label><div><input id="vocabulary-answer" autoComplete="off" autoCapitalize="off" spellCheck="false" value={typedAnswer} onChange={event => setTypedAnswer(event.target.value)} disabled={!!feedback} placeholder="Schreibe deine Antwort …" /><button className={styles.actionLink} disabled={!typedAnswer.trim() || !!feedback} type="submit">Prüfen</button></div></form>}
         {feedback && <div className={`${styles.feedback} ${feedback.correct ? styles.feedbackCorrect : styles.feedbackWrong}`} role="status" aria-live="polite"><span className={styles.feedbackIcon}>{feedback.correct ? '✓' : '↺'}</span><div><strong>{feedback.correct ? 'Richtig!' : 'So ist es richtig:'}</strong><p>{isMcq ? question.options[question.correct] : question.answer}</p><small>{question.explain}</small></div></div>}
-        {feedback && <button type="button" className={styles.nextButton} onClick={nextQuestion}>{index === questions.length - 1 ? 'Ergebnis ansehen' : 'Nächste Frage'} <span aria-hidden="true">→</span></button>}
+        {feedback && <button type="button" className={styles.nextButton} disabled={saveStatus === 'saving'} onClick={nextQuestion}>{index === questions.length - 1 ? 'Ergebnis ansehen' : 'Nächste Frage'} <span aria-hidden="true">→</span></button>}
       </section> : null}
 
       {ready && finished ? <section className={styles.resultPanel}>

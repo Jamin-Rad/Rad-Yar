@@ -3,17 +3,23 @@
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import { challengeAnswered, challengeComplete, readEnglishHistory } from '@/lib/mobinEnglishProgress'
+import { loadEnglishHistory } from '@/lib/mobinEnglishOnline'
 import styles from './english.module.css'
 
 export default function EnglishTestPrep() {
   const [history, setHistory] = useState({})
   const [ready, setReady] = useState(false)
+  const [online, setOnline] = useState(false)
   useEffect(() => {
-    const refresh = () => { setHistory(readEnglishHistory()); setReady(true) }
-    refresh()
+    let disposed = false
+    const refresh = () => { if (!disposed) setHistory(readEnglishHistory()) }
+    const load = () => loadEnglishHistory().then(saved => { if (!disposed) { setHistory(saved); setOnline(true) } }).catch(() => { refresh(); if (!disposed) setOnline(false) }).finally(() => { if (!disposed) setReady(true) })
+    load()
     window.addEventListener('storage', refresh)
     window.addEventListener('mobin-english-progress', refresh)
-    return () => { window.removeEventListener('storage', refresh); window.removeEventListener('mobin-english-progress', refresh) }
+    window.addEventListener('online', load)
+    window.addEventListener('focus', load)
+    return () => { disposed = true; window.removeEventListener('storage', refresh); window.removeEventListener('mobin-english-progress', refresh); window.removeEventListener('online', load); window.removeEventListener('focus', load) }
   }, [])
 
   const answered = challengeAnswered(history)
@@ -28,6 +34,7 @@ export default function EnglishTestPrep() {
         <div className={styles.skyline} aria-hidden="true" />
       </header>
 
+      <p className={styles.saveNotice} role="status">{!ready ? 'Online-Lernstand wird geladen …' : online ? 'Lernstand online synchronisiert.' : 'Offline: Der angezeigte Lernstand stammt von diesem Gerät.'}</p>
       <section className={styles.path} aria-label="Dein Lernweg">
         <article className={styles.trainingCard}>
           <div className={styles.stageNumber}>01</div>
