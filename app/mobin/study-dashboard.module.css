@@ -15,7 +15,7 @@
 .heading { display: flex; align-items: center; gap: 19px; }
 .calendarIcon { display: grid; place-items: center; width: 62px; height: 62px; flex: none; border: 1px solid #84b7ff87; border-radius: 15px; background: linear-gradient(145deg, #386fc58c, #18315f); color: #bfe4ff; box-shadow: 0 7px 24px #4590e14a; }
 .calendarIcon svg { width: 37px; height: 37px; filter: drop-shadow(0 0 5px #5fb6ff); }
-.header h2 { margin: 0; font-family: var(--font-manrope), Arial, sans-serif; font-size: clamp(26px, 3vw, 37px); font-weight: 850; letter-spacing: -.035em; }
+.header h2 { margin: 0; font-family: Arial, Helvetica, sans-serif; font-size: clamp(26px, 3vw, 37px); font-weight: 850; letter-spacing: -.035em; }
 .header p { margin: 5px 0 0; color: #bfd2e9; font-size: 14px; }
 .rangeButtons { display: flex; flex: none; padding: 4px; border: 1px solid #8eb5e454; border-radius: 12px; background: #071832a8; }
 .rangeButtons button { min-height: 38px; padding: 7px 13px; border: 0; border-radius: 9px; background: transparent; color: #d2e2f7; font: inherit; font-size: 12px; font-weight: 800; cursor: pointer; }
@@ -23,7 +23,7 @@
 .overview { display: grid; grid-template-columns: minmax(205px, .75fr) minmax(0, 2.25fr); gap: 25px; margin: 25px 0 20px; }
 .todayCard { display: flex; flex-direction: column; justify-content: center; min-height: 114px; padding: 19px 22px; border: 1px solid #8bb9f452; border-radius: 16px; background: linear-gradient(120deg, #264a88a8, #1b3365a1); }
 .todayCard span { color: #c4defd; font-size: 12px; font-weight: 900; letter-spacing: .13em; }
-.todayCard strong { margin: 3px 0; color: #d1ebff; font-family: var(--font-manrope), Arial, sans-serif; font-size: clamp(32px, 3.3vw, 47px); font-weight: 850; line-height: 1.05; }
+.todayCard strong { margin: 3px 0; color: #d1ebff; font-family: Arial, Helvetica, sans-serif; font-size: clamp(32px, 3.3vw, 47px); font-weight: 850; line-height: 1.05; }
 .todayCard small { color: #c5d6ee; font-size: 12px; }
 .legend { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); align-items: center; gap: 11px; padding: 15px 19px; border: 1px solid #94b0dc3a; border-radius: 16px; background: #0c1c3b98; }
 .legendItem { display: grid; grid-template-columns: 11px minmax(0, 1fr); column-gap: 8px; align-items: center; min-width: 0; }
@@ -32,7 +32,7 @@
 .legendItem strong { grid-column: 2; margin-top: 5px; color: #bdcde4; font-size: 14px; font-weight: 750; }
 .english { background: #61bdff; }.kangaroo { background: #f8c65d; }.math { background: #b590f6; }.preparation { background: #70ddb1; }
 .chartScroll { box-sizing: border-box; width: 100%; max-width: 100%; min-width: 0; overflow-x: auto; overflow-y: hidden; contain: inline-size; scrollbar-color: #679ce0 #0b1d3e; }
-.chart { display: grid; grid-template-columns: 54px minmax(0, 1fr); gap: 10px; width: max(100%, calc(var(--day-count) * 59px)); min-width: 0; padding: 10px 0 2px; }
+.chart { display: grid; grid-template-columns: 54px minmax(0, 1fr); gap: 10px; width: 100%; min-width: 0; padding: 10px 0 2px; }
 .axis { display: flex; flex-direction: column; justify-content: space-between; align-items: flex-end; height: 172px; margin-top: 24px; padding-bottom: 1px; color: #b7cee9; font-size: 11px; white-space: nowrap; }
 .plot { position: relative; display: grid; grid-template-columns: repeat(var(--day-count), minmax(0, 1fr)); gap: 6px; }
 .plot::before { content: ""; position: absolute; inset: 24px 0 auto; height: 172px; background: repeating-linear-gradient(to top, #a8c5ea50 0 1px, transparent 1px 25%); border-top: 1px solid #a8c5ea50; pointer-events: none; }
@@ -43,6 +43,8 @@
 .segment:first-child { border-radius: 0 0 3px 3px; }.segment:last-child:not([style*="height: 0%"]) { border-radius: 4px 4px 0 0; }
 .dayName { margin-top: 9px; color: #e5effd; font-size: 12px; font-weight: 850; }.dayDate { margin-top: 2px; color: #aebed6; font-size: 11px; }
 .todayDay .dayDate { padding: 2px 6px; border-radius: 5px; background: #448ce365; color: white; }
+.dense .dayName { display: none; }
+.dense .dayDate { font-size: 10px; }
 .footnote { margin: 16px 0 0; color: #aebfd5; font-size: 11px; line-height: 1.5; }
 @media (max-width: 850px) { .overview { grid-template-columns: 1fr; }.legend { min-height: 86px; } }
-@media (max-width: 640px) { .panel { padding: 20px 16px; border-radius: 19px; }.header { flex-direction: column; }.heading { gap: 12px; }.calendarIcon { width: 46px; height: 46px; border-radius: 11px; }.calendarIcon svg { width: 29px; height: 29px; }.rangeButtons { width: 100%; }.rangeButtons button { flex: 1; }.legend { grid-template-columns: repeat(2, 1fr); row-gap: 16px; }.todayCard { min-height: 100px; }.barTrack, .axis, .plot::before { height: 145px; } }
+@media (max-width: 640px) { .panel { padding: 20px 16px; border-radius: 19px; }.header { flex-direction: column; }.heading { gap: 12px; }.calendarIcon { width: 46px; height: 46px; border-radius: 11px; }.calendarIcon svg { width: 29px; height: 29px; }.rangeButtons { width: 100%; }.rangeButtons button { flex: 1; }.legend { grid-template-columns: repeat(2, 1fr); row-gap: 16px; }.todayCard { min-height: 100px; }.barTrack, .axis, .plot::before { height: 145px; }.dense .dayDate { display: none; }.dense .day:nth-child(5n + 1) .dayDate, .dense .day:last-child .dayDate { display: block; }.dense .dayValue { font-size: 8px; } }

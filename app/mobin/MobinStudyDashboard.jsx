@@ -73,7 +73,7 @@ export default function MobinStudyDashboard() {
       <div className={styles.todayCard}><span>HEUTE</span><strong>{duration(today)}</strong><small>Gesamt: {duration(period)} {range === 'all' ? 'seit Beginn' : `in ${range} Tagen`}</small></div>
       <div className={styles.legend}>{sections.map(item => <div className={styles.legendItem} key={item.key}><i className={styles[item.key]} /><span>{item.name}</span><strong>{duration(item.seconds)}</strong></div>)}</div>
     </div>
-    <div className={styles.chartScroll}><div className={styles.chart} style={{ '--day-count': count }} role="img" aria-label={`Lernzeit der letzten ${count} Tage: ${days.map(day => `${DATE_LABEL.format(day.date)} ${duration(totals[day.key]?.total || 0)}`).join(', ')}`}>
+    <div className={styles.chartScroll}><div className={`${styles.chart} ${count > 14 ? styles.dense : ''}`} style={{ '--day-count': count }} role="img" aria-label={`Lernzeit der letzten ${count} Tage: ${days.map(day => `${DATE_LABEL.format(day.date)} ${duration(totals[day.key]?.total || 0)}`).join(', ')}`}>
       <div className={styles.axis}>{[1, .75, .5, .25, 0].map(fraction => <span key={fraction}>{Math.round(max * fraction / 60)} Min.</span>)}</div>
       <div className={styles.plot}>
         {days.map(day => {
