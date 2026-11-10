@@ -3,103 +3,121 @@
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import { MOCK_TESTS, WORD_CHALLENGE, isTypedAnswerCorrect } from '@/lib/mobinEnglish'
+import { canOpenEnglishMode, challengeComplete, readEnglishHistory, saveEnglishHistory } from '@/lib/mobinEnglishProgress'
 import styles from '../english.module.css'
 
-const STORAGE_KEY = 'mobin_english_vokabeltest_unit2_v1'
-const MODES = [
-  { id: 'probe-a', title: 'Probetest A', detail: '10 Aufgaben · London entdecken', kind: 'Freitext' },
-  { id: 'probe-b', title: 'Probetest B', detail: '10 Aufgaben · Unterwegs in London', kind: 'Freitext' },
-  { id: 'word-challenge', title: 'Wort-Challenge', detail: '30 Fragen · Bedeutung & Schreibweise', kind: '4 Antworten' },
+const TESTS = [
+  { id: 'probe-a', title: 'Probetest A', detail: 'London entdecken' },
+  { id: 'probe-b', title: 'Probetest B', detail: 'Unterwegs in London' },
 ]
 
-function loadHistory() {
-  try {
-    const data = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}')
-    return data && typeof data === 'object' ? data : {}
-  } catch {
-    return {}
-  }
-}
-
-export default function VokabeltestClient() {
+export default function VokabeltestClient({ requestedMode }) {
+  const [history, setHistory] = useState({})
+  const [ready, setReady] = useState(false)
   const [mode, setMode] = useState(null)
   const [index, setIndex] = useState(0)
   const [typedAnswer, setTypedAnswer] = useState('')
   const [feedback, setFeedback] = useState(null)
   const [results, setResults] = useState([])
-  const [history, setHistory] = useState({})
-  const [historyLoaded, setHistoryLoaded] = useState(false)
   const [reviewOnly, setReviewOnly] = useState(false)
+  const [reviewQuestionIds, setReviewQuestionIds] = useState([])
 
-  useEffect(() => { setHistory(loadHistory()); setHistoryLoaded(true) }, [])
-
-  const allQuestions = mode === 'word-challenge' ? WORD_CHALLENGE : MOCK_TESTS.find(test => test.id === mode)?.questions || []
-  const missedIds = new Set(history[mode]?.missedIds || [])
-  const questions = reviewOnly ? allQuestions.filter(question => missedIds.has(question.id)) : allQuestions
-  const question = questions[index]
-  const isMcq = mode === 'word-challenge'
-  const finished = mode && index >= questions.length
-  const score = results.filter(result => result.correct).length
-
-  function start(nextMode, onlyMissed = false) {
+  function openMode(nextMode, onlyMissed = false, saved = history) {
+    if (!canOpenEnglishMode(nextMode, saved)) return
+    const savedRun = saved[nextMode]?.run
+    const resumed = onlyMissed ? [] : (savedRun?.results || [])
+    const resumingReview = onlyMissed || Boolean(savedRun?.reviewOnly)
     setMode(nextMode)
-    setReviewOnly(onlyMissed)
-    setIndex(0)
+    setReviewOnly(resumingReview)
+    setReviewQuestionIds(onlyMissed ? saved[nextMode]?.missedIds || [] : resumingReview ? savedRun?.questionIds || [] : [])
+    setResults(resumed)
+    setIndex(resumed.length)
     setTypedAnswer('')
     setFeedback(null)
-    setResults([])
   }
+
+  useEffect(() => {
+    const saved = readEnglishHistory()
+    setHistory(saved)
+    const next = !challengeComplete(saved) ? 'word-challenge' : ['word-challenge', 'probe-a', 'probe-b'].includes(requestedMode) ? requestedMode : null
+    if (next) openMode(next, false, saved)
+    setReady(true)
+    // The requested route determines the initial lesson; later mode changes stay in client state.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [requestedMode])
+
+  const allQuestions = mode === 'word-challenge' ? WORD_CHALLENGE : MOCK_TESTS.find(test => test.id === mode)?.questions || []
+  const reviewIds = new Set(reviewQuestionIds)
+  const questions = reviewOnly ? allQuestions.filter(question => reviewIds.has(question.id)) : allQuestions
+  const question = questions[index]
+  const isMcq = mode === 'word-challenge'
+  const finished = Boolean(mode && index >= questions.length)
+  const score = results.filter(result => result.correct).length
+  const unlocked = challengeComplete(history)
 
   function recordAnswer(value) {
     if (!question || feedback) return
     const correct = isMcq ? value === question.correct : isTypedAnswerCorrect(question, value)
     const result = { id: question.id, correct, chosen: value }
+    const nextResults = [...results, result]
+    const completeNow = nextResults.length === questions.length
+    const previous = history[mode] || {}
+    let entry = { ...previous, run: { results: nextResults, ...(reviewOnly ? { reviewOnly: true, questionIds: reviewQuestionIds } : {}) } }
+    if (completeNow) {
+      const missed = new Set(reviewOnly ? previous.missedIds || [] : [])
+      nextResults.forEach(item => item.correct ? missed.delete(item.id) : missed.add(item.id))
+      entry = {
+        ...previous,
+        ...(reviewOnly ? {} : { best: Math.max(previous.best || 0, nextResults.filter(item => item.correct).length), last: nextResults.filter(item => item.correct).length, total: questions.length, date: new Date().toISOString() }),
+        completed: previous.completed || mode === 'word-challenge' && !reviewOnly,
+        missedIds: [...missed],
+      }
+      delete entry.run
+    }
+    const updated = { ...history, [mode]: entry }
+    setHistory(updated)
+    saveEnglishHistory(updated)
     setFeedback(result)
-    setResults(previous => [...previous, result])
+    setResults(nextResults)
   }
 
   function nextQuestion() {
     if (!feedback) return
-    if (index === questions.length - 1) {
-      const previous = history[mode] || {}
-      const missed = new Set(reviewOnly ? previous.missedIds || [] : [])
-      results.forEach(result => result.correct ? missed.delete(result.id) : missed.add(result.id))
-      const updated = { ...history, [mode]: { best: Math.max(previous.best || 0, score), last: score, total: questions.length, missedIds: [...missed], date: new Date().toISOString() } }
-      setHistory(updated)
-      try { localStorage.setItem(STORAGE_KEY, JSON.stringify(updated)) } catch { /* Storage may be unavailable. */ }
-    }
     setIndex(previous => previous + 1)
     setTypedAnswer('')
     setFeedback(null)
   }
 
-  return (
-    <main className={styles.shell}>
-      <div className={styles.container}>
-        <nav className={styles.breadcrumb} aria-label="Navigation"><Link href="/mobin">← Mobin</Link><span>/</span><Link href="/mobin/english">English</Link><span>/</span><strong>Vokabeltest</strong></nav>
-        <header className={styles.practiceHero}><div className={styles.practiceDate}><span>TEST AM 11. NOVEMBER 2026</span><strong>UNIT 02 · LONDON: WOW!</strong></div><span className={styles.kicker}>DEIN TRAINING FÜR DEN 11. NOVEMBER</span><h1>Vokabel<span>test</span></h1><p>Ein Wort nach dem anderen. Nach jeder Antwort siehst du sofort die richtige Lösung und warum sie passt. Deine aktive Lernzeit erscheint auf der Mobin-Startseite.</p></header>
-        {!mode && <>
-          <section className={styles.sectionHead}><span>WÄHLE DEIN TRAINING</span><h2>Drei Wege zum Ziel</h2></section>
-          <div className={styles.modeGrid}>{MODES.map((item, position) => <article className={styles.modeCard} key={item.id}>
-            <div className={styles.modeTop}><span>0{position + 1}</span><span>{item.kind}</span></div><h3>{item.title}</h3><p>{item.detail}</p>
-            {historyLoaded && history[item.id] && <div className={styles.miniHistory}>Zuletzt: {history[item.id].last}/{history[item.id].total} richtig · Bestwert: {history[item.id].best}</div>}
-            <button className={styles.primaryButton} onClick={() => start(item.id)}>Starten <span aria-hidden="true">↗</span></button>
-            {historyLoaded && history[item.id]?.missedIds?.length > 0 && <button className={styles.reviewButton} onClick={() => start(item.id, true)}>↺ Fehler wiederholen ({history[item.id].missedIds.length})</button>}
-          </article>)}</div>
-          <p className={styles.sourceNote}>Die zwei Probetests folgen dem Muster deiner bisherigen Vokabeltests: Übersetzen, Lückensätze und einfache Vergangenheitsformen. Die Wörter stammen aus Unit 2 und den London-Fotos. Dein Fortschritt wird in diesem Browser gespeichert.</p>
-        </>}
-        {mode && !finished && question && <section className={styles.quizPanel}>
-          <div className={styles.quizTop}><button className={styles.backButton} onClick={() => setMode(null)}>← Übersicht</button><span>{reviewOnly ? 'FEHLERTRAINING' : MODES.find(item => item.id === mode)?.title}</span></div>
-          <div className={styles.progressInfo}><strong>Frage {index + 1} <span>/ {questions.length}</span></strong><span>{score} richtig</span></div>
-          <div className={styles.progressRail}><span style={{ width: `${((index + (feedback ? 1 : 0)) / questions.length) * 100}%` }} /></div>
-          <div className={styles.questionType}>{question.group || question.skill}</div><h2 className={styles.questionText}>{question.prompt}</h2>
-          {isMcq ? <div className={styles.optionGrid}>{question.options.map((option, optionIndex) => <button key={optionIndex} disabled={!!feedback} onClick={() => recordAnswer(optionIndex)} className={`${styles.optionButton} ${feedback && optionIndex === question.correct ? styles.correctOption : ''} ${feedback && optionIndex === feedback.chosen && !feedback.correct ? styles.wrongOption : ''}`}><span>{'ABCD'[optionIndex]}</span>{option}</button>)}</div>
-            : <form onSubmit={event => { event.preventDefault(); recordAnswer(typedAnswer) }} className={styles.answerForm}><label htmlFor="vocabulary-answer">Deine Antwort auf Englisch</label><div><input id="vocabulary-answer" autoComplete="off" autoCapitalize="off" spellCheck="false" value={typedAnswer} onChange={event => setTypedAnswer(event.target.value)} disabled={!!feedback} placeholder="Schreibe das englische Wort …" /><button className={styles.primaryButton} disabled={!typedAnswer.trim() || !!feedback} type="submit">Prüfen</button></div></form>}
-          {feedback && <div className={`${styles.feedback} ${feedback.correct ? styles.feedbackCorrect : styles.feedbackWrong}`} role="status" aria-live="polite"><span className={styles.feedbackIcon}>{feedback.correct ? '✓' : '↺'}</span><div><strong>{feedback.correct ? 'Richtig!' : 'Fast — so ist es richtig:'}</strong><p>{isMcq ? question.options[question.correct] : question.answer}</p><small>{question.explain}</small></div></div>}
-          {feedback && <button className={styles.nextButton} onClick={nextQuestion}>{index === questions.length - 1 ? 'Ergebnis ansehen' : 'Nächste Frage'} <span aria-hidden="true">→</span></button>}
-        </section>}
-        {finished && <section className={styles.resultPanel}><span className={styles.kicker}>GESCHAFFT!</span><div className={styles.resultScore}>{score}<span> / {questions.length}</span></div><h2>{score === questions.length ? 'Alles richtig. Stark!' : 'Gut geübt — weiter geht’s.'}</h2><p>Du hast {score} von {questions.length} Aufgaben richtig gelöst. Fehler kannst du jederzeit noch einmal üben.</p><div className={styles.resultActions}><button className={styles.primaryButton} onClick={() => start(mode)}>Noch einmal</button><button className={styles.reviewButton} onClick={() => setMode(null)}>Zur Übersicht</button></div></section>}
-      </div>
-    </main>
-  )
+  return <main className={styles.shell}>
+    <div className={styles.quizPage}>
+      <nav className={styles.quizNav}><Link href="/mobin/english">← English</Link><span>Unit 2 · London</span></nav>
+      {!ready ? <div className={styles.loading}>Training wird geladen …</div> : null}
+
+      {ready && !mode && unlocked ? <section className={styles.chooseTests}>
+        <div className={styles.successStamp}>✓ 30 WÖRTER GEÜBT</div>
+        <h1>Jetzt bist du dran.</h1>
+        <p>Wähle einen Probetest. Hier schreibst du die Antworten selbst.</p>
+        <div className={styles.chooseGrid}>{TESTS.map(test => <button type="button" key={test.id} className={styles.chooseCard} onClick={() => openMode(test.id)}><span>✎</span><strong>{test.title}</strong><small>{test.detail} · 10 Aufgaben</small><b aria-hidden="true">→</b></button>)}</div>
+        <button type="button" className={styles.textButton} onClick={() => openMode('word-challenge')}>30 Wörter noch einmal üben</button>
+        {history['word-challenge']?.missedIds?.length > 0 && <button type="button" className={styles.textButton} onClick={() => openMode('word-challenge', true)}>Fehler wiederholen ({history['word-challenge'].missedIds.length})</button>}
+      </section> : null}
+
+      {ready && mode && !finished && question ? <section className={styles.quizPanel}>
+        <div className={styles.quizTop}><span>{reviewOnly ? 'FEHLERTRAINING' : isMcq ? '01 / WORTTRAINING' : `02 / ${TESTS.find(test => test.id === mode)?.title.toUpperCase()}`}</span><span>{index + 1} / {questions.length}</span></div>
+        <div className={styles.progressRail}><span style={{ width: `${((index + (feedback ? 1 : 0)) / questions.length) * 100}%` }} /></div>
+        <div className={styles.questionType}>{question.group || question.skill}</div>
+        <h1 className={styles.questionText}>{question.prompt}</h1>
+        {isMcq ? <div className={styles.optionGrid}>{question.options.map((option, optionIndex) => <button type="button" key={optionIndex} disabled={!!feedback} onClick={() => recordAnswer(optionIndex)} className={`${styles.optionButton} ${feedback && optionIndex === question.correct ? styles.correctOption : ''} ${feedback && optionIndex === feedback.chosen && !feedback.correct ? styles.wrongOption : ''}`}><span>{'ABCD'[optionIndex]}</span>{option}</button>)}</div>
+          : <form onSubmit={event => { event.preventDefault(); recordAnswer(typedAnswer) }} className={styles.answerForm}><label htmlFor="vocabulary-answer">Deine Antwort auf Englisch</label><div><input id="vocabulary-answer" autoComplete="off" autoCapitalize="off" spellCheck="false" value={typedAnswer} onChange={event => setTypedAnswer(event.target.value)} disabled={!!feedback} placeholder="Schreibe deine Antwort …" /><button className={styles.actionLink} disabled={!typedAnswer.trim() || !!feedback} type="submit">Prüfen</button></div></form>}
+        {feedback && <div className={`${styles.feedback} ${feedback.correct ? styles.feedbackCorrect : styles.feedbackWrong}`} role="status" aria-live="polite"><span className={styles.feedbackIcon}>{feedback.correct ? '✓' : '↺'}</span><div><strong>{feedback.correct ? 'Richtig!' : 'So ist es richtig:'}</strong><p>{isMcq ? question.options[question.correct] : question.answer}</p><small>{question.explain}</small></div></div>}
+        {feedback && <button type="button" className={styles.nextButton} onClick={nextQuestion}>{index === questions.length - 1 ? 'Ergebnis ansehen' : 'Nächste Frage'} <span aria-hidden="true">→</span></button>}
+      </section> : null}
+
+      {ready && finished ? <section className={styles.resultPanel}>
+        <span className={styles.successStamp}>RUNDE ABGESCHLOSSEN</span><div className={styles.resultScore}>{score}<span> / {questions.length}</span></div>
+        <h1>{isMcq && !reviewOnly ? 'Die Probetests sind frei.' : 'Gut gemacht!'}</h1><p>{score} von {questions.length} richtig. {history[mode]?.missedIds?.length ? 'Deine Fehler kannst du jederzeit wiederholen.' : 'Du hast alles richtig gelöst.'}</p>
+        <div className={styles.resultActions}>{isMcq ? <button className={styles.actionLink} type="button" onClick={() => setMode(null)}>Zu den Probetests <span aria-hidden="true">→</span></button> : <button className={styles.actionLink} type="button" onClick={() => openMode(mode === 'probe-a' ? 'probe-b' : 'probe-a')}>{mode === 'probe-a' ? 'Probetest B starten' : 'Probetest A starten'} <span aria-hidden="true">→</span></button>}<Link href="/mobin/english" className={styles.textButton}>Zur Übersicht</Link></div>
+      </section> : null}
+    </div>
+  </main>
 }

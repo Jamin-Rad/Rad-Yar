@@ -8,7 +8,8 @@ export const metadata = {
   robots: { index: false, follow: false },
 }
 
-export default async function VokabeltestPage() {
+export default async function VokabeltestPage({ searchParams }) {
   if (!(await hasMobinSession())) redirect('/mobin/login?next=/mobin/english/vokabeltest')
-  return <VokabeltestClient />
+  const { mode } = await searchParams
+  return <VokabeltestClient requestedMode={typeof mode === 'string' ? mode : null} />
 }
