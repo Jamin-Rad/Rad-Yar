@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import { MOCK_TESTS, WORD_CHALLENGE, isTypedAnswerCorrect } from '@/lib/mobinEnglish'
-import { canOpenEnglishMode, challengeComplete, readEnglishHistory, saveEnglishHistory } from '@/lib/mobinEnglishProgress'
+import { canOpenEnglishMode, challengeComplete, englishRunPosition, readEnglishHistory, saveEnglishHistory } from '@/lib/mobinEnglishProgress'
 import styles from '../english.module.css'
 
 const TESTS = [
@@ -14,6 +14,12 @@ const TESTS = [
 export default function VokabeltestClient({ requestedMode }) {
   const [history, setHistory] = useState({})
   const [ready, setReady] = useState(false)
+  const [saveFailed, setSaveFailed] = useState(false)
+
+  function persist(updated) {
+    setHistory(updated)
+    setSaveFailed(!saveEnglishHistory(updated))
+  }
   const [mode, setMode] = useState(null)
   const [index, setIndex] = useState(0)
   const [typedAnswer, setTypedAnswer] = useState('')
@@ -22,18 +28,22 @@ export default function VokabeltestClient({ requestedMode }) {
   const [reviewOnly, setReviewOnly] = useState(false)
   const [reviewQuestionIds, setReviewQuestionIds] = useState([])
 
-  function openMode(nextMode, onlyMissed = false, saved = history) {
+  function openMode(nextMode, onlyMissed = false, saved = history, restart = false) {
     if (!canOpenEnglishMode(nextMode, saved)) return
-    const savedRun = saved[nextMode]?.run
-    const resumed = onlyMissed ? [] : (savedRun?.results || [])
+    const savedRun = onlyMissed || restart ? null : saved[nextMode]?.run
+    const restored = englishRunPosition(savedRun)
     const resumingReview = onlyMissed || Boolean(savedRun?.reviewOnly)
+    const ids = onlyMissed ? saved[nextMode]?.missedIds || [] : resumingReview ? savedRun?.questionIds || [] : []
     setMode(nextMode)
     setReviewOnly(resumingReview)
-    setReviewQuestionIds(onlyMissed ? saved[nextMode]?.missedIds || [] : resumingReview ? savedRun?.questionIds || [] : [])
-    setResults(resumed)
-    setIndex(resumed.length)
-    setTypedAnswer('')
-    setFeedback(null)
+    setReviewQuestionIds(ids)
+    setResults(restored.results)
+    setIndex(restored.index)
+    setTypedAnswer(restored.feedback?.chosen || '')
+    setFeedback(restored.feedback)
+    if (onlyMissed || restart) {
+      persist({ ...saved, [nextMode]: { ...saved[nextMode], run: { results: [], index: 0, ...(resumingReview ? { reviewOnly: true, questionIds: ids } : {}) } } })
+    }
   }
 
   useEffect(() => {
@@ -62,7 +72,7 @@ export default function VokabeltestClient({ requestedMode }) {
     const nextResults = [...results, result]
     const completeNow = nextResults.length === questions.length
     const previous = history[mode] || {}
-    let entry = { ...previous, run: { results: nextResults, ...(reviewOnly ? { reviewOnly: true, questionIds: reviewQuestionIds } : {}) } }
+    let entry = { ...previous, run: { results: nextResults, index, ...(reviewOnly ? { reviewOnly: true, questionIds: reviewQuestionIds } : {}) } }
     if (completeNow) {
       const missed = new Set(reviewOnly ? previous.missedIds || [] : [])
       nextResults.forEach(item => item.correct ? missed.delete(item.id) : missed.add(item.id))
@@ -72,17 +82,17 @@ export default function VokabeltestClient({ requestedMode }) {
         completed: previous.completed || mode === 'word-challenge' && !reviewOnly,
         missedIds: [...missed],
       }
-      delete entry.run
+      entry.run = { results: nextResults, index, ...(reviewOnly ? { reviewOnly: true, questionIds: reviewQuestionIds } : {}) }
     }
     const updated = { ...history, [mode]: entry }
-    setHistory(updated)
-    saveEnglishHistory(updated)
+    persist(updated)
     setFeedback(result)
     setResults(nextResults)
   }
 
   function nextQuestion() {
     if (!feedback) return
+    persist({ ...history, [mode]: { ...history[mode], run: { ...history[mode]?.run, results, index: index + 1 } } })
     setIndex(previous => previous + 1)
     setTypedAnswer('')
     setFeedback(null)
@@ -90,7 +100,7 @@ export default function VokabeltestClient({ requestedMode }) {
 
   return <main className={styles.shell}>
     <div className={styles.quizPage}>
-      <nav className={styles.quizNav}><Link href="/mobin/english/vokabeltest/11-november">← Vokabeltest</Link><span>Unit 2 · London</span></nav>
+      <nav className={styles.quizNav}><Link href="/mobin/english/vokabeltest/11-november">← Pause & Übersicht</Link><span>Unit 2 · London</span></nav>
       {!ready ? <div className={styles.loading}>Training wird geladen …</div> : null}
 
       {ready && !mode && unlocked ? <section className={styles.chooseTests}>
@@ -98,10 +108,11 @@ export default function VokabeltestClient({ requestedMode }) {
         <h1>Jetzt bist du dran.</h1>
         <p>Wähle einen Probetest. Hier schreibst du die Antworten selbst.</p>
         <div className={styles.chooseGrid}>{TESTS.map(test => <button type="button" key={test.id} className={styles.chooseCard} onClick={() => openMode(test.id)}><span>✎</span><strong>{test.title}</strong><small>{test.detail} · 10 Aufgaben</small><b aria-hidden="true">→</b></button>)}</div>
-        <button type="button" className={styles.textButton} onClick={() => openMode('word-challenge')}>30 Wörter noch einmal üben</button>
+        <button type="button" className={styles.textButton} onClick={() => openMode('word-challenge', false, history, true)}>30 Wörter neu starten</button>
         {history['word-challenge']?.missedIds?.length > 0 && <button type="button" className={styles.textButton} onClick={() => openMode('word-challenge', true)}>Fehler wiederholen ({history['word-challenge'].missedIds.length})</button>}
       </section> : null}
 
+      {ready && mode ? <p className={styles.saveNotice} role="status">{saveFailed ? 'Speichern nicht möglich. Bitte lasse diese Seite geöffnet.' : `${results.length} Antworten gespeichert · Du kannst jederzeit auf diesem Gerät weiterlernen.`}{saveFailed && <button type="button" className={styles.textButton} onClick={() => persist(history)}>Erneut speichern</button>}</p> : null}
       {ready && mode && !finished && question ? <section className={styles.quizPanel}>
         <div className={styles.quizTop}><span>{reviewOnly ? 'FEHLERTRAINING' : isMcq ? '01 / WORTTRAINING' : `02 / ${TESTS.find(test => test.id === mode)?.title.toUpperCase()}`}</span><span>{index + 1} / {questions.length}</span></div>
         <div className={styles.progressRail}><span style={{ width: `${((index + (feedback ? 1 : 0)) / questions.length) * 100}%` }} /></div>
@@ -116,7 +127,7 @@ export default function VokabeltestClient({ requestedMode }) {
       {ready && finished ? <section className={styles.resultPanel}>
         <span className={styles.successStamp}>RUNDE ABGESCHLOSSEN</span><div className={styles.resultScore}>{score}<span> / {questions.length}</span></div>
         <h1>{isMcq && !reviewOnly ? 'Die Probetests sind frei.' : 'Gut gemacht!'}</h1><p>{score} von {questions.length} richtig. {history[mode]?.missedIds?.length ? 'Deine Fehler kannst du jederzeit wiederholen.' : 'Du hast alles richtig gelöst.'}</p>
-        <div className={styles.resultActions}>{isMcq ? <button className={styles.actionLink} type="button" onClick={() => setMode(null)}>Zu den Probetests <span aria-hidden="true">→</span></button> : <button className={styles.actionLink} type="button" onClick={() => openMode(mode === 'probe-a' ? 'probe-b' : 'probe-a')}>{mode === 'probe-a' ? 'Probetest B starten' : 'Probetest A starten'} <span aria-hidden="true">→</span></button>}<Link href="/mobin/english/vokabeltest/11-november" className={styles.textButton}>Zur Übersicht</Link></div>
+        <div className={styles.resultActions}>{isMcq ? <button className={styles.actionLink} type="button" onClick={() => setMode(null)}>Zu den Probetests <span aria-hidden="true">→</span></button> : <button className={styles.actionLink} type="button" onClick={() => openMode(mode === 'probe-a' ? 'probe-b' : 'probe-a')}>{mode === 'probe-a' ? 'Probetest B starten' : 'Probetest A starten'} <span aria-hidden="true">→</span></button>}<button type="button" className={styles.textButton} onClick={() => openMode(mode, false, history, true)}>Neue Runde starten</button><Link href="/mobin/english/vokabeltest/11-november" className={styles.textButton}>Zur Übersicht</Link></div>
       </section> : null}
     </div>
   </main>

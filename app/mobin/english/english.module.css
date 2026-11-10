@@ -268,3 +268,5 @@
   .prepShell .skyline { height: 110px; }
 }
 @media (prefers-reduced-motion: reduce) { .categoryCard { transition: none; } }
+
+.saveNotice { margin: 18px 0 0; color: #52657b; font-size: 13px; line-height: 1.6; }

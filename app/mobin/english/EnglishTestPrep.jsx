@@ -32,7 +32,7 @@ export default function EnglishTestPrep() {
         <article className={styles.trainingCard}>
           <div className={styles.stageNumber}>01</div>
           <div className={styles.trainingCopy}><span className={styles.stageLabel}>DEIN ERSTER SCHRITT</span><h2>Worttraining</h2><p>30 Fragen zu Bedeutung und Rechtschreibung. Nach jeder Antwort siehst du sofort die Lösung.</p></div>
-          <div className={styles.trainingAction}><div className={styles.progressCircle} style={{ '--progress': `${percent}%` }} role="progressbar" aria-label="Worttraining" aria-valuenow={answered} aria-valuemin={0} aria-valuemax={30}><strong>{ready ? answered : '–'}<span>/30</span></strong></div><Link className={styles.actionLink} href="/mobin/english/vokabeltest?mode=word-challenge">{unlocked ? 'Noch einmal üben' : answered > 0 ? 'Training fortsetzen' : '30 Fragen üben'} <span aria-hidden="true">→</span></Link></div>
+          <div className={styles.trainingAction}><div className={styles.progressCircle} style={{ '--progress': `${percent}%` }} role="progressbar" aria-label="Worttraining" aria-valuenow={answered} aria-valuemin={0} aria-valuemax={30}><strong>{ready ? answered : '–'}<span>/30</span></strong></div><Link className={styles.actionLink} href="/mobin/english/vokabeltest?mode=word-challenge">{unlocked ? 'Ergebnis & neue Runde' : answered > 0 ? 'Training fortsetzen' : '30 Fragen üben'} <span aria-hidden="true">→</span></Link></div>
         </article>
 
         <div className={styles.stageTwoHead}><span className={styles.stageNumberSmall}>02</span><div><h2>Probetests</h2><p>{unlocked ? 'Wähle einen Test und schreibe die Antworten selbst.' : 'Nach den 30 Trainingsfragen werden beide Tests freigeschaltet.'}</p></div></div>
