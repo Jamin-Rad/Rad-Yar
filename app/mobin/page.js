@@ -23,6 +23,13 @@ const pages = [
     tilt: '1.5deg',
     speed: '7.6s',
   },
+  {
+    href: '/mobin/english',
+    title: 'English',
+    meta: 'Vokabeltest · London-Wörter, Rechtschreibung & Bedeutung',
+    tilt: '-1.5deg',
+    speed: '7s',
+  },
 ]
 
 export const metadata = {
