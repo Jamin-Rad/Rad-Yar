@@ -104,28 +104,41 @@ export default function MathExamClient() {
 
   return <main className={journey.page} lang="de" dir="ltr">
     <header className={`${journey.header} ${styles.header}`}><div className={journey.brandLockup}><span className={styles.brandMark} aria-hidden="true">M<span>+</span></span><strong>Mobins Matheprüfung</strong></div><Link href="/mobin"><ArrowIcon back /> Zurück zu Mobin</Link></header>
-    <section className={journey.journeyStage} aria-labelledby="math-title">
-      <Image className={journey.journeyBackdrop} src="/mobin/mathepruefung/journey-landscape-v2.png" alt="" fill sizes="100vw" priority />
-      <div className={`${journey.hero} ${styles.hero}`}><div className={journey.titleBlock}><span className={styles.eyebrow}>Gymnasium · Klasse 6</span><h1 id="math-title">Dein Mathe-Weg</h1><p>Rationale Zahlen verstehen. Sicher in die Klassenarbeit.</p></div><div className={styles.collectionBadge}><span className={styles.badgeIcon}>{MATH_QUESTIONS.length}</span><span><strong>Dein Prüfungstraining</strong><small>14 Themen · Mittel bis schwer</small></span></div></div>
-      <div className={journey.map} aria-hidden="true"><Image className={`${journey.mascot} ${styles.mascot}`} src="/mobin/mathepruefung/kangaroo-explorer.png" alt="" width={1024} height={1536} priority /><div className={`${journey.mapMarker} ${journey.markerStart}`}><b>Üben</b><span /></div><div className={`${journey.mapMarker} ${journey.markerMiddle}`}><b>Verstehen</b><span /></div><div className={`${journey.mapMarker} ${journey.markerFinish}`}><b>Sicher werden</b><span /></div></div>
-      <div className={journey.stations} aria-label="Übungsarten">{MODES.map(mode => {
-        const ids = mode.id === 'practice' ? practiceIds : mode.id === 'review' ? reviewIds : filtered.map(q => q.id)
-        return <div className={`${journey.station} ${journey[mode.tone] || styles.review} ${styles.station}`} key={mode.id}><span className={journey.stationIcon}><svg viewBox="0 0 32 32" aria-hidden="true"><path d={mode.path} /></svg></span><button className={journey.stationButton} type="button" disabled={!ready || !ids.length} onClick={() => start(mode.id, ids)} aria-describedby={`${mode.id}-description`}><strong>{MODE_NAMES[mode.id]}</strong></button><small id={`${mode.id}-description`}>{mode.text}<span className={styles.modeCount}>{ids.length ? `${ids.length} ${ids.length === 1 ? 'Aufgabe' : 'Aufgaben'} in deiner Auswahl` : 'Aktuell keine Aufgaben in dieser Auswahl'}</span></small></div>
-      })}</div>
+    <section className={styles.examHero} aria-labelledby="math-title">
+      <div className={styles.examHeroCopy}>
+        <span className={styles.eyebrow}>Gymnasium · Klasse 6</span>
+        <h1 id="math-title">Matheprüfung<span>.</span></h1>
+        <p>Rationale Zahlen verstehen.<br />Mit einem guten Gefühl in die Klassenarbeit.</p>
+        <div className={styles.heroFacts}><span>{MATH_QUESTIONS.length} Aufgaben</span><span>14 Themen</span><span>Mittel bis schwer</span></div>
+      </div>
+      <div className={styles.examArtwork} data-no-zoom aria-hidden="true">
+        <Image src="/mobin/mathepruefung/journey-landscape-v2.png" alt="" fill sizes="(max-width: 700px) 100vw, 45vw" priority draggable={false} />
+      </div>
     </section>
 
     <div className={styles.dashboard}>
+      {unfinished ? <section className={styles.resumePanel}><div><strong>Du hast eine Runde begonnen.</strong><p>{MODE_NAMES[unfinished.mode]} · {Object.keys(unfinished.responses).length} von {unfinished.questionIds.length} Antworten gespeichert</p></div><button className={styles.secondaryButton} type="button" onClick={() => resume(unfinished)}>Fortsetzen<ArrowIcon /></button></section> : null}
+
       <section className={styles.filterPanel} aria-labelledby="selection-title">
-        <div><span className={styles.eyebrow}>Deine nächste Runde</span><h2 id="selection-title">Was möchtest du üben?</h2></div>
+        <div><span className={styles.eyebrow}>01 · Deine Auswahl</span><h2 id="selection-title">Was möchtest du üben?</h2></div>
         <div className={styles.filters}>
           <label>Aufgabensammlung<select value={collection} onChange={event => setCollection(event.target.value)}>{MATH_EXAM_COLLECTIONS.map(item => <option value={item.id} key={item.id}>{item.title}</option>)}</select></label>
           <label>Themenauswahl<select value={scope} onChange={event => setScope(event.target.value)}><option value="all">Alle 14 Themen</option>{MATH_CHAPTERS.map(chapter => <optgroup label={`Kapitel ${chapter.number} · ${chapter.title}`} key={chapter.id}><option value={chapter.id}>Ganzes Kapitel {chapter.number}</option>{MATH_TOPICS.filter(topic => topic.chapter === chapter.id).map(topic => <option value={topic.id} key={topic.id}>{topic.title}</option>)}</optgroup>)}</select></label>
           <label>Schwierigkeit<select value={level} onChange={event => setLevel(event.target.value)}><option value="all">Mittel & schwer</option><option value="medium">Mittel</option><option value="hard">Schwer</option></select></label>
           <label>Übungsrunde<select value={count} onChange={event => setCount(event.target.value)}><option value="5">Bis zu 5 Aufgaben</option><option value="10">Bis zu 10 Aufgaben</option><option value="all">Alle ausgewählten Aufgaben</option></select></label>
         </div>
-        <p className={styles.selectionNote}>Deine Auswahl enthält {filtered.length} Aufgaben. Sammlung, Thema und Schwierigkeit gelten auch für die Probeprüfung und das Fehlertraining. Beim Üben kommen unbearbeitete Aufgaben zuerst.</p><button className={styles.primaryButton} type="button" disabled={!ready || !practiceIds.length} onClick={() => start('practice', practiceIds)}>Übungsrunde starten<ArrowIcon /></button>
+        <p className={styles.selectionNote}><strong>{filtered.length} Aufgaben</strong> passen zu deiner Auswahl. Thema und Schwierigkeit gelten für alle drei Lernarten. Die Rundengröße gilt für „Aufgaben üben“.</p>
+        <div className={styles.modeHeading}><span className={styles.eyebrow}>02 · So möchtest du lernen</span><p>Beim Üben kommen unbearbeitete Aufgaben zuerst.</p></div>
+        <div className={styles.modeGrid} aria-label="Übungsarten">{MODES.map(mode => {
+          const ids = mode.id === 'practice' ? practiceIds : mode.id === 'review' ? reviewIds : filtered.map(q => q.id)
+          return <button className={`${styles.modeCard} ${styles[`${mode.id}Mode`] || ''}`} key={mode.id} type="button" disabled={!ready || !ids.length} onClick={() => start(mode.id, ids)} aria-describedby={`${mode.id}-description`}>
+            <span className={styles.modeIcon} aria-hidden="true"><svg viewBox="0 0 32 32"><path d={mode.path} /></svg></span>
+            <strong>{MODE_NAMES[mode.id]}</strong>
+            <span id={`${mode.id}-description`}>{mode.text}</span>
+            <span className={styles.modeFooter}>{!ready ? 'Wird geladen …' : ids.length ? `${ids.length} ${ids.length === 1 ? 'Aufgabe' : 'Aufgaben'} starten` : mode.id === 'review' ? 'Keine Fehler in dieser Auswahl' : 'Keine passenden Aufgaben'}<ArrowIcon /></span>
+          </button>
+        })}</div>
       </section>
-      {unfinished ? <section className={styles.resumePanel}><div><strong>Du hast eine Runde begonnen.</strong><p>{MODE_NAMES[unfinished.mode]} · {Object.keys(unfinished.responses).length} von {unfinished.questionIds.length} Antworten gespeichert</p></div><button className={styles.secondaryButton} type="button" onClick={() => resume(unfinished)}>Fortsetzen<ArrowIcon /></button></section> : null}
       <section className={styles.summaryPanel} aria-labelledby="progress-title">
         <div className={styles.summaryHeading}><h2 id="progress-title">Dein Fortschritt</h2><span>{ready ? `${summary.attempted} / ${MATH_QUESTIONS.length} bearbeitet` : 'Wird geladen …'}</span></div><div className={journey.progressTrack} role="progressbar" aria-label="Bearbeitete Aufgaben" aria-valuenow={summary.attempted} aria-valuemin={0} aria-valuemax={MATH_QUESTIONS.length}><span style={{ width: `${summary.attempted / MATH_QUESTIONS.length * 100}%` }} /></div>
         <dl className={styles.summaryStats}><div><dt>Zuletzt richtig</dt><dd>{summary.correct}</dd></div><div><dt>Zum Wiederholen</dt><dd>{summary.reviewIds.length}</dd></div><div><dt>Aktive Lernzeit</dt><dd>{duration(summary.seconds)}</dd></div><div><dt>Runden abgeschlossen</dt><dd>{summary.completed}</dd></div></dl><p className={styles.selectionNote}>Ein richtig gelöstes Fehlertraining entfernt die Aufgabe aus der Fehlerliste. Abgebrochene Probeprüfungen werden erst nach der Abgabe ausgewertet.</p>

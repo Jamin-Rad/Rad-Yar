@@ -465,3 +465,55 @@
 @media (prefers-reduced-motion: reduce) {
   .dashboard *, .questionCard * { scroll-behavior: auto; transition: none; }
 }
+
+/* Exam overview: select a scope before starting one of the three modes. */
+.examHero { position: relative; display: grid; grid-template-columns: 1.15fr 1fr; width: min(1240px, calc(100% - 48px)); margin: 28px auto 24px; border: 1px solid #d5e3f3; border-radius: 26px; overflow: hidden; background: #fff; }
+.examHeroCopy { position: relative; z-index: 1; padding: 36px; }
+.examHeroCopy h1 { margin: 0; font-size: clamp(36px, 4.7vw, 64px); letter-spacing: -.055em; line-height: 1.1; }
+.examHeroCopy h1 span { color: #ed7357; }
+.examHeroCopy p { margin: 18px 0 22px; color: #536887; font-size: 17px; line-height: 1.6; }
+.heroFacts { display: flex; flex-wrap: wrap; gap: 8px; }
+.heroFacts span { padding: 7px 11px; border-radius: 99px; background: #eef4fc; color: #24599d; font-size: 11px; font-weight: 750; }
+.examArtwork { position: relative; min-height: 250px; overflow: hidden; pointer-events: none; }
+.examArtwork img { width: 100%; height: 100%; object-fit: cover; object-position: center 65%; }
+.examArtwork::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, #fff, #ffffff00 30%); }
+.dashboard { width: min(1240px, calc(100% - 48px)); margin: 0 auto; }
+.filterPanel { padding: 28px; }
+.filters { gap: 14px; }
+.filters label { min-width: 0; }
+.filters select { width: 100%; min-width: 0; }
+.modeHeading { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; padding-top: 24px; margin-top: 22px; border-top: 1px solid #e0e9f3; }
+.modeHeading .eyebrow { margin: 0; }
+.modeHeading p { margin: 0; color: #63728a; font-size: 12px; line-height: 1.5; }
+.modeGrid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 18px; }
+.modeCard { --mode-color: #245fb5; --mode-bg: #eaf2ff; display: flex; flex-direction: column; align-items: flex-start; gap: 14px; min-width: 0; padding: 22px; border: 1px solid #cddcf0; border-radius: 18px; background: #f8fbff; color: #102c56; text-align: left; font: inherit; cursor: pointer; transition: transform .15s, box-shadow .15s; }
+.practiceMode { --mode-color: #bc4d35; --mode-bg: #ffebe3; background: #fffbf8; border-color: #eed4c6; }
+.reviewMode { --mode-color: #25734d; --mode-bg: #e3f3e9; background: #f7fcf9; border-color: #cbe0d3; }
+.modeIcon { display: grid; place-items: center; width: 46px; height: 46px; border-radius: 13px; background: var(--mode-bg); color: var(--mode-color); }
+.modeIcon svg { width: 29px; height: 29px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.modeCard > strong { font-size: 20px; letter-spacing: -.025em; }
+.modeCard > span:nth-of-type(2) { color: #586d86; font-size: 13px; line-height: 1.6; }
+.modeFooter { display: flex; justify-content: space-between; align-items: center; gap: 8px; width: 100%; padding-top: 12px; margin-top: auto; color: var(--mode-color); font-size: 12px; font-weight: 800; }
+.modeFooter svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; flex: none; }
+.modeCard:hover:not(:disabled) { transform: translateY(-3px); box-shadow: 0 12px 24px #123a6512; }
+.modeCard:focus-visible { outline: 3px solid #245fb5; outline-offset: 3px; }
+.modeCard:disabled { cursor: default; background: #f4f6f8; border-color: #e0e5eb; }
+.modeCard:disabled .modeIcon { background: #e8edf0; color: #6e7d8b; }
+.modeCard:disabled .modeFooter { color: #647487; }
+@media (max-width: 900px) { .examHeroCopy { padding: 28px; } .modeGrid { gap: 12px; } .modeCard { padding: 18px; } .modeCard > strong { font-size: 18px; } }
+@media (max-width: 700px) {
+  .examHero, .dashboard { width: calc(100% - 28px); }
+  .examHero { grid-template-columns: 1fr; margin-top: 18px; border-radius: 20px; }
+  .examHeroCopy { padding: 24px; }
+  .examHeroCopy p { font-size: 15px; margin: 14px 0 18px; }
+  .examArtwork { min-height: 110px; max-height: 110px; }
+  .examArtwork::after { background: linear-gradient(#fff, #ffffff00 65%); }
+  .filterPanel { padding: 20px; }
+  .modeGrid { grid-template-columns: 1fr; }
+  .modeCard { display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 10px 14px; padding: 18px; }
+  .modeIcon { grid-row: span 2; }
+  .modeCard > strong { align-self: center; font-size: 19px; }
+  .modeCard > span:nth-of-type(2) { grid-column: 2; }
+  .modeFooter { grid-column: 2; padding-top: 4px; }
+}
+@media (prefers-reduced-motion: reduce) { .modeCard { transition: none; } }
