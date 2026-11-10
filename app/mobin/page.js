@@ -36,7 +36,7 @@ export const metadata = {
 
 export default function MobinPage() {
   return (
-    <main className={styles.shell}>
+    <main className={`${styles.shell} ${styles.homeShell}`}>
       <div className={`${styles.wrap} ${styles.homeWrap}`}>
         <section className={`${styles.main} ${styles.homeMain}`}>
           <div className={`${styles.hero} ${styles.homeHero}`}>
