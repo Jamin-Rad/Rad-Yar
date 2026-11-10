@@ -220,6 +220,25 @@
   transform: rotate(0deg) translateY(-5px) scale(1.02);
 }
 
+.englishButton {
+  border-color: rgba(255, 223, 153, .84);
+  background: linear-gradient(145deg, rgba(255, 211, 132, .34), rgba(101, 204, 190, .16)), radial-gradient(circle at 90% 15%, rgba(255, 246, 197, .30), transparent 36%);
+}
+
+.examTag {
+  position: relative;
+  align-self: flex-start;
+  margin-top: auto;
+  padding: 5px 9px;
+  border: 1px solid rgba(255, 234, 180, .55);
+  border-radius: 999px;
+  background: rgba(62, 42, 19, .32);
+  color: #fff0be;
+  font-size: 10px;
+  font-weight: 950;
+  letter-spacing: .11em;
+}
+
 .buttonTitle {
   position: relative;
   font-size: clamp(23px, 3vw, 36px);

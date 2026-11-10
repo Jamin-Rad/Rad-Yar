@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import styles from './mobin.module.css'
+import MobinStudyDashboard from './MobinStudyDashboard'
 
 const pages = [
   {
@@ -26,9 +27,10 @@ const pages = [
   {
     href: '/mobin/english',
     title: 'English',
-    meta: 'Vokabeltest · London-Wörter, Rechtschreibung & Bedeutung',
+    meta: 'Vokabeltest am 11. November · Unit 2 London',
     tilt: '-1.5deg',
     speed: '7s',
+    featured: true,
   },
 ]
 
@@ -63,16 +65,18 @@ export default function MobinPage() {
           <nav className={`${styles.buttonField} ${styles.homePages}`} aria-label="Mobin Seiten">
             {pages.map((page) => (
               <Link
-                className={styles.glassButton}
+                className={`${styles.glassButton} ${page.featured ? styles.englishButton : ''}`}
                 href={page.href}
                 key={page.href}
                 style={{ '--tilt': page.tilt, '--speed': page.speed }}
               >
                 <span className={styles.buttonTitle}>{page.title}</span>
+                {page.featured && <span className={styles.examTag}>11 NOV · VOKABELTEST</span>}
                 <span className={styles.buttonMeta}>{page.meta}</span>
               </Link>
             ))}
           </nav>
+          <MobinStudyDashboard />
         </section>
 
         <footer className={styles.footer}>Für Mobin gemacht.</footer>

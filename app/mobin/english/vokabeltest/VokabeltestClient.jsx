@@ -77,7 +77,7 @@ export default function VokabeltestClient() {
     <main className={styles.shell}>
       <div className={styles.container}>
         <nav className={styles.breadcrumb} aria-label="Navigation"><Link href="/mobin">← Mobin</Link><span>/</span><Link href="/mobin/english">English</Link><span>/</span><strong>Vokabeltest</strong></nav>
-        <header className={styles.practiceHero}><span className={styles.kicker}>UNIT 02 · LONDON: WOW!</span><h1>Vokabel<span>test</span></h1><p>Ein Wort nach dem anderen. Nach jeder Antwort siehst du sofort die richtige Lösung und warum sie passt.</p></header>
+        <header className={styles.practiceHero}><div className={styles.practiceDate}><span>TEST AM 11. NOVEMBER 2026</span><strong>UNIT 02 · LONDON: WOW!</strong></div><span className={styles.kicker}>DEIN TRAINING FÜR DEN 11. NOVEMBER</span><h1>Vokabel<span>test</span></h1><p>Ein Wort nach dem anderen. Nach jeder Antwort siehst du sofort die richtige Lösung und warum sie passt. Deine aktive Lernzeit erscheint auf der Mobin-Startseite.</p></header>
         {!mode && <>
           <section className={styles.sectionHead}><span>WÄHLE DEIN TRAINING</span><h2>Drei Wege zum Ziel</h2></section>
           <div className={styles.modeGrid}>{MODES.map((item, position) => <article className={styles.modeCard} key={item.id}>
