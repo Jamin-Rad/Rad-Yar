@@ -30,16 +30,16 @@ const pages = [
 ]
 
 const subjects = [
-  ['NWT', '/mobin/fach/nwt', 'subjectBlue'],
-  ['Physik', '/mobin/fach/physik', 'subjectViolet'],
+  ['NWT', '/mobin/fach/nwt', 'subjectBlueGreen'],
+  ['Physik', '/mobin/fach/physik', 'subjectBlue'],
   ['Biologie', '/mobin/fach/biologie', 'subjectGreen'],
   ['Geographie', '/mobin/fach/geographie', 'subjectAmber'],
   ['Sport', '/mobin/fach/sport', 'subjectCoral'],
   ['Spanisch', '/mobin/fach/spanisch', 'subjectRose'],
-  ['Latein', '/mobin/fach/latein', 'subjectGold'],
+  ['Latein', '/mobin/fach/latein', 'subjectRoyal'],
   ['Französisch', '/mobin/fach/franzoesisch', 'subjectBlue'],
   ['Englisch', '/mobin/english', 'subjectTeal'],
-  ['Mathe', '/mobin/mathepruefung', 'subjectPurple'],
+  ['Mathe', '/mobin/mathepruefung', 'subjectBlueGreen'],
   ['Reli', '/mobin/fach/religion', 'subjectPink'],
 ]
 

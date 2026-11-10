@@ -51,6 +51,7 @@
 
 .calendarPlaceholder {
   min-width: 0;
+  min-height: 390px;
   padding: clamp(20px, 3vw, 34px);
   border: 1px dashed #d7e1ee88;
   border-radius: 24px;
@@ -67,17 +68,17 @@
 .calendarPlaceholder .calendarIcon svg { filter: none; }
 .calendarViews { display: flex; gap: 5px; padding: 4px; border: 1px solid #d6deeb3d; border-radius: 12px; background: #111d2c40; }
 .calendarViews span { min-width: 60px; padding: 9px 12px; border-radius: 8px; color: #bac5d2; font-size: 13px; font-weight: 800; text-align: center; }
-.calendarPlaceholderBody { display: grid; min-height: 160px; place-items: center; align-content: center; gap: 14px; margin-top: 24px; border: 1px dashed #d6deeb45; border-radius: 16px; background: #111b2a27; text-align: center; }
+.calendarPlaceholderBody { display: grid; min-height: 200px; place-items: center; align-content: center; gap: 14px; margin-top: 24px; border: 1px dashed #d6deeb45; border-radius: 16px; background: #111b2a27; text-align: center; }
 .calendarPlaceholderBody p { margin: 0; color: #c4ced9; font-size: clamp(15px, 2vw, 18px); font-weight: 700; }
 .calendarPlaceholderDot { width: 42px; height: 42px; border: 1px solid #d8e1ee50; border-radius: 50%; background: #c7d1de13; box-shadow: 0 0 25px #ccd9e329; }
 @media (max-width: 640px) {
-  .calendarPlaceholder { padding: 17px 14px; border-radius: 18px; }
+  .calendarPlaceholder { min-height: 310px; padding: 17px 14px; border-radius: 18px; }
   .calendarPlaceholderTop { align-items: stretch; flex-direction: column; gap: 16px; }
   .calendarHeading { gap: 11px; }
   .calendarPlaceholder .calendarIcon { width: 46px; height: 46px; border-radius: 11px; }
   .calendarPlaceholder .calendarIcon svg { width: 29px; height: 29px; }
   .calendarViews { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); }
   .calendarViews span { min-width: 0; padding: 8px 2px; font-size: 12px; }
-  .calendarPlaceholderBody { min-height: 100px; margin-top: 14px; }
+  .calendarPlaceholderBody { min-height: 125px; margin-top: 14px; }
   .calendarPlaceholderDot { width: 30px; height: 30px; }
 }
