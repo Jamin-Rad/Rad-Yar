@@ -1816,9 +1816,9 @@
   position: relative;
   display: flex;
   align-items: center;
-  gap: 15px;
-  min-height: 132px;
-  padding: 18px 20px;
+  gap: 10px;
+  min-height: 142px;
+  padding: 12px 16px;
   border: 1px solid var(--card-border);
   border-radius: 21px;
   background: linear-gradient(138deg, var(--card-glow), #16274be8 50%, #0e1c3ae8);
@@ -1830,7 +1830,18 @@
 .homeCard:hover { transform: translateY(-4px); box-shadow: 0 20px 42px #020919a8, inset 0 1px #ffffff40; }
 .homeCard:focus-visible { outline: 3px solid white; outline-offset: 4px; }
 .homeCard .buttonTitle { font-size: clamp(18px, 1.7vw, 28px); white-space: nowrap; }
-.homeIcon { display: grid; place-items: center; width: 62px; height: 62px; flex: none; color: var(--card-border); font-size: 43px; line-height: 1; filter: drop-shadow(0 0 10px var(--card-border)); }
+/* Four equal cells in the transparent 3:1 artwork preserve the original proportions. */
+.homeIcon {
+  display: block;
+  width: 78px;
+  height: 104px;
+  flex: none;
+  background-image: url('/mobin/learning-icons.webp');
+  background-size: 400% 100%;
+  background-repeat: no-repeat;
+  transition: transform .18s ease;
+}
+.homeCard:hover .homeIcon { transform: translateY(-2px) scale(1.05); }
 .homeArrow { margin-left: auto; color: #eaf2ff; font-size: 40px; line-height: .7; font-weight: 200; }
 .kangarooCard { --card-border: #f1c86b; --card-glow: #77592e; }
 .planCard { --card-border: #85c6ff; --card-glow: #225080; }
@@ -1847,7 +1858,7 @@
   .homeHero .title { font-size: clamp(62px, 17vw, 86px); }
   .homePages { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
   .homeCard { min-height: 112px; padding: 12px; flex-direction: column; align-items: flex-start; gap: 5px; border-radius: 15px; }
-  .homeIcon { width: 35px; height: 35px; font-size: 31px; }
+  .homeIcon { width: 54px; height: 72px; }
   .homeCard .buttonTitle { font-size: clamp(14px, 4vw, 21px); white-space: normal; }
   .homeArrow { position: absolute; align-self: flex-end; margin-top: 60px; font-size: 26px; }
 }

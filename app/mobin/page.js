@@ -6,25 +6,25 @@ const pages = [
   {
     href: '/mobin/kaenguru',
     title: 'Känguru',
-    icon: '🦘',
+    iconPosition: '0%',
     tone: 'kangarooCard',
   },
   {
     href: '/mobin/tagesplan',
     title: 'Tagesplan',
-    icon: '▣',
+    iconPosition: '33.333333%',
     tone: 'planCard',
   },
   {
     href: '/mobin/mathepruefung',
     title: 'Matheprüfung',
-    icon: '▦',
+    iconPosition: '66.666667%',
     tone: 'mathCard',
   },
   {
     href: '/mobin/english',
     title: 'English',
-    icon: '🇬🇧',
+    iconPosition: '100%',
     tone: 'englishCard',
   },
 ]
@@ -52,7 +52,7 @@ export default function MobinPage() {
                 href={page.href}
                 key={page.href}
               >
-                <span className={styles.homeIcon} aria-hidden="true">{page.icon}</span>
+                <span className={styles.homeIcon} style={{ backgroundPosition: `${page.iconPosition} center` }} aria-hidden="true" />
                 <span className={styles.buttonTitle}>{page.title}</span>
                 <span className={styles.homeArrow} aria-hidden="true">›</span>
               </Link>
