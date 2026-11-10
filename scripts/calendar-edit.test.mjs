@@ -5,7 +5,7 @@ import { readFileSync } from 'node:fs'
 const id = '11111111-1111-4111-8111-111111111111'
 function fixture({legacy=false,foreign=false,concurrent=false,allDay=false}={}) {
   let row = {id,owner_id:'private:test',title:'Appointment',deadline:'2026-10-15',done:false,updated_at:'2026-10-01T12:00:00Z',
-    note:'[[andarun:todo-meta:'+JSON.stringify({itemType:'event',eventTime:allDay?'':'15:00',endTime:allDay?'':'16:00',allDay,endDate:allDay?'2026-10-15':'',cancelled:true})+']]\nPrivate note'}
+    note:'[[andarun:todo-meta:'+JSON.stringify({itemType:'event',eventTime:allDay?'':'15:00',endTime:allDay?'':'16:00',allDay,endDate:allDay?'2026-10-15':'',cancelled:true,calendarCategory:'Fokus',calendarMutationId:'receipt-test'})+']]\nPrivate note'}
   const db = {from(){
     let patch=null,filters=[]
     const query={select(){return query},eq(k,v){filters.push([k,v]);return query},in(k,v){filters.push([k,v]);return query},update(v){patch=v;return query},async maybeSingle(){
@@ -24,7 +24,7 @@ test('ChatGPT edits the same row, preserving omitted note, cancellation and end 
   for(const legacy of [false,true]){
     const api=fixture({legacy})
     let result=await api.edit({title:'Changed',startTime:'15:30'})
-    assert.equal(result.event.id,id);assert.equal(result.event.note,'Private note');assert.equal(result.event.cancelled,true);assert.equal(result.event.endTime,'16:00')
+    assert.equal(result.event.id,id);assert.equal(result.event.note,'Private note');assert.equal(result.event.cancelled,true);assert.equal(result.event.endTime,'16:00');assert.match(api.row().note,/calendarCategory/);assert.match(api.row().note,/receipt-test/)
     result=await api.edit({cancelled:false,done:true})
     assert.equal(result.event.cancelled,false);assert.equal(result.event.done,true)
     const completed=api.row().completed_at
@@ -53,4 +53,12 @@ test('cancelled cards render no time or secondary cancelled label',()=>{
   const mcp=readFileSync(new URL('../app/api/personal-calendar/mcp/route.js',import.meta.url),'utf8')
   assert.match(mcp,/'update_personal_calendar_event'/)
   assert.match(mcp,/expectedUpdatedAt/)
+})
+
+test('ChatGPT title edits retain full native Unicode notes',async()=>{
+  const api=fixture({legacy:true})
+  const note='👨‍👩‍👧‍👦'.repeat(500)
+  await api.edit({note})
+  const result=await api.edit({title:'Preserve Unicode'})
+  assert.equal(result.event.note,note)
 })

@@ -3,6 +3,8 @@ import { requireAndarunSession } from '@/lib/andarunPasswordAuth'
 import { requireFatimaSession, SHARED_ANDARUN_LOOKUP_OWNER_IDS, SHARED_ANDARUN_OWNER_ID } from '@/lib/fatimaPasswordAuth'
 import { isSupabaseAdminConfigured, supabaseAdmin } from '@/lib/supabase/server'
 
+import { parseCalendarNote, timestamp } from '@/lib/calendarSync.mjs'
+
 const LANES = new Set(['urgent', 'today', 'watch'])
 const ITEM_TYPES = new Set(['todo', 'event'])
 const META_PREFIX = '[[andarun:todo-meta:'
@@ -49,7 +51,7 @@ function toClient(row) {
 }
 
 function cleanText(value, maxLength = 240) {
-  return typeof value === 'string' ? value.trim().slice(0, maxLength) : ''
+  return typeof value === 'string' ? [...new Intl.Segmenter('de', { granularity: 'grapheme' }).segment(value.trim())].slice(0, maxLength).map(item => item.segment).join('') : ''
 }
 
 function cleanDeadline(value) {
@@ -84,9 +86,10 @@ function parseStoredNote(value) {
   }
 }
 
-function encodeStoredNote(note, itemType, eventTime, allDay, endDate = '', endTime = '', cancelled = false) {
+function encodeStoredNote(note, itemType, eventTime, allDay, endDate = '', endTime = '', cancelled = false, preservedMeta = {}) {
   if (itemType !== 'event') return note || null
   const meta = JSON.stringify({
+    ...preservedMeta,
     itemType,
     eventTime: allDay ? '' : eventTime || '',
     endDate: allDay ? endDate || '' : '',
@@ -232,6 +235,9 @@ export async function PATCH(request) {
     .eq('id', id).in('owner_id', lookupOwnerIds(identity)).maybeSingle()
   if (existing.error) return unavailable()
   if (!existing.data) return NextResponse.json({ error: 'Todo not found.' }, { status: 404 })
+  if (body.expectedUpdatedAt !== undefined && (!timestamp(body.expectedUpdatedAt) || timestamp(body.expectedUpdatedAt) !== timestamp(existing.data.updated_at))) {
+    return NextResponse.json({ error: 'Dieser Termin wurde auf einem anderen Gerät geändert. Dein Entwurf bleibt geöffnet. Bitte den aktuellen Termin erneut öffnen und vergleichen.' }, { status: 409 })
+  }
   const saved = toClient(existing.data)
   const doneChanged = typeof body.done === 'boolean'
   body = { ...saved, ...body }
@@ -254,7 +260,7 @@ export async function PATCH(request) {
     const endDate = normalizeEndDate(deadline, cleanDeadline(body.endDate), allDay)
     const endTime = itemType === 'event' && !allDay ? cleanTime(body.endTime) : null
     update.note = itemType === 'event'
-      ? encodeStoredNote(cleanText(body.note, 500), itemType, eventTime, allDay, endDate, endTime, body.cancelled === true)
+      ? encodeStoredNote(cleanText(body.note, 500), itemType, eventTime, allDay, endDate, endTime, body.cancelled === true, parseCalendarNote(existing.data.note || '').meta)
       : cleanText(body.note, 500) || null
   }
   if (update.item_type === 'todo') {
@@ -288,7 +294,7 @@ export async function PATCH(request) {
       const endTime = itemType === 'event' && !allDay ? cleanTime(body.endTime) : null
 
       if (typeof body.title === 'string') fallbackUpdate.title = cleanText(body.title)
-      if (typeof body.note === 'string') fallbackUpdate.note = encodeStoredNote(cleanText(body.note, 500), itemType || 'todo', eventTime, allDay, endDate, endTime, body.cancelled === true)
+      if (typeof body.note === 'string') fallbackUpdate.note = encodeStoredNote(cleanText(body.note, 500), itemType || 'todo', eventTime, allDay, endDate, endTime, body.cancelled === true, parseCalendarNote(existing.data.note || '').meta)
       if (typeof body.lane === 'string' && LANES.has(body.lane)) fallbackUpdate.lane = body.lane
       if (typeof body.deadline === 'string') {
         fallbackUpdate.deadline = cleanDeadline(body.deadline)

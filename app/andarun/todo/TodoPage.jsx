@@ -300,6 +300,8 @@ export default function TodoPage({ apiBase = '/api/andarun/todos', homeHref = '/
   const [draggingId, setDraggingId] = useState(null)
   const [dropLaneId, setDropLaneId] = useState(null)
   const importInputRef = useRef(null)
+  const pendingMutations = useRef(new Set())
+  const syncRevision = useRef(0)
   const showWorkPlan = apiBase === '/api/andarun/todos'
   const showTodos = view !== 'events'
   const showEvents = view !== 'todos'
@@ -364,6 +366,34 @@ export default function TodoPage({ apiBase = '/api/andarun/todos', homeHref = '/
       active = false
     }
   }, [])
+
+  useEffect(() => {
+    if (!showEvents || loading || saving || detailId || newEventOpen || storageMode !== 'online') return
+    let active = true
+    let fetching = false
+    const controller = new AbortController()
+    async function refreshCalendar() {
+      if (!active || fetching || document.visibilityState !== 'visible' || pendingMutations.current.size) return
+      fetching = true
+      const revision = syncRevision.current
+      try {
+        const response = await fetch(apiBase, { cache: 'no-store', signal: controller.signal })
+        if (!response.ok) return
+        const payload = await response.json()
+        if (active && revision === syncRevision.current && !pendingMutations.current.size && Array.isArray(payload.todos)) setTodos(payload.todos)
+      } catch { /* Keep the last known calendar and any open draft. */ }
+      finally { fetching = false }
+    }
+    const timer = setInterval(refreshCalendar, 15000)
+    window.addEventListener('focus', refreshCalendar)
+    document.addEventListener('visibilitychange', refreshCalendar)
+    refreshCalendar()
+    return () => {
+      active = false; controller.abort(); clearInterval(timer)
+      window.removeEventListener('focus', refreshCalendar)
+      document.removeEventListener('visibilitychange', refreshCalendar)
+    }
+  }, [apiBase, showEvents, loading, saving, detailId, newEventOpen, storageMode])
 
   useEffect(() => {
     if (!showWorkPlan) return
@@ -642,27 +672,31 @@ export default function TodoPage({ apiBase = '/api/andarun/todos', homeHref = '/
   }, [todos, monthView])
 
   async function patchTodo(id, patch) {
+    if (pendingMutations.current.has(id)) return false
     const previous = todos
+    const saved = previous.find(todo => todo.id === id)
     const normalizedPatch = typeof patch.done === 'boolean'
       ? { ...patch, completedAt: patch.done ? new Date().toISOString() : null }
       : patch
     setTodos(prev => prev.map(todo => todo.id === id ? { ...todo, ...normalizedPatch, updatedAt: new Date().toISOString() } : todo))
 
-    if (storageMode === 'local' || id.startsWith('local-')) return
-
+    if (storageMode === 'local' || id.startsWith('local-')) return true
+    pendingMutations.current.add(id); syncRevision.current += 1
     try {
       const response = await fetch(apiBase, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ id, ...patch }),
+        body: JSON.stringify({ id, ...patch, ...(saved?.updatedAt ? { expectedUpdatedAt: saved.updatedAt } : {}) }),
       })
-      if (!response.ok) throw new Error('Could not update online.')
       const payload = await response.json()
+      if (!response.ok) throw new Error(payload.error || 'Could not update online.')
       setTodos(prev => prev.map(todo => todo.id === id ? payload.todo : todo))
+      return true
     } catch (error) {
-      setTodos(previous)
+      setTodos(prev => prev.map(todo => todo.id === id && saved ? saved : todo))
       setMessage(error.message)
-    }
+      return false
+    } finally { pendingMutations.current.delete(id); syncRevision.current += 1 }
   }
 
   function moveTodoToLane(todo, laneId) {
@@ -672,18 +706,21 @@ export default function TodoPage({ apiBase = '/api/andarun/todos', homeHref = '/
   }
 
   async function deleteTodo(id) {
+    if (pendingMutations.current.has(id)) return
+    syncRevision.current += 1
     const previous = todos
     setTodos(prev => prev.filter(todo => todo.id !== id))
 
     if (storageMode === 'local' || id.startsWith('local-')) return
 
+    pendingMutations.current.add(id)
     try {
       const response = await fetch(`${apiBase}?id=${encodeURIComponent(id)}`, { method: 'DELETE' })
       if (!response.ok) throw new Error('Could not delete online.')
     } catch (error) {
       setTodos(previous)
       setMessage(error.message)
-    }
+    } finally { pendingMutations.current.delete(id); syncRevision.current += 1 }
   }
 
   function openDetail(todo) {
@@ -751,7 +788,7 @@ export default function TodoPage({ apiBase = '/api/andarun/todos', homeHref = '/
       endTime: detailForm.itemType === 'event' && !detailForm.allDay ? detailForm.endTime : '',
     }
 
-    await patchTodo(detailId, patch)
+    if (!(await patchTodo(detailId, patch))) return
     if (patch.itemType === 'event' && patch.deadline) setMonthView(monthKeyFromDate(patch.deadline))
     closeDetail()
   }
