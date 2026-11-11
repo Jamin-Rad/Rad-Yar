@@ -29,7 +29,7 @@ export async function POST(request){
     if(batches.length!==(paired?2:1))throw Error('ساختار تراکنش معتبر نیست.')
     const replace=(previous,batch)=>{
       if(batch.accountId!==previous.accountId||batch.rows[0].type!==previous.type||(batch.rows[0].isin||'')!==(previous.isin||''))throw Error('نوع، حساب و شناسه دارایی باید ثابت بماند.')
-      return {...batch.rows[0],id:previous.id,accountId:previous.accountId,sourceRow:previous.sourceRow,manual:{...batch.rows[0].manual,corrected:true}}
+      return {...batch.rows[0],id:previous.id,accountId:previous.accountId,sourceRow:previous.sourceRow,manual:{...batch.rows[0].manual,...(previous.manual?.orderId ? {orderId: previous.manual.orderId} : {}),corrected:true}}
     }
     newPayload=replace(old,batches.find(b=>b.accountId===old.accountId))
     if(paired)newPaired=replace(paired,batches.find(b=>b.accountId===paired.accountId))

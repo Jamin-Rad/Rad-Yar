@@ -6,7 +6,7 @@ import { number } from '@/lib/investments/portfolio.mjs'
 import Icon from './InvestmentIcon'
 import styles from './InvestmentNavigation.module.css'
 
-const PRIMARY=[['accounts','نمای کلی','overview']]
+const PRIMARY=[['accounts','نمای کلی','overview'],['orders','مدیریت اردرها','trading']]
 const ANALYSIS=[['journal','تصمیم‌ها و نتیجه‌ها','journal']]
 export default function InvestmentNavigation({section,accountId,dueCount=0,onNavigate,onAccount,xtbOwnerId='self',onXtbAccount}) {
   const [expanded,setExpanded]=useState(section==='trades'?'xtb':section==='wallet'?'wallet':'tr')

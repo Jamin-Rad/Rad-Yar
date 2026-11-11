@@ -9,6 +9,7 @@ import usePeriodProfit from './usePeriodProfit'
 import useTransactionLedger from './useTransactionLedger'
 import LedgerWorkspace from './LedgerWorkspace'
 import EntryDialog from './EntryDialog'
+import OrdersWorkspace from './OrdersWorkspace'
 import {CashPlanDialog} from './CashPlans'
 import MarketRefresh from './MarketRefresh'
 import AssetProfile from './AssetProfile'
@@ -27,7 +28,7 @@ import Icon from './InvestmentIcon'
 import InvestmentNavigation from './InvestmentNavigation'
 import styles from './investments.module.css'
 
-const SECTIONS = [['accounts', 'نمای کلی', 'overview'], ['ledger', 'تراکنش‌ها', 'source'], ['weekly', 'مرور یکشنبه', 'calendar'], ['journal', 'تصمیم‌ها و نتیجه‌ها', 'journal']]
+const SECTIONS = [['accounts', 'نمای کلی', 'overview'], ['ledger', 'تراکنش‌ها', 'source'], ['orders', 'مدیریت اردرها', 'trading'], ['weekly', 'مرور یکشنبه', 'calendar'], ['journal', 'تصمیم‌ها و نتیجه‌ها', 'journal']]
 
 export function download(content, name, type) {
   const url = URL.createObjectURL(new Blob([content], { type: `${type};charset=utf-8` }))
@@ -107,6 +108,7 @@ export default function InvestmentWorkspace() {
         {store.offline && <section className={styles.conflictNotice} role="status"><p>{store.error || 'نسخه ذخیره‌شده مرورگر نمایش داده می‌شود؛ اتصال سرور در حال بررسی است.'}</p><button type="button" className={styles.secondaryButton} onClick={() => window.location.reload()}>بررسی دوباره اتصال</button></section>}
         {store.conflict && <section className={styles.conflictNotice} role="alert"><p>نسخه سرور با پیش‌نویس این مرورگر متفاوت است. ابتدا از تغییراتت پشتیبان بگیر.</p><button type="button" className={styles.secondaryButton} onClick={() => download(JSON.stringify(state, null, 2), 'family-local-draft.json', 'application/json')}>دانلود پیش‌نویس</button><button type="button" className={styles.secondaryButton} onClick={() => { if (window.confirm('پس از پشتیبان، پیش‌نویس مرورگر کنار گذاشته و نسخه سرور بارگذاری شود؟')) store.discardDraft() }}>بارگذاری نسخه سرور</button></section>}
         {section==='asset'&&<MarketRefresh marketData={marketData} state={state} />}
+        {section === 'orders' && <OrdersWorkspace onLedger={()=>openLedger()} state={state} ledger={ledger} onFill={async () => {const fresh=await ledger.reload();if(fresh)store.synchronizeLedger(fresh.transactions);setToast('اجرای اردر در دفتر تراکنش‌ها ثبت شد.')}}/>}
         {section === 'ledger' && <LedgerWorkspace onEditTransaction={tx=>setDialog({kind:'entry',...entryPair(tx),editTransaction:entryPair(tx).transaction})} onDeleteTransaction={deleteTransaction} marketData={marketData} state={state} onPlan={editCashPlan} onPostPlan={postCashPlan} onEntry={newEntry} key={`${ledgerAccountId}:${ledgerView}`} ledger={ledger} initialAccount={ledgerAccountId} initialView={ledgerView} download={download} notify={setToast}/>}
         {section === 'accounts' && <FamilyOverview onXtbAccount={openXtbAccount} onWallet={()=>navigate('wallet')} profitSelection={profitSelection} onProfitSelection={setProfitSelection} profitPeriod={profitPeriod} onEnablePrices={enableIsinPrices} marketData={marketData} ledger={ledger} onLedger={openLedger} state={state} onAccount={openAccount} />}
         {section === 'account' && <AccountWorkspace onEditTransaction={tx=>setDialog({kind:'entry',editTransaction:ledger.transactions.find(t=>t.id===tx.id&&t.accountId===tx.accountId)||tx})} onDeleteTransaction={deleteTransaction} marketData={marketData} download={download} profitSelection={profitSelection} onProfitSelection={setProfitSelection} profitPeriod={profitPeriod} cashPlans={state.settings.cashPlans} onPlan={editCashPlan} onPostPlan={postCashPlan} onEntry={newEntry} key={accountId} account={account} ledger={ledger} onLedger={() => openLedger(accountId)} markets={marketData.markets} onEdit={position => setDialog({ kind: 'position', accountId, position })} onAdd={() => setDialog({ kind: 'position', accountId, position: null })} onDetails={() => setDialog({ kind: 'details', accountId })} onSnapshot={() => setDialog({ kind: 'snapshot', accountId })} onOpen={p => openAsset(accountId,p.id)} onImport={() => setDialog({kind:'csv',accountId})} />}
