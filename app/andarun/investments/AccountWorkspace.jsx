@@ -11,7 +11,7 @@ import {CashPlans} from './CashPlans'
 import Icon from './InvestmentIcon'
 import styles from './investments.module.css'
 
-export default function AccountWorkspace({ account, onEdit, onAdd, onSnapshot, onDetails,  onOpen, onImport, markets, onLedger, ledger, cashPlans=[],onPlan,onPostPlan, profitSelection, onProfitSelection, profitPeriod, download }) {
+export default function AccountWorkspace({ account, onEdit, onAdd, onSnapshot, onDetails,  onOpen, onImport, markets, onLedger, ledger, cashPlans=[],onPlan,onPostPlan, profitSelection, onProfitSelection, profitPeriod, download, marketData, onEditTransaction, onDeleteTransaction }) {
   const summary = summarize(account.positions)
   const comparison = snapshotComparison(account)
   const [tab, setTab] = useState('holdings')
@@ -20,7 +20,7 @@ export default function AccountWorkspace({ account, onEdit, onAdd, onSnapshot, o
     <div className={view.tabs} role="tablist" aria-label="بخش‌های حساب">{[['holdings','دارایی‌ها'],['transactions','تراکنش‌ها'],['settings','تنظیمات']].map(([key,label])=><button type="button" role="tab" key={key} id={`account-tab-${key}`} aria-selected={tab===key} aria-controls="account-tab-panel" tabIndex={tab===key?0:-1} onKeyDown={event=>{if(['ArrowLeft','ArrowRight','Home','End'].includes(event.key)){event.preventDefault();const keys=['holdings','transactions','settings'];const next=event.key==='Home'?0:event.key==='End'?2:(keys.indexOf(tab)+(event.key==='ArrowLeft'?1:2))%3;setTab(keys[next]);document.getElementById(`account-tab-${keys[next]}`)?.focus()}}} onClick={()=>setTab(key)}>{label}</button>)}</div>
     <div id="account-tab-panel" role="tabpanel" aria-labelledby={`account-tab-${tab}`}>
       {tab==='holdings'&&(account.positions.length?<HoldingsTable compact positions={account.positions} totalCents={summary.totalCents} onEdit={onEdit} onOpen={onOpen} markets={markets}/>:<p className={view.empty}>دارایی بازی در این حساب ثبت نشده است.</p>)}
-      {tab==='transactions'&&<AccountTransactions account={account} ledger={ledger} onReport={onLedger} download={download}/>}
+      {tab==='transactions'&&<AccountTransactions account={account} ledger={ledger} onReport={onLedger} download={download} marketData={marketData} onEditTransaction={onEditTransaction} onDeleteTransaction={onDeleteTransaction}/>}
       {tab==='settings'&&<div className={view.settings}>
         <h2>تنظیمات حساب</h2>
         <AccountBalancePanel detailsOnly account={account} ledger={ledger} markets={markets} onDetails={onDetails} profitSelection={profitSelection} profitPeriod={profitPeriod}/>

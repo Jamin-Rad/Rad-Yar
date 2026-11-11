@@ -738,3 +738,10 @@
 .cleanMode .segmented button[aria-pressed=true] { background:#176b56; color:#fff; }
 .cleanMode .thesis,.cleanMode .journalHistory article,.cleanMode .planLocked { color:#536579; background:#f7f9fa; border-color:#e3e8ed; }
 .cleanMode :focus-visible { outline-color:#28876d; }
+
+.transactionFacts { display:grid; grid-template-columns:repeat(auto-fit,minmax(145px,1fr)); gap:10px; margin:18px 0; }
+.transactionFacts div, .counterfactual { border:1px solid var(--line); border-radius:8px; padding:10px 12px; min-width:0; }
+.transactionFacts dt { color:#aab8c6; font-size:12px; }
+.transactionFacts dd { margin:4px 0 0; font-weight:600; overflow-wrap:anywhere; }
+.counterfactual { margin:18px 0; }
+.counterfactual h3 { margin:0 0 8px; }
