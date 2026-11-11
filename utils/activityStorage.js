@@ -4,6 +4,7 @@ import { isUserCacheActive, getUserCacheToken, isUserCacheCurrent } from './prog
 const IDLE_MS = 60000
 const sourceIds = new Map()
 const inFlight = new Map()
+const lastPull = new Map()
 const keyFor = id => `radyar_activity_${id || 'anon'}`
 const snapshotKey = id => `radyar_activity_snapshot_v2_${id}`
 const prefix = id => `radyar_activity_stream_${id}_`
@@ -90,7 +91,8 @@ export function mergeServerActivity(userId, data) {
   notify(userId)
   return loadActivity(userId)
 }
-async function reconcile(userId, keepalive) {
+async function reconcile(userId, keepalive, flightKey) {
+  const startedAt = Date.now()
   const token=getUserCacheToken(userId), snapshot=json(snapshotKey(userId),{sources:[],legacyDays:{}})
   const acknowledged = new Map(snapshot.sources.map(row => [`${row.sourceId}:${row.day}`, activityDay(row)]))
   const localStreams=streams(userId).filter(row => {
@@ -102,20 +104,33 @@ async function reconcile(userId, keepalive) {
   // Limit payloads so pagehide keepalive requests stay below the browser limit.
   for(let offset=0;offset<Math.max(legacy.length,localStreams.length);offset+=100){
     if(!isUserCacheCurrent(userId,token))return null
-    const response=await fetch('/api/progress/activity',{method:'POST',headers,body:JSON.stringify({streams:localStreams.slice(offset,offset+100),legacyDays:Object.fromEntries(legacy.slice(offset,offset+100))}),keepalive})
+    const batch = { streams: localStreams.slice(offset,offset+100), legacyDays: Object.fromEntries(legacy.slice(offset,offset+100)) }
+    const response=await fetch('/api/progress/activity',{method:'POST',headers,body:JSON.stringify(batch),keepalive})
     if(!response.ok)throw new Error('Activity upload failed')
+    if (keepalive && isUserCacheCurrent(userId, token)) {
+      mergeServerActivity(userId, { version: 2, sources: batch.streams, legacyDays: batch.legacyDays })
+    }
   }
   if(!isUserCacheCurrent(userId,token))return null
+  if (keepalive) return loadActivity(userId)
   const response=await fetch('/api/progress/activity',{cache:'no-store',headers:{'X-Radyar-User-Id':userId}})
   if(!response.ok)throw new Error('Activity download failed')
   const data=await response.json()
   if(!isUserCacheCurrent(userId,token))return null
-  return mergeServerActivity(userId,data)
+  const activity = mergeServerActivity(userId,data)
+  lastPull.set(flightKey, startedAt)
+  return activity
 }
-export async function syncActivityToServer(userId,{keepalive=false}={}) {
+export async function syncActivityToServer(userId,{keepalive=false, maxAgeMs=0}={}) {
   if(!userId || !isUserCacheActive(userId))return null
   const flightKey = `${userId}:${getUserCacheToken(userId)}`
-  if(!inFlight.has(flightKey))inFlight.set(flightKey,reconcile(userId,keepalive).finally(()=>inFlight.delete(flightKey)))
-  return inFlight.get(flightKey)
+  // Page exit can upload newer local time while a foreground download is running.
+  // The server merges each cumulative stream by maximum, so either order is safe.
+  const requestKey = keepalive ? `${flightKey}:upload` : flightKey
+  if (inFlight.has(requestKey)) return inFlight.get(requestKey)
+  if (!keepalive && maxAgeMs > 0 && Date.now() - (lastPull.get(flightKey) ?? -Infinity) < maxAgeMs) return loadActivity(userId)
+  const request = reconcile(userId,keepalive,flightKey).finally(() => inFlight.delete(requestKey))
+  inFlight.set(requestKey, request)
+  return request
 }
 export { IDLE_MS, dateKey as activityDateKey }

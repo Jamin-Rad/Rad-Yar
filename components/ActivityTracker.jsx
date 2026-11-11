@@ -37,19 +37,21 @@ export default function ActivityTracker() {
     activateUserCache(userId)
     if (!userId) return
     const token = getUserCacheToken(userId)
-    const sync = () => {
-      if (document.visibilityState === 'visible' && isUserCacheCurrent(userId, token) && navigator.onLine) void syncLocalProgressToServer(userId, { force: true })
+    const run = activityMaxAgeMs => {
+      if (document.visibilityState === 'visible' && isUserCacheCurrent(userId, token) && navigator.onLine) void syncLocalProgressToServer(userId, { activityMaxAgeMs })
     }
+    const sync = () => run(60000)
+    const reconnect = () => run(0)
     sync()
     const interval = window.setInterval(sync, 30000)
-    window.addEventListener('online', sync)
+    window.addEventListener('online', reconnect)
     window.addEventListener('focus', sync)
     document.addEventListener('visibilitychange', sync)
     const pending = event => { if (event.detail?.userId === userId) sync() }
     window.addEventListener('radyar:progress-pending', pending)
     return () => {
       clearInterval(interval)
-      window.removeEventListener('online', sync)
+      window.removeEventListener('online', reconnect)
       window.removeEventListener('focus', sync)
       document.removeEventListener('visibilitychange', sync)
       window.removeEventListener('radyar:progress-pending', pending)
@@ -68,8 +70,11 @@ export default function ActivityTracker() {
       onInterval: (seconds, at) => addActiveSeconds(userId, seconds, category, at),
     })
     const touch = () => timer.interact()
-    const visibility = () => timer.visibilityChanged()
     const save = () => { timer.tick(); void syncActivityToServer(userId, { keepalive: true }).catch(() => {}) }
+    const visibility = () => {
+      timer.visibilityChanged()
+      if (document.visibilityState === 'hidden') save()
+    }
     const interval = window.setInterval(timer.tick, 1000)
     for (const name of ['pointerdown', 'keydown', 'scroll', 'touchstart']) window.addEventListener(name, touch, { passive: true })
     document.addEventListener('visibilitychange', visibility)
@@ -79,7 +84,6 @@ export default function ActivityTracker() {
     return () => {
       clearInterval(interval)
       timer.stop()
-      void syncActivityToServer(userId, { keepalive: true }).catch(() => {})
       for (const name of ['pointerdown', 'keydown', 'scroll', 'touchstart']) window.removeEventListener(name, touch)
       document.removeEventListener('visibilitychange', visibility)
       window.removeEventListener('focus', visibility)
