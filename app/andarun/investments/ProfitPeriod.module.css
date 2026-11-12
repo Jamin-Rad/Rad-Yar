@@ -31,3 +31,6 @@
 @media(max-width:680px) { .scopes { width:100%; } .scopes button { flex:1; padding:8px 6px; } .saleRow { grid-template-columns:1fr auto; } .saleRow>bdi:first-child { grid-column:1/-1; font-size:10px; } }
 .details.details > summary,.details .saleRows > summary { color:#344b46; }
 .dark.details > summary,.dark.details .saleRows > summary { color:#dbe8ec; }
+.dark select,.dark input,.dark .scopes,.dark .actions button { background:#16202b; color:#eef1f5; border-color:#405063; color-scheme:dark; }
+.dark .scopes button { color:#b7c7d1; }
+.dark .scopes button[aria-pressed="true"] { background:#c7e99a; color:#182229; }
