@@ -1,0 +1,36 @@
+.shell { min-height: 100svh; color: #edf6ff; background: #101a3c url('/mobin/planner-sky.webp') center bottom / cover fixed; padding: 18px 14px 44px; font-family: var(--font-main, system-ui); }
+.wrap { max-width: 1060px; margin: auto; }
+.wrap h1 { font-size: clamp(2rem, 5vw, 3.7rem); margin: 14px 0; color: #e3f6ff; text-shadow: 0 0 24px #7bbfff75; }
+.back { color: #c9ecff; text-decoration: none; font-weight: 850; }
+.panel { margin: 18px 0 0; padding: clamp(12px, 3vw, 25px); border: 1px solid #80b5f0a0; border-radius: 15px; background: linear-gradient(140deg, #254979, #151f46); color: #edf6ff; }
+.panel h2 { margin: 0 0 12px; }
+.controls { display: flex; flex-wrap: wrap; gap: 8px; align-items: flex-end; margin-block: 10px; }
+.controls label, .exercise label { display: grid; gap: 4px; flex: 1 1 145px; }
+.panel input, .panel select { color: #edf6ff; background: #111e40; border: 1px solid #83a8d6; border-radius: 7px; padding: 9px; min-width: 0; font: inherit; }
+.panel button, .actions button, .actions label { color: #e9f7ff; background: #284a79; border: 1px solid #8bbbf0; border-radius: 8px; padding: 8px 12px; min-height: 40px; font: inherit; font-weight: 750; cursor: pointer; }
+.panel button:disabled { opacity: .5; cursor: default; }
+.exercise { display: grid; gap: 12px; justify-items: start; padding: 12px; background: #111d43; border-radius: 9px; }
+.exercise p { margin: 0; }
+.exercise strong { font-size: 1.3rem; }
+.panel details li { margin-bottom: 5px; }
+.actions { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.heading { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+.untis { display: grid; gap: 6px; color: #edf6ff; }
+.untisForm { display: grid; gap: 8px; max-width: 420px; padding: 12px; border: 1px solid #89afe0; border-radius: 10px; background: #182a50; font-size: .9rem; }
+.untisForm label { display: grid; gap: 5px; }
+.untisForm input { width: 100%; min-width: 0; padding: 8px; color: #edf6ff; background: #101c36; border: 1px solid #89afe0; border-radius: 6px; }
+.untisForm a { color: #c1e7ff; }
+.untis p { margin: 0; }
+.capture { position: relative; display: inline-grid; place-items: center; }
+.capture input { position: absolute; inset: 0; width: 100%; opacity: 0; cursor: pointer; }
+.capture:focus-within { outline: 2px solid #fff; outline-offset: 3px; }
+.timetable { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; }
+.timetable section { background: #142347; border: 1px solid #85acd871; border-radius: 8px; padding: 8px; overflow-wrap: anywhere; }
+.timetable h3 { margin: 0 0 8px; color: #d1ecff; font-size: 1rem; }
+.timetable ul { list-style: none; display: grid; gap: 7px; padding: 0; margin: 0; }
+.timetable li { display: grid; gap: 3px; padding: 6px; background: #223d67; border-radius: 6px; }
+.timetable li span, .timetable p { color: #ccdef3; font-size: .82rem; }
+.timetablePhoto { display: block; width: min(100%, 780px); max-height: 75vh; object-fit: contain; margin: 12px 0; }
+@media (max-width: 640px) {
+  .timetable { grid-template-columns: 1fr; }
+}

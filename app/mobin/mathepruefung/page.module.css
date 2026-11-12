@@ -496,3 +496,8 @@
 .setupFooter .primaryButton { margin: 0; font-family: inherit; }
 .setupEmpty { padding: 14px; border-radius: 12px; color: #755b28; background: #fff6df; font-size: 13px; line-height: 1.6; }
 @media (max-width: 540px) { .setupHeader { padding: 20px; } .setupBody { padding: 20px; } .setupFooter { padding: 16px 20px; flex-wrap: wrap; } .setupFooter .primaryButton { width: 100%; justify-content: center; } .choiceRow button { padding: 10px 6px; font-size: 12px; } }
+.quickPractice { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px; padding: 15px; border: 1px solid #83b8f2; border-radius: 14px; color: #edf6ff; background: linear-gradient(145deg, #24497c, #151d44); }
+.quickPractice p { margin: 4px 0 0; color: #cbe4ff; }
+.summaryPanel, .report, .resumePanel { color: #102541; }
+.chapterCard { color: #102541; }
+.curriculum > p { color: #d2e7ff; }

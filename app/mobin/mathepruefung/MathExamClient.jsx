@@ -141,6 +141,13 @@ export default function MathExamClient() {
     </dialog>
 
     <div className={styles.dashboard}>
+      <section className={styles.quickPractice}>
+        <div><strong>Kurze Übungsrunde</strong><p>Fünf Aufgaben, mit Tipps und Lösungswegen.</p></div>
+        <button type="button" className={styles.primaryButton} disabled={!ready}
+          onClick={() => start('practice', [...MATH_QUESTIONS]
+            .sort((a, b) => Number(Boolean(summary.latest[a.id])) - Number(Boolean(summary.latest[b.id])))
+            .slice(0, 5).map(question => question.id))}>5 Aufgaben starten<ArrowIcon /></button>
+      </section>
       {unfinished ? <section className={styles.resumePanel}><div><strong>Du hast eine Runde begonnen.</strong><p>{MODE_NAMES[unfinished.mode]} · {Object.keys(unfinished.responses).length} von {unfinished.questionIds.length} Antworten gespeichert</p></div><button className={styles.secondaryButton} type="button" onClick={() => resume(unfinished)}>Fortsetzen<ArrowIcon /></button></section> : null}
       <section className={styles.summaryPanel} aria-labelledby="progress-title">
         <div className={styles.summaryHeading}><h2 id="progress-title">Dein Fortschritt</h2><span>{ready ? `${summary.attempted} / ${MATH_QUESTIONS.length} bearbeitet` : 'Wird geladen …'}</span></div><div className={journey.progressTrack} role="progressbar" aria-label="Bearbeitete Aufgaben" aria-valuenow={summary.attempted} aria-valuemin={0} aria-valuemax={MATH_QUESTIONS.length}><span style={{ width: `${summary.attempted / MATH_QUESTIONS.length * 100}%` }} /></div>

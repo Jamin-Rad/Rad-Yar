@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import styles from './english.module.css'
+import WordPractice from '../WordPractice'
 
 export default function EnglishHome() {
   const [open, setOpen] = useState(null)
@@ -29,6 +30,7 @@ export default function EnglishHome() {
           <span className={styles.categoryTop}><span className={styles.categoryIndex}>02 / UNTERRICHT</span><span className={styles.categoryBadge}>Termine</span></span><span className={styles.categoryArt} aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="2"><rect x="9" y="5" width="30" height="38" rx="4"/><path d="M17 15h14M17 23h14M17 31h8"/></svg></span><strong>Klassenarbeit</strong><span>Bereite dich auf die nächste Englischarbeit vor.</span><span className={styles.categoryFooter}>Test auswählen <b aria-hidden="true">→</b></span>
         </button>
       </section>
+      <WordPractice language="Englisch" />
     </div>
     {open && <div className={styles.modalBackdrop} onMouseDown={event => { if (event.target === event.currentTarget) setOpen(null) }}>
       <div className={styles.dateModal} role="dialog" aria-modal="true" aria-labelledby="english-dates-title">

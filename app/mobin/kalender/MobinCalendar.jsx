@@ -7,6 +7,7 @@ import {
   readLocalLegacyMathSessions, readLocalStudySessions, studySummary,
 } from '@/lib/mobinStudyTime'
 import styles from './calendar.module.css'
+import UntisConnect, { useUntis } from '../UntisConnect'
 
 const modes = { week: 'Wochen', month: 'Monate', year: 'Jahre' }
 const weekdays = ['Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So']
@@ -38,6 +39,8 @@ function weekNumber(start) {
 }
 
 export default function MobinCalendar({ initialView = 'month', embedded = false }) {
+  const untis = useUntis('calendar')
+  const [selectedDay, setSelectedDay] = useState('')
   const [view, setView] = useState(initialView)
   const [today, setToday] = useState('')
   const [cursor, setCursor] = useState('')
@@ -71,6 +74,15 @@ export default function MobinCalendar({ initialView = 'month', embedded = false 
     }
   }, [])
 
+  const eventsByDay = useMemo(() => {
+    const events = new Map()
+    for (const event of untis.data?.events ?? []) {
+      if (!events.has(event.day)) events.set(event.day, [])
+      events.get(event.day).push(event)
+    }
+    return events
+  }, [untis.data])
+
   const summary = useMemo(() => {
     const sessions = mergeStudySessions(remote?.sessions, local.sessions)
     const math = mergeLegacyMathSessions(remote?.mathSessions, local.mathSessions)
@@ -82,6 +94,8 @@ export default function MobinCalendar({ initialView = 'month', embedded = false 
   const Container = embedded ? 'section' : 'main'
   const Heading = embedded ? 'h2' : 'h1'
   if (!cursor) return <Container className={styles.shell} data-embedded={embedded}><p role="status">Kalender wird geladen …</p></Container>
+  const eventDay = selectedDay || cursor
+  const events = eventsByDay.get(eventDay) || []
   const date = dateOf(cursor)
   const currentWeek = key(monday(dateOf(today)))
   const week = daysOfWeek(monday(date))
@@ -95,6 +109,7 @@ export default function MobinCalendar({ initialView = 'month', embedded = false 
     : view === 'month' ? monthYear.format(date) : String(year)
 
   function navigate(direction) {
+    setSelectedDay('')
     if (view === 'week') setCursor(key(shift(date, direction * 7)))
     else if (view === 'month') setCursor(key(dateAt(year, month + direction)))
     else setCursor(key(dateAt(year + direction, month)))
@@ -105,7 +120,10 @@ export default function MobinCalendar({ initialView = 'month', embedded = false 
     const isToday = id === today
     return <div className={styles.day} key={id} data-today={isToday} data-outside={outside}
       aria-current={isToday ? 'date' : undefined} aria-label={fullDate.format(item) + ', ' + minutes([item]) + ' Minuten gelernt'}>
-      <time dateTime={id}>{item.getUTCDate()}</time>
+            {untis.data?.connected ? <button type="button" className={styles.daySelect}
+        aria-label={'Unterricht am ' + fullDate.format(item)} aria-pressed={eventDay === id}
+        onClick={() => setSelectedDay(id)}><time dateTime={id}>{item.getUTCDate()}</time>{eventsByDay.has(id) && <small>•</small>}</button>
+        : <time dateTime={id}>{item.getUTCDate()}</time>}
       <span>{minutes([item])} Min.</span>
     </div>
   }
@@ -114,7 +132,7 @@ export default function MobinCalendar({ initialView = 'month', embedded = false 
     <div className={styles.wrap}>
       {!embedded && <Link className={styles.back} href="/mobin?bereich=1">← Mobin</Link>}
       <header className={styles.header}>
-        <Heading>Kalender</Heading>
+        <Heading>Kalender</Heading><UntisConnect state={untis} />
         <div className={styles.views} aria-label="Kalenderansicht">
           {Object.entries(modes).map(([id, label]) => <button key={id} aria-pressed={view === id} onClick={() => setView(id)}>{label}</button>)}
         </div>
@@ -125,7 +143,7 @@ export default function MobinCalendar({ initialView = 'month', embedded = false 
           {view !== 'year' && <p>{minutes(view === 'week' ? week : monthDays)} Min. gelernt</p>}
         </div>
         <button aria-label="Nächster Zeitraum" onClick={() => navigate(1)}>›</button>
-        <button className={styles.todayButton} onClick={() => setCursor(today)}>Heute</button>
+        <button className={styles.todayButton} onClick={() => { setCursor(today); setSelectedDay('') }}>Heute</button>
       </div>
       {!remote && !failed && <p className={styles.status} role="status">Lernzeiten werden geladen …</p>}
       {failed && <p className={styles.status} role="status">Online-Lernzeiten sind gerade nicht verfügbar. Du siehst die Zeiten von diesem Gerät.</p>}
@@ -152,6 +170,13 @@ export default function MobinCalendar({ initialView = 'month', embedded = false 
           })}</div>
         </section>
       })}</div>}
+      {untis.data?.connected && view !== 'year' && <section className={styles.lessons} aria-label="Unterricht">
+        <h3>Unterricht · {shortDate.format(dateOf(eventDay))}</h3>
+        {events.length ? <ul>{events.map((event, index) => <li key={index}>
+          <span>{event.time}{event.end && '–' + event.end}</span>
+          <strong>{event.cancelled && 'Entfällt · '}{event.title}</strong>
+        </li>)}</ul> : <p>Keine Termine im WebUntis-Import für diesen Tag.</p>}
+      </section>}
     </div>
   </Container>
 }

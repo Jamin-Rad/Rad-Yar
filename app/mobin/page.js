@@ -41,7 +41,7 @@ const subjects = [
   ['Latein', '/mobin/fach/latein', 'subjectRoyal'],
   ['Französisch', '/mobin/fach/franzoesisch', 'subjectBlue'],
   ['Englisch', '/mobin/fach/englisch', 'subjectTeal'],
-  ['Mathe', '/mobin/mathepruefung', 'subjectBlueGreen'],
+  ['Mathe', '/mobin/fach/mathe', 'subjectBlueGreen'],
   ['Reli', '/mobin/fach/religion', 'subjectPink'],
 ]
 

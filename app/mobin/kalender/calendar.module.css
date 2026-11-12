@@ -63,3 +63,11 @@
   .shell[data-embedded=true] .monthBox p, .shell[data-embedded=true] .miniWeek { font-size: .72rem; }
   .shell[data-embedded=true] .miniWeek { padding: 3px 4px; }
 }
+.day button.daySelect { min-height: 0; padding: 2px 3px; border: 0; background: transparent; color: inherit; text-align: left; }
+.day button.daySelect[aria-pressed=true] { outline: 1px solid #b6dcff; color: inherit; background: #a4ccff26; }
+.daySelect small { margin-left: 4px; color: #c4ebff; }
+.lessons { padding: 9px 12px; margin-top: 12px; background: #182843; border: 1px solid #6685a7; border-radius: 9px; }
+.lessons h3, .lessons p { margin: 0 0 6px; }
+.lessons ul { margin: 0; padding: 0; list-style: none; }
+.lessons li { display: flex; gap: 10px; padding: 5px 0; border-top: 1px solid #8fa9c04d; }
+.lessons li span { min-width: 80px; color: #c6def7; }

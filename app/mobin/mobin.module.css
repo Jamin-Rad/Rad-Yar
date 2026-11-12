@@ -1978,3 +1978,11 @@
   box-shadow: inset 0 1px 2px #fff9, inset 0 -3px 5px #37030e80;
   background: linear-gradient(146deg, #fff9, transparent 30%), linear-gradient(327deg, #fff6, transparent 20%);
 }
+.schoolCard {
+  border-color: #8fc7ff;
+  background: radial-gradient(ellipse at 15% 0, #37649d99, transparent 66%), linear-gradient(130deg, #182f55, #121b39);
+  box-shadow: inset 0 1px #d6edff73, 0 0 20px #669cf142, 0 14px 36px #03071b91;
+}
+.schoolTitleLink { color: #e2f3ff; padding: 4px 1px 12px; }
+.schoolTitle { letter-spacing: -.035em; }
+.schoolCard .subjectLink { border-radius: 10px; }
