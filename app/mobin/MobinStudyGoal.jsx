@@ -13,7 +13,7 @@ import {
 import styles from './study-goal.module.css'
 
 const GOAL_SECONDS = 100 * 60 * 60
-const milestones = [25, 50, 75, 100]
+const milestones = [0, 25, 50, 75, 100]
 const weekdayFormat = new Intl.DateTimeFormat('de-DE', { weekday: 'short', timeZone: 'UTC' })
 const percentFormat = new Intl.NumberFormat('de-DE', { style: 'percent', maximumFractionDigits: 1 })
 const axisFormat = new Intl.NumberFormat('de-DE', { maximumFractionDigits: 2 })
@@ -105,7 +105,18 @@ function SubjectBreakdown({ summary, total }) {
   )
 }
 
-export default function MobinStudyGoal({ children }) {
+export function MobinEntry({ children }) {
+  const [entered, setEntered] = useState(false)
+
+  function enter() {
+    setEntered(true)
+    window.scrollTo({ top: 0, behavior: 'instant' })
+  }
+
+  return entered ? children : <MobinStudyGoal onEnter={enter} />
+}
+
+function MobinStudyGoal({ onEnter }) {
   const [local, setLocal] = useState({ sessions: [], mathSessions: [] })
   const [remote, setRemote] = useState(null)
   const [status, setStatus] = useState('loading')
@@ -155,15 +166,18 @@ export default function MobinStudyGoal({ children }) {
   const total = Object.values(summary).reduce((sum, day) => sum + day.total, 0)
   const week = today ? recentDays(today).map(day => ({ ...day, seconds: summary[day.key]?.total ?? 0 })) : []
   const progress = Math.min(total, GOAL_SECONDS)
+  const nextMilestone = milestones.find(hours => hours * 3600 > progress)
 
   return (
-    <main className={styles.goal}>
+    <main className={styles.goal} lang="de" dir="ltr" data-mobin-study-goal>
       <header className={styles.hero}>
         <div className={styles.heroText}>
           <p className={styles.wordmark}>Mobin</p>
           <h1>100 Stunden<br />Netto-Lernzeit</h1>
-          <p className={styles.reward}>Dein Geschenk <strong>AirPods Pro</strong></p>
-          <div className={styles.action}>{children}</div>
+          <p className={styles.reward}>Dein Geschenk: <strong>AirPods Pro</strong></p>
+          <div className={styles.action}>
+            <button type="button" onClick={onEnter}>Deine Seite öffnen <span aria-hidden="true">→</span></button>
+          </div>
         </div>
       </header>
       <div className={styles.details}>
@@ -172,15 +186,23 @@ export default function MobinStudyGoal({ children }) {
             {status === 'local' && <p role="status">Die Synchronisierung ist gerade nicht verfügbar. Der angezeigte Stand kann unvollständig sein.</p>}
             <section className={styles.milestones} aria-label="Fortschritt zum Lernziel">
               <p><strong>{formatTime(total)}</strong> von 100 Stunden gelernt</p>
-              <progress aria-label="Fortschritt zum Lernziel von 100 Stunden" max={GOAL_SECONDS} value={progress} />
-              <ol>
-                {milestones.map(hours => (
-                  <li key={hours} data-reached={total >= hours * 3600}>
-                    <span aria-hidden="true" />
-                    {hours} Std.
-                  </li>
-                ))}
-              </ol>
+              <div className={styles.milestoneScale}>
+                <progress aria-label="Fortschritt zum Lernziel von 100 Stunden" max={GOAL_SECONDS} value={progress} />
+                <ol>
+                  {milestones.map(hours => {
+                    const reached = hours > 0 && progress >= hours * 3600
+                    return <li key={hours} data-reached={reached} data-start={hours === 0}>
+                      <span className={styles.marker} aria-hidden="true">{reached ? '✓' : ''}</span>
+                      <span>{hours} Std.</span>
+                    </li>
+                  })}
+                </ol>
+              </div>
+              {nextMilestone && (
+                <p className={styles.nextMilestone}>
+                  Noch {formatTime(nextMilestone * 3600 - progress)} bis {nextMilestone} Std.
+                </p>
+              )}
             </section>
             <div className={styles.analysis}>
               <WeekChart week={week} />

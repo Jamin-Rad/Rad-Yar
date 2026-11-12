@@ -1,10 +1,7 @@
 import Link from 'next/link'
-import { cookies } from 'next/headers'
-import { redirect } from 'next/navigation'
-import { hasMobinSession } from '@/lib/mobinAuth'
 import styles from './mobin.module.css'
 import MobinStudyDashboard from './MobinStudyDashboard'
-import MobinStudyGoal from './MobinStudyGoal'
+import { MobinEntry } from './MobinStudyGoal'
 
 const pages = [
   {
@@ -52,38 +49,11 @@ export const metadata = {
   description: 'Mobins privater Bereich für Tagesplan, Ziele und die Vorbereitung auf die Matheprüfung.',
 }
 
-const goalCookie = 'mobin_study_goal_100_confirmed'
-
-async function confirmStudyGoal() {
-  'use server'
-
-  if (!(await hasMobinSession())) redirect('/mobin/login')
-  const cookieStore = await cookies()
-  cookieStore.set(goalCookie, '1', {
-    httpOnly: true,
-    secure: process.env.NODE_ENV === 'production',
-    sameSite: 'lax',
-    path: '/mobin',
-    maxAge: 365 * 24 * 60 * 60,
-  })
-  redirect('/mobin')
+export default function MobinPage() {
+  return <MobinEntry><MobinHome /></MobinEntry>
 }
 
-export default async function MobinPage({ searchParams }) {
-  const [cookieStore, params] = await Promise.all([cookies(), searchParams])
-  const confirmed = cookieStore.get(goalCookie)?.value === '1'
-  if (!confirmed || params?.lernziel === '1') {
-    return (
-      <MobinStudyGoal>
-        {confirmed ? <Link href="/mobin">Zu Mobin</Link> : (
-          <form action={confirmStudyGoal}>
-            <button type="submit">Ziel bestätigen <span aria-hidden="true">→</span></button>
-          </form>
-        )}
-      </MobinStudyGoal>
-    )
-  }
-
+function MobinHome() {
   return (
     <main className={`${styles.shell} ${styles.homeShell}`}>
       <div className={`${styles.wrap} ${styles.homeWrap}`}>
@@ -120,7 +90,7 @@ export default async function MobinPage({ searchParams }) {
           </nav>
         </section>
 
-        <footer className={styles.footer}>Für Mobin gemacht. · <Link href="/mobin?lernziel=1">Lernfortschritt</Link></footer>
+        <footer className={styles.footer}>Für Mobin gemacht. · <a href="/mobin?lernziel=1">Lernfortschritt</a></footer>
       </div>
     </main>
   )
