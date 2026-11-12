@@ -573,7 +573,6 @@
 .ledgerDetail p { font-size:13px; line-height:2; margin-bottom:10px; overflow-wrap:anywhere; }
 .ledgerDetail h3 { margin:20px 0 10px; }
 .holdingSource { display:block; font-size:11px; color:#afbdca; line-height:1.9; max-width:180px; margin-top:5px; }
-.mobileBack { display:none; }
 .navigation .mobileTrading { display:none; }
 .overviewMode { background:#f5f7fa; color:#142335; color-scheme:light; }
 .overviewMode .sidebar { width:216px; background:#102033; border-color:#263b4d; padding:25px 16px; }
@@ -605,7 +604,6 @@
 @media(max-width:1000px) {
  .overviewMode .sidebar { position:static; width:100%; padding:10px 20px; border:0; flex-direction:row; align-items:center; gap:18px; }
  .overviewMode .brand { font-size:24px; }
- .overviewMode .mobileBack { display:inline-flex; align-items:center; min-height:44px; color:#176b56; }
  .overviewMode .navigation { display:flex; flex-wrap:nowrap; overflow-x:auto; margin-top:0; padding-bottom:3px; flex:1; }
  .overviewMode .navigation button { white-space:nowrap; min-height:38px; font-size:12px; padding:7px 12px; }
  .overviewMode .sidebarAccounts,.overviewMode .sidebarBottom,.overviewMode .xtbNav { display:none; }
@@ -688,10 +686,12 @@
 
 @media(min-width:681px) and (max-width:1150px) { .balanceGrid { grid-template-columns:repeat(2,minmax(0,1fr)); } }
 
-/* Consistent right navigation on every investment screen. */
-.workspace .content { margin-right:252px; }
-@media(max-width:1000px) { .workspace .content { margin-right:0; } }
-@media print { .workspace .content { margin-right:0; } }
+.workspace .content { margin-right:0; min-width:0; }
+@media screen and (min-width:1001px) {
+  .workspace { display:grid; grid-template-columns:252px minmax(0,1fr); }
+  .workspace .content { grid-area:1 / 2; }
+}
+.sectorFilter { min-height:40px; max-width:100%; padding:6px 12px; border:1px solid var(--line); border-radius:8px; background:var(--panel); color:var(--text); font:inherit; }
 
 /* Quiet account surfaces: summary, one tab, one primary action. */
 .cleanMode { --bg:#f5f6fb; --panel:#fff; --line:#e3e8ed; --text:#142335; --muted:#647081; --accent:#176b56; color-scheme:light; }

@@ -62,6 +62,7 @@
 .navShell[data-surface='german'] { --header-bg: #061018; --header-line: #213239; --header-accent: #86cbb0; --header-width: 1320px; }
 .navShell[data-surface='work'] { --header-bg: #07111f; --header-line: #24354b; --header-accent: #8ce8fa; }
 .navShell[data-surface='learning'] { --header-bg: #171320; --header-line: #362c40; }
+.navShell[data-surface='investments'] { --header-bg: #121820; --header-ink: #f3f5f7; --header-muted: #b0bcca; --header-line: #2b3642; --header-accent: #c4e698; }
 @media (max-width: 1350px) { .navShell { --header-gutter: 64px; } }
 @media (max-width: 1320px) { .navShell[data-surface='finance'] { --header-gutter: 52px; } }
 @media (max-width: 760px) {

@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation'
 import styles from './AndarunNav.module.css'
 
 const SECTIONS = [
+  ['/andarun/investments', 'Investitionen'],
   ['/andarun/finanz/freunde', 'Konten mit Freunden'],
   ['/andarun/finanz/gefangene', 'Hilfe'],
   ['/andarun/finanz', 'Finanzen'], ['/andarun/urlaub', 'Urlaub'],
@@ -16,6 +17,7 @@ const SECTIONS = [
 ]
 
 const SURFACES = [
+  ['/andarun/investments', 'investments'],
   ['/andarun/finanz/freunde', 'friends'],
   ['/andarun/finanz/gefangene', 'aid'],
   ['/andarun/finanz', 'finance'],
@@ -40,8 +42,6 @@ export default function AndarunNav() {
   if (matchesPath(pathname, '/andarun/fallarchiv')) return null
   // To Do provides the same quiet navigation as the iPhone app.
   if (pathname === '/andarun/todo' || pathname?.startsWith('/andarun/todo/')) return null
-  // Investments has its own complete navigation and return link.
-  if (matchesPath(pathname, '/andarun/investments')) return null
   const isHome = pathname === '/andarun'
   const section = SECTIONS.find(([prefix]) => matchesPath(pathname, prefix))?.[1]
   const surface = SURFACES.find(([prefix]) => matchesPath(pathname, prefix))?.[1] || 'home'

@@ -171,6 +171,10 @@ export async function PUT(request) {
       ...state,
       settings: {
         ...state.settings,
+        assetSectors: {
+          ...state.settings.assetSectors,
+          ...stored.data.state.settings?.assetSectors,
+        },
         isinPricesEnabled: Object.hasOwn(
           body.state.settings || {},
           "isinPricesEnabled",

@@ -1,6 +1,5 @@
 'use client'
 
-import Link from 'next/link'
 import { useId, useMemo, useState } from 'react'
 import { familyBalance } from '@/lib/investments/balances.mjs'
 import { money, signedMoney, number, percent } from '@/lib/investments/portfolio.mjs'
@@ -12,7 +11,6 @@ import { ProfitPeriodControl, ProfitPeriodDetails, RealizedProfitDetails } from 
 import styles from './Overview.module.css'
 
 const quoteDate = new Intl.DateTimeFormat('fa-IR', { month:'short', day:'numeric', hour:'2-digit', minute:'2-digit', timeZone:'Europe/Berlin' })
-const colors = {stock: '#a8ce90', fund: '#82adcb', metal: '#e7bf76', other: '#aaa0bf'}
 const providers = [
   {id:'tr', label:'Trade Republic', icon:'trading'},
   {id:'xtb', label:'XTB', icon:'review'},
@@ -25,7 +23,7 @@ function Allocation({ allocation, onHolding }) {
   let offset = 0
   return <div className={styles.allocation}>
     <ul className={styles.sectors}>
-      {allocation.groups.map(group => <li key={group.key} style={{'--sector':colors[group.key]}}>
+      {allocation.groups.map(group => <li key={group.key} style={{'--sector':group.color}}>
         <span className={styles.sectorName}><i aria-hidden="true"/>{group.label}</span>
         <bdi>{percent(group.share * 100)}</bdi>
         <span className={styles.track} aria-hidden="true"><i style={{width: (group.share * 100) + '%'}}/></span>
@@ -37,7 +35,7 @@ function Allocation({ allocation, onHolding }) {
           const start = offset
           offset += group.share * 100
           const gap = allocation.groups.length === 1 ? 0 : Math.min(0.7, group.share * 30)
-          return <circle key={group.key} cx="100" cy="100" r="81" fill="none" pathLength="100" stroke={colors[group.key]} strokeWidth="30" strokeDasharray={(group.share * 100 - gap) + ' 100'} strokeDashoffset={-start} transform="rotate(-90 100 100)"/>
+          return <circle key={group.key} cx="100" cy="100" r="81" fill="none" pathLength="100" stroke={group.color} strokeWidth="30" strokeDasharray={(group.share * 100 - gap) + ' 100'} strokeDashoffset={-start} transform="rotate(-90 100 100)"/>
         })}
       </svg>
       <span lang="en">Trade<br/>Republic</span>
@@ -56,7 +54,7 @@ export default function FamilyOverview({ state, ledger, onLedger, marketData, on
   const [selected, setSelected] = useState('tr')
   const id = useId()
   const balance = useMemo(() => familyBalance(state.accounts, ledger?.loaded ? ledger.transactions : null, marketData.markets), [state.accounts, ledger?.loaded, ledger?.transactions, marketData.markets])
-  const allocation = useMemo(() => overviewAllocation(balance.accounts), [balance.accounts])
+  const allocation = useMemo(() => overviewAllocation(balance.accounts, state.settings.assetSectors), [balance.accounts, state.settings.assetSectors])
   const xtb = useMemo(() => {
     const recorded = XTB_OWNERS.map(id => xtbBalance(state.settings.xtbAccounts.find(account => account.id === id), state.trades)).filter(Boolean)
     return {
@@ -99,7 +97,6 @@ export default function FamilyOverview({ state, ledger, onLedger, marketData, on
           <Icon name="refresh" size={17}/>{refreshing ? 'دریافت قیمت‌ها… ' + number(marketData.batch.done) + ' از ' + number(marketData.batch.total) : 'به‌روزرسانی قیمت‌ها'}
         </button>
         <button type="button" className={styles.controlButton} onClick={onTheme}>{dark ? 'حالت روشن' : 'حالت تاریک'}</button>
-        <Link className={styles.controlButton} href="/andarun">بازگشت به Jaminova <Icon name="arrow" size={16}/></Link>
       </div>
     </header>
     {onSave && <button type="button" className={styles.controlButton} onClick={onSave} disabled={saving}>{saving ? 'در حال ذخیره…' : 'ذخیره تغییرات'}</button>}
@@ -120,7 +117,7 @@ export default function FamilyOverview({ state, ledger, onLedger, marketData, on
     <div role="tabpanel" id={id + '-panel'} aria-labelledby={id + '-' + selected} className={styles.contentPanel} tabIndex={0}>
       {selected === 'tr' && <>
         <section className={styles.block} aria-labelledby={id + '-allocation'}>
-          <h2 id={id + '-allocation'}>ترکیب دارایی‌های <bdi>Trade Republic</bdi></h2>
+          <h2 id={id + '-allocation'}>ترکیب بخشی دارایی‌های <bdi>Trade Republic</bdi></h2>
           {allocation.total > 0 ? <Allocation allocation={allocation} onHolding={holding => onLedger('all', 'transactions', holding.isin || holding.name)}/> : <p className={styles.empty}>برای نمایش ترکیب سبد، قیمت‌های دارایی‌ها را به‌روزرسانی کن.</p>}
           {allocation.excluded > 0 && <p className={styles.muted}>{number(allocation.excluded)} موقعیت به‌دلیل نبود قیمت معتبر یا تعداد تأییدشده، در وزن‌ها محاسبه نشده‌اند.</p>}
           {priceErrors && <p className={styles.muted} role="status">دریافت برخی قیمت‌ها انجام نشد. قیمت قبلی در صورت وجود حفظ شده است.</p>}
