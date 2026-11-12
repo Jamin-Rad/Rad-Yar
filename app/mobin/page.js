@@ -25,10 +25,10 @@ const pages = [
   {
     href: '/mobin/persisch',
     title: 'Persisch',
-    flag: '/andarun/icons/iran.svg',
+    iconPosition: '100%',
     tone: 'persianCard',
   },
-  { href: '/mobin/spanisch', title: 'Spanisch', flag: '/mobin/flag-es.svg', tone: 'spanishCard' },
+  { href: '/mobin/spanisch', title: 'Spanisch', iconPosition: '100%', flag: '/mobin/flag-es.svg', tone: 'spanishCard' },
   { href: '/mobin/stundenplan', title: 'Stundenplan', schedule: true, tone: 'scheduleCard' },
 ]
 
@@ -73,9 +73,10 @@ function MobinHome() {
                 href={page.href}
                 key={page.href}
               >
-                {page.flag ? <span className={styles.flagIcon} aria-hidden="true"><img src={page.flag} alt="" /></span>
-                  : page.schedule ? <span className={styles.scheduleIcon} aria-hidden="true"><i /><i /><i /><i /><i /><i /></span>
-                    : <span className={styles.homeIcon} style={{ backgroundPosition: page.iconPosition + ' center' }} aria-hidden="true" />}
+                {page.schedule ? <span className={styles.scheduleIcon} aria-hidden="true"><i /><i /><i /><i /><i /><i /></span>
+                  : <span className={styles.homeIcon} style={{ backgroundPosition: page.iconPosition + ' center' }} aria-hidden="true">
+                    {page.flag && <span className={styles.flagFace}><img src={page.flag} alt="" /></span>}
+                  </span>}
                 <span className={styles.buttonTitle}>{page.title}</span>
                 <span className={styles.homeArrow} aria-hidden="true">›</span>
               </Link>
