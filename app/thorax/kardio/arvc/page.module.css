@@ -4,6 +4,16 @@
   --plum-700:var(--lesson-accent);
   --plum-100:var(--lesson-accent-soft);
 }
+@media screen and (min-width:761px) {
+  .page :global([data-lesson-hero] img[data-designed-illustration='true']) {
+    transform: translateY(clamp(112px, 10vw, 132px)) scale(1.52);
+  }
+}
+@media screen and (max-width:760px) {
+  .page :global([data-lesson-hero] img[data-designed-illustration='true']) {
+    transform: translateY(22px) scale(1.16);
+  }
+}
 .chapterBody :is(button,input,select) { font-family:inherit; }
 .chapterBody button { cursor:pointer; }
 .chapterBody svg { width:21px; height:21px; flex-shrink:0; }
