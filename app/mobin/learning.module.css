@@ -60,3 +60,51 @@
 .timetableMonth small { font-size: clamp(.59rem, 2vw, .83rem); }
 .timetableYear { display: grid; grid-template-columns: repeat(auto-fit, minmax(125px, 1fr)); gap: 7px; }
 @media (max-width: 720px) { .timetable[data-view="week"] { grid-template-columns: 1fr; } }
+.subjectWrap {
+  --subject-accent: #a3d9ff;
+  --subject-glow: #27558a;
+  width: min(1060px, calc(100% - 32px));
+  margin: 0 auto;
+  padding-top: 19px;
+}
+.shell .subjectWrap { width: min(1060px, 100%); padding-top: 0; }
+.subjectWrap[data-subject="kangaroo"] { --subject-accent: #ffd798; --subject-glow: #62462d; }
+.subjectWrap[data-subject="english"] { --subject-accent: #abcaff; --subject-glow: #374a8b; }
+.subjectWrap[data-subject="latin"] { --subject-accent: #f4c99d; --subject-glow: #5a3c63; }
+.subjectWrap[data-subject="spanish"] { --subject-accent: #ffd48b; --subject-glow: #713d45; }
+.subjectWrap[data-subject="french"] { --subject-accent: #b8d4ff; --subject-glow: #404789; }
+.subjectWrap[data-subject="persian"] { --subject-accent: #9aebd2; --subject-glow: #235a59; }
+.subjectBack { display: inline-flex; align-items: center; min-height: 42px; color: #d4edff; text-decoration: none; font-weight: 850; }
+.subjectBack:hover { text-decoration: underline; }
+.subjectHero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: clamp(98px, 15vw, 164px);
+  padding: clamp(16px, 4vw, 38px);
+  border: 1px solid color-mix(in srgb, var(--subject-accent) 63%, transparent);
+  border-radius: 16px;
+  background: radial-gradient(ellipse at 95% 0%, var(--subject-glow), transparent 76%), #15244b;
+  box-shadow: inset 0 1px #fff3, 0 10px 26px #070c2966;
+}
+.subjectHero h1 { margin: 0; color: #eff8ff; font-size: clamp(1.85rem, 6vw, 3.85rem); letter-spacing: -.045em; line-height: 1.1; }
+.subjectMark { color: var(--subject-accent); font-size: clamp(1.25rem, 5vw, 3.2rem); font-weight: 850; }
+.subjectMark[dir=rtl] { font-family: var(--font-persian, 'Segoe UI'), system-ui, sans-serif; }
+.subjectFlag { display: block; width: clamp(37px, 7vw, 68px); max-height: 68px; object-fit: cover; border: 1px solid var(--subject-accent); border-radius: 9px; }
+.subjectActions { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 1fr)); gap: 9px; margin: 12px 0 22px; }
+.subjectAction {
+  display: flex; align-items: center; justify-content: space-between; gap: 6px;
+  padding: 10px 14px; min-height: 51px; text-align: left; font: inherit; font-weight: 850;
+  color: #f2f8ff; border: 1px solid #7f9ec88c; border-radius: 10px;
+  background: linear-gradient(145deg, #213d6b, #18284e); cursor: pointer;
+}
+.subjectAction span { color: var(--subject-accent); font-size: 1.35em; line-height: .8; }
+.subjectAction:hover, .subjectAction[aria-pressed=true] { border-color: var(--subject-accent); background: linear-gradient(145deg, var(--subject-glow), #1e325c); }
+.subjectAction:focus-visible, .subjectBack:focus-visible { outline: 2px solid white; outline-offset: 3px; }
+.subjectAction:disabled { opacity: .55; cursor: default; }
+@media (max-width: 590px) {
+  .subjectWrap { width: calc(100% - 24px); }
+  .subjectActions { grid-template-columns: 1fr; gap: 6px; }
+  .subjectAction { min-height: 43px; }
+}

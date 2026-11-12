@@ -510,3 +510,9 @@
 .setupDialog { color: #eef7ff; background: #14264a; border-color: #83b8f2; }
 .setupDialog .setupContent, .setupDialog .setupHeader, .setupDialog .setupFooter { background: #14264a; color: #eef7ff; }
 .setupDialog .setupGroup, .setupDialog .setupFooter p, .setupDialog .setupFooter span, .setupDialog .setupEmpty { color: #d7e9ff; }
+.setupDialog .setupBody { display: grid; gap: 12px; }
+.setupDialog .setupGroup { margin: 0; padding: 9px; border: 1px solid #7398c565; border-radius: 10px; }
+.setupDialog .setupGroup legend { margin: 0; padding: 0 5px; color: #d6eaff; }
+.setupDialog .setupGroup button, .setupDialog .topicChoices > button { min-height: 42px; background: #203c66; color: #eaf5ff; border-color: #7597c3; }
+.setupDialog .setupGroup button[aria-pressed=true], .setupDialog .topicChoices > button[aria-pressed=true] { background: #bfdefd; color: #13274a; }
+.setupDialog .setupBody > .secondaryButton { justify-self: start; }

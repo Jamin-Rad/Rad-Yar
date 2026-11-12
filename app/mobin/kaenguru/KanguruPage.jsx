@@ -1,7 +1,9 @@
 'use client'
 
+import learning from '../learning.module.css'
+import SubjectHeader from '../SubjectHeader'
+
 import Image from 'next/image'
-import Link from 'next/link'
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import {
   KANGURU_GRADE_GROUPS,
@@ -174,20 +176,8 @@ function ArrowIcon({ direction = 'right' }) {
   )
 }
 
-function PencilIcon() {
-  return <svg viewBox="0 0 32 32" aria-hidden="true"><path d="m7 25 2-7L22 5l5 5-13 13-7 2Z"/><path d="m19 8 5 5M9 18l5 5"/></svg>
-}
-
-function PaperIcon() {
-  return <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M8 4h11l6 6v18H8Z"/><path d="M19 4v7h6M12 16h9M12 21h9"/></svg>
-}
-
 function RepeatIcon() {
   return <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M25 11a10 10 0 0 0-17-2l-2 3"/><path d="M6 6v6h6M7 21a10 10 0 0 0 17 2l2-3"/><path d="M26 26v-6h-6"/></svg>
-}
-
-function LockIcon() {
-  return <svg viewBox="0 0 32 32" aria-hidden="true"><rect x="8" y="14" width="16" height="14" rx="3"/><path d="M11 14V9a5 5 0 0 1 10 0v5"/></svg>
 }
 
 function TargetIcon() {
@@ -363,17 +353,6 @@ function DailyStreak({ progress }) {
         <progress value={summary.current} max={goal} aria-label={`${summary.current} von ${goal} Tagen bis zum nächsten Ziel`} />
       </div>
     </section>
-  )
-}
-
-function ActionStation({ tone, icon, title, text, count, disabled, onClick }) {
-  return (
-    <button className={`${styles.station} ${styles[tone]}`} type="button" onClick={onClick} aria-disabled={disabled || undefined} aria-label={`${title}: ${count}`}>
-      <span className={styles.stationIcon}>{icon}</span>
-      <span className={styles.stationButton}><strong>{title}</strong><ArrowIcon /></span>
-      <small>{text}</small>
-      {disabled ? <span className={styles.stationNotice}>Aktuell keine Aufgaben zum Wiederholen.</span> : null}
-    </button>
   )
 }
 
@@ -769,18 +748,13 @@ export default function KanguruPage() {
 
   return (
     <main className={styles.page} lang="de" dir="ltr">
-      <header className={styles.header}>
-        <div className={styles.brandLockup}><Image className={styles.brandIcon} src="/kanguru/kanguru-app-icon.png" alt="" width={42} height={42} priority /><strong>Känguru</strong></div>
-        <Link href="/mobin?bereich=1"><ArrowIcon direction="left" /> Zurück zu Mobin</Link>
-      </header>
-
-      <section className={styles.kanguruOverview}>
-        <header className={styles.kanguruTitle}><h1>Känguru</h1><p>Wähle deine nächste Übungsrunde.</p></header>
-        <section className={styles.stations} aria-label="Übungsarten">
-          <ActionStation tone="coral" icon={<PencilIcon />} title="Neue Aufgaben" text="Nur Aufgaben, die du noch nicht gelöst hast" count={openCount} onClick={() => setDialog('new')} />
-          <ActionStation tone="blue" icon={<PaperIcon />} title="Jahresprüfung" text="Wähle ein Jahr und einen Aufgabenteil" count={gradeQuestions.length} onClick={() => setDialog('year')} />
-          <ActionStation tone="muted" icon={reviewCount ? <RepeatIcon /> : <LockIcon />} title="Fehler wiederholen" text="Teste dich mit deinen gemerkten Fehlern" count={reviewCount} disabled={!reviewCount} onClick={() => setDialog('review')} />
-        </section>
+      <section className={learning.subjectWrap} data-subject="kangaroo" aria-label="Känguru">
+        <SubjectHeader title="Känguru" flag="/kanguru/kanguru-app-icon.png" />
+        <div className={learning.subjectActions} aria-label="Übungsarten">
+          <button className={learning.subjectAction} onClick={() => setDialog('new')}>Neue Aufgaben<span aria-hidden="true">›</span></button>
+          <button className={learning.subjectAction} onClick={() => setDialog('year')}>Jahresprüfung<span aria-hidden="true">›</span></button>
+          <button className={learning.subjectAction} onClick={() => setDialog('review')}>Fehler wiederholen<span aria-hidden="true">›</span></button>
+        </div>
       </section>
 
       <DailyStreak progress={progress} />

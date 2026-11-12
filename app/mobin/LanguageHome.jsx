@@ -1,5 +1,7 @@
 'use client'
 import Link from 'next/link'
+import { useState } from 'react'
+import SubjectHeader from './SubjectHeader'
 import WordPractice from './WordPractice'
 import SchoolTests, { useSchoolTests } from './SchoolTests'
 import styles from './learning.module.css'
@@ -12,16 +14,34 @@ const starters = {
   Persisch: [['Hallo', 'سلام'], ['Danke', 'ممنون'], ['Guten Morgen', 'صبح بخیر'], ['Auf Wiedersehen', 'خداحافظ'], ['Ich möchte Wasser', 'من آب می‌خواهم', '2']],
 }
 
+const themes = {
+  Englisch: { tone: 'english', mark: 'Hello' },
+  Latein: { tone: 'latin', mark: 'Salve' },
+  Spanisch: { tone: 'spanish', flag: '/mobin/flag-es.svg' },
+  Französisch: { tone: 'french', mark: 'Bonjour' },
+  Persisch: { tone: 'persian', mark: 'فارسی', rtl: true },
+}
+
 export default function LanguageHome({ language, school = false }) {
   const tests = useSchoolTests(language)
-  return <main className={styles.shell}><div className={styles.wrap}>
-    <Link className={styles.back} href="/mobin?bereich=1">← Mobin</Link>
-    <header className={styles.learningHero}><h1>{language}</h1><p>Vokabeln üben und eigene Karteikarten sammeln.</p></header>
-    {school && <SchoolTests state={tests} vocabulary />}
-    {language === 'Englisch' && <section className={styles.panel}>
-      <h2>Vokabeltest · Unit 2 London</h2>
-      <Link className={styles.back} href="/mobin/english/vokabeltest/11-november">Vorhandenen Test öffnen →</Link>
-    </section>}
-    <WordPractice language={language} starter={starters[language]} />
+  const [panel, setPanel] = useState('practice')
+  const theme = themes[language]
+  return <main className={styles.shell}><div className={styles.subjectWrap} data-subject={theme.tone}>
+    <SubjectHeader title={language} mark={theme.mark} flag={theme.flag} rtl={theme.rtl} />
+    <div className={styles.subjectActions} aria-label="Übungsarten">
+      <button className={styles.subjectAction} aria-pressed={panel === 'practice'} onClick={() => setPanel('practice')}>Aufgaben üben<span aria-hidden="true">›</span></button>
+      <button className={styles.subjectAction} aria-pressed={panel === 'cards'} onClick={() => setPanel('cards')}>Karteikarten<span aria-hidden="true">›</span></button>
+      {school && <button className={styles.subjectAction} aria-pressed={panel === 'tests'} onClick={() => setPanel('tests')}>Tests<span aria-hidden="true">›</span></button>}
+    </div>
+    {school && <div hidden={panel !== 'tests'}>
+      <SchoolTests state={tests} vocabulary />
+      {language === 'Englisch' && <section className={styles.panel}>
+        <h2>Vokabeltest · Unit 2 London</h2>
+        <Link className={styles.back} href="/mobin/english/vokabeltest/11-november">Vorhandenen Test öffnen →</Link>
+      </section>}
+    </div>}
+    <div hidden={panel === 'tests'}>
+      <WordPractice language={language} starter={starters[language]} activity={panel === 'cards' ? 'cards' : 'test'} />
+    </div>
   </div></main>
 }

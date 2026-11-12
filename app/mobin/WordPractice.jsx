@@ -2,12 +2,13 @@
 import { useEffect, useState } from 'react'
 import styles from './learning.module.css'
 
-export default function WordPractice({ language, starter = [] }) {
+export default function WordPractice({ language, starter = [], activity = null }) {
   const storage = 'mobin-word-practice-' + language
   const [cards, setCards] = useState(starter)
   const [round, setRound] = useState([])
   const [index, setIndex] = useState(0)
   const [mode, setMode] = useState('')
+  useEffect(() => { setMode('') }, [activity])
   const [answer, setAnswer] = useState('')
   const [revealed, setRevealed] = useState(false)
   const [score, setScore] = useState(0)
@@ -37,8 +38,8 @@ export default function WordPractice({ language, starter = [] }) {
   const normalize = value => value.trim().normalize('NFC').toLocaleLowerCase()
   const correct = card && normalize(answer) === normalize(card[1])
   return <section className={styles.panel} aria-label="Freies Training">
-    <h2>Freies Training</h2>
-    <form className={styles.controls} onSubmit={event => {
+    <h2>{activity === 'cards' ? 'Karteikarten' : 'Freies Training'}</h2>
+    <details><summary>Eigene Karte hinzufügen</summary><form className={styles.controls} onSubmit={event => {
       event.preventDefault()
       const fields = new FormData(event.currentTarget)
       const front = String(fields.get('front')).trim()
@@ -48,9 +49,9 @@ export default function WordPractice({ language, starter = [] }) {
       event.currentTarget.reset()
     }}>
       <label>Deutsch<input name="front" required maxLength={120} /></label>
-      <label>{language}<input name="back" required maxLength={120} /></label>
+      <label>{language}<input name="back" dir="auto" required maxLength={120} /></label>
       <label>Niveau der Karte<select name="level"><option value="1">Grundlagen</option><option value="2">Aufbau</option></select></label><button type="submit" disabled={cards.length >= 200}>Karte hinzufügen</button>
-    </form>
+    </form></details>
     {notice && <p role="status">{notice}</p>}
     {cards.length > 0 && <details><summary>{cards.length} Karten</summary><ul>{cards.map(([front, back], i) => <li key={i}>
       {front} · {back} <button type="button" onClick={() => save(cards.filter((_, n) => n !== i))}>Entfernen</button>
@@ -59,15 +60,15 @@ export default function WordPractice({ language, starter = [] }) {
       <label>Übungsniveau<select value={level} onChange={event => { setLevel(event.target.value); setMode('') }}>
         <option value="auto">Automatisch</option><option value="1">Grundlagen</option><option value="2">Aufbau</option>
       </select></label>
-      <button disabled={!available.length} onClick={() => begin('cards')}>Karteikarten lernen</button>
-      <button disabled={!available.length} onClick={() => begin('test')}>Übungsrunde starten</button>
+      {activity !== 'test' && <button disabled={!available.length} onClick={() => begin('cards')}>Karteikarten lernen</button>}
+      {activity !== 'cards' && <button disabled={!available.length} onClick={() => begin('test')}>Übungsrunde starten</button>}
     </div>
     {!available.length && <p>Füge Karten für dieses Niveau hinzu.</p>}
     {mode && (card ? <div className={styles.exercise}>
       <p>{index + 1} / {round.length}</p>
       <strong>{card[0]}</strong>
-      {mode === 'test' && <label>Deine Übersetzung<input value={answer} onChange={event => setAnswer(event.target.value)} readOnly={revealed} /></label>}
-      {revealed && <p role="status">{mode === 'test' && (correct ? 'Richtig · ' : 'Lösung · ')}{card[1]}</p>}
+      {mode === 'test' && <label>Deine Übersetzung<input dir="auto" value={answer} onChange={event => setAnswer(event.target.value)} readOnly={revealed} /></label>}
+      {revealed && <p role="status">{mode === 'test' && (correct ? 'Richtig · ' : 'Lösung · ')}<bdi>{card[1]}</bdi></p>}
       {!revealed ? <button disabled={mode === 'test' && !answer.trim()} onClick={() => setRevealed(true)}>{mode === 'test' ? 'Antwort prüfen' : 'Karte umdrehen'}</button>
         : <button onClick={() => {
           if (mode === 'test') {

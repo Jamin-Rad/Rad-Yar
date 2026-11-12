@@ -1,6 +1,5 @@
 'use client'
 
-import Link from 'next/link'
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { MATH_CHAPTERS, MATH_EXAM_COLLECTIONS, MATH_QUESTIONS, MATH_QUESTION_MAP, MATH_TOPICS, MATH_TOPIC_MAP } from '@/data/mobinMathExam'
 import { createMathSession, finishMathSession, gradeMathResponse, MATH_SESSION_KEY, recordMathResponse, sessionStudySeconds, summarizeMathProgress } from '@/lib/mobinMath'
@@ -12,12 +11,9 @@ import journey from './journey.module.css'
 import styles from './page.module.css'
 import SchoolTests, { useSchoolTests } from '../SchoolTests'
 import learning from '../learning.module.css'
+import SubjectHeader from '../SubjectHeader'
 
-const MODES = [
-  { id: 'practice', text: 'Eine Aufgabe nach der anderen. Mit Tipps und verständlichen Lösungswegen.', tone: 'coral', path: 'm7 25 2-7L22 5l5 5-13 13-7 2ZM19 8l5 5M9 18l5 5' },
-  { id: 'exam', text: 'Ohne Tipps testen. Auswertung und Lösungen gibt es erst am Ende.', tone: 'blue', path: 'M8 4h11l6 6v18H8ZM19 4v7h6M12 16h9M12 21h9' },
-  { id: 'review', text: 'Falsche und gemerkte Aufgaben gezielt noch einmal lösen.', tone: 'review', path: 'M25 11A10 10 0 0 0 8 9l-2 3M6 6v6h6M7 21a10 10 0 0 0 17 2l2-3M26 26v-6h-6' },
-]
+const MODES = ['practice', 'exam', 'review']
 const dateLabel = value => new Intl.DateTimeFormat('de-DE', { timeZone: 'Europe/Berlin', day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' }).format(new Date(value))
 
 export default function MathExamClient() {
@@ -124,12 +120,14 @@ export default function MathExamClient() {
   }
 
   return <main className={journey.page} lang="de" dir="ltr">
-    <header className={`${journey.header} ${styles.header}`}><div className={journey.brandLockup}><span className={styles.brandMark} aria-hidden="true">M<span>+</span></span><strong>Mathe</strong></div><Link href="/mobin?bereich=1"><ArrowIcon back /> Zurück zu Mobin</Link></header>
-    <section className={styles.mathOverview} aria-labelledby="math-title">
-      <div className={learning.learningHero}><h1 id="math-title">Mathe</h1></div>
-      <div className={journey.stations} aria-label="Übungsarten">{MODES.map(mode => {
-        return <div className={`${journey.station} ${journey[mode.tone] || styles.review} ${styles.station}`} key={mode.id}><span className={journey.stationIcon}><svg viewBox="0 0 32 32" aria-hidden="true"><path d={mode.path} /></svg></span><button className={journey.stationButton} type="button" disabled={!ready} onClick={() => setMenu(mode.id)} aria-describedby={`${mode.id}-description`}><strong>{MODE_NAMES[mode.id]}</strong></button><small id={`${mode.id}-description`}>{mode.text}<span className={styles.modeCount}>{mode.id === 'review' ? `${summary.reviewIds.length} Aufgaben zum Wiederholen` : 'Auswählen & starten →'}</span></small></div>
-      })}</div>
+    <section className={learning.subjectWrap} data-subject="math" aria-label="Mathe">
+      <SubjectHeader title="Mathe" mark="±" />
+      <div className={learning.subjectActions} aria-label="Übungsarten">
+        {MODES.map(mode => <button className={learning.subjectAction} key={mode} type="button"
+          disabled={!ready} onClick={() => setMenu(mode)}>
+          {MODE_NAMES[mode]}<span aria-hidden="true">›</span>
+        </button>)}
+      </div>
     </section>
 
     <dialog ref={menuRef} className={styles.setupDialog} onClose={() => setMenu(null)} onClick={event => { if (event.target === event.currentTarget) setMenu(null) }} aria-labelledby="selection-title">
