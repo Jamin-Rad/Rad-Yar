@@ -691,7 +691,6 @@
   .workspace { display:grid; grid-template-columns:252px minmax(0,1fr); }
   .workspace .content { grid-area:1 / 2; }
 }
-.sectorFilter { min-height:40px; max-width:100%; padding:6px 12px; border:1px solid var(--line); border-radius:8px; background:var(--panel); color:var(--text); font:inherit; }
 
 /* Quiet account surfaces: summary, one tab, one primary action. */
 .cleanMode { --bg:#f5f6fb; --panel:#fff; --line:#e3e8ed; --text:#142335; --muted:#647081; --accent:#176b56; color-scheme:light; }
