@@ -7,6 +7,17 @@ import styles from './wizard.module.css'
 
 const LIBRARY_KEY = 'mobin_planner_activities_v1'
 const PLAN_KEY = 'mobin_planner_days_v1'
+
+async function onlinePlan(method = 'GET', body) {
+  const response = await fetch('/api/mobin/tagesplan', {
+    method,
+    cache: 'no-store',
+    ...(body ? { headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) } : {}),
+  })
+  const result = await response.json()
+  if (!response.ok) throw new Error(result.error || 'Der Online-Plan ist nicht erreichbar.')
+  return result
+}
 const defaults = [
   ['Känguru', 'focus'], ['Mathe', 'focus'], ['Englisch', 'focus'],
   ['Latein', 'focus'], ['Biologie', 'focus'], ['Persisch', 'focus'],
@@ -28,7 +39,6 @@ const duration = units => {
   return [Math.floor(value / 60) && Math.floor(value / 60) + ' Std.', value % 60 && value % 60 + ' Min.'].filter(Boolean).join(' ') || '0 Min.'
 }
 const clock = value => String(Math.floor(value / 60)).padStart(2, '0') + ':' + String(value % 60).padStart(2, '0')
-const day = () => new Date().toLocaleDateString('sv-SE', { timeZone: 'Europe/Berlin' })
 const read = (key, fallback) => {
   try { return JSON.parse(localStorage.getItem(key)) ?? fallback } catch { return fallback }
 }
@@ -85,6 +95,8 @@ export default function PlannerWizard() {
   const [editing, setEditing] = useState(false)
   const [saved, setSaved] = useState(null)
   const savedDate = useRef(null)
+  const progressWrites = useRef(Promise.resolve())
+  const [saving, setSaving] = useState(false)
   const [message, setMessage] = useState('')
   const [legacy, setLegacy] = useState(false)
   const [over, setOver] = useState(false)
@@ -96,11 +108,26 @@ export default function PlannerWizard() {
   const focus = sum(groups.focus)
 
   useEffect(() => {
+    let active = true
     setLibrary(read(LIBRARY_KEY, defaults))
-    savedDate.current = day()
-    const today = read(PLAN_KEY, {})[savedDate.current] ?? null
-    setSaved(today)
-    setStep(today?.blocks.length ? 4 : 0)
+    async function load() {
+      try {
+        let result = await onlinePlan()
+        if (!active) return
+        const local = read(PLAN_KEY, {})[result.day]
+        if (!result.plan && local?.blocks?.length) {
+          result = await onlinePlan('PUT', { day: result.day, plan: local, importLocal: true })
+        }
+        if (!active) return
+        savedDate.current = result.day
+        setSaved(result.plan)
+        setStep(result.plan ? 4 : 0)
+      } catch (error) {
+        if (active) setMessage(error.message)
+      }
+    }
+    load()
+    return () => { active = false }
   }, [])
 
   function go(next) {
@@ -179,27 +206,40 @@ export default function PlannerWizard() {
     })
   }
 
-  function save() {
-    const plan = { start, blocks: order }
-    const date = day()
+  async function save() {
+    setSaving(true)
+    setMessage('')
     try {
-      localStorage.setItem(PLAN_KEY, JSON.stringify({ ...read(PLAN_KEY, {}), [date]: plan }))
-      setSaved(plan)
-      savedDate.current = date
+      await progressWrites.current
+      const result = await onlinePlan('PUT', {
+        day: savedDate.current, previousId: saved?.id, plan: { start, blocks: order },
+      })
+      savedDate.current = result.day
+      setSaved(result.plan)
       go(4)
-    } catch { setMessage('Dein Plan konnte nicht gespeichert werden.') }
+    } catch (error) {
+      setMessage(error.message)
+    } finally {
+      setSaving(false)
+    }
   }
 
   function updateProgress(id, done) {
-    const blocks = saved.blocks.map(block => block.id === id
-      ? { ...block, done: clamp(done, 0, block.units) }
-      : block)
-    const plan = { ...saved, blocks }
-    try {
-      localStorage.setItem(PLAN_KEY, JSON.stringify({ ...read(PLAN_KEY, {}), [savedDate.current]: plan }))
-      setSaved(plan)
-      setMessage('')
-    } catch { setMessage('Der Fortschritt konnte nicht gespeichert werden.') }
+    const planId = saved.id
+    const date = savedDate.current
+    setSaved(current => ({
+      ...current,
+      blocks: current.blocks.map(block => block.id === id
+        ? { ...block, done: clamp(done, 0, block.units) }
+        : block),
+    }))
+    progressWrites.current = progressWrites.current.then(async () => {
+      try {
+        await onlinePlan('PATCH', { day: date, planId, blockId: id, done })
+      } catch (error) {
+        setMessage(error.message + ' Eine Änderung wurde nicht online gespeichert.')
+      }
+    })
   }
 
   function newPlan() {
@@ -222,7 +262,12 @@ export default function PlannerWizard() {
 
   if (legacy) return <><button className={styles.legacyBack} onClick={() => setLegacy(false)}>Zum neuen Planer</button><LegacyPlan /></>
 
-  if (step === null) return <main className={styles.shell} aria-busy="true" />
+  if (step === null) return <main className={styles.shell} aria-busy={!message}>
+    <section className={styles.stage}>
+      <p role="status">{message || 'Tagesplan wird geladen …'}</p>
+      {message && <button className={styles.primary} onClick={() => window.location.reload()}>Erneut laden</button>}
+    </section>
+  </main>
 
   const savedBlocks = saved?.blocks ?? []
   const completed = savedBlocks.filter(block => (block.done ?? 0) === block.units).length
@@ -377,7 +422,7 @@ export default function PlannerWizard() {
               <button disabled={index === order.length - 1} onClick={() => move(index, index + 1)} aria-label={block.name + ' nach unten'}>↓</button>
             </li>
           })}</ol>
-          <button className={styles.primary} onClick={save}>Plan speichern</button>
+          <button className={styles.primary} onClick={save} disabled={saving}>{saving ? 'Wird gespeichert …' : 'Plan speichern'}</button>
         </>}
         {step === 4 && savedBlocks.length > 0 && <>
           <h1 tabIndex={-1} ref={heading}>Dein Plan für heute</h1>
