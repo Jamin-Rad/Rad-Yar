@@ -37,3 +37,29 @@
   .toolbar { gap: 4px; }
   .toolbar button { padding-inline: 7px; }
 }
+.shell[data-embedded=true] {
+  min-height: 0;
+  padding: clamp(10px, 2vw, 22px);
+  border: 1px solid #86b3e370;
+  border-radius: 17px;
+  background: #132540e8;
+}
+.shell[data-embedded=true] .header { margin: 0 0 8px; }
+.shell[data-embedded=true] .header h2 { margin: 0; font-size: clamp(1.3rem, 3vw, 2rem); }
+.shell[data-embedded=true] .toolbar { margin: 8px 0; }
+.shell[data-embedded=true] .day { min-height: 55px; padding-block: 5px; }
+.shell[data-embedded=true] .calendar { gap: 5px; }
+.shell[data-embedded=true] .weekTotal { padding-block: 3px; }
+@media (max-width: 500px) {
+  .shell[data-embedded=true] { padding: 9px; border-radius: 12px; }
+  .shell[data-embedded=true] .header { gap: 5px; }
+  .shell[data-embedded=true] .views { gap: 4px; }
+  .shell[data-embedded=true] .views button { min-height: 36px; padding-inline: 7px; font-size: .77rem; }
+  .shell[data-embedded=true] .day { min-height: 43px; padding: 3px; gap: 0; }
+  .shell[data-embedded=true] .weekday { font-size: .78rem; }
+  .shell[data-embedded=true] .weekTotal { font-size: .72rem; }
+  .shell[data-embedded=true] .yearGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; }
+  .shell[data-embedded=true] .monthBox { padding: 6px; }
+  .shell[data-embedded=true] .monthBox p, .shell[data-embedded=true] .miniWeek { font-size: .72rem; }
+  .shell[data-embedded=true] .miniWeek { padding: 3px 4px; }
+}

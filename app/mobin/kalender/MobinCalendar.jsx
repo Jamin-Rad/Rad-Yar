@@ -37,7 +37,7 @@ function weekNumber(start) {
   return 1 + Math.round((start - firstMonday) / 604800000)
 }
 
-export default function MobinCalendar({ initialView = 'month' }) {
+export default function MobinCalendar({ initialView = 'month', embedded = false }) {
   const [view, setView] = useState(initialView)
   const [today, setToday] = useState('')
   const [cursor, setCursor] = useState('')
@@ -79,7 +79,9 @@ export default function MobinCalendar({ initialView = 'month' }) {
     return studySummary(sessions, [...allDays], math)
   }, [remote, local])
 
-  if (!cursor) return <main className={styles.shell}><p role="status">Kalender wird geladen …</p></main>
+  const Container = embedded ? 'section' : 'main'
+  const Heading = embedded ? 'h2' : 'h1'
+  if (!cursor) return <Container className={styles.shell} data-embedded={embedded}><p role="status">Kalender wird geladen …</p></Container>
   const date = dateOf(cursor)
   const currentWeek = key(monday(dateOf(today)))
   const week = daysOfWeek(monday(date))
@@ -108,11 +110,11 @@ export default function MobinCalendar({ initialView = 'month' }) {
     </div>
   }
 
-  return <main className={styles.shell}>
+  return <Container className={styles.shell} data-embedded={embedded} aria-label={embedded ? 'Kalenderübersicht' : undefined}>
     <div className={styles.wrap}>
-      <Link className={styles.back} href="/mobin?bereich=1">← Mobin</Link>
+      {!embedded && <Link className={styles.back} href="/mobin?bereich=1">← Mobin</Link>}
       <header className={styles.header}>
-        <h1>Kalender</h1>
+        <Heading>Kalender</Heading>
         <div className={styles.views} aria-label="Kalenderansicht">
           {Object.entries(modes).map(([id, label]) => <button key={id} aria-pressed={view === id} onClick={() => setView(id)}>{label}</button>)}
         </div>
@@ -151,5 +153,5 @@ export default function MobinCalendar({ initialView = 'month' }) {
         </section>
       })}</div>}
     </div>
-  </main>
+  </Container>
 }

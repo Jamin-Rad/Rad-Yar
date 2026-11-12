@@ -28,7 +28,7 @@ export default function EnglishTestPrep() {
 
   return <main className={`${styles.shell} ${styles.prepShell}`}>
     <div className={styles.page}>
-      <nav className={styles.topbar} aria-label="Navigation"><Link href="/mobin/english" className={styles.backLink}>← English</Link><span className={styles.brand}>M<span>.</span> Mobin</span><span className={styles.dateTicket}>TEST · 11. NOVEMBER 2026</span></nav>
+      <nav className={styles.topbar} aria-label="Navigation"><Link href="/mobin/fach/englisch" className={styles.backLink}>← English</Link><span className={styles.brand}>M<span>.</span> Mobin</span><span className={styles.dateTicket}>TEST · 11. NOVEMBER 2026</span></nav>
       <header className={styles.hero}>
         <div className={styles.heroCopy}><span className={styles.heroEyebrow}>UNIT 2 · LONDON</span><h1>Vokabeltest<span>.</span></h1><p>Erst die Wörter meistern. Dann zeigst du in zwei Probetests, was du kannst.</p></div>
         <div className={styles.skyline} aria-hidden="true" />

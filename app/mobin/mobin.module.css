@@ -1938,3 +1938,28 @@
   .homeCard .buttonTitle { font-size: clamp(13px, 1.9vw, 21px); }
   .homeCard .homeArrow { font-size: 23px; }
 }
+.spanishCard { --card-border: #ffc188; --card-glow: #754237; }
+.scheduleCard { --card-border: #9fe7da; --card-glow: #265c64; }
+.flagIcon, .scheduleIcon { display: grid; place-items: center; flex: none; width: clamp(40px, 6vw, 73px); aspect-ratio: 1; border-radius: 23%; }
+.flagIcon { overflow: hidden; border: 2px solid #f9d4ba; box-shadow: 0 0 15px #ffb86b55, inset 0 0 10px #fff5; background: #fff; }
+.flagIcon img { width: 100%; height: 100%; object-fit: cover; }
+.scheduleIcon { grid-template-columns: repeat(3, 1fr); gap: 4px; padding: clamp(9px, 1.4vw, 16px) clamp(4px, .7vw, 9px) clamp(4px, .7vw, 9px); position: relative; border: 2px solid #b5faeb; background: linear-gradient(140deg, #60cabb, #247080); box-shadow: inset 0 0 11px #befff98c, 0 0 14px #79e2d463; }
+.scheduleIcon::before { content: ''; position: absolute; inset: 13% 12% auto; height: 8%; background: #edfffb; border-radius: 5px; }
+.scheduleIcon i { width: 100%; aspect-ratio: 1; border-radius: 2px; background: #c7fff5; }
+.scheduleIcon i:nth-child(3n) { background: #ffc594; }
+.schoolCard { border-color: #8baafa; background: radial-gradient(ellipse at top left, #3c4b86, transparent 65%), #152743; box-shadow: inset 0 1px #ffffff3a, 0 12px 28px #02091970; }
+.schoolTitleLink { gap: 10px; }
+.schoolMark { display: grid; place-items: center; width: 39px; height: 39px; border-radius: 10px; background: #6378bd; color: #fff; font-size: 25px; }
+.schoolCard .subjectLink { border-color: color-mix(in srgb, var(--subject-border) 68%, #253853); background: linear-gradient(150deg, var(--subject-fill), #202b49); }
+@media (max-width: 620px) {
+  .homeWrap { width: calc(100% - 16px); padding-top: 15px; }
+  .homeMain { gap: 15px; }
+  .homeHero .title { font-size: clamp(42px, 12vw, 66px); }
+  .homeCard { min-height: 85px; justify-content: center; align-items: center; text-align: center; padding: 4px 2px; gap: 3px; }
+  .homeIcon { width: 35px; height: 46px; }
+  .flagIcon, .scheduleIcon { width: 36px; }
+  .schoolCard { min-height: 0; padding: 10px; }
+  .schoolTitleLink { margin-bottom: 8px; padding-bottom: 8px; }
+  .schoolMark { width: 30px; height: 30px; font-size: 19px; }
+  .subjectLink { min-height: 34px; }
+}
