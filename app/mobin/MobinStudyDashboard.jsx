@@ -1,6 +1,7 @@
+import Link from 'next/link'
 import styles from './study-dashboard.module.css'
 
-const views = ['Tage', 'Wochen', 'Monate', 'Jahre']
+const views = [['week', 'Wochen'], ['month', 'Monate'], ['year', 'Jahre']]
 
 export default function MobinStudyDashboard() {
   return (
@@ -15,16 +16,16 @@ export default function MobinStudyDashboard() {
           </span>
           <div>
             <h2 id="mobin-calendar-title">Kalender</h2>
-            <p>Dein Kalender kommt bald</p>
+            <p>Deine Lernzeit im Kalender</p>
           </div>
         </div>
         <div className={styles.calendarViews} aria-label="Kalenderansicht">
-          {views.map((view) => <span key={view}>{view}</span>)}
+          {views.map(([id, label]) => <Link key={id} href={'/mobin/kalender?ansicht=' + id}>{label}</Link>)}
         </div>
       </div>
       <div className={styles.calendarPlaceholderBody}>
         <span className={styles.calendarPlaceholderDot} aria-hidden="true" />
-        <p>Hier kannst du bald deinen Schulalltag planen.</p>
+        <Link href="/mobin/kalender">Kalender öffnen →</Link>
       </div>
     </section>
   )

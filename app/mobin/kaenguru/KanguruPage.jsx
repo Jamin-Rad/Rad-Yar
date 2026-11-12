@@ -776,7 +776,7 @@ export default function KanguruPage() {
     <main className={styles.page} lang="de" dir="ltr">
       <header className={styles.header}>
         <div className={styles.brandLockup}><Image className={styles.brandIcon} src="/kanguru/kanguru-app-icon.png" alt="" width={42} height={42} priority /><strong>Känguru</strong></div>
-        <Link href="/mobin"><ArrowIcon direction="left" /> Zurück zu Mobin</Link>
+        <Link href="/mobin?bereich=1"><ArrowIcon direction="left" /> Zurück zu Mobin</Link>
       </header>
 
       <section className={styles.journeyStage}>

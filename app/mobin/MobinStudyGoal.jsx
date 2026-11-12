@@ -114,15 +114,16 @@ function SubjectBreakdown({ summary, total }) {
   )
 }
 
-export function MobinEntry({ children }) {
-  const [entered, setEntered] = useState(false)
+export function MobinEntry({ children, initiallyEntered = false }) {
+  const [entered, setEntered] = useState(initiallyEntered)
 
   function enter() {
     setEntered(true)
+    window.history.replaceState(null, '', '/mobin?bereich=1')
     window.scrollTo({ top: 0, behavior: 'instant' })
   }
 
-  return entered ? children : <MobinStudyGoal onEnter={enter} />
+  return entered || initiallyEntered ? children : <MobinStudyGoal onEnter={enter} />
 }
 
 function MobinStudyGoal({ onEnter }) {

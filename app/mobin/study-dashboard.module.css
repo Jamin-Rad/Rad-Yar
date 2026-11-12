@@ -82,3 +82,6 @@
   .calendarPlaceholderBody { min-height: 125px; margin-top: 14px; }
   .calendarPlaceholderDot { width: 30px; height: 30px; }
 }
+.calendarViews a { display: inline-flex; align-items: center; min-height: 36px; padding: 5px 11px; border: 1px solid #8aafda; border-radius: 8px; color: #eaf4ff; text-decoration: none; }
+.calendarViews a:hover { background: #385980; }
+.calendarPlaceholderBody a { color: #d4eaff; font-weight: 800; }

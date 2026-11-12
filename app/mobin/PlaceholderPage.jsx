@@ -7,7 +7,7 @@ export default function PlaceholderPage({ title, description = 'Dieser Bereich w
     <main className={`${styles.shell} ${styles.homeShell}`}>
       <div className={`${styles.wrap} ${styles.homeWrap}`}>
         <section className={styles.placeholderPage}>
-          <Link className={styles.placeholderBack} href="/mobin"><ArrowIcon back /> Zurück</Link>
+          <Link className={styles.placeholderBack} href="/mobin?bereich=1"><ArrowIcon back /> Zurück</Link>
           <div className={styles.placeholderContent}>
             <span className={styles.placeholderMark} aria-hidden="true" />
             <h1>{title}</h1>

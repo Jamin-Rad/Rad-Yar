@@ -278,11 +278,11 @@ export default function PlannerWizard() {
   return <main className={styles.shell} data-today={step === 4}>
     <div className={styles.wrap}>
       <header className={styles.header}>
-        {step > 0 && step < 4 ? <button className={styles.brand} onClick={() => go(step - 1)}>← <b>Mobin</b></button> : <Link className={styles.brand} href="/mobin" aria-label={step === 4 ? 'Zurück zu Mobin' : undefined}>← {step !== 4 && <b>Mobin</b>}</Link>}
+        {step > 0 && step < 4 ? <button className={styles.brand} onClick={() => go(step - 1)}>← <b>Mobin</b></button> : <Link className={styles.brand} href="/mobin?bereich=1" aria-label={step === 4 ? 'Zurück zu Mobin' : undefined}>← {step !== 4 && <b>Mobin</b>}</Link>}
         {step < 4 && <ol className={styles.steps}>{(step === 3 ? ['Zeit', 'Aktivitäten', 'Aufteilen', 'Dein Plan'] : ['Zeit', 'Aktivitäten', 'Aufteilen']).map((label, index) =>
           <li key={label} aria-current={step === index ? 'step' : undefined} data-done={step >= index}>{label}</li>)}</ol>}
         {step === 4 && <div className={styles.todayBrand}><img src="/mobin/planner-today-mascot.webp" alt="" />Mobin</div>}
-        <Link href="/mobin" aria-label="Planer schließen" className={styles.close}>×</Link>
+        <Link href="/mobin?bereich=1" aria-label="Planer schließen" className={styles.close}>×</Link>
       </header>
 
       <section className={styles.stage} data-step={step} key={step}>

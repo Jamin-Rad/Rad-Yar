@@ -28,6 +28,8 @@ const pages = [
     iconPosition: '100%',
     tone: 'persianCard',
   },
+  { href: '/mobin/fach/spanisch', title: 'Spanisch', symbol: '🇪🇸', tone: 'mathCard' },
+  { href: '/mobin/stundenplan', title: 'Stundenplan', symbol: '▦', tone: 'englishCard' },
 ]
 
 const subjects = [
@@ -36,7 +38,6 @@ const subjects = [
   ['Biologie', '/mobin/fach/biologie', 'subjectGreen'],
   ['Geographie', '/mobin/fach/geographie', 'subjectAmber'],
   ['Sport', '/mobin/fach/sport', 'subjectCoral'],
-  ['Spanisch', '/mobin/fach/spanisch', 'subjectRose'],
   ['Latein', '/mobin/fach/latein', 'subjectRoyal'],
   ['Französisch', '/mobin/fach/franzoesisch', 'subjectBlue'],
   ['Englisch', '/mobin/english', 'subjectTeal'],
@@ -49,8 +50,9 @@ export const metadata = {
   description: 'Mobins privater Bereich für Tagesplan, Ziele und die Vorbereitung auf die Matheprüfung.',
 }
 
-export default function MobinPage() {
-  return <MobinEntry><MobinHome /></MobinEntry>
+export default async function MobinPage({ searchParams }) {
+  const query = await searchParams
+  return <MobinEntry initiallyEntered={query?.bereich === '1' && query?.lernziel !== '1'}><MobinHome /></MobinEntry>
 }
 
 function MobinHome() {
@@ -71,12 +73,13 @@ function MobinHome() {
                 href={page.href}
                 key={page.href}
               >
-                <span className={styles.homeIcon} style={{ backgroundPosition: `${page.iconPosition} center` }} aria-hidden="true" />
+                {page.symbol ? <span className={styles.homeSymbol} aria-hidden="true">{page.symbol}</span> : <span className={styles.homeIcon} style={{ backgroundPosition: `${page.iconPosition} center` }} aria-hidden="true" />}
                 <span className={styles.buttonTitle}>{page.title}</span>
                 <span className={styles.homeArrow} aria-hidden="true">›</span>
               </Link>
             ))}
-            <section className={styles.schoolCard} aria-labelledby="school-title">
+          </nav>
+          <section className={styles.schoolCard} aria-labelledby="school-title">
               <Link className={styles.schoolTitleLink} href="/mobin/schule" id="school-title">
                 <span className={styles.schoolTitle}>Schule</span>
                 <span className={styles.homeArrow} aria-hidden="true">›</span>
@@ -86,8 +89,7 @@ function MobinHome() {
                   <Link className={`${styles.subjectLink} ${styles[tone]}`} href={href} key={title}>{title}</Link>
                 ))}
               </nav>
-            </section>
-          </nav>
+          </section>
         </section>
 
         <footer className={styles.footer}>Für Mobin gemacht. · <a href="/mobin?lernziel=1">Lernfortschritt</a></footer>

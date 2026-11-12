@@ -15,7 +15,7 @@ export default function EnglishHome() {
 
   return <main className={styles.shell}>
     <div className={styles.page}>
-      <nav className={styles.topbar} aria-label="Navigation"><Link href="/mobin" className={styles.backLink}>← Mobin</Link><span className={styles.brand}>M<span>.</span> Mobin</span><span className={styles.overviewUnit}>ENGLISH · KLASSE 6</span></nav>
+      <nav className={styles.topbar} aria-label="Navigation"><Link href="/mobin?bereich=1" className={styles.backLink}>← Mobin</Link><span className={styles.brand}>M<span>.</span> Mobin</span><span className={styles.overviewUnit}>ENGLISH · KLASSE 6</span></nav>
       <header className={styles.hero}>
         <div className={styles.heroCopy}><span className={styles.heroEyebrow}>DEIN ENGLISCH-STUDIO</span><h1>English<span>.</span></h1><p>Wähle aus, wofür du lernen möchtest.</p></div>
         <div className={styles.skyline} aria-hidden="true" />

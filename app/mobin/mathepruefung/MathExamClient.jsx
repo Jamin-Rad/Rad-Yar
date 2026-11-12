@@ -114,7 +114,7 @@ export default function MathExamClient() {
   }
 
   return <main className={journey.page} lang="de" dir="ltr">
-    <header className={`${journey.header} ${styles.header}`}><div className={journey.brandLockup}><span className={styles.brandMark} aria-hidden="true">M<span>+</span></span><strong>Mobins Matheprüfung</strong></div><Link href="/mobin"><ArrowIcon back /> Zurück zu Mobin</Link></header>
+    <header className={`${journey.header} ${styles.header}`}><div className={journey.brandLockup}><span className={styles.brandMark} aria-hidden="true">M<span>+</span></span><strong>Mobins Matheprüfung</strong></div><Link href="/mobin?bereich=1"><ArrowIcon back /> Zurück zu Mobin</Link></header>
     <section className={journey.journeyStage} aria-labelledby="math-title">
       <Image data-no-zoom draggable={false} className={journey.journeyBackdrop} src="/mobin/mathepruefung/journey-landscape-v2.png" alt="" fill sizes="100vw" priority />
       <div className={`${journey.hero} ${styles.hero}`}><div className={journey.titleBlock}><span className={styles.eyebrow}>Gymnasium · Klasse 6</span><h1 id="math-title">Dein Mathe-Weg</h1><p>Rationale Zahlen verstehen. Sicher in die Klassenarbeit.</p></div><div className={styles.collectionBadge}><span className={styles.badgeIcon}>{MATH_QUESTIONS.length}</span><span><strong>Dein Prüfungstraining</strong><small>14 Themen · Mittel bis schwer</small></span></div></div>
