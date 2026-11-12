@@ -1,8 +1,10 @@
 'use client'
 
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 import { summarize, money, signedMoney, number } from '@/lib/investments/portfolio.mjs'
-import { snapshotComparison } from '@/lib/investments/family.mjs'
+import { ACCOUNT_DEFINITIONS, snapshotComparison } from '@/lib/investments/family.mjs'
+import { accountBalance } from '@/lib/investments/balances.mjs'
+import { overviewAllocation } from '@/lib/investments/overview-allocation.mjs'
 import AccountTransactions from './AccountTransactions'
 import view from './AccountView.module.css'
 import HoldingsTable from './HoldingsTable'
@@ -11,19 +13,38 @@ import {CashPlans} from './CashPlans'
 import Icon from './InvestmentIcon'
 import styles from './investments.module.css'
 
-export default function AccountWorkspace({ account, assetSectors, onSnapshot, onDetails,  onOpen, onImport, markets, onLedger, ledger, cashPlans=[],onPlan,onPostPlan, profitSelection, onProfitSelection, profitPeriod, download, marketData, onEditTransaction, onDeleteTransaction }) {
+export default function AccountWorkspace({ account, assetSectors, dark, onAccount, onEntry, onSave, saving,
+  onSnapshot, onDetails, onOpen, onImport, markets, onLedger, ledger, cashPlans=[],
+  onPlan, onPostPlan, profitSelection, onProfitSelection, profitPeriod, download, marketData, onEditTransaction, onDeleteTransaction }) {
   const summary = summarize(account.positions)
   const comparison = snapshotComparison(account)
   const [tab, setTab] = useState('holdings')
-  return <div className={view.shell}>
-    <AccountBalancePanel account={account} ledger={ledger} markets={markets} onDetails={onDetails} profitSelection={profitSelection} onProfitSelection={onProfitSelection} profitPeriod={profitPeriod}/>
+  const transactions = ledger?.loaded ? ledger.transactions : null
+  const balance = useMemo(() => accountBalance(account, transactions, markets), [account, transactions, markets])
+  const allocation = useMemo(() => overviewAllocation([balance], assetSectors), [balance, assetSectors])
+  return <div className={view.shell} data-theme={dark ? 'dark' : 'light'}>
+    <header className={view.accountHeader}>
+      <div><h1>حساب <bdi>Trade Republic</bdi></h1><p>ترکیب دارایی‌ها به تفکیک دسته</p></div>
+      <div className={view.accountActions}>
+        <select aria-label="انتخاب حساب Trade Republic" value={account.id} onChange={event => onAccount(event.target.value)}>
+          {ACCOUNT_DEFINITIONS.map(({id, owner}) => <option key={id} value={id}>{owner}</option>)}
+        </select>
+        <button type="button" className={view.entryButton} onClick={() => onEntry(account.id)}><Icon name="plus" size={17}/>ثبت تراکنش</button>
+        <button type="button" className={view.refreshButton} disabled={marketData.batch.running || !marketData.symbolCount} onClick={marketData.refreshAll}>
+          <Icon name="refresh" size={16}/>{marketData.batch.running ? 'دریافت قیمت‌ها…' : 'به‌روزرسانی قیمت‌ها'}
+        </button>
+        {onSave && <button type="button" className={view.refreshButton} onClick={onSave} disabled={saving}>ذخیره تغییرات</button>}
+      </div>
+    </header>
+    <AccountBalancePanel account={account} balance={balance} allocation={allocation} ledger={ledger} dark={dark}
+      onDetails={onDetails} profitSelection={profitSelection} onProfitSelection={onProfitSelection} profitPeriod={profitPeriod}/>
     <div className={view.tabs} role="tablist" aria-label="بخش‌های حساب">{[['holdings','دارایی‌ها'],['transactions','تراکنش‌ها'],['settings','تنظیمات']].map(([key,label])=><button type="button" role="tab" key={key} id={`account-tab-${key}`} aria-selected={tab===key} aria-controls="account-tab-panel" tabIndex={tab===key?0:-1} onKeyDown={event=>{if(['ArrowLeft','ArrowRight','Home','End'].includes(event.key)){event.preventDefault();const keys=['holdings','transactions','settings'];const next=event.key==='Home'?0:event.key==='End'?2:(keys.indexOf(tab)+(event.key==='ArrowLeft'?1:2))%3;setTab(keys[next]);document.getElementById(`account-tab-${keys[next]}`)?.focus()}}} onClick={()=>setTab(key)}>{label}</button>)}</div>
     <div id="account-tab-panel" role="tabpanel" aria-labelledby={`account-tab-${tab}`}>
-      {tab==='holdings'&&(account.positions.length?<HoldingsTable compact assetSectors={assetSectors} positions={account.positions} totalCents={summary.totalCents} onOpen={onOpen} markets={markets}/>:<p className={view.empty}>دارایی بازی در این حساب ثبت نشده است.</p>)}
+      {tab==='holdings'&&(account.positions.length?<HoldingsTable assetSectors={assetSectors} positions={balance.positions} allocation={allocation} onOpen={onOpen}/>:<p className={view.empty}>دارایی بازی در این حساب ثبت نشده است.</p>)}
       {tab==='transactions'&&<AccountTransactions account={account} ledger={ledger} onReport={onLedger} download={download} marketData={marketData} onEditTransaction={onEditTransaction} onDeleteTransaction={onDeleteTransaction}/>}
       {tab==='settings'&&<div className={view.settings}>
         <h2>تنظیمات حساب</h2>
-        <AccountBalancePanel detailsOnly account={account} ledger={ledger} markets={markets} onDetails={onDetails} profitSelection={profitSelection} profitPeriod={profitPeriod}/>
+        <AccountBalancePanel detailsOnly account={account} balance={balance} ledger={ledger} onDetails={onDetails}/>
         <div className={styles.buttonRow}><button type="button" className={styles.secondaryButton} onClick={onDetails}>مشخصات و مبنای نقد</button><button type="button" className={styles.secondaryButton} onClick={onImport}>فایل دارایی‌ها</button><button type="button" className={styles.secondaryButton} onClick={onSnapshot} disabled={!account.positions.length||summary.unvaluedCount>0}>ثبت وضعیت تاریخی</button></div>
         <CashPlans plans={cashPlans.filter(p=>p.accountId===account.id)} ledger={ledger} onEdit={onPlan} onPost={onPostPlan}/>
         <button type="button" className={styles.textButton} onClick={()=>onPlan(null,account.id)}>واریز ماهانه جدید</button>

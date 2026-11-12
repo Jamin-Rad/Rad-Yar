@@ -1,12 +1,95 @@
-.shell { min-width:0; }
-.summary { background:#fff; border:1px solid #e3e8ed; border-radius:12px; padding:24px 28px 14px; margin-bottom:22px; }
-.metrics { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:24px; margin-bottom:20px; }
-.metrics>div { min-width:0; padding-inline:18px; border-left:1px solid #e3e8ed; }
-.metrics>div:first-child { padding-right:0; }
-.metrics>div:last-child { border:0; }
-.metrics span,.metrics small { display:block; color:#647081; font-size:12px; }
-.metrics strong { display:block; font-size:30px; font-weight:750; color:#142335; margin:8px 0; }
-.metrics small { font-size:11px; }
+.shell {
+  --account-panel:#fff;
+  --account-line:#dce3e9;
+  --account-text:#142335;
+  --account-muted:#58697a;
+  --account-accent:#72520e;
+  --account-gain:#176b56;
+  --account-loss:#b83943;
+  --account-hover:#f1f4f6;
+  min-width:0;
+  color:var(--account-text);
+}
+.shell[data-theme='dark'] {
+  --account-panel:#191f27;
+  --account-line:#303944;
+  --account-text:#eef0f4;
+  --account-muted:#b0bac7;
+  --account-accent:#f0ca74;
+  --account-gain:#a9d37c;
+  --account-loss:#ff9a94;
+  --account-hover:#242e38;
+}
+.accountHeader { display:flex; justify-content:space-between; align-items:center; gap:16px 24px; flex-wrap:wrap; margin-block:0 20px; }
+.accountHeader h1 { margin:0; font-size:clamp(21px,3vw,34px); }
+.accountHeader p { color:var(--account-muted); margin-top:2px; }
+.accountActions,.holdingsTools { display:flex; flex-wrap:wrap; align-items:center; gap:8px; }
+.accountActions :is(button,select),.holdingsTools select,.holdingsSearch {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:7px;
+  padding:8px 12px;
+  min-height:42px;
+  border:1px solid var(--account-line);
+  border-radius:8px;
+  background:var(--account-panel);
+  color:var(--account-text);
+  font:inherit;
+}
+.accountActions select { min-width:100px; }
+.accountActions .entryButton { background:#e8c36d; border-color:#e8c36d; color:#241a09; font-weight:750; }
+.accountActions .entryButton:hover { background:#f4d489; }
+.accountActions .refreshButton:hover:not(:disabled) { background:var(--account-hover); }
+.summary { padding-block:2px 14px; margin-bottom:4px; }
+.allocationSummary { display:grid; grid-template-columns:minmax(170px,.8fr) minmax(0,2fr); align-items:center; gap:clamp(16px,3vw,42px); padding-block:4px 18px; }
+.accountMetrics { margin:0; border-inline-end:1px solid var(--account-line); padding-inline-end:clamp(12px,2.5vw,32px); }
+.accountMetrics>div { min-width:0; padding-block:12px; border-bottom:1px solid var(--account-line); }
+.accountMetrics>div:last-child { border-bottom:0; }
+.accountMetrics dt,.accountMetrics small { color:var(--account-muted); font-size:12px; }
+.accountMetrics dd { margin:2px 0 0; font-size:clamp(19px,2.4vw,32px); font-weight:760; overflow-wrap:anywhere; }
+.accountMetrics .assetTotal { color:var(--account-accent); }
+.gain { color:var(--account-gain); }
+.loss { color:var(--account-loss); }
+.accountChart { display:flex; flex-direction:row-reverse; align-items:center; justify-content:center; gap:clamp(12px,2.7vw,36px); min-width:0; }
+.accountRing { width:clamp(145px,23vw,300px); max-width:52%; flex-shrink:0; display:grid; place-items:center; aspect-ratio:1; }
+.accountRing svg,.accountRing>div { grid-area:1/1; }
+.accountRing svg { width:100%; height:100%; }
+.accountRing>div { display:grid; width:66%; text-align:center; }
+.accountRing span { color:var(--account-muted); font-size:12px; }
+.accountRing strong { font-size:clamp(15px,2vw,25px); overflow-wrap:anywhere; }
+.accountLegend { min-width:0; display:grid; gap:8px; list-style:none; padding:0; margin:0; }
+.accountLegend li { display:grid; grid-template-columns:10px minmax(0,1fr) auto; gap:8px; align-items:center; font-size:13px; }
+.accountLegend i,.sectorTitle i { width:10px; height:10px; border-radius:50%; flex-shrink:0; }
+.chartEmpty,.coverage { color:var(--account-muted); font-size:13px; }
+.profitControls { margin-top:14px; }
+.sectorHoldings { display:grid; gap:10px; }
+.holdingsTools { justify-content:space-between; margin-block:0 4px; }
+.holdingsSearch { color:var(--account-muted); min-width:0; }
+.holdingsSearch input { width:100%; min-width:0; border:0; background:none; color:var(--account-text); font:inherit; }
+.holdingsSearch input::placeholder { color:var(--account-muted); }
+.sectorGroup { overflow:hidden; border:1px solid var(--account-line); border-radius:10px; background:var(--account-panel); }
+.sectorGroup>summary { display:grid; grid-template-columns:minmax(0,1fr) auto 16px; gap:12px; align-items:center; padding:12px 16px; color:var(--account-text)!important; background:var(--account-hover); list-style:none; }
+.sectorGroup>summary::-webkit-details-marker { display:none; }
+.sectorGroup>summary:focus-visible { outline-offset:-4px; }
+.sectorGroup[open]>summary>svg { transform:rotate(180deg); }
+.sectorTitle { display:flex; gap:8px; align-items:center; font-weight:700; }
+.sectorWeight { color:var(--account-accent); font-size:12px; white-space:nowrap; }
+.sectorRows { list-style:none; margin:0; padding:0; }
+.sectorRows li+li { border-top:1px solid var(--account-line); }
+.holding { display:grid; grid-template-columns:minmax(0,1fr) minmax(72px,auto) minmax(48px,auto); align-items:center; gap:12px; width:100%; padding:10px 16px; border:0; text-align:start; background:none; color:var(--account-text); }
+.holding:hover { background:var(--account-hover); }
+.holding:focus-visible { outline-offset:-4px; }
+.holdingName { min-width:0; overflow-wrap:anywhere; }
+.holding small { display:block; font-size:11px; }
+.holdingName small,.holdingWeight { color:var(--account-muted); }
+.holdingValue,.holdingWeight { text-align:end; }
+.shell .tabs { border-color:var(--account-line); }
+.shell .tabs button { color:var(--account-muted); }
+.shell .tabs button[aria-selected=true] { color:var(--account-accent); border-bottom-color:var(--account-accent); }
+.shell[data-theme='dark'] :is(.activity,.settings,.transaction,.dateFilters input,.actions button,.more) { background:var(--account-panel); border-color:var(--account-line); color:var(--account-text); }
+.shell[data-theme='dark'] :is(.day h3,.transaction:hover) { background:var(--account-hover); color:var(--account-text)!important; }
+.shell[data-theme='dark'] :is(.count,.txType,.txName small,.dateFilters label,.empty) { color:var(--account-muted); }
 .tabs { display:flex; gap:20px; border-bottom:1px solid #dce3e9; margin-bottom:20px; }
 .tabs button { padding:12px 22px; background:transparent; border:0; border-bottom:3px solid transparent; color:#647081; font-size:14px!important; font-weight:600!important; }
 .tabs button[aria-selected=true] { color:#176b56; border-bottom-color:#176b56; }
@@ -30,8 +113,8 @@
 .txName strong { display:block; font-size:13px; }
 .txName small { display:block; color:#647081; font-size:11px; margin-top:4px; }
 .transaction>strong { font-size:14px; }
-.positive,.metrics .positive { color:#176b56; }
-.negative,.metrics .negative { color:#b83943; }
+.positive { color:#176b56; }
+.negative { color:#b83943; }
 .more { display:block; margin:20px auto 0; }
 .wallet { display:grid; place-items:center; gap:16px; min-height:340px; background:#fff; border:1px solid #e3e8ed; border-radius:12px; color:#647081; padding:30px; text-align:center; }
 .wallet svg { color:#176b56; }
@@ -41,12 +124,19 @@
 .xtbRow { display:flex; justify-content:space-between; gap:20px; padding:20px 12px; border-bottom:1px solid #e3e8ed; }
 .xtbRow small { display:block; color:#647081; margin-top:5px; }
 @media(max-width:680px) {
- .summary { padding:18px 16px 12px; }
- .metrics { gap:12px; grid-template-columns:1fr 1fr; }
- .metrics>div { padding:0; border:0; }
- .metrics>div:first-child { grid-column:1/-1; border-bottom:1px solid #e3e8ed; padding-bottom:14px; }
- .metrics strong { font-size:25px; }
- .metrics>div:first-child strong { font-size:34px; }
+ .accountHeader { gap:12px; }
+ .accountActions { width:100%; }
+ .accountActions select { flex:1; }
+ .allocationSummary { grid-template-columns:minmax(0,1fr); gap:18px; }
+ .accountChart { grid-row:1; flex-direction:column; gap:12px; }
+ .accountRing { width:230px; max-width:78%; }
+ .accountLegend { width:min(100%,260px); }
+ .accountMetrics { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:8px; padding:12px 0 0; border:0; border-top:1px solid var(--account-line); }
+ .accountMetrics>div { padding:0; border:0; }
+ .accountMetrics dt,.accountMetrics small { font-size:11px; }
+ .accountMetrics dd { font-size:clamp(13px,3.9vw,21px); }
+ .holdingsSearch { flex:1; }
+ .holding,.sectorGroup>summary { padding-inline:10px; gap:8px; }
  .tabs { gap:0; }
  .tabs button { padding:11px 14px; font-size:13px!important; flex:1; }
  .activity,.settings { padding:16px; }

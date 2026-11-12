@@ -4,6 +4,7 @@ import { useId, useMemo, useState } from 'react'
 import { familyBalance } from '@/lib/investments/balances.mjs'
 import { money, signedMoney, number, percent } from '@/lib/investments/portfolio.mjs'
 import { overviewAllocation } from '@/lib/investments/overview-allocation.mjs'
+import AllocationRing from './AllocationRing'
 import { XTB_OWNERS, xtbBalance } from '@/lib/investments/xtb.mjs'
 import Icon from './InvestmentIcon'
 import { DigitalWalletWorkspace } from './XtbAccountWorkspace'
@@ -20,7 +21,6 @@ const resultClass = value => value == null || value === 0 ? '' : value > 0 ? sty
 const displayMoney = value => value == null ? '—' : money(value)
 
 function Allocation({ allocation, onHolding }) {
-  let offset = 0
   return <div className={styles.allocation}>
     <ul className={styles.sectors}>
       {allocation.groups.map(group => <li key={group.key} style={{'--sector':group.color}}>
@@ -29,17 +29,9 @@ function Allocation({ allocation, onHolding }) {
         <span className={styles.track} aria-hidden="true"><i style={{width: (group.share * 100) + '%'}}/></span>
       </li>)}
     </ul>
-    <div className={styles.ring}>
-      <svg viewBox="0 0 200 200" aria-hidden="true">
-        {allocation.groups.map(group => {
-          const start = offset
-          offset += group.share * 100
-          const gap = allocation.groups.length === 1 ? 0 : Math.min(0.7, group.share * 30)
-          return <circle key={group.key} cx="100" cy="100" r="81" fill="none" pathLength="100" stroke={group.color} strokeWidth="30" strokeDasharray={(group.share * 100 - gap) + ' 100'} strokeDashoffset={-start} transform="rotate(-90 100 100)"/>
-        })}
-      </svg>
+    <AllocationRing className={styles.ring} groups={allocation.groups}>
       <span lang="en">Trade<br/>Republic</span>
-    </div>
+    </AllocationRing>
     <div className={styles.topHoldings}>
       <h3>بیشترین وزن سبد</h3>
       {allocation.top.map(holding => <button type="button" key={holding.key} onClick={() => onHolding(holding)}>
