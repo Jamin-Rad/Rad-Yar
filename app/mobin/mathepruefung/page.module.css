@@ -501,3 +501,12 @@
 .summaryPanel, .report, .resumePanel { color: #102541; }
 .chapterCard { color: #102541; }
 .curriculum > p { color: #d2e7ff; }
+.mathOverview { width: min(1340px, calc(100% - 32px)); margin: 20px auto; }
+.mathOverview h1 { font-size: clamp(2.15rem, 5vw, 3.7rem); }
+.mathOverview [aria-label="Übungsarten"] { position: static; width: auto; transform: none; margin: 14px 0 0; }
+.examChoices { display: grid; gap: 8px; }
+.examChoices label { display: flex; align-items: center; gap: 9px; padding: 10px; border: 1px solid #688bb2; border-radius: 8px; background: #14264a; color: #eef7ff; }
+.examChoices small { display: block; color: #c3d9f4; }
+.setupDialog { color: #eef7ff; background: #14264a; border-color: #83b8f2; }
+.setupDialog .setupContent, .setupDialog .setupHeader, .setupDialog .setupFooter { background: #14264a; color: #eef7ff; }
+.setupDialog .setupGroup, .setupDialog .setupFooter p, .setupDialog .setupFooter span, .setupDialog .setupEmpty { color: #d7e9ff; }

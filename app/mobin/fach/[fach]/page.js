@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation'
 import PlaceholderPage from '../../PlaceholderPage'
+import LanguageHome from '../../LanguageHome'
 
 const subjects = {
   nwt: 'NWT',
@@ -26,5 +27,6 @@ export default async function FachPage({ params }) {
   const { fach } = await params
   const title = subjects[fach]
   if (!title) notFound()
+  if (fach === 'latein' || fach === 'franzoesisch') return <LanguageHome language={title} school={fach === 'latein'} />
   return <PlaceholderPage title={title} />
 }

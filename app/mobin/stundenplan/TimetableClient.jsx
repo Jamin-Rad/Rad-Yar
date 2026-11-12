@@ -9,38 +9,29 @@ const days = ['Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag']
 const storeKey = 'mobin-timetable-v1'
 const dateLabel = new Intl.DateTimeFormat('de-DE', { day: 'numeric', month: 'numeric', timeZone: 'UTC' })
 
-function weekDays(offset) {
-  const now = new Date(berlinStudyDay() + 'T12:00:00Z')
-  now.setUTCDate(now.getUTCDate() - (now.getUTCDay() + 6) % 7 + offset * 7)
-  return days.map((name, index) => {
-    const date = new Date(now)
-    date.setUTCDate(now.getUTCDate() + index)
-    return { name, date, key: date.toISOString().slice(0, 10) }
-  })
-}
-
-async function photoData(file) {
-  if (!file.type.startsWith('image/') || file.size > 25 * 1024 * 1024) throw new Error()
-  const url = URL.createObjectURL(file)
-  try {
-    const photo = new Image()
-    photo.src = url
-    await photo.decode()
-    const scale = Math.min(1, 1500 / Math.max(photo.width, photo.height))
-    const canvas = document.createElement('canvas')
-    canvas.width = Math.round(photo.width * scale)
-    canvas.height = Math.round(photo.height * scale)
-    canvas.getContext('2d').drawImage(photo, 0, 0, canvas.width, canvas.height)
-    return canvas.toDataURL('image/jpeg', .8)
-  } finally { URL.revokeObjectURL(url) }
-}
+const views = { day: 'Tag', week: 'Woche', month: 'Monat', year: 'Jahr' }
+const monthFormat = new Intl.DateTimeFormat('de-DE', { month: 'long', year: 'numeric', timeZone: 'UTC' })
+const dayFormat = new Intl.DateTimeFormat('de-DE', { weekday: 'long', day: 'numeric', month: 'long', timeZone: 'UTC' })
+const key = date => date.toISOString().slice(0, 10)
+const shift = (date, days) => new Date(Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate() + days, 12))
+const weekday = date => (date.getUTCDay() + 6) % 7
+const makeDate = (year, month, day = 1) => new Date(Date.UTC(year, month, day, 12))
 
 export default function TimetableClient() {
   const untis = useUntis('timetable')
   const [local, setLocal] = useState({ photo: '', lessons: [] })
-  const [offset, setOffset] = useState(0)
+  const [view, setView] = useState('week')
+  const [cursor, setCursor] = useState('')
+  const [tests, setTests] = useState([])
   const [notice, setNotice] = useState('')
   useEffect(() => {
+    setCursor(berlinStudyDay())
+    try {
+      setTests(['Mathe', 'Englisch', 'Latein'].flatMap(subject => {
+        const entries = JSON.parse(localStorage.getItem('mobin-school-tests:' + subject) || '[]')
+        return Array.isArray(entries) ? entries.map(test => ({ ...test, subject })) : []
+      }))
+    } catch {}
     try {
       const saved = JSON.parse(localStorage.getItem(storeKey) || 'null')
       if (saved) setLocal(saved)
@@ -53,44 +44,83 @@ export default function TimetableClient() {
       setNotice('')
     } catch { setNotice('Der Stundenplan konnte nicht auf diesem Gerät gespeichert werden.') }
   }
-  const week = weekDays(offset)
   const connected = untis.data?.connected
+  const today = berlinStudyDay()
+  const date = new Date((cursor || today) + 'T12:00:00Z')
+  const year = date.getUTCFullYear()
+  const month = date.getUTCMonth()
+  const monday = shift(date, -weekday(date))
+  const week = Array.from({ length: 7 }, (_, i) => shift(monday, i))
+  const first = makeDate(year, month)
+  const monthDays = Array.from({ length: makeDate(year, month + 1, 0).getUTCDate() }, (_, i) => makeDate(year, month, i + 1))
+  const imported = connected ? untis.data.events : []
+  const title = view === 'day' ? dayFormat.format(date) : view === 'week' ? dateLabel.format(week[0]) + ' – ' + dateLabel.format(week[6])
+    : view === 'month' ? monthFormat.format(date) : String(year)
+
+  function navigate(direction) {
+    const next = view === 'day' ? shift(date, direction) : view === 'week' ? shift(date, direction * 7)
+      : view === 'month' ? makeDate(year, month + direction) : makeDate(year + direction, month)
+    setCursor(key(next))
+  }
+
+  function dayEntries(item) {
+    const id = key(item)
+    const lessons = connected ? imported.filter(event => event.day === id) : local.lessons.filter(lesson => lesson.day === weekday(item))
+    const schoolTests = tests.filter(test => test.date === id).map(test => ({
+      time: test.period + '. Std.', title: test.subject + ' · ' + test.title,
+      kind: test.kind === 'vocabulary' ? 'Vokabeltest' : 'Klassenarbeit',
+    }))
+    return [...lessons, ...schoolTests]
+  }
+
   return <main className={styles.shell}><div className={styles.wrap}>
     <Link className={styles.back} href="/mobin?bereich=1">← Mobin</Link>
-    <header className={styles.heading}><h1>Stundenplan</h1><div className={styles.actions}>
-      <UntisConnect state={untis} update />
-      {!connected && <label className={styles.capture}>
-        {local.photo ? 'Unterricht aktualisieren' : 'Stundenplan scannen'}
-        <input type="file" accept="image/*" capture="environment" aria-label="Stundenplan fotografieren" onChange={async event => {
-          const file = event.target.files?.[0]
-          event.target.value = ''
-          if (!file) return
-          try { save({ ...local, photo: await photoData(file) }) }
-          catch { setNotice('Dieses Foto konnte nicht geöffnet werden. Versuche es mit einem JPEG oder PNG.') }
-        }} />
-      </label>}
-    </div></header>
+    <header className={styles.learningHero}><h1>Stundenplan</h1></header>
     {notice && <p role="status">{notice}</p>}
-    <section className={styles.panel} aria-label="Unterricht dieser Woche">
-      <div className={styles.heading}><h2>{dateLabel.format(week[0].date)} – {dateLabel.format(week[4].date)}</h2>
-        <div className={styles.actions}><button aria-label="Vorherige Woche" onClick={() => setOffset(offset - 1)}>‹</button>
-        <button onClick={() => setOffset(0)}>Diese Woche</button><button aria-label="Nächste Woche" onClick={() => setOffset(offset + 1)}>›</button></div>
+    <section className={styles.panel} aria-label="Unterricht">
+      <div className={styles.actions} aria-label="Stundenplanansicht">
+        {Object.entries(views).map(([id, label]) => <button key={id} aria-pressed={view === id} onClick={() => setView(id)}>{label}</button>)}
       </div>
-      <div className={styles.timetable}>{week.map((item, index) => {
-        const lessons = connected ? untis.data.events.filter(event => event.day === item.key) : local.lessons.filter(lesson => lesson.day === index)
-        return <section key={item.key}><h3>{item.name}</h3>
-          {lessons.length ? <ul>{lessons.map((lesson, i) => <li key={i}>
-            <span>{lesson.time}{lesson.end && '–' + lesson.end}</span>
+      <div className={styles.heading}><h2>{title}</h2>
+        <div className={styles.actions}><button aria-label="Vorheriger Zeitraum" onClick={() => navigate(-1)}>‹</button>
+        <button onClick={() => setCursor(today)}>Heute</button><button aria-label="Nächster Zeitraum" onClick={() => navigate(1)}>›</button></div>
+      </div>
+      {(view === 'day' || view === 'week') && <div className={styles.timetable} data-view={view}>{(view === 'day' ? [date] : week).map(item => {
+        const entries = dayEntries(item)
+        return <section key={key(item)} data-today={key(item) === today}><h3>{dayFormat.format(item)}</h3>
+          {entries.length ? <ul>{entries.map((lesson, i) => <li key={i}>
+            <span>{lesson.time}{lesson.end && '–' + lesson.end}{lesson.kind && ' · ' + lesson.kind}</span>
             <strong>{lesson.cancelled && 'Entfällt · '}{lesson.title}</strong>
-            {!connected && <button aria-label={lesson.title + ' entfernen'} onClick={() => save({ ...local, lessons: local.lessons.filter(item => item !== lesson) })}>×</button>}
-          </li>)}</ul> : <p>Kein Unterricht eingetragen</p>}
+            {!connected && local.lessons.includes(lesson) && <button aria-label={lesson.title + ' entfernen'} onClick={() => save({ ...local, lessons: local.lessons.filter(item => item !== lesson) })}>×</button>}
+          </li>)}</ul> : <p>{weekday(item) > 4 ? 'Wochenende' : 'Kein Unterricht eingetragen'}</p>}
         </section>
-      })}</div>
+      })}</div>}
+      {view === 'month' && <div className={styles.timetableMonth}>
+        {['Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So'].map(label => <span key={label}>{label}</span>)}
+        {Array.from({ length: weekday(first) }, (_, index) => <span key={'pad' + index} />)}
+        {monthDays.map(item => {
+          const entries = dayEntries(item)
+          return <button key={key(item)} data-today={key(item) === today} data-weekend={weekday(item) > 4}
+            onClick={() => { setCursor(key(item)); setView('day') }}>
+            <strong>{item.getUTCDate()}</strong>
+            <small>{entries.some(event => event.kind || /prüfung|klassenarbeit|test|ferien/i.test(event.title))
+              ? 'Termin' : entries.length ? entries.length + ' Eintr.' : ''}</small>
+          </button>
+        })}
+      </div>}
+      {view === 'year' && <div className={styles.timetableYear}>{Array.from({ length: 12 }, (_, index) => {
+        const item = makeDate(year, index)
+        return <button key={index} onClick={() => { setCursor(key(item)); setView('month') }}>{monthFormat.format(item)}</button>
+      })}</div>}
     </section>
+    <details className={styles.panel}><summary>Unterrichtsquellen</summary>
+      <UntisConnect state={untis} update />
+      <p><a className={styles.back} href="https://moodle.privates-gymnasium.de/login/index.php" target="_blank" rel="noreferrer">Moodle des PG öffnen ↗</a></p>
+    </details>
     {!connected && <section className={styles.panel}>
       <h2>Stunden eintragen</h2>
       {local.photo && <details open><summary>Fotografierter Stundenplan</summary><img className={styles.timetablePhoto} src={local.photo} alt="Fotografierter Stundenplan" /></details>}
-      <p>Du kannst Stunden aus dem Foto in die Wochenübersicht übertragen.</p>
+
       <form className={styles.controls} onSubmit={event => {
         event.preventDefault()
         const form = new FormData(event.currentTarget)

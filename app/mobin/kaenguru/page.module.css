@@ -726,3 +726,12 @@
   .page .header a { font-size: 11px; }
 }
 .page .progressPanel, .page .streakPanel { color: var(--ink); }
+.kanguruOverview { width: min(1340px, calc(100% - 32px)); margin: 20px auto; }
+.kanguruTitle { border: 1px solid #83b8f282; border-radius: 16px; background: linear-gradient(125deg, #274e82, #151d44); padding: clamp(15px, 3vw, 34px); }
+.kanguruTitle h1 { margin: 0; font-size: clamp(2.15rem, 5vw, 3.7rem); color: #e3f6ff; }
+.kanguruTitle p { margin: 4px 0 0; color: #cbe4ff; }
+.kanguruOverview .stations { position: static; width: auto; transform: none; margin: 14px 0 0; }
+.dialog { background: #15264a; color: #f3f8ff; border-color: #83b8f2; }
+.dialog > p, .dialogControl > span { color: #e0ecff; }
+.dialog .choiceRow button { background: #203c66; color: #eef7ff; border-color: #729bc9; }
+.dialog .choiceRow .choiceActive { background: #b6ddff; color: #101f3e; border-color: #b6ddff; }

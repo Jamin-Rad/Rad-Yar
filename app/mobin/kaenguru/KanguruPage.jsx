@@ -366,17 +366,6 @@ function DailyStreak({ progress }) {
   )
 }
 
-function JourneyMap({ progressPercent }) {
-  return (
-    <div className={styles.map} aria-label={`Fortschritt: ${progressPercent} Prozent`}>
-      <Image data-no-zoom draggable={false} className={styles.mascot} src="/kanguru/kangaroo-explorer.png" alt="Känguru mit Rucksack und Karte" width={1024} height={1536} priority />
-      <div className={`${styles.mapMarker} ${styles.markerStart}`}><b>Start</b><span /></div>
-      <div className={`${styles.mapMarker} ${styles.markerMiddle}`}><b>Unterwegs</b><span /></div>
-      <div className={`${styles.mapMarker} ${styles.markerFinish}`}><b>Geschafft</b><span /></div>
-    </div>
-  )
-}
-
 function ActionStation({ tone, icon, title, text, count, disabled, onClick }) {
   return (
     <button className={`${styles.station} ${styles[tone]}`} type="button" onClick={onClick} aria-disabled={disabled || undefined} aria-label={`${title}: ${count}`}>
@@ -388,7 +377,7 @@ function ActionStation({ tone, icon, title, text, count, disabled, onClick }) {
   )
 }
 
-function SetupDialog({ type, gradeGroup, attempts, onClose, onStart }) {
+function SetupDialog({ type, gradeGroup, attempts, onClose, onStart, onGradeChange }) {
   const [count, setCount] = useState(5)
   const [difficulty, setDifficulty] = useState('all')
   const [year, setYear] = useState(KANGURU_PLANNED_YEARS[0])
@@ -434,6 +423,12 @@ function SetupDialog({ type, gradeGroup, attempts, onClose, onStart }) {
         <button className={styles.closeButton} type="button" onClick={onClose} aria-label="Schließen"><CloseIcon /></button>
         <h2 id="dialog-title">{config.title}</h2>
         <p>{config.text}</p>
+        <div className={styles.dialogControl}>
+          <span>Klassenstufe</span>
+          <div className={styles.choiceRow}>{KANGURU_GRADE_GROUPS.map(value =>
+            <button key={value} type="button" aria-pressed={gradeGroup === value}
+              className={gradeGroup === value ? styles.choiceActive : ''} onClick={() => onGradeChange(value)}>Klassen {value.replace('-', '/')}</button>)}</div>
+        </div>
 
         {type === 'new' ? (
           <>
@@ -779,20 +774,8 @@ export default function KanguruPage() {
         <Link href="/mobin?bereich=1"><ArrowIcon direction="left" /> Zurück zu Mobin</Link>
       </header>
 
-      <section className={styles.journeyStage}>
-        <Image data-no-zoom draggable={false} aria-hidden="true" className={styles.journeyBackdrop} src="/kanguru/journey-landscape-v2.png" alt="" fill sizes="100vw" priority />
-        <div className={styles.hero}>
-          <div className={styles.titleBlock}>
-            <h1>Dein Känguru-Weg</h1>
-            <p>Jede Aufgabe bringt dich ein Stück weiter.</p>
-          </div>
-          <div className={styles.gradeSwitch} aria-label="Klassenstufe wählen">
-            {KANGURU_GRADE_GROUPS.map(value => <button key={value} type="button" aria-pressed={gradeGroup === value} onClick={() => chooseGradeGroup(value)}>Klassen {value.replace('-', '/')}</button>)}
-          </div>
-        </div>
-
-        <JourneyMap progressPercent={progressPercent} />
-
+      <section className={styles.kanguruOverview}>
+        <header className={styles.kanguruTitle}><h1>Känguru</h1><p>Wähle deine nächste Übungsrunde.</p></header>
         <section className={styles.stations} aria-label="Übungsarten">
           <ActionStation tone="coral" icon={<PencilIcon />} title="Neue Aufgaben" text="Nur Aufgaben, die du noch nicht gelöst hast" count={openCount} onClick={() => setDialog('new')} />
           <ActionStation tone="blue" icon={<PaperIcon />} title="Jahresprüfung" text="Wähle ein Jahr und einen Aufgabenteil" count={gradeQuestions.length} onClick={() => setDialog('year')} />
@@ -818,7 +801,7 @@ export default function KanguruPage() {
         </button>
       </section>
 
-      {dialog ? <SetupDialog type={dialog} gradeGroup={gradeGroup} attempts={progress.attempts} onClose={() => setDialog(null)} onStart={startSession} /> : null}
+      {dialog ? <SetupDialog type={dialog} gradeGroup={gradeGroup} attempts={progress.attempts} onClose={() => setDialog(null)} onStart={startSession} onGradeChange={chooseGradeGroup} /> : null}
       {statsMetric ? <StatsDialog metric={statsMetric} onMetricChange={setStatsMetric} questions={gradeQuestions} attempts={progress.attempts} gradeGroup={gradeGroup} onClose={() => setStatsMetric(null)} /> : null}
     </main>
   )

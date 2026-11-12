@@ -3,7 +3,7 @@ import { hasMobinSession, getMobinSessionSecret } from '@/lib/mobinAuth'
 import { supabaseAdmin } from '@/lib/supabase/server'
 import { parseUntisCalendar } from '@/lib/mobinUntis'
 
-const school = 'privates-gym-esslingen.webuntis.com'
+const schoolHosts = new Set(['privates-gym-esslingen.webuntis.com', 'pgm.webuntis.com'])
 const key = 'mobin-school-untis-v1'
 const targets = ['calendar', 'timetable']
 const json = (value, status = 200) => Response.json(value, { status, headers: { 'Cache-Control': 'private, no-store' } })
@@ -27,9 +27,14 @@ function publicData(data, target) {
 }
 
 async function loadFeed(link) {
-  const url = new URL(link)
-  if (url.protocol !== 'https:' || url.hostname !== school || url.port || url.username || url.password) {
-    throw new Error('Verwende den iCal-Link deiner Schule auf ' + school + '.')
+  let url
+  try { url = new URL(link.replace(/^webcal:/i, 'https:')) }
+  catch { throw new Error('Bitte kopiere den vollständigen iCal-Link aus WebUntis.') }
+  if (url.protocol !== 'https:' || !schoolHosts.has(url.hostname) || url.port || url.username || url.password) {
+    throw new Error('Verwende einen iCal-Link vom WebUntis des PG Esslingen.')
+  }
+  if (url.pathname.startsWith('/timetable/')) {
+    throw new Error('Das ist die Stundenplan-Seite. Kopiere in WebUntis unter „iCal-Abo verwalten“ den Standard-Link.')
   }
   const response = await fetch(url, { redirect: 'error', cache: 'no-store', signal: AbortSignal.timeout(10000) })
   if (!response.ok || !response.body) throw new Error('WebUntis konnte den Kalender nicht liefern.')
@@ -79,8 +84,8 @@ async function handle(request) {
     }
     if (saved.error) return json({ error: 'Untis-Verbindung konnte nicht gespeichert werden.' }, 503)
     return json(publicData(data, target))
-  } catch {
-    return json({ error: 'Der iCal-Import ist fehlgeschlagen. Prüfe den aktiven Abo-Link deiner Schule.' }, 422)
+  } catch (error) {
+    return json({ error: error.message?.startsWith('Das ist die Stundenplan-Seite') || error.message?.startsWith('Bitte kopiere') || error.message?.startsWith('Verwende einen') ? error.message : 'Der iCal-Import ist fehlgeschlagen. Prüfe den aktiven Abo-Link deiner Schule.' }, 422)
   }
 }
 

@@ -1,6 +1,5 @@
 'use client'
 
-import Image from 'next/image'
 import Link from 'next/link'
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { MATH_CHAPTERS, MATH_EXAM_COLLECTIONS, MATH_QUESTIONS, MATH_QUESTION_MAP, MATH_TOPICS, MATH_TOPIC_MAP } from '@/data/mobinMathExam'
@@ -11,6 +10,8 @@ import { useMathProgress } from './useMathProgress'
 import { useStudyClock } from './useStudyClock'
 import journey from './journey.module.css'
 import styles from './page.module.css'
+import SchoolTests, { useSchoolTests } from '../SchoolTests'
+import learning from '../learning.module.css'
 
 const MODES = [
   { id: 'practice', text: 'Eine Aufgabe nach der anderen. Mit Tipps und verständlichen Lösungswegen.', tone: 'coral', path: 'm7 25 2-7L22 5l5 5-13 13-7 2ZM19 8l5 5M9 18l5 5' },
@@ -24,6 +25,9 @@ export default function MathExamClient() {
   const [active, setActive] = useState(null)
   const [menu, setMenu] = useState(null)
   const menuRef = useRef(null)
+  const tests = useSchoolTests('Mathe')
+  const [examSelection, setExamSelection] = useState(['new'])
+  const [addingExam, setAddingExam] = useState(false)
   useEffect(() => {
     if (!menu) return
     const dialog = menuRef.current
@@ -65,7 +69,13 @@ export default function MathExamClient() {
   const reviewIds = filtered.filter(question => summary.reviewIds.includes(question.id)).map(question => question.id)
   const practiceIds = [...filtered].sort((a, b) => Number(Boolean(summary.latest[a.id])) - Number(Boolean(summary.latest[b.id]))).slice(0, count === 'all' ? filtered.length : Number(count)).map(q => q.id)
   const unfinished = summary.sessions.find(item => !item.finishedAt)
-  const menuIds = menu === 'practice' ? practiceIds : menu === 'review' ? reviewIds : filtered.map(q => q.id)
+  const examIds = new Set(MATH_EXAM_COLLECTIONS
+    .filter(item => examSelection.includes(item.id)).flatMap(item => item.questionIds))
+  const selectedTopics = new Set(tests.tests
+    .filter(test => examSelection.includes(test.id)).flatMap(test => test.topics ?? []))
+  const examQuestions = MATH_QUESTIONS.filter(question =>
+    examIds.has(question.id) || selectedTopics.has(question.topicId))
+  const menuIds = menu === 'practice' ? practiceIds : menu === 'review' ? reviewIds : examQuestions.map(q => q.id)
 
   const start = useCallback((mode, ids) => {
     if (!ready || !ids.length) return
@@ -114,11 +124,9 @@ export default function MathExamClient() {
   }
 
   return <main className={journey.page} lang="de" dir="ltr">
-    <header className={`${journey.header} ${styles.header}`}><div className={journey.brandLockup}><span className={styles.brandMark} aria-hidden="true">M<span>+</span></span><strong>Mobins Matheprüfung</strong></div><Link href="/mobin?bereich=1"><ArrowIcon back /> Zurück zu Mobin</Link></header>
-    <section className={journey.journeyStage} aria-labelledby="math-title">
-      <Image data-no-zoom draggable={false} className={journey.journeyBackdrop} src="/mobin/mathepruefung/journey-landscape-v2.png" alt="" fill sizes="100vw" priority />
-      <div className={`${journey.hero} ${styles.hero}`}><div className={journey.titleBlock}><span className={styles.eyebrow}>Gymnasium · Klasse 6</span><h1 id="math-title">Dein Mathe-Weg</h1><p>Rationale Zahlen verstehen. Sicher in die Klassenarbeit.</p></div><div className={styles.collectionBadge}><span className={styles.badgeIcon}>{MATH_QUESTIONS.length}</span><span><strong>Dein Prüfungstraining</strong><small>14 Themen · Mittel bis schwer</small></span></div></div>
-      <div className={journey.map} aria-hidden="true"><Image data-no-zoom draggable={false} className={`${journey.mascot} ${styles.mascot}`} src="/mobin/mathepruefung/kangaroo-explorer.png" alt="" width={1024} height={1536} priority /><div className={`${journey.mapMarker} ${journey.markerStart}`}><b>Üben</b><span /></div><div className={`${journey.mapMarker} ${journey.markerMiddle}`}><b>Verstehen</b><span /></div><div className={`${journey.mapMarker} ${journey.markerFinish}`}><b>Sicher werden</b><span /></div></div>
+    <header className={`${journey.header} ${styles.header}`}><div className={journey.brandLockup}><span className={styles.brandMark} aria-hidden="true">M<span>+</span></span><strong>Mathe</strong></div><Link href="/mobin?bereich=1"><ArrowIcon back /> Zurück zu Mobin</Link></header>
+    <section className={styles.mathOverview} aria-labelledby="math-title">
+      <div className={learning.learningHero}><h1 id="math-title">Mathe</h1></div>
       <div className={journey.stations} aria-label="Übungsarten">{MODES.map(mode => {
         return <div className={`${journey.station} ${journey[mode.tone] || styles.review} ${styles.station}`} key={mode.id}><span className={journey.stationIcon}><svg viewBox="0 0 32 32" aria-hidden="true"><path d={mode.path} /></svg></span><button className={journey.stationButton} type="button" disabled={!ready} onClick={() => setMenu(mode.id)} aria-describedby={`${mode.id}-description`}><strong>{MODE_NAMES[mode.id]}</strong></button><small id={`${mode.id}-description`}>{mode.text}<span className={styles.modeCount}>{mode.id === 'review' ? `${summary.reviewIds.length} Aufgaben zum Wiederholen` : 'Auswählen & starten →'}</span></small></div>
       })}</div>
@@ -128,12 +136,25 @@ export default function MathExamClient() {
       <div className={styles.setupContent}>
         <header className={styles.setupHeader}><div><span className={styles.eyebrow}>Deine nächste Runde</span><h2 id="selection-title">{MODE_NAMES[menu] || 'Training auswählen'}</h2></div><button type="button" className={styles.setupClose} onClick={() => setMenu(null)} aria-label="Schließen">×</button></header>
         <div className={styles.setupBody}>
+          {menu === 'exam' ? <>
+            <fieldset className={styles.setupGroup}><legend>Prüfungen auswählen</legend>
+              <div className={styles.examChoices}>{[...MATH_EXAM_COLLECTIONS.filter(item => item.id !== 'all'), ...tests.tests].map(item =>
+                <label key={item.id}><input type="checkbox" checked={examSelection.includes(item.id)}
+                  onChange={event => setExamSelection(current => event.target.checked
+                    ? [...current, item.id] : current.filter(id => id !== item.id))} />
+                  <span>{item.title}{item.date && <small>{item.date.split('-').reverse().join('.')} · {item.period}. Stunde{!item.topics?.length && ' · keine Übungsthemen zugeordnet'}</small>}</span>
+                </label>)}</div>
+            </fieldset>
+            <button type="button" className={styles.secondaryButton} onClick={() => setAddingExam(!addingExam)}>＋ Prüfung hinzufügen</button>
+            {addingExam && <SchoolTests state={tests} kind="exam" topics={MATH_TOPICS} onDone={() => setAddingExam(false)} />}
+          </> : <>
           <fieldset className={styles.setupGroup}><legend>Aufgabensammlung</legend><div className={styles.collectionChoices}>{MATH_EXAM_COLLECTIONS.map(item => <button type="button" key={item.id} aria-pressed={collection === item.id} onClick={() => setCollection(item.id)}>{item.title}</button>)}</div></fieldset>
           <fieldset className={styles.setupGroup}><legend>Schwierigkeit</legend><div className={styles.choiceRow}>{[['all', 'Mittel & schwer'], ['medium', 'Mittel'], ['hard', 'Schwer']].map(([value, label]) => <button type="button" key={value} aria-pressed={level === value} onClick={() => setLevel(value)}>{label}</button>)}</div></fieldset>
           {menu === 'practice' && <fieldset className={styles.setupGroup}><legend>Wie viele Aufgaben?</legend><div className={styles.choiceRow}>{[['5', 'Bis zu 5'], ['10', 'Bis zu 10'], ['all', 'Alle']].map(([value, label]) => <button type="button" key={value} aria-pressed={count === value} onClick={() => setCount(value)}>{label}</button>)}</div></fieldset>}
           <details className={styles.topicPicker}><summary>Themen auswählen <span>{scope === 'all' ? 'Alle 14 Themen' : MATH_TOPIC_MAP.get(scope)?.title || `Kapitel ${MATH_CHAPTERS.find(c => c.id === scope)?.number}`}</span></summary>
             <div className={styles.topicChoices}><button type="button" aria-pressed={scope === 'all'} onClick={() => setScope('all')}>Alle Themen</button>{MATH_CHAPTERS.map(chapter => <fieldset className={styles.setupGroup} key={chapter.id}><legend>Kapitel {chapter.number} · {chapter.title}</legend><button type="button" aria-pressed={scope === chapter.id} onClick={() => setScope(chapter.id)}>Ganzes Kapitel</button>{MATH_TOPICS.filter(topic => topic.chapter === chapter.id).map(topic => <button type="button" key={topic.id} aria-pressed={scope === topic.id} onClick={() => setScope(topic.id)}>{topic.title}</button>)}</fieldset>)}</div>
           </details>
+          </>}
           {!menuIds.length && <p className={styles.setupEmpty} role="status">{menu === 'review' ? 'Keine Fehler in dieser Auswahl. Wähle eine andere Sammlung oder übe neue Aufgaben.' : 'Keine passenden Aufgaben. Ändere die Sammlung, das Thema oder die Schwierigkeit.'}</p>}
         </div>
         <footer className={styles.setupFooter}><p aria-live="polite"><strong>{menuIds.length} Aufgaben</strong><span>{menu === 'exam' ? 'Lösungen nach der Abgabe' : menu === 'review' ? 'Fehler gezielt verstehen' : 'Mit Tipps und Lösungswegen'}</span></p><button className={styles.primaryButton} type="button" disabled={!ready || !menuIds.length} onClick={() => start(menu, menuIds)}>{menu === 'exam' ? 'Prüfung starten' : menu === 'review' ? 'Fehler üben' : 'Üben starten'}<ArrowIcon /></button></footer>
@@ -141,6 +162,7 @@ export default function MathExamClient() {
     </dialog>
 
     <div className={styles.dashboard}>
+      <SchoolTests state={tests} topics={MATH_TOPICS} />
       <section className={styles.quickPractice}>
         <div><strong>Kurze Übungsrunde</strong><p>Fünf Aufgaben, mit Tipps und Lösungswegen.</p></div>
         <button type="button" className={styles.primaryButton} disabled={!ready}

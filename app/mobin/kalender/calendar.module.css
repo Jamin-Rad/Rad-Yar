@@ -71,3 +71,9 @@
 .lessons ul { margin: 0; padding: 0; list-style: none; }
 .lessons li { display: flex; gap: 10px; padding: 5px 0; border-top: 1px solid #8fa9c04d; }
 .lessons li span { min-width: 80px; color: #c6def7; }
+.shell { background: #101a3c url('/mobin/planner-sky.webp') center bottom / cover fixed; }
+.shell[data-embedded=true] { background: linear-gradient(145deg, #234878, #151d44); }
+.weekBox, .monthBox, .lessons { background: #172c50; border-color: #83b8f282; }
+.weekTotal { background: #213f68; }
+.day[data-outside=true] { background: #13213c; }
+@media (max-width: 620px) { .shell { background-attachment: scroll; } }

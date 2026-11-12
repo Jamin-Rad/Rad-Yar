@@ -1,7 +1,3 @@
-import PlaceholderPage from '../PlaceholderPage'
-
+import LanguageHome from '../LanguageHome'
 export const metadata = { title: 'Persisch · Mobin' }
-
-export default function PersischPage() {
-  return <PlaceholderPage title="Persisch" />
-}
+export default function PersischPage() { return <LanguageHome language="Persisch" /> }
