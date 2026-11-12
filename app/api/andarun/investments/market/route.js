@@ -24,6 +24,6 @@ export async function GET(request) {
     if(query && query.length<=160) return NextResponse.json({results:await searchInstruments(query)},{headers})
     if(!symbol || !/^[A-Z0-9^][A-Z0-9.^=\-]{0,34}$/.test(symbol)) return NextResponse.json({error:'نماد بازار معتبر نیست.'},{status:400,headers})
     if (params.get('refresh') !== '1') return manualRefreshRequired()
-    return NextResponse.json(await loadMarket(symbol,(params.get('name') || symbol).slice(0,160),params.get('refresh') === '1'),{headers})
+    return NextResponse.json(await loadMarket(symbol,(params.get('name') || symbol).slice(0,160),true,params.get('history') === '1'),{headers})
   } catch { return NextResponse.json({error:'داده بازار در دسترس نیست. نماد و بورس را بررسی کن و دوباره تلاش کن.'},{status:502,headers}) }
 }

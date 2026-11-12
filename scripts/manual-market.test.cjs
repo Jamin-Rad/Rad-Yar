@@ -5,6 +5,9 @@ const path = require('node:path')
 const vm = require('node:vm')
 const { transformSync } = require('esbuild')
 const { marketKey } = require('../lib/investments/market.mjs')
+const browserQuotes = require('../lib/investments/browser-quotes.mjs')
+const tradingView = require('../lib/investments/tradingview.mjs')
+const { todayBerlin } = require('../lib/investments/family.mjs')
 const root = path.resolve(__dirname, '..')
 function load(file, mocks, globals = {}) {
   const module = { exports: {} }
@@ -22,6 +25,7 @@ function hookRuntime() {
     useRef(initial) { const i = cursor++; if (!(i in slots)) slots[i] = { current: initial }; return slots[i] },
     useMemo(factory, deps) { const i = cursor++; if (!slots[i] || changed(slots[i].deps, deps)) slots[i] = { deps, value: factory() }; return slots[i].value },
     useCallback(fn, deps) { return react.useMemo(() => fn, deps) },
+    useId() { return 'test-' + cursor++ },
     useEffect(fn, deps) { const i = cursor++; if (!slots[i] || changed(slots[i].deps, deps)) effects.push(() => { slots[i]?.cleanup?.(); slots[i] = { deps, cleanup: fn() } }) },
   }
   return { react, render(fn, ...args) { cursor = 0; const result = fn(...args); effects.splice(0).forEach(fn => fn()); return result }, stop() { slots.forEach(slot => slot?.cleanup?.()) } }
@@ -32,13 +36,17 @@ function target() {
 }
 const position = (symbol, id = symbol) => ({ id, name: 'Synthetic ' + symbol, marketConfirmed: true, marketSymbol: symbol })
 const portfolio = positions => ({ accounts: [{ positions }], decisions: [], settings: { isinPricesEnabled: true } })
-function marketHarness(state, request) {
+function marketHarness(state, request, storage = {getItem: () => null, setItem() {}}) {
   const runtime = hookRuntime(), requests = [], intervals = []
   const window = target(), document = target()
+  window.localStorage = storage
   let now = Date.now()
-  const Clock = class extends Date { static now() { return now } }
+  const Clock = class extends Date {
+    constructor(...args) { super(...(args.length ? args : [now])) }
+    static now() { return now }
+  }
   const hook = load('app/andarun/investments/useMarketData.js', {
-    react: runtime.react, '@/lib/investments/market.mjs': { marketKey }, '@/lib/investments/history-coverage.mjs': { historyCovers: () => false },
+    react: runtime.react, '@/lib/investments/market.mjs': { marketKey }, '@/lib/investments/family.mjs': { todayBerlin }, '@/lib/investments/browser-quotes.mjs': browserQuotes,
   }, { Date: Clock, window, document,
     setInterval: fn => { intervals.push(fn); return fn }, clearInterval() {},
     fetch: async url => { requests.push(url); return request ? request(url) : { ok: true, json: async () => ({ quote: { price: 100, currency: 'EUR' }, history: [], fetchedAt: new Clock(now).toISOString() }) } },
@@ -67,19 +75,22 @@ test('manual update fetches each unique symbol once, with at most three concurre
   assert.equal(h.render().batch.done, 4)
   h.stop()
 })
-test('passive history requests are collected for the next manual refresh; stale data stays readable', async () => {
+test('bulk refresh stays price-only after opening asset history, and explicit history loads its requested dates', async () => {
   const h = marketHarness(portfolio([{ id: 'a', isin: 'US0378331005', name: 'Synthetic' }]))
   const api = h.render()
   await api.load('ISIN:US0378331005', 'Synthetic', false, true, ['2026-10-01', '2026-10-31'])
   assert.equal(h.requests.length, 0)
   await api.refreshAll()
   const params = new URL(h.requests[0], 'https://example.test').searchParams
-  assert.equal(params.get('history'), '1')
-  assert.deepEqual(params.getAll('historyDate'), ['2026-10-01', '2026-10-31'])
+  assert.equal(params.get('history'), null)
+  await api.load('ISIN:US0378331005', 'Synthetic', true, true, ['2026-10-01', '2026-10-31'])
+  const history = new URL(h.requests[1], 'https://example.test').searchParams
+  assert.equal(history.get('history'), '1')
+  assert.deepEqual(history.getAll('historyDate'), ['2026-10-01', '2026-10-31'])
   const before = await api.load('ISIN:US0378331005', 'Synthetic')
   h.advance(86400000)
   assert.equal(await api.load('ISIN:US0378331005', 'Synthetic', false, true), before)
-  assert.equal(h.requests.length, 1)
+  assert.equal(h.requests.length, 2)
   h.stop()
 })
 test('duplicate manual clicks coalesce, and a failed update preserves the previous price', async () => {
@@ -90,11 +101,67 @@ test('duplicate manual clicks coalesce, and a failed update preserves the previo
   assert.equal(h.requests.length, 1)
   const previous = await api.load('DEMO')
   fail = true
+  h.advance(86400000)
   await api.refreshAll()
   assert.equal(await api.load('DEMO'), previous)
   assert.equal(h.render().batch.failed, 1)
   assert.equal(h.requests.length, 2)
   h.stop()
+})
+
+test('a new visit uses the last successful quote and repeated clicks the same Berlin day avoid requests', async () => {
+  let saved = null
+  const storage = { getItem: () => saved, setItem: (_, value) => { saved = value } }
+  const state = portfolio([position('DEMO')])
+  const first = marketHarness(state, async () => ({
+    ok: true, json: async () => ({ quote: {price: 123, asOf: '2026-11-11T10:00:00Z'}, history: [{date: '2026-11-10', close: 120}] }),
+  }), storage)
+  await first.render().refreshAll()
+  first.stop()
+  const next = marketHarness(state, undefined, storage)
+  next.render()
+  assert.equal(next.render().markets.DEMO.quote.price, 123)
+  assert.equal(next.render().markets.DEMO.history.length, 0)
+  await next.render().refreshAll()
+  assert.equal(next.requests.length, 0)
+  assert.equal(next.render().batch.reused, 1)
+  next.advance(86400000)
+  assert.equal(next.requests.length, 0)
+  await next.render().refreshAll()
+  assert.equal(next.requests.length, 1)
+  next.stop()
+})
+
+test('TradingView waits for a click, discovers an exact symbol, then reuses the saved symbol on a later visit', async () => {
+  const runtime = hookRuntime(), requests = []
+  const asset = {name: 'Synthetic Apple', isin: 'US0378331005'}
+  const chart = load('app/andarun/investments/TradingViewChart.jsx', {
+    react: runtime.react, '@/lib/investments/tradingview.mjs': tradingView, './investments.module.css': {},
+  }, { AbortController, fetch: async url => {
+    requests.push(url)
+    return {ok: true, json: async () => ({results: [{symbol: 'XETR:APC', currency: 'EUR'}]})}
+  } }).default
+  const render = () => runtime.render(chart, {position: asset, onConnect: symbol => { asset.tradingViewSymbol = symbol }})
+  function find(node, predicate) {
+    if (Array.isArray(node)) return node.map(child => find(child, predicate)).find(Boolean)
+    if (node && typeof node === 'object') return predicate(node) ? node : find(node.props?.children, predicate)
+  }
+  const show = tree => find(tree, node => node.type === 'button' && node.props.children === 'نمایش نمودار')
+  assert.equal(find(render(), node => node.type === 'iframe'), undefined)
+  assert.equal(requests.length, 0)
+  await show(render()).props.onClick()
+  assert.equal(asset.tradingViewSymbol, 'XETR:APC')
+  assert.equal(requests.length, 1)
+  assert.ok(find(render(), node => node.type === 'iframe'))
+  runtime.stop()
+  const later = hookRuntime()
+  const saved = load('app/andarun/investments/TradingViewChart.jsx', {
+    react: later.react, '@/lib/investments/tradingview.mjs': tradingView, './investments.module.css': {},
+  }, { fetch() { throw Error('Saved symbols must not need a request') } }).default
+  const openSaved = () => later.render(saved, {position: asset})
+  assert.equal(find(openSaved(), node => node.type === 'iframe'), undefined)
+  await show(openSaved()).props.onClick()
+  assert.ok(find(openSaved(), node => node.type === 'iframe'))
 })
 test('first explicit update can enable ISIN access and fetch in the same click', async () => {
   const state = { ...portfolio([{ isin: 'US0378331005', name: 'Synthetic' }]), settings: { isinPricesEnabled: false } }
