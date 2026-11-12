@@ -483,3 +483,19 @@ button.pill { cursor: pointer; }
 .todayNavigation input { display: block; width: 100%; margin: 4px 0 0; accent-color: #a5eaff; }
 .todayPanel .planDone { color: #aaf4d1; font-weight: 900; }
 @media (max-width: 740px) { .todayLayout { grid-template-columns: 1fr; } }
+.stage[data-step="1"] .basketContent {
+  --basket-card-scale: 1.5;
+  gap: 10px;
+}
+.stage[data-step="1"] .basketContent .token {
+  min-height: calc(var(--activity-height) * var(--basket-card-scale));
+  max-width: 100%;
+  padding-inline: clamp(10px, 1.25vw, 20px);
+  font-size: calc(var(--activity-label) * var(--basket-card-scale));
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+.stage[data-step="1"] .basketContent .activityIcon {
+  width: calc(var(--activity-icon) * var(--basket-card-scale));
+  height: calc(var(--activity-icon) * var(--basket-card-scale));
+}
