@@ -86,6 +86,22 @@
   top: calc(var(--marker-size) / 2 - 3px);
   width: calc(100% - var(--label-width));
 }
+.minorMilestones {
+  position: absolute;
+  inset-inline: calc(var(--label-width) / 2);
+  top: calc(var(--marker-size) / 2);
+  pointer-events: none;
+}
+.minorMilestones span {
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  border: 1px solid #a4d4ef;
+  border-radius: 50%;
+  background: #173b5a;
+  transform: translate(-50%, -50%);
+}
+.minorMilestones span[data-reached='true'] { background: #b8edff; }
 .milestones progress, .share progress {
   display: block;
   appearance: none;
@@ -150,7 +166,8 @@
   background: linear-gradient(150deg, #102e50, #081c34);
 }
 .panel h2 { margin: 0 0 12px; font-size: clamp(20px, 2vw, 28px); }
-.chart { display: block; width: 100%; height: auto; }
+.chartViewport { display: flex; flex-direction: column-reverse; max-height: 440px; overflow-y: auto; }
+.chart { display: block; flex: none; width: 100%; height: auto; }
 .chart text { fill: #d7e8f9; font: 13px system-ui, sans-serif; }
 .subjects { width: 100%; border-collapse: collapse; font-size: clamp(12px, 1.15vw, 15px); }
 .subjects th, .subjects td { padding: 10px 5px; border-bottom: 1px solid #365371; text-align: left; }

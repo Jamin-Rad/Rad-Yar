@@ -14,9 +14,10 @@ import styles from './study-goal.module.css'
 
 const GOAL_SECONDS = 100 * 60 * 60
 const milestones = [0, 25, 50, 75, 100]
+const minorMilestones = Array.from({ length: 19 }, (_, index) => (index + 1) * 5)
+  .filter(hours => hours % 25 !== 0)
 const weekdayFormat = new Intl.DateTimeFormat('de-DE', { weekday: 'short', timeZone: 'UTC' })
 const percentFormat = new Intl.NumberFormat('de-DE', { style: 'percent', maximumFractionDigits: 1 })
-const axisFormat = new Intl.NumberFormat('de-DE', { maximumFractionDigits: 2 })
 const subjectLabels = { ...STUDY_SECTIONS, english: 'Englisch', math: 'Mathe' }
 
 function formatTime(seconds) {
@@ -37,20 +38,25 @@ function recentDays(today) {
 
 function WeekChart({ week }) {
   const highest = Math.max(...week.map(day => day.seconds))
-  const step = Math.max(900, Math.ceil(highest / (4 * 900)) * 900)
+  const minute = 60
+  const hour = 60 * minute
+  const maximum = Math.max(hour, Math.ceil(highest / hour) * hour)
+  const ticks = Array.from({ length: 7 }, (_, index) => index * 10 * minute)
+  for (let value = 2 * hour; value <= maximum; value += hour) ticks.push(value)
   const top = 16
-  const bottom = 170
+  const bottom = top + 25 * maximum / (10 * minute)
   const points = week.map((day, index) => ({
     ...day,
     x: 65 + 66 * index,
-    y: bottom - (bottom - top) * day.seconds / (4 * step),
+    y: bottom - (bottom - top) * day.seconds / maximum,
   }))
   const line = points.map(({ x, y }) => `${x},${y}`).join(' ')
 
   return (
     <section className={styles.panel} aria-labelledby="study-week-heading">
       <h2 id="study-week-heading">Lernzeit (7 Tage)</h2>
-      <svg className={styles.chart} viewBox="0 0 480 205" role="img"
+      <div className={styles.chartViewport}>
+      <svg className={styles.chart} viewBox={`0 0 480 ${bottom + 35}`} role="img"
         aria-label={points.map(day => `${day.label} ${day.key}: ${formatTime(day.seconds)}`).join(', ')}>
         <defs>
           <linearGradient id="mobin-week-fill" x2="0" y2="1">
@@ -58,11 +64,13 @@ function WeekChart({ week }) {
             <stop offset="100%" stopColor="#3999f0" stopOpacity=".06" />
           </linearGradient>
         </defs>
-        {[4, 3, 2, 1, 0].map(value => {
-          const y = bottom - (bottom - top) * value / 4
+        {ticks.map(value => {
+          const y = bottom - (bottom - top) * value / maximum
           return <g key={value}>
             <line x1="60" x2="473" y1={y} y2={y} stroke="#41617e" strokeDasharray="4 4" />
-            <text x="53" y={y + 4} textAnchor="end">{axisFormat.format(value * step / 3600)} h</text>
+            <text x="53" y={y + 4} textAnchor="end">
+              {value < hour ? `${value / minute} Min.` : `${value / hour} Std.`}
+            </text>
           </g>
         })}
         <polygon points={`65,${bottom} ${line} 461,${bottom}`} fill="url(#mobin-week-fill)" />
@@ -72,10 +80,11 @@ function WeekChart({ week }) {
             <circle cx={x} cy={y} r="4.5" fill="#e9f9ff" stroke="#59c9fa" strokeWidth="2">
               <title>{`${label} ${key}: ${formatTime(seconds)}`}</title>
             </circle>
-            <text x={x} y="194" textAnchor="middle">{label}</text>
+            <text x={x} y={bottom + 24} textAnchor="middle">{label}</text>
           </g>
         ))}
       </svg>
+      </div>
     </section>
   )
 }
@@ -188,6 +197,11 @@ function MobinStudyGoal({ onEnter }) {
               <p><strong>{formatTime(total)}</strong> von 100 Stunden gelernt</p>
               <div className={styles.milestoneScale}>
                 <progress aria-label="Fortschritt zum Lernziel von 100 Stunden" max={GOAL_SECONDS} value={progress} />
+                <div className={styles.minorMilestones} aria-hidden="true">
+                  {minorMilestones.map(hours => (
+                    <span key={hours} style={{ left: `${hours}%` }} data-reached={progress >= hours * 3600} />
+                  ))}
+                </div>
                 <ol>
                   {milestones.map(hours => {
                     const reached = hours > 0 && progress >= hours * 3600
