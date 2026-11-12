@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import styles from './mobin.module.css'
 import MobinStudyDashboard from './MobinStudyDashboard'
+import MobinStudyGoal from './MobinStudyGoal'
 
 const pages = [
   {
@@ -57,6 +58,7 @@ export default function MobinPage() {
             <h1 className={styles.title}>Mobin</h1>
           </div>
 
+          <MobinStudyGoal />
           <MobinStudyDashboard />
 
           <nav className={`${styles.buttonField} ${styles.homePages}`} aria-label="Mobin Seiten">

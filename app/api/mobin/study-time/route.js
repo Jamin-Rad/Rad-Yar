@@ -3,19 +3,42 @@ import { hasMobinSession } from '@/lib/mobinAuth'
 import { supabaseAdmin } from '@/lib/supabase/server'
 import { normalizeLegacyMathSessions, validStudySession } from '@/lib/mobinStudyTime'
 
+async function readStudySessions() {
+  const sessions = []
+  let lastId
+  while (true) {
+    let query = supabaseAdmin.from('mobin_progress').select('id,data')
+      .like('id', 'study-time:%').order('id', { ascending: true }).limit(500)
+    if (lastId) query = query.gt('id', lastId)
+    const { data, error } = await query
+    if (error) throw error
+    if (!data.length) return sessions
+    for (const row of data) {
+      const session = { ...row.data, id: row.id }
+      if (validStudySession(session)) sessions.push(session)
+    }
+    lastId = data[data.length - 1].id
+  }
+}
+
 export async function GET() {
   if (!(await hasMobinSession())) return NextResponse.json({ error: 'Nicht eingeloggt' }, { status: 401 })
-  if (!supabaseAdmin) return NextResponse.json({ sessions: [], mathSessions: [] })
+  const headers = { 'Cache-Control': 'no-store' }
+  if (!supabaseAdmin) return NextResponse.json({ sessions: [], mathSessions: [], localOnly: true }, { headers })
 
-  const [studyResult, mathResult] = await Promise.all([
-    supabaseAdmin.from('mobin_progress').select('id,data').like('id', 'study-time:%').order('id', { ascending: false }).limit(2000),
-    supabaseAdmin.from('mobin_progress').select('data').eq('id', 'mobin-math-exam-v1').maybeSingle(),
-  ])
-  if (studyResult.error || mathResult.error) return NextResponse.json({ error: 'Lernzeit konnte nicht geladen werden' }, { status: 500 })
-  return NextResponse.json({
-    sessions: (studyResult.data || []).map(row => ({ ...row.data, id: row.id })).filter(validStudySession),
-    mathSessions: normalizeLegacyMathSessions(mathResult.data?.data),
-  }, { headers: { 'Cache-Control': 'no-store' } })
+  try {
+    const [sessions, mathResult] = await Promise.all([
+      readStudySessions(),
+      supabaseAdmin.from('mobin_progress').select('data').eq('id', 'mobin-math-exam-v1').maybeSingle(),
+    ])
+    if (mathResult.error) throw mathResult.error
+    return NextResponse.json({
+      sessions,
+      mathSessions: normalizeLegacyMathSessions(mathResult.data?.data),
+    }, { headers })
+  } catch {
+    return NextResponse.json({ error: 'Lernzeit konnte nicht geladen werden' }, { status: 500, headers })
+  }
 }
 
 export async function POST(request) {
