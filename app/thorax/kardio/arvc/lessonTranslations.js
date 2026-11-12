@@ -30,6 +30,42 @@ const COPY = {
     "en": "The disease is often inherited; LV involvement also matters for prognosis.",
     "fa": "بیماری اغلب ارثی است؛ درگیری LV برای پیش‌آگهی نیز اهمیت دارد."
   },
+  "Schematische Illustration der arrhythmogenen Kardiomyopathie": {
+    "en": "Schematic illustration of arrhythmogenic cardiomyopathy",
+    "fa": "تصویر شماتیک کاردیومیوپاتی آریتموژنیک"
+  },
+  "Die wichtigsten Überschneidungen": {
+    "en": "Key diagnostic overlaps",
+    "fa": "مهم‌ترین شباهت‌های تشخیصی"
+  },
+  "MRT-Beispiele auswählen": {
+    "en": "Choose an MRI example",
+    "fa": "انتخاب نمونهٔ MRI"
+  },
+  "Was bedeutet die Bewegung im Cine?": {
+    "en": "What does the wall motion on cine mean?",
+    "fa": "حرکت دیواره در Cine چه معنایی دارد؟"
+  },
+  "Das Narbenmuster einordnen": {
+    "en": "Interpreting the scar pattern",
+    "fa": "تفسیر الگوی اسکار"
+  },
+  "TFC 2010 · die MRT-Grenzwerte bei Erwachsenen": {
+    "en": "2010 TFC · MRI thresholds in adults",
+    "fa": "TFC 2010 · آستانه‌های MRI در بزرگسالان"
+  },
+  "Die wichtigsten Ergänzungen für das MRT": {
+    "en": "Key additions for MRI",
+    "fa": "مهم‌ترین موارد افزوده‌شده برای MRI"
+  },
+  "TFC und Padua erklären": {
+    "en": "Explore the TFC and Padua criteria",
+    "fa": "مرور معیارهای TFC و پادوآ"
+  },
+  "Was ist ACM?": {
+    "en": "What is ACM?",
+    "fa": "ACM چیست؟"
+  },
   "Drei mögliche Verteilungen": {
     "en": "Three possible distributions",
     "fa": "سه توزیع ممکن"
@@ -170,10 +206,7 @@ const COPY = {
     "en": "Arrhythmogenic cardiomyopathy",
     "fa": "کاردیومیوپاتی آریتموژن"
   },
-  "ACM verstehen und im MRT einordnen – mit echten Bildbeispielen.": {
-    "en": "Understand ACM and assess it on MRI, using actual imaging examples.",
-    "fa": "ACM را با نمونه‌های تصویربرداری واقعی بشناسید و در MRI ارزیابی کنید."
-  },
+
   "Take Home Message": {
     "en": "Take Home Message",
     "fa": "پیام نهایی"
