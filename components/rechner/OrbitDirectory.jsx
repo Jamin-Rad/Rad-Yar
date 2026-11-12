@@ -51,5 +51,3 @@ export default function OrbitDirectory({ lang, ui, initialGroup = 'urogenital', 
     <nav className={styles.dock} aria-label={ui.directory}><button type="button" aria-pressed={!searching} onClick={()=>setSearching(false)}><Icon name="lungs"/>{ui.menu}</button><button type="button" ref={searchButton} aria-pressed={searching} onClick={()=>setSearching(true)}><Icon name="search"/>{label('Suche','Search','جستجو')}</button></nav>
   </main>
 }
-
-

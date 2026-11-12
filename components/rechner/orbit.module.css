@@ -31,4 +31,3 @@
 :global([data-theme='dark']) .caption{box-shadow:inset 0 2px 8px #c0f9ff25,0 5px 16px #0005}
 :global([data-theme='dark']) .dock{box-shadow:inset 0 2px 12px #d0faff17,0 4px 18px #00182740}
 .active .art{transform:none}
-
