@@ -15,7 +15,7 @@ const defaults = [
 ].map(([name, group], id) => ({ name, group, id: String(id) }))
 
 function ActivityIcon({ id }) {
-  const position = { '0': '0%', '1': '66.67%', '2': '100%' }[id]
+  const position = defaults.some(activity => activity.id === id) ? Number(id) * 10 + '%' : null
   return position ? <i className={styles.activityIcon} style={{ backgroundPositionX: position }} aria-hidden="true" /> : null
 }
 
@@ -207,31 +207,31 @@ export default function PlannerWizard() {
     <div className={styles.wrap}>
       <header className={styles.header}>
         {step ? <button className={styles.brand} onClick={() => go(step - 1)}>← <b>Mobin</b></button> : <Link className={styles.brand} href="/mobin">← <b>Mobin</b></Link>}
-        <ol className={styles.steps}>{['Zeit', 'Aktivitäten', 'Aufteilen', 'Dein Plan'].map((label, index) =>
+        <ol className={styles.steps}>{(step === 3 ? ['Zeit', 'Aktivitäten', 'Aufteilen', 'Dein Plan'] : ['Zeit', 'Aktivitäten', 'Aufteilen']).map((label, index) =>
           <li key={label} aria-current={step === index ? 'step' : undefined} data-done={step >= index}>{label}</li>)}</ol>
         <Link href="/mobin" aria-label="Planer schließen" className={styles.close}>×</Link>
       </header>
 
-      <section className={styles.stage} key={step}>
-        <img className={styles.art} src="/mobin/planner-clock.webp" alt="" />
+      <section className={styles.stage} data-step={step} key={step}>
+        <img className={styles.art} src="/mobin/planner-reference-clock.webp" alt="" />
         {step === 0 && <>
           <h1 tabIndex={-1} ref={heading}>Hey Mobin!</h1>
           <p className={styles.lead}>Lass uns deinen Tag planen.</p>
           <div className={styles.timeSetup}>
-            <label className={styles.start}>Startzeit
+            <label className={styles.start}>Startzeit<span aria-hidden="true">{clock((startMinutes + 1380) % 1440)}</span>
               <input type="time" required value={start} max="23:30" onChange={event => {
                 const value = event.target.value
                 if (!value || value > '23:30') return
                 const [hour, minute] = value.split(':').map(Number)
                 setStart(value)
                 setTotal(current => Math.min(current, Math.floor((1440 - hour * 60 - minute) / 5)))
-              }} />
+              }} /><span aria-hidden="true">{clock((startMinutes + 60) % 1440)}</span>
             </label>
             <div className={styles.timeGraph}>
               <label htmlFor="first-duration">Wie viel Zeit hast du heute?</label>
-              <strong>{duration(total)}</strong>
+              <strong>{total % 12 === 0 ? total / 12 + (total === 12 ? ' Stunde' : ' Stunden') : duration(total)}</strong>
               <input id="first-duration" className={styles.range} type="range" min="6" max={max} value={total} aria-valuetext={duration(total)} style={{ '--fill': (max === 6 ? 100 : (total - 6) / (max - 6) * 100) + '%' }} onChange={event => changeTotal(Number(event.target.value))} />
-              <div className={styles.scale}><span>30 Min.</span><span>{duration(max)}</span></div>
+              <div className={styles.scale}>{Array.from({ length: Math.floor(max / 12) + 1 }, (_, index) => <span key={index} style={{ '--tick': (index === 0 ? 0 : (index * 12 - 6) / Math.max(1, max - 6) * 100) + '%' }}>{index === 0 ? '30 Min.' : index + ' Std.'}</span>)}</div><p className={styles.sliderHint}>Zieh den Regler für deine Planungszeit</p>
               <p>Fertig um <b>{end}</b></p>
             </div>
           </div>
@@ -275,11 +275,11 @@ export default function PlannerWizard() {
             <div className={styles.basket} data-over={over} onDragOver={event => { event.preventDefault(); setOver(true) }}
               onDragLeave={event => { if (!(event.relatedTarget instanceof Node && event.currentTarget.contains(event.relatedTarget))) setOver(false) }}
               onDrop={event => { event.preventDefault(); setOver(false); add(event.dataTransfer.getData('text/plain')) }}>
-              <img src="/mobin/planner-basket.webp" alt="" />
+              <img src="/mobin/planner-reference-basket.webp" alt="" />
               <div className={styles.basketContent}>{selected.map(id => {
                 const item = library.find(activity => activity.id === id)
                 return item && <button key={id} className={styles.token} data-group={item.group} aria-label={item.name + ' entfernen'}
-                  onClick={() => setSelected(current => current.filter(value => value !== id))}>{item.name} ×</button>
+                  onClick={() => setSelected(current => current.filter(value => value !== id))}><ActivityIcon id={item.id} />{item.name} ×</button>
               })}</div>
               <span className={styles.pill}>{selected.length ? selected.length + ' ausgewählt' : 'Hier ablegen'}</span>
             </div>
@@ -289,7 +289,7 @@ export default function PlannerWizard() {
 
         {step === 2 && <>
           <h1 className={styles.compact} tabIndex={-1} ref={heading}>Verteile deine Zeit.</h1>
-          <p className={styles.lead}>Zieh die Grenzen, um die Minuten zu verteilen.</p>
+          <p className={styles.lead}>Zieh die Grenzen – dein Plan bleibt im Gleichgewicht.</p>
           <div className={styles.balance} style={{ '--focus': focus / total * 100 + '%' }}>
             <div className={styles.balanceTrack}><span>{focus > 0 && 'Fokus · ' + duration(focus)}</span><span>{total > focus && 'Pause · ' + duration(total - focus)}</span></div>
             {groups.focus.length > 0 && groups.pause.length > 0 &&
@@ -297,15 +297,15 @@ export default function PlannerWizard() {
                 aria-valuetext={'Fokus ' + duration(focus) + ', Pause ' + duration(total - focus)}
                 onChange={event => changeBudget(total, clamp(Number(event.target.value), groups.focus.length, total - groups.pause.length))} />}
           </div>
-          <div className={styles.towers}>{Object.entries(groups).map(([group, blocks]) =>
+          <p className={styles.balanceHint}>Fokus und Pause aufteilen</p><div className={styles.towers}>{Object.entries(groups).map(([group, blocks]) =>
             <section key={group} className={styles.tower} data-group={group}>
-              <h2>{groupNames[group]} · {duration(sum(blocks))}</h2>
+              <h2>{groupNames[group]} · {minutes(sum(blocks))} Min.</h2>
               <div className={styles.blocks} data-count={blocks.length}>{blocks.length ? blocks.map((block, index) =>
                 <Fragment key={block.id}>
                   <div className={styles.block} style={{ flexGrow: block.units }}>
                     <strong><ActivityIcon id={block.activityId ?? block.id} />{block.name}</strong>
                     <span>{minutes(block.units)} Min.</span>
-                    {block.units >= 2 && <button type="button" onClick={() => split(group, index)} aria-label={block.name + ' teilen'}>Teilen</button>}
+                    {block.units >= 2 && <button type="button" onClick={() => split(group, index)} aria-label={block.name + ' teilen'}>✂ Teilen</button>}
                   </div>
                   {index + 1 < blocks.length && <button className={styles.divider} type="button" role="slider"
                     aria-label={'Zeit zwischen ' + block.name + ' und ' + blocks[index + 1].name + ' verteilen'}
@@ -329,8 +329,8 @@ export default function PlannerWizard() {
                     onLostPointerCapture={() => { drag.current = null }}><span /></button>}
                 </Fragment>) : <p className={styles.empty}>Keine Aktivitäten ausgewählt</p>}</div>
             </section>)}</div>
-          <div className={styles.total}>
-            <label htmlFor="total-duration">Gesamtzeit <strong>{duration(total)}</strong></label>
+          <p className={styles.balanceHint}>Mehr Zeit für eine Aktivität = weniger für die andere.</p><div className={styles.total}>
+            <label htmlFor="total-duration">Gesamtzeit <strong>{total % 12 === 0 ? total / 12 + (total === 12 ? ' Stunde' : ' Stunden') : duration(total)}</strong></label>
             <input id="total-duration" type="range" className={styles.range} min={min} max={max} value={total} aria-valuetext={duration(total)}
               style={{ '--fill': (max === min ? 100 : (total - min) / (max - min) * 100) + '%' }} onChange={event => changeTotal(Number(event.target.value))} />
             <span>{start}–{end}</span>
@@ -339,7 +339,7 @@ export default function PlannerWizard() {
             <button aria-pressed={mode === 'manual'} onClick={() => setMode('manual')}>Selbst ordnen</button>
             <button aria-pressed={mode === 'shuffle'} onClick={() => setMode('shuffle')}>Für mich mischen</button>
           </div>
-          {mode === 'shuffle' && <p className={styles.hint}>Fokus und Pause wechseln sich ab. Bei Bedarf werden Blöcke geteilt.</p>}
+          <p className={styles.hint}>{mode === 'shuffle' ? 'Fokus und Pause wechseln sich ab. Bei Bedarf werden Blöcke geteilt.' : 'Fokus und Pause im Wechsel'}</p>
           <button className={styles.primary} onClick={create}>Meinen Plan erstellen →</button>
         </>}
 

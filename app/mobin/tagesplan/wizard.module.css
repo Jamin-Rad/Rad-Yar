@@ -117,3 +117,172 @@ button.pill { cursor: pointer; }
 @media (prefers-reduced-motion: reduce) { .stage { animation: none; } }
 .activityIcon { display: inline-block; width: 30px; height: 38px; vertical-align: middle; margin-right: 7px; background: url('/mobin/learning-icons.webp') 0 center / 400% auto no-repeat; }
 .hint + .primary { display: block; margin: auto; }
+/* The wizard uses the rounded sans typography and glass surfaces of the approved artwork. */
+.shell {
+  --ice: #c8f6ff;
+  --lilac: #debcff;
+  font-family: var(--font-main), system-ui, sans-serif;
+  background: #10163f url('/mobin/planner-sky.webp') center bottom / cover no-repeat;
+  padding: 20px clamp(18px, 3vw, 48px) 36px;
+}
+.wrap { max-width: 1480px; }
+.steps li { font-size: clamp(.68rem, 1.32vw, 1.25rem); }
+.steps li::before { width: 19px; height: 19px; }
+.steps li + li::after { top: 9px; }
+.brand { font-weight: 800; }
+.stage { margin-top: clamp(24px, 4vw, 58px); }
+.stage h1 {
+  font-family: inherit;
+  font-weight: 800;
+  letter-spacing: -.04em;
+  color: var(--ice);
+  text-shadow: 0 3px 2px #4b85a5, 0 0 22px #72dfff36;
+}
+.stage .lead { color: var(--lilac); letter-spacing: -.025em; }
+.art {
+  width: clamp(125px, 26vw, 390px);
+  height: auto;
+  right: 2%;
+  top: -26px;
+  mix-blend-mode: screen;
+  mask-image: radial-gradient(ellipse at center, #000 47%, #000e 57%, transparent 76%);
+}
+.stage[data-step="0"] :is(h1, .lead), .stage[data-step="2"] :is(h1, .lead) {
+  text-align: left;
+  margin-left: 5%;
+  max-width: 74%;
+}
+.stage[data-step="0"] .lead { font-size: clamp(1.5rem, 4vw, 3.5rem); margin-bottom: .45em; }
+.timeSetup { max-width: 1300px; grid-template-columns: minmax(160px, 22%) 1fr; gap: 38px; margin: 42px auto 54px; }
+.start {
+  font-size: clamp(1rem, 2vw, 1.7rem);
+  padding: 18px 10px;
+  gap: 4px;
+  border-radius: 42px;
+  background: linear-gradient(145deg, #21386a, #171a45 65%, #36315f);
+  box-shadow: inset 0 0 22px #889fff65, 0 0 16px #4c75d446;
+}
+.start > span { color: #a1a9df9c; font-size: clamp(1.1rem, 2.5vw, 2.4rem); font-weight: 750; }
+.start input {
+  background: linear-gradient(165deg, #5289bb, #243967 72%, #426ba9);
+  border-color: #c4eeff;
+  box-shadow: 0 0 14px #83dfff83, inset 0 0 14px #a9dfff79;
+  border-radius: 20px;
+  padding: 8px 3px;
+  font-variant-numeric: tabular-nums;
+}
+.timeGraph label { font-size: clamp(1.12rem, 2.6vw, 2.25rem); }
+.timeGraph strong { color: var(--ice); font-size: clamp(2rem, 5vw, 4.55rem); }
+.timeGraph .range {
+  height: clamp(38px, 6vw, 84px);
+  background: repeating-linear-gradient(90deg, transparent 0 calc(8.333% - 1px), #d6e7ff65 calc(8.333% - 1px) 8.333%) center bottom / 96% 32% no-repeat,
+    linear-gradient(90deg, #8cecff, #b18aff var(--fill), #1d254e var(--fill));
+  border: 2px solid #a8b9ff;
+  box-shadow: inset 0 0 20px #b8ddff5e, 0 0 14px #9da8ff4c;
+}
+.scale { padding-inline: .6em; font-size: clamp(.7rem, 1.4vw, 1.2rem); }
+.timeGraph p { margin: 8px 0 0; font-size: clamp(.95rem, 2vw, 1.65rem); }
+.timeGraph .sliderHint { color: #bbb7e6; }
+.primary {
+  padding: .64em 1.45em;
+  font-size: clamp(1rem, 2.35vw, 2rem);
+  box-shadow: inset 0 0 12px #fff9, 0 0 32px #b595ffab;
+}
+.stage[data-step="1"] { margin-top: 30px; }
+.stage[data-step="1"] .compact { font-size: clamp(2rem, 4vw, 3.9rem); }
+.stage[data-step="1"] .lead { margin: .15em 0 .55em; }
+.stage[data-step="1"] .art { width: clamp(65px, 13vw, 200px); right: 0; }
+.basketHeader { position: relative; }
+.basketHeader button { position: absolute; right: 0; }
+.pill { background: linear-gradient(155deg, #29395f, #20234a); box-shadow: inset 0 0 12px #a1aaff47; }
+.tokens { max-width: 100%; gap: 16px; margin: 24px auto 0; }
+.token {
+  min-height: 66px;
+  flex: 0 1 auto;
+  padding: 8px clamp(10px, 1.35vw, 23px);
+  color: #fff;
+  background: linear-gradient(155deg, #293e68, #111832 65%, #293b67);
+  border: 1px solid #b7c8ffb0;
+  box-shadow: inset 0 0 16px #a7b7ff65, 0 5px 14px #080d28a3;
+  font-size: clamp(.95rem, 1.65vw, 1.6rem);
+}
+.token[data-group=pause] { background: linear-gradient(155deg, #343966, #141831 65%, #32335f); }
+.token[aria-pressed=true] { border-color: #b0ffdd; box-shadow: inset 0 0 17px #89ffd66b, 0 0 14px #78ffd261; }
+.activityIcon {
+  width: clamp(28px, 4vw, 59px);
+  height: clamp(28px, 4vw, 59px);
+  margin-right: .42em;
+  background-image: url('/mobin/planner-activity-icons.webp');
+  background-size: 1100% 100%;
+  border-radius: 25%;
+  mask-image: radial-gradient(ellipse at center, #000 53%, #000d 65%, transparent 77%);
+}
+.basket { width: min(920px, 94%); min-height: clamp(250px, 25vw, 370px); padding-bottom: 54px; margin-bottom: 8px; }
+.basketContent { max-width: 75%; }
+.basketContent .token { min-height: 38px; font-size: clamp(.8rem, 1.4vw, 1.25rem); }
+.basketContent .activityIcon { width: 28px; height: 28px; }
+.stage[data-step="2"] { margin-top: 30px; }
+.stage[data-step="2"] .art { width: clamp(105px, 17vw, 260px); }
+.stage[data-step="2"] .lead { margin-bottom: .75em; }
+.balance { margin-bottom: 8px; }
+.balanceTrack span { min-height: 55px; font-size: clamp(.8rem, 1.9vw, 1.55rem); box-shadow: inset 0 0 13px #f0ffffb0; }
+.balanceTrack span:first-child { background: linear-gradient(#a6f7ff, #01c6e6 65%, #0d8cae); }
+.balanceTrack span + span { background: linear-gradient(#e5c7ff, #9966f5 70%, #7650c6); }
+.balance input::-webkit-slider-thumb { width: 48px; height: 48px; }
+.balance input::-moz-range-thumb { width: 44px; height: 44px; }
+.balanceHint { margin: 7px 0 14px; color: #f0eaff; font-size: clamp(.85rem, 1.55vw, 1.35rem); }
+.tower {
+  border-width: 2px;
+  border-radius: 30px;
+  box-shadow: 0 0 17px color-mix(in srgb, var(--edge) 50%, transparent), inset 0 0 22px color-mix(in srgb, var(--edge) 32%, transparent);
+}
+.tower h2 { font-size: clamp(1rem, 2.2vw, 1.8rem); background: linear-gradient(180deg, #ffffff28, transparent); }
+.blocks { min-height: 244px; }
+.block { font-size: clamp(.82rem, 1.8vw, 1.45rem); background: linear-gradient(180deg, #ffffff0f, transparent 75%); }
+.divider { height: 2px; box-shadow: 0 0 10px var(--edge); }
+.divider span { width: 46px; height: 18px; }
+.total { margin-top: 10px; background: linear-gradient(120deg, #25305d, #212447); }
+.total .range { height: 9px; }
+.modes button { padding-inline: clamp(10px, 3vw, 42px); font-size: clamp(.85rem, 1.65vw, 1.4rem); }
+.stage[data-step="2"] .primary { background: linear-gradient(#d9b9ff, #8551e7 67%, #702bdf); color: white; }
+@media (max-width: 700px) {
+  .stage[data-step="0"] :is(h1, .lead), .stage[data-step="2"] :is(h1, .lead) { max-width: 100%; margin-left: 0; }
+  .art { opacity: .3; }
+  .timeSetup { grid-template-columns: 1fr; margin-block: 22px; gap: 16px; }
+  .start { max-width: 210px; border-radius: 20px; }
+  .basketHeader button { position: static; }
+  .token { min-height: 46px; }
+  .tokens { gap: 7px; }
+  .towers { gap: 9px; }
+  .block { padding-inline: 8px; }
+}
+.scale { display: block; position: relative; min-height: 1.4em; margin-inline: 15px; }
+.scale span { position: absolute; left: var(--tick); translate: -50% 0; white-space: nowrap; }
+.activityIcon { mask-image: radial-gradient(ellipse at center, #000 55%, #000d 68%, transparent 80%); }
+.block > span { order: 2; font-weight: 800; }
+.stage[data-step="2"] .lead { font-size: clamp(1rem, 2.7vw, 2.15rem); }
+@media (min-width: 701px) and (max-height: 850px) {
+  .shell { padding-top: 14px; padding-bottom: 20px; }
+  .stage, .stage[data-step="1"], .stage[data-step="2"] { margin-top: 17px; }
+  .stage h1 { font-size: clamp(3rem, 7vw, 5.8rem); }
+  .stage .compact { font-size: clamp(2rem, 4vw, 3.5rem); }
+  .stage[data-step="0"] .lead { font-size: clamp(1.5rem, 3.5vw, 2.8rem); }
+  .timeSetup { margin-block: 23px 28px; }
+  .timeGraph .range { height: 55px; }
+  .timeGraph strong { font-size: clamp(2rem, 4vw, 3.4rem); }
+  .timeGraph { gap: 6px; }
+  .token { min-height: 54px; }
+  .tokens { gap: 10px; margin-top: 13px; }
+  .tokens .activityIcon { width: 42px; height: 42px; }
+  .basket { min-height: 252px; padding-bottom: 34px; }
+  .balanceTrack span { min-height: 44px; }
+  .balance input::-webkit-slider-thumb { width: 38px; height: 38px; }
+  .blocks { min-height: 175px; }
+  .tower h2 { padding: 7px; }
+  .block .activityIcon { width: 38px; height: 38px; }
+  .balanceHint { margin-block: 4px 9px; }
+  .total { margin-block: 6px 8px; padding-block: 6px; }
+  .modes { margin-bottom: 7px; }
+  .hint { margin-bottom: 6px; }
+  .primary { font-size: clamp(1rem, 1.9vw, 1.5rem); }
+}
