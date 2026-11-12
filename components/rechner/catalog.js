@@ -52,14 +52,31 @@ function distance(a,b) {
   return rows[a.length][b.length]
 }
 export function filterTools(group, query) {
-  const term=normalizeSearch(query).slice(0,120)
-  return TOOLS.filter(tool => {
-    if(group!=='all' && tool.group!==group && !tool.alsoIn?.includes(group)) return false
-    if(!term) return true
-    const category=GROUPS.find(item=>item.id===tool.group)
-    const haystack=normalizeSearch([tool.id,...Object.values(tool.name),...Object.values(tool.description),...Object.values(category.name),tool.aliases].join(' '))
-    if(haystack.replace(/ /g,'').includes(term.replace(/ /g,''))) return true
-    const words=haystack.split(' ')
-    return term.split(' ').every(part=>words.some(word=>word.includes(part)||(part.length>=4&&Math.abs(word.length-part.length)<=2&&distance(part,word)<=(part.length>=7?2:1))))
+  const term = normalizeSearch(query).slice(0, 120).trim()
+  const inGroup = tool => group === 'all' || tool.group === group || tool.alsoIn?.includes(group)
+  if (!term) return TOOLS.filter(inGroup)
+
+  const searchable = TOOLS.map(tool => {
+    const category = GROUPS.find(item => item.id === tool.group)
+    const fields = [tool.id, ...Object.values(tool.name), ...Object.values(tool.description), ...Object.values(category.name), tool.aliases]
+    return { tool, fields: fields.map(normalizeSearch) }
   })
+  const compactTerm = term.replace(/ /g, '')
+  const literal = searchable.filter(({ fields }) =>
+    fields.some(field => field.replace(/ /g, '').includes(compactTerm))
+  )
+  // A real match in another category must not turn into a different score.
+  if (literal.length) return literal.map(({ tool }) => tool).filter(inGroup)
+
+  const parts = term.split(' ')
+  return searchable.filter(({ tool, fields }) => {
+    if (!inGroup(tool)) return false
+    const words = fields.flatMap(field => field.split(' '))
+    return parts.every(part => words.some(word => {
+      if (word.includes(part)) return true
+      const tolerance = part.length >= 7 ? 2 : 1
+      return part.length >= 4 && Math.abs(word.length - part.length) <= tolerance &&
+        distance(part, word) <= tolerance
+    }))
+  }).map(({ tool }) => tool)
 }
