@@ -2,6 +2,10 @@ const L = (de, en, fa) => ({ de, en, fa })
 export const COPY = {
   brand: L('PROSTATA RECHNER', 'PROSTATE CALCULATOR', 'محاسبه‌گر پروستات'),
   back: L('Alle Rechner', 'All calculators', 'همه محاسبه‌گرها'),
+  previous: L('Zurück', 'Back', 'قبلی'),
+  next: L('Weiter', 'Continue', 'ادامه'),
+  theme: L('Hell-/Dunkelmodus wechseln', 'Switch light or dark mode', 'تغییر حالت روشن یا تاریک'),
+  settings: L('Darstellung und Sprache', 'Appearance and language', 'ظاهر و زبان'),
   reset: L('Zurücksetzen', 'Reset', 'بازنشانی'),
   psaTitle: L('PSA & PSA-Dichte', 'PSA & PSA density', 'PSA و چگالی PSA'),
   psaIntro: L('Prostatavolumen bestimmen. PSA im Verhältnis zum Volumen einordnen.', 'Measure prostate volume. Calculate PSA relative to gland volume.', 'حجم پروستات را محاسبه کنید و PSA را نسبت به حجم بسنجید.'),
