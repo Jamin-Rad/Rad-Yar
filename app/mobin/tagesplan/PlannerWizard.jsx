@@ -84,7 +84,6 @@ export default function PlannerWizard() {
   const [mode, setMode] = useState('manual')
   const [editing, setEditing] = useState(false)
   const [saved, setSaved] = useState(null)
-  const [activeIndex, setActiveIndex] = useState(0)
   const savedDate = useRef(null)
   const [message, setMessage] = useState('')
   const [legacy, setLegacy] = useState(false)
@@ -101,7 +100,6 @@ export default function PlannerWizard() {
     savedDate.current = day()
     const today = read(PLAN_KEY, {})[savedDate.current] ?? null
     setSaved(today)
-    setActiveIndex(today?.blocks.findIndex(block => (block.done ?? 0) < block.units) ?? 0)
     setStep(today?.blocks.length ? 4 : 0)
   }, [])
 
@@ -188,7 +186,6 @@ export default function PlannerWizard() {
       localStorage.setItem(PLAN_KEY, JSON.stringify({ ...read(PLAN_KEY, {}), [date]: plan }))
       setSaved(plan)
       savedDate.current = date
-      setActiveIndex(0)
       go(4)
     } catch { setMessage('Dein Plan konnte nicht gespeichert werden.') }
   }
@@ -228,23 +225,23 @@ export default function PlannerWizard() {
   if (step === null) return <main className={styles.shell} aria-busy="true" />
 
   const savedBlocks = saved?.blocks ?? []
-  const viewedIndex = activeIndex < 0 ? savedBlocks.length - 1 : activeIndex
-  const viewed = savedBlocks[viewedIndex]
   const completed = savedBlocks.filter(block => (block.done ?? 0) === block.units).length
   const progress = savedBlocks.reduce((value, block) => value + (block.done ?? 0), 0)
+  const percent = savedBlocks.length ? Math.round(progress / sum(savedBlocks) * 100) : 0
   let savedCursor = saved?.start.split(':').reduce((hours, value) => hours * 60 + Number(value), 0)
   let cursor = startMinutes
-  return <main className={styles.shell}>
+  return <main className={styles.shell} data-today={step === 4}>
     <div className={styles.wrap}>
       <header className={styles.header}>
-        {step > 0 && step < 4 ? <button className={styles.brand} onClick={() => go(step - 1)}>← <b>Mobin</b></button> : <Link className={styles.brand} href="/mobin">← <b>Mobin</b></Link>}
+        {step > 0 && step < 4 ? <button className={styles.brand} onClick={() => go(step - 1)}>← <b>Mobin</b></button> : <Link className={styles.brand} href="/mobin" aria-label={step === 4 ? 'Zurück zu Mobin' : undefined}>← {step !== 4 && <b>Mobin</b>}</Link>}
         {step < 4 && <ol className={styles.steps}>{(step === 3 ? ['Zeit', 'Aktivitäten', 'Aufteilen', 'Dein Plan'] : ['Zeit', 'Aktivitäten', 'Aufteilen']).map((label, index) =>
           <li key={label} aria-current={step === index ? 'step' : undefined} data-done={step >= index}>{label}</li>)}</ol>}
+        {step === 4 && <div className={styles.todayBrand}><img src="/mobin/planner-today-mascot.webp" alt="" />Mobin</div>}
         <Link href="/mobin" aria-label="Planer schließen" className={styles.close}>×</Link>
       </header>
 
       <section className={styles.stage} data-step={step} key={step}>
-        <img className={styles.art} src="/mobin/planner-reference-clock.webp" alt="" />
+        {step !== 4 && <img className={styles.art} src="/mobin/planner-reference-clock.webp" alt="" />}
         {step === 0 && <>
           <h1 tabIndex={-1} ref={heading}>Hey Mobin!</h1>
           <p className={styles.lead}>Lass uns deinen Tag planen.</p>
@@ -382,53 +379,47 @@ export default function PlannerWizard() {
           })}</ol>
           <button className={styles.primary} onClick={save}>Plan speichern</button>
         </>}
-        {step === 4 && viewed && <>
-          <h1 className={styles.compact} tabIndex={-1} ref={heading}>Dein Plan für heute.</h1>
+        {step === 4 && savedBlocks.length > 0 && <>
+          <h1 tabIndex={-1} ref={heading}>Dein Plan für heute</h1>
           <div className={styles.todayLayout}>
             <section className={styles.todayPanel} aria-label="Tagesablauf">
-              <h2>Tagesablauf</h2>
-              <ol className={styles.todayList}>{savedBlocks.map((block, index) => {
+              <ol className={styles.todayList}>{savedBlocks.map(block => {
                 const time = clock(savedCursor)
                 savedCursor += minutes(block.units)
-                const done = (block.done ?? 0) === block.units
-                return <li key={block.id} data-group={block.group}>
-                  <button type="button" className={styles.todayActivity} aria-current={index === viewedIndex ? 'step' : undefined}
-                    onClick={() => setActiveIndex(index)}>
-                    <span>{time}–{clock(savedCursor)}</span>
-                    <strong><ActivityIcon id={block.activityId ?? block.id} />{block.name}</strong>
-                  </button>
-                  <label className={styles.todayCheck}>
-                    <input type="checkbox" checked={done} aria-label={block.name + ' erledigt'}
+                const done = block.done ?? 0
+                const finished = done === block.units
+                return <li key={block.id} data-group={block.group} data-finished={finished}>
+                  <div className={styles.todayIcon}><ActivityIcon id={block.activityId ?? block.id} /></div>
+                  <div className={styles.todayActivity}>
+                    <div className={styles.todayRow}>
+                      <div><strong>{block.name}</strong><span>{time} – {clock(savedCursor)}</span></div>
+                      <span className={styles.todayMinutes}>{minutes(done)}/{minutes(block.units)} Min.</span>
+                    </div>
+                    <input className={styles.todaySlider} type="range" min="0" max={block.units} value={done}
+                      style={{ '--fill': done / block.units * 100 + '%' }}
+                      aria-label={'Fortschritt für ' + block.name}
+                      aria-valuetext={minutes(done) + ' von ' + minutes(block.units) + ' Minuten'}
+                      onChange={event => updateProgress(block.id, Number(event.target.value))} />
+                  </div>
+                  <label className={styles.todayCheck} data-partial={done > 0 && !finished}>
+                    <input type="checkbox" checked={finished} aria-label={block.name + ' erledigt'}
                       onChange={event => updateProgress(block.id, event.target.checked ? block.units : 0)} />
+                    <span aria-hidden="true">{finished ? '✓' : done > 0 ? '−' : ''}</span>
                   </label>
                 </li>
               })}</ol>
             </section>
-            <section className={styles.todayPanel} aria-label="Fortschritt">
-              <h2>Fortschritt</h2>
-              <p aria-live="polite">{completed} von {savedBlocks.length} Aktivitäten erledigt · {minutes(progress)} von {minutes(sum(savedBlocks))} Min.</p>
-              <progress value={progress} max={sum(savedBlocks)} aria-label="Tagesfortschritt" />
-              <div className={styles.todayDetail}>
-                <div className={styles.todayNavigation}>
-                  <button type="button" aria-label="Vorherige Aktivität" disabled={viewedIndex === 0}
-                    onClick={() => setActiveIndex(viewedIndex - 1)}>←</button>
-                  <strong>{viewed.name}</strong>
-                  <button type="button" aria-label="Nächste Aktivität" disabled={viewedIndex === savedBlocks.length - 1}
-                    onClick={() => setActiveIndex(viewedIndex + 1)}>→</button>
-                </div>
-                <div className={styles.todayNavigation}>
-                  <button type="button" aria-label="5 Minuten weniger" disabled={!(viewed.done ?? 0)}
-                    onClick={() => updateProgress(viewed.id, (viewed.done ?? 0) - 1)}>−</button>
-                  <label>{minutes(viewed.done ?? 0)} / {minutes(viewed.units)} Min.
-                    <input type="range" min="0" max={viewed.units} value={viewed.done ?? 0}
-                      aria-label={'Fortschritt für ' + viewed.name}
-                      aria-valuetext={minutes(viewed.done ?? 0) + ' von ' + minutes(viewed.units) + ' Minuten'}
-                      onChange={event => updateProgress(viewed.id, Number(event.target.value))} />
-                  </label>
-                  <button type="button" aria-label="5 Minuten mehr" disabled={(viewed.done ?? 0) === viewed.units}
-                    onClick={() => updateProgress(viewed.id, (viewed.done ?? 0) + 1)}>+</button>
-                </div>
+            <section className={styles.todayPanel} aria-label="Fortschritt nach Zeit">
+              <h2>Fortschritt nach Zeit</h2>
+              <div className={styles.todayRing} data-partial={progress > 0 && progress < sum(savedBlocks)} style={{ '--progress': progress / sum(savedBlocks) * 100 + '%', '--angle': progress / sum(savedBlocks) * 360 + 'deg' }}
+                role="progressbar" aria-label="Tagesfortschritt" aria-valuenow={percent} aria-valuemin={0} aria-valuemax={100}>
+                <div><strong>{percent} %</strong><span>erledigt</span></div>
               </div>
+              <ul className={styles.todayLegend}>
+                <li>{percent} % erledigt</li>
+                <li>{100 - percent} % offen</li>
+              </ul>
+              <p className={styles.todayTotal} aria-live="polite">{minutes(progress)} von {minutes(sum(savedBlocks))} Min.</p>
               {completed === savedBlocks.length && <p className={styles.planDone} role="status">✓ Tagesplan abgeschlossen</p>}
             </section>
           </div>
