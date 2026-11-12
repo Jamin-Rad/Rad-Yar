@@ -12,7 +12,6 @@ import {
   dayKey,
   deadlineLabel,
   HORIZONS,
-  horizon,
   monthEnd,
   tasksIn,
   weekEnd,
@@ -20,12 +19,6 @@ import {
 } from "./plannerModel.mjs";
 import s from "./planner.module.css";
 
-const NAV = [
-  ["plan", "Plan"],
-  ["all", "Alle"],
-  ["activity", "Aktivität"],
-  ["profile", "Profil"],
-];
 const THEMES = [
   ["amethyst", "Amethyst", "#7137bb"],
   ["sapphire", "Saphir", "#2854bb"],
@@ -92,22 +85,22 @@ export default function PlannerPage() {
       });
     return result;
   }
-  const todayCount = tasks.filter(
-    (task) => !task.done && horizon(task, now) === "today",
-  ).length;
+  const isJournal = tab === "plan";
+  const today = dayKey(now);
+  const todayRows = [
+    ...tasks.filter((task) => completionDay(task) === today),
+    ...tasksIn(tasks, "today", now),
+  ];
+  const date = new Intl.DateTimeFormat("de-DE", {
+    weekday: "long",
+    day: "numeric",
+    month: "long",
+    timeZone: ZONE,
+  }).format(now);
   const headings = {
-    plan: "Dein Tag.",
-    all: "Alles im Blick.",
-    activity: "Deine kleinen Erfolge.",
-    profile: "Dein Raum.",
-  };
-  const subtitles = {
-    plan: todayCount
-      ? `${todayCount} ${todayCount === 1 ? "Aufgabe" : "Aufgaben"} für heute. In deinem Tempo.`
-      : "Heute ist Platz für das, was dir wichtig ist.",
-    all: "Ein klarer Platz für alles, was ansteht.",
-    activity: "Was du erledigt hast. Tag für Tag.",
-    profile: "So fühlt sich Jaminova nach dir an.",
+    all: "Alle Aufgaben",
+    activity: "Aktivität",
+    profile: "Einstellungen",
   };
   const allTasks = tasks
     .filter((task) => (filter === "done" ? task.done : !task.done))
@@ -177,49 +170,31 @@ export default function PlannerPage() {
       className={s.shell}
       data-theme={theme}
       data-todo-planner
+      data-layout="journal"
       lang="de"
       dir="ltr"
     >
-      <aside className={s.sidebar}>
-        <Link
-          href="/andarun"
-          className={s.brand}
-          aria-label="Jaminova Übersicht"
-        >
-          <span className={s.brandIcon}>
-            <TodoIcon name="check" size={25} />
-          </span>
-          <span>
-            Jaminova<small>To Do</small>
-          </span>
-        </Link>
-        <nav aria-label="To Do">
-          {NAV.map(([id, label]) => (
-            <button
-              key={id}
-              type="button"
-              onClick={() => navigate(id)}
-              className={`${s.navButton} ${tab === id ? s.navActive : ""} ${id === "profile" ? s.profileNav : ""}`}
-              aria-current={tab === id ? "page" : undefined}
-            >
-              <TodoIcon name={id} />
-              <span>{label}</span>
-            </button>
-          ))}
+      <main className={`${s.main} ${s.journalMain}`}>
+        <nav className={s.journalTools} aria-label="To Do">
+          <button type="button" aria-label={isJournal ? "Aktivität" : "Zum Tagesblatt"}
+            title={isJournal ? "Aktivität" : "Zum Tagesblatt"}
+            onClick={() => navigate(isJournal ? "activity" : "plan")}>
+            <TodoIcon name={isJournal ? "activity" : "back"} size={24} />
+          </button>
+          <span aria-hidden="true" />
+          <button type="button" aria-label="Einstellungen" title="Einstellungen"
+            onClick={() => navigate("profile")}>
+            <TodoIcon name="settings" size={24} />
+          </button>
         </nav>
-      </aside>
-      <main className={s.main}>
-        <header className={s.pageHeader}>
-          <p className={s.date}>
-            {new Intl.DateTimeFormat("de-DE", {
-              weekday: "long",
-              day: "numeric",
-              month: "long",
-              timeZone: ZONE,
-            }).format(now)}
-          </p>
-          <h1>{headings[tab]}</h1>
-          <p className={s.subtitle}>{subtitles[tab]}</p>
+        <header className={isJournal ? s.journalHeader : s.pageHeader}>
+          {isJournal ? (
+            <>
+              <p className={s.journalBrand}>Jaminova To Do</p>
+              <h1>Tagesblatt</h1>
+              <p className={s.journalDate}>{date.replace(", ", ",\n")}</p>
+            </>
+          ) : <h1>{headings[tab]}</h1>}
         </header>
         {error && !editor ? (
           <div className={s.error} role="alert">
@@ -229,59 +204,47 @@ export default function PlannerPage() {
             </button>
           </div>
         ) : null}
-        {tab === "plan" || tab === "all" ? (
-          <div className={s.workspace}>
-            <div className={s.tasks}>
+        {isJournal ? (
+          <div className={s.journalContent}>
+            <section className={s.journalSection} aria-label="Heute">
               {loading ? (
-                <div className={s.loading} role="status">
-                  Deine Aufgaben werden geladen …
-                </div>
-              ) : tab === "plan" ? (
-                HORIZONS.map((group, index) => {
-                  const items = tasksIn(tasks, group.id, now);
-                  if (index > 2 && !items.length) return null;
-                  return (
-                    <section key={group.id} className={s.group}>
-                      <header className={s.sectionHead}>
-                        <h2>
-                          {index === 0 ? (
-                            <TodoIcon name="sun" size={20} />
-                          ) : null}
-                          {group.title}
-                        </h2>
-                        <span>{items.length}</span>
-                      </header>
-                      {items.length ? (
-                        rows(items)
-                      ) : (
-                        <button
-                          type="button"
-                          className={s.emptyGroup}
-                          onClick={() =>
-                            edit({
-                              title: "",
-                              note: "",
-                              deadline:
-                                group.id === "today"
-                                  ? dayKey(now)
-                                  : group.id === "week"
-                                    ? weekEnd(now)
-                                    : group.id === "month"
-                                      ? monthEnd(now)
-                                      : "",
-                            })
-                          }
-                        >
-                          {index === 0
-                            ? "Alles im Fluss. Was steht heute an?"
-                            : "Noch nichts geplant."}
-                          <TodoIcon name="plus" size={17} />
-                        </button>
-                      )}
-                    </section>
-                  );
-                })
-              ) : (
+                <p role="status" className={s.journalEmpty}>Deine Aufgaben werden geladen …</p>
+              ) : todayRows.length ? rows(todayRows) : (
+                <p className={s.journalEmpty}>Keine Aufgaben für heute</p>
+              )}
+              <button className={s.journalAdd} type="button"
+                onClick={() => edit({ title: "", note: "", deadline: today })}>
+                <TodoIcon name="plus" size={19} /> Aufgabe
+              </button>
+            </section>
+            <section className={s.journalSection}>
+              <NotesPanel journal />
+            </section>
+            <div className={s.journalSection}>
+              {HORIZONS.slice(1, 3).map((group) => {
+                const items = tasksIn(tasks, group.id, now);
+                return (
+                  <details className={s.journalDisclosure} key={group.id}>
+                    <summary>{group.title}<TodoIcon name="down" size={18} /></summary>
+                    {items.length ? rows(items) : <p className={s.journalEmpty}>Keine offenen Aufgaben</p>}
+                    <button type="button" className={s.journalAdd}
+                      onClick={() => edit({ title: "", note: "", deadline: group.id === "week" ? weekEnd(now) : monthEnd(now) })}>
+                      <TodoIcon name="plus" size={17} /> Aufgabe
+                    </button>
+                  </details>
+                );
+              })}
+              <button className={s.journalAll} type="button" onClick={() => navigate("all")}>
+                <TodoIcon name="all" size={16} /> Alle Aufgaben
+              </button>
+            </div>
+          </div>
+        ) : null}
+        {tab === "all" ? (
+          <div className={s.tasks}>
+            {loading ? (
+              <div className={s.loading} role="status">Deine Aufgaben werden geladen …</div>
+            ) : (
                 <section className={s.group}>
                   <div className={s.filter} aria-label="Aufgaben filtern">
                     <button
@@ -310,7 +273,7 @@ export default function PlannerPage() {
                   )}
                 </section>
               )}
-              <div className={s.newTaskDock}>
+              <div>
                 <button
                   type="button"
                   className={s.newTask}
@@ -322,10 +285,6 @@ export default function PlannerPage() {
                   Neue Aufgabe
                 </button>
               </div>
-            </div>
-            <div className={s.notesRail}>
-              <NotesPanel />
-            </div>
           </div>
         ) : null}
         {tab === "activity" ? (
