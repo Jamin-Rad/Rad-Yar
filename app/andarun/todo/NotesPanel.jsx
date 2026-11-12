@@ -25,7 +25,7 @@ function durationOf(file) {
   })
 }
 
-export default function NotesPanel() {
+export default function NotesPanel({ journal = false }) {
   const [notes, setNotes] = useState([])
   const [text, setText] = useState('')
   const [loading, setLoading] = useState(true)
@@ -121,10 +121,10 @@ export default function NotesPanel() {
     finally { working.current = false; if (mounted.current) setBusy(false); if (fileInput.current) fileInput.current.value = '' }
   }
   const ordered = [...notes].sort((a, b) => Number(a.done) - Number(b.done) || b.createdAt - a.createdAt)
-  return <section className={styles.panel} aria-label="Notizen">
+  return <section className={`${styles.panel} ${journal ? styles.journal : ""}`} aria-label="Notizen">
     <header className={styles.header}>
-      <div><TodoIcon name="note" size={21}/><h2>Notizen</h2><span>{notes.filter(note => !note.done).length}</span></div>
-      <button type="button" onClick={() => fileInput.current?.click()} disabled={busy || loading} aria-label="Sprachnotiz hinzufügen" title="M4A importieren · bis 10 Minuten. Aufnehmen in der iPhone-App."><TodoIcon name="audio" size={22}/></button>
+      <div>{!journal && <TodoIcon name="note" size={21}/>}<h2>Notizen</h2>{!journal && <span>{notes.filter(note => !note.done).length}</span>}</div>
+      <button type="button" onClick={() => fileInput.current?.click()} disabled={busy || loading} aria-label="Sprachnotiz hinzufügen" title="M4A importieren · bis 10 Minuten. Aufnehmen in der iPhone-App."><TodoIcon name={journal ? "mic" : "audio"} size={22}/></button>
     </header>
     <div className={styles.surface}>
       <form onSubmit={add} className={styles.composer}>

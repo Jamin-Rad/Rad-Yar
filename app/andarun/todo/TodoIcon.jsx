@@ -29,6 +29,12 @@ export default function TodoIcon({ name, size = 22, ...props }) {
         <path d="M5.5 18c1-3 3.2-4 6.5-4s5.5 1 6.5 4" />
       </>
     ),
+    settings: <>
+      <path d="m10 3-.8 2.4-2 .9L5 5.2 3 8.6l1.8 1.8v2.3L3 14.5l2 3.4 2.2-1.1 2 .9.8 2.5h4l.8-2.5 2-.9 2.2 1.1 2-3.4-1.8-1.8v-2.3L21 8.6l-2-3.4-2.2 1.1-2-.9L14 3z" />
+      <circle cx="12" cy="11.6" r="3" />
+    </>,
+    down: <path d="m6 9 6 6 6-6" />,
+    mic: <><rect x="9" y="2" width="6" height="12" rx="3" /><path d="M5 10v1a7 7 0 0 0 14 0v-1M12 18v4m-3 0h6" /></>,
     plus: <path d="M12 4v16M4 12h16" />,
     check: <path d="m5 12 4 4L19 6" />,
     arrow: <path d="M4 12h16m-6-6 6 6-6 6" />,
