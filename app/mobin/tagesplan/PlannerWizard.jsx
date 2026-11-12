@@ -93,7 +93,6 @@ export default function PlannerWizard() {
   const end = clock(startMinutes + minutes(total))
   const max = Math.min(72, Math.floor((1440 - startMinutes) / 5))
   const focus = sum(groups.focus)
-  const min = Math.max(6, groups.focus.length + groups.pause.length)
 
   useEffect(() => {
     setLibrary(read(LIBRARY_KEY, defaults))
@@ -134,14 +133,6 @@ export default function PlannerWizard() {
       focus: distribute(groups.focus, nextFocus),
       pause: distribute(groups.pause, nextTotal - nextFocus),
     })
-  }
-
-  function changeTotal(value) {
-    if (step === 0) { setTotal(value); return }
-    const budget = groups.focus.length && groups.pause.length
-      ? clamp(Math.round(value * focus / total), groups.focus.length, value - groups.pause.length)
-      : groups.focus.length ? value : 0
-    changeBudget(value, budget)
   }
 
   function transfer(group, index, next) {
@@ -230,7 +221,7 @@ export default function PlannerWizard() {
             <div className={styles.timeGraph}>
               <label htmlFor="first-duration">Wie viel Zeit hast du heute?</label>
               <strong>{total % 12 === 0 ? total / 12 + (total === 12 ? ' Stunde' : ' Stunden') : duration(total)}</strong>
-              <input id="first-duration" className={styles.range} type="range" min="6" max={max} value={total} aria-valuetext={duration(total)} style={{ '--fill': (max === 6 ? 100 : (total - 6) / (max - 6) * 100) + '%' }} onChange={event => changeTotal(Number(event.target.value))} />
+              <input id="first-duration" className={styles.range} type="range" min="6" max={max} value={total} aria-valuetext={duration(total)} style={{ '--fill': (max === 6 ? 100 : (total - 6) / (max - 6) * 100) + '%' }} onChange={event => setTotal(Number(event.target.value))} />
               <div className={styles.scale}>{Array.from({ length: Math.floor(max / 12) + 1 }, (_, index) => <span key={index} style={{ '--tick': (index === 0 ? 0 : (index * 12 - 6) / Math.max(1, max - 6) * 100) + '%' }}>{index === 0 ? '30 Min.' : index + ' Std.'}</span>)}</div><p className={styles.sliderHint}>Zieh den Regler für deine Planungszeit</p>
               <p>Fertig um <b>{end}</b></p>
             </div>
@@ -269,9 +260,9 @@ export default function PlannerWizard() {
             <label>Gruppe<select name="new-group"><option value="focus">Fokus</option><option value="pause">Pause</option></select></label>
             <button className={styles.pill}>Liste speichern</button>
           </form> : <>
-            <div className={styles.tokens}>{library.map(item => <button key={item.id} type="button" draggable
+            <div className={styles.catalog}>{Object.entries(groupNames).map(([group, label]) => <section key={group} className={styles.catalogGroup} data-group={group}><h2>{label}</h2><div className={styles.tokens}>{library.filter(item => item.group === group).map(item => <button key={item.id} type="button" draggable
               onDragStart={event => { event.dataTransfer.setData('text/plain', item.id); event.dataTransfer.effectAllowed = 'copy' }}
-              onClick={() => add(item.id)} className={styles.token} data-group={item.group} aria-pressed={selected.includes(item.id)}><ActivityIcon id={item.id} />{item.name}</button>)}</div>
+              onClick={() => add(item.id)} className={styles.token} data-group={item.group} aria-pressed={selected.includes(item.id)}><ActivityIcon id={item.id} />{item.name}</button>)}</div></section>)}</div>
             <div className={styles.basket} data-over={over} onDragOver={event => { event.preventDefault(); setOver(true) }}
               onDragLeave={event => { if (!(event.relatedTarget instanceof Node && event.currentTarget.contains(event.relatedTarget))) setOver(false) }}
               onDrop={event => { event.preventDefault(); setOver(false); add(event.dataTransfer.getData('text/plain')) }}>
@@ -279,9 +270,9 @@ export default function PlannerWizard() {
               <div className={styles.basketContent}>{selected.map(id => {
                 const item = library.find(activity => activity.id === id)
                 return item && <button key={id} className={styles.token} data-group={item.group} aria-label={item.name + ' entfernen'}
-                  onClick={() => setSelected(current => current.filter(value => value !== id))}><ActivityIcon id={item.id} />{item.name} ×</button>
+                  onClick={() => setSelected(current => current.filter(value => value !== id))}><ActivityIcon id={item.id} />{item.name}</button>
               })}</div>
-              <span className={styles.pill}>{selected.length ? selected.length + ' ausgewählt' : 'Hier ablegen'}</span>
+              <span className={styles.basketBadge} aria-live="polite">{selected.length ? selected.length + ' ausgewählt' : 'Hier ablegen'}</span>
             </div>
             <button className={styles.primary} disabled={!selected.length} onClick={allocate}>Weiter zur Aufteilung →</button>
           </>}
@@ -290,14 +281,7 @@ export default function PlannerWizard() {
         {step === 2 && <>
           <h1 className={styles.compact} tabIndex={-1} ref={heading}>Verteile deine Zeit.</h1>
           <p className={styles.lead}>Zieh die Grenzen – dein Plan bleibt im Gleichgewicht.</p>
-          <div className={styles.balance} style={{ '--focus': focus / total * 100 + '%' }}>
-            <div className={styles.balanceTrack}><span>{focus > 0 && 'Fokus · ' + duration(focus)}</span><span>{total > focus && 'Pause · ' + duration(total - focus)}</span></div>
-            {groups.focus.length > 0 && groups.pause.length > 0 &&
-              <input type="range" min="0" max={total} value={focus} aria-label="Zeit für Fokus und Pause aufteilen"
-                aria-valuetext={'Fokus ' + duration(focus) + ', Pause ' + duration(total - focus)}
-                onChange={event => changeBudget(total, clamp(Number(event.target.value), groups.focus.length, total - groups.pause.length))} />}
-          </div>
-          <p className={styles.balanceHint}>Fokus und Pause aufteilen</p><div className={styles.towers}>{Object.entries(groups).map(([group, blocks]) =>
+          <div className={styles.towers}>{Object.entries(groups).map(([group, blocks]) =>
             <section key={group} className={styles.tower} data-group={group}>
               <h2>{groupNames[group]} · {minutes(sum(blocks))} Min.</h2>
               <div className={styles.blocks} data-count={blocks.length}>{blocks.length ? blocks.map((block, index) =>
@@ -329,12 +313,16 @@ export default function PlannerWizard() {
                     onLostPointerCapture={() => { drag.current = null }}><span /></button>}
                 </Fragment>) : <p className={styles.empty}>Keine Aktivitäten ausgewählt</p>}</div>
             </section>)}</div>
-          <p className={styles.balanceHint}>Mehr Zeit für eine Aktivität = weniger für die andere.</p><div className={styles.total}>
-            <label htmlFor="total-duration">Gesamtzeit <strong>{total % 12 === 0 ? total / 12 + (total === 12 ? ' Stunde' : ' Stunden') : duration(total)}</strong></label>
-            <input id="total-duration" type="range" className={styles.range} min={min} max={max} value={total} aria-valuetext={duration(total)}
-              style={{ '--fill': (max === min ? 100 : (total - min) / (max - min) * 100) + '%' }} onChange={event => changeTotal(Number(event.target.value))} />
-            <span>{start}–{end}</span>
+          <p className={styles.balanceHint}>Zieh die Griffe zwischen den Aktivitäten.</p>
+          <div className={styles.balance} style={{ '--focus': focus / total * 100 + '%' }}>
+            <div className={styles.balanceTrack}><span>{focus > 0 && 'Fokus · ' + duration(focus)}</span><span>{total > focus && 'Pause · ' + duration(total - focus)}</span></div>
+            {groups.focus.length > 0 && groups.pause.length > 0 &&
+              <input type="range" min="0" max={total} value={focus} aria-label="Zeit für Fokus und Pause aufteilen"
+                aria-valuetext={'Fokus ' + duration(focus) + ', Pause ' + duration(total - focus)}
+                onChange={event => changeBudget(total, clamp(Number(event.target.value), groups.focus.length, total - groups.pause.length))} />}
           </div>
+          <p className={styles.balanceHint}>Fokus und Pause aufteilen</p>
+          <p className={styles.fixedTotal}>Gesamtzeit · {duration(total)} · {start}–{end}</p>
           <div className={styles.modes} aria-label="Reihenfolge">
             <button aria-pressed={mode === 'manual'} onClick={() => setMode('manual')}>Selbst ordnen</button>
             <button aria-pressed={mode === 'shuffle'} onClick={() => setMode('shuffle')}>Für mich mischen</button>
