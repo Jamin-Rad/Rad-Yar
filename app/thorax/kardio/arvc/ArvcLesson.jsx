@@ -11,6 +11,30 @@ import { CASES, SECTIONS, SOURCES, TAKE_HOME } from './lessonContent'
 import { arvcText, localizeArvcTree } from './lessonTranslations'
 import styles from './page.module.css'
 
+const INTRO = {
+  "de": [
+    "Bei der arrhythmogenen Kardiomyopathie (ACM) wird Herzmuskelgewebe durch Narbengewebe und zum Teil durch Fett ersetzt. Gefährliche Rhythmusstörungen aus den Herzkammern können schon auftreten, wenn das Herz noch relativ gut pumpt.",
+    "ARVC bezeichnet die klassische Form, bei der vor allem die rechte Herzkammer betroffen ist. ACM ist der Oberbegriff: Auch die linke Kammer kann mitbetroffen sein oder im Vordergrund stehen.",
+    "ACM ist häufig erblich. Ob die linke Kammer betroffen ist, spielt auch für die Prognose eine Rolle.",
+    "Herzstolpern, eine Ohnmacht, ventrikuläre Rhythmusstörungen oder eine familiäre Vorbelastung können Anlass für eine Abklärung sein.",
+    "Das MRT zeigt, wie sich der Herzmuskel verändert hat. Zur Abklärung gehören auch ein EKG, die Untersuchung des Herzrhythmus und Fragen zu Herzerkrankungen in der Familie."
+  ],
+  "en": [
+    "In arrhythmogenic cardiomyopathy (ACM), heart muscle is replaced by scar tissue and sometimes fat. Dangerous ventricular arrhythmias can occur while the heart is still pumping relatively well.",
+    "ARVC is the classic form, which mainly affects the right ventricle. ACM is the broader term: the left ventricle can also be affected or can be the main site of disease.",
+    "ACM is often inherited. Whether the left ventricle is affected also matters for prognosis.",
+    "Palpitations, fainting, ventricular arrhythmias or a relevant family history can prompt an evaluation.",
+    "MRI shows how the heart muscle has changed. The evaluation also includes an ECG, assessment of heart rhythm and questions about heart disease in the family."
+  ],
+  "fa": [
+    "در کاردیومیوپاتی آریتموژنیک (ACM)، بافت جوشگاهی و گاهی چربی جای بخشی از عضلهٔ قلب را می‌گیرند. حتی وقتی قلب هنوز نسبتاً خوب پمپاژ می‌کند، ممکن است آریتمی‌های خطرناک بطنی رخ دهند.",
+    "ARVC شکل کلاسیک بیماری است که عمدتاً بطن راست را درگیر می‌کند. ACM اصطلاح کلی‌تری است: بطن چپ هم ممکن است درگیر باشد یا درگیری در آن غالب باشد.",
+    "ACM اغلب ارثی است. درگیری بطن چپ برای پیش‌آگهی هم اهمیت دارد.",
+    "تپش قلب، غش، آریتمی بطنی یا سابقهٔ خانوادگی مرتبط می‌تواند دلیل بررسی باشد.",
+    "MRI تغییرات عضلهٔ قلب را نشان می‌دهد. نوار قلب، بررسی ریتم و پرسش دربارهٔ بیماری قلبی در خانواده هم بخشی از ارزیابی‌اند."
+  ]
+}
+
 function Definition() {
   const { lang: _arvcLang } = useLanguage()
 
@@ -19,12 +43,17 @@ function Definition() {
       <TeachingGroups direction={_arvcLang === 'fa' ? 'rtl' : 'ltr'}>
         <TeachingGroup id="arvc-basics" title="Was ist ACM?">
           <div className={styles.foundationCopy}>
-            <p className={styles.lead}>Bei der <strong>arrhythmogenen Kardiomyopathie (ACM)</strong> wird Herzmuskel durch Narbengewebe ersetzt, teilweise auch durch Fett. Das kann gefährliche Rhythmusstörungen aus den Herzkammern auslösen – auch wenn die Pumpfunktion noch relativ gut ist.</p>            <p className={styles.bodyText}>Früher wurde vor allem die rechte Herzkammer beschrieben: daher der Name <strong>ARVC</strong>. Heute weiß man, dass auch die linke Kammer betroffen sein kann, manchmal sogar überwiegend. <strong>ACM ist deshalb der umfassendere Begriff.</strong> Die Erkrankung ist häufig erblich; eine LV-Beteiligung ist auch für die Prognose wichtig.</p>
-            <p className={styles.bodyText}>Ein Anlass zur Abklärung können Palpitationen, eine Synkope, ventrikuläre Rhythmusstörungen oder eine belastete Familiengeschichte sein. Das MRT hilft, die Veränderungen am Herzmuskel einzuordnen; EKG, Rhythmusdiagnostik und Familienanamnese gehören dazu.</p>
+            {(INTRO[_arvcLang] || INTRO.de).map((paragraph, index) => (
+              <p key={paragraph} className={index === 0 ? styles.lead : styles.bodyText}>{paragraph}</p>
+            ))}
           </div>
         </TeachingGroup>
       </TeachingGroups>
-      <Comparison id="distribution" title="Drei mögliche Verteilungen" rows={[        ['RV-dominant · klassische ARVC', 'Rechte Kammer besonders auffällig: regionale Bewegungsstörungen, Vergrößerung und reduzierte Pumpfunktion. Den LV trotzdem mitbeurteilen.'],        ['Biventrikulär', 'Rechte und linke Kammer sind beteiligt. Neben der RV-Veränderung können nichtischämische Narben im LV auffallen.'],        ['LV-dominant', 'Die linke Kammer steht im Vordergrund; der RV kann unauffällig sein. Das Narbenmuster, die Genetik und andere mögliche Ursachen werden wichtig.'],      ]}/>
+      <Comparison id="distribution" title="Drei mögliche Verteilungen" rows={[
+        ['RV-dominant · klassische ARVC', 'Rechte Kammer besonders auffällig: regionale Bewegungsstörungen, Vergrößerung und reduzierte Pumpfunktion. Den LV trotzdem mitbeurteilen.'],
+        ['Biventrikulär', 'Rechte und linke Kammer sind beteiligt. Neben der RV-Veränderung können nichtischämische Narben im LV auffallen.'],
+        ['LV-dominant', 'Die linke Kammer steht im Vordergrund; der RV kann unauffällig sein. Das Narbenmuster, die Genetik und andere mögliche Ursachen werden wichtig.'],
+      ]}/>
     </div>
     <Note title="Für das MRT merken">Immer beide Herzkammern ansehen: Größe, Bewegung, Pumpfunktion und Narben.</Note>
   </>, _arvcLang)
