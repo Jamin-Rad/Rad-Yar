@@ -233,6 +233,31 @@
 
 .takeHomeStatic { display:grid; grid-template-columns:36px minmax(0,1fr); align-items:start; gap:16px; padding:18px 20px; color:var(--ink); line-height:1.7; }
 
+@media screen {
+  :global(html[data-theme='dark']) .page[data-lesson-shell='/thorax/kardio/arvc'] {
+    /* The shell supplies the default theme tokens inline. */
+    --paper: #142634 !important;
+    --canvas: #10202d !important;
+    --ink: #edf5fa !important;
+    --body: #c5d6e0 !important;
+    --muted: #a9bfcd !important;
+    --line: #365162 !important;
+    --lesson-accent-strong: #8bd2eb !important;
+    --lesson-accent-soft: #223e4f !important;
+    --lesson-secondary-strong: #e0bc85 !important;
+  }
+  :global(html[data-theme='dark']) .page[data-lesson-shell='/thorax/kardio/arvc'] :is(.section,.sidebar,.progressBar,.secondaryAction) {
+    background: var(--paper);
+  }
+  :global(html[data-theme='dark']) .page[data-lesson-shell='/thorax/kardio/arvc'] :is(.progressTrack,.takeHomeSection .sectionHeader,.takeHomeJump) {
+    background: var(--lesson-accent-soft);
+  }
+  :global(html[data-theme='dark']) .page[data-lesson-shell='/thorax/kardio/arvc'] :is(.primaryAction,.continueButton,.readButtonDone,.lessonCompleteButtonDone,.activeSideItem .sideIcon,.takeHomeSection .sectionIcon) {
+    color: #fff;
+    background: #225d77;
+  }
+}
+
 @media(max-width:760px) { .lesson { --lesson-chapter-gap:12px; } }
 .presentationSources { display: contents; }
 .presentationPage > header { display: none; }
