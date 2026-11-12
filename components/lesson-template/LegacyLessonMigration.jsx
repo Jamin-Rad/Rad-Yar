@@ -71,7 +71,7 @@ function Icon({name}) {
 
 // A declarative bridge for preserved authored JSX, never a DOM rewrite. Chapters,
 // questions and clinical figures remain React children inside the maintained shell.
-export default function LegacyLessonMigration({children, lessonRoute, lessonId, lang='de', summaryFallback=[], summarySectionId, lessonRead=false, ...original}) {
+export default function LegacyLessonMigration({children, lessonRoute, lessonId, lang='de', summaryFallback=[], summarySectionId, lessonRead=false, renderIcon, ...original}) {
   const c=COPY[lang]||COPY.de
   const header=first(children,node=>node.type==='header')
   const heading=first(header?.props.children||children,node=>node.type==='h1'||node.type===LessonHero)
@@ -79,6 +79,7 @@ export default function LegacyLessonMigration({children, lessonRoute, lessonId, 
   const chapters=[],sources=[],auxiliary=[],footers=[],retainedIntro=[],readControls=[]
   const ids=new Set()
   walk(children,node=>{
+    if (node.props['data-migration-source']) { sources.push(node); return false }
     if (node.props.role==='dialog' || /lightbox|imageModal/.test(node.props.className||'')) { auxiliary.push(node);return false }
     if(node.props.migrationReadControl || Object.hasOwn(node.props,'data-migration-read-control') || /readControl|readBar/.test(node.props.className||'')) {if(!readControls.length)readControls.push(node);return false}
     if(/visualIntro|pillarLab|questionLab/.test(node.props.className||'')) {retainedIntro.push(node);return false}
@@ -96,7 +97,7 @@ export default function LegacyLessonMigration({children, lessonRoute, lessonId, 
     ids.add(id)
     const localHeading=first(node.props.children,e=>e.type==='h2'||e.type==='strong')
     const label=node.props.title||node.props.section?.title||localHeading?.props.children||id
-    const chapter={id,label,icon:summaryPattern.test(id+' '+text(label))?'summary':/fall|case|bild/i.test(id)?'case':'map',body:<>{node.props.lead?<p>{node.props.lead}</p>:null}{custom?node.props.children:cleanPanel(node.props.children)}</>,summaryBody:custom?node.props.children:cleanPanel(node.props.children)}
+    const chapter={id,label,icon:(renderIcon && node.props.section?.icon) || (summaryPattern.test(id+' '+text(label))?'summary':/fall|case|bild/i.test(id)?'case':'map'),body:<>{node.props.lead?<p>{node.props.lead}</p>:null}{custom?node.props.children:cleanPanel(node.props.children)}</>,summaryBody:custom?node.props.children:cleanPanel(node.props.children)}
     if(sourcePattern.test(id))sources.push(chapter);else chapters.push(chapter)
     return false
   })
@@ -142,11 +143,11 @@ export default function LegacyLessonMigration({children, lessonRoute, lessonId, 
   const sections=[...content.map(({id,label,icon})=>({id,label:text(label),icon})),{id:summaryId,label:c.takeHome,icon:'summary',emphasis:true}]
   return <StandardLessonShell lessonRead={serverRead} lessonId={lessonId||lessonRoute} heroLessonId={lessonRoute} lang={lang} title={title} author="Dr. Zia" heroImageAlt={text(title)} syncHashNavigation
     breadcrumbs={[{label:'RadYar',href:locale('/')},{label:regionLabel,href:locale(`/lernen/${regionCourse}`)},{label:text(title)}]}
-    sections={sections} labels={c} renderIcon={name=><Icon name={name}/>} actions={{mcq:quiz?{href:quiz.props.href,label:text(quiz.props.children)||c.quiz}:null,flashcards:cards?{href:cards.props.href,label:text(cards.props.children)||c.cards}:null}}
+    sections={sections} labels={c} renderIcon={renderIcon || (name=><Icon name={name}/>)} sources={sources.find(source=>source.props?.['data-migration-source']) || null} actions={{mcq:quiz?{href:quiz.props.href,label:text(quiz.props.children)||c.quiz}:null,flashcards:cards?{href:cards.props.href,label:text(cards.props.children)||c.cards}:null}}
     theme={{backgroundImage:'/andarun-galaxy-v3.png',accent:'#417e89',accentStrong:'#24515b',accentSoft:'#e4f1f1',secondary:'#bb8a5b',secondaryStrong:'#785032',heroBase:'#122630'}}>
     {content.map((chapter,index)=><LessonSection key={chapter.id} id={chapter.id} title={chapter.label} icon={chapter.icon}><div className={styles.content}>{index===0&&headerIntro.length?<div className={styles.intro}>{headerIntro}</div>:null}{index===0&&readControls.length?<div className={styles.legacyRead}>{readControls}</div>:null}{chapter.body}</div></LessonSection>)}
     {footers.length?<aside className={styles.sources}>{footers}</aside>:null}
-    {sources.length?<aside className={styles.sources}>{sources.map(source=><details key={source.id} id={source.id}><summary>{source.label}</summary><div className={styles.content}>{source.body}</div></details>)}</aside>:null}
+    {sources.some(source=>!source.props?.['data-migration-source'])?<aside className={styles.sources}>{sources.filter(source=>!source.props?.['data-migration-source']).map(source=><details key={source.id} id={source.id}><summary>{source.label}</summary><div className={styles.content}>{source.body}</div></details>)}</aside>:null}
     <LessonSection id={summaryId} title={c.takeHome} icon="summary">{summaryExtras.length?<div className={styles.summaryPrelude}>{summaryExtras}</div>:null}{points.length?<div data-migration-summary-rules={points.length}><TakeHomeList items={points}/></div>:null}{summary&&!points.length?<div className={styles.content}>{summary.body}</div>:null}</LessonSection>
     {auxiliary}
   </StandardLessonShell>
