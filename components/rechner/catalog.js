@@ -39,12 +39,27 @@ export function directoryHref({ group = 'all', query = '', lang = 'de' } = {}) {
   if (query) params.set('q', query)
   return `/rechner?${params}`
 }
+// Bounded Damerau-Levenshtein matching also accepts adjacent swapped letters.
+const normalizeSearch = value => value.normalize('NFKD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/ß/g, 'ss').replace(/ي/g,'ی').replace(/ك/g,'ک').replace(/[ـ‌]/g,'').replace(/[^\p{L}\p{N}]+/gu,' ').trim()
+function distance(a,b) {
+  const rows = Array.from({length:a.length+1},()=>Array(b.length+1).fill(0))
+  for(let i=0;i<=a.length;i++) rows[i][0]=i
+  for(let j=0;j<=b.length;j++) rows[0][j]=j
+  for(let i=1;i<=a.length;i++) for(let j=1;j<=b.length;j++) {
+    rows[i][j]=Math.min(rows[i-1][j]+1,rows[i][j-1]+1,rows[i-1][j-1]+(a[i-1]===b[j-1]?0:1))
+    if(i>1&&j>1&&a[i-1]===b[j-2]&&a[i-2]===b[j-1]) rows[i][j]=Math.min(rows[i][j],rows[i-2][j-2]+1)
+  }
+  return rows[a.length][b.length]
+}
 export function filterTools(group, query) {
-  const normalize = value => value.normalize('NFKD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/ß/g, 'ss').replace(/[\s\-ـ‌]/g, '')
-  const term = normalize(query.trim())
+  const term=normalizeSearch(query).slice(0,120)
   return TOOLS.filter(tool => {
-    if (group !== 'all' && tool.group !== group && !tool.alsoIn?.includes(group)) return false
-    const category = GROUPS.find(item => item.id === tool.group)
-    return !term || normalize([tool.id, ...Object.values(tool.name), ...Object.values(tool.description), ...Object.values(category.name), tool.aliases].join(' ')).includes(term)
+    if(group!=='all' && tool.group!==group && !tool.alsoIn?.includes(group)) return false
+    if(!term) return true
+    const category=GROUPS.find(item=>item.id===tool.group)
+    const haystack=normalizeSearch([tool.id,...Object.values(tool.name),...Object.values(tool.description),...Object.values(category.name),tool.aliases].join(' '))
+    if(haystack.replace(/ /g,'').includes(term.replace(/ /g,''))) return true
+    const words=haystack.split(' ')
+    return term.split(' ').every(part=>words.some(word=>word.includes(part)||(part.length>=4&&Math.abs(word.length-part.length)<=2&&distance(part,word)<=(part.length>=7?2:1))))
   })
 }

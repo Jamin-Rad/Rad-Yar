@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { ClerkLoaded, ClerkLoading, useUser } from '@clerk/nextjs'
 import styles from './Navbar.module.css'
@@ -58,7 +58,11 @@ function ClerkReady({ onReady }) {
 }
 
 export default function ClerkNavActions({ lang = 'de', controlsLang = lang === 'fa' ? 'de' : lang, onReady }) {
+  const [mounted, setMounted] = useState(false)
+  useEffect(() => { setMounted(true) }, [])
   const signInLabel = controlsLang === 'en' ? 'Sign in' : 'Anmelden'
+  // Clerk can already be cached during hydration; keep the first render stable.
+  if (!mounted) return <span aria-hidden="true" />
 
   return (
     <>

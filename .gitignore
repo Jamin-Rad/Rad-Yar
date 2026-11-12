@@ -37,3 +37,6 @@ env.local
 
 # Private MHBA originals are stored in authenticated object storage.
 /data/mhba/
+
+# clerk configuration (can include secrets)
+/.clerk/
