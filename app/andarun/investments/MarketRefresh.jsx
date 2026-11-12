@@ -12,9 +12,9 @@ export default function MarketRefresh({ marketData, state }) {
   return <section className={styles.marketRefresh} aria-label="به‌روزرسانی قیمت‌ها">
     <div><button type="button" className={styles.primaryButton} disabled={!symbolCount || batch.running} onClick={marketData.refreshAll}><Icon name="refresh" size={17} />{batch.running ? `در حال آپدیت ${number(batch.done)} از ${number(batch.total)}` : 'به‌روزرسانی همه قیمت‌ها'}</button>
       <span className={styles.footnote}>{number(symbolCount)} ابزار مستقل برای دریافت قیمت{missing > 0 ? ` · ${number(missing)} دارایی بدون شناسه قیمت` : ''}</span></div>
-    <div role="status" aria-live="polite">{batch.running ? <progress aria-label="پیشرفت دریافت قیمت‌ها" value={batch.done} max={batch.total} /> : batch.completedAt ? <p>آخرین درخواست: <bdi>{new Date(batch.completedAt).toLocaleTimeString('de-DE', { timeZone: 'Europe/Berlin' })}</bdi> · {number(batch.total - batch.failed)} موفق{batch.failed ? ` · ${number(batch.failed)} ناموفق؛ قیمت قبلی حفظ شد` : ''}</p> : null}</div>
+    <div role="status" aria-live="polite">{batch.running ? <progress aria-label="پیشرفت دریافت قیمت‌ها" value={batch.done} max={batch.total} /> : batch.completedAt ? <p>{number(batch.total - batch.failed - batch.reused)} قیمت تازه دریافت شد{batch.reused ? ` · ${number(batch.reused)} قیمت از ذخیرهٔ امروز` : ''}{batch.failed ? ` · ${number(batch.failed)} ناموفق؛ قیمت قبلی حفظ شد` : ''}</p> : null}</div>
     {failed.length > 0 && <details><summary>{number(failed.length)} دارایی با خطای دریافت؛ برای تلاش دوباره دکمه آپدیت را بزن</summary>{failed.map(p => <p key={`${p.accountId}:${p.id}`}><bdi>{p.name} · {marketKey(p)}</bdi> — {marketData.errors[marketKey(p)]}</p>)}</details>}
-    <p className={styles.footnote}>قیمت‌ها و تاریخچه فقط با زدن دکمه به‌روزرسانی دریافت می‌شوند.</p>
+    <p className={styles.footnote}>آخرین قیمت‌ها در همین مرورگر می‌مانند. دکمه، قیمت‌هایی را می‌گیرد که امروز هنوز دریافت نشده‌اند.</p>
     {!symbolCount && <p className={styles.footnote}>از نمای کلی، دریافت دستی قیمت با شناسه ISIN را فعال کن؛ برای ابزارهای بدون ISIN، نماد را در پرونده دارایی تعیین کن.</p>}
   </section>
 }
