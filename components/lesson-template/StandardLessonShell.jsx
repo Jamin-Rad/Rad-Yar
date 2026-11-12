@@ -108,7 +108,7 @@ export function LessonSection({ id, title, icon, children, bodyClassName = '', p
     </button>
     <div id={`${id}-panel`} data-book-body={presentationEnabled ? '' : undefined} hidden={!open} className={`${styles.sectionBody} ${bodyClassName}`}>
       {children}
-      {!book && (!emphasis || context.progressIncludesSummary) ? <button type="button" className={`${styles.readButton} ${isRead ? styles.readButtonDone : ''}`} aria-pressed={isRead} onClick={() => toggleSectionRead(id)}><Icon name="check" />{isRead ? labels.completed : labels.complete}</button> : null}
+      {!book && trackedIds.includes(id) ? <button type="button" className={`${styles.readButton} ${isRead ? styles.readButtonDone : ''}`} aria-pressed={isRead} onClick={() => toggleSectionRead(id)}><Icon name="check" />{isRead ? labels.completed : labels.complete}</button> : null}
     </div>
     {presentationEnabled && context.presentationQuestions ? <BookCheckpoint questions={context.presentationQuestions} questionIds={questionIdsForSection(context.lessonId, id, context.lang)} lang={context.lang} /> : null}
   </section>
@@ -190,6 +190,7 @@ function LessonShell({
   progressIncludesSummary = false,
   lessonRead = false,
   syncHashNavigation = false,
+  hashAliases,
   presentationEnabled = false,
   presentationQuestions,
 }) {
@@ -200,7 +201,8 @@ function LessonShell({
   const labels = { ...(DEFAULT_LABELS[lang] || DEFAULT_LABELS.de), ...Object.fromEntries(Object.entries(suppliedLabels || {}).filter(([, value]) => value !== undefined && value !== null)) }
   const trackedSections = useMemo(() => sections.filter(section => !section.emphasis), [sections])
   const lehrMode = useLehrModeActive()
-  const trackedIds = useMemo(() => (progressIncludesSummary ? sections : trackedSections).map(section => section.id), [sections, trackedSections, progressIncludesSummary])
+  const trackedIds = useMemo(() => sections.filter(section => !section.optional && (!section.emphasis || progressIncludesSummary)).map(section => section.id), [sections, progressIncludesSummary])
+  const chapterIds = useMemo(() => trackedSections.map(section => section.id), [trackedSections])
   const [openId, setOpenId] = useState(trackedSections[0]?.id || sections[0]?.id || null)
   const [summaryOpen, setSummaryOpen] = useState(false)
   const [readSections, setReadSections] = usePersistedSectionProgress(lessonId, trackedIds, lessonRead)
@@ -235,11 +237,11 @@ function LessonShell({
     const hash = window.location.hash.slice(1)
     if (hash === summarySection?.id) setSummaryOpen(true)
     else if (trackedSections.some(section => section.id === hash)) setOpenId(hash)
-  }, [summarySection?.id, trackedSections, trackedIds, syncHashNavigation])
+  }, [summarySection?.id, chapterIds, trackedSections, syncHashNavigation, hashAliases])
 
   const openSection = id => {
     if (book) { lessonView.navigate(id); return }
-    if (!trackedIds.includes(id)) return
+    if (!chapterIds.includes(id)) return
     setOpenId(id)
     replaceLessonHash(id)
     scrollToLessonSection(id)
