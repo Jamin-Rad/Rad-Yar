@@ -55,7 +55,6 @@ function Definition() {
         ['LV-dominant', 'Die linke Kammer steht im Vordergrund; der RV kann unauffällig sein. Das Narbenmuster, die Genetik und andere mögliche Ursachen werden wichtig.'],
       ]}/>
     </div>
-    <Note title="Für das MRT merken">Immer beide Herzkammern ansehen: Größe, Bewegung, Pumpfunktion und Narben.</Note>
   </>, _arvcLang)
 }
 
