@@ -432,7 +432,7 @@
 .primaryButton, .outlineButton, .secondaryButton { font-size: 13px !important; min-height: 44px; }
 .textButton { font-size: 13px !important; min-height: 36px; }
 .field input, .field select, .field textarea { font-size: 14px; min-height: 44px; }
-.profileStats { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 22px; padding: 7px 0 24px; }
+.profileStats { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 22px; padding-top: 7px; }
 .profileStats > div { min-width: 0; }
 .profileStats span, .profileStats small { display: block; font-size: 12px; color: #a6b0bd; }
 .profileStats strong { display: block; font-size: 23px; margin: 7px 0; overflow-wrap: anywhere; }
@@ -749,3 +749,6 @@
 .orderList { display: grid; gap: 14px; margin-top: 16px; }
 .orderCard { border: 1px solid var(--line); border-radius: 10px; padding: 16px; min-width: 0; }
 .orderCard .dialogActions { flex-wrap: wrap; }
+
+.assetDetails > summary { cursor: pointer; font-weight: 600; }
+.assetDetails[open] > summary { margin-bottom: 16px; }

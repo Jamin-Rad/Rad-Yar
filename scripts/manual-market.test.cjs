@@ -109,10 +109,10 @@ test('duplicate manual clicks coalesce, and a failed update preserves the previo
   h.stop()
 })
 
-test('a new visit uses the last successful quote and repeated clicks the same Berlin day avoid requests', async () => {
+test('a new visit shows saved quotes without requests and every click refreshes all connected symbols', async () => {
   let saved = null
   const storage = { getItem: () => saved, setItem: (_, value) => { saved = value } }
-  const state = portfolio([position('DEMO')])
+  const state = portfolio([position('DEMO'), position('OTHER')])
   const first = marketHarness(state, async () => ({
     ok: true, json: async () => ({ quote: {price: 123, asOf: '2026-11-11T10:00:00Z'}, history: [{date: '2026-11-10', close: 120}] }),
   }), storage)
@@ -122,13 +122,11 @@ test('a new visit uses the last successful quote and repeated clicks the same Be
   next.render()
   assert.equal(next.render().markets.DEMO.quote.price, 123)
   assert.equal(next.render().markets.DEMO.history.length, 0)
-  await next.render().refreshAll()
-  assert.equal(next.requests.length, 0)
-  assert.equal(next.render().batch.reused, 1)
-  next.advance(86400000)
   assert.equal(next.requests.length, 0)
   await next.render().refreshAll()
-  assert.equal(next.requests.length, 1)
+  await next.render().refreshAll()
+  const symbols = next.requests.map(url => new URL(url, 'https://example.test').searchParams.get('symbol'))
+  assert.deepEqual(symbols, ['DEMO', 'OTHER', 'DEMO', 'OTHER'])
   next.stop()
 })
 
