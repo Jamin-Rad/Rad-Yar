@@ -12,7 +12,7 @@ export default function useMarketData(state) {
   const [markets, setMarkets] = useState({})
   const [errors, setErrors] = useState({})
   const [loading, setLoading] = useState({})
-  const [batch, setBatch] = useState({ running: false, done: 0, total: 0, failed: 0, reused: 0, completedAt: null })
+  const [batch, setBatch] = useState({ running: false, done: 0, total: 0, failed: 0, completedAt: null })
   const data = useRef({}), pending = useRef(new Map()), mounted = useRef(true), batchLock = useRef(false)
   const savedQuotes = useRef(new Map())
   const storage = useRef(null)
@@ -28,7 +28,6 @@ export default function useMarketData(state) {
     if (!symbol || !mounted.current) return null
     if (!force) return data.current[symbol] || null
     const day = todayBerlin(new Date())
-    if (!withHistory && savedQuotes.current.get(symbol)?.day === day) return data.current[symbol]
     const dates = requestedDates || []
     const requestKey=withHistory?`${symbol}:history:${dates.join(',')}`:symbol
     if (pending.current.has(requestKey)) return pending.current.get(requestKey)
@@ -76,22 +75,20 @@ export default function useMarketData(state) {
     const rows = [...new Map(requested.map(row => [row.symbol, row])).values()]
     if (!rows.length) return
     batchLock.current = true
-    let index = 0, done = 0, failed = 0, reused = 0
-    const day = todayBerlin(new Date())
-    if (mounted.current) setBatch({ running: true, done, total: rows.length, failed, reused, completedAt: null })
+    let index = 0, done = 0, failed = 0
+    if (mounted.current) setBatch({ running: true, done, total: rows.length, failed, completedAt: null })
     async function worker() {
       while (mounted.current && index < rows.length) {
         const row = rows[index++]
-        if (savedQuotes.current.get(row.symbol)?.day === day) reused++
-        else if (!await load(row.symbol, row.name, true)) failed++
+        if (!await load(row.symbol, row.name, true)) failed++
         done++
-        if (mounted.current) setBatch({ running: true, done, total: rows.length, failed, reused, completedAt: null })
+        if (mounted.current) setBatch({ running: true, done, total: rows.length, failed, completedAt: null })
       }
     }
     try { await Promise.all(Array.from({ length: Math.min(3, rows.length) }, worker)) }
     finally {
       batchLock.current = false
-      if (mounted.current) setBatch({ running: false, done, total: rows.length, failed, reused, completedAt: new Date().toISOString() })
+      if (mounted.current) setBatch({ running: false, done, total: rows.length, failed, completedAt: new Date().toISOString() })
     }
   }, [keys, load])
   return { markets, errors, loading, load, refreshAll, batch, symbolCount: new Set(JSON.parse(keys).map(row => row.symbol)).size }

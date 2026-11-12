@@ -1,8 +1,7 @@
 'use client'
-import {useEffect,useState} from 'react'
-import {money,signedMoney,percent,number} from '@/lib/investments/portfolio.mjs'
+import {useState} from 'react'
+import {money,signedMoney,percent} from '@/lib/investments/portfolio.mjs'
 import {marketImpact,marketKey,marketForPosition,marketTrusted} from '@/lib/investments/market.mjs'
-import {DECISION_ACTIONS} from '@/lib/investments/family.mjs'
 import Icon from './InvestmentIcon'
 import TradingViewChart from './TradingViewChart'
 import TechnicalChart from './TechnicalChart'
@@ -16,31 +15,81 @@ function MarketConnection({position,marketData,onConnect}){
  {results.length>0&&<div className={styles.instrumentResults}>{results.map(r=><button type="button" key={r.symbol} onClick={()=>setSymbol(r.symbol)} className={symbol===r.symbol?styles.selectedTrade:''}><strong><bdi>{r.symbol}</bdi> · <bdi>{r.name}</bdi></strong><small><bdi>{r.exchange} · {r.type}</bdi></small></button>)}</div>}
  <form onSubmit={connect}><label className={styles.field}>نماد دقیق در منبع بازار<input value={symbol} onChange={e=>setSymbol(e.target.value)} dir="ltr" required maxLength={35} placeholder="مثلاً نماد تأییدشده در Yahoo Finance"/></label><label className={styles.checkbox}><input type="checkbox" required/>این نماد را با ابزار، کلاس سهم و بورس مورد نظرم تطبیق داده‌ام؛ ارز منبع ممکن است با حساب یورویی متفاوت باشد.</label><button className={styles.primaryButton} type="submit" disabled={busy}>{busy?'در حال بررسی…':'اتصال قیمت و تاریخچه'}</button></form>{error&&<p role="alert" className={styles.error}>{error}</p>}</div>
 }
-export default function AssetProfile({account,position,state,marketData,onEdit,onConnect,onChartConnect,onDecision,onOpenDecision,onEvent}){
- const [connectOpen,setConnectOpen]=useState(!position?.marketConfirmed&&!state.settings?.isinPricesEnabled)
- const key=position ? marketKey(position) : ''
- const market=position ? marketForPosition(position,marketData.markets) : null
- useEffect(()=>{if(key&&(position?.marketConfirmed||state.settings?.isinPricesEnabled))marketData.load(key,position.name,false,true)},[key,position?.marketConfirmed,position?.name,state.settings?.isinPricesEnabled,marketData.load])
- if(!position)return <section className={styles.panel}><h2>این دارایی در فهرست فعلی حساب نیست.</h2><p>تصمیم‌ها و ثبت‌های تاریخی قبلی همچنان در دفتر تصمیم‌ها حفظ شده‌اند.</p></section>
- const week=marketImpact(position,market,7),month=marketImpact(position,market,30)
- const related=state.decisions.filter(d=>d.accountId===account.id&&d.positionId===position.id)
- const owners=state.accounts.flatMap(a=>a.positions.filter(p=>p.id===position.id&&a.id===account.id||position.isin&&p.isin===position.isin).map(p=>({owner:a.owner,quantity:p.quantity,value:p.valueCents})))
- const events=state.events.filter(e=>e.accountId===account.id&&e.positionId===position.id&&!e.done).sort((a,b)=>a.date.localeCompare(b.date))
- const history=account.snapshots.map(s=>({date:s.asOf,row:s.positions.find(p=>p.id===position.id)})).filter(s=>s.row).sort((a,b)=>b.date.localeCompare(a.date))
- const fresh=market?.quote&&Date.now()-new Date(market.quote.asOf).getTime()<4*86400000
- return <div className={styles.sectionStack}>
- <section className={styles.panel}><div className={styles.panelHead}><div><h2 dir="auto">{position.name}</h2><p>حساب {account.owner} · <bdi>{position.isin||'ISIN ثبت نشده'}</bdi></p></div><button className={styles.secondaryButton} type="button" onClick={()=>onEdit(position)}><Icon name="edit" size={16}/>ویرایش اطلاعات</button></div>
- <div className={styles.profileStats}><div><span>ارزش ثبت‌شده بروکر</span><strong><bdi>{money(position.valueCents)}</bdi></strong><small>{position.asOf||account.snapshotDate||'تاریخ نامشخص'}</small></div><div><span>سود/زیان نمایشی منبع</span><strong className={position.gainCents==null?styles.unknown:position.gainCents<0?styles.negative:styles.positive}><bdi>{signedMoney(position.gainCents)}</bdi></strong><small>{position.gainCents==null?'مبلغ ناقص؛ در سود کل قابل اتکا نیست':'دوره سود/زیان منبع باید مشخص باشد'}</small></div><div><span>آخرین قیمت مرجع هر واحد</span><strong><bdi>{market?`${price(market.quote.price)} ${market.quote.currency}`:'—'}</bdi></strong><small>{market?`${market.quote.exchange} · ${fresh?'زمان منبع در پایین':'داده قدیمی؛ نیازمند بررسی'}`:'ابتدا نماد را تطبیق بده'}</small></div><div><span>تعداد ثبت‌شده</span><strong><bdi>{position.quantity}</bdi></strong><small>{position.verified?'با سند تطبیق شده':'مبالغ نیازمند تطبیق‌اند'}</small></div></div>
- <div className={styles.buttonRow}><button className={styles.primaryButton} type="button" onClick={onDecision}>ثبت تصمیم درباره این دارایی</button><button className={styles.secondaryButton} type="button" onClick={onEvent}>ثبت رویداد و موعد مهم</button></div>
- </section>
- <section className={styles.panel}><div className={styles.panelHead}><div><h2>قیمت و تاریخچه بازار</h2><p>قیمت مرجع مستقل از گزارش بروکر است؛ ارزش‌های ثبت‌شده را تغییر نمی‌دهد.</p></div><button className={styles.textButton} type="button" onClick={()=>setConnectOpen(v=>!v)}>{connectOpen?'بستن تنظیم اتصال':'تغییر نماد بازار'}</button></div>
- {connectOpen&&<MarketConnection position={position} marketData={marketData} onConnect={symbol=>{onConnect(symbol);setConnectOpen(false)}}/>}
- {marketData.loading[key]&&<p role="status" className={styles.muted}>دریافت داده واقعی بازار…</p>}{marketData.errors[key]&&<p role="alert" className={styles.error}>{marketData.errors[key]}</p>}
- {market&&<><p className={styles.marketSource}><a href={market.quote.sourceUrl} target="_blank" rel="noreferrer">{market.quote.source}</a> · <bdi>{market.quote.symbol} · {market.quote.exchange}</bdi> · زمان قیمت: <time><bdi>{new Date(market.quote.asOf).toLocaleString('de-DE',{timeZone:'Europe/Berlin'})}</bdi></time> · {market.quote.delay}</p>{!marketTrusted(position,market)&&<p className={styles.error}>تطبیق نماد تأیید نشده؛ در برآورد اثر سبد استفاده نمی‌شود.</p>}<TechnicalChart key={key} market={market} loading={marketData.loading[key]} error={marketData.errors[key]}/><div className={styles.periodGrid}>{[['هفته',week],['ماه',month]].map(([label,value])=><div key={label}><h3>تغییر {label}</h3><strong><bdi>{value?percent(value.nativePercent):'—'}</bdi></strong><p>اثر برآوردی با تعداد فعلی: <bdi>{signedMoney(value?.deltaCents)}</bdi></p>{value&&<small><bdi>{value.previous} تا {value.latest}</bdi> · تاریخ تبدیل ارز: <bdi>{value.fxDate||'نامشخص'}</bdi></small>}</div>)}</div><p className={styles.footnote}>این برآورد، بازده واقعی حساب نیست؛ تعداد فعلی ثابت فرض شده و جریان پول، معاملات، سود نقدی و هزینه‌ها لحاظ نشده‌اند. در بازه دارای تجزیه سهم، برآورد نمایش داده نمی‌شود. تبدیل ارز با نرخ مرجع Frankfurter انجام می‌شود؛ برای نبود نرخ، مبلغ یورویی ساخته نمی‌شود.</p><button type="button" className={styles.secondaryButton} disabled={marketData.loading[key]} onClick={()=>marketData.load(key,position.name,true,true)}>دریافت تاریخچه</button></>}
- </section>
- <TradingViewChart position={position} onConnect={onChartConnect}/>
- <div className={styles.overviewBottom}><section className={styles.panel}><div className={styles.panelHead}><h2>خبرهای مرتبط</h2><Icon name="report"/></div>{market?.news?.length?<div className={styles.newsList}>{market.news.map(n=><article key={n.url}><a href={n.url} target="_blank" rel="noreferrer" dir="auto">{n.title}</a><small><bdi>{n.publisher} · {n.date.slice(0,10)}</bdi>{n.important?' · واژه‌های رویداد مهم؛ نیازمند بررسی':''}</small></article>)}</div>:<p className={styles.muted}>{market?.newsError||'پس از اتصال نماد، خبرهای عمومی مرتبط دریافت می‌شوند؛ نبود خبر به معنی نبود ریسک نیست.'}</p>}<p className={styles.footnote}>منبع گردآوری: Google News RSS. ارتباط و اهمیت عنوان‌ها باید از متن خبر و اطلاعیه رسمی شرکت بررسی شود.</p></section>
- <section className={styles.panel}><div className={styles.panelHead}><h2>این ابزار در حساب‌های خانواده</h2></div>{owners.map((o,i)=><div className={styles.dataAccountRow} key={i}><strong>{o.owner}</strong><bdi>{o.quantity}</bdi><bdi>{money(o.value)}</bdi></div>)}<p className={styles.footnote}>تجمیع فقط با ISIN یکسان انجام می‌شود؛ مالکیت حساب‌ها مستقل می‌ماند.</p><h3>رویدادهای ثبت‌شده</h3>{events.length?events.map(e=><p key={e.id}>{e.title} · <bdi>{e.date}</bdi>{e.url&&<> · <a href={e.url} target="_blank" rel="noreferrer">منبع</a></>}</p>):<p className={styles.muted}>رویداد دستی ثبت نشده؛ تقویم سود شرکت‌ها خودکار تأیید نشده است.</p>}</section></div>
- <section className={styles.panel}><div className={styles.panelHead}><h2>تصمیم‌ها و ثبت‌های تاریخی</h2></div>{related.map(d=><button key={d.id} type="button" className={styles.reviewQueueRow} onClick={()=>onOpenDecision(d.id)}><strong>{DECISION_ACTIONS[d.action]} · {d.planDate}</strong><span>{d.rationale}</span><Icon name="arrow" size={16}/></button>)}{!related.length&&<p className={styles.muted}>هنوز تصمیمی درباره این دارایی ثبت نشده است.</p>}<details><summary>تاریخچه ثبت‌های حساب · {number(history.length)} مورد</summary>{history.map(s=><p key={s.date}><bdi>{s.date}</bdi> · تعداد <bdi>{s.row.quantity}</bdi> · ارزش <bdi>{money(s.row.valueCents)}</bdi> · سود/زیان منبع <bdi>{signedMoney(s.row.gainCents)}</bdi></p>)}</details></section>
- </div>
+export default function AssetProfile({account, position, state, marketData, onTransactions, onConnect, onChartConnect, onDecision, onOpenDecision, onEvent}) {
+  const [connectOpen, setConnectOpen] = useState(false)
+  if (!position) return <section className={styles.panel}><h2>این دارایی در فهرست فعلی حساب نیست.</h2></section>
+
+  const key = marketKey(position)
+  const market = marketForPosition(position, marketData.markets)
+  const quote = market?.quote
+  const canLoad = key && (position.marketConfirmed || state.settings.isinPricesEnabled)
+  const changes = [['هفته', marketImpact(position, market, 7)], ['ماه', marketImpact(position, market, 30)]]
+  const related = state.decisions.filter(item => item.accountId === account.id && item.positionId === position.id)
+  const events = state.events.filter(item => item.accountId === account.id && item.positionId === position.id && !item.done)
+  const owners = state.accounts.flatMap(item => item.positions
+    .filter(holding => (holding.id === position.id && item.id === account.id) || (position.isin && holding.isin === position.isin))
+    .map(holding => ({...holding, owner: item.owner, accountId: item.id})))
+  const history = account.snapshots.map(snapshot => ({
+    date: snapshot.asOf,
+    row: snapshot.positions.find(holding => holding.id === position.id),
+  })).filter(item => item.row).sort((a, b) => b.date.localeCompare(a.date))
+
+  return <div className={styles.sectionStack}>
+    <section className={styles.panel}>
+      <div className={styles.panelHead}>
+        <div><h2 dir="auto">{position.name}</h2><p>{account.owner} · <bdi>{position.isin || 'بدون ISIN'}</bdi></p></div>
+        <button type="button" className={styles.primaryButton} onClick={onTransactions}>تراکنش‌های این دارایی</button>
+      </div>
+      <div className={styles.profileStats}>
+        <div><span>تعداد سهم</span><strong><bdi>{position.quantity}</bdi></strong></div>
+        <div><span>آخرین قیمت هر سهم</span><strong><bdi>{quote ? <>{price(quote.price)} {quote.currency}</> : '—'}</bdi></strong>
+          {quote && <small>{quote.exchange} · <bdi>{new Date(quote.asOf).toLocaleString('de-DE', {timeZone: 'Europe/Berlin'})}</bdi></small>}
+        </div>
+        <div><span>ارزش ثبت‌شده در گزارش بروکر</span><strong><bdi>{money(position.valueCents)}</bdi></strong>
+          <small><bdi>{position.asOf || account.snapshotDate || 'تاریخ نامشخص'}</bdi></small>
+        </div>
+      </div>
+    </section>
+
+    <TradingViewChart position={position} onConnect={onChartConnect}/>
+
+    <details className={`${styles.panel} ${styles.assetDetails}`}>
+      <summary>تاریخچه، منبع قیمت و خبرها</summary>
+      <div className={styles.buttonRow}>
+        <button type="button" className={styles.secondaryButton} disabled={!canLoad || marketData.loading[key]} onClick={() => marketData.load(key, position.name, true, true)}>دریافت تاریخچه</button>
+        <button type="button" className={styles.textButton} aria-expanded={connectOpen} onClick={() => setConnectOpen(open => !open)}>تنظیم منبع قیمت</button>
+      </div>
+      {connectOpen && <MarketConnection position={position} marketData={marketData} onConnect={symbol => {onConnect(symbol); setConnectOpen(false)}}/>}
+      {marketData.loading[key] && <p role="status">در حال دریافت دادهٔ بازار…</p>}
+      {marketData.errors[key] && <p role="alert" className={styles.error}>{marketData.errors[key]}</p>}
+      {quote && <p className={styles.marketSource}><a href={quote.sourceUrl} target="_blank" rel="noreferrer">{quote.source}</a> · <bdi>{quote.symbol} · {quote.exchange}</bdi></p>}
+      {market && !marketTrusted(position, market) && <p className={styles.error}>تطبیق این منبع قیمت تأیید نشده است.</p>}
+      {market?.history?.length > 0 && <TechnicalChart key={key} market={market} loading={marketData.loading[key]} error={marketData.errors[key]}/>}
+      {changes.some(([, change]) => change) && <div className={styles.periodGrid}>{changes.map(([label, change]) => change && <div key={label}>
+        <h3>تغییر {label}</h3><strong><bdi>{percent(change.nativePercent)}</bdi></strong>
+        <p>اثر برآوردی با تعداد فعلی <bdi>{signedMoney(change.deltaCents)}</bdi></p>
+      </div>)}</div>}
+      {market?.news?.length > 0 && <div className={styles.newsList}>{market.news.map(item => <article key={item.url}>
+        <a href={item.url} target="_blank" rel="noreferrer" dir="auto">{item.title}</a><small><bdi>{item.publisher} · {item.date.slice(0, 10)}</bdi></small>
+      </article>)}</div>}
+    </details>
+
+    <details className={`${styles.panel} ${styles.assetDetails}`}>
+      <summary>تصمیم‌ها و رویدادها</summary>
+      <div className={styles.buttonRow}>
+        <button type="button" className={styles.secondaryButton} onClick={onDecision}>ثبت تصمیم</button>
+        <button type="button" className={styles.secondaryButton} onClick={onEvent}>ثبت رویداد</button>
+      </div>
+      {related.map(item => <button key={item.id} type="button" className={styles.reviewQueueRow} onClick={() => onOpenDecision(item.id)}><bdi>{item.planDate}</bdi><span>{item.rationale}</span><Icon name="arrow" size={16}/></button>)}
+      {events.map(item => <p key={item.id}><bdi>{item.date}</bdi> · {item.title}</p>)}
+    </details>
+
+    <details className={`${styles.panel} ${styles.assetDetails}`}>
+      <summary>دارایی در حساب‌های خانواده و ثبت‌های تاریخی</summary>
+      {owners.map(item => <div className={styles.dataAccountRow} key={item.accountId + ':' + item.id}>
+        <strong>{item.owner}</strong><bdi>{item.quantity}</bdi><bdi>{money(item.valueCents)}</bdi>
+      </div>)}
+      {history.map(item => <p key={item.date}><bdi>{item.date}</bdi> · <bdi>{item.row.quantity}</bdi> سهم · <bdi>{money(item.row.valueCents)}</bdi></p>)}
+    </details>
+  </div>
 }
