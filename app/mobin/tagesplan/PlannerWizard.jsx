@@ -74,7 +74,7 @@ function alternate(blocks) {
 }
 
 export default function PlannerWizard() {
-  const [step, setStep] = useState(0)
+  const [step, setStep] = useState(null)
   const [library, setLibrary] = useState(defaults)
   const [start, setStart] = useState('12:00')
   const [total, setTotal] = useState(36)
@@ -84,6 +84,8 @@ export default function PlannerWizard() {
   const [mode, setMode] = useState('manual')
   const [editing, setEditing] = useState(false)
   const [saved, setSaved] = useState(null)
+  const [activeIndex, setActiveIndex] = useState(0)
+  const savedDate = useRef(null)
   const [message, setMessage] = useState('')
   const [legacy, setLegacy] = useState(false)
   const [over, setOver] = useState(false)
@@ -96,7 +98,11 @@ export default function PlannerWizard() {
 
   useEffect(() => {
     setLibrary(read(LIBRARY_KEY, defaults))
-    setSaved(read(PLAN_KEY, {})[day()] ?? null)
+    savedDate.current = day()
+    const today = read(PLAN_KEY, {})[savedDate.current] ?? null
+    setSaved(today)
+    setActiveIndex(today?.blocks.findIndex(block => (block.done ?? 0) < block.units) ?? 0)
+    setStep(today?.blocks.length ? 4 : 0)
   }, [])
 
   function go(next) {
@@ -177,11 +183,37 @@ export default function PlannerWizard() {
 
   function save() {
     const plan = { start, blocks: order }
+    const date = day()
     try {
-      localStorage.setItem(PLAN_KEY, JSON.stringify({ ...read(PLAN_KEY, {}), [day()]: plan }))
+      localStorage.setItem(PLAN_KEY, JSON.stringify({ ...read(PLAN_KEY, {}), [date]: plan }))
       setSaved(plan)
-      setMessage('Dein Plan wurde auf diesem Gerät gespeichert.')
+      savedDate.current = date
+      setActiveIndex(0)
+      go(4)
     } catch { setMessage('Dein Plan konnte nicht gespeichert werden.') }
+  }
+
+  function updateProgress(id, done) {
+    const blocks = saved.blocks.map(block => block.id === id
+      ? { ...block, done: clamp(done, 0, block.units) }
+      : block)
+    const plan = { ...saved, blocks }
+    try {
+      localStorage.setItem(PLAN_KEY, JSON.stringify({ ...read(PLAN_KEY, {}), [savedDate.current]: plan }))
+      setSaved(plan)
+      setMessage('')
+    } catch { setMessage('Der Fortschritt konnte nicht gespeichert werden.') }
+  }
+
+  function newPlan() {
+    setStart('12:00')
+    setTotal(36)
+    setSelected([])
+    setGroups({ focus: [], pause: [] })
+    setOrder([])
+    setMode('manual')
+    setEditing(false)
+    go(0)
   }
 
   function updateLibrary(next) {
@@ -193,13 +225,21 @@ export default function PlannerWizard() {
 
   if (legacy) return <><button className={styles.legacyBack} onClick={() => setLegacy(false)}>Zum neuen Planer</button><LegacyPlan /></>
 
+  if (step === null) return <main className={styles.shell} aria-busy="true" />
+
+  const savedBlocks = saved?.blocks ?? []
+  const viewedIndex = activeIndex < 0 ? savedBlocks.length - 1 : activeIndex
+  const viewed = savedBlocks[viewedIndex]
+  const completed = savedBlocks.filter(block => (block.done ?? 0) === block.units).length
+  const progress = savedBlocks.reduce((value, block) => value + (block.done ?? 0), 0)
+  let savedCursor = saved?.start.split(':').reduce((hours, value) => hours * 60 + Number(value), 0)
   let cursor = startMinutes
   return <main className={styles.shell}>
     <div className={styles.wrap}>
       <header className={styles.header}>
-        {step ? <button className={styles.brand} onClick={() => go(step - 1)}>← <b>Mobin</b></button> : <Link className={styles.brand} href="/mobin">← <b>Mobin</b></Link>}
-        <ol className={styles.steps}>{(step === 3 ? ['Zeit', 'Aktivitäten', 'Aufteilen', 'Dein Plan'] : ['Zeit', 'Aktivitäten', 'Aufteilen']).map((label, index) =>
-          <li key={label} aria-current={step === index ? 'step' : undefined} data-done={step >= index}>{label}</li>)}</ol>
+        {step > 0 && step < 4 ? <button className={styles.brand} onClick={() => go(step - 1)}>← <b>Mobin</b></button> : <Link className={styles.brand} href="/mobin">← <b>Mobin</b></Link>}
+        {step < 4 && <ol className={styles.steps}>{(step === 3 ? ['Zeit', 'Aktivitäten', 'Aufteilen', 'Dein Plan'] : ['Zeit', 'Aktivitäten', 'Aufteilen']).map((label, index) =>
+          <li key={label} aria-current={step === index ? 'step' : undefined} data-done={step >= index}>{label}</li>)}</ol>}
         <Link href="/mobin" aria-label="Planer schließen" className={styles.close}>×</Link>
       </header>
 
@@ -228,13 +268,7 @@ export default function PlannerWizard() {
           </div>
           <button className={styles.primary} onClick={() => go(1)}>Weiter zu den Aktivitäten →</button>
           <div className={styles.secondaryActions}>
-            {saved && <button onClick={() => {
-              setStart(saved.start)
-              setOrder(saved.blocks)
-              setTotal(sum(saved.blocks))
-              setGroups({ focus: saved.blocks.filter(block => block.group === 'focus'), pause: saved.blocks.filter(block => block.group === 'pause') })
-              go(3)
-            }}>Gespeicherten Plan öffnen</button>}
+            {saved && <button onClick={() => go(4)}>Heutigen Plan öffnen</button>}
             <button onClick={() => setLegacy(true)}>Ziele & bisherige Einträge</button>
           </div>
         </>}
@@ -347,6 +381,58 @@ export default function PlannerWizard() {
             </li>
           })}</ol>
           <button className={styles.primary} onClick={save}>Plan speichern</button>
+        </>}
+        {step === 4 && viewed && <>
+          <h1 className={styles.compact} tabIndex={-1} ref={heading}>Dein Plan für heute.</h1>
+          <div className={styles.todayLayout}>
+            <section className={styles.todayPanel} aria-label="Tagesablauf">
+              <h2>Tagesablauf</h2>
+              <ol className={styles.todayList}>{savedBlocks.map((block, index) => {
+                const time = clock(savedCursor)
+                savedCursor += minutes(block.units)
+                const done = (block.done ?? 0) === block.units
+                return <li key={block.id} data-group={block.group}>
+                  <button type="button" className={styles.todayActivity} aria-current={index === viewedIndex ? 'step' : undefined}
+                    onClick={() => setActiveIndex(index)}>
+                    <span>{time}–{clock(savedCursor)}</span>
+                    <strong><ActivityIcon id={block.activityId ?? block.id} />{block.name}</strong>
+                  </button>
+                  <label className={styles.todayCheck}>
+                    <input type="checkbox" checked={done} aria-label={block.name + ' erledigt'}
+                      onChange={event => updateProgress(block.id, event.target.checked ? block.units : 0)} />
+                  </label>
+                </li>
+              })}</ol>
+            </section>
+            <section className={styles.todayPanel} aria-label="Fortschritt">
+              <h2>Fortschritt</h2>
+              <p aria-live="polite">{completed} von {savedBlocks.length} Aktivitäten erledigt · {minutes(progress)} von {minutes(sum(savedBlocks))} Min.</p>
+              <progress value={progress} max={sum(savedBlocks)} aria-label="Tagesfortschritt" />
+              <div className={styles.todayDetail}>
+                <div className={styles.todayNavigation}>
+                  <button type="button" aria-label="Vorherige Aktivität" disabled={viewedIndex === 0}
+                    onClick={() => setActiveIndex(viewedIndex - 1)}>←</button>
+                  <strong>{viewed.name}</strong>
+                  <button type="button" aria-label="Nächste Aktivität" disabled={viewedIndex === savedBlocks.length - 1}
+                    onClick={() => setActiveIndex(viewedIndex + 1)}>→</button>
+                </div>
+                <div className={styles.todayNavigation}>
+                  <button type="button" aria-label="5 Minuten weniger" disabled={!(viewed.done ?? 0)}
+                    onClick={() => updateProgress(viewed.id, (viewed.done ?? 0) - 1)}>−</button>
+                  <label>{minutes(viewed.done ?? 0)} / {minutes(viewed.units)} Min.
+                    <input type="range" min="0" max={viewed.units} value={viewed.done ?? 0}
+                      aria-label={'Fortschritt für ' + viewed.name}
+                      aria-valuetext={minutes(viewed.done ?? 0) + ' von ' + minutes(viewed.units) + ' Minuten'}
+                      onChange={event => updateProgress(viewed.id, Number(event.target.value))} />
+                  </label>
+                  <button type="button" aria-label="5 Minuten mehr" disabled={(viewed.done ?? 0) === viewed.units}
+                    onClick={() => updateProgress(viewed.id, (viewed.done ?? 0) + 1)}>+</button>
+                </div>
+              </div>
+              {completed === savedBlocks.length && <p className={styles.planDone} role="status">✓ Tagesplan abgeschlossen</p>}
+            </section>
+          </div>
+          <div className={styles.secondaryActions}><button type="button" onClick={newPlan}>Neuen Plan erstellen</button></div>
         </>}
         {message && <p className={styles.message} role="status">{message}</p>}
       </section>
