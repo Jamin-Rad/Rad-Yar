@@ -5,9 +5,9 @@ import InteractiveTeachingGroups, { TeachingGroup, TeachingGroups } from '@/comp
 import StandardLessonShell, { LessonSection, LessonSources } from '@/components/lesson-template/StandardLessonShell'
 import { useLanguage } from '@/providers/LanguageProvider'
 import CaseAtlas from './CaseAtlas'
+import { VentricularMriExamples } from './PublishedMriFigures'
 import CriteriaOverview from './CriteriaLab'
 import { Icon, Note, MrtOverview, ProtocolOverview } from './LessonVisuals'
-import { VentricleDiagram } from './AcmDiagrams'
 import { CASES, SECTIONS, SOURCES, TAKE_HOME } from './lessonContent'
 import { arvcText, localizeArvcTree } from './lessonTranslations'
 import styles from './page.module.css'
@@ -50,11 +50,12 @@ function Definition() {
           </div>
         </TeachingGroup>
       </TeachingGroups>
-      <Comparison intro={DISTRIBUTION_INTRO[_arvcLang] || DISTRIBUTION_INTRO.de} id="distribution" title="Drei mögliche Verteilungen" renderVisual={item => <VentricleDiagram pattern={item.pattern}/>} rows={[
-        ['RV-dominant · klassische ARVC', 'Rechte Kammer besonders auffällig: regionale Bewegungsstörungen, Vergrößerung und reduzierte Pumpfunktion.', 'rv'],
-        ['Biventrikulär', 'Rechte und linke Kammer sind beteiligt. Neben der RV-Veränderung können nichtischämische Narben im LV auffallen.', 'both'],
-        ['LV-dominant', 'Vor allem die linke Kammer ist betroffen, während die rechte Kammer unauffällig sein kann. Für die Einordnung sind das Narbenmuster, die genetischen Befunde und mögliche andere Ursachen wichtig.', 'lv'],
+      <Comparison intro={DISTRIBUTION_INTRO[_arvcLang] || DISTRIBUTION_INTRO.de} id="distribution" title="Drei mögliche Verteilungen" rows={[
+        ['RV-dominant · klassische ARVC', 'Rechte Kammer besonders auffällig: regionale Bewegungsstörungen, Vergrößerung und reduzierte Pumpfunktion.'],
+        ['Biventrikulär', 'Rechte und linke Kammer sind beteiligt. Neben der RV-Veränderung können nichtischämische Narben im LV auffallen.'],
+        ['LV-dominant', 'Vor allem die linke Kammer ist betroffen, während die rechte Kammer unauffällig sein kann. Für die Einordnung sind das Narbenmuster, die genetischen Befunde und mögliche andere Ursachen wichtig.'],
       ]}/>
+      <VentricularMriExamples/>
     </div>
   </>, _arvcLang)
 }
@@ -96,16 +97,15 @@ function Differentials() {
   </>, _arvcLang)
 }
 
-function Comparison({ id, title, tone, rows, intro, renderVisual }) {
+function Comparison({ id, title, tone, rows, intro }) {
   const { lang } = useLanguage()
-  return <InteractiveTeachingGroups direction={lang === 'fa' ? 'rtl' : 'ltr'} renderVisual={renderVisual} groups={[{
+  return <InteractiveTeachingGroups direction={lang === 'fa' ? 'rtl' : 'ltr'} groups={[{
     id,
     title,
     tone,
     hidePanelTitle: true,
-    visualPlacement: renderVisual ? 'inline' : undefined,
     intro,
-    items: rows.map(([label, text, pattern], index) => ({ id: String(index), label, text, pattern })),
+    items: rows.map(([label, text], index) => ({ id: String(index), label, text })),
   }]} />
 }
 

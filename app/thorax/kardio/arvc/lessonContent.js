@@ -8,7 +8,14 @@ export const SECTIONS = [
 ]
 export const SECTION_IDS = SECTIONS.map(section => section.id)
 export const CORE_SECTION_IDS = SECTIONS.filter(section => !section.optional).map(section => section.id)
+export const LGE_PATTERN_SOURCE = {
+  label: 'Sokolska et al. · 2025',
+  title: 'Myocardial Damage Patterns in Patients with Left Ventricular Systolic Dysfunction with and Without Coronary Artery Disease Referred for Cardiac Magnetic Resonance · Fig. A1',
+  url: 'https://www.mdpi.com/2227-9059/13/7/1612#biomedicines-13-01612-f0A1',
+}
+
 export const SOURCES = [
+  LGE_PATTERN_SOURCE,
   { label: 'Marcus et al. · 2010', title: 'Originalarbeit: revidierte Task-Force-Kriterien', url: 'https://doi.org/10.1161/CIRCULATIONAHA.108.840827' },
   { label: 'Corrado et al. · 2020', title: 'Originalkonsens: Die Padua-Kriterien', url: 'https://doi.org/10.1016/j.ijcard.2020.06.005' },
   { label: 'Corrado et al. · 2021', title: 'Entwicklung und Anwendung der Diagnosekriterien', url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC8649536/' },

@@ -6,6 +6,15 @@
   "publicationLicense": "CC BY 4.0; third-party original image rights remain applicable.",
   "images": [
     {
+      "file": "lge-patterns-sokolska-2025.png",
+      "figure": "A1",
+      "creator": "Sokolska et al., Biomedicines 2025;13:1612",
+      "originalStudy": "https://doi.org/10.3390/biomedicines13071612",
+      "downloadUrl": "https://mdpi-res.com/biomedicines/biomedicines-13-01612/article_deploy/html/images/biomedicines-13-01612-g0A1.png",
+      "license": "CC BY 4.0",
+      "changes": "None."
+    },
+    {
       "file": "radiopaedia-57972.jpg",
       "figure": 3,
       "creator": "Dr. Azza Elgendy, Radiopaedia.org, rID 57972",
