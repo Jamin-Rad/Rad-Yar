@@ -21,7 +21,6 @@
   flex-direction: column;
   justify-content: center;
   overflow: hidden;
-  background: var(--hero-bg);
 }
 
 :global(html[data-theme='dark']) .hero {
@@ -37,16 +36,6 @@
   --hero-indicator-bg: rgba(8,14,28,.54);
   --hero-indicator-text: rgba(226,232,240,.74);
   --body-shift-x: 10px;
-}
-
-/* ── BACKGROUND ──────────────────────────────────────── */
-.bg {
-  position: absolute; inset: 0; z-index: 0;
-}
-
-
-.bgGrid {
-  z-index: 2;
 }
 
 /* Subtle top glow line */
@@ -330,14 +319,6 @@
   align-items: center;
   justify-content: flex-start;
   min-height: min(78vh, 760px);
-}
-
-/* ── AURORA CANVAS ───────────────────────────────────── */
-.auroraCanvas {
-  position: absolute; inset: 0;
-  width: 100%; height: 100%;
-  z-index: 1; pointer-events: none;
-  opacity: 1;
 }
 
 /* ── BODY WRAP ───────────────────────────────────────── */

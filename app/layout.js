@@ -11,6 +11,7 @@ import LegalNotice from '@/components/LegalNotice'
 import ImageLightbox from '@/components/ImageLightbox'
 import LessonEnhancer from '@/components/LessonEnhancer'
 import LessonPdfExport from '@/components/LessonPdfExport'
+import HomeScene from '@/components/HomeScene'
 
 const fraunces = localFont({
   src: [
@@ -131,6 +132,7 @@ export default function RootLayout({ children }) {
               <LehrMode />
               <LessonEnhancer />
               <LessonPdfExport />
+              <HomeScene />
               {children}
               <ImageLightbox />
               <RobotAssistant />

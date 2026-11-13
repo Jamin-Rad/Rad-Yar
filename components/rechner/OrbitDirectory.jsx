@@ -4,7 +4,6 @@ import Link from 'next/link'
 import { GROUPS, filterTools, pick, toolHref, directoryHref } from './catalog'
 import Icon from './Icons'
 import { HOME_ANATOMY_SRC, takeHomeArrival } from './homeArrival'
-import scene from '../HomeScene.module.css'
 import styles from './orbit.module.css'
 
 const ASSETS = ['brain','thorax','mamma','abdomen','urogenital','onko','spine']
@@ -19,16 +18,16 @@ function useHomeArrival(anatomy, orbit, panel) {
     if (!arrival || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
     if (!orbit.current?.animate) return
 
-    const easing = 'cubic-bezier(.22, .68, .27, 1)'
+    const easing = 'cubic-bezier(.25, .75, .25, 1)'
     const animations = [
       orbit.current.animate([
-        { transform: 'translateX(44vw) scale(.92)', opacity: 0 },
-        { transform: 'translateX(0) scale(1)', opacity: 1 },
-      ], { duration: 820, delay: 90, easing, fill: 'backwards' }),
+        { transform: 'translateX(24vw)', opacity: 0 },
+        { transform: 'none', opacity: 1 },
+      ], { duration: 860, delay: 150, easing, fill: 'backwards' }),
       panel.current.animate([
         { transform: 'translateY(14px)', opacity: 0 },
         { transform: 'translateY(0)', opacity: 1 },
-      ], { duration: 440, delay: 380, easing, fill: 'backwards' }),
+      ], { duration: 480, delay: 400, easing, fill: 'backwards' }),
     ]
 
     if (arrival.bounds && anatomy.current) {
@@ -38,10 +37,10 @@ function useHomeArrival(anatomy, orbit, panel) {
         animations.push(anatomy.current.animate([
           {
             transform: `translate(${from.left - to.left}px, ${from.top - to.top}px) scale(${from.width / to.width}, ${from.height / to.height})`,
-            opacity: .96,
+            opacity: 1,
           },
-          { transform: 'none', opacity: .14 },
-        ], { duration: 760, easing }))
+          { transform: 'none', opacity: getComputedStyle(anatomy.current).opacity },
+        ], { duration: 940, easing }))
       }
     }
 
@@ -80,8 +79,7 @@ export default function OrbitDirectory({ lang, ui, initialGroup = 'urogenital', 
     return () => window.removeEventListener('keydown', key)
   }, [searching])
   useEffect(() => { if (searching) input.current?.focus() }, [searching])
-  return <main className={`${styles.shell} ${scene.background}`} dir={lang === 'fa' ? 'rtl' : 'ltr'}>
-    <div className={scene.grid} aria-hidden="true"/>
+  return <main className={styles.shell} dir={lang === 'fa' ? 'rtl' : 'ltr'}>
     <img ref={anatomy} className={styles.homeAnatomy} src={HOME_ANATOMY_SRC} alt="" width="842" height="1672" draggable="false"/>
     <h1 className={styles.srOnly}>{ui.directory}</h1>
     <div className={styles.layout}>

@@ -116,6 +116,8 @@ body {
   overflow-x: hidden;
 }
 
+body:has([data-home-scene]) { isolation: isolate; }
+
 /* ── PERSIAN ──────────────────────────────────────────
    Vazirmatn auf RTL-Inhalte, aber NICHT auf lang="en"
    (schützt das RADYAR-Wordmark vor Überschreiben)

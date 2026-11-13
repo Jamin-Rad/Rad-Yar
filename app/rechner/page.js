@@ -1,6 +1,5 @@
 import { Suspense } from 'react'
 import RechnerClient from '@/components/rechner/RechnerClient'
-import scene from '@/components/HomeScene.module.css'
 
 export const metadata = {
   title: 'Radiologische Rechner | RadYar',
@@ -8,7 +7,7 @@ export const metadata = {
   alternates: { canonical: '/rechner' },
 }
 export default function RechnerPage() {
-  return <Suspense fallback={<main className={scene.background} style={{ minHeight: '100svh', padding: 40, color: '#eefaff' }}>RadYar · Rechner</main>}>
+  return <Suspense fallback={<main aria-busy="true" style={{ minHeight: '100svh' }}/>}>
     <RechnerClient/>
   </Suspense>
 }
