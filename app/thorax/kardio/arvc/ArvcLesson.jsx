@@ -13,24 +13,21 @@ import styles from './page.module.css'
 
 const INTRO = {
   "de": [
-    "Bei der arrhythmogenen Kardiomyopathie (ACM) wird Herzmuskelgewebe durch Narbengewebe und zum Teil durch Fett ersetzt. Gefährliche Rhythmusstörungen aus den Herzkammern können schon auftreten, wenn das Herz noch relativ gut pumpt.",
-    "ARVC bezeichnet die klassische Form, bei der vor allem die rechte Herzkammer betroffen ist. ACM ist der Oberbegriff: Auch die linke Kammer kann mitbetroffen sein oder im Vordergrund stehen.",
-    "ACM ist häufig erblich. Ob die linke Kammer betroffen ist, spielt auch für die Prognose eine Rolle.",
-    "Herzstolpern, eine Ohnmacht, ventrikuläre Rhythmusstörungen oder eine familiäre Vorbelastung können Anlass für eine Abklärung sein.",
+    "Bei der arrhythmogenen Kardiomyopathie (ACM) wird Herzmuskelgewebe durch Narbengewebe und zum Teil durch Fett ersetzt. Gefährliche Rhythmusstörungen aus den Herzkammern können schon auftreten, wenn das Herz noch relativ gut pumpt. Die klassische rechtsbetonte Form heißt arrhythmogene rechtsventrikuläre Kardiomyopathie (ARVC).",
+    "ACM ist der Oberbegriff: Auch die linke Kammer kann mitbetroffen sein oder im Vordergrund stehen.",
+    "ACM ist häufig erblich. Herzstolpern, eine Ohnmacht, ventrikuläre Rhythmusstörungen oder eine familiäre Vorbelastung können Anlass für eine Abklärung sein.",
     "Das MRT zeigt, wie sich der Herzmuskel verändert hat. Zur Abklärung gehören auch ein EKG, die Untersuchung des Herzrhythmus und Fragen zu Herzerkrankungen in der Familie."
   ],
   "en": [
-    "In arrhythmogenic cardiomyopathy (ACM), heart muscle is replaced by scar tissue and sometimes fat. Dangerous ventricular arrhythmias can occur while the heart is still pumping relatively well.",
-    "ARVC is the classic form, which mainly affects the right ventricle. ACM is the broader term: the left ventricle can also be affected or can be the main site of disease.",
-    "ACM is often inherited. Whether the left ventricle is affected also matters for prognosis.",
-    "Palpitations, fainting, ventricular arrhythmias or a relevant family history can prompt an evaluation.",
+    "In arrhythmogenic cardiomyopathy (ACM), heart muscle is replaced by scar tissue and sometimes fat. Dangerous ventricular arrhythmias can occur while the heart is still pumping relatively well. The classic right-sided form is called arrhythmogenic right ventricular cardiomyopathy (ARVC).",
+    "ACM is the broader term: the left ventricle can also be affected or can be the main site of disease.",
+    "ACM is often inherited. Palpitations, fainting, ventricular arrhythmias or a relevant family history can prompt an evaluation.",
     "MRI shows how the heart muscle has changed. The evaluation also includes an ECG, assessment of heart rhythm and questions about heart disease in the family."
   ],
   "fa": [
-    "در کاردیومیوپاتی آریتموژنیک (ACM)، بافت جوشگاهی و گاهی چربی جای بخشی از عضلهٔ قلب را می‌گیرند. حتی وقتی قلب هنوز نسبتاً خوب پمپاژ می‌کند، ممکن است آریتمی‌های خطرناک بطنی رخ دهند.",
-    "ARVC شکل کلاسیک بیماری است که عمدتاً بطن راست را درگیر می‌کند. ACM اصطلاح کلی‌تری است: بطن چپ هم ممکن است درگیر باشد یا درگیری در آن غالب باشد.",
-    "ACM اغلب ارثی است. درگیری بطن چپ برای پیش‌آگهی هم اهمیت دارد.",
-    "تپش قلب، غش، آریتمی بطنی یا سابقهٔ خانوادگی مرتبط می‌تواند دلیل بررسی باشد.",
+    "در کاردیومیوپاتی آریتموژنیک (ACM)، بافت جوشگاهی و گاهی چربی جای بخشی از عضلهٔ قلب را می‌گیرند. حتی وقتی قلب هنوز نسبتاً خوب پمپاژ می‌کند، ممکن است آریتمی‌های خطرناک بطنی رخ دهند. شکل کلاسیک با درگیری غالب بطن راست، کاردیومیوپاتی آریتموژنیک بطن راست (ARVC) نام دارد.",
+    "ACM اصطلاح کلی‌تری است: بطن چپ هم ممکن است درگیر باشد یا درگیری در آن غالب باشد.",
+    "ACM اغلب ارثی است. تپش قلب، غش، آریتمی بطنی یا سابقهٔ خانوادگی مرتبط می‌تواند دلیل بررسی باشد.",
     "MRI تغییرات عضلهٔ قلب را نشان می‌دهد. نوار قلب، بررسی ریتم و پرسش دربارهٔ بیماری قلبی در خانواده هم بخشی از ارزیابی‌اند."
   ]
 }
