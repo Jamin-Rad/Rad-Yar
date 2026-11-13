@@ -53,11 +53,9 @@
 .loss { color:var(--account-loss); }
 .accountChart { display:flex; flex-direction:row-reverse; align-items:center; justify-content:center; gap:clamp(12px,2.7vw,36px); min-width:0; }
 .accountRing { width:clamp(145px,23vw,300px); max-width:52%; flex-shrink:0; display:grid; place-items:center; aspect-ratio:1; }
-.accountRing svg,.accountRing>div { grid-area:1/1; }
-.accountRing svg { width:100%; height:100%; }
-.accountRing>div { display:grid; width:66%; text-align:center; }
-.accountRing span { color:var(--account-muted); font-size:12px; }
-.accountRing strong { font-size:clamp(15px,2vw,25px); overflow-wrap:anywhere; }
+.ringLabel { display:grid; }
+.ringLabel span { color:var(--account-muted); font-size:12px; }
+.ringLabel strong { font-size:clamp(15px,2vw,25px); overflow-wrap:anywhere; }
 .accountLegend { min-width:0; display:grid; gap:6px 20px; list-style:none; padding:0; margin:0; }
 .accountLegend li { display:grid; grid-template-columns:10px minmax(0,1fr) auto; gap:8px; align-items:center; font-size:13px; }
 .accountLegend i,.sectorTitle i { width:10px; height:10px; border-radius:50%; flex-shrink:0; }

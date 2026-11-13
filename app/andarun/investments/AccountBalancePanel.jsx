@@ -32,7 +32,7 @@ export default function AccountBalancePanel({ account, balance, allocation, ledg
       <div className={view.accountChart} role="group" aria-label="ترکیب دارایی‌ها به تفکیک دسته">
         {allocation.groups.length ? <>
           <AllocationRing className={view.accountRing} groups={allocation.groups}>
-            <div><span>ارزش دارایی‌ها</span><strong><bdi>{money(allocation.total)}</bdi></strong></div>
+            <div className={view.ringLabel}><span>ارزش دارایی‌ها</span><strong><bdi>{money(allocation.total)}</bdi></strong></div>
           </AllocationRing>
           <ul className={view.accountLegend}>
             {allocation.groups.map(group => <li key={group.key}><i style={{ background: group.color }} /><span>{group.label}</span><bdi>{percent(group.share * 100)}</bdi></li>)}
