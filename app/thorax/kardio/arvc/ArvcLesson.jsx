@@ -14,22 +14,25 @@ import styles from './page.module.css'
 const INTRO = {
   "de": [
     "Bei der arrhythmogenen Kardiomyopathie (ACM) wird Herzmuskelgewebe durch Narbengewebe und zum Teil durch Fett ersetzt. Gefährliche Rhythmusstörungen aus den Herzkammern können schon auftreten, wenn das Herz noch relativ gut pumpt. Die klassische rechtsbetonte Form heißt arrhythmogene rechtsventrikuläre Kardiomyopathie (ARVC).",
-    "ACM ist der Oberbegriff: Auch die linke Kammer kann mitbetroffen sein oder im Vordergrund stehen.",
     "ACM ist häufig erblich. Herzstolpern, eine Ohnmacht, ventrikuläre Rhythmusstörungen oder eine familiäre Vorbelastung können Anlass für eine Abklärung sein.",
     "Das MRT zeigt, wie sich der Herzmuskel verändert hat. Zur Abklärung gehören auch ein EKG, die Untersuchung des Herzrhythmus und Fragen zu Herzerkrankungen in der Familie."
   ],
   "en": [
     "In arrhythmogenic cardiomyopathy (ACM), heart muscle is replaced by scar tissue and sometimes fat. Dangerous ventricular arrhythmias can occur while the heart is still pumping relatively well. The classic right-sided form is called arrhythmogenic right ventricular cardiomyopathy (ARVC).",
-    "ACM is the broader term: the left ventricle can also be affected or can be the main site of disease.",
     "ACM is often inherited. Palpitations, fainting, ventricular arrhythmias or a relevant family history can prompt an evaluation.",
     "MRI shows how the heart muscle has changed. The evaluation also includes an ECG, assessment of heart rhythm and questions about heart disease in the family."
   ],
   "fa": [
     "در کاردیومیوپاتی آریتموژنیک (ACM)، بافت جوشگاهی و گاهی چربی جای بخشی از عضلهٔ قلب را می‌گیرند. حتی وقتی قلب هنوز نسبتاً خوب پمپاژ می‌کند، ممکن است آریتمی‌های خطرناک بطنی رخ دهند. شکل کلاسیک با درگیری غالب بطن راست، کاردیومیوپاتی آریتموژنیک بطن راست (ARVC) نام دارد.",
-    "ACM اصطلاح کلی‌تری است: بطن چپ هم ممکن است درگیر باشد یا درگیری در آن غالب باشد.",
     "ACM اغلب ارثی است. تپش قلب، غش، آریتمی بطنی یا سابقهٔ خانوادگی مرتبط می‌تواند دلیل بررسی باشد.",
     "MRI تغییرات عضلهٔ قلب را نشان می‌دهد. نوار قلب، بررسی ریتم و پرسش دربارهٔ بیماری قلبی در خانواده هم بخشی از ارزیابی‌اند."
   ]
+}
+
+const DISTRIBUTION_INTRO = {
+  "de": "ACM ist der Oberbegriff: Auch die linke Kammer kann mitbetroffen sein oder im Vordergrund stehen.",
+  "en": "ACM is the broader term: the left ventricle can also be affected or can be the main site of disease.",
+  "fa": "ACM اصطلاح کلی‌تری است: بطن چپ هم ممکن است درگیر باشد یا درگیری در آن غالب باشد."
 }
 
 function Definition() {
@@ -46,7 +49,7 @@ function Definition() {
           </div>
         </TeachingGroup>
       </TeachingGroups>
-      <Comparison id="distribution" title="Drei mögliche Verteilungen" rows={[
+      <Comparison intro={DISTRIBUTION_INTRO[_arvcLang] || DISTRIBUTION_INTRO.de} id="distribution" title="Drei mögliche Verteilungen" rows={[
         ['RV-dominant · klassische ARVC', 'Rechte Kammer besonders auffällig: regionale Bewegungsstörungen, Vergrößerung und reduzierte Pumpfunktion.'],
         ['Biventrikulär', 'Rechte und linke Kammer sind beteiligt. Neben der RV-Veränderung können nichtischämische Narben im LV auffallen.'],
         ['LV-dominant', 'Vor allem die linke Kammer ist betroffen, während die rechte Kammer unauffällig sein kann. Für die Einordnung sind das Narbenmuster, die genetischen Befunde und mögliche andere Ursachen wichtig.'],
@@ -92,13 +95,14 @@ function Differentials() {
   </>, _arvcLang)
 }
 
-function Comparison({ id, title, tone, rows }) {
+function Comparison({ id, title, tone, rows, intro }) {
   const { lang } = useLanguage()
   return <InteractiveTeachingGroups direction={lang === 'fa' ? 'rtl' : 'ltr'} groups={[{
     id,
     title,
     tone,
     hidePanelTitle: true,
+    intro,
     items: rows.map(([label, text], index) => ({ id: String(index), label, text })),
   }]} />
 }
