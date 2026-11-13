@@ -30,6 +30,20 @@
 .holdings { width: 100%; border-collapse: collapse; margin-top: 6px; }
 .holdings :is(th, td) { padding: 4px 0; border-top: 1px solid #394451; text-align: start; }
 .holdings th { font-weight: 600; overflow-wrap: anywhere; }
+.holdings .holdingLink {
+  display: block;
+  width: 100%;
+  min-height: 44px;
+  padding: 4px 0;
+  border: 0;
+  background: none;
+  color: #d8e9ff;
+  font: inherit;
+  text-align: start;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.holdingLink:focus-visible { outline: 2px solid #d8e9ff; outline-offset: -2px; }
 .holdings thead { color: #c7d2dd; }
 .holdings :is(th, td):not(:first-child) { padding-inline-start: 6px; text-align: end; white-space: nowrap; }
 @media (max-width: 680px) {

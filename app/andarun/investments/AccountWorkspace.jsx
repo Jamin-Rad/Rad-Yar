@@ -37,6 +37,7 @@ export default function AccountWorkspace({ account, assetSectors, dark, onAccoun
       </div>
     </header>
     <AccountBalancePanel account={account} balance={balance} allocation={allocation} ledger={ledger} dark={dark}
+      onOpenHolding={holding => onOpen({ id: holding.positionId })}
       onDetails={onDetails} profitSelection={profitSelection} onProfitSelection={onProfitSelection} profitPeriod={profitPeriod}/>
     <div className={view.tabs} role="tablist" aria-label="بخش‌های حساب">{[['holdings','دارایی‌ها'],['transactions','تراکنش‌ها'],['settings','تنظیمات']].map(([key,label])=><button type="button" role="tab" key={key} id={`account-tab-${key}`} aria-selected={tab===key} aria-controls="account-tab-panel" tabIndex={tab===key?0:-1} onKeyDown={event=>{if(['ArrowLeft','ArrowRight','Home','End'].includes(event.key)){event.preventDefault();const keys=['holdings','transactions','settings'];const next=event.key==='Home'?0:event.key==='End'?2:(keys.indexOf(tab)+(event.key==='ArrowLeft'?1:2))%3;setTab(keys[next]);document.getElementById(`account-tab-${keys[next]}`)?.focus()}}} onClick={()=>setTab(key)}>{label}</button>)}</div>
     <div id="account-tab-panel" role="tabpanel" aria-labelledby={`account-tab-${tab}`}>

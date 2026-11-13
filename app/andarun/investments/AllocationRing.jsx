@@ -4,7 +4,7 @@ import { useId, useState } from 'react'
 import { money, percent } from '@/lib/investments/portfolio.mjs'
 import styles from './AllocationRing.module.css'
 
-export default function AllocationRing({ groups, children, className }) {
+export default function AllocationRing({ groups, children, className, onOpenHolding }) {
   const gradientId = useId()
   const detailsId = gradientId + '-details'
   const [hovered, setHovered] = useState(null)
@@ -84,7 +84,11 @@ export default function AllocationRing({ groups, children, className }) {
       <table className={styles.holdings}>
         <thead><tr><th scope="col">دارایی</th><th scope="col">ارزش</th><th scope="col">از کل سبد</th></tr></thead>
         <tbody>{active.holdings.map(holding => <tr key={holding.key}>
-          <th scope="row"><bdi>{holding.name}</bdi></th>
+          <th scope="row">
+            <button type="button" className={styles.holdingLink} onClick={() => onOpenHolding(holding)}>
+              <bdi>{holding.name}</bdi>
+            </button>
+          </th>
           <td><bdi>{money(holding.valueCents)}</bdi></td>
           <td><bdi>{percent(holding.share * 100)}</bdi></td>
         </tr>)}</tbody>

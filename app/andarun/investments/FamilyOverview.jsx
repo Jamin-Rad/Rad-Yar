@@ -20,7 +20,7 @@ const providers = [
 const resultClass = value => value == null || value === 0 ? '' : value > 0 ? styles.positive : styles.negative
 const displayMoney = value => value == null ? '—' : money(value)
 
-function Allocation({ allocation, onHolding }) {
+function Allocation({ allocation, onHolding, onOpenHolding }) {
   return <div className={styles.allocation}>
     <ul className={styles.sectors}>
       {allocation.groups.map(group => <li key={group.key} style={{'--sector':group.color}}>
@@ -29,7 +29,7 @@ function Allocation({ allocation, onHolding }) {
         <span className={styles.track} aria-hidden="true"><i style={{width: (group.share * 100) + '%'}}/></span>
       </li>)}
     </ul>
-    <AllocationRing className={styles.ring} groups={allocation.groups}>
+    <AllocationRing className={styles.ring} groups={allocation.groups} onOpenHolding={onOpenHolding}>
       <span lang="en">Trade<br/>Republic</span>
     </AllocationRing>
     <div className={styles.topHoldings}>
@@ -42,7 +42,7 @@ function Allocation({ allocation, onHolding }) {
   </div>
 }
 
-export default function FamilyOverview({ state, ledger, onLedger, marketData, onEnablePrices, profitSelection={mode:'current'}, onProfitSelection, profitPeriod, dark, onTheme, onEntry, onSave, saving }) {
+export default function FamilyOverview({ state, ledger, onLedger, onOpenAsset, marketData, onEnablePrices, profitSelection={mode:'current'}, onProfitSelection, profitPeriod, dark, onTheme, onEntry, onSave, saving }) {
   const [selected, setSelected] = useState('tr')
   const id = useId()
   const balance = useMemo(() => familyBalance(state.accounts, ledger?.loaded ? ledger.transactions : null, marketData.markets), [state.accounts, ledger?.loaded, ledger?.transactions, marketData.markets])
@@ -110,7 +110,10 @@ export default function FamilyOverview({ state, ledger, onLedger, marketData, on
       {selected === 'tr' && <>
         <section className={styles.block} aria-labelledby={id + '-allocation'}>
           <h2 id={id + '-allocation'}>ترکیب بخشی دارایی‌های <bdi>Trade Republic</bdi></h2>
-          {allocation.total > 0 ? <Allocation allocation={allocation} onHolding={holding => onLedger('all', 'transactions', holding.isin || holding.name)}/> : <p className={styles.empty}>برای نمایش ترکیب سبد، قیمت‌های دارایی‌ها را به‌روزرسانی کن.</p>}
+          {allocation.total > 0 ? <Allocation allocation={allocation}
+            onHolding={holding => onLedger('all', 'transactions', holding.isin || holding.name)}
+            onOpenHolding={holding => onOpenAsset(holding.accountId, holding.positionId)}
+          /> : <p className={styles.empty}>برای نمایش ترکیب سبد، قیمت‌های دارایی‌ها را به‌روزرسانی کن.</p>}
           {allocation.excluded > 0 && <p className={styles.muted}>{number(allocation.excluded)} موقعیت به‌دلیل نبود قیمت معتبر یا تعداد تأییدشده، در وزن‌ها محاسبه نشده‌اند.</p>}
           {priceErrors && <p className={styles.muted} role="status">دریافت برخی قیمت‌ها انجام نشد. قیمت قبلی در صورت وجود حفظ شده است.</p>}
         </section>

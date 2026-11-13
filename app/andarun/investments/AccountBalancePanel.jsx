@@ -6,7 +6,7 @@ import AllocationRing from './AllocationRing'
 import styles from './investments.module.css'
 import view from './AccountView.module.css'
 
-export default function AccountBalancePanel({ account, balance, allocation, ledger, onDetails, profitSelection={mode:'current'}, onProfitSelection, profitPeriod, dark, detailsOnly=false }) {
+export default function AccountBalancePanel({ account, balance, allocation, ledger, onDetails, onOpenHolding, profitSelection={mode:'current'}, onProfitSelection, profitPeriod, dark, detailsOnly=false }) {
   const isPeriod = profitSelection.mode!=='current'
   const isRealized = profitSelection.scope==='realized'
   const result = isRealized ? profitPeriod?.realized?.accounts.find(a=>a.accountId===account.id) : isPeriod ? profitPeriod?.result?.accounts.find(a=>a.accountId===account.id) : unrealizedBalance(balance.positions)
@@ -31,7 +31,7 @@ export default function AccountBalancePanel({ account, balance, allocation, ledg
       </dl>
       <div className={view.accountChart} role="group" aria-label="ترکیب دارایی‌ها به تفکیک دسته">
         {allocation.groups.length ? <>
-          <AllocationRing className={view.accountRing} groups={allocation.groups}>
+          <AllocationRing className={view.accountRing} groups={allocation.groups} onOpenHolding={onOpenHolding}>
             <div className={view.ringLabel}><span>ارزش دارایی‌ها</span><strong><bdi>{money(allocation.total)}</bdi></strong></div>
           </AllocationRing>
           <ul className={view.accountLegend}>
