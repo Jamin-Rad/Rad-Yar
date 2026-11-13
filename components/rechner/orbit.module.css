@@ -36,12 +36,28 @@
   left: clamp(-45px, -2vw, -14px);
   height: min(96vh, 1120px);
   width: auto;
-  z-index: -1;
+  z-index: 1;
+  aspect-ratio: 842 / 1672;
+  cursor: pointer;
+  user-select: none;
+}
+
+.homeAnatomy img {
+  display: block;
+  width: 100%;
+  height: 100%;
   opacity: .40;
   transform-origin: top left;
   pointer-events: none;
-  user-select: none;
 }
+
+.homeAnatomy:hover img, .homeAnatomy:focus-visible img { opacity: .54; }
+.homeAnatomy:focus-visible { outline: 2px solid var(--mint); outline-offset: -3px; }
+
+.shell { touch-action: pan-y; }
+.layout { position: relative; z-index: 2; pointer-events: none; }
+.organ, .rotation, .results { pointer-events: auto; }
+.dock { position: relative; z-index: 2; }
 
 @media (max-width: 1024px) {
   .homeAnatomy { height: min(112vw, 700px); }
@@ -52,8 +68,8 @@
     height: auto;
     width: calc(100vw - 28px);
     left: -23vw;
-    opacity: .31;
   }
+  .homeAnatomy img { opacity: .31; }
 }
 
 .caption, .tool, .dock button, .search input {

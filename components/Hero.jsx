@@ -2,11 +2,11 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import RadYarIcon from './RadYarIcon'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useLayoutEffect, useRef } from 'react'
 import { useRouter } from 'next/navigation'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { REF_COPY } from '@/data/referenzen'
-import { captureHomeArrival, HOME_ANATOMY_SRC } from './rechner/homeArrival'
+import { captureHomeArrival, HOME_ANATOMY_SRC, takeHomeReturn } from './rechner/homeArrival'
 
 import styles from './Hero.module.css'
 
@@ -218,6 +218,33 @@ export default function Hero() {
   const [mounted, setMounted] = useState(false)
   const [mobilePanel, setMobilePanel] = useState(null)
   useEffect(()=>{ setMounted(true) },[])
+  const stage = useRef(null)
+  const bodyWrap = useRef(null)
+  const returnArrival = useRef(undefined)
+
+  useLayoutEffect(() => {
+    if (returnArrival.current === undefined) returnArrival.current = takeHomeReturn()
+    const arrival = returnArrival.current
+    const body = bodyWrap.current
+    if (!arrival || !body?.animate || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+
+    // The anatomy has its own return animation. Reveal the stage at its final position.
+    stage.current.dataset.returningHome = ''
+    const to = body.getBoundingClientRect()
+    const from = arrival.bounds
+    if (!to.width || !to.height) return
+    const restingTransform = getComputedStyle(body).transform
+    const base = restingTransform === 'none' ? '' : restingTransform
+    const animation = body.animate([
+      {
+        transform: `${base} translate(${from.left - to.left}px, ${from.top - to.top}px) scale(${from.width / to.width}, ${from.height / to.height})`,
+        opacity: arrival.opacity,
+      },
+      { transform: restingTransform, opacity: 1 },
+    ], { duration: 760, easing: 'cubic-bezier(.25, .75, .25, 1)' })
+
+    return () => animation.cancel()
+  }, [])
 
   const hovFach = hovered ? FACH_DATA[hovered] : null
   const hovName = hovered ? (FACH_NAMES[lang]?.[hovered]||FACH_NAMES.de[hovered]) : null
@@ -283,7 +310,7 @@ export default function Hero() {
         </div>
       </div>
 
-      <div className={`${styles.stage} ${mounted?styles.stageIn:''}`}>
+      <div ref={stage} className={`${styles.stage} ${mounted?styles.stageIn:''}`}>
         <div className={styles.mobilePanelToggles} aria-label="Homepage shortcuts">
           <button
             type="button"
@@ -325,7 +352,7 @@ export default function Hero() {
         </div>
 
         <div className={styles.centerStage}>
-          <div className={styles.bodyWrap}>
+          <div ref={bodyWrap} className={styles.bodyWrap}>
 
             <div className={styles.bodyColorWash}
               style={{background:hovFach

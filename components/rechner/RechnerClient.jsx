@@ -44,5 +44,13 @@ export default function RechnerClient({ toolId }) {
   const ui = COPY[lang] || COPY.de
   const params = useSearchParams()
   const tool = TOOLS.find(item => item.id === toolId)
-  return <><Navbar/><div style={{paddingTop:64}}>{tool ? <div className={styles.page} dir={lang === 'fa' ? 'rtl' : 'ltr'}><main className={styles.main}><ToolWorkspace key={tool.id} tool={tool} lang={lang} ui={ui}/></main></div> : <OrbitDirectory lang={lang} ui={ui} initialGroup={params.get('group') || 'urogenital'} initialQuery={params.get('q') || ''}/>}</div><Footer/></>
+  return <>
+    {tool && <Navbar/>}
+    <div style={{paddingTop:64}}>
+      {tool ? <div className={styles.page} dir={lang === 'fa' ? 'rtl' : 'ltr'}>
+        <main className={styles.main}><ToolWorkspace key={tool.id} tool={tool} lang={lang} ui={ui}/></main>
+      </div> : <OrbitDirectory lang={lang} ui={ui} initialGroup={params.get('group') || 'urogenital'} initialQuery={params.get('q') || ''}/>}
+    </div>
+    <Footer/>
+  </>
 }

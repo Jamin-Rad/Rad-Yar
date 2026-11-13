@@ -14,7 +14,7 @@ function HexLogo({ size = 32 }) {
   return <RadYarIcon size={size} />
 }
 
-export default function Navbar() {
+export default function Navbar({ onHomeClick } = {}) {
   const { lang, setLang } = useLanguage()
   const [lastControlsLang, setLastControlsLang] = useState('de')
   const controlsLang = lang === 'fa' ? lastControlsLang : lang
@@ -36,7 +36,7 @@ export default function Navbar() {
     <>
       <nav className={styles.nav} dir="ltr" lang={controlsLang} data-radyar-navbar data-print-exclude>
         <div className={styles.brandGroup} dir="ltr">
-          <Link href="/" className={styles.brand} dir="ltr">
+          <Link href="/" onClick={onHomeClick} className={styles.brand} dir="ltr">
             <HexLogo size={28} />
             <span className={styles.wordmark} dir="ltr">
               <span className={styles.rad}>RAD</span>
