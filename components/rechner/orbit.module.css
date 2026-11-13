@@ -59,6 +59,14 @@
 .organ, .rotation, .results { pointer-events: auto; }
 .dock { position: relative; z-index: 2; }
 
+.shell.exitOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 45;
+  padding: 0;
+  pointer-events: none;
+}
+
 @media (max-width: 1024px) {
   .homeAnatomy { height: min(112vw, 700px); }
 }

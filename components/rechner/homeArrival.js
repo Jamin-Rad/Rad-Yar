@@ -1,4 +1,6 @@
 export const HOME_ANATOMY_SRC = '/body-anatomy-clean.png'
+export const HOME_MOTION_EASING = 'cubic-bezier(.45, 0, .25, 1)'
+export const HOME_MOTION_DURATION = 1450
 
 let pendingArrival
 let pendingReturn

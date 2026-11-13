@@ -1,11 +1,11 @@
 'use client'
-import { useEffect, useLayoutEffect, useRef, useState } from 'react'
+import { useEffect, useInsertionEffect, useLayoutEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { GROUPS, filterTools, pick, toolHref, directoryHref } from './catalog'
 import Icon from './Icons'
 import Navbar from '../Navbar'
-import { HOME_ANATOMY_SRC, captureHomeReturn, isPlainNavigation, takeHomeArrival } from './homeArrival'
+import { HOME_ANATOMY_SRC, HOME_MOTION_DURATION, HOME_MOTION_EASING, captureHomeReturn, isPlainNavigation, takeHomeArrival } from './homeArrival'
 import styles from './orbit.module.css'
 
 const ASSETS = ['brain','thorax','mamma','abdomen','urogenital','onko','spine']
@@ -20,16 +20,16 @@ function useHomeArrival(anatomy, orbit, panel) {
     if (!arrival || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
     if (!orbit.current?.animate) return
 
-    const easing = 'cubic-bezier(.25, .75, .25, 1)'
+    const easing = HOME_MOTION_EASING
     const animations = [
       orbit.current.animate([
         { transform: 'translateX(24vw)', opacity: 0 },
         { transform: 'none', opacity: 1 },
-      ], { duration: 860, delay: 150, easing, fill: 'backwards' }),
+      ], { duration: HOME_MOTION_DURATION, delay: 100, easing, fill: 'backwards' }),
       panel.current.animate([
         { transform: 'translateY(14px)', opacity: 0 },
         { transform: 'translateY(0)', opacity: 1 },
-      ], { duration: 480, delay: 400, easing, fill: 'backwards' }),
+      ], { duration: 750, delay: 450, easing, fill: 'backwards' }),
     ]
 
     if (arrival.bounds && anatomy.current) {
@@ -42,7 +42,7 @@ function useHomeArrival(anatomy, orbit, panel) {
             opacity: 1,
           },
           { transform: 'none', opacity: getComputedStyle(anatomy.current).opacity },
-        ], { duration: 940, easing }))
+        ], { duration: HOME_MOTION_DURATION, easing }))
       }
     }
 
@@ -63,35 +63,60 @@ export default function OrbitDirectory({ lang, ui, initialGroup = 'urogenital', 
   const orbit = useRef(null)
   const panel = useRef(null)
   const dock = useRef(null)
-  const leaving = useRef(false)
-  const exitAnimations = useRef([])
+  const shell = useRef(null)
   const homeHref = `/?lang=${lang}`
   useHomeArrival(anatomy, orbit, panel)
 
-  useEffect(() => () => exitAnimations.current.forEach(animation => animation.cancel()), [])
-
-  async function returnHome(event) {
-    if (!isPlainNavigation(event)) return
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !orbit.current?.animate) return
+  function returnHome(event) {
+    if (!isPlainNavigation(event) || !prepareHomeReturn()) return
     event.preventDefault()
-    if (leaving.current) return
-    leaving.current = true
-
-    const options = { duration: 340, easing: 'cubic-bezier(.4, 0, .8, .5)', fill: 'forwards' }
-    const elements = [orbit.current, panel.current, dock.current]
-    exitAnimations.current = elements.map((element, index) => element.animate([
-      { transform: getComputedStyle(element).transform, opacity: getComputedStyle(element).opacity },
-      { transform: index === 0 ? 'translateX(30vw)' : 'translateY(12px)', opacity: 0 },
-    ], options))
-    try {
-      await Promise.all(exitAnimations.current.map(animation => animation.finished))
-    } catch {
-      return
-    }
-
-    captureHomeReturn(anatomy.current)
     router.push(homeHref)
   }
+
+  function prepareHomeReturn() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches ||
+        !orbit.current?.animate || !anatomy.current) return false
+
+    captureHomeReturn(anatomy.current)
+    document.querySelector('[data-rechner-exit]')?.remove()
+    // Keep the outgoing menu visible while the router swaps the page underneath it.
+    const overlay = shell.current.cloneNode(false)
+    overlay.classList.add(styles.exitOverlay)
+    overlay.dataset.rechnerExit = ''
+    overlay.inert = true
+    overlay.setAttribute('aria-hidden', 'true')
+    const copies = [orbit.current, panel.current, dock.current].map(element => {
+      const bounds = element.getBoundingClientRect()
+      const copy = element.cloneNode(true)
+      Object.assign(copy.style, {
+        position: 'absolute', inset: 'auto', margin: '0',
+        left: `${bounds.left}px`, top: `${bounds.top}px`,
+        width: `${bounds.width}px`, height: `${bounds.height}px`,
+        opacity: getComputedStyle(element).opacity,
+      })
+      overlay.append(copy)
+      return copy
+    })
+    document.body.append(overlay)
+    const animations = copies.map((copy, index) => copy.animate([
+      { transform: 'none' },
+      { transform: index === 0 ? 'translateX(32vw)' : 'translateY(12px)', opacity: 0 },
+    ], { duration: index === 0 ? HOME_MOTION_DURATION : 700, easing: HOME_MOTION_EASING, fill: 'forwards' }))
+    Promise.allSettled(animations.map(animation => animation.finished)).then(() => overlay.remove())
+    return true
+  }
+
+  useInsertionEffect(() => {
+    const onHistoryNavigation = () => {
+      if (window.location.pathname === '/') prepareHomeReturn()
+    }
+    window.addEventListener('popstate', onHistoryNavigation, { capture: true })
+    return () => {
+      window.removeEventListener('popstate', onHistoryNavigation, true)
+      if (window.location.pathname === '/' && shell.current?.isConnected &&
+          !document.querySelector('[data-rechner-exit]')) prepareHomeReturn()
+    }
+  }, [])
   const category = GROUPS.find(g => g.id === selected)
   const selectedIndex = GROUPS.indexOf(category)
   const tools = filterTools(searching ? 'all' : selected, searching ? query : '')
@@ -127,7 +152,7 @@ export default function OrbitDirectory({ lang, ui, initialGroup = 'urogenital', 
     return () => window.removeEventListener('keydown', key)
   }, [searching])
   useEffect(() => { if (searching) input.current?.focus() }, [searching])
-  return <><Navbar onHomeClick={returnHome}/><main className={styles.shell} dir={lang === 'fa' ? 'rtl' : 'ltr'}
+  return <><Navbar onHomeClick={returnHome}/><main ref={shell} className={styles.shell} dir={lang === 'fa' ? 'rtl' : 'ltr'}
     onPointerDown={startOrbitDrag} onPointerUp={finishOrbitDrag} onPointerCancel={() => { start.current = null }}>
     <Link href={homeHref} onClick={returnHome} className={styles.homeAnatomy}
       aria-label={label('Zur Startseite', 'Back to homepage', 'بازگشت به صفحهٔ اصلی')}>

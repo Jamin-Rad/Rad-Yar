@@ -6,7 +6,7 @@ import { useState, useEffect, useLayoutEffect, useRef } from 'react'
 import { useRouter } from 'next/navigation'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { REF_COPY } from '@/data/referenzen'
-import { captureHomeArrival, HOME_ANATOMY_SRC, takeHomeReturn } from './rechner/homeArrival'
+import { captureHomeArrival, HOME_ANATOMY_SRC, HOME_MOTION_DURATION, HOME_MOTION_EASING, takeHomeReturn } from './rechner/homeArrival'
 
 import styles from './Hero.module.css'
 
@@ -241,7 +241,7 @@ export default function Hero() {
         opacity: arrival.opacity,
       },
       { transform: restingTransform, opacity: 1 },
-    ], { duration: 760, easing: 'cubic-bezier(.25, .75, .25, 1)' })
+    ], { duration: HOME_MOTION_DURATION, easing: HOME_MOTION_EASING })
 
     return () => animation.cancel()
   }, [])
