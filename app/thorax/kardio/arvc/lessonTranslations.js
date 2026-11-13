@@ -499,6 +499,10 @@ const COPY = {
     "en": "Understand ACM",
     "fa": "شناخت ACM"
   },
+  "Grundlagen": {
+    "en": "Fundamentals",
+    "fa": "مبانی"
+  },
   "ACM verstehen: RV, LV oder beide?": {
     "en": "Understand ACM: RV, LV or both?",
     "fa": "شناخت ACM: RV، LV یا هر دو؟"

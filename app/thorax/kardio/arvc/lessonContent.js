@@ -1,5 +1,5 @@
 export const SECTIONS = [
-  { id: 'definition', short: 'ACM verstehen', title: 'ACM verstehen: RV, LV oder beide?', icon: 'heart' },
+  { id: 'definition', short: 'Grundlagen', title: 'Grundlagen', icon: 'heart' },
   { id: 'mrt', short: 'MRT systematisch lesen', title: 'MRT: Bewegung, Funktion und Gewebe', icon: 'layers' },
   { id: 'muster', short: 'Typische MRT-Befunde', title: 'Typische Befunde an echten MRTs', icon: 'scan' },
   { id: 'kriterien', short: 'TFC & Padua', title: 'TFC und Padua verständlich anwenden', icon: 'table' },
