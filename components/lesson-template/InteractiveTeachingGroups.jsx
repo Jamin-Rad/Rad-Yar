@@ -65,7 +65,7 @@ function InteractiveTeachingGroup({ group, resolve, direction, renderVisual, ren
             hidden={selected !== index}
           >
             <div className={styles.panelCopy}>
-              <div className={group.categoryInTabs ? styles.printHeading : undefined}>
+              <div className={group.categoryInTabs || group.hidePanelTitle ? styles.printHeading : undefined}>
                 <span className={styles.category}>{resolve(item.category)}</span>
                 <h4>{resolve(item.label)}</h4>
               </div>

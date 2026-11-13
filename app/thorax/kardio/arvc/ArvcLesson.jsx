@@ -98,6 +98,7 @@ function Comparison({ id, title, tone, rows }) {
     id,
     title,
     tone,
+    hidePanelTitle: true,
     items: rows.map(([label, text], index) => ({ id: String(index), label, text })),
   }]} />
 }
