@@ -6,6 +6,7 @@ import styles from './AllocationRing.module.css'
 
 export default function AllocationRing({ groups, children, className }) {
   const gradientId = useId()
+  const detailsId = gradientId + '-details'
   const [hovered, setHovered] = useState(null)
   const [focused, setFocused] = useState(null)
   const [selected, setSelected] = useState(null)
@@ -30,19 +31,23 @@ export default function AllocationRing({ groups, children, className }) {
     setSelected(previous => previous === key ? null : key)
   }
 
-  function onKeyDown(event, key) {
-    if (event.key === 'Enter' || event.key === ' ') {
-      event.preventDefault()
-      toggle(key)
-    } else if (event.key === 'Escape') {
-      event.stopPropagation()
-      setHovered(null)
-      setFocused(null)
-      setSelected(null)
-    }
+  function dismiss() {
+    setHovered(null)
+    setFocused(null)
+    setSelected(null)
   }
 
-  return <div className={`${className} ${styles.ring}`}>
+  return <div className={`${className} ${styles.ring}`}
+    onPointerLeave={() => setHovered(null)}
+    onBlur={event => { if (!event.currentTarget.contains(event.relatedTarget)) setFocused(null) }}
+    onKeyDown={event => {
+      if (event.key !== 'Escape' || !active) return
+      event.stopPropagation()
+      if (event.target.closest('[id]')?.id === detailsId) {
+        event.currentTarget.querySelector('[data-active="true"]')?.focus()
+      }
+      dismiss()
+    }}>
     <svg viewBox="0 0 200 200" role="group" aria-label="نمودار ترکیب سبد">
       <defs>
         {segments.map(group => <linearGradient key={group.key} id={gradientId + group.key} x1="0%" x2="100%" y1="0%" y2="100%">
@@ -58,19 +63,32 @@ export default function AllocationRing({ groups, children, className }) {
           stroke={`url(#${gradientId + group.key})`}
           className={styles.segment} data-active={active?.key === group.key}
           role="button" tabIndex={0} aria-pressed={selected === group.key}
+          aria-controls={active?.key === group.key ? detailsId : undefined}
           aria-label={`${group.label}، ${money(group.valueCents)}، ${percent(group.share * 100)} از سبد`}
           onPointerEnter={event => { if (event.pointerType !== 'touch') setHovered(group.key) }}
-          onPointerLeave={() => setHovered(null)}
-          onFocus={event => { if (event.currentTarget.matches(':focus-visible')) setFocused(group.key) }}
-          onBlur={() => setFocused(null)}
-          onClick={() => toggle(group.key)} onKeyDown={event => onKeyDown(event, group.key)}
+          onFocus={event => setFocused(event.currentTarget.matches(':focus-visible') ? group.key : null)}
+          onClick={() => toggle(group.key)} onKeyDown={event => {
+            if (event.key !== 'Enter' && event.key !== ' ') return
+            event.preventDefault()
+            toggle(group.key)
+          }}
         />)}
       </g>
     </svg>
     <div className={styles.center}>{children}</div>
-    {active && <div className={styles.tooltip} aria-hidden="true">
-      <strong><i style={{background: active.color}} />{active.label}</strong>
-      <div><bdi>{money(active.valueCents)}</bdi><bdi>{percent(active.share * 100)}</bdi></div>
+    {active && <div id={detailsId} className={styles.tooltip} role="region" aria-label={`دارایی‌های ${active.label}`} tabIndex={0}>
+      <div className={styles.detailHeader}>
+        <strong><i style={{background: active.color}} />{active.label}</strong>
+        <bdi>{money(active.valueCents)}</bdi><bdi>{percent(active.share * 100)}</bdi>
+      </div>
+      <table className={styles.holdings}>
+        <thead><tr><th scope="col">دارایی</th><th scope="col">ارزش</th><th scope="col">از کل سبد</th></tr></thead>
+        <tbody>{active.holdings.map(holding => <tr key={holding.key}>
+          <th scope="row"><bdi>{holding.name}</bdi></th>
+          <td><bdi>{money(holding.valueCents)}</bdi></td>
+          <td><bdi>{percent(holding.share * 100)}</bdi></td>
+        </tr>)}</tbody>
+      </table>
     </div>}
   </div>
 }

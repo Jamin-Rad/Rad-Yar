@@ -1,4 +1,5 @@
 .ring { position: relative; isolation: isolate; }
+.ring:has(.tooltip) { z-index: 3; }
 .ring > svg { grid-area: 1 / 1; display: block; width: 100%; height: 100%; }
 .center { position: absolute; inset-inline: 20%; top: 47%; translate: 0 -50%; text-align: center; pointer-events: none; }
 .depth { filter: brightness(.58); pointer-events: none; }
@@ -8,11 +9,12 @@
 .tooltip {
   position: absolute;
   z-index: 2;
-  inset-inline: 5%;
-  bottom: 0;
+  inset-inline: 0;
+  top: 91%;
   margin-inline: auto;
-  width: max-content;
-  max-width: 90%;
+  width: 100%;
+  max-height: min(300px, 42vh);
+  overflow: auto;
   padding: 7px 11px;
   border: 1px solid #4b596a;
   border-radius: 8px;
@@ -20,8 +22,16 @@
   color: #f3f5f7;
   box-shadow: 0 4px 14px #0005;
   font-size: 12px;
-  pointer-events: none;
 }
 .tooltip strong { display: flex; align-items: center; gap: 6px; }
 .tooltip i { width: 8px; height: 8px; border-radius: 50%; flex: none; }
-.tooltip > div { display: flex; justify-content: space-between; gap: 8px; color: #c7d2dd; }
+.detailHeader { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px; color: #f3f5f7; }
+.detailHeader strong { margin-inline-end: auto; }
+.holdings { width: 100%; border-collapse: collapse; margin-top: 6px; }
+.holdings :is(th, td) { padding: 4px 0; border-top: 1px solid #394451; text-align: start; }
+.holdings th { font-weight: 600; overflow-wrap: anywhere; }
+.holdings thead { color: #c7d2dd; }
+.holdings :is(th, td):not(:first-child) { padding-inline-start: 6px; text-align: end; white-space: nowrap; }
+@media (max-width: 680px) {
+  .tooltip { inset-inline: auto; left: 50%; translate: -50% 0; width: min(340px, calc(100vw - 36px)); }
+}
