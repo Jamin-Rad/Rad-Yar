@@ -5,6 +5,7 @@ import InteractiveTeachingGroups, { TeachingGroup, TeachingGroups } from '@/comp
 import StandardLessonShell, { LessonSection, LessonSources } from '@/components/lesson-template/StandardLessonShell'
 import { useLanguage } from '@/providers/LanguageProvider'
 import CaseAtlas from './CaseAtlas'
+import { VentricularDistributionIllustration } from './AcmIllustrations'
 import { VentricularMriExamples } from './PublishedMriFigures'
 import CriteriaOverview from './CriteriaLab'
 import { Icon, Note, MrtOverview, ProtocolOverview } from './LessonVisuals'
@@ -55,6 +56,7 @@ function Definition() {
         ['Biventrikulär', 'Rechte und linke Kammer sind beteiligt. Neben der RV-Veränderung können nichtischämische Narben im LV auffallen.'],
         ['LV-dominant', 'Vor allem die linke Kammer ist betroffen, während die rechte Kammer unauffällig sein kann. Für die Einordnung sind das Narbenmuster, die genetischen Befunde und mögliche andere Ursachen wichtig.'],
       ]}/>
+      <VentricularDistributionIllustration/>
       <VentricularMriExamples/>
     </div>
   </>, _arvcLang)

@@ -5,6 +5,7 @@ import { localizeArvcTree } from './lessonTranslations'
 
 import { useId, useState } from 'react'
 import MriTeaching from './MriTeaching'
+import { ScarDepthIllustration } from './AcmIllustrations'
 import { LgePatternFigure } from './PublishedMriFigures'
 import styles from './page.module.css'
 
@@ -92,6 +93,7 @@ export function MrtOverview() {
     ]}/>
     <h3 className={styles.subheading}>LGE: die Lage in der Wand ist wichtig</h3>
     <p className={styles.bodyText}><strong>LGE</strong> bedeutet Late Gadolinium Enhancement: eine Aufnahme nach Kontrastmittel, die bei der Beurteilung von Narben hilft. Im LV können bei ACM streifenförmige Veränderungen außen in der Wand (subepikardial) oder in der Wandmitte (intramural) auftreten. Eine relativ erhaltene LVEF schließt diese Beteiligung nicht aus.</p>
+    <ScarDepthIllustration/>
     <LgePatternFigure/>
     <TeachingTable caption="Das Narbenmuster einordnen" headers={['Muster', 'Was bedeutet das?']} rows={[
       ['Subepikardial / intramural', 'Nichtischämisches Muster. Kann zu ACM passen, kommt aber auch bei anderen Erkrankungen wie Myokarditis vor.'],
