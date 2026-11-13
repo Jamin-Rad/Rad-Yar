@@ -78,9 +78,9 @@ const COPY = {
     "en": "RV-dominant · classic ARVC",
     "fa": "غالب در RV · ARVC کلاسیک"
   },
-  "Rechte Kammer besonders auffällig: regionale Bewegungsstörungen, Vergrößerung und reduzierte Pumpfunktion. Den LV trotzdem mitbeurteilen.": {
-    "en": "The right ventricle is particularly abnormal: regional motion abnormalities, enlargement and reduced pump function. Assess the LV as well.",
-    "fa": "بطن راست به‌ویژه غیرطبیعی است: اختلال حرکت ناحیه‌ای، بزرگ‌شدگی و کاهش عملکرد پمپاژ. LV را نیز ارزیابی کنید."
+  "Rechte Kammer besonders auffällig: regionale Bewegungsstörungen, Vergrößerung und reduzierte Pumpfunktion.": {
+    "en": "The right ventricle is particularly abnormal, with regional motion abnormalities, enlargement and reduced pump function.",
+    "fa": "بطن راست به‌ویژه غیرطبیعی است: اختلال حرکت ناحیه‌ای، بزرگ‌شدگی و کاهش عملکرد پمپاژ."
   },
   "Biventrikulär": {
     "en": "Biventricular",
@@ -90,9 +90,9 @@ const COPY = {
     "en": "Both ventricles are involved. Non-ischaemic LV scars may be present in addition to RV changes.",
     "fa": "هر دو بطن درگیرند. افزون بر تغییرات RV، اسکارهای غیرایسکمیک در LV نیز ممکن است دیده شوند."
   },
-  "Die linke Kammer steht im Vordergrund; der RV kann unauffällig sein. Das Narbenmuster, die Genetik und andere mögliche Ursachen werden wichtig.": {
-    "en": "The left ventricle predominates; the RV may be unremarkable. Scar pattern, genetics and other possible causes become important.",
-    "fa": "درگیری بطن چپ غالب است؛ RV ممکن است طبیعی به نظر برسد. الگوی اسکار، ژنتیک و سایر علل احتمالی اهمیت پیدا می‌کنند."
+  "Vor allem die linke Kammer ist betroffen, während die rechte Kammer unauffällig sein kann. Für die Einordnung sind das Narbenmuster, die genetischen Befunde und mögliche andere Ursachen wichtig.": {
+    "en": "The left ventricle is predominantly affected, while the right ventricle may appear normal. The scar pattern, genetic findings and other possible causes help with interpretation.",
+    "fa": "بطن چپ عمدتاً درگیر است، در حالی که بطن راست ممکن است طبیعی به نظر برسد. برای ارزیابی، الگوی اسکار، یافته‌های ژنتیکی و سایر علل احتمالی اهمیت دارند."
   },
   "Ein Anlass zur Abklärung können Palpitationen, eine Synkope, ventrikuläre Rhythmusstörungen oder eine belastete Familiengeschichte sein. Das MRT hilft, die Veränderungen am Herzmuskel einzuordnen; EKG, Rhythmusdiagnostik und Familienanamnese gehören dazu.": {
     "en": "Palpitations, syncope, ventricular arrhythmias or a relevant family history may prompt assessment. MRI helps characterise myocardial changes; ECG, rhythm assessment and family history are also needed.",
