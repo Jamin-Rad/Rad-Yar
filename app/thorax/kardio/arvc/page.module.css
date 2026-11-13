@@ -23,6 +23,38 @@
 .foundationGroups { display:grid; gap:18px; }
 .foundationCopy { margin-top:16px; }
 .foundationCopy p:last-child { margin-bottom:0 !important; }
+.ventricleDiagram,.scarLayerDiagrams {
+  --diagram-highlight:#ffd49e;
+  --diagram-stroke:#9a4822;
+  margin:0;
+  padding:14px;
+  border:1px solid var(--line);
+  border-radius:12px;
+  background:var(--canvas);
+  text-align:center;
+  break-inside:avoid;
+}
+.ventricleDiagram svg {
+  display:block;
+  width:min(100%, 280px);
+  height:auto;
+  margin-inline:auto;
+}
+.ventricleDiagram path,.scarWall { fill:var(--paper); stroke:var(--muted); stroke-width:2; }
+.ventricleDiagram path[data-highlight='true'] { fill:var(--diagram-highlight); stroke:var(--diagram-stroke); stroke-width:3; }
+.ventricleDiagram text { fill:var(--ink); font:800 15px system-ui,sans-serif; text-anchor:middle; dominant-baseline:middle; }
+.ventricleDiagram figcaption,.scarLayerDiagrams figcaption { color:var(--muted); font-size:13px; line-height:1.55; }
+.scarLayerDiagrams ul { display:flex; flex-wrap:wrap; justify-content:center; gap:12px; margin:0 0 12px; padding:0; list-style:none; }
+.scarLayerDiagrams li { flex:1 1 110px; display:grid; justify-items:center; align-content:start; color:var(--ink); font-size:13px; font-weight:750; }
+.scarLayerDiagrams svg { width:min(100%, 96px); height:auto; }
+.scarCavity { fill:var(--canvas); stroke:var(--muted); stroke-width:1.5; }
+.scarArc { fill:none; stroke:var(--diagram-stroke); stroke-width:7; stroke-linecap:round; }
+@media screen {
+  :global(html[data-theme='dark']) :is(.ventricleDiagram,.scarLayerDiagrams) {
+    --diagram-highlight:#663b25;
+    --diagram-stroke:#ffb975;
+  }
+}
 .lead { margin:0 0 22px !important; font-size:17px; line-height:1.8; color:var(--body); }
 .bodyText { margin-block:18px 24px !important; font-size:16px; line-height:1.85; }
 .subheading { margin:30px 0 16px; font:800 clamp(23px,2.4vw,29px)/1.2 var(--font-newsreader,Georgia,serif); }
