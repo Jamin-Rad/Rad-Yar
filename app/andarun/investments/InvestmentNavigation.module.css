@@ -68,5 +68,5 @@
 .sidebar[data-theme='dark'] :is(.item,.brand,.close):focus-visible, .mobileHeader[data-theme='dark'] button:focus-visible { outline-color:var(--nav-green); }
 
 @media screen and (min-width:1001px) {
-  .sidebar { position:sticky; inset:0 auto auto; grid-area:1 / 1; align-self:start; width:100%; height:100dvh; }
+  .sidebar { position:sticky; inset:0 auto auto; grid-area:1 / 1; align-self:start; width:100%; min-height:0; max-height:100dvh; scrollbar-width:thin; }
 }
