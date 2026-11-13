@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { REF_COPY, REF_DATA, tx } from '@/data/referenzen'
+import { captureHomeArrival } from './rechner/homeArrival'
 import styles from './WichtigeReferenzen.module.css'
 
 
@@ -386,7 +387,7 @@ export default function WichtigeReferenzen({ mode = 'section' }) {
             <p className={styles.cardDesc}>{copy.btnMesswerteSub}</p>
             <div className={styles.chips}>{(copy.chipsMesswerte||[]).slice(0,4).map(ch=><span key={ch} className={`${styles.chip} ${styles.chipBlue}`}>{ch}</span>)}</div>
           </button>
-          <Link className={`${styles.card} ${styles.cardGreen}`} href={`/rechner?lang=${lang}`}>
+          <Link className={`${styles.card} ${styles.cardGreen}`} href={`/rechner?lang=${lang}`} onClick={captureHomeArrival}>
             <HomeCardIcon type="rechner" alt="" />
             <h3 className={`${styles.cardTitle} ${styles.colorGreen}`}>{copy.btnRechner}</h3>
             <p className={styles.cardDesc}>{copy.btnRechnerSub}</p>

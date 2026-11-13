@@ -6,6 +6,8 @@ import { useState, useEffect, useRef } from 'react'
 import { useRouter } from 'next/navigation'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { REF_COPY } from '@/data/referenzen'
+import { captureHomeArrival, HOME_ANATOMY_SRC } from './rechner/homeArrival'
+import scene from './HomeScene.module.css'
 import styles from './Hero.module.css'
 
 const PILLAR_ICONS = [
@@ -472,9 +474,9 @@ export default function Hero() {
 
   return (
     <section className={styles.hero}>
-      <div className={styles.bg}/>
+      <div className={`${styles.bg} ${scene.background}`}/>
       <GalaxyAtom/>
-      <div className={styles.bgGrid}/>
+      <div className={`${styles.bgGrid} ${scene.grid}`}/>
 
       <div className={`${styles.heroHeader} ${mounted?styles.leftIn:''}`}>
         <div className={styles.wordmark} dir="ltr" lang="en">
@@ -539,7 +541,7 @@ export default function Hero() {
                 :'none'}}/>
 
             <svg className={styles.zoneSvg} viewBox="0 0 842 1672" preserveAspectRatio="xMidYMin meet" aria-label={hintLabel}>
-              <image href="/body-anatomy-clean.png" width="842" height="1672" className={styles.bodyImg} pointerEvents="none" />
+              <image data-home-anatomy href={HOME_ANATOMY_SRC} width="842" height="1672" className={styles.bodyImg} pointerEvents="none" />
               <g transform="translate(-8 0)">
                 {ZONES.map((zone,i)=>{
                   const isHov = hovered===zone.id
@@ -599,7 +601,7 @@ export default function Hero() {
               href={card.key === 'rechner' ? `/rechner?lang=${lang}` : undefined}
               className={`${styles.floatCard} ${styles[`floatRight${index}`] || ''}`}
               style={{ '--card-color': card.color }}
-              onClick={card.key === 'rechner' ? undefined : () => openReferenceCard(card.key)}
+              onClick={card.key === 'rechner' ? captureHomeArrival : () => openReferenceCard(card.key)}
             >
               <span className={styles.floatIcon}>
                 <Image src={card.image} alt="" width={62} height={62} />
