@@ -63,21 +63,15 @@ export function MrtOverview() {
       <Tabs label="Welche Sequenzen schauen wir an?" items={MRI_SEQUENCES} selected={selected} onChange={setSelected} idPrefix="mri-sequence"/>
       <div className={styles.selectedCase} id="mri-sequence-panel" role="tabpanel" aria-labelledby={`mri-sequence-tab-${selected}`} tabIndex={0}>
         {selected === 0 ? <>
+          <h4>Wichtige Cine-Befunde</h4>
           <dl className={styles.mriSequenceSummary}>
-            <div><dt>Worauf achten?</dt><dd>Die freie RV-Wand im Vierkammerblick und in einer zweiten Ebene verfolgen.</dd></div>
-            <div><dt>Wandbewegung</dt><dd>In der Systole kann ein Abschnitt unbeweglich bleiben (Akinesie) oder sich nach außen wölben (Dyskinesie).</dd></div>
-            <div><dt>Volumen und Funktion</dt><dd>Aus dem vollständigen Cine-Stapel bestimmen wir RV-Volumen und RVEF.</dd></div>
+            <div><dt>Regionale Wandbewegungsstörung</dt><dd>In der Systole kann ein Abschnitt unbeweglich bleiben (Akinesie) oder sich nach außen wölben (Dyskinesie).</dd></div>
+            <div><dt>Dilatation und systolische Funktionsstörung</dt><dd>Erhöhtes enddiastolisches RV-Volumen und/oder reduzierte RV-Ejektionsfraktion (RVEF). Beide Werte aus dem vollständigen Cine-Stapel bestimmen.</dd></div>
           </dl>
-          <div className={styles.mriSchematicGrid}>
-      <figure className={styles.acmIllustration}>
-        <Image src="/thorax/kardio/arvc/acm-heart.png" width={1145} height={1374} sizes="(max-width: 760px) 90vw, 320px" alt=""/>
-        <figcaption><p>Herzschema zur Orientierung. Die freie Wand des rechten Ventrikels liegt im Bild links.</p></figcaption>
-      </figure>
-      <figure className={styles.acmIllustration}>
-        <Image src="/thorax/kardio/arvc/acm-rv-dyskinesia.webp" width={1200} height={600} sizes="(max-width: 760px) 90vw, 480px" alt=""/>
-        <figcaption><p>Schema einer RV-Dyskinesie. Rechts zeigt der Pfeil die lokale Auswärtsbewegung in der Systole.</p></figcaption>
-      </figure>
-          </div>
+          <figure className={`${styles.acmIllustration} ${styles.mriDyskinesiaFigure}`}>
+            <Image src="/thorax/kardio/arvc/acm-rv-dyskinesia.webp" width={1200} height={600} sizes="(max-width: 760px) 90vw, 680px" alt=""/>
+            <figcaption><p>Schema einer RV-Dyskinesie. Rechts zeigt der Pfeil die lokale Auswärtsbewegung in der Systole.</p></figcaption>
+          </figure>
           <details className={styles.mrtDetails}>
             <summary>Warum bewegt sich die Wand anders?</summary>
             <ul className={styles.essentialList}>
@@ -87,17 +81,19 @@ export function MrtOverview() {
             </ul>
           </details>
         </> : <>
+          <h4>Kontrastmittelanreicherung im LGE</h4>
+          <p>Späte Kontrastmittelanreicherung in beiden Ventrikeln beurteilen. Auffällige Bereiche in einer zweiten Ebene bestätigen.</p>
           <dl className={styles.mriSequenceSummary}>
-            <div><dt>Aufnahme</dt><dd>Spätaufnahmen nach Gadolinium in zwei Ebenen.</dd></div>
-            <div><dt>Worauf achten?</dt><dd>Die Wände beider Kammern auf helle Areale prüfen und Auffälligkeiten in der zweiten Ebene bestätigen.</dd></div>
-            <div><dt>Typisches Muster</dt><dd>Im LV liegt das LGE bei ACM häufig außen oder in der Wandmitte.</dd></div>
+            <div><dt>ACM mit LV-Beteiligung</dt><dd>Streifenförmiges LGE, häufig subepikardial oder intramural, besonders inferolateral. Die Verteilung folgt keinem Koronarterritorium.</dd></div>
           </dl>
-          <div className={styles.mriSchematicGrid}>
-      <figure className={styles.acmIllustration}>
-        <Image src="/thorax/kardio/arvc/acm-lge-symbol.webp" width={1200} height={902} sizes="(max-width: 760px) 90vw, 320px" alt=""/>
-        <figcaption><p>Stilisiertes LGE-Schema ohne Patientenbezug. Der helle Streifen liegt am Außenrand der linken Kammerwand.</p></figcaption>
-      </figure>
-          </div>
+          <details className={styles.mrtDetails}>
+            <summary>Wie unterscheidet sich das Muster?</summary>
+            <dl className={styles.mriSequenceSummary}>
+              <div><dt>Infarktnarbe</dt><dd>Typischerweise beginnt das LGE subendokardial und kann sich bis zur gesamten Wanddicke ausdehnen. Die Verteilung passt zum Versorgungsgebiet einer Koronararterie.</dd></div>
+              <div><dt>Myokarditis</dt><dd>Auch bei Myokarditis kann das LGE subepikardial oder intramural liegen. Das Muster allein trennt Myokarditis und ACM daher nicht sicher.</dd></div>
+            </dl>
+            <p>Akuter Verlauf und Ödem im T2-Mapping helfen bei der Einordnung, können aber auch in einer entzündlichen Phase der ACM auftreten. Rhythmusbefunde, Familienanamnese und Genetik mitbeurteilen.</p>
+          </details>
         </>}
       </div>
     </div>

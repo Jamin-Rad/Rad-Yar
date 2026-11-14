@@ -2,6 +2,20 @@ import { Children, cloneElement, isValidElement } from 'react'
 
 // Authored parallel translations; German clinical source remains unchanged.
 const COPY = {
+  "MRT": { en: "MRI", fa: "MRI" },
+  "Wichtige Cine-Befunde": { en: "Key cine findings", fa: "یافته‌های مهم Cine" },
+  "Regionale Wandbewegungsstörung": { en: "Regional wall motion abnormality", fa: "اختلال موضعی حرکت دیواره" },
+  "Dilatation und systolische Funktionsstörung": { en: "Dilatation and systolic dysfunction", fa: "اتساع و اختلال عملکرد سیستولی" },
+  "Erhöhtes enddiastolisches RV-Volumen und/oder reduzierte RV-Ejektionsfraktion (RVEF). Beide Werte aus dem vollständigen Cine-Stapel bestimmen.": { en: "Increased RV end-diastolic volume, reduced RV ejection fraction (RVEF), or both. Measure both from the full cine stack.", fa: "افزایش حجم پایان دیاستولی بطن راست، کاهش کسر جهشی آن (RVEF) یا هر دو. هر دو مقدار را از کل سری Cine اندازه بگیرید." },
+  "Kontrastmittelanreicherung im LGE": { en: "Contrast enhancement on LGE", fa: "افزایش سیگنال پس از تزریق در LGE" },
+  "Späte Kontrastmittelanreicherung in beiden Ventrikeln beurteilen. Auffällige Bereiche in einer zweiten Ebene bestätigen.": { en: "Assess late contrast enhancement in both ventricles. Confirm suspicious areas in a second plane.", fa: "افزایش سیگنال تأخیری را در هر دو بطن بررسی کنید و نواحی مشکوک را در نمای دوم تأیید کنید." },
+  "ACM mit LV-Beteiligung": { en: "ACM with LV involvement", fa: "ACM با درگیری بطن چپ" },
+  "Streifenförmiges LGE, häufig subepikardial oder intramural, besonders inferolateral. Die Verteilung folgt keinem Koronarterritorium.": { en: "Stria-like LGE, often subepicardial or midwall, especially inferolateral. The distribution does not follow a coronary territory.", fa: "LGE نواری، اغلب زیر اپی‌کارد یا میان‌دیواره‌ای، به‌ویژه در بخش تحتانی‌جانبی. الگو از قلمرو یک شریان کرونری پیروی نمی‌کند." },
+  "Wie unterscheidet sich das Muster?": { en: "How do the patterns differ?", fa: "الگوها چه تفاوتی دارند؟" },
+  "Infarktnarbe": { en: "Infarct scar", fa: "اسکار انفارکتوس" },
+  "Typischerweise beginnt das LGE subendokardial und kann sich bis zur gesamten Wanddicke ausdehnen. Die Verteilung passt zum Versorgungsgebiet einer Koronararterie.": { en: "Enhancement typically starts in the subendocardium and may extend through the full wall thickness. It follows a coronary artery territory.", fa: "افزایش سیگنال معمولاً از زیر اندوکارد شروع می‌شود و ممکن است به تمام ضخامت دیواره برسد. توزیع آن با قلمرو یک شریان کرونری هم‌خوانی دارد." },
+  "Auch bei Myokarditis kann das LGE subepikardial oder intramural liegen. Das Muster allein trennt Myokarditis und ACM daher nicht sicher.": { en: "Myocarditis can also show subepicardial or midwall LGE. The pattern alone cannot reliably distinguish myocarditis from ACM.", fa: "در میوکاردیت هم LGE می‌تواند زیر اپی‌کارد یا میان‌دیواره‌ای باشد. بنابراین الگو به‌تنهایی این دو بیماری را با اطمینان از هم جدا نمی‌کند." },
+  "Akuter Verlauf und Ödem im T2-Mapping helfen bei der Einordnung, können aber auch in einer entzündlichen Phase der ACM auftreten. Rhythmusbefunde, Familienanamnese und Genetik mitbeurteilen.": { en: "An acute presentation and edema on T2 mapping help with interpretation but can also occur in an inflammatory phase of ACM. Consider rhythm findings, family history, and genetics.", fa: "سیر حاد و ادم در T2 mapping به تفسیر کمک می‌کنند، اما در فاز التهابی ACM هم ممکن‌اند. یافته‌های ریتم، سابقهٔ خانوادگی و ژنتیک را هم بررسی کنید." },
   "Wandbewegung": { en: "Wall motion", fa: "حرکت دیواره" },
   "Volumen und Funktion": { en: "Volume and function", fa: "حجم و عملکرد" },
   "Die freie RV-Wand im Vierkammerblick und in einer zweiten Ebene verfolgen.": { en: "Follow the RV free wall in the four-chamber view and a second plane.", fa: "دیوارهٔ آزاد بطن راست را در نمای چهارحفره‌ای و یک نمای دوم دنبال کنید." },

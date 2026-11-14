@@ -1,6 +1,6 @@
 export const SECTIONS = [
   { id: 'definition', short: 'Grundlagen', title: 'Grundlagen', icon: 'heart' },
-  { id: 'mrt', short: 'Was sieht man im MRT?', title: 'Was sieht man im MRT?', icon: 'layers' },
+  { id: 'mrt', short: 'MRT', title: 'MRT', icon: 'layers' },
   { id: 'kriterien', short: 'Wie wird ARVC diagnostiziert?', title: 'Wie wird ARVC diagnostiziert?', icon: 'table' },
   { id: 'differenzialdiagnosen', short: 'Wichtige Fallstricke', title: 'Was eine ACM imitieren kann', icon: 'activity' },
 ]
@@ -14,6 +14,8 @@ export const LGE_PATTERN_SOURCE = {
 
 export const SOURCES = [
   LGE_PATTERN_SOURCE,
+  { label: 'JACC: Cardiovascular Imaging · 2008', title: 'Tissue Characterization of Acute Myocardial Infarction and Myocarditis by Cardiac Magnetic Resonance', url: 'https://doi.org/10.1016/j.jcmg.2008.07.011' },
+  { label: 'Bariani et al. · 2021', title: 'Hot-phase clinical presentation in arrhythmogenic cardiomyopathy', url: 'https://pubmed.ncbi.nlm.nih.gov/33313835/' },
   { label: 'Marcus et al. · 2010', title: 'Originalarbeit: revidierte Task-Force-Kriterien', url: 'https://doi.org/10.1161/CIRCULATIONAHA.108.840827' },
   { label: 'Corrado et al. · 2020', title: 'Originalkonsens: Die Padua-Kriterien', url: 'https://doi.org/10.1016/j.ijcard.2020.06.005' },
   { label: 'Corrado et al. · 2021', title: 'Entwicklung und Anwendung der Diagnosekriterien', url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC8649536/' },
