@@ -1,8 +1,7 @@
 export const SECTIONS = [
   { id: 'definition', short: 'Grundlagen', title: 'Grundlagen', icon: 'heart' },
-  { id: 'mrt', short: 'MRT systematisch lesen', title: 'MRT: Bewegung, Funktion und Gewebe', icon: 'layers' },
-  { id: 'muster', short: 'Typische MRT-Befunde', title: 'Typische Befunde an echten MRTs', icon: 'scan' },
-  { id: 'kriterien', short: 'TFC & Padua', title: 'TFC und Padua verständlich anwenden', icon: 'table' },
+  { id: 'mrt', short: 'Was sieht man im MRT?', title: 'Was sieht man im MRT?', icon: 'layers' },
+  { id: 'kriterien', short: 'Wie wird ARVC diagnostiziert?', title: 'Wie wird ARVC diagnostiziert?', icon: 'table' },
   { id: 'differenzialdiagnosen', short: 'Wichtige Fallstricke', title: 'Was eine ACM imitieren kann', icon: 'activity' },
   { id: 'bilder', short: 'Weitere MRTs · optional', title: 'Weitere MRT-Beispiele · optional', icon: 'case', optional: true },
 ]

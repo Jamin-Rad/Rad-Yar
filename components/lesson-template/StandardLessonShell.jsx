@@ -228,6 +228,7 @@ function LessonShell({
         target: window,
         trackedIds,
         summaryId: summarySection?.id,
+        hashAliases,
         onChange: ({ openId: nextOpenId, summaryOpen: nextSummaryOpen }) => {
           if (nextOpenId) setOpenId(nextOpenId)
           setSummaryOpen(nextSummaryOpen)

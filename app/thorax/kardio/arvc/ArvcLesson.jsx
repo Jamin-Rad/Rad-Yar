@@ -7,7 +7,7 @@ import { useLanguage } from '@/providers/LanguageProvider'
 import CaseAtlas from './CaseAtlas'
 import { VentricularDistributionIllustration } from './AcmIllustrations'
 import CriteriaOverview from './CriteriaLab'
-import { Icon, Note, MrtOverview, ProtocolOverview } from './LessonVisuals'
+import { Icon, Note, MrtOverview } from './LessonVisuals'
 import { CASES, SECTIONS, SOURCES, TAKE_HOME } from './lessonContent'
 import { arvcText, localizeArvcTree } from './lessonTranslations'
 import styles from './page.module.css'
@@ -60,27 +60,6 @@ function Definition() {
   </>, _arvcLang)
 }
 
-function Mrt() {
-  const { lang: _arvcLang } = useLanguage()
-
-  return localizeArvcTree(<>
-    <p className={styles.lead}>Bei Verdacht auf ACM beantworten wir drei Fragen: <strong>Wie bewegt sich die Wand? Wie groß sind die Kammern und wie gut pumpen sie? Wo liegt eine Narbe?</strong></p>
-    <TeachingGroups direction={_arvcLang === 'fa' ? 'rtl' : 'ltr'}>
-      <TeachingGroup id="arvc-protocol" title="MRT systematisch lesen"><ProtocolOverview/></TeachingGroup>
-    </TeachingGroups>
-    <Note caution title="Nicht an einem einzelnen Schnitt entscheiden">Der RV ist dünnwandig und geometrisch komplex. Auffällige Bewegung oder eine scheinbar helle Wandstelle über die Serie und in einer zweiten Ebene überprüfen.</Note>
-  </>, _arvcLang)
-}
-
-function Patterns() {
-  const { lang: _arvcLang } = useLanguage()
-
-  return localizeArvcTree(<>
-    <p className={styles.lead}>Zuerst die Bewegung im Cine ansehen, dann die Gewebeveränderungen im LGE. Die folgenden Aufnahmen stammen aus echten Radiopaedia-Untersuchungen.</p>
-    <MrtOverview/>
-  </>, _arvcLang)
-}
-
 function Differentials() {
   const { lang: _arvcLang } = useLanguage()
 
@@ -112,13 +91,12 @@ function Comparison({ id, title, tone, rows, intro, renderVisual }) {
 
 const CONTENT = {
   definition: Definition,
-  mrt: Mrt,
-  muster: Patterns,
+  mrt: MrtOverview,
   kriterien: CriteriaOverview,
   differenzialdiagnosen: Differentials,
   bilder: CaseAtlas,
 }
-const HASH_ALIASES = { tfc: 'kriterien', padua: 'kriterien', merksaetze: 'take-home' }
+const HASH_ALIASES = { muster: 'mrt', tfc: 'kriterien', padua: 'kriterien', merksaetze: 'take-home' }
 const THEME = {
   backgroundImage: '/andarun-galaxy-v3.png',
   accent: '#187e9a',

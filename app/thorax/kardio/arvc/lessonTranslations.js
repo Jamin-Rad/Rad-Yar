@@ -2,6 +2,27 @@ import { Children, cloneElement, isValidElement } from 'react'
 
 // Authored parallel translations; German clinical source remains unchanged.
 const COPY = {
+  "Grenzwerte, Padua und ein Fallbeispiel": { en: "Thresholds, Padua and a case example", fa: "حد آستانه‌ها، معیارهای پادوا و یک نمونهٔ بالینی" },
+  "Was sieht man im MRT?": { en: "What do we see on MRI?", fa: "در MRI چه می‌بینیم؟" },
+  "Wie wird ARVC diagnostiziert?": { en: "How is ARVC diagnosed?", fa: "ARVC چگونه تشخیص داده می‌شود؟" },
+  "Bei klassischer ARVC zuerst die rechte Kammer (RV) im Cine ansehen.": { en: "In classic ARVC, look at the right ventricle (RV) on cine first.", fa: "در ARVC کلاسیک، ابتدا حرکت بطن راست (RV) را در تصاویر متحرک بررسی کنید." },
+  "Dann Größe und Pumpfunktion messen und nach Narben in beiden Kammern suchen.": { en: "Then measure size and pumping function and look for scar in both ventricles.", fa: "سپس اندازه و عملکرد پمپاژ را بسنجید و در هر دو بطن دنبال اسکار بگردید." },
+  "Bewegung:": { en: "Motion:", fa: "حرکت:" },
+  "Im MRT-Film (Cine) kann ein Abschnitt der freien RV-Wand stehen bleiben oder sich beim Zusammenziehen nach außen wölben.": { en: "On cine MRI, part of the RV free wall may stay still or bulge outward during contraction.", fa: "در MRI متحرک (Cine)، بخشی از دیوارهٔ آزاد بطن راست ممکن است بی‌حرکت بماند یا هنگام انقباض به بیرون برجسته شود." },
+  "Größe und Pumpfunktion:": { en: "Size and pumping function:", fa: "اندازه و عملکرد پمپاژ:" },
+  "Die rechte Kammer kann vergrößert sein oder weniger Blut auswerfen. Beides wird aus der gesamten Cine-Serie gemessen.": { en: "The right ventricle may be enlarged or eject a smaller fraction of its blood. Both are measured from the full cine series.", fa: "بطن راست ممکن است بزرگ شده باشد یا درصد کمتری از خون درون خود را بیرون براند. هر دو را از کل سری Cine اندازه می‌گیریم." },
+  "Narben:": { en: "Scar:", fa: "اسکار:" },
+  "Auf späten Kontrastaufnahmen (LGE) können helle Streifen in der Herzwand auffallen. Auch die linke Kammer prüfen. Fehlendes LGE schließt ARVC nicht aus.": { en: "On late gadolinium enhancement (LGE) images, bright streaks may appear in the heart wall. Check the left ventricle too. Absent LGE does not rule out ARVC.", fa: "در تصاویر تأخیری پس از تزریق (LGE) ممکن است نوارهای روشن در دیوارهٔ قلب دیده شوند. بطن چپ را هم بررسی کنید. نبود LGE، بیماری ARVC را رد نمی‌کند." },
+  "Bewegung und Narben genauer ansehen": { en: "A closer look at motion and scar", fa: "بررسی دقیق‌تر حرکت و اسکار" },
+  "Ein auffälliges MRT allein reicht für die Diagnose ARVC nicht aus.": { en: "An abnormal MRI alone cannot establish ARVC.", fa: "MRI غیرطبیعی به‌تنهایی برای تشخیص ARVC کافی نیست." },
+  "Für die klassische rechtsbetonte Form führen die Task Force Criteria von 2010 Befunde aus verschiedenen Bereichen zusammen, etwa aus MRT oder Echo, EKG, dokumentierten Rhythmusstörungen und Familienanamnese oder Genetik.": { en: "For classic right-dominant ARVC, the 2010 Task Force Criteria combine findings from different categories, such as MRI or echo, ECG, documented arrhythmias, and family history or genetics.", fa: "برای نوع کلاسیک با درگیری غالب بطن راست، معیارهای ۲۰۱۰ یافته‌های چند دسته را کنار هم می‌گذارند، از جمله MRI یا اکو، نوار قلب، آریتمی ثبت‌شده و سابقهٔ خانوادگی یا ژنتیک." },
+  "Was zählt im MRT?": { en: "What counts on MRI?", fa: "در MRI چه چیزی معیار محسوب می‌شود؟" },
+  "Eine passende regionale Bewegungsstörung der rechten Kammer zusammen mit einem erhöhten RV-Volumen oder einer verminderten RV-Auswurffraktion. Das ergibt ein Bildgebungskriterium.": { en: "A qualifying regional RV wall motion abnormality together with increased RV volume or reduced RV ejection fraction. This counts as one imaging criterion.", fa: "اختلال موضعی مشخص در حرکت دیوارهٔ بطن راست همراه با افزایش حجم یا کاهش کسر جهشی همان بطن. این ترکیب یک معیار تصویربرداری محسوب می‌شود." },
+  "Wann ist die Diagnose nach TFC 2010 gesichert?": { en: "When is the diagnosis definite under the 2010 TFC?", fa: "طبق معیارهای ۲۰۱۰، چه زمانی تشخیص قطعی است؟" },
+  "Mit zwei Hauptkriterien (Major), einem Haupt- und zwei Nebenkriterien (Minor) oder vier Nebenkriterien aus unterschiedlichen Kategorien.": { en: "With two major criteria, one major plus two minor criteria, or four minor criteria, drawn from different categories.", fa: "با دو معیار اصلی، یک معیار اصلی و دو معیار فرعی، یا چهار معیار فرعی. معیارها باید از دسته‌های متفاوت باشند." },
+  "Beispiel: Eine typische Wandbewegungsstörung mit deutlich vergrößerter rechter Kammer kann ein Major-Kriterium sein. Kommt aus einer anderen Kategorie eine nachweislich krankheitsverursachende ARVC-Genvariante hinzu, sind zwei Major-Kriterien erfüllt.": { en: "For example, typical abnormal wall motion with a markedly enlarged RV can meet one major criterion. An established disease-causing ARVC variant would meet a second major criterion in a different category.", fa: "مثلاً اختلال تیپیک حرکت دیواره همراه با بزرگی واضح بطن راست می‌تواند یک معیار اصلی باشد. اگر یک واریانت ژنتیکیِ اثبات‌شدهٔ بیماری‌زا هم یافت شود، معیار اصلی دوم از دستهٔ دیگری تأمین می‌شود." },
+  "Die Padua-Kriterien erfassen zusätzlich linksbetonte und beidseitige ACM-Muster und berücksichtigen passende Narben im LGE.": { en: "The Padua criteria also cover left-dominant and biventricular ACM and account for characteristic scar on LGE.", fa: "معیارهای پادوا الگوهای غالب در بطن چپ و درگیری هر دو بطن را هم پوشش می‌دهند و الگوی مناسب اسکار در LGE را در نظر می‌گیرند." },
+  "Für die Gesamtdiagnose zählen weitere Kriterien aus anderen Kategorien.": { en: "The overall diagnosis requires additional criteria from other categories.", fa: "برای تشخیص نهایی، معیارهای دیگری از دسته‌های متفاوت لازم است." },
   "Bei der": {
     "en": "In",
     "fa": "در"
@@ -439,7 +460,7 @@ const COPY = {
     "en": "From cine to the TFC MRI component",
     "fa": "از Cine تا جزء MRI در TFC"
   },
-  "Das Cine aus dem Bildkapitel gehört zu einem": {
+  "Das Cine aus dem MRT-Kapitel gehört zu einem": {
     "en": "The cine in the imaging chapter belongs to a",
     "fa": "Cine فصل تصاویر مربوط است به یک"
   },

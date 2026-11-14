@@ -28,7 +28,7 @@ function TfcExplanation() {
       ['RVEF · beide', '≤ 40 %', '> 40 bis ≤ 45 %'],
     ]}/></div>
     <p className={styles.caption}>Nur zusammen mit der geforderten regionalen Störung. RVEDVi = enddiastolisches RV-Volumen / Körperoberfläche; EF = ausgeworfener Volumenanteil. Bei Kindern und Sportlern die Referenzen gesondert prüfen.</p>
-    <p className={styles.bodyText}><strong>Nicht doppelt zählen:</strong> Erhöhtes RV-Volumen und reduzierte RVEF sind zwei Wege zum selben MRT-Kriterium dieser Kategorie. Ein bildgebendes Major-Kriterium allein ist noch keine gesicherte Gesamtdiagnose. Die übrigen Diagnosebereiche, etwa EKG, Rhythmus und Familie, müssen dazukommen.</p>
+    <p className={styles.bodyText}><strong>Nicht doppelt zählen:</strong> Erhöhtes RV-Volumen und reduzierte RVEF sind zwei Wege zum selben MRT-Kriterium dieser Kategorie. Für die Gesamtdiagnose zählen weitere Kriterien aus anderen Kategorien.</p>
     <Note title="Die Grenze dieses Systems">LGE und spezifische LV-Kriterien sind in den TFC 2010 nicht enthalten. Deshalb kann eine linksdominante Erkrankung mit diesem System übersehen werden.</Note>
   </>, _arvcLang)
 }
@@ -55,7 +55,7 @@ function CriteriaExample() {
 
   return localizeArvcTree(<>
     <h3 className={styles.subheading}>Vom Cine zum TFC-MRT-Baustein</h3>
-    {_arvcLang === 'fa' ? <p className={styles.bodyText}>Cine فصل تصاویر مربوط به <strong>مرد ۵۰ ساله با ARVC شناخته‌شده</strong> است که پس از ابلیشن RVOT بررسی شده است. گزارش اصلی، برآمدگی‌های آنوریسمی و دیسکینتیک RV را با RVEDVi برابر <strong>115 ml/m²</strong> و RVEF برابر <strong>41 %</strong> توصیف می‌کند.</p> : <p className={styles.bodyText}>Das Cine aus dem Bildkapitel gehört zu einem <strong>50-jährigen Mann mit bekannter ARVC</strong>, untersucht nach einer RVOT-Ablation. Die Originalbeschreibung nennt dyskinetische, aneurysmatische RV-Ausbuchtungen, einen RVEDVi von <strong>115 ml/m²</strong> und eine RVEF von <strong>41 %</strong>.</p>}
+    {_arvcLang === 'fa' ? <p className={styles.bodyText}>Cine فصل تصاویر مربوط به <strong>مرد ۵۰ ساله با ARVC شناخته‌شده</strong> است که پس از ابلیشن RVOT بررسی شده است. گزارش اصلی، برآمدگی‌های آنوریسمی و دیسکینتیک RV را با RVEDVi برابر <strong>115 ml/m²</strong> و RVEF برابر <strong>41 %</strong> توصیف می‌کند.</p> : <p className={styles.bodyText}>Das Cine aus dem MRT-Kapitel gehört zu einem <strong>50-jährigen Mann mit bekannter ARVC</strong>, untersucht nach einer RVOT-Ablation. Die Originalbeschreibung nennt dyskinetische, aneurysmatische RV-Ausbuchtungen, einen RVEDVi von <strong>115 ml/m²</strong> und eine RVEF von <strong>41 %</strong>.</p>}
     <ol className={styles.essentialList}>
       <li><strong>Regional:</strong> Die beschriebene Dyskinesie erfüllt den geforderten regionalen Teil.</li>
       <li><strong>Global:</strong> 115 ml/m² liegt beim Mann über der Major-Grenze für das RVEDVi. Die RVEF von 41 % liegt dagegen im Minor-Bereich.</li>
@@ -71,10 +71,19 @@ export default function CriteriaOverview() {
 
   const [selected, setSelected] = useState(0)
   return localizeArvcTree(<>
-    <p className={styles.lead}><strong>Kein einzelnes MRT-Zeichen beweist eine ACM.</strong> TFC und Padua sind Regelwerke, die Befunde aus Bildgebung, EKG, Rhythmusdiagnostik und Familiengeschichte / Genetik zu einer Diagnose zusammenführen.</p>
-    <div className={styles.explorer}>
-      <Tabs label="TFC und Padua erklären" items={CRITERIA_TABS} selected={selected} onChange={setSelected} idPrefix="criteria"/>
-      <div className={styles.criteriaReading} id="criteria-panel" role="tabpanel" aria-labelledby={`criteria-tab-${selected}`}>{selected === 0 ? <TfcExplanation/> : selected === 1 ? <PaduaExplanation/> : <CriteriaExample/>}</div>
-    </div>
+    <p className={styles.lead}><strong>Ein auffälliges MRT allein reicht für die Diagnose ARVC nicht aus.</strong> Für die klassische rechtsbetonte Form führen die Task Force Criteria von 2010 Befunde aus verschiedenen Bereichen zusammen, etwa aus MRT oder Echo, EKG, dokumentierten Rhythmusstörungen und Familienanamnese oder Genetik.</p>
+    <ol className={styles.essentialList}>
+      <li><strong>Was zählt im MRT?</strong> Eine passende regionale Bewegungsstörung der rechten Kammer zusammen mit einem erhöhten RV-Volumen oder einer verminderten RV-Auswurffraktion. Das ergibt ein Bildgebungskriterium.</li>
+      <li><strong>Wann ist die Diagnose nach TFC 2010 gesichert?</strong> Mit zwei Hauptkriterien (Major), einem Haupt- und zwei Nebenkriterien (Minor) oder vier Nebenkriterien aus unterschiedlichen Kategorien.</li>
+    </ol>
+    <p className={styles.bodyText}>Beispiel: Eine typische Wandbewegungsstörung mit deutlich vergrößerter rechter Kammer kann ein Major-Kriterium sein. Kommt aus einer anderen Kategorie eine nachweislich krankheitsverursachende ARVC-Genvariante hinzu, sind zwei Major-Kriterien erfüllt.</p>
+    <p className={styles.bodyText}>Die Padua-Kriterien erfassen zusätzlich linksbetonte und beidseitige ACM-Muster und berücksichtigen passende Narben im LGE.</p>
+    <details className={styles.mrtDetails}>
+      <summary>Grenzwerte, Padua und ein Fallbeispiel</summary>
+      <div className={styles.explorer}>
+        <Tabs label="TFC und Padua erklären" items={CRITERIA_TABS} selected={selected} onChange={setSelected} idPrefix="criteria"/>
+        <div className={styles.criteriaReading} id="criteria-panel" role="tabpanel" aria-labelledby={`criteria-tab-${selected}`}>{selected === 0 ? <TfcExplanation/> : selected === 1 ? <PaduaExplanation/> : <CriteriaExample/>}</div>
+      </div>
+    </details>
   </>, _arvcLang)
 }

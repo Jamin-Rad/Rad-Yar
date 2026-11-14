@@ -372,6 +372,13 @@
 .essentialList { margin:18px 0 0; padding-inline-start:22px; }
 .essentialList li { margin-bottom:14px; padding-inline-start:5px; font-size:15px; line-height:1.8; }
 .essentialList strong { color:var(--ink); }
+.mrtDetails { margin-block-start:24px; }
+.mrtDetails > summary {
+  cursor:pointer;
+  color:var(--ink);
+  font-weight:750;
+  margin-block-end:14px;
+}
 .explorer .mriTeaching { border:0; border-radius:0; margin:0; }
 .page .table { min-width:0; }
 .page .table tbody th { width:27%; }
