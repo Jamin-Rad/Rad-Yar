@@ -2,10 +2,12 @@ import { auth, currentUser } from '@clerk/nextjs/server'
 import { hasFullAccess } from '@/utils/subscription'
 import { isChallenge, issueStudyGrant } from '@/lib/iosStudyGrant'
 
+// WebKit checks the final redirect of a form submission against form-action.
+// Permit only our app callback scheme in addition to same-origin form posts.
 const headers = {
   'Cache-Control': 'private, no-store',
   'Referrer-Policy': 'no-referrer',
-  'Content-Security-Policy': "default-src 'none'; style-src 'unsafe-inline'; form-action 'self'; frame-ancestors 'none'",
+  'Content-Security-Policy': "default-src 'none'; style-src 'unsafe-inline'; form-action 'self' com.radyar.study:; frame-ancestors 'none'",
 }
 
 const copy = {
