@@ -38,6 +38,8 @@ export async function GET(request) {
     'X-RadYar-Access-Until': String(access),
     'X-RadYar-Account': encodeURIComponent(user.username || user.primaryEmailAddress?.emailAddress || ''),
     'X-RadYar-Account-ID': user.id,
+    ...(user.hasImage && user.imageUrl?.startsWith('https://')
+      ? { 'X-RadYar-Account-Image': user.imageUrl } : {}),
   }
   if (request.headers.get('if-none-match') === snapshot.etag) {
     return new Response(null, { status: 304, headers: responseHeaders })
