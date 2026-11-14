@@ -19,7 +19,7 @@ function requestLanguage(request) {
   return language === 'fa' || language === 'de' ? language : 'en'
 }
 
-function page(language, title, content, status = 200) {
+function page(language, title, content, status = 200, referrerPolicy = headers['Referrer-Policy']) {
   return new Response(`<!doctype html><html lang="${language}" dir="${language === 'fa' ? 'rtl' : 'ltr'}"><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>${title}</title><style>
@@ -27,7 +27,7 @@ body{background:#080e1c;color:#f8fafc;font:1rem system-ui;margin:0;padding:12vh 
 main{max-width:28rem;margin:auto;background:#111b2d;padding:2rem;border-radius:1.25rem}
 button{border:0;border-radius:2rem;padding:.8rem 1.3rem;background:#fbbf24;color:#080e1c;font:inherit}
 </style><main><h1>${title}</h1>${content}</main></html>`, {
-    status, headers: { ...headers, 'Content-Type': 'text/html; charset=utf-8' },
+    status, headers: { ...headers, 'Referrer-Policy': referrerPolicy, 'Content-Type': 'text/html; charset=utf-8' },
   })
 }
 
@@ -44,7 +44,8 @@ export async function GET(request) {
     return new Response(null, { status: 302, headers: { ...headers, Location: login.href } })
   }
   return page(language, title,
-    `<p>${permission}</p><form method="post"><input type="hidden" name="challenge" value="${challenge}"><button>${connect}</button></form>`)
+    `<p>${permission}</p><form method="post"><input type="hidden" name="challenge" value="${challenge}"><button>${connect}</button></form>`,
+    200, 'same-origin')
 }
 
 export async function POST(request) {
