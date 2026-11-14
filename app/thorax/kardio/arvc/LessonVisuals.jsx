@@ -66,7 +66,10 @@ export function MrtOverview() {
   const [selected, setSelected] = useState(0)
   return localizeArvcTree(<>
     <h3 className={styles.subheading}>MRT bei klassischer ARVC</h3>
-    <section className={styles.mriSequenceGuide}>
+    <div className={styles.explorer}>
+      <Tabs label="MRT-Beispiele auswählen" items={MRI_VIEWS} selected={selected} onChange={setSelected} idPrefix="mri-overview"/>
+      <div id="mri-overview-panel" role="tabpanel" aria-labelledby={`mri-overview-tab-${selected}`} tabIndex={0}>
+    {MRI_VIEWS[selected].id === 'cine' ? <section className={styles.mriSequenceGuide}>
       <h4>Cine – Bewegung, Volumen und Ejektionsfraktion</h4>
       <dl>
         <dt>Worauf achten?</dt>
@@ -81,8 +84,7 @@ export function MrtOverview() {
         </figure>
         <CinePhaseIllustration/>
       </div>
-    </section>
-    <section className={styles.mriSequenceGuide}>
+    </section> : <section className={styles.mriSequenceGuide}>
       <h4>LGE – Narben</h4>
       <dl>
         <dt>Worauf achten?</dt>
@@ -91,10 +93,9 @@ export function MrtOverview() {
         <dd>Narben können als helle Areale in der Herzwand sichtbar sein. Fehlendes LGE schließt eine ARVC nicht aus.</dd>
       </dl>
       <ScarDepthIllustration/>
-    </section>
-    <div className={styles.explorer}>
-      <Tabs label="MRT-Beispiele auswählen" items={MRI_VIEWS} selected={selected} onChange={setSelected} idPrefix="mri-overview"/>
-      <div id="mri-overview-panel" role="tabpanel" aria-labelledby={`mri-overview-tab-${selected}`}><MriTeaching key={MRI_VIEWS[selected].id} scene={MRI_VIEWS[selected].scene}/></div>
+    </section>}
+        <MriTeaching key={MRI_VIEWS[selected].id} scene={MRI_VIEWS[selected].scene}/>
+      </div>
     </div>
     <details className={styles.mrtDetails}>
       <summary>Bewegung und Narben genauer ansehen</summary>

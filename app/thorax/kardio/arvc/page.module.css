@@ -373,8 +373,7 @@
 .essentialList li { margin-bottom:14px; padding-inline-start:5px; font-size:15px; line-height:1.8; }
 .essentialList strong { color:var(--ink); }
 .mriSequenceGuide {
-  padding-block:16px 20px;
-  border-block-start:1px solid var(--line);
+  padding:clamp(12px,3vw,24px);
 }
 .mriSequenceGuide h4 { margin:0 0 12px; font-size:18px; }
 .mriSequenceGuide dl {
