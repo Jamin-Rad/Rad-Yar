@@ -3,7 +3,7 @@
 import Image from 'next/image'
 
 import { useLanguage } from '@/providers/LanguageProvider'
-import { localizeArvcTree } from './lessonTranslations'
+import { arvcText, localizeArvcTree } from './lessonTranslations'
 
 import { useId, useState } from 'react'
 import styles from './page.module.css'
@@ -61,7 +61,7 @@ export function MrtOverview() {
     <h3 className={styles.subheading}>Welche Sequenzen schauen wir an?</h3>
     <div className={styles.atlas}>
       <Tabs label="Welche Sequenzen schauen wir an?" items={MRI_SEQUENCES} selected={selected} onChange={setSelected} idPrefix="mri-sequence"/>
-      <div className={styles.selectedCase} id="mri-sequence-panel" role="tabpanel" aria-labelledby={`mri-sequence-tab-${selected}`} tabIndex={0}>
+      <div className={`${styles.selectedCase} ${styles.mrtPanel}`} id="mri-sequence-panel" role="tabpanel" aria-labelledby={`mri-sequence-tab-${selected}`} tabIndex={0}>
         {selected === 0 ? <>
           <h4 className={styles.mrtTopic}>Regionale Wandbewegungsstörung</h4>
           <p>Cine im Vierkammerblick und in einer zweiten Ebene beurteilen.</p>
@@ -73,21 +73,38 @@ export function MrtOverview() {
             <Image src="/thorax/kardio/arvc/acm-rv-dyskinesia.webp" width={1200} height={600} sizes="(max-width: 760px) 90vw, 680px" alt=""/>
             <figcaption><p>Schema einer RV-Dyskinesie. Rechts zeigt der Pfeil die lokale Auswärtsbewegung in der Systole.</p></figcaption>
           </figure>
+
+          <h4 className={styles.mrtTopic}>RV-Dilatation und systolische Dysfunktion</h4>
+          <dl className={styles.mriSequenceSummary}>
+            <div><dt>RV-Dilatation</dt><dd>Erhöhtes enddiastolisches RV-Volumen, bezogen auf die Körperoberfläche (RVEDVi).</dd></div>
+            <div><dt>Systolische RV-Dysfunktion</dt><dd>Verminderte RV-Ejektionsfraktion (RVEF).</dd></div>
+          </dl>
+          <aside className={styles.mrtKeyPoint}>
+            <strong>Diagnostische Bedeutung</strong>
+            <p>Nach TFC 2010 zählt eine regionale RV-Wandbewegungsstörung zusammen mit einem erhöhten RVEDVi oder einer verminderten RVEF als ein MRT-Kriterium, wenn der jeweilige Grenzwert erreicht ist.</p>
+          </aside>
           <details className={styles.mrtDetails}>
             <summary>Warum bewegt sich die Wand anders?</summary>
-            <ul className={styles.essentialList}>
-              <li>Bei ACM kann Herzmuskel durch Bindegewebe und zum Teil durch Fett ersetzt werden.</li>
-              <li>Betroffene Wandabschnitte können sich dadurch in der Systole schlechter oder paradox bewegen.</li>
-              <li>Fett allein ist kein ARVC-Kriterium.</li>
-            </ul>
+            <p>{[
+              'Bei ACM kann Herzmuskel durch Bindegewebe und zum Teil durch Fett ersetzt werden.',
+              'Betroffene Wandabschnitte können sich dadurch in der Systole schlechter oder paradox bewegen.',
+              'Fett allein ist kein ARVC-Kriterium.',
+            ].map(sentence => arvcText(sentence, lang)).join(' ')}</p>
           </details>
         </> : <>
           <h4 className={styles.mrtTopic}>Kontrastmittelanreicherung im LGE</h4>
           <p>Späte Kontrastmittelanreicherung in beiden Ventrikeln beurteilen. Auffällige Bereiche in einer zweiten Ebene bestätigen.</p>
-
-          <h4 className={styles.mrtTopic}>LGE-Muster im Vergleich</h4>
           <dl className={styles.mriSequenceSummary}>
-            <div><dt>ACM mit LV-Beteiligung</dt><dd>Streifenförmiges LGE unter dem Epikard oder in der Wandmitte, häufig inferolateral.</dd></div>
+            <div><dt>Rechter Ventrikel</dt><dd>Streifenförmiges LGE kann die gesamte RV-Wanddicke erfassen. Die dünne Wand erschwert den Nachweis.</dd></div>
+            <div><dt>Linker Ventrikel</dt><dd>Streifenförmiges LGE unter dem Epikard oder in der Wandmitte, häufig inferolateral.</dd></div>
+          </dl>
+          <aside className={styles.mrtKeyPoint}>
+            <strong>Padua 2020</strong>
+            <p>Transmurales, streifenförmiges LGE in mindestens einer RV-Region zählt als strukturelles Major-Kriterium, wenn es in zwei orthogonalen Ebenen bestätigt ist. Fehlendes RV-LGE schließt ARVC nicht aus.</p>
+          </aside>
+
+          <h4 className={styles.mrtTopic}>Abgrenzung zu Infarkt und Myokarditis</h4>
+          <dl className={styles.mriSequenceSummary}>
             <div><dt>Infarktnarbe</dt><dd>Das LGE beginnt typischerweise subendokardial im Gebiet einer Koronararterie. Es kann die gesamte Wanddicke erfassen.</dd></div>
             <div><dt>Myokarditis</dt><dd>Subepikardiales oder intramurales LGE kann genauso aussehen wie bei ACM.</dd></div>
           </dl>

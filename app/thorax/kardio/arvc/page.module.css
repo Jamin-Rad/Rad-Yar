@@ -397,6 +397,21 @@
 .mriDyskinesiaFigure { max-width:680px; margin-inline:auto; }
 .mrtTopic { margin:0 0 8px; font-size:17px; line-height:1.4; }
 .mrtTopic:not(:first-child) { margin-block-start:24px; }
+.mrtPanel .mrtTopic {
+  padding-inline-start:10px;
+  border-inline-start:3px solid var(--lesson-accent);
+  font-weight:800;
+}
+.mrtPanel .mriSequenceSummary dt { color:var(--lesson-accent-strong); }
+.mrtPanel .mrtDetails > summary { color:var(--lesson-accent-strong); }
+.mrtKeyPoint {
+  margin-block:16px;
+  padding:12px 16px;
+  border-inline-start:3px solid var(--lesson-accent);
+  border-radius:6px;
+  background:var(--canvas);
+}
+.mrtKeyPoint strong { display:block; margin-block-end:4px; color:var(--ink); }
 .mriCaseDivider { border:0; border-block-start:1px solid var(--line); margin:32px 0 0; }
 .mriSequenceSummary { margin:14px 0; }
 .mriSequenceSummary > div {

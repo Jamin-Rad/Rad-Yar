@@ -2,6 +2,15 @@ import { Children, cloneElement, isValidElement } from 'react'
 
 // Authored parallel translations; German clinical source remains unchanged.
 const COPY = {
+  "RV-Dilatation und systolische Dysfunktion": { en: "RV dilatation and systolic dysfunction", fa: "اتساع و اختلال عملکرد سیستولی بطن راست" },
+  "Erhöhtes enddiastolisches RV-Volumen, bezogen auf die Körperoberfläche (RVEDVi).": { en: "Increased RV end-diastolic volume indexed to body surface area (RVEDVi).", fa: "افزایش حجم پایان دیاستولی بطن راست نسبت به سطح بدن (RVEDVi)." },
+  "Diagnostische Bedeutung": { en: "Diagnostic significance", fa: "اهمیت تشخیصی" },
+  "Nach TFC 2010 zählt eine regionale RV-Wandbewegungsstörung zusammen mit einem erhöhten RVEDVi oder einer verminderten RVEF als ein MRT-Kriterium, wenn der jeweilige Grenzwert erreicht ist.": { en: "Under the 2010 TFC, regional RV wall motion abnormality plus increased RVEDVi or reduced RVEF counts as one MRI criterion when the relevant threshold is met.", fa: "طبق معیارهای ۲۰۱۰، اختلال موضعی حرکت دیواره همراه با افزایش RVEDVi یا کاهش RVEF، در صورت رسیدن به آستانهٔ مربوط، یک معیار MRI محسوب می‌شود." },
+  "Rechter Ventrikel": { en: "Right ventricle", fa: "بطن راست" },
+  "Linker Ventrikel": { en: "Left ventricle", fa: "بطن چپ" },
+  "Streifenförmiges LGE kann die gesamte RV-Wanddicke erfassen. Die dünne Wand erschwert den Nachweis.": { en: "Stria-like LGE can extend through the full thickness of the RV wall. The thin wall can make it difficult to detect.", fa: "LGE نواری می‌تواند تمام ضخامت دیوارهٔ بطن راست را درگیر کند. نازکی دیواره تشخیص آن را دشوار می‌کند." },
+  "Transmurales, streifenförmiges LGE in mindestens einer RV-Region zählt als strukturelles Major-Kriterium, wenn es in zwei orthogonalen Ebenen bestätigt ist. Fehlendes RV-LGE schließt ARVC nicht aus.": { en: "Transmural, stria-like LGE in at least one RV region counts as a major structural criterion when confirmed in two orthogonal planes. Absence of RV LGE does not rule out ARVC.", fa: "LGE نواری تمام‌ضخامت در دست‌کم یک ناحیهٔ بطن راست، اگر در دو نمای عمود بر هم تأیید شود، یک معیار اصلی ساختاری است. نبود LGE بطن راست، ARVC را رد نمی‌کند." },
+  "Abgrenzung zu Infarkt und Myokarditis": { en: "Distinguishing infarction and myocarditis", fa: "افتراق از انفارکتوس و میوکاردیت" },
   "Cine im Vierkammerblick und in einer zweiten Ebene beurteilen.": { en: "Assess cine in the four-chamber view and in a second plane.", fa: "تصاویر Cine را در نمای چهارحفره‌ای و یک نمای دوم بررسی کنید." },
   "Ein Abschnitt der freien RV-Wand bewegt sich in der Systole nicht.": { en: "A segment of the RV free wall does not move during systole.", fa: "بخشی از دیوارهٔ آزاد بطن راست در سیستول حرکت نمی‌کند." },
   "Ein Abschnitt der freien RV-Wand wölbt sich in der Systole nach außen.": { en: "A segment of the RV free wall bulges outward during systole.", fa: "بخشی از دیوارهٔ آزاد بطن راست در سیستول به بیرون برجسته می‌شود." },
