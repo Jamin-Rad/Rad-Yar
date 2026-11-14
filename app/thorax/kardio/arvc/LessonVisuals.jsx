@@ -5,7 +5,7 @@ import { localizeArvcTree } from './lessonTranslations'
 
 import { useId, useState } from 'react'
 import MriTeaching from './MriTeaching'
-import { ScarDepthIllustration } from './AcmIllustrations'
+import { CinePhaseIllustration, ScarDepthIllustration } from './AcmIllustrations'
 import { LgePatternFigure } from './PublishedMriFigures'
 import styles from './page.module.css'
 
@@ -66,6 +66,7 @@ export function ProtocolOverview() {
   return localizeArvcTree(<>
     <ol className={styles.workflow}>{PROTOCOL_STEPS.map((item, index) => <li key={item.id}><button type="button" aria-pressed={selected === index} aria-controls="protocol-reading" onClick={() => setSelected(index)}><span>{index + 1}</span><strong>{item.label}</strong><small>{item.question}</small></button></li>)}</ol>
     <div className={styles.protocolDetail} id="protocol-reading" aria-live="polite"><Icon name="layers"/><div><h3>{step.question}</h3><dl className={styles.details}><div><dt>Welche Aufnahmen?</dt><dd>{step.sequence}</dd></div><div><dt>Worauf achten?</dt><dd>{step.look}</dd></div><div><dt>Häufiger Fehler</dt><dd>{step.trap}</dd></div></dl></div></div>
+    {step.id !== 'lge' && <CinePhaseIllustration/>}
     <p className={styles.caption}>T1-/T2-Mapping kann bei einer zusätzlichen Gewebefrage ergänzen. Für den ersten Überblick bleiben Cine, Kammerfunktion und LGE die drei Grundbausteine.</p>
   </>, _arvcLang)
 }

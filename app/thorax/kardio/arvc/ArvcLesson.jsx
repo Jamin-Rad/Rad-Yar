@@ -6,7 +6,6 @@ import StandardLessonShell, { LessonSection, LessonSources } from '@/components/
 import { useLanguage } from '@/providers/LanguageProvider'
 import CaseAtlas from './CaseAtlas'
 import { VentricularDistributionIllustration } from './AcmIllustrations'
-import { VentricularMriExamples } from './PublishedMriFigures'
 import CriteriaOverview from './CriteriaLab'
 import { Icon, Note, MrtOverview, ProtocolOverview } from './LessonVisuals'
 import { CASES, SECTIONS, SOURCES, TAKE_HOME } from './lessonContent'
@@ -57,7 +56,6 @@ function Definition() {
         ['LV-dominant', 'Vor allem die linke Kammer ist betroffen, während die rechte Kammer unauffällig sein kann. Für die Einordnung sind das Narbenmuster, die genetischen Befunde und mögliche andere Ursachen wichtig.'],
       ]}/>
       <VentricularDistributionIllustration/>
-      <VentricularMriExamples/>
     </div>
   </>, _arvcLang)
 }

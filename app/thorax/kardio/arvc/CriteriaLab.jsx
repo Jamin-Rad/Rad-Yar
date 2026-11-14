@@ -4,6 +4,7 @@ import { useLanguage } from '@/providers/LanguageProvider'
 import { localizeArvcTree } from './lessonTranslations'
 
 import { useState } from 'react'
+import { TfcRuleDiagram } from './AcmIllustrations'
 import { Note, Tabs, TeachingTable } from './LessonVisuals'
 import styles from './page.module.css'
 
@@ -20,6 +21,7 @@ function TfcExplanation() {
     <h3 className={styles.subheading}>Warum braucht man die TFC?</h3>
     <p className={styles.bodyText}>Die <strong>Task Force Criteria von 2010</strong> ordnen Hinweise aus verschiedenen Untersuchungen zur klassischen rechtsbetonten ARVC. Ein Major-Kriterium ist stärker, ein Minor-Kriterium schwächer gewichtet. Das ist diagnostisches Gewicht und nicht automatisch ein Maß für die Krankheitsschwere.</p>
     <Note title="Der MRT-Baustein: regional UND global">Eine regionale RV-Akinesie, Dyskinesie oder dyssynchrone Kontraktion muss mit einem erhöhten RVEDVi oder einer verminderten RVEF zusammenkommen. Ein großer RV allein genügt nicht; eine isolierte Hypokinesie auch nicht.</Note>
+    <TfcRuleDiagram/>
     <div className={styles.thresholds}><TeachingTable caption="TFC 2010 · die MRT-Grenzwerte bei Erwachsenen" headers={['Messgröße', 'Major', 'Minor']} rows={[
       ['RVEDVi · Männer', '≥ 110 ml/m²', '≥ 100 bis < 110 ml/m²'],
       ['RVEDVi · Frauen', '≥ 100 ml/m²', '≥ 90 bis < 100 ml/m²'],
