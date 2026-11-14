@@ -393,6 +393,9 @@
   line-height:1.4;
 }
 .readingGuide dd { margin:0; }
+.mriIntroLine { display:block; padding-inline-start:1rem; }
+.mriSchematicGrid { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr)); gap:12px; align-items:start; }
+.mriSchematicGrid figure { margin:0; width:100%; }
 .readingGuide dd,.diagnosisExample p { font-size:15px; line-height:1.65; }
 .diagnosisExample p + p { margin-block-start:10px; }
 .mrtDetails { margin-block-start:24px; }

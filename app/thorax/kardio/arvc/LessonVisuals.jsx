@@ -1,5 +1,7 @@
 'use client'
 
+import Image from 'next/image'
+
 import { useLanguage } from '@/providers/LanguageProvider'
 import { localizeArvcTree } from './lessonTranslations'
 
@@ -63,28 +65,39 @@ export function MrtOverview() {
 
   const [selected, setSelected] = useState(0)
   return localizeArvcTree(<>
-    <p className={styles.lead}><strong>Bei klassischer ARVC steht die rechte Herzkammer (RV) im Vordergrund.</strong> Im Cine beurteilst du Bewegung und Pumpfunktion. Auf den späten Kontrastaufnahmen suchst du nach Narben.</p>
+    <p className={styles.lead}>
+      <strong>Bei klassischer ARVC steht die rechte Herzkammer (RV) im Vordergrund.</strong>
+      <span className={styles.mriIntroLine}>Cine-Aufnahmen zeigen Wandbewegung und Pumpfunktion.</span>
+      <span className={styles.mriIntroLine}>Späte Kontrastaufnahmen (LGE) zeigen Hinweise auf Narben.</span>
+    </p>
     <dl className={styles.readingGuide}>
       <div>
-        <dt>Wie bewegt sich die Wand?</dt>
-        <dd>Im Cine kann ein Abschnitt der RV-Wand stillstehen (Akinesie) oder sich beim Zusammenziehen nach außen wölben (Dyskinesie).</dd>
+        <dt>Wandbewegungsstörung</dt>
+        <dd>In der Systole zeigt ein Abschnitt der freien RV-Wand keine Bewegung (Akinesie) oder wölbt sich nach außen (Dyskinesie).</dd>
       </div>
       <div>
-        <dt>Wie groß ist der RV? Wie gut pumpt er?</dt>
-        <dd>Die Kammer kann zu groß sein oder einen kleineren Anteil ihres Blutes auswerfen. Das misst du in der gesamten Cine-Serie.</dd>
+        <dt>RV-Dilatation und EF</dt>
+        <dd>Typische Befunde sind ein erhöhtes enddiastolisches RV-Volumen und/oder eine verminderte rechtsventrikuläre Ejektionsfraktion (RVEF). Beide Werte werden aus der vollständigen Cine-Serie bestimmt.</dd>
       </div>
       <div>
-        <dt>Siehst du Hinweise auf Narben?</dt>
-        <dd>Im LGE können helle Streifen in der Wand auffallen. Schau beide Kammern an. Auch ohne sichtbares LGE ist eine ARVC möglich.</dd>
+        <dt>Narben im LGE</dt>
+        <dd>Im LGE können Narben als helle Areale in der Wand beider Ventrikel sichtbar sein. Fehlendes LGE schließt eine ARVC nicht aus.</dd>
       </div>
     </dl>
+    <div className={styles.mriSchematicGrid}>
+      <figure className={styles.acmIllustration}>
+        <Image src="/thorax/kardio/arvc/acm-rv-dyskinesia.webp" width={1200} height={600} sizes="(max-width: 760px) 90vw, 480px" alt=""/>
+        <figcaption><p>Schema einer RV-Dyskinesie. Rechts zeigt der Pfeil die lokale Auswärtsbewegung in der Systole.</p></figcaption>
+      </figure>
+      <CinePhaseIllustration/>
+      <ScarDepthIllustration/>
+    </div>
     <div className={styles.explorer}>
       <Tabs label="MRT-Beispiele auswählen" items={MRI_VIEWS} selected={selected} onChange={setSelected} idPrefix="mri-overview"/>
       <div id="mri-overview-panel" role="tabpanel" aria-labelledby={`mri-overview-tab-${selected}`}><MriTeaching key={MRI_VIEWS[selected].id} scene={MRI_VIEWS[selected].scene}/></div>
     </div>
     <details className={styles.mrtDetails}>
       <summary>Bewegung und Narben genauer ansehen</summary>
-      <CinePhaseIllustration/>
       <h3 className={styles.subheading}>Wandbewegung: die Begriffe auseinanderhalten</h3>
     <TeachingTable caption="Was bedeutet die Bewegung im Cine?" headers={['Begriff', 'Einfach erklärt']} rows={[
       ['Hypokinesie', 'Ein Wandabschnitt zieht sich schwächer zusammen. Allein reicht das nicht als regionale RV-Störung für den MRT-Baustein der TFC 2010.'],
@@ -93,7 +106,6 @@ export function MrtOverview() {
     ]}/>
     <h3 className={styles.subheading}>LGE: die Lage in der Wand ist wichtig</h3>
     <p className={styles.bodyText}><strong>LGE</strong> bedeutet Late Gadolinium Enhancement: eine Aufnahme nach Kontrastmittel, die bei der Beurteilung von Narben hilft. Im LV können bei ACM streifenförmige Veränderungen außen in der Wand (subepikardial) oder in der Wandmitte (intramural) auftreten. Eine relativ erhaltene LVEF schließt diese Beteiligung nicht aus.</p>
-    <ScarDepthIllustration/>
     <LgePatternFigure/>
     <TeachingTable caption="Das Narbenmuster einordnen" headers={['Muster', 'Was bedeutet das?']} rows={[
       ['Subepikardial / intramural', 'Nichtischämisches Muster. Kann zu ACM passen, kommt aber auch bei anderen Erkrankungen wie Myokarditis vor.'],
