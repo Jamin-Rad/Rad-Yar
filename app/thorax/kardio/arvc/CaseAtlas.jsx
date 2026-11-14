@@ -43,9 +43,13 @@ function SelectedCase({ item }) {
       {image.type === 'video' ? <div className={styles.videoToolbar}><button type="button" onClick={() => { if (video.current?.paused) video.current.play().catch(() => setPlayError(true)); else video.current?.pause() }}><Icon name="activity"/>{playing ? 'Cine pausieren' : 'Cine abspielen'}</button><label>Tempo<select defaultValue="1" onChange={e => { if (video.current) video.current.playbackRate = Number(e.target.value) }}><option value="0.5">0,5×</option><option value="1">1×</option></select></label>{playError ? <a href={item.study} target="_blank" rel="noreferrer">Cine in der Originalserie öffnen</a> : null}</div> : null}
     </div>
     <dl className={styles.mriSequenceSummary}>
-      <div><dt>MRT-Befund</dt><dd>{item.look} {item.values.map(([name, value]) => `${name} ${value}`).join(' · ')}</dd></div>
-      <div><dt>Diagnose im Originalfall</dt><dd>{CASE_DIAGNOSES[item.id] || item.certainty}</dd></div>
+      <div><dt>MRT-Befund</dt><dd>{item.look}</dd></div>
+      {item.values.map(([name, value]) => <div key={name}><dt>{name}</dt><dd>{value}</dd></div>)}
     </dl>
+    <details className={styles.caseDiagnosis}>
+      <summary>Diagnose anzeigen</summary>
+      <p>{CASE_DIAGNOSES[item.id]}</p>
+    </details>
     <footer className={styles.caseCredit}><p>Case courtesy of {item.creator}, <a href={item.url} target="_blank" rel="noreferrer">Radiopaedia.org · rID {item.id}</a> · <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank" rel="noreferrer">CC BY-NC-SA 3.0</a>. Originalaufnahmen unverändert.</p></footer>
     {image.type !== 'video' ? <dialog ref={dialog} className={styles.imageDialog} aria-label={`${item.title}: ${image.label}`} onClick={event => { if (event.target === dialog.current) dialog.current.close() }}><button type="button" autoFocus onClick={() => dialog.current?.close()}>Schließen ×</button><Image data-no-zoom unoptimized src={image.src} width={1200} height={1000} sizes="95vw" alt={image.alt}/><p>{image.sequence} · {item.creator} · Radiopaedia rID {item.id}</p></dialog> : null}
   </div>, _arvcLang)

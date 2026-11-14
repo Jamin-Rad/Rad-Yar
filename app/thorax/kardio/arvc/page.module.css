@@ -408,6 +408,9 @@
 }
 .mriSequenceSummary dt { color:var(--ink); font-weight:750; }
 .mriSequenceSummary dd { margin:0; }
+.caseDiagnosis { padding:12px 16px; border:1px solid var(--line); border-radius:8px; background:var(--canvas); }
+.caseDiagnosis summary { cursor:pointer; color:var(--ink); font-weight:750; }
+.caseDiagnosis p { margin-block-start:8px!important; }
 @media (max-width:600px) {
   .mriSequenceSummary > div { grid-template-columns:minmax(0,1fr); gap:4px; }
 }

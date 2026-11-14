@@ -2,6 +2,21 @@ import { Children, cloneElement, isValidElement } from 'react'
 
 // Authored parallel translations; German clinical source remains unchanged.
 const COPY = {
+  "Wandbewegung": { en: "Wall motion", fa: "حرکت دیواره" },
+  "Volumen und Funktion": { en: "Volume and function", fa: "حجم و عملکرد" },
+  "Die freie RV-Wand im Vierkammerblick und in einer zweiten Ebene verfolgen.": { en: "Follow the RV free wall in the four-chamber view and a second plane.", fa: "دیوارهٔ آزاد بطن راست را در نمای چهارحفره‌ای و یک نمای دوم دنبال کنید." },
+  "In der Systole kann ein Abschnitt unbeweglich bleiben (Akinesie) oder sich nach außen wölben (Dyskinesie).": { en: "During systole, a segment may stay still (akinesia) or bulge outward (dyskinesia).", fa: "در سیستول، بخشی از دیواره ممکن است بی‌حرکت بماند (آکینزی) یا به بیرون برجسته شود (دیسکینزی)." },
+  "Aus dem vollständigen Cine-Stapel bestimmen wir RV-Volumen und RVEF.": { en: "Measure RV volume and RVEF from the full cine stack.", fa: "حجم و کسر جهشی بطن راست را از کل سری Cine اندازه بگیرید." },
+  "Aufnahme": { en: "Acquisition", fa: "تصویربرداری" },
+  "Spätaufnahmen nach Gadolinium in zwei Ebenen.": { en: "Late post-gadolinium images in two planes.", fa: "تصاویر تأخیری پس از تزریق گادولینیوم در دو نما." },
+  "Die Wände beider Kammern auf helle Areale prüfen und Auffälligkeiten in der zweiten Ebene bestätigen.": { en: "Look for bright areas in both ventricular walls and confirm them in the second plane.", fa: "دیوارهٔ هر دو بطن را از نظر نواحی روشن بررسی کنید و یافته را در نمای دوم تأیید کنید." },
+  "Typisches Muster": { en: "Typical pattern", fa: "الگوی معمول" },
+  "Im LV liegt das LGE bei ACM häufig außen oder in der Wandmitte.": { en: "In ACM, LV enhancement is often subepicardial or midwall.", fa: "در ACM، افزایش سیگنال بطن چپ اغلب در بخش بیرونی یا میانهٔ دیواره است." },
+  "Warum bewegt sich die Wand anders?": { en: "Why does wall motion change?", fa: "چرا حرکت دیواره تغییر می‌کند؟" },
+  "Bei ACM kann Herzmuskel durch Bindegewebe und zum Teil durch Fett ersetzt werden.": { en: "In ACM, heart muscle may be replaced by fibrous tissue and sometimes fat.", fa: "در ACM ممکن است بافت فیبروزی و گاهی چربی جای بخشی از عضلهٔ قلب را بگیرند." },
+  "Betroffene Wandabschnitte können sich dadurch in der Systole schlechter oder paradox bewegen.": { en: "Affected segments may contract less or move paradoxically during systole.", fa: "بخش درگیر ممکن است در سیستول ضعیف‌تر یا در جهت غیرطبیعی حرکت کند." },
+  "Fett allein ist kein ARVC-Kriterium.": { en: "Fat alone is not an ARVC criterion.", fa: "چربی به‌تنهایی معیار ARVC نیست." },
+  "Diagnose anzeigen": { en: "Reveal diagnosis", fa: "نمایش تشخیص" },
   "Welche Sequenzen schauen wir an?": { en: "Which sequences should we review?", fa: "کدام سکانس‌ها را بررسی کنیم؟" },
   "Im Vierkammerblick und in einer zweiten Ebene die freie RV-Wand verfolgen. In der Systole kann ein Abschnitt unbeweglich bleiben (Akinesie) oder sich nach außen wölben (Dyskinesie). Aus dem vollständigen Cine-Stapel bestimmen wir RV-Volumen und RVEF.": { en: "Follow the RV free wall in the four-chamber view and a second plane. During systole, a segment may show no motion (akinesia) or bulge outward (dyskinesia). Measure RV volume and RVEF from the full cine stack.", fa: "دیوارهٔ آزاد بطن راست را در نمای چهارحفره‌ای و یک نمای دوم دنبال کنید. در سیستول، بخشی از آن ممکن است بی‌حرکت بماند (آکینزی) یا به بیرون برجسته شود (دیسکینزی). حجم و کسر جهشی بطن راست را از کل سری Cine اندازه بگیرید." },
   "In den Spätaufnahmen nach Gadolinium die Wände beider Kammern prüfen. Narben können hell erscheinen. Im LV liegt das LGE bei ACM häufig außen oder in der Wandmitte. Auffälligkeiten in einer zweiten Ebene bestätigen.": { en: "Check both ventricular walls on late post-gadolinium images. Scar may appear bright. In ACM, LV enhancement is often subepicardial or midwall. Confirm suspicious findings in a second plane.", fa: "دیوارهٔ هر دو بطن را در تصاویر تأخیری پس از گادولینیوم بررسی کنید. اسکار ممکن است روشن دیده شود. در ACM، افزایش سیگنال بطن چپ اغلب در بخش بیرونی یا میانهٔ دیواره است. یافتهٔ مشکوک را در نمای دوم تأیید کنید." },
