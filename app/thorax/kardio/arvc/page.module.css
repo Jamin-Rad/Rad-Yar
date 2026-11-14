@@ -372,42 +372,31 @@
 .essentialList { margin:18px 0 0; padding-inline-start:22px; }
 .essentialList li { margin-bottom:14px; padding-inline-start:5px; font-size:15px; line-height:1.8; }
 .essentialList strong { color:var(--ink); }
-.mriWorkspace { container-type:inline-size; border:1px solid var(--line); border-radius:14px; background:var(--paper); }
-.mriWorkspace .tabs { border-start-start-radius:13px; border-start-end-radius:13px; }
-.mriWorkspace .tabs button { flex:1 1 120px; }
-.mriWorkspacePanel { padding:clamp(12px,3vw,24px); }
-.mriWorkspacePanel .mriSequenceLine { margin-block-end:16px; color:var(--ink); font-weight:750; }
-.mriWorkspaceGrid { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:22px; align-items:start; }
-.mriWorkspaceMedia { min-width:0; }
-.mriTeachingCompact { margin:0; border:1px solid var(--line); border-radius:10px; }
-.mriTeachingCompact .mriTeachingGrid { display:block; }
-.mriTeachingCompact .mriMedia { border-start-start-radius:9px; border-start-end-radius:9px; }
-.mriReadout { display:grid; gap:14px; margin:0; }
-.mriReadout > div { border-block-end:1px solid var(--line); padding-block-end:12px; }
-.mriReadout > div:last-child { border:0; background:var(--canvas); padding:12px; border-radius:8px; }
-.mriReadout dt { color:var(--ink); font-weight:800; }
-.mriReadout dd { margin:4px 0 0; font-size:15px; line-height:1.6; overflow-wrap:break-word; }
-.mriPlaneToggle { display:flex; flex-wrap:wrap; gap:8px; margin-block-end:12px; }
-.mriPlaneToggle button { background:var(--canvas); color:var(--ink); border:1px solid var(--line); border-radius:8px; padding:8px 12px; }
-.mriPlaneToggle button[aria-pressed='true'] { border-color:var(--ink); font-weight:750; }
-@container (max-width:680px) {
-  .mriWorkspaceGrid { grid-template-columns:minmax(0,1fr); gap:16px; }
+.readingGuide {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(min(100%,205px),1fr));
+  gap:12px;
+  margin:20px 0;
 }
-.diagnosisExample {
+.readingGuide > div,.diagnosisExample {
   min-width:0;
   padding:16px;
   border:1px solid var(--line);
   border-radius:10px;
   background:var(--canvas);
 }
-.diagnosisExample h3 {
+.readingGuide dt,.diagnosisExample h3 {
   margin:0 0 8px;
   color:var(--ink);
   font-size:16px;
   font-weight:750;
   line-height:1.4;
 }
-.diagnosisExample p { font-size:15px; line-height:1.65; }
+.readingGuide dd { margin:0; }
+.mriIntroLine { display:block; padding-inline-start:1rem; }
+.mriSchematicGrid { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr)); gap:12px; align-items:start; }
+.mriSchematicGrid figure { margin:0; width:100%; }
+.readingGuide dd,.diagnosisExample p { font-size:15px; line-height:1.65; }
 .diagnosisExample p + p { margin-block-start:10px; }
 .mrtDetails { margin-block-start:24px; }
 .mrtDetails > summary {
