@@ -32,7 +32,13 @@ export async function GET(request) {
     const body = JSON.stringify(buildStudyBank())
     snapshot = { body, etag: `"${createHash('sha256').update(body).digest('hex')}"` }
   }
-  const responseHeaders = { ...headers, ETag: snapshot.etag, 'X-RadYar-Access-Until': String(access) }
+  const responseHeaders = {
+    ...headers,
+    ETag: snapshot.etag,
+    'X-RadYar-Access-Until': String(access),
+    'X-RadYar-Account': encodeURIComponent(user.username || user.primaryEmailAddress?.emailAddress || ''),
+    'X-RadYar-Account-ID': user.id,
+  }
   if (request.headers.get('if-none-match') === snapshot.etag) {
     return new Response(null, { status: 304, headers: responseHeaders })
   }
