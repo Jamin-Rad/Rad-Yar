@@ -65,33 +65,33 @@ export function MrtOverview() {
 
   const [selected, setSelected] = useState(0)
   return localizeArvcTree(<>
-    <p className={styles.lead}>
-      <strong>Bei klassischer ARVC steht die rechte Herzkammer (RV) im Vordergrund.</strong>
-      <span className={styles.mriIntroLine}>Cine-Aufnahmen zeigen Wandbewegung und Pumpfunktion.</span>
-      <span className={styles.mriIntroLine}>Späte Kontrastaufnahmen (LGE) zeigen Hinweise auf Narben.</span>
-    </p>
-    <dl className={styles.readingGuide}>
-      <div>
-        <dt>Wandbewegungsstörung</dt>
-        <dd>In der Systole zeigt ein Abschnitt der freien RV-Wand keine Bewegung (Akinesie) oder wölbt sich nach außen (Dyskinesie).</dd>
+    <h3 className={styles.subheading}>MRT bei klassischer ARVC</h3>
+    <section className={styles.mriSequenceGuide}>
+      <h4>Cine – Bewegung, Volumen und Ejektionsfraktion</h4>
+      <dl>
+        <dt>Worauf achten?</dt>
+        <dd>Die freie Wand der rechten Herzkammer (RV) über den gesamten Herzzyklus verfolgen. Enddiastolisches RV-Volumen und rechtsventrikuläre Ejektionsfraktion (RVEF) aus der vollständigen Cine-Serie bestimmen.</dd>
+        <dt>Was sieht man im MRT?</dt>
+        <dd>Regionale Akinesie oder systolische Auswärtsbewegung (Dyskinesie). Der RV kann dilatiert sein, die RVEF vermindert.</dd>
+      </dl>
+      <div className={styles.mriSchematicGrid}>
+        <figure className={styles.acmIllustration}>
+          <Image src="/thorax/kardio/arvc/acm-rv-dyskinesia.webp" width={1200} height={600} sizes="(max-width: 760px) 90vw, 480px" alt=""/>
+          <figcaption><p>Schema einer RV-Dyskinesie. Rechts zeigt der Pfeil die lokale Auswärtsbewegung in der Systole.</p></figcaption>
+        </figure>
+        <CinePhaseIllustration/>
       </div>
-      <div>
-        <dt>RV-Dilatation und EF</dt>
-        <dd>Typische Befunde sind ein erhöhtes enddiastolisches RV-Volumen und/oder eine verminderte rechtsventrikuläre Ejektionsfraktion (RVEF). Beide Werte werden aus der vollständigen Cine-Serie bestimmt.</dd>
-      </div>
-      <div>
-        <dt>Narben im LGE</dt>
-        <dd>Im LGE können Narben als helle Areale in der Wand beider Ventrikel sichtbar sein. Fehlendes LGE schließt eine ARVC nicht aus.</dd>
-      </div>
-    </dl>
-    <div className={styles.mriSchematicGrid}>
-      <figure className={styles.acmIllustration}>
-        <Image src="/thorax/kardio/arvc/acm-rv-dyskinesia.webp" width={1200} height={600} sizes="(max-width: 760px) 90vw, 480px" alt=""/>
-        <figcaption><p>Schema einer RV-Dyskinesie. Rechts zeigt der Pfeil die lokale Auswärtsbewegung in der Systole.</p></figcaption>
-      </figure>
-      <CinePhaseIllustration/>
+    </section>
+    <section className={styles.mriSequenceGuide}>
+      <h4>LGE – Narben</h4>
+      <dl>
+        <dt>Worauf achten?</dt>
+        <dd>Die Wände beider Herzkammern auf späten Aufnahmen nach Kontrastmittel prüfen. Auffällige Areale in einer zweiten Ebene bestätigen.</dd>
+        <dt>Was sieht man im MRT?</dt>
+        <dd>Narben können als helle Areale in der Herzwand sichtbar sein. Fehlendes LGE schließt eine ARVC nicht aus.</dd>
+      </dl>
       <ScarDepthIllustration/>
-    </div>
+    </section>
     <div className={styles.explorer}>
       <Tabs label="MRT-Beispiele auswählen" items={MRI_VIEWS} selected={selected} onChange={setSelected} idPrefix="mri-overview"/>
       <div id="mri-overview-panel" role="tabpanel" aria-labelledby={`mri-overview-tab-${selected}`}><MriTeaching key={MRI_VIEWS[selected].id} scene={MRI_VIEWS[selected].scene}/></div>

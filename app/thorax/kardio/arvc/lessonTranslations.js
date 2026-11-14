@@ -2,6 +2,13 @@ import { Children, cloneElement, isValidElement } from 'react'
 
 // Authored parallel translations; German clinical source remains unchanged.
 const COPY = {
+  "MRT bei klassischer ARVC": { en: "MRI in classic ARVC", fa: "MRI در ARVC کلاسیک" },
+  "Cine – Bewegung, Volumen und Ejektionsfraktion": { en: "Cine – wall motion, volume and ejection fraction", fa: "Cine – حرکت دیواره، حجم و کسر جهشی" },
+  "Die freie Wand der rechten Herzkammer (RV) über den gesamten Herzzyklus verfolgen. Enddiastolisches RV-Volumen und rechtsventrikuläre Ejektionsfraktion (RVEF) aus der vollständigen Cine-Serie bestimmen.": { en: "Follow the right ventricular (RV) free wall throughout the cardiac cycle. Measure RV end-diastolic volume and right ventricular ejection fraction (RVEF) from the full cine series.", fa: "دیوارهٔ آزاد بطن راست را در تمام چرخهٔ قلب دنبال کنید. حجم پایان دیاستولی و کسر جهشی بطن راست (RVEF) را از کل سری Cine اندازه بگیرید." },
+  "Regionale Akinesie oder systolische Auswärtsbewegung (Dyskinesie). Der RV kann dilatiert sein, die RVEF vermindert.": { en: "Regional akinesia or outward motion during systole (dyskinesia). The RV may be dilated and RVEF may be reduced.", fa: "آکینزی موضعی یا حرکت به بیرون در سیستول (دیسکینزی). بطن راست ممکن است متسع و کسر جهشی آن کاهش یافته باشد." },
+  "LGE – Narben": { en: "LGE – scar", fa: "LGE – اسکار" },
+  "Die Wände beider Herzkammern auf späten Aufnahmen nach Kontrastmittel prüfen. Auffällige Areale in einer zweiten Ebene bestätigen.": { en: "Check both ventricular walls on late post-contrast images. Confirm suspicious areas in a second plane.", fa: "دیوارهٔ هر دو بطن را در تصاویر تأخیری پس از تزریق بررسی کنید. نواحی مشکوک را در نمای دوم تأیید کنید." },
+  "Narben können als helle Areale in der Herzwand sichtbar sein. Fehlendes LGE schließt eine ARVC nicht aus.": { en: "Scar may appear as bright areas in the heart wall. Absent LGE does not rule out ARVC.", fa: "اسکار ممکن است به‌صورت نواحی روشن در دیوارهٔ قلب دیده شود. نبود LGE، بیماری ARVC را رد نمی‌کند." },
   "Wandbewegungsstörung": { en: "Wall motion abnormality", fa: "اختلال حرکت دیواره" },
   "Cine-Aufnahmen zeigen Wandbewegung und Pumpfunktion.": { en: "Cine images show wall motion and pumping function.", fa: "تصاویر Cine حرکت دیواره و عملکرد پمپاژ را نشان می‌دهند." },
   "Späte Kontrastaufnahmen (LGE) zeigen Hinweise auf Narben.": { en: "Late gadolinium enhancement (LGE) images show signs of scar.", fa: "تصاویر تأخیری پس از تزریق (LGE) نشانه‌های اسکار را نشان می‌دهند." },
