@@ -50,12 +50,12 @@ function Definition() {
           </div>
         </TeachingGroup>
       </TeachingGroups>
-      <Comparison intro={DISTRIBUTION_INTRO[_arvcLang] || DISTRIBUTION_INTRO.de} id="distribution" title="Drei mögliche Verteilungen" rows={[
-        ['RV-dominant · klassische ARVC', 'Rechte Kammer besonders auffällig: regionale Bewegungsstörungen, Vergrößerung und reduzierte Pumpfunktion.'],
-        ['Biventrikulär', 'Rechte und linke Kammer sind beteiligt. Neben der RV-Veränderung können nichtischämische Narben im LV auffallen.'],
-        ['LV-dominant', 'Vor allem die linke Kammer ist betroffen, während die rechte Kammer unauffällig sein kann. Für die Einordnung sind das Narbenmuster, die genetischen Befunde und mögliche andere Ursachen wichtig.'],
+      <Comparison intro={DISTRIBUTION_INTRO[_arvcLang] || DISTRIBUTION_INTRO.de} id="distribution" title="Drei mögliche Verteilungen"
+        renderVisual={item => <VentricularDistributionIllustration pattern={item.pattern}/>} rows={[
+        ['RV-dominant · klassische ARVC', 'Rechte Kammer besonders auffällig: regionale Bewegungsstörungen, Vergrößerung und reduzierte Pumpfunktion.', 'rv'],
+        ['Biventrikulär', 'Rechte und linke Kammer sind beteiligt. Neben der RV-Veränderung können nichtischämische Narben im LV auffallen.', 'both'],
+        ['LV-dominant', 'Vor allem die linke Kammer ist betroffen, während die rechte Kammer unauffällig sein kann. Für die Einordnung sind das Narbenmuster, die genetischen Befunde und mögliche andere Ursachen wichtig.', 'lv'],
       ]}/>
-      <VentricularDistributionIllustration/>
     </div>
   </>, _arvcLang)
 }
@@ -97,15 +97,15 @@ function Differentials() {
   </>, _arvcLang)
 }
 
-function Comparison({ id, title, tone, rows, intro }) {
+function Comparison({ id, title, tone, rows, intro, renderVisual }) {
   const { lang } = useLanguage()
-  return <InteractiveTeachingGroups direction={lang === 'fa' ? 'rtl' : 'ltr'} groups={[{
+  return <InteractiveTeachingGroups direction={lang === 'fa' ? 'rtl' : 'ltr'} renderVisual={renderVisual} groups={[{
     id,
     title,
     tone,
     hidePanelTitle: true,
     intro,
-    items: rows.map(([label, text], index) => ({ id: String(index), label, text })),
+    items: rows.map(([label, text, pattern], index) => ({ id: String(index), label, text, pattern })),
   }]} />
 }
 
