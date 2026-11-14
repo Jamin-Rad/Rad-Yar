@@ -104,6 +104,7 @@ function Comparison({ id, title, tone, rows, intro, renderVisual }) {
     title,
     tone,
     hidePanelTitle: true,
+    visualPlacement: renderVisual ? 'inline' : undefined,
     intro,
     items: rows.map(([label, text, pattern], index) => ({ id: String(index), label, text, pattern })),
   }]} />

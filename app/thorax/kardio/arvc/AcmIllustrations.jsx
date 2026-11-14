@@ -26,8 +26,10 @@ const COPY = {
 }
 
 export function VentricularDistributionIllustration({ pattern }) {
-  return <Image src={`/thorax/kardio/arvc/acm-distribution-${pattern}.webp`} width={512} height={764}
-    sizes="(max-width: 760px) 310px, 200px" alt=""/>
+  return <div className={styles.acmDistributionImage} data-pattern={pattern}>
+    <Image src="/thorax/kardio/arvc/acm-ventricular-distribution.webp" width={1536} height={764}
+      sizes="(max-width: 760px) 90vw, 650px" alt=""/>
+  </div>
 }
 
 export function ScarDepthIllustration() {
