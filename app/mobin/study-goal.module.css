@@ -189,6 +189,15 @@
 .subjects .english { background-position: 33.333% center; }
 .subjects .kangaroo { background-position: 66.667% center; }
 .subjects .preparation { background-position: 100% center; }
+.subjects .latin {
+  display: inline-grid;
+  place-items: center;
+  border-radius: 7px;
+  background: linear-gradient(145deg, #7b5479, #4c355c);
+  color: #ffe6c6;
+  font: 800 clamp(15px, 2vw, 24px)/1 var(--font-fraunces, Georgia), serif;
+}
+.subjects .latin::before { content: 'L'; }
 
 @media (max-width: 780px) {
   .hero { min-height: 0; align-items: start; padding: 26px 22px min(59vw, 325px); background-size: auto, 100% auto; background-position: center, bottom; }

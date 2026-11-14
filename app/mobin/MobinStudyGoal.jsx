@@ -96,8 +96,9 @@ function SubjectBreakdown({ summary, total }) {
       <table className={styles.subjects}>
         <thead><tr><th scope="col">Fach</th><th scope="col">Lernzeit</th><th scope="col">Anteil</th></tr></thead>
         <tbody>
-          {['math', 'english', 'kangaroo', 'preparation'].map(section => {
+          {['math', 'english', 'kangaroo', 'preparation', 'latin'].map(section => {
             const seconds = Object.values(summary).reduce((sum, day) => sum + day.sections[section], 0)
+            if (section === 'latin' && seconds === 0) return null
             const share = total ? seconds / total : 0
             return <tr key={section}>
               <th scope="row"><span className={styles[section]} aria-hidden="true" />{subjectLabels[section]}</th>
