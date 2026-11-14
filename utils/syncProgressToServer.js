@@ -73,7 +73,7 @@ function postJson(url, body, userId) {
   })
 }
 
-async function reconcileProgress(userId) {
+async function reconcileProgress(userId, activityMaxAgeMs) {
   activateUserCache(userId)
   const token = getUserCacheToken(userId)
   if (!await flushPendingProgress(userId)) throw new Error('Pending progress upload failed')
@@ -84,7 +84,7 @@ async function reconcileProgress(userId) {
     requestJson('/api/progress/read-status', options),
     requestJson('/api/progress/mcq-results', options),
     requestJson('/api/progress/leitner', options),
-    syncActivityToServer(userId),
+    syncActivityToServer(userId, { maxAgeMs: activityMaxAgeMs }),
   ])
   if (!isUserCacheCurrent(userId, token)) return null
 
@@ -151,7 +151,7 @@ export function markProgressSyncPending(userId) {
   sessionStorage.removeItem(`${SESSION_KEY_PREFIX}${userId}`)
 }
 
-export async function syncLocalProgressToServer(userId, { throwOnError = false } = {}) {
+export async function syncLocalProgressToServer(userId, { throwOnError = false, activityMaxAgeMs = 0 } = {}) {
   if (typeof window === 'undefined' || !userId) return null
   activateUserCache(userId)
   const sessionKey = `${SESSION_KEY_PREFIX}${userId}`
@@ -160,7 +160,7 @@ export async function syncLocalProgressToServer(userId, { throwOnError = false }
   if (!promise) {
     const token = getUserCacheToken(userId)
     notifySyncState(userId, 'loading')
-    promise = reconcileProgress(userId)
+    promise = reconcileProgress(userId, activityMaxAgeMs)
       .then(result => {
         if (result && isUserCacheCurrent(userId, token)) notifySyncState(userId, 'synced')
         return result

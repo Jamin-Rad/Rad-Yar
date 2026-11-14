@@ -703,7 +703,7 @@ export default function PruefungClient() {
     <main className={styles.shell}>
       <div className={styles.wrap}>
         <header className={styles.topbar}>
-          <Link className={styles.brand} href="/mobin">
+          <Link className={styles.brand} href="/mobin?bereich=1">
             <span className={styles.mark}>M</span>
             <span className={styles.brandText}>
               <span className={styles.brandName}>Mobin</span>
@@ -711,7 +711,7 @@ export default function PruefungClient() {
             </span>
           </Link>
           <nav className={styles.nav} aria-label="Mobin Navigation">
-            <Link className={styles.glassButton} href="/mobin" style={{ '--tilt': '1.1deg', '--speed': '8s' }}>
+            <Link className={styles.glassButton} href="/mobin?bereich=1" style={{ '--tilt': '1.1deg', '--speed': '8s' }}>
               <span className={styles.buttonTitle}>Start</span>
               <span className={styles.buttonMeta}>Fortschritt ansehen</span>
             </Link>
@@ -879,7 +879,7 @@ export default function PruefungClient() {
         </section>
 
         <footer className={styles.footer}>
-          Zurück zu <Link href="/mobin">Mobin</Link>
+          Zurück zu <Link href="/mobin?bereich=1">Mobin</Link>
         </footer>
       </div>
     </main>

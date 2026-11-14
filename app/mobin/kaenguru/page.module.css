@@ -707,3 +707,31 @@
   .gradeSwitch button,
   .progressTrack span { transition: none; }
 }
+/* Mobin learning overview, aligned with Tagesplan. */
+.page {
+  color: #edf6ff;
+  background: #101a3c url('/mobin/planner-sky.webp') center bottom / cover fixed;
+}
+.page .header { background: #101a3cf0; border-color: #5c8ec46b; color: #edf6ff; }
+.page .header a { order: -1; color: #c9ecff; }
+.page .journeyStage { background: #101b40; }
+.page .journeyBackdrop { opacity: .34; }
+.page .titleBlock h1 { color: #e3f6ff; text-shadow: 0 0 24px #7bbfff75; }
+.page .titleBlock p { color: #d3e8ff; }
+.page .station { border-color: #79b5f08c; background: linear-gradient(145deg, #24497c, #151d44); box-shadow: inset 0 1px #badbff38, 0 12px 26px #060b30a6; }
+.page .station > small { color: #e0ecff; }
+.page .stationButton { --station-color: #356daf; --station-dark: #244979; }
+@media (max-width: 620px) {
+  .page .header { padding-inline: 12px; gap: 8px; }
+  .page .header a { font-size: 11px; }
+}
+.page .progressPanel, .page .streakPanel { color: var(--ink); }
+.kanguruOverview { width: min(1340px, calc(100% - 32px)); margin: 20px auto; }
+.kanguruTitle { border: 1px solid #83b8f282; border-radius: 16px; background: linear-gradient(125deg, #274e82, #151d44); padding: clamp(15px, 3vw, 34px); }
+.kanguruTitle h1 { margin: 0; font-size: clamp(2.15rem, 5vw, 3.7rem); color: #e3f6ff; }
+.kanguruTitle p { margin: 4px 0 0; color: #cbe4ff; }
+.kanguruOverview .stations { position: static; width: auto; transform: none; margin: 14px 0 0; }
+.dialog { background: #15264a; color: #f3f8ff; border-color: #83b8f2; }
+.dialog > p, .dialogControl > span { color: #e0ecff; }
+.dialog .choiceRow button { background: #203c66; color: #eef7ff; border-color: #729bc9; }
+.dialog .choiceRow .choiceActive { background: #b6ddff; color: #101f3e; border-color: #b6ddff; }

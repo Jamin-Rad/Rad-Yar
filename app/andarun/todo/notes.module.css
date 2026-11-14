@@ -352,3 +352,28 @@
     padding: 23px;
   }
 }
+
+.journal { padding: 14px 4px 11px; }
+.journal .header { margin: 0; }
+.journal .header h2 {
+  font: italic 500 28px/1.15 var(--journal-serif);
+}
+.journal .header button {
+  margin: 0;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--accent), transparent 92%);
+}
+.journal .surface {
+  padding: 0;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  overflow: visible;
+}
+.journal .composer { padding: 2px 0; }
+.journal .composer textarea,
+.journal .title {
+  font: italic 500 19px/1.4 var(--journal-serif);
+}
+.journal .note { border-color: var(--journal-line); }

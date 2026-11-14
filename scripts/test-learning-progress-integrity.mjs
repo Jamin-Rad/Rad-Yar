@@ -316,6 +316,31 @@ await check('simultaneous tabs retain independent offline edits and time streams
   assert.equal(remote['tab-one'], true); assert.equal(remote['tab-two'], true)
 })
 
+await check('background study sync reuses a fresh download and page exit uploads new seconds without a download', async () => {
+  const first = new Device('study-batch'), second = new Device('study-batch')
+  await first.activate('study-batch')
+  const activity = await first.exports('utils/activityStorage.js')
+  await first.time(25)
+  await activity.syncActivityToServer(first.user.id, { maxAgeMs: 60000 })
+  first.requests.length = 0
+  first.clock += 30000
+  await first.time(35)
+  await activity.syncActivityToServer(first.user.id, { maxAgeMs: 60000 })
+  assert.equal(first.requests.length, 0)
+  assert.equal((await first.summary()).totalSeconds, 60)
+  await activity.syncActivityToServer(first.user.id, { keepalive: true })
+  await activity.syncActivityToServer(first.user.id, { keepalive: true })
+  assert.equal(first.requests.length, 1)
+  assert.equal(first.requests[0].options.method, 'POST')
+  await second.activate('study-batch')
+  await second.sync()
+  assert.equal((await second.summary()).totalSeconds, 60)
+  first.clock += 30000
+  await activity.syncActivityToServer(first.user.id, { maxAgeMs: 60000 })
+  assert.equal(first.requests.length, 2)
+  assert.equal(first.requests[1].options.method, undefined)
+})
+
 await check('idle and background time are excluded; midnight belongs to the correct local day', async () => {
   let clock = new Date('2026-06-01T23:59:58').getTime(), foreground = true
   const rows = []

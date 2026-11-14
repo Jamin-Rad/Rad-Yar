@@ -997,3 +997,124 @@
     }
   }
 }
+
+.shell[data-layout="journal"] {
+  --journal-serif: "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  --journal-rule: color-mix(in srgb, var(--accent), transparent 15%);
+  --journal-line: color-mix(in srgb, var(--accent), transparent 71%);
+  display: block;
+  background: #fbf5ec url("/andarun/icons/tagesblatt-paper.jpg") repeat;
+  background-size: 700px auto;
+}
+.shell .journalMain {
+  width: min(100%, 660px);
+  max-width: none;
+  margin: 0 auto;
+  padding: 22px clamp(20px, 5vw, 36px) 54px;
+}
+.journalTools {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 26px;
+}
+.journalTools button {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+.journalTools span {
+  flex: 1;
+  height: 1px;
+  background: var(--journal-line);
+}
+.journalBrand {
+  margin: 0;
+  font: bold 11px/1.5 var(--journal-serif);
+  text-transform: uppercase;
+  letter-spacing: .28em;
+}
+.journalHeader h1 {
+  position: relative;
+  display: inline-block;
+  margin: 2px 0 22px;
+  font: italic 500 clamp(39px, 8.5vw, 58px)/1.07 var(--journal-serif);
+}
+.journalHeader h1::after {
+  content: "";
+  position: absolute;
+  left: 16%;
+  right: 5%;
+  bottom: -5px;
+  border-bottom: 1px solid var(--journal-rule);
+  transform: rotate(-3deg);
+}
+.journalDate {
+  margin: 0 0 16px;
+  white-space: pre-line;
+  font: 600 clamp(35px, 8vw, 55px)/1.05 var(--journal-serif);
+  letter-spacing: -.035em;
+}
+.journalSection {
+  border-top: 4px double var(--journal-rule);
+}
+.journalContent .taskList {
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  background: transparent;
+}
+.journalContent .taskRow {
+  min-height: 54px;
+  border: 0;
+  border-bottom: 1px solid var(--journal-line);
+}
+.journalContent .taskContent { padding: 10px 0; }
+.journalContent .taskTitle {
+  font: 500 clamp(19px, 4.6vw, 23px)/1.2 var(--journal-serif);
+}
+.journalContent .taskMeta { margin-top: 3px; }
+.journalContent .checkButton {
+  order: -1;
+  margin: 0 2px 0 0;
+}
+.journalContent .checkButton > span { border-color: var(--accent); }
+.journalEmpty {
+  padding: 12px 4px 4px;
+  margin: 0;
+  color: var(--muted);
+}
+.shell .journalAdd,
+.shell .journalAll {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 44px;
+  padding: 0 8px;
+  color: var(--accent);
+  background: transparent;
+  border: 0;
+}
+.shell .journalAdd {
+  margin-bottom: 9px;
+  font: italic 500 22px/1 var(--journal-serif);
+}
+.journalDisclosure { border-bottom: 1px solid var(--journal-line); }
+.journalDisclosure summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 0 6px;
+  min-height: 48px;
+  cursor: pointer;
+  list-style: none;
+  font: 600 23px/1.18 var(--journal-serif);
+}
+.journalDisclosure summary::-webkit-details-marker { display: none; }
+.journalDisclosure[open] summary svg { transform: rotate(180deg); }

@@ -190,7 +190,7 @@ export default function RoutineClient() {
     <main className={styles.shell}>
       <div className={styles.wrap}>
         <header className={styles.topbar}>
-          <Link className={styles.brand} href="/mobin">
+          <Link className={styles.brand} href="/mobin?bereich=1">
             <span className={styles.mark}>M</span>
             <span className={styles.brandText}>
               <span className={styles.brandName}>Mobin</span>
@@ -350,7 +350,7 @@ export default function RoutineClient() {
           </div>
         </section>
 
-        <footer className={styles.footer}>Zurück zu <Link href="/mobin">Mobin</Link></footer>
+        <footer className={styles.footer}>Zurück zu <Link href="/mobin?bereich=1">Mobin</Link></footer>
       </div>
     </main>
   )

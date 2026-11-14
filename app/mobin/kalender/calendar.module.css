@@ -1,0 +1,79 @@
+.shell { min-height: 100svh; background: #101b33; color: #f0f5ff; padding: 22px 14px 52px; font-family: var(--font-main, system-ui); }
+.wrap { max-width: 1100px; margin: auto; }
+.back { color: #b4dcff; font-weight: 850; text-decoration: none; }
+.header { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; margin: 16px 0; }
+.header h1 { margin: 0; font-size: clamp(2rem, 6vw, 3.8rem); }
+.views, .toolbar { display: flex; align-items: center; gap: 8px; }
+.shell button { border: 1px solid #829cbb; border-radius: 8px; background: #203450; color: #f2f7ff; min-height: 42px; padding: 6px 12px; font: inherit; font-weight: 750; cursor: pointer; }
+.shell button:hover { background: #294666; }
+.shell button[aria-pressed=true] { background: #badfff; color: #10213b; border-color: #badfff; }
+.toolbar { margin: 12px 0 16px; }
+.toolbar > div { flex: 1; min-width: 0; text-align: center; }
+.toolbar h2 { margin: 0; font-size: clamp(1.1rem, 3vw, 1.65rem); }
+.toolbar p { margin: 4px 0 0; color: #bfd0e7; font-size: .9rem; }
+.toolbar button[aria-label] { font-size: 1.45rem; line-height: 1; min-width: 42px; }
+.status { color: #cadbf0; }
+.calendar { display: grid; gap: 9px; }
+.dayGrid { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); }
+.weekday { text-align: center; color: #c0d5ec; font-weight: 800; }
+.weekBox { border: 2px solid #6685a7; border-radius: 10px; overflow: hidden; background: #182843; }
+.day { min-width: 0; min-height: 72px; padding: clamp(4px, 1.3vw, 12px); display: grid; align-content: space-between; gap: 5px; }
+.day + .day { border-left: 1px solid #6988a852; }
+.day time { font-weight: 900; font-size: 1.12rem; }
+.day span { color: #d5e5f8; font-size: clamp(.65rem, 2vw, .95rem); }
+.day[data-outside=true] { background: #142036; color: #a7bdd9; }
+.day[data-today=true], .miniWeek[data-today=true] { background: #a72942; color: #fff; }
+.day[data-today=true] span { color: #fff; }
+.weekTotal { margin: 0; border-top: 1px solid #6685a7; padding: 6px 10px; color: #e2edfa; background: #203652; font-size: .85rem; font-weight: 800; }
+.yearGrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 215px), 1fr)); gap: 12px; }
+.monthBox { border: 2px solid #6685a7; border-radius: 10px; background: #182843; padding: 12px; }
+.monthBox h3 { margin: 0; }
+.monthBox p { margin: 3px 0 10px; color: #bfd0e7; }
+.monthWeeks { display: grid; gap: 4px; }
+.miniWeek { display: flex; justify-content: space-between; gap: 5px; padding: 5px 8px; border: 1px solid #6988a875; border-radius: 5px; font-size: .85rem; }
+@media (max-width: 500px) {
+  .day { min-height: 57px; }
+  .day time { font-size: .95rem; }
+  .toolbar { gap: 4px; }
+  .toolbar button { padding-inline: 7px; }
+}
+.shell[data-embedded=true] {
+  min-height: 0;
+  padding: clamp(10px, 2vw, 22px);
+  border: 1px solid #86b3e370;
+  border-radius: 17px;
+  background: #132540e8;
+}
+.shell[data-embedded=true] .header { margin: 0 0 8px; }
+.shell[data-embedded=true] .header h2 { margin: 0; font-size: clamp(1.3rem, 3vw, 2rem); }
+.shell[data-embedded=true] .toolbar { margin: 8px 0; }
+.shell[data-embedded=true] .day { min-height: 55px; padding-block: 5px; }
+.shell[data-embedded=true] .calendar { gap: 5px; }
+.shell[data-embedded=true] .weekTotal { padding-block: 3px; }
+@media (max-width: 500px) {
+  .shell[data-embedded=true] { padding: 9px; border-radius: 12px; }
+  .shell[data-embedded=true] .header { gap: 5px; }
+  .shell[data-embedded=true] .views { gap: 4px; }
+  .shell[data-embedded=true] .views button { min-height: 36px; padding-inline: 7px; font-size: .77rem; }
+  .shell[data-embedded=true] .day { min-height: 43px; padding: 3px; gap: 0; }
+  .shell[data-embedded=true] .weekday { font-size: .78rem; }
+  .shell[data-embedded=true] .weekTotal { font-size: .72rem; }
+  .shell[data-embedded=true] .yearGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; }
+  .shell[data-embedded=true] .monthBox { padding: 6px; }
+  .shell[data-embedded=true] .monthBox p, .shell[data-embedded=true] .miniWeek { font-size: .72rem; }
+  .shell[data-embedded=true] .miniWeek { padding: 3px 4px; }
+}
+.day button.daySelect { min-height: 0; padding: 2px 3px; border: 0; background: transparent; color: inherit; text-align: left; }
+.day button.daySelect[aria-pressed=true] { outline: 1px solid #b6dcff; color: inherit; background: #a4ccff26; }
+.daySelect small { margin-left: 4px; color: #c4ebff; }
+.lessons { padding: 9px 12px; margin-top: 12px; background: #182843; border: 1px solid #6685a7; border-radius: 9px; }
+.lessons h3, .lessons p { margin: 0 0 6px; }
+.lessons ul { margin: 0; padding: 0; list-style: none; }
+.lessons li { display: flex; gap: 10px; padding: 5px 0; border-top: 1px solid #8fa9c04d; }
+.lessons li span { min-width: 80px; color: #c6def7; }
+.shell { background: #101a3c url('/mobin/planner-sky.webp') center bottom / cover fixed; }
+.shell[data-embedded=true] { background: linear-gradient(145deg, #234878, #151d44); }
+.weekBox, .monthBox, .lessons { background: #172c50; border-color: #83b8f282; }
+.weekTotal { background: #213f68; }
+.day[data-outside=true] { background: #13213c; }
+@media (max-width: 620px) { .shell { background-attachment: scroll; } }

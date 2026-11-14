@@ -270,3 +270,30 @@
 @media (prefers-reduced-motion: reduce) { .categoryCard { transition: none; } }
 
 .saveNotice { margin: 18px 0 0; color: #52657b; font-size: 13px; line-height: 1.6; }
+.shell { color: #edf6ff; background: #101a3c url('/mobin/planner-sky.webp') center bottom / cover fixed; font-family: var(--font-main, system-ui); }
+.backLink, .quizNav a, .brand, .overviewUnit, .sectionIntro p, .heroEyebrow, .hero p, .modalLabel { color: #cbe4ff; }
+.brand span, .hero h1 span { color: #91defe; }
+.hero, .categoryCard, .dateModal, .trainingCard, .dateRow, .emptyDates {
+  background: linear-gradient(145deg, #234878, #151d44);
+  color: #edf6ff;
+  border-color: #83b8f282;
+  box-shadow: inset 0 1px #badbff38, 0 12px 26px #060b3070;
+}
+.hero h1 { color: #e3f6ff; font-family: inherit; text-shadow: 0 0 24px #7bbfff75; }
+.hero h1::after { background: #87cafa; }
+.skyline { opacity: .44; }
+.categoryIndex, .categoryFooter, .dateRow > span:nth-child(2) small, .trainingCopy p, .stageLabel { color: #cbe4ff; }
+.categoryCard > span:not(.categoryIndex):not(.categoryTop):not(.categoryArt):not(.categoryFooter) { color: #d4e6ff; }
+.categoryCard .categoryArt, .categoryCard:nth-child(2) .categoryArt { background: #284a7b; color: #bde9ff; }
+.categoryFooter b { color: #102345; }
+.dateRow:hover { background: #244b80; }
+@media (max-width: 600px) {
+  .page, .quizPage { width: calc(100% - 24px); padding-block: 10px 35px; }
+  .topbar { gap: 6px; }
+  .overviewUnit { display: none; }
+  .hero { min-height: 165px; padding: 14px; }
+  .heroCopy { padding: 10px 0; }
+  .categorySection { gap: 9px; }
+  .categoryCard { padding: 13px; }
+  .categoryCard strong { font-size: clamp(17px, 5vw, 23px); overflow-wrap: anywhere; }
+}

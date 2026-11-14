@@ -201,7 +201,7 @@ export default function TagesplanClient() {
     <main className={styles.shell}>
       <div className={styles.wrap}>
         <header className={styles.topbar}>
-          <Link className={styles.brand} href="/mobin">
+          <Link className={styles.brand} href="/mobin?bereich=1">
             <span className={styles.mark}>M</span>
             <span><strong>Mobin</strong><small>Tagesplan</small></span>
           </Link>
@@ -380,7 +380,7 @@ export default function TagesplanClient() {
           </form>
         </section>
 
-        <footer className={styles.footer}>Zurück zu <Link href="/mobin">Mobins Startseite</Link></footer>
+        <footer className={styles.footer}>Zurück zu <Link href="/mobin?bereich=1">Mobins Startseite</Link></footer>
       </div>
     </main>
   )
