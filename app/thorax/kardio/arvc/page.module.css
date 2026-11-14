@@ -395,6 +395,8 @@
 .readingGuide dd { margin:0; }
 .mriIntroLine { display:block; padding-inline-start:1rem; }
 .mriDyskinesiaFigure { max-width:680px; margin-inline:auto; }
+.mrtTopic { margin:0 0 8px; font-size:17px; line-height:1.4; }
+.mrtTopic:not(:first-child) { margin-block-start:24px; }
 .mriCaseDivider { border:0; border-block-start:1px solid var(--line); margin:32px 0 0; }
 .mriSequenceSummary { margin:14px 0; }
 .mriSequenceSummary > div {

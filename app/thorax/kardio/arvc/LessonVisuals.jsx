@@ -63,10 +63,11 @@ export function MrtOverview() {
       <Tabs label="Welche Sequenzen schauen wir an?" items={MRI_SEQUENCES} selected={selected} onChange={setSelected} idPrefix="mri-sequence"/>
       <div className={styles.selectedCase} id="mri-sequence-panel" role="tabpanel" aria-labelledby={`mri-sequence-tab-${selected}`} tabIndex={0}>
         {selected === 0 ? <>
-          <h4>Wichtige Cine-Befunde</h4>
+          <h4 className={styles.mrtTopic}>Regionale Wandbewegungsstörung</h4>
+          <p>Cine im Vierkammerblick und in einer zweiten Ebene beurteilen.</p>
           <dl className={styles.mriSequenceSummary}>
-            <div><dt>Regionale Wandbewegungsstörung</dt><dd>In der Systole kann ein Abschnitt unbeweglich bleiben (Akinesie) oder sich nach außen wölben (Dyskinesie).</dd></div>
-            <div><dt>Dilatation und systolische Funktionsstörung</dt><dd>Erhöhtes enddiastolisches RV-Volumen und/oder reduzierte RV-Ejektionsfraktion (RVEF). Beide Werte aus dem vollständigen Cine-Stapel bestimmen.</dd></div>
+            <div><dt>Akinesie</dt><dd>Ein Abschnitt der freien RV-Wand bewegt sich in der Systole nicht.</dd></div>
+            <div><dt>Dyskinesie</dt><dd>Ein Abschnitt der freien RV-Wand wölbt sich in der Systole nach außen.</dd></div>
           </dl>
           <figure className={`${styles.acmIllustration} ${styles.mriDyskinesiaFigure}`}>
             <Image src="/thorax/kardio/arvc/acm-rv-dyskinesia.webp" width={1200} height={600} sizes="(max-width: 760px) 90vw, 680px" alt=""/>
@@ -81,18 +82,21 @@ export function MrtOverview() {
             </ul>
           </details>
         </> : <>
-          <h4>Kontrastmittelanreicherung im LGE</h4>
+          <h4 className={styles.mrtTopic}>Kontrastmittelanreicherung im LGE</h4>
           <p>Späte Kontrastmittelanreicherung in beiden Ventrikeln beurteilen. Auffällige Bereiche in einer zweiten Ebene bestätigen.</p>
+
+          <h4 className={styles.mrtTopic}>LGE-Muster im Vergleich</h4>
           <dl className={styles.mriSequenceSummary}>
-            <div><dt>ACM mit LV-Beteiligung</dt><dd>Streifenförmiges LGE, häufig subepikardial oder intramural, besonders inferolateral. Die Verteilung folgt keinem Koronarterritorium.</dd></div>
+            <div><dt>ACM mit LV-Beteiligung</dt><dd>Streifenförmiges LGE unter dem Epikard oder in der Wandmitte, häufig inferolateral.</dd></div>
+            <div><dt>Infarktnarbe</dt><dd>Das LGE beginnt typischerweise subendokardial im Gebiet einer Koronararterie. Es kann die gesamte Wanddicke erfassen.</dd></div>
+            <div><dt>Myokarditis</dt><dd>Subepikardiales oder intramurales LGE kann genauso aussehen wie bei ACM.</dd></div>
           </dl>
           <details className={styles.mrtDetails}>
-            <summary>Wie unterscheidet sich das Muster?</summary>
-            <dl className={styles.mriSequenceSummary}>
-              <div><dt>Infarktnarbe</dt><dd>Typischerweise beginnt das LGE subendokardial und kann sich bis zur gesamten Wanddicke ausdehnen. Die Verteilung passt zum Versorgungsgebiet einer Koronararterie.</dd></div>
-              <div><dt>Myokarditis</dt><dd>Auch bei Myokarditis kann das LGE subepikardial oder intramural liegen. Das Muster allein trennt Myokarditis und ACM daher nicht sicher.</dd></div>
-            </dl>
-            <p>Akuter Verlauf und Ödem im T2-Mapping helfen bei der Einordnung, können aber auch in einer entzündlichen Phase der ACM auftreten. Rhythmusbefunde, Familienanamnese und Genetik mitbeurteilen.</p>
+            <summary>Was hilft bei der Abgrenzung zur Myokarditis?</summary>
+            <ul className={styles.essentialList}>
+              <li>Ein akuter Verlauf und ein Ödem im T2-Mapping sprechen für eine aktive Entzündung. Beides kann auch bei ACM vorkommen.</li>
+              <li>Für die Einordnung sind Rhythmusbefunde, Familienanamnese und Genetik wichtig.</li>
+            </ul>
           </details>
         </>}
       </div>

@@ -2,6 +2,20 @@ import { Children, cloneElement, isValidElement } from 'react'
 
 // Authored parallel translations; German clinical source remains unchanged.
 const COPY = {
+  "Cine im Vierkammerblick und in einer zweiten Ebene beurteilen.": { en: "Assess cine in the four-chamber view and in a second plane.", fa: "تصاویر Cine را در نمای چهارحفره‌ای و یک نمای دوم بررسی کنید." },
+  "Ein Abschnitt der freien RV-Wand bewegt sich in der Systole nicht.": { en: "A segment of the RV free wall does not move during systole.", fa: "بخشی از دیوارهٔ آزاد بطن راست در سیستول حرکت نمی‌کند." },
+  "Ein Abschnitt der freien RV-Wand wölbt sich in der Systole nach außen.": { en: "A segment of the RV free wall bulges outward during systole.", fa: "بخشی از دیوارهٔ آزاد بطن راست در سیستول به بیرون برجسته می‌شود." },
+  "Systolische RV-Dysfunktion": { en: "RV systolic dysfunction", fa: "اختلال عملکرد سیستولی بطن راست" },
+  "Erhöhtes enddiastolisches RV-Volumen.": { en: "Increased RV end-diastolic volume.", fa: "افزایش حجم پایان دیاستولی بطن راست." },
+  "Verminderte RV-Ejektionsfraktion (RVEF).": { en: "Reduced RV ejection fraction (RVEF).", fa: "کاهش کسر جهشی بطن راست (RVEF)." },
+  "Volumen und RVEF aus dem vollständigen Cine-Stapel bestimmen.": { en: "Measure volume and RVEF from the full cine stack.", fa: "حجم و RVEF را از کل سری Cine اندازه بگیرید." },
+  "LGE-Muster im Vergleich": { en: "Comparison of LGE patterns", fa: "مقایسهٔ الگوهای LGE" },
+  "Streifenförmiges LGE unter dem Epikard oder in der Wandmitte, häufig inferolateral.": { en: "Stria-like subepicardial or midwall LGE, often inferolateral.", fa: "LGE نواری زیر اپی‌کارد یا در میانهٔ دیواره، اغلب در بخش تحتانی‌جانبی." },
+  "Das LGE beginnt typischerweise subendokardial im Gebiet einer Koronararterie. Es kann die gesamte Wanddicke erfassen.": { en: "LGE typically starts subendocardially in a coronary territory and can extend through the full wall thickness.", fa: "LGE معمولاً از زیر اندوکارد در قلمرو یک شریان کرونری آغاز می‌شود و می‌تواند تمام ضخامت دیواره را درگیر کند." },
+  "Subepikardiales oder intramurales LGE kann genauso aussehen wie bei ACM.": { en: "Subepicardial or midwall LGE can look the same as in ACM.", fa: "LGE زیر اپی‌کارد یا میان‌دیواره‌ای می‌تواند شبیه ACM باشد." },
+  "Was hilft bei der Abgrenzung zur Myokarditis?": { en: "What helps distinguish myocarditis?", fa: "چه چیز به افتراق از میوکاردیت کمک می‌کند؟" },
+  "Ein akuter Verlauf und ein Ödem im T2-Mapping sprechen für eine aktive Entzündung. Beides kann auch bei ACM vorkommen.": { en: "An acute presentation and edema on T2 mapping suggest active inflammation. Both can occur in ACM as well.", fa: "سیر حاد و ادم در T2 mapping به نفع التهاب فعال‌اند. هر دو در ACM هم ممکن‌اند." },
+  "Für die Einordnung sind Rhythmusbefunde, Familienanamnese und Genetik wichtig.": { en: "Interpret the findings alongside rhythm findings, family history, and genetics.", fa: "برای تفسیر، یافته‌های ریتم، سابقهٔ خانوادگی و ژنتیک را در نظر بگیرید." },
   "MRT": { en: "MRI", fa: "MRI" },
   "Wichtige Cine-Befunde": { en: "Key cine findings", fa: "یافته‌های مهم Cine" },
   "Regionale Wandbewegungsstörung": { en: "Regional wall motion abnormality", fa: "اختلال موضعی حرکت دیواره" },
