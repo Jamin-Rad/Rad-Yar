@@ -186,6 +186,8 @@
 .score strong span { color: var(--soft); font-size: .58em; }
 .review { padding-left: 0; list-style: none; }
 .review li { padding-block: 10px; border-top: 1px solid var(--line); }
+.resultRow { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px 14px; }
+.resultRow small { display: block; color: var(--soft); margin-top: 3px; }
 .review summary, .reference summary { cursor: pointer; font-weight: 750; }
 .reference summary { padding: 14px 16px; color: var(--gold); }
 .referenceBody { display: grid; grid-template-columns: 1fr 1.7fr; gap: 16px; padding: 0 16px 14px; }

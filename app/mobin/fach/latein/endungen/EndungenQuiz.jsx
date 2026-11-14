@@ -5,6 +5,20 @@ import { isCorrect, rounds } from './questions'
 import styles from './endungen.module.css'
 
 const marks = { training: '↗', medium: '✓', hard: '✦' }
+const resultsKey = 'mobin-latin-endungen-results-v1'
+const resultDate = new Intl.DateTimeFormat('de-DE', { dateStyle: 'medium', timeStyle: 'short' })
+
+function readResults() {
+  try {
+    const data = JSON.parse(window.localStorage.getItem(resultsKey) ?? '[]')
+    return Array.isArray(data) ? data.filter((item) => item && typeof item.id === 'string'
+      && (item.mode === 'medium' || item.mode === 'hard') && Number.isFinite(item.date)
+      && Array.isArray(item.mistakes) && item.mistakes.every((index) =>
+        Number.isInteger(index) && index >= 0 && index < rounds[item.mode].questions.length)) : []
+  } catch {
+    return []
+  }
+}
 
 const rows = [
   ['a-Deklination', 'amica', 'a', 'am', 'ae', 'as'],
@@ -57,9 +71,11 @@ function AnswerFeedback({ question, answer }) {
   )
 }
 
-function Round({ mode, onExit }) {
-  const { title, questions } = rounds[mode]
-  const training = mode === 'training'
+function Round({ mode, subset, onExit, onResult, onRepeat }) {
+  const round = rounds[mode]
+  const questions = subset ? subset.map((index) => round.questions[index]) : round.questions
+  const title = subset ? 'Fehler wiederholen' : round.title
+  const training = mode === 'training' || Boolean(subset)
   const [index, setIndex] = useState(0)
   const [answers, setAnswers] = useState({})
   const [checked, setChecked] = useState({})
@@ -71,6 +87,8 @@ function Round({ mode, onExit }) {
   const marked = Boolean(checked[index])
   const done = training ? Object.keys(checked).length : Object.values(answers).filter((value) => value.trim()).length
   const total = questions.length
+  const mistakes = finished ? questions.flatMap((item, number) =>
+    isCorrect(item, answers[number]) ? [] : [subset?.[number] ?? number]) : []
 
   useEffect(() => {
     heading.current?.focus()
@@ -92,6 +110,9 @@ function Round({ mode, onExit }) {
       return
     }
     if (done === total) {
+      if (!training) {
+        onResult(mode, questions.flatMap((item, number) => isCorrect(item, answers[number]) ? [] : [number]))
+      }
       setFinished(true)
       return
     }
@@ -111,7 +132,7 @@ function Round({ mode, onExit }) {
   }
 
   if (finished) {
-    const score = questions.filter((item, number) => isCorrect(item, answers[number])).length
+    const score = total - mistakes.length
     return (
       <section className={styles.panel}>
         <button className={styles.textButton} onClick={onExit}>← Zur Auswahl</button>
@@ -129,7 +150,10 @@ function Round({ mode, onExit }) {
             </li>
           ))}
         </ol>
-        <button className={styles.primary} onClick={restart}>Runde wiederholen</button>
+        <div className={styles.controls}>
+          <button className={styles.secondary} onClick={restart}>Runde wiederholen</button>
+          {mistakes.length > 0 && <button className={styles.primary} onClick={() => onRepeat(mode, mistakes)}>Fehler wiederholen</button>}
+        </div>
       </section>
     )
   }
@@ -152,7 +176,7 @@ function Round({ mode, onExit }) {
           </nav>
         )}
         <p className={styles.eyebrow}>
-          {training ? (index < 10 ? 'Mittel' : 'Schwer') : title} · Aufgabe {index + 1}/{total} · {question.topic}
+          {mode === 'training' && !subset ? (index < 10 ? 'Mittel' : 'Schwer') : title} · Aufgabe {index + 1}/{total} · {question.topic}
         </p>
         <h2 ref={heading} tabIndex={-1}>{question.prompt}</h2>
         <p className={styles.example}>{question.example}</p>
@@ -191,13 +215,50 @@ function Round({ mode, onExit }) {
 }
 
 export default function EndungenQuiz() {
-  const [mode, setMode] = useState(null)
-  if (mode) return <Round key={mode} mode={mode} onExit={() => setMode(null)} />
+  const [active, setActive] = useState(null)
+  const [results, setResults] = useState([])
+  const [storageError, setStorageError] = useState(false)
+
+  useEffect(() => {
+    setResults(readResults())
+    function syncResults(event) {
+      if (event.key === resultsKey) setResults(readResults())
+    }
+    window.addEventListener('storage', syncResults)
+    return () => window.removeEventListener('storage', syncResults)
+  }, [])
+
+  function saveResult(mode, mistakes) {
+    const entry = { id: crypto.randomUUID(), date: Date.now(), mode, mistakes }
+    const previous = readResults()
+    const saved = [entry, ...previous, ...results.filter((result) => !previous.some((item) => item.id === result.id))]
+    setResults(saved)
+    try {
+      window.localStorage.setItem(resultsKey, JSON.stringify(saved))
+      setStorageError(false)
+    } catch {
+      setStorageError(true)
+    }
+  }
+
+  function repeat(mode, subset) {
+    setActive({ mode, subset, id: crypto.randomUUID() })
+  }
+
+  const storageWarning = storageError && <p role="status" className={styles.testNote}>
+    Die Ergebnisse sind noch sichtbar, konnten aber in diesem Browser nicht dauerhaft gespeichert werden.
+  </p>
+
+  if (active) return <>
+    {storageWarning}
+    <Round key={active.id} mode={active.mode} subset={active.subset}
+      onExit={() => setActive(null)} onResult={saveResult} onRepeat={repeat} />
+  </>
   return (
     <>
       <section className={styles.rounds} aria-label="Übungen und Probetests">
         {Object.entries(rounds).map(([key, round]) => (
-          <button className={styles.roundCard} data-mode={key} key={key} onClick={() => setMode(key)}>
+          <button className={styles.roundCard} data-mode={key} key={key} onClick={() => setActive({ mode: key, id: key })}>
             <span className={styles.badge} aria-hidden="true">{marks[key]}</span>
             <span className={styles.detail}>{round.detail}</span>
             <strong>{round.title}</strong>
@@ -207,6 +268,24 @@ export default function EndungenQuiz() {
         ))}
       </section>
       <p className={styles.testNote}>Die Probetests zeigen Lösungen und Punktzahl erst nach der Abgabe.</p>
+      {storageWarning}
+      {results.length > 0 && (
+        <section className={styles.panel} aria-labelledby="latin-results">
+          <h2 id="latin-results">Deine Testergebnisse</h2>
+          <ul className={styles.review}>
+            {results.map(({ id, mode, date, mistakes }) => {
+              const total = rounds[mode].questions.length
+              return <li className={styles.resultRow} key={id}>
+                <div><strong>{rounds[mode].title} · {total - mistakes.length}/{total}</strong>
+                  <small>{resultDate.format(date)}</small></div>
+                {mistakes.length > 0
+                  ? <button className={styles.secondary} onClick={() => repeat(mode, mistakes)}>Fehler wiederholen</button>
+                  : <span>Alles richtig</span>}
+              </li>
+            })}
+          </ul>
+        </section>
+      )}
       <Reference />
     </>
   )
