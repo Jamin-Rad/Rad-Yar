@@ -372,6 +372,29 @@
 .essentialList { margin:18px 0 0; padding-inline-start:22px; }
 .essentialList li { margin-bottom:14px; padding-inline-start:5px; font-size:15px; line-height:1.8; }
 .essentialList strong { color:var(--ink); }
+.readingGuide {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(min(100%,205px),1fr));
+  gap:12px;
+  margin:20px 0;
+}
+.readingGuide > div,.diagnosisExample {
+  min-width:0;
+  padding:16px;
+  border:1px solid var(--line);
+  border-radius:10px;
+  background:var(--canvas);
+}
+.readingGuide dt,.diagnosisExample h3 {
+  margin:0 0 8px;
+  color:var(--ink);
+  font-size:16px;
+  font-weight:750;
+  line-height:1.4;
+}
+.readingGuide dd { margin:0; }
+.readingGuide dd,.diagnosisExample p { font-size:15px; line-height:1.65; }
+.diagnosisExample p + p { margin-block-start:10px; }
 .mrtDetails { margin-block-start:24px; }
 .mrtDetails > summary {
   cursor:pointer;

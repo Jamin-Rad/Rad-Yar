@@ -21,7 +21,6 @@ function TfcExplanation() {
     <h3 className={styles.subheading}>Warum braucht man die TFC?</h3>
     <p className={styles.bodyText}>Die <strong>Task Force Criteria von 2010</strong> ordnen Hinweise aus verschiedenen Untersuchungen zur klassischen rechtsbetonten ARVC. Ein Major-Kriterium ist stärker, ein Minor-Kriterium schwächer gewichtet. Das ist diagnostisches Gewicht und nicht automatisch ein Maß für die Krankheitsschwere.</p>
     <Note title="Der MRT-Baustein: regional UND global">Eine regionale RV-Akinesie, Dyskinesie oder dyssynchrone Kontraktion muss mit einem erhöhten RVEDVi oder einer verminderten RVEF zusammenkommen. Ein großer RV allein genügt nicht; eine isolierte Hypokinesie auch nicht.</Note>
-    <TfcRuleDiagram/>
     <div className={styles.thresholds}><TeachingTable caption="TFC 2010 · die MRT-Grenzwerte bei Erwachsenen" headers={['Messgröße', 'Major', 'Minor']} rows={[
       ['RVEDVi · Männer', '≥ 110 ml/m²', '≥ 100 bis < 110 ml/m²'],
       ['RVEDVi · Frauen', '≥ 100 ml/m²', '≥ 90 bis < 100 ml/m²'],
@@ -71,13 +70,14 @@ export default function CriteriaOverview() {
 
   const [selected, setSelected] = useState(0)
   return localizeArvcTree(<>
-    <p className={styles.lead}><strong>Ein auffälliges MRT allein reicht für die Diagnose ARVC nicht aus.</strong> Für die klassische rechtsbetonte Form führen die Task Force Criteria von 2010 Befunde aus verschiedenen Bereichen zusammen, etwa aus MRT oder Echo, EKG, dokumentierten Rhythmusstörungen und Familienanamnese oder Genetik.</p>
-    <ol className={styles.essentialList}>
-      <li><strong>Was zählt im MRT?</strong> Eine passende regionale Bewegungsstörung der rechten Kammer zusammen mit einem erhöhten RV-Volumen oder einer verminderten RV-Auswurffraktion. Das ergibt ein Bildgebungskriterium.</li>
-      <li><strong>Wann ist die Diagnose nach TFC 2010 gesichert?</strong> Mit zwei Hauptkriterien (Major), einem Haupt- und zwei Nebenkriterien (Minor) oder vier Nebenkriterien aus unterschiedlichen Kategorien.</li>
-    </ol>
-    <p className={styles.bodyText}>Beispiel: Eine typische Wandbewegungsstörung mit deutlich vergrößerter rechter Kammer kann ein Major-Kriterium sein. Kommt aus einer anderen Kategorie eine nachweislich krankheitsverursachende ARVC-Genvariante hinzu, sind zwei Major-Kriterien erfüllt.</p>
-    <p className={styles.bodyText}>Die Padua-Kriterien erfassen zusätzlich linksbetonte und beidseitige ACM-Muster und berücksichtigen passende Narben im LGE.</p>
+    <p className={styles.lead}><strong>Die Diagnose ergibt sich aus mehreren Befunden.</strong> Die Task Force Criteria von 2010 (TFC) berücksichtigen unter anderem Bildgebung, EKG, dokumentierte Rhythmusstörungen und Familienanamnese oder Genetik.</p>
+    <TfcRuleDiagram/>
+    <div className={styles.diagnosisExample}>
+      <h3>Vom MRT-Befund zur Diagnose</h3>
+      <p>Ein Abschnitt der RV-Wand wölbt sich bei der Kontraktion nach außen. Das gemessene RV-Volumen liegt über der Major-Grenze. Zusammen ergibt das <strong>ein Major-Kriterium im MRT</strong>.</p>
+      <p>Eine nachgewiesene krankheitsverursachende ARVC-Genvariante liefert <strong>ein zweites Major-Kriterium</strong> aus einer anderen Kategorie. Damit ist die Diagnose nach TFC 2010 gesichert.</p>
+    </div>
+    <p className={styles.bodyText}>Die TFC erlauben auch andere Kombinationen aus verschiedenen Kategorien. Ein Major-Kriterium plus zwei Minor-Kriterien oder vier Minor-Kriterien reichen ebenfalls aus.</p>
     <details className={styles.mrtDetails}>
       <summary>Grenzwerte, Padua und ein Fallbeispiel</summary>
       <div className={styles.explorer}>

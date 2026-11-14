@@ -63,12 +63,21 @@ export function MrtOverview() {
 
   const [selected, setSelected] = useState(0)
   return localizeArvcTree(<>
-    <p className={styles.lead}><strong>Bei klassischer ARVC zuerst die rechte Kammer (RV) im Cine ansehen.</strong> Dann Größe und Pumpfunktion messen und nach Narben in beiden Kammern suchen.</p>
-    <ol className={styles.essentialList}>
-      <li><strong>Bewegung:</strong> Im MRT-Film (Cine) kann ein Abschnitt der freien RV-Wand stehen bleiben oder sich beim Zusammenziehen nach außen wölben.</li>
-      <li><strong>Größe und Pumpfunktion:</strong> Die rechte Kammer kann vergrößert sein oder weniger Blut auswerfen. Beides wird aus der gesamten Cine-Serie gemessen.</li>
-      <li><strong>Narben:</strong> Auf späten Kontrastaufnahmen (LGE) können helle Streifen in der Herzwand auffallen. Auch die linke Kammer prüfen. Fehlendes LGE schließt ARVC nicht aus.</li>
-    </ol>
+    <p className={styles.lead}><strong>Bei klassischer ARVC steht die rechte Herzkammer (RV) im Vordergrund.</strong> Im Cine beurteilst du Bewegung und Pumpfunktion. Auf den späten Kontrastaufnahmen suchst du nach Narben.</p>
+    <dl className={styles.readingGuide}>
+      <div>
+        <dt>Wie bewegt sich die Wand?</dt>
+        <dd>Im Cine kann ein Abschnitt der RV-Wand stillstehen (Akinesie) oder sich beim Zusammenziehen nach außen wölben (Dyskinesie).</dd>
+      </div>
+      <div>
+        <dt>Wie groß ist der RV? Wie gut pumpt er?</dt>
+        <dd>Die Kammer kann zu groß sein oder einen kleineren Anteil ihres Blutes auswerfen. Das misst du in der gesamten Cine-Serie.</dd>
+      </div>
+      <div>
+        <dt>Siehst du Hinweise auf Narben?</dt>
+        <dd>Im LGE können helle Streifen in der Wand auffallen. Schau beide Kammern an. Auch ohne sichtbares LGE ist eine ARVC möglich.</dd>
+      </div>
+    </dl>
     <div className={styles.explorer}>
       <Tabs label="MRT-Beispiele auswählen" items={MRI_VIEWS} selected={selected} onChange={setSelected} idPrefix="mri-overview"/>
       <div id="mri-overview-panel" role="tabpanel" aria-labelledby={`mri-overview-tab-${selected}`}><MriTeaching key={MRI_VIEWS[selected].id} scene={MRI_VIEWS[selected].scene}/></div>
