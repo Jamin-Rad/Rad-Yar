@@ -1,6 +1,8 @@
 import { notFound } from 'next/navigation'
+import Link from 'next/link'
 import PlaceholderPage from '../../PlaceholderPage'
 import LanguageHome from '../../LanguageHome'
+import endungen from '../latein/endungen/endungen.module.css'
 
 const subjects = {
   nwt: 'NWT',
@@ -27,6 +29,14 @@ export default async function FachPage({ params }) {
   const { fach } = await params
   const title = subjects[fach]
   if (!title) notFound()
-  if (fach === 'latein' || fach === 'franzoesisch') return <LanguageHome language={title} school={fach === 'latein'} />
+  if (fach === 'latein') {
+    return <LanguageHome language={title} school featured={
+      <Link className={endungen.launch} href="/mobin/fach/latein/endungen">
+        <span><strong>Grammatiktest · Endungen</strong><small>20 Trainingsaufgaben und zwei Probetests</small></span>
+        <span aria-hidden="true">→</span>
+      </Link>
+    } />
+  }
+  if (fach === 'franzoesisch') return <LanguageHome language={title} />
   return <PlaceholderPage title={title} />
 }

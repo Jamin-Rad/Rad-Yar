@@ -22,12 +22,13 @@ const themes = {
   Persisch: { tone: 'persian', mark: 'فارسی', rtl: true },
 }
 
-export default function LanguageHome({ language, school = false }) {
+export default function LanguageHome({ language, school = false, featured }) {
   const tests = useSchoolTests(language)
   const [panel, setPanel] = useState('practice')
   const theme = themes[language]
   return <main className={styles.shell}><div className={styles.subjectWrap} data-subject={theme.tone}>
     <SubjectHeader title={language} mark={theme.mark} flag={theme.flag} rtl={theme.rtl} />
+    {featured}
     <div className={styles.subjectActions} aria-label="Übungsarten">
       <button className={styles.subjectAction} aria-pressed={panel === 'practice'} onClick={() => setPanel('practice')}>Aufgaben üben<span aria-hidden="true">›</span></button>
       <button className={styles.subjectAction} aria-pressed={panel === 'cards'} onClick={() => setPanel('cards')}>Karteikarten<span aria-hidden="true">›</span></button>
