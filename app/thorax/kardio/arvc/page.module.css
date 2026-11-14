@@ -396,6 +396,21 @@
 .mriIntroLine { display:block; padding-inline-start:1rem; }
 .mriSchematicGrid { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr)); gap:12px; align-items:start; }
 .mriSchematicGrid figure { margin:0; width:100%; }
+.mriSchematicGrid img { aspect-ratio:4 / 3; object-fit:contain; background:#071125; }
+.mriCaseDivider { border:0; border-block-start:1px solid var(--line); margin:32px 0 0; }
+.mriSequenceSummary { margin:14px 0; }
+.mriSequenceSummary > div {
+  display:grid;
+  grid-template-columns:minmax(0,10rem) minmax(0,1fr);
+  gap:8px 16px;
+  border-block-start:1px solid var(--line);
+  padding-block:12px;
+}
+.mriSequenceSummary dt { color:var(--ink); font-weight:750; }
+.mriSequenceSummary dd { margin:0; }
+@media (max-width:600px) {
+  .mriSequenceSummary > div { grid-template-columns:minmax(0,1fr); gap:4px; }
+}
 .readingGuide dd,.diagnosisExample p { font-size:15px; line-height:1.65; }
 .diagnosisExample p + p { margin-block-start:10px; }
 .mrtDetails { margin-block-start:24px; }

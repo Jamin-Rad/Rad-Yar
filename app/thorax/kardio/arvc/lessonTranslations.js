@@ -2,6 +2,21 @@ import { Children, cloneElement, isValidElement } from 'react'
 
 // Authored parallel translations; German clinical source remains unchanged.
 const COPY = {
+  "Welche Sequenzen schauen wir an?": { en: "Which sequences should we review?", fa: "کدام سکانس‌ها را بررسی کنیم؟" },
+  "Im Vierkammerblick und in einer zweiten Ebene die freie RV-Wand verfolgen. In der Systole kann ein Abschnitt unbeweglich bleiben (Akinesie) oder sich nach außen wölben (Dyskinesie). Aus dem vollständigen Cine-Stapel bestimmen wir RV-Volumen und RVEF.": { en: "Follow the RV free wall in the four-chamber view and a second plane. During systole, a segment may show no motion (akinesia) or bulge outward (dyskinesia). Measure RV volume and RVEF from the full cine stack.", fa: "دیوارهٔ آزاد بطن راست را در نمای چهارحفره‌ای و یک نمای دوم دنبال کنید. در سیستول، بخشی از آن ممکن است بی‌حرکت بماند (آکینزی) یا به بیرون برجسته شود (دیسکینزی). حجم و کسر جهشی بطن راست را از کل سری Cine اندازه بگیرید." },
+  "In den Spätaufnahmen nach Gadolinium die Wände beider Kammern prüfen. Narben können hell erscheinen. Im LV liegt das LGE bei ACM häufig außen oder in der Wandmitte. Auffälligkeiten in einer zweiten Ebene bestätigen.": { en: "Check both ventricular walls on late post-gadolinium images. Scar may appear bright. In ACM, LV enhancement is often subepicardial or midwall. Confirm suspicious findings in a second plane.", fa: "دیوارهٔ هر دو بطن را در تصاویر تأخیری پس از گادولینیوم بررسی کنید. اسکار ممکن است روشن دیده شود. در ACM، افزایش سیگنال بطن چپ اغلب در بخش بیرونی یا میانهٔ دیواره است. یافتهٔ مشکوک را در نمای دوم تأیید کنید." },
+  "Von der Herzwand zum MRT-Befund": { en: "From the ventricular wall to the MRI finding", fa: "از دیوارهٔ قلب تا یافتهٔ MRI" },
+  "Bei ACM kann Herzmuskel durch Bindegewebe und zum Teil durch Fett ersetzt werden. Betroffene Wandabschnitte können sich dadurch in der Systole schlechter oder paradox bewegen. Fett allein ist kein ARVC-Kriterium.": { en: "In ACM, muscle may be replaced by fibrous tissue and sometimes fat. Affected segments may contract less or move paradoxically during systole. Fat alone is not an ARVC criterion.", fa: "در ACM ممکن است بافت فیبروزی و گاهی چربی جای بخشی از عضلهٔ قلب را بگیرند. بخش درگیر در سیستول ممکن است ضعیف‌تر یا در جهت غیرطبیعی حرکت کند. چربی به‌تنهایی معیار ARVC نیست." },
+  "Herzschema zur Orientierung. Die freie Wand des rechten Ventrikels liegt im Bild links.": { en: "Anatomical orientation. The RV free wall is on the left side of the image.", fa: "نمای شماتیک آناتومی. دیوارهٔ آزاد بطن راست در سمت چپ تصویر است." },
+  "Stilisiertes LGE-Schema ohne Patientenbezug. Der helle Streifen liegt am Außenrand der linken Kammerwand.": { en: "Stylized LGE diagram. The bright streak lies at the outer edge of the LV wall.", fa: "نمای شماتیک LGE. نوار روشن در لبهٔ بیرونی دیوارهٔ بطن چپ قرار دارد." },
+  "MRT-Beispiele": { en: "MRI examples", fa: "نمونه‌های MRI" },
+  "Fall 1": { en: "Case 1", fa: "کیس ۱" },
+  "Fall 2": { en: "Case 2", fa: "کیس ۲" },
+  "Anamnese": { en: "Clinical history", fa: "شرح حال" },
+  "MRT-Befund": { en: "MRI findings", fa: "یافته‌های MRI" },
+  "Diagnose im Originalfall": { en: "Diagnosis in the source case", fa: "تشخیص در گزارش اصلی" },
+  "Rechtsbetonte arrhythmogene Kardiomyopathie (ARVC).": { en: "Right-dominant arrhythmogenic cardiomyopathy (ARVC).", fa: "کاردیومیوپاتی آریتموژنیک با درگیری غالب بطن راست (ARVC)." },
+  "Arrhythmogene Kardiomyopathie mit Beteiligung beider Ventrikel, im Originalfall als sehr wahrscheinlich eingestuft.": { en: "Biventricular arrhythmogenic cardiomyopathy, considered highly likely in the source case.", fa: "کاردیومیوپاتی آریتموژنیک با درگیری هر دو بطن، که در گزارش اصلی بسیار محتمل دانسته شده است." },
   "Wandbewegungsstörung": { en: "Wall motion abnormality", fa: "اختلال حرکت دیواره" },
   "Cine-Aufnahmen zeigen Wandbewegung und Pumpfunktion.": { en: "Cine images show wall motion and pumping function.", fa: "تصاویر Cine حرکت دیواره و عملکرد پمپاژ را نشان می‌دهند." },
   "Späte Kontrastaufnahmen (LGE) zeigen Hinweise auf Narben.": { en: "Late gadolinium enhancement (LGE) images show signs of scar.", fa: "تصاویر تأخیری پس از تزریق (LGE) نشانه‌های اسکار را نشان می‌دهند." },

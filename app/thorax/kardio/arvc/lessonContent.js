@@ -3,7 +3,6 @@ export const SECTIONS = [
   { id: 'mrt', short: 'Was sieht man im MRT?', title: 'Was sieht man im MRT?', icon: 'layers' },
   { id: 'kriterien', short: 'Wie wird ARVC diagnostiziert?', title: 'Wie wird ARVC diagnostiziert?', icon: 'table' },
   { id: 'differenzialdiagnosen', short: 'Wichtige Fallstricke', title: 'Was eine ACM imitieren kann', icon: 'activity' },
-  { id: 'bilder', short: 'Weitere MRTs · optional', title: 'Weitere MRT-Beispiele · optional', icon: 'case', optional: true },
 ]
 export const SECTION_IDS = SECTIONS.map(section => section.id)
 export const CORE_SECTION_IDS = SECTIONS.filter(section => !section.optional).map(section => section.id)

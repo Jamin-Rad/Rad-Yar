@@ -89,14 +89,24 @@ function Comparison({ id, title, tone, rows, intro, renderVisual }) {
   }]} />
 }
 
+function MrtChapter() {
+  const { lang } = useLanguage()
+  return localizeArvcTree(<>
+    <MrtOverview/>
+    <hr className={styles.mriCaseDivider}/>
+    <h3 className={styles.subheading}>MRT-Beispiele</h3>
+    <CaseAtlas/>
+  </>, lang)
+}
+
 const CONTENT = {
   definition: Definition,
-  mrt: MrtOverview,
+  mrt: MrtChapter,
   kriterien: CriteriaOverview,
   differenzialdiagnosen: Differentials,
   bilder: CaseAtlas,
 }
-const HASH_ALIASES = { muster: 'mrt', tfc: 'kriterien', padua: 'kriterien', merksaetze: 'take-home' }
+const HASH_ALIASES = { bilder: 'mrt', muster: 'mrt', tfc: 'kriterien', padua: 'kriterien', merksaetze: 'take-home' }
 const THEME = {
   backgroundImage: '/andarun-galaxy-v3.png',
   accent: '#187e9a',

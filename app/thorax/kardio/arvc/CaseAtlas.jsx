@@ -9,6 +9,11 @@ import { CASES } from './lessonContent'
 import { Icon, Tabs } from './LessonVisuals'
 import styles from './page.module.css'
 
+const CASE_DIAGNOSES = {
+  '57972': 'Rechtsbetonte arrhythmogene Kardiomyopathie (ARVC).',
+  '194915': 'Arrhythmogene Kardiomyopathie mit Beteiligung beider Ventrikel, im Originalfall als sehr wahrscheinlich eingestuft.',
+}
+
 function SelectedCase({ item }) {
   const { lang: _arvcLang } = useLanguage()
 
@@ -28,6 +33,7 @@ function SelectedCase({ item }) {
   }, [image.type])
   return localizeArvcTree(<div className={styles.selectedCase}>
     <header className={styles.caseHeader}><div><small>Radiopaedia · rID {item.id}</small><h3>{item.title}</h3><p>{item.age}</p></div><a href={item.study} target="_blank" rel="noreferrer">Originalserie <Icon name="external"/></a></header>
+    <p className={styles.caseClinical}><strong>Anamnese</strong><br/>{item.clinical}</p>
     <Tabs label={`Ansichten für Fall ${item.id}`} items={item.views} selected={view} onChange={setView} idPrefix={prefix}/>
     <div id={`${prefix}-panel`} role="tabpanel" aria-labelledby={`${prefix}-tab-${view}`}>
       <figure className={styles.mriFigure}>
@@ -35,9 +41,12 @@ function SelectedCase({ item }) {
         <figcaption>{image.sequence}</figcaption>
       </figure>
       {image.type === 'video' ? <div className={styles.videoToolbar}><button type="button" onClick={() => { if (video.current?.paused) video.current.play().catch(() => setPlayError(true)); else video.current?.pause() }}><Icon name="activity"/>{playing ? 'Cine pausieren' : 'Cine abspielen'}</button><label>Tempo<select defaultValue="1" onChange={e => { if (video.current) video.current.playbackRate = Number(e.target.value) }}><option value="0.5">0,5×</option><option value="1">1×</option></select></label>{playError ? <a href={item.study} target="_blank" rel="noreferrer">Cine in der Originalserie öffnen</a> : null}</div> : null}
-      <p className={styles.caseClinical}>{item.look}</p>
     </div>
-    <footer className={styles.caseCredit}><p>Case courtesy of {item.creator}, <a href={item.url} target="_blank" rel="noreferrer">Radiopaedia.org · rID {item.id}</a> · <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank" rel="noreferrer">CC BY-NC-SA 3.0</a>. Originalaufnahmen unverändert.</p><p>{item.certainty}. Standbilder zeigen keine Wandbewegung; dafür die Cine-Serie ansehen.</p></footer>
+    <dl className={styles.mriSequenceSummary}>
+      <div><dt>MRT-Befund</dt><dd>{item.look} {item.values.map(([name, value]) => `${name} ${value}`).join(' · ')}</dd></div>
+      <div><dt>Diagnose im Originalfall</dt><dd>{CASE_DIAGNOSES[item.id] || item.certainty}</dd></div>
+    </dl>
+    <footer className={styles.caseCredit}><p>Case courtesy of {item.creator}, <a href={item.url} target="_blank" rel="noreferrer">Radiopaedia.org · rID {item.id}</a> · <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank" rel="noreferrer">CC BY-NC-SA 3.0</a>. Originalaufnahmen unverändert.</p></footer>
     {image.type !== 'video' ? <dialog ref={dialog} className={styles.imageDialog} aria-label={`${item.title}: ${image.label}`} onClick={event => { if (event.target === dialog.current) dialog.current.close() }}><button type="button" autoFocus onClick={() => dialog.current?.close()}>Schließen ×</button><Image data-no-zoom unoptimized src={image.src} width={1200} height={1000} sizes="95vw" alt={image.alt}/><p>{image.sequence} · {item.creator} · Radiopaedia rID {item.id}</p></dialog> : null}
   </div>, _arvcLang)
 }
@@ -46,12 +55,14 @@ export default function CaseAtlas() {
   const { lang: _arvcLang } = useLanguage()
 
   const [selected, setSelected] = useState(0)
-  const cases = CASES.filter(item => item.id !== '95633')
+  const cases = CASES.filter(item => Object.hasOwn(CASE_DIAGNOSES, item.id))
+  const caseTabs = cases.map((item, index) => ({ id: item.id, label: index === 0 ? 'Fall 1' : 'Fall 2' }))
   return localizeArvcTree(<>
-    <p className={styles.lead}>Optional zum Anschauen: fünf originale MRT-Fälle mit verschiedenen Ansichten. Fall auswählen und bei Bedarf die vollständige Serie auf Radiopaedia öffnen.</p>
     <div className={styles.atlas}>
-      <nav className={styles.caseList} aria-label="Radiopaedia-Lehrfälle">{cases.map((item, index) => <button type="button" key={item.id} onClick={() => setSelected(index)} aria-pressed={selected === index}><span>{String(index + 1).padStart(2, '0')}</span><div><strong>{item.label}</strong><small>{item.age} · rID {item.id}</small></div><Icon name="arrow"/></button>)}</nav>
-      <SelectedCase key={cases[selected].id} item={cases[selected]}/>
+      <Tabs label="MRT-Beispiele" items={caseTabs} selected={selected} onChange={setSelected} idPrefix="mri-cases"/>
+      <div id="mri-cases-panel" role="tabpanel" aria-labelledby={`mri-cases-tab-${selected}`} tabIndex={0}>
+        <SelectedCase key={cases[selected].id} item={cases[selected]}/>
+      </div>
     </div>
   </>, _arvcLang)
 }
