@@ -46,7 +46,7 @@ export default function useLatinProgress() {
     if (!pending.current.size) return
     setStatus('saving')
     const batch = [...pending.current.entries()]
-      .sort(([, a], [, b]) => Number(Boolean(b.result)) - Number(Boolean(a.result))).slice(0, 10)
+      .sort(([, a], [, b]) => Number(Boolean(b.result)) - Number(Boolean(a.result))).slice(0, 5)
     const drafts = {}
     const results = []
     for (const [, item] of batch) {
@@ -131,12 +131,13 @@ export default function useLatinProgress() {
     schedule()
   }
 
-  function saveResult(mode, mistakes, unanswered) {
-    const result = { id: crypto.randomUUID(), date: Date.now(), mode, mistakes, unanswered }
+  function saveResult(mode, mistakes, unanswered, answers) {
+    const result = { id: crypto.randomUUID(), date: Date.now(), mode, mistakes, unanswered, answers }
     const previous = current.current
     pending.current.set(result.id, { result })
     store({ ...previous, results: [result, ...previous.results] })
     schedule()
+    return result
   }
 
   return { ...progress, status, saveDraft, saveResult, refresh, flush }

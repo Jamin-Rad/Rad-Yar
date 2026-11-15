@@ -72,8 +72,8 @@ const extraTraining = [
   question(esse, 'Ersetze „wir“ durch „du“. Schreibe nur das Verb.', 'Ibi sumus. → Ibi ___.', 'es', 'sumus steht für „wir sind“, es für „du bist“.'),
   question(esse, 'Ergänze die Form von esse.', 'Ibi equi ___. · Dort sind Pferde.', 'sunt', 'equi steht im Nominativ Plural und braucht sunt.'),
   question(cases, 'Welches Wort ist das Akkusativobjekt?', 'Amicam servae salutant.', 'amicam', 'amicam beantwortet „Wen begrüßen die Dienerinnen?“', ['amicam', 'servae', 'salutant']),
-  question(cases, 'Setze nur das Objekt in den Plural.', 'Amicus asinum timet.', 'asinos', 'Aus -um im Akkusativ Singular wird -os im Akkusativ Plural.'),
-  question(cases, 'Setze nur das Subjekt in den Plural.', 'Serva donum apportat.', 'servae', 'Das Subjekt bleibt im Nominativ. Die Pluralendung lautet -ae.'),
+  question(cases, 'Schreibe das Akkusativobjekt im Plural. Gib nur dieses Wort ein.', 'Amicus asinum timet.', 'asinos', 'asinum ist das Objekt im Akkusativ Singular. Die maskuline o-Deklination bildet den Akkusativ Plural mit -os.'),
+  question(cases, 'Schreibe das Subjekt im Plural. Gib nur dieses Wort ein.', 'Serva donum apportat.', 'servae', 'serva ist das Subjekt im Nominativ Singular. Der Nominativ Plural der a-Deklination endet auf -ae.'),
   question(cases, 'Welche Rolle hat donum?', 'Donum iacet.', 'Subjekt', 'Was liegt da? Das Geschenk. donum ist hier das Subjekt.', ['Akkusativobjekt', 'Subjekt', 'Prädikat']),
   question(cases, 'Welche Rolle hat donum?', 'Donum apportatis.', 'Akkusativobjekt', 'In apportatis steckt „ihr“. donum beantwortet „Was bringt ihr?“', ['Subjekt', 'Prädikat', 'Akkusativobjekt']),
 ]
@@ -82,7 +82,7 @@ const quick = [
   question(present, 'Bilde die Form für „wir schweigen“.', 'tacere', 'tacemus', 'tace- + -mus ergibt tacemus.'),
   question(esse, 'Ergänze die Form von esse.', 'Ibi ___. · Dort bist du.', 'es', 'In der 2. Person Singular lautet die Form es.'),
   question(cases, 'Bilde den Akkusativ Plural.', 'villa', 'villas', 'Die a-Deklination hat im Akkusativ Plural -as.'),
-  question(cases, 'Bestimme Kasus und Numerus von dona.', 'Dona apportatis.', 'Akkusativ Plural', 'Ihr bringt die Geschenke. dona ist das Objekt und steht im Plural.', ['Nominativ Plural', 'Akkusativ Plural', 'Akkusativ Singular']),
+  question(cases, 'Bestimme Kasus und Numerus von dona.', 'Dona apportatis.', 'Akkusativ Plural', '„Ihr bringt die Geschenke.“ Die Verbendung -tis zeigt das Subjekt „ihr“. Dona beantwortet „Was bringt ihr?“ und ist Akkusativ Plural. Beim Neutrum donum haben Nominativ und Akkusativ Plural dieselbe Form: dona.', ['Nominativ Plural', 'Akkusativ Plural', 'Akkusativ Singular']),
   question(present, 'Ergänze die passende Verbform.', 'Servi familiam ___. · Die Diener begrüßen die Familie. (salutare)', 'salutant', 'Servi steht im Plural. Die passende Endung ist -nt.'),
 ]
 

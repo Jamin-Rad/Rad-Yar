@@ -232,3 +232,83 @@
   .caseTable th, .caseTable td { font-size: .76rem; }
 }
 @media (prefers-reduced-motion: reduce) { .roundCard { transition: none; } }
+
+/* The active routes share the selected Latin arcade background. */
+.screen {
+  --ink: #f6faff;
+  --soft: #c4d6e8;
+  --gold: #a9d6ff;
+  min-height: 100svh;
+  padding: clamp(16px, 2.6vw, 42px) clamp(18px, 4vw, 66px) 56px;
+  background: #142a40 url('/mobin/latin-arcade.webp') center / cover fixed;
+  color: var(--ink);
+  font-family: var(--font-manrope), system-ui, sans-serif;
+}
+.screenWrap { width: min(100%, 1510px); margin-inline: auto; }
+.screenBack {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 8px;
+  margin-bottom: clamp(12px, 2vw, 28px);
+  background: #102c44ed;
+  border: 0;
+  border-radius: 6px;
+  color: #fff;
+  font: inherit;
+  font-weight: 750;
+  text-decoration: none;
+  cursor: pointer;
+}
+.screen :is(button, a, input, summary):focus-visible { outline: 2px solid #a9d6ff; outline-offset: 4px; }
+.topicHero, .workspace {
+  padding: clamp(20px, 3.15vw, 52px);
+  border-radius: 12px;
+  background: #0b2237fa;
+  color: var(--ink);
+  box-shadow: 0 14px 35px #09182730;
+}
+.topicHero h1, .workspace h1 { margin: 0 0 6px; font-size: clamp(2rem, 3.6vw, 3.45rem); line-height: 1.08; }
+.topicHero p, .workspace p { margin: 0 0 12px; }
+.kicker { color: #c4d9ed; font-size: .98rem; font-weight: 700; }
+.workspaceHeader { display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 10px 24px; margin-bottom: 24px; }
+.workspaceHeader .testNote { margin: 0; }
+.workspaceGrid { display: grid; grid-template-columns: minmax(0, 2.35fr) minmax(230px, 1fr); }
+.questionPane { min-width: 0; padding-inline-end: clamp(20px, 3vw, 48px); }
+.questionPane h2 { margin: 10px 0 14px; font-size: clamp(1.4rem, 2.65vw, 2.55rem); line-height: 1.2; }
+.questionPane .example { background: transparent; border: 0; padding: 2px 0 8px; font: inherit; font-size: clamp(1.18rem, 2vw, 1.9rem); }
+.questionPane .option { padding: 12px 15px; font-size: clamp(1rem, 1.45vw, 1.24rem); background: #102b44; }
+.questionPane .input { width: 100%; background: #102b44; }
+.questionPane .progress { accent-color: #6ab9fa; }
+.sidePane { padding-inline-start: clamp(18px, 3vw, 48px); border-inline-start: 1px solid #66859e80; min-width: 0; }
+.sidePane h2 { margin: 0 0 14px; font-size: 1.2rem; }
+.sidePane .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(44px, 1fr)); }
+.sidePane .reference { margin: 0; background: transparent; }
+.sidePane .referenceBody { grid-template-columns: minmax(0, 1fr); overflow-x: auto; }
+.sidePane table { font-size: .78rem; }
+.screen .primary { background: #77bdff; color: #0b2337; }
+.screen .primary:not(:disabled):hover { background: #a6d5ff; }
+.screen .secondary:disabled { opacity: .5; cursor: default; }
+.resultGrid { display: grid; grid-template-columns: minmax(250px, 1fr) minmax(0, 2.15fr); align-items: start; gap: 16px; }
+.resultGrid .workspace h2 { margin: 0 0 14px; font-size: clamp(1.45rem, 2.4vw, 2.2rem); }
+.resultActions { display: grid; gap: 12px; }
+.resultGrid .score { margin-block: 16px; }
+.answerList { display: grid; gap: 10px; list-style: none; padding: 0; margin: 0; }
+.answerList details { border: 1px solid #7294b045; border-radius: 9px; background: #142e46; }
+.answerList summary { padding: 14px 16px; font-weight: 800; cursor: pointer; }
+.answerList [data-wrong="true"] > summary { color: #ffc5c9; }
+.answerDetail { padding: 0 16px 8px; }
+.answerDetail h3 { margin: 0 0 10px; font-size: 1.06rem; }
+.answerComparison { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin: 14px 0; }
+.answerComparison > div { padding: 9px 12px; border-radius: 7px; background: #263d55; }
+.answerComparison > div:last-child { background: #1b493f; }
+.answerComparison dt { color: #dbebf9; font-size: .84rem; }
+.answerComparison dd { margin: 4px 0 0; font-weight: 800; overflow-wrap: anywhere; }
+.screenWrap > .roundBar { margin-top: 12px; padding-inline: 12px; border-radius: 6px; background: #0b2237ee; }
+
+@media (max-width: 760px) {
+  .screen { background-attachment: scroll; }
+  .workspaceGrid, .resultGrid { grid-template-columns: 1fr; }
+  .questionPane { padding-inline-end: 0; }
+  .sidePane { padding: 18px 0 0; margin-top: 20px; border-inline-start: 0; border-top: 1px solid #66859e80; }
+}
