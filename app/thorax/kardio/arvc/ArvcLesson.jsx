@@ -64,15 +64,36 @@ function Differentials() {
   const { lang: _arvcLang } = useLanguage()
 
   return localizeArvcTree(<>
-    <p className={styles.lead}>Ein großer RV oder eine Narbe kann verschiedene Ursachen haben. Entscheidend ist, ob <strong>Bewegung, Kammerfunktion, Narbenmuster und klinische Angaben zusammenpassen.</strong></p>
-    <Comparison id="mimics" title="Die wichtigsten Überschneidungen" tone="secondary" rows={[
-      ['Sportherz', 'RV-Vergrößerung kann eine Trainingsanpassung sein. Beide Kammern vergleichen und nach sicheren regionalen Störungen oder Narben suchen.'],
-      ['Myokarditis', 'Nichtischämisches LV-LGE kann ähnlich aussehen. Akute Beschwerden, Troponin, Ödem und Verlauf berücksichtigen. Auch eine ACM kann entzündungsähnliche Episoden zeigen.'],
-      ['Kardiale Sarkoidose', 'Kann nichtischämische Narben und Rhythmusstörungen verursachen. Verteilung, Leitungsstörungen und Hinweise außerhalb des Herzens helfen weiter.'],
-      ['Druck- oder Volumenbelastung des RV', 'Zum Beispiel pulmonale Hypertonie oder Shunt: nach einer Ursache für die RV-Vergrößerung suchen.'],
-      ['Artefakte oder frühere Ablation', 'Bewegung aus der Schicht, Arrhythmie und Partialvolumen können täuschen. Eine frühere Ablation kann selbst eine Narbe hinterlassen.'],
+    <p className={styles.lead}>Ein vergrößerter rechter Ventrikel oder ein nichtischämisches LGE kann mehrere Ursachen haben. Für die Einordnung zählen <strong>Wandbewegung, Kammerfunktion, Narbenmuster und klinischer Kontext.</strong></p>
+    <Comparison id="mimics" title="Worauf kommt es bei der Abgrenzung an?" tone="secondary" rows={[
+      ['Sportherz', [
+        'Ausdauertraining kann beide Ventrikel vergrößern.',
+        'Vergleiche die Größe und Funktion beider Kammern. Achte besonders auf regionale Wandbewegungsstörungen und das LGE-Muster.',
+      ]],
+      ['Myokarditis', [
+        'Ein nichtischämisches LGE im linken Ventrikel kann bei Myokarditis und ACM ähnlich aussehen.',
+        'Ordne akute Beschwerden, Troponin, myokardiales Ödem und Verlauf gemeinsam ein. Auch eine ACM kann mit entzündungsähnlichen Episoden einhergehen.',
+      ]],
+      ['Kardiale Sarkoidose', [
+        'Auch kardiale Sarkoidose kann nichtischämische Narben und ventrikuläre Arrhythmien verursachen.',
+        'Achte auf die Verteilung des LGE, auf Leitungsstörungen und auf Hinweise für eine Sarkoidose außerhalb des Herzens.',
+      ]],
+      ['Druck- oder Volumenbelastung des RV', [
+        'Pulmonale Hypertonie kann den rechten Ventrikel druckbelasten. Ein Links-rechts-Shunt kann ihn volumenbelasten.',
+        'Prüfe bei einer RV-Dilatation, ob eine solche Belastung die Vergrößerung erklärt.',
+      ]],
+      ['Artefakte oder frühere Ablation', [
+        'Bewegung aus der Schichtebene, Arrhythmien und Partialvolumeneffekte können einen auffälligen Befund vortäuschen.',
+        'Eine frühere Ablation kann selbst eine Narbe hinterlassen. Gleiche die Lage des LGE mit der Eingriffsvorgeschichte ab.',
+      ]],
     ]}/>
-    <Note title="Drei Dinge nicht gleichsetzen">Großer RV ist nicht automatisch ARVC. LGE ist nicht automatisch ACM. Und fehlendes LGE schließt eine ARVC nicht aus.</Note>
+    <Note title="Cave · Drei Dinge nicht gleichsetzen" caution>
+      <ul className={styles.caveList}>
+        <li>Ein vergrößerter RV allein belegt keine ARVC.</li>
+        <li>LGE allein belegt keine ACM.</li>
+        <li>Fehlendes LGE schließt eine ARVC nicht aus.</li>
+      </ul>
+    </Note>
   </>, _arvcLang)
 }
 
@@ -85,7 +106,12 @@ function Comparison({ id, title, tone, rows, intro, renderVisual }) {
     hidePanelTitle: true,
     visualPlacement: renderVisual ? 'inline' : undefined,
     intro,
-    items: rows.map(([label, text, pattern], index) => ({ id: String(index), label, text, pattern })),
+    items: rows.map(([label, text, pattern], index) => ({
+      id: String(index),
+      label,
+      text: Array.isArray(text) ? text.map(line => <span className={styles.differentialLine} key={line}>{line}</span>) : text,
+      pattern,
+    })),
   }]} />
 }
 

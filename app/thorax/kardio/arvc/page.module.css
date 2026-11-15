@@ -61,6 +61,10 @@
 .note > strong { display:block; margin-bottom:5px; color:var(--plum-800); font-size:14px; }
 .note.caution { border-color:#dec495; border-inline-start-color:#c88a36; background:#fcf6e9; color:#654f30; }
 .note.caution > strong { color:#835b22; }
+.differentialLine { display:block; }
+.differentialLine + .differentialLine { margin-block-start:.65em; }
+.caveList { margin:8px 0 0; padding-inline-start:1.35em; }
+.caveList li + li { margin-block-start:4px; }
 @media screen {
   :global(html[data-theme='dark']) .page .note {
     background:#183545;

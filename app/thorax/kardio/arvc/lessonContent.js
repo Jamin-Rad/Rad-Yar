@@ -2,7 +2,7 @@ export const SECTIONS = [
   { id: 'definition', short: 'Grundlagen', title: 'Grundlagen', icon: 'heart' },
   { id: 'mrt', short: 'MRT', title: 'MRT', icon: 'layers' },
   { id: 'kriterien', short: 'Diagnosekriterien', title: 'Diagnosekriterien', icon: 'table' },
-  { id: 'differenzialdiagnosen', short: 'Wichtige Fallstricke', title: 'Was eine ACM imitieren kann', icon: 'activity' },
+  { id: 'differenzialdiagnosen', short: 'Differenzialdiagnose', title: 'Differenzialdiagnose', icon: 'activity' },
 ]
 export const SECTION_IDS = SECTIONS.map(section => section.id)
 export const CORE_SECTION_IDS = SECTIONS.filter(section => !section.optional).map(section => section.id)
