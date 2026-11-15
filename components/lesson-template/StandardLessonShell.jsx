@@ -82,7 +82,6 @@ function MobileLearningPath() {
       </button>)}{learningPathLinks.map(link => <Link key={link.href} href={link.href} className={styles.mobilePathLink} onClick={() => setPanelOpen(false)}>
         <span className={styles.mobilePathItemIcon}>{renderIcon(link.icon)}</span>
         <span><strong>{link.label}</strong></span>
-        <i aria-hidden="true">↗</i>
       </Link>)}</nav>
     </section> : null}
     <button type="button" className={styles.mobilePathButton} onClick={() => setPanelOpen(value => !value)} aria-expanded={panelOpen} aria-controls="standard-mobile-learning-path-panel">
@@ -339,7 +338,7 @@ function LessonShell({
         <h2>{labels.path}</h2>
         <nav>{trackedSections.map(section => <button type="button" key={section.id} className={openId === section.id ? styles.activeSideItem : ''} onClick={() => openSection(section.id)} aria-current={openId === section.id ? 'location' : undefined} aria-label={`${labels.open}: ${section.label}`}><span className={styles.sideIcon}>{renderIcon(section.icon || section.id)}</span><strong>{section.label}</strong></button>)}
           {learningPathLinks.map(link => <Link key={link.href} href={link.href} className={styles.sidePathLink}>
-            <span className={styles.sideIcon}>{renderIcon(link.icon)}</span><strong>{link.label}</strong><span aria-hidden="true">↗</span>
+            <span className={styles.sideIcon}>{renderIcon(link.icon)}</span><strong>{link.label}</strong>
           </Link>)}
         </nav>
       </aside>

@@ -416,7 +416,7 @@
   background:var(--canvas);
 }
 .mrtKeyPoint strong { display:block; margin-block-end:4px; color:var(--ink); }
-.mriCaseDivider { border:0; border-block-start:1px solid var(--line); margin:32px 0 0; }
+.mriCaseDivider { border:0; border-block-start:1px solid var(--line); margin:28px 0 16px; }
 .mriSequenceSummary { margin:14px 0; }
 .mriSequenceSummary > div {
   display:grid;
@@ -458,7 +458,7 @@
 }
 
 .workflow { grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px; }
-.criteriaLesson { font-size:1rem; line-height:1.65; }
+.criteriaLesson { margin-block-start:18px; font-size:1rem; line-height:1.65; min-inline-size:0; }
 .criteriaLesson > .subheading {
   margin-block:clamp(28px,4vw,40px) 10px;
   font-family:inherit;
@@ -466,21 +466,11 @@
   font-weight:750;
   line-height:1.3;
 }
-.criteriaLesson > .criteriaStart { margin-block-start:0; }
-.criteriaLesson > .mriHeading {
-  display:flex;
-  align-items:center;
-  gap:.5em;
-  color:#8b2633;
-}
-.mriHeading::before {
-  content:'';
-  flex:0 0 5px;
-  block-size:1.15em;
-  border-radius:4px;
+.chapterBody .mriCriteriaGroup > header h3 { color:#8b2633; }
+.mriCriteriaGroup > header > span {
   background:linear-gradient(105deg,#661826 0%,#a83343 32%,#f7a7a9 51%,#b74452 65%,#711e2d 100%);
 }
-:global(html[data-theme='dark']) .criteriaLesson > .mriHeading { color:#f4a6ac; }
+:global(html[data-theme='dark']) .chapterBody .mriCriteriaGroup > header h3 { color:#f4a6ac; }
 .criteriaIntro { max-inline-size:68ch; }
 .criteriaIntro strong { color:var(--ink); }
 .criteriaIntro > span {
@@ -615,19 +605,25 @@
 .paduaPatterns dt { color:var(--lesson-accent-strong); font-weight:750; }
 .paduaPatterns dd { margin:3px 0 0; }
 .paduaCalculatorLink {
-  display:inline-flex;
+  display:flex;
   align-items:center;
-  gap:12px;
-  margin-block-start:14px;
-  padding:8px 14px;
-  border:1px solid var(--lesson-accent);
-  border-radius:8px;
-  background:var(--canvas);
+  justify-content:center;
+  inline-size:100%;
+  box-sizing:border-box;
+  gap:16px;
+  margin:24px auto 0;
+  padding:16px 24px;
+  border:1px solid var(--lesson-accent-strong);
+  border-radius:10px;
+  background:var(--paper);
   color:var(--lesson-accent-strong);
-  font-weight:750;
+  font-weight:800;
+  text-align:center;
   text-decoration:none;
 }
 .paduaCalculatorLink:hover { background:var(--lesson-accent-soft); }
+.paduaCalculatorLink:focus-visible { outline:3px solid var(--lesson-accent); outline-offset:4px; }
+.page[dir='rtl'] .paduaCalculatorLink svg { transform:scaleX(-1); }
 .criteriaMri { padding:clamp(12px,3vw,24px); }
 .criteriaMri .mrtTopic { color:var(--ink); }
 .paduaMri > section + section {

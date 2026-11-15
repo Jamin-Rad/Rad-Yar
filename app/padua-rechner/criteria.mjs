@@ -1,6 +1,32 @@
 const L = (de, en, fa) => ({ de, en, fa })
 const item = (id, side, grade, de, en, fa) => ({ id, side, grade, text: L(de, en, fa) })
 
+export const criterionTitles = {
+  'rv-function': L("Wandbewegungsstörung mit RV-Dilatation oder Dysfunktion", "Wall motion abnormality with RV dilatation or dysfunction", "اختلال حرکت دیواره همراه با اتساع یا اختلال عملکرد بطن راست"),
+  'rv-motion': L("Regionale Störung der freien RV-Wand", "Regional RV free-wall abnormality", "اختلال موضعی دیوارهٔ آزاد بطن راست"),
+  'lv-function': L("Globale systolische Dysfunktion", "Global systolic dysfunction", "اختلال کلی عملکرد سیستولی"),
+  'lv-motion': L("Regionale Wandbewegungsstörung", "Regional wall motion abnormality", "اختلال موضعی حرکت دیواره"),
+  'rv-lge': L("Transmurales RV-LGE", "Transmural RV LGE", "LGE تمام‌ضخامت بطن راست"),
+  'rv-biopsy': L("Fibrose in der RV-Biopsie", "Fibrosis in RV biopsy", "فیبروز در بیوپسی بطن راست"),
+  'lv-lge': L("Nichtischämisches LV-LGE", "Non-ischaemic LV LGE", "LGE غیرایسکمیک بطن چپ"),
+  'rv-twi-major': L("T-Inversionen V1–V3 oder weiter", "T-wave inversion in V1–V3 or beyond", "وارونگی T در V1–V3 یا فراتر"),
+  'rv-twi-minor': L("T-Inversionen V1–V2", "T-wave inversion in V1–V2", "وارونگی T در V1–V2"),
+  'rv-twi-rbbb': L("T-Inversionen bei Rechtsschenkelblock", "T-wave inversion with right bundle branch block", "وارونگی T همراه با بلوک شاخهٔ راست"),
+  'lv-twi': L("T-Inversionen V4–V6", "T-wave inversion in V4–V6", "وارونگی T در V4–V6"),
+  'epsilon': L("Epsilon-Welle", "Epsilon wave", "موج اپسیلون"),
+  'terminal-activation': L("Verlängerte terminale Aktivierung", "Prolonged terminal activation", "طولانی‌شدن فعال‌سازی انتهایی"),
+  'low-voltage': L("QRS-Niedervoltage", "Low QRS voltage", "ولتاژ پایین QRS"),
+  'rv-arrhythmia-major': L("Linksschenkelblockmuster außerhalb des RVOT", "LBBB pattern outside the RVOT", "الگوی بلوک شاخهٔ چپ خارج از RVOT"),
+  'rv-arrhythmia-minor': L("RVOT-Muster", "RVOT pattern", "الگوی RVOT"),
+  'lv-arrhythmia': L("Rechtsschenkelblockmuster", "RBBB pattern", "الگوی بلوک شاخهٔ راست"),
+  'gene': L("Pathogene ACM-Genvariante", "Pathogenic ACM variant", "واریانت بیماری‌زای مرتبط با ACM"),
+  'family-definite': L("Gesicherte ACM bei erstgradig Verwandten", "Definite ACM in a first-degree relative", "ACM قطعی در بستگان درجهٔ اول"),
+  'family-pathology': L("Pathologisch bestätigte ACM bei erstgradig Verwandten", "Pathology-confirmed ACM in a first-degree relative", "ACM تأییدشده با پاتولوژی در بستگان درجهٔ اول"),
+  'family-suspected': L("ACM in der Familie anamnestisch bekannt", "Reported family history of ACM", "سابقهٔ گزارش‌شدهٔ ACM در خانواده"),
+  'family-sudden': L("Plötzlicher Tod vor 35 Jahren", "Sudden death before age 35", "مرگ ناگهانی پیش از ۳۵ سالگی"),
+  'family-second': L("Gesicherte ACM bei zweitgradig Verwandten", "Confirmed ACM in a second-degree relative", "ACM تأییدشده در بستگان درجهٔ دوم"),
+}
+
 export const categories = [
   {
     id: 'function', number: 'I',

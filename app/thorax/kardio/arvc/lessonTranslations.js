@@ -3,7 +3,7 @@ import { Children, cloneElement, isValidElement } from 'react'
 // Authored parallel translations; German clinical source remains unchanged.
 const COPY = {
   "Padua-Rechner": { en: "Padua calculator", fa: "محاسبه‌گر پادوا" },
-  "Padua-Rechner öffnen": { en: "Open Padua calculator", fa: "باز کردن محاسبه‌گر پادوا" },
+  "Zum Padua-Rechner": { en: "Open Padua calculator", fa: "باز کردن محاسبه‌گر پادوا" },
   "Diagnosestufen nach TFC 2010 und Padua 2020": { en: "Diagnostic tiers under the 2010 TFC and 2020 Padua criteria", fa: "رده‌های تشخیصی طبق TFC ۲۰۱۰ و پادوا ۲۰۲۰" },
   "Bei Padua gilt die Skala für rechtsdominante und biventrikuläre ACM.": { en: "Under Padua, the scale applies to right-dominant and biventricular ACM.", fa: "در پادوا، این مقیاس برای ACM راست‌غالب و دوبطنی به کار می‌رود." },
   "Padua · Schon für „möglich“": { en: "Padua · Requirements for “possible” ACM", fa: "پادوا · شرایط ردهٔ «ممکن»" },

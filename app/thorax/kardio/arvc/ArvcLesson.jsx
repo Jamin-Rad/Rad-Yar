@@ -120,8 +120,11 @@ function MrtChapter() {
   return localizeArvcTree(<>
     <MrtOverview/>
     <hr className={styles.mriCaseDivider}/>
-    <h3 className={styles.subheading}>MRT-Beispiele</h3>
-    <CaseAtlas/>
+    <TeachingGroups direction={lang === 'fa' ? 'rtl' : 'ltr'}>
+      <TeachingGroup id="arvc-mri-cases" title="MRT-Beispiele">
+        <div className={styles.criteriaLesson}><CaseAtlas/></div>
+      </TeachingGroup>
+    </TeachingGroups>
   </>, lang)
 }
 
@@ -184,7 +187,7 @@ export default function ArvcLesson() {
       mcq: { label: t('MCQ starten'), href: '/ueben/quiz?fach=thorax&n=10&themen=arvc', trailingIcon: 'arrow' },
       flashcards: { label: t('Flashcards'), href: '/flashcards/arvc' },
     }}
-    learningPathLinks={[{ label: t('Padua-Rechner'), href: localPath('/padua-rechner'), icon: 'table' }]}
+    learningPathLinks={[{ label: t('Padua-Rechner'), href: localPath('/padua-rechner'), icon: 'chart' }]}
     sections={LOCAL_SECTIONS[lang] || LOCAL_SECTIONS.de}
     renderIcon={renderIcon}
     theme={THEME}

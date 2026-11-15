@@ -95,7 +95,8 @@
 .sidebar nav { display: grid; gap: 4px; }
 .sidebar :is(button,.sidePathLink) { width: 100%; min-height: 46px; display: grid; grid-template-columns: 34px 1fr; align-items: center; gap: 9px; padding: 6px 8px; border: 0; border-radius: 7px; background: transparent; color: var(--body); font: 700 14px/1.35 var(--font-inter,system-ui,sans-serif); text-align: start; cursor: pointer; }
 .sidebar :is(button,.sidePathLink):hover { background: var(--lesson-accent-soft); color: var(--lesson-accent-strong); }
-.sidebar .sidePathLink { grid-template-columns:34px minmax(0,1fr) auto; color:var(--lesson-accent-strong); text-decoration:none; }
+.sidebar .sidePathLink { min-height:42px; margin-top:8px; padding:9px 8px; border-top:1px solid var(--line); text-decoration:none; }
+.sidebar .sidePathLink:focus-visible,.mobilePathPanel .mobilePathLink:focus-visible { outline:2px solid var(--lesson-accent-strong); outline-offset:2px; }
 .sideIcon { width: 31px; height: 31px; display: grid; place-items: center; border: 1px solid #d3d2db; border-radius: 50%; color: var(--lesson-accent-strong); }
 .sideIcon svg { width: 17px; height: 17px; }
 .sidebar .activeSideItem { background: linear-gradient(90deg,color-mix(in srgb,var(--lesson-accent) 17%,transparent),color-mix(in srgb,var(--lesson-secondary) 12%,transparent)); color: var(--lesson-accent-strong); }
@@ -236,6 +237,7 @@
   .mobilePathPanel nav :is(button,.mobilePathLink) > span:nth-child(2) { min-width: 0; }
   .mobilePathPanel nav :is(button,.mobilePathLink) strong { color: var(--ink); font-size: 13px; }
   .mobilePathPanel nav .mobilePathLink:hover { background:var(--lesson-accent-soft); }
+  .mobilePathPanel nav .mobilePathLink { grid-template-columns:34px minmax(0,1fr); margin-top:4px; border-top-color:var(--line); }
   .mobilePathItemIcon { width: 32px; height: 32px; display: grid; place-items: center; border: 1px solid var(--line); border-radius: 50%; color: var(--lesson-accent-strong); }
   .mobilePathPanel nav i { color: var(--lesson-secondary-strong); font-size: 13px; font-style: normal; font-weight: 900; text-align: center; }
   .mobilePathPanel nav .mobilePathCurrent { border-color: color-mix(in srgb,var(--lesson-accent) 25%,var(--line)); background: color-mix(in srgb,var(--lesson-accent-soft) 70%,transparent); }

@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
-import { assessPadua, categories } from './criteria.mjs'
+import { assessPadua, categories, criterionTitles } from './criteria.mjs'
 
 const assess = (...ids) => assessPadua(new Set(ids))
 
@@ -9,6 +9,7 @@ test('all 23 criteria belong to six categories and have unique IDs', () => {
   assert.equal(categories.length, 6)
   assert.equal(ids.length, 23)
   assert.equal(new Set(ids).size, ids.length)
+  assert.deepEqual(Object.keys(criterionTitles).sort(), [...ids].sort())
 })
 
 test('ECG and genetics alone cannot establish a Padua phenotype', () => {

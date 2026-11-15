@@ -5,8 +5,8 @@ import styles from './InteractiveTeachingGroups.module.css'
 
 const identity = value => value
 
-export function TeachingGroup({ id, title, tone, children }) {
-  return <section className={`${styles.group} ${tone === 'secondary' ? styles.secondary : ''}`} data-lesson-print-teaching-group aria-labelledby={`${id}-heading`}>
+export function TeachingGroup({ id, title, tone, children, className = '' }) {
+  return <section className={`${styles.group} ${tone === 'secondary' ? styles.secondary : ''} ${className}`} data-lesson-print-teaching-group aria-labelledby={`${id}-heading`}>
     <header className={styles.groupHeader}><span aria-hidden="true" /><h3 id={`${id}-heading`}>{title}</h3></header>
     {children}
   </section>

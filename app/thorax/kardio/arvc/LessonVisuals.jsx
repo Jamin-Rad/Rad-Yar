@@ -15,6 +15,7 @@ export function Icon({ name, className }) {
     activity: <><path d="M2 12h5l3-8 4 16 3-8h5"/></>,
     case: <><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V2h6v2M8 9h8M8 13h8M8 17h5"/></>,
     table: <><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M3 14h18M9 4v16"/></>,
+    chart: <path d="M4 20h16M6 16v-4m6 4V8m6 8V4"/>,
     branch: <><path d="M12 3v6M5 17v-5h14v5M12 9v8"/><circle cx="5" cy="20" r="2"/><circle cx="12" cy="20" r="2"/><circle cx="19" cy="20" r="2"/></>,
     scan: <><path d="M8 3H3v5M16 3h5v5M3 16v5h5M21 16v5h-5"/><circle cx="12" cy="12" r="5"/></>,
     check: <><circle cx="12" cy="12" r="9"/><path d="m7 12 3 3 7-7"/></>,

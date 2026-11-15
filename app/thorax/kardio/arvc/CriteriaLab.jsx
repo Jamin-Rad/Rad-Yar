@@ -5,7 +5,8 @@ import { localizeArvcTree } from './lessonTranslations'
 
 import { useState } from 'react'
 import Link from 'next/link'
-import { Tabs } from './LessonVisuals'
+import { TeachingGroup, TeachingGroups } from '@/components/lesson-template/InteractiveTeachingGroups'
+import { Icon, Tabs } from './LessonVisuals'
 import styles from './page.module.css'
 
 const MRI_SYSTEMS = [
@@ -136,53 +137,60 @@ export default function CriteriaOverview() {
   const { lang } = useLanguage()
   const [selected, setSelected] = useState(0)
 
-  return localizeArvcTree(<div className={styles.criteriaLesson}>
-    <h3 className={`${styles.subheading} ${styles.criteriaStart}`}>TFC und Padua im Vergleich</h3>
-    <p className={styles.criteriaIntro}>
-      <strong>Für eine gesicherte Diagnose reicht ein einzelner MRT-Befund nicht aus.</strong>
-      <span>TFC und Padua berücksichtigen sechs Befundkategorien. Neben dem MRT zählen unter anderem das EKG, dokumentierte Rhythmusstörungen sowie Familienanamnese und Genetik.</span>
-    </p>
-    <dl className={styles.criteriaRows}>
-      <div><dt>TFC 2010</dt><dd>Die Task-Force-Kriterien wurden für die klassische ARVC entwickelt. Im Mittelpunkt steht die rechte Herzkammer.</dd></div>
-      <div><dt>Padua 2020</dt><dd>Padua erfasst auch linksdominante und biventrikuläre Formen und berücksichtigt Narben im LGE. Bei rechtsdominanter oder biventrikulärer ACM gelten dieselben Diagnosestufen mit zusätzlichen Voraussetzungen.</dd></div>
-    </dl>
-    <h3 className={styles.subheading}>Von den Befunden zur Diagnose</h3>
-    <p>Pro Kategorie zählt nur das stärkste erfüllte Kriterium, dann werden die Punkte aus den verschiedenen Kategorien addiert.</p>
-    <figure className={styles.criteriaScale}>
-      <figcaption>Diagnosestufen nach TFC 2010 und Padua 2020</figcaption>
-      <p className={styles.criteriaScaleScope}>Bei Padua gilt die Skala für rechtsdominante und biventrikuläre ACM.</p>
-      <div className={styles.criteriaWeights}>
-        <span><strong>Major</strong> <span>2 Punkte</span></span>
-        <span><strong>Minor</strong> <span>1 Punkt</span></span>
+  return localizeArvcTree(<TeachingGroups direction={lang === 'fa' ? 'rtl' : 'ltr'}>
+    <TeachingGroup id="arvc-diagnostic-comparison" title="TFC und Padua im Vergleich" tone="secondary">
+      <div className={styles.criteriaLesson}>
+        <p className={styles.criteriaIntro}>
+          <strong>Für eine gesicherte Diagnose reicht ein einzelner MRT-Befund nicht aus.</strong>
+          <span>TFC und Padua berücksichtigen sechs Befundkategorien. Neben dem MRT zählen unter anderem das EKG, dokumentierte Rhythmusstörungen sowie Familienanamnese und Genetik.</span>
+        </p>
+        <dl className={styles.criteriaRows}>
+          <div><dt>TFC 2010</dt><dd>Die Task-Force-Kriterien wurden für die klassische ARVC entwickelt. Im Mittelpunkt steht die rechte Herzkammer.</dd></div>
+          <div><dt>Padua 2020</dt><dd>Padua erfasst auch linksdominante und biventrikuläre Formen und berücksichtigt Narben im LGE. Bei rechtsdominanter oder biventrikulärer ACM gelten dieselben Diagnosestufen mit zusätzlichen Voraussetzungen.</dd></div>
+        </dl>
+        <h4 className={styles.subheading}>Von den Befunden zur Diagnose</h4>
+        <p>Pro Kategorie zählt nur das stärkste erfüllte Kriterium, dann werden die Punkte aus den verschiedenen Kategorien addiert.</p>
+        <figure className={styles.criteriaScale}>
+          <figcaption>Diagnosestufen nach TFC 2010 und Padua 2020</figcaption>
+          <p className={styles.criteriaScaleScope}>Bei Padua gilt die Skala für rechtsdominante und biventrikuläre ACM.</p>
+          <div className={styles.criteriaWeights}>
+            <span><strong>Major</strong> <span>2 Punkte</span></span>
+            <span><strong>Minor</strong> <span>1 Punkt</span></span>
+          </div>
+          <dl className={styles.criteriaScores}>
+            <div><dt><bdi dir="ltr" aria-label="2 Punkte">2</bdi></dt><dd>Möglich</dd></div>
+            <div><dt><bdi dir="ltr" aria-label="3 Punkte">3</bdi></dt><dd>Grenzwertig</dd></div>
+            <div><dt><bdi dir="ltr" aria-label="Ab 4 Punkten">≥ 4</bdi></dt><dd>Gesichert</dd></div>
+          </dl>
+        </figure>
+        <dl className={styles.paduaPatterns}>
+          <div>
+            <dt>Padua · Schon für „möglich“</dt>
+            <dd>Mindestens ein Kriterium für Form und Funktion (I) oder Myokardgewebe (II) muss erfüllt sein. Bei biventrikulärer ACM gilt das für beide Kammern. Ein Major-Kriterium im EKG allein genügt nicht.</dd>
+          </div>
+          <div>
+            <dt>Padua · Isoliert links (ALVC)</dt>
+            <dd>Erforderlich sind ein strukturelles LV-Major-Kriterium (typisches LGE) und eine pathogene oder wahrscheinlich pathogene ACM-assoziierte Genvariante.</dd>
+          </div>
+        </dl>
+        <Link className={styles.paduaCalculatorLink} href="/padua-rechner">Zum Padua-Rechner <Icon name="arrow"/></Link>
       </div>
-      <dl className={styles.criteriaScores}>
-        <div><dt><bdi dir="ltr" aria-label="2 Punkte">2</bdi></dt><dd>Möglich</dd></div>
-        <div><dt><bdi dir="ltr" aria-label="3 Punkte">3</bdi></dt><dd>Grenzwertig</dd></div>
-        <div><dt><bdi dir="ltr" aria-label="Ab 4 Punkten">≥ 4</bdi></dt><dd>Gesichert</dd></div>
-      </dl>
-    </figure>
-    <dl className={styles.paduaPatterns}>
-      <div>
-        <dt>Padua · Schon für „möglich“</dt>
-        <dd>Mindestens ein Kriterium für Form und Funktion (I) oder Myokardgewebe (II) muss erfüllt sein. Bei biventrikulärer ACM gilt das für beide Kammern. Ein Major-Kriterium im EKG allein genügt nicht.</dd>
+    </TeachingGroup>
+    <TeachingGroup id="arvc-diagnostic-mri" title="Major und Minor im MRT" className={styles.mriCriteriaGroup}>
+      <div className={styles.criteriaLesson}>
+        <p>Cine zeigt Form und Funktion der Herzkammern (Kategorie I). Bei Padua können typische Narben im LGE auch in die Bewertung des Myokardgewebes eingehen (Kategorie II).</p>
+        <div className={`${styles.atlas} ${styles.criteriaAtlas}`}>
+          <Tabs label="MRT-Kriterien vergleichen" items={MRI_SYSTEMS} selected={selected} onChange={setSelected} idPrefix="acm-diagnostic-mri"/>
+          <div className={styles.criteriaMri} id="acm-diagnostic-mri-panel" role="tabpanel" aria-labelledby={`acm-diagnostic-mri-tab-${selected}`} tabIndex={0}>
+            {selected === 0 ? <TfcExplanation lang={lang}/> : <PaduaExplanation lang={lang}/>}
+          </div>
+        </div>
       </div>
-      <div>
-        <dt>Padua · Isoliert links (ALVC)</dt>
-        <dd>Erforderlich sind ein strukturelles LV-Major-Kriterium (typisches LGE) und eine pathogene oder wahrscheinlich pathogene ACM-assoziierte Genvariante.</dd>
+    </TeachingGroup>
+    <TeachingGroup id="arvc-diagnostic-other-categories" title="Die fünf weiteren Kategorien">
+      <div className={styles.criteriaGuide}>
+          {OTHER_CATEGORIES.map(category => <CategoryDisclosure key={category.number} {...category}/>)}
       </div>
-    </dl>
-    <Link className={styles.paduaCalculatorLink} href="/padua-rechner">Padua-Rechner öffnen <span aria-hidden="true">↗</span></Link>
-    <h3 className={`${styles.subheading} ${styles.mriHeading}`}>Major und Minor im MRT</h3>
-    <p>Cine zeigt Form und Funktion der Herzkammern (Kategorie I). Bei Padua können typische Narben im LGE auch in die Bewertung des Myokardgewebes eingehen (Kategorie II).</p>
-    <div className={`${styles.atlas} ${styles.criteriaAtlas}`}>
-      <Tabs label="MRT-Kriterien vergleichen" items={MRI_SYSTEMS} selected={selected} onChange={setSelected} idPrefix="acm-diagnostic-mri"/>
-      <div className={styles.criteriaMri} id="acm-diagnostic-mri-panel" role="tabpanel" aria-labelledby={`acm-diagnostic-mri-tab-${selected}`} tabIndex={0}>
-        {selected === 0 ? <TfcExplanation lang={lang}/> : <PaduaExplanation lang={lang}/>}
-      </div>
-    </div>
-    <h3 className={styles.subheading}>Die fünf weiteren Kategorien</h3>
-    <div className={styles.criteriaGuide}>
-      {OTHER_CATEGORIES.map(category => <CategoryDisclosure key={category.number} {...category}/>)}
-    </div>
-  </div>, lang)
+    </TeachingGroup>
+  </TeachingGroups>, lang)
 }
