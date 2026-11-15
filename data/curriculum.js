@@ -1874,6 +1874,22 @@ export const getFachTitle = (fach, lang) => t(fach?.title, lang)
 export const getKapitelTitle = (kapitel, lang) => t(kapitel?.title, lang)
 export const getThemaTitle = (thema, lang) => t(thema?.title, lang)
 
+const topicIdsByLessonPath = new Map()
+for (const fach of CURRICULUM) {
+  for (const kapitel of fach.kapitel) {
+    for (const thema of kapitel.themen.flatMap(thema => [thema, ...(thema.sub || [])])) {
+      const path = thema.link
+      if (path?.startsWith('/') && !/[?#]/.test(path)) {
+        // Shared overview routes cannot identify an individual curriculum topic.
+        const existing = topicIdsByLessonPath.get(path)
+        topicIdsByLessonPath.set(path, existing === undefined || existing === thema.id ? thema.id : null)
+      }
+    }
+  }
+}
+
+export const getLessonTopicId = path => topicIdsByLessonPath.get(path)
+
 // Findet die Lektion (Lernen-Seite) zu einem Flashcard-Thema, z.B. '/flashcards/meniskus' → '/msk/knie/meniskus'
 export const getLessonLinkForFlashcard = (flashcardHref) => {
   for (const fach of CURRICULUM) {

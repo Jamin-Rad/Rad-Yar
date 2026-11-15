@@ -15,7 +15,7 @@ export function useLessonReadStatus(topicId) {
   const [authError, setAuthError] = useState(false)
 
   useEffect(() => {
-    if (!isLoaded) return
+    if (!isLoaded || !topicId) return
     activateUserCache(userId)
     try {
       const { articles } = projectReadState(loadReadState(userId))
@@ -24,6 +24,7 @@ export function useLessonReadStatus(topicId) {
   }, [isLoaded, userId, topicId])
 
   useEffect(() => {
+    if (!topicId) return
     const update = event => {
       if (event.detail?.userId === userId) setIsRead(Number(event.detail.articles?.[topicId] || 0) >= 1)
     }
@@ -34,7 +35,7 @@ export function useLessonReadStatus(topicId) {
   // Beim Login: Lesefortschritt vom Server holen und mit localStorage mergen
   // (Server gewinnt bei Konflikten – damit andere Geräte berücksichtigt werden).
   useEffect(() => {
-    if (!isLoaded || !userId) return
+    if (!isLoaded || !userId || !topicId) return
     let cancelled = false
     pullReadStatusFromServer(userId)
       .then(result => {
@@ -45,13 +46,12 @@ export function useLessonReadStatus(topicId) {
     return () => { cancelled = true }
   }, [isLoaded, userId, topicId])
 
-  const toggleRead = () => {
-    if (!isLoaded || !userId || !isUserCacheActive(userId)) {
+  const setLessonRead = next => {
+    if (!isLoaded || !userId || !topicId || !isUserCacheActive(userId)) {
       setAuthError(true)
       return false
     }
     setAuthError(false)
-    const next = !isRead
     let payload
     try { payload = changeReadStatus(userId, topicId, next) } catch { return false }
     persistProgressWrite(
@@ -67,5 +67,7 @@ export function useLessonReadStatus(topicId) {
     return true
   }
 
-  return { isRead, toggleRead, authError, clearAuthError: () => setAuthError(false) }
+  const toggleRead = () => setLessonRead(!isRead)
+
+  return { isRead, setLessonRead, toggleRead, authError, clearAuthError: () => setAuthError(false) }
 }

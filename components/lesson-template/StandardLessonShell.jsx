@@ -3,9 +3,11 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { lessonAssessmentActions } from '@/lib/lessonAssessmentLinks'
+import { getLessonTopicId } from '@/data/curriculum'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { createContext, useContext, useEffect, useMemo, useState } from 'react'
 import { usePersistedSectionProgress } from '@/hooks/usePersistedSectionProgress'
+import { useLessonReadStatus } from '@/hooks/useLessonReadStatus'
 import { useLehrModeActive } from '@/hooks/useLehrModeActive'
 import LessonHero from '@/components/LessonHero'
 import BookView from '@/components/book-view/BookView'
@@ -16,6 +18,12 @@ import { observeLessonHash } from '@/lib/lessonHashNavigation'
 import styles from './StandardLessonShell.module.css'
 
 const LessonShellContext = createContext(null)
+
+const SIGN_IN_LABELS = {
+  de: ['Melde dich an, um die Lektion in deinem Lernfortschritt zu speichern.', 'Anmelden'],
+  en: ['Sign in to save the lesson to your learning progress.', 'Sign in'],
+  fa: ['برای ثبت این درس در پیشرفت یادگیری وارد حساب خود شوید.', 'ورود'],
+}
 
 const DEFAULT_LABELS = {
   de: { contents:'Lektionsinhalt', path:'Lernpfad', progress:'gelesen', continue:'Lektion fortsetzen', close:'Schließen', complete:'Abschnitt als gelesen markieren', completed:'Als gelesen markiert', completeLesson:'Ganze Lektion als gelesen markieren', lessonCompleted:'Ganze Lektion gelesen', open:'Abschnitt öffnen', takeHome:'Take Home Message' },
@@ -201,6 +209,8 @@ function LessonShell({
   const lessonView = useLessonView()
   const book = presentationEnabled && lessonView?.mode === 'book'
   const pathname = usePathname()
+  const topicId = getLessonTopicId(pathname) ?? getLessonTopicId(heroLessonId)
+  const { isRead, setLessonRead, authError } = useLessonReadStatus(topicId)
   const assessmentActions = lessonAssessmentActions(pathname, lang, actions)
   const labels = { ...(DEFAULT_LABELS[lang] || DEFAULT_LABELS.de), ...Object.fromEntries(Object.entries(suppliedLabels || {}).filter(([, value]) => value !== undefined && value !== null)) }
   const trackedSections = useMemo(() => sections.filter(section => !section.emphasis), [sections])
@@ -209,7 +219,7 @@ function LessonShell({
   const chapterIds = useMemo(() => trackedSections.map(section => section.id), [trackedSections])
   const [openId, setOpenId] = useState(trackedSections[0]?.id || sections[0]?.id || null)
   const [summaryOpen, setSummaryOpen] = useState(false)
-  const [readSections, setReadSections] = usePersistedSectionProgress(lessonId, trackedIds, lessonRead)
+  const [readSections, setReadSections] = usePersistedSectionProgress(lessonId, trackedIds, topicId ? isRead : lessonRead)
   const activeIndex = trackedSections.findIndex(section => section.id === openId)
   const summarySection = sections.find(section => section.emphasis)
 
@@ -273,15 +283,27 @@ function LessonShell({
     openSection(trackedSections[nextIndex].id)
   }
 
-  const toggleSectionRead = id => setReadSections(previous => {
-    const next = new Set(previous)
+  const sectionsComplete = trackedIds.length > 0 && readSections.size === trackedIds.length
+  const lessonComplete = topicId ? isRead : sectionsComplete
+
+  useEffect(() => {
+    if (topicId && sectionsComplete && !isRead) setReadSections(new Set())
+  }, [topicId, sectionsComplete, isRead, setReadSections])
+
+  const toggleSectionRead = id => {
+    const next = new Set(isRead ? trackedIds : readSections)
     if (next.has(id)) next.delete(id)
     else next.add(id)
-    return next
-  })
+    const complete = next.size === trackedIds.length
+    if (topicId && isRead !== complete && !setLessonRead(complete)) return
+    setReadSections(next)
+  }
 
-  const lessonComplete = trackedIds.length > 0 && readSections.size === trackedIds.length
-  const toggleLessonComplete = () => setReadSections(lessonComplete ? new Set() : new Set(trackedIds))
+  const toggleLessonComplete = () => {
+    const next = !lessonComplete
+    if (topicId && !setLessonRead(next)) return
+    setReadSections(next ? new Set(trackedIds) : new Set())
+  }
   const progress = trackedIds.length ? (readSections.size / trackedIds.length) * 100 : 0
   const context = { lang, progressIncludesSummary, labels, trackedIds, openId, openSection, summaryOpen, toggleSummary, readSections, toggleSectionRead, sections, trackedSections, learningPathLinks, renderIcon, lehrMode, book, presentationEnabled, presentationQuestions, lessonId }
   const atmosphereIndex = [...String(heroLessonId)].reduce((value, char) => (value * 31 + char.charCodeAt(0)) >>> 0, 0) % 6
@@ -307,6 +329,7 @@ function LessonShell({
 
   const summaryAction = summarySection ? { label: labels.takeHome, onClick: openSummary, trailingIcon: 'down' } : null
   const isAtLastTrackedSection = activeIndex === trackedSections.length - 1
+  const [signInHint, signInLabel] = SIGN_IN_LABELS[lang] || SIGN_IN_LABELS.de
 
   const lessonContent = <><article className={styles.lesson}><LessonShellContext.Provider value={context}>{children}</LessonShellContext.Provider></article>{sources ? (presentationEnabled ? <div className={styles.presentationSources} data-book-slide>{sources}</div> : sources) : null}</>
 
@@ -328,9 +351,10 @@ function LessonShell({
         <span><bdi dir="ltr">{readSections.size} / {trackedIds.length}</bdi> {labels.progress}</span>
         <div className={styles.progressActions}>
           <button type="button" className={styles.continueButton} onClick={advance} disabled={isAtLastTrackedSection}>{labels.continue}<Icon name="arrow" /></button>
-          <button type="button" className={`${styles.lessonCompleteButton} ${lessonComplete ? styles.lessonCompleteButtonDone : ''}`} aria-pressed={lessonComplete} onClick={toggleLessonComplete}><Icon name="check" />{lessonComplete ? labels.lessonCompleted : labels.completeLesson}</button>
+          <button type="button" className={`${styles.lessonCompleteButton} ${lessonComplete ? styles.lessonCompleteButtonDone : ''}`} aria-pressed={lessonComplete} disabled={!trackedIds.length} onClick={toggleLessonComplete}><Icon name="check" />{lessonComplete ? labels.lessonCompleted : labels.completeLesson}</button>
         </div>
       </div>
+      {authError ? <p role="status">{signInHint} <Link href={`/sign-in?lang=${lang}&redirect_url=${encodeURIComponent(`${pathname}?lang=${lang}`)}`}>{signInLabel}</Link></p> : null}
     </header>
 
     <div className={styles.layout}>
