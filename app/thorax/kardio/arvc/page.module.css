@@ -446,8 +446,6 @@
 .caseSeries { min-width:0; }
 .caseSeries .tabs { margin-block-end:8px; }
 .caseSeries .tabs button { flex:1 1 100px; }
-.page .seriesHint { margin-block-start:8px; color:var(--muted); font-size:12px; line-height:1.5; }
-.seriesHint a { color:var(--lesson-accent-strong); }
 @media (max-width:600px) {
   .mriSequenceSummary > div { grid-template-columns:minmax(0,1fr); gap:4px; }
 }

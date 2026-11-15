@@ -7,6 +7,7 @@ import { useState } from 'react'
 import { CASES } from './lessonContent'
 import { arvcText } from './lessonTranslations'
 import { Tabs } from './LessonVisuals'
+import seriesManifest from '@/public/thorax/kardio/arvc/series-provenance.json'
 import styles from './page.module.css'
 
 const examples = [
@@ -64,41 +65,33 @@ const examples = [
 const SERIES = {
   '39806': [
     { id: 'cine', label: '4ch Cine', file: '39806-cine-4ch.mp4' },
-    { id: 't1', label: 'T1' },
+    { id: 't1', label: 'Axial T1 Black Blood', directory: 'series-t1' },
   ],
   '194915': [
-    { id: 'psir', label: '4ch PSIR', file: '194915-lge-4ch.jpg' },
-    { id: 'axial', label: 'Axial T1 Black Blood' },
-    { id: 'sax', label: 'T1 Black Blood · SAX', file: '194915-t1-sax.jpg' },
+    { id: 'psir', label: '4ch PSIR', directory: 'series-psir', initialFrame: 9 },
+    { id: 'axial', label: 'Axial T1 Black Blood', directory: 'series-ax' },
   ],
 }
 
-const VIEWER_COPY = {
-  de: { label: 'MRT-Sequenz auswählen', unavailable: 'Diese Sequenz ist im Lernmodul noch nicht verfügbar.', preview: 'Einzelbild. Weitere Schichten in der Studie ansehen.', study: 'Studie im Vollbild öffnen' },
-  en: { label: 'Choose an MRI sequence', unavailable: 'This sequence is not yet available in the lesson.', preview: 'Single frame. Open the study for additional slices.', study: 'Open study full screen' },
-  fa: { label: 'انتخاب سکانس MRI', unavailable: 'این سکانس هنوز در درس در دسترس نیست.', preview: 'تک‌تصویر. برای برش‌های بیشتر مطالعه را باز کنید.', study: 'باز کردن مطالعه در نمای تمام‌صفحه' },
-}
-
-function CaseSeries({ item, lang, studyUrl }) {
+function CaseSeries({ item, lang }) {
   const [selected, setSelected] = useState(0)
   const sequences = SERIES[item.id]
   const sequence = sequences[selected]
   const view = item.views.find(entry => entry.file === sequence.file)
-  const copy = VIEWER_COPY[lang] || VIEWER_COPY.de
+  const stack = seriesManifest.find(entry => entry.caseId === Number(item.id) && entry.directory === sequence.directory)
+  const frames = stack?.frames.map(frame => `/thorax/kardio/arvc/${stack.directory}/${frame.file}`)
   const prefix = `acm-series-${item.id}`
 
   return <div className={styles.caseSeries}>
-    <Tabs label={copy.label} items={sequences} selected={selected} onChange={setSelected} idPrefix={prefix}/>
+    <Tabs label="MRT-Sequenz auswählen" items={sequences} selected={selected} onChange={setSelected} idPrefix={prefix}/>
     <div id={`${prefix}-panel`} role="tabpanel" aria-labelledby={`${prefix}-tab-${selected}`}>
       {view?.type === 'video' && <video key={view.src} className={styles.caseCine} controls loop playsInline preload="metadata" aria-label={arvcText(view.alt, lang)}>
         <source src={view.src} type="video/mp4"/>
       </video>}
-      {view && view.type !== 'video' && <CaseSequence key={sequence.id} lang={lang} caseData={{
-        frames: [view.src], initialFrame: 0, alt: arvcText(view.alt, lang), autoAspectRatio: true, compactScroll: true,
+      {frames && <CaseSequence key={sequence.id} lang={lang} caseData={{
+        frames, initialFrame: sequence.initialFrame ?? Math.floor(frames.length / 2),
+        alt: sequence.label, autoAspectRatio: true, compactScroll: true,
       }}/>}
-      {view?.type !== 'video' && <p className={styles.seriesHint}>
-        {view ? copy.preview : copy.unavailable} <a href={studyUrl} target="_blank" rel="noreferrer">{copy.study}</a>
-      </p>}
     </div>
   </div>
 }
@@ -118,7 +111,7 @@ export default function CaseAtlas() {
         description: [example.history],
         findings: example.findings[lang] || example.findings.de,
         url: studyUrl,
-        media: <CaseSeries item={item} lang={lang} studyUrl={studyUrl}/>,
+        media: <CaseSeries item={item} lang={lang}/>,
         credit: <>{item.creator} · <a href={item.url}>Radiopaedia · rID {item.id}</a> · <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/">CC BY-NC-SA 3.0</a></>,
       },
     }
