@@ -29,7 +29,7 @@ function Icon({ name, className = '' }) {
   return <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{paths[name]}</svg>
 }
 
-function CaseSequence({ lang, caseData }) {
+export function CaseSequence({ lang, caseData }) {
   const { frames, initialFrame, alt } = caseData
   const [frameIndex, setFrameIndex] = useState(initialFrame)
   const [aspectRatio, setAspectRatio] = useState(caseData.aspectRatio || 1)
@@ -52,7 +52,7 @@ function CaseSequence({ lang, caseData }) {
 
   useEffect(() => {
     const viewer = viewerRef.current
-    if (!viewer) return undefined
+    if (!viewer || frames.length < 2) return undefined
     const wheelStep = createSliceWheelController()
     const handleWheel = event => {
       if (event.ctrlKey || !event.deltaY || Math.abs(event.deltaX) > Math.abs(event.deltaY)) return
@@ -67,7 +67,7 @@ function CaseSequence({ lang, caseData }) {
     return () => {
       viewer.removeEventListener('wheel', handleWheel)
     }
-  }, [seriesReady, moveFrame])
+  }, [frames.length, seriesReady, moveFrame])
 
   const handleFrameLoad = async (image, index, attempt) => {
     if (caseData.autoAspectRatio && index === initialFrame && image.naturalWidth && image.naturalHeight) setAspectRatio(image.naturalWidth / image.naturalHeight)
@@ -129,7 +129,7 @@ function CaseSequence({ lang, caseData }) {
     if (event.currentTarget.hasPointerCapture(event.pointerId)) event.currentTarget.releasePointerCapture(event.pointerId)
   }
 
-  return <div className={styles.caseViewer}>
+  return <div className={styles.caseViewer} data-compact-scroll={caseData.compactScroll || undefined}>
     <div ref={viewerRef} className={styles.caseViewport} style={caseData.aspectRatio || caseData.autoAspectRatio ? { aspectRatio } : undefined} data-no-zoom data-lesson-print-case-viewport role="group" aria-busy={!seriesReady && !loadFailed} tabIndex={0} onKeyDown={handleKeyDown} onPointerDown={handlePointerDown} onPointerMove={handlePointerMove} onPointerUp={handlePointerEnd} onPointerCancel={handlePointerEnd} onLostPointerCapture={() => { pointerStartRef.current = null }} aria-label={pick(alt, lang)}>
       {frames.map((src, index) => <Image key={`${loadAttempt}-${index}-${src}`} src={src} alt={index === frameIndex ? `${pick(alt, lang)} · ${index + 1}/${frames.length}` : ''} aria-hidden={index !== frameIndex} style={{...caseData.frameStyles?.[index], visibility: index === frameIndex ? 'visible' : 'hidden' }} width={320} height={320} unoptimized loading="eager" draggable={false} onLoad={event => handleFrameLoad(event.currentTarget, index, loadAttempt)} onError={() => { if (loadAttemptRef.current === loadAttempt) setLoadFailed(true) }} />)}
       <div className={styles.caseImageMeta}><strong dir={caseData.frameLabels ? undefined : 'ltr'} aria-live="polite">{caseData.frameLabels ? pick(caseData.frameLabels[frameIndex],lang) : <>{String(frameIndex + 1).padStart(2, '0')} <i>/ {frames.length}</i></>}</strong></div>

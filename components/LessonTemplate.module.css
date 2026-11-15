@@ -201,6 +201,27 @@
 .caseRange input::-moz-range-track { height: 5px; border-radius: 999px; background: var(--range-track); }
 .caseRange input::-webkit-slider-thumb { width: 17px; height: 17px; margin-top: -6px; appearance: none; border: 3px solid #eefafa; border-radius: 50%; background: #31a6ac; box-shadow: 0 0 0 1px #31a6ac; }
 .caseRange input::-moz-range-thumb { width: 13px; height: 13px; border: 3px solid #eefafa; border-radius: 50%; background: #31a6ac; box-shadow: 0 0 0 1px #31a6ac; }
+.caseViewer[data-compact-scroll] .caseControls {
+  inset-inline:0;
+  margin-inline:auto;
+  width:min(75%,240px);
+  bottom:10px;
+  grid-template-columns:32px minmax(0,1fr) 32px;
+  gap:5px;
+  padding:2px 5px;
+  border-radius:999px;
+  background:rgba(16,25,36,.32);
+  backdrop-filter:blur(16px) saturate(1.3);
+}
+.caseViewer[data-compact-scroll] .caseControls > button { width:32px; height:32px; border-radius:50%; }
+.caseViewer[data-compact-scroll] .caseRange input { --range-track:rgba(238,250,250,.5); }
+.caseViewer[data-compact-scroll] .caseImageMeta strong {
+  padding:3px 7px;
+  border-radius:999px;
+  font-size:11px;
+  background:rgba(16,25,36,.38);
+  backdrop-filter:blur(14px);
+}
 .caseBody { display: grid; align-content: center; gap: 22px; padding: clamp(28px,3.6vw,44px); border-inline-start: 1px solid #d9e1e6; background: linear-gradient(145deg,#fff 30%,#f7fbfb 100%); }
 .caseBody h3 { max-width: 18ch; margin: 0; color: #102d42; font: 850 clamp(26px,2.7vw,38px)/1.13 "Avenir Next","Segoe UI",Helvetica,Arial,sans-serif; letter-spacing: -.032em; }
 .compactCase { margin-top: 0; border-color: color-mix(in srgb,var(--teal-500) 24%,var(--line)); background: var(--paper); box-shadow: 0 12px 32px rgba(18,45,63,.07); }

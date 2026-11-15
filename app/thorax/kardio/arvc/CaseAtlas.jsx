@@ -1,9 +1,12 @@
 'use client'
 
 import LessonCaseGallery from '@/components/LessonCaseGallery'
+import { CaseSequence } from '@/components/LessonCaseFile'
 import { useLanguage } from '@/providers/LanguageProvider'
+import { useState } from 'react'
 import { CASES } from './lessonContent'
 import { arvcText } from './lessonTranslations'
+import { Tabs } from './LessonVisuals'
 import styles from './page.module.css'
 
 const examples = [
@@ -58,12 +61,53 @@ const examples = [
   },
 ]
 
+const SERIES = {
+  '39806': [
+    { id: 'cine', label: '4ch Cine', file: '39806-cine-4ch.mp4' },
+    { id: 't1', label: 'T1' },
+  ],
+  '194915': [
+    { id: 'psir', label: '4ch PSIR', file: '194915-lge-4ch.jpg' },
+    { id: 'axial', label: 'Axial T1 Black Blood' },
+    { id: 'sax', label: 'T1 Black Blood · SAX', file: '194915-t1-sax.jpg' },
+  ],
+}
+
+const VIEWER_COPY = {
+  de: { label: 'MRT-Sequenz auswählen', unavailable: 'Diese Sequenz ist im Lernmodul noch nicht verfügbar.', preview: 'Einzelbild. Weitere Schichten in der Studie ansehen.', study: 'Studie im Vollbild öffnen' },
+  en: { label: 'Choose an MRI sequence', unavailable: 'This sequence is not yet available in the lesson.', preview: 'Single frame. Open the study for additional slices.', study: 'Open study full screen' },
+  fa: { label: 'انتخاب سکانس MRI', unavailable: 'این سکانس هنوز در درس در دسترس نیست.', preview: 'تک‌تصویر. برای برش‌های بیشتر مطالعه را باز کنید.', study: 'باز کردن مطالعه در نمای تمام‌صفحه' },
+}
+
+function CaseSeries({ item, lang, studyUrl }) {
+  const [selected, setSelected] = useState(0)
+  const sequences = SERIES[item.id]
+  const sequence = sequences[selected]
+  const view = item.views.find(entry => entry.file === sequence.file)
+  const copy = VIEWER_COPY[lang] || VIEWER_COPY.de
+  const prefix = `acm-series-${item.id}`
+
+  return <div className={styles.caseSeries}>
+    <Tabs label={copy.label} items={sequences} selected={selected} onChange={setSelected} idPrefix={prefix}/>
+    <div id={`${prefix}-panel`} role="tabpanel" aria-labelledby={`${prefix}-tab-${selected}`}>
+      {view?.type === 'video' && <video key={view.src} className={styles.caseCine} controls loop playsInline preload="metadata" aria-label={arvcText(view.alt, lang)}>
+        <source src={view.src} type="video/mp4"/>
+      </video>}
+      {view && view.type !== 'video' && <CaseSequence key={sequence.id} lang={lang} caseData={{
+        frames: [view.src], initialFrame: 0, alt: arvcText(view.alt, lang), autoAspectRatio: true, compactScroll: true,
+      }}/>}
+      {view?.type !== 'video' && <p className={styles.seriesHint}>
+        {view ? copy.preview : copy.unavailable} <a href={studyUrl} target="_blank" rel="noreferrer">{copy.study}</a>
+      </p>}
+    </div>
+  </div>
+}
+
 export default function CaseAtlas() {
   const { lang } = useLanguage()
   const items = examples.map(example => {
     const item = CASES.find(entry => entry.id === example.id)
-    const views = item.views.filter(view => view.file !== '194915-lge-sax.jpg')
-    const firstView = views[0]
+    const studyUrl = item.study + '?new_full_screen_viewer=true'
     return {
       id: item.id,
       label: example.label,
@@ -73,16 +117,8 @@ export default function CaseAtlas() {
         title: { de: 'Anamnese', en: 'Clinical history', fa: 'شرح حال' },
         description: [example.history],
         findings: example.findings[lang] || example.findings.de,
-        url: item.study + '?new_full_screen_viewer=true',
-        frames: views.map(view => view.src),
-        frameLabels: views.map(view => arvcText(view.label, lang)),
-        initialFrame: 0,
-        alt: arvcText(firstView.alt, lang),
-        media: firstView.type === 'video' ? (
-          <video className={styles.caseCine} controls loop playsInline preload="metadata" aria-label={arvcText(firstView.alt, lang)}>
-            <source src={firstView.src} type="video/mp4"/>
-          </video>
-        ) : undefined,
+        url: studyUrl,
+        media: <CaseSeries item={item} lang={lang} studyUrl={studyUrl}/>,
         credit: <>{item.creator} · <a href={item.url}>Radiopaedia · rID {item.id}</a> · <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/">CC BY-NC-SA 3.0</a></>,
       },
     }
