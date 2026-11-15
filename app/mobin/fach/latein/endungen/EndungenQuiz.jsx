@@ -3,33 +3,11 @@
 import { useEffect, useRef, useState } from 'react'
 import { isCorrect, rounds } from './questions'
 import styles from './endungen.module.css'
+import useLatinProgress from './useLatinProgress'
 
 const marks = { training: '↗', extra: '+', quick: '◷', medium: '✓', hard: '✦' }
-const resultsKey = 'mobin-latin-endungen-results-v1'
-const draftKey = (mode) => 'mobin-latin-endungen-draft-v1:' + mode
 const resultDate = new Intl.DateTimeFormat('de-DE', { dateStyle: 'medium', timeStyle: 'short' })
 const emptyDraft = { index: 0, answers: {}, checked: {} }
-
-function readDraft(mode) {
-  try {
-    const draft = JSON.parse(window.localStorage.getItem(draftKey(mode)))
-    if (draft && Number.isInteger(draft.index) && draft.index >= 0
-      && draft.index < rounds[mode].questions.length && draft.answers && draft.checked) return draft
-  } catch {}
-  return null
-}
-
-function readResults() {
-  try {
-    const data = JSON.parse(window.localStorage.getItem(resultsKey) ?? '[]')
-    return Array.isArray(data) ? data.filter((item) => item && typeof item.id === 'string'
-      && ['medium', 'hard', 'quick'].includes(item.mode) && Number.isFinite(item.date)
-      && Array.isArray(item.mistakes) && item.mistakes.every((index) =>
-        Number.isInteger(index) && index >= 0 && index < rounds[item.mode].questions.length)) : []
-  } catch {
-    return []
-  }
-}
 
 const rows = [
   ['a-Deklination', 'amica', 'a', 'am', 'ae', 'as'],
@@ -219,7 +197,7 @@ function Round({ mode, subset, initialDraft, onDraft, onExit, onResult, onRepeat
               Deine Antwort
               <input key={index} className={styles.input} value={answer}
                 onChange={(event) => updateDraft({ answers: { ...answers, [index]: event.target.value } })}
-                readOnly={marked} autoComplete="off" autoCapitalize="none" spellCheck={false} />
+                readOnly={marked} maxLength={240} autoComplete="off" autoCapitalize="none" spellCheck={false} />
             </label>
           )}
           <div aria-live="polite">{marked && <AnswerFeedback question={question} answer={answer} />}</div>
@@ -244,56 +222,35 @@ function Round({ mode, subset, initialDraft, onDraft, onExit, onResult, onRepeat
 
 export default function EndungenQuiz() {
   const [active, setActive] = useState(null)
-  const [results, setResults] = useState([])
-  const [drafts, setDrafts] = useState({})
-  const [storageError, setStorageError] = useState(false)
-
-  useEffect(() => {
-    setResults(readResults())
-    setDrafts(Object.fromEntries(Object.keys(rounds).map((mode) => [mode, readDraft(mode)])))
-    function syncResults(event) {
-      if (event.key === resultsKey) setResults(readResults())
-    }
-    window.addEventListener('storage', syncResults)
-    return () => window.removeEventListener('storage', syncResults)
-  }, [])
-
-  function saveDraft(mode, draft) {
-    setDrafts((previous) => ({ ...previous, [mode]: draft }))
-    try {
-      if (draft) window.localStorage.setItem(draftKey(mode), JSON.stringify(draft))
-      else window.localStorage.removeItem(draftKey(mode))
-    } catch {
-      setStorageError(true)
-    }
-  }
-
-  function saveResult(mode, mistakes, unanswered) {
-    const entry = { id: crypto.randomUUID(), date: Date.now(), mode, mistakes, unanswered }
-    const previous = readResults()
-    const saved = [entry, ...previous, ...results.filter((result) => !previous.some((item) => item.id === result.id))]
-    setResults(saved)
-    try {
-      window.localStorage.setItem(resultsKey, JSON.stringify(saved))
-      setStorageError(false)
-    } catch {
-      setStorageError(true)
-    }
-  }
+  const { results, drafts, status, saveDraft, saveResult, refresh, flush } = useLatinProgress()
+  const [opening, setOpening] = useState(false)
 
   function repeat(mode, subset) {
     setActive({ mode, subset, id: crypto.randomUUID() })
   }
 
-  const storageWarning = storageError && <p role="status" className={styles.testNote}>
-    Die Ergebnisse sind noch sichtbar, konnten aber in diesem Browser nicht dauerhaft gespeichert werden.
-  </p>
+  async function openRound(mode) {
+    setOpening(true)
+    const latest = await refresh()
+    setActive({ mode, id: mode, draft: latest[mode]?.draft })
+    setOpening(false)
+  }
+
+  const syncStatus = <div className={styles.roundBar}>
+    <p className={styles.testNote} role="status">{{
+      loading: 'Lernstand wird geladen …',
+      saving: 'Lernstand wird synchronisiert …',
+      saved: 'Im Mobin-Konto gespeichert',
+      offline: 'Online-Speicher nicht erreichbar. Lernstand bleibt vorerst in diesem Browser.',
+    }[status]}</p>
+    {status === 'offline' && <button type="button" className={styles.textButton} onClick={refresh}>Erneut synchronisieren</button>}
+  </div>
 
   if (active) return <>
-    {storageWarning}
+    {syncStatus}
     <Round key={active.id} mode={active.mode} subset={active.subset}
-      initialDraft={active.subset ? null : drafts[active.mode]} onDraft={saveDraft}
-      onExit={() => setActive(null)} onResult={saveResult} onRepeat={repeat} />
+      initialDraft={active.draft} onDraft={saveDraft}
+      onExit={() => { void flush(); setActive(null) }} onResult={saveResult} onRepeat={repeat} />
   </>
   return (
     <>
@@ -302,19 +259,19 @@ export default function EndungenQuiz() {
         <h2 id={`latein-${kind}`}>{label}</h2>
         <div className={styles.rounds}>
         {Object.entries(rounds).filter(([, round]) => (round.kind ?? 'test') === kind).map(([key, round]) => (
-          <button className={styles.roundCard} data-mode={key} key={key} onClick={() => setActive({ mode: key, id: key })}>
+          <button className={styles.roundCard} data-mode={key} key={key} disabled={status === 'loading' || opening} onClick={() => openRound(key)}>
             <span className={styles.badge} aria-hidden="true">{marks[key]}</span>
             <span className={styles.detail}>{round.detail}</span>
             <strong>{round.title}</strong>
             <span>{round.description}</span>
-            <span className={styles.start} data-draft={Boolean(drafts[key])}>{drafts[key] ? 'Fortsetzen' : round.kind === 'training' ? 'Training starten' : 'Test starten'} <span aria-hidden="true">→</span></span>
+            <span className={styles.start} data-draft={Boolean(drafts[key]?.draft)}>{drafts[key]?.draft ? 'Fortsetzen' : round.kind === 'training' ? 'Training starten' : 'Test starten'} <span aria-hidden="true">→</span></span>
           </button>
         ))}
         </div>
       </section>
       ))}
       <p className={styles.testNote}>Die Probetests zeigen Lösungen und Punktzahl erst nach der Abgabe.</p>
-      {storageWarning}
+      {syncStatus}
       {results.length > 0 && (
         <section className={styles.panel} aria-labelledby="latin-results">
           <h2 id="latin-results">Deine Testergebnisse</h2>
