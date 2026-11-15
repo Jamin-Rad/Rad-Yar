@@ -2,6 +2,17 @@ import { Children, cloneElement, isValidElement } from 'react'
 
 // Authored parallel translations; German clinical source remains unchanged.
 const COPY = {
+  "Diagnosekriterien": { en: "Diagnostic criteria", fa: "معیارهای تشخیصی" },
+  "MRT-Kriterium": { en: "MRI criterion", fa: "معیار MRI" },
+  "Gesicherte ARVC nach TFC 2010": { en: "Definite ARVC under the 2010 TFC", fa: "تشخیص قطعی ARVC طبق معیارهای ۲۰۱۰" },
+  "Die Kriterien müssen aus unterschiedlichen Kategorien stammen.": { en: "Criteria must come from different categories.", fa: "معیارها باید از دسته‌های متفاوت باشند." },
+  "2 Major": { en: "2 major", fa: "۲ معیار اصلی" },
+  "1 Major + 2 Minor": { en: "1 major + 2 minor", fa: "۱ معیار اصلی + ۲ فرعی" },
+  "4 Minor": { en: "4 minor", fa: "۴ معیار فرعی" },
+  "MRT-Grenzwerte anzeigen": { en: "Show MRI thresholds", fa: "نمایش آستانه‌های MRI" },
+  "Einordnung anzeigen": { en: "Reveal interpretation", fa: "نمایش تفسیر" },
+  "Die Diagnose stützt sich auf mehrere Befunde. Das MRT liefert nur einen Teil davon.": { en: "Diagnosis combines several findings. MRI provides only part of the evidence.", fa: "تشخیص بر ترکیب چند یافته استوار است. MRI فقط بخشی از شواهد را فراهم می‌کند." },
+  "Fallbeispiel": { en: "Case example", fa: "نمونهٔ بالینی" },
   "RV-Dilatation und systolische Dysfunktion": { en: "RV dilatation and systolic dysfunction", fa: "اتساع و اختلال عملکرد سیستولی بطن راست" },
   "Erhöhtes enddiastolisches RV-Volumen, bezogen auf die Körperoberfläche (RVEDVi).": { en: "Increased RV end-diastolic volume indexed to body surface area (RVEDVi).", fa: "افزایش حجم پایان دیاستولی بطن راست نسبت به سطح بدن (RVEDVi)." },
   "Diagnostische Bedeutung": { en: "Diagnostic significance", fa: "اهمیت تشخیصی" },

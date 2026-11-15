@@ -1,7 +1,7 @@
 export const SECTIONS = [
   { id: 'definition', short: 'Grundlagen', title: 'Grundlagen', icon: 'heart' },
   { id: 'mrt', short: 'MRT', title: 'MRT', icon: 'layers' },
-  { id: 'kriterien', short: 'Wie wird ARVC diagnostiziert?', title: 'Wie wird ARVC diagnostiziert?', icon: 'table' },
+  { id: 'kriterien', short: 'Diagnosekriterien', title: 'Diagnosekriterien', icon: 'table' },
   { id: 'differenzialdiagnosen', short: 'Wichtige Fallstricke', title: 'Was eine ACM imitieren kann', icon: 'activity' },
 ]
 export const SECTION_IDS = SECTIONS.map(section => section.id)
