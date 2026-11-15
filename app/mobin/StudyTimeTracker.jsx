@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation'
 import { berlinStudyDay, saveLocalStudySession, studySectionFromPath, syncLocalStudySessions } from '@/lib/mobinStudyTime'
 import { createStudyTimer } from '@/utils/studyTimer'
 
-const SYNC_INTERVAL = 60000
+const SYNC_INTERVAL = 120000
 
 function berlinMidnightBetween(start, end, day) {
   while (end - start > 1) {
@@ -65,7 +65,7 @@ export default function StudyTimeTracker() {
     const activity = () => timer.interact()
     const visibility = () => {
       timer.visibilityChanged()
-      if (!foreground()) void syncLocalStudySessions()
+      if (document.visibilityState === 'hidden') void syncLocalStudySessions()
     }
     const save = () => { timer.tick(); void syncLocalStudySessions() }
     const interval = window.setInterval(timer.tick, 5000)

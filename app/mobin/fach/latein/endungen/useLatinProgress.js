@@ -4,6 +4,7 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 import { draftKey, modes, resultsKey, validDraft, validResult } from './progress'
 
 const endpoint = '/api/mobin/latin-progress'
+const SYNC_DELAY = 15000
 const empty = { results: [], drafts: {} }
 
 function readLocal() {
@@ -25,6 +26,8 @@ export default function useLatinProgress() {
   const current = useRef(empty)
   const pending = useRef(new Map())
   const timer = useRef(null)
+  const writing = useRef(false)
+  const shouldFlush = useRef(false)
   const [progress, setProgress] = useState(empty)
   const [status, setStatus] = useState('loading')
 
@@ -43,7 +46,14 @@ export default function useLatinProgress() {
 
   const flush = useCallback(async () => {
     clearTimeout(timer.current)
+    timer.current = null
     if (!pending.current.size) return
+    if (writing.current) {
+      shouldFlush.current = true
+      return
+    }
+    writing.current = true
+    let sent = false
     setStatus('saving')
     const batch = [...pending.current.entries()]
       .sort(([, a], [, b]) => Number(Boolean(b.result)) - Number(Boolean(a.result))).slice(0, 5)
@@ -61,10 +71,17 @@ export default function useLatinProgress() {
       })
       if (!response.ok) throw new Error('Save failed')
       for (const [key, item] of batch) if (pending.current.get(key) === item) pending.current.delete(key)
-      if (pending.current.size) timer.current = setTimeout(flush, 300)
-      else setStatus('saved')
+      sent = true
+      if (!pending.current.size) setStatus('saved')
     } catch {
       setStatus('offline')
+    } finally {
+      writing.current = false
+      if (sent && pending.current.size) {
+        clearTimeout(timer.current)
+        timer.current = setTimeout(flush, shouldFlush.current ? 0 : SYNC_DELAY)
+      }
+      shouldFlush.current = false
     }
   }, [])
 
@@ -118,9 +135,8 @@ export default function useLatinProgress() {
   }, [flush, refresh, store])
 
   function schedule() {
-    clearTimeout(timer.current)
     setStatus('saving')
-    timer.current = setTimeout(flush, 300)
+    if (timer.current === null) timer.current = setTimeout(flush, SYNC_DELAY)
   }
 
   function saveDraft(mode, draft) {

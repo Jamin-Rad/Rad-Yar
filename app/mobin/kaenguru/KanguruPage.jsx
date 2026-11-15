@@ -16,6 +16,7 @@ import {
 import styles from './page.module.css'
 import { berlinDay, streakSummary } from '@/lib/kanguruStreak'
 import { normalizeProgress, mergeProgress } from '@/lib/kanguruProgress'
+import { bindProgressSaveQueue, createProgressSaveQueue } from '../progressSaveQueue'
 
 const STORAGE_KEY = 'andarun_kaenguru_progress_v1'
 // Keep the legacy browser key so moving the page does not lose existing answers.
@@ -670,36 +671,53 @@ export default function KanguruPage() {
   const [dialog, setDialog] = useState(null)
   const [statsMetric, setStatsMetric] = useState(null)
   const [session, setSession] = useState(null)
+  const queue = useRef(null)
+  const synced = useRef(null)
 
   useEffect(() => {
     let active = true
+    const writer = createProgressSaveQueue(async (snapshot, onExit) => {
+      if (snapshot === synced.current) return
+      if (active) setSyncState('saving')
+      try {
+        const body = '{"state":' + snapshot + '}'
+        const response = await fetch('/api/mobin/kaenguru', {
+          method: 'PATCH',
+          headers: { 'content-type': 'application/json' },
+          body,
+          keepalive: onExit && new Blob([body]).size < 60000,
+        })
+        if (!response.ok) throw new Error('Progress not synced')
+        synced.current = snapshot
+        if (active) setSyncState('synced')
+      } catch (error) {
+        if (active) setSyncState('local')
+        throw error
+      }
+    })
+    queue.current = writer
+    const unbind = bindProgressSaveQueue(writer)
     const local = readLocalProgress()
     setProgress(local)
     fetch('/api/mobin/kaenguru')
       .then(response => response.ok ? response.json() : Promise.reject())
       .then(payload => {
-        if (active) setProgress(current => mergeProgress(current, payload.state))
+        if (active) {
+          synced.current = JSON.stringify(normalizeProgress(payload.state))
+          setProgress(current => mergeProgress(current, payload.state))
+          setSyncState('synced')
+        }
       })
       .catch(() => { if (active) setSyncState('local') })
       .finally(() => active && setReady(true))
-    return () => { active = false }
+    return () => { active = false; unbind() }
   }, [])
 
   useEffect(() => {
     if (!ready) return undefined
-    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(progress)) } catch { setSyncState('local') }
-    const timer = window.setTimeout(() => {
-      setSyncState('saving')
-      fetch('/api/mobin/kaenguru', {
-        method: 'PATCH',
-        headers: { 'content-type': 'application/json' },
-        body: JSON.stringify({ state: progress }),
-      }).then(response => {
-        if (!response.ok) throw new Error('Progress not synced')
-        setSyncState('synced')
-      }).catch(() => setSyncState('local'))
-    }, 450)
-    return () => window.clearTimeout(timer)
+    const snapshot = JSON.stringify(progress)
+    try { localStorage.setItem(STORAGE_KEY, snapshot) } catch { setSyncState('local') }
+    queue.current?.enqueue(snapshot)
   }, [progress, ready])
 
   const gradeGroup = progress.gradeGroup
@@ -710,7 +728,8 @@ export default function KanguruPage() {
   const progressPercent = percent(attemptedCount, gradeQuestions.length)
   const weaknesses = useMemo(() => buildWeaknesses(gradeQuestions, progress.attempts), [gradeQuestions, progress.attempts])
 
-  const chooseGradeGroup = nextGradeGroup => setProgress(current => ({ ...current, gradeGroup: nextGradeGroup, updatedAt: new Date().toISOString() }))
+  const chooseGradeGroup = nextGradeGroup => setProgress(current => current.gradeGroup === nextGradeGroup
+    ? current : { ...current, gradeGroup: nextGradeGroup, updatedAt: new Date().toISOString() })
   const startSession = (mode, label, questions, teaching = false) => {
     setSession({ mode, label, teaching, ids: questions.map(question => question.id) })
     setDialog(null)

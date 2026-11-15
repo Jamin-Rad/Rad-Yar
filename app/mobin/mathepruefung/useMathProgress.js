@@ -3,7 +3,8 @@
 import { useEffect, useRef, useState } from 'react'
 import { emptyMathProgress, mergeMathProgress, MATH_STORAGE_KEY, normalizeMathProgress } from '@/lib/mobinMath'
 
-const STUDY_SYNC_INTERVAL = 60000
+const STUDY_SYNC_INTERVAL = 120000
+const PROGRESS_SYNC_INTERVAL = 15000
 const answersAndSessions = state => JSON.stringify(state, (key, value) => key === 'studyDays' || key === 'updatedAt' ? undefined : value)
 
 export function useMathProgress() {
@@ -68,7 +69,8 @@ export function useMathProgress() {
     if (!navigator.onLine) { setStatus('local'); return undefined }
     if (pendingSince.current === null) pendingSince.current = Date.now()
     const timeOnly = !retry && synced.current?.work === answersAndSessions(normalized)
-    const delay = timeOnly ? Math.max(0, STUDY_SYNC_INTERVAL - (Date.now() - pendingSince.current)) : 650
+    const interval = timeOnly ? STUDY_SYNC_INTERVAL : PROGRESS_SYNC_INTERVAL
+    const delay = Math.max(0, interval - (Date.now() - pendingSince.current))
     const generation = lifetime.current
     setStatus('saving')
     const save = async (keepalive = false) => {
