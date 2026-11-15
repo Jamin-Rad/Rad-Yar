@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server'
 import { isSupabaseAdminConfigured, supabaseAdmin } from '@/lib/supabase/server'
 import { getLearningUserIdentity } from '@/lib/userIdentity'
-import { readVersion } from '@/utils/readProgressStore'
+import { loadLearningReadSnapshot } from '@/lib/learningReadSnapshot'
 
 const unavailable = () => NextResponse.json({ error: 'Lesefortschritt nicht verfügbar' }, { status: 503 })
 const validDate = value => typeof value === 'string' && Number.isFinite(Date.parse(value)) && Date.parse(value) <= Date.now() + 300000
@@ -11,35 +11,12 @@ export async function GET(request) {
   const identity = await getLearningUserIdentity(request)
   if (!identity) return NextResponse.json({ error: 'Nicht angemeldet' }, { status: 401 })
   if (identity.storageUnavailable || !isSupabaseAdminConfigured || !supabaseAdmin) return unavailable()
-  const rows = []
-  for (let offset = 0; ; offset += 1000) {
-    const { data, error } = await supabaseAdmin.from('user_progress')
-      .select('user_id,thema_id,read_pct,updated_at,change_id,learned_at')
-      .in('user_id', identity.lookupIds).order('user_id').order('thema_id').range(offset, offset + 999)
-    if (error) return unavailable()
-    rows.push(...data)
-    if (data.length < 1000) break
+  try {
+    const snapshot = await loadLearningReadSnapshot(supabaseAdmin, identity.lookupIds)
+    return NextResponse.json(snapshot, { headers: { 'Cache-Control': 'no-store' } })
+  } catch {
+    return unavailable()
   }
-  const resets = await supabaseAdmin.from('learning_progress_resets')
-    .select('changed_at,change_id').in('user_id', identity.lookupIds)
-  if (resets.error) return unavailable()
-  let reset = null
-  for (const row of resets.data || []) {
-    const next = { changedAt: new Date(row.changed_at).toISOString(), changeId: row.change_id }
-    if (readVersion(next) > readVersion(reset)) reset = next
-  }
-  const records = {}
-  for (const row of rows) {
-    const record = { read: Number(row.read_pct) >= 1, changedAt: new Date(row.updated_at).toISOString(), changeId: row.change_id || '', learnedAt: row.learned_at || row.updated_at }
-    if (!records[row.thema_id] || readVersion(record) > readVersion(records[row.thema_id])) records[row.thema_id] = record
-  }
-  const read = {}, history = []
-  for (const [topicId, record] of Object.entries(records)) {
-    read[topicId] = record.read && (!reset || readVersion(record) > readVersion(reset))
-    if (read[topicId]) history.push({ topicId, learnedAt: record.learnedAt })
-  }
-  history.sort((a, b) => Date.parse(b.learnedAt) - Date.parse(a.learnedAt))
-  return NextResponse.json({ version: 2, records, reset, read, history }, { headers: { 'Cache-Control': 'no-store' } })
 }
 
 export async function POST(request) {

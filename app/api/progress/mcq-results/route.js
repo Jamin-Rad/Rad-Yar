@@ -2,16 +2,8 @@ import { NextResponse } from 'next/server'
 import { isSupabaseAdminConfigured, supabaseAdmin } from '@/lib/supabase/server'
 import { getPracticeUserIdentity } from '@/lib/userIdentity'
 
-function toClient(row) {
-  const details = row.details && typeof row.details === 'object' ? row.details : {}
-  return {
-    attempted: row.attempted,
-    correct: row.correct,
-    lastDate: row.last_date,
-    fach: row.fach_id || '',
-    ...details,
-  }
-}
+import { loadQuestionProgress } from '@/lib/iosStudyProgressStore'
+import { nativeScorePrefix } from '@/lib/studyProgressScores.mjs'
 
 function toRow(userId, themaId, result) {
   const { attempted, correct, lastDate, fach, ...details } = result || {}
@@ -35,30 +27,12 @@ export async function GET(request) {
     return NextResponse.json({ error: 'Speicher nicht verfügbar' }, { status: 503 })
   }
 
-  const rows = []
-  for (let offset = 0; ;) {
-    const { data, error, count } = await supabaseAdmin
-      .from('mcq_results').select('*', { count: 'exact' })
-      .in('user_id', identity.lookupIds).order('user_id').order('thema_id')
-      .range(offset, offset + 999)
-    if (error) {
-      console.error('MCQ-Ergebnisse konnten nicht geladen werden:', error)
-      return NextResponse.json({ error: 'Ergebnisse nicht verfügbar' }, { status: 503 })
-    }
-    rows.push(...data)
-    offset += data.length
-    if (!data.length || (count !== null && count !== undefined ? offset >= count : data.length < 1000)) break
+  try {
+    const { scores } = await loadQuestionProgress(supabaseAdmin, identity.lookupIds)
+    return NextResponse.json({ scores }, { headers: { 'Cache-Control': 'no-store' } })
+  } catch {
+    return NextResponse.json({ error: 'Ergebnisse nicht verfügbar' }, { status: 503 })
   }
-
-  const scores = {}
-  for (const row of rows) {
-    const next = toClient(row)
-    const previous = scores[row.thema_id]
-    if (!previous || new Date(next.lastDate || 0) >= new Date(previous.lastDate || 0)) {
-      scores[row.thema_id] = next
-    }
-  }
-  return NextResponse.json({ scores }, { headers: { 'Cache-Control': 'no-store' } })
 }
 
 export async function POST(request) {
@@ -91,6 +65,7 @@ export async function POST(request) {
     return NextResponse.json({ error: 'Ungültige Anfrage' }, { status: 400 })
   }
 
+  rows = rows.filter(row => !row.thema_id.startsWith(nativeScorePrefix))
   if (rows.length === 0) {
     return NextResponse.json({ ok: true })
   }
