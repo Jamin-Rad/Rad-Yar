@@ -107,6 +107,7 @@ function Round({ mode, subset, initialDraft, onDraft, onExit, onResult, onRepeat
     if (!answer.trim()) return
     if (training && !marked) {
       updateDraft({ checked: { ...checked, [index]: true } })
+      if (done + 1 === total) finish()
       return
     }
     if (index < total - 1) {
@@ -136,11 +137,17 @@ function Round({ mode, subset, initialDraft, onDraft, onExit, onResult, onRepeat
       <section className={styles.panel}>
         <button className={styles.textButton} onClick={onExit}>← Zur Auswahl</button>
         <h2 ref={heading} tabIndex={-1}>{title} · Auswertung</h2>
-        <div className={styles.score}><strong>{score}<span> / {total}</span></strong><span>richtige Antworten</span></div>
+        <div className={styles.score}>
+          <strong>{score}<span> / {total}</span></strong><span>richtige Antworten</span>
+        </div>
+        <p>{mistakes.length} falsch{done < total ? ` · ${total - done} offen` : ''}</p>
+        {mistakes.length > 0 && (
+          <button className={styles.primary} onClick={() => onRepeat(mode, mistakes)}>Fehler wiederholen</button>
+        )}
         <ol className={styles.review}>
           {questions.map((item, number) => (
             <li key={number}>
-              <details open={answers[number]?.trim() && !isCorrect(item, answers[number]) ? true : undefined}>
+              <details open={(training && number === index) || (answers[number]?.trim() && !isCorrect(item, answers[number])) ? true : undefined}>
                 <summary>{!answers[number]?.trim() ? '–' : isCorrect(item, answers[number]) ? '✓' : '↻'} {number + 1}. {item.prompt}</summary>
                 <p>{item.example}</p>
                 <p>Deine Antwort: <strong>{answers[number]?.trim() || 'Nicht beantwortet'}</strong></p>
@@ -151,7 +158,6 @@ function Round({ mode, subset, initialDraft, onDraft, onExit, onResult, onRepeat
         </ol>
         <div className={styles.controls}>
           <button className={styles.secondary} onClick={restart}>Runde wiederholen</button>
-          {mistakes.length > 0 && <button className={styles.primary} onClick={() => onRepeat(mode, mistakes)}>Fehler wiederholen</button>}
         </div>
       </section>
     )
