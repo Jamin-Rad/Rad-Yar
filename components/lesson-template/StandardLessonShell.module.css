@@ -114,6 +114,20 @@
 .toggle { width: 30px; height: 30px; display: grid; place-items: center; color: var(--lesson-accent-strong); transition: transform .18s ease; }
 .toggle svg { width: 20px; height: 20px; }
 .toggleOpen { transform: rotate(180deg); }
+.page[data-lesson-shell='/thorax/kardio/arvc'] .sidebar h2 {
+  padding-block-end:10px;
+  border-block-end:1px solid var(--line);
+}
+.page[data-lesson-shell='/thorax/kardio/arvc'] .sectionHeader[aria-expanded='true'] {
+  border-block-end:1px solid var(--line);
+}
+.page[data-lesson-shell='/thorax/kardio/arvc'] .toggle svg { display:none; }
+.page[data-lesson-shell='/thorax/kardio/arvc'] .toggle {
+  font:700 24px/1 system-ui,sans-serif;
+  transform:none;
+}
+.page[data-lesson-shell='/thorax/kardio/arvc'] .toggle::before { content:'+'; }
+.page[data-lesson-shell='/thorax/kardio/arvc'] .toggleOpen::before { content:'−'; }
 .sectionBody { padding: 24px 24px 26px 82px; border-top: 1px solid var(--line); }
 .sectionBody[hidden] { display: none; }
 .readButton { order: 999; min-height: 48px; width: 100%; display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 26px; border: 1px solid var(--lesson-accent-strong); border-radius: 8px; background: transparent; color: var(--lesson-accent-strong); font: 800 14px/1 var(--font-inter,system-ui,sans-serif); cursor: pointer; }

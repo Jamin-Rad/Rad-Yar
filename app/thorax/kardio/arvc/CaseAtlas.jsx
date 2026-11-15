@@ -9,33 +9,52 @@ import styles from './page.module.css'
 const examples = [
   {
     id: '39806',
-    label: { de: 'Fall 1 · Cine', en: 'Case 1 · Cine', fa: 'کیس ۱ · Cine' },
+    label: { de: 'Fall 1 (ARVC)', en: 'Case 1 (ARVC)', fa: 'کیس ۱ (ARVC)' },
     history: {
       de: '50-jähriger Mann mit bekannter ARVC nach Ablation einer ventrikulären Tachykardie im RV-Ausflusstrakt.',
       en: 'A 50-year-old man with known ARVC after ablation of ventricular tachycardia in the RV outflow tract.',
       fa: 'مرد ۵۰ ساله با ARVC شناخته‌شده پس از ابلیشن تاکی‌کاردی بطنی در مسیر خروجی بطن راست.',
     },
     findings: {
-      de: ['Die freie RV-Wand zeigt im Cine regionale dyskinetische Ausbuchtungen.', 'RVEDVi 115 ml/m², RVEF 41 %.'],
-      en: ['Cine shows regional dyskinetic bulges of the RV free wall.', 'RVEDVi 115 mL/m², RVEF 41%.'],
-      fa: ['در Cine، برجستگی‌های موضعی دیسکینتیک در دیوارهٔ آزاد بطن راست دیده می‌شوند.', 'RVEDVi ۱۱۵ میلی‌لیتر بر مترمربع، RVEF ۴۱٪.'],
+      "de": [
+        "Ausgeprägte Dyskinesie mit aneurysmatischen Ausbuchtungen der RV-Wand, vor allem am Apex und an der freien Wand.",
+        "T1: Leichte fettige Veränderungen basal und apikal an der freien RV-Wand sowie subepikardial an der posterolateralen LV-Wand."
+      ],
+      "en": [
+        "Marked dyskinesia with aneurysmal bulging of the RV wall, most prominent at the apex and free wall.",
+        "T1-weighted images show slight fatty changes in the basal and apical RV free wall and in the subepicardial posterolateral LV wall."
+      ],
+      "fa": [
+        "دیسکینزی واضح با برجستگی‌های آنوریسمی دیوارهٔ بطن راست، به‌ویژه در نوک و دیوارهٔ آزاد.",
+        "در تصاویر T1، تغییرات چربی خفیف در قاعده و نوک دیوارهٔ آزاد بطن راست و زیر اپی‌کارد دیوارهٔ خلفی‌جانبی بطن چپ دیده می‌شود."
+      ]
     },
-    diagnosis: { de: 'Arrhythmogene rechtsventrikuläre Kardiomyopathie (ARVC).', en: 'Arrhythmogenic right ventricular cardiomyopathy (ARVC).', fa: 'کاردیومیوپاتی آریتموژنیک بطن راست (ARVC).' },
   },
   {
     id: '194915',
-    label: { de: 'Fall 2 · LGE', en: 'Case 2 · LGE', fa: 'کیس ۲ · LGE' },
+    label: { de: 'Fall 2 (Biventrikuläre ACM)', en: 'Case 2 (Biventricular ACM)', fa: 'کیس ۲ (ACM دو بطنی)' },
     history: {
       de: '30-jähriger Mann mit Palpitationen, Synkope und auffälligem EKG.',
       en: 'A 30-year-old man with palpitations, syncope and an abnormal ECG.',
       fa: 'مرد ۳۰ ساله با تپش قلب، سنکوپ و نوار قلب غیرطبیعی.',
     },
     findings: {
-      de: ['Der RV ist dilatiert. Die freie Wand ist dünn und zeigt eine fokale Ausbuchtung.', 'LGE im RV und in der antero- und inferolateralen LV-Wand.', 'RVEDVi ≈ 135 ml/m², RVEF ≈ 35 %, LVEF ≈ 51 %.'],
-      en: ['The RV is dilated with a thin free wall and focal bulging.', 'LGE in the RV and the anterolateral and inferolateral LV wall.', 'RVEDVi ≈ 135 mL/m², RVEF ≈ 35%, LVEF ≈ 51%.'],
-      fa: ['بطن راست متسع است. دیوارهٔ آزاد آن نازک است و برجستگی موضعی دارد.', 'LGE در بطن راست و دیوارهٔ قدامی‌جانبی و تحتانی‌جانبی بطن چپ.', 'RVEDVi حدود ۱۳۵ میلی‌لیتر بر مترمربع، RVEF حدود ۳۵٪، LVEF حدود ۵۱٪.'],
+      "de": [
+        "Dilatierter RV mit dünner, gewellter Wand und fettigem Ersatz von RV-Myokard.",
+        "RV-Hypokinesie mit Ausbuchtung bzw. leichter regionaler Dyskinesie der freien Wand.",
+        "LGE in der RV-Wand und in der LV-Wand, besonders basal anterolateral."
+      ],
+      "en": [
+        "The RV is dilated with a thin, corrugated wall and fatty replacement of RV myocardium.",
+        "RV hypokinesia with bulging or mild regional dyskinesia of the free wall.",
+        "LGE in the RV wall and in the LV wall, particularly in the basal anterolateral segment."
+      ],
+      "fa": [
+        "بطن راست متسع است و دیواره‌ای نازک و موج‌دار با جایگزینی چربی در میوکارد دارد.",
+        "هیپوکینزی بطن راست با برجستگی یا دیسکینزی موضعی خفیف دیوارهٔ آزاد.",
+        "LGE در دیوارهٔ بطن راست و دیوارهٔ بطن چپ، به‌ویژه در بخش قاعده‌ای قدامی‌جانبی."
+      ]
     },
-    diagnosis: { de: 'Biventrikuläre ACM, im Fallbericht als sehr wahrscheinlich eingestuft.', en: 'Biventricular ACM, considered highly likely in the case report.', fa: 'کاردیومیوپاتی آریتموژنیک دو بطنی، بسیار محتمل طبق گزارش کیس.' },
   },
 ]
 
@@ -43,7 +62,8 @@ export default function CaseAtlas() {
   const { lang } = useLanguage()
   const items = examples.map(example => {
     const item = CASES.find(entry => entry.id === example.id)
-    const firstView = item.views[0]
+    const views = item.views.filter(view => view.file !== '194915-lge-sax.jpg')
+    const firstView = views[0]
     return {
       id: item.id,
       label: example.label,
@@ -53,11 +73,9 @@ export default function CaseAtlas() {
         title: { de: 'Anamnese', en: 'Clinical history', fa: 'شرح حال' },
         description: [example.history],
         findings: example.findings[lang] || example.findings.de,
-        interpretation: example.diagnosis,
-        revealDiagnosis: true,
-        url: item.url,
-        frames: item.views.map(view => view.src),
-        frameLabels: item.views.map(view => arvcText(view.label, lang)),
+        url: item.study + '?new_full_screen_viewer=true',
+        frames: views.map(view => view.src),
+        frameLabels: views.map(view => arvcText(view.label, lang)),
         initialFrame: 0,
         alt: arvcText(firstView.alt, lang),
         media: firstView.type === 'video' ? (
