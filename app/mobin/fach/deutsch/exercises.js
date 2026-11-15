@@ -5,49 +5,50 @@ export const families = [
   { name: 'Wissen', words: ['das Gewissen', 'die Wissenschaft', 'wissbegierig', 'das Wissen', 'ich weiß'] },
 ]
 
-export const dictations = families.map(({ name, words }) => ({
-  name,
-  questions: words.map(answer => ({ answer })),
-}))
-
-function item(prompt, example, answer, explanation, options) {
-  return { prompt, example, answer, explanation, options }
-}
-
-export const grammar = [
-  { name: 'Nomen', note: 'Nomen können Lebewesen, Dinge und Begriffe benennen. Man schreibt sie groß.', questions: [
-    item('Welches Wort ist ein Nomen?', 'Plötzlich begann die Musik.', 'Musik', 'Musik ist ein Nomen. Dazu passt der Artikel die.', ['Plötzlich', 'begann', 'Musik']),
-    item('Schreibe die Mehrzahl von „das Kind“.', 'Die ___ spielen auf dem Hof.', 'Kinder', 'Der Plural von Kind lautet Kinder. Der Artikel im Plural ist die.'),
-    item('Welches Wort ist ein Nomen?', 'Ihr Mut überraschte uns.', 'Mut', 'Auch ein Begriff wie Mut ist ein Nomen. Man schreibt es groß.', ['Ihr', 'Mut', 'überraschte']),
-    item('Welcher Artikel passt zu „Erlebnis“?', '___ Erlebnis blieb mir im Gedächtnis.', 'das', 'Erlebnis ist sächlich. Der bestimmte Artikel im Nominativ lautet das.', ['der', 'die', 'das']),
-  ] },
-  { name: 'Adjektive', note: 'Adjektive beschreiben Eigenschaften. Viele kann man steigern: schnell, schneller, am schnellsten.', questions: [
-    item('Welches Wort beschreibt das Wetter?', 'Das Wetter war stürmisch.', 'stürmisch', 'Stürmisch beschreibt, wie das Wetter war.', ['Wetter', 'war', 'stürmisch']),
-    item('Setze den Komparativ von „hell“ ein.', 'Diese Lampe leuchtet ___ als die andere.', 'heller', 'Beim regelmäßigen Komparativ kommt -er an den Stamm: hell → heller.'),
-    item('Ergänze die passende Adjektivform.', 'Wir sahen einen ___ Vogel. (klein)', 'kleinen', 'Nach einen bekommt das Adjektiv im maskulinen Akkusativ die Endung -en.', ['kleine', 'kleinen', 'kleines']),
-    item('Schreibe die Steigerungsform hinter „am“.', 'Von allen lief Lina am ___. (schnell)', 'schnellsten', 'Die höchste Stufe lautet am schnellsten.'),
-  ] },
-  { name: 'Präpositionen', note: 'Präpositionen zeigen zum Beispiel Ort, Richtung oder Zeit an. Sie bestimmen den Kasus der folgenden Wortgruppe.', questions: [
-    item('Welches Wort ist die Präposition?', 'Die Tasche liegt unter dem Tisch.', 'unter', 'Unter beschreibt hier die Lage der Tasche.', ['liegt', 'unter', 'Tisch']),
-    item('Welcher Artikel passt nach „mit“?', 'Mila fährt mit ___ Bus.', 'dem', 'Mit verlangt den Dativ. Aus der Bus wird dem Bus.', ['der', 'den', 'dem']),
-    item('Welcher Artikel passt? Frage: Wohin?', 'Das Kind legt das Heft auf ___ Tisch.', 'den', 'Bei einer Richtung verlangt auf den Akkusativ. Wohin? Auf den Tisch.', ['dem', 'den', 'des']),
-    item('Welcher Artikel passt? Frage: Wo?', 'Das Heft liegt auf ___ Tisch.', 'dem', 'Bei einer Ortsangabe verlangt auf den Dativ. Wo? Auf dem Tisch.', ['den', 'dem', 'des']),
-  ] },
-  { name: 'Pronomen', note: 'Relativpronomen leiten Relativsätze ein. Demonstrativpronomen weisen auf etwas hin. Possessivpronomen zeigen Zugehörigkeit.', questions: [
-    item('Welche Art von Pronomen ist „die“ im Nebensatz?', 'Dort steht die Frau, die uns geholfen hat.', 'Relativpronomen', 'Die leitet den Relativsatz ein und bezieht sich auf die Frau.', ['Relativpronomen', 'Demonstrativpronomen', 'Possessivpronomen']),
-    item('Welche Art von Pronomen ist „meins“?', 'Das Fahrrad ist meins.', 'Possessivpronomen', 'Meins zeigt, wem das Fahrrad gehört.', ['Demonstrativpronomen', 'Possessivpronomen', 'Relativpronomen']),
-    item('Welche Art von Pronomen ist „diese“?', 'Von den beiden Jacken nehme ich diese.', 'Demonstrativpronomen', 'Diese weist auf eine bestimmte der beiden Jacken hin.', ['Possessivpronomen', 'Relativpronomen', 'Demonstrativpronomen']),
-    item('Ergänze das passende Relativpronomen.', 'Der Junge, ___ ich geholfen habe, winkt.', 'dem', 'Helfen verlangt den Dativ. Das maskuline Relativpronomen im Dativ lautet dem.', ['der', 'dem', 'den']),
-  ] },
-  { name: 'Zeitformen', note: 'Präsens: ich lese. Präteritum: ich las. Perfekt: ich habe gelesen. Plusquamperfekt: ich hatte gelesen.', questions: [
-    item('In welcher Zeitform steht der Satz?', 'Nora liest die Nachricht.', 'Präsens', 'Liest ist die Präsensform von lesen.', ['Perfekt', 'Präsens', 'Präteritum']),
-    item('In welcher Zeitform steht der Satz?', 'Nora las die Nachricht.', 'Präteritum', 'Las ist die Präteritumform von lesen.', ['Präsens', 'Perfekt', 'Präteritum']),
-    item('In welcher Zeitform steht der Satz?', 'Nora hat die Nachricht gelesen.', 'Perfekt', 'Das Perfekt besteht hier aus hat im Präsens und dem Partizip gelesen.', ['Perfekt', 'Plusquamperfekt', 'Präteritum']),
-    item('In welcher Zeitform steht „hatte gelesen“?', 'Nora hatte die Nachricht gelesen, bevor sie anrief.', 'Plusquamperfekt', 'Hatte ist das Hilfsverb im Präteritum. Mit gelesen bildet es das Plusquamperfekt und bezeichnet die frühere Handlung.', ['Präsens', 'Perfekt', 'Plusquamperfekt']),
-    item('Ergänze das Hilfsverb im Plusquamperfekt.', 'Als ich ankam, ___ der Bus schon abgefahren. (Plusquamperfekt)', 'war', 'Bei abfahren bildet war + abgefahren das Plusquamperfekt. Die Abfahrt geschah vor dem Ankommen.'),
-    item('Setze „finden“ ins Präteritum.', 'Beim Aufräumen ___ ich ein altes Foto.', 'fand', 'Die 1. Person Singular im Präteritum von finden lautet fand.'),
-  ] },
+// Each row pairs a spelling choice and a practice context with a fresh test sentence.
+const entries = [
+  ['Fluss', 'Fluß', 'Nach dem Regen trat der ___ über die Ufer.', 'Vom Hügel aus sahen wir einen breiten ___.', 'größeres Fließgewässer'],
+  ['fließend', 'fliessend', 'Sie spricht ___ Deutsch.', 'Nach einem Jahr sprach er ___ Französisch.', 'ohne stockendes Sprechen'],
+  ['flüssig', 'flüßig', 'Erwärmtes Wachs wird ___.', 'Die Butter war in der heißen Pfanne bald ___.', 'Gegenteil von fest'],
+  ['Flussbett', 'Flußbett', 'Im trockenen ___ lagen Kiesel.', 'Nach dem Hochwasser war das ___ voller Äste.', 'Vertiefung, in der ein Fluss fließt'],
+  ['überfließend', 'überfliessend', 'Das Wasser strömte ___ über den Rand des Beckens.', 'Der Brunnen wurde als ___ beschrieben: Wasser lief über seinen Rand.', 'über den Rand fließend'],
+  ['Schloss', 'Schloß', 'Der Schlüssel steckt im ___.', 'Auf dem Berg steht ein altes ___.', 'herrschaftliches Gebäude'],
+  ['verschließen', 'verschliessen', 'Wir müssen die Dose luftdicht ___.', 'Bitte die Kiste fest ___, damit nichts herausfällt.', 'fest zumachen'],
+  ['Schlüssel', 'Schlüßel', 'Der ___ passt in das Schloss.', 'Ohne ___ konnte sie die Tür nicht aufsperren.', 'Gegenstand zum Öffnen eines Schlosses'],
+  ['aufgeschlossen', 'aufgeschloßen', 'Sie reagierte ___ auf neue Ideen.', 'Er war neuen Vorschlägen gegenüber ___.', 'offen für Neues'],
+  ['abschließen', 'abschliessen', 'Nach dem Training soll ich die Halle ___.', 'Vor der Abfahrt müssen wir die Wohnungstür ___.', 'mit dem Schlüssel zusperren'],
+  ['Genuss', 'Genuß', 'Das Eis war ein echter ___.', 'Das Konzert war ein großer ___ für das Publikum.', 'besondere Freude an etwas'],
+  ['genießen', 'geniessen', 'Wir wollen den Abend ___.', 'Die Gäste konnten das Essen in Ruhe ___.', 'mit Freude erleben'],
+  ['genüsslich', 'genüßlich', 'Die Katze streckte sich ___.', 'Nach dem Essen lehnte sie sich ___ zurück.', 'mit sichtlichem Behagen, mit Umlaut'],
+  ['genussvoll', 'genußvoll', 'Er trank den Kakao ___ in kleinen Schlucken.', 'Sie kostete ___ von der Schokolade.', 'voller Genuss, ohne Umlaut'],
+  ['Genüsslichkeit', 'Genüßlichkeit', 'Mit sichtbarer ___ nahm er den ersten Bissen.', 'Mit welcher ___ sie den Tee schlürfte!', 'Nomen zu genüsslich'],
+  ['Gewissen', 'Gewißen', 'Mein ___ riet mir, die Wahrheit zu sagen.', 'Nach der Lüge hatte er ein schlechtes ___.', 'inneres Gefühl für richtig und falsch'],
+  ['Wissenschaft', 'Wißenschaft', 'Experimente sind für die ___ wichtig.', 'Die ___ untersucht, wie Sterne entstehen.', 'systematische Forschung'],
+  ['wissbegierig', 'wissenbegierig', 'Das Kind war ___ und stellte viele Fragen.', 'Die Schülerin war ___ und wollte alles über Planeten erfahren.', 'begierig, Neues zu erfahren'],
+  ['Wissen', 'Wißen', 'Die Bücher erweitern unser ___.', 'Ihr ___ über Tiere half ihr beim Quiz.', 'das, was man gelernt hat'],
+  ['weiß', 'weiss', 'Ich ___, wie die Aufgabe geht.', 'Ich ___ schon, wann der Zug fährt.', 'wissen · 1. Person Singular'],
 ]
 
-export const grammarTest = { name: 'Grammatiktest', questions: grammar.flatMap(station => station.questions.slice(2)) }
-export const dictationTest = { name: 'Minidiktat · Test', questions: dictations.flatMap(set => set.questions) }
+function gap([answer, wrong, practice, test, hint], isTest) {
+  return {
+    prompt: 'Ergänze das gesuchte Wort.',
+    example: isTest ? test : practice,
+    hint,
+    answer,
+    explanation: `Die richtige Schreibung lautet „${answer}“.`,
+  }
+}
+
+export const spellingPractice = {
+  id: 'diktat-ueben',
+  name: 'Schreibung erkennen und anwenden',
+  questions: entries.flatMap((entry, index) => {
+    const [answer, wrong] = entry
+    return [
+      { prompt: 'Welche Schreibung passt in die Lücke?', example: entry[2], answer,
+        options: index % 2 ? [wrong, answer] : [answer, wrong], explanation: `Richtig ist „${answer}“.` },
+      gap(entry, false),
+    ]
+  }),
+}
+export const spellingTest = { id: 'diktat-test', name: 'Lückentext · Rechtschreibtest', questions: entries.map(entry => gap(entry, true)) }

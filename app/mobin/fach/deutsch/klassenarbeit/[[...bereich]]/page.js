@@ -2,48 +2,52 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import DeutschTraining from '../../DeutschTraining'
 import styles from '../../deutsch.module.css'
+import { stations } from '../../grammar'
 
 const base = '/mobin/fach/deutsch/klassenarbeit'
 const areas = {
-  diktat: { title: 'Minidiktat', detail: 'Vier Wortlisten hören und schreiben' },
+  diktat: { title: 'Minidiktat', detail: 'Vier Wortlisten und Rechtschreibung im Satz' },
   grammatik: { title: 'Grammatik', detail: 'Fünf Stationen zu Wortarten und Zeitformen' },
-  geschichte: { title: 'Geschichte schreiben', detail: 'Schreibplan und Erzählung' },
+  geschichte: { title: 'Geschichte schreiben' },
 }
 
 export const metadata = { title: 'Klassenarbeit Deutsch · Mobin' }
 
 export default async function KlassenarbeitPage({ params }) {
   const { bereich = [] } = await params
-  const [area, mode] = bereich
-  if (bereich.length > 2 || (area && !Object.hasOwn(areas, area)) || (mode && !['ueben', 'test'].includes(mode))) notFound()
+  const [area, mode, stationId] = bereich
+  const station = stations.find(item => item.id === stationId)
+  if (bereich.length > 3 || (area && !Object.hasOwn(areas, area))
+    || (mode && (area === 'geschichte' || !['ueben', 'test'].includes(mode)))
+    || (stationId && (area !== 'grammatik' || !station))) notFound()
   return (
     <main className={styles.shell} lang="de">
       <div className={styles.frame}>
-        <Link className={styles.back} href={mode ? base + '/' + area : area ? base : '/mobin/fach/deutsch'}>
-          ← {mode ? areas[area].title : area ? 'Klassenarbeit' : 'Deutsch'}
+        <Link className={styles.back} href={station ? base + '/' + area + '/' + mode : mode ? base + '/' + area : area ? base : '/mobin/fach/deutsch'}>
+          ← {station ? (mode === 'test' ? 'Grammatiktests' : 'Grammatikstationen') : mode ? areas[area].title : area ? 'Klassenarbeit' : 'Deutsch'}
         </Link>
         <header className={styles.heading}>
-          <h1>{area ? areas[area].title : 'Klassenarbeit'}</h1>
-          <p>{mode ? (mode === 'ueben' ? 'Üben' : 'Test') : area ? areas[area].detail : 'Deutsch · 20. November'}</p>
+          <h1>{station ? station.name : area ? areas[area].title : 'Klassenarbeit'}</h1>
+          {area !== 'geschichte' && <p>{mode ? (mode === 'ueben' ? 'Üben' : 'Test') : area ? areas[area].detail : 'Deutsch · 20. November'}</p>}
         </header>
         {!area ? (
           <nav className={styles.tiles} aria-label="Prüfungsbereiche">
             {Object.entries(areas).map(([id, { title, detail }]) =>
               <Link className={styles.tile} data-tone={id} href={base + '/' + id} key={id}>
                 <span className={styles.art} aria-hidden="true" />
-                <strong>{title}</strong><small>{detail}</small><span className={styles.tileArrow} aria-hidden="true">→</span>
+                <strong>{title}</strong>{detail && <small>{detail}</small>}<span className={styles.tileArrow} aria-hidden="true">→</span>
               </Link>)}
           </nav>
-        ) : !mode ? (
+        ) : area === 'geschichte' ? null : !mode ? (
           <nav className={styles.tiles} aria-label="Modus wählen">
             <Link className={styles.tile} href={base + '/' + area + '/ueben'}><strong>Üben</strong>
-              <small>{area === 'geschichte' ? 'Mit Schreibhilfen planen und schreiben' : 'Mit direkter Rückmeldung'}</small><span className={styles.tileArrow} aria-hidden="true">→</span>
+              <small>Mit direkter Rückmeldung</small><span className={styles.tileArrow} aria-hidden="true">→</span>
             </Link>
             <Link className={styles.tile} data-tone="geschichte" href={base + '/' + area + '/test'}><strong>Test</strong>
-              <small>{area === 'geschichte' ? '15 Minuten planen, 45 Minuten schreiben' : 'Lösungen nach der Abgabe'}</small><span className={styles.tileArrow} aria-hidden="true">→</span>
+              <small>{area === 'grammatik' ? 'Fünf Tests mit je zehn neuen Aufgaben' : 'Neue Lückensätze · Lösungen nach der Abgabe'}</small><span className={styles.tileArrow} aria-hidden="true">→</span>
             </Link>
           </nav>
-        ) : <DeutschTraining key={area + mode} area={area} isTest={mode === 'test'} />}
+        ) : <DeutschTraining key={bereich.join('/')} area={area} isTest={mode === 'test'} stationId={stationId} />}
       </div>
     </main>
   )

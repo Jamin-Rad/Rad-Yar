@@ -159,3 +159,40 @@
   .hero h1 { font-size: clamp(3rem, 12vw, 5rem); }
 }
 @media (prefers-reduced-motion: reduce) { .tiles .tile { transition: none; } }
+
+.stationGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 168px), 1fr));
+  gap: 14px;
+}
+.stationCard {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 12px;
+  color: #f4f8ff;
+  border: 1px solid #7399c882;
+  border-radius: 13px;
+  background: linear-gradient(145deg, #203b62, #11223c 72%);
+  box-shadow: 0 5px #071223, 0 12px 24px #020a1755;
+  text-decoration: none;
+  transition: transform .16s ease, border-color .16s ease;
+}
+.stationCard:hover { transform: translateY(-3px); border-color: #ffdb9e; }
+.stationArt {
+  display: block;
+  width: 100%;
+  aspect-ratio: .95;
+  border-radius: 8px;
+  background: #0c182d url('/mobin/deutsch-stationen.webp') 0 center / 500% auto no-repeat;
+}
+.stationCard strong { font-size: clamp(1.02rem, 1.4vw, 1.26rem); }
+.stationCard small { color: #c9ddf5; line-height: 1.4; }
+.stationCard > span:last-child { margin-top: auto; padding-top: 8px; color: #ffdda4; font-weight: 750; font-size: .9rem; }
+.exerciseHead { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: baseline; justify-content: space-between; }
+.exerciseHead h2 { margin-bottom: 0; }
+.prompt mark { padding: .08em .2em; background: #a9dcff; color: #102748; border-radius: 4px; }
+.hint { color: #c7dcf8; }
+.families p { margin: 0; line-height: 1.6; }
+@media (prefers-reduced-motion: reduce) { .stationCard { transition: none; } }
