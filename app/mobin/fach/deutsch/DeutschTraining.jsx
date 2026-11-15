@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react'
 import styles from './deutsch.module.css'
 import { families, spellingPractice, spellingTest } from './exercises'
 import { stations } from './grammar'
+import { mixedTests } from './mixedGrammar'
 
 const base = '/mobin/fach/deutsch/klassenarbeit/grammatik/'
 const keyFor = (id) => 'mobin-deutsch-2026-11-20-v2:' + id
@@ -26,7 +27,8 @@ function normalize(value, strict) {
 }
 
 function correct(question, value, strict) {
-  return normalize(question.answer, strict) === normalize(value, strict)
+  const exact = strict || question.strict
+  return normalize(question.answer, exact) === normalize(value, exact)
 }
 
 function WordLists() {
@@ -148,30 +150,39 @@ function Round({ set, isTest, spelling }) {
 function StationCards({ isTest }) {
   const [progress, setProgress] = useState({})
   const mode = isTest ? 'test' : 'ueben'
+  const cards = isTest ? mixedTests : stations
   useEffect(() => {
     function read() {
-      setProgress(Object.fromEntries(stations.map(station => [station.id, load(isTest ? station.test : station.practice)])))
+      const assigned = isTest ? [...mixedTests, ...stations] : stations
+      setProgress(Object.fromEntries(assigned.map(station => [station.id, load(isTest ? station.test : station.practice)])))
     }
     read()
     window.addEventListener('pageshow', read)
     return () => window.removeEventListener('pageshow', read)
   }, [isTest])
-  return (
+  const previousTests = isTest ? stations.filter(({ id }) => progress[id]?.answers.length || progress[id]?.value) : []
+  return (<>
     <nav className={styles.stationGrid} aria-label={isTest ? 'Grammatiktests' : 'Grammatikstationen'}>
-      {stations.map((station, index) => {
+      {cards.map((station, index) => {
         const draft = progress[station.id]
         const count = draft?.answers.length ?? 0
         return (
         <Link className={styles.stationCard} key={station.id} href={base + mode + '/' + station.id}>
           <span className={styles.stationArt} style={{ backgroundPositionX: `${index * 25}%` }} aria-hidden="true" />
           <strong>{station.name}</strong>
-          <small>{station.note}</small>
+          <small>{isTest ? 'Alle fünf Themen · anspruchsvoll' : station.note}</small>
           <span>{count === 10 ? 'Ergebnis öffnen' : count || draft?.value ? `Fortsetzen · ${count}/10` : '10 Aufgaben'} <span aria-hidden="true">→</span></span>
         </Link>
         )
       })}
     </nav>
-  )
+    {previousTests.length > 0 && <details className={styles.wordLists}>
+      <summary>Frühere Tests nach Thema</summary>
+      <ul>{previousTests.map(station => (
+        <li key={station.id}><Link href={base + 'test/' + station.id}>{station.name}</Link></li>
+      ))}</ul>
+    </details>}
+  </>)
 }
 
 export default function DeutschTraining({ area, isTest, stationId }) {
@@ -180,6 +191,6 @@ export default function DeutschTraining({ area, isTest, stationId }) {
     <Round set={isTest ? spellingTest : spellingPractice} isTest={isTest} spelling />
   </>
   if (!stationId) return <StationCards isTest={isTest} />
-  const station = stations.find(item => item.id === stationId)
+  const station = (isTest ? [...mixedTests, ...stations] : stations).find(item => item.id === stationId)
   return <Round set={isTest ? station.test : station.practice} isTest={isTest} />
 }

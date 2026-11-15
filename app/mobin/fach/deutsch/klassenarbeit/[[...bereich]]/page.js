@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation'
 import DeutschTraining from '../../DeutschTraining'
 import styles from '../../deutsch.module.css'
 import { stations } from '../../grammar'
+import { mixedTests } from '../../mixedGrammar'
 
 const base = '/mobin/fach/deutsch/klassenarbeit'
 const areas = {
@@ -16,7 +17,7 @@ export const metadata = { title: 'Klassenarbeit Deutsch · Mobin' }
 export default async function KlassenarbeitPage({ params }) {
   const { bereich = [] } = await params
   const [area, mode, stationId] = bereich
-  const station = stations.find(item => item.id === stationId)
+  const station = (mode === 'test' ? [...mixedTests, ...stations] : stations).find(item => item.id === stationId)
   if (bereich.length > 3 || (area && !Object.hasOwn(areas, area))
     || (mode && (area === 'geschichte' || !['ueben', 'test'].includes(mode)))
     || (stationId && (area !== 'grammatik' || !station))) notFound()
@@ -44,7 +45,7 @@ export default async function KlassenarbeitPage({ params }) {
               <small>Mit direkter Rückmeldung</small><span className={styles.tileArrow} aria-hidden="true">→</span>
             </Link>
             <Link className={styles.tile} data-tone="geschichte" href={base + '/' + area + '/test'}><strong>Test</strong>
-              <small>{area === 'grammatik' ? 'Fünf Tests mit je zehn neuen Aufgaben' : 'Neue Lückensätze · Lösungen nach der Abgabe'}</small><span className={styles.tileArrow} aria-hidden="true">→</span>
+              <small>{area === 'grammatik' ? 'Fünf anspruchsvolle Mischtests · je zehn Aufgaben' : 'Neue Lückensätze · Lösungen nach der Abgabe'}</small><span className={styles.tileArrow} aria-hidden="true">→</span>
             </Link>
           </nav>
         ) : <DeutschTraining key={bereich.join('/')} area={area} isTest={mode === 'test'} stationId={stationId} />}
