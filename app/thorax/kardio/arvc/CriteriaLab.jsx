@@ -4,8 +4,6 @@ import { useLanguage } from '@/providers/LanguageProvider'
 import { localizeArvcTree } from './lessonTranslations'
 
 import { useState } from 'react'
-import LessonCaseFile from '@/components/LessonCaseFile'
-import { getAcmCaseData } from './CaseAtlas'
 import { Tabs } from './LessonVisuals'
 import styles from './page.module.css'
 
@@ -56,7 +54,7 @@ function CategoryDisclosure({ number, title, description }) {
 function TfcExplanation({ lang }) {
   return localizeArvcTree(<>
     <h4 className={styles.mrtTopic}>Cine · rechter Ventrikel</h4>
-    <p>Für beide Stufen braucht es eine regionale RV-Akinesie, Dyskinesie oder dyssynchrone RV-Kontraktion. Dazu muss mindestens einer der folgenden Messwerte auffällig sein.</p>
+    <p>Major und Minor setzen eine regionale RV-Akinesie, Dyskinesie oder dyssynchrone Kontraktion voraus. Der Messwert für RV-Volumen oder RVEF bestimmt die Einstufung.</p>
     <dl className={`${styles.criteriaRows} ${styles.criteriaThresholds}`}>
       <div>
         <dt>RVEDVi · Männer</dt>
@@ -75,7 +73,7 @@ function TfcExplanation({ lang }) {
       </div>
     </dl>
     <p className={styles.criteriaNote}>RVEDVi ist das enddiastolische RV-Volumen bezogen auf die Körperoberfläche. RVEF ist die rechtsventrikuläre Ejektionsfraktion.</p>
-    <p className={styles.criteriaNote}>Volumen und RVEF gehören beide zur Kategorie I. Bei zwei auffälligen Messwerten zählt nur die höhere Einstufung. LGE ist bei TFC 2010 kein eigenes Kriterium.</p>
+    <p className={styles.criteriaNote}>Sind Volumen und RVEF auffällig, zählt in Kategorie I nur die höhere Einstufung. LGE ist bei TFC 2010 kein eigenes Kriterium.</p>
   </>, lang)
 }
 
@@ -104,45 +102,30 @@ function PaduaExplanation({ lang }) {
   </>, lang)
 }
 
-function CriteriaExample() {
-  const { lang } = useLanguage()
-  const caseData = getAcmCaseData('39806', lang, 'acm-criteria-series')
-  const measurements = {
-    de: ['RVEDVi: 115 ml/m²', 'RVEF: 41 %'],
-    en: ['RVEDVi: 115 mL/m²', 'RVEF: 41%'],
-    fa: ['حجم پایان دیاستول شاخص‌شدهٔ بطن راست: ۱۱۵ میلی‌لیتر بر متر مربع', 'کسر جهشی بطن راست: ۴۱٪'],
-  }
-
-  return <LessonCaseFile lang={lang} caseData={{
-    ...caseData,
-    findings: [caseData.findings[0], ...(measurements[lang] || measurements.de)],
-    revealDiagnosis: true,
-    revealLabel: { de: 'Major oder Minor nach TFC 2010?', en: 'Major or minor under the 2010 TFC?', fa: 'طبق TFC ۲۰۱۰ معیار اصلی است یا فرعی؟' },
-    interpretation: {
-      de: 'Ein Major-Kriterium (2 Punkte). Die RV-Dyskinesie und das RVEDVi von 115 ml/m² erfüllen es gemeinsam. Die RVEF von 41 % liegt im Minor-Bereich derselben Kategorie. Für sich genommen ergibt dieser MRT-Befund nach TFC die Stufe „möglich“. Beim Patienten war die ARVC bereits bekannt.',
-      en: 'One major criterion (2 points). RV dyskinesia and an RVEDVi of 115 mL/m² together fulfill it. The RVEF of 41% falls in the minor range within the same category. On its own, this MRI finding meets the “possible” tier under TFC. The patient already had a diagnosis of ARVC.',
-      fa: 'یک معیار اصلی (۲ امتیاز). دیسکینزی بطن راست و حجم پایان دیاستول شاخص‌شدهٔ ۱۱۵ میلی‌لیتر بر متر مربع با هم این معیار را برآورده می‌کنند. کسر جهشی ۴۱٪ در محدودهٔ معیار فرعیِ همان دسته است. اگر فقط این یافتهٔ MRI را حساب کنیم، نتیجه طبق TFC در ردهٔ «ممکن» قرار می‌گیرد. تشخیص ARVC از قبل برای این بیمار مشخص بود.',
-    },
-  }}/>
-}
-
 export default function CriteriaOverview() {
   const { lang } = useLanguage()
   const [selected, setSelected] = useState(0)
 
-  return localizeArvcTree(<>
-    <p className={styles.lead}>Ein einzelner MRT-Befund reicht für eine gesicherte Diagnose nicht aus. TFC und Padua verteilen die Befunde auf sechs Kategorien. Das MRT liefert Befunde zu Form, Funktion und Gewebe. Auch EKG, Rhythmus und Familienanamnese oder Genetik fließen in die Diagnose ein.</p>
-    <h3 className={styles.subheading}>Wie wird gewertet?</h3>
-    <p><strong>Major entspricht 2 Punkten. Minor entspricht 1 Punkt.</strong> Pro Kategorie zählt der stärkste Befund einmal.</p>
-    <dl className={styles.criteriaScores} aria-label="Diagnosestufen nach TFC 2010">
-      <div><dt>Möglich</dt><dd>2 Punkte</dd></div>
-      <div><dt>Grenzwertig</dt><dd>3 Punkte</dd></div>
-      <div><dt>Gesichert</dt><dd>Ab 4 Punkten</dd></div>
-    </dl>
-    <p className={styles.criteriaNote}>Vier Punkte ergeben sich zum Beispiel aus zwei Major-Kriterien, einem Major- und zwei Minor-Kriterien oder vier Minor-Kriterien aus verschiedenen Kategorien.</p>
+  return localizeArvcTree(<div className={styles.criteriaLesson}>
+    <p className={styles.criteriaIntro}><strong>Für eine gesicherte Diagnose reicht ein einzelner MRT-Befund nicht aus.</strong> TFC und Padua berücksichtigen sechs Befundkategorien. Neben dem MRT zählen unter anderem das EKG, dokumentierte Rhythmusstörungen sowie Familienanamnese und Genetik.</p>
+    <h3 className={styles.subheading}>Von den Befunden zur Diagnose</h3>
+    <p>Pro Kategorie zählt nur das stärkste erfüllte Kriterium. Die Punkte aus den verschiedenen Kategorien werden addiert.</p>
+    <figure className={styles.criteriaScale}>
+      <figcaption>Diagnosestufen nach TFC 2010</figcaption>
+      <div className={styles.criteriaWeights}>
+        <span><strong>Major</strong> <span>2 Punkte</span></span>
+        <span><strong>Minor</strong> <span>1 Punkt</span></span>
+      </div>
+      <dl className={styles.criteriaScores}>
+        <div><dt><bdi dir="ltr" aria-label="2 Punkte">2</bdi></dt><dd>Möglich</dd></div>
+        <div><dt><bdi dir="ltr" aria-label="3 Punkte">3</bdi></dt><dd>Grenzwertig</dd></div>
+        <div><dt><bdi dir="ltr" aria-label="Ab 4 Punkten">≥ 4</bdi></dt><dd>Gesichert</dd></div>
+      </dl>
+    </figure>
+    <h3 className={styles.subheading}>TFC und Padua im Vergleich</h3>
     <dl className={styles.criteriaRows}>
-      <div><dt>TFC 2010</dt><dd>Die Task-Force-Kriterien richten sich auf die klassische ARVC mit Beteiligung der rechten Herzkammer. Für sie gelten die drei Stufen oben.</dd></div>
-      <div><dt>Padua 2020</dt><dd>Padua ergänzt Kriterien für die linke Herzkammer und für Narben im LGE. Für rechtsdominante und biventrikuläre Formen gelten dieselben Stufen mit zusätzlichen Voraussetzungen.</dd></div>
+      <div><dt>TFC 2010</dt><dd>Die Task-Force-Kriterien wurden für die klassische ARVC entwickelt. Im Mittelpunkt steht die rechte Herzkammer.</dd></div>
+      <div><dt>Padua 2020</dt><dd>Padua erfasst auch linksdominante und biventrikuläre Formen und berücksichtigt Narben im LGE. Bei rechtsdominanter oder biventrikulärer ACM gelten dieselben Diagnosestufen mit zusätzlichen Voraussetzungen.</dd></div>
     </dl>
     <details className={styles.mrtDetails}>
       <summary>Welche Voraussetzungen gelten bei Padua?</summary>
@@ -153,9 +136,9 @@ export default function CriteriaOverview() {
         <div><dt>Isoliert links</dt><dd>Typisches LV-LGE und eine pathogene oder wahrscheinlich pathogene ACM-Genvariante sind erforderlich.</dd></div>
       </dl>
     </details>
-    <h3 className={styles.subheading}>Was zählt im MRT als Major oder Minor?</h3>
-    <p>Im Cine beurteilen wir Form und Funktion (I). Bei Padua kann das LGE zusätzlich ein Kriterium des Myokardgewebes (II) erfüllen.</p>
-    <div className={styles.atlas}>
+    <h3 className={styles.subheading}>Major und Minor im MRT</h3>
+    <p>Cine zeigt Form und Funktion der Herzkammern (Kategorie I). Bei Padua können typische Narben im LGE auch in die Bewertung des Myokardgewebes eingehen (Kategorie II).</p>
+    <div className={`${styles.atlas} ${styles.criteriaAtlas}`}>
       <Tabs label="MRT-Kriterien vergleichen" items={MRI_SYSTEMS} selected={selected} onChange={setSelected} idPrefix="acm-diagnostic-mri"/>
       <div className={styles.criteriaMri} id="acm-diagnostic-mri-panel" role="tabpanel" aria-labelledby={`acm-diagnostic-mri-tab-${selected}`} tabIndex={0}>
         {selected === 0 ? <TfcExplanation lang={lang}/> : <PaduaExplanation lang={lang}/>}
@@ -165,8 +148,5 @@ export default function CriteriaOverview() {
     <div className={styles.criteriaGuide}>
       {OTHER_CATEGORIES.map(category => <CategoryDisclosure key={category.number} {...category}/>)}
     </div>
-    <hr className={styles.mriCaseDivider}/>
-    <h3 className={styles.subheading}>Fallbeispiel</h3>
-    <CriteriaExample/>
-  </>, lang)
+  </div>, lang)
 }

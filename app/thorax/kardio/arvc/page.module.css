@@ -397,25 +397,6 @@
 .mriDyskinesiaFigure { max-width:680px; margin-inline:auto; }
 .mrtTopic { margin:0 0 8px; font-size:17px; line-height:1.4; }
 .mrtTopic:not(:first-child) { margin-block-start:24px; }
-.criteriaScores {
-  display:grid;
-  grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:8px;
-  margin:14px 0 20px;
-}
-.criteriaScores > div {
-  padding:10px 12px;
-  border:1px solid var(--line);
-  border-block-start:2px solid var(--lesson-accent);
-  border-radius:8px;
-  background:var(--canvas);
-}
-.criteriaScores dt { font-weight:750; }
-.criteriaScores dd {
-  margin:0;
-  color:var(--lesson-accent-strong);
-  font-weight:700;
-}
 .mrtPanel .mrtTopic {
   padding-inline-start:10px;
   border-inline-start:3px solid var(--lesson-accent);
@@ -473,8 +454,65 @@
 }
 
 .workflow { grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px; }
+.criteriaLesson { font-size:1rem; line-height:1.65; }
+.criteriaLesson > .subheading {
+  margin-block:clamp(28px,4vw,40px) 10px;
+  font-family:inherit;
+  font-size:clamp(1.2rem,2.5vw,1.52rem);
+  font-weight:750;
+  line-height:1.3;
+}
+.criteriaIntro { max-inline-size:68ch; }
+.criteriaIntro strong { color:var(--ink); }
+.criteriaScale {
+  margin:14px 0 0;
+  padding:clamp(12px,3vw,24px);
+  border:1px solid var(--line);
+  border-radius:10px;
+  background:var(--canvas);
+}
+.criteriaWeights {
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-block:8px 16px;
+}
+.criteriaWeights > span {
+  display:inline-flex;
+  align-items:baseline;
+  gap:6px;
+  padding:3px 9px;
+  border:1px solid var(--line);
+  border-radius:6px;
+  background:var(--paper);
+  font-size:.875rem;
+}
+.criteriaWeights strong { color:var(--lesson-accent-strong); }
+.criteriaScale figcaption { color:var(--ink); font-weight:700; }
+.criteriaScores {
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  margin:10px 0 0;
+  padding-block-start:4px;
+  border-block-start:2px solid var(--lesson-accent);
+}
+.criteriaScores > div { position:relative; padding:10px 4px 0; text-align:center; }
+.criteriaScores > div::before {
+  content:'';
+  position:absolute;
+  inset-block-start:-10px;
+  inset-inline-start:calc(50% - 4px);
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:var(--lesson-accent-strong);
+}
+.criteriaScores dt { color:var(--lesson-accent-strong); font-size:clamp(1.2rem,2.8vw,1.55rem); font-weight:800; font-variant-numeric:tabular-nums; }
+.criteriaScores dd { margin:0; color:var(--ink); font-size:.875rem; }
+.criteriaAtlas { margin-block-start:14px; }
+.criteriaAtlas .tabs button { flex:1 1 auto; }
 .criteriaGuide {
-  margin-block-start:20px;
+  margin-block-start:12px;
   border-block:1px solid var(--line);
 }
 .criteriaDisclosure + .criteriaDisclosure { border-block-start:1px solid var(--line); }
@@ -542,15 +580,14 @@
 .criteriaRows dt { color:var(--lesson-accent-strong); font-weight:750; }
 .criteriaRows dd { margin:0; }
 .criteriaRows:not(.criteriaThresholds) dd { grid-column:2; }
-.criteriaRows dd strong { color:var(--ink); margin-inline-end:.25em; }
+.criteriaRows dd strong { color:var(--lesson-accent-strong); margin-inline-end:.25em; }
 .criteriaThresholds > div { grid-template-columns:minmax(0,1fr) repeat(2,minmax(0,1fr)); }
 .criteriaThresholds dd strong { display:block; }
 .criteriaMri .mrtTopic + .criteriaRows { margin-block-start:8px; }
-.chapterBody .criteriaNote { margin-block-start:12px; }
+.chapterBody .criteriaNote { margin-block-start:12px; font-size:.91em; }
 .chapterBody .criteriaNote + .criteriaRows { margin-block-start:10px; }
 @media(max-width:520px) {
-  .criteriaScores { gap:5px; font-size:.85em; }
-  .criteriaScores > div { padding:8px 5px; }
+  .criteriaScores dd { font-size:.8rem; }
   .criteriaRows:not(.criteriaThresholds) > div { grid-template-columns:minmax(0,1fr); }
   .criteriaRows:not(.criteriaThresholds) dd { grid-column:1; }
   .criteriaThresholds > div { grid-template-columns:repeat(2,minmax(0,1fr)); }
