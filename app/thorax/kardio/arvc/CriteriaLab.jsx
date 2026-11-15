@@ -24,6 +24,8 @@ function TfcExplanation() {
   const { lang: _arvcLang } = useLanguage()
 
   return localizeArvcTree(<>
+    <h4 className={styles.mrtTopic}>MRT-Kriterium</h4>
+    <p>Zum MRT-Kriterium gehören eine regionale Wandbewegungsstörung des rechten Ventrikels und entweder eine RV-Dilatation oder eine verminderte RVEF.</p>
     <dl className={styles.criteriaRows}>
       <div><dt>Regional</dt><dd>RV-Akinesie, Dyskinesie oder dyssynchrone Kontraktion.</dd></div>
       <div><dt>Global</dt><dd>Erhöhtes RVEDVi oder verminderte RVEF. Ist beides auffällig, zählt die höhere Einstufung einmal.</dd></div>
@@ -52,6 +54,7 @@ function PaduaExplanation() {
   const { lang: _arvcLang } = useLanguage()
 
   return localizeArvcTree(<>
+    <h4 className={styles.mrtTopic}>Was wird im MRT beurteilt?</h4>
     <dl className={styles.criteriaRows}>
       <div><dt>Cine</dt><dd>Wandbewegung, Größe und Funktion beider Kammern beurteilen. Volumen und EF anhand geeigneter Referenzwerte einordnen.</dd></div>
       <div><dt>RV-LGE</dt><dd>Transmurales Streifen-LGE in mindestens einer Region der RV-Wand.</dd></div>
@@ -89,12 +92,12 @@ export default function CriteriaOverview() {
   const { lang: _arvcLang } = useLanguage()
 
   return localizeArvcTree(<>
-    <p className={styles.lead}>Die Diagnose ergibt sich aus mehreren Befundgruppen, darunter Bildgebung, EKG, Rhythmusdiagnostik und Familienanamnese oder Genetik.</p>
+    <p className={styles.lead}>TFC und Padua sind zwei Regelwerke für die Diagnose der arrhythmogenen Kardiomyopathie. Sie legen fest, welche Befunde aus Untersuchungen wie EKG, Herz-MRT und Gentest zählen und wie man sie kombiniert.</p>
     <div className={styles.criteriaGuide}>
-      <CriteriaDisclosure title="Task-Force-Kriterien (TFC 2010)" focus="Klassische ARVC" summary="Das MRT-Kriterium verbindet eine regionale RV-Wandbewegungsstörung mit RV-Dilatation oder verminderter RVEF.">
+      <CriteriaDisclosure title="Task-Force-Kriterien (TFC 2010)" focus="Klassische ARVC" summary="Der Schwerpunkt liegt auf Veränderungen der rechten Herzkammer.">
         <TfcExplanation/>
       </CriteriaDisclosure>
-      <CriteriaDisclosure title="Padua-Kriterien (2020)" focus="ACM mit RV- und/oder LV-Beteiligung" summary="Im Cine beide Kammern beurteilen. Typische LGE-Muster zählen als strukturelle Kriterien.">
+      <CriteriaDisclosure title="Padua-Kriterien (2020)" focus="Das gesamte Spektrum der ACM" summary="Für Erkrankungen der rechten, der linken oder beider Herzkammern. Im MRT zählen auch typische Narbenmuster im LGE.">
         <PaduaExplanation/>
       </CriteriaDisclosure>
     </div>

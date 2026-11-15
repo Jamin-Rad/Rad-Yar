@@ -526,7 +526,7 @@
 .criteriaToggle::after { transform:rotate(90deg); }
 .criteriaDisclosure[open] .criteriaToggle::after { display:none; }
 .criteriaContent {
-  padding:0 12px 18px;
+  padding:14px 12px 18px;
   border-block-start:1px solid var(--line);
 }
 .criteriaRows { margin:0; }

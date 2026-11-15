@@ -15,20 +15,25 @@ const COPY = {
   "Fallbeispiel": { en: "Case example", fa: "نمونهٔ بالینی" },
   "Task-Force-Kriterien (TFC 2010)": { en: "Task Force Criteria (2010 TFC)", fa: "معیارهای کارگروه تخصصی (TFC ۲۰۱۰)" },
   "Padua-Kriterien (2020)": { en: "Padua Criteria (2020)", fa: "معیارهای پادوا (۲۰۲۰)" },
-  "Die Diagnose ergibt sich aus mehreren Befundgruppen, darunter Bildgebung, EKG, Rhythmusdiagnostik und Familienanamnese oder Genetik.": {
-    en: "Diagnosis draws on several groups of findings, including imaging, ECG, rhythm assessment, and family history or genetics.",
-    fa: "برای تشخیص، چند دسته یافته از جمله تصویربرداری، نوار قلب، بررسی ریتم و سابقهٔ خانوادگی یا ژنتیک کنار هم قرار می‌گیرند."
+  "TFC und Padua sind zwei Regelwerke für die Diagnose der arrhythmogenen Kardiomyopathie. Sie legen fest, welche Befunde aus Untersuchungen wie EKG, Herz-MRT und Gentest zählen und wie man sie kombiniert.": {
+    en: "TFC and Padua are two frameworks for diagnosing arrhythmogenic cardiomyopathy. They define which findings from tests such as ECG, cardiac MRI, and genetic testing count and how to combine them.",
+    fa: "TFC و پادوا دو چارچوب برای تشخیص کاردیومیوپاتی آریتموژن هستند. این معیارها مشخص می‌کنند کدام یافته‌های نوار قلب، MRI قلب یا آزمایش ژنتیک در تشخیص حساب می‌شوند و چگونه باید آن‌ها را کنار هم گذاشت."
   },
   "Klassische ARVC": { en: "Classic ARVC", fa: "ARVC کلاسیک" },
-  "Das MRT-Kriterium verbindet eine regionale RV-Wandbewegungsstörung mit RV-Dilatation oder verminderter RVEF.": {
-    en: "The MRI criterion combines a regional RV wall motion abnormality with RV dilatation or reduced RVEF.",
-    fa: "معیار MRI به ترکیب اختلال موضعی حرکت دیوارهٔ بطن راست با اتساع یا کاهش کسر جهشی بطن راست نیاز دارد."
+  "Der Schwerpunkt liegt auf Veränderungen der rechten Herzkammer.": {
+    en: "The focus is on changes in the right ventricle.",
+    fa: "تمرکز بر تغییرات بطن راست است."
   },
-  "ACM mit RV- und/oder LV-Beteiligung": { en: "ACM involving the RV, LV, or both", fa: "ACM با درگیری بطن راست، بطن چپ یا هر دو" },
-  "Im Cine beide Kammern beurteilen. Typische LGE-Muster zählen als strukturelle Kriterien.": {
-    en: "Assess both ventricles on cine. Characteristic LGE patterns count as structural criteria.",
-    fa: "در Cine هر دو بطن ارزیابی می‌شوند. الگوهای شاخص LGE معیار ساختاری محسوب می‌شوند."
+  "Das gesamte Spektrum der ACM": { en: "The full ACM spectrum", fa: "طیف کامل ACM" },
+  "Für Erkrankungen der rechten, der linken oder beider Herzkammern. Im MRT zählen auch typische Narbenmuster im LGE.": {
+    en: "Covers disease involving the right ventricle, the left ventricle, or both. Characteristic scar patterns on LGE also count on MRI.",
+    fa: "درگیری بطن راست، بطن چپ یا هر دو را پوشش می‌دهد. در MRI، الگوهای شاخص اسکار در LGE هم جزو معیارها هستند."
   },
+  "Zum MRT-Kriterium gehören eine regionale Wandbewegungsstörung des rechten Ventrikels und entweder eine RV-Dilatation oder eine verminderte RVEF.": {
+    en: "The MRI criterion requires a regional right ventricular wall motion abnormality together with either RV dilatation or reduced RVEF.",
+    fa: "معیار MRI به اختلال موضعی حرکت دیوارهٔ بطن راست همراه با اتساع یا کاهش کسر جهشی بطن راست نیاز دارد."
+  },
+  "Was wird im MRT beurteilt?": { en: "What is assessed on MRI?", fa: "در MRI چه چیزهایی بررسی می‌شوند؟" },
   "Regional": { en: "Regional", fa: "موضعی" },
   "RV-Akinesie, Dyskinesie oder dyssynchrone Kontraktion.": { en: "RV akinesia, dyskinesia, or dyssynchronous contraction.", fa: "آکینزی، دیسکینزی یا انقباض ناهماهنگ بطن راست." },
   "Global": { en: "Global", fa: "عملکرد و حجم کلی" },
