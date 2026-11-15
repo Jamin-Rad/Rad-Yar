@@ -9,14 +9,18 @@ import { mixedTests } from './mixedGrammar'
 
 const base = '/mobin/fach/deutsch/klassenarbeit/grammatik/'
 const keyFor = (id) => 'mobin-deutsch-2026-11-20-v2:' + id
-const emptyRound = { answers: [], value: '', checked: false }
+const emptyRound = { answers: [], value: '' }
 
 function load(set) {
   try {
     const saved = JSON.parse(window.localStorage.getItem(keyFor(set.id)))
     if (saved && Array.isArray(saved.answers) && saved.answers.length <= set.questions.length
-        && saved.answers.every(value => typeof value === 'string') && typeof saved.value === 'string'
-        && typeof saved.checked === 'boolean') return saved
+        && saved.answers.every(value => typeof value === 'string') && typeof saved.value === 'string') {
+      if (saved.checked === true && saved.value.trim() && saved.answers.length < set.questions.length) {
+        return { answers: [...saved.answers, saved.value], value: '' }
+      }
+      return { answers: saved.answers, value: saved.value }
+    }
   } catch {}
   return emptyRound
 }
@@ -54,11 +58,12 @@ function Sentence({ text }) {
 function Round({ set, isTest, spelling }) {
   const [saved, setSaved] = useState(null)
   const [retry, setRetry] = useState(null)
+  const [feedbackIndex, setFeedbackIndex] = useState(null)
   const [storageError, setStorageError] = useState(false)
   const questions = retry ? retry.questions : set.questions
   const testing = isTest && !retry
   const draft = retry ? retry.draft : saved
-  const index = draft?.answers.length ?? 0
+  const index = feedbackIndex ?? draft?.answers.length ?? 0
   const question = questions[index]
   const strict = spelling || ['nomen-ueben', 'nomen-test'].includes(set.id)
 
@@ -80,9 +85,13 @@ function Round({ set, isTest, spelling }) {
 
   function submit(event) {
     event.preventDefault()
+    if (feedbackIndex !== null) {
+      setFeedbackIndex(null)
+      return
+    }
     if (!draft.value.trim()) return
-    if (testing || draft.checked) save({ answers: [...draft.answers, draft.value], value: '', checked: false })
-    else save({ ...draft, checked: true })
+    save({ answers: [...draft.answers, draft.value], value: '' })
+    if (!testing) setFeedbackIndex(index)
   }
 
   if (!draft) return <p role="status">Lernstand wird geladen …</p>
@@ -114,12 +123,13 @@ function Round({ set, isTest, spelling }) {
     </section>
   }
 
-  const checked = !testing && draft.checked
-  const right = checked && correct(question, draft.value, strict)
+  const checked = feedbackIndex !== null
+  const displayedValue = checked ? draft.answers[index] : draft.value
+  const right = checked && correct(question, displayedValue, strict)
   return (
     <section className={styles.panel}>
       <div className={styles.exerciseHead}><h2>{retry ? 'Fehler wiederholen' : set.name}</h2><strong>Aufgabe {index + 1}/{questions.length}</strong></div>
-      <progress className={styles.progress} value={index + Number(checked)} max={questions.length} aria-label="Fortschritt" />
+      <progress className={styles.progress} value={draft.answers.length} max={questions.length} aria-label="Fortschritt" />
       <p>{question.prompt}</p>
       <Sentence text={question.example} />
       {question.hint && <p className={styles.hint}>Gesucht: {question.hint}</p>}
@@ -127,17 +137,17 @@ function Round({ set, isTest, spelling }) {
         {question.options ? <fieldset className={styles.choices} disabled={checked}>
           <legend>Deine Antwort</legend>
           {question.options.map(option => <label key={option}>
-            <input type="radio" name="deutsch-answer" checked={draft.value === option}
+            <input type="radio" name="deutsch-answer" checked={displayedValue === option}
               onChange={() => save({ ...draft, value: option })} />{option}
           </label>)}
-        </fieldset> : <label>Deine Antwort<input key={index} value={draft.value} onChange={event => save({ ...draft, value: event.target.value })}
+        </fieldset> : <label>Deine Antwort<input key={index} value={displayedValue} onChange={event => save({ ...draft, value: event.target.value })}
           readOnly={checked} maxLength={160} autoCapitalize="none" autoCorrect="off" spellCheck={false} autoComplete="off"
           data-gramm="false" data-gramm_editor="false" data-enable-grammarly="false" /></label>}
         <div aria-live="polite">{checked && <div className={styles.feedback} data-correct={right}>
           <strong>{right ? 'Richtig!' : 'Richtig wäre: ' + question.answer}</strong>
           <p>{question.explanation}</p>
         </div>}</div>
-        <button className={styles.primary} disabled={!draft.value.trim()}>
+        <button className={styles.primary} disabled={!displayedValue.trim()}>
           {testing ? (index + 1 === questions.length ? 'Test abgeben' : 'Weiter')
             : !checked ? 'Antwort prüfen' : index + 1 === questions.length ? 'Auswertung anzeigen' : 'Weiter'}
         </button>
