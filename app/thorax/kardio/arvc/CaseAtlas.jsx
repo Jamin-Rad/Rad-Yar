@@ -1,72 +1,74 @@
 'use client'
 
+import LessonCaseGallery from '@/components/LessonCaseGallery'
 import { useLanguage } from '@/providers/LanguageProvider'
-import { localizeArvcTree } from './lessonTranslations'
-
-import Image from 'next/image'
-import { useEffect, useRef, useState } from 'react'
 import { CASES } from './lessonContent'
-import { Icon, Tabs } from './LessonVisuals'
+import { arvcText } from './lessonTranslations'
 import styles from './page.module.css'
 
-const CASE_DIAGNOSES = {
-  '57972': 'Rechtsbetonte arrhythmogene Kardiomyopathie (ARVC).',
-  '194915': 'Arrhythmogene Kardiomyopathie mit Beteiligung beider Ventrikel, im Originalfall als sehr wahrscheinlich eingestuft.',
-}
-
-function SelectedCase({ item }) {
-  const { lang: _arvcLang } = useLanguage()
-
-  const [view, setView] = useState(0)
-  const dialog = useRef(null)
-  const video = useRef(null)
-  const [playing, setPlaying] = useState(false)
-  const [playError, setPlayError] = useState(false)
-  const image = item.views[view]
-  const prefix = `case-${item.id}`
-  useEffect(() => {
-    if (image.type !== 'video' || !video.current) return
-    const element = video.current
-    const observer = new IntersectionObserver(entries => { if (!entries[0].isIntersecting) element.pause() })
-    observer.observe(element)
-    return () => { observer.disconnect(); element.pause() }
-  }, [image.type])
-  return localizeArvcTree(<div className={styles.selectedCase}>
-    <header className={styles.caseHeader}><div><small>Radiopaedia · rID {item.id}</small><h3>{item.title}</h3><p>{item.age}</p></div><a href={item.study} target="_blank" rel="noreferrer">Originalserie <Icon name="external"/></a></header>
-    <p className={styles.caseClinical}><strong>Anamnese</strong><br/>{item.clinical}</p>
-    <Tabs label={`Ansichten für Fall ${item.id}`} items={item.views} selected={view} onChange={setView} idPrefix={prefix}/>
-    <div id={`${prefix}-panel`} role="tabpanel" aria-labelledby={`${prefix}-tab-${view}`}>
-      <figure className={styles.mriFigure}>
-        {image.type === 'video' ? <video ref={video} key={image.src} controls loop playsInline preload="metadata" aria-label={image.alt} onPlay={() => setPlaying(true)} onPause={() => setPlaying(false)} onError={() => setPlayError(true)}><source src={image.src} type="video/mp4"/><p>Das Video kann nicht wiedergegeben werden. <a href={item.study}>Originalserie öffnen</a>.</p></video> : <button type="button" className={styles.imageButton} onClick={() => dialog.current?.showModal()} aria-label={`${image.label} vergrößern`}><Image data-no-zoom unoptimized src={image.src} alt={image.alt} width={1024} height={800} sizes="(max-width:760px) 95vw, 720px" loading="lazy"/><span><Icon name="scan"/>Vergrößern</span></button>}
-        <figcaption>{image.sequence}</figcaption>
-      </figure>
-      {image.type === 'video' ? <div className={styles.videoToolbar}><button type="button" onClick={() => { if (video.current?.paused) video.current.play().catch(() => setPlayError(true)); else video.current?.pause() }}><Icon name="activity"/>{playing ? 'Cine pausieren' : 'Cine abspielen'}</button><label>Tempo<select defaultValue="1" onChange={e => { if (video.current) video.current.playbackRate = Number(e.target.value) }}><option value="0.5">0,5×</option><option value="1">1×</option></select></label>{playError ? <a href={item.study} target="_blank" rel="noreferrer">Cine in der Originalserie öffnen</a> : null}</div> : null}
-    </div>
-    <dl className={styles.mriSequenceSummary}>
-      <div><dt>MRT-Befund</dt><dd>{item.look}</dd></div>
-      {item.values.map(([name, value]) => <div key={name}><dt>{name}</dt><dd>{value}</dd></div>)}
-    </dl>
-    <details className={styles.caseDiagnosis}>
-      <summary>Diagnose anzeigen</summary>
-      <p>{CASE_DIAGNOSES[item.id]}</p>
-    </details>
-    <footer className={styles.caseCredit}><p>Case courtesy of {item.creator}, <a href={item.url} target="_blank" rel="noreferrer">Radiopaedia.org · rID {item.id}</a> · <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank" rel="noreferrer">CC BY-NC-SA 3.0</a>. Originalaufnahmen unverändert.</p></footer>
-    {image.type !== 'video' ? <dialog ref={dialog} className={styles.imageDialog} aria-label={`${item.title}: ${image.label}`} onClick={event => { if (event.target === dialog.current) dialog.current.close() }}><button type="button" autoFocus onClick={() => dialog.current?.close()}>Schließen ×</button><Image data-no-zoom unoptimized src={image.src} width={1200} height={1000} sizes="95vw" alt={image.alt}/><p>{image.sequence} · {item.creator} · Radiopaedia rID {item.id}</p></dialog> : null}
-  </div>, _arvcLang)
-}
+const examples = [
+  {
+    id: '39806',
+    label: { de: 'Fall 1 · Cine', en: 'Case 1 · Cine', fa: 'کیس ۱ · Cine' },
+    history: {
+      de: '50-jähriger Mann mit bekannter ARVC nach Ablation einer ventrikulären Tachykardie im RV-Ausflusstrakt.',
+      en: 'A 50-year-old man with known ARVC after ablation of ventricular tachycardia in the RV outflow tract.',
+      fa: 'مرد ۵۰ ساله با ARVC شناخته‌شده پس از ابلیشن تاکی‌کاردی بطنی در مسیر خروجی بطن راست.',
+    },
+    findings: {
+      de: ['Die freie RV-Wand zeigt im Cine regionale dyskinetische Ausbuchtungen.', 'RVEDVi 115 ml/m², RVEF 41 %.'],
+      en: ['Cine shows regional dyskinetic bulges of the RV free wall.', 'RVEDVi 115 mL/m², RVEF 41%.'],
+      fa: ['در Cine، برجستگی‌های موضعی دیسکینتیک در دیوارهٔ آزاد بطن راست دیده می‌شوند.', 'RVEDVi ۱۱۵ میلی‌لیتر بر مترمربع، RVEF ۴۱٪.'],
+    },
+    diagnosis: { de: 'Arrhythmogene rechtsventrikuläre Kardiomyopathie (ARVC).', en: 'Arrhythmogenic right ventricular cardiomyopathy (ARVC).', fa: 'کاردیومیوپاتی آریتموژنیک بطن راست (ARVC).' },
+  },
+  {
+    id: '194915',
+    label: { de: 'Fall 2 · LGE', en: 'Case 2 · LGE', fa: 'کیس ۲ · LGE' },
+    history: {
+      de: '30-jähriger Mann mit Palpitationen, Synkope und auffälligem EKG.',
+      en: 'A 30-year-old man with palpitations, syncope and an abnormal ECG.',
+      fa: 'مرد ۳۰ ساله با تپش قلب، سنکوپ و نوار قلب غیرطبیعی.',
+    },
+    findings: {
+      de: ['Der RV ist dilatiert. Die freie Wand ist dünn und zeigt eine fokale Ausbuchtung.', 'LGE im RV und in der antero- und inferolateralen LV-Wand.', 'RVEDVi ≈ 135 ml/m², RVEF ≈ 35 %, LVEF ≈ 51 %.'],
+      en: ['The RV is dilated with a thin free wall and focal bulging.', 'LGE in the RV and the anterolateral and inferolateral LV wall.', 'RVEDVi ≈ 135 mL/m², RVEF ≈ 35%, LVEF ≈ 51%.'],
+      fa: ['بطن راست متسع است. دیوارهٔ آزاد آن نازک است و برجستگی موضعی دارد.', 'LGE در بطن راست و دیوارهٔ قدامی‌جانبی و تحتانی‌جانبی بطن چپ.', 'RVEDVi حدود ۱۳۵ میلی‌لیتر بر مترمربع، RVEF حدود ۳۵٪، LVEF حدود ۵۱٪.'],
+    },
+    diagnosis: { de: 'Biventrikuläre ACM, im Fallbericht als sehr wahrscheinlich eingestuft.', en: 'Biventricular ACM, considered highly likely in the case report.', fa: 'کاردیومیوپاتی آریتموژنیک دو بطنی، بسیار محتمل طبق گزارش کیس.' },
+  },
+]
 
 export default function CaseAtlas() {
-  const { lang: _arvcLang } = useLanguage()
+  const { lang } = useLanguage()
+  const items = examples.map(example => {
+    const item = CASES.find(entry => entry.id === example.id)
+    const firstView = item.views[0]
+    return {
+      id: item.id,
+      label: example.label,
+      caseData: {
+        variant: 'compact',
+        heading: example.label,
+        title: { de: 'Anamnese', en: 'Clinical history', fa: 'شرح حال' },
+        description: [example.history],
+        findings: example.findings[lang] || example.findings.de,
+        interpretation: example.diagnosis,
+        revealDiagnosis: true,
+        url: item.url,
+        frames: item.views.map(view => view.src),
+        frameLabels: item.views.map(view => arvcText(view.label, lang)),
+        initialFrame: 0,
+        alt: arvcText(firstView.alt, lang),
+        media: firstView.type === 'video' ? (
+          <video className={styles.caseCine} controls loop playsInline preload="metadata" aria-label={arvcText(firstView.alt, lang)}>
+            <source src={firstView.src} type="video/mp4"/>
+          </video>
+        ) : undefined,
+        credit: <>{item.creator} · <a href={item.url}>Radiopaedia · rID {item.id}</a> · <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/">CC BY-NC-SA 3.0</a></>,
+      },
+    }
+  })
 
-  const [selected, setSelected] = useState(0)
-  const cases = CASES.filter(item => Object.hasOwn(CASE_DIAGNOSES, item.id))
-  const caseTabs = cases.map((item, index) => ({ id: item.id, label: index === 0 ? 'Fall 1' : 'Fall 2' }))
-  return localizeArvcTree(<>
-    <div className={styles.atlas}>
-      <Tabs label="MRT-Beispiele" items={caseTabs} selected={selected} onChange={setSelected} idPrefix="mri-cases"/>
-      <div id="mri-cases-panel" role="tabpanel" aria-labelledby={`mri-cases-tab-${selected}`} tabIndex={0}>
-        <SelectedCase key={cases[selected].id} item={cases[selected]}/>
-      </div>
-    </div>
-  </>, _arvcLang)
+  return <LessonCaseGallery items={items} lang={lang} label={arvcText('MRT-Beispiele', lang)} idPrefix="acm-cases"/>
 }

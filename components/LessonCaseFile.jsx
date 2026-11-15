@@ -154,17 +154,20 @@ export default function RadiopaediaFile({ lang, caseData }) {
       <a href={caseData.url} target="_blank" rel="noopener noreferrer">{pick(L('Fall im Vollbild', 'Open case full screen', 'نمایش تمام‌صفحه کیس'), lang)} <Icon name="external" /></a>
     </header>
     <div className={styles.caseFileContent} data-lesson-print-case-content>
-      <CaseSequence lang={lang} caseData={caseData} />
+      {caseData.media ?? <CaseSequence lang={lang} caseData={caseData} />}
       <div className={styles.caseBody} data-lesson-print-case-body>
         <h3>{pick(caseData.title, lang)}</h3>
         {caseData.description?.map((paragraph, index) => <p className={styles.caseDescription} key={index}>{pick(paragraph, lang)}</p>)}
         {caseData.findings?.length ? <section className={styles.caseFindings} aria-labelledby={findingsId}>
           <h4 id={findingsId}>{pick(L('Was sehen wir?', 'What do we see?', 'چه می‌بینیم؟'), lang)}</h4>
           <ol>{caseData.findings.map((finding, index) => <li key={pick(finding, lang)}><span>{index + 1}</span><p>{pick(finding, lang)}</p></li>)}</ol>
-          <div className={styles.caseInterpretation}>
+          {caseData.revealDiagnosis ? <details className={styles.caseInterpretation}>
+            <summary>{pick(L('Diagnose anzeigen', 'Reveal diagnosis', 'نمایش تشخیص'), lang)}</summary>
+            <p>{pick(caseData.interpretation, lang)}</p>
+          </details> : <div className={styles.caseInterpretation}>
             <strong>{pick(L('Entscheidender Befund', 'Key interpretation', 'یافته کلیدی'), lang)}</strong>
             <p>{pick(caseData.interpretation, lang)}</p>
-          </div>
+          </div>}
         </section> : null}
       </div>
     </div>
