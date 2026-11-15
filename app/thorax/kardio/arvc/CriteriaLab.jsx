@@ -16,12 +16,18 @@ const OTHER_CATEGORIES = [
   {
     number: 'II',
     title: 'Myokardgewebe',
-    description: 'TFC bewertet den fibrotischen Ersatz in der RV-Biopsie anhand des Anteils verbliebener Herzmuskelzellen. Bei Padua zählen fibrotischer Ersatz in der RV-Biopsie oder typisches LGE als Major-Kriterium.',
+    description: [
+      'TFC bewertet den fibrotischen Ersatz in der RV-Biopsie anhand des Anteils verbliebener Herzmuskelzellen.',
+      'Bei Padua zählen fibrotischer Ersatz in der RV-Biopsie oder typisches LGE als Major-Kriterium.',
+    ],
   },
   {
     number: 'III',
     title: 'Repolarisation im EKG',
-    description: 'Negative T-Wellen in V1–V3 oder darüber hinaus ohne kompletten Rechtsschenkelblock sind ein Beispiel für Major. TFC setzt ein Alter über 14 Jahren voraus, Padua eine abgeschlossene Pubertät.',
+    description: [
+      'Negative T-Wellen in V1–V3 oder darüber hinaus ohne kompletten Rechtsschenkelblock sind ein Beispiel für Major.',
+      'TFC setzt ein Alter über 14 Jahren voraus, Padua eine abgeschlossene Pubertät.',
+    ],
   },
   {
     number: 'IV',
@@ -47,7 +53,9 @@ function CategoryDisclosure({ number, title, description }) {
       <strong>{title}</strong>
       <span className={styles.criteriaToggle} aria-hidden="true"/>
     </summary>
-    <p className={styles.criteriaContent}>{description}</p>
+    <div className={styles.criteriaContent}>
+      {[description].flat().map(paragraph => <p key={paragraph}>{paragraph}</p>)}
+    </div>
   </details>
 }
 
@@ -72,34 +80,55 @@ function TfcExplanation({ lang }) {
         <dd><strong>Minor</strong> &gt; 40 bis ≤ 45 %</dd>
       </div>
     </dl>
-    <p className={styles.criteriaNote}>RVEDVi ist das enddiastolische RV-Volumen bezogen auf die Körperoberfläche. RVEF ist die rechtsventrikuläre Ejektionsfraktion.</p>
-    <p className={styles.criteriaNote}>Sind Volumen und RVEF auffällig, zählt in Kategorie I nur die höhere Einstufung. LGE ist bei TFC 2010 kein eigenes Kriterium.</p>
+    <ul className={styles.criteriaFootnotes}>
+      <li>RVEDVi ist das enddiastolische RV-Volumen bezogen auf die Körperoberfläche.</li>
+      <li>RVEF ist die rechtsventrikuläre Ejektionsfraktion.</li>
+      <li>Sind Volumen und RVEF auffällig, zählt in Kategorie I nur die höhere Einstufung.</li>
+      <li>LGE ist bei TFC 2010 kein eigenes Kriterium.</li>
+    </ul>
   </>, lang)
 }
 
 function PaduaExplanation({ lang }) {
-  return localizeArvcTree(<>
-    <h4 className={styles.mrtTopic}>Cine · Form und Funktion (I)</h4>
-    <dl className={styles.criteriaRows}>
-      <div>
-        <dt>RV</dt>
-        <dd><strong>Major</strong> Regionale Akinesie, Dyskinesie oder Ausbuchtung zusammen mit globaler RV-Dilatation oder verminderter RVEF.</dd>
-        <dd><strong>Minor</strong> Regionale Akinesie, Dyskinesie oder ein Aneurysma der freien RV-Wand genügt auch ohne globale Auffälligkeit.</dd>
+  return localizeArvcTree(<div className={styles.paduaMri}>
+    <section aria-labelledby="padua-cine">
+      <h4 id="padua-cine" className={styles.mrtTopic}>Cine · Form und Funktion (I)</h4>
+      <div className={styles.paduaChambers}>
+        <div>
+          <h5>Rechter Ventrikel (RV)</h5>
+          <dl className={styles.paduaGrades}>
+            <div><dt>Major</dt><dd>Regionale Akinesie, Dyskinesie oder Ausbuchtung zusammen mit globaler RV-Dilatation oder verminderter RVEF.</dd></div>
+            <div><dt>Minor</dt><dd>Regionale Akinesie, Dyskinesie oder ein Aneurysma der freien RV-Wand genügt auch ohne globale Auffälligkeit.</dd></div>
+          </dl>
+        </div>
+        <div>
+          <h5>Linker Ventrikel (LV)</h5>
+          <dl className={styles.paduaGrades}>
+            <div>
+              <dt>Minor</dt>
+              <dd>Verminderte LVEF mit oder ohne LV-Dilatation.</dd>
+              <dd>Alternativ zählt eine regionale Hypokinesie oder Akinesie der freien LV-Wand oder des Septums.</dd>
+            </div>
+          </dl>
+          <p className={styles.criteriaNote}>Für den LV gibt es im Cine kein Major-Kriterium.</p>
+        </div>
       </div>
-      <div>
-        <dt>LV</dt>
-        <dd><strong>Minor</strong> Verminderte LVEF mit oder ohne LV-Dilatation. Auch eine regionale Hypokinesie oder Akinesie der freien LV-Wand oder des Septums erfüllt ein Minor-Kriterium.</dd>
-      </div>
-    </dl>
-    <p className={styles.criteriaNote}>Im Cine gibt es für den LV kein Major-Kriterium. Für Volumen und EF gelten zur Methode und zur untersuchten Person passende Referenzwerte, etwa nach Alter, Geschlecht und Körperoberfläche.</p>
-    <h4 className={styles.mrtTopic}>LGE · Myokardgewebe (II)</h4>
-    <p>Das typische LGE muss in zwei orthogonalen Ebenen nachweisbar sein.</p>
-    <dl className={styles.criteriaRows}>
-      <div><dt>RV</dt><dd><strong>Major</strong> Transmurales Streifen-LGE in mindestens einer RV-Region (Einflusstrakt, Ausflusstrakt oder Apex).</dd></div>
-      <div><dt>LV</dt><dd><strong>Major</strong> Subepikardiales oder mittmyokardiales Streifen-LGE in mindestens einem Segment der freien Wand oder des Septums. Isoliertes LGE an RV-Insertionspunkten bleibt unberücksichtigt.</dd></div>
-    </dl>
-    <p className={styles.criteriaNote}>Für LGE gibt es kein Minor-Kriterium.</p>
-  </>, lang)
+      <p className={styles.criteriaNote}>Volumen und EF anhand geeigneter Referenzwerte für die Methode, das Alter und das Geschlecht beurteilen. Beim Volumen auch die Körperoberfläche berücksichtigen.</p>
+    </section>
+    <section aria-labelledby="padua-lge">
+      <h4 id="padua-lge" className={styles.mrtTopic}>LGE · Myokardgewebe (II)</h4>
+      <p>Ein typisches LGE-Muster in zwei orthogonalen Ebenen zählt als Major-Kriterium.</p>
+      <dl className={styles.paduaChambers}>
+        <div><dt>Rechter Ventrikel (RV)</dt><dd>Transmurales Streifen-LGE in mindestens einer RV-Region (Einflusstrakt, Ausflusstrakt oder Apex).</dd></div>
+        <div>
+          <dt>Linker Ventrikel (LV)</dt>
+          <dd>Subepikardiales oder mittmyokardiales Streifen-LGE in mindestens einem Segment der freien Wand oder des Septums.</dd>
+          <dd>Isoliertes LGE an RV-Insertionspunkten bleibt unberücksichtigt.</dd>
+        </div>
+      </dl>
+      <p className={styles.criteriaNote}>Für LGE gibt es kein Minor-Kriterium.</p>
+    </section>
+  </div>, lang)
 }
 
 export default function CriteriaOverview() {
@@ -107,9 +136,12 @@ export default function CriteriaOverview() {
   const [selected, setSelected] = useState(0)
 
   return localizeArvcTree(<div className={styles.criteriaLesson}>
-    <p className={styles.criteriaIntro}><strong>Für eine gesicherte Diagnose reicht ein einzelner MRT-Befund nicht aus.</strong> TFC und Padua berücksichtigen sechs Befundkategorien. Neben dem MRT zählen unter anderem das EKG, dokumentierte Rhythmusstörungen sowie Familienanamnese und Genetik.</p>
+    <p className={styles.criteriaIntro}>
+      <strong>Für eine gesicherte Diagnose reicht ein einzelner MRT-Befund nicht aus.</strong>
+      <span>TFC und Padua berücksichtigen sechs Befundkategorien. Neben dem MRT zählen unter anderem das EKG, dokumentierte Rhythmusstörungen sowie Familienanamnese und Genetik.</span>
+    </p>
     <h3 className={styles.subheading}>Von den Befunden zur Diagnose</h3>
-    <p>Pro Kategorie zählt nur das stärkste erfüllte Kriterium. Die Punkte aus den verschiedenen Kategorien werden addiert.</p>
+    <p>Pro Kategorie zählt nur das stärkste erfüllte Kriterium, dann werden die Punkte aus den verschiedenen Kategorien addiert.</p>
     <figure className={styles.criteriaScale}>
       <figcaption>Diagnosestufen nach TFC 2010</figcaption>
       <div className={styles.criteriaWeights}>
@@ -127,14 +159,25 @@ export default function CriteriaOverview() {
       <div><dt>TFC 2010</dt><dd>Die Task-Force-Kriterien wurden für die klassische ARVC entwickelt. Im Mittelpunkt steht die rechte Herzkammer.</dd></div>
       <div><dt>Padua 2020</dt><dd>Padua erfasst auch linksdominante und biventrikuläre Formen und berücksichtigt Narben im LGE. Bei rechtsdominanter oder biventrikulärer ACM gelten dieselben Diagnosestufen mit zusätzlichen Voraussetzungen.</dd></div>
     </dl>
-    <details className={styles.mrtDetails}>
-      <summary>Welche Voraussetzungen gelten bei Padua?</summary>
-      <p>Bei Padua muss mindestens ein Kriterium aus Form und Funktion (I) oder Myokardgewebe (II) erfüllt sein. Welche Kammer betroffen ist, bestimmt die Form.</p>
-      <dl className={styles.criteriaRows}>
-        <div><dt>Rechtsdominant</dt><dd>Kriterien aus I oder II nur am RV. Linksventrikuläre elektrische Befunde fließen bei dieser Form nicht in die Wertung ein.</dd></div>
-        <div><dt>Biventrikulär</dt><dd>Mindestens ein Kriterium aus I oder II pro Herzkammer.</dd></div>
-        <div><dt>Isoliert links</dt><dd>Typisches LV-LGE und eine pathogene oder wahrscheinlich pathogene ACM-Genvariante sind erforderlich.</dd></div>
-      </dl>
+    <details className={`${styles.criteriaDisclosure} ${styles.paduaDisclosure}`}>
+      <summary><strong>Welche Voraussetzungen gelten bei Padua?</strong><span className={styles.criteriaToggle} aria-hidden="true"/></summary>
+      <div className={styles.criteriaContent}>
+        <p>Für die Diagnose braucht es mindestens ein Kriterium für Form und Funktion (I) oder Myokardgewebe (II). Anhand dieser Befunde unterscheidet Padua drei Formen.</p>
+        <dl className={styles.paduaPatterns}>
+          <div>
+            <dt>Rechtsdominant</dt>
+            <dd><strong>Nur die rechte Kammer</strong> erfüllt mindestens ein Kriterium aus Kategorie I oder II. Elektrische Befunde der linken Kammer zählen bei dieser Form nicht mit.</dd>
+          </div>
+          <div>
+            <dt>Biventrikulär</dt>
+            <dd><strong>Beide Kammern</strong> erfüllen jeweils mindestens ein Kriterium aus Kategorie I oder II.</dd>
+          </div>
+          <div>
+            <dt>Isoliert links</dt>
+            <dd>Typisches LGE im LV und eine pathogene oder wahrscheinlich pathogene ACM-Genvariante. Am RV ist kein Kriterium aus Kategorie I oder II erfüllt.</dd>
+          </div>
+        </dl>
+      </div>
     </details>
     <h3 className={styles.subheading}>Major und Minor im MRT</h3>
     <p>Cine zeigt Form und Funktion der Herzkammern (Kategorie I). Bei Padua können typische Narben im LGE auch in die Bewertung des Myokardgewebes eingehen (Kategorie II).</p>

@@ -468,6 +468,11 @@
 }
 .criteriaIntro { max-inline-size:68ch; }
 .criteriaIntro strong { color:var(--ink); }
+.criteriaIntro > span {
+  display:block;
+  margin-block-start:4px;
+  margin-inline-start:clamp(8px,1.5vw,16px);
+}
 .criteriaScale {
   margin:14px 0 0;
   padding:clamp(12px,3vw,24px);
@@ -571,8 +576,70 @@
   padding:12px 12px 16px;
   border-block-start:1px solid var(--line);
 }
+.chapterBody .criteriaContent > p + p { margin-block-start:8px; }
+.criteriaFootnotes {
+  margin:14px 0 0;
+  padding-inline-start:1.4em;
+  font-size:.875rem;
+  line-height:1.55;
+}
+.criteriaFootnotes li + li { margin-block-start:4px; }
+.criteriaFootnotes li::marker { color:var(--lesson-accent-strong); }
+.paduaDisclosure {
+  margin-block-start:14px;
+  border:1px solid var(--line);
+  border-radius:9px;
+  background:var(--paper);
+  overflow:hidden;
+}
+.paduaDisclosure > summary { grid-template-columns:minmax(0,1fr) 32px; }
+.paduaPatterns {
+  display:grid;
+  gap:8px;
+  margin:12px 0 0;
+}
+.paduaPatterns > div {
+  padding:10px 12px;
+  border-inline-start:3px solid var(--lesson-accent);
+  background:var(--canvas);
+}
+.paduaPatterns dt { color:var(--lesson-accent-strong); font-weight:750; }
+.paduaPatterns dd { margin:3px 0 0; }
 .criteriaMri { padding:clamp(12px,3vw,24px); }
 .criteriaMri .mrtTopic { color:var(--ink); }
+.paduaMri > section + section {
+  margin-block-start:20px;
+  padding-block-start:16px;
+  border-block-start:1px solid var(--line);
+}
+.paduaChambers {
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:10px;
+  margin:12px 0 0;
+}
+.paduaChambers > div {
+  min-inline-size:0;
+  padding:12px;
+  border:1px solid var(--line);
+  border-radius:8px;
+  background:var(--canvas);
+}
+.paduaChambers :is(h5,dt) { margin:0; font-weight:750; }
+.paduaChambers h5,.paduaChambers > div > dt {
+  color:var(--lesson-accent-strong);
+  font-size:1rem;
+  margin-block-end:8px;
+}
+.paduaChambers dd { margin:0; }
+.paduaChambers dd + dd { margin-block-start:6px; }
+.paduaGrades { margin:0; }
+.paduaGrades > div + div {
+  margin-block-start:10px;
+  padding-block-start:8px;
+  border-block-start:1px solid var(--line);
+}
+.paduaGrades dt { color:var(--ink); font-size:.875rem; }
 .criteriaRows { margin:0; }
 .criteriaRows > div {
   display:grid;
@@ -591,6 +658,7 @@
 .chapterBody .criteriaNote { margin-block-start:12px; font-size:.91em; }
 .chapterBody .criteriaNote + .criteriaRows { margin-block-start:10px; }
 @media(max-width:520px) {
+  .paduaChambers { grid-template-columns:minmax(0,1fr); }
   .criteriaScores dd { font-size:.8rem; }
   .criteriaRows:not(.criteriaThresholds) > div { grid-template-columns:minmax(0,1fr); }
   .criteriaRows:not(.criteriaThresholds) dd { grid-column:1; }
