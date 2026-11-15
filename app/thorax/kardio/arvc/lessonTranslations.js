@@ -14,14 +14,48 @@ const COPY = {
   "Die Diagnose stützt sich auf mehrere Befunde. Das MRT liefert nur einen Teil davon.": { en: "Diagnosis combines several findings. MRI provides only part of the evidence.", fa: "تشخیص بر ترکیب چند یافته استوار است. MRI فقط بخشی از شواهد را فراهم می‌کند." },
   "Fallbeispiel": { en: "Case example", fa: "نمونهٔ بالینی" },
   "Task-Force-Kriterien (TFC 2010)": { en: "Task Force Criteria (2010 TFC)", fa: "معیارهای کارگروه تخصصی (TFC ۲۰۱۰)" },
-  "Die TFC dienen der Diagnose der klassischen ARVC. Sie kombinieren Haupt- und Nebenkriterien aus Bildgebung, EKG, Rhythmusdiagnostik, Histologie und Familienanamnese oder Genetik.": {
-    en: "The TFC are used to diagnose classic ARVC. They combine major and minor criteria from imaging, ECG, rhythm assessment, histology, and family history or genetics.",
-    fa: "معیارهای TFC برای تشخیص ARVC کلاسیک به‌کار می‌روند. این چارچوب معیارهای اصلی و فرعی را از تصویربرداری، نوار قلب، بررسی ریتم، بافت‌شناسی و سابقهٔ خانوادگی یا ژنتیک ترکیب می‌کند."
-  },
   "Padua-Kriterien (2020)": { en: "Padua Criteria (2020)", fa: "معیارهای پادوا (۲۰۲۰)" },
-  "Die Padua-Kriterien erfassen rechtsdominante, biventrikuläre und linksdominante Formen der ACM. Im MRT beziehen sie auch typische Narbenmuster im Late Gadolinium Enhancement (LGE) ein.": {
-    en: "The Padua Criteria cover right-dominant, biventricular, and left-dominant forms of ACM. They also include characteristic scar patterns on late gadolinium enhancement (LGE) imaging.",
-    fa: "معیارهای پادوا انواع ACM با غلبهٔ بطن راست، درگیری هر دو بطن یا غلبهٔ بطن چپ را پوشش می‌دهند. در MRI، الگوهای شاخص اسکار در تصاویر تقویت دیررس گادولینیوم (LGE) هم در نظر گرفته می‌شوند."
+  "Die Diagnose ergibt sich aus mehreren Befundgruppen, darunter Bildgebung, EKG, Rhythmusdiagnostik und Familienanamnese oder Genetik.": {
+    en: "Diagnosis draws on several groups of findings, including imaging, ECG, rhythm assessment, and family history or genetics.",
+    fa: "برای تشخیص، چند دسته یافته از جمله تصویربرداری، نوار قلب، بررسی ریتم و سابقهٔ خانوادگی یا ژنتیک کنار هم قرار می‌گیرند."
+  },
+  "Klassische ARVC": { en: "Classic ARVC", fa: "ARVC کلاسیک" },
+  "Das MRT-Kriterium verbindet eine regionale RV-Wandbewegungsstörung mit RV-Dilatation oder verminderter RVEF.": {
+    en: "The MRI criterion combines a regional RV wall motion abnormality with RV dilatation or reduced RVEF.",
+    fa: "معیار MRI به ترکیب اختلال موضعی حرکت دیوارهٔ بطن راست با اتساع یا کاهش کسر جهشی بطن راست نیاز دارد."
+  },
+  "ACM mit RV- und/oder LV-Beteiligung": { en: "ACM involving the RV, LV, or both", fa: "ACM با درگیری بطن راست، بطن چپ یا هر دو" },
+  "Im Cine beide Kammern beurteilen. Typische LGE-Muster zählen als strukturelle Kriterien.": {
+    en: "Assess both ventricles on cine. Characteristic LGE patterns count as structural criteria.",
+    fa: "در Cine هر دو بطن ارزیابی می‌شوند. الگوهای شاخص LGE معیار ساختاری محسوب می‌شوند."
+  },
+  "Regional": { en: "Regional", fa: "موضعی" },
+  "RV-Akinesie, Dyskinesie oder dyssynchrone Kontraktion.": { en: "RV akinesia, dyskinesia, or dyssynchronous contraction.", fa: "آکینزی، دیسکینزی یا انقباض ناهماهنگ بطن راست." },
+  "Global": { en: "Global", fa: "عملکرد و حجم کلی" },
+  "Erhöhtes RVEDVi oder verminderte RVEF. Ist beides auffällig, zählt die höhere Einstufung einmal.": {
+    en: "Increased RVEDVi or reduced RVEF. If both are abnormal, count the higher classification once.",
+    fa: "افزایش RVEDVi یا کاهش RVEF. اگر هر دو غیرطبیعی باشند، بالاترین رده فقط یک بار حساب می‌شود."
+  },
+  "Wandbewegung, Größe und Funktion beider Kammern beurteilen. Volumen und EF anhand geeigneter Referenzwerte einordnen.": {
+    en: "Assess wall motion, size, and function in both ventricles. Compare volume and EF with appropriate reference values.",
+    fa: "حرکت دیواره، اندازه و عملکرد هر دو بطن را بررسی کنید. حجم و کسر جهشی را با مقادیر مرجع مناسب بسنجید."
+  },
+  "Transmurales Streifen-LGE in mindestens einer Region der RV-Wand.": {
+    en: "Transmural stria-like LGE in at least one region of the RV wall.",
+    fa: "LGE نواری تمام‌ضخامت در دست‌کم یک ناحیه از دیوارهٔ بطن راست."
+  },
+  "Subepikardiales oder intramurales Streifen-LGE. LGE allein an den RV-Insertionspunkten bleibt unberücksichtigt.": {
+    en: "Subepicardial or intramural stria-like LGE. Isolated LGE at the RV insertion points does not count.",
+    fa: "LGE نواری زیر اپی‌کارد یا داخل دیواره. LGE محدود به محل اتصال بطن راست معیار محسوب نمی‌شود."
+  },
+  "Das LGE-Muster in zwei orthogonalen Ebenen bestätigen. Bei der Einordnung auch andere Narbenursachen wie eine Myokarditis berücksichtigen.": {
+    en: "Confirm the LGE pattern in two orthogonal planes. Consider other causes of scarring, such as myocarditis.",
+    fa: "الگوی LGE را در دو نمای عمود بر هم تأیید کنید. سایر علل اسکار، مانند میوکاردیت، را هم در نظر بگیرید."
+  },
+  "Was braucht die Gesamtdiagnose?": { en: "What supports the overall diagnosis?", fa: "برای تشخیص نهایی چه لازم است؟" },
+  "Mindestens ein morphofunktionelles oder strukturelles Kriterium ist erforderlich. Bei isolierter LV-Beteiligung verlangt Padua zusätzlich eine pathogene oder wahrscheinlich pathogene ACM-Genvariante.": {
+    en: "At least one morphofunctional or structural criterion is required. With isolated LV involvement, Padua also requires a pathogenic or likely pathogenic ACM variant.",
+    fa: "وجود دست‌کم یک معیار ساختاری یا معیار مربوط به شکل و عملکرد ضروری است. در درگیری محدود به بطن چپ، پادوا علاوه بر این یک واریانت ژنتیکی بیماری‌زا یا احتمالاً بیماری‌زای مرتبط با ACM می‌خواهد."
   },
   "RV-Dilatation und systolische Dysfunktion": { en: "RV dilatation and systolic dysfunction", fa: "اتساع و اختلال عملکرد سیستولی بطن راست" },
   "Erhöhtes enddiastolisches RV-Volumen, bezogen auf die Körperoberfläche (RVEDVi).": { en: "Increased RV end-diastolic volume indexed to body surface area (RVEDVi).", fa: "افزایش حجم پایان دیاستولی بطن راست نسبت به سطح بدن (RVEDVi)." },
