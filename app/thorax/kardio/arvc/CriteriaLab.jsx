@@ -136,14 +136,20 @@ export default function CriteriaOverview() {
   const [selected, setSelected] = useState(0)
 
   return localizeArvcTree(<div className={styles.criteriaLesson}>
+    <h3 className={`${styles.subheading} ${styles.criteriaStart}`}>TFC und Padua im Vergleich</h3>
     <p className={styles.criteriaIntro}>
       <strong>Für eine gesicherte Diagnose reicht ein einzelner MRT-Befund nicht aus.</strong>
       <span>TFC und Padua berücksichtigen sechs Befundkategorien. Neben dem MRT zählen unter anderem das EKG, dokumentierte Rhythmusstörungen sowie Familienanamnese und Genetik.</span>
     </p>
+    <dl className={styles.criteriaRows}>
+      <div><dt>TFC 2010</dt><dd>Die Task-Force-Kriterien wurden für die klassische ARVC entwickelt. Im Mittelpunkt steht die rechte Herzkammer.</dd></div>
+      <div><dt>Padua 2020</dt><dd>Padua erfasst auch linksdominante und biventrikuläre Formen und berücksichtigt Narben im LGE. Bei rechtsdominanter oder biventrikulärer ACM gelten dieselben Diagnosestufen mit zusätzlichen Voraussetzungen.</dd></div>
+    </dl>
     <h3 className={styles.subheading}>Von den Befunden zur Diagnose</h3>
     <p>Pro Kategorie zählt nur das stärkste erfüllte Kriterium, dann werden die Punkte aus den verschiedenen Kategorien addiert.</p>
     <figure className={styles.criteriaScale}>
-      <figcaption>Diagnosestufen nach TFC 2010</figcaption>
+      <figcaption>Diagnosestufen nach TFC 2010 und Padua 2020</figcaption>
+      <p className={styles.criteriaScaleScope}>Bei Padua gilt die Skala für rechtsdominante und biventrikuläre ACM.</p>
       <div className={styles.criteriaWeights}>
         <span><strong>Major</strong> <span>2 Punkte</span></span>
         <span><strong>Minor</strong> <span>1 Punkt</span></span>
@@ -154,32 +160,17 @@ export default function CriteriaOverview() {
         <div><dt><bdi dir="ltr" aria-label="Ab 4 Punkten">≥ 4</bdi></dt><dd>Gesichert</dd></div>
       </dl>
     </figure>
-    <h3 className={styles.subheading}>TFC und Padua im Vergleich</h3>
-    <dl className={styles.criteriaRows}>
-      <div><dt>TFC 2010</dt><dd>Die Task-Force-Kriterien wurden für die klassische ARVC entwickelt. Im Mittelpunkt steht die rechte Herzkammer.</dd></div>
-      <div><dt>Padua 2020</dt><dd>Padua erfasst auch linksdominante und biventrikuläre Formen und berücksichtigt Narben im LGE. Bei rechtsdominanter oder biventrikulärer ACM gelten dieselben Diagnosestufen mit zusätzlichen Voraussetzungen.</dd></div>
-    </dl>
-    <details className={`${styles.criteriaDisclosure} ${styles.paduaDisclosure}`}>
-      <summary><strong>Welche Voraussetzungen gelten bei Padua?</strong><span className={styles.criteriaToggle} aria-hidden="true"/></summary>
-      <div className={styles.criteriaContent}>
-        <p>Für die Diagnose braucht es mindestens ein Kriterium für Form und Funktion (I) oder Myokardgewebe (II). Anhand dieser Befunde unterscheidet Padua drei Formen.</p>
-        <dl className={styles.paduaPatterns}>
-          <div>
-            <dt>Rechtsdominant</dt>
-            <dd><strong>Nur die rechte Kammer</strong> erfüllt mindestens ein Kriterium aus Kategorie I oder II. Elektrische Befunde der linken Kammer zählen bei dieser Form nicht mit.</dd>
-          </div>
-          <div>
-            <dt>Biventrikulär</dt>
-            <dd><strong>Beide Kammern</strong> erfüllen jeweils mindestens ein Kriterium aus Kategorie I oder II.</dd>
-          </div>
-          <div>
-            <dt>Isoliert links</dt>
-            <dd>Typisches LGE im LV und eine pathogene oder wahrscheinlich pathogene ACM-Genvariante. Am RV ist kein Kriterium aus Kategorie I oder II erfüllt.</dd>
-          </div>
-        </dl>
+    <dl className={styles.paduaPatterns}>
+      <div>
+        <dt>Padua · Schon für „möglich“</dt>
+        <dd>Mindestens ein Kriterium für Form und Funktion (I) oder Myokardgewebe (II) muss erfüllt sein. Bei biventrikulärer ACM gilt das für beide Kammern. Ein Major-Kriterium im EKG allein genügt nicht.</dd>
       </div>
-    </details>
-    <h3 className={styles.subheading}>Major und Minor im MRT</h3>
+      <div>
+        <dt>Padua · Isoliert links (ALVC)</dt>
+        <dd>Erforderlich sind ein strukturelles LV-Major-Kriterium (typisches LGE) und eine pathogene oder wahrscheinlich pathogene ACM-assoziierte Genvariante.</dd>
+      </div>
+    </dl>
+    <h3 className={`${styles.subheading} ${styles.mriHeading}`}>Major und Minor im MRT</h3>
     <p>Cine zeigt Form und Funktion der Herzkammern (Kategorie I). Bei Padua können typische Narben im LGE auch in die Bewertung des Myokardgewebes eingehen (Kategorie II).</p>
     <div className={`${styles.atlas} ${styles.criteriaAtlas}`}>
       <Tabs label="MRT-Kriterien vergleichen" items={MRI_SYSTEMS} selected={selected} onChange={setSelected} idPrefix="acm-diagnostic-mri"/>
