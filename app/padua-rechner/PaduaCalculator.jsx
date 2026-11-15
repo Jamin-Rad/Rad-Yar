@@ -5,37 +5,34 @@ import Link from 'next/link'
 import Icon from '@/components/rechner/Icons'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { useTheme } from '@/providers/ThemeProvider'
-import { assessPadua, categories, criterionTitles } from './criteria.mjs'
+import { categories } from './criteria.mjs'
+import { evaluateFindings, GROUPS, isReviewed, L, optionsFor, questionsFor, validMeasurements } from './workflow.mjs'
 import kaiser from '@/app/kaiser-score/page.module.css'
 import styles from './page.module.css'
 
-const L = (de, en, fa) => ({ de, en, fa })
 const COPY = {
-  title: L('Padua-Rechner', 'Padua calculator', 'محاسبه‌گر پادوا'),
+  title: L('ACM-Rechner', 'ACM calculator', 'محاسبه‌گر ACM'),
   subject: L('Arrhythmogene Kardiomyopathie', 'Arrhythmogenic cardiomyopathy', 'کاردیومیوپاتی آریتموژن'),
-  accordingTo: L('nach den', 'using the', 'بر اساس'),
+  accordingTo: L('nach', 'using', 'بر اساس'),
+  systems: L('TFC 2010 und Padua 2020', 'TFC 2010 and Padua 2020', 'TFC ۲۰۱۰ و پادوا ۲۰۲۰'),
   lesson: L('Zur ACM-Lektion', 'ACM lesson', 'درس ACM'),
   theme: L('Hell-/Dunkelmodus wechseln', 'Switch light or dark mode', 'تغییر حالت روشن یا تیره'),
   language: L('Sprache', 'Language', 'زبان'),
   categories: L('Kategorien', 'Categories', 'دسته‌ها'),
-  checked: L('beurteilt', 'reviewed', 'ارزیابی‌شده'),
-  outstanding: L('Offen', 'Pending', 'باز'),
   reviewed: L('Beurteilt', 'Reviewed', 'ارزیابی‌شده'),
-  incomplete: L('Unvollständig beurteilt', 'Partially assessed', 'ارزیابی ناقص'),
-  select: L('Alle sicher erfüllten Kriterien markieren.', 'Select all criteria that are confidently met.', 'همهٔ معیارهایی را که با اطمینان برآورده شده‌اند انتخاب کنید.'),
+  select: L('Markiere die Befunde, die dokumentiert sind.', 'Select the documented findings.', 'یافته‌های ثبت‌شده را انتخاب کنید.'),
   next: L('Weiter', 'Next', 'بعدی'),
-  negative: L('Keine Kriterien erfüllt', 'No criteria met', 'هیچ معیاری برآورده نشده'),
-  skip: L('Offen lassen', 'Leave pending', 'باز بماند'),
+  negative: L('Keiner dieser Befunde', 'None of these findings', 'هیچ‌کدام از این یافته‌ها'),
+  skip: L('Nicht beurteilbar', 'Not assessable', 'قابل ارزیابی نیست'),
+  incompleteAnswer: L('Nicht oder nur teilweise untersucht.', 'Unavailable or only partially assessed.', 'بررسی انجام نشده یا ناقص است.'),
   back: L('Zurück', 'Back', 'بازگشت'),
   result: L('Auswertung', 'Assessment', 'نتیجه'),
   provisional: L('Vorläufige Einordnung', 'Provisional assessment', 'نتیجهٔ موقت'),
-  unknown: L('Offene Kategorien können die Einstufung oder den Phänotyp verändern.', 'Pending categories may change the tier or phenotype.', 'دسته‌های باز ممکن است رده یا فنوتیپ را تغییر دهند.'),
   reset: L('Neu beginnen', 'Start again', 'شروع دوباره'),
-  rv: L('Rechter Ventrikel', 'Right ventricle', 'بطن راست'),
-  lv: L('Linker Ventrikel', 'Left ventricle', 'بطن چپ'),
   gradeMajor: L('Major', 'Major', 'اصلی'),
   gradeMinor: L('Minor', 'Minor', 'فرعی'),
   points: L('Punkte', 'points', 'امتیاز'),
+  point: L('Punkt', 'point', 'امتیاز'),
   right: L('Rechtsdominante ACM (ARVC)', 'Right-dominant ACM (ARVC)', 'ACM راست‌غالب (ARVC)'),
   biventricular: L('Biventrikuläre ACM', 'Biventricular ACM', 'ACM دوبطنی'),
   left: L('Isoliert linksventrikuläres Muster', 'Isolated LV pattern', 'الگوی محدود به بطن چپ'),
@@ -57,58 +54,78 @@ const COPY = {
   source: L('Padua-Kriterien 2020', '2020 Padua criteria', 'معیارهای پادوا ۲۰۲۰'),
   interpretation: L('Anwendung und Fallbeispiele', 'Application and case examples', 'کاربرد و نمونه‌های بالینی'),
   context: L('Für die fachliche Einordnung. Befunde im klinischen Kontext prüfen und Phänokopien berücksichtigen.', 'For professional interpretation. Review findings in clinical context and consider phenocopies.', 'برای تفسیر تخصصی. یافته‌ها را در زمینهٔ بالینی بررسی کنید و بیماری‌های مشابه را در نظر بگیرید.'),
+  comparison: L('TFC 2010 und Padua 2020 im Vergleich', 'Compare TFC 2010 and Padua 2020', 'مقایسهٔ TFC ۲۰۱۰ و پادوا ۲۰۲۰'),
+  tfc: L('TFC 2010 · ARVC', 'TFC 2010 · ARVC', 'TFC ۲۰۱۰ · ARVC'),
+  padua: L('Padua 2020 · ACM', 'Padua 2020 · ACM', 'پادوا ۲۰۲۰ · ACM'),
+  comparisonHint: L('Beide Auswertungen verwenden dieselben Angaben. Die Kriterien werden pro System getrennt gewertet.', 'Both assessments use the same findings. Each system scores its own criteria independently.', 'هر دو ارزیابی از یافته‌های یکسان استفاده می‌کنند. هر سیستم معیارهای خود را جداگانه امتیاز می‌دهد.'),
+  unknown: L('Unvollständige Angaben können die Einstufung oder den Phänotyp verändern.', 'Missing information can change the tier or phenotype.', 'اطلاعات ناقص ممکن است رده یا فنوتیپ را تغییر دهند.'),
+  measurementsHint: L('Die festen TFC-Grenzwerte hier gelten für Erwachsene. Ein verwertbarer auffälliger Messwert kann genügen. Fehlende Werte leer lassen.', 'The fixed TFC thresholds here apply to adults. One abnormal valid measurement can suffice. Leave unavailable values blank.', 'آستانه‌های ثابت TFC در اینجا برای بزرگسالان است. یک مقدار غیرطبیعی معتبر می‌تواند کافی باشد. مقادیر ناموجود را خالی بگذارید.'),
+  sex: L('Referenzgruppe für RVEDVi', 'RVEDVi reference group', 'گروه مرجع RVEDVi'),
+  female: L('Weiblich', 'Female', 'زن'),
+  male: L('Männlich', 'Male', 'مرد'),
+  unspecified: L('Nicht angegeben', 'Not specified', 'مشخص نشده'),
+  edvi: L('RVEDVi (ml/m²)', 'RVEDVi (mL/m²)', 'RVEDVi (میلی‌لیتر بر متر مربع)'),
+  ef: L('RVEF (%)', 'RVEF (%)', 'RVEF (٪)'),
+  invalid: L('RVEDVi muss größer als 0 sein. RVEF muss zwischen 0 und 100 % liegen. Bitte nur Zahlen eingeben.', 'RVEDVi must be above zero. RVEF must be between 0 and 100%. Enter numbers only.', 'RVEDVi باید بزرگ‌تر از صفر باشد. RVEF باید بین ۰ و ۱۰۰٪ باشد. فقط عدد وارد کنید.'),
+  noneInCategory: L('Kein Kriterium belegt', 'No criterion established', 'معیاری ثبت نشده'),
+  sections: L('Untersuchungen', 'Examinations', 'بررسی‌ها'),
+  scoredFindings: L('Kriterien im Detail', 'Criteria breakdown', 'جزئیات معیارها'),
 }
 
-const STEPS = categories.flatMap(category => (
-  ['rv', 'lv', 'shared'].flatMap(side => {
-    const criteria = category.criteria.filter(criterion => criterion.side === side)
-    return criteria.length ? [{ id: `${category.id}-${side}`, category, side, criteria }] : []
-  })
-))
+const EMPTY_VALUES = { sex: '', edvi: '', ef: '', unavailable: false }
 
-function Result({ assessment, review, reviewedCount, t, label, goTo }) {
+function ResultSummary({ assessment, t }) {
   const left = assessment.phenotype === 'left'
   const scored = assessment.points !== null
-  const provisional = reviewedCount < categories.length
 
-  return <div className={kaiser.resultPanel}>
-    <div className={`${kaiser.resultHero} ${styles.resultHero}`} data-outcome={assessment.outcome}>
-      {provisional && <p className={styles.provisional}>{t('provisional')}</p>}
-      <h2 id="padua-step">{t(assessment.outcome)}</h2>
-      {assessment.phenotype !== 'none' && <p>{t(assessment.phenotype)}</p>}
-      {scored && <strong className={styles.score}><bdi>{assessment.points}</bdi> {t('points')}</strong>}
-      {scored && <dl className={styles.scale}>
-        {[[2, 'possible'], [3, 'borderline'], ['≥ 4', 'definite']].map(([points, outcome]) => <div key={outcome} data-current={outcome === assessment.outcome}>
-          <dt><bdi>{points}</bdi></dt><dd>{t(outcome)}</dd>
-        </div>)}
-      </dl>}
-      {assessment.outcome === 'noAnchor' && <p>{t('noAnchorWhy')}</p>}
-    </div>
-    {provisional && <p className={styles.hint}>{t('unknown')}</p>}
+  return <>
+    <strong className={styles.outcome}>{t(assessment.outcome)}</strong>
+    {assessment.phenotype && assessment.phenotype !== 'none' && <p>{t(assessment.phenotype)}</p>}
+    {scored && <p className={styles.score}><bdi>{assessment.points}</bdi> {t(assessment.points === 1 ? 'point' : 'points')}</p>}
+    {assessment.outcome === 'noAnchor' && <p>{t('noAnchorWhy')}</p>}
     {left && <dl className={styles.requirements}>
       <div><dt>{t('lge')}</dt><dd>{t(assessment.hasLge ? 'met' : 'notDocumented')}</dd></div>
       <div><dt>{t('gene')}</dt><dd>{t(assessment.hasGene ? 'met' : 'notDocumented')}</dd></div>
     </dl>}
-    <div className={`${kaiser.reportBox} ${styles.breakdown}`}>
-      <header><strong>{t('categories')}</strong></header>
-      {assessment.breakdown.map((category, index) => <details key={category.id}>
-        <summary>
-          <span className={styles.roman}>{categories[index].number}</span>
-          <strong>{label(categories[index].title)}</strong>
-          <span>{scored && category.points > 0 ? `${category.points} ${t('points')}` : t(review[category.id] === 'reviewed' ? 'reviewed' : 'outstanding')}</span>
-        </summary>
-        <ul>
-          {category.matches.map(criterion => <li key={criterion.id}>
-            <strong>{t(criterion.grade === 2 ? 'gradeMajor' : 'gradeMinor')}</strong>{' '}
-            {label(criterion.text)}
-            {scored && !category.eligible.includes(criterion) && <small>{t('excluded')}</small>}
-          </li>)}
-          {category.matches.length === 0 && <li>{t(review[category.id] === 'reviewed' ? 'negative' : 'notDocumented')}</li>}
-        </ul>
-        <button className={styles.textButton} type="button" onClick={() => goTo(STEPS.findIndex(step => step.category.id === category.id))}>{label(categories[index].title)} <span aria-hidden="true">↗</span></button>
+  </>
+}
+
+function Result({ assessment, provisional, t, label }) {
+  return <div className={kaiser.resultPanel}>
+    <header className={styles.prompt}>
+      <h2 id="padua-step">{t('comparison')}</h2>
+      <p>{t('comparisonHint')}</p>
+    </header>
+    {provisional && <p className={`${kaiser.questionHelp} ${styles.hint}`}><strong>{t('provisional')}.</strong> {t('unknown')}</p>}
+    <div className={styles.resultGrid}>
+      {['tfc', 'padua'].map(system => <section key={system} className={styles.resultCard} aria-labelledby={`result-${system}`}>
+        <h3 id={`result-${system}`}>{t(system)}</h3>
+        <ResultSummary assessment={assessment[system]} t={t}/>
+      </section>)}
+    </div>
+    <div className={styles.resultDetails}>
+      {['tfc', 'padua'].map(system => <details key={system} className={styles.resultEvidence}>
+        <summary>{t(system)} <span>{t('scoredFindings')}</span></summary>
+        <div className={styles.breakdown}>
+          {assessment[system].breakdown.map((category, index) => <details key={category.id}>
+            <summary>
+              <span className={styles.roman}>{categories[index].number}</span>
+              <strong>{label(categories[index].title)}</strong>
+              {assessment[system].points !== null && category.points > 0 && <span>{category.points} {t(category.points === 1 ? 'point' : 'points')}</span>}
+            </summary>
+            <ul>
+              {category.matches.map((criterion, matchIndex) => <li key={criterion.id || matchIndex}>
+                <strong>{t(criterion.grade === 2 ? 'gradeMajor' : 'gradeMinor')}</strong>{' '}
+                {label(criterion.text || criterion.title)}
+                {category.eligible && !category.eligible.includes(criterion) && <small>{t('excluded')}</small>}
+              </li>)}
+              {category.matches.length === 0 && <li>{t('noneInCategory')}</li>}
+            </ul>
+          </details>)}
+        </div>
       </details>)}
     </div>
-    {scored && <p className={styles.hint}>{t('scoreRule')} {assessment.phenotype === 'right' && t('rvExclusion')}</p>}
+    <p className={styles.hint}>{t('scoreRule')} {assessment.padua.phenotype === 'right' && t('rvExclusion')}</p>
   </div>
 }
 
@@ -116,20 +133,20 @@ export default function PaduaCalculator() {
   const { lang, setLang } = useLanguage()
   const { toggleTheme } = useTheme()
   const [step, setStep] = useState(0)
-  const [selected, setSelected] = useState(() => new Set())
-  const [review, setReview] = useState({})
+  const [answers, setAnswers] = useState({})
+  const [values, setValues] = useState(EMPTY_VALUES)
   const panel = useRef(null)
   const label = value => value[lang] || value.de
   const t = key => label(COPY[key])
-  const current = STEPS[step]
+  const steps = questionsFor(answers)
+  const current = steps[step]
   const isResult = !current
-  const hasMatches = current?.criteria.some(criterion => selected.has(criterion.id))
-  const categoryReview = Object.fromEntries(categories.map(category => {
-    const parts = STEPS.filter(part => part.category.id === category.id)
-    return [category.id, parts.every(part => review[part.id] === 'reviewed') ? 'reviewed' : parts.some(part => review[part.id]) ? 'pending' : undefined]
-  }))
-  const reviewedCount = Object.values(categoryReview).filter(status => status === 'reviewed').length
-  const assessment = isResult ? assessPadua(selected) : null
+  const choices = current ? optionsFor(current, answers) : []
+  const active = current ? answers[current.id] || [] : []
+  const valid = validMeasurements(values)
+  const canAdvance = isResult || (current.type === 'measurements' ? valid && (values.unavailable || values.ef || values.edvi) : active.length > 0)
+  const assessment = isResult ? evaluateFindings(answers, values) : null
+  const provisional = steps.some(item => !isReviewed(item, answers, values))
   const lessonHref = `/thorax/kardio/arvc${lang === 'de' ? '' : `?lang=${lang}`}#kriterien`
 
   function goTo(index) {
@@ -140,24 +157,27 @@ export default function PaduaCalculator() {
     })
   }
 
-  function toggleFinding(id) {
-    setSelected(previous => {
-      const next = new Set(previous)
-      if (next.has(id)) next.delete(id)
-      else next.add(id)
-      return next
-    })
-    setReview(previous => ({ ...previous, [current.id]: undefined }))
+  function choose(id) {
+    const selected = active.includes(id)
+    let next
+    if (selected) next = active.filter(value => value !== id)
+    else if (id === 'none' || current.single) next = [id]
+    else next = [...active.filter(value => value !== 'none'), id]
+    setAnswers(previous => ({
+      ...previous,
+      [current.id]: next,
+      ...(current.id === 'family' ? { 'family-arvc': [] } : {}),
+    }))
   }
 
-  function finishCategory(complete) {
-    setReview(previous => ({ ...previous, [current.id]: complete ? 'reviewed' : 'pending' }))
-    goTo(step + 1)
+  function changeMeasurement(event) {
+    const { name, value } = event.target
+    setValues(previous => ({ ...previous, [name]: value, unavailable: false }))
   }
 
   function reset() {
-    setSelected(new Set())
-    setReview({})
+    setAnswers({})
+    setValues(EMPTY_VALUES)
     goTo(0)
   }
 
@@ -176,55 +196,70 @@ export default function PaduaCalculator() {
         </div>
       </nav>
     </header>
-    <div className={kaiser.shell}>
+    <div className={`${kaiser.shell} ${styles.shell}`} data-result={isResult}>
       <section className={`${kaiser.workspace} ${styles.workspace}`}>
         <div className={`${kaiser.intro} ${styles.intro}`}>
-          <h1>{t('subject')}<span>{t('accordingTo')} <em>{t('source')}</em></span></h1>
+          <h1>{t('subject')}<span>{t('accordingTo')} <em>{t('systems')}</em></span></h1>
         </div>
-        <nav className={styles.navigation} aria-label={t('categories')}>
+        <nav className={styles.navigation} aria-label={t('sections')}>
           <ol>
-            {categories.map(entry => <li key={entry.id}>
-              <button type="button" onClick={() => goTo(STEPS.findIndex(part => part.category.id === entry.id))}
-                aria-label={label(entry.title)} title={label(entry.title)}
-                aria-current={current?.category.id === entry.id ? 'step' : undefined}
-                data-status={categoryReview[entry.id]}>
-                <bdi>{entry.number}</bdi>
-                {categoryReview[entry.id] === 'reviewed' && <span aria-label={t('reviewed')}>✓</span>}
-                {categoryReview[entry.id] === 'pending' && <span aria-label={t('incomplete')}>·</span>}
-              </button>
-            </li>)}
+            {Object.entries(GROUPS).map(([id, name]) => {
+              const completed = steps.filter(item => item.group === id).every(item => isReviewed(item, answers, values))
+              return <li key={id}>
+                <button type="button" onClick={() => goTo(steps.findIndex(item => item.group === id))} aria-current={current?.group === id ? 'step' : undefined}>
+                  {label(name)}{completed && <span aria-label={t('reviewed')}>✓</span>}
+                </button>
+              </li>
+            })}
           </ol>
-          <button className={styles.resultLink} type="button" onClick={() => goTo(STEPS.length)} aria-current={isResult ? 'step' : undefined}>{t('result')}</button>
-          <span className={styles.progress}><bdi>{reviewedCount}/{categories.length}</bdi> {t('checked')}</span>
+          <button className={styles.resultLink} type="button" onClick={() => goTo(steps.length)} aria-current={isResult ? 'step' : undefined}>{t('result')}</button>
         </nav>
         <section ref={panel} className={`${kaiser.question} ${styles.panel}`} aria-labelledby="padua-step" tabIndex={-1}>
-          {isResult ? <Result assessment={assessment} review={categoryReview} reviewedCount={reviewedCount} t={t} label={label} goTo={goTo}/> : <>
+          {isResult ? <Result assessment={assessment} provisional={provisional} t={t} label={label}/> : <>
             <header className={styles.prompt} key={current.id}>
-              <h2 id="padua-step">{label(current.category.title)}</h2>
-              {current.side !== 'shared' && <strong>{t(current.side)}</strong>}
-              <p>{t('select')}</p>
+              <p className={styles.progress}><bdi>{step + 1}/{steps.length}</bdi> · {label(GROUPS[current.group])}</p>
+              <h2 id="padua-step">{label(current.title)}</h2>
+              <p>{t(current.type === 'measurements' ? 'measurementsHint' : 'select')}</p>
             </header>
-            <div className={`${kaiser.options} ${styles.options}`} key={`${current.id}-options`}>
-              {current.criteria.map(criterion => {
-                const active = selected.has(criterion.id)
-                return <button type="button" key={criterion.id} className={active ? kaiser.optionSelected : undefined} aria-pressed={active} onClick={() => toggleFinding(criterion.id)}>
-                  <i aria-hidden="true">{active ? '✓' : ''}</i>
-                  <span className={styles.grade} data-major={criterion.grade === 2}>{t(criterion.grade === 2 ? 'gradeMajor' : 'gradeMinor')}</span>
-                  <span className={kaiser.optionCopy}>
-                    <strong>{label(criterionTitles[criterion.id])}</strong>
-                    <small>{label(criterion.text)}</small>
-                  </span>
-                </button>
-              })}
-            </div>
-            {current.category.hint && <p className={`${kaiser.questionHelp} ${styles.hint}`}>{label(current.category.hint)}</p>}
-            <button type="button" className={styles.skip} onClick={() => finishCategory(false)}>{t('skip')}</button>
+            {current.type === 'measurements' ? <>
+              <div className={styles.measurements}>
+                <label>{t('sex')}<select name="sex" value={values.sex} onChange={changeMeasurement}>
+                  <option value="">{t('unspecified')}</option>
+                  <option value="female">{t('female')}</option>
+                  <option value="male">{t('male')}</option>
+                </select></label>
+                <label>{t('edvi')}<input name="edvi" value={values.edvi} onChange={changeMeasurement} inputMode="decimal" dir="ltr"/></label>
+                <label>{t('ef')}<input name="ef" value={values.ef} onChange={changeMeasurement} inputMode="decimal" dir="ltr"/></label>
+              </div>
+              {!valid && <p className={styles.invalid} role="alert">{t('invalid')}</p>}
+              <div className={styles.alternatives}>
+                <button type="button" aria-pressed={values.unavailable} onClick={() => setValues(values.unavailable ? EMPTY_VALUES : { ...EMPTY_VALUES, unavailable: true })}>{t('skip')}</button>
+              </div>
+            </> : <>
+              <div className={`${kaiser.options} ${styles.options}`} key={`${current.id}-options`}>
+                {choices.map(choice => {
+                  const marked = active.includes(choice.id)
+                  return <button type="button" key={choice.id} className={marked ? kaiser.optionSelected : undefined} aria-pressed={marked} onClick={() => choose(choice.id)}>
+                    <i aria-hidden="true">{marked ? '✓' : ''}</i>
+                    <span className={kaiser.optionCopy}>
+                      <strong>{label(choice.title)}</strong>
+                      {choice.text && <small>{label(choice.text)}</small>}
+                    </span>
+                  </button>
+                })}
+              </div>
+              <div className={styles.alternatives}>
+                <button type="button" aria-pressed={active.includes('none')} onClick={() => choose('none')}>{t('negative')}</button>
+                <button type="button" aria-pressed={active.includes('unknown')} onClick={() => choose('unknown')} title={t('incompleteAnswer')}>{t('skip')}</button>
+              </div>
+            </>}
+            {current.hint && <p className={`${kaiser.questionHelp} ${styles.hint}`}>{label(current.hint)}</p>}
           </>}
         </section>
         <footer className={`${kaiser.actions} ${styles.actions}`}>
           <button type="button" className={kaiser.backButton} onClick={() => goTo(step - 1)} disabled={step === 0}><Icon name="arrow" className={styles.backArrow}/>{t('back')}</button>
-          <button type="button" className={kaiser.nextButton} onClick={isResult ? reset : () => finishCategory(true)}>
-            {isResult ? t('reset') : t(hasMatches ? 'next' : 'negative')}<Icon name={isResult ? 'reset' : 'arrow'}/>
+          <button type="button" className={kaiser.nextButton} disabled={!canAdvance} onClick={isResult ? reset : () => goTo(step + 1)}>
+            {isResult ? t('reset') : t('next')}<Icon name={isResult ? 'reset' : 'arrow'}/>
           </button>
         </footer>
       </section>
@@ -232,6 +267,7 @@ export default function PaduaCalculator() {
     </div>
     <footer className={`${kaiser.disclaimer} ${styles.sources}`}>
       <p>{t('context')}</p>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/20172911/">{t('tfc')}</a>
       <a href="https://doi.org/10.1016/j.ijcard.2020.06.005">{t('source')}</a>
       <a href="https://pubmed.ncbi.nlm.nih.gov/35012021/">{t('interpretation')}</a>
       <Link href={lessonHref}>{t('lesson')}</Link>

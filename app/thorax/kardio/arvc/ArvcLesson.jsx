@@ -187,7 +187,7 @@ export default function ArvcLesson() {
       mcq: { label: t('MCQ starten'), href: '/ueben/quiz?fach=thorax&n=18&themen=arvc', trailingIcon: 'arrow' },
       flashcards: { label: t('Flashcards'), href: '/flashcards/arvc' },
     }}
-    learningPathLinks={[{ label: t('Padua-Rechner'), href: localPath('/padua-rechner'), icon: 'chart' }]}
+    learningPathLinks={[{ label: t('ACM-Rechner'), href: localPath('/padua-rechner'), icon: 'chart' }]}
     sections={LOCAL_SECTIONS[lang] || LOCAL_SECTIONS.de}
     renderIcon={renderIcon}
     theme={THEME}

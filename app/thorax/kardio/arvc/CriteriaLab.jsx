@@ -173,7 +173,7 @@ export default function CriteriaOverview() {
             <dd>Erforderlich sind ein strukturelles LV-Major-Kriterium (typisches LGE) und eine pathogene oder wahrscheinlich pathogene ACM-assoziierte Genvariante.</dd>
           </div>
         </dl>
-        <Link className={styles.paduaCalculatorLink} href="/padua-rechner">Zum Padua-Rechner <Icon name="arrow"/></Link>
+        <Link className={styles.paduaCalculatorLink} href="/padua-rechner">Zum ACM-Rechner <Icon name="arrow"/></Link>
       </div>
     </TeachingGroup>
     <TeachingGroup id="arvc-diagnostic-mri" title="Major und Minor im MRT" className={styles.mriCriteriaGroup}>
