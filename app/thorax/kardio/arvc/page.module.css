@@ -614,6 +614,20 @@
 }
 .paduaPatterns dt { color:var(--lesson-accent-strong); font-weight:750; }
 .paduaPatterns dd { margin:3px 0 0; }
+.paduaCalculatorLink {
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+  margin-block-start:14px;
+  padding:8px 14px;
+  border:1px solid var(--lesson-accent);
+  border-radius:8px;
+  background:var(--canvas);
+  color:var(--lesson-accent-strong);
+  font-weight:750;
+  text-decoration:none;
+}
+.paduaCalculatorLink:hover { background:var(--lesson-accent-soft); }
 .criteriaMri { padding:clamp(12px,3vw,24px); }
 .criteriaMri .mrtTopic { color:var(--ink); }
 .paduaMri > section + section {

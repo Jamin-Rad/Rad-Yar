@@ -4,6 +4,7 @@ import { useLanguage } from '@/providers/LanguageProvider'
 import { localizeArvcTree } from './lessonTranslations'
 
 import { useState } from 'react'
+import Link from 'next/link'
 import { Tabs } from './LessonVisuals'
 import styles from './page.module.css'
 
@@ -170,6 +171,7 @@ export default function CriteriaOverview() {
         <dd>Erforderlich sind ein strukturelles LV-Major-Kriterium (typisches LGE) und eine pathogene oder wahrscheinlich pathogene ACM-assoziierte Genvariante.</dd>
       </div>
     </dl>
+    <Link className={styles.paduaCalculatorLink} href="/padua-rechner">Padua-Rechner öffnen <span aria-hidden="true">↗</span></Link>
     <h3 className={`${styles.subheading} ${styles.mriHeading}`}>Major und Minor im MRT</h3>
     <p>Cine zeigt Form und Funktion der Herzkammern (Kategorie I). Bei Padua können typische Narben im LGE auch in die Bewertung des Myokardgewebes eingehen (Kategorie II).</p>
     <div className={`${styles.atlas} ${styles.criteriaAtlas}`}>

@@ -93,8 +93,9 @@
 .sidebar { position: sticky; top: 90px; padding: 20px 14px; border: 1px solid var(--line); border-radius: 10px; background: rgba(255,255,255,.9); box-shadow: 0 12px 30px rgba(12,9,17,.08); backdrop-filter: blur(16px); }
 .sidebar h2 { margin: 0 8px 14px; font-family: var(--font-newsreader,Georgia,serif); font-size: 23px; font-weight: 700; }
 .sidebar nav { display: grid; gap: 4px; }
-.sidebar button { width: 100%; min-height: 46px; display: grid; grid-template-columns: 34px 1fr; align-items: center; gap: 9px; padding: 6px 8px; border: 0; border-radius: 7px; background: transparent; color: var(--body); font: 700 14px/1.35 var(--font-inter,system-ui,sans-serif); text-align: start; cursor: pointer; }
-.sidebar button:hover { background: var(--lesson-accent-soft); color: var(--lesson-accent-strong); }
+.sidebar :is(button,.sidePathLink) { width: 100%; min-height: 46px; display: grid; grid-template-columns: 34px 1fr; align-items: center; gap: 9px; padding: 6px 8px; border: 0; border-radius: 7px; background: transparent; color: var(--body); font: 700 14px/1.35 var(--font-inter,system-ui,sans-serif); text-align: start; cursor: pointer; }
+.sidebar :is(button,.sidePathLink):hover { background: var(--lesson-accent-soft); color: var(--lesson-accent-strong); }
+.sidebar .sidePathLink { grid-template-columns:34px minmax(0,1fr) auto; color:var(--lesson-accent-strong); text-decoration:none; }
 .sideIcon { width: 31px; height: 31px; display: grid; place-items: center; border: 1px solid #d3d2db; border-radius: 50%; color: var(--lesson-accent-strong); }
 .sideIcon svg { width: 17px; height: 17px; }
 .sidebar .activeSideItem { background: linear-gradient(90deg,color-mix(in srgb,var(--lesson-accent) 17%,transparent),color-mix(in srgb,var(--lesson-secondary) 12%,transparent)); color: var(--lesson-accent-strong); }
@@ -231,9 +232,10 @@
   .mobilePathPanel header button { width: 32px; height: 32px; display: grid; place-items: center; border: 0; border-radius: 50%; color: var(--muted); background: var(--canvas); cursor: pointer; }
   .mobilePathPanel header button svg { width: 17px; height: 17px; }
   .mobilePathPanel nav { min-height: 0; overflow-y: auto; display: grid; align-content: start; gap: 3px; padding: 8px; }
-  .mobilePathPanel nav button { min-height: 52px; padding: 7px 9px; display: grid; grid-template-columns: 34px minmax(0,1fr) 22px; align-items: center; gap: 9px; border: 1px solid transparent; border-radius: 11px; color: var(--body); background: transparent; cursor: pointer; text-align: start; }
-  .mobilePathPanel nav button > span:nth-child(2) { min-width: 0; }
-  .mobilePathPanel nav button strong { color: var(--ink); font-size: 13px; }
+  .mobilePathPanel nav :is(button,.mobilePathLink) { min-height: 52px; padding: 7px 9px; display: grid; grid-template-columns: 34px minmax(0,1fr) 22px; align-items: center; gap: 9px; border: 1px solid transparent; border-radius: 11px; color: var(--body); background: transparent; cursor: pointer; text-align: start; text-decoration:none; }
+  .mobilePathPanel nav :is(button,.mobilePathLink) > span:nth-child(2) { min-width: 0; }
+  .mobilePathPanel nav :is(button,.mobilePathLink) strong { color: var(--ink); font-size: 13px; }
+  .mobilePathPanel nav .mobilePathLink:hover { background:var(--lesson-accent-soft); }
   .mobilePathItemIcon { width: 32px; height: 32px; display: grid; place-items: center; border: 1px solid var(--line); border-radius: 50%; color: var(--lesson-accent-strong); }
   .mobilePathPanel nav i { color: var(--lesson-secondary-strong); font-size: 13px; font-style: normal; font-weight: 900; text-align: center; }
   .mobilePathPanel nav .mobilePathCurrent { border-color: color-mix(in srgb,var(--lesson-accent) 25%,var(--line)); background: color-mix(in srgb,var(--lesson-accent-soft) 70%,transparent); }

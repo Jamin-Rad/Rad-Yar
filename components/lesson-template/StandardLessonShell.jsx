@@ -64,7 +64,7 @@ function MobileLearningPath() {
   const [panelOpen, setPanelOpen] = useState(false)
   if (!context) return null
 
-  const { labels, openId, readSections, trackedSections, trackedIds, openSection, renderIcon } = context
+  const { labels, openId, readSections, trackedSections, trackedIds, openSection, renderIcon, learningPathLinks } = context
   const activeSection = trackedSections.find(section => section.id === openId) || trackedSections[0]
   const progress = trackedIds.length ? (readSections.size / trackedIds.length) * 360 : 0
   const selectFromPanel = id => {
@@ -79,7 +79,11 @@ function MobileLearningPath() {
         <span className={styles.mobilePathItemIcon}>{renderIcon(section.icon || section.id)}</span>
         <span><strong>{section.label}</strong></span>
         <i aria-hidden="true">{readSections.has(section.id) ? '✓' : ''}</i>
-      </button>)}</nav>
+      </button>)}{learningPathLinks.map(link => <Link key={link.href} href={link.href} className={styles.mobilePathLink} onClick={() => setPanelOpen(false)}>
+        <span className={styles.mobilePathItemIcon}>{renderIcon(link.icon)}</span>
+        <span><strong>{link.label}</strong></span>
+        <i aria-hidden="true">↗</i>
+      </Link>)}</nav>
     </section> : null}
     <button type="button" className={styles.mobilePathButton} onClick={() => setPanelOpen(value => !value)} aria-expanded={panelOpen} aria-controls="standard-mobile-learning-path-panel">
       <span dir="ltr" className={styles.mobileProgressRing} style={{ '--mobile-progress': `${progress}deg` }}><b>{readSections.size}</b><small>/{trackedIds.length}</small></span>
@@ -178,6 +182,7 @@ function LessonShell({
   sections,
   labels: suppliedLabels,
   actions = {},
+  learningPathLinks = [],
   renderIcon,
   theme,
   className = '',
@@ -279,7 +284,7 @@ function LessonShell({
   const lessonComplete = trackedIds.length > 0 && readSections.size === trackedIds.length
   const toggleLessonComplete = () => setReadSections(lessonComplete ? new Set() : new Set(trackedIds))
   const progress = trackedIds.length ? (readSections.size / trackedIds.length) * 100 : 0
-  const context = { lang, progressIncludesSummary, labels, trackedIds, openId, openSection, summaryOpen, toggleSummary, readSections, toggleSectionRead, sections, trackedSections, renderIcon, lehrMode, book, presentationEnabled, presentationQuestions, lessonId }
+  const context = { lang, progressIncludesSummary, labels, trackedIds, openId, openSection, summaryOpen, toggleSummary, readSections, toggleSectionRead, sections, trackedSections, learningPathLinks, renderIcon, lehrMode, book, presentationEnabled, presentationQuestions, lessonId }
   const atmosphereIndex = [...String(heroLessonId)].reduce((value, char) => (value * 31 + char.charCodeAt(0)) >>> 0, 0) % 6
   const atmosphere = ['#3a1e46', '#123a46', '#283d36', '#33254d', '#453028', '#1d304d'][atmosphereIndex]
   const shellStyle = {
@@ -332,7 +337,11 @@ function LessonShell({
     <div className={styles.layout}>
       <aside className={styles.sidebar}>
         <h2>{labels.path}</h2>
-        <nav>{trackedSections.map(section => <button type="button" key={section.id} className={openId === section.id ? styles.activeSideItem : ''} onClick={() => openSection(section.id)} aria-current={openId === section.id ? 'location' : undefined} aria-label={`${labels.open}: ${section.label}`}><span className={styles.sideIcon}>{renderIcon(section.icon || section.id)}</span><strong>{section.label}</strong></button>)}</nav>
+        <nav>{trackedSections.map(section => <button type="button" key={section.id} className={openId === section.id ? styles.activeSideItem : ''} onClick={() => openSection(section.id)} aria-current={openId === section.id ? 'location' : undefined} aria-label={`${labels.open}: ${section.label}`}><span className={styles.sideIcon}>{renderIcon(section.icon || section.id)}</span><strong>{section.label}</strong></button>)}
+          {learningPathLinks.map(link => <Link key={link.href} href={link.href} className={styles.sidePathLink}>
+            <span className={styles.sideIcon}>{renderIcon(link.icon)}</span><strong>{link.label}</strong><span aria-hidden="true">↗</span>
+          </Link>)}
+        </nav>
       </aside>
       <div className={styles.lessonColumn}>
         {presentationEnabled ? <BookView title={title} sections={sections.map(section => ({ id: section.id, title: section.label }))} lang={lang}>{lessonContent}</BookView> : lessonContent}
