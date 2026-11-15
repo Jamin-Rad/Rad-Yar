@@ -55,8 +55,41 @@ const hard = [
   question(cases, 'Setze den Satz in den Plural. Schreibe den ganzen lateinischen Satz.', 'Serva donum apportat. · Die Dienerinnen bringen Geschenke.', 'servae dona apportant', 'Subjekt: servae. Objekt: dona. Verb zur 3. Person Plural: apportant.'),
 ]
 
+const extraTraining = [
+  question(present, 'Ergänze die Personalendung für „er“.', 'clama___', 't', 'clama- + -t ergibt clamat. -t steht für die 3. Person Singular.'),
+  question(present, 'Schreibe „ihr lacht“ auf Latein.', 'ridere', 'ridetis', 'ride- + -tis ergibt ridetis.'),
+  question(present, 'Wähle die Form für „du wartest“.', 'exspectare', 'exspectas', 'An -s erkennst du die 2. Person Singular.', ['exspectat', 'exspectas', 'exspectatis']),
+  question(present, 'Welche Person steckt in apportamus?', 'apportare · bringen', 'wir', '-mus steht für die 1. Person Plural.', ['ihr', 'sie (Plural)', 'wir']),
+  question(esse, 'Wie heißt „ich bin“?', 'esse', 'sum', 'Die 1. Person Singular von esse lautet sum.'),
+  question(esse, 'Wie heißt „sie sind“?', 'esse · Mehrzahl', 'sunt', 'In der 3. Person Plural steht sunt.'),
+  question(cases, 'Bilde den Akkusativ Singular.', 'matrona', 'matronam', 'Die a-Deklination bildet den Akkusativ Singular mit -am.'),
+  question(cases, 'Bilde den Nominativ Plural.', 'asinus', 'asini', 'Maskuline Wörter der o-Deklination haben hier -i.'),
+  question(cases, 'Bilde den Akkusativ Plural.', 'amica', 'amicas', 'Die a-Deklination bildet den Akkusativ Plural mit -as.'),
+  question(cases, 'Bilde den Akkusativ Singular.', 'silentium', 'silentium', 'Beim Neutrum sind Nominativ und Akkusativ gleich.'),
+  question(present, 'Ersetze „ihr“ durch „wir“. Schreibe nur das Verb.', 'Tum clamatis. → Tum ___.', 'clamamus', 'Tausche -tis gegen -mus.'),
+  question(present, 'Ergänze das Verb im Präsens.', 'Matronae cito ___. · Die Frauen eilen schnell. (properare)', 'properant', 'Matronae steht im Plural. properant ist die 3. Person Plural.'),
+  question(present, 'Schreibe „ich warte“ auf Latein.', 'exspectare', 'exspecto', 'Die Form der 1. Person Singular lautet exspecto.'),
+  question(esse, 'Ersetze „wir“ durch „du“. Schreibe nur das Verb.', 'Ibi sumus. → Ibi ___.', 'es', 'sumus steht für „wir sind“, es für „du bist“.'),
+  question(esse, 'Ergänze die Form von esse.', 'Ibi equi ___. · Dort sind Pferde.', 'sunt', 'equi steht im Nominativ Plural und braucht sunt.'),
+  question(cases, 'Welches Wort ist das Akkusativobjekt?', 'Amicam servae salutant.', 'amicam', 'amicam beantwortet „Wen begrüßen die Dienerinnen?“', ['amicam', 'servae', 'salutant']),
+  question(cases, 'Setze nur das Objekt in den Plural.', 'Amicus asinum timet.', 'asinos', 'Aus -um im Akkusativ Singular wird -os im Akkusativ Plural.'),
+  question(cases, 'Setze nur das Subjekt in den Plural.', 'Serva donum apportat.', 'servae', 'Das Subjekt bleibt im Nominativ. Die Pluralendung lautet -ae.'),
+  question(cases, 'Welche Rolle hat donum?', 'Donum iacet.', 'Subjekt', 'Was liegt da? Das Geschenk. donum ist hier das Subjekt.', ['Akkusativobjekt', 'Subjekt', 'Prädikat']),
+  question(cases, 'Welche Rolle hat donum?', 'Donum apportatis.', 'Akkusativobjekt', 'In apportatis steckt „ihr“. donum beantwortet „Was bringt ihr?“', ['Subjekt', 'Prädikat', 'Akkusativobjekt']),
+]
+
+const quick = [
+  question(present, 'Bilde die Form für „wir schweigen“.', 'tacere', 'tacemus', 'tace- + -mus ergibt tacemus.'),
+  question(esse, 'Ergänze die Form von esse.', 'Ibi ___. · Dort bist du.', 'es', 'In der 2. Person Singular lautet die Form es.'),
+  question(cases, 'Bilde den Akkusativ Plural.', 'villa', 'villas', 'Die a-Deklination hat im Akkusativ Plural -as.'),
+  question(cases, 'Bestimme Kasus und Numerus von dona.', 'Dona apportatis.', 'Akkusativ Plural', 'Ihr bringt die Geschenke. dona ist das Objekt und steht im Plural.', ['Nominativ Plural', 'Akkusativ Plural', 'Akkusativ Singular']),
+  question(present, 'Ergänze die passende Verbform.', 'Servi familiam ___. · Die Diener begrüßen die Familie. (salutare)', 'salutant', 'Servi steht im Plural. Die passende Endung ist -nt.'),
+]
+
 export const rounds = {
-  training: { title: 'Endungen trainieren', questions: training, detail: '20 Aufgaben · 10 mittel, 10 schwer', description: 'Übe mit Merkhilfe und einer Erklärung nach jeder Antwort.' },
+  training: { kind: 'training', title: 'Endungen trainieren', questions: training, detail: '20 Aufgaben · 10 mittel, 10 schwer', description: 'Übe mit Merkhilfe und einer Erklärung nach jeder Antwort.' },
+  extra: { kind: 'training', title: 'Endungen vertiefen', questions: extraTraining, detail: '20 neue Aufgaben · 10 mittel, 10 schwer', description: 'Wechsle die Person und bestimme die Rolle eines Worts im Satz.' },
+  quick: { title: 'Kurztest · Endungen', questions: quick, detail: '5 Aufgaben', description: 'Prüfe in einer kurzen Runde, welche Endungen du schon sicher kannst.' },
   medium: { title: 'Probetest · Mittel', questions: medium, detail: '10 Aufgaben', description: 'Erkenne Endungen und bilde passende Formen.' },
   hard: { title: 'Probetest · Schwer', questions: hard, detail: '10 Aufgaben', description: 'Wechsle zwischen Formen und bestimme ihre Rolle im Satz.' },
 }

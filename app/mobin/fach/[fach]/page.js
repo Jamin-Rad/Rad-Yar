@@ -32,7 +32,7 @@ export default async function FachPage({ params }) {
   if (fach === 'latein') {
     return <LanguageHome language={title} school featured={
       <Link className={endungen.launch} href="/mobin/fach/latein/endungen">
-        <span><strong>Grammatiktest · Endungen</strong><small>20 Trainingsaufgaben und zwei Probetests</small></span>
+        <span><strong>Grammatiktest · Endungen</strong><small>40 Trainingsaufgaben und drei Tests</small></span>
         <span aria-hidden="true">→</span>
       </Link>
     } />

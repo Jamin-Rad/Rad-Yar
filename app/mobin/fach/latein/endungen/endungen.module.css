@@ -64,11 +64,12 @@
 }
 .motif span:first-child { justify-self: start; }
 .motif span:last-child { justify-self: end; }
+.roundGroup { margin-top: 22px; }
+.roundGroup h2 { margin: 0 0 10px; font-size: 1.23rem; letter-spacing: -.01em; }
 .rounds {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr));
   gap: 12px;
-  margin-top: 16px;
 }
 .roundCard {
   --card-accent: #b6dcff;
@@ -88,6 +89,7 @@
   transition: border-color .18s, background-color .18s;
 }
 .roundCard[data-mode="training"] { --card-accent: #ffdbab; background: linear-gradient(147deg, #4a374d, #231f36 76%); }
+.roundCard[data-mode="extra"] { --card-accent: #b3edd9; background: linear-gradient(147deg, #2b4c52, #17283b 76%); }
 .roundCard[data-mode="hard"] { --card-accent: #e2c7ff; background: linear-gradient(147deg, #40375a, #201e3c 76%); }
 .roundCard:hover { border-color: var(--card-accent); }
 .badge {
@@ -104,6 +106,7 @@
 .detail { font-size: .85rem; color: var(--card-accent); }
 .roundCard > strong { font-size: 1.14rem; color: var(--ink); }
 .start { margin-top: auto; padding-top: 8px; color: var(--card-accent); font-weight: 750; }
+.start[data-draft="true"] { color: #bcffe4; }
 .testNote { color: var(--soft); font-size: .93rem; margin: 14px 1px; }
 .panel, .reference {
   background: var(--surface);
