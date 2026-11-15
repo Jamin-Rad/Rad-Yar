@@ -145,7 +145,7 @@ const THEME = {
   secondaryStrong: '#80571f',
   heroBase: '#102435',
 }
-const HERO = '/educational/lesson-design/thorax--kardio--arvc.webp'
+const HERO = '/educational/lesson-design/thorax--kardio--arvc-heart.webp'
 const renderIcon = name => <Icon name={name}/>
 const SUMMARY = { de: 'Take Home Message', en: 'Take Home Message', fa: 'پیام نهایی' }
 const LOCAL_SECTIONS = Object.fromEntries(Object.entries(SUMMARY).map(([lang, label]) => [lang, [
@@ -184,7 +184,7 @@ export default function ArvcLesson() {
     className={styles.page}
     breadcrumbs={[{ label: 'RadYar', href: localPath('/') }, { label: t('Thorax'), href: localPath('/lernen/thorax') }, { label: 'ACM / ARVC' }]}
     actions={{
-      mcq: { label: t('MCQ starten'), href: '/ueben/quiz?fach=thorax&n=10&themen=arvc', trailingIcon: 'arrow' },
+      mcq: { label: t('MCQ starten'), href: '/ueben/quiz?fach=thorax&n=18&themen=arvc', trailingIcon: 'arrow' },
       flashcards: { label: t('Flashcards'), href: '/flashcards/arvc' },
     }}
     learningPathLinks={[{ label: t('Padua-Rechner'), href: localPath('/padua-rechner'), icon: 'chart' }]}

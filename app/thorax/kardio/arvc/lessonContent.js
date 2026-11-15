@@ -56,10 +56,27 @@ export const CASES = [
   ], look: 'Der Originalfall zeigt einen deutlich dilatierten RV mit verdünnter, fetthaltiger Wand. Den ICD als Hinweis auf die bekannte Rhythmuserkrankung einordnen.', lesson: 'CT kann die Morphologie illustrieren. Die MRT-spezifischen Funktions- und Gewebekriterien lassen sich daraus nicht ersetzen.', limit: 'Bewusst ein CT-Vergleichsfall, kein MRT. Fett allein beweist keine ACM und ist kein eigenständiges TFC- / Padua-Kriterium.' },
 ].map(item => ({ ...item, views: item.views.map(view => ({ ...view, src: path + view.file })) }))
 
+const localized = (de, en, fa) => ({ de, en, fa })
+
 export const TAKE_HOME = [
-  { title: 'ACM ist mehr als eine Erkrankung des RV.', detail: 'ARVC bezeichnet die klassische rechtsbetonte Form. Auch der LV kann mitbetroffen sein oder im Vordergrund stehen; das ist für Diagnose und Prognose relevant.' },
-  { title: 'Bewegung, Funktion und Gewebe getrennt beurteilen.', detail: 'Cine zeigt regionale Bewegung, der vollständige Cine-Stapel liefert Volumen und EF, LGE zeigt das Narbenmuster. Immer beide Kammern prüfen.' },
-  { title: 'TFC 2010: regional UND global.', detail: 'Die geforderte regionale RV-Bewegungsstörung muss zusammen mit dem passenden RVEDVi- oder RVEF-Grenzwert vorliegen. Volumen und EF zählen in dieser Kategorie nicht doppelt.' },
-  { title: 'Padua 2020 ergänzt LV und LGE.', detail: 'Die Kriterien erfassen auch biventrikuläre und linksdominante Formen. Bei rein linksdominantem Muster ist die passende Genetik ein wesentlicher Teil der Einordnung.' },
-  { title: 'Ein Einzelzeichen stellt keine Diagnose.', detail: 'Sportherz, Belastung des RV, Myokarditis und Artefakte können überlappen. Fehlendes LGE schließt ARVC nicht aus; Fett oder LGE allein beweisen keine ACM.' },
+  {
+    title: localized("ACM ist häufig erblich. Narben begünstigen ventrikuläre Arrhythmien.", "ACM is often inherited. Scarring predisposes to ventricular arrhythmias.", "ACM اغلب ارثی است و اسکار زمینه‌ساز آریتمی‌های بطنی است."),
+    detail: localized("Herzmuskel kann durch Bindegewebe und teilweise durch Fett ersetzt werden. Ventrikuläre Arrhythmien können schon bei erhaltener Pumpfunktion auftreten.", "Heart muscle may be replaced by fibrous tissue and sometimes fat. Ventricular arrhythmias can occur while systolic function is still preserved.", "ممکن است فیبروز و گاهی چربی جای بخشی از عضلهٔ قلب را بگیرند. آریتمی بطنی حتی با عملکرد سیستولی حفظ‌شده ممکن است رخ دهد."),
+  },
+  {
+    title: localized("ARVC ist die rechtsdominante Form. Bei ACM kann auch der LV betroffen sein.", "ARVC is the right-dominant form. ACM can also involve the LV.", "ARVC شکل راست‌غالب است. در ACM بطن چپ هم ممکن است درگیر باشد."),
+    detail: localized("Die Beteiligung kann rechtsdominant, biventrikulär oder linksdominant sein. Beurteile im MRT deshalb beide Herzkammern.", "Involvement may be right-dominant, biventricular, or left-dominant. Assess both ventricles on MRI.", "درگیری می‌تواند راست‌غالب، دوبطنی یا چپ‌غالب باشد. به همین دلیل در MRI هر دو بطن را بررسی کنید."),
+  },
+  {
+    title: localized("Cine zeigt Bewegung und Pumpfunktion. LGE zeigt das Narbenmuster.", "Cine shows motion and systolic function. LGE shows the scar pattern.", "Cine حرکت و عملکرد پمپاژ را نشان می‌دهد. LGE الگوی اسکار را مشخص می‌کند."),
+    detail: localized("Im Cine regionale Wandbewegung, Volumina und Ejektionsfraktion erfassen. Im LGE Lage und Verteilung der Narbe beschreiben. Fehlendes LGE schließt ARVC nicht aus.", "Use cine to assess regional wall motion, volumes, and ejection fraction. Describe the location and distribution of scar on LGE. Absence of LGE does not exclude ARVC.", "در Cine حرکت موضعی دیواره، حجم و کسر جهشی را ارزیابی کنید. در LGE محل و توزیع اسکار را توصیف کنید. نبود LGE، ARVC را رد نمی‌کند."),
+  },
+  {
+    title: localized("TFC 2010 prüft vor allem den RV. Padua 2020 ergänzt LV- und LGE-Kriterien.", "The 2010 TFC focus on the RV. Padua 2020 adds LV and LGE criteria.", "تمرکز TFC ۲۰۱۰ بر بطن راست است. پادوا ۲۰۲۰ معیارهای بطن چپ و LGE را اضافه می‌کند."),
+    detail: localized("Bei TFC muss im MRT eine regionale RV-Bewegungsstörung mit einem erhöhten RVEDVi oder einer verminderten RVEF zusammenkommen. Für die isoliert linksventrikuläre Form verlangt Padua typisches LV-LGE und eine passende pathogene oder wahrscheinlich pathogene Genvariante.", "Under TFC, a regional RV wall motion abnormality on MRI must accompany increased RVEDVi or reduced RVEF. For isolated left ventricular disease, Padua requires characteristic LV LGE together with an appropriate pathogenic or likely pathogenic genetic variant.", "در TFC، اختلال موضعی حرکت دیوارهٔ بطن راست در MRI باید همراه با افزایش RVEDVi یا کاهش RVEF باشد. برای درگیری محدود به بطن چپ، پادوا الگوی شاخص LGE بطن چپ و یک واریانت بیماری‌زا یا احتمالاً بیماری‌زای مرتبط را لازم می‌داند."),
+  },
+  {
+    title: localized("Die Diagnose verbindet MRT, EKG, Rhythmusdiagnostik und Familienanamnese oder Genetik.", "Diagnosis combines MRI, ECG, rhythm assessment, and family history or genetics.", "تشخیص با کنار هم گذاشتن MRI، نوار قلب، بررسی ریتم و سابقهٔ خانوادگی یا ژنتیک انجام می‌شود."),
+    detail: localized("Synkope, ventrikuläre Tachykardie oder plötzlicher Herztod in der Familie können den Verdacht verstärken. Bei RV-Dilatation oder nichtischämischem LGE auch an Sportherz, RV-Belastung beziehungsweise Myokarditis oder Sarkoidose denken.", "Syncope, ventricular tachycardia, or a family history of sudden cardiac death can raise suspicion. Consider athlete’s heart or RV overload in RV dilatation, and myocarditis or sarcoidosis in non-ischaemic LGE.", "سنکوپ، تاکی‌کاردی بطنی یا سابقهٔ مرگ ناگهانی قلبی در خانواده می‌تواند شک را بیشتر کند. در اتساع بطن راست به قلب ورزشکار یا اضافه‌بار بطن راست و در LGE غیرایسکمیک به میوکاردیت یا سارکوئیدوز هم فکر کنید."),
+  },
 ]

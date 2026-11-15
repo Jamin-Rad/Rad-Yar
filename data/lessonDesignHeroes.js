@@ -208,7 +208,7 @@ export const LESSON_DESIGN_HEROES = {
   "/thorax/hrct/dichteanhebung": "/educational/lesson-design/thorax--hrct--dichteanhebung.webp",
   "/thorax/hrct/dichteminderung": "/educational/lesson-design/thorax--hrct--dichteminderung.webp",
   "/thorax/hrct/retikulaer-nodulaer": "/educational/lesson-design/thorax--hrct--retikulaer-nodulaer.webp",
-  "/thorax/kardio/arvc": "/educational/lesson-design/thorax--kardio--arvc.webp",
+  "/thorax/kardio/arvc": "/educational/lesson-design/thorax--kardio--arvc-heart.webp",
   "/thorax/kardio/kardio-mrt-basics": "/educational/lesson-design/thorax--kardio--kardio-mrt-basics.webp",
   "/thorax/kardio/kardio-mrt-indikationen": "/educational/lesson-design/thorax--kardio--kardio-mrt-indikationen.webp",
   "/thorax/kardio/kardiomyopathien": "/educational/lesson-design/thorax--kardio--kardiomyopathien.webp",
