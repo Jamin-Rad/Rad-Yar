@@ -13,6 +13,16 @@ const COPY = {
   "Einordnung anzeigen": { en: "Reveal interpretation", fa: "نمایش تفسیر" },
   "Die Diagnose stützt sich auf mehrere Befunde. Das MRT liefert nur einen Teil davon.": { en: "Diagnosis combines several findings. MRI provides only part of the evidence.", fa: "تشخیص بر ترکیب چند یافته استوار است. MRI فقط بخشی از شواهد را فراهم می‌کند." },
   "Fallbeispiel": { en: "Case example", fa: "نمونهٔ بالینی" },
+  "Task-Force-Kriterien (TFC 2010)": { en: "Task Force Criteria (2010 TFC)", fa: "معیارهای کارگروه تخصصی (TFC ۲۰۱۰)" },
+  "Die TFC dienen der Diagnose der klassischen ARVC. Sie kombinieren Haupt- und Nebenkriterien aus Bildgebung, EKG, Rhythmusdiagnostik, Histologie und Familienanamnese oder Genetik.": {
+    en: "The TFC are used to diagnose classic ARVC. They combine major and minor criteria from imaging, ECG, rhythm assessment, histology, and family history or genetics.",
+    fa: "معیارهای TFC برای تشخیص ARVC کلاسیک به‌کار می‌روند. این چارچوب معیارهای اصلی و فرعی را از تصویربرداری، نوار قلب، بررسی ریتم، بافت‌شناسی و سابقهٔ خانوادگی یا ژنتیک ترکیب می‌کند."
+  },
+  "Padua-Kriterien (2020)": { en: "Padua Criteria (2020)", fa: "معیارهای پادوا (۲۰۲۰)" },
+  "Die Padua-Kriterien erfassen rechtsdominante, biventrikuläre und linksdominante Formen der ACM. Im MRT beziehen sie auch typische Narbenmuster im Late Gadolinium Enhancement (LGE) ein.": {
+    en: "The Padua Criteria cover right-dominant, biventricular, and left-dominant forms of ACM. They also include characteristic scar patterns on late gadolinium enhancement (LGE) imaging.",
+    fa: "معیارهای پادوا انواع ACM با غلبهٔ بطن راست، درگیری هر دو بطن یا غلبهٔ بطن چپ را پوشش می‌دهند. در MRI، الگوهای شاخص اسکار در تصاویر تقویت دیررس گادولینیوم (LGE) هم در نظر گرفته می‌شوند."
+  },
   "RV-Dilatation und systolische Dysfunktion": { en: "RV dilatation and systolic dysfunction", fa: "اتساع و اختلال عملکرد سیستولی بطن راست" },
   "Erhöhtes enddiastolisches RV-Volumen, bezogen auf die Körperoberfläche (RVEDVi).": { en: "Increased RV end-diastolic volume indexed to body surface area (RVEDVi).", fa: "افزایش حجم پایان دیاستولی بطن راست نسبت به سطح بدن (RVEDVi)." },
   "Diagnostische Bedeutung": { en: "Diagnostic significance", fa: "اهمیت تشخیصی" },

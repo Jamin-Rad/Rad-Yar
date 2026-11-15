@@ -4,14 +4,15 @@ import { useLanguage } from '@/providers/LanguageProvider'
 import { localizeArvcTree } from './lessonTranslations'
 
 import { useState } from 'react'
+import LessonCaseFile from '@/components/LessonCaseFile'
 import { TfcRuleDiagram } from './AcmIllustrations'
+import { getAcmCaseData } from './CaseAtlas'
 import { Note, Tabs, TeachingTable } from './LessonVisuals'
 import styles from './page.module.css'
 
 const CRITERIA_TABS = [
   { id: 'tfc', label: 'TFC 2010' },
   { id: 'padua', label: 'Padua 2020' },
-  { id: 'example', label: 'Fallbeispiel' },
 ]
 
 function TfcExplanation() {
@@ -60,22 +61,25 @@ function PaduaExplanation() {
 }
 
 function CriteriaExample() {
-  const { lang: _arvcLang } = useLanguage()
+  const { lang } = useLanguage()
+  const caseData = getAcmCaseData('39806', lang, 'acm-criteria-series')
+  const measurements = {
+    de: ['RVEDVi: 115 ml/m²', 'RVEF: 41 %'],
+    en: ['RVEDVi: 115 mL/m²', 'RVEF: 41%'],
+    fa: ['حجم پایان دیاستول شاخص‌شدهٔ بطن راست: ۱۱۵ میلی‌لیتر بر متر مربع', 'کسر جهشی بطن راست: ۴۱٪'],
+  }
 
-  return localizeArvcTree(<>
-    <h3 className={styles.subheading}>Vom Cine zum TFC-MRT-Baustein</h3>
-    {_arvcLang === 'fa' ? <p className={styles.bodyText}>Cine فصل تصاویر مربوط به <strong>مرد ۵۰ ساله با ARVC شناخته‌شده</strong> است که پس از ابلیشن RVOT بررسی شده است. گزارش اصلی، برآمدگی‌های آنوریسمی و دیسکینتیک RV را با RVEDVi برابر <strong>115 ml/m²</strong> و RVEF برابر <strong>41 %</strong> توصیف می‌کند.</p> : <p className={styles.bodyText}>Das Cine aus dem MRT-Kapitel gehört zu einem <strong>50-jährigen Mann mit bekannter ARVC</strong>, untersucht nach einer RVOT-Ablation. Die Originalbeschreibung nennt dyskinetische, aneurysmatische RV-Ausbuchtungen, einen RVEDVi von <strong>115 ml/m²</strong> und eine RVEF von <strong>41 %</strong>.</p>}
-    <details className={styles.mrtDetails}>
-      <summary>Einordnung anzeigen</summary>
-    <ol className={styles.essentialList}>
-      <li><strong>Regional:</strong> Die beschriebene Dyskinesie erfüllt den geforderten regionalen Teil.</li>
-      <li><strong>Global:</strong> 115 ml/m² liegt beim Mann über der Major-Grenze für das RVEDVi. Die RVEF von 41 % liegt dagegen im Minor-Bereich.</li>
-      <li><strong>Zusammenführen:</strong> Das ergibt einen Major-MRT-Baustein aus dieser Kategorie. Volumen und EF werden nicht als zwei getrennte Kriterien addiert.</li>
-    </ol>
-    <Note title="Warum der Zusammenhang wichtig ist">Bei denselben Zahlen ohne die geforderte regionale Störung wäre der MRT-Baustein der TFC 2010 nicht erfüllt. Und selbst ein erfüllter MRT-Baustein ersetzt nicht die übrige diagnostische Einordnung.</Note>
-    </details>
-    <p className={styles.caption}>Zahlen und Bewegungsbefund aus dem Originalfall von Tim Luijkx: <a href="https://radiopaedia.org/cases/39806" target="_blank" rel="noreferrer">Radiopaedia rID 39806</a>. Dies erklärt die Kriterien anhand einer bereits diagnostizierten Erkrankung.</p>
-  </>, _arvcLang)
+  return <LessonCaseFile lang={lang} caseData={{
+    ...caseData,
+    findings: [caseData.findings[0], ...(measurements[lang] || measurements.de), caseData.findings[1]],
+    revealDiagnosis: true,
+    revealLabel: { de: 'Einordnung nach TFC 2010 anzeigen', en: 'Show 2010 TFC interpretation', fa: 'نمایش تفسیر بر اساس TFC ۲۰۱۰' },
+    interpretation: {
+      de: 'Die regionale RV-Dyskinesie und das RVEDVi von 115 ml/m² erfüllen zusammen ein Major-MRT-Kriterium. Die RVEF von 41 % liegt im Minor-Bereich derselben Kategorie. Für die Gesamtdiagnose zählen zusätzlich Befunde aus anderen Kategorien.',
+      en: 'Regional RV dyskinesia and an RVEDVi of 115 mL/m² together fulfill one major CMR criterion. The RVEF of 41% falls in the minor range within the same category. The overall diagnosis also requires findings from other categories.',
+      fa: 'دیسکینزی موضعی بطن راست همراه با حجم پایان دیاستول شاخص‌شدهٔ ۱۱۵ میلی‌لیتر بر متر مربع، یک معیار اصلی MRI را برآورده می‌کند. کسر جهشی ۴۱٪ در محدودهٔ معیار فرعیِ همان دسته است. برای تشخیص نهایی، یافته‌های دسته‌های دیگر هم لازم‌اند.',
+    },
+  }}/>
 }
 
 export default function CriteriaOverview() {
@@ -84,9 +88,22 @@ export default function CriteriaOverview() {
   const [selected, setSelected] = useState(0)
   return localizeArvcTree(<>
     <p className={styles.lead}>Die Diagnose stützt sich auf mehrere Befunde. Das MRT liefert nur einen Teil davon.</p>
+    <dl className={styles.mriSequenceSummary}>
+      <div>
+        <dt>Task-Force-Kriterien (TFC 2010)</dt>
+        <dd>Die TFC dienen der Diagnose der klassischen ARVC. Sie kombinieren Haupt- und Nebenkriterien aus Bildgebung, EKG, Rhythmusdiagnostik, Histologie und Familienanamnese oder Genetik.</dd>
+      </div>
+      <div>
+        <dt>Padua-Kriterien (2020)</dt>
+        <dd>Die Padua-Kriterien erfassen rechtsdominante, biventrikuläre und linksdominante Formen der ACM. Im MRT beziehen sie auch typische Narbenmuster im Late Gadolinium Enhancement (LGE) ein.</dd>
+      </div>
+    </dl>
     <div className={styles.explorer}>
       <Tabs label="TFC und Padua erklären" items={CRITERIA_TABS} selected={selected} onChange={setSelected} idPrefix="criteria"/>
-      <div className={`${styles.criteriaReading} ${styles.mrtPanel}`} id="criteria-panel" role="tabpanel" aria-labelledby={`criteria-tab-${selected}`}>{selected === 0 ? <TfcExplanation/> : selected === 1 ? <PaduaExplanation/> : <CriteriaExample/>}</div>
+      <div className={`${styles.criteriaReading} ${styles.mrtPanel}`} id="criteria-panel" role="tabpanel" aria-labelledby={`criteria-tab-${selected}`} tabIndex={0}>{selected === 0 ? <TfcExplanation/> : <PaduaExplanation/>}</div>
     </div>
+    <hr className={styles.mriCaseDivider}/>
+    <h3 className={styles.subheading}>Fallbeispiel</h3>
+    <CriteriaExample/>
   </>, _arvcLang)
 }

@@ -73,14 +73,14 @@ const SERIES = {
   ],
 }
 
-function CaseSeries({ item, lang }) {
+function CaseSeries({ item, lang, idPrefix }) {
   const [selected, setSelected] = useState(0)
   const sequences = SERIES[item.id]
   const sequence = sequences[selected]
   const view = item.views.find(entry => entry.file === sequence.file)
   const stack = seriesManifest.find(entry => entry.caseId === Number(item.id) && entry.directory === sequence.directory)
   const frames = stack?.frames.map(frame => `/thorax/kardio/arvc/${stack.directory}/${frame.file}`)
-  const prefix = `acm-series-${item.id}`
+  const prefix = `${idPrefix}-${item.id}`
 
   return <div className={styles.caseSeries}>
     <Tabs label="MRT-Sequenz auswählen" items={sequences} selected={selected} onChange={setSelected} idPrefix={prefix}/>
@@ -96,26 +96,25 @@ function CaseSeries({ item, lang }) {
   </div>
 }
 
+export function getAcmCaseData(caseId, lang, idPrefix = 'acm-series') {
+  const example = examples.find(entry => entry.id === caseId)
+  const item = CASES.find(entry => entry.id === caseId)
+
+  return {
+    variant: 'compact',
+    heading: example.label[lang] || example.label.de,
+    title: { de: 'Anamnese', en: 'Clinical history', fa: 'شرح حال' },
+    description: [example.history],
+    findings: example.findings[lang] || example.findings.de,
+    url: item.study + '?new_full_screen_viewer=true',
+    media: <CaseSeries item={item} lang={lang} idPrefix={idPrefix}/>,
+    credit: <>{item.creator} · <a href={item.url}>Radiopaedia · rID {item.id}</a> · <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/">CC BY-NC-SA 3.0</a></>,
+  }
+}
+
 export default function CaseAtlas() {
   const { lang } = useLanguage()
-  const items = examples.map(example => {
-    const item = CASES.find(entry => entry.id === example.id)
-    const studyUrl = item.study + '?new_full_screen_viewer=true'
-    return {
-      id: item.id,
-      label: example.label,
-      caseData: {
-        variant: 'compact',
-        heading: example.label,
-        title: { de: 'Anamnese', en: 'Clinical history', fa: 'شرح حال' },
-        description: [example.history],
-        findings: example.findings[lang] || example.findings.de,
-        url: studyUrl,
-        media: <CaseSeries item={item} lang={lang}/>,
-        credit: <>{item.creator} · <a href={item.url}>Radiopaedia · rID {item.id}</a> · <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/">CC BY-NC-SA 3.0</a></>,
-      },
-    }
-  })
+  const items = examples.map(({ id, label }) => ({ id, label, caseData: getAcmCaseData(id, lang) }))
 
   return <LessonCaseGallery items={items} lang={lang} label={arvcText('MRT-Beispiele', lang)} idPrefix="acm-cases"/>
 }

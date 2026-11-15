@@ -162,7 +162,7 @@ export default function RadiopaediaFile({ lang, caseData }) {
           <h4 id={findingsId}>{pick(L('Was sehen wir?', 'What do we see?', 'چه می‌بینیم؟'), lang)}</h4>
           <ol>{caseData.findings.map((finding, index) => <li key={pick(finding, lang)}><span>{index + 1}</span><p>{pick(finding, lang)}</p></li>)}</ol>
           {caseData.interpretation && (caseData.revealDiagnosis ? <details className={styles.caseInterpretation}>
-            <summary>{pick(L('Diagnose anzeigen', 'Reveal diagnosis', 'نمایش تشخیص'), lang)}</summary>
+            <summary>{pick(caseData.revealLabel ?? L('Diagnose anzeigen', 'Reveal diagnosis', 'نمایش تشخیص'), lang)}</summary>
             <p>{pick(caseData.interpretation, lang)}</p>
           </details> : <div className={styles.caseInterpretation}>
             <strong>{pick(L('Entscheidender Befund', 'Key interpretation', 'یافته کلیدی'), lang)}</strong>
