@@ -1,0 +1,71 @@
+.home {
+  position: relative;
+  display: flow-root;
+  min-height: 100svh;
+  color: #f8fbff;
+  background: #142b43 url('/mobin/latin-arcade.webp') center / cover no-repeat;
+  font-family: var(--font-manrope), system-ui, sans-serif;
+}
+
+.back {
+  position: absolute;
+  top: 2.2%;
+  left: clamp(18px, 3vw, 52px);
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: #fff;
+  font-size: clamp(1rem, 1.8vw, 1.7rem);
+  font-weight: 700;
+  text-shadow: 0 1px 6px #071527;
+  text-decoration: none;
+}
+
+.home h1 {
+  position: absolute;
+  top: 14.4%;
+  left: clamp(24px, 4.5vw, 72px);
+  color: #fff;
+  margin: 0;
+  font-size: clamp(3.2rem, 5.5vw, 5.6rem);
+  font-weight: 800;
+  letter-spacing: -.035em;
+  line-height: 1.05;
+  text-shadow: 0 2px 18px #0c1f38b5;
+}
+
+.topic {
+  position: absolute;
+  top: 51.8%;
+  inset-inline: clamp(18px, 2.15vw, 36px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: clamp(132px, 18.6svh, 224px);
+  gap: clamp(12px, 3vw, 50px);
+  padding: clamp(16px, 2svh, 24px) clamp(24px, 3.6vw, 60px);
+  border-radius: 5px;
+  background: #09233cdb;
+  color: #f8fbff;
+  text-decoration: none;
+  transition: background-color .2s ease;
+}
+
+.topic:hover { background-color: #123c61f2; }
+.home a:focus-visible { outline: 3px solid #e0efff; outline-offset: 4px; }
+.topic strong { display: block; font-size: clamp(2rem, 4.1vw, 4.4rem); line-height: 1.12; letter-spacing: -.025em; }
+.topic small { display: block; margin-top: .35em; font-size: clamp(1rem, 2.15vw, 2.2rem); line-height: 1.35; }
+.arrow { flex: none; font-size: clamp(2rem, 5vw, 5rem); line-height: 1; }
+
+@media (max-width: 640px) {
+  .home { background-position: 44% center; }
+  .topic { min-height: 122px; }
+}
+
+@media (max-height: 475px) {
+  .home { min-height: 475px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .topic { transition: none; }
+}

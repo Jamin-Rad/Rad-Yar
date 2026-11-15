@@ -2,9 +2,7 @@ import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import PlaceholderPage from '../../PlaceholderPage'
 import LanguageHome from '../../LanguageHome'
-import SubjectHeader from '../../SubjectHeader'
-import learning from '../../learning.module.css'
-import endungen from '../latein/endungen/endungen.module.css'
+import latin from '../latein/latin-home.module.css'
 
 const subjects = {
   nwt: 'NWT',
@@ -33,14 +31,13 @@ export default async function FachPage({ params }) {
   if (!title) notFound()
   if (fach === 'latein') {
     return (
-      <main className={learning.shell}>
-        <div className={learning.subjectWrap} data-subject="latin">
-          <SubjectHeader title={title} mark="Salve" />
-          <Link className={endungen.launch} href="/mobin/fach/latein/endungen">
-            <span><strong>Grammatiktest · Endungen</strong><small>40 Trainingsaufgaben und drei Tests</small></span>
-            <span aria-hidden="true">→</span>
-          </Link>
-        </div>
+      <main className={latin.home} lang="de">
+        <Link className={latin.back} href="/mobin?bereich=1">← Mobin</Link>
+        <h1>{title}</h1>
+        <Link className={latin.topic} href="/mobin/fach/latein/endungen">
+          <span><strong>Endungen</strong><small>Präsens, esse und Akkusativ</small></span>
+          <span className={latin.arrow} aria-hidden="true">→</span>
+        </Link>
       </main>
     )
   }
