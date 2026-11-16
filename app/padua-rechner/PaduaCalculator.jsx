@@ -6,7 +6,7 @@ import Icon from '@/components/rechner/Icons'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { useTheme } from '@/providers/ThemeProvider'
 import { categories } from './criteria.mjs'
-import { evaluateFindings, GROUPS, isReviewed, L, optionsFor, questionsFor, validMeasurements } from './workflow.mjs'
+import { evaluateFindings, GROUPS, isReviewed, L, optionsFor, questionsFor, selectFinding, validMeasurements } from './workflow.mjs'
 import kaiser from '@/app/kaiser-score/page.module.css'
 import styles from './page.module.css'
 
@@ -20,11 +20,9 @@ const COPY = {
   language: L('Sprache', 'Language', 'زبان'),
   categories: L('Kategorien', 'Categories', 'دسته‌ها'),
   reviewed: L('Beurteilt', 'Reviewed', 'ارزیابی‌شده'),
-  select: L('Markiere die Befunde, die dokumentiert sind.', 'Select the documented findings.', 'یافته‌های ثبت‌شده را انتخاب کنید.'),
   next: L('Weiter', 'Next', 'بعدی'),
   negative: L('Keiner dieser Befunde', 'None of these findings', 'هیچ‌کدام از این یافته‌ها'),
   skip: L('Nicht beurteilbar', 'Not assessable', 'قابل ارزیابی نیست'),
-  incompleteAnswer: L('Nicht oder nur teilweise untersucht.', 'Unavailable or only partially assessed.', 'بررسی انجام نشده یا ناقص است.'),
   back: L('Zurück', 'Back', 'بازگشت'),
   result: L('Auswertung', 'Assessment', 'نتیجه'),
   provisional: L('Vorläufige Einordnung', 'Provisional assessment', 'نتیجهٔ موقت'),
@@ -59,7 +57,8 @@ const COPY = {
   padua: L('Padua 2020 · ACM', 'Padua 2020 · ACM', 'پادوا ۲۰۲۰ · ACM'),
   comparisonHint: L('Beide Auswertungen verwenden dieselben Angaben. Die Kriterien werden pro System getrennt gewertet.', 'Both assessments use the same findings. Each system scores its own criteria independently.', 'هر دو ارزیابی از یافته‌های یکسان استفاده می‌کنند. هر سیستم معیارهای خود را جداگانه امتیاز می‌دهد.'),
   unknown: L('Unvollständige Angaben können die Einstufung oder den Phänotyp verändern.', 'Missing information can change the tier or phenotype.', 'اطلاعات ناقص ممکن است رده یا فنوتیپ را تغییر دهند.'),
-  measurementsHint: L('Die festen TFC-Grenzwerte hier gelten für Erwachsene. Ein verwertbarer auffälliger Messwert kann genügen. Fehlende Werte leer lassen.', 'The fixed TFC thresholds here apply to adults. One abnormal valid measurement can suffice. Leave unavailable values blank.', 'آستانه‌های ثابت TFC در اینجا برای بزرگسالان است. یک مقدار غیرطبیعی معتبر می‌تواند کافی باشد. مقادیر ناموجود را خالی بگذارید.'),
+  measurementsHint: L('TFC 2010 · Grenzwerte für Erwachsene', 'TFC 2010 · Adult thresholds', 'TFC ۲۰۱۰ · آستانه‌های بزرگسالان'),
+  noMeasurements: L('Keine Messwerte verfügbar', 'Measurements unavailable', 'مقادیر اندازه‌گیری در دسترس نیست'),
   sex: L('Referenzgruppe für RVEDVi', 'RVEDVi reference group', 'گروه مرجع RVEDVi'),
   female: L('Weiblich', 'Female', 'زن'),
   male: L('Männlich', 'Male', 'مرد'),
@@ -68,7 +67,6 @@ const COPY = {
   ef: L('RVEF (%)', 'RVEF (%)', 'RVEF (٪)'),
   invalid: L('RVEDVi muss größer als 0 sein. RVEF muss zwischen 0 und 100 % liegen. Bitte nur Zahlen eingeben.', 'RVEDVi must be above zero. RVEF must be between 0 and 100%. Enter numbers only.', 'RVEDVi باید بزرگ‌تر از صفر باشد. RVEF باید بین ۰ و ۱۰۰٪ باشد. فقط عدد وارد کنید.'),
   noneInCategory: L('Kein Kriterium belegt', 'No criterion established', 'معیاری ثبت نشده'),
-  sections: L('Untersuchungen', 'Examinations', 'بررسی‌ها'),
   scoredFindings: L('Kriterien im Detail', 'Criteria breakdown', 'جزئیات معیارها'),
 }
 
@@ -138,15 +136,19 @@ export default function PaduaCalculator() {
   const panel = useRef(null)
   const label = value => value[lang] || value.de
   const t = key => label(COPY[key])
-  const steps = questionsFor(answers)
+  const questions = questionsFor(answers)
+  const measures = questions.find(item => item.id === 'rv-values')
+  const rvGlobal = questions.find(item => item.id === 'rv-global')
+  const steps = questions.filter(item => !measures || item !== rvGlobal)
   const current = steps[step]
   const isResult = !current
-  const choices = current ? optionsFor(current, answers) : []
-  const active = current ? answers[current.id] || [] : []
   const valid = validMeasurements(values)
-  const canAdvance = isResult || (current.type === 'measurements' ? valid && (values.unavailable || values.ef || values.edvi) : active.length > 0)
+  const hasAnswer = item => Boolean(answers[item.id]?.length)
+  const canAdvance = isResult || (current === measures
+    ? valid && (values.unavailable || values.ef || values.edvi) && (!rvGlobal || hasAnswer(rvGlobal))
+    : hasAnswer(current))
   const assessment = isResult ? evaluateFindings(answers, values) : null
-  const provisional = steps.some(item => !isReviewed(item, answers, values))
+  const provisional = questions.some(item => !isReviewed(item, answers, values))
   const lessonHref = `/thorax/kardio/arvc${lang === 'de' ? '' : `?lang=${lang}`}#kriterien`
 
   function goTo(index) {
@@ -157,17 +159,33 @@ export default function PaduaCalculator() {
     })
   }
 
-  function choose(id) {
-    const selected = active.includes(id)
-    let next
-    if (selected) next = active.filter(value => value !== id)
-    else if (id === 'none' || current.single) next = [id]
-    else next = [...active.filter(value => value !== 'none'), id]
+  function choose(item, id) {
     setAnswers(previous => ({
       ...previous,
-      [current.id]: next,
-      ...(current.id === 'family' ? { 'family-arvc': [] } : {}),
+      [item.id]: selectFinding(item, previous[item.id] || [], id),
+      ...(item.id === 'family' ? { 'family-arvc': [] } : {}),
+      ...(item.id === 'rv-motion' ? { 'rv-global': [] } : {}),
     }))
+    if (item.id === 'rv-motion') setValues(EMPTY_VALUES)
+  }
+
+  function renderChoices(item) {
+    const selected = answers[item.id] || []
+    return <div key={item.id}>
+      <div className={`${kaiser.options} ${styles.options}`}>
+        {optionsFor(item, answers).map(choice => {
+          const marked = selected.includes(choice.id)
+          return <button key={choice.id} type="button" className={marked ? kaiser.optionSelected : undefined} aria-pressed={marked} onClick={() => choose(item, choice.id)}>
+            <i aria-hidden="true">{marked ? '✓' : ''}</i>
+            <span className={kaiser.optionCopy}><strong>{label(choice.title)}</strong>{choice.text && <small>{label(choice.text)}</small>}</span>
+          </button>
+        })}
+      </div>
+      <div className={styles.alternatives}>
+        <button type="button" aria-pressed={selected.includes('none')} onClick={() => choose(item, 'none')}>{t('negative')}</button>
+        <button type="button" aria-pressed={selected.includes('unknown')} onClick={() => choose(item, 'unknown')}>{t('skip')}</button>
+      </div>
+    </div>
   }
 
   function changeMeasurement(event) {
@@ -201,27 +219,25 @@ export default function PaduaCalculator() {
         <div className={`${kaiser.intro} ${styles.intro}`}>
           <h1>{t('subject')}<span>{t('accordingTo')} <em>{t('systems')}</em></span></h1>
         </div>
-        <nav className={styles.navigation} aria-label={t('sections')}>
+        <div className={styles.navigation} role="group" aria-label={t('categories')}>
           <ol>
-            {Object.entries(GROUPS).map(([id, name]) => {
-              const completed = steps.filter(item => item.group === id).every(item => isReviewed(item, answers, values))
-              return <li key={id}>
-                <button type="button" onClick={() => goTo(steps.findIndex(item => item.group === id))} aria-current={current?.group === id ? 'step' : undefined}>
-                  {label(name)}{completed && <span aria-label={t('reviewed')}>✓</span>}
-                </button>
+            {Object.entries(GROUPS).map(([id, name], index) => {
+              const group = questions.filter(item => item.group === id)
+              const completed = group.every(item => isReviewed(item, answers, values))
+              return <li key={id} aria-current={current?.group === id ? 'step' : undefined}>
+                <bdi>{categories[index].number}</bdi> {label(name)}{completed && <span aria-label={t('reviewed')}>✓</span>}
               </li>
             })}
           </ol>
-          <button className={styles.resultLink} type="button" onClick={() => goTo(steps.length)} aria-current={isResult ? 'step' : undefined}>{t('result')}</button>
-        </nav>
+        </div>
         <section ref={panel} className={`${kaiser.question} ${styles.panel}`} aria-labelledby="padua-step" tabIndex={-1}>
           {isResult ? <Result assessment={assessment} provisional={provisional} t={t} label={label}/> : <>
             <header className={styles.prompt} key={current.id}>
-              <p className={styles.progress}><bdi>{step + 1}/{steps.length}</bdi> · {label(GROUPS[current.group])}</p>
-              <h2 id="padua-step">{label(current.title)}</h2>
-              <p>{t(current.type === 'measurements' ? 'measurementsHint' : 'select')}</p>
+              <p className={styles.progress}><bdi>{step + 1}/{steps.length}</bdi> · {current.group === 'cine' && current.id !== 'other-imaging' ? 'Cine-MRT' : label(GROUPS[current.group])}</p>
+              <h2 id="padua-step">{label(current === rvGlobal ? L('RV-Volumen und RVEF?', 'RV volume and RVEF?', 'حجم و کسر جهشی بطن راست؟') : current.title)}</h2>
             </header>
-            {current.type === 'measurements' ? <>
+            {current === measures && <>
+              <p className={styles.hint}>{t('measurementsHint')}</p>
               <div className={styles.measurements}>
                 <label>{t('sex')}<select name="sex" value={values.sex} onChange={changeMeasurement}>
                   <option value="">{t('unspecified')}</option>
@@ -233,33 +249,22 @@ export default function PaduaCalculator() {
               </div>
               {!valid && <p className={styles.invalid} role="alert">{t('invalid')}</p>}
               <div className={styles.alternatives}>
-                <button type="button" aria-pressed={values.unavailable} onClick={() => setValues(values.unavailable ? EMPTY_VALUES : { ...EMPTY_VALUES, unavailable: true })}>{t('skip')}</button>
-              </div>
-            </> : <>
-              <div className={`${kaiser.options} ${styles.options}`} key={`${current.id}-options`}>
-                {choices.map(choice => {
-                  const marked = active.includes(choice.id)
-                  return <button type="button" key={choice.id} className={marked ? kaiser.optionSelected : undefined} aria-pressed={marked} onClick={() => choose(choice.id)}>
-                    <i aria-hidden="true">{marked ? '✓' : ''}</i>
-                    <span className={kaiser.optionCopy}>
-                      <strong>{label(choice.title)}</strong>
-                      {choice.text && <small>{label(choice.text)}</small>}
-                    </span>
-                  </button>
-                })}
-              </div>
-              <div className={styles.alternatives}>
-                <button type="button" aria-pressed={active.includes('none')} onClick={() => choose('none')}>{t('negative')}</button>
-                <button type="button" aria-pressed={active.includes('unknown')} onClick={() => choose('unknown')} title={t('incompleteAnswer')}>{t('skip')}</button>
+                <button type="button" aria-pressed={values.unavailable} onClick={() => setValues(values.unavailable ? EMPTY_VALUES : { ...EMPTY_VALUES, unavailable: true })}>{t('noMeasurements')}</button>
               </div>
             </>}
+            {current === measures && rvGlobal && <div className={styles.referenceFindings}>
+              <h3>Padua 2020</h3>
+              {renderChoices(rvGlobal)}
+              <p className={styles.hint}>{label(rvGlobal.hint)}</p>
+            </div>}
+            {current !== measures && renderChoices(current)}
             {current.hint && <p className={`${kaiser.questionHelp} ${styles.hint}`}>{label(current.hint)}</p>}
           </>}
         </section>
         <footer className={`${kaiser.actions} ${styles.actions}`}>
           <button type="button" className={kaiser.backButton} onClick={() => goTo(step - 1)} disabled={step === 0}><Icon name="arrow" className={styles.backArrow}/>{t('back')}</button>
           <button type="button" className={kaiser.nextButton} disabled={!canAdvance} onClick={isResult ? reset : () => goTo(step + 1)}>
-            {isResult ? t('reset') : t('next')}<Icon name={isResult ? 'reset' : 'arrow'}/>
+            {isResult ? t('reset') : step === steps.length - 1 ? t('result') : t('next')}<Icon name={isResult ? 'reset' : 'arrow'}/>
           </button>
         </footer>
       </section>

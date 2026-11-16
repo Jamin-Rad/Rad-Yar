@@ -16,22 +16,23 @@ const repolRv = ['v1-v3', 'v1-v2', 'v1-v4-rbbb']
 const familyIds = ['family-definite', 'family-pathology', 'family-suspected', 'family-sudden', 'family-second']
 
 export const GROUPS = {
-  cine: L('Cine-MRT', 'Cine MRI', 'Cine MRI'),
-  tissue: L('LGE & Zusatzbefunde', 'LGE & additional tests', 'LGE و بررسی تکمیلی'),
-  ecg: L('EKG', 'ECG', 'نوار قلب'),
+  cine: L('Form & Funktion', 'Morphology & function', 'شکل و عملکرد'),
+  tissue: L('Myokardgewebe', 'Myocardial tissue', 'بافت میوکارد'),
+  ecg: L('Repolarisation', 'Repolarization', 'رپلاریزاسیون'),
+  conduction: L('Depolarisation', 'Depolarization', 'دپلاریزاسیون'),
   rhythm: L('Rhythmus', 'Rhythm', 'ریتم'),
   family: L('Familie & Genetik', 'Family & genetics', 'خانواده و ژنتیک'),
 }
 
 const QUESTIONS = [
-  question('rv-motion', 'cine', L('Wie bewegt sich die rechte Kammer im Cine?', 'How does the right ventricle move on cine?', 'بطن راست در Cine چگونه حرکت می‌کند؟'), [
+  question('rv-motion', 'cine', L('RV-Wandbewegung?', 'RV wall motion?', 'حرکت دیوارهٔ بطن راست؟'), [
     short('ak-dys-free', 'Akinesie oder Dyskinesie der freien RV-Wand', 'Akinesia or dyskinesia of the RV free wall', 'آکینزی یا دیسکینزی دیوارهٔ آزاد بطن راست'),
     short('ak-dys-other', 'Akinesie oder Dyskinesie in einem anderen RV-Abschnitt', 'Akinesia or dyskinesia in another RV region', 'آکینزی یا دیسکینزی در ناحیهٔ دیگری از بطن راست'),
     short('aneurysm', 'Aneurysma der freien RV-Wand', 'Aneurysm of the RV free wall', 'آنوریسم دیوارهٔ آزاد بطن راست'),
     short('bulging', 'Regionale Ausbuchtung', 'Regional bulging', 'برجستگی موضعی'),
     short('dyssync', 'Dyssynchrone RV-Kontraktion', 'Dyssynchronous RV contraction', 'انقباض ناهماهنگ بطن راست'),
-  ], { hint: L('Nur gesicherte regionale Befunde markieren. Eine isolierte Hypokinesie gehört hier zu „Keiner dieser Befunde“.', 'Select established regional findings only. Use “None of these findings” for isolated hypokinesia.', 'فقط یافته‌های موضعی قطعی را انتخاب کنید. برای هیپوکینزی منفرد، «هیچ‌کدام» را بزنید.') }),
-  question('rv-values', 'cine', L('Welche RV-Messwerte liegen vor?', 'Which RV measurements are available?', 'کدام اندازه‌گیری‌های بطن راست ثبت شده‌اند؟'), [], {
+  ], { hint: L('Eine isolierte RV-Hypokinesie zählt bei TFC und Padua nicht.', 'Isolated RV hypokinesia does not count in TFC or Padua.', 'هیپوکینزی منفرد بطن راست در TFC و پادوا معیار محسوب نمی‌شود.') }),
+  question('rv-values', 'cine', L('RV-Volumen und RVEF?', 'RV volume and RVEF?', 'حجم و کسر جهشی بطن راست؟'), [], {
     type: 'measurements',
     visible: answers => any(answers, 'rv-motion', regionTfc),
   }),
@@ -42,19 +43,20 @@ const QUESTIONS = [
     visible: answers => any(answers, 'rv-motion', regionPadua),
     hint: L('Für Padua gelten Referenzwerte für die Messmethode, das Alter und das Geschlecht. Beim Volumen die Körperoberfläche berücksichtigen.', 'For Padua, use technique-, age- and sex-appropriate reference values. Account for body surface area for volume.', 'برای پادوا از مقادیر مرجع متناسب با روش، سن و جنس استفاده کنید. برای حجم، سطح بدن را هم در نظر بگیرید.'),
   }),
-  question('lv-function', 'cine', L('Was fällt an der linken Kammer auf?', 'What is abnormal in the left ventricle?', 'چه یافته‌ای در بطن چپ وجود دارد؟'), [
-    recorded('lv-function'), recorded('lv-motion'),
-  ], { hint: L('Befunde aus Cine-MRT oder einer anderen geeigneten Untersuchung können hier eingetragen werden.', 'Use findings from cine MRI or another suitable examination.', 'یافته‌های Cine MRI یا بررسی مناسب دیگری را وارد کنید.') }),
-  question('lge', 'tissue', L('Welches Narbenmuster wurde im LGE bestätigt?', 'Which scar pattern was confirmed on LGE?', 'کدام الگوی اسکار در LGE تأیید شده است؟'), [
-    recorded('rv-lge'), recorded('lv-lge'),
-  ], { hint: L('Beide Muster müssen in zwei orthogonalen Ebenen sichtbar sein. Isoliertes Insertions-LGE, ein Infarktmuster oder Fett allein gehören zu „Keiner dieser Befunde“.', 'Both patterns require two orthogonal views. Use “None of these findings” for isolated insertion-point LGE, an infarct pattern, or fat alone.', 'هر دو الگو باید در دو نمای عمود بر هم دیده شوند. برای LGE محدود به محل اتصال، الگوی انفارکتوس یا چربی به‌تنهایی، «هیچ‌کدام» را بزنید.') }),
-  question('other-imaging', 'tissue', L('Gibt es zusätzliche RV-Befunde im Echo oder im Ventrikulogramm?', 'Are there additional RV findings on echo or ventriculography?', 'آیا در اکو یا ونتریکولوگرافی یافتهٔ دیگری در بطن راست وجود دارد؟'), [
+  question('lv-function', 'cine', L('LV-Funktion?', 'LV function?', 'عملکرد بطن چپ؟'), [
+    recorded('lv-function', { title: L('LVEF vermindert, mit oder ohne LV-Dilatation', 'Reduced LVEF, with or without LV dilatation', 'کاهش کسر جهشی بطن چپ، با یا بدون اتساع'), text: null }),
+    recorded('lv-motion', { title: L('Regionale Hypokinesie oder Akinesie', 'Regional hypokinesia or akinesia', 'هیپوکینزی یا آکینزی موضعی'), text: L('Freie LV-Wand oder Septum', 'LV free wall or septum', 'دیوارهٔ آزاد بطن چپ یا سپتوم') }),
+  ]),
+  question('other-imaging', 'cine', L('Gibt es zusätzliche RV-Befunde im Echo oder im Ventrikulogramm?', 'Are there additional RV findings on echo or ventriculography?', 'آیا در اکو یا ونتریکولوگرافی یافتهٔ دیگری در بطن راست وجود دارد؟'), [
     option('echo-major', L('Echo mit deutlich auffälligen Messwerten', 'Echo with markedly abnormal measurements', 'اکو با اندازه‌گیری‌های به‌وضوح غیرطبیعی'), L('Regionale RV-Akinesie, Dyskinesie oder Aneurysma plus mindestens ein enddiastolischer Grenzwert. RVOT-PLAX ≥ 32 mm (≥ 19 mm/m²), RVOT-PSAX ≥ 36 mm (≥ 21 mm/m²) oder FAC ≤ 33 %.', 'Regional RV akinesia, dyskinesia, or aneurysm plus at least one end-diastolic threshold. RVOT PLAX ≥32 mm (≥19 mm/m²), RVOT PSAX ≥36 mm (≥21 mm/m²), or FAC ≤33%.', 'آکینزی، دیسکینزی یا آنوریسم موضعی همراه با یکی از موارد: RVOT در PLAX ≥۳۲ میلی‌متر (≥۱۹ میلی‌متر بر متر مربع)، در PSAX ≥۳۶ (≥۲۱ نسبت به سطح بدن)، یا FAC ≤۳۳٪.'), tfc('function', 2)),
     option('echo-minor', L('Echo mit mäßig auffälligen Messwerten', 'Echo with moderately abnormal measurements', 'اکو با اندازه‌گیری‌های نسبتاً غیرطبیعی'), L('Regionale RV-Akinesie oder Dyskinesie plus RVOT-PLAX 29 bis < 32 mm (16 bis < 19 mm/m²), RVOT-PSAX 32 bis < 36 mm (18 bis < 21 mm/m²) oder FAC > 33 bis ≤ 40 %.', 'Regional RV akinesia or dyskinesia plus RVOT PLAX 29 to <32 mm (16 to <19 mm/m²), RVOT PSAX 32 to <36 mm (18 to <21 mm/m²), or FAC >33% to ≤40%.', 'آکینزی یا دیسکینزی موضعی همراه با RVOT در PLAX از ۲۹ تا کمتر از ۳۲ (شاخص ۱۶ تا کمتر از ۱۹)، در PSAX از ۳۲ تا کمتر از ۳۶ (شاخص ۱۸ تا کمتر از ۲۱)، یا FAC بیش از ۳۳٪ تا ۴۰٪.'), tfc('function', 1)),
     option('angio', L('Auffällige RV-Ventrikulografie', 'Abnormal RV ventriculography', 'ونتریکولوگرافی غیرطبیعی بطن راست'), L('Regionale RV-Akinesie, Dyskinesie oder Aneurysma.', 'Regional RV akinesia, dyskinesia, or aneurysm.', 'آکینزی، دیسکینزی یا آنوریسم موضعی بطن راست.'), tfc('function', 2)),
     recorded('rv-motion'),
     recorded('rv-function'),
   ], { hint: L('Nur Befunde aus Echo oder Ventrikulografie ergänzen. Die letzten beiden Antworten verwenden die Padua-Definition und die jeweiligen Referenzwerte der Methode.', 'Add only echo or ventriculography findings here. The last two choices use the Padua definition and modality-specific reference values.', 'فقط یافته‌های اکو یا ونتریکولوگرافی را اضافه کنید. دو گزینهٔ پایانی بر اساس تعریف پادوا و مقادیر مرجع روش هستند.') }),
+  question('lge', 'tissue', L('Welches Narbenmuster wurde im LGE bestätigt?', 'Which scar pattern was confirmed on LGE?', 'کدام الگوی اسکار در LGE تأیید شده است؟'), [
+    recorded('rv-lge'), recorded('lv-lge'),
+  ], { hint: L('Beide Muster müssen in zwei orthogonalen Ebenen sichtbar sein. Isoliertes Insertions-LGE, ein Infarktmuster oder Fett allein gehören zu „Keiner dieser Befunde“.', 'Both patterns require two orthogonal views. Use “None of these findings” for isolated insertion-point LGE, an infarct pattern, or fat alone.', 'هر دو الگو باید در دو نمای عمود بر هم دیده شوند. برای LGE محدود به محل اتصال، الگوی انفارکتوس یا چربی به‌تنهایی، «هیچ‌کدام» را بزنید.') }),
   question('biopsy', 'tissue', L('Was zeigt eine vorliegende RV-Biopsie?', 'What does the RV biopsy show, if available?', 'اگر بیوپسی بطن راست موجود است، چه چیزی نشان می‌دهد؟'), [
     option('biopsy-major', L('Fibrose mit deutlich vermindertem Myozytenanteil', 'Fibrosis with markedly reduced residual myocytes', 'فیبروز با کاهش شدید میوسیت‌های باقی‌مانده'), L('Fibrotischer Ersatz der freien RV-Wand in mindestens einer Probe. Restmyozyten < 60 % morphometrisch oder < 50 % geschätzt.', 'Fibrous replacement of the RV free wall in at least one sample. Residual myocytes <60% by morphometry or <50% by estimate.', 'فیبروز جایگزین در دست‌کم یک نمونه از دیوارهٔ آزاد بطن راست. میوسیت باقی‌مانده کمتر از ۶۰٪ در مورفومتری یا کمتر از ۵۰٪ برآوردی.'), { padua: 'rv-biopsy', ...tfc('tissue', 2) }),
     option('biopsy-minor', L('Fibrose mit mäßig vermindertem Myozytenanteil', 'Fibrosis with moderately reduced residual myocytes', 'فیبروز با کاهش متوسط میوسیت‌های باقی‌مانده'), L('Fibrotischer Ersatz der freien RV-Wand in mindestens einer Probe. Restmyozyten 60–75 % morphometrisch oder 50–65 % geschätzt.', 'Fibrous replacement of the RV free wall in at least one sample. Residual myocytes 60–75% by morphometry or 50–65% by estimate.', 'فیبروز جایگزین در دست‌کم یک نمونه از دیوارهٔ آزاد بطن راست. میوسیت باقی‌مانده ۶۰ تا ۷۵٪ در مورفومتری یا ۵۰ تا ۶۵٪ برآوردی.'), { padua: 'rv-biopsy', ...tfc('tissue', 1) }),
@@ -72,7 +74,7 @@ const QUESTIONS = [
     short('older14', 'Älter als 14 Jahre', 'Older than 14 years', 'سن بیشتر از ۱۴ سال'),
     short('puberty', 'Pubertät abgeschlossen', 'Puberty completed', 'بلوغ کامل شده'),
   ], { visible: answers => any(answers, 'twi', repolRv), hint: L('TFC und Padua verwenden unterschiedliche Voraussetzungen. Wenn beides zutrifft, beides markieren.', 'TFC and Padua use different requirements. Select both if applicable.', 'TFC و پادوا شرط‌های متفاوتی دارند. اگر هر دو برقرارند، هر دو را انتخاب کنید.') }),
-  question('depolarization', 'ecg', L('Gibt es auffällige Erregungsausbreitung oder Niedervoltage?', 'Is conduction abnormal or is QRS voltage low?', 'آیا هدایت غیرطبیعی یا ولتاژ QRS پایین است؟'), [
+  question('depolarization', 'conduction', L('Gibt es auffällige Erregungsausbreitung oder Niedervoltage?', 'Is conduction abnormal or is QRS voltage low?', 'آیا هدایت غیرطبیعی یا ولتاژ QRS پایین است؟'), [
     recorded('epsilon', tfc('depolarization', 2)),
     recorded('terminal-activation', tfc('depolarization', 1)),
     recorded('low-voltage'),
@@ -108,6 +110,18 @@ const QUESTIONS = [
 
 export function questionsFor(answers) {
   return QUESTIONS.filter(item => !item.visible || item.visible(answers))
+}
+
+const exclusiveChoices = {
+  twi: [repolRv, ['lateral-pattern', 'lateral-other']],
+  'other-imaging': [['echo-major', 'echo-minor'], ['rv-function', 'rv-motion']],
+}
+
+export function selectFinding(item, current, id) {
+  if (current.includes(id)) return current.filter(value => value !== id)
+  if (item.single || id === 'none' || id === 'unknown') return [id]
+  const exclusive = exclusiveChoices[item.id]?.find(group => group.includes(id)) || []
+  return [...current.filter(value => value !== 'none' && value !== 'unknown' && !exclusive.includes(value)), id]
 }
 
 export function optionsFor(item, answers) {

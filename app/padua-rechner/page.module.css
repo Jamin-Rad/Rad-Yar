@@ -35,9 +35,8 @@
 .intro h1 em { color:var(--coral); font-style:normal; }
 .navigation { display:flex; flex-wrap:wrap; align-items:center; gap:6px 9px; margin-block-end:20px; }
 .navigation ol { display:flex; flex-wrap:wrap; gap:4px; margin:0; padding:0; list-style:none; }
-.navigation button {
+.navigation li {
   min-inline-size:32px;
-  min-block-size:32px;
   padding:3px 6px;
   border:1px solid var(--line-strong);
   border-radius:7px;
@@ -45,15 +44,16 @@
   background:var(--surface-soft);
   font-size:.79rem;
   font-weight:750;
-  cursor:pointer;
 }
-.navigation button:is([aria-current='step'],:hover) {
+.navigation li[aria-current='step'] {
   border-color:var(--teal);
   color:var(--ink);
   background:var(--teal-pale);
 }
-.navigation li button span { margin-inline-start:3px; color:var(--teal-dark); }
-.navigation .resultLink { padding-inline:9px; }
+.navigation li span { margin-inline-start:3px; color:var(--teal-dark); }
+.navigation li bdi { margin-inline-end:3px; }
+.referenceFindings { margin-block-start:16px; padding-block-start:12px; border-block-start:1px solid var(--line-strong); }
+.referenceFindings h3 { margin:0 0 8px; font-size:.9rem; }
 .progress { color:var(--muted); font-size:.78rem; }
 .panel { min-inline-size:0; scroll-margin-block-start:98px; }
 .panel:focus { outline:none; }

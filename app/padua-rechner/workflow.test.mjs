@@ -1,8 +1,19 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
-import { evaluateFindings, isReviewed, optionsFor, parseMeasurement, questionsFor, validMeasurements } from './workflow.mjs'
+import { evaluateFindings, isReviewed, optionsFor, parseMeasurement, questionsFor, selectFinding, validMeasurements } from './workflow.mjs'
 
 const values = { sex: '', edvi: '', ef: '', unavailable: false }
+
+test('incompatible responses replace each other and independent findings remain selected', () => {
+  const questions = questionsFor({ 'rv-motion': ['ak-dys-free'] })
+  const twi = questions.find(item => item.id === 'twi')
+  const global = questions.find(item => item.id === 'rv-global')
+  assert.deepEqual(selectFinding(twi, ['v1-v2', 'lateral-pattern'], 'v1-v3'), ['lateral-pattern', 'v1-v3'])
+  assert.deepEqual(selectFinding(global, ['dilated'], 'dysfunction'), ['dilated', 'dysfunction'])
+  assert.deepEqual(selectFinding(global, ['dilated', 'dysfunction'], 'none'), ['none'])
+  assert.deepEqual(selectFinding(global, ['none'], 'unknown'), ['unknown'])
+  assert.deepEqual(selectFinding(global, ['unknown'], 'dilated'), ['dilated'])
+})
 
 test('only relevant follow-ups appear, and explicit negative and unknown are distinguishable', () => {
   const normal = { 'rv-motion': ['none'], twi: ['none'], family: ['none'] }
