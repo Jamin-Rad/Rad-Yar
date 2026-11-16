@@ -5,7 +5,8 @@ import {marketImpact,marketKey,marketForPosition,marketTrusted} from '@/lib/inve
 import {browserChartStorage,chartDrawingKey,chartEntries,readChartHistory,saveChartHistory} from '@/lib/investments/local-asset-chart.mjs'
 import Icon from './InvestmentIcon'
 import TradingViewChart from './TradingViewChart'
-import TechnicalChart from './TechnicalChart'
+import XtbPositionChart from './XtbPositionChart'
+import {positionBalance} from '@/lib/investments/balances.mjs'
 import styles from './investments.module.css'
 const price=value=>new Intl.NumberFormat('de-DE',{maximumSignificantDigits:10}).format(value)
 function MarketConnection({position,marketData,onConnect}){
@@ -16,7 +17,7 @@ function MarketConnection({position,marketData,onConnect}){
  {results.length>0&&<div className={styles.instrumentResults}>{results.map(r=><button type="button" key={r.symbol} onClick={()=>setSymbol(r.symbol)} className={symbol===r.symbol?styles.selectedTrade:''}><strong><bdi>{r.symbol}</bdi> · <bdi>{r.name}</bdi></strong><small><bdi>{r.exchange} · {r.type}</bdi></small></button>)}</div>}
  <form onSubmit={connect}><label className={styles.field}>نماد دقیق در منبع بازار<input value={symbol} onChange={e=>setSymbol(e.target.value)} dir="ltr" required maxLength={35} placeholder="مثلاً نماد تأییدشده در Yahoo Finance"/></label><label className={styles.checkbox}><input type="checkbox" required/>این نماد را با ابزار، کلاس سهم و بورس مورد نظرم تطبیق داده‌ام؛ ارز منبع ممکن است با حساب یورویی متفاوت باشد.</label><button className={styles.primaryButton} type="submit" disabled={busy}>{busy?'در حال بررسی…':'اتصال قیمت و تاریخچه'}</button></form>{error&&<p role="alert" className={styles.error}>{error}</p>}</div>
 }
-export default function AssetProfile({account, position, state, marketData, ledger, onEnablePrices, onTransactions, onConnect, onChartConnect, onDecision, onOpenDecision, onEvent}) {
+export default function AssetProfile({account, position, state, marketData, ledger, onDrawings, onEnablePrices, onTransactions, onConnect, onChartConnect, onDecision, onOpenDecision, onEvent}) {
   const [connectOpen, setConnectOpen] = useState(false)
   const [saved, setSaved] = useState(null)
   const [chartNotice, setChartNotice] = useState('')
@@ -33,7 +34,18 @@ export default function AssetProfile({account, position, state, marketData, ledg
   const quote = market?.quote
   const canLoad = key && (position.marketConfirmed || state.settings.isinPricesEnabled)
   const cached = saved?.key === key ? saved.market : null
-  const chartMarket = [cached, market].find(candidate => candidate?.history?.length >= 2 && marketTrusted(position, candidate))
+  const chartMarket = [cached, market].find(candidate => candidate?.history?.length >= 2 && marketTrusted(position, candidate) &&
+    (!candidate.identity?.isin || candidate.historyMeta?.verified && candidate.historyMeta.idNotation === candidate.quote?.idNotation &&
+      candidate.historyMeta.currency === candidate.quote?.currency))
+  const currentMarket = marketTrusted(position, market) ? market : chartMarket
+  const currency = chartMarket?.quote?.currency || currentMarket?.quote?.currency
+  const chartQuote = [currentMarket, chartMarket].find(candidate => candidate?.quote?.currency === currency &&
+    (!chartMarket || candidate?.quote?.symbol === chartMarket.quote.symbol && candidate.quote?.idNotation === chartMarket.quote.idNotation))?.quote
+  const balance = positionBalance(position, { [key]:currentMarket })
+  const quantity = Number(position.quantity)
+  const averageEur = balance.remainingCostCents != null && balance.quantityKnown && quantity > 0 ? balance.remainingCostCents / 100 / quantity : null
+  const chartIdentity = [position.isin || key || position.id,chartMarket?.quote?.idNotation ?? chartMarket?.quote?.symbol ?? '',currency || '']
+    .join('.').toUpperCase().replace(/[^A-Z0-9._=-]/g,'_').slice(0,90)
   async function refreshChart() {
     if (!key || chartBusy) return
     if (!canLoad && !onEnablePrices()) return
@@ -79,19 +91,17 @@ export default function AssetProfile({account, position, state, marketData, ledg
       </div>
     </section>
 
-    <section className={styles.panel} aria-label="نمودار قیمت دارایی">
-      <div className={styles.panelHead}>
-        <div><h2>نمودار قیمت و نقاط ورود</h2>
-          <p>{chartMarket ? <>تاریخچهٔ موجود تا <bdi>{chartMarket.history.at(-1)?.date}</bdi></> : 'برای بار اول تاریخچه را دریافت کن.'}</p></div>
-        <button type="button" className={styles.secondaryButton} disabled={!key || chartBusy || marketData.loading[key]} onClick={refreshChart}>
-          {chartBusy ? 'در حال به‌روزرسانی…' : 'به‌روزرسانی نمودار'}
-        </button>
-      </div>
-      {chartNotice && <p className={styles.footnote} role="status">{chartNotice}</p>}
-      {chartMarket ? <TechnicalChart market={chartMarket} entries={entries} loading={chartBusy}
-        key={chartDrawingKey(account.id, position, chartMarket)} drawingKey={chartDrawingKey(account.id, position, chartMarket)} error={marketData.errors[key]}/>
-        : marketData.errors[key] && <p className={styles.error} role="alert">{marketData.errors[key]}</p>}
-    </section>
+    <XtbPositionChart key={chartIdentity} trade={{id:position.id,ownerId:account.id,plan:{name:position.name,symbol:position.symbol || position.isin,currency:currency || ''},executions:[]}}
+      drawings={state.settings.xtbDrawings} onDrawings={onDrawings} daily={{
+        identity:chartIdentity, legacyKey:chartDrawingKey(account.id, position, chartMarket),
+        market:chartMarket ? {...chartMarket,quote:chartQuote || chartMarket.quote} : {quote:currentMarket?.quote},
+        entry:currency==='EUR' && averageEur>0 ? averageEur : null, entries, quantity,
+        quantityLabel:balance.quantityKnown ? position.quantity : 'نیازمند تطبیق',
+        entryLabel:averageEur==null ? '—' : price(averageEur)+' €',
+        gainCents:balance.marketGainCents, gainLabel:balance.marketGainCents==null?'—':signedMoney(balance.marketGainCents),
+        busy:chartBusy||marketData.loading[key], onRefresh:key?refreshChart:null,
+        notice:chartNotice,error:marketData.errors[key],onTransactions,
+      }}/>
     <details className={`${styles.panel} ${styles.assetDetails}`}>
       <summary>TradingView</summary>
       <TradingViewChart position={position} onConnect={onChartConnect}/>

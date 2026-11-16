@@ -19,8 +19,8 @@ const fields = [['price', 'قیمت خروج فعلی در XTB (دلار)'], ['e
 const top = 22, bottom = 242
 const averages = [['ema20','EMA 20','#f1c975'],['sma50','SMA 50','#91c5ff'],['sma200','SMA 200','#d5a7fa']]
 
-export default function XtbPositionChart({ trade, openCount, drawings = [], onDrawings }) {
-  const exposure = xtbExposure(trade)
+export default function XtbPositionChart({ trade, openCount, drawings = [], onDrawings, daily }) {
+  const exposure = daily ? { direction:1, entry:daily.entry, volume:daily.quantity } : xtbExposure(trade)
   const [limits, setLimits] = useState({ stop: trade.plan.stopPrice || '', target: trade.plan.targetPrice || '' })
   const [referenceMarket, setReferenceMarket] = useState(null)
   const [busy, setBusy] = useState(false)
@@ -43,9 +43,10 @@ export default function XtbPositionChart({ trade, openCount, drawings = [], onDr
   const [limitDetail, setLimitDetail] = useState(null)
   const [forecast, setForecast] = useState(false)
   const [indicators, setIndicators] = useState({ ema20: true, sma50: true, sma200: false, rsi: true })
-  const symbol = (trade.plan.symbol || '').toUpperCase()
+  const displaySymbol = (trade.plan.symbol || '').toUpperCase()
+  const symbol = daily ? 'TR:' + daily.identity : displaySymbol
   const prefsKey = 'andarun-xtb-view-v2:' + symbol
-  const drawingsKey = JSON.stringify(['xtb', trade.ownerId, trade.id, trade.plan.symbol, trade.plan.currency])
+  const drawingsKey = daily?.legacyKey ?? JSON.stringify(['xtb', trade.ownerId, trade.id, trade.plan.symbol, trade.plan.currency])
   const gradient = useId()
   const plot = useRef(null)
   const positionSheet = useRef(null)
@@ -76,7 +77,7 @@ export default function XtbPositionChart({ trade, openCount, drawings = [], onDr
     const storage=browserChartStorage()
     try { if(storage?.getItem(drawingsKey+'-imported')) return } catch {}
     setLegacy(readChartDrawings(storage,drawingsKey).map((line,index)=>({
-      id:`${trade.id}-legacy-${index}`.slice(0,80),symbol,scope:trade.ownerId,type:line.type,color:XTB_DRAWING_COLORS[0],
+      id:`legacy-${trade.ownerId}-${index}-${trade.id}`.replace(/[^a-zA-Z0-9_-]/g,'_').slice(0,80),symbol,scope:trade.ownerId,type:line.type,color:XTB_DRAWING_COLORS[0],
       points:line.end?[line.start,line.end]:[line.start],
     })))
   },[drawingsKey,symbol,trade.id,trade.ownerId])
@@ -86,19 +87,23 @@ export default function XtbPositionChart({ trade, openCount, drawings = [], onDr
 
   const currency = trade.plan.currency
   const currentPrice = positive(snapshot.price)
-  const referencePrice = positive(referenceMarket?.quote?.price)
+  const referencePrice = positive((daily ? daily.market : referenceMarket)?.quote?.price)
   const displayedPrice = currentPrice ?? referencePrice
   const pnl = xtbScenario(exposure, displayedPrice)
   const enteredFx = positive(snapshot.fx)
   const fx = currency === 'EUR' ? 1 : enteredFx ?? positive(referenceMarket?.fx?.latest?.rate)
   const eurAmount = scenario => scenario?.amount != null && fx != null ? signedFormat.format(scenario.amount * fx) + ' €' : null
   const stock = intraday[interval === 5 ? 5 : 15]?.history
-  const fullHistory = useMemo(() => technicalHistory(xtbBars(stock,interval),Date.now(),true), [stock,interval])
+  const dailyHistory = daily?.market?.history
+  const fullHistory = useMemo(() => daily
+    ? technicalHistory(dailyHistory)
+    : technicalHistory(xtbBars(stock,interval),Date.now(),true), [stock,interval,dailyHistory,!!daily])
   const visibleCount=range ?? Math.max(24,Math.min(150,Math.floor(width/9)))
   const historyEnd=Math.max(0,fullHistory.length-offset)
   const historyStart=Math.max(0,historyEnd-visibleCount)
   const history=fullHistory.slice(historyStart,historyEnd)
-  const prediction=useMemo(()=>forecast?trendForecast(fullHistory,{window:32,horizon:4}):null,[forecast,fullHistory])
+  const horizon=daily?20:4
+  const prediction=useMemo(()=>forecast?trendForecast(fullHistory,{window:horizon===20?50:32,horizon}):null,[forecast,fullHistory,horizon])
   const projection=offset===0?prediction?.points:null
   const visibleAverages = averages.filter(([key]) => indicators[key])
   const candles=history.length>0
@@ -108,13 +113,13 @@ export default function XtbPositionChart({ trade, openCount, drawings = [], onDr
   const stop = positive(limits.stop), target = positive(limits.target)
   const invalidStop = stop != null && (stop - exposure.entry) * direction >= 0
   const invalidTarget = target != null && (target - exposure.entry) * direction <= 0
-  const marketLevels = (history.length ? [...history.flatMap(row=>[row.low,row.high]),
+  const marketLevels = (history.length ? [...history.flatMap(row=>[row.low??row.close,row.high??row.close]),
     ...(projection||[]).flatMap(point=>[point.low,point.high])] : [exposure.entry,stop,target,displayedPrice]).filter(value=>value!=null)
-  const low = Math.min(...marketLevels), high = Math.max(...marketLevels)
-  const pad = Math.max((high - low) * .13, exposure.entry * .025)
+  const low = marketLevels.length?Math.min(...marketLevels):1, high = marketLevels.length?Math.max(...marketLevels):2
+  const pad = Math.max((high - low) * .13, low * .025)
   const [min, max] = drag?.domain || [Math.max(.01, low - pad), high + pad]
   const y = price => bottom - (price - min) / (max - min) * (bottom - top)
-  const slots=Math.max(1,history.length-1)+(projection?4:0)
+  const slots=Math.max(1,history.length-1)+(projection?horizon:0)
   const x = i => 16 + 575 * i / slots
   const anchorX = date => {
     const stamp=Date.parse(date)
@@ -180,7 +185,7 @@ export default function XtbPositionChart({ trade, openCount, drawings = [], onDr
     const bar=history[index]
     let date=bar?.date || new Date().toISOString()
     if(snap && bar) {
-      price=[bar.open,bar.high,bar.low,bar.close].reduce((best,value)=>Math.abs(value-price)<Math.abs(best-price)?value:best)
+      price=[bar.open,bar.high,bar.low].filter(Number.isFinite).reduce((best,value)=>Math.abs(value-price)<Math.abs(best-price)?value:best,bar.close)
     } else if(history.length>=2) {
       const position=Math.max(0,Math.min(history.length-1,(location.x-16)/575*slots))
       const left=Math.floor(position),right=Math.min(left+1,history.length-1)
@@ -223,7 +228,7 @@ export default function XtbPositionChart({ trade, openCount, drawings = [], onDr
       if(now-state.wheel<150)return
       state.wheel=now
       const shift=event.deltaY>0?1:-1
-      if(event.shiftKey)setRange(Math.max(16,Math.min(190,visibleCount+shift*8)))
+      if(daily||event.shiftKey)setRange(Math.max(16,Math.min(190,visibleCount+shift*8)))
       else {
         const current=XTB_INTERVALS.indexOf(interval)
         const next=XTB_INTERVALS[Math.max(0,Math.min(XTB_INTERVALS.length-1,current+shift))]
@@ -232,7 +237,7 @@ export default function XtbPositionChart({ trade, openCount, drawings = [], onDr
     }
     element.addEventListener('wheel',wheel,{passive:false})
     return ()=>element.removeEventListener('wheel',wheel)
-  },[interval,visibleCount])
+  },[interval,visibleCount,!!daily])
 
   const [editPreview,setEditPreview]=useState(null)
   function begin(event, line, handleIndex) {
@@ -340,7 +345,7 @@ export default function XtbPositionChart({ trade, openCount, drawings = [], onDr
     {key:'stop',label:'حد ضرر',value:stop,original:positive(trade.plan.stopPrice)},
     {key:'target',label:'حد سود',value:target,original:positive(trade.plan.targetPrice)},
     {key:'liquidation',label:'Stop Out',value:estimate?.price},
-  ]
+  ].filter(level=>!daily||level.key==='entry')
   const inPlot=price=>price!=null&&price>=min&&price<=max
   const axisLevels=levelRows.filter(level=>inPlot(level.value)).sort((a,b)=>y(a.value)-y(b.value))
   let nextLabel=top-18
@@ -352,16 +357,25 @@ export default function XtbPositionChart({ trade, openCount, drawings = [], onDr
   for(let i=axisPositions.length-1;i>=0;i--)axisPositions[i]=Math.min(axisPositions[i],i===axisPositions.length-1?bottom:axisPositions[i+1]-18)
   const selectedLevel=limitDetail&&levelRows.find(level=>level.key===limitDetail)
   const levelDistance=selectedLevel?.value!=null&&displayedPrice!=null?selectedLevel.value-displayedPrice:null
-  const closingResult=selectedLevel&&xtbScenario(exposure,selectedLevel.value)
+  const closingResult=!daily&&selectedLevel&&xtbScenario(exposure,selectedLevel.value)
   const showDetails=selectedLevel?.value!=null
   const last=history.length-1
   const forecastPath=(points,key,reverse=false)=>(reverse?[...points].reverse():points).map((point,index)=>
     `${index||reverse?'L':'M'}${x(last+(reverse?points.length-1-index:index))},${y(point[key])}`).join(' ')
   const maxVolume=Math.max(1,...history.map(bar=>bar.volume||0))
   const knownEntry=trade.executions.find(event=>event.kind==='entry')
-  const entryTime=knownEntry&&!knownEntry.observedOpen?knownEntry.date:null
+  const entryTime=knownEntry&&!knownEntry.observedOpen&&knownEntry.date.includes('T')?knownEntry.date:null
   const entryX=entryTime?anchorX(entryTime):null
-  const positionPanel=<>
+  const positionPanel=daily ? <>
+    <h3>دارایی‌های حساب</h3>
+    <dl className={styles.quoteStrip}>
+      <div><dt>سود و زیان باز</dt><dd data-sign={daily.gainCents<0?'negative':'positive'}><bdi>{daily.gainLabel}</bdi></dd></div>
+      <div><dt>تعداد</dt><dd><bdi>{daily.quantityLabel}</bdi></dd></div>
+      <div><dt>میانگین بهای خرید</dt><dd><bdi>{daily.entryLabel}</bdi></dd></div>
+      <div><dt>آخرین قیمت مرجع</dt><dd><bdi>{formatPrice(displayedPrice)} {currency}</bdi></dd></div>
+    </dl>
+    <button type="button" onClick={daily.onTransactions}>تراکنش‌های این دارایی</button>
+  </> : <>
     <h3>موقعیت باز</h3>
     <dl className={styles.quoteStrip}>
       <div><dt>سود و زیان باز · برآوردی</dt><dd data-sign={pnl?.percent<0?'negative':'positive'}><bdi>{eurAmount(pnl)||'—'}</bdi></dd>
@@ -391,18 +405,19 @@ export default function XtbPositionChart({ trade, openCount, drawings = [], onDr
     </details>
   </>
 
-  return <section className={styles.card} aria-label="نمودار و سناریوی موقعیت XTB">
+  return <section className={styles.card} aria-label={daily?'نمودار دارایی Trade Republic':'نمودار و سناریوی موقعیت XTB'}>
     <div className={styles.grid}>
       <div className={styles.chart}>
         <header className={styles.header}>
-          <div><small>XTB · {direction===1?'خرید':'فروش'}</small><h2 dir="auto">{trade.plan.name}</h2></div>
+          <div><small>{daily?'Trade Republic':direction===1?'XTB · خرید':'XTB · فروش'}</small><h2 dir="auto">{trade.plan.name}</h2></div>
+          {daily&&<button type="button" disabled={daily.busy||!daily.onRefresh} onClick={daily.onRefresh}>{daily.busy?'در حال دریافت…':'به‌روزرسانی'}</button>}
           {exposure.isBrent&&<button type="button" disabled={busy} onClick={refresh}>{busy?'در حال دریافت…':'به‌روزرسانی'}</button>}
-          <button type="button" className={styles.mobileButton} onClick={()=>positionSheet.current?.showModal()}><bdi>{symbol} · {eurAmount(pnl)||'—'}</bdi> ▴</button>
+          <button type="button" className={styles.mobileButton} onClick={()=>positionSheet.current?.showModal()}><bdi>{displaySymbol||trade.plan.name} · {daily?daily.gainLabel:eurAmount(pnl)||'—'}</bdi> ▴</button>
         </header>
         <div className={styles.chartTools} aria-label="تایم‌فریم و پیش‌بینی">
-          <label>تایم‌فریم <select value={interval} onChange={event=>setFrame(Number(event.target.value))}>
+          {daily?<strong>کندل روزانه</strong>:<label>تایم‌فریم <select value={interval} onChange={event=>setFrame(Number(event.target.value))}>
             {XTB_INTERVALS.map(value=><option key={value} value={value}>{value===60?'۱ ساعت':value===240?'۴ ساعت':value+' دقیقه'}</option>)}
-          </select></label>
+          </select></label>}
           <button type="button" aria-pressed={forecast} disabled={!fullHistory.length} onClick={()=>{setOffset(0);setForecast(value=>!value)}}>پیش‌بینی روند</button>
           {offset>0&&<button type="button" onClick={()=>setOffset(0)}>آخرین کندل‌ها</button>}
           <button type="button" className={styles.mobileButton} aria-expanded={mobileTools} onClick={()=>setMobileTools(value=>!value)}>رسم</button>
@@ -428,7 +443,8 @@ export default function XtbPositionChart({ trade, openCount, drawings = [], onDr
           {[...averages,['rsi','RSI 14','#a9d5cf']].map(([key,label,color])=><button key={key} style={{color}} type="button" aria-pressed={indicators[key]} onClick={()=>setIndicators(previous=>({...previous,[key]:!previous[key]}))}>{label}</button>)}
         </div>
         {drawing==='arrow'&&<p>نقطه‌ها را با دوبارکلیک یا لمس اضافه کن و «ثبت مسیر» را بزن.</p>}
-        {!history.length&&<p>برای دریافت کندل‌های این تایم‌فریم، «به‌روزرسانی» را بزن.</p>}
+        {!history.length&&<p>برای دریافت تاریخچه، «به‌روزرسانی» را بزن.</p>}
+        {daily&&history.length>0&&history.some(row=>row.open==null||row.low==null||row.high==null)&&<p>در روزهایی که منبع فقط قیمت پایانی دارد، همان قیمت با یک نقطه نمایش داده می‌شود.</p>}
         {forecast&&!prediction&&<p role="status">دادهٔ کامل برای آزمون پیش‌بینی این تایم‌فریم کافی نیست.</p>}
         <div className={styles.plotWrap}>
         <svg ref={plot} className={styles.plot} data-drawing={!!drawing} viewBox="0 0 700 266" preserveAspectRatio="none" role="group" aria-label="نمودار کندلی و سطح‌های موقعیت"
@@ -448,7 +464,9 @@ export default function XtbPositionChart({ trade, openCount, drawings = [], onDr
               const color=bar.close>=bar.open?'#53d6ae':'#fb8092'
               const volume=(bar.volume||0)/maxVolume*32
               return <g key={bar.date}><rect x={x(i)-candleWidth/2} y={bottom-volume} width={candleWidth} height={volume} fill={color} opacity=".22"/>
-                <line x1={x(i)} x2={x(i)} y1={y(bar.high)} y2={y(bar.low)} stroke={color}/><rect x={x(i)-candleWidth/2} y={Math.min(y(bar.open),y(bar.close))} width={candleWidth} height={Math.max(1,Math.abs(y(bar.close)-y(bar.open)))} fill={color}/></g>
+                {['open','high','low'].every(key=>Number.isFinite(bar[key])) ? <>
+                  <line x1={x(i)} x2={x(i)} y1={y(bar.high)} y2={y(bar.low)} stroke={color}/><rect x={x(i)-candleWidth/2} y={Math.min(y(bar.open),y(bar.close))} width={candleWidth} height={Math.max(1,Math.abs(y(bar.close)-y(bar.open)))} fill={color}/>
+                </> : <circle cx={x(i)} cy={y(bar.close)} r="2" fill="#aebdd4"/>}</g>
             })}
             {visibleAverages.map(([key,,color])=><path key={key} d={seriesPath(key,y)} fill="none" stroke={color} vectorEffect="non-scaling-stroke"/>)}
             {projection&&<g aria-label="پیش‌بینی ادامهٔ نمودار">
@@ -456,6 +474,15 @@ export default function XtbPositionChart({ trade, openCount, drawings = [], onDr
               <path d={forecastPath(projection,'mid')} fill="none" stroke="#88d1ff" strokeDasharray="5 4" strokeWidth="2" vectorEffect="non-scaling-stroke"/>
             </g>}
             {entryX!=null&&<line x1={entryX} x2={entryX} y1={top} y2={bottom} stroke={levelColors.entry} strokeDasharray="4 4"/>}
+            {daily?.entries.map(entry=>{
+              const i=history.findIndex(row=>row.date>=entry.date)
+              if(i<0||entry.date<history[0].date)return null
+              const matchingPrice=entry.currency===currency&&inPlot(entry.price)
+              return <circle key={entry.id} cx={x(i)} cy={matchingPrice?y(entry.price):bottom-8} r="4" fill={levelColors.entry}
+                tabIndex={0} aria-label={`خرید ${entry.date} · ${formatPrice(entry.price)} ${entry.currency||''}`}>
+                <title>{`خرید ${entry.date} · ${formatPrice(entry.price)} ${entry.currency||''}`}</title>
+              </circle>
+            })}
             {displayedPrice!=null&&<line x1="12" x2="605" y1={y(displayedPrice)} y2={y(displayedPrice)} stroke="#91a8bd" strokeDasharray="2 5"/>}
             {levelRows.map(level=><g key={level.key}>
               {level.original!=null&&level.original!==level.value&&<line x1="12" x2="605" y1={y(level.original)} y2={y(level.original)} stroke={levelColors[level.key]} opacity=".38" strokeDasharray="3 5"/>}
@@ -494,14 +521,14 @@ export default function XtbPositionChart({ trade, openCount, drawings = [], onDr
         {showDetails ? <div className={styles.tooltip} role="status">
           <strong>{selectedLevel.label} <bdi>{formatPrice(selectedLevel.value)} {currency}</bdi></strong>
           <strong>فاصله <bdi>{levelDistance==null?'—':`${signedFormat.format(levelDistance)} ${currency} · ${signedFormat.format(levelDistance/displayedPrice*100)}٪`}</bdi></strong>
-          <small>سود و زیان برآوردی <bdi>{eurAmount(closingResult)||'—'}</bdi></small>
+          {!daily&&<small>سود و زیان برآوردی <bdi>{eurAmount(closingResult)||'—'}</bdi></small>}
         </div> : cursor!=null&&activeBar&&<div className={styles.candleTip} style={{left:`clamp(4px, ${x(cursor)/7}%, calc(100% - 162px))`}}>
-          <bdi>{activeBar.date.slice(0,16).replace('T',' ')} UTC</bdi>
+          <bdi>{activeBar.date.slice(0,16).replace('T',' ')}{!daily&&' UTC'}</bdi>
           <bdi>O {formatPrice(activeBar.open)} · C {formatPrice(activeBar.close)}</bdi>
           <bdi>H {formatPrice(activeBar.high)} · L {formatPrice(activeBar.low)}</bdi>
         </div>}
         </div>
-        {projection&&<p>پیش‌بینی ۴ کندل · دامنهٔ تجربی ۸۰٪ <bdi>{formatPrice(projection.at(-1).low)} – {formatPrice(projection.at(-1).high)} {currency}</bdi> · خطای آزمون <bdi>{formatPrice(prediction.error)} {currency}</bdi></p>}
+        {projection&&<p>پیش‌بینی {daily?'۲۰ جلسهٔ معاملاتی':'۴ کندل'} · دامنهٔ تجربی ۸۰٪ <bdi>{formatPrice(projection.at(-1).low)} – {formatPrice(projection.at(-1).high)} {currency}</bdi> · خطای آزمون <bdi>{formatPrice(prediction.error)} {currency}</bdi></p>}
         {forecast&&offset>0&&<p>برای دیدن پیش‌بینی به آخرین کندل‌ها برگرد.</p>}
         {indicators.rsi&&history.length>0&&<div className={styles.rsi}>
           <div className={styles.rsiTitle}><bdi>RSI 14 · {formatPrice(activeBar?.rsi)}</bdi><label>ارتفاع <input type="range" min="48" max="180" value={rsiHeight} onChange={event=>setRsiHeight(Number(event.target.value))}/></label></div>
@@ -510,7 +537,9 @@ export default function XtbPositionChart({ trade, openCount, drawings = [], onDr
             <path d={seriesPath('rsi',value=>92-value*.84)} fill="none" stroke="#a9d5cf" strokeWidth="2" vectorEffect="non-scaling-stroke"/>
           </svg>
         </div>}
-        {candles&&<p>برنت مرجع · آخرین کندل <bdi>{history.at(-1).date.slice(0,16).replace('T',' ')} UTC</bdi></p>}
+        {candles&&<p>{daily?.market?.quote?.source || 'برنت مرجع'} · آخرین داده <bdi>{history.at(-1).date.slice(0,16).replace('T',' ')}{!daily&&' UTC'}</bdi></p>}
+        {daily?.notice&&<p role="status">{daily.notice}</p>}
+        {daily?.error&&<p role="alert">{daily.error}</p>}
         {error&&<p role="alert">{error}</p>}
       </div>
       <aside className={styles.scenarios}>{positionPanel}</aside>
