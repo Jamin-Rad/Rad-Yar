@@ -6,8 +6,18 @@
 .header h2 { font-size:clamp(20px,2.5vw,30px); }
 .tags span { border:1px solid #3b4b5b; border-radius:7px; padding:6px 9px; font-size:13px; }
 .grid { display:grid; grid-template-columns:minmax(0,2.2fr) minmax(225px,1fr); gap:14px; }
+.quoteStrip { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; margin:0 0 15px; }
+.quoteStrip>div { padding:12px; border:1px solid #344959; border-radius:10px; background:#172432; }
+.quoteStrip dt { font-size:12px; color:#bdcddd; }
+.quoteStrip dd { margin:4px 0; font-size:clamp(15px,2vw,24px); font-weight:750; font-variant-numeric:tabular-nums; }
+.quoteStrip dd[data-sign=positive] { color:#7cdeb2; }
+.quoteStrip dd[data-sign=negative] { color:#ff9daa; }
+.chartTools { display:flex; flex-wrap:wrap; gap:5px; margin-bottom:8px; }
+.chartTools button[aria-pressed=true] { border-color:#82b8ee; background:#293c54; }
+.card .readout { min-height:24px; margin-block:6px; font-variant-numeric:tabular-nums; }
 .chart,.scenarios,.stopOut { min-width:0; background:#101923; border:1px solid #30404f; border-radius:10px; padding:12px; }
-.plot { display:block; width:100%; height:clamp(210px,27vw,340px); direction:ltr; overflow:hidden; }
+.plot { display:block; width:100%; height:clamp(245px,32vw,410px); direction:ltr; overflow:hidden; background:#0d1620; border-radius:8px; }
+.plot[data-drawing=true] { cursor:crosshair; }
 .plot text { fill:#c6d1dc; font:15px system-ui,sans-serif; }
 .handle { cursor:ns-resize; touch-action:none; }
 .legend { margin-block:6px 8px; font-size:12px; }

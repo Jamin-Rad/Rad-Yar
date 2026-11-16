@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useId, useRef, useState } from 'react'
 import { browserChartStorage, readChartHistory, saveChartHistory } from '@/lib/investments/local-asset-chart.mjs'
 import { estimateXtbStopOut, xtbExposure, xtbScenario } from '@/lib/investments/xtb-risk.mjs'
 import styles from './XtbPositionChart.module.css'
@@ -23,6 +23,12 @@ export default function XtbPositionChart({ trade, openCount }) {
   const [error, setError] = useState('')
   const [snapshot, setSnapshot] = useState({})
   const [drag, setDrag] = useState(null)
+  const [range, setRange] = useState(90)
+  const [mode, setMode] = useState('candles')
+  const [cursor, setCursor] = useState(null)
+  const [drawing, setDrawing] = useState(false)
+  const [lines, setLines] = useState([])
+  const gradient = useId()
   const plot = useRef(null)
   useEffect(() => {
     if (exposure.isBrent) setReferenceMarket(readChartHistory(browserChartStorage(), reference))
@@ -30,18 +36,27 @@ export default function XtbPositionChart({ trade, openCount }) {
 
   const currency = trade.plan.currency
   const currentPrice = positive(snapshot.price)
-  const history = (referenceMarket?.history || []).filter(row => Number.isFinite(row.close) && row.close > 0).slice(-70)
+  const referencePrice = positive(referenceMarket?.quote?.price)
+  const displayedPrice = currentPrice ?? referencePrice
+  const pnl = xtbScenario(exposure, displayedPrice)
+  const history = (referenceMarket?.history || []).filter(row => Number.isFinite(row.close) && row.close > 0).slice(-range)
+  const candles = mode === 'candles' && history.length > 0 && history.every(row =>
+    ['open', 'high', 'low'].every(key => Number.isFinite(row[key]) && row[key] > 0))
+  const activeBar = history[cursor ?? history.length - 1]
   const estimate = estimateXtbStopOut(exposure, Object.fromEntries(fields.map(([key]) => [key, positive(snapshot[key])])), openCount)
   const direction = exposure.direction
   const stop = positive(limits.stop), target = positive(limits.target)
   const invalidStop = stop != null && (stop - exposure.entry) * direction >= 0
   const invalidTarget = target != null && (target - exposure.entry) * direction <= 0
-  const marketLevels = [exposure.entry, stop, target, currentPrice, estimate?.price, ...history.map(row => row.close)].filter(value => value != null)
+  const marketLevels = [exposure.entry, stop, target, displayedPrice, estimate?.price, ...lines,
+    ...history.flatMap(row => candles ? [row.low, row.high] : [row.close])].filter(value => value != null)
   const low = Math.min(...marketLevels), high = Math.max(...marketLevels)
   const pad = Math.max((high - low) * .13, exposure.entry * .025)
   const [min, max] = drag?.domain || [Math.max(.01, low - pad), high + pad]
   const y = price => bottom - (price - min) / (max - min) * (bottom - top)
-  const line = history.map((row, i) => `${i === 0 ? 'M' : 'L'}${16 + 589 * i / Math.max(1, history.length - 1)},${y(row.close)}`).join(' ')
+  const x = i => 16 + 575 * i / Math.max(1, history.length - 1)
+  const line = history.map((row, i) => `${i === 0 ? 'M' : 'L'}${x(i)},${y(row.close)}`).join(' ')
+  const candleWidth = Math.max(1, Math.min(12, 415 / history.length))
 
   async function refresh() {
     setBusy(true)
@@ -57,11 +72,20 @@ export default function XtbPositionChart({ trade, openCount }) {
     finally { setBusy(false) }
   }
 
-  function move(event) {
-    if (!drag) return
+  function pointerPrice(event) {
     const box = plot.current.getBoundingClientRect()
     const coordinate = (event.clientY - box.top) * 266 / box.height
-    const price = min + (bottom - Math.min(bottom, Math.max(top, coordinate))) / (bottom - top) * (max - min)
+    return min + (bottom - Math.min(bottom, Math.max(top, coordinate))) / (bottom - top) * (max - min)
+  }
+  function move(event) {
+    if (!drag) {
+      if (!history.length) return
+      const box = plot.current.getBoundingClientRect()
+      const coordinate = (event.clientX - box.left) * 700 / box.width
+      setCursor(Math.max(0, Math.min(history.length - 1, Math.round((coordinate - 16) / 575 * (history.length - 1)))))
+      return
+    }
+    const price = pointerPrice(event)
     setLimits(previous => ({ ...previous, [drag.key]: Math.max(.01, price).toFixed(2) }))
   }
 
@@ -71,27 +95,52 @@ export default function XtbPositionChart({ trade, openCount }) {
       <div className={styles.tags}><span>حجم <bdi>{exposure.volume.toPrecision(8).replace(/\.?0+$/, '')}</bdi></span><span>میانگین ورود <bdi>{formatPrice(exposure.entry)} {currency}</bdi></span></div>
       {exposure.isBrent && <button type="button" disabled={busy} onClick={refresh}>{busy ? 'در حال دریافت…' : 'به‌روزرسانی نمودار'}</button>}
     </header>
+    <dl className={styles.quoteStrip}>
+      <div><dt>{currentPrice != null ? 'قیمت خروج واردشده از XTB' : 'آخرین قیمت مرجع'}</dt><dd><bdi>{formatPrice(displayedPrice)} {currency}</bdi></dd>
+        {currentPrice == null && referenceMarket?.quote?.asOf && <small><bdi>{referenceMarket.quote.asOf.slice(0, 16).replace('T', ' ')} UTC</bdi></small>}</div>
+      <div><dt>سود و زیان باز · ناخالص برآوردی</dt><dd data-sign={pnl?.percent < 0 ? 'negative' : 'positive'}><bdi>{pnl ? `${pnl.amount == null ? '' : signedFormat.format(pnl.amount) + ' ' + currency + ' · '}${signedFormat.format(pnl.percent)}%` : '—'}</bdi></dd>
+        <small>{currentPrice != null ? 'بر اساس قیمت خروج واردشده' : displayedPrice == null ? 'قیمت مرجع را به‌روزرسانی کن' : 'بر اساس قیمت مرجع برنت'}</small></div>
+    </dl>
     <div className={styles.grid}>
       <div className={styles.chart}>
-        <svg ref={plot} className={styles.plot} viewBox="0 0 700 266" preserveAspectRatio="none" role="group" aria-label="نمودار سطح ورود و حدهای موقعیت" onPointerMove={move} onPointerUp={()=>setDrag(null)} onPointerCancel={()=>setDrag(null)} onLostPointerCapture={()=>setDrag(null)}>
+        <div className={styles.chartTools} aria-label="ابزارهای نمودار">
+          {[[30, '۳۰ جلسه'], [90, '۹۰ جلسه'], [260, 'یک سال']].map(([value,label])=><button type="button" key={value} aria-pressed={range===value} onClick={()=>{setRange(value);setCursor(null)}}>{label}</button>)}
+          <button type="button" aria-pressed={mode === 'candles'} onClick={()=>setMode('candles')}>کندلی</button>
+          <button type="button" aria-pressed={mode === 'line'} onClick={()=>setMode('line')}>خطی</button>
+          <button type="button" aria-pressed={drawing} onClick={()=>setDrawing(value=>!value)}>خط افقی</button>
+          <button type="button" disabled={!lines.length} onClick={()=>setLines(previous=>previous.slice(0,-1))}>حذف خط آخر</button>
+        </div>
+        {mode === 'candles' && history.length > 0 && !candles && <p>برای دریافت کندل‌ها نمودار را به‌روزرسانی کن.</p>}
+        {activeBar && <p className={styles.readout}><bdi>{activeBar.date}</bdi> · پایانی <bdi>{formatPrice(activeBar.close)}</bdi>{candles && <> · باز <bdi>{formatPrice(activeBar.open)}</bdi> · بالا <bdi>{formatPrice(activeBar.high)}</bdi> · پایین <bdi>{formatPrice(activeBar.low)}</bdi></>}</p>}
+        <svg ref={plot} className={styles.plot} data-drawing={drawing} viewBox="0 0 700 266" preserveAspectRatio="none" role="group" aria-label="نمودار قیمت و سطح‌های موقعیت"
+          onPointerMove={move} onPointerLeave={()=>setCursor(null)} onPointerUp={()=>setDrag(null)} onPointerCancel={()=>setDrag(null)} onLostPointerCapture={()=>setDrag(null)}
+          onClick={event=>{if(drawing){setLines(previous=>[...previous,pointerPrice(event)]);setDrawing(false)}}}>
+          <defs><linearGradient id={gradient} x2="0" y2="1"><stop stopColor="#63a9fd" stopOpacity=".3"/><stop offset="100%" stopColor="#63a9fd" stopOpacity="0"/></linearGradient></defs>
           {[0,.25,.5,.75,1].map(step => {
             const value = min + (max-min)*step
             return <g key={step}><line x1="16" x2="605" y1={y(value)} y2={y(value)} stroke="#344350"/><text x="690" y={y(value)+4} textAnchor="end">{formatPrice(value)}</text></g>
           })}
-          {line && <path d={line} fill="none" stroke="#9dcce4" strokeWidth="2" vectorEffect="non-scaling-stroke"/>}
+          {candles ? history.map((bar,i)=>{
+            const color=bar.close>=bar.open?'#53d6ae':'#fb8092'
+            return <g key={bar.date}><line x1={x(i)} x2={x(i)} y1={y(bar.high)} y2={y(bar.low)} stroke={color}/><rect x={x(i)-candleWidth/2} y={Math.min(y(bar.open),y(bar.close))} width={candleWidth} height={Math.max(1,Math.abs(y(bar.close)-y(bar.open)))} fill={color}/></g>
+          }) : line && <><path d={`${line} L${x(history.length-1)},${bottom} L16,${bottom} Z`} fill={`url(#${gradient})`}/><path d={line} fill="none" stroke="#84c5ff" strokeWidth="2" vectorEffect="non-scaling-stroke"/></>}
+          {cursor != null && activeBar && <g><line x1={x(cursor)} x2={x(cursor)} y1={top} y2={bottom} stroke="#b6c8dc" strokeDasharray="3 4"/><circle cx={x(cursor)} cy={y(activeBar.close)} r="4" fill="#c8e3ff"/></g>}
+          {lines.map((price,i)=><line key={i} x1="16" x2="605" y1={y(price)} y2={y(price)} stroke="#8bb7ee" strokeDasharray="3 4"/>)}
           <line x1="16" x2="605" y1={y(exposure.entry)} y2={y(exposure.entry)} stroke="#f1c975" strokeDasharray="5 4" />
           <circle cx="16" cy={y(exposure.entry)} r="5" fill="#f1c975"/>
-          {currentPrice != null && <line x1="16" x2="605" y1={y(currentPrice)} y2={y(currentPrice)} stroke="#9dcce4" strokeDasharray="2 4"/>}
+          {displayedPrice != null && <line x1="16" x2="605" y1={y(displayedPrice)} y2={y(displayedPrice)} stroke="#9dcce4" strokeDasharray="2 4"/>}
           {estimate?.price != null && <line x1="16" x2="605" y1={y(estimate.price)} y2={y(estimate.price)} stroke="#c5a3fd" strokeWidth="2" strokeDasharray="7 4"/>}
           {Object.entries({stop,target}).filter(([,value])=>value!=null).map(([key,value]) => <g key={key} className={styles.handle}
-            onPointerDown={event=>{event.currentTarget.setPointerCapture(event.pointerId);setDrag({key,domain:[min,max]})}}>
+            onPointerDown={event=>{if(drawing)return;event.currentTarget.setPointerCapture(event.pointerId);setDrag({key,domain:[min,max]})}}>
             <line x1="16" x2="605" y1={y(value)} y2={y(value)} stroke={key==='stop'?'#fa9b9b':'#a3e2bd'} strokeWidth="2"/>
             <rect x="16" y={y(value)-11} width="590" height="22" fill="transparent"/>
             <circle cx="605" cy={y(value)} r="8" fill={key==='stop'?'#fa9b9b':'#a3e2bd'}/><title>{limitLabels[key]} {formatPrice(value)}</title>
           </g>)}
+          {history.length > 1 && [0, Math.floor(history.length / 2), history.length - 1].filter((i,index,list)=>list.indexOf(i)===index).map((i,index)=>
+            <text key={i} x={x(i)} y="261" textAnchor={index===0?'start':i===history.length-1?'end':'middle'}>{history[i].date.slice(5)}</text>)}
         </svg>
         <div className={styles.legend}>
-          <span data-color="entry">ورود</span><span data-color="stop">حد ضرر</span><span data-color="target">حد سود</span>{currentPrice != null && <span data-color="current">قیمت ثبت‌شدهٔ XTB</span>}{estimate?.price != null && <span data-color="liquidation">تخمین Stop Out</span>}
+          <span data-color="entry">ورود</span><span data-color="stop">حد ضرر</span><span data-color="target">حد سود</span>{displayedPrice != null && <span data-color="current">{currentPrice != null ? 'قیمت واردشده از XTB' : 'قیمت مرجع'}</span>}{estimate?.price != null && <span data-color="liquidation">تخمین Stop Out</span>}
         </div>
         <p>{history.length ? <>قیمت مرجع قرارداد آتی برنت، <bdi>{history[0].date} تا {history.at(-1).date}</bdi>. قیمت اجرای XTB می‌تواند متفاوت باشد.</> : 'سطوح موقعیت روی محور قیمت نمایش داده می‌شوند.'}</p>
         {error && <p role="alert">{error}</p>}
