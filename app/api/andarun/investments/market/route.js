@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server'
 import { requireAndarunSession } from '@/lib/andarunPasswordAuth'
-import { searchInstruments, loadMarket } from '@/lib/investments/market.server'
+import { searchInstruments, loadMarket, loadBrentIntraday } from '@/lib/investments/market.server'
 import { loadIsinMarket } from '@/lib/investments/isin-market.server'
 import { validIsin, isDate, todayBerlin } from '@/lib/investments/family.mjs'
 export const dynamic = 'force-dynamic'
@@ -13,6 +13,11 @@ export async function GET(request) {
   const symbol=params.get('symbol')?.trim().toUpperCase()
   const isin=params.get('isin')?.trim().toUpperCase()
   try {
+    if (params.get('interval') === '15m') {
+      if (params.get('refresh') !== '1') return manualRefreshRequired()
+      if (symbol !== 'BZ=F' || isin) return NextResponse.json({error:'تایم‌فریم برای این نماد در دسترس نیست.'},{status:400,headers})
+      return NextResponse.json({history:await loadBrentIntraday()},{headers})
+    }
     if (isin) {
       if (!validIsin(isin)) return NextResponse.json({error:'شناسه ابزار معتبر نیست.'},{status:400,headers})
       const historyDates=params.getAll('historyDate')

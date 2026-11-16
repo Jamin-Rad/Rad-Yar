@@ -3,6 +3,7 @@
 import { useEffect, useId, useMemo, useRef, useState } from 'react'
 import { browserChartStorage, readChartDrawings, readChartHistory, saveChartDrawings, saveChartHistory } from '@/lib/investments/local-asset-chart.mjs'
 import { technicalHistory } from '@/lib/investments/indicators.mjs'
+import ForecastChart from './ForecastChart'
 import { estimateXtbStopOut, xtbExposure, xtbScenario } from '@/lib/investments/xtb-risk.mjs'
 import styles from './XtbPositionChart.module.css'
 
@@ -32,6 +33,7 @@ export default function XtbPositionChart({ trade, openCount }) {
   const [anchor, setAnchor] = useState(null)
   const [lines, setLines] = useState([])
   const [saveError, setSaveError] = useState(false)
+  const [forecast, setForecast] = useState(null)
   const [indicators, setIndicators] = useState({ ema20: true, sma50: true, sma200: true, rsi: true })
   const drawingsKey = JSON.stringify(['xtb', trade.ownerId, trade.id, trade.plan.symbol, trade.plan.currency])
   const gradient = useId()
@@ -97,6 +99,16 @@ export default function XtbPositionChart({ trade, openCount }) {
     } catch (err) { setError(err.message) }
     finally { setBusy(false) }
   }
+  async function toggleForecast() {
+    if (forecast) { setForecast(null);return }
+    setForecast({loading:true})
+    try {
+      const response = await fetch('/api/andarun/investments/market?symbol=BZ%3DF&refresh=1&interval=15m', {cache:'no-store'})
+      const data = await response.json()
+      if (!response.ok || !Array.isArray(data.history)) throw Error('دریافت کندل‌های ۱۵ دقیقه‌ای برنت انجام نشد.')
+      setForecast({rows:data.history})
+    } catch (error) { setForecast({error:error.message}) }
+  }
 
   function pointerPrice(event) {
     const box = plot.current.getBoundingClientRect()
@@ -150,6 +162,7 @@ export default function XtbPositionChart({ trade, openCount }) {
     <div className={styles.grid}>
       <div className={styles.chart}>
         <div className={styles.chartTools} aria-label="ابزارهای نمودار">
+          {exposure.isBrent && <button type="button" aria-expanded={!!forecast} disabled={forecast?.loading} onClick={toggleForecast}>{forecast?.loading?'دریافت کندل‌ها…':forecast?'بستن پیش‌بینی':'پیش‌بینی روند'}</button>}
           {[[30, '۳۰ جلسه'], [90, '۹۰ جلسه'], [260, 'یک سال']].map(([value,label])=><button type="button" key={value} aria-pressed={range===value} onClick={()=>{setRange(value);setCursor(null)}}>{label}</button>)}
           <button type="button" aria-pressed={mode === 'candles'} onClick={()=>setMode('candles')}>کندلی</button>
           <button type="button" aria-pressed={mode === 'line'} onClick={()=>setMode('line')}>خطی</button>
@@ -206,6 +219,8 @@ export default function XtbPositionChart({ trade, openCount }) {
           <span data-color="entry">ورود</span><span data-color="stop">حد ضرر</span><span data-color="target">حد سود</span>{displayedPrice != null && <span data-color="current">{currentPrice != null ? 'قیمت واردشده از XTB' : 'قیمت مرجع'}</span>}{estimate?.price != null && <span data-color="liquidation">تخمین Stop Out</span>}
         </div>
         <p>{history.length ? <>قیمت مرجع قرارداد آتی برنت، <bdi>{history[0].date} تا {history.at(-1).date}</bdi>. قیمت اجرای XTB می‌تواند متفاوت باشد.</> : 'سطوح موقعیت روی محور قیمت نمایش داده می‌شوند.'}</p>
+        {forecast?.error && <p role="alert">{forecast.error}</p>}
+        {forecast?.rows && <ForecastChart rows={forecast.rows} currency="USD" intraday/>}
         {error && <p role="alert">{error}</p>}
       </div>
       <div className={styles.scenarios}>
