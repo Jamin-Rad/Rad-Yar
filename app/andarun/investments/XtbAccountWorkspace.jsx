@@ -4,6 +4,7 @@ import {todayBerlin,tradeStatus} from '@/lib/investments/family.mjs'
 import {xtbBalance} from '@/lib/investments/xtb.mjs'
 import {money,signedMoney,percent,parseMoney} from '@/lib/investments/portfolio.mjs'
 import TradeWorkspace from './TradeWorkspace'
+import XtbPositionChart from './XtbPositionChart'
 import Icon from './InvestmentIcon'
 import styles from './investments.module.css'
 import view from './AccountView.module.css'
@@ -28,11 +29,22 @@ export function XtbEntryDialog({account,onClose,onSave}) {
 
 export default function XtbAccountWorkspace({account,owner,trades,tradeProps}) {
   const ownTrades=trades.filter(t=>t.ownerId===account?.id)
-  const [tab,setTab]=useState(tradeProps.createOpen||tradeProps.selectedId||ownTrades.some(t=>tradeStatus(t)==='open')?'plans':'transactions')
+  const openTrades=ownTrades.filter(t=>tradeStatus(t)==='open')
+  const [chartId,setChartId]=useState(null)
+  const chartTrade=openTrades.find(t=>t.id===chartId)||openTrades[0]
+  const [tab,setTab]=useState(tradeProps.createOpen||tradeProps.selectedId||openTrades.length?'plans':'transactions')
   useEffect(()=>{if(tradeProps.createOpen||tradeProps.selectedId)setTab('plans')},[tradeProps.createOpen,tradeProps.selectedId])
   const balance=xtbBalance(account,trades)
   if(!balance)return <section className={view.wallet}><Icon name="trading" size={40}/><h2>موجودی XTB ثبت نشده است</h2></section>
   return <>
+    {chartTrade && <>
+      {openTrades.length > 1 && <label className={styles.field}>موقعیت روی نمودار
+        <select value={chartTrade.id} onChange={event=>setChartId(event.target.value)}>
+          {openTrades.map(trade=><option key={trade.id} value={trade.id}>{trade.plan.name} · {trade.plan.planDate}</option>)}
+        </select>
+      </label>}
+      <XtbPositionChart key={chartTrade.id} trade={chartTrade} openCount={openTrades.length}/>
+    </>}
     <section className={view.summary} aria-label={`موجودی XTB ${owner}`}><div className={view.metrics}>
       <div><span>موجودی حساب</span><strong><bdi>{money(balance.balanceCents)}</bdi></strong><small>موجودی پس از معاملات بسته‌شده</small></div>
       <div><span>سرمایهٔ اولیه</span><strong><bdi>{money(balance.openingCents)}</bdi></strong></div>
