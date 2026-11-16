@@ -13,6 +13,10 @@
 .readout { display:flex; flex-wrap:wrap; gap:8px 16px; align-items:center; min-height:55px; padding-top:12px; font-size:12px; font-variant-numeric:tabular-nums; }
 .readout time { color:#b9c7d4; }
 .plot { display:block; width:100%; direction:ltr; touch-action:pan-y; }
+.plot[data-drawing='true'] { cursor:crosshair; }
+.drawingTools { display:flex; flex-wrap:wrap; gap:6px 10px; align-items:center; margin-top:12px; }
+.entry { cursor:pointer; }
+.entry[aria-pressed='true'],.entry:focus-visible { stroke:#e1ffef; }
 .study { border-top:1px solid #2e3b47; padding-top:11px; }
 .study > div { display:flex; gap:18px; align-items:center; font-size:12px; color:#c1cad7; }
 .study strong { color:#e2e9f0; font-variant-numeric:tabular-nums; }

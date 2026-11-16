@@ -4,7 +4,7 @@ import { useId, useMemo, useState } from 'react'
 import { familyBalance } from '@/lib/investments/balances.mjs'
 import { money, signedMoney, number, percent } from '@/lib/investments/portfolio.mjs'
 import { overviewAllocation } from '@/lib/investments/overview-allocation.mjs'
-import AllocationRing from './AllocationRing'
+import AllocationRing, { AllocationMetric } from './AllocationRing'
 import { XTB_OWNERS, xtbBalance } from '@/lib/investments/xtb.mjs'
 import Icon from './InvestmentIcon'
 import { DigitalWalletWorkspace } from './XtbAccountWorkspace'
@@ -20,7 +20,7 @@ const providers = [
 const resultClass = value => value == null || value === 0 ? '' : value > 0 ? styles.positive : styles.negative
 const displayMoney = value => value == null ? '—' : money(value)
 
-function Allocation({ allocation, onHolding, onOpenHolding }) {
+function Allocation({ allocation, onHolding, onOpenHolding, metric }) {
   return <div className={styles.allocation}>
     <ul className={styles.sectors}>
       {allocation.groups.map(group => <li key={group.key} style={{'--sector':group.color}}>
@@ -29,11 +29,11 @@ function Allocation({ allocation, onHolding, onOpenHolding }) {
         <span className={styles.track} aria-hidden="true"><i style={{width: (group.share * 100) + '%'}}/></span>
       </li>)}
     </ul>
-    <AllocationRing className={styles.ring} groups={allocation.groups} onOpenHolding={onOpenHolding}>
-      <span lang="en">Trade<br/>Republic</span>
+    <AllocationRing className={styles.ring} groups={allocation.groups} metric={metric} onOpenHolding={onOpenHolding}>
+      {metric === 'profit' ? <span><bdi>{money(allocation.total)}</bdi></span> : <span lang="en">Trade<br/>Republic</span>}
     </AllocationRing>
     <div className={styles.topHoldings}>
-      <h3>بیشترین وزن سبد</h3>
+      <h3>{metric === 'profit' ? 'بیشترین سود فعلی' : 'بیشترین وزن سبد'}</h3>
       {allocation.top.map(holding => <button type="button" key={holding.key} onClick={() => onHolding(holding)}>
         <strong dir="auto">{holding.name}</strong>
         <span><bdi>{money(holding.valueCents)}</bdi><bdi className={styles.weight}>{percent(holding.share * 100)}</bdi></span>
@@ -44,9 +44,10 @@ function Allocation({ allocation, onHolding, onOpenHolding }) {
 
 export default function FamilyOverview({ state, ledger, onLedger, onOpenAsset, marketData, onEnablePrices, profitSelection={mode:'current'}, onProfitSelection, profitPeriod, dark, onTheme, onEntry, onSave, saving }) {
   const [selected, setSelected] = useState('tr')
+  const [metric, setMetric] = useState('value')
   const id = useId()
   const balance = useMemo(() => familyBalance(state.accounts, ledger?.loaded ? ledger.transactions : null, marketData.markets), [state.accounts, ledger?.loaded, ledger?.transactions, marketData.markets])
-  const allocation = useMemo(() => overviewAllocation(balance.accounts, state.settings.assetSectors), [balance.accounts, state.settings.assetSectors])
+  const allocation = useMemo(() => overviewAllocation(balance.accounts, state.settings.assetSectors, metric), [balance.accounts, state.settings.assetSectors, metric])
   const xtb = useMemo(() => {
     const recorded = XTB_OWNERS.map(id => xtbBalance(state.settings.xtbAccounts.find(account => account.id === id), state.trades)).filter(Boolean)
     return {
@@ -110,11 +111,12 @@ export default function FamilyOverview({ state, ledger, onLedger, onOpenAsset, m
       {selected === 'tr' && <>
         <section className={styles.block} aria-labelledby={id + '-allocation'}>
           <h2 id={id + '-allocation'}>ترکیب بخشی دارایی‌های <bdi>Trade Republic</bdi></h2>
-          {allocation.total > 0 ? <Allocation allocation={allocation}
+          <AllocationMetric value={metric} onChange={setMetric}/>
+          {allocation.total > 0 ? <Allocation key={metric} allocation={allocation} metric={metric}
             onHolding={holding => onLedger('all', 'transactions', holding.isin || holding.name)}
             onOpenHolding={holding => onOpenAsset(holding.accountId, holding.positionId)}
-          /> : <p className={styles.empty}>برای نمایش ترکیب سبد، قیمت‌های دارایی‌ها را به‌روزرسانی کن.</p>}
-          {allocation.excluded > 0 && <p className={styles.muted}>{number(allocation.excluded)} موقعیت به‌دلیل نبود قیمت معتبر یا تعداد تأییدشده، در وزن‌ها محاسبه نشده‌اند.</p>}
+          /> : <p className={styles.empty}>{metric === 'profit' ? 'سود مثبتِ قابل محاسبه‌ای برای نمایش وجود ندارد.' : 'برای نمایش ترکیب سبد، قیمت‌های دارایی‌ها را به‌روزرسانی کن.'}</p>}
+          {allocation.excluded > 0 && <p className={styles.muted}>{number(allocation.excluded)} موقعیت به‌دلیل {metric === 'profit' ? 'نبود سود قابل محاسبه' : 'نبود قیمت معتبر یا تعداد تأییدشده'} در نمودار لحاظ نشده است.</p>}
           {priceErrors && <p className={styles.muted} role="status">دریافت برخی قیمت‌ها انجام نشد. قیمت قبلی در صورت وجود حفظ شده است.</p>}
         </section>
         <section className={styles.block}>

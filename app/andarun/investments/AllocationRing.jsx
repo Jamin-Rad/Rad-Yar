@@ -4,7 +4,19 @@ import { useId, useState } from 'react'
 import { money, percent } from '@/lib/investments/portfolio.mjs'
 import styles from './AllocationRing.module.css'
 
-export default function AllocationRing({ groups, children, className, onOpenHolding }) {
+export function AllocationMetric({ value, onChange }) {
+  return <div className={styles.metrics}>
+    <label>مبنای ترکیب سبد{' '}
+      <select value={value} onChange={event => onChange(event.target.value)}>
+        <option value="value">ارزش فعلی (یورو)</option>
+        <option value="profit">سود فعلی (یورو)</option>
+      </select>
+    </label>
+    {value === 'profit' && <small>وزن‌ها بر اساس جمع سودهای مثبتِ دارایی‌های باز محاسبه می‌شوند.</small>}
+  </div>
+}
+
+export default function AllocationRing({ groups, children, className, onOpenHolding, metric = 'value' }) {
   const gradientId = useId()
   const detailsId = gradientId + '-details'
   const [hovered, setHovered] = useState(null)
@@ -51,8 +63,9 @@ export default function AllocationRing({ groups, children, className, onOpenHold
     <svg viewBox="0 0 200 200" role="group" aria-label="نمودار ترکیب سبد">
       <defs>
         {segments.map(group => <linearGradient key={group.key} id={gradientId + group.key} x1="0%" x2="100%" y1="0%" y2="100%">
-          <stop offset="0%" stopColor={`color-mix(in srgb, ${group.color}, white 24%)`} />
-          <stop offset="100%" stopColor={group.color} />
+          <stop offset="0%" stopColor={`color-mix(in srgb, ${group.color}, white 34%)`} />
+          <stop offset="50%" stopColor={group.color} />
+          <stop offset="100%" stopColor={`color-mix(in srgb, ${group.color}, black 12%)`} />
         </linearGradient>)}
       </defs>
       <g transform="translate(0 31) scale(1 .74)" aria-hidden="true" className={styles.depth}>
@@ -64,7 +77,7 @@ export default function AllocationRing({ groups, children, className, onOpenHold
           className={styles.segment} data-active={active?.key === group.key}
           role="button" tabIndex={0} aria-pressed={selected === group.key}
           aria-controls={active?.key === group.key ? detailsId : undefined}
-          aria-label={`${group.label}، ${money(group.valueCents)}، ${percent(group.share * 100)} از سبد`}
+          aria-label={`${group.label}، ${money(group.valueCents)}، ${percent(group.share * 100)} ${metric === 'profit' ? 'از جمع سودها' : 'از سبد'}`}
           onPointerEnter={event => { if (event.pointerType !== 'touch') setHovered(group.key) }}
           onFocus={event => setFocused(event.currentTarget.matches(':focus-visible') ? group.key : null)}
           onClick={() => toggle(group.key)} onKeyDown={event => {
@@ -82,7 +95,7 @@ export default function AllocationRing({ groups, children, className, onOpenHold
         <bdi>{money(active.valueCents)}</bdi><bdi>{percent(active.share * 100)}</bdi>
       </div>
       <table className={styles.holdings}>
-        <thead><tr><th scope="col">دارایی</th><th scope="col">ارزش</th><th scope="col">از کل سبد</th></tr></thead>
+        <thead><tr><th scope="col">دارایی</th><th scope="col">{metric === 'profit' ? 'سود فعلی' : 'ارزش'}</th><th scope="col">{metric === 'profit' ? 'از جمع سودها' : 'از کل سبد'}</th></tr></thead>
         <tbody>{active.holdings.map(holding => <tr key={holding.key}>
           <th scope="row">
             <button type="button" className={styles.holdingLink} onClick={() => onOpenHolding(holding)}>

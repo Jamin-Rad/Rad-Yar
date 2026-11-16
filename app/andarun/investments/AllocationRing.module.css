@@ -1,4 +1,7 @@
 .ring { position: relative; isolation: isolate; }
+.metrics { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 14px; margin-block: 12px; }
+.metrics select { font: inherit; min-height: 42px; padding: 5px 10px; border: 1px solid currentColor; border-radius: 8px; }
+.metrics small { opacity: .85; }
 .ring:has(.tooltip) { z-index: 3; }
 .ring > svg { grid-area: 1 / 1; display: block; width: 100%; height: 100%; }
 .center { position: absolute; inset-inline: 20%; top: 47%; translate: 0 -50%; text-align: center; pointer-events: none; }

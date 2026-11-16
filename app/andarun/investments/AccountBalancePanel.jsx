@@ -1,12 +1,17 @@
 'use client'
+import { useMemo, useState } from 'react'
+import { overviewAllocation } from '@/lib/investments/overview-allocation.mjs'
 import { balanceCsv, unrealizedBalance } from '@/lib/investments/balances.mjs'
 import { money, number, percent, signedMoney } from '@/lib/investments/portfolio.mjs'
 import {ProfitPeriodControl, ProfitPeriodDetails, RealizedProfitDetails} from './ProfitPeriod'
-import AllocationRing from './AllocationRing'
+import AllocationRing, { AllocationMetric } from './AllocationRing'
 import styles from './investments.module.css'
 import view from './AccountView.module.css'
 
-export default function AccountBalancePanel({ account, balance, allocation, ledger, onDetails, onOpenHolding, profitSelection={mode:'current'}, onProfitSelection, profitPeriod, dark, detailsOnly=false }) {
+export default function AccountBalancePanel({ account, balance, allocation, assetSectors, ledger, onDetails, onOpenHolding, profitSelection={mode:'current'}, onProfitSelection, profitPeriod, dark, detailsOnly=false }) {
+  const [metric, setMetric] = useState('value')
+  const composition = useMemo(() => !detailsOnly && metric === 'profit'
+    ? overviewAllocation([balance], assetSectors, metric) : allocation, [allocation, balance, assetSectors, detailsOnly, metric])
   const isPeriod = profitSelection.mode!=='current'
   const isRealized = profitSelection.scope==='realized'
   const result = isRealized ? profitPeriod?.realized?.accounts.find(a=>a.accountId===account.id) : isPeriod ? profitPeriod?.result?.accounts.find(a=>a.accountId===account.id) : unrealizedBalance(balance.positions)
@@ -18,6 +23,7 @@ export default function AccountBalancePanel({ account, balance, allocation, ledg
   }
   if(detailsOnly)return <details className={styles.balanceDetails}><summary>جزئیات موجودی و خروجی</summary><button type="button" className={styles.textButton} onClick={exportBalance} disabled={!ledger?.loaded}>خروجی موجودی</button><p>{number(balance.pricedCount)} از {number(account.positions.length)} دارایی قیمت دارد.{balance.unknownQuantityCount?` تعداد ${number(balance.unknownQuantityCount)} دارایی از مبنای قبلی است.`:''}</p><p>{cash.status==='confirmed-checkpoint'?`نقد ثبت‌شده در ${new Date(cash.checkpoint.asOf).toLocaleString('de-DE',{timeZone:'Europe/Berlin'})}`:cash.status==='confirmed-opening'?`مانده شروع: ${money(cash.openingCents)}`:cash.status==='zero-opening-estimate'?'نقد با فرض مانده شروع صفر محاسبه شده است.':'مانده نقد هنوز ثبت نشده است.'}</p><p>زمان قدیمی‌ترین قیمت: <bdi>{balance.oldestPrice?new Date(balance.oldestPrice).toLocaleString('de-DE',{timeZone:'Europe/Berlin'}):'—'}</bdi></p><button type="button" className={styles.textButton} onClick={onDetails}>اصلاح مبنای نقد</button></details>
   return <section className={view.summary} aria-label={`موجودی حساب ${account.owner}`}>
+    <AllocationMetric value={metric} onChange={setMetric}/>
     <div className={view.allocationSummary}>
       <dl className={view.accountMetrics}>
         <div><dt>ارزش دارایی‌ها{allocation.excluded > 0 ? ' · بخش محاسبه‌شده' : ''}</dt>
@@ -30,17 +36,17 @@ export default function AccountBalancePanel({ account, balance, allocation, ledg
         </div>
       </dl>
       <div className={view.accountChart} role="group" aria-label="ترکیب دارایی‌ها به تفکیک دسته">
-        {allocation.groups.length ? <>
-          <AllocationRing className={view.accountRing} groups={allocation.groups} onOpenHolding={onOpenHolding}>
-            <div className={view.ringLabel}><span>ارزش دارایی‌ها</span><strong><bdi>{money(allocation.total)}</bdi></strong></div>
+        {composition.groups.length ? <>
+          <AllocationRing className={view.accountRing} key={metric} groups={composition.groups} metric={metric} onOpenHolding={onOpenHolding}>
+            <div className={view.ringLabel}><span>{metric === 'profit' ? 'جمع سودهای مثبت' : 'ارزش دارایی‌ها'}</span><strong><bdi>{money(composition.total)}</bdi></strong></div>
           </AllocationRing>
           <ul className={view.accountLegend}>
-            {allocation.groups.map(group => <li key={group.key}><i style={{ background: group.color }} /><span>{group.label}</span><bdi>{percent(group.share * 100)}</bdi></li>)}
+            {composition.groups.map(group => <li key={group.key}><i style={{ background: group.color }} /><span>{group.label}</span><bdi>{percent(group.share * 100)}</bdi></li>)}
           </ul>
-        </> : <p className={view.chartEmpty}>{account.positions.length ? 'برای محاسبهٔ وزن سبد، قیمت معتبر و تعداد تأییدشده لازم است.' : 'این حساب هنوز دارایی باز ندارد.'}</p>}
+        </> : <p className={view.chartEmpty}>{metric === 'profit' ? 'سود مثبتِ قابل محاسبه‌ای برای نمایش وجود ندارد.' : account.positions.length ? 'برای محاسبهٔ وزن سبد، قیمت معتبر و تعداد تأییدشده لازم است.' : 'این حساب هنوز دارایی باز ندارد.'}</p>}
       </div>
     </div>
-    {allocation.excluded > 0 && <p className={view.coverage}>{number(allocation.excluded)} دارایی به‌دلیل نبود قیمت معتبر یا تعداد تأییدشده در وزن سبد محاسبه نشده است.</p>}
+    {composition.excluded > 0 && <p className={view.coverage}>{number(composition.excluded)} دارایی به‌دلیل {metric === 'profit' ? 'نبود سود قابل محاسبه' : 'نبود قیمت معتبر یا تعداد تأییدشده'} در نمودار لحاظ نشده است.</p>}
     <div className={view.profitControls}>
       <ProfitPeriodControl selection={profitSelection} onChange={onProfitSelection} period={profitPeriod} dark={dark}/>
       {isRealized&&<RealizedProfitDetails result={profitPeriod?.realized} accountId={account.id} dark={dark}/>}

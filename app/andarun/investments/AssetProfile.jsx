@@ -1,7 +1,8 @@
 'use client'
-import {useState} from 'react'
+import {useEffect,useMemo,useState} from 'react'
 import {money,signedMoney,percent} from '@/lib/investments/portfolio.mjs'
 import {marketImpact,marketKey,marketForPosition,marketTrusted} from '@/lib/investments/market.mjs'
+import {browserChartStorage,chartDrawingKey,chartEntries,readChartHistory,saveChartHistory} from '@/lib/investments/local-asset-chart.mjs'
 import Icon from './InvestmentIcon'
 import TradingViewChart from './TradingViewChart'
 import TechnicalChart from './TechnicalChart'
@@ -15,14 +16,41 @@ function MarketConnection({position,marketData,onConnect}){
  {results.length>0&&<div className={styles.instrumentResults}>{results.map(r=><button type="button" key={r.symbol} onClick={()=>setSymbol(r.symbol)} className={symbol===r.symbol?styles.selectedTrade:''}><strong><bdi>{r.symbol}</bdi> · <bdi>{r.name}</bdi></strong><small><bdi>{r.exchange} · {r.type}</bdi></small></button>)}</div>}
  <form onSubmit={connect}><label className={styles.field}>نماد دقیق در منبع بازار<input value={symbol} onChange={e=>setSymbol(e.target.value)} dir="ltr" required maxLength={35} placeholder="مثلاً نماد تأییدشده در Yahoo Finance"/></label><label className={styles.checkbox}><input type="checkbox" required/>این نماد را با ابزار، کلاس سهم و بورس مورد نظرم تطبیق داده‌ام؛ ارز منبع ممکن است با حساب یورویی متفاوت باشد.</label><button className={styles.primaryButton} type="submit" disabled={busy}>{busy?'در حال بررسی…':'اتصال قیمت و تاریخچه'}</button></form>{error&&<p role="alert" className={styles.error}>{error}</p>}</div>
 }
-export default function AssetProfile({account, position, state, marketData, onTransactions, onConnect, onChartConnect, onDecision, onOpenDecision, onEvent}) {
+export default function AssetProfile({account, position, state, marketData, ledger, onEnablePrices, onTransactions, onConnect, onChartConnect, onDecision, onOpenDecision, onEvent}) {
   const [connectOpen, setConnectOpen] = useState(false)
+  const [saved, setSaved] = useState(null)
+  const [chartNotice, setChartNotice] = useState('')
+  const [chartBusy, setChartBusy] = useState(false)
+  const key = position ? marketKey(position) : ''
+  useEffect(() => {
+    setSaved({key, market: readChartHistory(browserChartStorage(), key)})
+  }, [key])
+  const accountId = account?.id
+  const entries = useMemo(() => chartEntries(ledger?.transactions || [], accountId, position?.isin), [ledger?.transactions, accountId, position?.isin])
   if (!position) return <section className={styles.panel}><h2>این دارایی در فهرست فعلی حساب نیست.</h2></section>
 
-  const key = marketKey(position)
   const market = marketForPosition(position, marketData.markets)
   const quote = market?.quote
   const canLoad = key && (position.marketConfirmed || state.settings.isinPricesEnabled)
+  const cached = saved?.key === key ? saved.market : null
+  const chartMarket = [cached, market].find(candidate => candidate?.history?.length >= 2 && marketTrusted(position, candidate))
+  async function refreshChart() {
+    if (!key || chartBusy) return
+    if (!canLoad && !onEnablePrices()) return
+    setChartNotice('')
+    setChartBusy(true)
+    try {
+      const result = await marketData.load(key, position.name, true, true)
+      if (!result) return
+      if (!(result.history?.length >= 2) || !marketTrusted(position,result)) {
+        setChartNotice('تاریخچهٔ معتبر برای این نماد دریافت نشد.')
+        return
+      }
+      const persisted = saveChartHistory(browserChartStorage(), key, result)
+      setSaved({key, market:result})
+      setChartNotice(persisted ? 'تاریخچه در همین مرورگر ذخیره شد.' : 'تاریخچه دریافت شد. ذخیره در مرورگر انجام نشد.')
+    } finally { setChartBusy(false) }
+  }
   const changes = [['هفته', marketImpact(position, market, 7)], ['ماه', marketImpact(position, market, 30)]]
   const related = state.decisions.filter(item => item.accountId === account.id && item.positionId === position.id)
   const events = state.events.filter(item => item.accountId === account.id && item.positionId === position.id && !item.done)
@@ -51,12 +79,27 @@ export default function AssetProfile({account, position, state, marketData, onTr
       </div>
     </section>
 
-    <TradingViewChart position={position} onConnect={onChartConnect}/>
+    <section className={styles.panel} aria-label="نمودار قیمت دارایی">
+      <div className={styles.panelHead}>
+        <div><h2>نمودار قیمت و نقاط ورود</h2>
+          <p>{chartMarket ? <>تاریخچهٔ موجود تا <bdi>{chartMarket.history.at(-1)?.date}</bdi></> : 'برای بار اول تاریخچه را دریافت کن.'}</p></div>
+        <button type="button" className={styles.secondaryButton} disabled={!key || chartBusy || marketData.loading[key]} onClick={refreshChart}>
+          {chartBusy ? 'در حال به‌روزرسانی…' : 'به‌روزرسانی نمودار'}
+        </button>
+      </div>
+      {chartNotice && <p className={styles.footnote} role="status">{chartNotice}</p>}
+      {chartMarket ? <TechnicalChart market={chartMarket} entries={entries} loading={chartBusy}
+        key={chartDrawingKey(account.id, position, chartMarket)} drawingKey={chartDrawingKey(account.id, position, chartMarket)} error={marketData.errors[key]}/>
+        : marketData.errors[key] && <p className={styles.error} role="alert">{marketData.errors[key]}</p>}
+    </section>
+    <details className={`${styles.panel} ${styles.assetDetails}`}>
+      <summary>TradingView</summary>
+      <TradingViewChart position={position} onConnect={onChartConnect}/>
+    </details>
 
     <details className={`${styles.panel} ${styles.assetDetails}`}>
       <summary>تاریخچه، منبع قیمت و خبرها</summary>
       <div className={styles.buttonRow}>
-        <button type="button" className={styles.secondaryButton} disabled={!canLoad || marketData.loading[key]} onClick={() => marketData.load(key, position.name, true, true)}>دریافت تاریخچه</button>
         <button type="button" className={styles.textButton} aria-expanded={connectOpen} onClick={() => setConnectOpen(open => !open)}>تنظیم منبع قیمت</button>
       </div>
       {connectOpen && <MarketConnection position={position} marketData={marketData} onConnect={symbol => {onConnect(symbol); setConnectOpen(false)}}/>}
@@ -64,7 +107,6 @@ export default function AssetProfile({account, position, state, marketData, onTr
       {marketData.errors[key] && <p role="alert" className={styles.error}>{marketData.errors[key]}</p>}
       {quote && <p className={styles.marketSource}><a href={quote.sourceUrl} target="_blank" rel="noreferrer">{quote.source}</a> · <bdi>{quote.symbol} · {quote.exchange}</bdi></p>}
       {market && !marketTrusted(position, market) && <p className={styles.error}>تطبیق این منبع قیمت تأیید نشده است.</p>}
-      {market?.history?.length > 0 && <TechnicalChart key={key} market={market} loading={marketData.loading[key]} error={marketData.errors[key]}/>}
       {changes.some(([, change]) => change) && <div className={styles.periodGrid}>{changes.map(([label, change]) => change && <div key={label}>
         <h3>تغییر {label}</h3><strong><bdi>{percent(change.nativePercent)}</bdi></strong>
         <p>اثر برآوردی با تعداد فعلی <bdi>{signedMoney(change.deltaCents)}</bdi></p>

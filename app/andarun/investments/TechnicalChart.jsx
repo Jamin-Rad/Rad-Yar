@@ -1,7 +1,8 @@
 'use client'
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useEffect, useId, useMemo, useRef, useState } from 'react'
 import { technicalHistory } from '@/lib/investments/indicators.mjs'
 import { number } from '@/lib/investments/portfolio.mjs'
+import { browserChartStorage, chartSessionIndex, readChartDrawings, saveChartDrawings } from '@/lib/investments/local-asset-chart.mjs'
 import styles from './TechnicalChart.module.css'
 
 const LEFT=12
@@ -15,11 +16,18 @@ function Series({rows,series,x,y}){return series.map(([key,color])=><path key={k
 function Axis({min,max,y,right}){return [0,.5,1].map(step=>{const value=min+(max-min)*step;return <g key={step}><line x1={LEFT} x2={right} y1={y(value)} y2={y(value)} stroke="#2e3b47"/><text x={right+10} y={y(value)+4} fontSize="12" fill="#aab8c7">{display(value)}</text></g>})}
 function Cursor({x,height}){return <line x1={x} x2={x} y1="8" y2={height-22} stroke="#adbdcb" strokeDasharray="3 4" opacity=".65"/>}
 
-export default function TechnicalChart({ market, loading=false, error='' }) {
+export default function TechnicalChart({ market, loading=false, error='', drawingKey, entries=[] }) {
   const chartRef=useRef(null)
+  const clipId=useId()
+  const [lines,setLines]=useState([])
+  const [tool,setTool]=useState(null)
+  const [anchor,setAnchor]=useState(null)
+  const [selectedEntry,setSelectedEntry]=useState(null)
+  const [drawingError,setDrawingError]=useState(false)
   const [width,setWidth]=useState(900),[dataOpen,setDataOpen]=useState(false)
   const right=width-78
-  const [days,setDays]=useState(90),[enabled,setEnabled]=useState({sma20:true,sma50:true,sma200:true,rsi:true}),[hover,setHover]=useState(null),[mode,setMode]=useState('candles')
+  const [days,setDays]=useState(0),[enabled,setEnabled]=useState({sma20:true,sma50:true,sma200:true,rsi:true}),[hover,setHover]=useState(null),[mode,setMode]=useState('candles')
+  useEffect(()=>{if(drawingKey)setLines(readChartDrawings(browserChartStorage(),drawingKey))},[drawingKey])
   const verified=!market?.identity?.isin || market.historyMeta?.verified && market.historyMeta.idNotation===market.quote.idNotation && market.historyMeta.currency===market.quote.currency
   const all=useMemo(()=>technicalHistory(verified?market?.history:[]),[verified,market?.history])
   const end=all.at(-1)?.date
@@ -38,9 +46,46 @@ export default function TechnicalChart({ market, loading=false, error='' }) {
   if(enabled.bb)series.push(['bbUpper','#8dabb7'],['bbLower','#8dabb7'])
   const canCandles=rows.every(row=>row.open!=null)
   const candles=mode==='candles'&&canCandles
-  const [min,max]=extent(rows.flatMap(row=>[candles?row.low:row.close,candles?row.high:row.close,...series.map(([key])=>row[key]).filter(n=>n!=null)]))
+  const visibleEntries = entries.map(entry=>({...entry,index:chartSessionIndex(rows,entry.date)})).filter(entry=>entry.index>=0)
+  const nativePrice = entry => entry.currency === market.quote.currency ? entry.price : null
+  const [min,max]=extent([
+    ...rows.flatMap(row=>[candles?row.low:row.close,candles?row.high:row.close,...series.map(([key])=>row[key]).filter(n=>n!=null)]),
+    ...visibleEntries.map(nativePrice).filter(value=>value!=null),
+    ...lines.filter(line=>line.type==='horizontal'||(line.start.date<=end&&line.end.date>=rows[0].date)||(line.end.date<=end&&line.start.date>=rows[0].date))
+      .flatMap(line=>[line.start.price,...(line.end?[line.end.price]:[])]),
+  ])
   const y=value=>278-(value-min)/(max-min)*258
-  function point(event){const box=event.currentTarget.getBoundingClientRect();const local=(event.clientX-box.left)*width/box.width;setHover(Math.max(0,Math.min(rows.length-1,Math.round((local-LEFT)/(right-LEFT)*(rows.length-1)))))}
+  function coordinates(event) {
+    const box=event.currentTarget.getBoundingClientRect()
+    const localX=(event.clientX-box.left)*width/box.width
+    const index=Math.max(0,Math.min(rows.length-1,Math.round((localX-LEFT)/(right-LEFT)*(rows.length-1))))
+    return { box, localX, index }
+  }
+  function point(event){setHover(coordinates(event).index)}
+  function persist(next) {
+    setLines(next)
+    setDrawingError(!saveChartDrawings(browserChartStorage(),drawingKey,next))
+  }
+  function draw(event) {
+    if (!tool || lines.length >= 100) return
+    const { box, localX, index } = coordinates(event)
+    const localY=(event.clientY-box.top)*315/box.height
+    if(localX<LEFT||localX>right||localY<20||localY>278) return
+    const price=min+(278-localY)/258*(max-min)
+    if(price<=0)return
+    const next={date:rows[index].date,price}
+    if(tool==='trend'&&!anchor){setAnchor(next);return}
+    persist([...lines,tool==='horizontal'?{type:tool,start:next}:{type:tool,start:anchor,end:next}])
+    setTool(null)
+    setAnchor(null)
+  }
+  function chooseTool(next) { setTool(tool===next?null:next);setAnchor(null) }
+  const viewportOffset=all.length-rows.length
+  const drawingX=date=>{
+    const index=chartSessionIndex(all,date)
+    return x(index<0?(date<all[0].date?-viewportOffset-1:rows.length):index-viewportOffset)
+  }
+  const entryDetail=visibleEntries.find(entry=>entry.id===selectedEntry)
   const dates=[0,Math.floor((rows.length-1)/2),rows.length-1]
   const span=Date.parse(end)-Date.parse(all[0].date)
   const macdValues=rows.flatMap(row=>[row.macd,row.signal,row.histogram].filter(n=>n!=null))
@@ -50,12 +95,35 @@ export default function TechnicalChart({ market, loading=false, error='' }) {
   return <div className={styles.chart} ref={chartRef}>
     <div className={styles.toolbar}><h3>نمودار روزانه <bdi>{market.quote.currency}</bdi></h3><div className={styles.ranges}>{[[30,'۱ ماه'],[90,'۳ ماه'],[180,'۶ ماه'],[365,'۱ سال'],[0,'همه']].map(([value,label])=><button key={value} type="button" disabled={value>30&&span<value*.8*86400000} aria-pressed={days===value} onClick={()=>{setDays(value);setHover(null)}}>{label}</button>)}</div><button className={styles.mode} type="button" aria-pressed={candles} disabled={!canCandles} onClick={()=>setMode(mode==='candles'?'line':'candles')}>{candles?'کندلی':'خطی'}</button></div>
     <div className={styles.indicators} aria-label="اندیکاتورهای نمودار">{OPTIONS.map(([key,label,color])=><label key={key} style={{'--series':color}}><input type="checkbox" checked={!!enabled[key]} onChange={event=>setEnabled({...enabled,[key]:event.target.checked})}/><span dir={key==='volume'?'rtl':'ltr'}>{label}</span></label>)}</div>
+    {drawingKey&&<div className={styles.drawingTools} aria-label="ابزارهای رسم">
+      <button type="button" className={styles.mode} aria-pressed={tool==='trend'} disabled={lines.length>=100} onClick={()=>chooseTool('trend')}>خط روند</button>
+      <button type="button" className={styles.mode} aria-pressed={tool==='horizontal'} disabled={lines.length>=100} onClick={()=>chooseTool('horizontal')}>خط افقی</button>
+      <button type="button" className={styles.mode} disabled={!lines.length} onClick={()=>persist(lines.slice(0,-1))}>حذف آخرین خط</button>
+      {tool&&<small role="status">{tool==='horizontal'?'سطح قیمت را لمس کن یا روی آن کلیک کن.':anchor?'نقطهٔ پایان را انتخاب کن.':'نقطهٔ شروع را انتخاب کن.'}</small>}
+      {drawingError&&<small role="alert">ذخیرهٔ خطوط در مرورگر انجام نشد.</small>}
+    </div>}
     <div className={styles.readout} aria-live="off"><time><bdi>{current.date}</bdi></time><span>پایانی <bdi>{display(current.close)} {market.quote.currency}</bdi></span>{series.filter(([key])=>!key.startsWith('bb')).map(([key,color])=><span key={key} style={{color}}><bdi>{key.toUpperCase().replace(/(\d+)/,' $1')}: {display(current[key])}</bdi></span>)}{enabled.rsi&&<span style={{color:'#b8a0fa'}}><bdi>RSI: {display(current.rsi)}</bdi></span>}</div>
-    <svg className={styles.plot} viewBox={`0 0 ${width} 315`} role="img" aria-label={`نمودار روزانه ${number(rows.length)} قیمت؛ ${rows[0].date} تا ${end}`} onPointerMove={point} onPointerLeave={()=>setHover(null)}>
+    <svg className={styles.plot} data-drawing={!!tool} viewBox={`0 0 ${width} 315`} role="group" aria-label={`نمودار روزانه ${number(rows.length)} قیمت؛ ${rows[0].date} تا ${end}`} onPointerMove={point} onPointerLeave={()=>setHover(null)} onClick={draw}>
+      <defs><clipPath id={clipId}><rect x={LEFT} y="19" width={right-LEFT} height="261"/></clipPath></defs>
       <title>{`قیمت ${market.quote.currency} و میانگین‌های متحرک؛ ${market.quote.exchange}`}</title><Axis min={min} max={max} y={y} right={right}/>
       {candles?rows.map((row,i)=>{const color=row.close>=row.open?'#6bc4a4':'#ef888f';return <g key={row.date} stroke={color}><line x1={x(i)} x2={x(i)} y1={y(row.high)} y2={y(row.low)} strokeWidth="1"/><rect x={x(i)-barWidth/2} y={Math.min(y(row.open),y(row.close))} width={barWidth} height={Math.max(1,Math.abs(y(row.open)-y(row.close)))} fill={color} stroke="none"/></g>}):<Series rows={rows} series={[["close","#6bc4a4"]]} x={x} y={y}/>}
       <Series rows={rows} series={series} x={x} y={y}/><Cursor x={cursor} height={315}/>{dates.map((i,k)=><text key={k} x={x(i)} y="306" textAnchor={k===0?'start':k===2?'end':'middle'} fill="#aab8c7" fontSize="11">{rows[i].date}</text>)}
+      <g clipPath={`url(#${clipId})`} aria-hidden="true">
+        {lines.map((line,index)=><line key={index} x1={line.end?drawingX(line.start.date):LEFT} y1={y(line.start.price)}
+          x2={line.end?drawingX(line.end.date):right} y2={y(line.end?.price??line.start.price)}
+          stroke="#e9bc62" strokeWidth="2" vectorEffect="non-scaling-stroke"/>)}
+        {anchor&&<circle cx={drawingX(anchor.date)} cy={y(anchor.price)} r="4" fill="#e9bc62"/>}
+      </g>
+      {visibleEntries.map(entry=><circle key={entry.id} className={styles.entry} cx={x(entry.index)} cy={nativePrice(entry)==null?269:Math.min(269,Math.max(29,y(nativePrice(entry))))}
+        r="7" fill="#6ce0a4" stroke="#12202b" strokeWidth="2" role="button" tabIndex={0}
+        aria-pressed={selectedEntry===entry.id} aria-label={`خرید ${entry.date}، ${display(entry.price)} ${entry.currency||''}`}
+        onClick={event=>{if(tool)return;event.stopPropagation();setSelectedEntry(entry.id)}}
+        onKeyDown={event=>{if(event.key==='Enter'||event.key===' '){event.preventDefault();setSelectedEntry(entry.id)}}}>
+        <title>{`خرید ${entry.date} · ${display(entry.price)} ${entry.currency||''}`}</title>
+      </circle>)}
     </svg>
+    {visibleEntries.length>0&&<p className={styles.caption}>نقطهٔ سبز: خرید ثبت‌شده. خرید با ارز متفاوت یا قیمت نامشخص در پایین محور قیمت علامت می‌خورد.</p>}
+    {entryDetail&&<p className={styles.caption} role="status">خرید <bdi>{entryDetail.date}</bdi> · تعداد <bdi>{display(entryDetail.quantity)}</bdi> · قیمت هر واحد <bdi>{display(entryDetail.price)} {entryDetail.currency}</bdi></p>}
     {enabled.rsi&&<section className={styles.study} aria-label="شاخص قدرت نسبی"><div><bdi>RSI (14)</bdi><strong><bdi>{display(current.rsi)}</bdi></strong><small>۳۰ / ۷۰</small></div><svg className={styles.plot} viewBox={`0 0 ${width} 150`} role="img" aria-label="نمودار RSI با محدوده‌های ۳۰ و ۷۰" onPointerMove={point} onPointerLeave={()=>setHover(null)}><rect x={LEFT} width={right-LEFT} y="47" height="44" fill="#b8a0fa" opacity=".07"/>{[30,50,70].map(n=><g key={n}><line x1={LEFT} x2={right} y1={124-n*1.1} y2={124-n*1.1} stroke="#51546c" strokeDasharray="4 4"/><text x={right+10} y={128-n*1.1} fill="#b6b9ce" fontSize="12">{n}</text></g>)}<Series rows={rows} series={[["rsi","#b8a0fa"]]} x={x} y={value=>124-value*1.1}/><Cursor x={cursor} height={150}/></svg>{current.rsi==null&&<p>برای RSI دست‌کم ۱۵ قیمت پایانی لازم است.</p>}</section>}
     {enabled.macd&&<section className={styles.study} aria-label="اندیکاتور MACD"><div><bdi>MACD (12, 26, 9)</bdi><strong><bdi>{display(current.macd)}</bdi></strong><span>سیگنال <bdi>{display(current.signal)}</bdi></span></div><svg className={styles.plot} viewBox={`0 0 ${width} 150`} role="img" aria-label="نمودار MACD و خط سیگنال" onPointerMove={point} onPointerLeave={()=>setHover(null)}><line x1={LEFT} x2={right} y1={macdY(0)} y2={macdY(0)} stroke="#50606c"/>{rows.map((row,i)=>row.histogram==null?null:<rect key={row.date} x={x(i)-barWidth/2} width={barWidth} y={Math.min(macdY(0),macdY(row.histogram))} height={Math.max(.5,Math.abs(macdY(row.histogram)-macdY(0)))} fill={row.histogram>=0?'#467e6d':'#9d555e'}/>)}<Axis min={macdMin} max={macdMax} y={macdY} right={right}/><Series rows={rows} series={[["macd","#76c8e0"],["signal","#e9bc62"]]} x={x} y={macdY}/><Cursor x={cursor} height={150}/></svg>{current.signal==null&&<p>برای MACD و خط سیگنال دست‌کم ۳۴ قیمت پایانی لازم است.</p>}</section>}
     {enabled.volume&&<section className={styles.study} aria-label="حجم معاملات"><div>حجم معاملات همین بورس <strong><bdi>{display(current.volume)}</bdi></strong></div><svg className={styles.plot} viewBox={`0 0 ${width} 125`} role="img" aria-label="نمودار حجم معاملات" onPointerMove={point} onPointerLeave={()=>setHover(null)}>{rows.map((row,i)=>row.volume==null?null:<rect key={row.date} x={x(i)-barWidth/2} width={barWidth} y={volumeY(row.volume)} height={105-volumeY(row.volume)} fill="#689693"/>)}<Cursor x={cursor} height={125}/></svg></section>}
