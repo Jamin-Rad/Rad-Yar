@@ -1,6 +1,6 @@
 'use client'
 import {useEffect,useRef,useState} from 'react'
-import {todayBerlin} from '@/lib/investments/family.mjs'
+import {todayBerlin,tradeStatus} from '@/lib/investments/family.mjs'
 import {xtbBalance} from '@/lib/investments/xtb.mjs'
 import {money,signedMoney,percent,parseMoney} from '@/lib/investments/portfolio.mjs'
 import TradeWorkspace from './TradeWorkspace'
@@ -27,11 +27,11 @@ export function XtbEntryDialog({account,onClose,onSave}) {
 }
 
 export default function XtbAccountWorkspace({account,owner,trades,tradeProps}) {
-  const [tab,setTab]=useState(tradeProps.createOpen||tradeProps.selectedId?'plans':'transactions')
+  const ownTrades=trades.filter(t=>t.ownerId===account?.id)
+  const [tab,setTab]=useState(tradeProps.createOpen||tradeProps.selectedId||ownTrades.some(t=>tradeStatus(t)==='open')?'plans':'transactions')
   useEffect(()=>{if(tradeProps.createOpen||tradeProps.selectedId)setTab('plans')},[tradeProps.createOpen,tradeProps.selectedId])
   const balance=xtbBalance(account,trades)
   if(!balance)return <section className={view.wallet}><Icon name="trading" size={40}/><h2>موجودی XTB ثبت نشده است</h2></section>
-  const ownTrades=trades.filter(t=>t.ownerId===account.id)
   return <>
     <section className={view.summary} aria-label={`موجودی XTB ${owner}`}><div className={view.metrics}>
       <div><span>موجودی حساب</span><strong><bdi>{money(balance.balanceCents)}</bdi></strong><small>موجودی پس از معاملات بسته‌شده</small></div>
