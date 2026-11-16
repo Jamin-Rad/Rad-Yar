@@ -5,7 +5,7 @@ import {marketImpact,marketKey,marketForPosition,marketTrusted} from '@/lib/inve
 import {browserChartStorage,chartDrawingKey,chartEntries,readChartHistory,saveChartHistory} from '@/lib/investments/local-asset-chart.mjs'
 import Icon from './InvestmentIcon'
 import TradingViewChart from './TradingViewChart'
-import XtbPositionChart from './XtbPositionChart'
+import InvestmentPositionChart from './InvestmentPositionChart'
 import {positionBalance} from '@/lib/investments/balances.mjs'
 import styles from './investments.module.css'
 const price=value=>new Intl.NumberFormat('de-DE',{maximumSignificantDigits:10}).format(value)
@@ -91,7 +91,7 @@ export default function AssetProfile({account, position, state, marketData, ledg
       </div>
     </section>
 
-    <XtbPositionChart key={chartIdentity} trade={{id:position.id,ownerId:account.id,plan:{name:position.name,symbol:position.symbol || position.isin,currency:currency || ''},executions:[]}}
+    <InvestmentPositionChart key={chartIdentity} trade={{id:position.id,ownerId:account.id,plan:{name:position.name,symbol:position.symbol || position.isin,currency:currency || ''},executions:[]}}
       drawings={state.settings.xtbDrawings} onDrawings={onDrawings} daily={{
         identity:chartIdentity, legacyKey:chartDrawingKey(account.id, position, chartMarket),
         market:chartMarket ? {...chartMarket,quote:chartQuote || chartMarket.quote} : {quote:currentMarket?.quote},

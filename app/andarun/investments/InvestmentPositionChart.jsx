@@ -6,7 +6,7 @@ import { technicalHistory } from '@/lib/investments/indicators.mjs'
 import { trendForecast } from '@/lib/investments/trend-forecast.mjs'
 import { XTB_DRAWING_COLORS, XTB_INTERVALS, xtbBars } from '@/lib/investments/xtb-chart.mjs'
 import { estimateXtbStopOut, xtbExposure, xtbScenario } from '@/lib/investments/xtb-risk.mjs'
-import styles from './XtbPositionChart.module.css'
+import styles from './InvestmentPositionChart.module.css'
 
 const reference = 'BZ=F'
 const stopOutSource = 'https://www.xtb.com/de/hilfe-center/handelskonto/was-ist-der-stop-out'
@@ -16,10 +16,10 @@ const positive = value => Number(value) > 0 && Number.isFinite(Number(value)) ? 
 const formatPrice = value => value == null ? '—' : priceFormat.format(value)
 const limitLabels = { stop: 'حد ضرر', target: 'حد سود' }
 const fields = [['price', 'قیمت خروج فعلی در XTB (دلار)'], ['equity', 'ارزش فعلی حساب (یورو)'], ['margin', 'مارجین مصرف‌شده (یورو)'], ['fx', 'ارزش یک دلار به یورو']]
-const top = 22, bottom = 242
+const LEFT = 12, AXIS = 82, TOP = 14
 const averages = [['ema20','EMA 20','#f1c975'],['sma50','SMA 50','#91c5ff'],['sma200','SMA 200','#d5a7fa']]
 
-export default function XtbPositionChart({ trade, openCount, drawings = [], onDrawings, daily }) {
+export default function InvestmentPositionChart({ trade, openCount, drawings = [], onDrawings, daily }) {
   const exposure = daily ? { direction:1, entry:daily.entry, volume:daily.quantity } : xtbExposure(trade)
   const [limits, setLimits] = useState({ stop: trade.plan.stopPrice || '', target: trade.plan.targetPrice || '' })
   const [referenceMarket, setReferenceMarket] = useState(null)
@@ -28,7 +28,9 @@ export default function XtbPositionChart({ trade, openCount, drawings = [], onDr
   const [snapshot, setSnapshot] = useState({})
   const [drag, setDrag] = useState(null)
   const [range, setRange] = useState(null)
-  const [width, setWidth] = useState(700)
+  const [{ width, height }, setSize] = useState({ width: 700, height: 410 })
+  const top = TOP, bottom = height - 28
+  const plotRight = width - AXIS, plotSpan = Math.max(1, plotRight - LEFT * 2)
   const [interval, setIntervalMinutes] = useState(15)
   const [offset, setOffset] = useState(0)
   const [intraday, setIntraday] = useState({})
@@ -40,6 +42,7 @@ export default function XtbPositionChart({ trade, openCount, drawings = [], onDr
   const [snap, setSnap] = useState(false)
   const [rsiHeight, setRsiHeight] = useState(75)
   const [mobileTools, setMobileTools] = useState(false)
+  const [indicatorTools, setIndicatorTools] = useState(false)
   const [limitDetail, setLimitDetail] = useState(null)
   const [forecast, setForecast] = useState(false)
   const [indicators, setIndicators] = useState({ ema20: true, sma50: true, sma200: false, rsi: true })
@@ -63,7 +66,7 @@ export default function XtbPositionChart({ trade, openCount, drawings = [], onDr
       if (Number.isInteger(saved?.range) && saved.range>=16 && saved.range<=190) setRange(saved.range)
     } catch {}
     setLoaded(true)
-    const observer = new ResizeObserver(([entry])=>setWidth(entry.contentRect.width))
+    const observer = new ResizeObserver(([entry])=>setSize({ width:Math.max(150,entry.contentRect.width), height:Math.max(120,entry.contentRect.height) }))
     observer.observe(plot.current)
     const interaction = gestures.current
     return ()=>{observer.disconnect();clearTimeout(interaction.timer)}
@@ -120,7 +123,7 @@ export default function XtbPositionChart({ trade, openCount, drawings = [], onDr
   const [min, max] = drag?.domain || [Math.max(.01, low - pad), high + pad]
   const y = price => bottom - (price - min) / (max - min) * (bottom - top)
   const slots=Math.max(1,history.length-1)+(projection?horizon:0)
-  const x = i => 16 + 575 * i / slots
+  const x = i => LEFT + 6 + plotSpan * i / slots
   const anchorX = date => {
     const stamp=Date.parse(date)
     if (!fullHistory.length) return 16
@@ -140,7 +143,7 @@ export default function XtbPositionChart({ trade, openCount, drawings = [], onDr
       return `${command}${x(i)},${scale(row[key])}`
     }).join(' ')
   }
-  const candleWidth = Math.max(1, Math.min(12, 415 / slots))
+  const candleWidth = Math.max(1, Math.min(16, (plotSpan / slots) * .7))
 
   async function refresh() {
     setBusy(true)
@@ -171,13 +174,13 @@ export default function XtbPositionChart({ trade, openCount, drawings = [], onDr
 
   function coordinates(event) {
     const box=plot.current.getBoundingClientRect()
-    return {x:(event.clientX-box.left)*700/box.width,y:(event.clientY-box.top)*266/box.height}
+    return { x:(event.clientX-box.left)*width/box.width, y:(event.clientY-box.top)*height/box.height }
   }
   function priceAt(yCoordinate) {
     return Math.max(.01,min+(bottom-Math.min(bottom,Math.max(top,yCoordinate)))/(bottom-top)*(max-min))
   }
   function indexAt(xCoordinate) {
-    return Math.max(0,Math.min(history.length-1,Math.round((xCoordinate-16)/575*slots)))
+    return Math.max(0,Math.min(history.length-1,Math.round((xCoordinate-LEFT-6)/plotSpan*slots)))
   }
   function pointAt(event) {
     const location=coordinates(event), index=indexAt(location.x)
@@ -187,7 +190,7 @@ export default function XtbPositionChart({ trade, openCount, drawings = [], onDr
     if(snap && bar) {
       price=[bar.open,bar.high,bar.low].filter(Number.isFinite).reduce((best,value)=>Math.abs(value-price)<Math.abs(best-price)?value:best,bar.close)
     } else if(history.length>=2) {
-      const position=Math.max(0,Math.min(history.length-1,(location.x-16)/575*slots))
+      const position=Math.max(0,Math.min(history.length-1,(location.x-LEFT-6)/plotSpan*slots))
       const left=Math.floor(position),right=Math.min(left+1,history.length-1)
       const start=Date.parse(history[left].date),end=Date.parse(history[right].date)
       date=new Date(start+(end-start)*(position-left)).toISOString()
@@ -228,7 +231,7 @@ export default function XtbPositionChart({ trade, openCount, drawings = [], onDr
       if(now-state.wheel<150)return
       state.wheel=now
       const shift=event.deltaY>0?1:-1
-      if(daily||event.shiftKey)setRange(Math.max(16,Math.min(190,visibleCount+shift*8)))
+      if(!event.shiftKey||daily)setRange(Math.max(16,Math.min(190,visibleCount+shift*8)))
       else {
         const current=XTB_INTERVALS.indexOf(interval)
         const next=XTB_INTERVALS[Math.max(0,Math.min(XTB_INTERVALS.length-1,current+shift))]
@@ -255,7 +258,8 @@ export default function XtbPositionChart({ trade, openCount, drawings = [], onDr
     const chart=plot.current
     chart.setPointerCapture(event.pointerId)
     if(line){select(line.id);g.action={type:'edit',line,handleIndex,point:pointAt(event),domain:[min,max]};return}
-    if(event.button===2||(event.pointerType==='touch'&&!drawing)){
+    if(event.button===2||!drawing){
+      if(event.pointerType!=='touch'){select(null);setLimitDetail(null)}
       g.action={type:'pan',x:local.x,offset}
       if(event.pointerType==='touch'){
         const index=indexAt(local.x)
@@ -263,7 +267,6 @@ export default function XtbPositionChart({ trade, openCount, drawings = [], onDr
       }
       return
     }
-    if(!drawing){select(null);setLimitDetail(null);return}
     if(drawing==='horizontal'){addDrawing(drawing,[pointAt(event)]);setDrawing(null);return}
     if(drawing==='arrow'){
       if(event.pointerType==='touch')setDraft(previous=>[...previous,pointAt(event)].slice(0,120))
@@ -289,7 +292,7 @@ export default function XtbPositionChart({ trade, openCount, drawings = [], onDr
     } else if(action?.type==='pan'){
       if(Math.abs(local.x-action.x)<4)return
       clearTimeout(g.timer)
-      setOffset(Math.min(Math.max(0,fullHistory.length-visibleCount),Math.max(0,action.offset+Math.round((local.x-action.x)*slots/575))))
+      setOffset(Math.min(Math.max(0,fullHistory.length-visibleCount),Math.max(0,action.offset+Math.round((local.x-action.x)*slots/plotSpan))))
     } else if(action?.type==='edit'){
       const point=pointAt(event)
       const delta=Date.parse(point.date)-Date.parse(action.point.date), priceDelta=point.price-action.point.price
@@ -360,11 +363,12 @@ export default function XtbPositionChart({ trade, openCount, drawings = [], onDr
   const closingResult=!daily&&selectedLevel&&xtbScenario(exposure,selectedLevel.value)
   const showDetails=selectedLevel?.value!=null
   const last=history.length-1
+  const tickCount=width>=740?6:width>=460?4:3
   const forecastPath=(points,key,reverse=false)=>(reverse?[...points].reverse():points).map((point,index)=>
     `${index||reverse?'L':'M'}${x(last+(reverse?points.length-1-index:index))},${y(point[key])}`).join(' ')
   const maxVolume=Math.max(1,...history.map(bar=>bar.volume||0))
   const knownEntry=trade.executions.find(event=>event.kind==='entry')
-  const entryTime=knownEntry&&!knownEntry.observedOpen&&knownEntry.date.includes('T')?knownEntry.date:null
+  const entryTime=knownEntry&&!knownEntry.observedOpen&&knownEntry.date?.includes('T')?knownEntry.date:null
   const entryX=entryTime?anchorX(entryTime):null
   const positionPanel=daily ? <>
     <h3>دارایی‌های حساب</h3>
@@ -415,12 +419,13 @@ export default function XtbPositionChart({ trade, openCount, drawings = [], onDr
           <button type="button" className={styles.mobileButton} onClick={()=>positionSheet.current?.showModal()}><bdi>{displaySymbol||trade.plan.name} · {daily?daily.gainLabel:eurAmount(pnl)||'—'}</bdi> ▴</button>
         </header>
         <div className={styles.chartTools} aria-label="تایم‌فریم و پیش‌بینی">
-          {daily?<strong>کندل روزانه</strong>:<label>تایم‌فریم <select value={interval} onChange={event=>setFrame(Number(event.target.value))}>
+          {daily?<strong className={styles.timeframe}>روزانه</strong>:<label className={styles.timeframe}>تایم‌فریم <select value={interval} onChange={event=>setFrame(Number(event.target.value))}>
             {XTB_INTERVALS.map(value=><option key={value} value={value}>{value===60?'۱ ساعت':value===240?'۴ ساعت':value+' دقیقه'}</option>)}
           </select></label>}
-          <button type="button" aria-pressed={forecast} disabled={!fullHistory.length} onClick={()=>{setOffset(0);setForecast(value=>!value)}}>پیش‌بینی روند</button>
+          <button type="button" className={styles.forecastButton} aria-pressed={forecast} disabled={!fullHistory.length} onClick={()=>{setOffset(0);setForecast(value=>!value)}}>پیش‌بینی روند</button>
           {offset>0&&<button type="button" onClick={()=>setOffset(0)}>آخرین کندل‌ها</button>}
-          <button type="button" className={styles.mobileButton} aria-expanded={mobileTools} onClick={()=>setMobileTools(value=>!value)}>رسم</button>
+          <button type="button" aria-expanded={mobileTools} onClick={()=>setMobileTools(value=>!value)}>ابزار رسم</button>
+          <button type="button" aria-expanded={indicatorTools} onClick={()=>setIndicatorTools(value=>!value)}>اندیکاتورها</button>
         </div>
         <div className={styles.drawingTools} data-open={mobileTools}>
           <div className={styles.chartTools} aria-label="ابزار رسم">
@@ -439,26 +444,29 @@ export default function XtbPositionChart({ trade, openCount, drawings = [], onDr
             <button type="button" onClick={()=>{saveLines(allDrawings.filter(line=>line.id!==selectedLine.id));select(null)}}>حذف رسم</button>
           </div>}
         </div>
-        <div className={styles.chartTools} aria-label="اندیکاتورها">
+        {indicatorTools&&<div className={styles.chartTools} aria-label="اندیکاتورها">
           {[...averages,['rsi','RSI 14','#a9d5cf']].map(([key,label,color])=><button key={key} style={{color}} type="button" aria-pressed={indicators[key]} onClick={()=>setIndicators(previous=>({...previous,[key]:!previous[key]}))}>{label}</button>)}
-        </div>
+        </div>}
         {drawing==='arrow'&&<p>نقطه‌ها را با دوبارکلیک یا لمس اضافه کن و «ثبت مسیر» را بزن.</p>}
         {!history.length&&<p>برای دریافت تاریخچه، «به‌روزرسانی» را بزن.</p>}
         {daily&&history.length>0&&history.some(row=>row.open==null||row.low==null||row.high==null)&&<p>در روزهایی که منبع فقط قیمت پایانی دارد، همان قیمت با یک نقطه نمایش داده می‌شود.</p>}
         {forecast&&!prediction&&<p role="status">دادهٔ کامل برای آزمون پیش‌بینی این تایم‌فریم کافی نیست.</p>}
         <div className={styles.plotWrap}>
-        <svg ref={plot} className={styles.plot} data-drawing={!!drawing} viewBox="0 0 700 266" preserveAspectRatio="none" role="group" aria-label="نمودار کندلی و سطح‌های موقعیت"
+        <div className={styles.chartLegend} aria-hidden="true">
+          {visibleAverages.map(([key,label,color])=><span key={key} style={{color}}><bdi>{label} {formatPrice(activeBar?.[key])}</bdi></span>)}
+        </div>
+        <svg ref={plot} className={styles.plot} data-drawing={!!drawing} viewBox={`0 0 ${width} ${height}`} role="group" aria-label="نمودار کندلی و سطح‌های موقعیت"
           onPointerDown={beginChart} onPointerMove={move} onPointerLeave={event=>{if(event.pointerType!=='touch'&&!gestures.current.action)setCursor(null)}} onPointerUp={event=>finish(event)} onPointerCancel={event=>finish(event,true)}
           onContextMenu={event=>event.preventDefault()} onDoubleClick={addArrowPoint}>
           <defs>
-            <clipPath id={gradient+'-plot'}><rect x="12" y={top} width="593" height={bottom-top}/></clipPath>
+            <clipPath id={gradient+'-plot'}><rect x={LEFT} y={top} width={plotRight-LEFT} height={bottom-top}/></clipPath>
             <marker id={gradient+'-arrow'} markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0 0L6 3L0 6Z" fill="context-stroke"/></marker>
           </defs>
           {[0,.25,.5,.75,1].map(step=>{
             const value=min+(max-min)*step
-            return <g key={step}><line x1="12" x2="605" y1={y(value)} y2={y(value)} stroke="#26323e"/><text x="691" y={y(value)+4} textAnchor="end">{formatPrice(value)}</text></g>
+            return <g key={step}><line x1={LEFT} x2={plotRight} y1={y(value)} y2={y(value)} stroke="#26323e"/><text x={width-8} y={y(value)+4} textAnchor="end">{formatPrice(value)}</text></g>
           })}
-          {[0,.2,.4,.6,.8,1].map(step=><line key={step} x1={16+575*step} x2={16+575*step} y1={top} y2={bottom} stroke="#222d36"/>)}
+          {[0,.2,.4,.6,.8,1].map(step=><line key={step} x1={LEFT+plotSpan*step} x2={LEFT+plotSpan*step} y1={top} y2={bottom} stroke="#222d36"/>)}
           <g clipPath={`url(#${gradient}-plot)`}>
             {history.map((bar,i)=>{
               const color=bar.close>=bar.open?'#53d6ae':'#fb8092'
@@ -483,19 +491,19 @@ export default function XtbPositionChart({ trade, openCount, drawings = [], onDr
                 <title>{`خرید ${entry.date} · ${formatPrice(entry.price)} ${entry.currency||''}`}</title>
               </circle>
             })}
-            {displayedPrice!=null&&<line x1="12" x2="605" y1={y(displayedPrice)} y2={y(displayedPrice)} stroke="#91a8bd" strokeDasharray="2 5"/>}
+            {displayedPrice!=null&&<line x1={LEFT} x2={plotRight} y1={y(displayedPrice)} y2={y(displayedPrice)} stroke="#91a8bd" strokeDasharray="2 5"/>}
             {levelRows.map(level=><g key={level.key}>
-              {level.original!=null&&level.original!==level.value&&<line x1="12" x2="605" y1={y(level.original)} y2={y(level.original)} stroke={levelColors[level.key]} opacity=".38" strokeDasharray="3 5"/>}
+              {level.original!=null&&level.original!==level.value&&<line x1={LEFT} x2={plotRight} y1={y(level.original)} y2={y(level.original)} stroke={levelColors[level.key]} opacity=".38" strokeDasharray="3 5"/>}
               {inPlot(level.value)&&<g className={level.original!=null?styles.handle:undefined}
                 onPointerEnter={()=>setLimitDetail(level.key)} onPointerLeave={()=>{if(!drag)setLimitDetail(null)}}
                 onPointerDown={event=>startLevel(event,level)}>
-                <line x1="12" x2="605" y1={y(level.value)} y2={y(level.value)} stroke={levelColors[level.key]} strokeDasharray="5 4"/>
-                <line x1="490" x2="605" y1={y(level.value)} y2={y(level.value)} stroke="transparent" strokeWidth="14"/>
+                <line x1={LEFT} x2={plotRight} y1={y(level.value)} y2={y(level.value)} stroke={levelColors[level.key]} strokeDasharray="5 4"/>
+                <line x1={plotRight-84} x2={plotRight} y1={y(level.value)} y2={y(level.value)} stroke="transparent" strokeWidth="14"/>
               </g>}
             </g>)}
             {lines.map(line=>{
               const points=editPreview?.id===line.id?editPreview.points:line.points
-              const path=line.type==='horizontal'?`M12,${y(points[0].price)}L605,${y(points[0].price)}`:points.map((point,i)=>`${i?'L':'M'}${anchorX(point.date)},${y(point.price)}`).join(' ')
+              const path=line.type==='horizontal'?`M${LEFT},${y(points[0].price)}L${plotRight},${y(points[0].price)}`:points.map((point,i)=>`${i?'L':'M'}${anchorX(point.date)},${y(point.price)}`).join(' ')
               return <g key={line.id}>
                 <path d={path} stroke={line.color} strokeWidth="2" fill="none" markerEnd={line.type==='arrow'?`url(#${gradient}-arrow)`:undefined}/>
                 <path d={path} stroke="transparent" strokeWidth="14" fill="none" className={styles.handle}
@@ -507,22 +515,26 @@ export default function XtbPositionChart({ trade, openCount, drawings = [], onDr
             })}
             {draft.length>0&&<><path d={draft.map((point,i)=>`${i?'L':'M'}${anchorX(point.date)},${y(point.price)}`).join(' ')} fill="none" stroke="#b3d8ff" strokeWidth="2"/>
               {drawing==='arrow'&&draft.map((point,index)=><circle key={index} cx={anchorX(point.date)} cy={y(point.price)} r="3" fill="#b3d8ff"/>)}</>}
-            {cursor!=null&&activeBar&&<line x1={x(cursor)} x2={x(cursor)} y1={top} y2={bottom} stroke="#b6c8dc" strokeDasharray="3 4" pointerEvents="none"/>}
+            {cursor!=null&&activeBar&&<g pointerEvents="none">
+              <line x1={x(cursor)} x2={x(cursor)} y1={top} y2={bottom} stroke="#8192a7" strokeDasharray="3 4"/>
+              <line x1={LEFT} x2={plotRight} y1={y(activeBar.close)} y2={y(activeBar.close)} stroke="#8192a7" strokeDasharray="3 4"/>
+              <circle cx={x(cursor)} cy={y(activeBar.close)} r="3" fill="#cbe3fa"/>
+            </g>}
           </g>
           {axisLevels.map((level,i)=><g key={level.key} className={styles.handle} role="button" tabIndex={0}
             aria-label={level.label+' '+formatPrice(level.value)} onFocus={()=>setLimitDetail(level.key)} onBlur={()=>setLimitDetail(null)}
             onKeyDown={event=>{if(event.key==='Enter'||event.key===' '){event.preventDefault();setLimitDetail(level.key)}}}
             onPointerDown={event=>startLevel(event,level)}>
-            <rect x="605" y={axisPositions[i]-9} width="94" height="18" rx="3" fill={levelColors[level.key]}/>
-            <text className={styles.axisLabel} x="651" y={axisPositions[i]+4} textAnchor="middle">{level.label} {formatPrice(level.value)}</text>
+            <rect x={plotRight+2} y={axisPositions[i]-9} width={AXIS-4} height="18" rx="3" fill={levelColors[level.key]}/>
+            <text className={styles.axisLabel} x={plotRight+AXIS/2} y={axisPositions[i]+4} textAnchor="middle">{level.label} {formatPrice(level.value)}</text>
           </g>)}
-          {history.length>1&&[...new Set([0,Math.floor(last/2),last])].map((i,index)=><text key={i} x={x(i)} y="260" textAnchor={index===0?'start':i===last?'end':'middle'}>{history[i].date.slice(5,16).replace('T',' ')}</text>)}
+          {history.length>1&&[...new Set(Array.from({length:tickCount},(_,index)=>Math.round(last*index/(tickCount-1))))].map((i,index)=><text key={i} x={x(i)} y={height-8} textAnchor={index===0?'start':i===last?'end':'middle'}>{history[i].date.slice(5,16).replace('T',' ')}</text>)}
         </svg>
         {showDetails ? <div className={styles.tooltip} role="status">
           <strong>{selectedLevel.label} <bdi>{formatPrice(selectedLevel.value)} {currency}</bdi></strong>
           <strong>فاصله <bdi>{levelDistance==null?'—':`${signedFormat.format(levelDistance)} ${currency} · ${signedFormat.format(levelDistance/displayedPrice*100)}٪`}</bdi></strong>
           {!daily&&<small>سود و زیان برآوردی <bdi>{eurAmount(closingResult)||'—'}</bdi></small>}
-        </div> : cursor!=null&&activeBar&&<div className={styles.candleTip} style={{left:`clamp(4px, ${x(cursor)/7}%, calc(100% - 162px))`}}>
+        </div> : cursor!=null&&activeBar&&<div className={styles.candleTip} style={{left:`clamp(4px, ${x(cursor)/width*100}%, calc(100% - 162px))`}}>
           <bdi>{activeBar.date.slice(0,16).replace('T',' ')}{!daily&&' UTC'}</bdi>
           <bdi>O {formatPrice(activeBar.open)} · C {formatPrice(activeBar.close)}</bdi>
           <bdi>H {formatPrice(activeBar.high)} · L {formatPrice(activeBar.low)}</bdi>
@@ -532,9 +544,9 @@ export default function XtbPositionChart({ trade, openCount, drawings = [], onDr
         {forecast&&offset>0&&<p>برای دیدن پیش‌بینی به آخرین کندل‌ها برگرد.</p>}
         {indicators.rsi&&history.length>0&&<div className={styles.rsi}>
           <div className={styles.rsiTitle}><bdi>RSI 14 · {formatPrice(activeBar?.rsi)}</bdi><label>ارتفاع <input type="range" min="48" max="180" value={rsiHeight} onChange={event=>setRsiHeight(Number(event.target.value))}/></label></div>
-          <svg style={{height:rsiHeight}} viewBox="0 0 700 100" preserveAspectRatio="none" role="img" aria-label="نمودار RSI">
-            {[30,70].map(level=><line key={level} x1="12" x2="605" y1={92-level*.84} y2={92-level*.84} stroke="#65778a" strokeDasharray="4 4"/>)}
-            <path d={seriesPath('rsi',value=>92-value*.84)} fill="none" stroke="#a9d5cf" strokeWidth="2" vectorEffect="non-scaling-stroke"/>
+          <svg style={{height:rsiHeight}} viewBox={`0 0 ${width} ${rsiHeight}`} role="img" aria-label="نمودار RSI">
+            {[30,70].map(level=><line key={level} x1={LEFT} x2={plotRight} y1={(rsiHeight-8)-level*(rsiHeight-16)/100} y2={(rsiHeight-8)-level*(rsiHeight-16)/100} stroke="#65778a" strokeDasharray="4 4"/>)}
+            <path d={seriesPath('rsi',value=>(rsiHeight-8)-value*(rsiHeight-16)/100)} fill="none" stroke="#a9d5cf" strokeWidth="2" vectorEffect="non-scaling-stroke"/>
           </svg>
         </div>}
         {candles&&<p>{daily?.market?.quote?.source || 'برنت مرجع'} · آخرین داده <bdi>{history.at(-1).date.slice(0,16).replace('T',' ')}{!daily&&' UTC'}</bdi></p>}

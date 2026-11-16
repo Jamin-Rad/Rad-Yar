@@ -4,7 +4,7 @@ import {todayBerlin,tradeStatus} from '@/lib/investments/family.mjs'
 import {xtbBalance} from '@/lib/investments/xtb.mjs'
 import {money,signedMoney,percent,parseMoney} from '@/lib/investments/portfolio.mjs'
 import TradeWorkspace from './TradeWorkspace'
-import XtbPositionChart from './XtbPositionChart'
+import InvestmentPositionChart from './InvestmentPositionChart'
 import Icon from './InvestmentIcon'
 import styles from './investments.module.css'
 import view from './AccountView.module.css'
@@ -43,7 +43,7 @@ export default function XtbAccountWorkspace({account,owner,trades,tradeProps,dra
           {openTrades.map(trade=><option key={trade.id} value={trade.id}>{trade.plan.name} · {trade.plan.planDate}</option>)}
         </select>
       </label>}
-      <XtbPositionChart key={chartTrade.id} trade={chartTrade} openCount={openTrades.length} drawings={drawings} onDrawings={onDrawings}/>
+      <InvestmentPositionChart key={chartTrade.id} trade={chartTrade} openCount={openTrades.length} drawings={drawings} onDrawings={onDrawings}/>
     </>}
     <section className={view.summary} aria-label={`موجودی XTB ${owner}`}><div className={view.metrics}>
       <div><span>موجودی حساب</span><strong><bdi>{money(balance.balanceCents)}</bdi></strong><small>موجودی پس از معاملات بسته‌شده</small></div>
