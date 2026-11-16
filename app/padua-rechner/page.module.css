@@ -1,6 +1,3 @@
-.page {
-  --padua-image:url('/padua-rechner/heart-model.webp');
-}
 .page .shell[data-result='true'] { grid-template-columns:minmax(0,1fr); max-inline-size:1160px; }
 .shell[data-result='true'] > aside { display:none; }
 .page :is(button,a,summary):focus-visible { outline:2px solid var(--teal); outline-offset:3px; }
@@ -19,9 +16,8 @@
 }
 .brandIcon svg { inline-size:23px; block-size:23px; }
 .page .anatomy {
-  background:var(--padua-image) center center / 85% auto no-repeat;
-  -webkit-mask-image:none;
-  mask-image:none;
+  background-image:url('/padua-rechner/cardiac-torso.webp');
+  background-position:57% 44%;
 }
 .intro h1 {
   margin:0;
