@@ -15,6 +15,8 @@
 .chartTools { display:flex; flex-wrap:wrap; gap:5px; margin-bottom:8px; }
 .chartTools button[aria-pressed=true] { border-color:#82b8ee; background:#293c54; }
 .card .readout { min-height:24px; margin-block:6px; font-variant-numeric:tabular-nums; }
+.rsi { margin-top:9px; padding:5px 0; border-top:1px solid #344350; }
+.rsi svg { display:block; width:100%; height:100px; direction:ltr; }
 .chart,.scenarios,.stopOut { min-width:0; background:#101923; border:1px solid #30404f; border-radius:10px; padding:12px; }
 .plot { display:block; width:100%; height:clamp(245px,32vw,410px); direction:ltr; overflow:hidden; background:#0d1620; border-radius:8px; }
 .plot[data-drawing=true] { cursor:crosshair; }
