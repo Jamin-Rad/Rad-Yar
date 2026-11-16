@@ -171,6 +171,8 @@ export async function PUT(request) {
       ...state,
       settings: {
         ...state.settings,
+        xtbDrawings: Object.hasOwn(body.state.settings || {}, "xtbDrawings")
+          ? state.settings.xtbDrawings : stored.data.state.settings?.xtbDrawings || [],
         assetSectors: {
           ...state.settings.assetSectors,
           ...stored.data.state.settings?.assetSectors,

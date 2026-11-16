@@ -27,7 +27,7 @@ export function XtbEntryDialog({account,onClose,onSave}) {
   </form></dialog>
 }
 
-export default function XtbAccountWorkspace({account,owner,trades,tradeProps}) {
+export default function XtbAccountWorkspace({account,owner,trades,tradeProps,drawings,onDrawings}) {
   const ownTrades=trades.filter(t=>t.ownerId===account?.id)
   const openTrades=ownTrades.filter(t=>tradeStatus(t)==='open')
   const [chartId,setChartId]=useState(null)
@@ -43,7 +43,7 @@ export default function XtbAccountWorkspace({account,owner,trades,tradeProps}) {
           {openTrades.map(trade=><option key={trade.id} value={trade.id}>{trade.plan.name} · {trade.plan.planDate}</option>)}
         </select>
       </label>}
-      <XtbPositionChart key={chartTrade.id} trade={chartTrade} openCount={openTrades.length}/>
+      <XtbPositionChart key={chartTrade.id} trade={chartTrade} openCount={openTrades.length} drawings={drawings} onDrawings={onDrawings}/>
     </>}
     <section className={view.summary} aria-label={`موجودی XTB ${owner}`}><div className={view.metrics}>
       <div><span>موجودی حساب</span><strong><bdi>{money(balance.balanceCents)}</bdi></strong><small>موجودی پس از معاملات بسته‌شده</small></div>

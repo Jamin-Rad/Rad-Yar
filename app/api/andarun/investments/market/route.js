@@ -13,10 +13,11 @@ export async function GET(request) {
   const symbol=params.get('symbol')?.trim().toUpperCase()
   const isin=params.get('isin')?.trim().toUpperCase()
   try {
-    if (params.get('interval') === '15m') {
+    const interval = params.get('interval')
+    if (interval === '15m' || interval === '5m') {
       if (params.get('refresh') !== '1') return manualRefreshRequired()
       if (symbol !== 'BZ=F' || isin) return NextResponse.json({error:'تایم‌فریم برای این نماد در دسترس نیست.'},{status:400,headers})
-      return NextResponse.json({history:await loadBrentIntraday()},{headers})
+      return NextResponse.json({history:await loadBrentIntraday(parseInt(interval,10))},{headers})
     }
     if (isin) {
       if (!validIsin(isin)) return NextResponse.json({error:'شناسه ابزار معتبر نیست.'},{status:400,headers})

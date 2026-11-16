@@ -5,8 +5,8 @@
 .header small { color:#a9ddba; }
 .header h2 { font-size:clamp(20px,2.5vw,30px); }
 .tags span { border:1px solid #3b4b5b; border-radius:7px; padding:6px 9px; font-size:13px; }
-.grid { display:grid; grid-template-columns:minmax(0,2.2fr) minmax(225px,1fr); gap:14px; }
-.quoteStrip { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; margin:0 0 15px; }
+.grid { display:grid; grid-template-columns:minmax(0,1fr) minmax(210px,270px); gap:14px; }
+.quoteStrip { display:grid; grid-template-columns:1fr; gap:4px; margin:0 0 15px; }
 .quoteStrip>div { padding:12px; border:1px solid #344959; border-radius:10px; background:#172432; }
 .quoteStrip dt { font-size:12px; color:#bdcddd; }
 .quoteStrip dd { margin:4px 0; font-size:clamp(15px,2vw,24px); font-weight:750; font-variant-numeric:tabular-nums; }
@@ -18,9 +18,22 @@
 .rsi { margin-top:9px; padding:5px 0; border-top:1px solid #344350; }
 .rsi svg { display:block; width:100%; height:100px; direction:ltr; }
 .chart,.scenarios,.stopOut { min-width:0; background:#101923; border:1px solid #30404f; border-radius:10px; padding:12px; }
-.plot { display:block; width:100%; height:clamp(245px,32vw,410px); direction:ltr; overflow:hidden; background:#0d1620; border-radius:8px; }
+.plot { display:block; width:100%; height:clamp(300px,37vw,510px); direction:ltr; overflow:hidden; background:#0d141c; border-radius:8px; touch-action:none; }
 .plot[data-drawing=true] { cursor:crosshair; }
 .plot text { fill:#c6d1dc; font:15px system-ui,sans-serif; }
+.plot .axisLabel { fill:#0d141c; font-size:12px; font-weight:750; }
+.plotWrap { position:relative; }
+.tooltip,.candleTip { position:absolute; top:8px; z-index:1; pointer-events:none; padding:7px 9px; background:#172331; color:#eef3fb; border:1px solid #405872; border-radius:6px; font-size:12px; display:grid; gap:3px; }
+.tooltip { right:14px; }
+.candleTip { direction:ltr; }
+.chartTools select { background:#19283a; color:#e5eefb; border:1px solid #465b70; border-radius:6px; min-height:40px; padding:5px; font:inherit; }
+.chartTools label,.rsiTitle { display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+.rsiTitle { justify-content:space-between; font-size:12px; }
+.rsiTitle input[type=range] { min-height:24px; width:100px; }
+.card .mobileButton,.positionSheet { display:none; }
+.positionSheet[open] { display:block; position:fixed; margin:auto 0 0; bottom:0; width:100%; max-width:none; max-height:76dvh; overflow:auto; color:#edf3f8; background:#141e28; border:1px solid #354756; border-radius:14px 14px 0 0; padding:18px; }
+.positionSheet::backdrop { background:#0008; }
+.positionSheet > div { display:grid; gap:8px; }
 .handle { cursor:ns-resize; touch-action:none; }
 .legend { margin-block:6px 8px; font-size:12px; }
 .legend span::before { content:''; display:inline-block; margin-inline-end:6px; width:9px; height:9px; border-radius:50%; background:var(--dot); }
@@ -44,4 +57,11 @@
 .stopOut summary bdi { margin-inline-start:8px; }
 .stopOut a { text-decoration:underline; text-underline-offset:3px; }
 .inputs { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,170px),1fr)); gap:8px; margin-block:9px; }
-@media(max-width:760px) { .grid { grid-template-columns:1fr; } .plot text { font-size:20px; } }
+@media(max-width:850px) {
+ .grid { grid-template-columns:minmax(0,1fr); }
+ .grid>.scenarios,.drawingTools:not([data-open=true]) { display:none; }
+ .card .mobileButton { display:inline-flex; }
+ .plot text { font-size:20px; }
+ .plot .axisLabel { font-size:16px; }
+ .positionSheet .quoteStrip { grid-template-columns:repeat(2,minmax(0,1fr)); }
+}
