@@ -67,6 +67,12 @@ const COPY = {
   ef: L('RVEF (%)', 'RVEF (%)', 'RVEF (٪)'),
   invalid: L('RVEDVi muss größer als 0 sein. RVEF muss zwischen 0 und 100 % liegen. Bitte nur Zahlen eingeben.', 'RVEDVi must be above zero. RVEF must be between 0 and 100%. Enter numbers only.', 'RVEDVi باید بزرگ‌تر از صفر باشد. RVEF باید بین ۰ و ۱۰۰٪ باشد. فقط عدد وارد کنید.'),
   noneInCategory: L('Kein Kriterium belegt', 'No criterion established', 'معیاری ثبت نشده'),
+  hideFindings: L('Details schließen', 'Hide details', 'بستن جزئیات'),
+  counted: L('Maßgeblich', 'Counts for this category', 'ملاک امتیاز دسته'),
+  lowerGrade: L('Ohne Zusatzpunkte', 'No additional points', 'بدون امتیاز اضافه'),
+  unscored: L('Ohne Punktwertung', 'Not scored', 'بدون امتیاز'),
+  noScore: L('Keine Punktwertung', 'No point score', 'بدون امتیازدهی'),
+  alvcRequirement: L('ALVC-Voraussetzung', 'ALVC requirement', 'شرط ALVC'),
   scoredFindings: L('Kriterien im Detail', 'Criteria breakdown', 'جزئیات معیارها'),
 }
 
@@ -79,7 +85,7 @@ function ResultSummary({ assessment, t }) {
   return <>
     <strong className={styles.outcome}>{t(assessment.outcome)}</strong>
     {assessment.phenotype && assessment.phenotype !== 'none' && <p>{t(assessment.phenotype)}</p>}
-    {scored && <p className={styles.score}><bdi>{assessment.points}</bdi> {t(assessment.points === 1 ? 'point' : 'points')}</p>}
+    <p className={styles.score}>{scored ? <><bdi>{assessment.points}</bdi> {t(assessment.points === 1 ? 'point' : 'points')}</> : t('noScore')}</p>
     {assessment.outcome === 'noAnchor' && <p>{t('noAnchorWhy')}</p>}
     {left && <dl className={styles.requirements}>
       <div><dt>{t('lge')}</dt><dd>{t(assessment.hasLge ? 'met' : 'notDocumented')}</dd></div>
@@ -88,40 +94,58 @@ function ResultSummary({ assessment, t }) {
   </>
 }
 
+function CriterionDetails({ assessment, t, label }) {
+  const matched = assessment.breakdown
+    .map((category, index) => ({ ...category, definition: categories[index] }))
+    .filter(category => category.matches.length > 0)
+
+  if (!matched.length) return <p>{t('noneInCategory')}</p>
+
+  return <div className={styles.breakdown}>
+    {matched.map(category => <section key={category.id}>
+      <h4><span className={styles.roman}>{category.definition.number}</span> {label(category.definition.title)}
+        {assessment.points !== null && <small>{category.points} {t(category.points === 1 ? 'point' : 'points')}</small>}
+      </h4>
+      <ul>{category.matches.map((criterion, index) => {
+        const excluded = category.eligible && !category.eligible.includes(criterion)
+        const requirement = assessment.phenotype === 'left' && ['lv-lge', 'gene'].includes(criterion.id)
+        const counted = assessment.points !== null && !excluded && criterion.grade === category.points
+        const status = excluded ? 'excluded' : requirement ? 'alvcRequirement' : assessment.points === null ? 'unscored' : counted ? 'counted' : 'lowerGrade'
+        return <li key={criterion.id || index}>
+          <div className={styles.evidenceStatus}>
+            <strong data-grade={criterion.grade}>{t(criterion.grade === 2 ? 'gradeMajor' : 'gradeMinor')}</strong>
+            <small>{t(status)}</small>
+          </div>
+          <p>{label(criterion.text || criterion.title)}</p>
+        </li>
+      })}</ul>
+    </section>)}
+  </div>
+}
+
 function Result({ assessment, provisional, t, label }) {
+  const [expanded, setExpanded] = useState({})
+  const systems = ['tfc', 'padua']
+
   return <div className={kaiser.resultPanel}>
     <header className={styles.prompt}>
       <h2 id="padua-step">{t('comparison')}</h2>
-      <p>{t('comparisonHint')}</p>
     </header>
     {provisional && <p className={`${kaiser.questionHelp} ${styles.hint}`}><strong>{t('provisional')}.</strong> {t('unknown')}</p>}
     <div className={styles.resultGrid}>
-      {['tfc', 'padua'].map(system => <section key={system} className={styles.resultCard} aria-labelledby={`result-${system}`}>
+      {systems.map(system => <section key={system} className={styles.resultCard} aria-labelledby={`result-${system}`}>
         <h3 id={`result-${system}`}>{t(system)}</h3>
         <ResultSummary assessment={assessment[system]} t={t}/>
+        <button type="button" className={styles.evidenceToggle} aria-expanded={!!expanded[system]} aria-controls={`evidence-${system}`} onClick={() => setExpanded(previous => ({ ...previous, [system]: !previous[system] }))}>
+          {t(expanded[system] ? 'hideFindings' : 'scoredFindings')} <span aria-hidden="true">{expanded[system] ? '−' : '+'}</span>
+        </button>
       </section>)}
     </div>
-    <div className={styles.resultDetails}>
-      {['tfc', 'padua'].map(system => <details key={system} className={styles.resultEvidence}>
-        <summary>{t(system)} <span>{t('scoredFindings')}</span></summary>
-        <div className={styles.breakdown}>
-          {assessment[system].breakdown.map((category, index) => <details key={category.id}>
-            <summary>
-              <span className={styles.roman}>{categories[index].number}</span>
-              <strong>{label(categories[index].title)}</strong>
-              {assessment[system].points !== null && category.points > 0 && <span>{category.points} {t(category.points === 1 ? 'point' : 'points')}</span>}
-            </summary>
-            <ul>
-              {category.matches.map((criterion, matchIndex) => <li key={criterion.id || matchIndex}>
-                <strong>{t(criterion.grade === 2 ? 'gradeMajor' : 'gradeMinor')}</strong>{' '}
-                {label(criterion.text || criterion.title)}
-                {category.eligible && !category.eligible.includes(criterion) && <small>{t('excluded')}</small>}
-              </li>)}
-              {category.matches.length === 0 && <li>{t('noneInCategory')}</li>}
-            </ul>
-          </details>)}
-        </div>
-      </details>)}
+    <div className={styles.resultDetails} data-both={!!expanded.tfc && !!expanded.padua}>
+      {systems.map(system => <section key={system} id={`evidence-${system}`} className={styles.resultEvidence} hidden={!expanded[system]} aria-labelledby={`evidence-title-${system}`}>
+        <h3 id={`evidence-title-${system}`}>{t(system)}</h3>
+        <CriterionDetails assessment={assessment[system]} t={t} label={label}/>
+      </section>)}
     </div>
     <p className={styles.hint}>{t('scoreRule')} {assessment.padua.phenotype === 'right' && t('rvExclusion')}</p>
   </div>
