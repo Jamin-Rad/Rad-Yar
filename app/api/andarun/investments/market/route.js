@@ -1,8 +1,9 @@
 import { NextResponse } from 'next/server'
 import { requireAndarunSession } from '@/lib/andarunPasswordAuth'
-import { searchInstruments, loadMarket, loadBrentIntraday } from '@/lib/investments/market.server'
+import { searchInstruments, loadMarket, loadXtbIntraday } from '@/lib/investments/market.server'
 import { loadIsinMarket } from '@/lib/investments/isin-market.server'
 import { validIsin, isDate, todayBerlin } from '@/lib/investments/family.mjs'
+import { xtbReferences } from '@/lib/investments/xtb-markets.mjs'
 export const dynamic = 'force-dynamic'
 const headers = { 'Cache-Control': 'private, no-store', Vary: 'Cookie' }
 const manualRefreshRequired = () => NextResponse.json({error:'برای دریافت قیمت و تاریخچه، دکمه به‌روزرسانی را بزن.'},{status:409,headers})
@@ -16,8 +17,8 @@ export async function GET(request) {
     const interval = params.get('interval')
     if (interval === '15m' || interval === '5m') {
       if (params.get('refresh') !== '1') return manualRefreshRequired()
-      if (symbol !== 'BZ=F' || isin) return NextResponse.json({error:'تایم‌فریم برای این نماد در دسترس نیست.'},{status:400,headers})
-      return NextResponse.json({history:await loadBrentIntraday(parseInt(interval,10))},{headers})
+      if (!xtbReferences.includes(symbol) || isin) return NextResponse.json({error:'تایم‌فریم برای این نماد در دسترس نیست.'},{status:400,headers})
+      return NextResponse.json({history:await loadXtbIntraday(symbol,parseInt(interval,10))},{headers})
     }
     if (isin) {
       if (!validIsin(isin)) return NextResponse.json({error:'شناسه ابزار معتبر نیست.'},{status:400,headers})

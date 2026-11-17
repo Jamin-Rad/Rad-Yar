@@ -190,11 +190,13 @@ test('a manual period retry does not enable network requests for future range ch
 })
 test('server rejects old automatic price requests before calling providers and still requires login', async () => {
   let allowed = true, calls = 0
-  const providers = { searchInstruments: async () => { calls++; return [] }, loadMarket: async () => { calls++; return { quote: { price: 100 } } } }
+  const providers = { searchInstruments: async () => { calls++; return [] }, loadMarket: async () => { calls++; return { quote: { price: 100 } } },
+    loadXtbIntraday: async (symbol,minutes) => { calls++; return [{symbol,minutes}] } }
   const route = load('app/api/andarun/investments/market/route.js', {
     'next/server': { NextResponse: { json: (value, options) => Response.json(value, options) } }, '@/lib/andarunPasswordAuth': { requireAndarunSession: async () => allowed ? {} : { error: 'denied' } },
     '@/lib/investments/market.server': providers, '@/lib/investments/isin-market.server': { loadIsinMarket: async () => { calls++; return { quote: { price: 100 } } } },
     '@/lib/investments/family.mjs': { validIsin: value => value === 'US0378331005', isDate: () => true, todayBerlin: () => '2026-11-05' },
+    '@/lib/investments/xtb-markets.mjs': await import('../lib/investments/xtb-markets.mjs'),
   })
   const get = query => route.GET(new Request('https://example.test/api/andarun/investments/market?' + query))
   for (const query of ['symbol=DEMO', 'isin=US0378331005&history=1']) assert.equal((await get(query)).status, 409)
@@ -203,4 +205,9 @@ test('server rejects old automatic price requests before calling providers and s
   allowed = true
   for (const query of ['symbol=DEMO&refresh=1', 'isin=US0378331005&refresh=1', 'q=synthetic']) assert.equal((await get(query)).status, 200)
   assert.equal(calls, 3)
+  assert.equal((await get('symbol=SI%3DF&interval=5m')).status,409)
+  assert.equal((await get('symbol=UNLISTED&interval=5m&refresh=1')).status,400)
+  const silver=await get('symbol=SI%3DF&interval=5m&refresh=1')
+  assert.deepEqual(await silver.json(),{history:[{symbol:'SI=F',minutes:5}]})
+  assert.equal(calls,4)
 })

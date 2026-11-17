@@ -7,6 +7,8 @@ import { XTB_DRAWING_COLORS, XTB_INTERVALS, xtbBars } from '@/lib/investments/xt
 import { estimateXtbStopOut, xtbExposure, xtbScenario } from '@/lib/investments/xtb-risk.mjs'
 import { aggregateDaily, rsiDivergences, atr, vwap, pricePatterns, tradeSpans } from '@/lib/investments/chart-analysis.mjs'
 import Icon from './InvestmentIcon'
+import { xtbMarkets } from '@/lib/investments/xtb-markets.mjs'
+import openingRange from '@/lib/investments/xtb-opening-range-results.json'
 import IndicatorGuide from './IndicatorGuide'
 import styles from './InvestmentPositionChart.module.css'
 
@@ -15,11 +17,11 @@ const berlinTime = value => {
   if (!Number.isFinite(date.getTime())) return '—'
   return new Intl.DateTimeFormat('de-DE', { timeZone:'Europe/Berlin', day:'2-digit', month:'2-digit', ...(value.includes('T')?{hour:'2-digit',minute:'2-digit'}:{}) }).format(date)
 }
-const reference = 'BZ=F'
 const stopOutSource = 'https://www.xtb.com/de/hilfe-center/handelskonto/was-ist-der-stop-out'
 const priceFormat = new Intl.NumberFormat('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
 const signedFormat = new Intl.NumberFormat('en-US', { signDisplay: 'exceptZero', minimumFractionDigits: 2, maximumFractionDigits: 2 })
 const positive = value => Number(value) > 0 && Number.isFinite(Number(value)) ? Number(value) : null
+const currencyReference=plan=>plan.currency==='USD'?xtbMarkets.find(market=>market.symbol===plan.symbol?.trim().toUpperCase())?.reference:null
 const formatPrice = value => value == null ? '—' : priceFormat.format(value)
 const limitLabels = { stop: 'حد ضرر', target: 'حد سود' }
 const fields = [['price', 'قیمت خروج فعلی در XTB (دلار)'], ['equity', 'ارزش فعلی حساب (یورو)'], ['margin', 'مارجین مصرف‌شده (یورو)'], ['fx', 'ارزش یک دلار به یورو']]
@@ -27,8 +29,9 @@ const frames = [...XTB_INTERVALS,'1d','1w','1mo']
 const LEFT = 12, AXIS = 82, TOP = 42
 const averages = [['ema20','EMA 20','#f1c975'],['sma50','SMA 50','#91c5ff'],['sma200','SMA 200','#d5a7fa']]
 
-export default function InvestmentPositionChart({ trade, openCount, drawings = [], onDrawings, daily, onTransaction, symbolTrades }) {
+export default function InvestmentPositionChart({ trade, openCount, drawings = [], onDrawings, daily, onTransaction, symbolTrades, watchMarket }) {
   const exposure = daily ? { direction:1, entry:daily.entry, volume:daily.quantity } : xtbExposure(trade)
+  const reference=watchMarket?.reference??(exposure.isBrent?'BZ=F':!daily&&currencyReference(trade.plan))
   const [limits, setLimits] = useState({ stop: trade.plan.stopPrice || '', target: trade.plan.targetPrice || '' })
   const [referenceMarket, setReferenceMarket] = useState(null)
   const [busy, setBusy] = useState(false)
@@ -69,6 +72,7 @@ export default function InvestmentPositionChart({ trade, openCount, drawings = [
   const [indicatorTools, setIndicatorTools] = useState(false)
   const [limitDetail, setLimitDetail] = useState(null)
   const [showPatterns, setShowPatterns] = useState(true)
+  const [showOpeningRange, setShowOpeningRange] = useState(false)
   const [showTrades, setShowTrades] = useState(true)
   const [indicators, setIndicators] = useState({ ema20: true, sma50: true, sma200: false, rsi: true, vwap: true, macd: true, atr: true, bands: false })
   const displaySymbol = (trade.plan.symbol || '').toUpperCase()
@@ -80,7 +84,7 @@ export default function InvestmentPositionChart({ trade, openCount, drawings = [
   const gestures = useRef({ points:new Map(), action:null, timer:null, wheel:0 })
   useEffect(() => {
     const storage = browserChartStorage()
-    if (exposure.isBrent) {
+    if (reference) {
       setReferenceMarket(readChartHistory(storage, reference))
       setIntraday(Object.fromEntries([5,15].map(n=>[n,readChartHistory(storage,`${reference}:${n}m`)])))
     }
@@ -94,7 +98,7 @@ export default function InvestmentPositionChart({ trade, openCount, drawings = [
     observer.observe(plot.current)
     const interaction = gestures.current
     return ()=>{observer.disconnect();clearTimeout(interaction.timer)}
-  }, [exposure.isBrent,prefsKey])
+  }, [reference,prefsKey])
   useEffect(()=>{
     if (!loaded) return
     try { browserChartStorage()?.setItem(prefsKey,JSON.stringify({interval,range})) } catch {}
@@ -136,7 +140,15 @@ export default function InvestmentPositionChart({ trade, openCount, drawings = [
   const viewportSlots=Math.min(visibleCount,fullHistory.length)+futureSlots
   const historyEnd=Math.min(fullHistory.length,historyStart+viewportSlots)
   const history=fullHistory.slice(historyStart,historyEnd)
-  const patterns = useMemo(()=>showPatterns?pricePatterns(fullHistory.slice(0,historyEnd)):[],[showPatterns,fullHistory,historyEnd])
+  const canShowOpeningRange=watchMarket&&typeof interval==='number'&&['NQ=F','GC=F','CL=F'].includes(reference)
+  const openingTrades=showOpeningRange&&canShowOpeningRange&&history.length>0
+    ? openingRange.trades.filter(item=>item.symbol===reference&&item.stamp*1000>=Date.parse(history[0].date)&&item.stamp*1000<=Date.parse(history.at(-1).date))
+    : []
+  const patterns = useMemo(()=>{
+    if (!showPatterns) return []
+    const start=Math.max(0,historyStart-130)
+    return pricePatterns(fullHistory.slice(start,historyEnd)).map(item=>({...item,start:item.start+start,end:item.end+start,confirmed:item.confirmed+start,points:item.points.map(point=>({...point,index:point.index+start}))}))
+  },[showPatterns,fullHistory,historyStart,historyEnd])
   const spans = useMemo(()=>daily
     ? tradeSpans(daily.events??[])
     : (symbolTrades??[trade]).flatMap(position=>tradeSpans(position.executions,position.plan.direction==='short'?-1:1).map(span=>({...span,id:position.id+':'+span.id,current:position.id===trade.id}))),
@@ -208,7 +220,7 @@ export default function InvestmentPositionChart({ trade, openCount, drawings = [
       if(!response.ok || !Array.isArray(result.history) || result.history.length<2) throw Error(result.error || 'دادهٔ کافی دریافت نشد.')
       return result
     }
-    const endpoint='/api/andarun/investments/market?symbol=BZ%3DF&refresh=1&'
+    const endpoint='/api/andarun/investments/market?symbol='+encodeURIComponent(reference)+'&refresh=1&'
     try {
       const results=await Promise.allSettled([read(endpoint+'interval=15m'),read(endpoint+'interval=5m'),read(endpoint+'history=1')])
       const next={}
@@ -514,22 +526,26 @@ export default function InvestmentPositionChart({ trade, openCount, drawings = [
   return <section className={styles.card} data-fullscreen={fullscreen} data-rsi={indicators.rsi} data-macd={indicators.macd} aria-label={daily?'نمودار دارایی Trade Republic':'نمودار و سناریوی موقعیت XTB'}>
         <header className={styles.header}>
           <button type="button" aria-label={fullscreen?'خروج از تمام صفحه':'تمام صفحه'} title="تمام صفحه" onClick={()=>setFullscreen(value=>!value)}><Icon name="expand"/></button>
-          <div><small>{daily?['Trade Republic',daily.ownerLabel].filter(Boolean).join(' · '):direction===1?'XTB · خرید':'XTB · فروش'}</small><h2 dir="auto">{trade.plan.name}</h2></div>
+          <div><small>{daily?['Trade Republic',daily.ownerLabel].filter(Boolean).join(' · '):direction===1?watchMarket?'XTB · بازار مرجع':'XTB · خرید':'XTB · فروش'}</small><h2 dir="auto">{trade.plan.name}</h2></div>
           {daily&&<button type="button" disabled={daily.busy||!daily.onRefresh} onClick={daily.onRefresh}>{daily.busy?'در حال دریافت…':'به‌روزرسانی'}</button>}
-          {exposure.isBrent&&<button type="button" disabled={busy} onClick={refresh}>{busy?'در حال دریافت…':'به‌روزرسانی'}</button>}
+          {reference&&<button type="button" disabled={busy} onClick={refresh}>{busy?'در حال دریافت…':'به‌روزرسانی'}</button>}
         </header>
-        <div className={styles.scenarios}>{positionPanel}</div>
+        {!watchMarket&&<div className={styles.scenarios}>{positionPanel}</div>}
         <div className={styles.chart}>
         <div className={styles.chartTools} aria-label="تایم‌فریم و لایه‌های نمودار">
           <label className={styles.timeframe}>تایم‌فریم <select value={interval} onChange={event=>setFrame(/^\d+$/.test(event.target.value)?Number(event.target.value):event.target.value)}>
             {frames.map(value=><option key={value} value={value} disabled={daily&&typeof value==='number'}>{({'1d':'روزانه','1w':'هفتگی','1mo':'ماهانه',60:'۱ ساعت',240:'۴ ساعت'})[value]||value+' دقیقه'}</option>)}
           </select></label>
           <button type="button" aria-pressed={showPatterns} onClick={()=>setShowPatterns(value=>!value)}>الگوهای قیمت</button>
+          {canShowOpeningRange&&<button type="button" aria-pressed={showOpeningRange} onClick={()=>setShowOpeningRange(value=>!value)}>بک‌تست محدودهٔ آغاز جلسه</button>}
           <button type="button" aria-pressed={showTrades} onClick={()=>setShowTrades(value=>!value)}>معاملات روی نمودار</button>
           {offset>0&&<button type="button" onClick={()=>setOffset(0)}>آخرین کندل‌ها</button>}
           <IndicatorGuide/>
           <button type="button" aria-expanded={indicatorTools} onClick={()=>setIndicatorTools(value=>!value)}>اندیکاتورها</button>
         </div>
+        {showOpeningRange&&canShowOpeningRange&&<p>
+          بک‌تست بازار مرجع · <bdi>{openingRange.first} تا {openingRange.last}</bdi> · {openingRange.valid} ورود در {openingRange.days} جلسه در مجموع سه بازار · بازده خالص <bdi>A {signedFormat.format(openingRange.a)}R · B {signedFormat.format(openingRange.b)}R</bdi> · {openingTrades.length} ورود از این نماد در نمای فعلی
+        </p>}
         <div className={styles.chartBody}>
         <div className={styles.drawingTools} data-open={true}>
           <div className={styles.chartTools} aria-label="ابزار رسم">
@@ -576,6 +592,17 @@ export default function InvestmentPositionChart({ trade, openCount, drawings = [
           {priceTicks.map(value=><g key={value}><line x1={LEFT} x2={plotRight} y1={y(value)} y2={y(value)} stroke="#26323e"/><text x={width-8} y={y(value)+4} textAnchor="end" pointerEvents="none">{axisPrice.format(value)}</text></g>)}
           {[0,.2,.4,.6,.8,1].map(step=><line key={step} x1={LEFT+plotSpan*step} x2={LEFT+plotSpan*step} y1={top} y2={bottom} stroke="#222d36"/>)}
           <g clipPath={`url(#${gradient}-plot)`}>
+            {openingTrades.map(item=>{
+              const time=new Date(item.stamp*1000).toISOString()
+              const start=anchorX(time)
+              const end=Math.min(plotRight,start+Math.max(9,plotSpan/slots*4))
+              return <g key={item.stamp} aria-label="ورود بک‌تست محدودهٔ آغاز جلسه">
+                <rect x={start} y={Math.min(y(item.entry),y(item.target))} width={end-start} height={Math.abs(y(item.target)-y(item.entry))} fill="#43dfca" fillOpacity=".26"/>
+                <rect x={start} y={Math.min(y(item.entry),y(item.stop))} width={end-start} height={Math.abs(y(item.stop)-y(item.entry))} fill="#ff9b58" fillOpacity=".24"/>
+                <circle cx={start} cy={y(item.entry)} r="4" fill="#d4e8ff"/>
+                <title>{`${berlinTime(time)} برلین · ${item.side===1?'خرید':'فروش'} · ورود ${formatPrice(item.entry)} · حد ضرر ${formatPrice(item.stop)} · هدف 2R ${formatPrice(item.target)} · A ${signedFormat.format(item.a)}R · B ${signedFormat.format(item.b)}R`}</title>
+              </g>
+            })}
             {positionBands.map(band=><g key={band.key} aria-label={limitLabels[band.key]} pointerEvents="none">
               <rect x={bandStart} y={Math.min(y(exposure.entry),y(band.value))} width={Math.max(2,x(last)-bandStart)} height={Math.abs(y(exposure.entry)-y(band.value))} fill={band.color} fillOpacity={band.key==='target'?'.18':'.16'}/>
               <title>{limitLabels[band.key]} · {formatPrice(band.value)} {currency}</title>
@@ -709,10 +736,10 @@ export default function InvestmentPositionChart({ trade, openCount, drawings = [
         {showPatterns&&history.length>0&&<p role="status">{patterns.some(pattern=>pattern.end>=historyStart&&pattern.confirmed<historyEnd)?'حداکثر پنج الگوی اخیر در این نما · نقطهٔ رنگی: بسته‌شدن کندل بیرون مرز':'در کندل‌های قابل مشاهده، الگوی منطبق با معیارها پیدا نشد.'}</p>}
         {indicators.vwap&&<p>{daily?'VWAP از ابتدای تاریخچهٔ ذخیره‌شده':'VWAP جلسهٔ روزانهٔ UTC · حجم قرارداد مرجع'}</p>}
         </div>
-        {!daily&&<details className={styles.exitPanel}><summary>سناریوی خروج · حد سود، حد ضرر و Stop Out</summary><div className={styles.exitControls}>{exitPanel}</div></details>}
+        {!daily&&!watchMarket&&<details className={styles.exitPanel}><summary>سناریوی خروج · حد سود، حد ضرر و Stop Out</summary><div className={styles.exitControls}>{exitPanel}</div></details>}
         {entryTime&&!entryTime.includes('T')&&!knownEntry?.observedOpen&&<p>برچسب ورود تاریخ ثبت‌شده را نشان می‌دهد.</p>}
         {!daily&&knownEntry?.observedOpen&&<p>ناحیه‌ها از تاریخ ثبت موقعیت باز شروع می‌شوند. زمان اجرای معامله در سابقه موجود نیست.</p>}
-        {candles&&<p>{daily?.market?.quote?.source || 'Yahoo Finance · قرارداد مرجع برنت BZ=F'} · آخرین داده <bdi>{berlinTime(history.at(-1).date)}{history.at(-1).date.includes('T')&&' برلین'}</bdi></p>}
+        {candles&&<p>{daily?.market?.quote?.source || (reference?'Yahoo Finance · قرارداد آتی مرجع '+reference:'منبع تاریخچه تعیین نشده')} · آخرین داده <bdi>{berlinTime(history.at(-1).date)}{history.at(-1).date.includes('T')&&' برلین'}</bdi></p>}
         {daily?.notice&&<p role="status">{daily.notice}</p>}
         {daily?.error&&<p role="alert">{daily.error}</p>}
         {error&&<p role="alert">{error}</p>}
