@@ -161,7 +161,7 @@ export default function InvestmentPositionChart({ trade, openCount, drawings = [
   const pad = Math.max((high - low) * .13, low * .025)
   const [min, max] = drag?.domain || priceDomain || [Math.max(.01, low - pad), high + pad]
   const y = price => bottom - (price - min) / (max - min) * (bottom - top)
-  const slots=Math.max(1,history.length-1)
+  const slots=Math.max(0,history.length-1)+30
   const x = i => LEFT + 6 + plotSpan * i / slots
   const anchorX = date => {
     const stamp=Date.parse(date)
@@ -392,7 +392,7 @@ export default function InvestmentPositionChart({ trade, openCount, drawings = [
       }
       setDraft(action.points)
     } else if(history.length && (event.pointerType!=='touch'||action?.type==='cursor')){
-      setCursor(indexAt(local.x))
+      setCursor(local.x>x(history.length-1)+candleWidth/2?null:indexAt(local.x))
     }
   }
   function finish(event, cancel=false) {
@@ -562,10 +562,9 @@ export default function InvestmentPositionChart({ trade, openCount, drawings = [
           {[0,.2,.4,.6,.8,1].map(step=><line key={step} x1={LEFT+plotSpan*step} x2={LEFT+plotSpan*step} y1={top} y2={bottom} stroke="#222d36"/>)}
           <g clipPath={`url(#${gradient}-plot)`}>
             {positionBands.map(band=><g key={band.key} aria-label={limitLabels[band.key]} pointerEvents="none">
-              <rect x={bandStart} y={Math.min(y(exposure.entry),y(band.value))} width={Math.max(2,x(last)-bandStart)} height={Math.abs(y(exposure.entry)-y(band.value))} fill={band.color} fillOpacity={band.key==='target'?'.18':'.16'} stroke={band.color} strokeOpacity=".46"/>
+              <rect x={bandStart} y={Math.min(y(exposure.entry),y(band.value))} width={Math.max(2,x(last)-bandStart)} height={Math.abs(y(exposure.entry)-y(band.value))} fill={band.color} fillOpacity={band.key==='target'?'.18':'.16'}/>
               <title>{limitLabels[band.key]} · {formatPrice(band.value)} {currency}</title>
             </g>)}
-            {positionBands.length>0&&<line x1={bandStart} x2={x(last)} y1={y(exposure.entry)} y2={y(exposure.entry)} stroke="#c5e4ea" strokeWidth="1.25"/>}
             {showTrades&&history.length>0&&spans.map(span=>{
               if (span.current&&!span.exit&&positionBands.length) return null
               const mark=span.exit?span.exit.price:positionMark
@@ -606,13 +605,16 @@ export default function InvestmentPositionChart({ trade, openCount, drawings = [
                 </> : <circle cx={x(i)} cy={y(bar.close)} r="2" fill="#aebdd4"/>}</g>
             })}
             {divergences.filter(item=>item.to.date>=history[0]?.date&&item.confirmedAt<=history.at(-1)?.date).map(item=><g key={item.id} role="button" tabIndex={0} aria-label={item.bullish?'واگرایی صعودی RSI':'واگرایی نزولی RSI'} onPointerDown={event=>event.stopPropagation()} onClick={()=>setSelectedDivergence(item.id===selectedDivergence?null:item.id)} onKeyDown={event=>{if(event.key==='Enter')setSelectedDivergence(item.id)}}>
-              <text x={anchorX(item.to.date)} y={y(item.to[item.side])+(item.bullish?20:-12)} textAnchor="middle" style={{fontSize:18,cursor:'pointer'}}>🧐</text><title>{item.bullish?'واگرایی صعودی':'واگرایی نزولی'} · تأیید {item.confirmedAt}</title>
+              <g transform={`translate(${anchorX(item.to.date)},${y(item.to[item.side])+(item.bullish?16:-14)})`} style={{cursor:'pointer'}}>
+                <circle r="9" fill="#152431" stroke={item.bullish?'#73d9c2':'#f2ae7f'}/>
+                <path d={item.bullish?'M-4 3L4 -4M0 -4H4V0':'M-4 -3L4 4M0 4H4V0'} fill="none" stroke={item.bullish?'#73d9c2':'#f2ae7f'} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              </g><title>{item.bullish?'واگرایی صعودی':'واگرایی نزولی'} · تأیید {item.confirmedAt}</title>
             </g>)}
             {divergence&&<line x1={anchorX(divergence.from.date)} x2={anchorX(divergence.to.date)} y1={y(divergence.from[divergence.side])} y2={y(divergence.to[divergence.side])} stroke="#e8c37a" strokeWidth="2"/>}
             {indicators.vwap&&<path d={history.map((row,i)=>vwapValues[historyStart+i]==null?'':((i&&vwapValues[historyStart+i-1]!=null?'L':'M')+x(i)+','+y(vwapValues[historyStart+i]))).join(' ')} fill="none" stroke="#e0a0da" strokeWidth="1.5"/>}
             {indicators.bands&&['bbUpper','bbLower'].map(key=><path key={key} d={seriesPath(key,y)} fill="none" stroke="#8198cc" strokeDasharray="3 3"/>)}
             {visibleAverages.map(([key,,color])=><path key={key} d={seriesPath(key,y)} fill="none" stroke={color} vectorEffect="non-scaling-stroke"/>)}
-            {showTrades&&entryX!=null&&entryX>=LEFT&&entryX<=x(last)&&<g aria-label={knownEntry?.observedOpen?'زمان ثبت موقعیت':'زمان ورود'}><line x1={entryX} x2={entryX} y1={top} y2={bottom} stroke={levelColors.entry} strokeDasharray="4 4"/><text x={Math.min(plotRight-90,entryX+5)} y={bottom-24} fill={levelColors.entry}>{knownEntry?.observedOpen?'ثبت موقعیت':'ورود'} {berlinTime(entryTime)}</text></g>}
+            {showTrades&&entryX!=null&&entryX>=LEFT&&entryX<=x(last)&&<text x={Math.min(plotRight-90,entryX+5)} y={bottom-24} style={{fill:levelColors.entry}}>{knownEntry?.observedOpen?'ثبت موقعیت':'ورود'} {berlinTime(entryTime)}</text>}
             {showTrades&&daily?.entries.map(entry=>{
               const i=history.findIndex(row=>row.date>=entry.date)
               if(i<0||entry.date<history[0].date)return null
@@ -623,15 +625,7 @@ export default function InvestmentPositionChart({ trade, openCount, drawings = [
               </circle>
             })}
             {displayedY!=null&&<line x1={LEFT} x2={plotRight} y1={displayedY} y2={displayedY} stroke="#91b8bd" strokeDasharray="2 5"/>}
-            {levelRows.filter(level=>showTrades||level.key!=='entry').map(level=><g key={level.key}>
-              {level.original!=null&&level.original!==level.value&&<line x1={LEFT} x2={plotRight} y1={y(level.original)} y2={y(level.original)} stroke={levelColors[level.key]} opacity=".38" strokeDasharray="3 5"/>}
-              {inPlot(level.value)&&(level.key!=='entry'||!positionBands.length)&&<g className={level.original!=null?styles.handle:undefined}
-                onPointerEnter={()=>setLimitDetail(level.key)} onPointerLeave={()=>{if(!drag)setLimitDetail(null)}}
-                onPointerDown={event=>startLevel(event,level)}>
-                <line x1={LEFT} x2={plotRight} y1={y(level.value)} y2={y(level.value)} stroke={levelColors[level.key]} strokeDasharray="5 4"/>
-                <line x1={plotRight-84} x2={plotRight} y1={y(level.value)} y2={y(level.value)} stroke="transparent" strokeWidth="14"/>
-              </g>}
-            </g>)}
+            {inPlot(estimate?.price)&&<line x1={LEFT} x2={plotRight} y1={y(estimate.price)} y2={y(estimate.price)} stroke={levelColors.liquidation} strokeDasharray="5 4"/>}
             {lines.map(line=>{
               const points=editPreview?.id===line.id?editPreview.points:line.points
               const path=drawingPath(line.type,points)
@@ -701,7 +695,7 @@ export default function InvestmentPositionChart({ trade, openCount, drawings = [
         {indicators.vwap&&<p>{daily?'VWAP از ابتدای تاریخچهٔ ذخیره‌شده':'VWAP جلسهٔ روزانهٔ UTC · حجم قرارداد مرجع'}</p>}
         </div>
         {!daily&&<details className={styles.exitPanel}><summary>سناریوی خروج · حد سود، حد ضرر و Stop Out</summary><div className={styles.exitControls}>{exitPanel}</div></details>}
-        {entryTime&&!entryTime.includes('T')&&!knownEntry?.observedOpen&&<p>خط ورود تاریخ ثبت‌شده را نشان می‌دهد.</p>}
+        {entryTime&&!entryTime.includes('T')&&!knownEntry?.observedOpen&&<p>برچسب ورود تاریخ ثبت‌شده را نشان می‌دهد.</p>}
         {!daily&&knownEntry?.observedOpen&&<p>ناحیه‌ها از تاریخ ثبت موقعیت باز شروع می‌شوند. زمان اجرای معامله در سابقه موجود نیست.</p>}
         {candles&&<p>{daily?.market?.quote?.source || 'برنت مرجع'} · آخرین داده <bdi>{berlinTime(history.at(-1).date)}{history.at(-1).date.includes('T')&&' برلین'}</bdi></p>}
         {daily?.notice&&<p role="status">{daily.notice}</p>}
