@@ -136,3 +136,7 @@
 .header h2 { text-align:right; }
 .card[data-fullscreen=true][data-rsi=true] .plot { height:clamp(270px,calc(100dvh - 340px),850px); }
 .card[data-fullscreen=true][data-rsi=true][data-macd=true] .plot { height:clamp(270px,calc(100dvh - 425px),850px); }
+.context { position:fixed; right:auto; width:min(220px,calc(100vw - 8px)); box-sizing:border-box; max-height:calc(100dvh - 8px); overflow:auto; z-index:1100; }
+.chartLegend { justify-content:flex-start; text-align:left; }
+.resizePlot { cursor:ns-resize; touch-action:none; }
+.chartBody .drawingTools { max-height:100%; }

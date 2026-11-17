@@ -18,3 +18,4 @@
 .figure figcaption { color:#b9c4d3; font-size:12px; margin-block:8px; }
 .figure label { display:flex; gap:16px; align-items:center; font-size:13px; }
 @media(max-width:600px) { .dialog { padding:15px; } .dialog dl { grid-template-columns:1fr; } .dialog h2 { font-size:18px; } }
+.dialog { position:fixed; inset:0; margin:auto; box-sizing:border-box; }
