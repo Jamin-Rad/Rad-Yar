@@ -64,7 +64,7 @@ const examples = [
 
 const SERIES = {
   '39806': [
-    { id: 'cine', label: '4ch Cine', file: '39806-cine-4ch.mp4' },
+    { id: 'cine', label: '4ch Cine', directory: 'series-cine-4ch', initialFrame: 0 },
     { id: 't1', label: 'Axial T1 Black Blood', directory: 'series-t1' },
   ],
   '194915': [
@@ -77,7 +77,6 @@ function CaseSeries({ item, lang }) {
   const [selected, setSelected] = useState(0)
   const sequences = SERIES[item.id]
   const sequence = sequences[selected]
-  const view = item.views.find(entry => entry.file === sequence.file)
   const stack = seriesManifest.find(entry => entry.caseId === Number(item.id) && entry.directory === sequence.directory)
   const frames = stack?.frames.map(frame => `/thorax/kardio/arvc/${stack.directory}/${frame.file}`)
   const prefix = `acm-series-${item.id}`
@@ -85,9 +84,6 @@ function CaseSeries({ item, lang }) {
   return <div className={styles.caseSeries}>
     <Tabs label="MRT-Sequenz auswählen" items={sequences} selected={selected} onChange={setSelected} idPrefix={prefix}/>
     <div id={`${prefix}-panel`} role="tabpanel" aria-labelledby={`${prefix}-tab-${selected}`}>
-      {view?.type === 'video' && <video key={view.src} className={styles.caseCine} controls loop playsInline preload="metadata" aria-label={arvcText(view.alt, lang)}>
-        <source src={view.src} type="video/mp4"/>
-      </video>}
       {frames && <CaseSequence key={sequence.id} lang={lang} caseData={{
         frames, initialFrame: sequence.initialFrame ?? Math.floor(frames.length / 2),
         alt: sequence.label, autoAspectRatio: true, compactScroll: true,

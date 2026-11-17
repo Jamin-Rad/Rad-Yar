@@ -1,5 +1,435 @@
 [
   {
+    "directory": "series-cine-4ch",
+    "caseId": 39806,
+    "creator": "Tim Luijkx",
+    "sequence": "4ch Cine",
+    "license": "CC BY-NC-SA 3.0",
+    "source": "39806-cine-4ch.mp4",
+    "frames": [
+      {
+        "file": "001.webp",
+        "timeSeconds": 0.025
+      },
+      {
+        "file": "002.webp",
+        "timeSeconds": 0.075
+      },
+      {
+        "file": "003.webp",
+        "timeSeconds": 0.125
+      },
+      {
+        "file": "004.webp",
+        "timeSeconds": 0.175
+      },
+      {
+        "file": "005.webp",
+        "timeSeconds": 0.225
+      },
+      {
+        "file": "006.webp",
+        "timeSeconds": 0.275
+      },
+      {
+        "file": "007.webp",
+        "timeSeconds": 0.325
+      },
+      {
+        "file": "008.webp",
+        "timeSeconds": 0.375
+      },
+      {
+        "file": "009.webp",
+        "timeSeconds": 0.425
+      },
+      {
+        "file": "010.webp",
+        "timeSeconds": 0.475
+      },
+      {
+        "file": "011.webp",
+        "timeSeconds": 0.525
+      },
+      {
+        "file": "012.webp",
+        "timeSeconds": 0.575
+      },
+      {
+        "file": "013.webp",
+        "timeSeconds": 0.625
+      },
+      {
+        "file": "014.webp",
+        "timeSeconds": 0.675
+      },
+      {
+        "file": "015.webp",
+        "timeSeconds": 0.725
+      },
+      {
+        "file": "016.webp",
+        "timeSeconds": 0.775
+      },
+      {
+        "file": "017.webp",
+        "timeSeconds": 0.825
+      },
+      {
+        "file": "018.webp",
+        "timeSeconds": 0.875
+      },
+      {
+        "file": "019.webp",
+        "timeSeconds": 0.925
+      },
+      {
+        "file": "020.webp",
+        "timeSeconds": 0.975
+      },
+      {
+        "file": "021.webp",
+        "timeSeconds": 1.025
+      },
+      {
+        "file": "022.webp",
+        "timeSeconds": 1.075
+      },
+      {
+        "file": "023.webp",
+        "timeSeconds": 1.125
+      },
+      {
+        "file": "024.webp",
+        "timeSeconds": 1.175
+      },
+      {
+        "file": "025.webp",
+        "timeSeconds": 1.225
+      },
+      {
+        "file": "026.webp",
+        "timeSeconds": 1.275
+      },
+      {
+        "file": "027.webp",
+        "timeSeconds": 1.325
+      },
+      {
+        "file": "028.webp",
+        "timeSeconds": 1.375
+      },
+      {
+        "file": "029.webp",
+        "timeSeconds": 1.425
+      },
+      {
+        "file": "030.webp",
+        "timeSeconds": 1.475
+      },
+      {
+        "file": "031.webp",
+        "timeSeconds": 1.525
+      },
+      {
+        "file": "032.webp",
+        "timeSeconds": 1.575
+      },
+      {
+        "file": "033.webp",
+        "timeSeconds": 1.625
+      },
+      {
+        "file": "034.webp",
+        "timeSeconds": 1.675
+      },
+      {
+        "file": "035.webp",
+        "timeSeconds": 1.725
+      },
+      {
+        "file": "036.webp",
+        "timeSeconds": 1.775
+      },
+      {
+        "file": "037.webp",
+        "timeSeconds": 1.825
+      },
+      {
+        "file": "038.webp",
+        "timeSeconds": 1.875
+      },
+      {
+        "file": "039.webp",
+        "timeSeconds": 1.925
+      },
+      {
+        "file": "040.webp",
+        "timeSeconds": 1.975
+      },
+      {
+        "file": "041.webp",
+        "timeSeconds": 2.025
+      },
+      {
+        "file": "042.webp",
+        "timeSeconds": 2.075
+      },
+      {
+        "file": "043.webp",
+        "timeSeconds": 2.125
+      },
+      {
+        "file": "044.webp",
+        "timeSeconds": 2.175
+      },
+      {
+        "file": "045.webp",
+        "timeSeconds": 2.225
+      },
+      {
+        "file": "046.webp",
+        "timeSeconds": 2.275
+      },
+      {
+        "file": "047.webp",
+        "timeSeconds": 2.325
+      },
+      {
+        "file": "048.webp",
+        "timeSeconds": 2.375
+      },
+      {
+        "file": "049.webp",
+        "timeSeconds": 2.425
+      },
+      {
+        "file": "050.webp",
+        "timeSeconds": 2.475
+      },
+      {
+        "file": "051.webp",
+        "timeSeconds": 2.525
+      },
+      {
+        "file": "052.webp",
+        "timeSeconds": 2.575
+      },
+      {
+        "file": "053.webp",
+        "timeSeconds": 2.625
+      },
+      {
+        "file": "054.webp",
+        "timeSeconds": 2.675
+      },
+      {
+        "file": "055.webp",
+        "timeSeconds": 2.725
+      },
+      {
+        "file": "056.webp",
+        "timeSeconds": 2.775
+      },
+      {
+        "file": "057.webp",
+        "timeSeconds": 2.825
+      },
+      {
+        "file": "058.webp",
+        "timeSeconds": 2.875
+      },
+      {
+        "file": "059.webp",
+        "timeSeconds": 2.925
+      },
+      {
+        "file": "060.webp",
+        "timeSeconds": 2.975
+      },
+      {
+        "file": "061.webp",
+        "timeSeconds": 3.025
+      },
+      {
+        "file": "062.webp",
+        "timeSeconds": 3.075
+      },
+      {
+        "file": "063.webp",
+        "timeSeconds": 3.125
+      },
+      {
+        "file": "064.webp",
+        "timeSeconds": 3.175
+      },
+      {
+        "file": "065.webp",
+        "timeSeconds": 3.225
+      },
+      {
+        "file": "066.webp",
+        "timeSeconds": 3.275
+      },
+      {
+        "file": "067.webp",
+        "timeSeconds": 3.325
+      },
+      {
+        "file": "068.webp",
+        "timeSeconds": 3.375
+      },
+      {
+        "file": "069.webp",
+        "timeSeconds": 3.425
+      },
+      {
+        "file": "070.webp",
+        "timeSeconds": 3.475
+      },
+      {
+        "file": "071.webp",
+        "timeSeconds": 3.525
+      },
+      {
+        "file": "072.webp",
+        "timeSeconds": 3.575
+      },
+      {
+        "file": "073.webp",
+        "timeSeconds": 3.625
+      },
+      {
+        "file": "074.webp",
+        "timeSeconds": 3.675
+      },
+      {
+        "file": "075.webp",
+        "timeSeconds": 3.725
+      },
+      {
+        "file": "076.webp",
+        "timeSeconds": 3.775
+      },
+      {
+        "file": "077.webp",
+        "timeSeconds": 3.825
+      },
+      {
+        "file": "078.webp",
+        "timeSeconds": 3.875
+      },
+      {
+        "file": "079.webp",
+        "timeSeconds": 3.925
+      },
+      {
+        "file": "080.webp",
+        "timeSeconds": 3.975
+      },
+      {
+        "file": "081.webp",
+        "timeSeconds": 4.025
+      },
+      {
+        "file": "082.webp",
+        "timeSeconds": 4.075
+      },
+      {
+        "file": "083.webp",
+        "timeSeconds": 4.125
+      },
+      {
+        "file": "084.webp",
+        "timeSeconds": 4.175
+      },
+      {
+        "file": "085.webp",
+        "timeSeconds": 4.225
+      },
+      {
+        "file": "086.webp",
+        "timeSeconds": 4.275
+      },
+      {
+        "file": "087.webp",
+        "timeSeconds": 4.325
+      },
+      {
+        "file": "088.webp",
+        "timeSeconds": 4.375
+      },
+      {
+        "file": "089.webp",
+        "timeSeconds": 4.425
+      },
+      {
+        "file": "090.webp",
+        "timeSeconds": 4.475
+      },
+      {
+        "file": "091.webp",
+        "timeSeconds": 4.525
+      },
+      {
+        "file": "092.webp",
+        "timeSeconds": 4.575
+      },
+      {
+        "file": "093.webp",
+        "timeSeconds": 4.625
+      },
+      {
+        "file": "094.webp",
+        "timeSeconds": 4.675
+      },
+      {
+        "file": "095.webp",
+        "timeSeconds": 4.725
+      },
+      {
+        "file": "096.webp",
+        "timeSeconds": 4.775
+      },
+      {
+        "file": "097.webp",
+        "timeSeconds": 4.825
+      },
+      {
+        "file": "098.webp",
+        "timeSeconds": 4.875
+      },
+      {
+        "file": "099.webp",
+        "timeSeconds": 4.925
+      },
+      {
+        "file": "100.webp",
+        "timeSeconds": 4.975
+      },
+      {
+        "file": "101.webp",
+        "timeSeconds": 5.025
+      },
+      {
+        "file": "102.webp",
+        "timeSeconds": 5.075
+      },
+      {
+        "file": "103.webp",
+        "timeSeconds": 5.125
+      },
+      {
+        "file": "104.webp",
+        "timeSeconds": 5.175
+      },
+      {
+        "file": "105.webp",
+        "timeSeconds": 5.225
+      }
+    ]
+  },
+  {
     "directory": "series-t1",
     "caseId": 39806,
     "creator": "Tim Luijkx",
