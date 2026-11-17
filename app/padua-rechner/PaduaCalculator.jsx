@@ -19,7 +19,6 @@ const COPY = {
   theme: L('Hell-/Dunkelmodus wechseln', 'Switch light or dark mode', 'تغییر حالت روشن یا تیره'),
   language: L('Sprache', 'Language', 'زبان'),
   categories: L('Kategorien', 'Categories', 'دسته‌ها'),
-  reviewed: L('Beurteilt', 'Reviewed', 'ارزیابی‌شده'),
   next: L('Weiter', 'Next', 'بعدی'),
   negative: L('Keiner dieser Befunde', 'None of these findings', 'هیچ‌کدام از این یافته‌ها'),
   skip: L('Nicht beurteilbar', 'Not assessable', 'قابل ارزیابی نیست'),
@@ -213,21 +212,27 @@ export default function PaduaCalculator() {
         </div>
       </nav>
     </header>
-    <div className={`${kaiser.shell} ${styles.shell}`} data-result={isResult}>
-      <section className={`${kaiser.workspace} ${styles.workspace}`}>
+    <div className={`${kaiser.shell} ${styles.shell}`}>
+      <aside className={styles.navigation} aria-label={t('categories')} dir={lang === 'fa' ? 'rtl' : 'ltr'}>
+        <div className={styles.anatomy} aria-hidden="true"/>
+        <ol>
+          {Object.entries(GROUPS).map(([id, name], index) => {
+            const first = steps.findIndex(item => item.group === id)
+            const length = steps.filter(item => item.group === id).length
+            const fill = Math.min(1, Math.max(0, (step - first) / length))
+            const active = current?.group === id
+            return <li key={id} data-reached={active || fill > 0} aria-current={active ? 'step' : undefined} style={{ '--segment-fill': `${fill * 100}%` }}>
+              <bdi>{categories[index].number}</bdi><span>{label(name)}</span>
+            </li>
+          })}
+          <li className={styles.finish} data-reached={isResult} aria-current={isResult ? 'step' : undefined}>
+            <bdi><Icon name="check"/></bdi><span>{t('result')}</span>
+          </li>
+        </ol>
+      </aside>
+      <section className={`${kaiser.workspace} ${styles.workspace}`} dir={lang === 'fa' ? 'rtl' : 'ltr'}>
         <div className={`${kaiser.intro} ${styles.intro}`}>
           <h1>{t('subject')}<span>{t('accordingTo')} <em>{t('systems')}</em></span></h1>
-        </div>
-        <div className={styles.navigation} role="group" aria-label={t('categories')}>
-          <ol>
-            {Object.entries(GROUPS).map(([id, name], index) => {
-              const group = steps.filter(item => item.group === id)
-              const completed = group.every(item => isReviewed(item, answers))
-              return <li key={id} aria-current={current?.group === id ? 'step' : undefined}>
-                <bdi>{categories[index].number}</bdi> {label(name)}{completed && <span aria-label={t('reviewed')}>✓</span>}
-              </li>
-            })}
-          </ol>
         </div>
         <section ref={panel} className={`${kaiser.question} ${styles.panel}`} aria-labelledby="padua-step" tabIndex={-1}>
           {isResult ? <Result assessment={assessment} provisional={provisional} t={t} label={label}/> : <>
@@ -246,7 +251,6 @@ export default function PaduaCalculator() {
           </button>
         </footer>
       </section>
-      <aside className={kaiser.visualStage} aria-hidden="true"><div className={`${kaiser.anatomyVisual} ${styles.anatomy}`}/></aside>
     </div>
     <footer className={`${kaiser.disclaimer} ${styles.sources}`}>
       <p>{t('context')}</p>

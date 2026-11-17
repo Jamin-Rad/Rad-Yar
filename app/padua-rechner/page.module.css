@@ -1,6 +1,5 @@
 .page { --padua-image:url('/padua-rechner/cardiac-torso.webp'); }
-.page .shell[data-result='true'] { grid-template-columns:minmax(0,1fr); max-inline-size:1160px; }
-.shell[data-result='true'] > aside { display:none; }
+.page .shell { direction:ltr; display:grid; grid-template-columns:minmax(230px,32%) minmax(0,1fr); }
 .page :is(button,a,summary):focus-visible { outline:2px solid var(--teal); outline-offset:3px; }
 .page[dir='rtl'] { font-family:Vazirmatn,system-ui,sans-serif; }
 .page .brandIcon {
@@ -16,10 +15,7 @@
   box-shadow:0 8px 20px #04637424;
 }
 .brandIcon svg { inline-size:23px; block-size:23px; }
-.page .anatomy {
-  background-image:var(--padua-image);
-  background-position:57% 44%;
-}
+
 .intro h1 {
   margin:0;
   color:var(--ink);
@@ -30,25 +26,72 @@
 }
 .intro h1 > span { display:block; color:var(--teal-dark); }
 .intro h1 em { color:var(--coral); font-style:normal; }
-.navigation { display:flex; flex-wrap:wrap; align-items:center; gap:6px 9px; margin-block-end:20px; }
-.navigation ol { display:flex; flex-wrap:wrap; gap:4px; margin:0; padding:0; list-style:none; }
+.navigation {
+  --metal:linear-gradient(95deg,#376a86,#77cbe2 34%,#effcff 49%,#6dbacf 67%,#306984);
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+  align-self:start;
+  min-height:700px;
+  display:grid;
+  align-items:center;
+  padding:35px clamp(16px,3vw,48px);
+}
+.anatomy {
+  position:absolute;
+  z-index:-1;
+  inset:0;
+  background:linear-gradient(90deg,#051b30c2,#071a2b22),var(--padua-image) 57% 44% / cover no-repeat;
+  mask-image:linear-gradient(#000 88%,transparent);
+}
+.navigation ol { list-style:none; margin:0; padding:0; color:#f1f8ff; }
 .navigation li {
-  min-inline-size:32px;
-  padding:3px 6px;
-  border:1px solid var(--line-strong);
-  border-radius:7px;
-  color:var(--muted);
-  background:var(--surface-soft);
-  font-size:.79rem;
-  font-weight:750;
+  position:relative;
+  display:grid;
+  grid-template-columns:42px minmax(0,1fr);
+  align-items:center;
+  gap:12px;
+  min-height:70px;
+  font-size:.9rem;
+  font-weight:720;
 }
-.navigation li[aria-current='step'] {
-  border-color:var(--teal);
-  color:var(--ink);
-  background:var(--teal-pale);
+.navigation li:not(:last-child)::before {
+  position:absolute;
+  content:'';
+  inset-block-start:50%;
+  inset-inline-start:18px;
+  width:6px;
+  height:100%;
+  background:#b0cfeb55;
 }
-.navigation li span { margin-inline-start:3px; color:var(--teal-dark); }
-.navigation li bdi { margin-inline-end:3px; }
+.navigation li:not(:last-child)::after {
+  position:absolute;
+  content:'';
+  inset-block-start:50%;
+  inset-inline-start:18px;
+  width:6px;
+  height:var(--segment-fill);
+  background:var(--metal);
+  box-shadow:0 0 9px #52c9ec70;
+  transition:height .28s ease;
+}
+.navigation bdi {
+  z-index:1;
+  display:grid;
+  place-items:center;
+  width:42px;
+  height:42px;
+  border:1px solid #afcfe2a0;
+  border-radius:50%;
+  background:#102638;
+  color:#d8ebf9;
+  font-size:.83rem;
+}
+.navigation li span { text-shadow:0 1px 5px #00101f,0 1px 15px #00101f; }
+.navigation li[data-reached='true'] bdi { border-color:#baf2ff; background:var(--metal); color:#061b2b; }
+.navigation li[aria-current='step'] bdi { outline:2px solid #8ae6ff; outline-offset:3px; box-shadow:0 0 18px #68ddffad; }
+.navigation .finish bdi svg { width:17px; height:17px; }
+@media (prefers-reduced-motion:reduce) { .navigation li::after { transition:none; } }
 .referenceFindings { margin-block-start:16px; padding-block-start:12px; border-block-start:1px solid var(--line-strong); }
 .referenceFindings h3 { margin:0 0 8px; font-size:.9rem; }
 .progress { color:var(--muted); font-size:.78rem; }
@@ -153,4 +196,18 @@
   .page .actions button:first-child { margin-inline-start:0; }
   .requirements > div { display:block; }
   .requirements dd { text-align:start; }
+}
+
+@media (max-width:800px) {
+  .page .shell { grid-template-columns:minmax(54px,17%) minmax(0,1fr); }
+  .page .workspace { padding-inline:10px; }
+  .navigation { min-height:525px; padding:22px 8px; }
+  .anatomy { background-position:57% 44%; }
+  .navigation li { grid-template-columns:30px minmax(0,1fr); gap:6px; min-height:62px; }
+  .navigation bdi { width:30px; height:30px; font-size:.71rem; }
+  .navigation li:not(:last-child)::before,.navigation li:not(:last-child)::after { inset-inline-start:13px; width:4px; }
+}
+@media (max-width:699px) {
+  .navigation li span { position:absolute; width:1px; height:1px; overflow:hidden; clip-path:inset(50%); }
+  .navigation ol { justify-self:center; }
 }
