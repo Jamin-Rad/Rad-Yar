@@ -5,7 +5,7 @@ import { browserChartStorage, readChartDrawings, readChartHistory, saveChartHist
 import { technicalHistory } from '@/lib/investments/indicators.mjs'
 import { XTB_DRAWING_COLORS, XTB_INTERVALS, xtbBars } from '@/lib/investments/xtb-chart.mjs'
 import { estimateXtbStopOut, xtbExposure, xtbScenario } from '@/lib/investments/xtb-risk.mjs'
-import { aggregateDaily, rsiDivergences, atr, vwap, trianglePatterns, tradeSpans } from '@/lib/investments/chart-analysis.mjs'
+import { aggregateDaily, rsiDivergences, atr, vwap, pricePatterns, tradeSpans } from '@/lib/investments/chart-analysis.mjs'
 import Icon from './InvestmentIcon'
 import IndicatorGuide from './IndicatorGuide'
 import styles from './InvestmentPositionChart.module.css'
@@ -133,7 +133,7 @@ export default function InvestmentPositionChart({ trade, openCount, drawings = [
   const historyEnd=Math.max(0,fullHistory.length-offset)
   const historyStart=Math.max(0,historyEnd-visibleCount)
   const history=fullHistory.slice(historyStart,historyEnd)
-  const patterns = useMemo(()=>showPatterns?trianglePatterns(fullHistory.slice(0,historyEnd)):[],[showPatterns,fullHistory,historyEnd])
+  const patterns = useMemo(()=>showPatterns?pricePatterns(fullHistory.slice(0,historyEnd)):[],[showPatterns,fullHistory,historyEnd])
   const spans = useMemo(()=>daily
     ? tradeSpans(daily.events??[])
     : (symbolTrades??[trade]).flatMap(position=>tradeSpans(position.executions,position.plan.direction==='short'?-1:1).map(span=>({...span,id:position.id+':'+span.id,current:position.id===trade.id}))),
@@ -505,7 +505,7 @@ export default function InvestmentPositionChart({ trade, openCount, drawings = [
         </header>
         <div className={styles.scenarios}>{positionPanel}</div>
         <div className={styles.chart}>
-        <div className={styles.chartTools} aria-label="تایم‌فریم و پیش‌بینی">
+        <div className={styles.chartTools} aria-label="تایم‌فریم و لایه‌های نمودار">
           <label className={styles.timeframe}>تایم‌فریم <select value={interval} onChange={event=>setFrame(/^\d+$/.test(event.target.value)?Number(event.target.value):event.target.value)}>
             {frames.map(value=><option key={value} value={value} disabled={daily&&typeof value==='number'}>{({'1d':'روزانه','1w':'هفتگی','1mo':'ماهانه',60:'۱ ساعت',240:'۴ ساعت'})[value]||value+' دقیقه'}</option>)}
           </select></label>
@@ -586,12 +586,13 @@ export default function InvestmentPositionChart({ trade, openCount, drawings = [
                 {end&&endX<=x(last)+1&&<line x1={endX} x2={endX} y1={top} y2={bottom} stroke={color} strokeDasharray="3 5" opacity=".6"/>}
               </g>
             })}
-            {showPatterns&&patterns.filter(pattern=>pattern.end>=historyStart&&pattern.confirmed<historyEnd).map(pattern=>{
+            {showPatterns&&patterns.filter(pattern=>pattern.end>=historyStart&&pattern.confirmed<historyEnd).slice(-5).map(pattern=>{
               const left=x(pattern.start-historyStart),right=x(pattern.end-historyStart)
-              const label=pattern.ascending?'مثلث صعودی':'مثلث نزولی'
-              const color=pattern.ascending?'#78dfc4':'#efb172'
+              const label=pattern.name
+              const color=pattern.breakout==='up'?'#78dfc4':pattern.breakout==='down'?'#efb172':'#93bfff'
               return <g key={pattern.start+':'+pattern.confirmed} aria-label={label} pointerEvents="none">
                 <polygon points={left+','+y(pattern.upper[0])+' '+right+','+y(pattern.upper[1])+' '+right+','+y(pattern.lower[1])+' '+left+','+y(pattern.lower[0])} fill={color} fillOpacity=".09" stroke={color} strokeWidth="1.5" strokeDasharray="5 4"/>
+                {pattern.points.length>0&&<polyline points={pattern.points.map(point=>x(point.index-historyStart)+','+y(point.price)).join(' ')} fill="none" stroke={color} strokeWidth="1.5"/>}
                 <text x={Math.max(LEFT+6,left+5)} y={Math.max(top+14,y(pattern.upper[0])-6)} style={{fill:color}}>{label}</text>
                 {pattern.breakout&&<circle cx={right} cy={y(fullHistory[pattern.end].close)} r="4" fill={color} aria-label={pattern.breakout==='up'?'شکست رو به بالا':'شکست رو به پایین'}/>}
               </g>
@@ -696,6 +697,7 @@ export default function InvestmentPositionChart({ trade, openCount, drawings = [
             </>})()}
           </svg>
         </div>}
+        {showPatterns&&history.length>0&&<p role="status">{patterns.some(pattern=>pattern.end>=historyStart&&pattern.confirmed<historyEnd)?'حداکثر پنج الگوی اخیر در این نما · نقطهٔ رنگی: بسته‌شدن کندل بیرون مرز':'در کندل‌های قابل مشاهده، الگوی منطبق با معیارها پیدا نشد.'}</p>}
         {indicators.vwap&&<p>{daily?'VWAP از ابتدای تاریخچهٔ ذخیره‌شده':'VWAP جلسهٔ روزانهٔ UTC · حجم قرارداد مرجع'}</p>}
         </div>
         {!daily&&<details className={styles.exitPanel}><summary>سناریوی خروج · حد سود، حد ضرر و Stop Out</summary><div className={styles.exitControls}>{exitPanel}</div></details>}
