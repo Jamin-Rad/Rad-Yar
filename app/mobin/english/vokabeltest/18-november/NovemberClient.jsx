@@ -115,7 +115,7 @@ export default function NovemberClient() {
           <div className={base.heroCopy}><span className={base.heroEyebrow}>UNIT 2 · LONDON · KLASSE 6</span><h1>Ready for<br />your test<span>?</span></h1><p>Wortschatz, Rechtschreibung und Grammatik für den 18. November.</p></div>
           <div className={base.skyline} aria-hidden="true" />
         </header>
-        <section className={styles.section} aria-labelledby="tests-title"><h2 id="tests-title">Bereit für einen Probetest?</h2><p>Zwei gemischte Tests mit je 30 Fragen und vier Antwortmöglichkeiten. Die Auswertung erscheint am Ende.</p><div className={styles.testCards}>{NOVEMBER_MODES.filter(m => m.kind === 'test').map(m => <ModeCard key={m.id} mode={m} entry={history[m.id]} ready={ready} onOpen={() => openMode(m)} />)}</div></section>
+        <section className={styles.section} aria-labelledby="tests-title"><h2 id="tests-title">Bereit für einen Probetest?</h2><p>Zwei gemischte Tests mit je 30 Fragen und ein mittelschwerer Rechtschreibtest mit 15 Fragen. Immer vier Antwortmöglichkeiten; die Auswertung erscheint am Ende.</p><div className={styles.testCards}>{NOVEMBER_MODES.filter(m => m.kind === 'test').map(m => <ModeCard key={m.id} mode={m} entry={history[m.id]} ready={ready} onOpen={() => openMode(m)} />)}</div></section>
       </>}
       {view === 'words' && <section className={styles.paper}>
         <span className={styles.eyebrow}>DEINE BEIDEN WORTSCHATZSEITEN</span><h1 ref={heading} tabIndex={-1}>Wörter zum Nachschlagen</h1><p>Britisches Englisch · Bedeutung und Schreibweise gehören zusammen. Die zusätzlichen Formen „fought“ und die Themenüberschriften werden mitgeübt.</p>

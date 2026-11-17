@@ -65,7 +65,7 @@ test('old November 11 history survives alongside all new completed modes within 
 })
 
 test('two quick tests each mix 30 difficult four-option items with one correct answer', () => {
- const tests = NOVEMBER_MODES.filter(m => m.id.startsWith('nov18-quick-'))
+ const tests = NOVEMBER_MODES.filter(m => /^nov18-quick-[12]$/.test(m.id))
  assert.equal(tests.length, 2)
  for (const t of tests) {
   assert.equal(t.questions.length,30)
@@ -75,4 +75,16 @@ test('two quick tests each mix 30 difficult four-option items with one correct a
   const normalized=normalizeEnglishHistory({[t.id]:{run:run(t.questions.map(q=>({id:q.id,chosen:q.answer})))}})
   assert.equal(normalized[t.id].run.results.filter(r=>r.correct).length,30)
  }
+})
+
+test('medium spelling test has 15 spelling-only questions and saves its own result', () => {
+ const t=NOVEMBER_MODES.find(m=>m.id==='nov18-quick-spelling')
+ assert.equal(t.questions.length,15)
+ for(const q of t.questions){
+  assert.equal(q.group,'Rechtschreibung · mittel')
+  assert.equal(new Set(q.options).size,4)
+  assert.equal(q.options.filter(o=>isTypedAnswerCorrect(q,o)).length,1)
+ }
+ const state=normalizeEnglishHistory({[t.id]:{run:run(t.questions.map(q=>({id:q.id,chosen:q.answer})))}})
+ assert.equal(state[t.id].run.results.filter(r=>r.correct).length,15)
 })
