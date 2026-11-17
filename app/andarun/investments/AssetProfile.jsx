@@ -81,6 +81,9 @@ export default function AssetProfile({account, position, state, marketData, ledg
         market:chartMarket ? {...chartMarket,quote:chartQuote || chartMarket.quote} : {quote:currentMarket?.quote},
         entry:currency==='EUR' && averageEur>0 ? averageEur : null, entries, quantity,
         quantityLabel:balance.quantityKnown ? position.quantity : 'نیازمند تطبیق',
+        events:(ledger?.transactions||[]).filter(tx=>tx.accountId===account.id&&tx.isin===position.isin&&['BUY','SELL'].includes(tx.type))
+          .map(tx=>({id:tx.id,date:tx.date,kind:tx.type==='BUY'?'entry':'exit',quantity:Math.abs(Number(tx.quantity)),price:Number(tx.price)||Math.abs(tx.amountCents/100/Number(tx.quantity)),currency:tx.currency}))
+          .filter(tx=>/^\d{4}-\d{2}-\d{2}$/.test(tx.date)).sort((a,b)=>a.date.localeCompare(b.date)),
         entryLabel:averageEur==null ? '—' : price(averageEur)+' €',
         gainCents:balance.marketGainCents, gainLabel:balance.marketGainCents==null?'—':signedMoney(balance.marketGainCents),
         busy:chartBusy||marketData.loading[key], onRefresh:key?refreshChart:null,

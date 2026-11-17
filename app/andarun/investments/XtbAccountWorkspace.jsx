@@ -31,19 +31,20 @@ export default function XtbAccountWorkspace({account,owner,trades,tradeProps,dra
   const ownTrades=trades.filter(t=>t.ownerId===account?.id)
   const openTrades=ownTrades.filter(t=>tradeStatus(t)==='open')
   const [chartId,setChartId]=useState(null)
-  const chartTrade=openTrades.find(t=>t.id===chartId)||openTrades[0]
+  const executedTrades=ownTrades.filter(t=>t.executions.some(event=>event.kind==='entry'))
+  const chartTrade=executedTrades.find(t=>t.id===chartId)||openTrades[0]||executedTrades[0]
   const [tab,setTab]=useState(tradeProps.createOpen||tradeProps.selectedId||openTrades.length?'plans':'transactions')
   useEffect(()=>{if(tradeProps.createOpen||tradeProps.selectedId)setTab('plans')},[tradeProps.createOpen,tradeProps.selectedId])
   const balance=xtbBalance(account,trades)
   if(!balance)return <section className={view.wallet}><Icon name="trading" size={40}/><h2>موجودی XTB ثبت نشده است</h2></section>
   return <>
     {chartTrade && <>
-      {openTrades.length > 1 && <label className={styles.field}>موقعیت روی نمودار
+      {executedTrades.length > 1 && <label className={styles.field}>موقعیت روی نمودار
         <select value={chartTrade.id} onChange={event=>setChartId(event.target.value)}>
-          {openTrades.map(trade=><option key={trade.id} value={trade.id}>{trade.plan.name} · {trade.plan.planDate}</option>)}
+          {executedTrades.map(trade=><option key={trade.id} value={trade.id}>{trade.plan.name} · {trade.plan.planDate}</option>)}
         </select>
       </label>}
-      <InvestmentPositionChart key={chartTrade.id} trade={chartTrade} onTransaction={kind=>{setTab('plans');tradeProps.onSelect(chartTrade.id);tradeProps.onCreateOpen(false);tradeProps.onExecution(kind)}} openCount={openTrades.length} drawings={drawings} onDrawings={onDrawings}/>
+      <InvestmentPositionChart key={chartTrade.id} trade={chartTrade} symbolTrades={executedTrades.filter(item=>item.plan.symbol===chartTrade.plan.symbol&&item.plan.currency===chartTrade.plan.currency)} onTransaction={tradeStatus(chartTrade)==='open'?kind=>{setTab('plans');tradeProps.onSelect(chartTrade.id);tradeProps.onCreateOpen(false);tradeProps.onExecution(kind)}:undefined} openCount={openTrades.length} drawings={drawings} onDrawings={onDrawings}/>
     </>}
     <section className={view.summary} aria-label={`موجودی XTB ${owner}`}><div className={view.metrics}>
       <div><span>موجودی حساب</span><strong><bdi>{money(balance.balanceCents)}</bdi></strong><small>موجودی پس از معاملات بسته‌شده</small></div>
