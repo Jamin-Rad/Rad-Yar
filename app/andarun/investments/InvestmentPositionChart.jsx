@@ -5,6 +5,7 @@ import { browserChartStorage, readChartDrawings, readChartHistory, saveChartHist
 import { technicalHistory } from '@/lib/investments/indicators.mjs'
 import { XTB_DRAWING_COLORS, XTB_INTERVALS, xtbBars } from '@/lib/investments/xtb-chart.mjs'
 import { estimateXtbStopOut, xtbExposure, xtbScenario } from '@/lib/investments/xtb-risk.mjs'
+import { backtestBreakout } from '@/lib/investments/breakout-strategy.mjs'
 import { aggregateDaily, rsiDivergences, atr, vwap, pricePatterns, tradeSpans } from '@/lib/investments/chart-analysis.mjs'
 import Icon from './InvestmentIcon'
 import IndicatorGuide from './IndicatorGuide'
@@ -68,6 +69,9 @@ export default function InvestmentPositionChart({ trade, openCount, drawings = [
   const [macdHeight, setMacdHeight] = useState(100)
   const [indicatorTools, setIndicatorTools] = useState(false)
   const [limitDetail, setLimitDetail] = useState(null)
+  const [spreadInput,setSpreadInput]=useState('10')
+  const [feeInput,setFeeInput]=useState('5')
+  const [strategyCosts,setStrategyCosts]=useState(null)
   const [showPatterns, setShowPatterns] = useState(true)
   const [showTrades, setShowTrades] = useState(true)
   const [indicators, setIndicators] = useState({ ema20: true, sma50: true, sma200: false, rsi: true, vwap: true, macd: true, atr: true, bands: false })
@@ -125,6 +129,10 @@ export default function InvestmentPositionChart({ trade, openCount, drawings = [
   const fullHistory = useMemo(() => daily || typeof interval === 'string'
     ? technicalHistory(aggregateDaily(dailyHistory, interval))
     : technicalHistory(xtbBars(stock,interval),Date.now(),true), [stock,interval,dailyHistory,!!daily])
+  const strategyFrame=daily?'1d':15
+  const strategy=useMemo(()=>strategyCosts&&interval===strategyFrame
+    ? backtestBreakout(fullHistory,{...strategyCosts,allowShort:!daily})
+    : null,[strategyCosts,interval,strategyFrame,fullHistory,!!daily])
   const divergences = useMemo(()=>rsiDivergences(fullHistory),[fullHistory])
   const divergence = divergences.find(item=>item.id===selectedDivergence)
   const atrValues = useMemo(()=>atr(fullHistory),[fullHistory])
@@ -133,6 +141,10 @@ export default function InvestmentPositionChart({ trade, openCount, drawings = [
   const historyEnd=Math.max(0,fullHistory.length-offset)
   const historyStart=Math.max(0,historyEnd-visibleCount)
   const history=fullHistory.slice(historyStart,historyEnd)
+  const strategyTrades=strategy
+    ? [...strategy.trades,...(strategy.active?[strategy.active]:[])].filter(result=>
+      (result.exit??fullHistory.length-1)>=historyStart&&result.entry<historyEnd)
+    : []
   const patterns = useMemo(()=>showPatterns?pricePatterns(fullHistory.slice(0,historyEnd)):[],[showPatterns,fullHistory,historyEnd])
   const spans = useMemo(()=>daily
     ? tradeSpans(daily.events??[])
@@ -155,7 +167,7 @@ export default function InvestmentPositionChart({ trade, openCount, drawings = [
     { key:'stop', value:invalidStop?null:stop, color:'#ff9b58' },
   ].filter(band=>band.value!=null):[]
   const marketLevels = (history.length
-    ? [...history.flatMap(row=>[row.low??row.close,row.high??row.close]),...(positionBands.length?[exposure.entry,...positionBands.map(band=>band.value)]:[])]
+    ? [...history.flatMap(row=>[row.low??row.close,row.high??row.close]),...(positionBands.length?[exposure.entry,...positionBands.map(band=>band.value)]:[]),...strategyTrades.flatMap(result=>[result.entryPrice,result.stop,result.target])]
     : [exposure.entry,stop,target,displayedPrice]).filter(value=>value!=null)
   const low = marketLevels.length?Math.min(...marketLevels):1, high = marketLevels.length?Math.max(...marketLevels):2
   const pad = Math.max((high - low) * .13, low * .025)
@@ -515,6 +527,22 @@ export default function InvestmentPositionChart({ trade, openCount, drawings = [
           <IndicatorGuide/>
           <button type="button" aria-expanded={indicatorTools} onClick={()=>setIndicatorTools(value=>!value)}>اندیکاتورها</button>
         </div>
+        <details className={styles.exitPanel}>
+          <summary>استراتژی شکست تأییدشده و بک‌تست</summary>
+          <form className={styles.exitControls} onSubmit={event=>{
+            event.preventDefault()
+            setStrategyCosts({spreadBps:Number(spreadInput),feeBps:Number(feeInput)})
+          }}>
+            <label>اسپرد کامل (bps) <input type="number" dir="ltr" min="0" max="1000" step="any" required value={spreadInput} onChange={event=>setSpreadInput(event.target.value)}/></label>
+            <label>کارمزد هر سمت (bps) <input type="number" dir="ltr" min="0" max="1000" step="any" required value={feeInput} onChange={event=>setFeeInput(event.target.value)}/></label>
+            <button type="submit" disabled={interval!==strategyFrame||fullHistory.length<50}>اجرای بک‌تست</button>
+            {strategyCosts&&<button type="button" onClick={()=>setStrategyCosts(null)}>پنهان‌کردن استراتژی</button>}
+          </form>
+          <p>هر ۱۰۰ bps برابر ۱٪ است. مقادیر پیش‌فرض نمونه هستند. بازهٔ استراتژی {daily?'روزانه':'۱۵ دقیقه‌ای'} است و حداقل ۵۰ کندل برای میانگین روند لازم است.</p>
+          <p>ورود در بازشدن کندل بعد از دو بسته‌شدن بیرون مرز و هم‌جهت با EMA 20 و SMA 50 است. حد ضرر نیم ATR پشت مرز شکست و هدف دو برابر ریسک است. در برخورد هم‌زمان با هر دو حد در یک کندل، حد ضرر اول حساب می‌شود.</p>
+          {fullHistory.length>0&&<p>دادهٔ موجود در این تایم‌فریم · {fullHistory.length} کندل · <bdi>{fullHistory[0].date.slice(0,10)} تا {fullHistory.at(-1).date.slice(0,10)}</bdi></p>}
+          {strategy&&<p role="status">اسپرد {strategyCosts.spreadBps} bps · کارمزد هر سمت {strategyCosts.feeBps} bps · {strategy.trades.length} معاملهٔ بسته · بازده خالص مرکب <bdi>{signedFormat.format((strategy.equity-1)*100)}٪</bdi> · افت سرمایهٔ معاملات بسته <bdi>{formatPrice(strategy.drawdown*100)}٪</bdi>{strategy.active&&' · یک موقعیت آزمایشی باز'}{strategy.incomplete&&' · آزمون در کندل فاقد OHLC متوقف شد'}</p>}
+        </details>
         <div className={styles.chartBody}>
         <div className={styles.drawingTools} data-open={true}>
           <div className={styles.chartTools} aria-label="ابزار رسم">
@@ -561,6 +589,20 @@ export default function InvestmentPositionChart({ trade, openCount, drawings = [
           {priceTicks.map(value=><g key={value}><line x1={LEFT} x2={plotRight} y1={y(value)} y2={y(value)} stroke="#26323e"/><text x={width-8} y={y(value)+4} textAnchor="end" pointerEvents="none">{axisPrice.format(value)}</text></g>)}
           {[0,.2,.4,.6,.8,1].map(step=><line key={step} x1={LEFT+plotSpan*step} x2={LEFT+plotSpan*step} y1={top} y2={bottom} stroke="#222d36"/>)}
           <g clipPath={`url(#${gradient}-plot)`}>
+            {strategyTrades.map(result=>{
+              const exit=result.exit??fullHistory.length-1
+              const start=x(Math.max(0,result.entry-historyStart))
+              const finish=x(Math.min(last,exit-historyStart))
+              const levels=[['ورود آزمایشی',result.entryPrice,'#afcdff'],['حد سود آزمایشی',result.target,'#43dfca'],['حد ضرر آزمایشی',result.stop,'#ff9b58']]
+              return <g key={result.entry} aria-label={result.pattern} pointerEvents="none">
+                {levels.map(([label,value,color])=><g key={label}>
+                  <path d={`M${start},${y(value)}H${Math.max(start+9,finish)}`} stroke={color} strokeWidth="1.5" strokeDasharray="4 3"/>
+                  <circle cx={start} cy={y(value)} r="3" fill={color}/>
+                  <text x={Math.min(plotRight-100,Math.max(start+6,finish+4))} y={y(value)-4} style={{fill:color}}>{label} {formatPrice(value)}</text>
+                </g>)}
+                <title>{result.pattern}</title>
+              </g>
+            })}
             {positionBands.map(band=><g key={band.key} aria-label={limitLabels[band.key]} pointerEvents="none">
               <rect x={bandStart} y={Math.min(y(exposure.entry),y(band.value))} width={Math.max(2,x(last)-bandStart)} height={Math.abs(y(exposure.entry)-y(band.value))} fill={band.color} fillOpacity={band.key==='target'?'.18':'.16'}/>
               <title>{limitLabels[band.key]} · {formatPrice(band.value)} {currency}</title>
@@ -697,7 +739,7 @@ export default function InvestmentPositionChart({ trade, openCount, drawings = [
         {!daily&&<details className={styles.exitPanel}><summary>سناریوی خروج · حد سود، حد ضرر و Stop Out</summary><div className={styles.exitControls}>{exitPanel}</div></details>}
         {entryTime&&!entryTime.includes('T')&&!knownEntry?.observedOpen&&<p>برچسب ورود تاریخ ثبت‌شده را نشان می‌دهد.</p>}
         {!daily&&knownEntry?.observedOpen&&<p>ناحیه‌ها از تاریخ ثبت موقعیت باز شروع می‌شوند. زمان اجرای معامله در سابقه موجود نیست.</p>}
-        {candles&&<p>{daily?.market?.quote?.source || 'برنت مرجع'} · آخرین داده <bdi>{berlinTime(history.at(-1).date)}{history.at(-1).date.includes('T')&&' برلین'}</bdi></p>}
+        {candles&&<p>{daily?.market?.quote?.source || 'Yahoo Finance · قرارداد مرجع برنت BZ=F'} · آخرین داده <bdi>{berlinTime(history.at(-1).date)}{history.at(-1).date.includes('T')&&' برلین'}</bdi></p>}
         {daily?.notice&&<p role="status">{daily.notice}</p>}
         {daily?.error&&<p role="alert">{daily.error}</p>}
         {error&&<p role="alert">{error}</p>}
