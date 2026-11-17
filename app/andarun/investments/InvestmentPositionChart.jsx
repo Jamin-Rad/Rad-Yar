@@ -353,7 +353,11 @@ export default function InvestmentPositionChart({ trade, openCount, drawings = [
     if(line){select(line.id);g.action={type:'edit',line,handleIndex,point:pointAt(event),domain:[min,max]};return}
     if(event.button===2||!drawing){
       if(event.pointerType!=='touch'){select(null);setLimitDetail(null)}
-      g.action={type:'pan',x:local.x,offset:viewportOffset}
+      g.action={
+        type:'pan',x:local.x,y:local.y,offset:viewportOffset,
+        vertical:event.button===0&&event.pointerType==='mouse',
+        domain:[min,max], pricePerPixel:(max-min)/(bottom-top),
+      }
       if(event.pointerType==='touch'){
         const index=indexAt(local.x)
         g.timer=setTimeout(()=>{g.action={type:'cursor'};setCursor(index)},430)
@@ -387,9 +391,17 @@ export default function InvestmentPositionChart({ trade, openCount, drawings = [
       const scale=Math.hypot(a.x-b.x,a.y-b.y)/action.distance
       setRange(Math.max(16,Math.min(190,Math.round(action.count/Math.max(.2,scale)))))
     } else if(action?.type==='pan'){
-      if(Math.abs(local.x-action.x)<4)return
+      const dx=local.x-action.x,dy=local.y-action.y
+      action.movedX ||= Math.abs(dx)>=4
+      action.movedY ||= action.vertical&&Math.abs(dy)>=4
+      if(!action.movedX&&!action.movedY)return
       clearTimeout(g.timer)
-      setOffset(Math.min(Math.max(0,fullHistory.length-visibleCount),Math.max(0,action.offset+Math.round((local.x-action.x)*slots/plotSpan))))
+      setCursor(null)
+      if(action.movedX)setOffset(Math.min(Math.max(0,fullHistory.length-visibleCount),Math.max(0,action.offset+Math.round(dx*slots/plotSpan))))
+      if(action.movedY){
+        const shift=dy*action.pricePerPixel
+        setPriceDomain([action.domain[0]+shift,action.domain[1]+shift])
+      }
     } else if(action?.type==='edit'){
       const point=pointAt(event)
       const delta=Date.parse(point.date)-Date.parse(action.point.date), priceDelta=point.price-action.point.price
