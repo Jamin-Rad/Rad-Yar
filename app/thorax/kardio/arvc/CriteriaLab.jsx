@@ -10,9 +10,9 @@ import { Icon, Tabs } from './LessonVisuals'
 import styles from './page.module.css'
 
 const MRI_SYSTEMS = [
-  { id: 'etf', label: 'ETF 2023' },
   { id: 'tfc', label: 'TFC 2010' },
   { id: 'padua', label: 'Padua 2020' },
+  { id: 'etf', label: 'ETF 2023' },
 ]
 
 const OTHER_CATEGORIES = [
@@ -146,21 +146,21 @@ const ETF_MRI = [
     fa: ['Cine · معیار فرعی بطن‌ها', 'بطن راست: آکینزی، دیسکینزی یا آنوریسم دیوارهٔ آزاد. بطن چپ: اختلال کلی سیستولی با یا بدون اتساع.'],
   },
   {
-    de: ['LGE · RV Minor', 'Eindeutiges RV-LGE in mindestens einer Region, außerhalb der Trikuspidalklappe.'],
-    en: ['LGE · RV minor', 'Unequivocal RV LGE in at least one region, excluding the tricuspid valve.'],
-    fa: ['LGE · معیار فرعی بطن راست', 'LGE قطعی در دست‌کم یک ناحیه از بطن راست، به‌جز دریچهٔ تریکوسپید.'],
+    de: ['LGE · RV Minor', 'Eindeutiges RV-LGE in mindestens einer Region außerhalb der Trikuspidalklappe, bestätigt in zwei orthogonalen Ebenen.'],
+    en: ['LGE · RV minor', 'Unequivocal RV LGE in at least one region outside the tricuspid valve, confirmed in two orthogonal views.'],
+    fa: ['LGE · معیار فرعی بطن راست', 'LGE قطعی در دست‌کم یک ناحیه از بطن راست خارج از دریچهٔ تریکوسپید، با تأیید در دو نمای عمود.'],
   },
   {
-    de: ['LGE · LV Major oder Minor', 'Subepikardiales oder mittmyokardiales Streifen-LGE: 1–2 Segmente sind Minor, ab 3 Segmenten Major. Beide Ventrikel in zwei orthogonalen Ebenen bestätigen.'],
-    en: ['LGE · LV major or minor', 'Subepicardial or midwall stria-pattern LGE: 1–2 segments are minor, at least 3 are major. Confirm ventricular LGE in two orthogonal planes.'],
-    fa: ['LGE · معیار اصلی یا فرعی بطن چپ', 'LGE نواری زیر اپیکارد یا میان‌میوکارد در ۱ تا ۲ سگمان فرعی و در دست‌کم ۳ سگمان اصلی است. LGE هر بطن را در دو نمای عمود تأیید کنید.'],
+    de: ['LGE · LV Major oder Minor', 'Subepikardiales oder mittmyokardiales Streifen-LGE in 1–2 Segmenten ist Minor. Ab 3 Segmenten zählt es als Major, ringförmig oder diskontinuierlich. Das Muster in zwei orthogonalen Ebenen bestätigen. Isoliertes Insertions-LGE zählt nicht.'],
+    en: ['LGE · LV major or minor', 'Subepicardial or midwall stria-pattern LGE in 1–2 segments is minor. At least 3 segments are major, whether ring-like or discontinuous. Confirm the pattern in two orthogonal views. Exclude isolated junctional LGE.'],
+    fa: ['LGE · معیار اصلی یا فرعی بطن چپ', 'LGE نواری زیر اپیکارد یا میان‌میوکارد در ۱ تا ۲ سگمان فرعی است. در دست‌کم ۳ سگمان، چه حلقوی چه ناپیوسته، اصلی است. الگو را در دو نمای عمود تأیید کنید. LGE محدود به محل اتصال بطن راست امتیاز ندارد.'],
   },
 ]
 
 const ETF_SUMMARY = {
-  de: ['ETF 2023 (Zeitschriftenausgabe 2024)', 'Der Konsensus der europäischen Task Force schlägt eine Weiterentwicklung der Padua-Kriterien vor. Für ALVC ist nichtischämisches LV-LGE als strukturelles Kriterium nötig. Die Diagnose kann bei ausreichender Befundkombination ohne Genvariante gestellt werden.'],
-  en: ['ETF 2023 (2024 journal issue)', 'The European Task Force consensus proposes a refinement of Padua. ALVC requires qualifying non-ischaemic LV LGE. A sufficient combination of findings can establish the diagnosis without a genetic variant.'],
-  fa: ['‏ETF ۲۰۲۳ (شمارهٔ مجله ۲۰۲۴)', 'کارگروه اروپایی نسخه‌ای دقیق‌تر از معیارهای پادوا پیشنهاد کرده است. تشخیص ALVC به معیار ساختاری LGE غیرایسکمیک بطن چپ نیاز دارد. با ترکیب کافی یافته‌ها، وجود واریانت ژنتیکی الزامی نیست.'],
+  de: ['ETF 2023', 'Der Konsensus der europäischen Task Force schlägt eine Weiterentwicklung der Padua-Kriterien vor. Für ALVC ist nichtischämisches LV-LGE als strukturelles Kriterium nötig. Die Diagnose kann bei ausreichender Befundkombination ohne Genvariante gestellt werden.'],
+  en: ['ETF 2023', 'The European Task Force consensus proposes a refinement of Padua. ALVC requires qualifying non-ischaemic LV LGE. A sufficient combination of findings can establish the diagnosis without a genetic variant.'],
+  fa: ['‏ETF ۲۰۲۳', 'کارگروه اروپایی نسخه‌ای دقیق‌تر از معیارهای پادوا پیشنهاد کرده است. تشخیص ALVC به معیار ساختاری LGE غیرایسکمیک بطن چپ نیاز دارد. با ترکیب کافی یافته‌ها، وجود واریانت ژنتیکی الزامی نیست.'],
 }
 
 const ETF_OTHER = {
@@ -190,12 +190,12 @@ export default function CriteriaOverview() {
       <div className={styles.criteriaLesson}>
         <p className={styles.criteriaIntro}>
           <strong>Für eine gesicherte Diagnose reicht ein einzelner MRT-Befund nicht aus.</strong>
-          <span>TFC und Padua berücksichtigen sechs Befundkategorien. Neben dem MRT zählen unter anderem das EKG, dokumentierte Rhythmusstörungen sowie Familienanamnese und Genetik.</span>
+          <span>Alle drei Systeme berücksichtigen sechs Befundkategorien. Neben dem MRT zählen unter anderem das EKG, dokumentierte Rhythmusstörungen sowie Familienanamnese und Genetik.</span>
         </p>
         <dl className={styles.criteriaRows}>
-          <div><dt>{etfTitle}</dt><dd>{etfSummary}</dd></div>
           <div><dt>TFC 2010</dt><dd>Die Task-Force-Kriterien wurden für die klassische ARVC entwickelt. Im Mittelpunkt steht die rechte Herzkammer.</dd></div>
           <div><dt>Padua 2020</dt><dd>Padua erfasst auch linksdominante und biventrikuläre Formen und berücksichtigt Narben im LGE. Bei rechtsdominanter oder biventrikulärer ACM gelten dieselben Diagnosestufen mit zusätzlichen Voraussetzungen.</dd></div>
+          <div><dt>{etfTitle}</dt><dd>{etfSummary}</dd></div>
         </dl>
         <h4 className={styles.subheading}>Von den Befunden zur Diagnose</h4>
         <p>Pro Kategorie zählt nur das stärkste erfüllte Kriterium, dann werden die Punkte aus den verschiedenen Kategorien addiert.</p>
@@ -227,19 +227,19 @@ export default function CriteriaOverview() {
     </TeachingGroup>
     <TeachingGroup id="arvc-diagnostic-mri" title="Major und Minor im MRT" className={styles.mriCriteriaGroup}>
       <div className={styles.criteriaLesson}>
-        <p>Cine zeigt Form und Funktion der Herzkammern (Kategorie I). Bei Padua können typische Narben im LGE auch in die Bewertung des Myokardgewebes eingehen (Kategorie II).</p>
+        <p>Cine zeigt Form und Funktion der Herzkammern (Kategorie I). Bei Padua und ETF können typische LGE-Muster als Kriterien für das Myokardgewebe zählen (Kategorie II).</p>
         <div className={`${styles.atlas} ${styles.criteriaAtlas}`}>
-          <Tabs label="MRT-Kriterien vergleichen" items={MRI_SYSTEMS} selected={selected} onChange={setSelected} idPrefix="acm-diagnostic-mri"/>
+          <div dir="ltr"><Tabs label="MRT-Kriterien vergleichen" items={MRI_SYSTEMS} selected={selected} onChange={setSelected} idPrefix="acm-diagnostic-mri"/></div>
           <div className={styles.criteriaMri} id="acm-diagnostic-mri-panel" role="tabpanel" aria-labelledby={`acm-diagnostic-mri-tab-${selected}`} tabIndex={0}>
-            {[<EtfExplanation key="etf" lang={lang}/>, <TfcExplanation key="tfc" lang={lang}/>, <PaduaExplanation key="padua" lang={lang}/>][selected]}
+            {[<TfcExplanation key="tfc" lang={lang}/>, <PaduaExplanation key="padua" lang={lang}/>, <EtfExplanation key="etf" lang={lang}/>][selected]}
           </div>
         </div>
       </div>
     </TeachingGroup>
     <TeachingGroup id="arvc-diagnostic-other-categories" title="Die fünf weiteren Kategorien">
       <div className={styles.criteriaGuide}>
-          <CategoryDisclosure number="ETF" title={otherTitle} description={otherNotes}/>
           {OTHER_CATEGORIES.map(category => <CategoryDisclosure key={category.number} {...category}/>)}
+          <CategoryDisclosure number="ETF" title={otherTitle} description={otherNotes}/>
       </div>
     </TeachingGroup>
   </TeachingGroups>, lang)
