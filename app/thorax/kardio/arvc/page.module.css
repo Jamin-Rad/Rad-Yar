@@ -690,3 +690,25 @@
   .workflow button > span { grid-row:1/3; }
   .workflow small { grid-column:2; }
 }
+
+.criteriaComparison {
+  margin-block:14px;
+  overflow-x:auto;
+  border:1px solid var(--line);
+  border-radius:10px;
+}
+.criteriaComparison:focus-visible { outline:2px solid var(--lesson-accent-strong); outline-offset:3px; }
+.criteriaComparison table {
+  width:100%;
+  min-width:580px;
+  border-collapse:collapse;
+  text-align:start;
+  font-size:.92em;
+  line-height:1.45;
+}
+.criteriaComparison :is(th,td) { padding:10px 12px; text-align:start; vertical-align:top; }
+.criteriaComparison thead { background:color-mix(in srgb,var(--lesson-accent-strong) 9%,transparent); }
+.criteriaComparison th { color:var(--lesson-accent-strong); }
+.criteriaComparison tbody th { white-space:nowrap; }
+.criteriaComparison tbody tr { border-block-start:1px solid var(--line); }
+.criteriaComparison tr > * + * { border-inline-start:1px solid var(--line); }

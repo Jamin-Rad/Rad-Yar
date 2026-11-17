@@ -157,10 +157,25 @@ const ETF_MRI = [
   },
 ]
 
-const ETF_SUMMARY = {
-  de: ['ETF 2023', 'Der Konsensus der europäischen Task Force schlägt eine Weiterentwicklung der Padua-Kriterien vor. Für ALVC ist nichtischämisches LV-LGE als strukturelles Kriterium nötig. Die Diagnose kann bei ausreichender Befundkombination ohne Genvariante gestellt werden.'],
-  en: ['ETF 2023', 'The European Task Force consensus proposes a refinement of Padua. ALVC requires qualifying non-ischaemic LV LGE. A sufficient combination of findings can establish the diagnosis without a genetic variant.'],
-  fa: ['‏ETF ۲۰۲۳', 'کارگروه اروپایی نسخه‌ای دقیق‌تر از معیارهای پادوا پیشنهاد کرده است. تشخیص ALVC به معیار ساختاری LGE غیرایسکمیک بطن چپ نیاز دارد. با ترکیب کافی یافته‌ها، وجود واریانت ژنتیکی الزامی نیست.'],
+const CRITERIA_COMPARISON = {
+  de: [
+    ['Kriteriensystem', 'Schwerpunkt', 'LGE', 'Diagnostische Einordnung'],
+    ['TFC 2010', 'Klassische ARVC mit Fokus auf den RV', 'Kein eigenes Kriterium', 'Diagnosestufen für ARVC'],
+    ['Padua 2020', 'Rechtsdominante, biventrikuläre und linksdominante ACM', 'Typisches RV- oder LV-LGE zählt als Major', 'Diagnosestufen für rechtsdominante und biventrikuläre ACM. Bei isolierter ALVC sind typisches LV-LGE und eine passende Genvariante erforderlich.'],
+    ['ETF 2023', 'Europäischer Vorschlag zur Weiterentwicklung von Padua', 'RV-LGE zählt als Minor. Beim LV entscheidet die Ausdehnung.', 'Für ALVC ist typisches nichtischämisches LV-LGE erforderlich. Eine ausreichende Befundkombination kann auch ohne Genvariante genügen.'],
+  ],
+  en: [
+    ['Criteria', 'Focus', 'LGE', 'Diagnostic classification'],
+    ['TFC 2010', 'Classic ARVC with a focus on the RV', 'No standalone criterion', 'Diagnostic tiers for ARVC'],
+    ['Padua 2020', 'Right-dominant, biventricular and left-dominant ACM', 'Characteristic RV or LV LGE is a major criterion', 'Diagnostic tiers apply to right-dominant and biventricular ACM. Isolated ALVC requires characteristic LV LGE and a qualifying genetic variant.'],
+    ['ETF 2023', 'European proposal to refine Padua', 'RV LGE is minor. LV grading depends on extent.', 'ALVC requires characteristic non-ischaemic LV LGE. A sufficient combination of findings can qualify without a genetic variant.'],
+  ],
+  fa: [
+    ['معیارها', 'تمرکز', 'LGE', 'طبقه‌بندی تشخیصی'],
+    ['TFC 2010', 'ARVC کلاسیک با تمرکز بر بطن راست', 'معیار مستقل ندارد', 'رده‌های تشخیصی ARVC'],
+    ['Padua 2020', 'ACM راست‌غالب، دوبطنی و چپ‌غالب', 'LGE شاخص بطن راست یا چپ معیار اصلی است', 'رده‌بندی برای فرم راست‌غالب و دوبطنی. در ALVC منفرد، LGE شاخص بطن چپ و واریانت ژنتیکی مرتبط لازم‌اند.'],
+    ['ETF 2023', 'پیشنهاد کارگروه اروپایی برای تکمیل پادوا', 'LGE بطن راست معیار فرعی است. در بطن چپ وسعت درگیری تعیین‌کننده است.', 'ALVC به LGE غیرایسکمیک شاخص بطن چپ نیاز دارد. ترکیب کافی یافته‌ها می‌تواند بدون واریانت ژنتیکی هم معیارها را برآورده کند.'],
+  ],
 }
 
 const ETF_OTHER = {
@@ -182,7 +197,7 @@ export default function CriteriaOverview() {
   const { lang } = useLanguage()
   const [selected, setSelected] = useState(0)
 
-  const [etfTitle, etfSummary] = ETF_SUMMARY[lang] || ETF_SUMMARY.de
+  const [columns, ...rows] = CRITERIA_COMPARISON[lang] || CRITERIA_COMPARISON.de
   const [otherTitle, ...otherNotes] = ETF_OTHER[lang] || ETF_OTHER.de
 
   return localizeArvcTree(<TeachingGroups direction={lang === 'fa' ? 'rtl' : 'ltr'}>
@@ -192,11 +207,15 @@ export default function CriteriaOverview() {
           <strong>Für eine gesicherte Diagnose reicht ein einzelner MRT-Befund nicht aus.</strong>
           <span>Alle drei Systeme berücksichtigen sechs Befundkategorien. Neben dem MRT zählen unter anderem das EKG, dokumentierte Rhythmusstörungen sowie Familienanamnese und Genetik.</span>
         </p>
-        <dl className={styles.criteriaRows}>
-          <div><dt>TFC 2010</dt><dd>Die Task-Force-Kriterien wurden für die klassische ARVC entwickelt. Im Mittelpunkt steht die rechte Herzkammer.</dd></div>
-          <div><dt>Padua 2020</dt><dd>Padua erfasst auch linksdominante und biventrikuläre Formen und berücksichtigt Narben im LGE. Bei rechtsdominanter oder biventrikulärer ACM gelten dieselben Diagnosestufen mit zusätzlichen Voraussetzungen.</dd></div>
-          <div><dt>{etfTitle}</dt><dd>{etfSummary}</dd></div>
-        </dl>
+        <div className={styles.criteriaComparison} tabIndex={0} role="region" aria-label="TFC / Padua / ETF">
+          <table>
+            <thead><tr>{columns.map(column => <th key={column} scope="col">{column}</th>)}</tr></thead>
+            <tbody>{rows.map(([system, ...cells]) => <tr key={system}>
+              <th scope="row"><bdi>{system}</bdi></th>
+              {cells.map((cell, index) => <td key={columns[index + 1]}>{cell}</td>)}
+            </tr>)}</tbody>
+          </table>
+        </div>
         <h4 className={styles.subheading}>Von den Befunden zur Diagnose</h4>
         <p>Pro Kategorie zählt nur das stärkste erfüllte Kriterium, dann werden die Punkte aus den verschiedenen Kategorien addiert.</p>
         <figure className={styles.criteriaScale}>
