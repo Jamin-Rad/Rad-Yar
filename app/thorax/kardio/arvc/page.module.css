@@ -629,7 +629,7 @@
 .paduaMri > section + section {
   margin-block-start:20px;
   padding-block-start:16px;
-  border-block-start:1px solid var(--line);
+  border-block-start: 2px solid #ba4656;
 }
 .paduaChambers {
   display:grid;

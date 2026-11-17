@@ -104,6 +104,26 @@ export function questionsFor(answers) {
   return QUESTIONS.filter(item => !item.visible || item.visible(answers))
 }
 
+const paduaOnly = new Set(['bulging', 'lv-motion', 'rv-lge', 'puberty', 'low-voltage'])
+const etfLgeTitle = L('Eindeutiges RV-LGE außerhalb der Trikuspidalklappe', 'Unequivocal RV LGE outside the tricuspid valve', 'LGE قطعی بطن راست خارج از دریچهٔ تریکوسپید')
+const etfHints = {
+  'rv-motion': L('Eine isolierte RV-Hypokinesie zählt bei ETF nicht.', 'Isolated RV hypokinesia does not count in ETF.', 'هیپوکینزی منفرد بطن راست در ETF معیار محسوب نمی‌شود.'),
+  'rv-global': L('Volumen und EF anhand geeigneter Referenzwerte beurteilen.', 'Use appropriate reference ranges for volume and EF.', 'حجم و EF را با مقادیر مرجع مناسب بسنجید.'),
+  lge: L('Das jeweilige Muster in zwei orthogonalen Ebenen bestätigen. Isoliertes Insertions-LGE zählt nicht.', 'Confirm each pattern in two orthogonal views. Isolated junctional LGE does not count.', 'الگو را در دو نمای عمود تأیید کنید. LGE محدود به محل اتصال بطن راست امتیاز ندارد.'),
+}
+export function etfQuestionsFor(answers) {
+  return questionsFor(answers)
+    .filter(item => item.id !== 'age' || any(answers, 'twi', ['v1-v2', 'v1-v3']))
+    .map(item => ({
+      ...item,
+      hint: etfHints[item.id] ?? item.hint,
+      options: item.options
+        .filter(choice => !paduaOnly.has(choice.id))
+        .filter(choice => item.id !== 'age' || has(answers, 'twi', 'v1-v2') || !['male', 'no-rbbb'].includes(choice.id))
+        .map(choice => choice.id === 'rv-lge-other' ? { ...choice, title: etfLgeTitle } : choice),
+    }))
+}
+
 const exclusiveChoices = {
   twi: [[...repolRv, 'v1-beyond-child']],
   lge: [['rv-lge', 'rv-lge-other'], ['lv-lge', 'lv-lge-extensive']],
@@ -131,7 +151,7 @@ const etfCategory = {
   'arrest-vf-vt': 'arrhythmia',
 }
 
-export function evaluateFindings(answers) {
+function collectFindings(answers) {
   const padua = new Set()
   const etf = new Map()
   function add(id, grade, side, title) {
@@ -180,5 +200,14 @@ export function evaluateFindings(answers) {
   if (has(answers, 'genetics', 'gene-arvc')) add('gene', 2, 'shared', QUESTIONS.find(item => item.id === 'genetics').options[0].title)
   if (has(answers, 'genetics', 'gene-acm')) add('gene', 1, 'shared', QUESTIONS.find(item => item.id === 'genetics').options[1].title)
 
+  return { etf, padua }
+}
+
+export function evaluateEtf(answers) {
+  return assessEuropeanTaskForce(collectFindings(answers).etf)
+}
+
+export function evaluateFindings(answers) {
+  const { etf, padua } = collectFindings(answers)
   return { etf: assessEuropeanTaskForce(etf), padua: assessPadua(padua) }
 }

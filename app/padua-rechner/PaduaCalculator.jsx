@@ -6,7 +6,7 @@ import Icon from '@/components/rechner/Icons'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { useTheme } from '@/providers/ThemeProvider'
 import { categories } from './criteria.mjs'
-import { evaluateFindings, GROUPS, isReviewed, L, questionsFor, selectFinding } from './workflow.mjs'
+import { evaluateEtf, GROUPS, isReviewed, L, etfQuestionsFor, selectFinding } from './workflow.mjs'
 import kaiser from '@/app/kaiser-score/page.module.css'
 import styles from './page.module.css'
 
@@ -14,7 +14,7 @@ const COPY = {
   title: L('ACM-Rechner', 'ACM calculator', 'محاسبه‌گر ACM'),
   subject: L('Arrhythmogene Kardiomyopathie', 'Arrhythmogenic cardiomyopathy', 'کاردیومیوپاتی آریتموژن'),
   accordingTo: L('nach', 'using', 'بر اساس'),
-  systems: L('ETF 2023 und Padua 2020', 'ETF 2023 and Padua 2020', 'ETF ۲۰۲۳ و پادوا ۲۰۲۰'),
+  systems: L('ETF 2023', 'ETF 2023', 'ETF ۲۰۲۳'),
   lesson: L('Zur ACM-Lektion', 'ACM lesson', 'درس ACM'),
   theme: L('Hell-/Dunkelmodus wechseln', 'Switch light or dark mode', 'تغییر حالت روشن یا تیره'),
   language: L('Sprache', 'Language', 'زبان'),
@@ -40,35 +40,20 @@ const COPY = {
   noAnchor: L('Keine morphofunktionelle oder strukturelle Grundlage belegt', 'No morphofunctional or structural basis established', 'معیار شکل و عملکرد یا ساختاری ثبت نشده'),
   etfLgeMissing: L('Für ALVC fehlt ein strukturelles LV-LGE-Kriterium', 'ALVC requires a qualifying LV LGE criterion', 'تشخیص ALVC به معیار ساختاری LGE بطن چپ نیاز دارد'),
   noAnchorWhy: L('Mindestens ein Kriterium aus Kategorie I oder II muss erfüllt sein.', 'At least one category I or II criterion must be met.', 'دست‌کم یک معیار از دستهٔ I یا II باید برآورده شود.'),
-  alvcMet: L('ALVC-Kriterien erfüllt', 'ALVC criteria met', 'معیارهای ALVC برآورده شده‌اند'),
-  alvcMissing: L('ALVC-Kriterien noch nicht belegt', 'ALVC criteria not established', 'معیارهای ALVC هنوز ثابت نشده‌اند'),
-  lge: L('Strukturelles LV-Major-Kriterium (typisches LGE)', 'Major LV structural criterion (characteristic LGE)', 'معیار اصلی ساختاری بطن چپ (الگوی شاخص LGE)'),
-  gene: L('Pathogene oder wahrscheinlich pathogene ACM-Genvariante', 'Pathogenic or likely pathogenic ACM variant', 'واریانت بیماری‌زا یا احتمالاً بیماری‌زای مرتبط با ACM'),
-  met: L('Erfüllt', 'Met', 'برآورده شده'),
-  notDocumented: L('Nicht belegt', 'Not established', 'ثابت نشده'),
   scoreRule: L('Pro Kategorie zählt das stärkste Kriterium. Major gibt 2 Punkte, Minor 1 Punkt.', 'Count the strongest criterion in each category. Major gives 2 points and minor 1 point.', 'در هر دسته قوی‌ترین معیار حساب می‌شود. معیار اصلی ۲ و معیار فرعی ۱ امتیاز دارد.'),
-  rvExclusion: L('Bei rechtsdominanter ACM zählen linksventrikuläre EKG- und Arrhythmiekriterien nicht mit.', 'LV ECG and arrhythmia criteria are excluded for right-dominant ACM.', 'در ACM راست‌غالب، معیارهای نوار قلب و آریتمی بطن چپ حساب نمی‌شوند.'),
   excluded: L('Für den ermittelten Phänotyp ohne Wertung', 'Excluded for this phenotype', 'برای این فنوتیپ بدون امتیاز'),
-  source: L('Padua-Kriterien 2020', '2020 Padua criteria', 'معیارهای پادوا ۲۰۲۰'),
-  interpretation: L('Anwendung und Fallbeispiele', 'Application and case examples', 'کاربرد و نمونه‌های بالینی'),
   context: L('Für die fachliche Einordnung. Befunde im klinischen Kontext prüfen und Phänokopien berücksichtigen.', 'For professional interpretation. Review findings in clinical context and consider phenocopies.', 'برای تفسیر تخصصی. یافته‌ها را در زمینهٔ بالینی بررسی کنید و بیماری‌های مشابه را در نظر بگیرید.'),
-  comparison: L('ETF 2023 und Padua 2020 im Vergleich', 'Compare ETF 2023 and Padua 2020', 'مقایسهٔ ETF ۲۰۲۳ و پادوا ۲۰۲۰'),
   etf: L('ETF 2023 · ACM', 'ETF 2023 · ACM', 'ETF ۲۰۲۳ · ACM'),
-  padua: L('Padua 2020 · ACM', 'Padua 2020 · ACM', 'پادوا ۲۰۲۰ · ACM'),
-  comparisonHint: L('Beide Auswertungen verwenden dieselben Angaben. Die Kriterien werden pro System getrennt gewertet.', 'Both assessments use the same findings. Each system scores its own criteria independently.', 'هر دو ارزیابی از یافته‌های یکسان استفاده می‌کنند. هر سیستم معیارهای خود را جداگانه امتیاز می‌دهد.'),
   unknown: L('Unvollständige Angaben können die Einstufung oder den Phänotyp verändern.', 'Missing information can change the tier or phenotype.', 'اطلاعات ناقص ممکن است رده یا فنوتیپ را تغییر دهند.'),
   noneInCategory: L('Kein Kriterium belegt', 'No criterion established', 'معیاری ثبت نشده'),
-  hideFindings: L('Details schließen', 'Hide details', 'بستن جزئیات'),
   counted: L('Maßgeblich', 'Counts for this category', 'ملاک امتیاز دسته'),
   lowerGrade: L('Ohne Zusatzpunkte', 'No additional points', 'بدون امتیاز اضافه'),
   unscored: L('Ohne Punktwertung', 'Not scored', 'بدون امتیاز'),
   noScore: L('Keine Punktwertung', 'No point score', 'بدون امتیازدهی'),
-  alvcRequirement: L('ALVC-Voraussetzung', 'ALVC requirement', 'شرط ALVC'),
   scoredFindings: L('Kriterien im Detail', 'Criteria breakdown', 'جزئیات معیارها'),
 }
 
 function ResultSummary({ assessment, t }) {
-  const left = typeof assessment.hasGene === 'boolean'
   const scored = assessment.points !== null
 
   return <>
@@ -76,10 +61,6 @@ function ResultSummary({ assessment, t }) {
     {assessment.phenotype && assessment.phenotype !== 'none' && <p>{t(assessment.phenotype)}</p>}
     <p className={styles.score}>{scored ? <><bdi>{assessment.points}</bdi> {t(assessment.points === 1 ? 'point' : 'points')}</> : t('noScore')}</p>
     {assessment.outcome === 'noAnchor' && <p>{t('noAnchorWhy')}</p>}
-    {left && <dl className={styles.requirements}>
-      <div><dt>{t('lge')}</dt><dd>{t(assessment.hasLge ? 'met' : 'notDocumented')}</dd></div>
-      <div><dt>{t('gene')}</dt><dd>{t(assessment.hasGene ? 'met' : 'notDocumented')}</dd></div>
-    </dl>}
   </>
 }
 
@@ -97,9 +78,8 @@ function CriterionDetails({ assessment, t, label }) {
       </h4>
       <ul>{category.matches.map((criterion, index) => {
         const excluded = category.eligible && !category.eligible.includes(criterion)
-        const requirement = typeof assessment.hasGene === 'boolean' && ['lv-lge', 'gene'].includes(criterion.id)
         const counted = assessment.points !== null && !excluded && criterion.grade === category.points
-        const status = excluded ? 'excluded' : requirement ? 'alvcRequirement' : assessment.points === null ? 'unscored' : counted ? 'counted' : 'lowerGrade'
+        const status = excluded ? 'excluded' : assessment.points === null ? 'unscored' : counted ? 'counted' : 'lowerGrade'
         return <li key={criterion.id || index}>
           <div className={styles.evidenceStatus}>
             <strong data-grade={criterion.grade}>{t(criterion.grade === 2 ? 'gradeMajor' : 'gradeMinor')}</strong>
@@ -113,30 +93,19 @@ function CriterionDetails({ assessment, t, label }) {
 }
 
 function Result({ assessment, provisional, t, label }) {
-  const [expanded, setExpanded] = useState({})
-  const systems = ['etf', 'padua']
-
   return <div className={kaiser.resultPanel}>
     <header className={styles.prompt}>
-      <h2 id="padua-step">{t('comparison')}</h2>
+      <h2 id="padua-step">{t('result')} · {t('etf')}</h2>
     </header>
     {provisional && <p className={`${kaiser.questionHelp} ${styles.hint}`}><strong>{t('provisional')}.</strong> {t('unknown')}</p>}
-    <div className={styles.resultGrid}>
-      {systems.map(system => <section key={system} className={styles.resultCard} aria-labelledby={`result-${system}`}>
-        <h3 id={`result-${system}`}>{t(system)}</h3>
-        <ResultSummary assessment={assessment[system]} t={t}/>
-        <button type="button" className={styles.evidenceToggle} aria-expanded={!!expanded[system]} aria-controls={`evidence-${system}`} onClick={() => setExpanded(previous => ({ ...previous, [system]: !previous[system] }))}>
-          {t(expanded[system] ? 'hideFindings' : 'scoredFindings')} <span aria-hidden="true">{expanded[system] ? '−' : '+'}</span>
-        </button>
-      </section>)}
-    </div>
-    <div className={styles.resultDetails} data-both={!!expanded.etf && !!expanded.padua}>
-      {systems.map(system => <section key={system} id={`evidence-${system}`} className={styles.resultEvidence} hidden={!expanded[system]} aria-labelledby={`evidence-title-${system}`}>
-        <h3 id={`evidence-title-${system}`}>{t(system)}</h3>
-        <CriterionDetails assessment={assessment[system]} t={t} label={label}/>
-      </section>)}
-    </div>
-    <p className={styles.hint}>{t('scoreRule')} {assessment.padua.phenotype === 'right' && t('rvExclusion')}</p>
+    <section className={styles.resultCard} aria-labelledby="padua-step">
+      <ResultSummary assessment={assessment} t={t}/>
+      <details className={styles.resultEvidence}>
+        <summary className={styles.evidenceToggle}>{t('scoredFindings')} <span aria-hidden="true"/></summary>
+        <CriterionDetails assessment={assessment} t={t} label={label}/>
+      </details>
+    </section>
+    <p className={styles.hint}>{t('scoreRule')}</p>
   </div>
 }
 
@@ -148,11 +117,11 @@ export default function PaduaCalculator() {
   const panel = useRef(null)
   const label = value => value[lang] || value.de
   const t = key => label(COPY[key])
-  const steps = questionsFor(answers)
+  const steps = etfQuestionsFor(answers)
   const current = steps[step]
   const isResult = !current
   const canAdvance = isResult || !!answers[current.id]?.length
-  const assessment = isResult ? evaluateFindings(answers) : null
+  const assessment = isResult ? evaluateEtf(answers) : null
   const provisional = steps.some(item => !isReviewed(item, answers))
   const lessonHref = `/thorax/kardio/arvc${lang === 'de' ? '' : `?lang=${lang}`}#kriterien`
 
@@ -255,8 +224,6 @@ export default function PaduaCalculator() {
     <footer className={`${kaiser.disclaimer} ${styles.sources}`}>
       <p>{t('context')}</p>
       <a href="https://pubmed.ncbi.nlm.nih.gov/37844667/">{t('etf')}</a>
-      <a href="https://doi.org/10.1016/j.ijcard.2020.06.005">{t('source')}</a>
-      <a href="https://pubmed.ncbi.nlm.nih.gov/35012021/">{t('interpretation')}</a>
       <Link href={lessonHref}>{t('lesson')}</Link>
     </footer>
   </main>

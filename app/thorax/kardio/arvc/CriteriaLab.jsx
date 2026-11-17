@@ -134,28 +134,35 @@ function PaduaExplanation({ lang }) {
   </div>, lang)
 }
 
-const ETF_MRI = [
-  {
-    de: ['Cine · RV Major', 'Regionale Akinesie, Dyskinesie oder Aneurysma plus globale RV-Dilatation oder reduzierte RVEF. Volumen und EF anhand geeigneter Referenzwerte beurteilen.'],
-    en: ['Cine · RV major', 'Regional akinesia, dyskinesia or aneurysm plus global RV dilatation or reduced RVEF. Use appropriate reference ranges for volume and EF.'],
-    fa: ['Cine · معیار اصلی بطن راست', 'آکینزی، دیسکینزی یا آنوریسم موضعی همراه اتساع کلی بطن راست یا کاهش RVEF. حجم و EF را با مقادیر مرجع مناسب بسنجید.'],
-  },
-  {
-    de: ['Cine · RV/LV Minor', 'RV: Akinesie, Dyskinesie oder Aneurysma der freien Wand. LV: globale systolische Dysfunktion mit oder ohne Dilatation.'],
-    en: ['Cine · RV/LV minor', 'RV: free-wall akinesia, dyskinesia or aneurysm. LV: global systolic dysfunction with or without dilatation.'],
-    fa: ['Cine · معیار فرعی بطن‌ها', 'بطن راست: آکینزی، دیسکینزی یا آنوریسم دیوارهٔ آزاد. بطن چپ: اختلال کلی سیستولی با یا بدون اتساع.'],
-  },
-  {
-    de: ['LGE · RV Minor', 'Eindeutiges RV-LGE in mindestens einer Region außerhalb der Trikuspidalklappe, bestätigt in zwei orthogonalen Ebenen.'],
-    en: ['LGE · RV minor', 'Unequivocal RV LGE in at least one region outside the tricuspid valve, confirmed in two orthogonal views.'],
-    fa: ['LGE · معیار فرعی بطن راست', 'LGE قطعی در دست‌کم یک ناحیه از بطن راست خارج از دریچهٔ تریکوسپید، با تأیید در دو نمای عمود.'],
-  },
-  {
-    de: ['LGE · LV Major oder Minor', 'Subepikardiales oder mittmyokardiales Streifen-LGE in 1–2 Segmenten ist Minor. Ab 3 Segmenten zählt es als Major, ringförmig oder diskontinuierlich. Das Muster in zwei orthogonalen Ebenen bestätigen. Isoliertes Insertions-LGE zählt nicht.'],
-    en: ['LGE · LV major or minor', 'Subepicardial or midwall stria-pattern LGE in 1–2 segments is minor. At least 3 segments are major, whether ring-like or discontinuous. Confirm the pattern in two orthogonal views. Exclude isolated junctional LGE.'],
-    fa: ['LGE · معیار اصلی یا فرعی بطن چپ', 'LGE نواری زیر اپیکارد یا میان‌میوکارد در ۱ تا ۲ سگمان فرعی است. در دست‌کم ۳ سگمان، چه حلقوی چه ناپیوسته، اصلی است. الگو را در دو نمای عمود تأیید کنید. LGE محدود به محل اتصال بطن راست امتیاز ندارد.'],
-  },
-]
+const ETF_MRI = {
+  de: [
+    'Regionale Akinesie, Dyskinesie oder Aneurysma mit globaler RV-Dilatation oder verminderter RVEF.',
+    'Regionale Akinesie, Dyskinesie oder Aneurysma der freien RV-Wand.',
+    'Globale systolische LV-Dysfunktion mit oder ohne LV-Dilatation.',
+    'Eindeutiges RV-LGE in mindestens einer Region außerhalb der Trikuspidalklappe.',
+    'Subepikardiales oder mittmyokardiales Streifen-LGE in mindestens 3 Segmenten, ringförmig oder diskontinuierlich.',
+    'Subepikardiales oder mittmyokardiales Streifen-LGE in 1–2 Segmenten der freien Wand oder des Septums.',
+    'Das jeweilige LGE-Muster in zwei orthogonalen Ebenen bestätigen.',
+  ],
+  en: [
+    'Regional akinesia, dyskinesia or aneurysm with global RV dilatation or reduced RVEF.',
+    'Regional akinesia, dyskinesia or aneurysm of the RV free wall.',
+    'Global LV systolic dysfunction with or without LV dilatation.',
+    'Unequivocal RV LGE in at least one region outside the tricuspid valve.',
+    'Subepicardial or midwall stria-pattern LGE in at least 3 segments, ring-like or discontinuous.',
+    'Subepicardial or midwall stria-pattern LGE in 1–2 segments of the free wall or septum.',
+    'Confirm the LGE pattern in two orthogonal views.',
+  ],
+  fa: [
+    'آکینزی، دیسکینزی یا آنوریسم موضعی همراه اتساع کلی بطن راست یا کاهش RVEF.',
+    'آکینزی، دیسکینزی یا آنوریسم موضعی دیوارهٔ آزاد بطن راست.',
+    'اختلال کلی سیستولی بطن چپ با یا بدون اتساع.',
+    'LGE قطعی در دست‌کم یک ناحیه از بطن راست خارج از دریچهٔ تریکوسپید.',
+    'LGE نواری زیر اپیکارد یا میان‌میوکارد در دست‌کم ۳ سگمان، حلقوی یا ناپیوسته.',
+    'LGE نواری زیر اپیکارد یا میان‌میوکارد در ۱ تا ۲ سگمان از دیوارهٔ آزاد یا سپتوم.',
+    'الگوی LGE را در دو نمای عمود بر هم تأیید کنید.',
+  ],
+}
 
 const CRITERIA_COMPARISON = {
   de: [
@@ -185,12 +192,45 @@ const ETF_OTHER = {
 }
 
 function EtfExplanation({ lang }) {
-  return <dl className={styles.criteriaRows}>
-    {ETF_MRI.map(row => {
-      const [label, detail] = row[lang] || row.de
-      return <div key={row.de[0]}><dt>{label}</dt><dd>{detail}</dd></div>
-    })}
-  </dl>
+  const [rvMajor, rvMinor, lvMinor, rvLge, lvLgeMajor, lvLgeMinor, confirmation] = ETF_MRI[lang] || ETF_MRI.de
+
+  return localizeArvcTree(<div className={styles.paduaMri}>
+    <section aria-labelledby="etf-cine">
+      <h4 id="etf-cine" className={styles.mrtTopic}>Cine · Form und Funktion (I)</h4>
+      <div className={styles.paduaChambers}>
+        <div>
+          <h5>Rechter Ventrikel (RV)</h5>
+          <dl className={styles.paduaGrades}>
+            <div><dt>Major</dt><dd>{rvMajor}</dd></div>
+            <div><dt>Minor</dt><dd>{rvMinor}</dd></div>
+          </dl>
+        </div>
+        <div>
+          <h5>Linker Ventrikel (LV)</h5>
+          <dl className={styles.paduaGrades}><div><dt>Minor</dt><dd>{lvMinor}</dd></div></dl>
+        </div>
+      </div>
+      <p className={styles.criteriaNote}>Volumen und EF anhand geeigneter Referenzwerte für die Methode, das Alter und das Geschlecht beurteilen. Beim Volumen auch die Körperoberfläche berücksichtigen.</p>
+    </section>
+    <section aria-labelledby="etf-lge">
+      <h4 id="etf-lge" className={styles.mrtTopic}>LGE · Myokardgewebe (II)</h4>
+      <p>{confirmation}</p>
+      <div className={styles.paduaChambers}>
+        <div>
+          <h5>Rechter Ventrikel (RV)</h5>
+          <dl className={styles.paduaGrades}><div><dt>Minor</dt><dd>{rvLge}</dd></div></dl>
+        </div>
+        <div>
+          <h5>Linker Ventrikel (LV)</h5>
+          <dl className={styles.paduaGrades}>
+            <div><dt>Major</dt><dd>{lvLgeMajor}</dd></div>
+            <div><dt>Minor</dt><dd>{lvLgeMinor}</dd></div>
+          </dl>
+          <p className={styles.criteriaNote}>Isoliertes LGE an RV-Insertionspunkten bleibt unberücksichtigt.</p>
+        </div>
+      </div>
+    </section>
+  </div>, lang)
 }
 
 export default function CriteriaOverview() {
