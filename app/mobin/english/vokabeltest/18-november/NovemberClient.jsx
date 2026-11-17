@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { useEffect, useRef, useState } from 'react'
-import { NOVEMBER_MODES, NOVEMBER_WORDS } from '@/lib/mobinEnglishNovember'
+import { NOVEMBER_MODES as ALL_MODES, NOVEMBER_WORDS } from '@/lib/mobinEnglishNovember'
 import { isTypedAnswerCorrect } from '@/lib/mobinEnglish'
 import { readEnglishHistory, saveEnglishHistory } from '@/lib/mobinEnglishProgress'
 import { loadEnglishHistory, syncEnglishHistory } from '@/lib/mobinEnglishOnline'
@@ -11,6 +11,7 @@ import { bindProgressSaveQueue, createProgressSaveQueue } from '../../../progres
 import base from '../../english.module.css'
 import styles from './november.module.css'
 
+const NOVEMBER_MODES = ALL_MODES.filter(m => m.id.startsWith('nov18-quick-'))
 const newRun = (reviewIds) => ({ id: crypto.randomUUID(), startedAt: new Date().toISOString(), results: [], index: 0, draft: '', reviewOnly: Boolean(reviewIds), questionIds: reviewIds || [] })
 
 export default function NovemberClient() {
@@ -114,12 +115,7 @@ export default function NovemberClient() {
           <div className={base.heroCopy}><span className={base.heroEyebrow}>UNIT 2 · LONDON · KLASSE 6</span><h1>Ready for<br />your test<span>?</span></h1><p>Wortschatz, Rechtschreibung und Grammatik für den 18. November.</p></div>
           <div className={base.skyline} aria-hidden="true" />
         </header>
-        <section className={styles.referenceRow} aria-label="Nachschlagen">
-          <button onClick={() => navigate('words')}><span>01 / WORTSCHATZ</span><strong>Alle {NOVEMBER_WORDS.length} Einträge im Überblick</strong><b>Wörter ansehen →</b></button>
-          <button onClick={() => navigate('rules')}><span>02 / GRAMMATIK</span><strong>Going to & adjective comparisons</strong><b>Regeln ansehen →</b></button>
-        </section>
-        <section className={styles.section} aria-labelledby="practice-title"><h2 id="practice-title">Schritt für Schritt üben</h2><p>Dein Lernstand bleibt erhalten. Starte dort weiter, wo du aufgehört hast.</p><div className={styles.cards}>{NOVEMBER_MODES.filter(m => m.kind === 'practice').map(m => <ModeCard key={m.id} mode={m} entry={history[m.id]} ready={ready} onOpen={() => openMode(m)} />)}</div></section>
-        <section className={styles.section} aria-labelledby="tests-title"><h2 id="tests-title">Bereit für einen Probetest?</h2><p>Neue Aufgaben, eigene Antworten. Die Auswertung erscheint nach der letzten Frage.</p><div className={styles.testCards}>{NOVEMBER_MODES.filter(m => m.kind === 'test').map(m => <ModeCard key={m.id} mode={m} entry={history[m.id]} ready={ready} onOpen={() => openMode(m)} />)}</div></section>
+        <section className={styles.section} aria-labelledby="tests-title"><h2 id="tests-title">Bereit für einen Probetest?</h2><p>Zwei gemischte Tests mit je 30 Fragen und vier Antwortmöglichkeiten. Die Auswertung erscheint am Ende.</p><div className={styles.testCards}>{NOVEMBER_MODES.filter(m => m.kind === 'test').map(m => <ModeCard key={m.id} mode={m} entry={history[m.id]} ready={ready} onOpen={() => openMode(m)} />)}</div></section>
       </>}
       {view === 'words' && <section className={styles.paper}>
         <span className={styles.eyebrow}>DEINE BEIDEN WORTSCHATZSEITEN</span><h1 ref={heading} tabIndex={-1}>Wörter zum Nachschlagen</h1><p>Britisches Englisch · Bedeutung und Schreibweise gehören zusammen. Die zusätzlichen Formen „fought“ und die Themenüberschriften werden mitgeübt.</p>

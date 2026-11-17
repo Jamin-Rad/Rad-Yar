@@ -19,7 +19,7 @@ test('all supplied vocabulary entries have a meaning and a spelling task', () =>
   }
   assert.equal(spelling.questions.length, NOVEMBER_WORDS.length)
   assert.equal(NOVEMBER_MODES.find(m => m.id === 'nov18-meaning').questions.length, NOVEMBER_WORDS.length)
-  const tests = NOVEMBER_MODES.filter(m => m.kind === 'test')
+  const tests = NOVEMBER_MODES.filter(m => m.kind === 'test' && !m.id.startsWith('nov18-quick-'))
   assert.equal(tests.length, 2)
   for (const mode of tests) {
     assert.equal(mode.questions.length, 20)
@@ -62,4 +62,17 @@ test('old November 11 history survives alongside all new completed modes within 
   assert.equal(merged[MOCK_TESTS[0].id].best, 7)
   assert.ok(JSON.stringify({ state: merged }).length < 60000)
   assert.equal(Object.keys(merged).length, NOVEMBER_MODES.length + 1)
+})
+
+test('two quick tests each mix 30 difficult four-option items with one correct answer', () => {
+ const tests = NOVEMBER_MODES.filter(m => m.id.startsWith('nov18-quick-'))
+ assert.equal(tests.length, 2)
+ for (const t of tests) {
+  assert.equal(t.questions.length,30)
+  assert.equal(t.questions.filter(q=>q.group==='Grammatik').length,15)
+  assert.equal(t.questions.filter(q=>q.group==='Rechtschreibung').length,10)
+  for(const q of t.questions){assert.equal(new Set(q.options).size,4);assert.equal(q.options.filter(o=>isTypedAnswerCorrect(q,o)).length,1)}
+  const normalized=normalizeEnglishHistory({[t.id]:{run:run(t.questions.map(q=>({id:q.id,chosen:q.answer})))}})
+  assert.equal(normalized[t.id].run.results.filter(r=>r.correct).length,30)
+ }
 })
