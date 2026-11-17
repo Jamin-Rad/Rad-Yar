@@ -73,3 +73,26 @@
  .chartTools .forecastButton { margin-inline-start:0; }
  .positionSheet .quoteStrip { grid-template-columns:repeat(2,minmax(0,1fr)); }
 }
+
+.card { background:radial-gradient(ellipse at 25% 10%,#34343866,transparent 50%),linear-gradient(120deg,#09090c,#202024 48%,#0a0a0d); }
+.card[data-fullscreen=true] { position:fixed; inset:0; z-index:1000; margin:0; border-radius:0; overflow:auto; }
+.grid { display:block; }
+.card>.scenarios { display:flex; flex-wrap:wrap; gap:12px; border:0; border-bottom:1px solid #404046; background:#17171be0; }
+.scenarios .quoteStrip { display:flex; flex-wrap:wrap; gap:20px; margin:0; flex:1; }
+.scenarios .quoteStrip>div { border:0; }
+.scenarios h3 { width:100%; font-size:14px; }
+.scenarios .stopOut { width:100%; }
+.chart { position:relative; padding-left:64px; }
+.drawingTools { position:absolute; left:8px; top:120px; width:46px; z-index:3; }
+.drawingTools .chartTools { flex-direction:column; }
+.drawingTools button { width:40px; height:40px; font-size:22px; }
+.plot { background:radial-gradient(ellipse at 65% 40%,#30303560,transparent 65%),linear-gradient(150deg,#08080b,#17171c,#08080b); }
+.resizeHandle { height:12px; cursor:ns-resize; touch-action:none; border-top:2px solid #565661; }
+.resizeHandle:hover { border-color:#c4a9ea; }
+.context { position:absolute; top:40px; right:85px; z-index:8; display:grid; gap:5px; padding:12px; border:1px solid #5f5c6c; border-radius:10px; background:#202026; box-shadow:0 12px 36px #0008; }
+.limit { border:1px solid #45404c; border-radius:8px; padding:8px; }
+@media(max-width:850px){.chart{padding-left:55px}.drawingTools{left:3px}.card>.scenarios{display:flex}.scenarios .quoteStrip{gap:12px}.context{right:8px;max-width:calc(100% - 16px)}}
+
+.drawingTools [aria-label="ویرایش رسم"] { position:absolute; left:48px; top:0; width:210px; background:#202026; padding:12px; border:1px solid #50505b; border-radius:8px; align-items:stretch; }
+.drawingTools [aria-label="ویرایش رسم"] button { width:auto; font-size:12px; }
+.scenarios>button { align-self:center; }

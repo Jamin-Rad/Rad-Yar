@@ -1,5 +1,10 @@
 export default function InvestmentIcon({ name, size = 20, ...props }) {
   const paths = {
+    expand: <path d="M8 3H3v5M16 3h5v5M3 16v5h5M21 16v5h-5"/>,
+    trend: <path d="M4 19 20 5M3 17v4h4M17 3h4v4"/>,
+    freehand: <path d="M3 17C6 3 9 3 8 12S14 22 15 12s6-10 6-2"/>,
+    horizontal: <path d="M3 12h18"/>,
+    measure: <><path d="m3 16 13-13 5 5L8 21ZM7 12l3 3m1-7 3 3m1-7 3 3"/></>,
     chevron: <path d="m6 9 6 6 6-6" />,
     menu: <path d="M4 6h16M4 12h16M4 18h16" />,
     transfer: <><path d="M4 7h15m-4-4 4 4-4 4M20 17H5m4-4-4 4 4 4" /></>,

@@ -17,7 +17,7 @@ function MarketConnection({position,marketData,onConnect}){
  {results.length>0&&<div className={styles.instrumentResults}>{results.map(r=><button type="button" key={r.symbol} onClick={()=>setSymbol(r.symbol)} className={symbol===r.symbol?styles.selectedTrade:''}><strong><bdi>{r.symbol}</bdi> · <bdi>{r.name}</bdi></strong><small><bdi>{r.exchange} · {r.type}</bdi></small></button>)}</div>}
  <form onSubmit={connect}><label className={styles.field}>نماد دقیق در منبع بازار<input value={symbol} onChange={e=>setSymbol(e.target.value)} dir="ltr" required maxLength={35} placeholder="مثلاً نماد تأییدشده در Yahoo Finance"/></label><label className={styles.checkbox}><input type="checkbox" required/>این نماد را با ابزار، کلاس سهم و بورس مورد نظرم تطبیق داده‌ام؛ ارز منبع ممکن است با حساب یورویی متفاوت باشد.</label><button className={styles.primaryButton} type="submit" disabled={busy}>{busy?'در حال بررسی…':'اتصال قیمت و تاریخچه'}</button></form>{error&&<p role="alert" className={styles.error}>{error}</p>}</div>
 }
-export default function AssetProfile({account, position, state, marketData, ledger, onDrawings, onEnablePrices, onTransactions, onConnect, onChartConnect, onDecision, onOpenDecision, onEvent}) {
+export default function AssetProfile({account, position, state, marketData, ledger, onDrawings, onEnablePrices, onTransactions, onTransaction, onConnect, onChartConnect, onDecision, onOpenDecision, onEvent}) {
   const [connectOpen, setConnectOpen] = useState(false)
   const [saved, setSaved] = useState(null)
   const [chartNotice, setChartNotice] = useState('')
@@ -91,7 +91,7 @@ export default function AssetProfile({account, position, state, marketData, ledg
       </div>
     </section>
 
-    <InvestmentPositionChart key={chartIdentity} trade={{id:position.id,ownerId:account.id,plan:{name:position.name,symbol:position.symbol || position.isin,currency:currency || ''},executions:[]}}
+    <InvestmentPositionChart onTransaction={onTransaction} key={chartIdentity} trade={{id:position.id,ownerId:account.id,plan:{name:position.name,symbol:position.symbol || position.isin,currency:currency || ''},executions:[]}}
       drawings={state.settings.xtbDrawings} onDrawings={onDrawings} daily={{
         identity:chartIdentity, legacyKey:chartDrawingKey(account.id, position, chartMarket),
         market:chartMarket ? {...chartMarket,quote:chartQuote || chartMarket.quote} : {quote:currentMarket?.quote},

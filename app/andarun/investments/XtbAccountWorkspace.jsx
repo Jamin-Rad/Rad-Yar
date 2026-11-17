@@ -43,7 +43,7 @@ export default function XtbAccountWorkspace({account,owner,trades,tradeProps,dra
           {openTrades.map(trade=><option key={trade.id} value={trade.id}>{trade.plan.name} · {trade.plan.planDate}</option>)}
         </select>
       </label>}
-      <InvestmentPositionChart key={chartTrade.id} trade={chartTrade} openCount={openTrades.length} drawings={drawings} onDrawings={onDrawings}/>
+      <InvestmentPositionChart key={chartTrade.id} trade={chartTrade} onTransaction={kind=>{setTab('plans');tradeProps.onSelect(chartTrade.id);tradeProps.onCreateOpen(false);tradeProps.onExecution(kind)}} openCount={openTrades.length} drawings={drawings} onDrawings={onDrawings}/>
     </>}
     <section className={view.summary} aria-label={`موجودی XTB ${owner}`}><div className={view.metrics}>
       <div><span>موجودی حساب</span><strong><bdi>{money(balance.balanceCents)}</bdi></strong><small>موجودی پس از معاملات بسته‌شده</small></div>
