@@ -8,8 +8,14 @@ import { XTB_DRAWING_COLORS, XTB_INTERVALS, xtbBars } from '@/lib/investments/xt
 import { estimateXtbStopOut, xtbExposure, xtbScenario } from '@/lib/investments/xtb-risk.mjs'
 import { aggregateDaily, rsiDivergences, atr, vwap } from '@/lib/investments/chart-analysis.mjs'
 import Icon from './InvestmentIcon'
+import IndicatorGuide from './IndicatorGuide'
 import styles from './InvestmentPositionChart.module.css'
 
+const berlinTime = value => {
+  const date = new Date(value)
+  if (!Number.isFinite(date.getTime())) return '—'
+  return new Intl.DateTimeFormat('de-DE', { timeZone:'Europe/Berlin', day:'2-digit', month:'2-digit', ...(value.includes('T')?{hour:'2-digit',minute:'2-digit'}:{}) }).format(date)
+}
 const reference = 'BZ=F'
 const stopOutSource = 'https://www.xtb.com/de/hilfe-center/handelskonto/was-ist-der-stop-out'
 const priceFormat = new Intl.NumberFormat('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
@@ -363,7 +369,7 @@ export default function InvestmentPositionChart({ trade, openCount, drawings = [
     if(drawing||event.button===2)return
     event.stopPropagation()
     setLimitDetail(level.key)
-    if(level.original==null)return
+    if(!['stop','target'].includes(level.key))return
     plot.current.setPointerCapture(event.pointerId)
     setDrag({key:level.key,domain:[min,max]})
   }
@@ -393,7 +399,7 @@ export default function InvestmentPositionChart({ trade, openCount, drawings = [
     `${index||reverse?'L':'M'}${x(last+(reverse?points.length-1-index:index))},${y(point[key])}`).join(' ')
   const maxVolume=Math.max(1,...history.map(bar=>bar.volume||0))
   const knownEntry=trade.executions.find(event=>event.kind==='entry')
-  const entryTime=knownEntry&&!knownEntry.observedOpen&&knownEntry.date?.includes('T')?knownEntry.date:null
+  const entryTime=daily ? daily.entries?.map(entry=>entry.date).sort()[0] : knownEntry&&!knownEntry.observedOpen?knownEntry.date:null
   const entryX=entryTime?anchorX(entryTime):null
   const positionPanel=daily ? <>
     <h3>دارایی‌های حساب</h3>
@@ -412,7 +418,7 @@ export default function InvestmentPositionChart({ trade, openCount, drawings = [
       <div><dt>حجم</dt><dd><bdi>{Number(exposure.volume.toPrecision(8))}</bdi></dd></div>
       <div><dt>میانگین ورود</dt><dd><bdi>{formatPrice(exposure.entry)} {currency}</bdi></dd></div>
       <div><dt>قیمت فعلی</dt><dd><bdi>{formatPrice(displayedPrice)} {currency}</bdi></dd>
-        {currentPrice==null&&referenceMarket?.quote?.asOf&&<small><bdi>{referenceMarket.quote.asOf.slice(0,16).replace('T',' ')} UTC</bdi></small>}</div>
+        {currentPrice==null&&referenceMarket?.quote?.asOf&&<small><bdi>{berlinTime(referenceMarket.quote.asOf)} برلین</bdi></small>}</div>
     </dl>
     <h3>سناریوی خروج</h3>
     {Object.entries(limitLabels).map(([key,label])=>{
@@ -451,6 +457,7 @@ export default function InvestmentPositionChart({ trade, openCount, drawings = [
           </select></label>
           <button type="button" className={styles.forecastButton} aria-pressed={forecast} disabled={!fullHistory.length} onClick={()=>{setOffset(0);setForecast(value=>!value)}}>پیش‌بینی روند</button>
           {offset>0&&<button type="button" onClick={()=>setOffset(0)}>آخرین کندل‌ها</button>}
+          <IndicatorGuide/>
           <button type="button" aria-expanded={indicatorTools} onClick={()=>setIndicatorTools(value=>!value)}>اندیکاتورها</button>
         </div>
         <div className={styles.drawingTools} data-open={true}>
@@ -500,6 +507,9 @@ export default function InvestmentPositionChart({ trade, openCount, drawings = [
           })}
           {[0,.2,.4,.6,.8,1].map(step=><line key={step} x1={LEFT+plotSpan*step} x2={LEFT+plotSpan*step} y1={top} y2={bottom} stroke="#222d36"/>)}
           <g clipPath={`url(#${gradient}-plot)`}>
+            {entryX!=null&&exposure.entry>0&&history.length>0&&<g aria-label="محدودهٔ معامله از زمان ورود">
+              <rect x={Math.max(LEFT,entryX)} y={Math.min(y(exposure.entry),y(displayedPrice??history.at(-1).close))} width={Math.max(0,plotRight-Math.max(LEFT,entryX))} height={Math.abs(y(exposure.entry)-y(displayedPrice??history.at(-1).close))} fill={((displayedPrice??history.at(-1).close)-exposure.entry)*direction>=0?'#43bc91':'#ce6578'} opacity=".12"/>
+            </g>}
             {history.map((bar,i)=>{
               const color=bar.close>=bar.open?'#53d6ae':'#fb8092'
               const volume=(bar.volume||0)/maxVolume*32
@@ -519,7 +529,7 @@ export default function InvestmentPositionChart({ trade, openCount, drawings = [
               <path d={forecastPath(projection,'high')+forecastPath(projection,'low',true)+'Z'} fill="#65b8f7" opacity=".23"/>
               <path d={forecastPath(projection,'mid')} fill="none" stroke="#88d1ff" strokeDasharray="5 4" strokeWidth="2" vectorEffect="non-scaling-stroke"/>
             </g>}
-            {entryX!=null&&<line x1={entryX} x2={entryX} y1={top} y2={bottom} stroke={levelColors.entry} strokeDasharray="4 4"/>}
+            {entryX!=null&&<g aria-label="زمان ورود"><line x1={entryX} x2={entryX} y1={top} y2={bottom} stroke={levelColors.entry} strokeDasharray="4 4"/><text x={Math.max(LEFT+4,entryX+5)} y={bottom-24} fill={levelColors.entry}>ورود {berlinTime(entryTime)}</text><title>{entryTime.includes('T')?'زمان ورود به وقت برلین':'روز ورود؛ ساعت دقیق ثبت نشده'}</title></g>}
             {daily?.entries.map(entry=>{
               const i=history.findIndex(row=>row.date>=entry.date)
               if(i<0||entry.date<history[0].date)return null
@@ -566,7 +576,7 @@ export default function InvestmentPositionChart({ trade, openCount, drawings = [
             <rect x={plotRight+2} y={axisPositions[i]-9} width={AXIS-4} height="18" rx="3" fill={levelColors[level.key]}/>
             <text className={styles.axisLabel} x={plotRight+AXIS/2} y={axisPositions[i]+4} textAnchor="middle">{level.label} {formatPrice(level.value)}</text>
           </g>)}
-          {history.length>1&&[...new Set(Array.from({length:tickCount},(_,index)=>Math.round(last*index/(tickCount-1))))].map((i,index)=><text key={i} x={x(i)} y={height-8} textAnchor={index===0?'start':i===last?'end':'middle'}>{history[i].date.slice(5,16).replace('T',' ')}</text>)}
+          {history.length>1&&[...new Set(Array.from({length:tickCount},(_,index)=>Math.round(last*index/(tickCount-1))))].map((i,index)=><text key={i} x={x(i)} y={height-8} textAnchor={index===0?'start':i===last?'end':'middle'}>{berlinTime(history[i].date)}</text>)}
         </svg>
         {drawing==='measure'&&draft.length===2&&<div className={styles.tooltip}><bdi>{signedFormat.format(draft[1].price-draft[0].price)} {currency} · {signedFormat.format((draft[1].price/draft[0].price-1)*100)}٪</bdi></div>}
         {context&&<div className={styles.context} role="menu" aria-label="عملیات نمودار" onKeyDown={event=>{if(event.key==='Escape')setContext(null)}}>
@@ -582,7 +592,7 @@ export default function InvestmentPositionChart({ trade, openCount, drawings = [
           <strong>فاصله <bdi>{levelDistance==null?'—':`${signedFormat.format(levelDistance)} ${currency} · ${signedFormat.format(levelDistance/displayedPrice*100)}٪`}</bdi></strong>
           {!daily&&<small>سود و زیان برآوردی <bdi>{eurAmount(closingResult)||'—'}</bdi></small>}
         </div> : cursor!=null&&activeBar&&<div className={styles.candleTip} style={{left:`clamp(4px, ${x(cursor)/width*100}%, calc(100% - 162px))`}}>
-          <bdi>{activeBar.date.slice(0,16).replace('T',' ')}{!daily&&' UTC'}</bdi>
+          <bdi>{berlinTime(activeBar.date)}{activeBar.date.includes('T')&&' برلین'}</bdi>
           <bdi>O {formatPrice(activeBar.open)} · C {formatPrice(activeBar.close)}</bdi>
           <bdi>H {formatPrice(activeBar.high)} · L {formatPrice(activeBar.low)}</bdi>
         </div>}
@@ -613,7 +623,9 @@ export default function InvestmentPositionChart({ trade, openCount, drawings = [
           </svg>
         </div>}
         {indicators.vwap&&<p>{daily?'VWAP از ابتدای تاریخچهٔ ذخیره‌شده':'VWAP جلسهٔ روزانهٔ UTC · حجم قرارداد مرجع'}</p>}
-        {candles&&<p>{daily?.market?.quote?.source || 'برنت مرجع'} · آخرین داده <bdi>{history.at(-1).date.slice(0,16).replace('T',' ')}{!daily&&' UTC'}</bdi></p>}
+        {entryTime&&!entryTime.includes('T')&&<p>خط ورود روز ثبت‌شده را نشان می‌دهد؛ ساعت دقیق ورود ثبت نشده است.</p>}
+        {!daily&&knownEntry?.observedOpen&&<p>زمان بازشدن این موقعیت در سابقه ثبت نشده است.</p>}
+        {candles&&<p>{daily?.market?.quote?.source || 'برنت مرجع'} · آخرین داده <bdi>{berlinTime(history.at(-1).date)}{history.at(-1).date.includes('T')&&' برلین'}</bdi></p>}
         {daily?.notice&&<p role="status">{daily.notice}</p>}
         {daily?.error&&<p role="alert">{daily.error}</p>}
         {error&&<p role="alert">{error}</p>}
