@@ -75,25 +75,9 @@ export default function AssetProfile({account, position, state, marketData, ledg
   })).filter(item => item.row).sort((a, b) => b.date.localeCompare(a.date))
 
   return <div className={styles.sectionStack}>
-    <section className={styles.panel}>
-      <div className={styles.panelHead}>
-        <div><h2 dir="auto">{position.name}</h2><p>{account.owner} · <bdi>{position.isin || 'بدون ISIN'}</bdi></p></div>
-        <button type="button" className={styles.primaryButton} onClick={onTransactions}>تراکنش‌های این دارایی</button>
-      </div>
-      <div className={styles.profileStats}>
-        <div><span>تعداد سهم</span><strong><bdi>{position.quantity}</bdi></strong></div>
-        <div><span>آخرین قیمت هر سهم</span><strong><bdi>{quote ? <>{price(quote.price)} {quote.currency}</> : '—'}</bdi></strong>
-          {quote && <small>{quote.exchange} · <bdi>{new Date(quote.asOf).toLocaleString('de-DE', {timeZone: 'Europe/Berlin'})}</bdi></small>}
-        </div>
-        <div><span>ارزش ثبت‌شده در گزارش بروکر</span><strong><bdi>{money(position.valueCents)}</bdi></strong>
-          <small><bdi>{position.asOf || account.snapshotDate || 'تاریخ نامشخص'}</bdi></small>
-        </div>
-      </div>
-    </section>
-
     <InvestmentPositionChart onTransaction={onTransaction} key={chartIdentity} trade={{id:position.id,ownerId:account.id,plan:{name:position.name,symbol:position.symbol || position.isin,currency:currency || ''},executions:[]}}
       drawings={state.settings.xtbDrawings} onDrawings={onDrawings} daily={{
-        identity:chartIdentity, legacyKey:chartDrawingKey(account.id, position, chartMarket),
+        ownerLabel:account.owner, identity:chartIdentity, legacyKey:chartDrawingKey(account.id, position, chartMarket),
         market:chartMarket ? {...chartMarket,quote:chartQuote || chartMarket.quote} : {quote:currentMarket?.quote},
         entry:currency==='EUR' && averageEur>0 ? averageEur : null, entries, quantity,
         quantityLabel:balance.quantityKnown ? position.quantity : 'نیازمند تطبیق',
@@ -109,6 +93,16 @@ export default function AssetProfile({account, position, state, marketData, ledg
 
     <details className={`${styles.panel} ${styles.assetDetails}`}>
       <summary>تاریخچه، منبع قیمت و خبرها</summary>
+      <div className={styles.profileStats}>
+        <div><span>تعداد سهم</span><strong><bdi>{position.quantity}</bdi></strong></div>
+        <div><span>آخرین قیمت هر سهم</span><strong><bdi>{quote ? <>{price(quote.price)} {quote.currency}</> : '—'}</bdi></strong>
+          {quote && <small>{quote.exchange} · <bdi>{new Date(quote.asOf).toLocaleString('de-DE', {timeZone: 'Europe/Berlin'})}</bdi></small>}
+        </div>
+        <div><span>ارزش ثبت‌شده در گزارش بروکر</span><strong><bdi>{money(position.valueCents)}</bdi></strong>
+          <small><bdi>{position.asOf || account.snapshotDate || 'تاریخ نامشخص'}</bdi></small>
+        </div>
+      </div>
+
       <div className={styles.buttonRow}>
         <button type="button" className={styles.textButton} aria-expanded={connectOpen} onClick={() => setConnectOpen(open => !open)}>تنظیم منبع قیمت</button>
       </div>

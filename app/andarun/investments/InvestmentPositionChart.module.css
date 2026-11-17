@@ -96,3 +96,43 @@
 .drawingTools [aria-label="ویرایش رسم"] { position:absolute; left:48px; top:0; width:210px; background:#202026; padding:12px; border:1px solid #50505b; border-radius:8px; align-items:stretch; }
 .drawingTools [aria-label="ویرایش رسم"] button { width:auto; font-size:12px; }
 .scenarios>button { align-self:center; }
+
+.header { display:grid; grid-template-columns:auto minmax(0,1fr) auto; gap:12px; padding:12px 16px 8px; margin:0; }
+.header h2 { line-height:1.25; }
+.header small { color:#a5b8c8; }
+.card>.scenarios { display:flex; padding:0 16px 10px; gap:8px 16px; border-radius:0; background:transparent; align-items:center; }
+.scenarios .quoteStrip { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); flex:1 1 450px; gap:3px 14px; }
+.scenarios .quoteStrip>div { padding:4px 0; }
+.scenarios .quoteStrip dd { margin:1px 0; font-size:clamp(14px,1.55vw,20px); }
+.chart { padding:8px 12px 12px; }
+.chartBody { position:relative; padding-left:48px; }
+.chartBody .drawingTools { left:0; top:0; width:40px; }
+.chartBody .drawingTools button { width:36px; height:36px; min-height:36px; padding:4px; display:grid; place-items:center; border-color:#303944; background:#171e27; }
+.chartBody .drawingTools button[aria-pressed=true] { background:#263e56; border-color:#88b8e7; }
+.chartBody .drawingTools [aria-label="ویرایش رسم"] { left:40px; max-width:calc(100vw - 110px); }
+.chartBody .drawingTools [aria-label="ویرایش رسم"] button { width:auto; }
+.chartLegend { top:5px; max-width:calc(100% - 91px); column-gap:4px; row-gap:2px; }
+.chartLegend .ohlc { flex-basis:100%; background:transparent; color:#e4edf6; }
+.plot { height:clamp(360px,43vw,650px); }
+.priceAxis { fill:#19242a66; cursor:ns-resize; }
+.priceAxis:hover { fill:#263a4666; }
+.card[data-fullscreen=true] .plot { height:clamp(295px,calc(100dvh - 310px),850px); }
+.exitPanel { margin-top:12px; padding:8px 12px; border:1px solid #333b46; border-radius:8px; }
+.exitPanel summary { cursor:pointer; color:#d8e2ec; font-size:13px; }
+.exitControls { display:flex; flex-wrap:wrap; align-items:center; gap:8px; padding-top:10px; }
+.exitControls .stopOut { flex-basis:100%; }
+@media(max-width:600px) {
+ .header { padding:8px; gap:7px; }
+ .card>.scenarios { padding-inline:9px; }
+ .scenarios .quoteStrip { grid-template-columns:repeat(2,minmax(0,1fr)); }
+ .card>.scenarios>button { min-height:32px; }
+ .chart { padding:7px; }
+ .chartBody { padding-left:39px; }
+ .chartBody .drawingTools { width:34px; }
+ .chartBody .drawingTools button { min-height:34px; width:34px; height:34px; }
+ .plot { height:clamp(340px,53dvh,460px); }
+ .chartLegend { max-width:calc(100% - 40px); left:5px; font-size:10px; }
+}
+.header h2 { text-align:right; }
+.card[data-fullscreen=true][data-rsi=true] .plot { height:clamp(270px,calc(100dvh - 340px),850px); }
+.card[data-fullscreen=true][data-rsi=true][data-macd=true] .plot { height:clamp(270px,calc(100dvh - 425px),850px); }

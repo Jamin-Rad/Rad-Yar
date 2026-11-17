@@ -24,7 +24,7 @@ const positive = value => Number(value) > 0 && Number.isFinite(Number(value)) ? 
 const formatPrice = value => value == null ? '—' : priceFormat.format(value)
 const limitLabels = { stop: 'حد ضرر', target: 'حد سود' }
 const fields = [['price', 'قیمت خروج فعلی در XTB (دلار)'], ['equity', 'ارزش فعلی حساب (یورو)'], ['margin', 'مارجین مصرف‌شده (یورو)'], ['fx', 'ارزش یک دلار به یورو']]
-const LEFT = 12, AXIS = 82, TOP = 14
+const LEFT = 12, AXIS = 82, TOP = 42
 const averages = [['ema20','EMA 20','#f1c975'],['sma50','SMA 50','#91c5ff'],['sma200','SMA 200','#d5a7fa']]
 
 export default function InvestmentPositionChart({ trade, openCount, drawings = [], onDrawings, daily, onTransaction }) {
@@ -75,7 +75,6 @@ export default function InvestmentPositionChart({ trade, openCount, drawings = [
   const drawingsKey = daily?.legacyKey ?? JSON.stringify(['xtb', trade.ownerId, trade.id, trade.plan.symbol, trade.plan.currency])
   const gradient = useId()
   const plot = useRef(null)
-  const positionSheet = useRef(null)
   const gestures = useRef({ points:new Map(), action:null, timer:null, wheel:0 })
   useEffect(() => {
     const storage = browserChartStorage()
@@ -395,6 +394,15 @@ export default function InvestmentPositionChart({ trade, openCount, drawings = [
   const showDetails=selectedLevel?.value!=null
   const last=history.length-1
   const tickCount=width>=740?6:width>=460?4:3
+  const rawStep=(max-min)/Math.max(2,Math.floor((bottom-top)/60))
+  const magnitude=10**Math.floor(Math.log10(rawStep))
+  const tickStep=([1,2,2.5,5,10].find(value=>value>=rawStep/magnitude)??10)*magnitude
+  const firstTick=Math.ceil(min/tickStep)*tickStep
+  const priceTicks=Array.from({length:Math.max(0,Math.floor((max-firstTick)/tickStep)+1)},(_,index)=>firstTick+index*tickStep)
+  const axisPrice=new Intl.NumberFormat('en-US',{minimumFractionDigits:2,maximumFractionDigits:Math.min(10,Math.max(2,1-Math.floor(Math.log10(tickStep))))})
+  const displayedLevel=displayedPrice??fullHistory.at(-1)?.close
+  const positionMark=(offset===0?displayedPrice:null)??history.at(-1)?.close
+  const displayedY=inPlot(displayedLevel)?y(displayedLevel):null
   const forecastPath=(points,key,reverse=false)=>(reverse?[...points].reverse():points).map((point,index)=>
     `${index||reverse?'L':'M'}${x(last+(reverse?points.length-1-index:index))},${y(point[key])}`).join(' ')
   const maxVolume=Math.max(1,...history.map(bar=>bar.volume||0))
@@ -402,7 +410,6 @@ export default function InvestmentPositionChart({ trade, openCount, drawings = [
   const entryTime=daily ? daily.entries?.map(entry=>entry.date).sort()[0] : knownEntry&&!knownEntry.observedOpen?knownEntry.date:null
   const entryX=entryTime?anchorX(entryTime):null
   const positionPanel=daily ? <>
-    <h3>دارایی‌های حساب</h3>
     <dl className={styles.quoteStrip}>
       <div><dt>سود و زیان باز</dt><dd data-sign={daily.gainCents<0?'negative':'positive'}><bdi>{daily.gainLabel}</bdi></dd></div>
       <div><dt>تعداد</dt><dd><bdi>{daily.quantityLabel}</bdi></dd></div>
@@ -411,16 +418,16 @@ export default function InvestmentPositionChart({ trade, openCount, drawings = [
     </dl>
     <button type="button" onClick={daily.onTransactions}>تراکنش‌های این دارایی</button>
   </> : <>
-    <h3>موقعیت باز</h3>
     <dl className={styles.quoteStrip}>
       <div><dt>سود و زیان باز · برآوردی</dt><dd data-sign={pnl?.percent<0?'negative':'positive'}><bdi>{eurAmount(pnl)||'—'}</bdi></dd>
         <small>{currentPrice!=null?'قیمت واردشدهٔ XTB':'مرجع برنت'}</small></div>
       <div><dt>حجم</dt><dd><bdi>{Number(exposure.volume.toPrecision(8))}</bdi></dd></div>
       <div><dt>میانگین ورود</dt><dd><bdi>{formatPrice(exposure.entry)} {currency}</bdi></dd></div>
-      <div><dt>قیمت فعلی</dt><dd><bdi>{formatPrice(displayedPrice)} {currency}</bdi></dd>
+      <div><dt>{displayedPrice!=null?'قیمت فعلی':'آخرین پایانی'}</dt><dd><bdi>{formatPrice(displayedLevel)} {currency}</bdi></dd>
         {currentPrice==null&&referenceMarket?.quote?.asOf&&<small><bdi>{berlinTime(referenceMarket.quote.asOf)} برلین</bdi></small>}</div>
     </dl>
-    <h3>سناریوی خروج</h3>
+  </>
+  const exitPanel = !daily && <>
     {Object.entries(limitLabels).map(([key,label])=>{
       const invalid=key==='stop'?invalidStop:invalidTarget
       const result=!invalid&&xtbScenario(exposure,positive(limits[key]))
@@ -440,17 +447,15 @@ export default function InvestmentPositionChart({ trade, openCount, drawings = [
     </details>
   </>
 
-  return <section className={styles.card} data-fullscreen={fullscreen} aria-label={daily?'نمودار دارایی Trade Republic':'نمودار و سناریوی موقعیت XTB'}>
-    <aside className={styles.scenarios}>{positionPanel}</aside>
-    <div className={styles.grid}>
-      <div className={styles.chart}>
+  return <section className={styles.card} data-fullscreen={fullscreen} data-rsi={indicators.rsi} data-macd={indicators.macd} aria-label={daily?'نمودار دارایی Trade Republic':'نمودار و سناریوی موقعیت XTB'}>
         <header className={styles.header}>
           <button type="button" aria-label={fullscreen?'خروج از تمام صفحه':'تمام صفحه'} title="تمام صفحه" onClick={()=>setFullscreen(value=>!value)}><Icon name="expand"/></button>
-          <div><small>{daily?'Trade Republic':direction===1?'XTB · خرید':'XTB · فروش'}</small><h2 dir="auto">{trade.plan.name}</h2></div>
+          <div><small>{daily?['Trade Republic',daily.ownerLabel].filter(Boolean).join(' · '):direction===1?'XTB · خرید':'XTB · فروش'}</small><h2 dir="auto">{trade.plan.name}</h2></div>
           {daily&&<button type="button" disabled={daily.busy||!daily.onRefresh} onClick={daily.onRefresh}>{daily.busy?'در حال دریافت…':'به‌روزرسانی'}</button>}
           {exposure.isBrent&&<button type="button" disabled={busy} onClick={refresh}>{busy?'در حال دریافت…':'به‌روزرسانی'}</button>}
-          <button type="button" className={styles.mobileButton} onClick={()=>positionSheet.current?.showModal()}><bdi>{displaySymbol||trade.plan.name} · {daily?daily.gainLabel:eurAmount(pnl)||'—'}</bdi> ▴</button>
         </header>
+        <div className={styles.scenarios}>{positionPanel}</div>
+        <div className={styles.chart}>
         <div className={styles.chartTools} aria-label="تایم‌فریم و پیش‌بینی">
           <label className={styles.timeframe}>تایم‌فریم <select value={interval} onChange={event=>setFrame(/^\d+$/.test(event.target.value)?Number(event.target.value):event.target.value)}>
             {frames.map(value=><option key={value} value={value}>{({'1d':'روزانه','1w':'هفتگی','1mo':'ماهانه',60:'۱ ساعت',240:'۴ ساعت'})[value]||value+' دقیقه'}</option>)}
@@ -460,6 +465,7 @@ export default function InvestmentPositionChart({ trade, openCount, drawings = [
           <IndicatorGuide/>
           <button type="button" aria-expanded={indicatorTools} onClick={()=>setIndicatorTools(value=>!value)}>اندیکاتورها</button>
         </div>
+        <div className={styles.chartBody}>
         <div className={styles.drawingTools} data-open={true}>
           <div className={styles.chartTools} aria-label="ابزار رسم">
             {[['trend','خط صاف'],['freehand','آزاد'],['arrow','مسیر فلش'],['horizontal','خط افقی'],['measure','اندازه‌گیری فاصله']].map(([key,label])=>
@@ -490,6 +496,7 @@ export default function InvestmentPositionChart({ trade, openCount, drawings = [
         {forecast&&!prediction&&<p role="status">دادهٔ کامل برای آزمون پیش‌بینی این تایم‌فریم کافی نیست.</p>}
         <div className={styles.plotWrap}>
         <div className={styles.chartLegend}>
+          {activeBar&&<span className={styles.ohlc}><bdi>O {formatPrice(activeBar.open)} · H {formatPrice(activeBar.high)} · L {formatPrice(activeBar.low)} · C {formatPrice(activeBar.close)}</bdi></span>}
           {indicators.atr&&<span title="میانگین دامنهٔ واقعی نوسان"><bdi>ATR 14 {formatPrice(atrValues[historyStart+(cursor??history.length-1) ])} {currency}</bdi></span>}
           {visibleAverages.map(([key,label,color])=><span key={key} style={{color}}><bdi>{label} {formatPrice(activeBar?.[key])}</bdi></span>)}
         </div>
@@ -501,14 +508,12 @@ export default function InvestmentPositionChart({ trade, openCount, drawings = [
             <clipPath id={gradient+'-plot'}><rect x={LEFT} y={top} width={plotRight-LEFT} height={bottom-top}/></clipPath>
             <marker id={gradient+'-arrow'} markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0 0L6 3L0 6Z" fill="context-stroke"/></marker>
           </defs>
-          {[0,.25,.5,.75,1].map(step=>{
-            const value=min+(max-min)*step
-            return <g key={step}><line x1={LEFT} x2={plotRight} y1={y(value)} y2={y(value)} stroke="#26323e"/><text x={width-8} y={y(value)+4} textAnchor="end">{formatPrice(value)}</text></g>
-          })}
+          <rect x={plotRight} y={top} width={AXIS} height={bottom-top} className={styles.priceAxis}><title>محور قیمت را بالا یا پایین بکشید</title></rect>
+          {priceTicks.map(value=><g key={value}><line x1={LEFT} x2={plotRight} y1={y(value)} y2={y(value)} stroke="#26323e"/><text x={width-8} y={y(value)+4} textAnchor="end" pointerEvents="none">{axisPrice.format(value)}</text></g>)}
           {[0,.2,.4,.6,.8,1].map(step=><line key={step} x1={LEFT+plotSpan*step} x2={LEFT+plotSpan*step} y1={top} y2={bottom} stroke="#222d36"/>)}
           <g clipPath={`url(#${gradient}-plot)`}>
-            {entryX!=null&&exposure.entry>0&&history.length>0&&<g aria-label="محدودهٔ معامله از زمان ورود">
-              <rect x={Math.max(LEFT,entryX)} y={Math.min(y(exposure.entry),y(displayedPrice??history.at(-1).close))} width={Math.max(0,plotRight-Math.max(LEFT,entryX))} height={Math.abs(y(exposure.entry)-y(displayedPrice??history.at(-1).close))} fill={((displayedPrice??history.at(-1).close)-exposure.entry)*direction>=0?'#43bc91':'#ce6578'} opacity=".12"/>
+            {entryX!=null&&exposure.entry>0&&positionMark!=null&&<g aria-label="محدودهٔ معامله از زمان ورود">
+              <rect x={Math.max(LEFT,entryX)} y={Math.min(y(exposure.entry),y(positionMark))} width={Math.max(0,x(last)-Math.max(LEFT,entryX))} height={Math.abs(y(exposure.entry)-y(positionMark))} fill={((positionMark)-exposure.entry)*direction>=0?'#43bc91':'#ce6578'} opacity=".12"/>
             </g>}
             {history.map((bar,i)=>{
               const color=bar.close>=bar.open?'#53d6ae':'#fb8092'
@@ -539,7 +544,7 @@ export default function InvestmentPositionChart({ trade, openCount, drawings = [
                 <title>{`خرید ${entry.date} · ${formatPrice(entry.price)} ${entry.currency||''}`}</title>
               </circle>
             })}
-            {displayedPrice!=null&&<line x1={LEFT} x2={plotRight} y1={y(displayedPrice)} y2={y(displayedPrice)} stroke="#91a8bd" strokeDasharray="2 5"/>}
+            {displayedY!=null&&<line x1={LEFT} x2={plotRight} y1={displayedY} y2={displayedY} stroke="#91b8bd" strokeDasharray="2 5"/>}
             {levelRows.map(level=><g key={level.key}>
               {level.original!=null&&level.original!==level.value&&<line x1={LEFT} x2={plotRight} y1={y(level.original)} y2={y(level.original)} stroke={levelColors[level.key]} opacity=".38" strokeDasharray="3 5"/>}
               {inPlot(level.value)&&<g className={level.original!=null?styles.handle:undefined}
@@ -569,6 +574,7 @@ export default function InvestmentPositionChart({ trade, openCount, drawings = [
               <circle cx={x(cursor)} cy={y(activeBar.close)} r="3" fill="#cbe3fa"/>
             </g>}
           </g>
+          {displayedY!=null&&!axisPositions.some(position=>Math.abs(position-displayedY)<18)&&<g pointerEvents="none"><rect x={plotRight+3} y={displayedY-9} width={AXIS-7} height="18" rx="4" fill="#29454d"/><text x={width-8} y={displayedY+4} textAnchor="end">{axisPrice.format(displayedLevel)}</text></g>}
           {axisLevels.map((level,i)=><g key={level.key} className={styles.handle} role="button" tabIndex={0}
             aria-label={level.label+' '+formatPrice(level.value)} onFocus={()=>setLimitDetail(level.key)} onBlur={()=>setLimitDetail(null)}
             onKeyDown={event=>{if(event.key==='Enter'||event.key===' '){event.preventDefault();setLimitDetail(level.key)}}}
@@ -593,8 +599,6 @@ export default function InvestmentPositionChart({ trade, openCount, drawings = [
           {!daily&&<small>سود و زیان برآوردی <bdi>{eurAmount(closingResult)||'—'}</bdi></small>}
         </div> : cursor!=null&&activeBar&&<div className={styles.candleTip} style={{left:`clamp(4px, ${x(cursor)/width*100}%, calc(100% - 162px))`}}>
           <bdi>{berlinTime(activeBar.date)}{activeBar.date.includes('T')&&' برلین'}</bdi>
-          <bdi>O {formatPrice(activeBar.open)} · C {formatPrice(activeBar.close)}</bdi>
-          <bdi>H {formatPrice(activeBar.high)} · L {formatPrice(activeBar.low)}</bdi>
         </div>}
         </div>
         {projection&&<p>پیش‌بینی {daily?'۲۰ کندل':'۴ کندل'} · دامنهٔ تجربی ۸۰٪ <bdi>{formatPrice(projection.at(-1).low)} – {formatPrice(projection.at(-1).high)} {currency}</bdi> · خطای آزمون <bdi>{formatPrice(prediction.error)} {currency}</bdi></p>}
@@ -623,7 +627,9 @@ export default function InvestmentPositionChart({ trade, openCount, drawings = [
           </svg>
         </div>}
         {indicators.vwap&&<p>{daily?'VWAP از ابتدای تاریخچهٔ ذخیره‌شده':'VWAP جلسهٔ روزانهٔ UTC · حجم قرارداد مرجع'}</p>}
-        {entryTime&&!entryTime.includes('T')&&<p>خط ورود روز ثبت‌شده را نشان می‌دهد؛ ساعت دقیق ورود ثبت نشده است.</p>}
+        </div>
+        {!daily&&<details className={styles.exitPanel}><summary>سناریوی خروج · حد سود، حد ضرر و Stop Out</summary><div className={styles.exitControls}>{exitPanel}</div></details>}
+        {entryTime&&!entryTime.includes('T')&&<p>خط ورود تاریخ ثبت‌شده را نشان می‌دهد.</p>}
         {!daily&&knownEntry?.observedOpen&&<p>زمان بازشدن این موقعیت در سابقه ثبت نشده است.</p>}
         {candles&&<p>{daily?.market?.quote?.source || 'برنت مرجع'} · آخرین داده <bdi>{berlinTime(history.at(-1).date)}{history.at(-1).date.includes('T')&&' برلین'}</bdi></p>}
         {daily?.notice&&<p role="status">{daily.notice}</p>}
@@ -631,9 +637,5 @@ export default function InvestmentPositionChart({ trade, openCount, drawings = [
         {error&&<p role="alert">{error}</p>}
       </div>
 
-    </div>
-    <dialog ref={positionSheet} className={styles.positionSheet} aria-label="جزئیات موقعیت" onClick={event=>{if(event.target===event.currentTarget)event.currentTarget.close()}}>
-      <div><button type="button" onClick={()=>positionSheet.current?.close()}>بستن</button>{positionPanel}</div>
-    </dialog>
   </section>
 }
