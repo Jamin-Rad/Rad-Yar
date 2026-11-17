@@ -5,6 +5,29 @@
   "valid": 29,
   "a": -5.846991605656389,
   "b": 2.7343370447028272,
+  "byMarket": {
+    "NQ=F": {
+      "valid": 19,
+      "noBreakout": 3,
+      "noRetest": 8,
+      "cost": 0,
+      "invalidRisk": 0
+    },
+    "GC=F": {
+      "valid": 12,
+      "noBreakout": 4,
+      "noRetest": 14,
+      "cost": 0,
+      "invalidRisk": 0
+    },
+    "BZ=F": {
+      "valid": 16,
+      "noBreakout": 0,
+      "noRetest": 9,
+      "cost": 5,
+      "invalidRisk": 0
+    }
+  },
   "trades": [
     {
       "symbol": "NQ=F",

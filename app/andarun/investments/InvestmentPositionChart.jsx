@@ -141,8 +141,11 @@ export default function InvestmentPositionChart({ trade, openCount, drawings = [
   const historyEnd=Math.min(fullHistory.length,historyStart+viewportSlots)
   const history=fullHistory.slice(historyStart,historyEnd)
   const canShowOpeningRange=typeof interval==='number'&&['NQ=F','GC=F','BZ=F'].includes(reference)
-  const openingTrades=showOpeningRange&&canShowOpeningRange&&history.length>0
-    ? openingRange.trades.filter(item=>item.symbol===reference&&item.stamp*1000>=Date.parse(history[0].date)&&item.stamp*1000<=Date.parse(history.at(-1).date))
+  const selectedMarketTrades=showOpeningRange&&canShowOpeningRange
+    ? openingRange.trades.filter(item=>item.symbol===reference)
+    : []
+  const openingTrades=history.length>0
+    ? selectedMarketTrades.filter(item=>item.stamp*1000>=Date.parse(history[0].date)&&item.stamp*1000<=Date.parse(history.at(-1).date))
     : []
   const patterns = useMemo(()=>{
     if (!showPatterns) return []
@@ -543,9 +546,11 @@ export default function InvestmentPositionChart({ trade, openCount, drawings = [
           <IndicatorGuide/>
           <button type="button" aria-expanded={indicatorTools} onClick={()=>setIndicatorTools(value=>!value)}>اندیکاتورها</button>
         </div>
-        {showOpeningRange&&canShowOpeningRange&&<p>
-          بک‌تست بازار مرجع · <bdi>{openingRange.first} تا {openingRange.last}</bdi> · {openingRange.valid} ورود در {openingRange.days} جلسه در مجموع سه بازار · بازده خالص <bdi>A {signedFormat.format(openingRange.a)}R · B {signedFormat.format(openingRange.b)}R</bdi> · {openingTrades.length} ورود از این نماد در نمای فعلی
-        </p>}
+        {showOpeningRange&&canShowOpeningRange&&<div>
+          <p>بک‌تست بازار مرجع · سناریوی پایه · <bdi>{openingRange.first} تا {openingRange.last}</bdi></p>
+          <p><strong>{trade.plan.name}</strong> · {openingRange.byMarket[reference].valid} جلسه با ستاپ معتبر از {openingRange.days} · {selectedMarketTrades.length} ورود منتخب · {openingTrades.length} ورود در نمای فعلی</p>
+          <p><strong>مجموع نزدک، طلا و برنت</strong> · {openingRange.valid} ورود در {openingRange.days} جلسه · نتیجهٔ خالص <bdi>A {signedFormat.format(openingRange.a)}R · B {signedFormat.format(openingRange.b)}R</bdi></p>
+        </div>}
         <div className={styles.chartBody}>
         <div className={styles.drawingTools} data-open={true}>
           <div className={styles.chartTools} aria-label="ابزار رسم">

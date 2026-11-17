@@ -230,7 +230,7 @@ for (const [period,runs] of Object.entries(results)) for (const result of runs) 
 await writeFile(resolve(directory,'trades.csv'),csvRows.map(row=>row.map(csvCell).join(',')).join('\r\n')+'\r\n')
 const base=results.recent.find(result=>result.cost.name==='base')
 const overlay={first:base.first,last:base.last,days:base.days,valid:base.valid,
-  a:base.a.totalR,b:base.b.totalR,trades:base.trades.map(trade=>({
+  a:base.a.totalR,b:base.b.totalR,byMarket:base.byMarket,trades:base.trades.map(trade=>({
     symbol:trade.symbol,stamp:trade.stamp,entry:trade.entry,stop:trade.stop,target:trade.a.target,side:trade.side,
     a:trade.a.netR,b:trade.b.netR,rangeHigh:trade.rangeHigh,rangeLow:trade.rangeLow,
   }))}
