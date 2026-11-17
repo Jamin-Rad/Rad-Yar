@@ -146,7 +146,17 @@ export default function InvestmentPositionChart({ trade, openCount, drawings = [
   const stop = positive(limits.stop), target = positive(limits.target)
   const invalidStop = stop != null && (stop - exposure.entry) * direction >= 0
   const invalidTarget = target != null && (target - exposure.entry) * direction <= 0
-  const marketLevels = (history.length ? history.flatMap(row=>[row.low??row.close,row.high??row.close]) : [exposure.entry,stop,target,displayedPrice]).filter(value=>value!=null)
+  const knownEntry=trade.executions.find(event=>event.kind==='entry')
+  const entryTime=daily ? daily.entries?.map(entry=>entry.date).sort()[0] : knownEntry?.date
+  const hasPositionRange=!daily&&showTrades&&exposure.volume>0&&exposure.entry>0&&history.length>0&&
+    (!entryTime||Date.parse(entryTime)<=Date.parse(history.at(-1).date))
+  const positionBands=hasPositionRange?[
+    { key:'target', value:invalidTarget?null:target, color:'#43dfca' },
+    { key:'stop', value:invalidStop?null:stop, color:'#ff9b58' },
+  ].filter(band=>band.value!=null):[]
+  const marketLevels = (history.length
+    ? [...history.flatMap(row=>[row.low??row.close,row.high??row.close]),...(positionBands.length?[exposure.entry,...positionBands.map(band=>band.value)]:[])]
+    : [exposure.entry,stop,target,displayedPrice]).filter(value=>value!=null)
   const low = marketLevels.length?Math.min(...marketLevels):1, high = marketLevels.length?Math.max(...marketLevels):2
   const pad = Math.max((high - low) * .13, low * .025)
   const [min, max] = drag?.domain || priceDomain || [Math.max(.01, low - pad), high + pad]
@@ -446,9 +456,8 @@ export default function InvestmentPositionChart({ trade, openCount, drawings = [
   const positionMark=(offset===0?displayedPrice:null)??history.at(-1)?.close
   const displayedY=inPlot(displayedLevel)?y(displayedLevel):null
   const maxVolume=Math.max(1,...history.map(bar=>bar.volume||0))
-  const knownEntry=trade.executions.find(event=>event.kind==='entry')
-  const entryTime=daily ? daily.entries?.map(entry=>entry.date).sort()[0] : knownEntry&&!knownEntry.observedOpen?knownEntry.date:null
   const entryX=entryTime?anchorX(entryTime):null
+  const bandStart=Math.max(LEFT,Math.min(x(last),entryX??LEFT))
   const positionPanel=daily ? <>
     <dl className={styles.quoteStrip}>
       <div><dt>سود و زیان باز</dt><dd data-sign={daily.gainCents<0?'negative':'positive'}><bdi>{daily.gainLabel}</bdi></dd></div>
@@ -552,7 +561,13 @@ export default function InvestmentPositionChart({ trade, openCount, drawings = [
           {priceTicks.map(value=><g key={value}><line x1={LEFT} x2={plotRight} y1={y(value)} y2={y(value)} stroke="#26323e"/><text x={width-8} y={y(value)+4} textAnchor="end" pointerEvents="none">{axisPrice.format(value)}</text></g>)}
           {[0,.2,.4,.6,.8,1].map(step=><line key={step} x1={LEFT+plotSpan*step} x2={LEFT+plotSpan*step} y1={top} y2={bottom} stroke="#222d36"/>)}
           <g clipPath={`url(#${gradient}-plot)`}>
+            {positionBands.map(band=><g key={band.key} aria-label={limitLabels[band.key]} pointerEvents="none">
+              <rect x={bandStart} y={Math.min(y(exposure.entry),y(band.value))} width={Math.max(2,x(last)-bandStart)} height={Math.abs(y(exposure.entry)-y(band.value))} fill={band.color} fillOpacity={band.key==='target'?'.18':'.16'} stroke={band.color} strokeOpacity=".46"/>
+              <title>{limitLabels[band.key]} · {formatPrice(band.value)} {currency}</title>
+            </g>)}
+            {positionBands.length>0&&<line x1={bandStart} x2={x(last)} y1={y(exposure.entry)} y2={y(exposure.entry)} stroke="#c5e4ea" strokeWidth="1.25"/>}
             {showTrades&&history.length>0&&spans.map(span=>{
+              if (span.current&&!span.exit&&positionBands.length) return null
               const mark=span.exit?span.exit.price:positionMark
               const entry=span.entry
               const entryPrice=entry?.price
@@ -596,7 +611,7 @@ export default function InvestmentPositionChart({ trade, openCount, drawings = [
             {indicators.vwap&&<path d={history.map((row,i)=>vwapValues[historyStart+i]==null?'':((i&&vwapValues[historyStart+i-1]!=null?'L':'M')+x(i)+','+y(vwapValues[historyStart+i]))).join(' ')} fill="none" stroke="#e0a0da" strokeWidth="1.5"/>}
             {indicators.bands&&['bbUpper','bbLower'].map(key=><path key={key} d={seriesPath(key,y)} fill="none" stroke="#8198cc" strokeDasharray="3 3"/>)}
             {visibleAverages.map(([key,,color])=><path key={key} d={seriesPath(key,y)} fill="none" stroke={color} vectorEffect="non-scaling-stroke"/>)}
-            {showTrades&&entryX!=null&&<g aria-label="زمان ورود"><line x1={entryX} x2={entryX} y1={top} y2={bottom} stroke={levelColors.entry} strokeDasharray="4 4"/><text x={Math.max(LEFT+4,entryX+5)} y={bottom-24} fill={levelColors.entry}>ورود {berlinTime(entryTime)}</text><title>{entryTime.includes('T')?'زمان ورود به وقت برلین':'روز ورود؛ ساعت دقیق ثبت نشده'}</title></g>}
+            {showTrades&&entryX!=null&&entryX>=LEFT&&entryX<=x(last)&&<g aria-label={knownEntry?.observedOpen?'زمان ثبت موقعیت':'زمان ورود'}><line x1={entryX} x2={entryX} y1={top} y2={bottom} stroke={levelColors.entry} strokeDasharray="4 4"/><text x={Math.min(plotRight-90,entryX+5)} y={bottom-24} fill={levelColors.entry}>{knownEntry?.observedOpen?'ثبت موقعیت':'ورود'} {berlinTime(entryTime)}</text></g>}
             {showTrades&&daily?.entries.map(entry=>{
               const i=history.findIndex(row=>row.date>=entry.date)
               if(i<0||entry.date<history[0].date)return null
@@ -609,7 +624,7 @@ export default function InvestmentPositionChart({ trade, openCount, drawings = [
             {displayedY!=null&&<line x1={LEFT} x2={plotRight} y1={displayedY} y2={displayedY} stroke="#91b8bd" strokeDasharray="2 5"/>}
             {levelRows.filter(level=>showTrades||level.key!=='entry').map(level=><g key={level.key}>
               {level.original!=null&&level.original!==level.value&&<line x1={LEFT} x2={plotRight} y1={y(level.original)} y2={y(level.original)} stroke={levelColors[level.key]} opacity=".38" strokeDasharray="3 5"/>}
-              {inPlot(level.value)&&<g className={level.original!=null?styles.handle:undefined}
+              {inPlot(level.value)&&(level.key!=='entry'||!positionBands.length)&&<g className={level.original!=null?styles.handle:undefined}
                 onPointerEnter={()=>setLimitDetail(level.key)} onPointerLeave={()=>{if(!drag)setLimitDetail(null)}}
                 onPointerDown={event=>startLevel(event,level)}>
                 <line x1={LEFT} x2={plotRight} y1={y(level.value)} y2={y(level.value)} stroke={levelColors[level.key]} strokeDasharray="5 4"/>
@@ -684,8 +699,8 @@ export default function InvestmentPositionChart({ trade, openCount, drawings = [
         {indicators.vwap&&<p>{daily?'VWAP از ابتدای تاریخچهٔ ذخیره‌شده':'VWAP جلسهٔ روزانهٔ UTC · حجم قرارداد مرجع'}</p>}
         </div>
         {!daily&&<details className={styles.exitPanel}><summary>سناریوی خروج · حد سود، حد ضرر و Stop Out</summary><div className={styles.exitControls}>{exitPanel}</div></details>}
-        {entryTime&&!entryTime.includes('T')&&<p>خط ورود تاریخ ثبت‌شده را نشان می‌دهد.</p>}
-        {!daily&&knownEntry?.observedOpen&&<p>زمان بازشدن این موقعیت در سابقه ثبت نشده است.</p>}
+        {entryTime&&!entryTime.includes('T')&&!knownEntry?.observedOpen&&<p>خط ورود تاریخ ثبت‌شده را نشان می‌دهد.</p>}
+        {!daily&&knownEntry?.observedOpen&&<p>ناحیه‌ها از تاریخ ثبت موقعیت باز شروع می‌شوند. زمان اجرای معامله در سابقه موجود نیست.</p>}
         {candles&&<p>{daily?.market?.quote?.source || 'برنت مرجع'} · آخرین داده <bdi>{berlinTime(history.at(-1).date)}{history.at(-1).date.includes('T')&&' برلین'}</bdi></p>}
         {daily?.notice&&<p role="status">{daily.notice}</p>}
         {daily?.error&&<p role="alert">{daily.error}</p>}
