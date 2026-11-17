@@ -140,7 +140,7 @@ export default function InvestmentPositionChart({ trade, openCount, drawings = [
   const viewportSlots=Math.min(visibleCount,fullHistory.length)+futureSlots
   const historyEnd=Math.min(fullHistory.length,historyStart+viewportSlots)
   const history=fullHistory.slice(historyStart,historyEnd)
-  const canShowOpeningRange=watchMarket&&typeof interval==='number'&&['NQ=F','GC=F','CL=F'].includes(reference)
+  const canShowOpeningRange=typeof interval==='number'&&['NQ=F','GC=F','BZ=F'].includes(reference)
   const openingTrades=showOpeningRange&&canShowOpeningRange&&history.length>0
     ? openingRange.trades.filter(item=>item.symbol===reference&&item.stamp*1000>=Date.parse(history[0].date)&&item.stamp*1000<=Date.parse(history.at(-1).date))
     : []

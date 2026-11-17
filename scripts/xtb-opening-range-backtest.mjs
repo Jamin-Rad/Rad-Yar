@@ -4,7 +4,7 @@ import { resolve } from 'node:path'
 const markets=[
   {name:'Nasdaq 100',symbol:'NQ=F',tick:.25,multiplier:20},
   {name:'Gold futures (XAUUSD proxy)',symbol:'GC=F',tick:.1,multiplier:100},
-  {name:'WTI',symbol:'CL=F',tick:.01,multiplier:1000},
+  {name:'Brent (XTB OIL reference)',symbol:'BZ=F',tick:.01,multiplier:1000},
 ]
 const scenarios=[
   {name:'low',spreadTicks:1,slipTicks:0,feePerSide:2.5},
