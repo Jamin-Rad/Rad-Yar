@@ -13,6 +13,7 @@ export const LGE_PATTERN_SOURCE = {
 }
 
 export const SOURCES = [
+  { label: "European Task Force 2023", title: "Corrado et al. European Task Force consensus report. Int J Cardiol. 2024;395:131447.", url: "https://doi.org/10.1016/j.ijcard.2023.131447" },
   LGE_PATTERN_SOURCE,
   { label: 'JACC: Cardiovascular Imaging · 2008', title: 'Tissue Characterization of Acute Myocardial Infarction and Myocarditis by Cardiac Magnetic Resonance', url: 'https://doi.org/10.1016/j.jcmg.2008.07.011' },
   { label: 'Bariani et al. · 2021', title: 'Hot-phase clinical presentation in arrhythmogenic cardiomyopathy', url: 'https://pubmed.ncbi.nlm.nih.gov/33313835/' },
@@ -72,7 +73,7 @@ export const TAKE_HOME = [
     detail: localized("Im Cine regionale Wandbewegung, Volumina und Ejektionsfraktion erfassen. Im LGE Lage und Verteilung der Narbe beschreiben. Fehlendes LGE schließt ARVC nicht aus.", "Use cine to assess regional wall motion, volumes, and ejection fraction. Describe the location and distribution of scar on LGE. Absence of LGE does not exclude ARVC.", "در Cine حرکت موضعی دیواره، حجم و کسر جهشی را ارزیابی کنید. در LGE محل و توزیع اسکار را توصیف کنید. نبود LGE، ARVC را رد نمی‌کند."),
   },
   {
-    title: localized("TFC 2010 prüft vor allem den RV. Padua 2020 ergänzt LV- und LGE-Kriterien.", "The 2010 TFC focus on the RV. Padua 2020 adds LV and LGE criteria.", "تمرکز TFC ۲۰۱۰ بر بطن راست است. پادوا ۲۰۲۰ معیارهای بطن چپ و LGE را اضافه می‌کند."),
+    title: localized("Padua und ETF berücksichtigen beide Ventrikel. Die ETF gewichtet LGE nach Kammer und Ausdehnung.", "Padua and ETF cover both ventricles. ETF grades LGE by chamber and extent.", "پادوا و ETF هر دو بطن را در نظر می‌گیرند. در ETF وزن LGE به بطن درگیر و وسعت آن بستگی دارد."),
     detail: localized("Bei TFC muss im MRT eine regionale RV-Bewegungsstörung mit einem erhöhten RVEDVi oder einer verminderten RVEF zusammenkommen. Für die isoliert linksventrikuläre Form verlangt Padua typisches LV-LGE und eine passende pathogene oder wahrscheinlich pathogene Genvariante.", "Under TFC, a regional RV wall motion abnormality on MRI must accompany increased RVEDVi or reduced RVEF. For isolated left ventricular disease, Padua requires characteristic LV LGE together with an appropriate pathogenic or likely pathogenic genetic variant.", "در TFC، اختلال موضعی حرکت دیوارهٔ بطن راست در MRI باید همراه با افزایش RVEDVi یا کاهش RVEF باشد. برای درگیری محدود به بطن چپ، پادوا الگوی شاخص LGE بطن چپ و یک واریانت بیماری‌زا یا احتمالاً بیماری‌زای مرتبط را لازم می‌داند."),
   },
   {

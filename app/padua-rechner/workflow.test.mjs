@@ -1,86 +1,72 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
-import { evaluateFindings, isReviewed, optionsFor, parseMeasurement, questionsFor, selectFinding, validMeasurements } from './workflow.mjs'
+import { evaluateFindings, isReviewed, questionsFor, selectFinding } from './workflow.mjs'
 
-const values = { sex: '', edvi: '', ef: '', unavailable: false }
-
-test('incompatible responses replace each other and independent findings remain selected', () => {
-  const questions = questionsFor({ 'rv-motion': ['ak-dys-free'] })
-  const twi = questions.find(item => item.id === 'twi')
-  const global = questions.find(item => item.id === 'rv-global')
-  assert.deepEqual(selectFinding(twi, ['v1-v2', 'lateral-pattern'], 'v1-v3'), ['lateral-pattern', 'v1-v3'])
-  assert.deepEqual(selectFinding(global, ['dilated'], 'dysfunction'), ['dilated', 'dysfunction'])
-  assert.deepEqual(selectFinding(global, ['dilated', 'dysfunction'], 'none'), ['none'])
-  assert.deepEqual(selectFinding(global, ['none'], 'unknown'), ['unknown'])
-  assert.deepEqual(selectFinding(global, ['unknown'], 'dilated'), ['dilated'])
-})
-
-test('only relevant follow-ups appear, and explicit negative and unknown are distinguishable', () => {
-  const normal = { 'rv-motion': ['none'], twi: ['none'], family: ['none'] }
+test('Cine and ECG follow-ups depend on relevant findings', () => {
+  const normal = { 'rv-motion': ['none'], twi: ['none'] }
   const path = questionsFor(normal)
-  assert.ok(path.every(item => !['rv-values', 'rv-global', 'age', 'family-arvc'].includes(item.id)))
-  assert.equal(isReviewed(path[0], normal, values), true)
-  assert.equal(isReviewed(path[0], { 'rv-motion': ['unknown'] }, values), false)
-  const withFindings = { 'rv-motion': ['ak-dys-free'], twi: ['v1-v3'], family: ['family-pathology'] }
-  const followups = questionsFor(withFindings)
-  assert.ok(['rv-values', 'rv-global', 'age', 'family-arvc'].every(id => followups.some(item => item.id === id)))
-  assert.deepEqual(optionsFor(followups.find(item => item.id === 'family-arvc'), withFindings).map(item => item.id), ['family-pathology'])
+  assert.ok(path.every(item => !['rv-global', 'age', 'rv-values', 'family-arvc'].includes(item.id)))
+  assert.equal(isReviewed(path[0], normal), true)
+  assert.equal(isReviewed(path[0], { 'rv-motion': ['unknown'] }), false)
+  const positive = questionsFor({ 'rv-motion': ['aneurysm'], twi: ['v1-v3'] })
+  assert.ok(['rv-global', 'age'].every(id => positive.some(item => item.id === id)))
 })
 
-test('numeric CMR separates Padua normal references from fixed TFC thresholds', () => {
-  const answers = { 'rv-motion': ['ak-dys-free'], 'rv-global': ['none'] }
-  const result = evaluateFindings(answers, { ...values, sex: 'male', edvi: '110,0' })
-  assert.equal(result.tfc.points, 2)
-  assert.equal(result.tfc.outcome, 'possible')
+test('selecting another LV scar extent preserves the RV finding', () => {
+  const lge = questionsFor({}).find(item => item.id === 'lge')
+  assert.deepEqual(selectFinding(lge, ['rv-lge', 'lv-lge'], 'lv-lge-extensive'), ['rv-lge', 'lv-lge-extensive'])
+  assert.deepEqual(selectFinding(lge, ['rv-lge'], 'none'), ['none'])
+})
+
+test('ETF scores RV scar as minor and Padua as major', () => {
+  const { etf, padua } = evaluateFindings({ lge: ['rv-lge'] })
+  assert.equal(etf.points, 1)
+  assert.equal(padua.points, 2)
+  const anotherPattern = evaluateFindings({ lge: ['rv-lge-other'] })
+  assert.equal(anotherPattern.etf.points, 1)
+  assert.equal(anotherPattern.padua.outcome, 'noAnchor')
+})
+
+test('ETF uses LV LGE extent and can diagnose ALVC without a variant', () => {
+  const limited = evaluateFindings({ lge: ['lv-lge'], genetics: ['gene-acm'] })
+  assert.equal(limited.etf.points, 2)
+  assert.equal(limited.etf.outcome, 'possible')
+  assert.equal(limited.padua.outcome, 'alvcMet')
+  const extensive = evaluateFindings({ lge: ['lv-lge-extensive'], depolarization: ['low-voltage-all'] })
+  assert.equal(extensive.etf.points, 4)
+  assert.equal(extensive.etf.outcome, 'definite')
+  assert.equal(extensive.padua.outcome, 'alvcMissing')
+  assert.equal(evaluateFindings({ 'lv-function': ['lv-function'], genetics: ['gene-arvc'] }).etf.outcome, 'etfLgeMissing')
+})
+
+test('ETF does not establish overt disease from electrical and genetic findings alone', () => {
+  const result = evaluateFindings({ depolarization: ['low-voltage-all'], genetics: ['gene-arvc'], arrest: ['arrest-vf-vt'] })
+  assert.equal(result.etf.outcome, 'noAnchor')
+  assert.equal(result.etf.points, null)
+})
+
+test('ETF aneurysm with global RV dysfunction is major, with no additional minor points', () => {
+  const result = evaluateFindings({ 'rv-motion': ['aneurysm'], 'rv-global': ['dysfunction'] })
+  assert.equal(result.etf.points, 2)
+  assert.equal(result.etf.breakdown[0].matches.length, 2)
   assert.equal(result.padua.points, 1)
-  assert.equal(evaluateFindings(answers, { ...values, ef: '۴۵' }).tfc.points, 1)
-  assert.equal(evaluateFindings(answers, { ...values, ef: '40' }).tfc.points, 2)
-  assert.equal(evaluateFindings(answers, { ...values, sex: 'female', edvi: '۹۰٫۰' }).tfc.points, 1)
-  assert.equal(evaluateFindings(answers, { ...values, edvi: '150' }).tfc.points, 0)
-  assert.equal(evaluateFindings({ 'rv-motion': ['none'] }, { ...values, ef: '30' }).tfc.points, 0)
-  assert.equal(parseMeasurement('١١٠٫٥'), 110.5)
-  assert.equal(validMeasurements({ ...values, ef: '101' }), false)
 })
 
-test('aneurysmal RV free wall alone qualifies as Padua minor and dyssynchrony alone does not', () => {
-  const aneurysm = evaluateFindings({ 'rv-motion': ['aneurysm'] }, values)
-  assert.equal(aneurysm.padua.points, 1)
-  assert.equal(aneurysm.tfc.points, 0)
-  const dyssync = evaluateFindings({ 'rv-motion': ['dyssync'], 'rv-global': ['dilated'] }, { ...values, ef: '40' })
-  assert.equal(dyssync.padua.outcome, 'noAnchor')
-  assert.equal(dyssync.tfc.points, 2)
+test('ETF applies the distinct right precordial T-wave rules', () => {
+  const scar = { lge: ['rv-lge'], twi: ['v1-v2'] }
+  const age = ['age14', 'no-j', 'no-rbbb', 'puberty']
+  const result = evaluateFindings({ ...scar, age })
+  assert.equal(result.etf.breakdown[2].points, 0)
+  assert.equal(result.padua.breakdown[2].points, 1)
+  assert.equal(evaluateFindings({ ...scar, age: [...age, 'male'] }).etf.breakdown[2].points, 1)
+  assert.equal(evaluateFindings({ ...scar, twi: ['v1-v3'], age }).etf.breakdown[2].points, 2)
+  assert.equal(evaluateFindings({ ...scar, twi: ['v1-beyond-child'] }).etf.breakdown[2].points, 1)
 })
 
-test('age conditions, epsilon-wave grading and unknown VT axis use their own rules', () => {
-  const answers = {
-    'rv-motion': ['ak-dys-free'], twi: ['v1-v3'], age: ['older14'],
-    depolarization: ['epsilon'], vt: ['vt-unknown-axis'],
-  }
-  const result = evaluateFindings(answers, values)
-  assert.equal(result.tfc.points, 5)
-  assert.equal(result.padua.points, 2)
-  assert.equal(isReviewed(questionsFor(answers).find(item => item.id === 'vt'), answers, values), false)
-  assert.equal(evaluateFindings({ ...answers, age: ['puberty'] }, values).padua.points, 4)
-})
-
-test('Padua establishes ALVC with LV LGE and genotype, TFC scores only qualifying independent findings', () => {
-  const result = evaluateFindings({
-    lge: ['lv-lge'], genetics: ['gene-acm'], biopsy: ['none'],
-  }, values)
-  assert.equal(result.padua.outcome, 'alvcMet')
-  assert.equal(result.padua.points, null)
-  assert.equal(result.tfc.points, 0)
-  const biopsy = evaluateFindings({ biopsy: ['biopsy-minor'], lge: ['rv-lge'] }, values)
-  assert.equal(biopsy.padua.points, 2)
-  assert.equal(biopsy.tfc.points, 1)
-})
-
-test('findings from echo, angiography and MRI in the same category do not add up', () => {
-  const result = evaluateFindings({
-    'rv-motion': ['ak-dys-free'], 'other-imaging': ['echo-minor', 'angio', 'rv-function'],
-    family: ['family-pathology'], 'family-arvc': ['family-pathology'], genetics: ['gene-arvc'],
-  }, { ...values, sex: 'male', edvi: '115', ef: '38' })
-  assert.equal(result.tfc.points, 4)
-  assert.equal(result.padua.points, 4)
-  assert.equal(result.tfc.breakdown[0].matches.length, 3)
+test('ETF counts compatible rhythm findings once and excludes LV-only findings in ARVC', () => {
+  const result = evaluateFindings({ lge: ['rv-lge'], vt: ['vt-superior'], pvc: ['pvc-rv', 'pvc-exercise'], arrest: ['arrest-vf-vt'] })
+  const category = result.etf.breakdown[4]
+  assert.equal(category.points, 2)
+  assert.equal(category.matches.length, 3)
+  assert.equal(category.eligible.length, 2)
 })
