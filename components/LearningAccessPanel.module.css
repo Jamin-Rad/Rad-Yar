@@ -54,7 +54,7 @@
 }
 
 .iconEarly { background: linear-gradient(135deg, #b45309, #f59e0b); }
-.panel h1 { margin: 0; color: var(--text-strong, #0f172a); font: 800 clamp(26px, 5vw, 38px)/1.2 var(--font-display, Georgia, serif); }
+.panel :is(h1,h2) { margin: 0; color: var(--text-strong, #0f172a); font: 800 clamp(26px, 5vw, 38px)/1.2 var(--font-display, Georgia, serif); }
 .panel p { max-width: 48ch; margin: 15px auto 26px; color: var(--text-soft, #475569); font-size: 14px; line-height: 1.8; }
 
 .primaryButton {

@@ -1,6 +1,7 @@
 import { clerkMiddleware } from '@clerk/nextjs/server'
 import { NextResponse } from 'next/server'
 import { familyCookiesAllowAccess } from './lib/familySession'
+import { getLessonPreview } from './lib/lessonPreviews'
 
 const MOBIN_COOKIE = 'mobin_session'
 
@@ -22,6 +23,11 @@ export default clerkMiddleware(async (auth, request) => {
 
   const requestHeaders = new Headers(request.headers)
   requestHeaders.set('x-radyar-pathname', pathname)
+  if (getLessonPreview(pathname)?.gated && !(await auth()).userId) {
+    const previewUrl = request.nextUrl.clone()
+    previewUrl.pathname = '/lesson-preview'
+    return NextResponse.rewrite(previewUrl, { request: { headers: requestHeaders } })
+  }
   return NextResponse.next({ request: { headers: requestHeaders } })
 })
 

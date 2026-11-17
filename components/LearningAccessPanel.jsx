@@ -93,6 +93,7 @@ export default function LearningAccessPanel({
   requestKind = 'welcome',
   requestStatus,
   showContentBehind = false,
+  embedded = false,
 }) {
   const { lang } = useLanguage()
   const t = COPY[lang] || COPY.de
@@ -143,6 +144,7 @@ export default function LearningAccessPanel({
     }
   }
 
+  const Heading = embedded ? 'h2' : 'h1'
   const panel = (
     <section
       className={styles.panel}
@@ -154,7 +156,7 @@ export default function LearningAccessPanel({
       <div className={`${styles.icon} ${kind === 'early_access' ? styles.iconEarly : ''}`} aria-hidden="true">
         {kind === 'sign_in' ? '↗' : kind === 'pro' ? 'P' : '◷'}
       </div>
-      <h1 id="learning-access-title">{title}</h1>
+      <Heading id="learning-access-title">{title}</Heading>
       <p>{text}</p>
 
       {kind === 'sign_in' ? (
@@ -172,6 +174,8 @@ export default function LearningAccessPanel({
       {message ? <div className={state === 'error' ? styles.error : styles.notice} role="status">{message}</div> : null}
     </section>
   )
+
+  if (embedded) return panel
 
   if (showContentBehind) {
     return (

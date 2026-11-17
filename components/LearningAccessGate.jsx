@@ -8,6 +8,8 @@ import {
   hasEarlyAccess,
 } from '@/utils/subscription'
 import LearningAccessPanel from './LearningAccessPanel'
+import LessonPublicPreview from './LessonPublicPreview'
+import { getLessonPreview } from '@/lib/lessonPreviews'
 
 export default async function LearningAccessGate({ children, checkLessonStatus = true, showContentBehind = false }) {
   const requestHeaders = await headers()
@@ -16,42 +18,25 @@ export default async function LearningAccessGate({ children, checkLessonStatus =
 
   if (lessonStatus === 'public') return children
 
-  const user = await currentUser()
-  if (!user) {
-    return (
-      <LearningAccessPanel kind="sign_in" pathname={pathname} showContentBehind={showContentBehind}>
-        {showContentBehind ? children : null}
-      </LearningAccessPanel>
-    )
+  const preview = checkLessonStatus && getLessonPreview(pathname)
+  function locked(props) {
+    const panel = <LearningAccessPanel {...props} pathname={pathname} embedded={!!preview} showContentBehind={showContentBehind}>
+      {showContentBehind ? children : null}
+    </LearningAccessPanel>
+    return preview ? <LessonPublicPreview preview={preview}>{panel}</LessonPublicPreview> : panel
   }
+
+  const user = await currentUser()
+  if (!user) return locked({ kind: 'sign_in' })
 
   const proAccess = getProAccess(user)
   const access = getLearningAccess(user)
   if (!proAccess.active) {
-    return (
-      <LearningAccessPanel
-        kind="pro"
-        pathname={pathname}
-        requestKind={getProRequestKind(user)}
-        requestStatus={access.proRequest?.status || null}
-        showContentBehind={showContentBehind}
-      >
-        {showContentBehind ? children : null}
-      </LearningAccessPanel>
-    )
+    return locked({ kind: 'pro', requestKind: getProRequestKind(user), requestStatus: access.proRequest?.status || null })
   }
 
   if (checkLessonStatus && lessonStatus === 'in_progress' && !hasEarlyAccess(user, pathname)) {
-    return (
-      <LearningAccessPanel
-        kind="early_access"
-        pathname={pathname}
-        requestStatus={access.earlyAccessRequests[pathname]?.status || null}
-        showContentBehind={showContentBehind}
-      >
-        {showContentBehind ? children : null}
-      </LearningAccessPanel>
-    )
+    return locked({ kind: 'early_access', requestStatus: access.earlyAccessRequests[pathname]?.status || null })
   }
 
   return children

@@ -1,3 +1,5 @@
+export { generateLessonMetadata as generateMetadata } from '@/lib/lessonMetadata'
+
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import { LessonInProgressGate } from '@/components/InProgressBanner'

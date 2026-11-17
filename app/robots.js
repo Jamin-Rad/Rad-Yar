@@ -7,5 +7,6 @@ export default function robots() {
       allow: ['/', '/kaiser-score', '/kaiser-score/', '/node-rads', '/node-rads/', '/fleischner', '/fleischner/', '/khk-vortestwahrscheinlichkeit', '/khk-vortestwahrscheinlichkeit/'],
     },
     host: siteUrl,
+    sitemap: new URL('/sitemap.xml', siteUrl).href,
   }
 }

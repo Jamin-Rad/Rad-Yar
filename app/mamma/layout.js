@@ -2,7 +2,9 @@ import Navbar from '@/components/Navbar'
 import { LessonInProgressGate } from '@/components/InProgressBanner'
 import LearningAccessGate from '@/components/LearningAccessGate'
 
-export const metadata = {
+import { generateLessonMetadata } from '@/lib/lessonMetadata'
+
+const metadata = {
   title: 'Mamma - RadYar',
   description: 'Strukturiertes Wissen, Fälle und Prüfungsvorbereitung für die Mammadiagnostik.',
   applicationName: 'Mamma - RadYar',
@@ -27,6 +29,10 @@ export const metadata = {
     type: 'website',
     images: [{ url: '/mamma/app-icon.png', width: 1024, height: 1024, alt: 'Mamma - RadYar' }],
   },
+}
+
+export async function generateMetadata() {
+  return { ...metadata, ...await generateLessonMetadata() }
 }
 
 export default function MammaLayout({ children }) {

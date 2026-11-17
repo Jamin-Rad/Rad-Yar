@@ -4,6 +4,8 @@ import Hero from '@/components/Hero'
 import WichtigeReferenzen from '@/components/WichtigeReferenzen'
 import Footer from '@/components/Footer'
 
+export const metadata = { alternates: { canonical: '/' } }
+
 export default function Home() {
   return (
     <LanguageProvider>

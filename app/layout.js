@@ -67,11 +67,9 @@ export const metadata = {
     title: 'RadYar',
     statusBarStyle: 'default',
   },
-  alternates: { canonical: '/' },
   openGraph: {
     title: 'RadYar | Learn Radiology',
     description: 'Structured knowledge, clinical cases, and exam preparation for radiologists.',
-    url: '/',
     siteName: 'RadYar',
     locale: 'en_US',
     type: 'website',
