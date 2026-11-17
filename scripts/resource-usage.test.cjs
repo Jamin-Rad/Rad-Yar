@@ -185,7 +185,7 @@ test('declining analytics does not start analytics requests', () => {
   const h = analyticsHarness({ consent: false }); h.advance(3600); h.stop(); assert.equal(h.posts.length, 0)
 })
 
-function mobinStudyHarness({ localStorage = storage(), online = true, start = '2026-11-10T22:30:00Z' } = {}) {
+function mobinStudyHarness({ localStorage = storage(), online = true, start = '2026-11-10T22:30:00Z', pathname = '/mobin/mathepruefung' } = {}) {
   const startedAt = Date.parse(start)
   let clock = startedAt
   const callbacks = new Map(), effects = [], posts = []
@@ -201,7 +201,7 @@ function mobinStudyHarness({ localStorage = storage(), online = true, start = '2
   } })
   const tracker = load(read('app/mobin/StudyTimeTracker.jsx'), {
     react: { useEffect: effect => effects.push(effect), useRef: value => ({ current: value }) },
-    'next/navigation': { usePathname: () => '/mobin/mathepruefung' },
+    'next/navigation': { usePathname: () => pathname },
     '@/lib/mobinStudyTime': study,
     '@/utils/studyTimer': load(read('utils/studyTimer.js'), {}, globals),
   }, globals).default
@@ -220,11 +220,11 @@ function mobinStudyHarness({ localStorage = storage(), online = true, start = '2
   }
 }
 
-test('Mobin sends 60 batches for an hour and attributes every second to the correct Berlin day', async () => {
+test('Mobin sends 30 batches for an hour and attributes every second to the correct Berlin day', async () => {
   const h = mobinStudyHarness()
   await h.advance(3600)
   h.stop()
-  assert.equal(h.posts.length, 60)
+  assert.equal(h.posts.length, 30)
   const days = ['2026-11-10', '2026-11-11']
   const summary = h.study.studySummary(h.posts.flatMap(p => p.sessions), days)
   assert.equal(summary[days[0]].total, 1800)
@@ -275,7 +275,7 @@ test('Mobin study API retains newer time after legacy or batched requests arrive
   assert.equal(rows.get(session.id).data.seconds, 90)
 })
 
-test('math clock ticks share a save deadline while answers and navigation flush progress promptly', async () => {
+test('math clock ticks batch for two minutes, answers for 15 seconds, and exit flushes promptly', async () => {
   let time = 0, cursor = 0
   const effects = [], hooks = [], timers = new Map(), writes = []
   const Clock = class extends Date { static now() { return time } }
@@ -314,18 +314,18 @@ test('math clock ticks share a save deadline while answers and navigation flush 
     await settle()
   }
   render(); await settle()
-  for (let seconds = 5; seconds <= 65; seconds += 5) {
+  for (let seconds = 5; seconds <= 125; seconds += 5) {
     time = seconds * 1000
     const { setProgress } = render()
     setProgress({ ...initial, sessions: { round: { ...initial.sessions.round, updatedAt: String(time), studyDays: { today: seconds } } } })
     render(); await due()
   }
-  assert.deepEqual(writes.map(write => write.state.sessions.round.studyDays.today), [65])
-  time = 70000
+  assert.deepEqual(writes.map(write => write.state.sessions.round.studyDays.today), [125])
+  time = 130000
   const { progress, setProgress } = render()
   setProgress({ ...progress, sessions: { round: { ...progress.sessions.round, responses: { answer: '12' } } } })
   render()
-  time += 650; await due()
+  time += 15000; await due()
   assert.equal(writes.length, 2)
   assert.equal(writes[1].state.sessions.round.responses.answer, '12')
   const next = render()
@@ -336,4 +336,23 @@ test('math clock ticks share a save deadline while answers and navigation flush 
   assert.equal(writes.length, 3)
   assert.equal(writes[2].state.sessions.round.studyDays.today, 70)
   assert.equal(writes[2].keepalive, true)
+})
+
+test('English exam time reaches the English section and overall total without double counting repeated uploads', async () => {
+  for (const pathname of ['/mobin/fach/englisch', '/mobin/english/vokabeltest/18-november']) {
+    const h = mobinStudyHarness({ pathname, start: '2026-11-17T15:00:00Z' })
+    await h.advance(247)
+    h.stop()
+    await new Promise(resolve => setImmediate(resolve))
+    const sessions = h.posts.flatMap(p => p.sessions)
+    assert.ok(sessions.length > 1)
+    assert.ok(sessions.every(s => s.section === 'english'))
+    const totals = h.study.studySummary([...sessions, ...sessions], ['2026-11-17'])['2026-11-17']
+    assert.equal(totals.sections.english, 247)
+    assert.equal(totals.total, 247)
+    const combined = h.study.studySummary([...sessions, {id:'study-time:2026-11-17:123e4567-e89b-42d3-a456-426614174000',day:'2026-11-17',section:'math',seconds:90}], ['2026-11-17'])['2026-11-17']
+    assert.equal(combined.total, 337)
+    assert.equal(combined.sections.english, 247)
+    assert.equal(combined.sections.math, 90)
+  }
 })
