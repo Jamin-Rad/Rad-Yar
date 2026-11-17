@@ -138,8 +138,11 @@ export default function InvestmentPositionChart({ trade, openCount, drawings = [
   const atrValues = useMemo(()=>atr(fullHistory),[fullHistory])
   const vwapValues = useMemo(()=>vwap(fullHistory,!daily),[fullHistory,!!daily])
   const visibleCount=range ?? Math.max(24,Math.min(150,Math.floor(width/9)))
-  const historyEnd=Math.max(0,fullHistory.length-offset)
-  const historyStart=Math.max(0,historyEnd-visibleCount)
+  const futureSlots=30
+  const viewportOffset=Math.min(offset,Math.max(0,fullHistory.length-visibleCount))
+  const historyStart=Math.max(0,fullHistory.length-visibleCount-viewportOffset)
+  const viewportSlots=Math.min(visibleCount,fullHistory.length)+futureSlots
+  const historyEnd=Math.min(fullHistory.length,historyStart+viewportSlots)
   const history=fullHistory.slice(historyStart,historyEnd)
   const strategyTrades=strategy
     ? [...strategy.trades,...(strategy.active?[strategy.active]:[])].filter(result=>
@@ -173,7 +176,7 @@ export default function InvestmentPositionChart({ trade, openCount, drawings = [
   const pad = Math.max((high - low) * .13, low * .025)
   const [min, max] = drag?.domain || priceDomain || [Math.max(.01, low - pad), high + pad]
   const y = price => bottom - (price - min) / (max - min) * (bottom - top)
-  const slots=Math.max(0,history.length-1)+30
+  const slots=viewportSlots-1
   const x = i => LEFT + 6 + plotSpan * i / slots
   const anchorX = date => {
     const stamp=Date.parse(date)
@@ -350,7 +353,7 @@ export default function InvestmentPositionChart({ trade, openCount, drawings = [
     if(line){select(line.id);g.action={type:'edit',line,handleIndex,point:pointAt(event),domain:[min,max]};return}
     if(event.button===2||!drawing){
       if(event.pointerType!=='touch'){select(null);setLimitDetail(null)}
-      g.action={type:'pan',x:local.x,offset}
+      g.action={type:'pan',x:local.x,offset:viewportOffset}
       if(event.pointerType==='touch'){
         const index=indexAt(local.x)
         g.timer=setTimeout(()=>{g.action={type:'cursor'};setCursor(index)},430)
@@ -465,7 +468,7 @@ export default function InvestmentPositionChart({ trade, openCount, drawings = [
   const priceTicks=Array.from({length:Math.max(0,Math.floor((max-firstTick)/tickStep)+1)},(_,index)=>firstTick+index*tickStep)
   const axisPrice=new Intl.NumberFormat('en-US',{minimumFractionDigits:2,maximumFractionDigits:Math.min(10,Math.max(2,1-Math.floor(Math.log10(tickStep))))})
   const displayedLevel=displayedPrice??fullHistory.at(-1)?.close
-  const positionMark=(offset===0?displayedPrice:null)??history.at(-1)?.close
+  const positionMark=(historyEnd===fullHistory.length?displayedPrice:null)??history.at(-1)?.close
   const displayedY=inPlot(displayedLevel)?y(displayedLevel):null
   const maxVolume=Math.max(1,...history.map(bar=>bar.volume||0))
   const entryX=entryTime?anchorX(entryTime):null
