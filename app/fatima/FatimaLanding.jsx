@@ -3,6 +3,7 @@ import Link from 'next/link'
 import styles from './page.module.css'
 
 const destinations = [
+  { title: 'همسریابی', text: 'پرونده‌ها، معیارها و مقایسهٔ افراد', href: '/fatima/matchmaking', icon: 'heart', lang: 'fa' },
   { title: 'MHBA', text: 'Dein Studium, in deinem Tempo.', href: '/fatima/mhba', icon: 'book' },
   { title: 'Deutschlernen', text: 'Mit jedem Wort ein Stück weiter.', href: '/fatima/deutsch', icon: 'language' },
   { title: 'Kalender', text: 'Deine Termine und kleinen Pläne.', href: '/fatima/todo', icon: 'calendar' },
@@ -41,11 +42,11 @@ export default function FatimaLanding() {
             </section>
             <nav className={styles.destinations} aria-label="Fatimas Bereiche" lang="de">
               {destinations.map(destination => (
-                <Link className={styles.destination} href={destination.href} key={destination.href} lang="de">
+                <Link className={styles.destination} href={destination.href} key={destination.href} lang={destination.lang || "de"}>
                   <Icon name={destination.icon} className={styles.destinationIcon} />
-                  <span className={styles.destinationText} lang="de">
-                    <span className={styles.destinationTitle} lang="de">{destination.title}</span>
-                    <span className={styles.destinationDescription} lang="de">{destination.text}</span>
+                  <span className={styles.destinationText} lang={destination.lang || "de"} dir={destination.lang === "fa" ? "rtl" : "ltr"}>
+                    <span className={styles.destinationTitle} lang={destination.lang || "de"}>{destination.title}</span>
+                    <span className={styles.destinationDescription} lang={destination.lang || "de"}>{destination.text}</span>
                   </span>
                   <Icon name="arrow" className={styles.arrow} />
                 </Link>
