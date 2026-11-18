@@ -18,22 +18,6 @@ export default function VokabeltestClient({ requestedMode }) {
   const [ready, setReady] = useState(false)
   const [saveStatus, setSaveStatus] = useState('loading')
   const saveVersion = useRef(0)
-  const optionButtons = useRef([])
-
-  useEffect(() => {
-    const chooseWithNumber = event => {
-      if (event.repeat || event.isComposing || event.ctrlKey || event.metaKey || event.altKey || event.shiftKey) return
-      if (event.target instanceof Element && event.target.closest('input, textarea, select, [contenteditable]:not([contenteditable="false"]), dialog[open], [role="dialog"]')) return
-      const digit = '1234'.indexOf(event.key) >= 0 ? '1234'.indexOf(event.key) : '۱۲۳۴'.indexOf(event.key) >= 0 ? '۱۲۳۴'.indexOf(event.key) : '١٢٣٤'.indexOf(event.key)
-      if (digit < 0) return
-      const button = optionButtons.current[digit]
-      if (!button || button.disabled || !button.isConnected) return
-      event.preventDefault()
-      button.click()
-    }
-    window.addEventListener('keydown', chooseWithNumber)
-    return () => window.removeEventListener('keydown', chooseWithNumber)
-  }, [])
 
   function restoreRun(saved, currentMode) {
     const run = saved[currentMode]?.run
@@ -176,7 +160,7 @@ export default function VokabeltestClient({ requestedMode }) {
         <div className={styles.questionType}>{question.group || question.skill}</div>
         <h1 className={styles.questionText}>{question.prompt}</h1>
         {isMcq && <p className={styles.saveNotice}>Mit der Maus oder den Tasten 1–4 antworten.</p>}
-        {isMcq ? <div className={styles.optionGrid}>{question.options.map((option, optionIndex) => <button type="button" key={optionIndex} ref={element => { optionButtons.current[optionIndex] = element }} aria-keyshortcuts={String(optionIndex + 1)} disabled={!!feedback} onClick={() => recordAnswer(optionIndex)} className={`${styles.optionButton} ${feedback && optionIndex === question.correct ? styles.correctOption : ''} ${feedback && optionIndex === feedback.chosen && !feedback.correct ? styles.wrongOption : ''}`}><span>{optionIndex + 1}</span>{option}</button>)}</div>
+        {isMcq ? <div className={styles.optionGrid}>{question.options.map((option, optionIndex) => <button type="button" key={optionIndex} data-mobin-option={optionIndex + 1} aria-keyshortcuts={String(optionIndex + 1)} disabled={!!feedback} onClick={() => recordAnswer(optionIndex)} className={`${styles.optionButton} ${feedback && optionIndex === question.correct ? styles.correctOption : ''} ${feedback && optionIndex === feedback.chosen && !feedback.correct ? styles.wrongOption : ''}`}><span>{optionIndex + 1}</span>{option}</button>)}</div>
           : <form onSubmit={event => { event.preventDefault(); recordAnswer(typedAnswer) }} className={styles.answerForm}><label htmlFor="vocabulary-answer">Deine Antwort auf Englisch</label><div><input id="vocabulary-answer" autoComplete="off" autoCapitalize="off" spellCheck="false" value={typedAnswer} onChange={event => setTypedAnswer(event.target.value)} disabled={!!feedback} placeholder="Schreibe deine Antwort …" /><button className={styles.actionLink} disabled={!typedAnswer.trim() || !!feedback} type="submit">Prüfen</button></div></form>}
         {feedback && <div className={`${styles.feedback} ${feedback.correct ? styles.feedbackCorrect : styles.feedbackWrong}`} role="status" aria-live="polite"><span className={styles.feedbackIcon}>{feedback.correct ? '✓' : '↺'}</span><div><strong>{feedback.correct ? 'Richtig!' : 'So ist es richtig:'}</strong><p>{isMcq ? question.options[question.correct] : question.answer}</p><small>{question.explain}</small></div></div>}
         {feedback && <button type="button" className={styles.nextButton} disabled={saveStatus === 'saving'} onClick={nextQuestion}>{index === questions.length - 1 ? 'Ergebnis ansehen' : 'Nächste Frage'} <span aria-hidden="true">→</span></button>}

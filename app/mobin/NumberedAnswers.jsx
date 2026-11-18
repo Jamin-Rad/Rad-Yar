@@ -1,0 +1,25 @@
+'use client'
+
+import { useEffect } from 'react'
+
+export default function NumberedAnswers() {
+  useEffect(() => {
+    function selectAnswer(event) {
+      if (event.defaultPrevented || event.repeat || event.isComposing || event.ctrlKey || event.metaKey || event.altKey || event.shiftKey) return
+      const target = event.target
+      if (target instanceof Element && target.closest('textarea, select, input:not([type="radio"]):not([type="checkbox"]), [contenteditable]:not([contenteditable="false"])')) return
+      const digits = ['123456789', '۱۲۳۴۵۶۷۸۹', '١٢٣٤٥٦٧٨٩']
+      const index = digits.map(set => set.indexOf(event.key)).find(value => value >= 0)
+      if (index === undefined) return
+      const dialog = document.querySelector('dialog[open], [role="dialog"][aria-modal="true"]')
+      const options = (dialog || document).querySelectorAll(`[data-mobin-option="${index + 1}"]`)
+      const option = Array.from(options).find(el => el.getClientRects().length && !el.matches(':disabled') && el.getAttribute('aria-disabled') !== 'true')
+      if (!option) return
+      event.preventDefault()
+      option.click()
+    }
+    window.addEventListener('keydown', selectAnswer, true)
+    return () => window.removeEventListener('keydown', selectAnswer, true)
+  }, [])
+  return null
+}

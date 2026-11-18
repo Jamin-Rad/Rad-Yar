@@ -963,17 +963,20 @@ function McqMode({ topic, onComplete }) {
       </div>
       <h3 className={styles.mcqQuestion}>{current.question}</h3>
       <div className={styles.answerGrid}>
-        {current.options.map((option) => {
+        {current.options.map((option, optionIndex) => {
           const isAnswer = selected && option === current.answer
           const isWrong = selected === option && option !== current.answer
           return (
             <button
+              data-mobin-option={optionIndex + 1}
+              aria-keyshortcuts={String(optionIndex + 1)}
+              disabled={Boolean(selected)}
               className={`${styles.answerButton} ${isAnswer ? styles.answerCorrect : ''} ${isWrong ? styles.answerWrong : ''}`}
               key={option}
               type="button"
               onClick={() => choose(option)}
             >
-              {option}
+              <b>{optionIndex + 1} · </b>{option}
             </button>
           )
         })}

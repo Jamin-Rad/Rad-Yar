@@ -147,12 +147,12 @@ function Round({ mode, subset, initialDraft, onDraft, onExit, onResult, syncStat
           {question.options ? (
             <fieldset className={styles.options} key={index} disabled={marked}>
               <legend className={styles.srOnly}>Wähle eine Antwort</legend>
-              {question.options.map((option) => (
+              {question.options.map((option, optionIndex) => (
                 <label key={option} className={styles.option} data-selected={answer === option}
                   data-solution={marked && option === question.answer}>
-                  <input type="radio" name="latin-answer" value={option} checked={answer === option}
+                  <input data-mobin-option={optionIndex + 1} aria-keyshortcuts={String(optionIndex + 1)} type="radio" name="latin-answer" value={option} checked={answer === option}
                     onChange={() => updateDraft({ answers: { ...answers, [index]: option } })} />
-                  {option}
+                  <b>{optionIndex + 1} · </b>{option}
                 </label>
               ))}
             </fieldset>

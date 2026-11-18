@@ -136,9 +136,9 @@ function Round({ set, isTest, spelling }) {
       <form onSubmit={submit} className={styles.exercise} autoComplete="off">
         {question.options ? <fieldset className={styles.choices} disabled={checked}>
           <legend>Deine Antwort</legend>
-          {question.options.map(option => <label key={option}>
-            <input type="radio" name="deutsch-answer" checked={displayedValue === option}
-              onChange={() => save({ ...draft, value: option })} />{option}
+          {question.options.map((option, optionIndex) => <label key={option}>
+            <input data-mobin-option={optionIndex + 1} aria-keyshortcuts={String(optionIndex + 1)} type="radio" name="deutsch-answer" checked={displayedValue === option}
+              onChange={() => save({ ...draft, value: option })} /><b>{optionIndex + 1} · </b>{option}
           </label>)}
         </fieldset> : <label>Deine Antwort<input key={index} value={displayedValue} onChange={event => save({ ...draft, value: event.target.value })}
           readOnly={checked} maxLength={160} autoCapitalize="none" autoCorrect="off" spellCheck={false} autoComplete="off"

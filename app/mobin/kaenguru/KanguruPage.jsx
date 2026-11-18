@@ -605,14 +605,15 @@ function QuizView({ session, attempts, onRecord, onToggleReview, onExit }) {
                     type="button"
                     role="radio"
                     aria-checked={isSelected}
-                    aria-label={`Antwort ${option.id}: ${option.text}`}
+                    data-mobin-option={optionIndex + 1}
+                    aria-label={`Antwort ${optionIndex + 1} (${option.id}): ${option.text}`}
                     aria-keyshortcuts={`${option.id} ${optionIndex + 1}`}
                     disabled={checked}
                     className={stateClass}
                     onClick={() => setSelected(option.id)}
                     key={option.id}
                   >
-                    <b>{option.id}</b>
+                    <b>{optionIndex + 1} · {option.id}</b>
                     {option.image ? (
                       <Image className={styles.optionImage} src={option.image} alt={option.text} width={420} height={180} sizes="(max-width: 760px) 72vw, 34vw" draggable={false} unoptimized />
                     ) : <span>{option.text}</span>}

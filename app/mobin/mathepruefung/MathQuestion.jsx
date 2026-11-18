@@ -41,7 +41,7 @@ export function Solution({ question, response }) {
     <ol>{question.steps.map((step, index) => <li key={index}><MathText>{step}</MathText></li>)}</ol>
     {question.type === 'choice' ? <details className={styles.optionReasons}>
       <summary>Alle Antwortmöglichkeiten erklärt</summary>
-      <ul>{question.options.map(option => <li key={option.id}><strong>{option.id} · <MathText>{formatMathAnswer(option.value)}</MathText></strong><span><MathText>{option.explanation}</MathText></span></li>)}</ul>
+      <ul>{question.options.map((option, optionIndex) => <li key={option.id}><strong>{optionIndex + 1} · <MathText>{formatMathAnswer(option.value)}</MathText></strong><span><MathText>{option.explanation}</MathText></span></li>)}</ul>
     </details> : null}
   </div>
 }
@@ -84,12 +84,12 @@ export default function MathQuestion({ question, response, mode, number, total, 
       <form className={styles.answerForm} onSubmit={submit}>
         {question.type === 'choice' ? <fieldset className={styles.optionGroup} disabled={Boolean(response)}>
           <legend>Welche Antwort stimmt?</legend>
-          {question.options.map(option => {
+          {question.options.map((option, optionIndex) => {
             const selected = value === option.id, correctOption = checked && gradeMathResponse(question, option.id).correct
             const color = correctOption ? styles.choiceCorrect : checked && selected ? styles.choiceWrong : selected ? styles.choiceSelected : ''
             return <label className={`${styles.optionLabel} ${color}`} key={option.id}>
-              <input type="radio" name={`answer-${question.id}`} value={option.id} checked={selected} onChange={() => { setValue(option.id); setError('') }} />
-              <b aria-hidden="true">{option.id}</b><span><MathText>{formatMathAnswer(option.value)}</MathText>{question.unit ? ` ${question.unit}` : ''}{checked && (correctOption || selected) ? <small>{correctOption ? 'Richtig' : 'Deine Antwort'}</small> : null}</span>
+              <input data-mobin-option={optionIndex + 1} aria-keyshortcuts={String(optionIndex + 1)} type="radio" name={`answer-${question.id}`} value={option.id} checked={selected} onChange={() => { setValue(option.id); setError('') }} />
+              <b aria-hidden="true">{optionIndex + 1}</b><span><MathText>{formatMathAnswer(option.value)}</MathText>{question.unit ? ` ${question.unit}` : ''}{checked && (correctOption || selected) ? <small>{correctOption ? 'Richtig' : 'Deine Antwort'}</small> : null}</span>
             </label>
           })}
         </fieldset> : <div className={styles.writtenAnswer}>
