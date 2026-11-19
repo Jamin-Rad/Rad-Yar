@@ -75,14 +75,16 @@ function Round({ mode, subset, initialDraft, onDraft, onExit, onResult, syncStat
 
 
   const heading = useRef(null)
+  const answerInput = useRef(null)
   const question = questions[index]
   const answer = answers[index] ?? ''
   const marked = Boolean(checked[index])
   const done = training ? Object.keys(checked).length : Object.values(answers).filter((value) => value.trim()).length
   const total = questions.length
   useEffect(() => {
-    heading.current?.focus({ preventScroll: true })
-  }, [index])
+    if (!marked && answerInput.current) answerInput.current.focus({ preventScroll: true })
+    else heading.current?.focus({ preventScroll: true })
+  }, [index, marked])
 
   function updateDraft(changes) {
     const updated = { ...draft, ...changes }
@@ -159,7 +161,7 @@ function Round({ mode, subset, initialDraft, onDraft, onExit, onResult, syncStat
           ) : (
             <label className={styles.inputLabel}>
               Deine Antwort
-              <input key={index} className={styles.input} value={answer}
+              <input ref={answerInput} key={index} className={styles.input} value={answer}
                 onChange={(event) => updateDraft({ answers: { ...answers, [index]: event.target.value } })}
                 readOnly={marked} maxLength={240} autoComplete="off" autoCapitalize="none" spellCheck={false} />
             </label>

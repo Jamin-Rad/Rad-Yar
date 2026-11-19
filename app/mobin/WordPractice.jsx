@@ -1,10 +1,11 @@
 'use client'
 
 import { expandGermanLetters } from '@/lib/mobinAnswerText'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import styles from './learning.module.css'
 
 export default function WordPractice({ language, starter = [], activity = null }) {
+  const answerInput = useRef(null)
   const storage = 'mobin-word-practice-' + language
   const [cards, setCards] = useState(starter)
   const [round, setRound] = useState([])
@@ -37,6 +38,9 @@ export default function WordPractice({ language, starter = [], activity = null }
     setRound([...available]); setMode(nextMode); setIndex(0); setScore(0); setAnswer(''); setRevealed(false)
   }
   const card = round[index]
+  useEffect(() => {
+    if (mode === 'test' && card && !revealed) answerInput.current?.focus()
+  }, [mode, index, revealed, Boolean(card)])
   const normalize = value => expandGermanLetters(value).trim().toLocaleLowerCase()
   const correct = card && normalize(answer) === normalize(card[1])
   return <section className={styles.panel} aria-label="Freies Training">
@@ -69,7 +73,7 @@ export default function WordPractice({ language, starter = [], activity = null }
     {mode && (card ? <div className={styles.exercise}>
       <p>{index + 1} / {round.length}</p>
       <strong>{card[0]}</strong>
-      {mode === 'test' && <label>Deine Übersetzung<input dir="auto" value={answer} onChange={event => setAnswer(event.target.value)} readOnly={revealed} /></label>}
+      {mode === 'test' && <label>Deine Übersetzung<input ref={answerInput} dir="auto" value={answer} onChange={event => setAnswer(event.target.value)} readOnly={revealed} /></label>}
       {revealed && <p role="status">{mode === 'test' && (correct ? 'Richtig · ' : 'Lösung · ')}<bdi>{card[1]}</bdi></p>}
       {!revealed ? <button data-mobin-enter aria-keyshortcuts="Enter" disabled={mode === 'test' && !answer.trim()} onClick={() => setRevealed(true)}>{mode === 'test' ? 'Antwort prüfen' : 'Karte umdrehen'}</button>
         : <button data-mobin-enter aria-keyshortcuts="Enter" onClick={() => {

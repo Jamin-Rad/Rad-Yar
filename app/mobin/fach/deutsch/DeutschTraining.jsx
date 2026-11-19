@@ -3,7 +3,7 @@
 import { expandGermanLetters } from '@/lib/mobinAnswerText'
 
 import Link from 'next/link'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import styles from './deutsch.module.css'
 import { families, spellingPractice, spellingTest } from './exercises'
 import { stations } from './grammar'
@@ -58,6 +58,7 @@ function Sentence({ text }) {
 }
 
 function Round({ set, isTest, spelling }) {
+  const answerRef = useRef(null)
   const [saved, setSaved] = useState(null)
   const [retry, setRetry] = useState(null)
   const [feedbackIndex, setFeedbackIndex] = useState(null)
@@ -70,6 +71,9 @@ function Round({ set, isTest, spelling }) {
   const strict = spelling || ['nomen-ueben', 'nomen-test'].includes(set.id)
 
   useEffect(() => { setSaved(load(set)) }, [set])
+  useEffect(() => {
+    if (draft && feedbackIndex === null && !question?.options) answerRef.current?.focus()
+  }, [set.id, index, Boolean(draft), feedbackIndex, Boolean(retry)])
 
   function save(next) {
     if (retry) {
@@ -142,7 +146,7 @@ function Round({ set, isTest, spelling }) {
             <input data-mobin-option={optionIndex + 1} aria-keyshortcuts={String(optionIndex + 1)} type="radio" name="deutsch-answer" checked={displayedValue === option}
               onChange={() => save({ ...draft, value: option })} /><b>{optionIndex + 1} · </b>{option}
           </label>)}
-        </fieldset> : <label>Deine Antwort<input key={index} value={displayedValue} onChange={event => save({ ...draft, value: event.target.value })}
+        </fieldset> : <label>Deine Antwort<input ref={answerRef} key={index} value={displayedValue} onChange={event => save({ ...draft, value: event.target.value })}
           readOnly={checked} maxLength={160} autoCapitalize="none" autoCorrect="off" spellCheck={false} autoComplete="off"
           data-gramm="false" data-gramm_editor="false" data-enable-grammarly="false" /></label>}
         <div aria-live="polite">{checked && <div className={styles.feedback} data-correct={right}>

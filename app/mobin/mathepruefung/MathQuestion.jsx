@@ -50,12 +50,15 @@ export default function MathQuestion({ question, response, mode, number, total, 
   const [value, setValue] = useState(response?.value || '')
   const [hint, setHint] = useState(false)
   const [error, setError] = useState('')
-  const headingRef = useRef(null), feedbackRef = useRef(null)
+  const headingRef = useRef(null), feedbackRef = useRef(null), answerRef = useRef(null)
   const result = response ? gradeMathResponse(question, response.value) : null
   const checked = Boolean(response) && mode !== 'exam'
   const topic = MATH_TOPIC_MAP.get(question.topicId)
 
-  useEffect(() => { headingRef.current?.focus() }, [])
+  useEffect(() => {
+    if (answerRef.current && !answerRef.current.disabled) answerRef.current.focus()
+    else headingRef.current?.focus()
+  }, [])
   useEffect(() => { if (checked) feedbackRef.current?.focus() }, [checked])
 
   function submit(event) {
@@ -94,7 +97,7 @@ export default function MathQuestion({ question, response, mode, number, total, 
           })}
         </fieldset> : <div className={styles.writtenAnswer}>
           <label htmlFor="math-answer">Dein Ergebnis</label>
-          <div className={styles.answerInputRow}><input id="math-answer" type="text" inputMode="text" value={value} onChange={event => { setValue(event.target.value); setError('') }} maxLength={64} autoComplete="off" spellCheck={false} disabled={Boolean(response)} aria-describedby="answer-format" aria-invalid={Boolean(error) || undefined} />{question.unit ? <span>{question.unit}</span> : null}</div>
+          <div className={styles.answerInputRow}><input ref={answerRef} id="math-answer" type="text" inputMode="text" value={value} onChange={event => { setValue(event.target.value); setError('') }} maxLength={64} autoComplete="off" spellCheck={false} disabled={Boolean(response)} aria-describedby="answer-format" aria-invalid={Boolean(error) || undefined} />{question.unit ? <span>{question.unit}</span> : null}</div>
           <p id="answer-format">{question.format === 'reducedFraction' ? 'Als vollständig gekürzten Bruch eingeben, z. B. 3/4.' : 'Bruch oder Dezimalzahl eingeben. Komma und Punkt sind beide möglich.'}</p>
         </div>}
         {error ? <p className={styles.inputError} role="alert">{error}</p> : null}
