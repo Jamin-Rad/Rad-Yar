@@ -14,7 +14,7 @@ export const metadata = {
     shortcut: '/mobin/icons/mobin-32.png',
     apple: [{ url: '/mobin/icons/mobin-180.png', sizes: '180x180', type: 'image/png' }],
   },
-  other: { 'mobile-web-app-capable': 'yes' },
+  other: { 'mobile-web-app-capable': 'yes', 'apple-mobile-web-app-capable': 'yes' },
 }
 
 export const viewport = {
