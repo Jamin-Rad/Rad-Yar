@@ -706,3 +706,8 @@
 .criteriaComparison tbody th { white-space:nowrap; }
 .criteriaComparison tbody tr { border-block-start:1px solid var(--line); }
 .criteriaComparison tr > * + * { border-inline-start:1px solid var(--line); }
+.cmrReferences table { min-width: 0; }
+.cmrReferences tbody th { white-space: normal; }
+.cmrReferences :is(th,td) { padding-inline: clamp(4px, 1.4vw, 12px); }
+.paduaGrades dd > .essentialList { margin-block-start: 0; }
+.paduaGrades dd > .essentialList li { margin-block-end: 4px; font-size: inherit; }

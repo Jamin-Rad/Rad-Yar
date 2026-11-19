@@ -22,37 +22,68 @@ function CategoryDisclosure({ number, title, description }) {
 }
 
 const ETF_MRI = {
-  de: [
-    'Regionale Akinesie, Dyskinesie oder Aneurysma mit globaler RV-Dilatation oder verminderter RVEF.',
-    'Regionale Akinesie, Dyskinesie oder Aneurysma der freien RV-Wand.',
-    'Globale systolische LV-Dysfunktion mit oder ohne LV-Dilatation.',
-    'Eindeutiges RV-LGE in mindestens einer Region außerhalb der Trikuspidalklappe.',
-    'Subepikardiales oder mittmyokardiales Streifen-LGE in mindestens 3 Segmenten, ringförmig oder diskontinuierlich.',
-    'Subepikardiales oder mittmyokardiales Streifen-LGE in 1–2 Segmenten der freien Wand oder des Septums.',
-    'Das jeweilige LGE-Muster in zwei orthogonalen Ebenen bestätigen.',
-  ],
-  en: [
-    'Regional akinesia, dyskinesia or aneurysm with global RV dilatation or reduced RVEF.',
-    'Regional akinesia, dyskinesia or aneurysm of the RV free wall.',
-    'Global LV systolic dysfunction with or without LV dilatation.',
-    'Unequivocal RV LGE in at least one region outside the tricuspid valve.',
-    'Subepicardial or midwall stria-pattern LGE in at least 3 segments, ring-like or discontinuous.',
-    'Subepicardial or midwall stria-pattern LGE in 1–2 segments of the free wall or septum.',
-    'Confirm the LGE pattern in two orthogonal views.',
-  ],
-  fa: [
-    'آکینزی، دیسکینزی یا آنوریسم موضعی همراه اتساع کلی بطن راست یا کاهش RVEF.',
-    'آکینزی، دیسکینزی یا آنوریسم موضعی دیوارهٔ آزاد بطن راست.',
-    'اختلال کلی سیستولی بطن چپ با یا بدون اتساع.',
-    'LGE واضح در دست‌کم یک ناحیه از میوکارد بطن راست. افزایش سیگنال محدود به دریچهٔ تریکوسپید در این معیار حساب نمی‌شود.',
-    'LGE نواری زیر اپیکارد یا میان‌میوکارد در دست‌کم ۳ سگمان، حلقوی یا ناپیوسته.',
-    'LGE نواری زیر اپیکارد یا میان‌میوکارد در ۱ تا ۲ سگمان از دیوارهٔ آزاد یا سپتوم.',
-    'یافتهٔ LGE را در دو نمای عمود بر هم تأیید کنید.',
-  ],
+  de: {
+    regional: 'Regionale Akinesie, Dyskinesie oder Aneurysma des RV.',
+    global: 'Zusätzlich globale RV-Dilatation oder verminderte RVEF.',
+    rvMinor: 'Akinesie, Dyskinesie oder Aneurysma der freien RV-Wand reichen auch bei normalem RV-Volumen und normaler RVEF.',
+    lvMinor: 'Globale systolische Dysfunktion des LV, mit oder ohne LV-Dilatation. In Kategorie I gibt es für den LV nur ein Minor-Kriterium.',
+    referenceNote: 'Das enddiastolische Volumen auf die Körperoberfläche (KOF) beziehen. Die EF in Prozent angeben. Referenzwerte passend zu Alter, Geschlecht und Messmethode verwenden.',
+    referenceTitle: 'MRT-Grenzwerte für Dilatation und systolische Dysfunktion',
+    referenceHeaders: ['Messgröße', 'Frauen', 'Männer', 'Sportler'],
+    referenceLimit: 'Die Grenzwerte aus Tabelle 2 des ETF-Berichts sind bei Kindern und älteren Menschen nur eingeschränkt aussagekräftig.',
+    confirmation: 'Den LGE-Befund in zwei zueinander senkrechten Ebenen bestätigen.',
+    rvLge: 'Klar abgrenzbares LGE im Herzmuskel des rechten Ventrikels in mindestens einer Region. Der Befund zählt als Minor.',
+    tricuspid: 'LGE, das auf die Trikuspidalklappe begrenzt ist, zählt nicht.',
+    lvPattern: 'Gesucht ist streifenförmiges, nichtischämisches LGE direkt unter dem Epikard oder in der mittleren Schicht der LV-Wand. Die Zahl der betroffenen Segmente bestimmt die Einstufung.',
+    lvMajor: 'Mindestens 3 Segmente. Die Anreicherung kann ringförmig zusammenhängen oder in getrennten Segmenten liegen.',
+    lvMinorLge: '1–2 Segmente der freien LV-Wand, des Septums oder beider Bereiche.',
+    lvExclusions: 'Punktförmiges oder fleckiges LGE sowie isoliertes LGE an RV-Insertionspunkten zählen nicht.',
+  },
+  en: {
+    regional: 'Regional RV akinesia, dyskinesia or aneurysm.',
+    global: 'In addition, global RV dilatation or reduced RVEF.',
+    rvMinor: 'Akinesia, dyskinesia or aneurysm of the RV free wall qualifies even when RV volume and RVEF are normal.',
+    lvMinor: 'Global LV systolic dysfunction with or without LV dilatation. Category I has only a minor criterion for the LV.',
+    referenceNote: 'Index end-diastolic volume to body surface area (BSA). Report EF as a percentage. Use reference ranges appropriate for age, sex and measurement technique.',
+    referenceTitle: 'MRI thresholds for dilatation and systolic dysfunction',
+    referenceHeaders: ['Measure', 'Women', 'Men', 'Athletes'],
+    referenceLimit: 'The thresholds in Table 2 of the ETF report have limited accuracy in children and older adults.',
+    confirmation: 'Confirm the LGE finding in two perpendicular planes.',
+    rvLge: 'Clearly identifiable LGE in the right ventricular myocardium in at least one region counts as minor.',
+    tricuspid: 'LGE confined to the tricuspid valve does not count.',
+    lvPattern: 'Look for non-ischaemic, streak-like LGE in the outer or middle layer of the LV wall. The number of involved segments determines the grade.',
+    lvMajor: 'At least 3 segments. Enhancement may form a ring or involve separate segments.',
+    lvMinorLge: '1–2 segments of the LV free wall, septum or both.',
+    lvExclusions: 'Focal or patchy LGE and isolated RV insertion-point LGE are excluded.',
+  },
+  fa: {
+    regional: 'آکینزی، دیسکینزی یا آنوریسم موضعی بطن راست.',
+    global: 'همراه با اتساع کلی بطن راست یا کاهش کسر جهشی آن (RVEF).',
+    rvMinor: 'آکینزی، دیسکینزی یا آنوریسم موضعی دیوارهٔ آزاد بطن راست، حتی وقتی حجم بطن راست و RVEF طبیعی‌اند.',
+    lvMinor: 'اختلال کلی عملکرد سیستولی بطن چپ، با یا بدون اتساع. در دستهٔ I، بطن چپ فقط معیار فرعی دارد.',
+    referenceNote: 'حجم پایان دیاستول را بر سطح بدن (BSA) تقسیم کنید. کسر جهشی (EF) به درصد بیان می‌شود. برای تفسیر، از مقادیر مرجع متناسب با سن، جنس و روش اندازه‌گیری استفاده کنید.',
+    referenceTitle: 'آستانه‌های MRI برای اتساع و اختلال عملکرد سیستولی',
+    referenceHeaders: ['شاخص', 'زنان', 'مردان', 'ورزشکاران'],
+    referenceLimit: 'آستانه‌های جدول ۲ گزارش ETF در کودکان و سالمندان دقت محدودتری دارند.',
+    confirmation: 'یافتهٔ LGE را در دو صفحهٔ تصویربرداری عمود بر هم تأیید کنید.',
+    rvLge: 'اگر افزایش سیگنال تأخیری پس از تزریق گادولینیوم (LGE) به‌وضوح در دست‌کم یک ناحیه از عضلهٔ بطن راست دیده شود، معیار فرعی است.',
+    tricuspid: 'افزایش سیگنال محدود به دریچهٔ تریکوسپید در این معیار حساب نمی‌شود.',
+    lvPattern: 'به دنبال رگه‌های LGE با الگوی غیرایسکمیک در لایهٔ بیرونی دیواره، زیر اپیکارد، یا در ضخامت میانی عضلهٔ بطن چپ باشید. تعداد سگمان‌های درگیر تعیین می‌کند یافته اصلی است یا فرعی.',
+    lvMajor: 'درگیری دست‌کم ۳ سگمان. الگو می‌تواند حلقوی یا ناپیوسته باشد.',
+    lvMinorLge: 'درگیری ۱ تا ۲ سگمان در دیوارهٔ آزاد بطن چپ، سپتوم یا هر دو.',
+    lvExclusions: 'LGE کانونی یا لکه‌ای و LGE محدود به محل اتصال بطن راست به سپتوم در این معیار حساب نمی‌شوند.',
+  },
 }
 
+const cmrThresholds = [
+  ['RV EDV / BSA (mL/m²)', '>112', '>121', '>130'],
+  ['RVEF (%)', '<51', '<52', '<52'],
+  ['LV EDV / BSA (mL/m²)', '>96', '>105', '>122'],
+  ['LVEF (%)', '<57', '<57', '<58'],
+]
+
 function EtfExplanation({ lang }) {
-  const [rvMajor, rvMinor, lvMinor, rvLge, lvLgeMajor, lvLgeMinor, confirmation] = ETF_MRI[lang] || ETF_MRI.de
+  const copy = ETF_MRI[lang] || ETF_MRI.de
 
   return localizeArvcTree(<div className={styles.paduaMri}>
     <section aria-labelledby="etf-cine">
@@ -61,32 +92,49 @@ function EtfExplanation({ lang }) {
         <div>
           <h5>Rechter Ventrikel (RV)</h5>
           <dl className={styles.paduaGrades}>
-            <div><dt>Major</dt><dd>{rvMajor}</dd></div>
-            <div><dt>Minor</dt><dd>{rvMinor}</dd></div>
+            <div><dt>Major</dt><dd><ol className={styles.essentialList}><li>{copy.regional}</li><li>{copy.global}</li></ol></dd></div>
+            <div><dt>Minor</dt><dd>{copy.rvMinor}</dd></div>
           </dl>
         </div>
         <div>
           <h5>Linker Ventrikel (LV)</h5>
-          <dl className={styles.paduaGrades}><div><dt>Minor</dt><dd>{lvMinor}</dd></div></dl>
+          <dl className={styles.paduaGrades}><div><dt>Minor</dt><dd>{copy.lvMinor}</dd></div></dl>
         </div>
       </div>
-      <p className={styles.criteriaNote}>Volumen und EF anhand geeigneter Referenzwerte für die Methode, das Alter und das Geschlecht beurteilen. Beim Volumen auch die Körperoberfläche berücksichtigen.</p>
+      <p className={styles.criteriaNote}>{copy.referenceNote}</p>
+      <details className={styles.criteriaDisclosure}>
+        <summary><strong>{copy.referenceTitle}</strong><span className={styles.criteriaToggle} aria-hidden="true"/></summary>
+        <div className={styles.criteriaContent}>
+          <div className={`${styles.criteriaComparison} ${styles.cmrReferences}`} tabIndex={0} role="region" aria-label={copy.referenceTitle}>
+            <table>
+              <thead><tr>{copy.referenceHeaders.map(header => <th key={header} scope="col">{header}</th>)}</tr></thead>
+              <tbody>{cmrThresholds.map(([measure, ...values]) => <tr key={measure}>
+                <th scope="row"><bdi dir="ltr">{measure}</bdi></th>
+                {values.map((value, index) => <td key={copy.referenceHeaders[index + 1]}><bdi dir="ltr">{value}</bdi></td>)}
+              </tr>)}</tbody>
+            </table>
+          </div>
+          <p className={styles.criteriaNote}>{copy.referenceLimit}</p>
+        </div>
+      </details>
     </section>
     <section aria-labelledby="etf-lge">
       <h4 id="etf-lge" className={styles.mrtTopic}>LGE · Myokardgewebe (II)</h4>
-      <p>{confirmation}</p>
+      <p>{copy.confirmation}</p>
       <div className={styles.paduaChambers}>
         <div>
           <h5>Rechter Ventrikel (RV)</h5>
-          <dl className={styles.paduaGrades}><div><dt>Minor</dt><dd>{rvLge}</dd></div></dl>
+          <dl className={styles.paduaGrades}><div><dt>Minor</dt><dd>{copy.rvLge}</dd></div></dl>
+          <p className={styles.criteriaNote}>{copy.tricuspid}</p>
         </div>
         <div>
           <h5>Linker Ventrikel (LV)</h5>
+          <p>{copy.lvPattern}</p>
           <dl className={styles.paduaGrades}>
-            <div><dt>Major</dt><dd>{lvLgeMajor}</dd></div>
-            <div><dt>Minor</dt><dd>{lvLgeMinor}</dd></div>
+            <div><dt>Major</dt><dd>{copy.lvMajor}</dd></div>
+            <div><dt>Minor</dt><dd>{copy.lvMinorLge}</dd></div>
           </dl>
-          <p className={styles.criteriaNote}>Isoliertes LGE an RV-Insertionspunkten bleibt unberücksichtigt.</p>
+          <p className={styles.criteriaNote}>{copy.lvExclusions}</p>
         </div>
       </div>
     </section>
