@@ -300,7 +300,7 @@ export default function InvestmentPositionChart({ trade, openCount, drawings = [
       setPointer(null)
       return
     }
-    setPointer({index:historyStart+indexAt(px), price:py == null ? null : priceAt(py)})
+    setPointer({index:historyStart+indexAt(px), y:py})
   }
   function pointAt(event) {
     const location=coordinates(event)
@@ -355,7 +355,7 @@ export default function InvestmentPositionChart({ trade, openCount, drawings = [
         setRange(count)
         setOffset(nextOffset)
         const next = chartViewport(fullHistory.length,count,nextOffset)
-        if (history.length) setPointer({index:next.start+Math.round(fraction*(next.slots-1)),price:priceAt(local.y)})
+        if (history.length) setPointer({index:next.start+Math.round(fraction*(next.slots-1)), y:local.y >= top && local.y <= bottom ? local.y : null})
       } else {
         const current=frames.indexOf(interval)
         const next=frames[Math.max(0,Math.min(frames.length-1,current+shift))]
@@ -722,7 +722,7 @@ export default function InvestmentPositionChart({ trade, openCount, drawings = [
               {drawing==='arrow'&&draft.map((point,index)=><circle key={index} cx={anchorX(point.date)} cy={y(point.price)} r="3" fill="#b3d8ff"/>)}</>}
             {cursor!=null&&<g pointerEvents="none">
               {timeGuide(top,bottom)}
-              {pointer.price!=null&&<line x1={LEFT} x2={plotRight} y1={y(pointer.price)} y2={y(pointer.price)} stroke="#afbece" strokeDasharray="3 4"/>}
+              {pointer.y!=null&&<line x1={LEFT} x2={plotRight} y1={pointer.y} y2={pointer.y} stroke="#afbece" strokeDasharray="3 4"/>}
             </g>}
           </g>
           {displayedY!=null&&!axisPositions.some(position=>Math.abs(position-displayedY)<18)&&<g pointerEvents="none"><rect x={plotRight+3} y={displayedY-9} width={AXIS-7} height="18" rx="4" fill="#29454d"/><text x={width-8} y={displayedY+4} textAnchor="end">{axisPrice.format(displayedLevel)}</text></g>}
@@ -737,9 +737,9 @@ export default function InvestmentPositionChart({ trade, openCount, drawings = [
           {cursor!=null&&<g pointerEvents="none">
             <rect x={labelX} y={bottom+1} width={timeLabelWidth} height="22" rx="4" fill="#33495e"/>
             <text x={labelX+timeLabelWidth/2} y={bottom+16} textAnchor="middle">{cursor>last?'≈ ':''}{berlinTime(dateAt(cursor))}</text>
-            {pointer.price!=null&&<g data-cursor-price={pointer.price}>
-              <rect x={plotRight} y={y(pointer.price)-10} width={AXIS} height="20" rx="3" fill="#33495e"/>
-              <text x={width-8} y={y(pointer.price)+4} textAnchor="end">{axisPrice.format(pointer.price)}</text>
+            {pointer.y!=null&&<g data-cursor-price={priceAt(pointer.y)}>
+              <rect x={plotRight} y={pointer.y-10} width={AXIS} height="20" rx="3" fill="#33495e"/>
+              <text x={width-8} y={pointer.y+4} textAnchor="end">{axisPrice.format(priceAt(pointer.y))}</text>
             </g>}
           </g>}
         </svg>
