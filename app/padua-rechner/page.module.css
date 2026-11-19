@@ -205,6 +205,36 @@
   .navigation li:not(:last-child)::before,.navigation li:not(:last-child)::after { inset-inline-start:13px; width:4px; }
 }
 @media (max-width:699px) {
-  .navigation li span { position:absolute; width:1px; height:1px; overflow:hidden; clip-path:inset(50%); }
-  .navigation ol { justify-self:center; }
+  .page .shell { grid-template-columns:minmax(0,1fr); }
+  .navigation { display:none; }
 }
+
+.page .options {
+  display:grid;
+  grid-template-columns:minmax(0,1fr);
+  gap:7px;
+}
+.page .options button,
+.page[dir='rtl'] .options button {
+  display:flex;
+  flex-direction:row;
+  align-items:center;
+  justify-content:flex-start;
+  text-align:start;
+  min-block-size:54px;
+  padding:10px 14px;
+  gap:12px;
+  border-radius:10px;
+}
+.page .options button > i {
+  position:static;
+  flex:0 0 20px;
+  inline-size:20px;
+  block-size:20px;
+  border-radius:5px;
+}
+.options button > span:last-child { inline-size:auto; min-inline-size:0; }
+.page .options small { margin-block-start:2px; }
+.alternatives { border-block-start:1px solid var(--line); padding-block-start:10px; }
+.alternatives button { min-height:40px; color:var(--ink); background:transparent; }
+.alternatives button:last-child { color:var(--muted); border-color:transparent; text-decoration:underline; text-underline-offset:3px; }

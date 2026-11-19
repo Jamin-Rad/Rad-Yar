@@ -20,14 +20,14 @@ const COPY = {
   language: L('Sprache', 'Language', 'زبان'),
   categories: L('Kategorien', 'Categories', 'دسته‌ها'),
   next: L('Weiter', 'Next', 'بعدی'),
-  negative: L('Keiner dieser Befunde', 'None of these findings', 'هیچ‌کدام از این یافته‌ها'),
-  skip: L('Nicht beurteilbar', 'Not assessable', 'قابل ارزیابی نیست'),
+  negative: L('Geprüft · kein Treffer', 'Assessed · none apply', 'بررسی شد؛ هیچ‌کدام وجود ندارد'),
+  skip: L('Angabe fehlt · überspringen', 'Insufficient information · skip', 'اطلاعات کافی نیست؛ عبور'),
   back: L('Zurück', 'Back', 'بازگشت'),
   result: L('Auswertung', 'Assessment', 'نتیجه'),
   provisional: L('Vorläufige Einordnung', 'Provisional assessment', 'نتیجهٔ موقت'),
   reset: L('Neu beginnen', 'Start again', 'شروع دوباره'),
-  gradeMajor: L('Major', 'Major', 'اصلی'),
-  gradeMinor: L('Minor', 'Minor', 'فرعی'),
+  gradeMajor: L('Major', 'Major', 'ماژور'),
+  gradeMinor: L('Minor', 'Minor', 'مینور'),
   points: L('Punkte', 'points', 'امتیاز'),
   point: L('Punkt', 'point', 'امتیاز'),
   right: L('Rechtsdominante ACM (ARVC)', 'Right-dominant ACM (ARVC)', 'ACM راست‌غالب (ARVC)'),
@@ -134,12 +134,14 @@ export default function PaduaCalculator() {
   }
 
   function choose(item, id) {
+    const advance = item.single || item.options.length === 1 || id === 'none' || id === 'unknown'
     setAnswers(previous => ({
       ...previous,
-      [item.id]: selectFinding(item, previous[item.id] || [], id),
+      [item.id]: advance ? [id] : selectFinding(item, previous[item.id] || [], id),
       ...(item.id === 'rv-motion' ? { 'rv-global': [] } : {}),
       ...(item.id === 'twi' ? { age: [] } : {}),
     }))
+    if (advance) goTo(step + 1)
   }
 
   function renderChoices(item) {
@@ -205,7 +207,7 @@ export default function PaduaCalculator() {
         </div>
         <section ref={panel} className={`${kaiser.question} ${styles.panel}`} aria-labelledby="padua-step" tabIndex={-1}>
           {isResult ? <Result assessment={assessment} provisional={provisional} t={t} label={label}/> : <>
-            <header className={styles.prompt} key={current.id}>
+            <header className={styles.prompt}>
               <p className={styles.progress}><bdi>{step + 1}/{steps.length}</bdi> · {current.group === 'cine' ? 'Cine-MRT' : label(GROUPS[current.group])}</p>
               <h2 id="padua-step">{label(current.title)}</h2>
             </header>
@@ -215,9 +217,9 @@ export default function PaduaCalculator() {
         </section>
         <footer className={`${kaiser.actions} ${styles.actions}`}>
           <button type="button" className={kaiser.backButton} onClick={() => goTo(step - 1)} disabled={step === 0}><Icon name="arrow" className={styles.backArrow}/>{t('back')}</button>
-          <button type="button" className={kaiser.nextButton} disabled={!canAdvance} onClick={isResult ? reset : () => goTo(step + 1)}>
+          {(isResult || (!current.single && current.options.length > 1) || canAdvance) && <button type="button" className={kaiser.nextButton} disabled={!canAdvance} onClick={isResult ? reset : () => goTo(step + 1)}>
             {isResult ? t('reset') : step === steps.length - 1 ? t('result') : t('next')}<Icon name={isResult ? 'reset' : 'arrow'}/>
-          </button>
+          </button>}
         </footer>
       </section>
     </div>
