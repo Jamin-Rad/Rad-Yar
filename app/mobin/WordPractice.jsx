@@ -1,4 +1,6 @@
 'use client'
+
+import { expandGermanLetters } from '@/lib/mobinAnswerText'
 import { useEffect, useState } from 'react'
 import styles from './learning.module.css'
 
@@ -35,7 +37,7 @@ export default function WordPractice({ language, starter = [], activity = null }
     setRound([...available]); setMode(nextMode); setIndex(0); setScore(0); setAnswer(''); setRevealed(false)
   }
   const card = round[index]
-  const normalize = value => value.trim().normalize('NFC').toLocaleLowerCase()
+  const normalize = value => expandGermanLetters(value).trim().toLocaleLowerCase()
   const correct = card && normalize(answer) === normalize(card[1])
   return <section className={styles.panel} aria-label="Freies Training">
     <h2>{activity === 'cards' ? 'Karteikarten' : 'Freies Training'}</h2>
@@ -69,8 +71,8 @@ export default function WordPractice({ language, starter = [], activity = null }
       <strong>{card[0]}</strong>
       {mode === 'test' && <label>Deine Übersetzung<input dir="auto" value={answer} onChange={event => setAnswer(event.target.value)} readOnly={revealed} /></label>}
       {revealed && <p role="status">{mode === 'test' && (correct ? 'Richtig · ' : 'Lösung · ')}<bdi>{card[1]}</bdi></p>}
-      {!revealed ? <button disabled={mode === 'test' && !answer.trim()} onClick={() => setRevealed(true)}>{mode === 'test' ? 'Antwort prüfen' : 'Karte umdrehen'}</button>
-        : <button onClick={() => {
+      {!revealed ? <button data-mobin-enter aria-keyshortcuts="Enter" disabled={mode === 'test' && !answer.trim()} onClick={() => setRevealed(true)}>{mode === 'test' ? 'Antwort prüfen' : 'Karte umdrehen'}</button>
+        : <button data-mobin-enter aria-keyshortcuts="Enter" onClick={() => {
           if (mode === 'test') {
             const nextScore = score + Number(correct)
             setScore(nextScore)

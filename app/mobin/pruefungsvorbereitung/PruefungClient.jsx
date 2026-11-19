@@ -897,7 +897,7 @@ function LearnMode({ topic, progress, onDone }) {
           </article>
         ))}
       </div>
-      <button className={styles.primaryAction} type="button" onClick={onDone}>
+      <button data-mobin-enter aria-keyshortcuts="Enter" className={styles.primaryAction} type="button" onClick={onDone}>
         {progress.learnDone ? 'Lernbereich wiederholt' : 'Lernbereich gelernt'}
       </button>
     </div>
@@ -985,7 +985,7 @@ function McqMode({ topic, onComplete }) {
         <div className={styles.feedbackBox}>
           <strong>{wasCorrect ? 'Richtig.' : 'Noch einmal merken.'}</strong>
           <span>{current.help}</span>
-          <button className={styles.primaryAction} type="button" onClick={next}>
+          <button data-mobin-enter aria-keyshortcuts="Enter" className={styles.primaryAction} type="button" onClick={next}>
             {index + 1 >= topic.mcqs.length ? 'Ergebnis speichern' : 'Nächste Frage'}
           </button>
         </div>

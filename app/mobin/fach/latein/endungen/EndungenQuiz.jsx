@@ -167,7 +167,7 @@ function Round({ mode, subset, initialDraft, onDraft, onExit, onResult, syncStat
           <div aria-live="polite">{marked && <AnswerFeedback question={question} answer={answer} />}</div>
           <div className={styles.controls}>
             {index > 0 && <button className={styles.secondary} type="button" onClick={() => setIndex(index - 1)}>← Zurück</button>}
-            {(training || index < total - 1 || done < total) && <button className={styles.primary} disabled={!answer.trim()}>
+            {(training || index < total - 1 || done < total) && <button data-mobin-enter aria-keyshortcuts="Enter" className={styles.primary} disabled={!answer.trim()}>
               {training && !marked ? 'Antwort prüfen' : index < total - 1 ? 'Weiter →'
                 : done < total ? 'Zur offenen Aufgabe →' : 'Auswertung anzeigen'}
             </button>}
@@ -184,7 +184,7 @@ function Round({ mode, subset, initialDraft, onDraft, onExit, onResult, syncStat
                 onClick={() => setIndex(number)}>{number + 1}</button>
             ))}
           </nav>
-          <button type="button" className={styles.secondary} disabled={done === 0} onClick={submitTest}>
+          <button data-mobin-enter={done === total ? true : undefined} aria-keyshortcuts={done === total ? "Enter" : undefined} type="button" className={styles.secondary} disabled={done === 0} onClick={submitTest}>
             {done < total ? 'Vorzeitig abgeben' : 'Test abgeben'}
           </button>
         </>}

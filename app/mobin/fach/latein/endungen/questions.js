@@ -1,3 +1,5 @@
+import { expandGermanLetters } from '@/lib/mobinAnswerText'
+
 const present = 'Personalendungen'
 const esse = 'esse'
 const cases = 'Nominativ & Akkusativ'
@@ -95,7 +97,7 @@ export const rounds = {
 }
 
 function normalize(answer) {
-  return answer.toLowerCase().normalize('NFD').replace(/\p{M}/gu, '')
+  return expandGermanLetters(answer).toLowerCase().normalize('NFD').replace(/\p{M}/gu, '')
     .trim().replace(/^[-–−]/, '').replace(/[.!?]+$/, '').replace(/\s+/g, ' ')
 }
 

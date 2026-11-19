@@ -98,13 +98,13 @@ export default function MathQuestion({ question, response, mode, number, total, 
           <p id="answer-format">{question.format === 'reducedFraction' ? 'Als vollständig gekürzten Bruch eingeben, z. B. 3/4.' : 'Bruch oder Dezimalzahl eingeben. Komma und Punkt sind beide möglich.'}</p>
         </div>}
         {error ? <p className={styles.inputError} role="alert">{error}</p> : null}
-        {!response ? <button className={journey.checkButton} type="submit" disabled={!value.trim()}>{mode === 'exam' ? number === total ? 'Prüfung abgeben' : 'Antwort speichern & weiter' : 'Antwort prüfen'}</button> : mode === 'exam' ? <button className={journey.checkButton} type="button" onClick={onNext}>{number === total ? 'Prüfung abgeben' : 'Weiter zur nächsten Aufgabe'}</button> : null}
+        {!response ? <button data-mobin-enter aria-keyshortcuts="Enter" className={journey.checkButton} type="submit" disabled={!value.trim()}>{mode === 'exam' ? number === total ? 'Prüfung abgeben' : 'Antwort speichern & weiter' : 'Antwort prüfen'}</button> : mode === 'exam' ? <button data-mobin-enter aria-keyshortcuts="Enter" className={journey.checkButton} type="button" onClick={onNext}>{number === total ? 'Prüfung abgeben' : 'Weiter zur nächsten Aufgabe'}</button> : null}
       </form>
     </div>
     {checked ? <section ref={feedbackRef} tabIndex={-1} className={`${styles.feedback} ${result.correct ? styles.feedbackCorrect : styles.feedbackWrong}`} aria-labelledby="feedback-title">
       <header><div><span className={styles.feedbackIcon} aria-hidden="true">{result.correct ? '✓' : '↻'}</span><h2 id="feedback-title">{result.correct ? 'Richtig gelöst!' : 'Noch nicht richtig – schau dir den Weg an.'}</h2></div><p>Richtiges Ergebnis: <strong><MathText>{formatMathAnswer(question.answer)}</MathText>{question.unit ? ` ${question.unit}` : ''}</strong></p></header>
       <Solution question={question} response={response} />
-      <div className={styles.feedbackActions}><button className={journey.nextButton} type="button" onClick={onNext}>{number === total ? 'Ergebnis anzeigen' : 'Nächste Aufgabe'}<ArrowIcon /></button>{result.correct ? <button className={styles.bookmarkButton} type="button" aria-pressed={marked} onClick={onBookmark}>{marked ? 'Gemerkt – aus Merkliste entfernen' : 'Trotzdem für später merken'}</button> : <p>Zum Wiederholen gespeichert.</p>}</div>
+      <div className={styles.feedbackActions}><button data-mobin-enter aria-keyshortcuts="Enter" className={journey.nextButton} type="button" onClick={onNext}>{number === total ? 'Ergebnis anzeigen' : 'Nächste Aufgabe'}<ArrowIcon /></button>{result.correct ? <button className={styles.bookmarkButton} type="button" aria-pressed={marked} onClick={onBookmark}>{marked ? 'Gemerkt – aus Merkliste entfernen' : 'Trotzdem für später merken'}</button> : <p>Zum Wiederholen gespeichert.</p>}</div>
     </section> : null}
   </article>
 }

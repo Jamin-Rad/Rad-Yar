@@ -136,9 +136,9 @@ export default function NovemberClient() {
             <label htmlFor="november-answer">Deine Antwort</label>
             <input ref={input} id="november-answer" type="text" autoComplete="off" autoCorrect="off" autoCapitalize="none" spellCheck={false} maxLength={500} disabled={Boolean(feedback)} value={feedback?.chosen ?? run.draft ?? ''} onChange={event => persist(mode.id, { ...entry, run: { ...run, draft: event.target.value } })} />
             <p className={styles.hint}>Ohne Autokorrektur oder Rechtschreibhilfe. Satzzeichen am Satzende sind bei ganzen Sätzen optional.</p>
-            {!feedback && <button className={styles.primary} disabled={!run.draft?.trim()}>{mode.kind === 'test' && !run.reviewOnly ? 'Antwort speichern →' : 'Antwort prüfen →'}</button>}
+            {!feedback && <button data-mobin-enter aria-keyshortcuts="Enter" className={styles.primary} disabled={!run.draft?.trim()}>{mode.kind === 'test' && !run.reviewOnly ? 'Antwort speichern →' : 'Antwort prüfen →'}</button>}
           </form>}
-          {feedback && <div className={feedback.correct ? styles.correct : styles.incorrect} role="status"><strong>{feedback.correct ? 'Richtig!' : 'Noch nicht richtig.'}</strong><p>{question.explain}</p><button className={styles.primary} onClick={() => persist(mode.id, { ...entry, run: { ...run, index: index + 1, draft: '' } })}>Nächste Frage →</button></div>}
+          {feedback && <div className={feedback.correct ? styles.correct : styles.incorrect} role="status"><strong>{feedback.correct ? 'Richtig!' : 'Noch nicht richtig.'}</strong><p>{question.explain}</p><button data-mobin-enter aria-keyshortcuts="Enter" className={styles.primary} onClick={() => persist(mode.id, { ...entry, run: { ...run, index: index + 1, draft: '' } })}>Nächste Frage →</button></div>}
         </div>
       </section>}
       {mode && finished && <section className={styles.paper}>

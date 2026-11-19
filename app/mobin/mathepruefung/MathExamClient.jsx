@@ -155,7 +155,7 @@ export default function MathExamClient() {
           </>}
           {!menuIds.length && <p className={styles.setupEmpty} role="status">{menu === 'review' ? 'Keine Fehler in dieser Auswahl. Wähle eine andere Sammlung oder übe neue Aufgaben.' : 'Keine passenden Aufgaben. Ändere die Sammlung, das Thema oder die Schwierigkeit.'}</p>}
         </div>
-        <footer className={styles.setupFooter}><p aria-live="polite"><strong>{menuIds.length} Aufgaben</strong><span>{menu === 'exam' ? 'Lösungen nach der Abgabe' : menu === 'review' ? 'Fehler gezielt verstehen' : 'Mit Tipps und Lösungswegen'}</span></p><button className={styles.primaryButton} type="button" disabled={!ready || !menuIds.length} onClick={() => start(menu, menuIds)}>{menu === 'exam' ? 'Prüfung starten' : menu === 'review' ? 'Fehler üben' : 'Üben starten'}<ArrowIcon /></button></footer>
+        <footer className={styles.setupFooter}><p aria-live="polite"><strong>{menuIds.length} Aufgaben</strong><span>{menu === 'exam' ? 'Lösungen nach der Abgabe' : menu === 'review' ? 'Fehler gezielt verstehen' : 'Mit Tipps und Lösungswegen'}</span></p><button data-mobin-enter aria-keyshortcuts="Enter" className={styles.primaryButton} type="button" disabled={!ready || !menuIds.length} onClick={() => start(menu, menuIds)}>{menu === 'exam' ? 'Prüfung starten' : menu === 'review' ? 'Fehler üben' : 'Üben starten'}<ArrowIcon /></button></footer>
       </div>
     </dialog>
 

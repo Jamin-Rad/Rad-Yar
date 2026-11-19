@@ -1,5 +1,7 @@
 'use client'
 
+import { expandGermanLetters } from '@/lib/mobinAnswerText'
+
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import styles from './deutsch.module.css'
@@ -26,7 +28,7 @@ function load(set) {
 }
 
 function normalize(value, strict) {
-  const result = value.normalize('NFC').trim().replace(/\s+/g, ' ')
+  const result = expandGermanLetters(value).trim().replace(/\s+/g, ' ')
   return strict ? result : result.toLocaleLowerCase('de-DE')
 }
 
@@ -147,7 +149,7 @@ function Round({ set, isTest, spelling }) {
           <strong>{right ? 'Richtig!' : 'Richtig wäre: ' + question.answer}</strong>
           <p>{question.explanation}</p>
         </div>}</div>
-        <button className={styles.primary} disabled={!displayedValue.trim()}>
+        <button data-mobin-enter aria-keyshortcuts="Enter" className={styles.primary} disabled={!displayedValue.trim()}>
           {testing ? (index + 1 === questions.length ? 'Test abgeben' : 'Weiter')
             : !checked ? 'Antwort prüfen' : index + 1 === questions.length ? 'Auswertung anzeigen' : 'Weiter'}
         </button>
