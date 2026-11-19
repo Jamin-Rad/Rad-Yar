@@ -80,7 +80,7 @@ function Differentials() {
       ]],
       ['Druck- oder Volumenbelastung des RV', [
         'Pulmonale Hypertonie kann den rechten Ventrikel druckbelasten. Ein Links-rechts-Shunt kann ihn volumenbelasten.',
-        'Prüfe bei einer RV-Dilatation, ob eine solche Belastung die Vergrößerung erklärt.',
+        'Bei einer RV-Dilatation gezielt nach Ursachen für eine Druck- oder Volumenbelastung suchen.',
       ]],
       ['Artefakte oder frühere Ablation', [
         'Bewegung aus der Schichtebene, Arrhythmien und Partialvolumeneffekte können einen auffälligen Befund vortäuschen.',
@@ -90,8 +90,8 @@ function Differentials() {
     <Note title="Cave · Drei Dinge nicht gleichsetzen" caution>
       <ul className={styles.caveList}>
         <li>Ein vergrößerter RV allein belegt keine ARVC.</li>
-        <li>LGE allein belegt keine ACM.</li>
-        <li>Fehlendes LGE schließt eine ARVC nicht aus.</li>
+        <li>Eine späte Kontrastmittelanreicherung im Myokard allein belegt keine ACM.</li>
+        <li>Auch ohne nachweisbare späte Kontrastmittelanreicherung im Myokard ist eine ARVC möglich.</li>
       </ul>
     </Note>
   </>, _arvcLang)

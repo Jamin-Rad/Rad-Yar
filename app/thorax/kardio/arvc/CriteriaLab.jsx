@@ -8,7 +8,17 @@ import { TeachingGroup, TeachingGroups } from '@/components/lesson-template/Inte
 import { Icon } from './LessonVisuals'
 import styles from './page.module.css'
 
-function CategoryDisclosure({ number, title, description }) {
+const criterionLabels = {
+  major: ['Major', 'Major', 'معیار اصلی'],
+  minor: ['Minor', 'Minor', 'معیار فرعی'],
+  rvMajor: ['RV · Major', 'RV · Major', 'بطن راست · معیار اصلی'],
+  rvMinor: ['RV · Minor', 'RV · Minor', 'بطن راست · معیار فرعی'],
+  lvMajor: ['LV · Major', 'LV · Major', 'بطن چپ · معیار اصلی'],
+  lvMinor: ['LV · Minor', 'LV · Minor', 'بطن چپ · معیار فرعی'],
+  bothMinor: ['RV oder LV · Minor', 'RV or LV · Minor', 'بطن راست یا چپ · معیار فرعی'],
+}
+
+function CategoryDisclosure({ number, title, rows, note, languageIndex }) {
   return <details className={styles.criteriaDisclosure}>
     <summary>
       <span className={styles.criteriaTitle}>{number}</span>
@@ -16,7 +26,13 @@ function CategoryDisclosure({ number, title, description }) {
       <span className={styles.criteriaToggle} aria-hidden="true"/>
     </summary>
     <div className={styles.criteriaContent}>
-      {[description].flat().map(paragraph => <p key={paragraph}>{paragraph}</p>)}
+      <dl className={styles.categoryFindings}>
+        {rows.map(([grade, ...findings]) => <div key={grade}>
+          <dt>{criterionLabels[grade][languageIndex]}</dt>
+          <dd><ul>{findings.map(finding => <li key={finding[0]}>{finding[languageIndex]}</li>)}</ul></dd>
+        </div>)}
+      </dl>
+      {note && <p className={styles.criteriaNote}>{note}</p>}
     </div>
   </details>
 }
@@ -154,7 +170,7 @@ const overview = {
     'Jeder Ventrikel erfüllt mindestens ein Kriterium aus I oder II.',
     'Linksdominant (ALVC)',
     'Ein qualifizierendes LV-LGE ist erforderlich und kann Major oder Minor sein. Bei ausreichender Befundkombination ist eine Genvariante nicht zwingend.',
-    'Kriterien außerhalb des MRT',
+    'Diagnostische Befunde ergänzend zum MRT',
   ],
   en: [
     'Diagnosis under ETF 2023',
@@ -168,7 +184,7 @@ const overview = {
     'Each ventricle meets at least one criterion from I or II.',
     'Left-dominant (ALVC)',
     'Qualifying LV LGE is required and can be major or minor. A genetic variant is optional when the combination of findings is sufficient.',
-    'Criteria beyond MRI',
+    'Diagnostic findings that complement MRI',
   ],
   fa: [
     'تشخیص بر اساس ETF 2023',
@@ -182,31 +198,62 @@ const overview = {
     'هر بطن باید دست‌کم یک معیار از دستهٔ I یا II داشته باشد.',
     'چپ‌غالب (ALVC)',
     'برای تشخیص فرم چپ‌غالب، الگوی غیرایسکمیک LGE در بطن چپ باید معیار ساختاری اصلی یا فرعی ETF را برآورده کند. اگر مجموع یافته‌ها کافی باشد، وجود واریانت ژنتیکی الزامی نیست.',
-    'معیارهای خارج از MRI',
+    'یافته‌های تشخیصی در کنار MRI',
   ],
 }
 
 const otherCriteria = [
-  ['II', 'Histologie', 'Histology', 'بافت‌شناسی',
-    ['Major: fibrotischer Ersatz von Myokard in mindestens einer Biopsieprobe, mit oder ohne Fett.'],
-    ['Major: fibrous replacement of myocardium in at least one biopsy sample, with or without fat.'],
-    ['در بافت‌شناسی، جایگزینی میوکارد با بافت فیبروزی، با یا بدون چربی، در دست‌کم یک نمونهٔ بیوپسی معیار اصلی است.']],
-  ['III', 'Repolarisation im EKG', 'ECG repolarization', 'رپلاریزاسیون در نوار قلب',
-    ['RV Major: T-Negativierung in V1–V3 oder weiter ab 14 Jahren, ohne kompletten Rechtsschenkelblock und ohne vorangehende J-Punkt- oder ST-Hebung.', 'RV Minor: V1–V2 bei Männern ab 14 Jahren ohne Rechtsschenkelblock und ohne vorangehende J-Punkt- oder ST-Hebung. T-Negativierung über V3 hinaus zählt bei komplettem Rechtsschenkelblock oder unter 14 Jahren ebenfalls als Minor.', 'LV Minor: T-Negativierung in V4–V6 ohne kompletten Linksschenkelblock.'],
-    ['RV major: T-wave inversion in V1–V3 or beyond at age 14 or older, without complete RBBB or preceding J-point or ST elevation.', 'RV minor: inversion in V1–V2 in males aged 14 or older without RBBB or preceding J-point or ST elevation. Inversion beyond V3 also counts with complete RBBB or below age 14.', 'LV minor: inversion in V4–V6 without complete LBBB.'],
-    ['معیار اصلی بطن راست شامل وارونگی موج T در V1 تا V3 یا فراتر از آن از ۱۴ سالگی، بدون بلوک کامل شاخهٔ راست و بدون بالارفتن پیشین نقطهٔ J یا قطعهٔ ST است.', 'وارونگی در V1 و V2 در مردان از ۱۴ سالگی، بدون بلوک شاخهٔ راست و بدون بالارفتن پیشین J یا ST، معیار فرعی بطن راست است. وارونگی فراتر از V3 در صورت بلوک کامل شاخهٔ راست یا سن زیر ۱۴ سال هم معیار فرعی است.', 'وارونگی T در V4 تا V6 بدون بلوک کامل شاخهٔ چپ معیار فرعی بطن چپ است.']],
-  ['IV', 'Depolarisation im EKG', 'ECG depolarization', 'دپلاریزاسیون در نوار قلب',
-    ['RV Minor: reproduzierbare Epsilon-Welle in V1–V3 oder terminale Aktivierungsdauer ≥ 55 ms in V1, V2 oder V3 ohne kompletten Rechtsschenkelblock.', 'LV Major: QRS-Amplitude < 0,5 mV in allen Extremitätenableitungen, wenn andere Ursachen der Niedervoltage ausgeschlossen sind.'],
-    ['RV minor: reproducible epsilon wave in V1–V3 or terminal activation duration ≥55 ms in V1, V2 or V3 without complete RBBB.', 'LV major: QRS amplitude <0.5 mV in all limb leads after other causes of low voltage have been excluded.'],
-    ['موج اپسیلون تکرارپذیر در V1 تا V3 یا مدت فعال‌سازی انتهایی دست‌کم ۵۵ میلی‌ثانیه در یکی از این لیدها بدون بلوک کامل شاخهٔ راست، معیار فرعی بطن راست است.', 'دامنهٔ قله‌به‌قلهٔ QRS کمتر از ۰٫۵ میلی‌ولت در تمام لیدهای اندامی، پس از رد سایر علل کاهش ولتاژ، معیار اصلی بطن چپ است.']],
-  ['V', 'Ventrikuläre Arrhythmien', 'Ventricular arrhythmias', 'آریتمی‌های بطنی',
-    ['RV Major: > 500 ventrikuläre Extrasystolen in 24 Stunden oder anhaltende bzw. nichtanhaltende VT mit Linksschenkelblockmorphologie und nichtinferiorer Achse. Bei inferiorer Achse zählt dieses Muster als RV Minor.', 'LV Minor: häufige oder belastungsinduzierte ventrikuläre Extrasystolen oder VT mit nichtfaszikulärer Rechtsschenkelblockmorphologie.', 'Minor: überlebter Herzstillstand durch Kammerflimmern oder anhaltende VT unbekannter Morphologie.'],
-    ['RV major: >500 premature ventricular complexes in 24 hours or sustained or nonsustained VT with LBBB morphology and a non-inferior axis. The same findings with an inferior axis count as RV minor.', 'LV minor: frequent or exercise-induced premature ventricular complexes, or VT, with non-fascicular RBBB morphology.', 'Minor: resuscitated cardiac arrest due to ventricular fibrillation or sustained VT of unknown morphology.'],
-    ['بیش از ۵۰۰ اکستراسیستول بطنی در ۲۴ ساعت، یا تاکی‌کاردی بطنی پایدار یا غیرپایدار، با الگوی بلوک شاخهٔ چپ و محور غیرتحتانی معیار اصلی بطن راست است. همین الگو با محور تحتانی معیار فرعی است.', 'اکستراسیستول‌های بطنی مکرر یا ناشی از ورزش، یا VT، با الگوی بلوک شاخهٔ راست غیرفاسیکولار معیار فرعی بطن چپ هستند.', 'ایست قلبی احیاشده بر اثر فیبریلاسیون بطنی یا VT پایدار با مورفولوژی نامشخص معیار فرعی است.']],
-  ['VI', 'Familienanamnese und Genetik', 'Family history and genetics', 'سابقهٔ خانوادگی و ژنتیک',
-    ['Major: pathogene ACM-Genvariante oder gesicherte ACM bei einem erstgradig Verwandten.', 'Minor: wahrscheinlich pathogene Variante, nicht überprüfbare ACM-Diagnose bei einem erstgradig Verwandten, plötzlicher Tod unter 35 Jahren bei einem erstgradig Verwandten mit ACM-Verdacht oder gesicherte ACM bei einem zweitgradig Verwandten.'],
-    ['Major: pathogenic ACM variant or confirmed ACM in a first-degree relative.', 'Minor: likely pathogenic variant, unverifiable ACM diagnosis in a first-degree relative, sudden death before age 35 in a first-degree relative with suspected ACM, or confirmed ACM in a second-degree relative.'],
-    ['واریانت بیماری‌زای مرتبط با ACM یا تشخیص تأییدشدهٔ ACM در بستگان درجهٔ اول معیار اصلی است.', 'واریانت احتمالاً بیماری‌زا، تشخیص غیرقابل‌تأیید ACM در بستگان درجهٔ اول، مرگ ناگهانی پیش از ۳۵ سالگی در بستگان درجهٔ اول مشکوک به ACM، یا ACM تأییدشده در بستگان درجهٔ دوم معیار فرعی است.']],
+  ['II', ["Endomyokardbiopsie","Endomyocardial biopsy","بیوپسی اندومیوکارد"], [
+    ['major',
+      ["Fibrotischer Ersatz von Myokard in mindestens einer Biopsieprobe, mit oder ohne Fett.","Fibrous replacement of myocardium in at least one biopsy sample, with or without fat.","جایگزینی میوکارد با بافت فیبروزی، با یا بدون چربی، در دست‌کم یک نمونهٔ بیوپسی."],
+    ],
+  ], ["LGE und Biopsie liefern unterschiedliche Befunde derselben Kategorie (II). Eindeutiges RV-LGE erfüllt ein Minor-Kriterium, fibrotischer Ersatz in der Biopsie ein Major-Kriterium. Erfüllt das MRT bereits ein strukturelles Kriterium, ist eine Biopsie allein für dessen Wertung entbehrlich. In Kategorie II zählt nur das stärkste Kriterium.","LGE and biopsy provide different evidence within the same category (II). Unequivocal RV LGE meets a minor criterion, while fibrous replacement on biopsy meets a major criterion. A structural criterion met on MRI can be counted without biopsy. Count only the strongest criterion in category II.","LGE و بیوپسی دو نوع یافته در دستهٔ II هستند. LGE واضح در میوکارد بطن راست معیار فرعی است و جایگزینی میوکارد با بافت فیبروزی در بیوپسی معیار اصلی. اگر یافتهٔ MRI یکی از معیارهای ساختاری را برآورده کند، برای امتیاز دادن به همان یافته نیازی به بیوپسی نیست. در دستهٔ II فقط قوی‌ترین معیار حساب می‌شود."]],
+  ['III', ["Repolarisation im EKG","ECG repolarization","رپلاریزاسیون در نوار قلب"], [
+    ['rvMajor',
+      ["T-Negativierung in V1–V3 oder weiter ab 14 Jahren, ohne kompletten Rechtsschenkelblock und ohne vorangehende J-Punkt- oder ST-Hebung.","T-wave inversion in V1–V3 or beyond at age 14 or older, without complete RBBB or preceding J-point or ST elevation.","وارونگی موج T در V1 تا V3 یا فراتر از آن از ۱۴ سالگی، بدون بلوک کامل شاخهٔ راست و بدون بالارفتن پیشین نقطهٔ J یا قطعهٔ ST."],
+    ],
+    ['rvMinor',
+      ["T-Negativierung in V1–V2 bei Männern ab 14 Jahren ohne Rechtsschenkelblock und ohne vorangehende J-Punkt- oder ST-Hebung.","T-wave inversion in V1–V2 in males aged 14 or older without RBBB or preceding J-point or ST elevation.","وارونگی موج T در V1 و V2 در مردان از ۱۴ سالگی، بدون بلوک شاخهٔ راست و بدون بالارفتن پیشین نقطهٔ J یا قطعهٔ ST."],
+      ["T-Negativierung über V3 hinaus bei komplettem Rechtsschenkelblock oder unter 14 Jahren.","T-wave inversion beyond V3 with complete RBBB or below age 14.","وارونگی موج T فراتر از V3 در صورت بلوک کامل شاخهٔ راست یا سن زیر ۱۴ سال."],
+    ],
+    ['lvMinor',
+      ["T-Negativierung in V4–V6 ohne kompletten Linksschenkelblock.","T-wave inversion in V4–V6 without complete LBBB.","وارونگی موج T در V4 تا V6 بدون بلوک کامل شاخهٔ چپ."],
+    ],
+  ]],
+  ['IV', ["Depolarisation im EKG","ECG depolarization","دپلاریزاسیون در نوار قلب"], [
+    ['rvMinor',
+      ["Reproduzierbare Epsilon-Welle in V1–V3.","Reproducible epsilon wave in V1–V3.","موج اپسیلون تکرارپذیر در V1 تا V3."],
+      ["Terminale Aktivierungsdauer ≥ 55 ms in V1, V2 oder V3 ohne kompletten Rechtsschenkelblock.","Terminal activation duration ≥55 ms in V1, V2 or V3 without complete RBBB.","مدت فعال‌سازی انتهایی دست‌کم ۵۵ میلی‌ثانیه در یکی از لیدهای V1 تا V3، بدون بلوک کامل شاخهٔ راست."],
+    ],
+    ['lvMajor',
+      ["QRS-Amplitude < 0,5 mV in allen Extremitätenableitungen nach Ausschluss anderer Ursachen der Niedervoltage.","Peak-to-peak QRS amplitude <0.5 mV in all limb leads after excluding other causes of low voltage.","دامنهٔ قله‌به‌قلهٔ QRS کمتر از ۰٫۵ میلی‌ولت در تمام لیدهای اندامی، پس از رد سایر علل کاهش ولتاژ."],
+    ],
+  ]],
+  ['V', ["Ventrikuläre Arrhythmien","Ventricular arrhythmias","آریتمی‌های بطنی"], [
+    ['rvMajor',
+      ["> 500 ventrikuläre Extrasystolen pro 24 Stunden oder VT, jeweils mit Linksschenkelblockmorphologie und nichtinferiorer Achse.","More than 500 premature ventricular complexes per 24 hours or VT, in either case with LBBB morphology and a non-inferior axis.","بیش از ۵۰۰ اکستراسیستول بطنی در ۲۴ ساعت یا تاکی‌کاردی بطنی (VT)، در هر دو حالت با الگوی بلوک شاخهٔ چپ و محور غیرتحتانی."],
+    ],
+    ['rvMinor',
+      ["Dasselbe Muster mit inferiorer Achse (RVOT-Muster).","The same findings with an inferior axis (RVOT pattern).","همان یافته‌ها با محور تحتانی (الگوی مسیر خروجی بطن راست)."],
+    ],
+    ['lvMinor',
+      ["> 500 ventrikuläre Extrasystolen pro 24 Stunden, belastungsinduzierte Extrasystolen oder VT, jeweils mit nichtfaszikulärer Rechtsschenkelblockmorphologie.","More than 500 premature ventricular complexes per 24 hours, exercise-induced ventricular ectopy, or VT, in each case with non-fascicular RBBB morphology.","بیش از ۵۰۰ اکستراسیستول بطنی در ۲۴ ساعت، اکستراسیستول بطنی ناشی از فعالیت یا VT، در هر حالت با الگوی بلوک شاخهٔ راست غیرفاسیکولار."],
+    ],
+    ['bothMinor',
+      ["Überlebter Herzstillstand durch Kammerflimmern oder anhaltende VT unbekannter Morphologie.","Resuscitated cardiac arrest due to ventricular fibrillation or sustained VT of unknown morphology.","ایست قلبی احیاشده بر اثر فیبریلاسیون بطنی یا VT پایدار با مورفولوژی نامشخص."],
+    ],
+  ]],
+  ['VI', ["Familienanamnese und Genetik","Family history and genetics","سابقهٔ خانوادگی و ژنتیک"], [
+    ['major',
+      ["Pathogene ACM-Genvariante.","Pathogenic ACM-associated variant.","واریانت بیماری‌زای مرتبط با ACM."],
+      ["Gesicherte ACM bei einem Verwandten ersten Grades.","Confirmed ACM in a first-degree relative.","ACM تأییدشده در بستگان درجهٔ اول."],
+    ],
+    ['minor',
+      ["Wahrscheinlich pathogene ACM-Genvariante.","Likely pathogenic ACM-associated variant.","واریانت احتمالاً بیماری‌زای مرتبط با ACM."],
+      ["Nicht überprüfbare ACM-Diagnose oder plötzlicher Tod vor dem 35. Lebensjahr bei ACM-Verdacht bei einem Verwandten ersten Grades.","Unverifiable ACM diagnosis or sudden death before age 35 with suspected ACM in a first-degree relative.","تشخیص غیرقابل‌تأیید ACM یا مرگ ناگهانی پیش از ۳۵ سالگی با شک به ACM در بستگان درجهٔ اول."],
+      ["Gesicherte ACM bei einem Verwandten zweiten Grades.","Confirmed ACM in a second-degree relative.","ACM تأییدشده در بستگان درجهٔ دوم."],
+    ],
+  ]],
 ]
 
 export default function CriteriaOverview() {
@@ -253,7 +300,7 @@ export default function CriteriaOverview() {
     </TeachingGroup>
     <TeachingGroup id="arvc-diagnostic-other-categories" title={other}>
       <div className={styles.criteriaGuide}>
-        {otherCriteria.map(([number, ...copy]) => <CategoryDisclosure key={number} number={number} title={copy[languageIndex]} description={copy[languageIndex + 3]}/>)}
+        {otherCriteria.map(([number, title, rows, note]) => <CategoryDisclosure key={number} number={number} title={title[languageIndex]} rows={rows} note={note?.[languageIndex]} languageIndex={languageIndex}/>)}
       </div>
     </TeachingGroup>
   </TeachingGroups>, lang)

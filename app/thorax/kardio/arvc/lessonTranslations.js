@@ -37,14 +37,14 @@ const COPY = {
   "Ordne akute Beschwerden, Troponin, myokardiales Ödem und Verlauf gemeinsam ein. Auch eine ACM kann mit entzündungsähnlichen Episoden einhergehen.": { en: "Interpret acute symptoms, troponin, myocardial oedema, and the clinical course together. ACM can also present with episodes resembling inflammation.", fa: "علائم حاد، تروپونین، ادم میوکارد و سیر بالینی را با هم بررسی کنید. در ACM هم ممکن است دوره‌هایی شبیه التهاب رخ دهد." },
   "Auch kardiale Sarkoidose kann nichtischämische Narben und ventrikuläre Arrhythmien verursachen.": { en: "Cardiac sarcoidosis can also cause non-ischaemic scars and ventricular arrhythmias.", fa: "سارکوئیدوز قلبی هم می‌تواند باعث اسکار غیرایسکمیک و آریتمی بطنی شود." },
   "Achte auf die Verteilung des LGE, auf Leitungsstörungen und auf Hinweise für eine Sarkoidose außerhalb des Herzens.": { en: "Look at the distribution of LGE, conduction abnormalities, and any evidence of extracardiac sarcoidosis.", fa: "به توزیع LGE، اختلالات هدایتی و شواهد سارکوئیدوز خارج قلب توجه کنید." },
-  "Pulmonale Hypertonie kann den rechten Ventrikel druckbelasten. Ein Links-rechts-Shunt kann ihn volumenbelasten.": { en: "Pulmonary hypertension can cause right ventricular pressure overload. A left-to-right shunt can cause volume overload.", fa: "پرفشاری ریوی می‌تواند باعث اضافه‌بار فشاری بطن راست شود. شانت چپ به راست می‌تواند اضافه‌بار حجمی ایجاد کند." },
-  "Prüfe bei einer RV-Dilatation, ob eine solche Belastung die Vergrößerung erklärt.": { en: "If the RV is dilated, assess whether pressure or volume overload accounts for the enlargement.", fa: "اگر بطن راست متسع است، بررسی کنید که آیا اضافه‌بار فشاری یا حجمی اتساع را توضیح می‌دهد." },
+  "Pulmonale Hypertonie kann den rechten Ventrikel druckbelasten. Ein Links-rechts-Shunt kann ihn volumenbelasten.": { en: "Pulmonary hypertension can increase the pressure load on the right ventricle. A left-to-right shunt can increase its volume load.", fa: "هیپرتانسیون ریوی بار فشاری بطن راست را افزایش می‌دهد. شانت چپ به راست می‌تواند بار حجمی بطن راست را بالا ببرد." },
+  "Bei einer RV-Dilatation gezielt nach Ursachen für eine Druck- oder Volumenbelastung suchen.": { en: "When the right ventricle is dilated, look for causes of pressure or volume overload.", fa: "در صورت اتساع بطن راست، علل افزایش بار فشاری یا حجمی را بررسی کنید." },
   "Bewegung aus der Schichtebene, Arrhythmien und Partialvolumeneffekte können einen auffälligen Befund vortäuschen.": { en: "Through-plane motion, arrhythmias, and partial-volume effects can mimic an abnormality.", fa: "حرکت خارج از صفحهٔ تصویربرداری، آریتمی‌ها و اثر حجم جزئی می‌توانند ظاهری شبیه یافتهٔ غیرطبیعی ایجاد کنند." },
   "Eine frühere Ablation kann selbst eine Narbe hinterlassen. Gleiche die Lage des LGE mit der Eingriffsvorgeschichte ab.": { en: "Previous ablation can leave a scar. Compare the location of LGE with the procedural history.", fa: "ابلیشن قبلی می‌تواند اسکار بر جا بگذارد. محل LGE را با سابقهٔ مداخله تطبیق دهید." },
   "Cave · Drei Dinge nicht gleichsetzen": { en: "Caution · Three diagnostic pitfalls", fa: "احتیاط · سه نکتهٔ تشخیصی" },
   "Ein vergrößerter RV allein belegt keine ARVC.": { en: "RV enlargement alone does not establish ARVC.", fa: "بزرگ‌شدن بطن راست به‌تنهایی ARVC را ثابت نمی‌کند." },
-  "LGE allein belegt keine ACM.": { en: "LGE alone does not establish ACM.", fa: "LGE به‌تنهایی ACM را ثابت نمی‌کند." },
-  "Fehlendes LGE schließt eine ARVC nicht aus.": { en: "Absence of LGE does not exclude ARVC.", fa: "نبود LGE، بیماری ARVC را رد نمی‌کند." },
+  "Eine späte Kontrastmittelanreicherung im Myokard allein belegt keine ACM.": { en: "Late gadolinium enhancement in the myocardium, by itself, does not establish ACM.", fa: "افزایش سیگنال تأخیری میوکارد پس از تزریق گادولینیوم (LGE) به‌تنهایی برای تشخیص ACM کافی نیست." },
+  "Auch ohne nachweisbare späte Kontrastmittelanreicherung im Myokard ist eine ARVC möglich.": { en: "ARVC remains possible even when no late gadolinium enhancement is visible in the myocardium.", fa: "حتی اگر افزایش سیگنال تأخیری در میوکارد دیده نشود، ARVC همچنان مطرح است." },
   "Für eine gesicherte Diagnose reicht ein einzelner MRT-Befund nicht aus.": { en: "A single MRI finding is insufficient for a definite diagnosis.", fa: "یک یافتهٔ MRI برای تشخیص قطعی کافی نیست." },
   "Alle drei Systeme berücksichtigen sechs Befundkategorien. Neben dem MRT zählen unter anderem das EKG, dokumentierte Rhythmusstörungen sowie Familienanamnese und Genetik.": { en: "All three systems consider six categories of findings. Alongside MRI, they assess ECG findings, documented arrhythmias, family history, and genetics.", fa: "هر سه نظام شش دستهٔ یافته را در نظر می‌گیرند. در کنار MRI، نوار قلب، آریتمی‌های ثبت‌شده، سابقهٔ خانوادگی و ژنتیک هم در تشخیص نقش دارند." },
   "Von den Befunden zur Diagnose": { en: "From findings to diagnosis", fa: "از یافته‌ها تا تشخیص" },
@@ -401,7 +401,7 @@ const COPY = {
   },
   "Zum Beispiel pulmonale Hypertonie oder Shunt: nach einer Ursache für die RV-Vergrößerung suchen.": {
     "en": "For example, pulmonary hypertension or a shunt: look for a cause of RV enlargement.",
-    "fa": "برای مثال پرفشاری ریوی یا شانت: علت بزرگ‌شدگی RV را جست‌وجو کنید."
+    "fa": "در اتساع بطن راست به عللی مثل هیپرتانسیون ریوی یا شانت چپ به راست توجه کنید."
   },
   "Artefakte oder frühere Ablation": {
     "en": "Artefacts or previous ablation",

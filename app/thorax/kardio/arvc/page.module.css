@@ -578,6 +578,12 @@
   border-block-start:1px solid var(--line);
 }
 .chapterBody .criteriaContent > p + p { margin-block-start:8px; }
+.categoryFindings { margin:0; }
+.categoryFindings > div + div { margin-block-start:12px; padding-block-start:12px; border-block-start:1px solid var(--line); }
+.categoryFindings dt { color:var(--lesson-accent-strong); font-weight:750; }
+.categoryFindings dd { margin:4px 0 0; }
+.categoryFindings ul { margin:0; padding-inline-start:1.3em; }
+.categoryFindings li + li { margin-block-start:4px; }
 .criteriaFootnotes {
   margin:14px 0 0;
   padding-inline-start:1.4em;
