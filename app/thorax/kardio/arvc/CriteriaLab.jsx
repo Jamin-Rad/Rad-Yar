@@ -9,13 +9,13 @@ import { Icon } from './LessonVisuals'
 import styles from './page.module.css'
 
 const criterionLabels = {
-  major: ['Major', 'Major', 'معیار اصلی'],
-  minor: ['Minor', 'Minor', 'معیار فرعی'],
-  rvMajor: ['RV · Major', 'RV · Major', 'بطن راست · معیار اصلی'],
-  rvMinor: ['RV · Minor', 'RV · Minor', 'بطن راست · معیار فرعی'],
-  lvMajor: ['LV · Major', 'LV · Major', 'بطن چپ · معیار اصلی'],
-  lvMinor: ['LV · Minor', 'LV · Minor', 'بطن چپ · معیار فرعی'],
-  bothMinor: ['RV oder LV · Minor', 'RV or LV · Minor', 'بطن راست یا چپ · معیار فرعی'],
+  major: ['Major', 'Major', 'معیار ماژور'],
+  minor: ['Minor', 'Minor', 'معیار مینور'],
+  rvMajor: ['RV · Major', 'RV · Major', 'بطن راست · معیار ماژور'],
+  rvMinor: ['RV · Minor', 'RV · Minor', 'بطن راست · معیار مینور'],
+  lvMajor: ['LV · Major', 'LV · Major', 'بطن چپ · معیار ماژور'],
+  lvMinor: ['LV · Minor', 'LV · Minor', 'بطن چپ · معیار مینور'],
+  bothMinor: ['RV oder LV · Minor', 'RV or LV · Minor', 'بطن راست یا چپ · معیار مینور'],
 }
 
 function CategoryDisclosure({ number, title, rows, note, languageIndex }) {
@@ -40,54 +40,69 @@ function CategoryDisclosure({ number, title, rows, note, languageIndex }) {
 const ETF_MRI = {
   de: {
     regional: 'Regionale Akinesie, Dyskinesie oder Aneurysma des RV.',
-    global: 'Zusätzlich globale RV-Dilatation oder verminderte RVEF.',
-    rvMinor: 'Akinesie, Dyskinesie oder Aneurysma der freien RV-Wand reichen auch bei normalem RV-Volumen und normaler RVEF.',
-    lvMinor: 'Globale systolische Dysfunktion des LV, mit oder ohne LV-Dilatation. In Kategorie I gibt es für den LV nur ein Minor-Kriterium.',
-    referenceNote: 'Das enddiastolische Volumen auf die Körperoberfläche (KOF) beziehen. Die EF in Prozent angeben. Referenzwerte passend zu Alter, Geschlecht und Messmethode verwenden.',
-    referenceTitle: 'MRT-Grenzwerte für Dilatation und systolische Dysfunktion',
+    global: "Globale RV-Dilatation oder verminderte RVEF.",
+    rvMinor: "Regionale Akinesie, Dyskinesie oder Aneurysma der freien RV-Wand.",
+    lvMinor: "Globale systolische LV-Dysfunktion, mit oder ohne LV-Dilatation.",
+    referenceTitle: "CMR-Grenzwerte",
     referenceHeaders: ['Messgröße', 'Frauen', 'Männer', 'Sportler'],
     referenceLimit: 'Die Grenzwerte aus Tabelle 2 des ETF-Berichts sind bei Kindern und älteren Menschen nur eingeschränkt aussagekräftig.',
     confirmation: 'Den LGE-Befund in zwei zueinander senkrechten Ebenen bestätigen.',
-    rvLge: 'Klar abgrenzbares LGE im Herzmuskel des rechten Ventrikels in mindestens einer Region. Der Befund zählt als Minor.',
+    rvLge: "Klar abgrenzbares LGE in mindestens einer Region des RV-Myokards.",
     tricuspid: 'LGE, das auf die Trikuspidalklappe begrenzt ist, zählt nicht.',
-    lvPattern: 'Gesucht ist streifenförmiges, nichtischämisches LGE direkt unter dem Epikard oder in der mittleren Schicht der LV-Wand. Die Zahl der betroffenen Segmente bestimmt die Einstufung.',
+    lvPattern: "Nichtischämisches Enhancement im LGE",
     lvMajor: 'Mindestens 3 Segmente. Die Anreicherung kann ringförmig zusammenhängen oder in getrennten Segmenten liegen.',
     lvMinorLge: '1–2 Segmente der freien LV-Wand, des Septums oder beider Bereiche.',
     lvExclusions: 'Punktförmiges oder fleckiges LGE sowie isoliertes LGE an RV-Insertionspunkten zählen nicht.',
+    rvMinorContext: "Ohne RV-Dilatation und bei normaler RVEF.",
+    lvCineNote: "Für den LV gibt es im Cine nur ein Minor-Kriterium.",
+    volumeNote: "Enddiastolisches Volumen auf die Körperoberfläche beziehen (EDV/KOF).",
+    efNote: "EF anhand alters- und geschlechtsspezifischer Referenzwerte beurteilen.",
+    lvPatternNote: "Streifenförmige Anreicherung subepikardial oder in der mittleren Wandschicht.",
+    bothRequired: "Beide Befunde erforderlich",
   },
   en: {
     regional: 'Regional RV akinesia, dyskinesia or aneurysm.',
-    global: 'In addition, global RV dilatation or reduced RVEF.',
-    rvMinor: 'Akinesia, dyskinesia or aneurysm of the RV free wall qualifies even when RV volume and RVEF are normal.',
-    lvMinor: 'Global LV systolic dysfunction with or without LV dilatation. Category I has only a minor criterion for the LV.',
-    referenceNote: 'Index end-diastolic volume to body surface area (BSA). Report EF as a percentage. Use reference ranges appropriate for age, sex and measurement technique.',
-    referenceTitle: 'MRI thresholds for dilatation and systolic dysfunction',
+    global: "Global RV dilatation or reduced RVEF.",
+    rvMinor: "Regional akinesia, dyskinesia or aneurysm of the RV free wall.",
+    lvMinor: "Global LV systolic dysfunction, with or without LV dilatation.",
+    referenceTitle: "CMR thresholds",
     referenceHeaders: ['Measure', 'Women', 'Men', 'Athletes'],
     referenceLimit: 'The thresholds in Table 2 of the ETF report have limited accuracy in children and older adults.',
     confirmation: 'Confirm the LGE finding in two perpendicular planes.',
-    rvLge: 'Clearly identifiable LGE in the right ventricular myocardium in at least one region counts as minor.',
+    rvLge: "Unequivocal LGE in at least one region of the RV myocardium.",
     tricuspid: 'LGE confined to the tricuspid valve does not count.',
-    lvPattern: 'Look for non-ischaemic, streak-like LGE in the outer or middle layer of the LV wall. The number of involved segments determines the grade.',
+    lvPattern: "Non-ischaemic enhancement on LGE images",
     lvMajor: 'At least 3 segments. Enhancement may form a ring or involve separate segments.',
     lvMinorLge: '1–2 segments of the LV free wall, septum or both.',
     lvExclusions: 'Focal or patchy LGE and isolated RV insertion-point LGE are excluded.',
+    rvMinorContext: "No RV dilatation and normal RVEF.",
+    lvCineNote: "Cine has only a minor criterion for the LV.",
+    volumeNote: "Index end-diastolic volume to body surface area (EDV/BSA).",
+    efNote: "Interpret EF using age- and sex-specific reference values.",
+    lvPatternNote: "Streak-like enhancement in the subepicardium or mid-wall.",
+    bothRequired: "Both findings required",
   },
   fa: {
     regional: 'آکینزی، دیسکینزی یا آنوریسم موضعی بطن راست.',
-    global: 'همراه با اتساع کلی بطن راست یا کاهش کسر جهشی آن (RVEF).',
-    rvMinor: 'آکینزی، دیسکینزی یا آنوریسم موضعی دیوارهٔ آزاد بطن راست، حتی وقتی حجم بطن راست و RVEF طبیعی‌اند.',
-    lvMinor: 'اختلال کلی عملکرد سیستولی بطن چپ، با یا بدون اتساع. در دستهٔ I، بطن چپ فقط معیار فرعی دارد.',
-    referenceNote: 'حجم پایان دیاستول را بر سطح بدن (BSA) تقسیم کنید. کسر جهشی (EF) به درصد بیان می‌شود. برای تفسیر، از مقادیر مرجع متناسب با سن، جنس و روش اندازه‌گیری استفاده کنید.',
-    referenceTitle: 'آستانه‌های MRI برای اتساع و اختلال عملکرد سیستولی',
+    global: "اتساع کلی بطن راست یا RVEF پایین.",
+    rvMinor: "آکینزی، دیسکینزی یا آنوریسم موضعی دیوارهٔ آزاد بطن راست.",
+    lvMinor: "اختلال کلی عملکرد سیستولی بطن چپ، با یا بدون اتساع.",
+    referenceTitle: "آستانه‌های MRI",
     referenceHeaders: ['شاخص', 'زنان', 'مردان', 'ورزشکاران'],
     referenceLimit: 'آستانه‌های جدول ۲ گزارش ETF در کودکان و سالمندان دقت محدودتری دارند.',
     confirmation: 'یافتهٔ LGE را در دو صفحهٔ تصویربرداری عمود بر هم تأیید کنید.',
-    rvLge: 'اگر افزایش سیگنال تأخیری پس از تزریق گادولینیوم (LGE) به‌وضوح در دست‌کم یک ناحیه از عضلهٔ بطن راست دیده شود، معیار فرعی است.',
+    rvLge: "انهانسمنت واضح در دست‌کم یک ناحیه از میوکارد بطن راست.",
     tricuspid: 'افزایش سیگنال محدود به دریچهٔ تریکوسپید در این معیار حساب نمی‌شود.',
-    lvPattern: 'به دنبال رگه‌های LGE با الگوی غیرایسکمیک در لایهٔ بیرونی دیواره، زیر اپیکارد، یا در ضخامت میانی عضلهٔ بطن چپ باشید. تعداد سگمان‌های درگیر تعیین می‌کند یافته اصلی است یا فرعی.',
+    lvPattern: "انهانسمنت غیرایسکمیک در تصاویر LGE",
     lvMajor: 'درگیری دست‌کم ۳ سگمان. الگو می‌تواند حلقوی یا ناپیوسته باشد.',
     lvMinorLge: 'درگیری ۱ تا ۲ سگمان در دیوارهٔ آزاد بطن چپ، سپتوم یا هر دو.',
     lvExclusions: 'LGE کانونی یا لکه‌ای و LGE محدود به محل اتصال بطن راست به سپتوم در این معیار حساب نمی‌شوند.',
+    rvMinorContext: "بدون اتساع بطن راست و با RVEF طبیعی.",
+    lvCineNote: "در Cine، بطن چپ فقط معیار مینور دارد.",
+    volumeNote: "حجم پایان دیاستول را بر سطح بدن تقسیم کنید (EDV/BSA).",
+    efNote: "EF را بر اساس مقادیر مرجع متناسب با سن و جنس تفسیر کنید.",
+    lvPatternNote: "انهانسمنت خطی زیر اپیکارد یا در لایهٔ میانی دیواره.",
+    bothRequired: "هر دو شرط لازم‌اند",
   },
 }
 
@@ -108,8 +123,15 @@ function EtfExplanation({ lang }) {
         <div>
           <h5>Rechter Ventrikel (RV)</h5>
           <dl className={styles.paduaGrades}>
-            <div><dt>Major</dt><dd><ol className={styles.essentialList}><li>{copy.regional}</li><li>{copy.global}</li></ol></dd></div>
-            <div><dt>Minor</dt><dd>{copy.rvMinor}</dd></div>
+            <div><dt>Major</dt><dd className={styles.cineConditions}>
+              <p>{copy.regional}</p>
+              <span className={styles.cinePlus} role="img" aria-label={copy.bothRequired}>+</span>
+              <p>{copy.global}</p>
+            </dd></div>
+            <div><dt>Minor</dt><dd className={styles.cineConditions}>
+              <p>{copy.rvMinor}</p>
+              <p className={styles.criteriaNote}>{copy.rvMinorContext}</p>
+            </dd></div>
           </dl>
         </div>
         <div>
@@ -117,10 +139,14 @@ function EtfExplanation({ lang }) {
           <dl className={styles.paduaGrades}><div><dt>Minor</dt><dd>{copy.lvMinor}</dd></div></dl>
         </div>
       </div>
-      <p className={styles.criteriaNote}>{copy.referenceNote}</p>
-      <details className={styles.criteriaDisclosure}>
-        <summary><strong>{copy.referenceTitle}</strong><span className={styles.criteriaToggle} aria-hidden="true"/></summary>
-        <div className={styles.criteriaContent}>
+      <ul className={styles.mriNotes}>
+        <li>{copy.lvCineNote}</li>
+        <li>{copy.volumeNote}</li>
+        <li>{copy.efNote}</li>
+      </ul>
+      <details className={styles.cmrDisclosure}>
+        <summary><span>{copy.referenceTitle}</span><span className={styles.cmrToggle} aria-hidden="true"/></summary>
+        <div className={styles.cmrContent}>
           <div className={`${styles.criteriaComparison} ${styles.cmrReferences}`} tabIndex={0} role="region" aria-label={copy.referenceTitle}>
             <table>
               <thead><tr>{copy.referenceHeaders.map(header => <th key={header} scope="col">{header}</th>)}</tr></thead>
@@ -136,12 +162,11 @@ function EtfExplanation({ lang }) {
     </section>
     <section aria-labelledby="etf-lge">
       <h4 id="etf-lge" className={styles.mrtTopic}>LGE · Myokardgewebe (II)</h4>
-      <p>{copy.confirmation}</p>
       <div className={styles.paduaChambers}>
         <div>
           <h5>Rechter Ventrikel (RV)</h5>
           <dl className={styles.paduaGrades}><div><dt>Minor</dt><dd>{copy.rvLge}</dd></div></dl>
-          <p className={styles.criteriaNote}>{copy.tricuspid}</p>
+          <ul className={styles.mriNotes}><li>{copy.tricuspid}</li></ul>
         </div>
         <div>
           <h5>Linker Ventrikel (LV)</h5>
@@ -150,9 +175,13 @@ function EtfExplanation({ lang }) {
             <div><dt>Major</dt><dd>{copy.lvMajor}</dd></div>
             <div><dt>Minor</dt><dd>{copy.lvMinorLge}</dd></div>
           </dl>
-          <p className={styles.criteriaNote}>{copy.lvExclusions}</p>
+          <ul className={styles.mriNotes}>
+            <li>{copy.lvPatternNote}</li>
+            <li>{copy.lvExclusions}</li>
+          </ul>
         </div>
       </div>
+      <ul className={styles.mriNotes}><li>{copy.confirmation}</li></ul>
     </section>
   </div>, lang)
 }
@@ -197,7 +226,7 @@ const overview = {
     'دوبطنی',
     'هر بطن باید دست‌کم یک معیار از دستهٔ I یا II داشته باشد.',
     'چپ‌غالب (ALVC)',
-    'برای تشخیص فرم چپ‌غالب، الگوی غیرایسکمیک LGE در بطن چپ باید معیار ساختاری اصلی یا فرعی ETF را برآورده کند. اگر مجموع یافته‌ها کافی باشد، وجود واریانت ژنتیکی الزامی نیست.',
+    'برای تشخیص فرم چپ‌غالب، الگوی غیرایسکمیک LGE در بطن چپ باید معیار ساختاری ماژور یا مینور ETF را برآورده کند. اگر مجموع یافته‌ها کافی باشد، وجود واریانت ژنتیکی الزامی نیست.',
     'یافته‌های تشخیصی در کنار MRI',
   ],
 }
@@ -207,7 +236,7 @@ const otherCriteria = [
     ['major',
       ["Fibrotischer Ersatz von Myokard in mindestens einer Biopsieprobe, mit oder ohne Fett.","Fibrous replacement of myocardium in at least one biopsy sample, with or without fat.","جایگزینی میوکارد با بافت فیبروزی، با یا بدون چربی، در دست‌کم یک نمونهٔ بیوپسی."],
     ],
-  ], ["LGE und Biopsie liefern unterschiedliche Befunde derselben Kategorie (II). Eindeutiges RV-LGE erfüllt ein Minor-Kriterium, fibrotischer Ersatz in der Biopsie ein Major-Kriterium. Erfüllt das MRT bereits ein strukturelles Kriterium, ist eine Biopsie allein für dessen Wertung entbehrlich. In Kategorie II zählt nur das stärkste Kriterium.","LGE and biopsy provide different evidence within the same category (II). Unequivocal RV LGE meets a minor criterion, while fibrous replacement on biopsy meets a major criterion. A structural criterion met on MRI can be counted without biopsy. Count only the strongest criterion in category II.","LGE و بیوپسی دو نوع یافته در دستهٔ II هستند. LGE واضح در میوکارد بطن راست معیار فرعی است و جایگزینی میوکارد با بافت فیبروزی در بیوپسی معیار اصلی. اگر یافتهٔ MRI یکی از معیارهای ساختاری را برآورده کند، برای امتیاز دادن به همان یافته نیازی به بیوپسی نیست. در دستهٔ II فقط قوی‌ترین معیار حساب می‌شود."]],
+  ], ["LGE und Biopsie liefern unterschiedliche Befunde derselben Kategorie (II). Eindeutiges RV-LGE erfüllt ein Minor-Kriterium, fibrotischer Ersatz in der Biopsie ein Major-Kriterium. Erfüllt das MRT bereits ein strukturelles Kriterium, ist eine Biopsie allein für dessen Wertung entbehrlich. In Kategorie II zählt nur das stärkste Kriterium.","LGE and biopsy provide different evidence within the same category (II). Unequivocal RV LGE meets a minor criterion, while fibrous replacement on biopsy meets a major criterion. A structural criterion met on MRI can be counted without biopsy. Count only the strongest criterion in category II.","LGE و بیوپسی دو نوع یافته در دستهٔ II هستند. LGE واضح در میوکارد بطن راست معیار مینور است و جایگزینی میوکارد با بافت فیبروزی در بیوپسی معیار ماژور. اگر یافتهٔ MRI یکی از معیارهای ساختاری را برآورده کند، برای امتیاز دادن به همان یافته نیازی به بیوپسی نیست. در دستهٔ II فقط قوی‌ترین معیار حساب می‌شود."]],
   ['III', ["Repolarisation im EKG","ECG repolarization","رپلاریزاسیون در نوار قلب"], [
     ['rvMajor',
       ["T-Negativierung in V1–V3 oder weiter ab 14 Jahren, ohne kompletten Rechtsschenkelblock und ohne vorangehende J-Punkt- oder ST-Hebung.","T-wave inversion in V1–V3 or beyond at age 14 or older, without complete RBBB or preceding J-point or ST elevation.","وارونگی موج T در V1 تا V3 یا فراتر از آن از ۱۴ سالگی، بدون بلوک کامل شاخهٔ راست و بدون بالارفتن پیشین نقطهٔ J یا قطعهٔ ST."],

@@ -712,8 +712,53 @@
 .criteriaComparison tbody th { white-space:nowrap; }
 .criteriaComparison tbody tr { border-block-start:1px solid var(--line); }
 .criteriaComparison tr > * + * { border-inline-start:1px solid var(--line); }
-.cmrReferences table { min-width: 0; }
-.cmrReferences tbody th { white-space: normal; }
-.cmrReferences :is(th,td) { padding-inline: clamp(4px, 1.4vw, 12px); }
-.paduaGrades dd > .essentialList { margin-block-start: 0; }
-.paduaGrades dd > .essentialList li { margin-block-end: 4px; font-size: inherit; }
+.cmrDisclosure { margin-block-start:10px; }
+.cmrDisclosure > summary {
+  display:flex;
+  width:fit-content;
+  max-width:100%;
+  min-height:40px;
+  align-items:center;
+  gap:10px;
+  padding-inline:10px;
+  border:1px solid var(--line);
+  border-radius:8px;
+  color:var(--lesson-accent-strong);
+  font-size:.875rem;
+  font-weight:700;
+  list-style:none;
+  cursor:pointer;
+}
+.cmrDisclosure > summary::-webkit-details-marker { display:none; }
+.cmrToggle {
+  width:7px;
+  height:7px;
+  border:solid currentColor;
+  border-width:0 1.5px 1.5px 0;
+  transform:translateY(-2px) rotate(45deg);
+}
+.cmrDisclosure[open] .cmrToggle { transform:translateY(2px) rotate(225deg); }
+.cmrContent { margin-block-start:8px; max-width:40rem; }
+.cmrReferences table { min-width:0; font-size:.8125rem; }
+.cmrReferences tbody th { white-space:normal; }
+.cmrReferences :is(th,td) { padding:4px clamp(4px, 1.4vw, 10px); }
+.paduaGrades .cineConditions { display:grid; gap:4px; }
+.paduaGrades .cineConditions p { margin:0; }
+.cinePlus {
+  display:grid;
+  width:1.4rem;
+  height:1.4rem;
+  place-items:center;
+  border:1px solid var(--line);
+  border-radius:50%;
+  color:var(--lesson-accent-strong);
+  font-weight:750;
+  line-height:1;
+}
+.paduaMri .mriNotes {
+  margin:10px 0 0;
+  padding-inline-start:1rem;
+  font-size:.875rem;
+  line-height:1.55;
+}
+.mriNotes li::marker { color:var(--lesson-accent-strong); }

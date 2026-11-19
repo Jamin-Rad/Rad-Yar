@@ -2,13 +2,13 @@ import { Children, cloneElement, isValidElement } from 'react'
 
 // Authored parallel translations; German clinical source remains unchanged.
 const COPY = {
-  "Regionale RV-Akinesie, Dyskinesie oder ein Aneurysma ergeben zusammen mit globaler RV-Dilatation oder verminderter RVEF ein Major-Kriterium. An der freien RV-Wand reicht der regionale Befund allein für Minor.": {"en":"Regional RV akinesia, dyskinesia or an aneurysm with global RV dilatation or reduced RVEF meets a major criterion. The regional finding alone qualifies as minor when it affects the RV free wall.","fa":"آکینزی، دیسکینزی یا آنوریسم موضعی بطن راست همراه با اتساع کلی یا کاهش RVEF معیار اصلی است. اگر یافتهٔ موضعی در دیوارهٔ آزاد بطن راست باشد، به‌تنهایی معیار فرعی است."},
-  "Eindeutiges RV-LGE außerhalb der Trikuspidalklappe zählt als Minor. Beim typischen LV-Streifen-LGE sind 1–2 Segmente Minor und mindestens 3 Segmente Major.": {"en":"Unequivocal RV LGE outside the tricuspid valve is minor. Typical LV stria-pattern LGE is minor in 1–2 segments and major in at least 3 segments.","fa":"LGE واضح در بطن راست خارج از دریچهٔ تریکوسپید معیار فرعی است. در LGE نواری تیپیک بطن چپ، ۱ تا ۲ سگمان معیار فرعی و دست‌کم ۳ سگمان معیار اصلی است."},
+  "Regionale RV-Akinesie, Dyskinesie oder ein Aneurysma ergeben zusammen mit globaler RV-Dilatation oder verminderter RVEF ein Major-Kriterium. An der freien RV-Wand reicht der regionale Befund allein für Minor.": {"en":"Regional RV akinesia, dyskinesia or an aneurysm with global RV dilatation or reduced RVEF meets a major criterion. The regional finding alone qualifies as minor when it affects the RV free wall.","fa":"آکینزی، دیسکینزی یا آنوریسم موضعی بطن راست همراه با اتساع کلی یا کاهش RVEF معیار ماژور است. اگر یافتهٔ موضعی در دیوارهٔ آزاد بطن راست باشد، به‌تنهایی معیار مینور است."},
+  "Eindeutiges RV-LGE außerhalb der Trikuspidalklappe zählt als Minor. Beim typischen LV-Streifen-LGE sind 1–2 Segmente Minor und mindestens 3 Segmente Major.": {"en":"Unequivocal RV LGE outside the tricuspid valve is minor. Typical LV stria-pattern LGE is minor in 1–2 segments and major in at least 3 segments.","fa":"LGE واضح در بطن راست خارج از دریچهٔ تریکوسپید معیار مینور است. در LGE نواری تیپیک بطن چپ، ۱ تا ۲ سگمان معیار مینور و دست‌کم ۳ سگمان معیار ماژور است."},
   "ACM-Rechner": { en: "ACM calculator", fa: "محاسبه‌گر ACM" },
   "Zum ACM-Rechner": { en: "Open ACM calculator", fa: "باز کردن محاسبه‌گر ACM" },
-  "Mindestens ein Kriterium für Form und Funktion (I) oder Myokardgewebe (II) muss erfüllt sein. Bei biventrikulärer ACM gilt das für beide Kammern. Ein Major-Kriterium im EKG allein genügt nicht.": { en: "At least one criterion for morphology and function (I) or myocardial tissue (II) must be met. In biventricular ACM, this applies to both ventricles. A major ECG criterion alone is insufficient.", fa: "دست‌کم یک معیار مورفولوژی و عملکرد (I) یا بافت میوکارد (II) باید برآورده شود. در ACM دوبطنی، این شرط برای هر دو بطن برقرار است. یک معیار اصلی نوار قلب به‌تنهایی کافی نیست." },
-  "Erforderlich sind ein strukturelles LV-Major-Kriterium (typisches LGE) und eine pathogene oder wahrscheinlich pathogene ACM-assoziierte Genvariante.": { en: "A major LV structural criterion (characteristic LGE) and a pathogenic or likely pathogenic ACM-associated genetic variant are required.", fa: "یک معیار اصلی ساختاری بطن چپ (الگوی تیپیک LGE) و یک واریانت بیماری‌زا یا احتمالاً بیماری‌زای مرتبط با ACM لازم‌اند." },
-  "Negative T-Wellen in V1–V3 oder darüber hinaus ohne kompletten Rechtsschenkelblock sind ein Beispiel für Major.": { en: "T-wave inversion in V1–V3 or beyond without complete right bundle branch block is an example of a major finding.", fa: "وارونگی موج T در V1–V3 یا فراتر از آن، بدون بلوک کامل شاخهٔ راست، نمونه‌ای از معیار اصلی است." },
+  "Mindestens ein Kriterium für Form und Funktion (I) oder Myokardgewebe (II) muss erfüllt sein. Bei biventrikulärer ACM gilt das für beide Kammern. Ein Major-Kriterium im EKG allein genügt nicht.": { en: "At least one criterion for morphology and function (I) or myocardial tissue (II) must be met. In biventricular ACM, this applies to both ventricles. A major ECG criterion alone is insufficient.", fa: "دست‌کم یک معیار مورفولوژی و عملکرد (I) یا بافت میوکارد (II) باید برآورده شود. در ACM دوبطنی، این شرط برای هر دو بطن برقرار است. یک معیار ماژور نوار قلب به‌تنهایی کافی نیست." },
+  "Erforderlich sind ein strukturelles LV-Major-Kriterium (typisches LGE) und eine pathogene oder wahrscheinlich pathogene ACM-assoziierte Genvariante.": { en: "A major LV structural criterion (characteristic LGE) and a pathogenic or likely pathogenic ACM-associated genetic variant are required.", fa: "یک معیار ماژور ساختاری بطن چپ (الگوی تیپیک LGE) و یک واریانت بیماری‌زا یا احتمالاً بیماری‌زای مرتبط با ACM لازم‌اند." },
+  "Negative T-Wellen in V1–V3 oder darüber hinaus ohne kompletten Rechtsschenkelblock sind ein Beispiel für Major.": { en: "T-wave inversion in V1–V3 or beyond without complete right bundle branch block is an example of a major finding.", fa: "وارونگی موج T در V1–V3 یا فراتر از آن، بدون بلوک کامل شاخهٔ راست، نمونه‌ای از معیار ماژور است." },
   "RVEDVi ist das enddiastolische RV-Volumen bezogen auf die Körperoberfläche.": { en: "RVEDVi is the RV end-diastolic volume indexed to body surface area.", fa: "RVEDVi حجم پایان دیاستول بطن راست نسبت به سطح بدن است." },
   "RVEF ist die rechtsventrikuläre Ejektionsfraktion.": { en: "RVEF is the right ventricular ejection fraction.", fa: "RVEF کسر جهشی بطن راست است." },
   "Sind Volumen und RVEF auffällig, zählt in Kategorie I nur die höhere Einstufung.": { en: "If volume and RVEF are both abnormal, count only the higher grade in category I.", fa: "اگر حجم و RVEF هر دو غیرطبیعی باشند، در دستهٔ I فقط ردهٔ بالاتر حساب می‌شود." },
@@ -16,9 +16,9 @@ const COPY = {
   "Linker Ventrikel (LV)": { en: "Left ventricle (LV)", fa: "بطن چپ (LV)" },
   "Verminderte LVEF mit oder ohne LV-Dilatation.": { en: "Reduced LVEF with or without LV dilatation.", fa: "کاهش LVEF با یا بدون اتساع بطن چپ." },
   "Alternativ zählt eine regionale Hypokinesie oder Akinesie der freien LV-Wand oder des Septums.": { en: "Regional hypokinesia or akinesia of the LV free wall or septum can also qualify.", fa: "هیپوکینزی یا آکینزی موضعی دیوارهٔ آزاد بطن چپ یا سپتوم نیز می‌تواند این معیار را برآورده کند." },
-  "Für den LV gibt es im Cine kein Major-Kriterium.": { en: "There is no major LV criterion on cine.", fa: "در Cine معیار اصلی برای بطن چپ وجود ندارد." },
+  "Für den LV gibt es im Cine kein Major-Kriterium.": { en: "There is no major LV criterion on cine.", fa: "در Cine معیار ماژور برای بطن چپ وجود ندارد." },
   "Volumen und EF anhand geeigneter Referenzwerte für die Methode, das Alter und das Geschlecht beurteilen. Beim Volumen auch die Körperoberfläche berücksichtigen.": { en: "Assess volume and EF against reference values appropriate for the method, age, and sex. Also account for body surface area when assessing volume.", fa: "حجم و EF را با مقادیر مرجع متناسب با روش تصویربرداری، سن و جنس بسنجید. در ارزیابی حجم، سطح بدن را هم در نظر بگیرید." },
-  "Ein typisches LGE-Muster in zwei orthogonalen Ebenen zählt als Major-Kriterium.": { en: "A characteristic LGE pattern demonstrated in two orthogonal planes counts as a major criterion.", fa: "الگوی تیپیک LGE که در دو نمای عمود بر هم دیده شود، معیار اصلی است." },
+  "Ein typisches LGE-Muster in zwei orthogonalen Ebenen zählt als Major-Kriterium.": { en: "A characteristic LGE pattern demonstrated in two orthogonal planes counts as a major criterion.", fa: "الگوی تیپیک LGE که در دو نمای عمود بر هم دیده شود، معیار ماژور است." },
   "Subepikardiales oder mittmyokardiales Streifen-LGE in mindestens einem Segment der freien Wand oder des Septums.": { en: "Subepicardial or mid-wall stria-like LGE in at least one segment of the free wall or septum.", fa: "LGE نواری زیر اپی‌کارد یا در میانهٔ دیواره، در دست‌کم یک سگمان از دیوارهٔ آزاد یا سپتوم." },
   "Isoliertes LGE an RV-Insertionspunkten bleibt unberücksichtigt.": { en: "Isolated RV insertion-point LGE does not count.", fa: "LGE محدود به نقاط اتصال بطن راست حساب نمی‌شود." },
   "Pro Kategorie zählt nur das stärkste erfüllte Kriterium, dann werden die Punkte aus den verschiedenen Kategorien addiert.": { en: "Count only the strongest criterion met in each category, then add the points across categories.", fa: "در هر دسته فقط قوی‌ترین معیارِ برآورده‌شده حساب می‌شود، سپس امتیاز دسته‌های مختلف با هم جمع می‌شود." },
@@ -51,10 +51,10 @@ const COPY = {
   "Pro Kategorie zählt nur das stärkste erfüllte Kriterium. Die Punkte aus den verschiedenen Kategorien werden addiert.": { en: "Count only the strongest criterion met in each category, then add the points across categories.", fa: "در هر دسته فقط قوی‌ترین معیارِ برآورده‌شده حساب می‌شود. سپس امتیاز دسته‌های مختلف با هم جمع می‌شوند." },
   "1 Punkt": { en: "1 point", fa: "۱ امتیاز" },
   "Die Task-Force-Kriterien wurden für die klassische ARVC entwickelt. Im Mittelpunkt steht die rechte Herzkammer.": { en: "The Task Force Criteria were developed for classic ARVC. They focus on the right ventricle.", fa: "معیارهای کارگروه برای ARVC کلاسیک تدوین شدند و تمرکزشان بر بطن راست است." },
-  "Major und Minor im MRT": { en: "Major and minor criteria on MRI", fa: "معیارهای اصلی و فرعی در MRI" },
+  "Major und Minor im MRT": { en: "Major and minor criteria on MRI", fa: "معیارهای ماژور و مینور در MRI" },
   "Major und Minor setzen eine regionale RV-Akinesie, Dyskinesie oder dyssynchrone Kontraktion voraus. Der Messwert für RV-Volumen oder RVEF bestimmt die Einstufung.": { en: "Major and minor both require regional RV akinesia, dyskinesia, or dyssynchronous contraction. The RV volume or RVEF measurement determines the grade.", fa: "هر دو رده به آکینزی یا دیسکینزی موضعی بطن راست یا انقباض ناهماهنگ آن نیاز دارند. مقدار حجم بطن راست یا RVEF رده را مشخص می‌کند." },
   "Wie wird gewertet?": { en: "How are findings scored?", fa: "امتیازها چطور حساب می‌شوند؟" },
-  "Major entspricht 2 Punkten. Minor entspricht 1 Punkt.": { en: "Major corresponds to 2 points. Minor corresponds to 1 point.", fa: "معیار اصلی ۲ امتیاز دارد و معیار فرعی ۱ امتیاز." },
+  "Major entspricht 2 Punkten. Minor entspricht 1 Punkt.": { en: "Major corresponds to 2 points. Minor corresponds to 1 point.", fa: "معیار ماژور ۲ امتیاز دارد و معیار مینور ۱ امتیاز." },
   "Pro Kategorie zählt der stärkste Befund einmal.": { en: "Count the strongest finding in each category once.", fa: "در هر دسته، قوی‌ترین یافته فقط یک بار حساب می‌شود." },
   "Möglich": { en: "Possible", fa: "ممکن" },
   "Grenzwertig": { en: "Borderline", fa: "مرزی" },
@@ -62,14 +62,14 @@ const COPY = {
   "2 Punkte": { en: "2 points", fa: "۲ امتیاز" },
   "3 Punkte": { en: "3 points", fa: "۳ امتیاز" },
   "Ab 4 Punkten": { en: "4 points or more", fa: "۴ امتیاز یا بیشتر" },
-  "Vier Punkte ergeben sich zum Beispiel aus zwei Major-Kriterien, einem Major- und zwei Minor-Kriterien oder vier Minor-Kriterien aus verschiedenen Kategorien.": { en: "Four points can come from two major criteria, one major plus two minor criteria, or four minor criteria, each from a different category.", fa: "چهار امتیاز می‌تواند از دو معیار اصلی، یک معیار اصلی همراه با دو معیار فرعی، یا چهار معیار فرعی به دست بیاید. هر معیار باید از دسته‌ای متفاوت باشد." },
+  "Vier Punkte ergeben sich zum Beispiel aus zwei Major-Kriterien, einem Major- und zwei Minor-Kriterien oder vier Minor-Kriterien aus verschiedenen Kategorien.": { en: "Four points can come from two major criteria, one major plus two minor criteria, or four minor criteria, each from a different category.", fa: "چهار امتیاز می‌تواند از دو معیار ماژور، یک معیار ماژور همراه با دو معیار مینور، یا چهار معیار مینور به دست بیاید. هر معیار باید از دسته‌ای متفاوت باشد." },
   "Die Task-Force-Kriterien richten sich auf die klassische ARVC mit Beteiligung der rechten Herzkammer. Für sie gelten die drei Stufen oben.": { en: "The Task Force Criteria address classic ARVC involving the right ventricle. The three tiers above apply.", fa: "معیارهای کارگروه برای ARVC کلاسیک با درگیری بطن راست تدوین شدند. سه ردهٔ بالا برای همین فرم به کار می‌روند." },
   "Kriterien aus I oder II nur am RV. Linksventrikuläre elektrische Befunde fließen bei dieser Form nicht in die Wertung ein.": { en: "Category I or II criteria are met only in the RV. LV electrical findings are excluded from scoring for this form.", fa: "معیارهای دستهٔ I یا II فقط در بطن راست وجود دارند. یافته‌های الکتریکی بطن چپ در امتیاز این فرم حساب نمی‌شوند." },
   "Mindestens ein Kriterium aus I oder II pro Herzkammer.": { en: "At least one category I or II criterion in each ventricle.", fa: "حداقل یک معیار از دستهٔ I یا II در هر بطن." },
   "Rechtsdominant": { en: "Right-dominant", fa: "راست‌غالب" },
   "Isoliert links": { en: "Isolated LV involvement", fa: "درگیری محدود به بطن چپ" },
   "Typisches LV-LGE und eine pathogene oder wahrscheinlich pathogene ACM-Genvariante sind erforderlich.": { en: "Characteristic LV LGE and a pathogenic or likely pathogenic ACM variant are required.", fa: "الگوی تیپیک LGE در بطن چپ و یک واریانت بیماری‌زا یا احتمالاً بیماری‌زای مرتبط با ACM لازم‌اند." },
-  "Was zählt im MRT als Major oder Minor?": { en: "What counts as major or minor on MRI?", fa: "کدام یافته‌های MRI معیار اصلی یا فرعی هستند؟" },
+  "Was zählt im MRT als Major oder Minor?": { en: "What counts as major or minor on MRI?", fa: "کدام یافته‌های MRI معیار ماژور یا مینور هستند؟" },
   "MRT-Kriterien vergleichen": { en: "Compare MRI criteria", fa: "مقایسهٔ معیارهای MRI" },
   "Cine · rechter Ventrikel": { en: "Cine · right ventricle", fa: "Cine · بطن راست" },
   "Für beide Stufen braucht es eine regionale RV-Akinesie, Dyskinesie oder dyssynchrone RV-Kontraktion. Dazu muss mindestens einer der folgenden Messwerte auffällig sein.": { en: "Both levels require regional RV akinesia, dyskinesia, or dyssynchronous RV contraction plus an abnormal value for at least one of the following measurements.", fa: "هر دو رده به آکینزی موضعی، دیسکینزی یا انقباض ناهماهنگ بطن راست همراه با دست‌کم یکی از مقادیر غیرطبیعی زیر نیاز دارند." },
@@ -77,27 +77,27 @@ const COPY = {
   "Cine · Form und Funktion (I)": { en: "Cine · morphology and function (I)", fa: "Cine · مورفولوژی و عملکرد (I)" },
   "Regionale Akinesie, Dyskinesie oder Ausbuchtung zusammen mit globaler RV-Dilatation oder verminderter RVEF.": { en: "Regional akinesia, dyskinesia, or bulging together with global RV dilatation or reduced RVEF.", fa: "آکینزی، دیسکینزی یا برجستگی موضعی همراه با اتساع کلی بطن راست یا کاهش RVEF." },
   "Regionale Akinesie, Dyskinesie oder ein Aneurysma der freien RV-Wand genügt auch ohne globale Auffälligkeit.": { en: "Regional akinesia, dyskinesia, or an aneurysm of the RV free wall can qualify even without a global abnormality.", fa: "آکینزی، دیسکینزی یا آنوریسم موضعی دیوارهٔ آزاد بطن راست، حتی با حجم و عملکرد کلی طبیعی، کافی است." },
-  "Verminderte LVEF mit oder ohne LV-Dilatation. Auch eine regionale Hypokinesie oder Akinesie der freien LV-Wand oder des Septums erfüllt ein Minor-Kriterium.": { en: "Reduced LVEF with or without LV dilatation. Regional hypokinesia or akinesia of the LV free wall or septum also meets a minor criterion.", fa: "کاهش LVEF با یا بدون اتساع بطن چپ. هیپوکینزی یا آکینزی موضعی دیوارهٔ آزاد بطن چپ یا سپتوم هم معیار فرعی است." },
-  "Im Cine gibt es für den LV kein Major-Kriterium. Für Volumen und EF gelten zur Methode und zur untersuchten Person passende Referenzwerte, etwa nach Alter, Geschlecht und Körperoberfläche.": { en: "There is no major LV criterion on cine. Use technique- and patient-appropriate reference values for volume and EF, accounting for factors such as age, sex, and body surface area.", fa: "در Cine معیار اصلی برای بطن چپ وجود ندارد. برای حجم و EF از مقادیر مرجع متناسب با روش و فرد، از جمله سن، جنس و سطح بدن، استفاده کنید." },
+  "Verminderte LVEF mit oder ohne LV-Dilatation. Auch eine regionale Hypokinesie oder Akinesie der freien LV-Wand oder des Septums erfüllt ein Minor-Kriterium.": { en: "Reduced LVEF with or without LV dilatation. Regional hypokinesia or akinesia of the LV free wall or septum also meets a minor criterion.", fa: "کاهش LVEF با یا بدون اتساع بطن چپ. هیپوکینزی یا آکینزی موضعی دیوارهٔ آزاد بطن چپ یا سپتوم هم معیار مینور است." },
+  "Im Cine gibt es für den LV kein Major-Kriterium. Für Volumen und EF gelten zur Methode und zur untersuchten Person passende Referenzwerte, etwa nach Alter, Geschlecht und Körperoberfläche.": { en: "There is no major LV criterion on cine. Use technique- and patient-appropriate reference values for volume and EF, accounting for factors such as age, sex, and body surface area.", fa: "در Cine معیار ماژور برای بطن چپ وجود ندارد. برای حجم و EF از مقادیر مرجع متناسب با روش و فرد، از جمله سن، جنس و سطح بدن، استفاده کنید." },
   "LGE · Myokardgewebe (II)": { en: "LGE · myocardial tissue (II)", fa: "LGE · بافت میوکارد (II)" },
   "Das typische LGE muss in zwei orthogonalen Ebenen nachweisbar sein.": { en: "Characteristic LGE must be demonstrable in two orthogonal planes.", fa: "الگوی تیپیک LGE باید در دو نمای عمود بر هم دیده شود." },
   "Transmurales Streifen-LGE in mindestens einer RV-Region (Einflusstrakt, Ausflusstrakt oder Apex).": { en: "Transmural stria-like LGE in at least one RV region (inlet, outflow tract, or apex).", fa: "LGE نواری تمام‌ضخامت در دست‌کم یک ناحیه از بطن راست (مسیر ورودی، مسیر خروجی یا اپکس)." },
   "Subepikardiales oder mittmyokardiales Streifen-LGE in mindestens einem Segment der freien Wand oder des Septums. Isoliertes LGE an RV-Insertionspunkten bleibt unberücksichtigt.": { en: "Subepicardial or mid-wall stria-like LGE in at least one segment of the free wall or septum. Exclude isolated RV insertion-point LGE.", fa: "LGE نواری زیر اپی‌کارد یا در میانهٔ دیواره، در دست‌کم یک سگمان از دیوارهٔ آزاد یا سپتوم. LGE محدود به نقاط اتصال بطن راست حساب نمی‌شود." },
-  "Für LGE gibt es kein Minor-Kriterium.": { en: "There is no minor LGE criterion.", fa: "LGE معیار فرعی ندارد." },
+  "Für LGE gibt es kein Minor-Kriterium.": { en: "There is no minor LGE criterion.", fa: "LGE معیار مینور ندارد." },
   "Die fünf weiteren Kategorien": { en: "The five other categories", fa: "پنج دستهٔ دیگر" },
   "Myokardgewebe": { en: "Myocardial tissue", fa: "بافت میوکارد" },
   "Repolarisation im EKG": { en: "ECG repolarization", fa: "رپلاریزاسیون در نوار قلب" },
   "Depolarisation im EKG": { en: "ECG depolarization", fa: "دپلاریزاسیون در نوار قلب" },
   "Ventrikuläre Arrhythmien": { en: "Ventricular arrhythmias", fa: "آریتمی‌های بطنی" },
-  "Im Langzeit-EKG zählen Häufigkeit und Morphologie ventrikulärer Extrasystolen und Tachykardien. Zum Beispiel ist eine VT mit Linksschenkelblockmorphologie und superiorer Achse in beiden Systemen ein Major-Kriterium.": { en: "Ambulatory ECG evaluates the frequency and morphology of ventricular ectopy and tachycardia. For example, VT with left bundle branch block morphology and a superior axis is a major criterion in both systems.", fa: "در پایش طولانی‌مدت نوار قلب، تعداد و شکل اکستراسیستول‌ها و تاکی‌کاردی‌های بطنی اهمیت دارند. برای مثال، VT با نمای بلوک شاخهٔ چپ و محور فوقانی در هر دو سیستم معیار اصلی است." },
+  "Im Langzeit-EKG zählen Häufigkeit und Morphologie ventrikulärer Extrasystolen und Tachykardien. Zum Beispiel ist eine VT mit Linksschenkelblockmorphologie und superiorer Achse in beiden Systemen ein Major-Kriterium.": { en: "Ambulatory ECG evaluates the frequency and morphology of ventricular ectopy and tachycardia. For example, VT with left bundle branch block morphology and a superior axis is a major criterion in both systems.", fa: "در پایش طولانی‌مدت نوار قلب، تعداد و شکل اکستراسیستول‌ها و تاکی‌کاردی‌های بطنی اهمیت دارند. برای مثال، VT با نمای بلوک شاخهٔ چپ و محور فوقانی در هر دو سیستم معیار ماژور است." },
   "Familienanamnese und Genetik": { en: "Family history and genetics", fa: "سابقهٔ خانوادگی و ژنتیک" },
-  "Eine bestätigte Erkrankung bei einem erstgradig Verwandten kann ein Major-Kriterium erfüllen. Auch eine als krankheitsverursachend eingestufte Genvariante kann als Major zählen.": { en: "Confirmed disease in a first-degree relative can meet a major criterion. A genetic variant classified as disease-causing may also count as major.", fa: "بیماری تأییدشده در یکی از بستگان درجهٔ اول می‌تواند معیار اصلی باشد. واریانتی که بیماری‌زا طبقه‌بندی شده است هم می‌تواند معیار اصلی محسوب شود." },
+  "Eine bestätigte Erkrankung bei einem erstgradig Verwandten kann ein Major-Kriterium erfüllen. Auch eine als krankheitsverursachend eingestufte Genvariante kann als Major zählen.": { en: "Confirmed disease in a first-degree relative can meet a major criterion. A genetic variant classified as disease-causing may also count as major.", fa: "بیماری تأییدشده در یکی از بستگان درجهٔ اول می‌تواند معیار ماژور باشد. واریانتی که بیماری‌زا طبقه‌بندی شده است هم می‌تواند معیار ماژور محسوب شود." },
   "Diagnosekriterien": { en: "Diagnostic criteria", fa: "معیارهای تشخیصی" },
   "MRT-Kriterium": { en: "MRI criterion", fa: "معیار MRI" },
   "Die Kriterien müssen aus unterschiedlichen Kategorien stammen.": { en: "Criteria must come from different categories.", fa: "معیارها باید از دسته‌های متفاوت باشند." },
-  "2 Major": { en: "2 major", fa: "۲ معیار اصلی" },
-  "1 Major + 2 Minor": { en: "1 major + 2 minor", fa: "۱ معیار اصلی + ۲ فرعی" },
-  "4 Minor": { en: "4 minor", fa: "۴ معیار فرعی" },
+  "2 Major": { en: "2 major", fa: "۲ معیار ماژور" },
+  "1 Major + 2 Minor": { en: "1 major + 2 minor", fa: "۱ معیار ماژور + ۲ فرعی" },
+  "4 Minor": { en: "4 minor", fa: "۴ معیار مینور" },
   "MRT-Grenzwerte anzeigen": { en: "Show MRI thresholds", fa: "نمایش آستانه‌های MRI" },
   "Einordnung anzeigen": { en: "Reveal interpretation", fa: "نمایش تفسیر" },
   "Die Diagnose stützt sich auf mehrere Befunde. Das MRT liefert nur einen Teil davon.": { en: "Diagnosis combines several findings. MRI provides only part of the evidence.", fa: "تشخیص بر ترکیب چند یافته استوار است. MRI فقط بخشی از شواهد را فراهم می‌کند." },
@@ -147,7 +147,7 @@ const COPY = {
   "Rechter Ventrikel": { en: "Right ventricle", fa: "بطن راست" },
   "Linker Ventrikel": { en: "Left ventricle", fa: "بطن چپ" },
   "Streifenförmiges LGE kann die gesamte RV-Wanddicke erfassen. Die dünne Wand erschwert den Nachweis.": { en: "Stria-like LGE can extend through the full thickness of the RV wall. The thin wall can make it difficult to detect.", fa: "LGE نواری می‌تواند تمام ضخامت دیوارهٔ بطن راست را درگیر کند. نازکی دیواره تشخیص آن را دشوار می‌کند." },
-  "Transmurales, streifenförmiges LGE in mindestens einer RV-Region zählt als strukturelles Major-Kriterium, wenn es in zwei orthogonalen Ebenen bestätigt ist. Fehlendes RV-LGE schließt ARVC nicht aus.": { en: "Transmural, stria-like LGE in at least one RV region counts as a major structural criterion when confirmed in two orthogonal planes. Absence of RV LGE does not rule out ARVC.", fa: "LGE نواری تمام‌ضخامت در دست‌کم یک ناحیهٔ بطن راست، اگر در دو نمای عمود بر هم تأیید شود، یک معیار اصلی ساختاری است. نبود LGE بطن راست، ARVC را رد نمی‌کند." },
+  "Transmurales, streifenförmiges LGE in mindestens einer RV-Region zählt als strukturelles Major-Kriterium, wenn es in zwei orthogonalen Ebenen bestätigt ist. Fehlendes RV-LGE schließt ARVC nicht aus.": { en: "Transmural, stria-like LGE in at least one RV region counts as a major structural criterion when confirmed in two orthogonal planes. Absence of RV LGE does not rule out ARVC.", fa: "LGE نواری تمام‌ضخامت در دست‌کم یک ناحیهٔ بطن راست، اگر در دو نمای عمود بر هم تأیید شود، یک معیار ماژور ساختاری است. نبود LGE بطن راست، ARVC را رد نمی‌کند." },
   "Abgrenzung zu Infarkt und Myokarditis": { en: "Distinguishing infarction and myocarditis", fa: "افتراق از انفارکتوس و میوکاردیت" },
   "Cine im Vierkammerblick und in einer zweiten Ebene beurteilen.": { en: "Assess cine in the four-chamber view and in a second plane.", fa: "تصاویر Cine را در نمای چهارحفره‌ای و یک نمای دوم بررسی کنید." },
   "Ein Abschnitt der freien RV-Wand bewegt sich in der Systole nicht.": { en: "A segment of the RV free wall does not move during systole.", fa: "بخشی از دیوارهٔ آزاد بطن راست در سیستول حرکت نمی‌کند." },
@@ -225,10 +225,10 @@ const COPY = {
   "Im LGE können helle Streifen in der Wand auffallen. Schau beide Kammern an. Auch ohne sichtbares LGE ist eine ARVC möglich.": { en: "LGE images may show bright streaks in the wall. Check both ventricles. ARVC can be present without visible LGE.", fa: "در تصاویر LGE ممکن است نوارهای روشن در دیواره دیده شوند. هر دو بطن را بررسی کنید. حتی بدون LGE قابل مشاهده هم ARVC ممکن است وجود داشته باشد." },
   "Die Diagnose ergibt sich aus mehreren Befunden.": { en: "Diagnosis depends on a combination of findings.", fa: "تشخیص از کنار هم گذاشتن چند یافته به دست می‌آید." },
   "Vom MRT-Befund zur Diagnose": { en: "From MRI finding to diagnosis", fa: "از یافتهٔ MRI تا تشخیص" },
-  "Ein Abschnitt der RV-Wand wölbt sich bei der Kontraktion nach außen. Das gemessene RV-Volumen liegt über der Major-Grenze. Zusammen ergibt das": { en: "A segment of the RV wall bulges outward during contraction. The measured RV volume is above the major threshold. Together these meet", fa: "بخشی از دیوارهٔ بطن راست هنگام انقباض به بیرون برجسته می‌شود و حجم اندازه‌گیری‌شدهٔ بطن راست از آستانهٔ معیار اصلی بالاتر است. این دو در کنار هم" },
-  "ein Major-Kriterium im MRT": { en: "one major MRI criterion", fa: "یک معیار اصلی MRI را تشکیل می‌دهند" },
+  "Ein Abschnitt der RV-Wand wölbt sich bei der Kontraktion nach außen. Das gemessene RV-Volumen liegt über der Major-Grenze. Zusammen ergibt das": { en: "A segment of the RV wall bulges outward during contraction. The measured RV volume is above the major threshold. Together these meet", fa: "بخشی از دیوارهٔ بطن راست هنگام انقباض به بیرون برجسته می‌شود و حجم اندازه‌گیری‌شدهٔ بطن راست از آستانهٔ معیار ماژور بالاتر است. این دو در کنار هم" },
+  "ein Major-Kriterium im MRT": { en: "one major MRI criterion", fa: "یک معیار ماژور MRI را تشکیل می‌دهند" },
   "Eine nachgewiesene krankheitsverursachende ARVC-Genvariante liefert": { en: "An established disease-causing ARVC variant provides", fa: "وجود یک واریانت ژنتیکیِ اثبات‌شدهٔ بیماری‌زا برای ARVC،" },
-  "ein zweites Major-Kriterium": { en: "a second major criterion", fa: "معیار اصلی دوم" },
+  "ein zweites Major-Kriterium": { en: "a second major criterion", fa: "معیار ماژور دوم" },
   "Was sieht man im MRT?": { en: "What do we see on MRI?", fa: "در MRI چه می‌بینیم؟" },
   "Wie wird ARVC diagnostiziert?": { en: "How is ARVC diagnosed?", fa: "ARVC چگونه تشخیص داده می‌شود؟" },
   "Bei klassischer ARVC zuerst die rechte Kammer (RV) im Cine ansehen.": { en: "In classic ARVC, look at the right ventricle (RV) on cine first.", fa: "در ARVC کلاسیک، ابتدا حرکت بطن راست (RV) را در تصاویر متحرک بررسی کنید." },
@@ -244,8 +244,8 @@ const COPY = {
   "Für die klassische rechtsbetonte Form führen die Task Force Criteria von 2010 Befunde aus verschiedenen Bereichen zusammen, etwa aus MRT oder Echo, EKG, dokumentierten Rhythmusstörungen und Familienanamnese oder Genetik.": { en: "For classic right-dominant ARVC, the 2010 Task Force Criteria combine findings from different categories, such as MRI or echo, ECG, documented arrhythmias, and family history or genetics.", fa: "برای نوع کلاسیک با درگیری غالب بطن راست، معیارهای ۲۰۱۰ یافته‌های چند دسته را کنار هم می‌گذارند، از جمله MRI یا اکو، نوار قلب، آریتمی ثبت‌شده و سابقهٔ خانوادگی یا ژنتیک." },
   "Was zählt im MRT?": { en: "What counts on MRI?", fa: "در MRI چه چیزی معیار محسوب می‌شود؟" },
   "Eine passende regionale Bewegungsstörung der rechten Kammer zusammen mit einem erhöhten RV-Volumen oder einer verminderten RV-Auswurffraktion. Das ergibt ein Bildgebungskriterium.": { en: "A qualifying regional RV wall motion abnormality together with increased RV volume or reduced RV ejection fraction. This counts as one imaging criterion.", fa: "اختلال موضعی مشخص در حرکت دیوارهٔ بطن راست همراه با افزایش حجم یا کاهش کسر جهشی همان بطن. این ترکیب یک معیار تصویربرداری محسوب می‌شود." },
-  "Mit zwei Hauptkriterien (Major), einem Haupt- und zwei Nebenkriterien (Minor) oder vier Nebenkriterien aus unterschiedlichen Kategorien.": { en: "With two major criteria, one major plus two minor criteria, or four minor criteria, drawn from different categories.", fa: "با دو معیار اصلی، یک معیار اصلی و دو معیار فرعی، یا چهار معیار فرعی. معیارها باید از دسته‌های متفاوت باشند." },
-  "Beispiel: Eine typische Wandbewegungsstörung mit deutlich vergrößerter rechter Kammer kann ein Major-Kriterium sein. Kommt aus einer anderen Kategorie eine nachweislich krankheitsverursachende ARVC-Genvariante hinzu, sind zwei Major-Kriterien erfüllt.": { en: "For example, typical abnormal wall motion with a markedly enlarged RV can meet one major criterion. An established disease-causing ARVC variant would meet a second major criterion in a different category.", fa: "مثلاً اختلال تیپیک حرکت دیواره همراه با بزرگی واضح بطن راست می‌تواند یک معیار اصلی باشد. اگر یک واریانت ژنتیکیِ اثبات‌شدهٔ بیماری‌زا هم یافت شود، معیار اصلی دوم از دستهٔ دیگری تأمین می‌شود." },
+  "Mit zwei Hauptkriterien (Major), einem Haupt- und zwei Nebenkriterien (Minor) oder vier Nebenkriterien aus unterschiedlichen Kategorien.": { en: "With two major criteria, one major plus two minor criteria, or four minor criteria, drawn from different categories.", fa: "با دو معیار ماژور، یک معیار ماژور و دو معیار مینور، یا چهار معیار مینور. معیارها باید از دسته‌های متفاوت باشند." },
+  "Beispiel: Eine typische Wandbewegungsstörung mit deutlich vergrößerter rechter Kammer kann ein Major-Kriterium sein. Kommt aus einer anderen Kategorie eine nachweislich krankheitsverursachende ARVC-Genvariante hinzu, sind zwei Major-Kriterien erfüllt.": { en: "For example, typical abnormal wall motion with a markedly enlarged RV can meet one major criterion. An established disease-causing ARVC variant would meet a second major criterion in a different category.", fa: "مثلاً اختلال تیپیک حرکت دیواره همراه با بزرگی واضح بطن راست می‌تواند یک معیار ماژور باشد. اگر یک واریانت ژنتیکیِ اثبات‌شدهٔ بیماری‌زا هم یافت شود، معیار ماژور دوم از دستهٔ دیگری تأمین می‌شود." },
   "Für die Gesamtdiagnose zählen weitere Kriterien aus anderen Kategorien.": { en: "The overall diagnosis requires additional criteria from other categories.", fa: "برای تشخیص نهایی، معیارهای دیگری از دسته‌های متفاوت لازم است." },
   "Bei der": {
     "en": "In",
@@ -550,7 +550,7 @@ const COPY = {
   },
   "ordnen Hinweise aus verschiedenen Untersuchungen zur klassischen rechtsbetonten ARVC. Ein Major-Kriterium ist stärker, ein Minor-Kriterium schwächer gewichtet. Das ist diagnostisches Gewicht und nicht automatisch ein Maß für die Krankheitsschwere.": {
     "en": "combine evidence from different examinations for classic right-dominant ARVC. A major criterion has greater diagnostic weight than a minor criterion. This is diagnostic weight, not automatically a measure of disease severity.",
-    "fa": "شواهد بررسی‌های گوناگون را برای ARVC کلاسیکِ غالب در راست کنار هم می‌گذارند. معیار اصلی وزن تشخیصی بیشتری از معیار فرعی دارد. این وزن تشخیصی است و به‌طور خودکار معیاری برای شدت بیماری نیست."
+    "fa": "شواهد بررسی‌های گوناگون را برای ARVC کلاسیکِ غالب در راست کنار هم می‌گذارند. معیار ماژور وزن تشخیصی بیشتری از معیار مینور دارد. این وزن تشخیصی است و به‌طور خودکار معیاری برای شدت بیماری نیست."
   },
   "Der MRT-Baustein: regional UND global": {
     "en": "The MRI component: regional AND global",
@@ -598,7 +598,7 @@ const COPY = {
   },
   "Erhöhtes RV-Volumen und reduzierte RVEF sind zwei Wege zum selben MRT-Kriterium dieser Kategorie. Ein bildgebendes Major-Kriterium allein ist noch keine gesicherte Gesamtdiagnose. Die übrigen Diagnosebereiche, etwa EKG, Rhythmus und Familie, müssen dazukommen.": {
     "en": "Increased RV volume and reduced RVEF are two routes to the same MRI criterion in this category. One major imaging criterion alone does not establish the overall diagnosis. Other diagnostic domains, such as ECG, rhythm and family history, must be added.",
-    "fa": "افزایش حجم RV و کاهش RVEF دو مسیر برای رسیدن به همان معیار MRI در این دسته هستند. یک معیار اصلی تصویربرداری به‌تنهایی تشخیص کلی را قطعی نمی‌کند. سایر حوزه‌های تشخیصی، مانند ECG، ریتم و سابقهٔ خانوادگی نیز باید اضافه شوند."
+    "fa": "افزایش حجم RV و کاهش RVEF دو مسیر برای رسیدن به همان معیار MRI در این دسته هستند. یک معیار ماژور تصویربرداری به‌تنهایی تشخیص کلی را قطعی نمی‌کند. سایر حوزه‌های تشخیصی، مانند ECG، ریتم و سابقهٔ خانوادگی نیز باید اضافه شوند."
   },
   "Die Grenze dieses Systems": {
     "en": "The limits of this system",
@@ -670,7 +670,7 @@ const COPY = {
   },
   "115 ml/m² liegt beim Mann über der Major-Grenze für das RVEDVi. Die RVEF von 41 % liegt dagegen im Minor-Bereich.": {
     "en": "In a man, 115 mL/m² exceeds the major RVEDVi threshold. The RVEF of 41%, however, is in the minor range.",
-    "fa": "در مردان، مقدار 115 mL/m² بالاتر از آستانهٔ معیار اصلی RVEDVi است. در مقابل، RVEF برابر 41٪ در محدودهٔ معیار فرعی قرار می‌گیرد."
+    "fa": "در مردان، مقدار 115 mL/m² بالاتر از آستانهٔ معیار ماژور RVEDVi است. در مقابل، RVEF برابر 41٪ در محدودهٔ معیار مینور قرار می‌گیرد."
   },
   "Zusammenführen:": {
     "en": "Combine the findings:",
@@ -1358,11 +1358,11 @@ const COPY = {
   },
   "Major": {
     "en": "Major",
-    "fa": "معیار اصلی"
+    "fa": "معیار ماژور"
   },
   "Minor": {
     "en": "Minor",
-    "fa": "معیار فرعی"
+    "fa": "معیار مینور"
   },
   "Baustein": {
     "en": "Component",
