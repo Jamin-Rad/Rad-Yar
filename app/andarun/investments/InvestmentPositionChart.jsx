@@ -8,7 +8,9 @@ import { estimateXtbStopOut, xtbExposure, xtbScenario } from '@/lib/investments/
 import { aggregateDaily, rsiDivergences, atr, vwap, pricePatterns, tradeSpans } from '@/lib/investments/chart-analysis.mjs'
 import Icon from './InvestmentIcon'
 import { xtbMarkets } from '@/lib/investments/xtb-markets.mjs'
-import openingRange from '@/lib/investments/xtb-opening-range-results.json'
+import PatternOverlay, {snapshotPattern} from './PatternOverlay'
+import ChartContextMenu from './ChartContextMenu'
+import {readIntradayArchive,extendIntradayArchive,mergeIntradayRows} from '@/lib/investments/intraday-archive.mjs'
 import IndicatorGuide from './IndicatorGuide'
 import { DrawingPalette, IndicatorPicker, patternFamilies } from './ChartControls'
 import styles from './InvestmentPositionChart.module.css'
@@ -75,12 +77,20 @@ export default function InvestmentPositionChart({ trade, openCount, drawings = [
   const [rsiHeight, setRsiHeight] = useState(75)
   const [macdHeight, setMacdHeight] = useState(100)
   const [panel, setPanel] = useState(null)
+  const patternControl=useRef(null)
+  useEffect(()=>{
+    if(panel!=='patterns')return
+    const close=e=>{if(!patternControl.current?.contains(e.target))setPanel(null)}
+    document.addEventListener('pointerdown',close)
+    return ()=>document.removeEventListener('pointerdown',close)
+  },[panel])
   const [measurement,setMeasurement]=useState(null)
   const [limitDetail, setLimitDetail] = useState(null)
   const [family,setFamily]=useState(null)
   const [patternType,setPatternType]=useState('')
   const [occurrence,setOccurrence]=useState('')
-  const [showOpeningRange, setShowOpeningRange] = useState(false)
+  const [channelBase,setChannelBase]=useState(null)
+  const [editAnchor,setEditAnchor]=useState(null)
   const [showTrades, setShowTrades] = useState(true)
   const [indicators, setIndicators] = useState(indicatorDefaults)
   const displaySymbol = (trade.plan.symbol || '').toUpperCase()
@@ -92,9 +102,14 @@ export default function InvestmentPositionChart({ trade, openCount, drawings = [
   const gestures = useRef({ points:new Map(), action:null, timer:null, wheel:0 })
   useEffect(() => {
     const storage = browserChartStorage()
+    let active=true
     if (reference) {
       setReferenceMarket(readChartHistory(storage, reference))
-      setIntraday(Object.fromEntries([5,15].map(n=>[n,readChartHistory(storage,`${reference}:${n}m`)])))
+      const legacyBars=Object.fromEntries([5,15].map(n=>[n,readChartHistory(storage,`${reference}:${n}m`)]))
+      setIntraday(legacyBars)
+      for(const n of [5,15])readIntradayArchive(`${reference}:${n}m`).then(rows=>{
+        if(active&&rows.length)setIntraday(prev=>prev[n]!==legacyBars[n]?prev:{...prev,[n]:{history:mergeIntradayRows(prev[n]?.history,rows)}})
+      }).catch(()=>{})
     }
     try {
       const saved = JSON.parse(storage?.getItem(prefsKey))
@@ -106,7 +121,7 @@ export default function InvestmentPositionChart({ trade, openCount, drawings = [
     const observer = new ResizeObserver(([entry])=>setSize({ width:Math.max(150,entry.contentRect.width), height:Math.max(120,entry.contentRect.height) }))
     observer.observe(plot.current)
     const interaction = gestures.current
-    return ()=>{observer.disconnect();clearTimeout(interaction.timer)}
+    return ()=>{active=false;observer.disconnect();clearTimeout(interaction.timer)}
   }, [reference,prefsKey])
   useEffect(()=>{
     if (!loaded) return
@@ -164,17 +179,13 @@ export default function InvestmentPositionChart({ trade, openCount, drawings = [
     frameAnchor.current = null
     setOffset(anchoredOffset(fullHistory.length, visibleCount, timeIndex(times, anchor.stamp), anchor.fraction))
   }, [interval, times, fullHistory.length, visibleCount])
-  const canShowOpeningRange=typeof interval==='number'&&['NQ=F','GC=F','BZ=F'].includes(reference)
-  const selectedMarketTrades=showOpeningRange&&canShowOpeningRange
-    ? openingRange.trades.filter(item=>item.symbol===reference)
-    : []
-  const openingTrades=history.length>0
-    ? selectedMarketTrades.filter(item=>item.stamp*1000>=Date.parse(history[0].date)&&item.stamp*1000<=Date.parse(history.at(-1).date))
-    : []
-  const patterns = useMemo(()=>family ? pricePatterns(fullHistory.slice(0,historyEnd)) : [],[!!family,fullHistory,historyEnd])
-  const choices = useMemo(()=>patterns.filter(item=>item.end>=historyStart && family?.types.includes(item.name) && (!patternType||item.name===patternType)).reverse(),[patterns,historyStart,family,patternType])
-  const patternKey=item=>item.name+'-'+fullHistory[item.confirmed].date
+  const scanStart=Math.max(0,historyStart-180)
+  const patterns=useMemo(()=>family?pricePatterns(fullHistory.slice(scanStart,historyEnd)):[],[!!family,fullHistory,scanStart,historyEnd])
+  const choices = useMemo(()=>patterns.filter(item=>item.end+scanStart>=historyStart && family?.types.includes(item.name) && (!patternType||item.name===patternType)).reverse(),[patterns,scanStart,historyStart,family,patternType])
+  const patternKey=item=>item.name+'-'+fullHistory[item.confirmed+scanStart].date
   const pattern=choices.find(item=>patternKey(item)===occurrence)??choices[0]
+  const candidate=pattern?snapshotPattern(pattern,fullHistory,scanStart,interval):null
+  const pinned=candidate&&lines.find(line=>line.type==='pattern' && line.meta.frame===interval && line.meta.name===candidate.meta.name && line.points[0].date===candidate.points[0].date && line.points[line.meta.count-1].date===candidate.points[candidate.meta.count-1].date)
   const chooseFamily=value=>{setFamily(value);setOccurrence('');setPatternType('')}
   const spans = useMemo(()=>daily
     ? tradeSpans(daily.events??[])
@@ -222,6 +233,10 @@ export default function InvestmentPositionChart({ trade, openCount, drawings = [
   function drawingPath(type,points) {
     const first=points[0]
     const startX=anchorX(first.date), startY=y(first.price)
+    if(type==='channel'&&points.length===3){
+      const bx=anchorX(points[1].date),by=y(points[1].price),dy=y(points[2].price)-by
+      return 'M'+startX+','+startY+'L'+bx+','+by+'v'+dy+'L'+startX+','+(startY+dy)+'Z'
+    }
     if (type==='horizontal') return 'M'+LEFT+','+startY+'H'+plotRight
     if (type==='vertical') return 'M'+startX+','+top+'V'+bottom
     if (type==='ray') return 'M'+startX+','+startY+'H'+plotRight
@@ -255,8 +270,14 @@ export default function InvestmentPositionChart({ trade, openCount, drawings = [
       const next={}
       for (const [index,minutes] of [[0,15],[1,5]]) {
         if(results[index].status!=='fulfilled')continue
-        next[minutes]=results[index].value
-        saveChartHistory(browserChartStorage(),`${reference}:${minutes}m`,next[minutes],3400)
+        const key=`${reference}:${minutes}m`
+        const incoming=results[index].value.history
+        try {next[minutes]={history:await extendIntradayArchive(key,intraday[minutes]?.history,incoming)}}
+        catch {
+          next[minutes]={history:mergeIntradayRows(intraday[minutes]?.history,incoming)}
+          saveChartHistory(browserChartStorage(),key,next[minutes],3400)
+          setError('آرشیو کامل مرورگر در دسترس نبود. تاریخچهٔ این نما تا بستن صفحه در دسترس است.')
+        }
       }
       setIntraday(previous=>({...previous,...next}))
       if(results[2].status==='fulfilled' && results[2].value.quote?.currency==='USD'){
@@ -292,11 +313,12 @@ export default function InvestmentPositionChart({ trade, openCount, drawings = [
       onPointerLeave() { setPointer(null) },
     }
   }
-  function openContext(event,price,date=fullHistory.at(-1)?.date) {
+  function openContext(event,price,date=fullHistory.at(-1)?.date,lineId=null) {
     const box=event.currentTarget.getBoundingClientRect()
     const x=event.clientX||box.left
     const y=event.clientY||box.bottom
-    setContext({price,date,x,y})
+    select(lineId)
+    setContext({price,date,x,y,lineId,trigger:plot.current})
   }
 
   function coordinates(event) {
@@ -335,13 +357,14 @@ export default function InvestmentPositionChart({ trade, openCount, drawings = [
   function changeDrawing(id, update) {
     saveLines(allDrawings.map(line=>line.id===id?{...line,...update}:line))
   }
-  function addDrawing(type, points) {
-    if(!symbol||allDrawings.length>=300)return
+  function addDrawing(type, points,meta) {
+    if(!symbol||!onDrawings||allDrawings.length>=300){setError('ذخیرهٔ رسم در دسترس نیست یا ظرفیت ۳۰۰ رسم پر شده است.');return}
     const id=crypto.randomUUID()
-    saveLines([...allDrawings,{id,symbol,type,points,scope:'shared',color:XTB_DRAWING_COLORS[0]}])
+    saveLines([...allDrawings,{id,symbol,type,points,...(meta?{meta}:{}),scope:'shared',color:meta?XTB_DRAWING_COLORS[1]:XTB_DRAWING_COLORS[0]}])
     select(id)
   }
   function chooseDrawing(tool) {
+    setChannelBase(null)
     setDrawing(tool)
     setMeasurement(null)
     setDraft([])
@@ -350,7 +373,7 @@ export default function InvestmentPositionChart({ trade, openCount, drawings = [
   function setFrame(value, fraction = .5) {
     const stamp = times[historyStart + Math.round(fraction * slots)]
     frameAnchor.current = viewportOffset > 0 && Number.isFinite(stamp) ? {frame:value, stamp, fraction} : null
-    setMeasurement(null);setOccurrence('');setIntervalMinutes(value);setPointer(null);setOffset(0);setDraft([]);setPriceDomain(null);setSelectedDivergence(null)
+    setChannelBase(null);select(null);setDrawing(null);setMeasurement(null);setOccurrence('');setIntervalMinutes(value);setPointer(null);setOffset(0);setDraft([]);setPriceDomain(null);setSelectedDivergence(null)
   }
   useEffect(()=>{
     const element=plot.current
@@ -382,6 +405,24 @@ export default function InvestmentPositionChart({ trade, openCount, drawings = [
   },[interval,visibleCount,historyStart,slots,times,width,height,min,max,!!daily])
 
   const [editPreview,setEditPreview]=useState(null)
+  function channelPoints(base,point) {
+    const [a,b]=base,ax=anchorX(a.date),dx=anchorX(b.date)-ax
+    const basePrice=a.price+(b.price-a.price)*(anchorX(point.date)-ax)/(dx||1)
+    return [a,b,{date:b.date,price:Math.max(.00000001,b.price+point.price-basePrice)}]
+  }
+  function locateEditor(event) {
+    const {x,y}=coordinates(event)
+    setEditAnchor({x:x/width,y:y/height})
+  }
+  function pinPattern(event) {
+    if(event?.currentTarget?.closest('svg[data-drawing]'))locateEditor(event)
+    if(pinned)select(pinned.id)
+    else if(candidate)addDrawing('pattern',candidate.points,candidate.meta)
+  }
+  function removeDrawing() {
+    if(selectedLine)saveLines(allDrawings.filter(line=>line.id!==selectedLine.id))
+    select(null);setContext(null)
+  }
   function begin(event, line, handleIndex) {
     const g=gestures.current
     clearTimeout(g.timer)
@@ -395,14 +436,17 @@ export default function InvestmentPositionChart({ trade, openCount, drawings = [
     }
     if(event.button!==0&&event.button!==2)return
     const chart=plot.current
+    const hit=event.target.closest?.('[data-drawing-id]')?.dataset.drawingId
+    chart.focus({preventScroll:true})
     chart.setPointerCapture(event.pointerId)
+    if(event.button===0)locateEditor(event)
     if(event.button===0&&local.x>=plotRight){g.action={type:'priceScale',y:local.y,domain:[min,max]};return}
     setContext(null)
-    if(line){select(line.id);g.action={type:'edit',line,handleIndex,point:pointAt(event),domain:[min,max]};return}
+    if(line&&event.button===0){select(line.id);g.action={type:'edit',line,handleIndex,point:pointAt(event),domain:[min,max]};return}
     if(event.button===2||!drawing){
       if(event.pointerType!=='touch'){select(null);setLimitDetail(null)}
       g.action={
-        type:'pan',x:local.x,y:local.y,offset:viewportOffset,
+        type:'pan',right:event.button===2,hit,x:local.x,y:local.y,offset:viewportOffset,
         vertical:event.button===0&&event.pointerType==='mouse',
         domain:[min,max], pricePerPixel:(max-min)/(bottom-top),
       }
@@ -410,6 +454,12 @@ export default function InvestmentPositionChart({ trade, openCount, drawings = [
         g.timer=setTimeout(()=>{g.action={type:'cursor'};trackPointer(local.x,local.y)},430)
       }
       return
+    }
+    if(drawing==='channel'&&channelBase){
+      const points=channelPoints(channelBase,pointAt(event))
+      if(Math.abs(y(points[2].price)-y(points[1].price))<2)return
+      addDrawing('channel',points)
+      setDrawing(null);setDraft([]);setChannelBase(null);return
     }
     if(['horizontal','vertical','ray'].includes(drawing)){addDrawing(drawing,[pointAt(event)]);setDrawing(null);return}
     if(drawing==='arrow'){
@@ -439,6 +489,7 @@ export default function InvestmentPositionChart({ trade, openCount, drawings = [
       setRange(Math.max(16,Math.min(190,Math.round(action.count/Math.max(.2,scale)))))
     } else if(action?.type==='pan'){
       const dx=local.x-action.x,dy=local.y-action.y
+      action.moved ||= Math.hypot(dx,dy)>=4
       action.movedX ||= Math.abs(dx)>=4
       action.movedY ||= action.vertical&&Math.abs(dy)>=4
       if(!action.movedX&&!action.movedY)return
@@ -453,11 +504,16 @@ export default function InvestmentPositionChart({ trade, openCount, drawings = [
       const point=pointAt(event)
       const delta=Date.parse(point.date)-Date.parse(action.point.date), priceDelta=point.price-action.point.price
       const points=action.line.points.map((item,i)=>action.handleIndex==null
-        ? {date:new Date(Date.parse(item.date)+delta).toISOString(),price:Math.max(.01,item.price+priceDelta)}
+        ? {date:new Date(Date.parse(item.date)+delta).toISOString(),price:Math.max(.00000001,item.price+priceDelta)}
         : i===action.handleIndex?point:item)
+      if(action.line.type==='channel'&&action.handleIndex!=null){
+        const [,b,c]=action.line.points
+        if(action.handleIndex===1)points[2]={date:point.date,price:Math.max(.00000001,point.price+c.price-b.price)}
+        if(action.handleIndex===2)points[2]={date:b.date,price:point.price}
+      }
       g.preview=points
       setEditPreview({id:action.line.id,points})
-    } else if(['trend','freehand','measure','rectangle','ellipse','fib'].includes(action?.type)){
+    } else if(['trend','freehand','measure','rectangle','ellipse','fib','channel'].includes(action?.type)){
       const point=pointAt(event)
       if(action.type!=='freehand')action.points=[action.points[0],point]
       else {
@@ -465,6 +521,8 @@ export default function InvestmentPositionChart({ trade, openCount, drawings = [
         action.points=[...action.points,point]
       }
       setDraft(action.points)
+    } else if(channelBase&&drawing==='channel'){
+      setDraft(channelPoints(channelBase,pointAt(event)))
     } else if(history.length && (event.pointerType!=='touch'||action?.type==='cursor')){
       trackPointer(local.x,local.y)
     }
@@ -477,10 +535,22 @@ export default function InvestmentPositionChart({ trade, openCount, drawings = [
     const action=g.action
     g.action=null
     if(!cancel && action?.type==='edit' && g.preview)changeDrawing(action.line.id,{points:g.preview})
-    if(!cancel && action?.points?.length>=2){if(action.type==='measure')setMeasurement(action.points);else addDrawing(action.type,action.points);setDrawing(null)}
+    if(!cancel&&action?.right&&!action.moved){
+      const local=coordinates(event)
+      openContext(event,priceAt(local.y),dateAt(indexAt(local.x)),action.hit)
+      locateEditor(event)
+    }
+    if(!cancel && action?.points?.length>=2){
+      if(action.type==='channel'){
+        if(Math.abs(anchorX(action.points[1].date)-anchorX(action.points[0].date))>=3)setChannelBase(action.points)
+      } else {
+        if(action.type==='measure')setMeasurement(action.points);else addDrawing(action.type,action.points)
+        setDrawing(null)
+      }
+    }
     g.preview=null
     setEditPreview(null);setDrag(null)
-    if(drawing!=='arrow')setDraft([])
+    if(drawing!=='arrow'&&action?.type!=='channel')setDraft([])
   }
   function addArrowPoint(event) {
     if(drawing==='arrow')setDraft(previous=>[...previous,pointAt(event)].slice(0,120))
@@ -573,7 +643,12 @@ export default function InvestmentPositionChart({ trade, openCount, drawings = [
     </details>
   </>
 
-  return <section className={styles.card} data-fullscreen={fullscreen} data-rsi={indicators.rsi} data-macd={indicators.macd} aria-label={daily?'نمودار دارایی Trade Republic':'نمودار و سناریوی موقعیت XTB'}>
+  return <section onKeyDown={e=>{
+    if(e.target.closest('input,select,textarea'))return
+    if(e.key==='Escape'&&(drawing||selected||panel)){e.stopPropagation();chooseDrawing(null);setPanel(null)}
+    if(e.shiftKey&&e.key==='F10'&&e.target===plot.current){e.preventDefault();const box=plot.current.getBoundingClientRect();const i=cursor??Math.max(0,history.length-1);setContext({date:dateAt(i),price:pointer?.y!=null?priceAt(pointer.y):history[i]?.close,x:box.left+x(i),y:box.top+(pointer?.y??height/2),trigger:plot.current})}
+    if(e.key==='Delete'&&selectedLine){e.preventDefault();removeDrawing()}
+  }} className={styles.card} data-fullscreen={fullscreen} data-rsi={indicators.rsi} data-macd={indicators.macd} aria-label={daily?'نمودار دارایی Trade Republic':'نمودار و سناریوی موقعیت XTB'}>
         <header className={styles.header}>
           <button type="button" aria-label={fullscreen?'خروج از تمام صفحه':'تمام صفحه'} title="تمام صفحه" onClick={()=>setFullscreen(value=>!value)}><Icon name="expand"/></button>
           <div><small>{daily?['Trade Republic',daily.ownerLabel].filter(Boolean).join(' · '):direction===1?watchMarket?'XTB · بازار مرجع':'XTB · خرید':'XTB · فروش'}</small><h2 dir="auto">{trade.plan.name}</h2></div>
@@ -586,27 +661,24 @@ export default function InvestmentPositionChart({ trade, openCount, drawings = [
           <label className={styles.timeframe}>تایم‌فریم <select value={interval} onChange={event=>setFrame(/^\d+$/.test(event.target.value)?Number(event.target.value):event.target.value)}>
             {frames.map(value=><option key={value} value={value} disabled={daily&&typeof value==='number'}>{({'1d':'روزانه','1w':'هفتگی','1mo':'ماهانه',60:'۱ ساعت',240:'۴ ساعت'})[value]||value+' دقیقه'}</option>)}
           </select></label>
+          <div className={styles.patternControl} ref={patternControl}>
           <button type="button" aria-expanded={panel==='patterns'} onClick={()=>setPanel(panel==='patterns'?null:'patterns')}><Icon name="patterns" size={16}/> الگوهای قیمت</button>
-          {canShowOpeningRange&&<button type="button" aria-pressed={showOpeningRange} onClick={()=>setShowOpeningRange(value=>!value)}>بک‌تست محدودهٔ آغاز جلسه</button>}
+          {panel==='patterns'&&<section className={styles.patternPicker} aria-label="انتخاب الگوی قیمت">
+          <header><strong>الگوهای قیمت</strong><button type="button" aria-label="بستن فهرست الگوها" onClick={()=>setPanel(null)}>×</button></header>
+          <div className={styles.familyTabs}>{patternFamilies.map(item=><button key={item.name} type="button" aria-pressed={family===item} onClick={()=>chooseFamily(item)}>{item.name}</button>)}</div>
+          {family?<><p>{family.hint} برای برجسته‌کردن و نگه‌داشتن نمونه، روی شکل دوبارکلیک کن.</p>
+            <div className={styles.patternFilters}><label>نوع الگو <select value={patternType} onChange={e=>{setPatternType(e.target.value);setOccurrence('')}}><option value="">همهٔ انواع این خانواده</option>{family.types.map(name=><option key={name}>{name}</option>)}</select></label>
+            {choices.length>0?<label>نمونه ({choices.length}) <select value={patternKey(pattern)} onChange={e=>setOccurrence(e.target.value)}>{choices.map(item=><option key={patternKey(item)} value={patternKey(item)}>{item.name} · {berlinTime(fullHistory[item.confirmed+scanStart].date)}</option>)}</select></label>:<span role="status">در این نما نمونه‌ای پیدا نشد.</span>}</div>
+          </>:<p>یک خانواده را انتخاب کن تا شکل و نمونه‌های آن را ببینی.</p>}
+        </section>}
+          </div>
           <button type="button" aria-pressed={showTrades} onClick={()=>setShowTrades(value=>!value)}>معاملات روی نمودار</button>
           {offset>0&&<button type="button" onClick={()=>setOffset(0)}>آخرین کندل‌ها</button>}
           <IndicatorGuide/>
           <button type="button" aria-expanded={panel==='indicators'} onClick={()=>setPanel(panel==='indicators'?null:'indicators')}><Icon name="indicators" size={16}/> اندیکاتورها</button>
         </div>
-        {showOpeningRange&&canShowOpeningRange&&<div>
-          <p>بک‌تست بازار مرجع · سناریوی پایه · <bdi>{openingRange.first} تا {openingRange.last}</bdi></p>
-          <p><strong>{trade.plan.name}</strong> · {openingRange.byMarket[reference].valid} جلسه با ستاپ معتبر از {openingRange.days} · {selectedMarketTrades.length} ورود منتخب · {openingTrades.length} ورود در نمای فعلی</p>
-          <p><strong>مجموع نزدک، طلا و برنت</strong> · {openingRange.valid} ورود در {openingRange.days} جلسه · نتیجهٔ خالص <bdi>A {signedFormat.format(openingRange.a)}R · B {signedFormat.format(openingRange.b)}R</bdi></p>
-        </div>}
         {panel==='indicators'&&<IndicatorPicker values={indicators} onChange={(key,value)=>setIndicators(previous=>({...previous,[key]:value}))}/>}
-        {panel==='patterns'&&<section className={styles.patternPicker} aria-label="انتخاب الگوی قیمت">
-          <div className={styles.familyTabs}>{patternFamilies.map(item=><button key={item.name} type="button" aria-pressed={family===item} onClick={()=>chooseFamily(item)}>{item.name}</button>)}</div>
-          {family?<><p>{family.hint}</p>
-            <div className={styles.patternFilters}><label>نوع الگو <select value={patternType} onChange={e=>{setPatternType(e.target.value);setOccurrence('')}}><option value="">همهٔ انواع این خانواده</option>{family.types.map(name=><option key={name}>{name}</option>)}</select></label>
-            {choices.length>0?<label>نمونه در این نما <select value={patternKey(pattern)} onChange={e=>setOccurrence(e.target.value)}>{choices.map(item=><option key={patternKey(item)} value={patternKey(item)}>{item.name} · {berlinTime(fullHistory[item.confirmed].date)}</option>)}</select></label>:<span role="status">در این نما نمونه‌ای پیدا نشد.</span>}</div>
-          </>:<p>یک خانواده را انتخاب کن تا شکل و نمونه‌های آن را ببینی.</p>}
-        </section>}
-        {family&&<div className={styles.patternSummary}><span>{pattern?pattern.name:family.name}</span>{pattern&&<small>{pattern.breakout?(pattern.breakout==='up'?'شکست رو به بالا':'شکست رو به پایین'):'بدون شکست تأییدشده'}</small>}<button type="button" aria-label="حذف لایهٔ الگو" onClick={()=>chooseFamily(null)}><Icon name="close" size={14}/></button></div>}
+        {family&&<div className={styles.patternSummary}>{choices.length>1&&<><button type="button" aria-label="نمونهٔ قبلی" disabled={choices.indexOf(pattern)===choices.length-1} onClick={()=>setOccurrence(patternKey(choices[choices.indexOf(pattern)+1]))}>‹</button><button type="button" aria-label="نمونهٔ بعدی" disabled={choices.indexOf(pattern)===0} onClick={()=>setOccurrence(patternKey(choices[choices.indexOf(pattern)-1]))}>›</button></>}<span>{pattern?pattern.name:family.name}</span>{pattern&&<small>{pattern.breakout?(pattern.breakout==='up'?'شکست رو به بالا':'شکست رو به پایین'):'بدون شکست تأییدشده'}</small>}{candidate&&<button type="button" onClick={pinPattern}>{pinned?'نمایش رسم ذخیره‌شده':'نگه‌داشتن روی نمودار'}</button>}<button type="button" aria-label="حذف لایهٔ الگو" onClick={()=>chooseFamily(null)}><Icon name="close" size={14}/></button></div>}
         <div className={styles.chartBody}>
         <div className={styles.drawingTools} data-open={true}>
           <DrawingPalette drawing={drawing} choose={chooseDrawing} available={!!history.length}/>
@@ -614,28 +686,31 @@ export default function InvestmentPositionChart({ trade, openCount, drawings = [
             <button type="button" title="بازنشانی نما" aria-label="بازنشانی نما" onClick={()=>{setPriceDomain(null);setRange(null);setOffset(0)}}><Icon name="refresh"/></button>
             <button type="button" title="منوی نمودار" aria-label="منوی نمودار" onClick={event=>openContext(event,displayedPrice||exposure.entry||1)}><Icon name="menu"/></button>
           </div>
-          {selectedLine&&<div className={styles.chartTools} aria-label="ویرایش رسم">
+
+        </div>
+        {drawing==='channel'&&<p role="status">{channelBase?'برای تعیین پهنای کانال روی مرز دوم کلیک کن.':'خط پایهٔ کانال را با ماوس بکش.'}</p>}
+        {drawing==='arrow'&&<div className={styles.patternSummary}>نقطه‌ها را با دوبارکلیک انتخاب کن.<button type="button" disabled={draft.length<2} onClick={completeArrow}>ثبت مسیر</button></div>}
+        {!history.length&&<p>برای دریافت تاریخچه، «به‌روزرسانی» را بزن.</p>}
+        {daily&&history.length>0&&history.some(row=>row.open==null||row.low==null||row.high==null)&&<p>در روزهایی که منبع فقط قیمت پایانی دارد، همان قیمت با یک نقطه نمایش داده می‌شود.</p>}
+        <div className={styles.plotWrap}>
+          {selectedLine&&!context&&<div className={styles.objectEditor} style={{left:`clamp(6px, ${(editAnchor?.x??.3)*100}%, calc(100% - 220px))`,top:`clamp(24px, calc(${(editAnchor?.y??.2)*100}% + 18px), calc(100% - 98px))`}} aria-label="ویرایش رسم">
+            <button type="button" aria-label="بستن ویرایش رسم" onClick={()=>select(null)}>×</button>
             <label>رنگ <select value={selectedLine.color} onChange={event=>changeDrawing(selectedLine.id,{color:event.target.value})}>
               {XTB_DRAWING_COLORS.map((color,i)=><option value={color} key={color}>{['آبی','طلایی','سبز','قرمز','بنفش'][i]}</option>)}
             </select></label>
             <label>نمایش <select value={selectedLine.scope} onChange={event=>changeDrawing(selectedLine.id,{scope:event.target.value})}>
               <option value="shared">مشترک بین حساب‌ها</option><option value={trade.ownerId}>فقط این حساب</option>
             </select></label>
-            <button type="button" onClick={()=>{saveLines(allDrawings.filter(line=>line.id!==selectedLine.id));select(null)}}>حذف رسم</button>
+            <button type="button" onClick={removeDrawing}>حذف رسم</button>
           </div>}
-        </div>
-        {drawing==='arrow'&&<div className={styles.patternSummary}>نقطه‌ها را با دوبارکلیک انتخاب کن.<button type="button" disabled={draft.length<2} onClick={completeArrow}>ثبت مسیر</button></div>}
-        {!history.length&&<p>برای دریافت تاریخچه، «به‌روزرسانی» را بزن.</p>}
-        {daily&&history.length>0&&history.some(row=>row.open==null||row.low==null||row.high==null)&&<p>در روزهایی که منبع فقط قیمت پایانی دارد، همان قیمت با یک نقطه نمایش داده می‌شود.</p>}
-        <div className={styles.plotWrap}>
         <div className={styles.chartLegend}>
           {activeBar&&<span className={styles.ohlc}><bdi>O {formatPrice(activeBar.open)} · H {formatPrice(activeBar.high)} · L {formatPrice(activeBar.low)} · C {formatPrice(activeBar.close)}</bdi></span>}
           {indicators.atr&&<span title="میانگین دامنهٔ واقعی نوسان"><bdi>ATR 14 {formatPrice(atrValues[historyStart+(cursor??history.length-1) ])} {currency}</bdi></span>}
           {visibleAverages.map(([key,label,color])=><span key={key} style={{color}}><bdi>{label} {formatPrice(activeBar?.[key])}</bdi></span>)}
         </div>
-        <svg ref={plot} className={styles.plot} data-drawing={!!drawing} viewBox={`0 0 ${width} ${height}`} role="group" aria-label={history.length?`نمودار قیمت ${trade.plan.name} با ${history.length} کندل، از ${berlinTime(history[0].date)} تا ${berlinTime(history.at(-1).date)}`:`نمودار قیمت ${trade.plan.name}؛ هنوز داده‌ای دریافت نشده است`}
+        <svg ref={plot} tabIndex={0} className={styles.plot} data-drawing={!!drawing} viewBox={`0 0 ${width} ${height}`} role="group" aria-label={history.length?`نمودار قیمت ${trade.plan.name} با ${history.length} کندل، از ${berlinTime(history[0].date)} تا ${berlinTime(history.at(-1).date)}`:`نمودار قیمت ${trade.plan.name}؛ هنوز داده‌ای دریافت نشده است`}
           onPointerDown={beginChart} onPointerMove={move} onPointerLeave={event=>{if(event.pointerType!=='touch'&&!gestures.current.action)setPointer(null)}} onPointerUp={event=>finish(event)} onPointerCancel={event=>finish(event,true)}
-          onContextMenu={event=>{event.preventDefault();const local=coordinates(event);openContext(event,priceAt(local.y),dateAt(indexAt(local.x)))}} onDoubleClick={addArrowPoint}>
+          onContextMenu={event=>{event.preventDefault();if(event.nativeEvent.detail===0&&!event.clientX&&!event.clientY)openContext(event,displayedPrice||exposure.entry||1)}} onDoubleClick={addArrowPoint}>
           <defs>
             {[['up','#17735c','#b1edce'],['down','#812b39','#f19aaa']].map(([key,dark,light])=><linearGradient key={key} id={gradient+'-'+key}><stop offset="0" stopColor={dark}/><stop offset=".45" stopColor={light}/><stop offset="1" stopColor={dark}/></linearGradient>)}
             <clipPath id={gradient+'-plot'}><rect x={LEFT} y={top} width={plotRight-LEFT} height={bottom-top}/></clipPath>
@@ -645,17 +720,6 @@ export default function InvestmentPositionChart({ trade, openCount, drawings = [
           {priceTicks.map(value=><g key={value}><line x1={LEFT} x2={plotRight} y1={y(value)} y2={y(value)} stroke="#26323e"/><text x={width-8} y={y(value)+4} textAnchor="end" pointerEvents="none">{axisPrice.format(value)}</text></g>)}
           {[0,.2,.4,.6,.8,1].map(step=><line key={step} x1={LEFT+plotSpan*step} x2={LEFT+plotSpan*step} y1={top} y2={bottom} stroke="#222d36"/>)}
           <g clipPath={`url(#${gradient}-plot)`}>
-            {openingTrades.map(item=>{
-              const time=new Date(item.stamp*1000).toISOString()
-              const start=anchorX(time)
-              const end=Math.min(plotRight,start+Math.max(9,plotSpan/slots*4))
-              return <g key={item.stamp} aria-label="ورود بک‌تست محدودهٔ آغاز جلسه">
-                <rect x={start} y={Math.min(y(item.entry),y(item.target))} width={end-start} height={Math.abs(y(item.target)-y(item.entry))} fill="#43dfca" fillOpacity=".26"/>
-                <rect x={start} y={Math.min(y(item.entry),y(item.stop))} width={end-start} height={Math.abs(y(item.stop)-y(item.entry))} fill="#ff9b58" fillOpacity=".24"/>
-                <circle cx={start} cy={y(item.entry)} r="4" fill="#d4e8ff"/>
-                <title>{`${berlinTime(time)} برلین · ${item.side===1?'خرید':'فروش'} · ورود ${formatPrice(item.entry)} · حد ضرر ${formatPrice(item.stop)} · هدف 2R ${formatPrice(item.target)} · A ${signedFormat.format(item.a)}R · B ${signedFormat.format(item.b)}R`}</title>
-              </g>
-            })}
             {positionBands.map(band=><g key={band.key} aria-label={limitLabels[band.key]} pointerEvents="none">
               <rect x={bandStart} y={Math.min(y(exposure.entry),y(band.value))} width={Math.max(2,x(last)-bandStart)} height={Math.abs(y(exposure.entry)-y(band.value))} fill={band.color} fillOpacity={band.key==='target'?'.18':'.16'}/>
               <title>{limitLabels[band.key]} · {formatPrice(band.value)} {currency}</title>
@@ -711,23 +775,19 @@ export default function InvestmentPositionChart({ trade, openCount, drawings = [
             })}
             {displayedY!=null&&<line x1={LEFT} x2={plotRight} y1={displayedY} y2={displayedY} stroke="#91b8bd" strokeDasharray="2 5"/>}
             {inPlot(estimate?.price)&&<line x1={LEFT} x2={plotRight} y1={y(estimate.price)} y2={y(estimate.price)} stroke={levelColors.liquidation} strokeDasharray="5 4"/>}
-            {pattern&&<g data-pattern={pattern.name} aria-label={pattern.name} pointerEvents="none">
-              {pattern.boundaries.map(([a,b],i)=><line key={i} x1={x(a.index-historyStart)} x2={x(b.index-historyStart)} y1={y(a.price)} y2={y(b.price)} stroke="#81bbc9" strokeWidth="1.6" strokeDasharray="5 3"/>)}
-              {pattern.pole&&<line x1={x(pattern.pole.index-historyStart)} x2={x(pattern.start-historyStart)} y1={y(pattern.pole.price)} y2={y(pattern.points[0].price)} stroke="#dab779" strokeWidth="2"/>}
-              <polyline points={pattern.points.map(p=>x(p.index-historyStart)+','+y(p.price)).join(' ')} fill="none" stroke="#ebc686" strokeWidth="1.6"/>
-              {pattern.points.map(p=><circle key={p.index} cx={x(p.index-historyStart)} cy={y(p.price)} r="3" fill="#ebc686"/>)}
-              {pattern.breakout&&<circle cx={x(pattern.end-historyStart)} cy={y(fullHistory[pattern.end].close)} r="4" fill={pattern.breakout==='up'?'#78dfc4':'#efb172'}/>}
-            </g>}
+            {candidate&&!pinned&&<PatternOverlay line={candidate} x={anchorX} y={y} onPin={pinPattern}/>}
             {lines.map(line=>{
+              if(line.type==='pattern')return <PatternOverlay key={line.id} line={line} x={anchorX} y={y} focused={selected===line.id} onFocus={e=>{locateEditor(e);select(line.id)}} onPin={()=>select(line.id)}/>
               const points=editPreview?.id===line.id?editPreview.points:line.points
               const path=drawingPath(line.type,points)
-              return <g key={line.id}>
-                <path d={path} stroke={line.color} strokeWidth="2" fill="none" markerEnd={line.type==='arrow'?`url(#${gradient}-arrow)`:undefined}/>
+              return <g key={line.id} data-drawing-id={line.id}>
+                <path d={path} stroke={line.color} strokeWidth={selected===line.id?2.8:2} fill={line.type==='channel'?line.color:'none'} fillOpacity=".08" markerEnd={line.type==='arrow'?`url(#${gradient}-arrow)`:undefined}/>
+                {line.type==='channel'&&<line x1={anchorX(points[0].date)} x2={anchorX(points[1].date)} y1={y(points[0].price+(points[2].price-points[1].price)/2)} y2={y((points[1].price+points[2].price)/2)} stroke={line.color} strokeDasharray="5 4" opacity=".65" pointerEvents="none"/>}
                 {line.type==='fib'&&fibLevels.map(level=><text key={level} x={Math.min(anchorX(points[0].date),anchorX(points[1].date))+4} y={y(points[1].price+(points[0].price-points[1].price)*level)-3} pointerEvents="none">{Math.round(level*1000)/10}%</text>)}
-                <path d={path} stroke="transparent" strokeWidth="14" fill="none" className={styles.handle}
+                <path d={path} stroke="transparent" strokeWidth="16" fill="none" style={{cursor:'move'}}
                   onPointerDown={event=>{if(drawing||event.button===2)return;event.stopPropagation();begin(event,line)}}/>
-                {line.id===selected&&line.type!=='horizontal'&&points.filter((_,index)=>line.type!=='freehand'||index===0||index===points.length-1).map((point,index)=>
-                  <circle key={index} cx={anchorX(point.date)} cy={y(point.price)} r="5" fill={line.color} className={styles.handle}
+                {line.id===selected&&points.filter((_,index)=>line.type!=='freehand'||index===0||index===points.length-1).map((point,index)=>
+                  <circle key={index} cx={anchorX(point.date)} cy={y(point.price)} r="6" fill={line.color} stroke="#0b1421" strokeWidth="2" style={{cursor:"grab"}}
                     onPointerDown={event=>{event.stopPropagation();begin(event,line,points.indexOf(point))}}/>)}
               </g>
             })}
@@ -758,14 +818,16 @@ export default function InvestmentPositionChart({ trade, openCount, drawings = [
           </g>}
         </svg>
         {measured&&<div className={styles.measureReadout}><bdi>{signedFormat.format(measured[1].price-measured[0].price)} {currency} · {signedFormat.format((measured[1].price/measured[0].price-1)*100)}٪</bdi>{measurement&&<button type="button" aria-label="بستن اندازه‌گیری" onClick={()=>setMeasurement(null)}><Icon name="close" size={14}/></button>}</div>}
-        {context&&<div className={styles.context} style={{left:`clamp(4px, ${context.x}px, calc(100vw - 224px))`,top:`clamp(4px, ${context.y}px, calc(100dvh - 300px))`}} role="menu" aria-label="عملیات نمودار" onKeyDown={event=>{if(event.key==='Escape')setContext(null)}}>
+        {context&&<ChartContextMenu context={context} close={()=>setContext(null)}>
           <bdi>{formatPrice(context.price)} {currency}{context.date && ' · '+berlinTime(context.date)}</bdi>
+          {selectedLine&&<button type="button" role="menuitem" onClick={()=>{setContext(null);select(selectedLine.id)}}>ویرایش رسم انتخاب‌شده</button>}
+          {selectedLine&&<button type="button" role="menuitem" onClick={removeDrawing}>حذف رسم انتخاب‌شده</button>}
           <button type="button" role="menuitem" disabled={!context.date||context.price<=0} onClick={()=>{addDrawing('horizontal',[{date:context.date,price:context.price}]);setContext(null)}}>خط افقی در این قیمت</button>
           {!daily&&Object.entries(limitLabels).map(([key,label])=><button type="button" role="menuitem" key={key} onClick={()=>{setLimits(previous=>({...previous,[key]:context.price.toFixed(priceStepDigits(tickStep))}));setContext(null)}}>{label} در این قیمت</button>)}
           <button type="button" role="menuitem" onClick={()=>{setPriceDomain(null);setRange(null);setOffset(0);setContext(null)}}>بازنشانی نما</button>
           {onTransaction&&[['entry','ثبت خرید / ورود'],['exit','ثبت فروش / خروج']].map(([kind,label])=><button key={kind} type="button" role="menuitem" onClick={()=>{setContext(null);setFullscreen(false);onTransaction(kind)}}>{label}</button>)}
           <button type="button" role="menuitem" onClick={()=>setContext(null)}>بستن</button>
-        </div>}
+        </ChartContextMenu>}
         {showDetails ? <div className={styles.tooltip} role="status">
           <strong>{selectedLevel.label} <bdi>{formatPrice(selectedLevel.value)} {currency}</bdi></strong>
           <strong>فاصله <bdi>{levelDistance==null?'—':`${signedFormat.format(levelDistance)} ${currency} · ${signedFormat.format(levelDistance/displayedPrice*100)}٪`}</bdi></strong>
@@ -798,7 +860,7 @@ export default function InvestmentPositionChart({ trade, openCount, drawings = [
         {!daily&&!watchMarket&&<details className={styles.exitPanel}><summary>سناریوی خروج · حد سود، حد ضرر و Stop Out</summary><div className={styles.exitControls}>{exitPanel}</div></details>}
         {entryTime&&!entryTime.includes('T')&&!knownEntry?.observedOpen&&<p>برچسب ورود تاریخ ثبت‌شده را نشان می‌دهد.</p>}
         {!daily&&knownEntry?.observedOpen&&<p>ناحیه‌ها از تاریخ ثبت موقعیت باز شروع می‌شوند. زمان اجرای معامله در سابقه موجود نیست.</p>}
-        {candles&&<p>{daily?.market?.quote?.source || (reference?'Yahoo Finance · قرارداد آتی مرجع '+reference:'منبع تاریخچه تعیین نشده')} · آخرین داده <bdi>{berlinTime(fullHistory.at(-1).date)}{fullHistory.at(-1).date.includes('T')&&' برلین'}</bdi></p>}
+        {candles&&<p>{daily?.market?.quote?.source || (reference?'Yahoo Finance · قرارداد آتی مرجع '+reference:'منبع تاریخچه تعیین نشده')} · {reference&&<bdi>{reference} · </bdi>}تاریخچهٔ موجود <bdi>{berlinTime(fullHistory[0].date)} — {berlinTime(fullHistory.at(-1).date)}{fullHistory.at(-1).date.includes('T')&&' برلین'}</bdi></p>}
         {daily?.notice&&<p role="status">{daily.notice}</p>}
         {daily?.error&&<p role="alert">{daily.error}</p>}
         {error&&<p role="alert">{error}</p>}

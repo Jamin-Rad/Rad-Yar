@@ -166,3 +166,19 @@
 .patternSummary { margin-bottom:6px; font-size:13px; color:#ebc686; }
 .patternSummary button,.measureReadout button { min-height:26px; display:grid; place-items:center; }
 .measureReadout { position:absolute; top:45px; right:10px; padding:4px 8px; background:#233142; border-radius:6px; color:#ead29a; font-size:13px; }
+.patternControl { position:relative; }
+.patternControl>button { display:inline-flex; align-items:center; gap:6px; }
+.patternControl .patternPicker { position:absolute; top:calc(100% + 5px); right:0; z-index:12; width:min(375px,76vw); box-sizing:border-box; padding:12px; box-shadow:0 12px 36px #0008; }
+.patternPicker header { display:flex; align-items:center; justify-content:space-between; margin-bottom:8px; }
+.patternPicker header button,.patternSummary button { min-height:26px; }
+.patternPicker .familyTabs { gap:4px; }
+.patternPicker .familyTabs button { padding:4px 7px; }
+.patternFilters label { width:100%; justify-content:space-between; }
+.objectEditor { position:absolute; z-index:5; display:flex; width:205px; flex-wrap:wrap; align-items:center; gap:4px 8px; box-sizing:border-box; padding:6px; border:1px solid #506174; border-radius:7px; background:#17222f; box-shadow:0 4px 18px #0008; font-size:12px; }
+.objectEditor button,.objectEditor select { min-height:25px; font-size:12px; color:#dce7ef; background:#203140; border:1px solid #485b70; border-radius:4px; }
+.objectEditor label { display:flex; align-items:center; gap:4px; }
+.context { top:auto; direction:rtl; margin:0; padding:5px; gap:1px; background:#15202c; border-color:#48596a; color:#edf3f8; font:13px system-ui,sans-serif; }
+.context>bdi { direction:ltr; padding:7px; font-variant-numeric:tabular-nums; border-bottom:1px solid #364555; }
+.context button { background:transparent; color:inherit; text-align:start; padding:7px 10px; min-height:30px; border:0; border-radius:4px; font:inherit; cursor:pointer; }
+.context button:is(:hover,:focus-visible) { background:#2b4257; outline:0; }
+.context button:disabled { opacity:.5; }

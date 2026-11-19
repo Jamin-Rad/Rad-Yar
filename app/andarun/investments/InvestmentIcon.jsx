@@ -1,5 +1,6 @@
 export default function InvestmentIcon({ name, size = 20, ...props }) {
   const paths = {
+    channel: <path d="M3 15 20 4M4 21 21 10M6 16 17 9"/>,
     pointer: <path d="M5 3l13 10-6 1-3 6Z"/>,
     ellipse: <ellipse cx="12" cy="12" rx="9" ry="6"/>,
     fib: <path d="M3 4h18M3 9h15M3 12h12M3 16h9M3 20h6"/>,

@@ -1,6 +1,5 @@
 'use client'
 import { useEffect, useId, useMemo, useRef, useState } from 'react'
-import ForecastChart from './ForecastChart'
 import { technicalHistory } from '@/lib/investments/indicators.mjs'
 import { number } from '@/lib/investments/portfolio.mjs'
 import { browserChartStorage, chartSessionIndex, readChartDrawings, saveChartDrawings } from '@/lib/investments/local-asset-chart.mjs'
@@ -25,7 +24,6 @@ export default function TechnicalChart({ market, loading=false, error='', drawin
   const [anchor,setAnchor]=useState(null)
   const [selectedEntry,setSelectedEntry]=useState(null)
   const [drawingError,setDrawingError]=useState(false)
-  const [forecastOpen,setForecastOpen]=useState(false)
   const [width,setWidth]=useState(900),[dataOpen,setDataOpen]=useState(false)
   const right=width-78
   const [days,setDays]=useState(0),[enabled,setEnabled]=useState({sma20:true,sma50:true,sma200:true,rsi:true}),[hover,setHover]=useState(null),[mode,setMode]=useState('candles')
@@ -130,8 +128,6 @@ export default function TechnicalChart({ market, loading=false, error='', drawin
     {enabled.macd&&<section className={styles.study} aria-label="اندیکاتور MACD"><div><bdi>MACD (12, 26, 9)</bdi><strong><bdi>{display(current.macd)}</bdi></strong><span>سیگنال <bdi>{display(current.signal)}</bdi></span></div><svg className={styles.plot} viewBox={`0 0 ${width} 150`} role="img" aria-label="نمودار MACD و خط سیگنال" onPointerMove={point} onPointerLeave={()=>setHover(null)}><line x1={LEFT} x2={right} y1={macdY(0)} y2={macdY(0)} stroke="#50606c"/>{rows.map((row,i)=>row.histogram==null?null:<rect key={row.date} x={x(i)-barWidth/2} width={barWidth} y={Math.min(macdY(0),macdY(row.histogram))} height={Math.max(.5,Math.abs(macdY(row.histogram)-macdY(0)))} fill={row.histogram>=0?'#467e6d':'#9d555e'}/>)}<Axis min={macdMin} max={macdMax} y={macdY} right={right}/><Series rows={rows} series={[["macd","#76c8e0"],["signal","#e9bc62"]]} x={x} y={macdY}/><Cursor x={cursor} height={150}/></svg>{current.signal==null&&<p>برای MACD و خط سیگنال دست‌کم ۳۴ قیمت پایانی لازم است.</p>}</section>}
     {enabled.volume&&<section className={styles.study} aria-label="حجم معاملات"><div>حجم معاملات همین بورس <strong><bdi>{display(current.volume)}</bdi></strong></div><svg className={styles.plot} viewBox={`0 0 ${width} 125`} role="img" aria-label="نمودار حجم معاملات" onPointerMove={point} onPointerLeave={()=>setHover(null)}>{rows.map((row,i)=>row.volume==null?null:<rect key={row.date} x={x(i)-barWidth/2} width={barWidth} y={volumeY(row.volume)} height={105-volumeY(row.volume)} fill="#689693"/>)}<Cursor x={cursor} height={125}/></svg></section>}
     <label className={styles.slider}>انتخاب روز نمودار<input aria-label="انتخاب روز نمودار" type="range" min="0" max={rows.length-1} value={selected} onChange={event=>setHover(Number(event.target.value))} dir="ltr"/></label>
-    <button type="button" className={styles.mode} aria-expanded={forecastOpen} onClick={()=>setForecastOpen(open=>!open)}>پیش‌بینی روند</button>
-    {forecastOpen&&<ForecastChart rows={all} currency={market.quote.currency}/>}
     <p className={styles.caption}>{number(rows.length)} روز معاملاتی · <bdi>{rows[0].date} — {end}</bdi> · قیمت پایانی · {market.quote.exchange}{loading?' · در حال به‌روزرسانی…':''}</p>
     {error&&<p className={styles.error} role="status">{error}</p>}
     {enabled.sma200&&current.sma200==null&&<p className={styles.caption}>برای میانگین ۲۰۰ روزه هنوز دادهٔ کافی در این تاریخ وجود ندارد.</p>}
