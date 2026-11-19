@@ -58,7 +58,7 @@ const QUESTIONS = [
   question('twi', 'ecg', L("T-Negativierungen?", "T-wave inversions?", "وارونگی موج T؟"), [
     short('v1-v3', 'V1–V3 oder weiter, ohne kompletten Rechtsschenkelblock', 'V1–V3 or beyond, without complete RBBB', 'V1–V3 یا فراتر، بدون بلوک کامل شاخهٔ راست'),
     short('v1-v2', 'V1–V2, ohne kompletten Rechtsschenkelblock', 'V1–V2, without complete RBBB', 'V1–V2، بدون بلوک کامل شاخهٔ راست'),
-    short('v1-v4-rbbb', 'V1–V4 bei komplettem Rechtsschenkelblock', 'V1–V4 with complete RBBB', 'V1–V4 همراه با بلوک کامل شاخهٔ راست'),
+    short('v1-v4-rbbb', 'T-Negativierung über V3 hinaus bei komplettem Rechtsschenkelblock', 'T-wave inversion beyond V3 with complete RBBB', 'وارونگی موج T فراتر از V3 همراه با بلوک کامل شاخهٔ راست'),
     option('lateral-pattern', L('Linksthorakal V4–V6, ohne kompletten Linksschenkelblock', 'Left precordial V4–V6 without complete LBBB', 'V4–V6 چپ، بدون بلوک کامل شاخهٔ چپ'), null, { padua: 'lv-twi' }),
     short('v1-beyond-child', 'Unter 14 Jahren: T-Negativierung V1 bis mindestens V4', 'Under 14: T-wave inversion from V1 through at least V4', 'زیر ۱۴ سال: وارونگی موج T از V1 تا دست‌کم V4'),
   ], { hint: L("Bei durchgehender T-Negativierung ab V1 das rechtspräkordiale Muster wählen.", "For continuous T-wave inversion starting at V1, select the right precordial pattern.", "در وارونگی پیوسته از V1، الگوی پره‌کوردیال راست را انتخاب کنید.") }),
@@ -73,7 +73,7 @@ const QUESTIONS = [
     recorded('epsilon'),
     recorded('terminal-activation'),
     recorded('low-voltage'),
-    short('low-voltage-all', 'QRS < 0,5 mV in allen Extremitätenableitungen ohne andere Ursache', 'QRS <0.5 mV in all limb leads without another cause', 'QRS کمتر از ۰٫۵ میلی‌ولت در همه لیدهای اندامی بدون علت دیگر'),
+    short('low-voltage-all', 'QRS-Amplitude < 0,5 mV (Spitze zu Spitze) in allen Extremitätenableitungen ohne andere Ursache', 'QRS amplitude <0.5 mV peak-to-peak in all limb leads without another cause', 'دامنهٔ قله‌به‌قلهٔ QRS کمتر از ۰٫۵ میلی‌ولت در همهٔ لیدهای اندامی بدون علت دیگر'),
   ]),
   question('vt', 'rhythm', L("VT-Morphologie?", "VT morphology?", "مورفولوژی VT؟"), [
     option('vt-superior', L('Linksschenkelblockmuster mit superiorer Achse', 'LBBB pattern with superior axis', 'الگوی بلوک شاخهٔ چپ با محور فوقانی'), L('QRS in II, III und aVF negativ oder indeterminiert und in aVL positiv.', 'QRS negative or indeterminate in II, III and aVF and positive in aVL.', 'QRS در II، III و aVF منفی یا نامعین و در aVL مثبت است.'), { padua: 'rv-arrhythmia-major' }),
@@ -89,7 +89,7 @@ const QUESTIONS = [
     short('pvc-exercise', 'Belastungsinduzierte VES mit nichtfaszikulärem Rechtsschenkelblockmuster', 'Exercise-induced PVCs with non-fascicular RBBB morphology', 'ضربان زودرس بطنی ناشی از ورزش با الگوی بلوک شاخه راست غیرفاسیکولار'),
     option('pvc-other', L('Andere Morphologie', 'another documented morphology', 'مورفولوژی دیگر و مشخص'), null),
     option('pvc-unknown', L('Morphologie unbekannt', 'morphology unknown', 'مورفولوژی نامشخص'), null, { incomplete: true }),
-  ], { hint: L('Im Langzeit-EKG: > 500 VES/24 h.', 'Holter: >500 PVCs per 24 h.', 'در هولتر: بیش از ۵۰۰ ضربان زودرس بطنی در ۲۴ ساعت.') }),
+  ], { hint: L('Im Langzeit-EKG werden die genannten Morphologien bei > 500 VES in 24 Stunden gewertet. Für die Belastung gilt die separat aufgeführte Option.', 'For Holter findings, select the applicable morphology only with >500 PVCs in 24 hours. Exercise-induced PVCs have a separate option.', 'در هولتر، الگوهای بالا با بیش از ۵۰۰ ضربان زودرس بطنی در ۲۴ ساعت امتیاز می‌گیرند. برای تست ورزش گزینهٔ جداگانه وجود دارد.') }),
   question('arrest', 'rhythm', L('Überlebter Herzstillstand?', 'Resuscitated cardiac arrest?', 'ایست قلبی احیاشده؟'), [
     short('arrest-vf-vt', 'Kammerflimmern oder anhaltende VT unbekannter Morphologie', 'Ventricular fibrillation or sustained VT of unknown morphology', 'فیبریلاسیون بطنی یا VT پایدار با مورفولوژی نامشخص'),
   ]),
@@ -107,15 +107,17 @@ export function questionsFor(answers) {
 const paduaOnly = new Set(['bulging', 'lv-motion', 'rv-lge', 'puberty', 'low-voltage'])
 const etfLgeTitle = L('Eindeutiges RV-LGE außerhalb der Trikuspidalklappe', 'Unequivocal RV LGE outside the tricuspid valve', 'LGE قطعی بطن راست خارج از دریچهٔ تریکوسپید')
 const etfHints = {
+  age: L('Für das gewählte T-Wellen-Muster alle zutreffenden Merkmale markieren.', 'Select all applicable features for the T-wave pattern.', 'همهٔ ویژگی‌های مربوط به الگوی موج T را انتخاب کنید.'),
   'rv-motion': L('Eine isolierte RV-Hypokinesie zählt bei ETF nicht.', 'Isolated RV hypokinesia does not count in ETF.', 'هیپوکینزی منفرد بطن راست در ETF معیار محسوب نمی‌شود.'),
-  'rv-global': L('Volumen und EF anhand geeigneter Referenzwerte beurteilen.', 'Use appropriate reference ranges for volume and EF.', 'حجم و EF را با مقادیر مرجع مناسب بسنجید.'),
-  lge: L('Das jeweilige Muster in zwei orthogonalen Ebenen bestätigen. Isoliertes Insertions-LGE zählt nicht.', 'Confirm each pattern in two orthogonal views. Isolated junctional LGE does not count.', 'الگو را در دو نمای عمود تأیید کنید. LGE محدود به محل اتصال بطن راست امتیاز ندارد.'),
+  'rv-global': L('Volumen und EF anhand geeigneter Referenzwerte für Methode, Alter und Geschlecht beurteilen. Das Volumen auf die Körperoberfläche beziehen.', 'Use reference ranges appropriate for method, age and sex. Index volume to body surface area.', 'حجم و EF را با مقادیر مرجع متناسب با روش، سن و جنس بسنجید. حجم را نسبت به سطح بدن شاخص‌گذاری کنید.'),
+  lge: L('Das jeweilige Muster in zwei orthogonalen Ebenen bestätigen. Fokales oder fleckiges LV-LGE sowie isoliertes Insertions-LGE bleiben unberücksichtigt.', 'Confirm each pattern in two orthogonal views. Exclude focal or patchy LV LGE and isolated junctional LGE.', 'الگو را در دو نمای عمود بر هم تأیید کنید. LGE کانونی یا لکه‌ای بطن چپ و LGE محدود به محل اتصال بطن راست امتیاز ندارند.'),
 }
 export function etfQuestionsFor(answers) {
   return questionsFor(answers)
     .filter(item => item.id !== 'age' || any(answers, 'twi', ['v1-v2', 'v1-v3']))
     .map(item => ({
       ...item,
+      title: item.id === 'age' ? L('Alter und EKG-Merkmale?', 'Age and ECG features?', 'سن و ویژگی‌های نوار قلب؟') : item.title,
       hint: etfHints[item.id] ?? item.hint,
       options: item.options
         .filter(choice => !paduaOnly.has(choice.id))
@@ -158,7 +160,13 @@ function collectFindings(answers) {
     const definition = criteria.get(id)
     etf.set(id, { id, grade: grade ?? definition.grade, side: side ?? definition.side, text: title ?? definition.text, category: etfCategory[id] ?? criterionCategory.get(id) })
   }
-  const addCustom = (id, grade, side, question) => add(id, grade, side, QUESTIONS.find(item => item.id === question).options.find(choice => choice.id === id).title)
+  function addCustom(id, grade, side, question) {
+    const choice = QUESTIONS.find(item => item.id === question).options.find(option => option.id === id)
+    const text = choice.text
+      ? L(...['de', 'en', 'fa'].map(lang => choice.title[lang] + '. ' + choice.text[lang]))
+      : choice.title
+    add(id, grade, side, text)
+  }
 
   for (const item of questionsFor(answers)) {
     for (const choice of item.options) {
@@ -185,7 +193,7 @@ function collectFindings(answers) {
   if (has(answers, 'lge', 'rv-lge') || has(answers, 'lge', 'rv-lge-other')) {
     add('rv-lge', 1, 'rv', L('Eindeutiges RV-LGE in mindestens einer Region, in zwei orthogonalen Ebenen bestätigt (Trikuspidalklappe ausgenommen).', 'Unequivocal RV LGE in at least one region in two orthogonal planes, excluding the tricuspid valve.', 'LGE قطعی بطن راست در دست‌کم یک ناحیه و دو نمای عمود، به‌جز دریچه تریکوسپید.'))
   }
-  if (has(answers, 'lge', 'lv-lge')) add('lv-lge', 1, 'lv', QUESTIONS.find(item => item.id === 'lge').options.find(choice => choice.id === 'lv-lge').text)
+  if (has(answers, 'lge', 'lv-lge')) addCustom('lv-lge', 1, 'lv', 'lge')
   if (has(answers, 'lge', 'lv-lge-extensive')) addCustom('lv-lge-extensive', 2, 'lv', 'lge')
   const adultWithoutElevation = has(answers, 'age', 'age14') && has(answers, 'age', 'no-j')
   if (adultWithoutElevation && has(answers, 'twi', 'v1-v3')) add('rv-twi-major', 2, 'rv', L('T-Negativierung V1–V3 oder weiter ab 14 Jahren, ohne kompletten RSB und ohne vorausgehende J-/ST-Hebung.', 'T-wave inversion in V1–V3 or beyond at age ≥14 without complete RBBB or preceding J/ST elevation.', 'وارونگی T در V1 تا V3 یا بیشتر از ۱۴ سالگی، بدون بلوک کامل شاخه راست یا بالا رفتن پیشین J یا ST.'))

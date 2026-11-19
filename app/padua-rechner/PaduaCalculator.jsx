@@ -11,7 +11,7 @@ import kaiser from '@/app/kaiser-score/page.module.css'
 import styles from './page.module.css'
 
 const COPY = {
-  title: L('ACM-Rechner', 'ACM calculator', 'محاسبه‌گر ACM'),
+  title: L("ACM-Rechner · ETF 2023", "ACM calculator · ETF 2023", "محاسبه‌گر ACM · ETF ۲۰۲۳"),
   subject: L('Arrhythmogene Kardiomyopathie', 'Arrhythmogenic cardiomyopathy', 'کاردیومیوپاتی آریتموژن'),
   accordingTo: L('nach', 'using', 'بر اساس'),
   systems: L('ETF 2023', 'ETF 2023', 'ETF ۲۰۲۳'),

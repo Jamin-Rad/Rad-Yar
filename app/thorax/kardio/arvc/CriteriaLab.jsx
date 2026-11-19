@@ -97,7 +97,7 @@ const overview = {
   de: [
     'Diagnose nach ETF 2023',
     'Die European Task Force kombiniert Befunde aus sechs Kategorien. Neben Cine und LGE zählen je nach Befund auch Histologie, EKG, ventrikuläre Arrhythmien, Familienanamnese und Genetik.',
-    'Pro Kategorie wird das stärkste passende Kriterium gewertet. Major entspricht 2 Punkten, Minor 1 Punkt.',
+    'Pro Kategorie wird das stärkste passende Kriterium gewertet.',
     'Diagnosestufen nach ETF 2023',
     'Voraussetzungen für den Phänotyp',
     'Rechtsdominant (ARVC)',
@@ -111,7 +111,7 @@ const overview = {
   en: [
     'Diagnosis under ETF 2023',
     'The European Task Force combines findings from six categories. Alongside cine and LGE, the assessment can include histology, ECG, ventricular arrhythmias, family history and genetics.',
-    'Count the strongest applicable criterion in each category. Major is worth 2 points and minor 1 point.',
+    'Count the strongest applicable criterion in each category.',
     'Diagnostic tiers under ETF 2023',
     'Requirements by phenotype',
     'Right-dominant (ARVC)',
@@ -125,7 +125,7 @@ const overview = {
   fa: [
     'تشخیص بر اساس ETF 2023',
     'کارگروه اروپایی یافته‌های شش دسته را با هم ارزیابی می‌کند. در کنار Cine و LGE، بافت‌شناسی، نوار قلب، آریتمی‌های بطنی، سابقهٔ خانوادگی و ژنتیک هم می‌توانند در تشخیص نقش داشته باشند.',
-    'در هر دسته قوی‌ترین معیارِ برآورده‌شده حساب می‌شود. معیار اصلی ۲ امتیاز و معیار فرعی ۱ امتیاز دارد.',
+    'در هر دسته قوی‌ترین معیارِ برآورده‌شده حساب می‌شود.',
     'رده‌های تشخیصی بر اساس ETF 2023',
     'پیش‌شرط‌های هر فنوتیپ',
     'راست‌غالب (ARVC)',
@@ -174,10 +174,22 @@ export default function CriteriaOverview() {
         <figure className={styles.criteriaScale}>
           <figcaption>{scale}</figcaption>
           <dl className={styles.criteriaScores}>
-            <div><dt><bdi dir="ltr" aria-label="2 Punkte">2</bdi></dt><dd>Möglich</dd></div>
-            <div><dt><bdi dir="ltr" aria-label="3 Punkte">3</bdi></dt><dd>Grenzwertig</dd></div>
-            <div><dt><bdi dir="ltr" aria-label="Ab 4 Punkten">≥ 4</bdi></dt><dd>Gesichert</dd></div>
+            {[
+              { points: 2, display: '2', label: 'Möglich', spoken: '2 Punkte' },
+              { points: 3, display: '3', label: 'Grenzwertig', spoken: '3 Punkte' },
+              { points: 4, display: '≥ 4', label: 'Gesichert', spoken: 'Ab 4 Punkten' },
+            ].map(tier => <div key={tier.points} data-tier={tier.points}>
+              <dt><bdi dir="ltr" aria-label={tier.spoken}>{tier.display}</bdi></dt>
+              <dd>{tier.label}</dd>
+              <span className={styles.criteriaMeter} aria-hidden="true">
+                {[1, 2, 3, 4].map(segment => <i key={segment} data-filled={segment <= tier.points}/>)}
+              </span>
+            </div>)}
           </dl>
+          <div className={styles.criteriaWeights}>
+            <span><strong>Major</strong><span>2 Punkte</span></span>
+            <span><strong>Minor</strong><span>1 Punkt</span></span>
+          </div>
         </figure>
         <h4 className={styles.subheading}>{phenotypes}</h4>
         <dl className={styles.paduaPatterns}>
