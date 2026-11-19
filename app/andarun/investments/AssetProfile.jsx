@@ -74,13 +74,12 @@ export default function AssetProfile({focusId,account, position, state, marketDa
     row: snapshot.positions.find(holding => holding.id === position.id),
   })).filter(item => item.row).sort((a, b) => b.date.localeCompare(a.date))
 
-  return <div className={styles.sectionStack}>
-    <InvestmentPositionChart onTransaction={onTransaction} key={chartIdentity} trade={{id:position.id,ownerId:account.id,plan:{name:position.name,symbol:position.symbol || position.isin,currency:currency || ''},executions:[]}}
+  const chart=<InvestmentPositionChart onTransaction={onTransaction} key={chartIdentity} trade={{id:position.id,ownerId:account.id,plan:{name:position.name,symbol:position.symbol || position.isin,currency:currency || ''},executions:[]}}
       drawings={state.settings.xtbDrawings} onDrawings={onDrawings} daily={{
         focusId,ownerLabel:account.owner, identity:chartIdentity, legacyKey:chartDrawingKey(account.id, position, chartMarket),
         market:chartMarket ? {...chartMarket,quote:chartQuote || chartMarket.quote} : {quote:currentMarket?.quote},
         entry:currency==='EUR' && averageEur>0 ? averageEur : null, entries, quantity,
-        quantityLabel:balance.quantityKnown ? position.quantity : 'نیازمند تطبیق',
+        quantityLabel:position.historyOnly?'در فهرست دارایی‌های فعلی نیست':balance.quantityKnown ? position.quantity : 'نیازمند تطبیق',
         events:(ledger?.transactions||[]).filter(tx=>position.isin&&tx.accountId===account.id&&tx.isin===position.isin&&['BUY','SELL'].includes(tx.type))
           .slice().sort((a,b)=>Date.parse(a.datetime||a.date)-Date.parse(b.datetime||b.date)||String(a.id).localeCompare(String(b.id))).map(tx=>({id:tx.id,date:tx.date,kind:tx.type==='BUY'?'entry':'exit',quantity:Math.abs(Number(tx.quantity)),price:Number(tx.price)||Math.abs(tx.amountCents/100/Number(tx.quantity)),currency:tx.currency}))
           .filter(tx=>/^\d{4}-\d{2}-\d{2}$/.test(tx.date)).sort((a,b)=>a.date.localeCompare(b.date)),
@@ -89,6 +88,8 @@ export default function AssetProfile({focusId,account, position, state, marketDa
         busy:chartBusy||marketData.loading[key], onRefresh:key?refreshChart:null,
         notice:chartNotice,error:marketData.errors[key],onTransactions,
       }}/>
+  if(position.historyOnly)return chart
+  return <div className={styles.sectionStack}>{chart}
     <details className={`${styles.panel} ${styles.assetDetails}`}>
       <summary>TradingView</summary>
       <TradingViewChart position={position} onConnect={onChartConnect}/>

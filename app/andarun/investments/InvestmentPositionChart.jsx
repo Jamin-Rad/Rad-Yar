@@ -203,9 +203,9 @@ export default function InvestmentPositionChart({ trade, openCount, drawings = [
     setPriceDomain(null);setOffset(anchoredOffset(fullHistory.length,visibleCount,timeIndex(times,t),.5))
   }
   useEffect(()=>{
-    if(!daily?.focusId||initialLot.current===daily.focusId||!fullHistory.length)return
+    if(!daily?.focusId||initialLot.current===daily.focusId)return
     const s=spans.find(s=>s.entry?.id===daily.focusId||s.exit?.id===daily.focusId)
-    if(s){initialLot.current=daily.focusId;focusLot(s,s.exit?.id===daily.focusId?s.exit:s.entry)}
+    if(s){if(fullHistory.length)initialLot.current=daily.focusId;focusLot(s,s.exit?.id===daily.focusId?s.exit:s.entry)}
   },[daily?.focusId,fullHistory,spans])
   const visibleAverages = averages.filter(([key]) => indicators[key])
   const candles=history.length>0

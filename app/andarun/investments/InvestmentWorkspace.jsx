@@ -67,7 +67,8 @@ export default function InvestmentWorkspace() {
   const profitPeriod = usePeriodProfit(state?.accounts,ledger,marketData,profitSelection,!!state?.settings?.isinPricesEnabled && ['accounts','account'].includes(section))
   const account = state?.accounts.find(a => a.id === accountId)
   const trade = state?.trades.find(t => t.id === tradeId)
-  const position = account?.positions.find(p => p.id === positionId)
+  const archivedTx=focusId&&ledger.transactions?.find(tx=>tx.id===focusId&&tx.accountId===accountId&&tx.isin===positionId)
+  const position = account?.positions.find(p => p.id === positionId) || (archivedTx?{id:archivedTx.isin,isin:archivedTx.isin,name:archivedTx.name,historyOnly:true}:null)
   const decision = state?.decisions.find(d => d.id === decisionId)
   useEffect(() => { if (!toast) return; const timer = setTimeout(() => setToast(''), 5500); return () => clearTimeout(timer) }, [toast])
 
