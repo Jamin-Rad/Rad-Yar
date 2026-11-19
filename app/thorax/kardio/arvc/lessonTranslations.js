@@ -3,11 +3,11 @@ import { Children, cloneElement, isValidElement } from 'react'
 // Authored parallel translations; German clinical source remains unchanged.
 const COPY = {
   "Regionale RV-Akinesie, Dyskinesie oder ein Aneurysma ergeben zusammen mit globaler RV-Dilatation oder verminderter RVEF ein Major-Kriterium. An der freien RV-Wand reicht der regionale Befund allein für Minor.": {"en":"Regional RV akinesia, dyskinesia or an aneurysm with global RV dilatation or reduced RVEF meets a major criterion. The regional finding alone qualifies as minor when it affects the RV free wall.","fa":"آکینزی، دیسکینزی یا آنوریسم موضعی بطن راست همراه با اتساع کلی یا کاهش RVEF معیار اصلی است. اگر یافتهٔ موضعی در دیوارهٔ آزاد بطن راست باشد، به‌تنهایی معیار فرعی است."},
-  "Eindeutiges RV-LGE außerhalb der Trikuspidalklappe zählt als Minor. Beim typischen LV-Streifen-LGE sind 1–2 Segmente Minor und mindestens 3 Segmente Major.": {"en":"Unequivocal RV LGE outside the tricuspid valve is minor. Typical LV stria-pattern LGE is minor in 1–2 segments and major in at least 3 segments.","fa":"LGE قطعی بطن راست خارج از دریچهٔ تریکوسپید معیار فرعی است. در LGE نواری شاخص بطن چپ، ۱ تا ۲ سگمان معیار فرعی و دست‌کم ۳ سگمان معیار اصلی است."},
+  "Eindeutiges RV-LGE außerhalb der Trikuspidalklappe zählt als Minor. Beim typischen LV-Streifen-LGE sind 1–2 Segmente Minor und mindestens 3 Segmente Major.": {"en":"Unequivocal RV LGE outside the tricuspid valve is minor. Typical LV stria-pattern LGE is minor in 1–2 segments and major in at least 3 segments.","fa":"LGE واضح در بطن راست خارج از دریچهٔ تریکوسپید معیار فرعی است. در LGE نواری تیپیک بطن چپ، ۱ تا ۲ سگمان معیار فرعی و دست‌کم ۳ سگمان معیار اصلی است."},
   "ACM-Rechner": { en: "ACM calculator", fa: "محاسبه‌گر ACM" },
   "Zum ACM-Rechner": { en: "Open ACM calculator", fa: "باز کردن محاسبه‌گر ACM" },
-  "Mindestens ein Kriterium für Form und Funktion (I) oder Myokardgewebe (II) muss erfüllt sein. Bei biventrikulärer ACM gilt das für beide Kammern. Ein Major-Kriterium im EKG allein genügt nicht.": { en: "At least one criterion for morphology and function (I) or myocardial tissue (II) must be met. In biventricular ACM, this applies to both ventricles. A major ECG criterion alone is insufficient.", fa: "دست‌کم یک معیار شکل و عملکرد (I) یا بافت میوکارد (II) باید برآورده شود. در ACM دوبطنی، این شرط برای هر دو بطن برقرار است. یک معیار اصلی نوار قلب به‌تنهایی کافی نیست." },
-  "Erforderlich sind ein strukturelles LV-Major-Kriterium (typisches LGE) und eine pathogene oder wahrscheinlich pathogene ACM-assoziierte Genvariante.": { en: "A major LV structural criterion (characteristic LGE) and a pathogenic or likely pathogenic ACM-associated genetic variant are required.", fa: "یک معیار اصلی ساختاری بطن چپ (الگوی شاخص LGE) و یک واریانت بیماری‌زا یا احتمالاً بیماری‌زای مرتبط با ACM لازم‌اند." },
+  "Mindestens ein Kriterium für Form und Funktion (I) oder Myokardgewebe (II) muss erfüllt sein. Bei biventrikulärer ACM gilt das für beide Kammern. Ein Major-Kriterium im EKG allein genügt nicht.": { en: "At least one criterion for morphology and function (I) or myocardial tissue (II) must be met. In biventricular ACM, this applies to both ventricles. A major ECG criterion alone is insufficient.", fa: "دست‌کم یک معیار مورفولوژی و عملکرد (I) یا بافت میوکارد (II) باید برآورده شود. در ACM دوبطنی، این شرط برای هر دو بطن برقرار است. یک معیار اصلی نوار قلب به‌تنهایی کافی نیست." },
+  "Erforderlich sind ein strukturelles LV-Major-Kriterium (typisches LGE) und eine pathogene oder wahrscheinlich pathogene ACM-assoziierte Genvariante.": { en: "A major LV structural criterion (characteristic LGE) and a pathogenic or likely pathogenic ACM-associated genetic variant are required.", fa: "یک معیار اصلی ساختاری بطن چپ (الگوی تیپیک LGE) و یک واریانت بیماری‌زا یا احتمالاً بیماری‌زای مرتبط با ACM لازم‌اند." },
   "Negative T-Wellen in V1–V3 oder darüber hinaus ohne kompletten Rechtsschenkelblock sind ein Beispiel für Major.": { en: "T-wave inversion in V1–V3 or beyond without complete right bundle branch block is an example of a major finding.", fa: "وارونگی موج T در V1–V3 یا فراتر از آن، بدون بلوک کامل شاخهٔ راست، نمونه‌ای از معیار اصلی است." },
   "RVEDVi ist das enddiastolische RV-Volumen bezogen auf die Körperoberfläche.": { en: "RVEDVi is the RV end-diastolic volume indexed to body surface area.", fa: "RVEDVi حجم پایان دیاستول بطن راست نسبت به سطح بدن است." },
   "RVEF ist die rechtsventrikuläre Ejektionsfraktion.": { en: "RVEF is the right ventricular ejection fraction.", fa: "RVEF کسر جهشی بطن راست است." },
@@ -17,8 +17,8 @@ const COPY = {
   "Verminderte LVEF mit oder ohne LV-Dilatation.": { en: "Reduced LVEF with or without LV dilatation.", fa: "کاهش LVEF با یا بدون اتساع بطن چپ." },
   "Alternativ zählt eine regionale Hypokinesie oder Akinesie der freien LV-Wand oder des Septums.": { en: "Regional hypokinesia or akinesia of the LV free wall or septum can also qualify.", fa: "هیپوکینزی یا آکینزی موضعی دیوارهٔ آزاد بطن چپ یا سپتوم نیز می‌تواند این معیار را برآورده کند." },
   "Für den LV gibt es im Cine kein Major-Kriterium.": { en: "There is no major LV criterion on cine.", fa: "در Cine معیار اصلی برای بطن چپ وجود ندارد." },
-  "Volumen und EF anhand geeigneter Referenzwerte für die Methode, das Alter und das Geschlecht beurteilen. Beim Volumen auch die Körperoberfläche berücksichtigen.": { en: "Assess volume and EF against reference values appropriate for the method, age, and sex. Also account for body surface area when assessing volume.", fa: "حجم و EF را با مقادیر مرجع متناسب با روش، سن و جنس بسنجید. در ارزیابی حجم، سطح بدن را هم در نظر بگیرید." },
-  "Ein typisches LGE-Muster in zwei orthogonalen Ebenen zählt als Major-Kriterium.": { en: "A characteristic LGE pattern demonstrated in two orthogonal planes counts as a major criterion.", fa: "الگوی شاخص LGE که در دو نمای عمود بر هم دیده شود، معیار اصلی است." },
+  "Volumen und EF anhand geeigneter Referenzwerte für die Methode, das Alter und das Geschlecht beurteilen. Beim Volumen auch die Körperoberfläche berücksichtigen.": { en: "Assess volume and EF against reference values appropriate for the method, age, and sex. Also account for body surface area when assessing volume.", fa: "حجم و EF را با مقادیر مرجع متناسب با روش تصویربرداری، سن و جنس بسنجید. در ارزیابی حجم، سطح بدن را هم در نظر بگیرید." },
+  "Ein typisches LGE-Muster in zwei orthogonalen Ebenen zählt als Major-Kriterium.": { en: "A characteristic LGE pattern demonstrated in two orthogonal planes counts as a major criterion.", fa: "الگوی تیپیک LGE که در دو نمای عمود بر هم دیده شود، معیار اصلی است." },
   "Subepikardiales oder mittmyokardiales Streifen-LGE in mindestens einem Segment der freien Wand oder des Septums.": { en: "Subepicardial or mid-wall stria-like LGE in at least one segment of the free wall or septum.", fa: "LGE نواری زیر اپی‌کارد یا در میانهٔ دیواره، در دست‌کم یک سگمان از دیوارهٔ آزاد یا سپتوم." },
   "Isoliertes LGE an RV-Insertionspunkten bleibt unberücksichtigt.": { en: "Isolated RV insertion-point LGE does not count.", fa: "LGE محدود به نقاط اتصال بطن راست حساب نمی‌شود." },
   "Pro Kategorie zählt nur das stärkste erfüllte Kriterium, dann werden die Punkte aus den verschiedenen Kategorien addiert.": { en: "Count only the strongest criterion met in each category, then add the points across categories.", fa: "در هر دسته فقط قوی‌ترین معیارِ برآورده‌شده حساب می‌شود، سپس امتیاز دسته‌های مختلف با هم جمع می‌شود." },
@@ -26,7 +26,7 @@ const COPY = {
   "erfüllt mindestens ein Kriterium aus Kategorie I oder II. Elektrische Befunde der linken Kammer zählen bei dieser Form nicht mit.": { en: "meets at least one criterion in category I or II. LV electrical findings do not count for this form.", fa: "دست‌کم یک معیار از دستهٔ I یا II را برآورده می‌کند. یافته‌های الکتریکی بطن چپ در این شکل حساب نمی‌شوند." },
   "Beide Kammern": { en: "Both ventricles", fa: "هر دو بطن" },
   "erfüllen jeweils mindestens ein Kriterium aus Kategorie I oder II.": { en: "each meet at least one criterion in category I or II.", fa: "هر کدام دست‌کم یک معیار از دستهٔ I یا II را برآورده می‌کنند." },
-  "Typisches LGE im LV und eine pathogene oder wahrscheinlich pathogene ACM-Genvariante. Am RV ist kein Kriterium aus Kategorie I oder II erfüllt.": { en: "Characteristic LV LGE and a pathogenic or likely pathogenic ACM gene variant are required. The RV meets no category I or II criterion.", fa: "الگوی شاخص LGE در بطن چپ و یک واریانت بیماری‌زا یا احتمالاً بیماری‌زای مرتبط با ACM لازم‌اند. بطن راست هیچ معیاری از دستهٔ I یا II را برآورده نمی‌کند." },
+  "Typisches LGE im LV und eine pathogene oder wahrscheinlich pathogene ACM-Genvariante. Am RV ist kein Kriterium aus Kategorie I oder II erfüllt.": { en: "Characteristic LV LGE and a pathogenic or likely pathogenic ACM gene variant are required. The RV meets no category I or II criterion.", fa: "الگوی تیپیک LGE در بطن چپ و یک واریانت بیماری‌زا یا احتمالاً بیماری‌زای مرتبط با ACM لازم‌اند. بطن راست هیچ معیاری از دستهٔ I یا II را برآورده نمی‌کند." },
   "Differenzialdiagnose": { en: "Differential diagnosis", fa: "تشخیص افتراقی" },
   "Ein vergrößerter rechter Ventrikel oder ein nichtischämisches LGE kann mehrere Ursachen haben. Für die Einordnung zählen": { en: "An enlarged right ventricle or non-ischaemic LGE can have several causes. Interpret these findings using", fa: "بزرگ‌شدن بطن راست یا LGE غیرایسکمیک می‌تواند علت‌های مختلفی داشته باشد. برای تفسیر، این موارد را کنار هم در نظر بگیرید:" },
   "Wandbewegung, Kammerfunktion, Narbenmuster und klinischer Kontext.": { en: "wall motion, ventricular function, scar pattern, and clinical context.", fa: "حرکت دیواره، عملکرد بطن‌ها، الگوی اسکار و وضعیت بالینی." },
@@ -68,19 +68,19 @@ const COPY = {
   "Mindestens ein Kriterium aus I oder II pro Herzkammer.": { en: "At least one category I or II criterion in each ventricle.", fa: "حداقل یک معیار از دستهٔ I یا II در هر بطن." },
   "Rechtsdominant": { en: "Right-dominant", fa: "راست‌غالب" },
   "Isoliert links": { en: "Isolated LV involvement", fa: "درگیری محدود به بطن چپ" },
-  "Typisches LV-LGE und eine pathogene oder wahrscheinlich pathogene ACM-Genvariante sind erforderlich.": { en: "Characteristic LV LGE and a pathogenic or likely pathogenic ACM variant are required.", fa: "الگوی شاخص LGE در بطن چپ و یک واریانت بیماری‌زا یا احتمالاً بیماری‌زای مرتبط با ACM لازم‌اند." },
+  "Typisches LV-LGE und eine pathogene oder wahrscheinlich pathogene ACM-Genvariante sind erforderlich.": { en: "Characteristic LV LGE and a pathogenic or likely pathogenic ACM variant are required.", fa: "الگوی تیپیک LGE در بطن چپ و یک واریانت بیماری‌زا یا احتمالاً بیماری‌زای مرتبط با ACM لازم‌اند." },
   "Was zählt im MRT als Major oder Minor?": { en: "What counts as major or minor on MRI?", fa: "کدام یافته‌های MRI معیار اصلی یا فرعی هستند؟" },
   "MRT-Kriterien vergleichen": { en: "Compare MRI criteria", fa: "مقایسهٔ معیارهای MRI" },
   "Cine · rechter Ventrikel": { en: "Cine · right ventricle", fa: "Cine · بطن راست" },
   "Für beide Stufen braucht es eine regionale RV-Akinesie, Dyskinesie oder dyssynchrone RV-Kontraktion. Dazu muss mindestens einer der folgenden Messwerte auffällig sein.": { en: "Both levels require regional RV akinesia, dyskinesia, or dyssynchronous RV contraction plus an abnormal value for at least one of the following measurements.", fa: "هر دو رده به آکینزی موضعی، دیسکینزی یا انقباض ناهماهنگ بطن راست همراه با دست‌کم یکی از مقادیر غیرطبیعی زیر نیاز دارند." },
   "RVEDVi ist das enddiastolische RV-Volumen bezogen auf die Körperoberfläche. RVEF ist die rechtsventrikuläre Ejektionsfraktion.": { en: "RVEDVi is RV end-diastolic volume indexed to body surface area. RVEF is the right ventricular ejection fraction.", fa: "RVEDVi حجم پایان دیاستول بطن راست نسبت به سطح بدن است. RVEF کسر جهشی بطن راست است." },
-  "Cine · Form und Funktion (I)": { en: "Cine · morphology and function (I)", fa: "Cine · شکل و عملکرد (I)" },
+  "Cine · Form und Funktion (I)": { en: "Cine · morphology and function (I)", fa: "Cine · مورفولوژی و عملکرد (I)" },
   "Regionale Akinesie, Dyskinesie oder Ausbuchtung zusammen mit globaler RV-Dilatation oder verminderter RVEF.": { en: "Regional akinesia, dyskinesia, or bulging together with global RV dilatation or reduced RVEF.", fa: "آکینزی، دیسکینزی یا برجستگی موضعی همراه با اتساع کلی بطن راست یا کاهش RVEF." },
   "Regionale Akinesie, Dyskinesie oder ein Aneurysma der freien RV-Wand genügt auch ohne globale Auffälligkeit.": { en: "Regional akinesia, dyskinesia, or an aneurysm of the RV free wall can qualify even without a global abnormality.", fa: "آکینزی، دیسکینزی یا آنوریسم موضعی دیوارهٔ آزاد بطن راست، حتی با حجم و عملکرد کلی طبیعی، کافی است." },
   "Verminderte LVEF mit oder ohne LV-Dilatation. Auch eine regionale Hypokinesie oder Akinesie der freien LV-Wand oder des Septums erfüllt ein Minor-Kriterium.": { en: "Reduced LVEF with or without LV dilatation. Regional hypokinesia or akinesia of the LV free wall or septum also meets a minor criterion.", fa: "کاهش LVEF با یا بدون اتساع بطن چپ. هیپوکینزی یا آکینزی موضعی دیوارهٔ آزاد بطن چپ یا سپتوم هم معیار فرعی است." },
   "Im Cine gibt es für den LV kein Major-Kriterium. Für Volumen und EF gelten zur Methode und zur untersuchten Person passende Referenzwerte, etwa nach Alter, Geschlecht und Körperoberfläche.": { en: "There is no major LV criterion on cine. Use technique- and patient-appropriate reference values for volume and EF, accounting for factors such as age, sex, and body surface area.", fa: "در Cine معیار اصلی برای بطن چپ وجود ندارد. برای حجم و EF از مقادیر مرجع متناسب با روش و فرد، از جمله سن، جنس و سطح بدن، استفاده کنید." },
   "LGE · Myokardgewebe (II)": { en: "LGE · myocardial tissue (II)", fa: "LGE · بافت میوکارد (II)" },
-  "Das typische LGE muss in zwei orthogonalen Ebenen nachweisbar sein.": { en: "Characteristic LGE must be demonstrable in two orthogonal planes.", fa: "الگوی شاخص LGE باید در دو نمای عمود بر هم دیده شود." },
+  "Das typische LGE muss in zwei orthogonalen Ebenen nachweisbar sein.": { en: "Characteristic LGE must be demonstrable in two orthogonal planes.", fa: "الگوی تیپیک LGE باید در دو نمای عمود بر هم دیده شود." },
   "Transmurales Streifen-LGE in mindestens einer RV-Region (Einflusstrakt, Ausflusstrakt oder Apex).": { en: "Transmural stria-like LGE in at least one RV region (inlet, outflow tract, or apex).", fa: "LGE نواری تمام‌ضخامت در دست‌کم یک ناحیه از بطن راست (مسیر ورودی، مسیر خروجی یا اپکس)." },
   "Subepikardiales oder mittmyokardiales Streifen-LGE in mindestens einem Segment der freien Wand oder des Septums. Isoliertes LGE an RV-Insertionspunkten bleibt unberücksichtigt.": { en: "Subepicardial or mid-wall stria-like LGE in at least one segment of the free wall or septum. Exclude isolated RV insertion-point LGE.", fa: "LGE نواری زیر اپی‌کارد یا در میانهٔ دیواره، در دست‌کم یک سگمان از دیوارهٔ آزاد یا سپتوم. LGE محدود به نقاط اتصال بطن راست حساب نمی‌شود." },
   "Für LGE gibt es kein Minor-Kriterium.": { en: "There is no minor LGE criterion.", fa: "LGE معیار فرعی ندارد." },
@@ -162,7 +162,7 @@ const COPY = {
   "Subepikardiales oder intramurales LGE kann genauso aussehen wie bei ACM.": { en: "Subepicardial or midwall LGE can look the same as in ACM.", fa: "LGE زیر اپی‌کارد یا میان‌دیواره‌ای می‌تواند شبیه ACM باشد." },
   "Was hilft bei der Abgrenzung zur Myokarditis?": { en: "What helps distinguish myocarditis?", fa: "چه چیز به افتراق از میوکاردیت کمک می‌کند؟" },
   "Ein akuter Verlauf und ein Ödem im T2-Mapping sprechen für eine aktive Entzündung. Beides kann auch bei ACM vorkommen.": { en: "An acute presentation and edema on T2 mapping suggest active inflammation. Both can occur in ACM as well.", fa: "سیر حاد و ادم در T2 mapping به نفع التهاب فعال‌اند. هر دو در ACM هم ممکن‌اند." },
-  "Für die Einordnung sind Rhythmusbefunde, Familienanamnese und Genetik wichtig.": { en: "Interpret the findings alongside rhythm findings, family history, and genetics.", fa: "برای تفسیر، یافته‌های ریتم، سابقهٔ خانوادگی و ژنتیک را در نظر بگیرید." },
+  "Für die Einordnung sind Rhythmusbefunde, Familienanamnese und Genetik wichtig.": { en: "Interpret the findings alongside rhythm findings, family history, and genetics.", fa: "یافته‌های تصویربرداری را در کنار نتایج پایش ریتم، سابقهٔ خانوادگی و یافته‌های ژنتیکی تفسیر کنید." },
   "MRT": { en: "MRI", fa: "MRI" },
   "Wichtige Cine-Befunde": { en: "Key cine findings", fa: "یافته‌های مهم Cine" },
   "Regionale Wandbewegungsstörung": { en: "Regional wall motion abnormality", fa: "اختلال موضعی حرکت دیواره" },
@@ -208,7 +208,7 @@ const COPY = {
   "Rechtsbetonte arrhythmogene Kardiomyopathie (ARVC).": { en: "Right-dominant arrhythmogenic cardiomyopathy (ARVC).", fa: "کاردیومیوپاتی آریتموژنیک با درگیری غالب بطن راست (ARVC)." },
   "Arrhythmogene Kardiomyopathie mit Beteiligung beider Ventrikel, im Originalfall als sehr wahrscheinlich eingestuft.": { en: "Biventricular arrhythmogenic cardiomyopathy, considered highly likely in the source case.", fa: "کاردیومیوپاتی آریتموژنیک با درگیری هر دو بطن، که در گزارش اصلی بسیار محتمل دانسته شده است." },
   "Wandbewegungsstörung": { en: "Wall motion abnormality", fa: "اختلال حرکت دیواره" },
-  "Cine-Aufnahmen zeigen Wandbewegung und Pumpfunktion.": { en: "Cine images show wall motion and pumping function.", fa: "تصاویر Cine حرکت دیواره و عملکرد پمپاژ را نشان می‌دهند." },
+  "Cine-Aufnahmen zeigen Wandbewegung und Pumpfunktion.": { en: "Cine images show wall motion and pumping function.", fa: "تصاویر Cine حرکت دیواره و عملکرد سیستولی را نشان می‌دهند." },
   "Späte Kontrastaufnahmen (LGE) zeigen Hinweise auf Narben.": { en: "Late gadolinium enhancement (LGE) images show signs of scar.", fa: "تصاویر تأخیری پس از تزریق (LGE) نشانه‌های اسکار را نشان می‌دهند." },
   "In der Systole zeigt ein Abschnitt der freien RV-Wand keine Bewegung (Akinesie) oder wölbt sich nach außen (Dyskinesie).": { en: "During systole, a segment of the RV free wall may show no motion (akinesia) or bulge outward (dyskinesia).", fa: "در سیستول، بخشی از دیوارهٔ آزاد بطن راست ممکن است حرکت نکند (آکینزی) یا به بیرون برجسته شود (دیسکینزی)." },
   "RV-Dilatation und EF": { en: "RV dilatation and EF", fa: "اتساع بطن راست و کسر جهشی" },
@@ -217,7 +217,7 @@ const COPY = {
   "Im LGE können Narben als helle Areale in der Wand beider Ventrikel sichtbar sein. Fehlendes LGE schließt eine ARVC nicht aus.": { en: "Scar can appear as bright areas in the wall of either ventricle on LGE. Absent LGE does not rule out ARVC.", fa: "در تصاویر LGE، اسکار ممکن است به صورت نواحی روشن در دیوارهٔ هر یک از دو بطن دیده شود. نبود LGE، بیماری ARVC را رد نمی‌کند." },
   "Schema einer RV-Dyskinesie. Rechts zeigt der Pfeil die lokale Auswärtsbewegung in der Systole.": { en: "Illustration of RV dyskinesia. The arrow in the right panel indicates focal outward motion during systole.", fa: "نمای شماتیک دیسکینزی بطن راست. فلش در تصویر سمت راست حرکت موضعی به بیرون در سیستول را نشان می‌دهد." },
   "Bei klassischer ARVC steht die rechte Herzkammer (RV) im Vordergrund.": { en: "Classic ARVC primarily affects the right ventricle (RV).", fa: "در ARVC کلاسیک، درگیری بطن راست (RV) غالب است." },
-  "Im Cine beurteilst du Bewegung und Pumpfunktion. Auf den späten Kontrastaufnahmen suchst du nach Narben.": { en: "Use cine to assess motion and pumping function. Look for scar on late contrast images.", fa: "حرکت و پمپاژ را در Cine بررسی کنید و در تصاویر تأخیری پس از تزریق دنبال اسکار بگردید." },
+  "Im Cine beurteilst du Bewegung und Pumpfunktion. Auf den späten Kontrastaufnahmen suchst du nach Narben.": { en: "Use cine to assess motion and pumping function. Look for scar on late contrast images.", fa: "حرکت دیواره و عملکرد سیستولی را در Cine ارزیابی کنید. الگوی اسکار میوکارد را در تصاویر تأخیری پس از تزریق گادولینیوم (LGE) بررسی کنید." },
   "Im Cine kann ein Abschnitt der RV-Wand stillstehen (Akinesie) oder sich beim Zusammenziehen nach außen wölben (Dyskinesie).": { en: "On cine, a segment of the RV wall may remain still (akinesia) or bulge outward during contraction (dyskinesia).", fa: "در Cine بخشی از دیوارهٔ بطن راست ممکن است بی‌حرکت بماند (آکینزی) یا هنگام انقباض به بیرون برجسته شود (دیسکینزی)." },
   "Wie groß ist der RV? Wie gut pumpt er?": { en: "How big is the RV? How well does it pump?", fa: "بطن راست چه اندازه‌ای دارد و چقدر خوب پمپاژ می‌کند؟" },
   "Die Kammer kann zu groß sein oder einen kleineren Anteil ihres Blutes auswerfen. Das misst du in der gesamten Cine-Serie.": { en: "The ventricle may be enlarged or eject a smaller fraction of its blood. Use the full cine series to measure both.", fa: "بطن ممکن است بزرگ شده باشد یا درصد کمتری از خون درونش را بیرون براند. هر دو را با بررسی کل سری Cine اندازه بگیرید." },
@@ -232,10 +232,10 @@ const COPY = {
   "Was sieht man im MRT?": { en: "What do we see on MRI?", fa: "در MRI چه می‌بینیم؟" },
   "Wie wird ARVC diagnostiziert?": { en: "How is ARVC diagnosed?", fa: "ARVC چگونه تشخیص داده می‌شود؟" },
   "Bei klassischer ARVC zuerst die rechte Kammer (RV) im Cine ansehen.": { en: "In classic ARVC, look at the right ventricle (RV) on cine first.", fa: "در ARVC کلاسیک، ابتدا حرکت بطن راست (RV) را در تصاویر متحرک بررسی کنید." },
-  "Dann Größe und Pumpfunktion messen und nach Narben in beiden Kammern suchen.": { en: "Then measure size and pumping function and look for scar in both ventricles.", fa: "سپس اندازه و عملکرد پمپاژ را بسنجید و در هر دو بطن دنبال اسکار بگردید." },
+  "Dann Größe und Pumpfunktion messen und nach Narben in beiden Kammern suchen.": { en: "Then measure size and pumping function and look for scar in both ventricles.", fa: "سپس اندازه و عملکرد سیستولی را بسنجید و در هر دو بطن دنبال اسکار بگردید." },
   "Bewegung:": { en: "Motion:", fa: "حرکت:" },
   "Im MRT-Film (Cine) kann ein Abschnitt der freien RV-Wand stehen bleiben oder sich beim Zusammenziehen nach außen wölben.": { en: "On cine MRI, part of the RV free wall may stay still or bulge outward during contraction.", fa: "در MRI متحرک (Cine)، بخشی از دیوارهٔ آزاد بطن راست ممکن است بی‌حرکت بماند یا هنگام انقباض به بیرون برجسته شود." },
-  "Größe und Pumpfunktion:": { en: "Size and pumping function:", fa: "اندازه و عملکرد پمپاژ:" },
+  "Größe und Pumpfunktion:": { en: "Size and pumping function:", fa: "اندازه و عملکرد سیستولی:" },
   "Die rechte Kammer kann vergrößert sein oder weniger Blut auswerfen. Beides wird aus der gesamten Cine-Serie gemessen.": { en: "The right ventricle may be enlarged or eject a smaller fraction of its blood. Both are measured from the full cine series.", fa: "بطن راست ممکن است بزرگ شده باشد یا درصد کمتری از خون درون خود را بیرون براند. هر دو را از کل سری Cine اندازه می‌گیریم." },
   "Narben:": { en: "Scar:", fa: "اسکار:" },
   "Auf späten Kontrastaufnahmen (LGE) können helle Streifen in der Herzwand auffallen. Auch die linke Kammer prüfen. Fehlendes LGE schließt ARVC nicht aus.": { en: "On late gadolinium enhancement (LGE) images, bright streaks may appear in the heart wall. Check the left ventricle too. Absent LGE does not rule out ARVC.", fa: "در تصاویر تأخیری پس از تزریق (LGE) ممکن است نوارهای روشن در دیوارهٔ قلب دیده شوند. بطن چپ را هم بررسی کنید. نبود LGE، بیماری ARVC را رد نمی‌کند." },
@@ -253,11 +253,11 @@ const COPY = {
   },
   "arrhythmogenen Kardiomyopathie (ACM)": {
     "en": "arrhythmogenic cardiomyopathy (ACM)",
-    "fa": "کاردیومیوپاتی آریتموژن (ACM)"
+    "fa": "کاردیومیوپاتی آریتموژنیک (ACM)"
   },
   "wird Herzmuskel durch Narbengewebe ersetzt, teilweise auch durch Fett. Das kann gefährliche Rhythmusstörungen aus den Herzkammern auslösen – auch wenn die Pumpfunktion noch relativ gut ist.": {
     "en": "heart muscle is replaced by scar tissue, sometimes also by fat. This can cause dangerous ventricular arrhythmias, even while pump function remains relatively good.",
-    "fa": "بافت عضلانی قلب با اسکار و گاهی نیز با چربی جایگزین می‌شود. این روند می‌تواند آریتمی‌های خطرناک بطنی ایجاد کند، حتی هنگامی که عملکرد پمپاژ هنوز نسبتاً خوب است."
+    "fa": "بافت عضلانی قلب با اسکار و گاهی نیز با چربی جایگزین می‌شود. این روند می‌تواند آریتمی‌های خطرناک بطنی ایجاد کند، حتی هنگامی که عملکرد سیستولی هنوز نسبتاً خوب است."
   },
   "Früher wurde vor allem die rechte Herzkammer beschrieben: daher der Name": {
     "en": "The right ventricle was originally the main focus, hence the name",
@@ -317,7 +317,7 @@ const COPY = {
   },
   "Rechte Kammer besonders auffällig: regionale Bewegungsstörungen, Vergrößerung und reduzierte Pumpfunktion.": {
     "en": "The right ventricle is particularly abnormal, with regional motion abnormalities, enlargement and reduced pump function.",
-    "fa": "بطن راست به‌ویژه غیرطبیعی است: اختلال حرکت ناحیه‌ای، بزرگ‌شدگی و کاهش عملکرد پمپاژ."
+    "fa": "بطن راست به‌ویژه غیرطبیعی است: اختلال حرکت ناحیه‌ای، بزرگ‌شدگی و کاهش عملکرد سیستولی."
   },
   "Biventrikulär": {
     "en": "Biventricular",
@@ -341,7 +341,7 @@ const COPY = {
   },
   "Immer beide Herzkammern ansehen: Größe, Bewegung, Pumpfunktion und Narben.": {
     "en": "Always assess both ventricles: size, motion, pump function and scars.",
-    "fa": "همیشه هر دو بطن را از نظر اندازه، حرکت، عملکرد پمپاژ و اسکار بررسی کنید."
+    "fa": "همیشه هر دو بطن را از نظر اندازه، حرکت، عملکرد سیستولی و اسکار بررسی کنید."
   },
   "Bei Verdacht auf ACM beantworten wir drei Fragen:": {
     "en": "When ACM is suspected, we answer three questions:",
@@ -381,7 +381,7 @@ const COPY = {
   },
   "RV-Vergrößerung kann eine Trainingsanpassung sein. Beide Kammern vergleichen und nach sicheren regionalen Störungen oder Narben suchen.": {
     "en": "RV enlargement may be a training adaptation. Compare both ventricles and look for definite regional abnormalities or scars.",
-    "fa": "بزرگ‌شدگی RV می‌تواند سازگاری با تمرین ورزشی باشد. هر دو بطن را مقایسه کنید و اختلال ناحیه‌ای قطعی یا اسکار را جست‌وجو کنید."
+    "fa": "اتساع بطن راست می‌تواند بخشی از سازگاری قلب با تمرین باشد. اندازه و عملکرد هر دو بطن را مقایسه کنید و به اختلال موضعی حرکت دیواره و الگوی LGE توجه کنید."
   },
   "Nichtischämisches LV-LGE kann ähnlich aussehen. Akute Beschwerden, Troponin, Ödem und Verlauf berücksichtigen. Auch eine ACM kann entzündungsähnliche Episoden zeigen.": {
     "en": "Non-ischaemic LV LGE may look similar. Consider acute symptoms, troponin, oedema and follow-up. ACM itself can also have inflammatory-like episodes.",
@@ -441,7 +441,7 @@ const COPY = {
   },
   "Arrhythmogene Kardiomyopathie": {
     "en": "Arrhythmogenic cardiomyopathy",
-    "fa": "کاردیومیوپاتی آریتموژن"
+    "fa": "کاردیومیوپاتی آریتموژنیک"
   },
 
   "Take Home Message": {
@@ -550,7 +550,7 @@ const COPY = {
   },
   "ordnen Hinweise aus verschiedenen Untersuchungen zur klassischen rechtsbetonten ARVC. Ein Major-Kriterium ist stärker, ein Minor-Kriterium schwächer gewichtet. Das ist diagnostisches Gewicht und nicht automatisch ein Maß für die Krankheitsschwere.": {
     "en": "combine evidence from different examinations for classic right-dominant ARVC. A major criterion has greater diagnostic weight than a minor criterion. This is diagnostic weight, not automatically a measure of disease severity.",
-    "fa": "شواهد بررسی‌های گوناگون را برای ARVC کلاسیکِ غالب در راست کنار هم می‌گذارند. معیار ماژور وزن تشخیصی بیشتری از معیار مینور دارد. این وزن تشخیصی است و به‌طور خودکار معیاری برای شدت بیماری نیست."
+    "fa": "شواهد بررسی‌های گوناگون را برای ARVC کلاسیکِ غالب در راست کنار هم می‌گذارند. معیار اصلی وزن تشخیصی بیشتری از معیار فرعی دارد. این وزن تشخیصی است و به‌طور خودکار معیاری برای شدت بیماری نیست."
   },
   "Der MRT-Baustein: regional UND global": {
     "en": "The MRI component: regional AND global",
@@ -598,7 +598,7 @@ const COPY = {
   },
   "Erhöhtes RV-Volumen und reduzierte RVEF sind zwei Wege zum selben MRT-Kriterium dieser Kategorie. Ein bildgebendes Major-Kriterium allein ist noch keine gesicherte Gesamtdiagnose. Die übrigen Diagnosebereiche, etwa EKG, Rhythmus und Familie, müssen dazukommen.": {
     "en": "Increased RV volume and reduced RVEF are two routes to the same MRI criterion in this category. One major imaging criterion alone does not establish the overall diagnosis. Other diagnostic domains, such as ECG, rhythm and family history, must be added.",
-    "fa": "افزایش حجم RV و کاهش RVEF دو مسیر برای رسیدن به همان معیار MRI در این دسته هستند. یک معیار ماژور تصویربرداری به‌تنهایی تشخیص کلی را قطعی نمی‌کند. سایر حوزه‌های تشخیصی، مانند ECG، ریتم و سابقهٔ خانوادگی نیز باید اضافه شوند."
+    "fa": "افزایش حجم RV و کاهش RVEF دو مسیر برای رسیدن به همان معیار MRI در این دسته هستند. یک معیار اصلی تصویربرداری به‌تنهایی تشخیص کلی را قطعی نمی‌کند. سایر حوزه‌های تشخیصی، مانند ECG، ریتم و سابقهٔ خانوادگی نیز باید اضافه شوند."
   },
   "Die Grenze dieses Systems": {
     "en": "The limits of this system",
@@ -618,7 +618,7 @@ const COPY = {
   },
   "Regionale Bewegungsstörung, globale Größe und Funktion beurteilen. Auch ein sicher nachgewiesenes transmural streifenförmiges RV-LGE kann ein strukturelles Kriterium sein.": {
     "en": "Assess regional motion abnormalities, global size and function. Definitely demonstrated transmural stria-pattern RV LGE may also constitute a structural criterion.",
-    "fa": "اختلال حرکت ناحیه‌ای، اندازه و عملکرد کلی را ارزیابی کنید. LGE ترانس‌مورال نواری RV که به‌طور قطعی نشان داده شده باشد نیز می‌تواند معیار ساختاری باشد."
+    "fa": "اختلال حرکت ناحیه‌ای، اندازه و عملکرد کلی را ارزیابی کنید. LGE نواری تمام‌ضخامت RV که به‌طور قطعی نشان داده شده باشد نیز می‌تواند معیار ساختاری باشد."
   },
   "Linke Kammer": {
     "en": "Left ventricle",
@@ -626,7 +626,7 @@ const COPY = {
   },
   "Pumpfunktion und regionale Bewegung prüfen; zusätzlich nach subepikardialem oder intramuralem Streifen-LGE suchen.": {
     "en": "Assess pump function and regional motion; also look for subepicardial or intramural stria-pattern LGE.",
-    "fa": "عملکرد پمپاژ و حرکت ناحیه‌ای را بررسی کنید؛ LGE نواری ساب‌اپی‌کاردیال یا داخل‌جداری را نیز جست‌وجو کنید."
+    "fa": "عملکرد سیستولی و حرکت ناحیه‌ای را بررسی کنید؛ LGE نواری ساب‌اپی‌کاردیال یا داخل‌جداری را نیز جست‌وجو کنید."
   },
   "LGE absichern": {
     "en": "Confirm LGE",
@@ -670,7 +670,7 @@ const COPY = {
   },
   "115 ml/m² liegt beim Mann über der Major-Grenze für das RVEDVi. Die RVEF von 41 % liegt dagegen im Minor-Bereich.": {
     "en": "In a man, 115 mL/m² exceeds the major RVEDVi threshold. The RVEF of 41%, however, is in the minor range.",
-    "fa": "در مردان، مقدار 115 mL/m² بالاتر از آستانهٔ ماژور RVEDVi است. در مقابل، RVEF برابر 41٪ در محدودهٔ مینور قرار می‌گیرد."
+    "fa": "در مردان، مقدار 115 mL/m² بالاتر از آستانهٔ معیار اصلی RVEDVi است. در مقابل، RVEF برابر 41٪ در محدودهٔ معیار فرعی قرار می‌گیرد."
   },
   "Zusammenführen:": {
     "en": "Combine the findings:",
@@ -898,7 +898,7 @@ const COPY = {
   },
   "Bekannte ARVC nach VT-Ablation am RVOT. Untersuchung von Bewegung und Pumpfunktion.": {
     "en": "Known ARVC after VT ablation at the RVOT. Assessment of motion and pump function.",
-    "fa": "ARVC شناخته‌شده پس از ابلیشن VT در RVOT. بررسی حرکت و عملکرد پمپاژ."
+    "fa": "ARVC شناخته‌شده پس از ابلیشن VT در RVOT. بررسی حرکت و عملکرد سیستولی."
   },
   "4-Kammer-Cine · Video": {
     "en": "Four-chamber cine · video",
@@ -1206,7 +1206,7 @@ const COPY = {
   },
   "Subendokardial bis transmural": {
     "en": "Subendocardial to transmural",
-    "fa": "از ساب‌اندوکاردیال تا ترانس‌مورال"
+    "fa": "از ساب‌اندوکاردیال تا تمام‌ضخامت"
   },
   "Bei passender Verteilung in einem Koronarterritorium eine ischämische Ursache prüfen.": {
     "en": "If distributed within a coronary territory, assess for an ischaemic cause.",
@@ -1250,7 +1250,7 @@ const COPY = {
   },
   "Die Originaluntersuchung beschreibt LGE in beiden Kammern. Eine LV-Beteiligung ist auch bei relativ guter Pumpfunktion möglich.": {
     "en": "The original examination describes LGE in both ventricles. LV involvement is possible even with relatively good pump function.",
-    "fa": "بررسی اصلی LGE در هر دو بطن را توصیف می‌کند. درگیری LV حتی با عملکرد پمپاژ نسبتاً خوب نیز ممکن است."
+    "fa": "بررسی اصلی LGE در هر دو بطن را توصیف می‌کند. درگیری LV حتی با عملکرد سیستولی نسبتاً خوب نیز ممکن است."
   },
   "RV und LV finden, dann die jeweilige Herzwand verfolgen.": {
     "en": "Identify RV and LV, then follow each ventricular wall.",
@@ -1358,11 +1358,11 @@ const COPY = {
   },
   "Major": {
     "en": "Major",
-    "fa": "ماژور"
+    "fa": "معیار اصلی"
   },
   "Minor": {
     "en": "Minor",
-    "fa": "مینور"
+    "fa": "معیار فرعی"
   },
   "Baustein": {
     "en": "Component",

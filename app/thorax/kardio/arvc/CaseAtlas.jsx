@@ -29,14 +29,14 @@ const examples = [
         "T1-weighted images show slight fatty changes in the basal and apical RV free wall and in the subepicardial posterolateral LV wall."
       ],
       "fa": [
-        "دیسکینزی واضح با برجستگی‌های آنوریسمی دیوارهٔ بطن راست، به‌ویژه در نوک و دیوارهٔ آزاد.",
-        "در تصاویر T1، تغییرات چربی خفیف در قاعده و نوک دیوارهٔ آزاد بطن راست و زیر اپی‌کارد دیوارهٔ خلفی‌جانبی بطن چپ دیده می‌شود."
+        "دیسکینزی واضح همراه با بیرون‌زدگی‌های آنوریسمی دیوارهٔ بطن راست، به‌ویژه در اپکس و دیوارهٔ آزاد.",
+        "در تصاویر T1، نفوذ خفیف چربی در بخش‌های قاعده‌ای و اپیکال دیوارهٔ آزاد بطن راست و در لایهٔ زیر اپیکارد دیوارهٔ خلفی‌جانبی بطن چپ دیده می‌شود."
       ]
     },
   },
   {
     id: '194915',
-    label: { de: 'Fall 2 (Biventrikuläre ACM)', en: 'Case 2 (Biventricular ACM)', fa: 'کیس ۲ (ACM دو بطنی)' },
+    label: { de: 'Fall 2 (Biventrikuläre ACM)', en: 'Case 2 (Biventricular ACM)', fa: 'کیس ۲ (ACM دوبطنی)' },
     history: {
       de: '30-jähriger Mann mit Palpitationen, Synkope und auffälligem EKG.',
       en: 'A 30-year-old man with palpitations, syncope and an abnormal ECG.',
@@ -54,7 +54,7 @@ const examples = [
         "LGE in the RV wall and in the LV wall, particularly in the basal anterolateral segment."
       ],
       "fa": [
-        "بطن راست متسع است و دیواره‌ای نازک و موج‌دار با جایگزینی چربی در میوکارد دارد.",
+        "بطن راست متسع است. دیوارهٔ آن نازک و نامنظم است و بخشی از میوکارد با چربی جایگزین شده است.",
         "هیپوکینزی بطن راست با برجستگی یا دیسکینزی موضعی خفیف دیوارهٔ آزاد.",
         "LGE در دیوارهٔ بطن راست و دیوارهٔ بطن چپ، به‌ویژه در بخش قاعده‌ای قدامی‌جانبی."
       ]

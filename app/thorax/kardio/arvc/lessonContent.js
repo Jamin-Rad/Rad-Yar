@@ -65,12 +65,12 @@ export const TAKE_HOME = [
     detail: localized("Die Beteiligung kann rechtsdominant, biventrikulär oder linksdominant sein. Beurteile im MRT deshalb beide Herzkammern.", "Involvement may be right-dominant, biventricular, or left-dominant. Assess both ventricles on MRI.", "درگیری می‌تواند راست‌غالب، دوبطنی یا چپ‌غالب باشد. به همین دلیل در MRI هر دو بطن را بررسی کنید."),
   },
   {
-    title: localized("Cine zeigt Bewegung und Pumpfunktion. LGE zeigt das Narbenmuster.", "Cine shows motion and systolic function. LGE shows the scar pattern.", "Cine حرکت و عملکرد پمپاژ را نشان می‌دهد. LGE الگوی اسکار را مشخص می‌کند."),
+    title: localized("Cine zeigt Bewegung und Pumpfunktion. LGE zeigt das Narbenmuster.", "Cine shows motion and systolic function. LGE shows the scar pattern.", "Cine حرکت و عملکرد سیستولی را نشان می‌دهد. LGE الگوی اسکار را مشخص می‌کند."),
     detail: localized("Im Cine regionale Wandbewegung, Volumina und Ejektionsfraktion erfassen. Im LGE Lage und Verteilung der Narbe beschreiben. Fehlendes LGE schließt ARVC nicht aus.", "Use cine to assess regional wall motion, volumes, and ejection fraction. Describe the location and distribution of scar on LGE. Absence of LGE does not exclude ARVC.", "در Cine حرکت موضعی دیواره، حجم و کسر جهشی را ارزیابی کنید. در LGE محل و توزیع اسکار را توصیف کنید. نبود LGE، ARVC را رد نمی‌کند."),
   },
   {
     title: localized("Bei ETF 2023 bestimmen Kammer und Ausdehnung die LGE-Wertung.", "Under ETF 2023, LGE grading depends on the ventricle and extent.", "در ETF 2023 درجهٔ LGE به بطن درگیر و وسعت آن بستگی دارد."),
-    detail: localized("Eindeutiges RV-LGE ist Minor. Typisches LV-Streifen-LGE ist bei 1–2 Segmenten Minor und ab 3 Segmenten Major. Für ALVC ist qualifizierendes LV-LGE erforderlich.", "Unequivocal RV LGE is minor. Typical LV stria-pattern LGE is minor in 1–2 segments and major in at least 3. ALVC requires qualifying LV LGE.", "LGE قطعی بطن راست فرعی است. LGE نواری شاخص بطن چپ در ۱ تا ۲ سگمان فرعی و در دست‌کم ۳ سگمان اصلی است. تشخیص ALVC به LGE واجد شرایط بطن چپ نیاز دارد."),
+    detail: localized("Eindeutiges RV-LGE ist Minor. Typisches LV-Streifen-LGE ist bei 1–2 Segmenten Minor und ab 3 Segmenten Major. Für ALVC ist qualifizierendes LV-LGE erforderlich.", "Unequivocal RV LGE is minor. Typical LV stria-pattern LGE is minor in 1–2 segments and major in at least 3. ALVC requires qualifying LV LGE.", "LGE واضح در بطن راست فرعی است. LGE نواری تیپیک بطن چپ در ۱ تا ۲ سگمان فرعی و در دست‌کم ۳ سگمان اصلی است. تشخیص ALVC به LGE واجد شرایط بطن چپ نیاز دارد."),
   },
   {
     title: localized("Die Diagnose verbindet MRT, EKG, Rhythmusdiagnostik und Familienanamnese oder Genetik.", "Diagnosis combines MRI, ECG, rhythm assessment, and family history or genetics.", "تشخیص با کنار هم گذاشتن MRI، نوار قلب، بررسی ریتم و سابقهٔ خانوادگی یا ژنتیک انجام می‌شود."),

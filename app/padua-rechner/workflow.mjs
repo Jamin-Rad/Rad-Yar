@@ -14,7 +14,7 @@ const repolRv = ['v1-v3', 'v1-v2', 'v1-v4-rbbb']
 const familyIds = ['family-definite', 'family-pathology', 'family-suspected', 'family-sudden', 'family-second']
 
 export const GROUPS = {
-  cine: L('Form & Funktion', 'Morphology & function', 'شکل و عملکرد'),
+  cine: L('Form & Funktion', 'Morphology & function', 'مورفولوژی و عملکرد'),
   tissue: L('Myokardgewebe', 'Myocardial tissue', 'بافت میوکارد'),
   ecg: L('Repolarisation', 'Repolarization', 'رپلاریزاسیون'),
   conduction: L('Depolarisation', 'Depolarization', 'دپلاریزاسیون'),
@@ -34,7 +34,7 @@ const QUESTIONS = [
     short('dysfunction', 'RVEF unter der Referenzgrenze', 'RVEF below the reference limit', 'RVEF پایین‌تر از محدودهٔ مرجع'),
   ], {
     visible: answers => any(answers, 'rv-motion', [...regionPadua, 'aneurysm']),
-    hint: L('Für beide Systeme gelten Referenzwerte für die Messmethode, das Alter und das Geschlecht. Beim Volumen die Körperoberfläche berücksichtigen.', 'For both systems, use technique-, age- and sex-appropriate reference values. Account for body surface area for volume.', 'برای هر دو سیستم از مقادیر مرجع متناسب با روش، سن و جنس استفاده کنید. برای حجم، سطح بدن را هم در نظر بگیرید.'),
+    hint: L('Für beide Systeme gelten Referenzwerte für die Messmethode, das Alter und das Geschlecht. Beim Volumen die Körperoberfläche berücksichtigen.', 'For both systems, use technique-, age- and sex-appropriate reference values. Account for body surface area for volume.', 'برای هر دو سیستم از مقادیر مرجع متناسب با روش تصویربرداری، سن و جنس استفاده کنید. برای حجم، سطح بدن را هم در نظر بگیرید.'),
   }),
   question('lv-function', 'cine', L('LV-Funktion?', 'LV function?', 'عملکرد بطن چپ؟'), [
     recorded('lv-function', { title: L('LVEF vermindert, mit oder ohne LV-Dilatation', 'Reduced LVEF, with or without LV dilatation', 'کاهش کسر جهشی بطن چپ، با یا بدون اتساع'), text: null }),
@@ -42,10 +42,10 @@ const QUESTIONS = [
   ]),
   question('lge', 'tissue', L("LGE-Muster?", "LGE pattern?", "الگوی LGE؟"), [
     recorded('rv-lge', {
-      title: L('RV · transmurales Streifen-LGE', 'RV · transmural stria-pattern LGE', 'بطن راست · LGE نواری ترانس‌مورال'),
+      title: L('RV · transmurales Streifen-LGE', 'RV · transmural stria-pattern LGE', 'بطن راست · LGE نواری تمام‌ضخامت'),
       text: L('Mindestens eine Region: Einfluss- oder Ausflusstrakt, Apex.', 'At least one region: inlet, outlet or apex.', 'دست‌کم یک ناحیه: مسیر ورودی، خروجی یا اپکس.'),
     }),
-    short('rv-lge-other', 'Eindeutiges RV-LGE außerhalb der Trikuspidalklappe, ohne Padua-Muster', 'Unequivocal RV LGE away from the tricuspid valve without the Padua pattern', 'LGE قطعی بطن راست خارج از دریچه تریکوسپید، بدون الگوی پادوا'),
+    short('rv-lge-other', 'Eindeutiges RV-LGE außerhalb der Trikuspidalklappe, ohne Padua-Muster', 'Unequivocal RV LGE away from the tricuspid valve without the Padua pattern', 'LGE واضح در بطن راست خارج از دریچه تریکوسپید، بدون الگوی پادوا'),
     recorded('lv-lge', {
       title: L('LV · subepikardiales oder mittmyokardiales Streifen-LGE', 'LV · subepicardial or midmyocardial stria-pattern LGE', 'بطن چپ · LGE نواری زیر اپیکارد یا میان‌میوکاردی'),
       text: L('1–2 Segmente der freien Wand oder des Septums.', '1–2 free-wall or septal segments.', '۱ تا ۲ سگمان از دیوارهٔ آزاد یا سپتوم.'),
@@ -81,15 +81,15 @@ const QUESTIONS = [
     option('vt-other-axis', L('Linksschenkelblockmuster mit gesicherter Achse außerhalb des RVOT-Musters', 'LBBB pattern with documented axis outside the RVOT pattern', 'الگوی بلوک شاخهٔ چپ با محور مشخص خارج از الگوی RVOT'), L('Andere Achse als superior oder inferior.', 'Axis other than superior or inferior.', 'محوری غیر از فوقانی یا تحتانی.'), { padua: 'rv-arrhythmia-major' }),
     option('vt-unknown-axis', L('Linksschenkelblockmuster, Achse unbekannt', 'LBBB pattern, axis unknown', 'الگوی بلوک شاخهٔ چپ با محور نامشخص'), null, { incomplete: true }),
     option('vt-rbbb', L('Rechtsschenkelblockmuster ohne faszikuläre Morphologie', 'RBBB pattern without fascicular morphology', 'الگوی بلوک شاخهٔ راست بدون مورفولوژی فاسیکولار'), null, { padua: 'lv-arrhythmia' }),
-  ], { hint: L("Anhaltende und nichtanhaltende VT zählen.", "Sustained and nonsustained VT both count.", "تاکی‌کاردی بطنی پایدار و ناپایدار هر دو حساب می‌شوند.") }),
-  question('pvc', 'rhythm', L("VES im Langzeit- oder Belastungs-EKG?", "PVCs on Holter or exercise ECG?", "ضربان زودرس بطنی در هولتر یا تست ورزش؟"), [
+  ], { hint: L("Anhaltende und nichtanhaltende VT zählen.", "Sustained and nonsustained VT both count.", "تاکی‌کاردی بطنی پایدار و غیرپایدار هر دو حساب می‌شوند.") }),
+  question('pvc', 'rhythm', L("VES im Langzeit- oder Belastungs-EKG?", "PVCs on Holter or exercise ECG?", "اکستراسیستول بطنی در هولتر یا تست ورزش؟"), [
     option('pvc-rv', L('Linksschenkelblockmuster außerhalb des RVOT-Musters', 'LBBB pattern outside the RVOT pattern', 'الگوی بلوک شاخهٔ چپ خارج از الگوی RVOT'), null, { padua: 'rv-arrhythmia-major' }),
     option('pvc-rvot', L('Linksschenkelblockmuster mit inferiorer Achse (RVOT)', 'LBBB pattern with inferior axis (RVOT)', 'الگوی بلوک شاخهٔ چپ با محور تحتانی (RVOT)'), null, { padua: 'rv-arrhythmia-minor' }),
     option('pvc-lv', L('Rechtsschenkelblockmuster ohne faszikuläre Morphologie', 'RBBB pattern without fascicular morphology', 'الگوی بلوک شاخهٔ راست بدون مورفولوژی فاسیکولار'), null, { padua: 'lv-arrhythmia' }),
-    short('pvc-exercise', 'Belastungsinduzierte VES mit nichtfaszikulärem Rechtsschenkelblockmuster', 'Exercise-induced PVCs with non-fascicular RBBB morphology', 'ضربان زودرس بطنی ناشی از ورزش با الگوی بلوک شاخه راست غیرفاسیکولار'),
+    short('pvc-exercise', 'Belastungsinduzierte VES mit nichtfaszikulärem Rechtsschenkelblockmuster', 'Exercise-induced PVCs with non-fascicular RBBB morphology', 'اکستراسیستول بطنی ناشی از ورزش با الگوی بلوک شاخه راست غیرفاسیکولار'),
     option('pvc-other', L('Andere Morphologie', 'another documented morphology', 'مورفولوژی دیگر و مشخص'), null),
     option('pvc-unknown', L('Morphologie unbekannt', 'morphology unknown', 'مورفولوژی نامشخص'), null, { incomplete: true }),
-  ], { hint: L('Im Langzeit-EKG werden die genannten Morphologien bei > 500 VES in 24 Stunden gewertet. Für die Belastung gilt die separat aufgeführte Option.', 'For Holter findings, select the applicable morphology only with >500 PVCs in 24 hours. Exercise-induced PVCs have a separate option.', 'در هولتر، الگوهای بالا با بیش از ۵۰۰ ضربان زودرس بطنی در ۲۴ ساعت امتیاز می‌گیرند. برای تست ورزش گزینهٔ جداگانه وجود دارد.') }),
+  ], { hint: L('Im Langzeit-EKG werden die genannten Morphologien bei > 500 VES in 24 Stunden gewertet. Für die Belastung gilt die separat aufgeführte Option.', 'For Holter findings, select the applicable morphology only with >500 PVCs in 24 hours. Exercise-induced PVCs have a separate option.', 'در هولتر، الگوهای بالا با بیش از ۵۰۰ اکستراسیستول بطنی در ۲۴ ساعت امتیاز می‌گیرند. برای تست ورزش گزینهٔ جداگانه وجود دارد.') }),
   question('arrest', 'rhythm', L('Überlebter Herzstillstand?', 'Resuscitated cardiac arrest?', 'ایست قلبی احیاشده؟'), [
     short('arrest-vf-vt', 'Kammerflimmern oder anhaltende VT unbekannter Morphologie', 'Ventricular fibrillation or sustained VT of unknown morphology', 'فیبریلاسیون بطنی یا VT پایدار با مورفولوژی نامشخص'),
   ]),
@@ -105,11 +105,11 @@ export function questionsFor(answers) {
 }
 
 const paduaOnly = new Set(['bulging', 'lv-motion', 'rv-lge', 'puberty', 'low-voltage'])
-const etfLgeTitle = L('Eindeutiges RV-LGE außerhalb der Trikuspidalklappe', 'Unequivocal RV LGE outside the tricuspid valve', 'LGE قطعی بطن راست خارج از دریچهٔ تریکوسپید')
+const etfLgeTitle = L('Eindeutiges RV-LGE außerhalb der Trikuspidalklappe', 'Unequivocal RV LGE outside the tricuspid valve', 'LGE واضح در میوکارد بطن راست، خارج از دریچهٔ تریکوسپید')
 const etfHints = {
   age: L('Für das gewählte T-Wellen-Muster alle zutreffenden Merkmale markieren.', 'Select all applicable features for the T-wave pattern.', 'همهٔ ویژگی‌های مربوط به الگوی موج T را انتخاب کنید.'),
   'rv-motion': L('Eine isolierte RV-Hypokinesie zählt bei ETF nicht.', 'Isolated RV hypokinesia does not count in ETF.', 'هیپوکینزی منفرد بطن راست در ETF معیار محسوب نمی‌شود.'),
-  'rv-global': L('Volumen und EF anhand geeigneter Referenzwerte für Methode, Alter und Geschlecht beurteilen. Das Volumen auf die Körperoberfläche beziehen.', 'Use reference ranges appropriate for method, age and sex. Index volume to body surface area.', 'حجم و EF را با مقادیر مرجع متناسب با روش، سن و جنس بسنجید. حجم را نسبت به سطح بدن شاخص‌گذاری کنید.'),
+  'rv-global': L('Volumen und EF anhand geeigneter Referenzwerte für Methode, Alter und Geschlecht beurteilen. Das Volumen auf die Körperoberfläche beziehen.', 'Use reference ranges appropriate for method, age and sex. Index volume to body surface area.', 'حجم و EF را با مقادیر مرجع متناسب با روش تصویربرداری، سن و جنس بسنجید. حجم را بر اساس سطح بدن (BSA) شاخص‌گذاری کنید.'),
   lge: L('Das jeweilige Muster in zwei orthogonalen Ebenen bestätigen. Fokales oder fleckiges LV-LGE sowie isoliertes Insertions-LGE bleiben unberücksichtigt.', 'Confirm each pattern in two orthogonal views. Exclude focal or patchy LV LGE and isolated junctional LGE.', 'الگو را در دو نمای عمود بر هم تأیید کنید. LGE کانونی یا لکه‌ای بطن چپ و LGE محدود به محل اتصال بطن راست امتیاز ندارند.'),
 }
 export function etfQuestionsFor(answers) {
@@ -188,17 +188,17 @@ function collectFindings(answers) {
   for (const id of padua) if (!etfExcluded.has(id)) add(id)
   if (minorMotion) add('rv-motion')
   if (global && any(answers, 'rv-motion', ['ak-dys-free', 'ak-dys-other', 'aneurysm'])) {
-    add('rv-function', 2, 'rv', L('Regionale RV-Akinesie, Dyskinesie oder Aneurysma plus globale RV-Dilatation oder verminderte RVEF.', 'Regional RV akinesia, dyskinesia or aneurysm with global RV dilatation or reduced RVEF.', 'آکینزی، دیسکینزی یا آنوریسم موضعی بطن راست همراه اتساع کلی یا کاهش RVEF.'))
+    add('rv-function', 2, 'rv', L('Regionale RV-Akinesie, Dyskinesie oder Aneurysma plus globale RV-Dilatation oder verminderte RVEF.', 'Regional RV akinesia, dyskinesia or aneurysm with global RV dilatation or reduced RVEF.', 'آکینزی، دیسکینزی یا آنوریسم موضعی بطن راست همراه با اتساع کلی بطن راست یا کاهش کسر جهشی آن (RVEF).'))
   }
   if (has(answers, 'lge', 'rv-lge') || has(answers, 'lge', 'rv-lge-other')) {
-    add('rv-lge', 1, 'rv', L('Eindeutiges RV-LGE in mindestens einer Region, in zwei orthogonalen Ebenen bestätigt (Trikuspidalklappe ausgenommen).', 'Unequivocal RV LGE in at least one region in two orthogonal planes, excluding the tricuspid valve.', 'LGE قطعی بطن راست در دست‌کم یک ناحیه و دو نمای عمود، به‌جز دریچه تریکوسپید.'))
+    add('rv-lge', 1, 'rv', L('Eindeutiges RV-LGE in mindestens einer Region, in zwei orthogonalen Ebenen bestätigt (Trikuspidalklappe ausgenommen).', 'Unequivocal RV LGE in at least one region in two orthogonal planes, excluding the tricuspid valve.', 'LGE واضح در بطن راست در دست‌کم یک ناحیه و دو نمای عمود، به‌جز دریچه تریکوسپید.'))
   }
   if (has(answers, 'lge', 'lv-lge')) addCustom('lv-lge', 1, 'lv', 'lge')
   if (has(answers, 'lge', 'lv-lge-extensive')) addCustom('lv-lge-extensive', 2, 'lv', 'lge')
   const adultWithoutElevation = has(answers, 'age', 'age14') && has(answers, 'age', 'no-j')
-  if (adultWithoutElevation && has(answers, 'twi', 'v1-v3')) add('rv-twi-major', 2, 'rv', L('T-Negativierung V1–V3 oder weiter ab 14 Jahren, ohne kompletten RSB und ohne vorausgehende J-/ST-Hebung.', 'T-wave inversion in V1–V3 or beyond at age ≥14 without complete RBBB or preceding J/ST elevation.', 'وارونگی T در V1 تا V3 یا بیشتر از ۱۴ سالگی، بدون بلوک کامل شاخه راست یا بالا رفتن پیشین J یا ST.'))
+  if (adultWithoutElevation && has(answers, 'twi', 'v1-v3')) add('rv-twi-major', 2, 'rv', L('T-Negativierung V1–V3 oder weiter ab 14 Jahren, ohne kompletten RSB und ohne vorausgehende J-/ST-Hebung.', 'T-wave inversion in V1–V3 or beyond at age ≥14 without complete RBBB or preceding J/ST elevation.', 'وارونگی موج T در لیدهای V1 تا V3 یا فراتر، در سن ۱۴ سال به بالا، بدون بلوک کامل شاخهٔ راست یا بالارفتن نقطهٔ J یا قطعهٔ ST پیش از موج T.'))
   if (adultWithoutElevation && has(answers, 'age', 'male') && has(answers, 'age', 'no-rbbb') && has(answers, 'twi', 'v1-v2')) {
-    add('rv-twi-minor', 1, 'rv', L('T-Negativierung V1–V2 bei Männern ab 14 Jahren, ohne RSB und ohne vorausgehende J-/ST-Hebung.', 'T-wave inversion in V1–V2 in males aged ≥14 without RBBB or preceding J/ST elevation.', 'وارونگی T در V1 و V2 در مردان از ۱۴ سالگی، بدون بلوک شاخه راست یا بالا رفتن پیشین J یا ST.'))
+    add('rv-twi-minor', 1, 'rv', L('T-Negativierung V1–V2 bei Männern ab 14 Jahren, ohne RSB und ohne vorausgehende J-/ST-Hebung.', 'T-wave inversion in V1–V2 in males aged ≥14 without RBBB or preceding J/ST elevation.', 'وارونگی موج T در لیدهای V1 و V2 در مردان ۱۴ ساله و بالاتر، بدون بلوک شاخهٔ راست یا بالارفتن نقطهٔ J یا قطعهٔ ST پیش از موج T.'))
   }
   if (has(answers, 'twi', 'v1-v4-rbbb')) add('rv-twi-rbbb', 1, 'rv', QUESTIONS.find(item => item.id === 'twi').options.find(choice => choice.id === 'v1-v4-rbbb').title)
   if (has(answers, 'twi', 'v1-beyond-child')) addCustom('v1-beyond-child', 1, 'rv', 'twi')
