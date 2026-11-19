@@ -745,13 +745,10 @@
 .paduaGrades .cineConditions { display:grid; gap:4px; }
 .paduaGrades .cineConditions p { margin:0; }
 .cinePlus {
-  display:grid;
-  width:1.4rem;
-  height:1.4rem;
-  place-items:center;
-  border:1px solid var(--line);
-  border-radius:50%;
+  justify-self:center;
+  margin-block:2px;
   color:var(--lesson-accent-strong);
+  font-size:1.25rem;
   font-weight:750;
   line-height:1;
 }
