@@ -3,51 +3,10 @@
 import { useLanguage } from '@/providers/LanguageProvider'
 import { localizeArvcTree } from './lessonTranslations'
 
-import { useState } from 'react'
 import Link from 'next/link'
 import { TeachingGroup, TeachingGroups } from '@/components/lesson-template/InteractiveTeachingGroups'
-import { Icon, Tabs } from './LessonVisuals'
+import { Icon } from './LessonVisuals'
 import styles from './page.module.css'
-
-const MRI_SYSTEMS = [
-  { id: 'tfc', label: 'TFC 2010' },
-  { id: 'padua', label: 'Padua 2020' },
-  { id: 'etf', label: 'ETF 2023' },
-]
-
-const OTHER_CATEGORIES = [
-  {
-    number: 'II',
-    title: 'Myokardgewebe',
-    description: [
-      'TFC bewertet den fibrotischen Ersatz in der RV-Biopsie anhand des Anteils verbliebener Herzmuskelzellen.',
-      'Bei Padua zählen fibrotischer Ersatz in der RV-Biopsie oder typisches LGE als Major-Kriterium.',
-    ],
-  },
-  {
-    number: 'III',
-    title: 'Repolarisation im EKG',
-    description: [
-      'Negative T-Wellen in V1–V3 oder darüber hinaus ohne kompletten Rechtsschenkelblock sind ein Beispiel für Major.',
-      'TFC setzt ein Alter über 14 Jahren voraus, Padua eine abgeschlossene Pubertät.',
-    ],
-  },
-  {
-    number: 'IV',
-    title: 'Depolarisation im EKG',
-    description: 'Eine Epsilon-Welle in V1–V3 zählt beispielsweise bei TFC als Major und bei Padua als Minor.',
-  },
-  {
-    number: 'V',
-    title: 'Ventrikuläre Arrhythmien',
-    description: 'Im Langzeit-EKG zählen Häufigkeit und Morphologie ventrikulärer Extrasystolen und Tachykardien. Zum Beispiel ist eine VT mit Linksschenkelblockmorphologie und superiorer Achse in beiden Systemen ein Major-Kriterium.',
-  },
-  {
-    number: 'VI',
-    title: 'Familienanamnese und Genetik',
-    description: 'Eine bestätigte Erkrankung bei einem erstgradig Verwandten kann ein Major-Kriterium erfüllen. Auch eine als krankheitsverursachend eingestufte Genvariante kann als Major zählen.',
-  },
-]
 
 function CategoryDisclosure({ number, title, description }) {
   return <details className={styles.criteriaDisclosure}>
@@ -60,78 +19,6 @@ function CategoryDisclosure({ number, title, description }) {
       {[description].flat().map(paragraph => <p key={paragraph}>{paragraph}</p>)}
     </div>
   </details>
-}
-
-function TfcExplanation({ lang }) {
-  return localizeArvcTree(<>
-    <h4 className={styles.mrtTopic}>Cine · rechter Ventrikel</h4>
-    <p>Major und Minor setzen eine regionale RV-Akinesie, Dyskinesie oder dyssynchrone Kontraktion voraus. Der Messwert für RV-Volumen oder RVEF bestimmt die Einstufung.</p>
-    <dl className={`${styles.criteriaRows} ${styles.criteriaThresholds}`}>
-      <div>
-        <dt>RVEDVi · Männer</dt>
-        <dd><strong>Major</strong> ≥ 110 ml/m²</dd>
-        <dd><strong>Minor</strong> ≥ 100 bis &lt; 110 ml/m²</dd>
-      </div>
-      <div>
-        <dt>RVEDVi · Frauen</dt>
-        <dd><strong>Major</strong> ≥ 100 ml/m²</dd>
-        <dd><strong>Minor</strong> ≥ 90 bis &lt; 100 ml/m²</dd>
-      </div>
-      <div>
-        <dt>RVEF · beide</dt>
-        <dd><strong>Major</strong> ≤ 40 %</dd>
-        <dd><strong>Minor</strong> &gt; 40 bis ≤ 45 %</dd>
-      </div>
-    </dl>
-    <ul className={styles.criteriaFootnotes}>
-      <li>RVEDVi ist das enddiastolische RV-Volumen bezogen auf die Körperoberfläche.</li>
-      <li>RVEF ist die rechtsventrikuläre Ejektionsfraktion.</li>
-      <li>Sind Volumen und RVEF auffällig, zählt in Kategorie I nur die höhere Einstufung.</li>
-      <li>LGE ist bei TFC 2010 kein eigenes Kriterium.</li>
-    </ul>
-  </>, lang)
-}
-
-function PaduaExplanation({ lang }) {
-  return localizeArvcTree(<div className={styles.paduaMri}>
-    <section aria-labelledby="padua-cine">
-      <h4 id="padua-cine" className={styles.mrtTopic}>Cine · Form und Funktion (I)</h4>
-      <div className={styles.paduaChambers}>
-        <div>
-          <h5>Rechter Ventrikel (RV)</h5>
-          <dl className={styles.paduaGrades}>
-            <div><dt>Major</dt><dd>Regionale Akinesie, Dyskinesie oder Ausbuchtung zusammen mit globaler RV-Dilatation oder verminderter RVEF.</dd></div>
-            <div><dt>Minor</dt><dd>Regionale Akinesie, Dyskinesie oder ein Aneurysma der freien RV-Wand genügt auch ohne globale Auffälligkeit.</dd></div>
-          </dl>
-        </div>
-        <div>
-          <h5>Linker Ventrikel (LV)</h5>
-          <dl className={styles.paduaGrades}>
-            <div>
-              <dt>Minor</dt>
-              <dd>Verminderte LVEF mit oder ohne LV-Dilatation.</dd>
-              <dd>Alternativ zählt eine regionale Hypokinesie oder Akinesie der freien LV-Wand oder des Septums.</dd>
-            </div>
-          </dl>
-          <p className={styles.criteriaNote}>Für den LV gibt es im Cine kein Major-Kriterium.</p>
-        </div>
-      </div>
-      <p className={styles.criteriaNote}>Volumen und EF anhand geeigneter Referenzwerte für die Methode, das Alter und das Geschlecht beurteilen. Beim Volumen auch die Körperoberfläche berücksichtigen.</p>
-    </section>
-    <section aria-labelledby="padua-lge">
-      <h4 id="padua-lge" className={styles.mrtTopic}>LGE · Myokardgewebe (II)</h4>
-      <p>Ein typisches LGE-Muster in zwei orthogonalen Ebenen zählt als Major-Kriterium.</p>
-      <dl className={styles.paduaChambers}>
-        <div><dt>Rechter Ventrikel (RV)</dt><dd>Transmurales Streifen-LGE in mindestens einer RV-Region (Einflusstrakt, Ausflusstrakt oder Apex).</dd></div>
-        <div>
-          <dt>Linker Ventrikel (LV)</dt>
-          <dd>Subepikardiales oder mittmyokardiales Streifen-LGE in mindestens einem Segment der freien Wand oder des Septums.</dd>
-          <dd>Isoliertes LGE an RV-Insertionspunkten bleibt unberücksichtigt.</dd>
-        </div>
-      </dl>
-      <p className={styles.criteriaNote}>Für LGE gibt es kein Minor-Kriterium.</p>
-    </section>
-  </div>, lang)
 }
 
 const ETF_MRI = {
@@ -162,33 +49,6 @@ const ETF_MRI = {
     'LGE نواری زیر اپیکارد یا میان‌میوکارد در ۱ تا ۲ سگمان از دیوارهٔ آزاد یا سپتوم.',
     'الگوی LGE را در دو نمای عمود بر هم تأیید کنید.',
   ],
-}
-
-const CRITERIA_COMPARISON = {
-  de: [
-    ['Kriteriensystem', 'Schwerpunkt', 'LGE', 'Diagnostische Einordnung'],
-    ['TFC 2010', 'Klassische ARVC mit Fokus auf den RV', 'Kein eigenes Kriterium', 'Diagnosestufen für ARVC'],
-    ['Padua 2020', 'Rechtsdominante, biventrikuläre und linksdominante ACM', 'Typisches RV- oder LV-LGE zählt als Major', 'Diagnosestufen für rechtsdominante und biventrikuläre ACM. Bei isolierter ALVC sind typisches LV-LGE und eine passende Genvariante erforderlich.'],
-    ['ETF 2023', 'Europäischer Vorschlag zur Weiterentwicklung von Padua', 'RV-LGE zählt als Minor. Beim LV entscheidet die Ausdehnung.', 'Für ALVC ist typisches nichtischämisches LV-LGE erforderlich. Eine ausreichende Befundkombination kann auch ohne Genvariante genügen.'],
-  ],
-  en: [
-    ['Criteria', 'Focus', 'LGE', 'Diagnostic classification'],
-    ['TFC 2010', 'Classic ARVC with a focus on the RV', 'No standalone criterion', 'Diagnostic tiers for ARVC'],
-    ['Padua 2020', 'Right-dominant, biventricular and left-dominant ACM', 'Characteristic RV or LV LGE is a major criterion', 'Diagnostic tiers apply to right-dominant and biventricular ACM. Isolated ALVC requires characteristic LV LGE and a qualifying genetic variant.'],
-    ['ETF 2023', 'European proposal to refine Padua', 'RV LGE is minor. LV grading depends on extent.', 'ALVC requires characteristic non-ischaemic LV LGE. A sufficient combination of findings can qualify without a genetic variant.'],
-  ],
-  fa: [
-    ['معیارها', 'تمرکز', 'LGE', 'طبقه‌بندی تشخیصی'],
-    ['TFC 2010', 'ARVC کلاسیک با تمرکز بر بطن راست', 'معیار مستقل ندارد', 'رده‌های تشخیصی ARVC'],
-    ['Padua 2020', 'ACM راست‌غالب، دوبطنی و چپ‌غالب', 'LGE شاخص بطن راست یا چپ معیار اصلی است', 'رده‌بندی برای فرم راست‌غالب و دوبطنی. در ALVC منفرد، LGE شاخص بطن چپ و واریانت ژنتیکی مرتبط لازم‌اند.'],
-    ['ETF 2023', 'پیشنهاد کارگروه اروپایی برای تکمیل پادوا', 'LGE بطن راست معیار فرعی است. در بطن چپ وسعت درگیری تعیین‌کننده است.', 'ALVC به LGE غیرایسکمیک شاخص بطن چپ نیاز دارد. ترکیب کافی یافته‌ها می‌تواند بدون واریانت ژنتیکی هم معیارها را برآورده کند.'],
-  ],
-}
-
-const ETF_OTHER = {
-  de: ['Weitere Änderungen nach ETF', 'Epsilon-Welle: Minor. Niedervoltage in allen Extremitätenableitungen ohne andere Ursache: LV Major. Pathogene ACM-Variante: Major, wahrscheinlich pathogene Variante: Minor.', 'Auch das T-Wellen-Muster, die VES-Morphologie bei Belastung und ein überlebter arrhythmischer Herzstillstand gehen nach den ETF-Regeln ein.'],
-  en: ['Other ETF updates', 'Epsilon wave: minor. Low voltage in all limb leads without another cause: LV major. Pathogenic ACM variant: major, likely pathogenic variant: minor.', 'ETF also defines criteria for T-wave patterns, exercise-induced PVC morphology and resuscitated arrhythmic cardiac arrest.'],
-  fa: ['تغییرات دیگر ETF', 'موج اپسیلون: فرعی. ولتاژ پایین در همهٔ لیدهای اندامی بدون علت دیگر: معیار اصلی بطن چپ. واریانت بیماری‌زا: اصلی. واریانت احتمالاً بیماری‌زا: فرعی.', 'الگوی موج T، مورفولوژی PVC حین ورزش و ایست قلبی آریتمیک احیاشده نیز معیارهای مشخصی دارند.'],
 }
 
 function EtfExplanation({ lang }) {
@@ -233,72 +93,107 @@ function EtfExplanation({ lang }) {
   </div>, lang)
 }
 
+const overview = {
+  de: [
+    'Diagnose nach ETF 2023',
+    'Die European Task Force kombiniert Befunde aus sechs Kategorien. Neben Cine und LGE zählen je nach Befund auch Histologie, EKG, ventrikuläre Arrhythmien, Familienanamnese und Genetik.',
+    'Pro Kategorie wird das stärkste passende Kriterium gewertet. Major entspricht 2 Punkten, Minor 1 Punkt.',
+    'Diagnosestufen nach ETF 2023',
+    'Voraussetzungen für den Phänotyp',
+    'Rechtsdominant (ARVC)',
+    'Mindestens ein RV-Kriterium aus Form und Funktion (I) oder Myokardgewebe (II).',
+    'Biventrikulär',
+    'Jeder Ventrikel erfüllt mindestens ein Kriterium aus I oder II.',
+    'Linksdominant (ALVC)',
+    'Ein qualifizierendes LV-LGE ist erforderlich und kann Major oder Minor sein. Bei ausreichender Befundkombination ist eine Genvariante nicht zwingend.',
+    'Kriterien außerhalb des MRT',
+  ],
+  en: [
+    'Diagnosis under ETF 2023',
+    'The European Task Force combines findings from six categories. Alongside cine and LGE, the assessment can include histology, ECG, ventricular arrhythmias, family history and genetics.',
+    'Count the strongest applicable criterion in each category. Major is worth 2 points and minor 1 point.',
+    'Diagnostic tiers under ETF 2023',
+    'Requirements by phenotype',
+    'Right-dominant (ARVC)',
+    'At least one RV criterion from morphology and function (I) or myocardial tissue (II).',
+    'Biventricular',
+    'Each ventricle meets at least one criterion from I or II.',
+    'Left-dominant (ALVC)',
+    'Qualifying LV LGE is required and can be major or minor. A genetic variant is optional when the combination of findings is sufficient.',
+    'Criteria beyond MRI',
+  ],
+  fa: [
+    'تشخیص بر اساس ETF 2023',
+    'کارگروه اروپایی یافته‌های شش دسته را با هم ارزیابی می‌کند. در کنار Cine و LGE، بافت‌شناسی، نوار قلب، آریتمی‌های بطنی، سابقهٔ خانوادگی و ژنتیک هم می‌توانند در تشخیص نقش داشته باشند.',
+    'در هر دسته قوی‌ترین معیارِ برآورده‌شده حساب می‌شود. معیار اصلی ۲ امتیاز و معیار فرعی ۱ امتیاز دارد.',
+    'رده‌های تشخیصی بر اساس ETF 2023',
+    'پیش‌شرط‌های هر فنوتیپ',
+    'راست‌غالب (ARVC)',
+    'دست‌کم یک معیار بطن راست از دستهٔ شکل و عملکرد (I) یا بافت میوکارد (II) لازم است.',
+    'دوبطنی',
+    'هر بطن باید دست‌کم یک معیار از دستهٔ I یا II داشته باشد.',
+    'چپ‌غالب (ALVC)',
+    'وجود LGE واجد شرایط در بطن چپ لازم است و می‌تواند معیار اصلی یا فرعی باشد. با ترکیب کافی یافته‌ها، وجود واریانت ژنتیکی الزامی نیست.',
+    'معیارهای خارج از MRI',
+  ],
+}
+
+const otherCriteria = [
+  ['II', 'Histologie', 'Histology', 'بافت‌شناسی',
+    ['Major: fibrotischer Ersatz von Myokard in mindestens einer Biopsieprobe, mit oder ohne Fett.'],
+    ['Major: fibrous replacement of myocardium in at least one biopsy sample, with or without fat.'],
+    ['معیار اصلی شامل جایگزینی فیبروزی میوکارد در دست‌کم یک نمونهٔ بیوپسی، با یا بدون چربی است.']],
+  ['III', 'Repolarisation im EKG', 'ECG repolarization', 'رپلاریزاسیون در نوار قلب',
+    ['RV Major: T-Negativierung in V1–V3 oder weiter ab 14 Jahren, ohne kompletten Rechtsschenkelblock und ohne vorangehende J-Punkt- oder ST-Hebung.', 'RV Minor: V1–V2 bei Männern ab 14 Jahren ohne Rechtsschenkelblock und ohne vorangehende J-Punkt- oder ST-Hebung. T-Negativierung über V3 hinaus zählt bei komplettem Rechtsschenkelblock oder unter 14 Jahren ebenfalls als Minor.', 'LV Minor: T-Negativierung in V4–V6 ohne kompletten Linksschenkelblock.'],
+    ['RV major: T-wave inversion in V1–V3 or beyond at age 14 or older, without complete RBBB or preceding J-point or ST elevation.', 'RV minor: inversion in V1–V2 in males aged 14 or older without RBBB or preceding J-point or ST elevation. Inversion beyond V3 also counts with complete RBBB or below age 14.', 'LV minor: inversion in V4–V6 without complete LBBB.'],
+    ['معیار اصلی بطن راست شامل وارونگی موج T در V1 تا V3 یا فراتر از آن از ۱۴ سالگی، بدون بلوک کامل شاخهٔ راست و بدون بالارفتن پیشین نقطهٔ J یا قطعهٔ ST است.', 'وارونگی در V1 و V2 در مردان از ۱۴ سالگی، بدون بلوک شاخهٔ راست و بدون بالارفتن پیشین J یا ST، معیار فرعی بطن راست است. وارونگی فراتر از V3 در صورت بلوک کامل شاخهٔ راست یا سن زیر ۱۴ سال هم معیار فرعی است.', 'وارونگی T در V4 تا V6 بدون بلوک کامل شاخهٔ چپ معیار فرعی بطن چپ است.']],
+  ['IV', 'Depolarisation im EKG', 'ECG depolarization', 'دپلاریزاسیون در نوار قلب',
+    ['RV Minor: reproduzierbare Epsilon-Welle in V1–V3 oder terminale Aktivierungsdauer ≥ 55 ms in V1, V2 oder V3 ohne kompletten Rechtsschenkelblock.', 'LV Major: QRS-Amplitude < 0,5 mV in allen Extremitätenableitungen, wenn andere Ursachen der Niedervoltage ausgeschlossen sind.'],
+    ['RV minor: reproducible epsilon wave in V1–V3 or terminal activation duration ≥55 ms in V1, V2 or V3 without complete RBBB.', 'LV major: QRS amplitude <0.5 mV in all limb leads after other causes of low voltage have been excluded.'],
+    ['موج اپسیلون تکرارپذیر در V1 تا V3 یا مدت فعال‌سازی انتهایی دست‌کم ۵۵ میلی‌ثانیه در یکی از این لیدها بدون بلوک کامل شاخهٔ راست، معیار فرعی بطن راست است.', 'دامنهٔ QRS کمتر از ۰٫۵ میلی‌ولت در همهٔ لیدهای اندامی پس از رد سایر علل ولتاژ پایین، معیار اصلی بطن چپ است.']],
+  ['V', 'Ventrikuläre Arrhythmien', 'Ventricular arrhythmias', 'آریتمی‌های بطنی',
+    ['RV Major: > 500 ventrikuläre Extrasystolen in 24 Stunden oder anhaltende bzw. nichtanhaltende VT mit Linksschenkelblockmorphologie und nichtinferiorer Achse. Bei inferiorer Achse zählt dieses Muster als RV Minor.', 'LV Minor: häufige oder belastungsinduzierte ventrikuläre Extrasystolen oder VT mit nichtfaszikulärer Rechtsschenkelblockmorphologie.', 'Minor: überlebter Herzstillstand durch Kammerflimmern oder anhaltende VT unbekannter Morphologie.'],
+    ['RV major: >500 premature ventricular complexes in 24 hours or sustained or nonsustained VT with LBBB morphology and a non-inferior axis. The same findings with an inferior axis count as RV minor.', 'LV minor: frequent or exercise-induced premature ventricular complexes, or VT, with non-fascicular RBBB morphology.', 'Minor: resuscitated cardiac arrest due to ventricular fibrillation or sustained VT of unknown morphology.'],
+    ['بیش از ۵۰۰ ضربان زودرس بطنی در ۲۴ ساعت، یا VT پایدار یا ناپایدار، با الگوی بلوک شاخهٔ چپ و محور غیرتحتانی معیار اصلی بطن راست است. همین الگو با محور تحتانی معیار فرعی است.', 'ضربان‌های زودرس بطنی مکرر یا ناشی از ورزش، یا VT، با الگوی بلوک شاخهٔ راست غیرفاسیکولار معیار فرعی بطن چپ هستند.', 'ایست قلبی احیاشده بر اثر فیبریلاسیون بطنی یا VT پایدار با مورفولوژی نامشخص معیار فرعی است.']],
+  ['VI', 'Familienanamnese und Genetik', 'Family history and genetics', 'سابقهٔ خانوادگی و ژنتیک',
+    ['Major: pathogene ACM-Genvariante oder gesicherte ACM bei einem erstgradig Verwandten.', 'Minor: wahrscheinlich pathogene Variante, nicht überprüfbare ACM-Diagnose bei einem erstgradig Verwandten, plötzlicher Tod unter 35 Jahren bei einem erstgradig Verwandten mit ACM-Verdacht oder gesicherte ACM bei einem zweitgradig Verwandten.'],
+    ['Major: pathogenic ACM variant or confirmed ACM in a first-degree relative.', 'Minor: likely pathogenic variant, unverifiable ACM diagnosis in a first-degree relative, sudden death before age 35 in a first-degree relative with suspected ACM, or confirmed ACM in a second-degree relative.'],
+    ['واریانت بیماری‌زای مرتبط با ACM یا تشخیص تأییدشدهٔ ACM در بستگان درجهٔ اول معیار اصلی است.', 'واریانت احتمالاً بیماری‌زا، تشخیص غیرقابل‌تأیید ACM در بستگان درجهٔ اول، مرگ ناگهانی پیش از ۳۵ سالگی در بستگان درجهٔ اول مشکوک به ACM، یا ACM تأییدشده در بستگان درجهٔ دوم معیار فرعی است.']],
+]
+
 export default function CriteriaOverview() {
   const { lang } = useLanguage()
-  const [selected, setSelected] = useState(0)
-
-  const [columns, ...rows] = CRITERIA_COMPARISON[lang] || CRITERIA_COMPARISON.de
-  const [otherTitle, ...otherNotes] = ETF_OTHER[lang] || ETF_OTHER.de
+  const languageIndex = { de: 0, en: 1, fa: 2 }[lang] ?? 0
+  const [title, intro, weighting, scale, phenotypes, rv, rvRule, biv, bivRule, lv, lvRule, other] = overview[lang] || overview.de
 
   return localizeArvcTree(<TeachingGroups direction={lang === 'fa' ? 'rtl' : 'ltr'}>
-    <TeachingGroup id="arvc-diagnostic-comparison" title="TFC und Padua im Vergleich" tone="secondary">
+    <TeachingGroup id="arvc-diagnostic-comparison" title={title} tone="secondary">
       <div className={styles.criteriaLesson}>
-        <p className={styles.criteriaIntro}>
-          <strong>Für eine gesicherte Diagnose reicht ein einzelner MRT-Befund nicht aus.</strong>
-          <span>Alle drei Systeme berücksichtigen sechs Befundkategorien. Neben dem MRT zählen unter anderem das EKG, dokumentierte Rhythmusstörungen sowie Familienanamnese und Genetik.</span>
-        </p>
-        <div className={styles.criteriaComparison} tabIndex={0} role="region" aria-label="TFC / Padua / ETF">
-          <table>
-            <thead><tr>{columns.map(column => <th key={column} scope="col">{column}</th>)}</tr></thead>
-            <tbody>{rows.map(([system, ...cells]) => <tr key={system}>
-              <th scope="row"><bdi>{system}</bdi></th>
-              {cells.map((cell, index) => <td key={columns[index + 1]}>{cell}</td>)}
-            </tr>)}</tbody>
-          </table>
-        </div>
-        <h4 className={styles.subheading}>Von den Befunden zur Diagnose</h4>
-        <p>Pro Kategorie zählt nur das stärkste erfüllte Kriterium, dann werden die Punkte aus den verschiedenen Kategorien addiert.</p>
+        <p className={styles.criteriaIntro}>{intro}</p>
+        <p>{weighting}</p>
         <figure className={styles.criteriaScale}>
-          <figcaption>Diagnosestufen nach TFC 2010 und Padua 2020</figcaption>
-          <p className={styles.criteriaScaleScope}>Bei Padua gilt die Skala für rechtsdominante und biventrikuläre ACM.</p>
-          <div className={styles.criteriaWeights}>
-            <span><strong>Major</strong> <span>2 Punkte</span></span>
-            <span><strong>Minor</strong> <span>1 Punkt</span></span>
-          </div>
+          <figcaption>{scale}</figcaption>
           <dl className={styles.criteriaScores}>
             <div><dt><bdi dir="ltr" aria-label="2 Punkte">2</bdi></dt><dd>Möglich</dd></div>
             <div><dt><bdi dir="ltr" aria-label="3 Punkte">3</bdi></dt><dd>Grenzwertig</dd></div>
             <div><dt><bdi dir="ltr" aria-label="Ab 4 Punkten">≥ 4</bdi></dt><dd>Gesichert</dd></div>
           </dl>
         </figure>
+        <h4 className={styles.subheading}>{phenotypes}</h4>
         <dl className={styles.paduaPatterns}>
-          <div>
-            <dt>Padua · Schon für „möglich“</dt>
-            <dd>Mindestens ein Kriterium für Form und Funktion (I) oder Myokardgewebe (II) muss erfüllt sein. Bei biventrikulärer ACM gilt das für beide Kammern. Ein Major-Kriterium im EKG allein genügt nicht.</dd>
-          </div>
-          <div>
-            <dt>Padua · Isoliert links (ALVC)</dt>
-            <dd>Erforderlich sind ein strukturelles LV-Major-Kriterium (typisches LGE) und eine pathogene oder wahrscheinlich pathogene ACM-assoziierte Genvariante.</dd>
-          </div>
+          <div><dt>{rv}</dt><dd>{rvRule}</dd></div>
+          <div><dt>{biv}</dt><dd>{bivRule}</dd></div>
+          <div><dt>{lv}</dt><dd>{lvRule}</dd></div>
         </dl>
-        <Link className={styles.paduaCalculatorLink} href="/padua-rechner">Zum ACM-Rechner <Icon name="arrow"/></Link>
+        <Link className={styles.paduaCalculatorLink} href={lang === 'de' ? '/padua-rechner' : '/padua-rechner?lang=' + lang}>Zum ACM-Rechner <Icon name="arrow"/></Link>
       </div>
     </TeachingGroup>
     <TeachingGroup id="arvc-diagnostic-mri" title="Major und Minor im MRT" className={styles.mriCriteriaGroup}>
-      <div className={styles.criteriaLesson}>
-        <p>Cine zeigt Form und Funktion der Herzkammern (Kategorie I). Bei Padua und ETF können typische LGE-Muster als Kriterien für das Myokardgewebe zählen (Kategorie II).</p>
-        <div className={`${styles.atlas} ${styles.criteriaAtlas}`}>
-          <div dir="ltr"><Tabs label="MRT-Kriterien vergleichen" items={MRI_SYSTEMS} selected={selected} onChange={setSelected} idPrefix="acm-diagnostic-mri"/></div>
-          <div className={styles.criteriaMri} id="acm-diagnostic-mri-panel" role="tabpanel" aria-labelledby={`acm-diagnostic-mri-tab-${selected}`} tabIndex={0}>
-            {[<TfcExplanation key="tfc" lang={lang}/>, <PaduaExplanation key="padua" lang={lang}/>, <EtfExplanation key="etf" lang={lang}/>][selected]}
-          </div>
-        </div>
-      </div>
+      <div className={styles.criteriaMri}><EtfExplanation lang={lang}/></div>
     </TeachingGroup>
-    <TeachingGroup id="arvc-diagnostic-other-categories" title="Die fünf weiteren Kategorien">
+    <TeachingGroup id="arvc-diagnostic-other-categories" title={other}>
       <div className={styles.criteriaGuide}>
-          {OTHER_CATEGORIES.map(category => <CategoryDisclosure key={category.number} {...category}/>)}
-          <CategoryDisclosure number="ETF" title={otherTitle} description={otherNotes}/>
+        {otherCriteria.map(([number, ...copy]) => <CategoryDisclosure key={number} number={number} title={copy[languageIndex]} description={copy[languageIndex + 3]}/>)}
       </div>
     </TeachingGroup>
   </TeachingGroups>, lang)

@@ -82,7 +82,7 @@ export function MrtOverview() {
           </dl>
           <aside className={styles.mrtKeyPoint}>
             <strong>Diagnostische Bedeutung</strong>
-            <p>Nach TFC 2010 zählt eine regionale RV-Wandbewegungsstörung zusammen mit einem erhöhten RVEDVi oder einer verminderten RVEF als ein MRT-Kriterium, wenn der jeweilige Grenzwert erreicht ist.</p>
+            <p>Regionale RV-Akinesie, Dyskinesie oder ein Aneurysma ergeben zusammen mit globaler RV-Dilatation oder verminderter RVEF ein Major-Kriterium. An der freien RV-Wand reicht der regionale Befund allein für Minor.</p>
           </aside>
           <details className={styles.mrtDetails}>
             <summary>Warum bewegt sich die Wand anders?</summary>
@@ -100,8 +100,8 @@ export function MrtOverview() {
             <div><dt>Linker Ventrikel</dt><dd>Streifenförmiges LGE unter dem Epikard oder in der Wandmitte, häufig inferolateral.</dd></div>
           </dl>
           <aside className={styles.mrtKeyPoint}>
-            <strong>Padua 2020</strong>
-            <p>Transmurales, streifenförmiges LGE in mindestens einer RV-Region zählt als strukturelles Major-Kriterium, wenn es in zwei orthogonalen Ebenen bestätigt ist. Fehlendes RV-LGE schließt ARVC nicht aus.</p>
+            <strong>ETF 2023</strong>
+            <p>Eindeutiges RV-LGE außerhalb der Trikuspidalklappe zählt als Minor. Beim typischen LV-Streifen-LGE sind 1–2 Segmente Minor und mindestens 3 Segmente Major.</p>
           </aside>
 
           <h4 className={styles.mrtTopic}>Abgrenzung zu Infarkt und Myokarditis</h4>

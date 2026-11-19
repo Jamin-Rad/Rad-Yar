@@ -2,22 +2,16 @@ import { Children, cloneElement, isValidElement } from 'react'
 
 // Authored parallel translations; German clinical source remains unchanged.
 const COPY = {
+  "Regionale RV-Akinesie, Dyskinesie oder ein Aneurysma ergeben zusammen mit globaler RV-Dilatation oder verminderter RVEF ein Major-Kriterium. An der freien RV-Wand reicht der regionale Befund allein für Minor.": {"en":"Regional RV akinesia, dyskinesia or an aneurysm with global RV dilatation or reduced RVEF meets a major criterion. The regional finding alone qualifies as minor when it affects the RV free wall.","fa":"آکینزی، دیسکینزی یا آنوریسم موضعی بطن راست همراه با اتساع کلی یا کاهش RVEF معیار اصلی است. اگر یافتهٔ موضعی در دیوارهٔ آزاد بطن راست باشد، به‌تنهایی معیار فرعی است."},
+  "Eindeutiges RV-LGE außerhalb der Trikuspidalklappe zählt als Minor. Beim typischen LV-Streifen-LGE sind 1–2 Segmente Minor und mindestens 3 Segmente Major.": {"en":"Unequivocal RV LGE outside the tricuspid valve is minor. Typical LV stria-pattern LGE is minor in 1–2 segments and major in at least 3 segments.","fa":"LGE قطعی بطن راست خارج از دریچهٔ تریکوسپید معیار فرعی است. در LGE نواری شاخص بطن چپ، ۱ تا ۲ سگمان معیار فرعی و دست‌کم ۳ سگمان معیار اصلی است."},
   "ACM-Rechner": { en: "ACM calculator", fa: "محاسبه‌گر ACM" },
   "Zum ACM-Rechner": { en: "Open ACM calculator", fa: "باز کردن محاسبه‌گر ACM" },
-  "Diagnosestufen nach TFC 2010 und Padua 2020": { en: "Diagnostic tiers under the 2010 TFC and 2020 Padua criteria", fa: "رده‌های تشخیصی طبق TFC ۲۰۱۰ و پادوا ۲۰۲۰" },
-  "Bei Padua gilt die Skala für rechtsdominante und biventrikuläre ACM.": { en: "Under Padua, the scale applies to right-dominant and biventricular ACM.", fa: "در پادوا، این مقیاس برای ACM راست‌غالب و دوبطنی به کار می‌رود." },
-  "Padua · Schon für „möglich“": { en: "Padua · Requirements for “possible” ACM", fa: "پادوا · شرایط ردهٔ «ممکن»" },
   "Mindestens ein Kriterium für Form und Funktion (I) oder Myokardgewebe (II) muss erfüllt sein. Bei biventrikulärer ACM gilt das für beide Kammern. Ein Major-Kriterium im EKG allein genügt nicht.": { en: "At least one criterion for morphology and function (I) or myocardial tissue (II) must be met. In biventricular ACM, this applies to both ventricles. A major ECG criterion alone is insufficient.", fa: "دست‌کم یک معیار شکل و عملکرد (I) یا بافت میوکارد (II) باید برآورده شود. در ACM دوبطنی، این شرط برای هر دو بطن برقرار است. یک معیار اصلی نوار قلب به‌تنهایی کافی نیست." },
-  "Padua · Isoliert links (ALVC)": { en: "Padua · Isolated left ventricular disease (ALVC)", fa: "پادوا · درگیری محدود به بطن چپ (ALVC)" },
   "Erforderlich sind ein strukturelles LV-Major-Kriterium (typisches LGE) und eine pathogene oder wahrscheinlich pathogene ACM-assoziierte Genvariante.": { en: "A major LV structural criterion (characteristic LGE) and a pathogenic or likely pathogenic ACM-associated genetic variant are required.", fa: "یک معیار اصلی ساختاری بطن چپ (الگوی شاخص LGE) و یک واریانت بیماری‌زا یا احتمالاً بیماری‌زای مرتبط با ACM لازم‌اند." },
-  "TFC bewertet den fibrotischen Ersatz in der RV-Biopsie anhand des Anteils verbliebener Herzmuskelzellen.": { en: "TFC grades fibrous replacement in an RV biopsy by the proportion of remaining myocytes.", fa: "TFC جایگزینی با فیبروز را در بیوپسی بطن راست بر اساس سهم سلول‌های عضلانی باقی‌مانده درجه‌بندی می‌کند." },
-  "Bei Padua zählen fibrotischer Ersatz in der RV-Biopsie oder typisches LGE als Major-Kriterium.": { en: "Under Padua, fibrous replacement in an RV biopsy or characteristic LGE can fulfill a major criterion.", fa: "در پادوا، جایگزینی با فیبروز در بیوپسی بطن راست یا الگوی شاخص LGE می‌تواند معیار اصلی باشد." },
   "Negative T-Wellen in V1–V3 oder darüber hinaus ohne kompletten Rechtsschenkelblock sind ein Beispiel für Major.": { en: "T-wave inversion in V1–V3 or beyond without complete right bundle branch block is an example of a major finding.", fa: "وارونگی موج T در V1–V3 یا فراتر از آن، بدون بلوک کامل شاخهٔ راست، نمونه‌ای از معیار اصلی است." },
-  "TFC setzt ein Alter über 14 Jahren voraus, Padua eine abgeschlossene Pubertät.": { en: "TFC requires age over 14 years. Padua requires completed puberty.", fa: "TFC سن بیش از ۱۴ سال و پادوا کامل شدن بلوغ را شرط می‌داند." },
   "RVEDVi ist das enddiastolische RV-Volumen bezogen auf die Körperoberfläche.": { en: "RVEDVi is the RV end-diastolic volume indexed to body surface area.", fa: "RVEDVi حجم پایان دیاستول بطن راست نسبت به سطح بدن است." },
   "RVEF ist die rechtsventrikuläre Ejektionsfraktion.": { en: "RVEF is the right ventricular ejection fraction.", fa: "RVEF کسر جهشی بطن راست است." },
   "Sind Volumen und RVEF auffällig, zählt in Kategorie I nur die höhere Einstufung.": { en: "If volume and RVEF are both abnormal, count only the higher grade in category I.", fa: "اگر حجم و RVEF هر دو غیرطبیعی باشند، در دستهٔ I فقط ردهٔ بالاتر حساب می‌شود." },
-  "LGE ist bei TFC 2010 kein eigenes Kriterium.": { en: "LGE is not a criterion under the 2010 TFC.", fa: "LGE در TFC ۲۰۱۰ معیار مستقلی نیست." },
   "Rechter Ventrikel (RV)": { en: "Right ventricle (RV)", fa: "بطن راست (RV)" },
   "Linker Ventrikel (LV)": { en: "Left ventricle (LV)", fa: "بطن چپ (LV)" },
   "Verminderte LVEF mit oder ohne LV-Dilatation.": { en: "Reduced LVEF with or without LV dilatation.", fa: "کاهش LVEF با یا بدون اتساع بطن چپ." },
@@ -28,7 +22,6 @@ const COPY = {
   "Subepikardiales oder mittmyokardiales Streifen-LGE in mindestens einem Segment der freien Wand oder des Septums.": { en: "Subepicardial or mid-wall stria-like LGE in at least one segment of the free wall or septum.", fa: "LGE نواری زیر اپی‌کارد یا در میانهٔ دیواره، در دست‌کم یک سگمان از دیوارهٔ آزاد یا سپتوم." },
   "Isoliertes LGE an RV-Insertionspunkten bleibt unberücksichtigt.": { en: "Isolated RV insertion-point LGE does not count.", fa: "LGE محدود به نقاط اتصال بطن راست حساب نمی‌شود." },
   "Pro Kategorie zählt nur das stärkste erfüllte Kriterium, dann werden die Punkte aus den verschiedenen Kategorien addiert.": { en: "Count only the strongest criterion met in each category, then add the points across categories.", fa: "در هر دسته فقط قوی‌ترین معیارِ برآورده‌شده حساب می‌شود، سپس امتیاز دسته‌های مختلف با هم جمع می‌شود." },
-  "Für die Diagnose braucht es mindestens ein Kriterium für Form und Funktion (I) oder Myokardgewebe (II). Anhand dieser Befunde unterscheidet Padua drei Formen.": { en: "Diagnosis requires at least one criterion for morphology and function (I) or myocardial tissue (II). Padua uses these findings to distinguish three forms.", fa: "تشخیص دست‌کم به یک معیار از دستهٔ شکل و عملکرد (I) یا بافت میوکارد (II) نیاز دارد. پادوا بر اساس این یافته‌ها سه شکل بیماری را از هم متمایز می‌کند." },
   "Nur die rechte Kammer": { en: "Only the right ventricle", fa: "فقط بطن راست" },
   "erfüllt mindestens ein Kriterium aus Kategorie I oder II. Elektrische Befunde der linken Kammer zählen bei dieser Form nicht mit.": { en: "meets at least one criterion in category I or II. LV electrical findings do not count for this form.", fa: "دست‌کم یک معیار از دستهٔ I یا II را برآورده می‌کند. یافته‌های الکتریکی بطن چپ در این شکل حساب نمی‌شوند." },
   "Beide Kammern": { en: "Both ventricles", fa: "هر دو بطن" },
@@ -57,18 +50,12 @@ const COPY = {
   "Von den Befunden zur Diagnose": { en: "From findings to diagnosis", fa: "از یافته‌ها تا تشخیص" },
   "Pro Kategorie zählt nur das stärkste erfüllte Kriterium. Die Punkte aus den verschiedenen Kategorien werden addiert.": { en: "Count only the strongest criterion met in each category, then add the points across categories.", fa: "در هر دسته فقط قوی‌ترین معیارِ برآورده‌شده حساب می‌شود. سپس امتیاز دسته‌های مختلف با هم جمع می‌شوند." },
   "1 Punkt": { en: "1 point", fa: "۱ امتیاز" },
-  "TFC und Padua im Vergleich": { en: "Comparing TFC and Padua", fa: "مقایسهٔ TFC و پادوا" },
   "Die Task-Force-Kriterien wurden für die klassische ARVC entwickelt. Im Mittelpunkt steht die rechte Herzkammer.": { en: "The Task Force Criteria were developed for classic ARVC. They focus on the right ventricle.", fa: "معیارهای کارگروه برای ARVC کلاسیک تدوین شدند و تمرکزشان بر بطن راست است." },
-  "Padua erfasst auch linksdominante und biventrikuläre Formen und berücksichtigt Narben im LGE. Bei rechtsdominanter oder biventrikulärer ACM gelten dieselben Diagnosestufen mit zusätzlichen Voraussetzungen.": { en: "Padua also covers left-dominant and biventricular forms and includes scars on LGE. The same diagnostic tiers apply to right-dominant and biventricular ACM, with additional requirements.", fa: "پادوا فرم چپ‌غالب و دوبطنی و اسکار در LGE را هم در نظر می‌گیرد. برای ACM راست‌غالب و دوبطنی، همان رده‌های تشخیصی با شرایط تکمیلی به کار می‌روند." },
   "Major und Minor im MRT": { en: "Major and minor criteria on MRI", fa: "معیارهای اصلی و فرعی در MRI" },
-  "Cine zeigt Form und Funktion der Herzkammern (Kategorie I). Bei Padua und ETF können typische LGE-Muster als Kriterien für das Myokardgewebe zählen (Kategorie II).": { en: "Cine shows ventricular morphology and function (category I). In Padua and ETF, characteristic LGE patterns can meet myocardial tissue criteria (category II).", fa: "Cine شکل و عملکرد بطن‌ها را نشان می‌دهد (دستهٔ I). در پادوا و ETF، الگوهای شاخص LGE می‌توانند معیار بافت میوکارد باشند (دستهٔ II)." },
   "Major und Minor setzen eine regionale RV-Akinesie, Dyskinesie oder dyssynchrone Kontraktion voraus. Der Messwert für RV-Volumen oder RVEF bestimmt die Einstufung.": { en: "Major and minor both require regional RV akinesia, dyskinesia, or dyssynchronous contraction. The RV volume or RVEF measurement determines the grade.", fa: "هر دو رده به آکینزی یا دیسکینزی موضعی بطن راست یا انقباض ناهماهنگ آن نیاز دارند. مقدار حجم بطن راست یا RVEF رده را مشخص می‌کند." },
-  "Sind Volumen und RVEF auffällig, zählt in Kategorie I nur die höhere Einstufung. LGE ist bei TFC 2010 kein eigenes Kriterium.": { en: "If volume and RVEF are both abnormal, count only the higher grade in category I. LGE is not a criterion under the 2010 TFC.", fa: "اگر حجم و RVEF هر دو غیرطبیعی باشند، در دستهٔ I فقط ردهٔ بالاتر حساب می‌شود. LGE در TFC ۲۰۱۰ معیار مستقلی نیست." },
-  "Ein einzelner MRT-Befund reicht für eine gesicherte Diagnose nicht aus. TFC und Padua verteilen die Befunde auf sechs Kategorien. Das MRT liefert Befunde zu Form, Funktion und Gewebe. Auch EKG, Rhythmus und Familienanamnese oder Genetik fließen in die Diagnose ein.": { en: "A single MRI finding is insufficient for a definite diagnosis. TFC and Padua group findings into six categories. MRI provides information on morphology, function, and tissue. ECG, rhythm assessment, and family history or genetics also contribute.", fa: "یک یافتهٔ MRI برای تشخیص قطعی کافی نیست. معیارهای TFC و پادوا یافته‌ها را در شش دسته قرار می‌دهند. MRI دربارهٔ شکل، عملکرد و بافت قلب اطلاعات می‌دهد. نوار قلب، بررسی ریتم و سابقهٔ خانوادگی یا ژنتیک هم در تشخیص نقش دارند." },
   "Wie wird gewertet?": { en: "How are findings scored?", fa: "امتیازها چطور حساب می‌شوند؟" },
   "Major entspricht 2 Punkten. Minor entspricht 1 Punkt.": { en: "Major corresponds to 2 points. Minor corresponds to 1 point.", fa: "معیار اصلی ۲ امتیاز دارد و معیار فرعی ۱ امتیاز." },
   "Pro Kategorie zählt der stärkste Befund einmal.": { en: "Count the strongest finding in each category once.", fa: "در هر دسته، قوی‌ترین یافته فقط یک بار حساب می‌شود." },
-  "Diagnosestufen nach TFC 2010": { en: "Diagnostic tiers under the 2010 TFC", fa: "رده‌های تشخیصی طبق TFC ۲۰۱۰" },
   "Möglich": { en: "Possible", fa: "ممکن" },
   "Grenzwertig": { en: "Borderline", fa: "مرزی" },
   "Gesichert": { en: "Definite", fa: "قطعی" },
@@ -77,21 +64,16 @@ const COPY = {
   "Ab 4 Punkten": { en: "4 points or more", fa: "۴ امتیاز یا بیشتر" },
   "Vier Punkte ergeben sich zum Beispiel aus zwei Major-Kriterien, einem Major- und zwei Minor-Kriterien oder vier Minor-Kriterien aus verschiedenen Kategorien.": { en: "Four points can come from two major criteria, one major plus two minor criteria, or four minor criteria, each from a different category.", fa: "چهار امتیاز می‌تواند از دو معیار اصلی، یک معیار اصلی همراه با دو معیار فرعی، یا چهار معیار فرعی به دست بیاید. هر معیار باید از دسته‌ای متفاوت باشد." },
   "Die Task-Force-Kriterien richten sich auf die klassische ARVC mit Beteiligung der rechten Herzkammer. Für sie gelten die drei Stufen oben.": { en: "The Task Force Criteria address classic ARVC involving the right ventricle. The three tiers above apply.", fa: "معیارهای کارگروه برای ARVC کلاسیک با درگیری بطن راست تدوین شدند. سه ردهٔ بالا برای همین فرم به کار می‌روند." },
-  "Padua ergänzt Kriterien für die linke Herzkammer und für Narben im LGE. Für rechtsdominante und biventrikuläre Formen gelten dieselben Stufen mit zusätzlichen Voraussetzungen.": { en: "Padua adds criteria for the left ventricle and for scar on LGE. The same tiers apply to right-dominant and biventricular forms, with additional requirements.", fa: "پادوا معیارهایی برای بطن چپ و اسکار در LGE اضافه می‌کند. همین رده‌ها برای فرم راست‌غالب و دوبطنی هم به کار می‌روند، با شرایط تکمیلی." },
-  "Welche Voraussetzungen gelten bei Padua?": { en: "What else does Padua require?", fa: "پادوا چه شرایط دیگری دارد؟" },
-  "Bei Padua muss mindestens ein Kriterium aus Form und Funktion (I) oder Myokardgewebe (II) erfüllt sein. Welche Kammer betroffen ist, bestimmt die Form.": { en: "Padua requires at least one criterion in morphology and function (I) or myocardial tissue (II). The affected ventricle determines the phenotype.", fa: "پادوا حداقل یک معیار از دستهٔ شکل و عملکرد (I) یا بافت میوکارد (II) می‌خواهد. بطن درگیر نوع بیماری را مشخص می‌کند." },
   "Kriterien aus I oder II nur am RV. Linksventrikuläre elektrische Befunde fließen bei dieser Form nicht in die Wertung ein.": { en: "Category I or II criteria are met only in the RV. LV electrical findings are excluded from scoring for this form.", fa: "معیارهای دستهٔ I یا II فقط در بطن راست وجود دارند. یافته‌های الکتریکی بطن چپ در امتیاز این فرم حساب نمی‌شوند." },
   "Mindestens ein Kriterium aus I oder II pro Herzkammer.": { en: "At least one category I or II criterion in each ventricle.", fa: "حداقل یک معیار از دستهٔ I یا II در هر بطن." },
   "Rechtsdominant": { en: "Right-dominant", fa: "راست‌غالب" },
   "Isoliert links": { en: "Isolated LV involvement", fa: "درگیری محدود به بطن چپ" },
   "Typisches LV-LGE und eine pathogene oder wahrscheinlich pathogene ACM-Genvariante sind erforderlich.": { en: "Characteristic LV LGE and a pathogenic or likely pathogenic ACM variant are required.", fa: "الگوی شاخص LGE در بطن چپ و یک واریانت بیماری‌زا یا احتمالاً بیماری‌زای مرتبط با ACM لازم‌اند." },
   "Was zählt im MRT als Major oder Minor?": { en: "What counts as major or minor on MRI?", fa: "کدام یافته‌های MRI معیار اصلی یا فرعی هستند؟" },
-  "Im Cine beurteilen wir Form und Funktion (I). Bei Padua kann das LGE zusätzlich ein Kriterium des Myokardgewebes (II) erfüllen.": { en: "Cine assesses morphology and function (I). Under Padua, LGE can also fulfill a myocardial tissue criterion (II).", fa: "در Cine شکل و عملکرد را بررسی می‌کنیم (I). در پادوا، LGE می‌تواند یک معیار بافت میوکارد را هم برآورده کند (II)." },
   "MRT-Kriterien vergleichen": { en: "Compare MRI criteria", fa: "مقایسهٔ معیارهای MRI" },
   "Cine · rechter Ventrikel": { en: "Cine · right ventricle", fa: "Cine · بطن راست" },
   "Für beide Stufen braucht es eine regionale RV-Akinesie, Dyskinesie oder dyssynchrone RV-Kontraktion. Dazu muss mindestens einer der folgenden Messwerte auffällig sein.": { en: "Both levels require regional RV akinesia, dyskinesia, or dyssynchronous RV contraction plus an abnormal value for at least one of the following measurements.", fa: "هر دو رده به آکینزی موضعی، دیسکینزی یا انقباض ناهماهنگ بطن راست همراه با دست‌کم یکی از مقادیر غیرطبیعی زیر نیاز دارند." },
   "RVEDVi ist das enddiastolische RV-Volumen bezogen auf die Körperoberfläche. RVEF ist die rechtsventrikuläre Ejektionsfraktion.": { en: "RVEDVi is RV end-diastolic volume indexed to body surface area. RVEF is the right ventricular ejection fraction.", fa: "RVEDVi حجم پایان دیاستول بطن راست نسبت به سطح بدن است. RVEF کسر جهشی بطن راست است." },
-  "Volumen und RVEF gehören beide zur Kategorie I. Bei zwei auffälligen Messwerten zählt nur die höhere Einstufung. LGE ist bei TFC 2010 kein eigenes Kriterium.": { en: "Volume and RVEF both belong to category I. If both are abnormal, count the higher grade only. LGE is not a criterion under the 2010 TFC.", fa: "حجم و RVEF هر دو در دستهٔ I هستند. اگر هر دو غیرطبیعی باشند، فقط ردهٔ بالاتر حساب می‌شود. LGE در TFC ۲۰۱۰ معیار مستقل نیست." },
   "Cine · Form und Funktion (I)": { en: "Cine · morphology and function (I)", fa: "Cine · شکل و عملکرد (I)" },
   "Regionale Akinesie, Dyskinesie oder Ausbuchtung zusammen mit globaler RV-Dilatation oder verminderter RVEF.": { en: "Regional akinesia, dyskinesia, or bulging together with global RV dilatation or reduced RVEF.", fa: "آکینزی، دیسکینزی یا برجستگی موضعی همراه با اتساع کلی بطن راست یا کاهش RVEF." },
   "Regionale Akinesie, Dyskinesie oder ein Aneurysma der freien RV-Wand genügt auch ohne globale Auffälligkeit.": { en: "Regional akinesia, dyskinesia, or an aneurysm of the RV free wall can qualify even without a global abnormality.", fa: "آکینزی، دیسکینزی یا آنوریسم موضعی دیوارهٔ آزاد بطن راست، حتی با حجم و عملکرد کلی طبیعی، کافی است." },
@@ -104,18 +86,14 @@ const COPY = {
   "Für LGE gibt es kein Minor-Kriterium.": { en: "There is no minor LGE criterion.", fa: "LGE معیار فرعی ندارد." },
   "Die fünf weiteren Kategorien": { en: "The five other categories", fa: "پنج دستهٔ دیگر" },
   "Myokardgewebe": { en: "Myocardial tissue", fa: "بافت میوکارد" },
-  "TFC bewertet den fibrotischen Ersatz in der RV-Biopsie anhand des Anteils verbliebener Herzmuskelzellen. Bei Padua zählen fibrotischer Ersatz in der RV-Biopsie oder typisches LGE als Major-Kriterium.": { en: "TFC grades fibrous replacement in an RV biopsy by the proportion of residual myocytes. Under Padua, fibrous replacement in an RV biopsy or characteristic LGE can fulfill a major criterion.", fa: "TFC جایگزینی بافت عضله با فیبروز را در بیوپسی بطن راست بر اساس سهم سلول‌های عضلانی باقی‌مانده درجه‌بندی می‌کند. در پادوا، فیبروز جایگزین در بیوپسی بطن راست یا LGE شاخص می‌تواند معیار اصلی باشد." },
   "Repolarisation im EKG": { en: "ECG repolarization", fa: "رپلاریزاسیون در نوار قلب" },
-  "Negative T-Wellen in V1–V3 oder darüber hinaus ohne kompletten Rechtsschenkelblock sind ein Beispiel für Major. TFC setzt ein Alter über 14 Jahren voraus, Padua eine abgeschlossene Pubertät.": { en: "T-wave inversion in V1–V3 or beyond without complete right bundle branch block is an example of a major finding. TFC requires age over 14 years, and Padua requires completed puberty.", fa: "وارونگی موج T در V1–V3 یا فراتر از آن، بدون بلوک کامل شاخهٔ راست، نمونه‌ای از معیار اصلی است. TFC سن بیش از ۱۴ سال و پادوا کامل شدن بلوغ را شرط می‌داند." },
   "Depolarisation im EKG": { en: "ECG depolarization", fa: "دپلاریزاسیون در نوار قلب" },
-  "Eine Epsilon-Welle in V1–V3 zählt beispielsweise bei TFC als Major und bei Padua als Minor.": { en: "For example, an epsilon wave in V1–V3 is major under TFC and minor under Padua.", fa: "برای مثال، موج اپسیلون در V1–V3 طبق TFC معیار اصلی و طبق پادوا معیار فرعی است." },
   "Ventrikuläre Arrhythmien": { en: "Ventricular arrhythmias", fa: "آریتمی‌های بطنی" },
   "Im Langzeit-EKG zählen Häufigkeit und Morphologie ventrikulärer Extrasystolen und Tachykardien. Zum Beispiel ist eine VT mit Linksschenkelblockmorphologie und superiorer Achse in beiden Systemen ein Major-Kriterium.": { en: "Ambulatory ECG evaluates the frequency and morphology of ventricular ectopy and tachycardia. For example, VT with left bundle branch block morphology and a superior axis is a major criterion in both systems.", fa: "در پایش طولانی‌مدت نوار قلب، تعداد و شکل اکستراسیستول‌ها و تاکی‌کاردی‌های بطنی اهمیت دارند. برای مثال، VT با نمای بلوک شاخهٔ چپ و محور فوقانی در هر دو سیستم معیار اصلی است." },
   "Familienanamnese und Genetik": { en: "Family history and genetics", fa: "سابقهٔ خانوادگی و ژنتیک" },
   "Eine bestätigte Erkrankung bei einem erstgradig Verwandten kann ein Major-Kriterium erfüllen. Auch eine als krankheitsverursachend eingestufte Genvariante kann als Major zählen.": { en: "Confirmed disease in a first-degree relative can meet a major criterion. A genetic variant classified as disease-causing may also count as major.", fa: "بیماری تأییدشده در یکی از بستگان درجهٔ اول می‌تواند معیار اصلی باشد. واریانتی که بیماری‌زا طبقه‌بندی شده است هم می‌تواند معیار اصلی محسوب شود." },
   "Diagnosekriterien": { en: "Diagnostic criteria", fa: "معیارهای تشخیصی" },
   "MRT-Kriterium": { en: "MRI criterion", fa: "معیار MRI" },
-  "Gesicherte ARVC nach TFC 2010": { en: "Definite ARVC under the 2010 TFC", fa: "تشخیص قطعی ARVC طبق معیارهای ۲۰۱۰" },
   "Die Kriterien müssen aus unterschiedlichen Kategorien stammen.": { en: "Criteria must come from different categories.", fa: "معیارها باید از دسته‌های متفاوت باشند." },
   "2 Major": { en: "2 major", fa: "۲ معیار اصلی" },
   "1 Major + 2 Minor": { en: "1 major + 2 minor", fa: "۱ معیار اصلی + ۲ فرعی" },
@@ -124,12 +102,6 @@ const COPY = {
   "Einordnung anzeigen": { en: "Reveal interpretation", fa: "نمایش تفسیر" },
   "Die Diagnose stützt sich auf mehrere Befunde. Das MRT liefert nur einen Teil davon.": { en: "Diagnosis combines several findings. MRI provides only part of the evidence.", fa: "تشخیص بر ترکیب چند یافته استوار است. MRI فقط بخشی از شواهد را فراهم می‌کند." },
   "Fallbeispiel": { en: "Case example", fa: "نمونهٔ بالینی" },
-  "Task-Force-Kriterien (TFC 2010)": { en: "Task Force Criteria (2010 TFC)", fa: "معیارهای کارگروه تخصصی (TFC ۲۰۱۰)" },
-  "Padua-Kriterien (2020)": { en: "Padua Criteria (2020)", fa: "معیارهای پادوا (۲۰۲۰)" },
-  "TFC und Padua sind zwei Regelwerke für die Diagnose der arrhythmogenen Kardiomyopathie. Sie legen fest, welche Befunde aus Untersuchungen wie EKG, Herz-MRT und Gentest zählen und wie man sie kombiniert.": {
-    en: "TFC and Padua are two frameworks for diagnosing arrhythmogenic cardiomyopathy. They define which findings from tests such as ECG, cardiac MRI, and genetic testing count and how to combine them.",
-    fa: "TFC و پادوا دو چارچوب برای تشخیص کاردیومیوپاتی آریتموژن هستند. این معیارها مشخص می‌کنند کدام یافته‌های نوار قلب، MRI قلب یا آزمایش ژنتیک در تشخیص حساب می‌شوند و چگونه باید آن‌ها را کنار هم گذاشت."
-  },
   "Klassische ARVC": { en: "Classic ARVC", fa: "ARVC کلاسیک" },
   "Der Schwerpunkt liegt auf Veränderungen der rechten Herzkammer.": {
     en: "The focus is on changes in the right ventricle.",
@@ -169,14 +141,9 @@ const COPY = {
     fa: "الگوی LGE را در دو نمای عمود بر هم تأیید کنید. سایر علل اسکار، مانند میوکاردیت، را هم در نظر بگیرید."
   },
   "Was braucht die Gesamtdiagnose?": { en: "What supports the overall diagnosis?", fa: "برای تشخیص نهایی چه لازم است؟" },
-  "Mindestens ein morphofunktionelles oder strukturelles Kriterium ist erforderlich. Bei isolierter LV-Beteiligung verlangt Padua zusätzlich eine pathogene oder wahrscheinlich pathogene ACM-Genvariante.": {
-    en: "At least one morphofunctional or structural criterion is required. With isolated LV involvement, Padua also requires a pathogenic or likely pathogenic ACM variant.",
-    fa: "وجود دست‌کم یک معیار ساختاری یا معیار مربوط به شکل و عملکرد ضروری است. در درگیری محدود به بطن چپ، پادوا علاوه بر این یک واریانت ژنتیکی بیماری‌زا یا احتمالاً بیماری‌زای مرتبط با ACM می‌خواهد."
-  },
   "RV-Dilatation und systolische Dysfunktion": { en: "RV dilatation and systolic dysfunction", fa: "اتساع و اختلال عملکرد سیستولی بطن راست" },
   "Erhöhtes enddiastolisches RV-Volumen, bezogen auf die Körperoberfläche (RVEDVi).": { en: "Increased RV end-diastolic volume indexed to body surface area (RVEDVi).", fa: "افزایش حجم پایان دیاستولی بطن راست نسبت به سطح بدن (RVEDVi)." },
   "Diagnostische Bedeutung": { en: "Diagnostic significance", fa: "اهمیت تشخیصی" },
-  "Nach TFC 2010 zählt eine regionale RV-Wandbewegungsstörung zusammen mit einem erhöhten RVEDVi oder einer verminderten RVEF als ein MRT-Kriterium, wenn der jeweilige Grenzwert erreicht ist.": { en: "Under the 2010 TFC, regional RV wall motion abnormality plus increased RVEDVi or reduced RVEF counts as one MRI criterion when the relevant threshold is met.", fa: "طبق معیارهای ۲۰۱۰، اختلال موضعی حرکت دیواره همراه با افزایش RVEDVi یا کاهش RVEF، در صورت رسیدن به آستانهٔ مربوط، یک معیار MRI محسوب می‌شود." },
   "Rechter Ventrikel": { en: "Right ventricle", fa: "بطن راست" },
   "Linker Ventrikel": { en: "Left ventricle", fa: "بطن چپ" },
   "Streifenförmiges LGE kann die gesamte RV-Wanddicke erfassen. Die dünne Wand erschwert den Nachweis.": { en: "Stria-like LGE can extend through the full thickness of the RV wall. The thin wall can make it difficult to detect.", fa: "LGE نواری می‌تواند تمام ضخامت دیوارهٔ بطن راست را درگیر کند. نازکی دیواره تشخیص آن را دشوار می‌کند." },
@@ -257,15 +224,11 @@ const COPY = {
   "Siehst du Hinweise auf Narben?": { en: "Can you see signs of scar?", fa: "نشانه‌ای از اسکار می‌بینید؟" },
   "Im LGE können helle Streifen in der Wand auffallen. Schau beide Kammern an. Auch ohne sichtbares LGE ist eine ARVC möglich.": { en: "LGE images may show bright streaks in the wall. Check both ventricles. ARVC can be present without visible LGE.", fa: "در تصاویر LGE ممکن است نوارهای روشن در دیواره دیده شوند. هر دو بطن را بررسی کنید. حتی بدون LGE قابل مشاهده هم ARVC ممکن است وجود داشته باشد." },
   "Die Diagnose ergibt sich aus mehreren Befunden.": { en: "Diagnosis depends on a combination of findings.", fa: "تشخیص از کنار هم گذاشتن چند یافته به دست می‌آید." },
-  "Die Task Force Criteria von 2010 (TFC) berücksichtigen unter anderem Bildgebung, EKG, dokumentierte Rhythmusstörungen und Familienanamnese oder Genetik.": { en: "The 2010 Task Force Criteria (TFC) consider imaging, ECG, documented arrhythmias, and family history or genetics, among other findings.", fa: "معیارهای سال ۲۰۱۰ (TFC) از جمله یافته‌های تصویربرداری، نوار قلب، آریتمی ثبت‌شده و سابقهٔ خانوادگی یا ژنتیک را در نظر می‌گیرند." },
   "Vom MRT-Befund zur Diagnose": { en: "From MRI finding to diagnosis", fa: "از یافتهٔ MRI تا تشخیص" },
   "Ein Abschnitt der RV-Wand wölbt sich bei der Kontraktion nach außen. Das gemessene RV-Volumen liegt über der Major-Grenze. Zusammen ergibt das": { en: "A segment of the RV wall bulges outward during contraction. The measured RV volume is above the major threshold. Together these meet", fa: "بخشی از دیوارهٔ بطن راست هنگام انقباض به بیرون برجسته می‌شود و حجم اندازه‌گیری‌شدهٔ بطن راست از آستانهٔ معیار اصلی بالاتر است. این دو در کنار هم" },
   "ein Major-Kriterium im MRT": { en: "one major MRI criterion", fa: "یک معیار اصلی MRI را تشکیل می‌دهند" },
   "Eine nachgewiesene krankheitsverursachende ARVC-Genvariante liefert": { en: "An established disease-causing ARVC variant provides", fa: "وجود یک واریانت ژنتیکیِ اثبات‌شدهٔ بیماری‌زا برای ARVC،" },
   "ein zweites Major-Kriterium": { en: "a second major criterion", fa: "معیار اصلی دوم" },
-  "aus einer anderen Kategorie. Damit ist die Diagnose nach TFC 2010 gesichert.": { en: "from a different category. This meets the 2010 TFC for a definite diagnosis.", fa: "را از دسته‌ای دیگر فراهم می‌کند. با این ترکیب، تشخیص طبق TFC ۲۰۱۰ قطعی است." },
-  "Die TFC erlauben auch andere Kombinationen aus verschiedenen Kategorien. Ein Major-Kriterium plus zwei Minor-Kriterien oder vier Minor-Kriterien reichen ebenfalls aus.": { en: "The TFC also allow other combinations from different categories. One major criterion plus two minor criteria, or four minor criteria, also meets the threshold.", fa: "ترکیب‌های دیگری از دسته‌های متفاوت هم کافی‌اند: یک معیار اصلی و دو معیار فرعی، یا چهار معیار فرعی." },
-  "Grenzwerte, Padua und ein Fallbeispiel": { en: "Thresholds, Padua and a case example", fa: "حد آستانه‌ها، معیارهای پادوا و یک نمونهٔ بالینی" },
   "Was sieht man im MRT?": { en: "What do we see on MRI?", fa: "در MRI چه می‌بینیم؟" },
   "Wie wird ARVC diagnostiziert?": { en: "How is ARVC diagnosed?", fa: "ARVC چگونه تشخیص داده می‌شود؟" },
   "Bei klassischer ARVC zuerst die rechte Kammer (RV) im Cine ansehen.": { en: "In classic ARVC, look at the right ventricle (RV) on cine first.", fa: "در ARVC کلاسیک، ابتدا حرکت بطن راست (RV) را در تصاویر متحرک بررسی کنید." },
@@ -281,10 +244,8 @@ const COPY = {
   "Für die klassische rechtsbetonte Form führen die Task Force Criteria von 2010 Befunde aus verschiedenen Bereichen zusammen, etwa aus MRT oder Echo, EKG, dokumentierten Rhythmusstörungen und Familienanamnese oder Genetik.": { en: "For classic right-dominant ARVC, the 2010 Task Force Criteria combine findings from different categories, such as MRI or echo, ECG, documented arrhythmias, and family history or genetics.", fa: "برای نوع کلاسیک با درگیری غالب بطن راست، معیارهای ۲۰۱۰ یافته‌های چند دسته را کنار هم می‌گذارند، از جمله MRI یا اکو، نوار قلب، آریتمی ثبت‌شده و سابقهٔ خانوادگی یا ژنتیک." },
   "Was zählt im MRT?": { en: "What counts on MRI?", fa: "در MRI چه چیزی معیار محسوب می‌شود؟" },
   "Eine passende regionale Bewegungsstörung der rechten Kammer zusammen mit einem erhöhten RV-Volumen oder einer verminderten RV-Auswurffraktion. Das ergibt ein Bildgebungskriterium.": { en: "A qualifying regional RV wall motion abnormality together with increased RV volume or reduced RV ejection fraction. This counts as one imaging criterion.", fa: "اختلال موضعی مشخص در حرکت دیوارهٔ بطن راست همراه با افزایش حجم یا کاهش کسر جهشی همان بطن. این ترکیب یک معیار تصویربرداری محسوب می‌شود." },
-  "Wann ist die Diagnose nach TFC 2010 gesichert?": { en: "When is the diagnosis definite under the 2010 TFC?", fa: "طبق معیارهای ۲۰۱۰، چه زمانی تشخیص قطعی است؟" },
   "Mit zwei Hauptkriterien (Major), einem Haupt- und zwei Nebenkriterien (Minor) oder vier Nebenkriterien aus unterschiedlichen Kategorien.": { en: "With two major criteria, one major plus two minor criteria, or four minor criteria, drawn from different categories.", fa: "با دو معیار اصلی، یک معیار اصلی و دو معیار فرعی، یا چهار معیار فرعی. معیارها باید از دسته‌های متفاوت باشند." },
   "Beispiel: Eine typische Wandbewegungsstörung mit deutlich vergrößerter rechter Kammer kann ein Major-Kriterium sein. Kommt aus einer anderen Kategorie eine nachweislich krankheitsverursachende ARVC-Genvariante hinzu, sind zwei Major-Kriterien erfüllt.": { en: "For example, typical abnormal wall motion with a markedly enlarged RV can meet one major criterion. An established disease-causing ARVC variant would meet a second major criterion in a different category.", fa: "مثلاً اختلال تیپیک حرکت دیواره همراه با بزرگی واضح بطن راست می‌تواند یک معیار اصلی باشد. اگر یک واریانت ژنتیکیِ اثبات‌شدهٔ بیماری‌زا هم یافت شود، معیار اصلی دوم از دستهٔ دیگری تأمین می‌شود." },
-  "Die Padua-Kriterien erfassen zusätzlich linksbetonte und beidseitige ACM-Muster und berücksichtigen passende Narben im LGE.": { en: "The Padua criteria also cover left-dominant and biventricular ACM and account for characteristic scar on LGE.", fa: "معیارهای پادوا الگوهای غالب در بطن چپ و درگیری هر دو بطن را هم پوشش می‌دهند و الگوی مناسب اسکار در LGE را در نظر می‌گیرند." },
   "Für die Gesamtdiagnose zählen weitere Kriterien aus anderen Kategorien.": { en: "The overall diagnosis requires additional criteria from other categories.", fa: "برای تشخیص نهایی، معیارهای دیگری از دسته‌های متفاوت لازم است." },
   "Bei der": {
     "en": "In",
@@ -334,17 +295,9 @@ const COPY = {
     "en": "Interpreting the scar pattern",
     "fa": "تفسیر الگوی اسکار"
   },
-  "TFC 2010 · die MRT-Grenzwerte bei Erwachsenen": {
-    "en": "2010 TFC · MRI thresholds in adults",
-    "fa": "TFC 2010 · آستانه‌های MRI در بزرگسالان"
-  },
   "Die wichtigsten Ergänzungen für das MRT": {
     "en": "Key additions for MRI",
     "fa": "مهم‌ترین موارد افزوده‌شده برای MRI"
-  },
-  "TFC und Padua erklären": {
-    "en": "Explore the TFC and Padua criteria",
-    "fa": "مرور معیارهای TFC و پادوآ"
   },
   "Was ist ACM?": {
     "en": "What is ACM?",
@@ -591,10 +544,6 @@ const COPY = {
     "en": "Understand an example",
     "fa": "شناخت یک مثال"
   },
-  "Warum braucht man die TFC?": {
-    "en": "Why are the TFC needed?",
-    "fa": "چرا به TFC نیاز داریم؟"
-  },
   "Task Force Criteria von 2010": {
     "en": "2010 Task Force Criteria",
     "fa": "معیارهای Task Force سال ۲۰۱۰"
@@ -655,18 +604,6 @@ const COPY = {
     "en": "The limits of this system",
     "fa": "محدودیت‌های این نظام"
   },
-  "LGE und spezifische LV-Kriterien sind in den TFC 2010 nicht enthalten. Deshalb kann eine linksdominante Erkrankung mit diesem System übersehen werden.": {
-    "en": "LGE and specific LV criteria are not included in the 2010 TFC. Left-dominant disease may therefore be missed with this system.",
-    "fa": "LGE و معیارهای اختصاصی LV در TFC سال ۲۰۱۰ وجود ندارند. بنابراین بیماری غالب در بطن چپ ممکن است با این نظام از نظر دور بماند."
-  },
-  "Was ergänzt Padua?": {
-    "en": "What does Padua add?",
-    "fa": "پادوآ چه چیزی اضافه می‌کند؟"
-  },
-  "Padua-Kriterien von 2020": {
-    "en": "2020 Padua criteria",
-    "fa": "معیارهای پادوآ سال ۲۰۲۰"
-  },
   "erweitern den Blick: Welche Kammer ist betroffen, wie funktioniert sie und wo liegt eine Narbe? Dafür werden LV-Kriterien und die Gewebeinformation aus dem LGE aufgenommen. Die Einordnung berücksichtigt weiterhin auch EKG, Rhythmusdiagnostik und Familie / Genetik.": {
     "en": "broaden the assessment: which ventricle is involved, how does it function and where is a scar? LV criteria and tissue information from LGE are included. Interpretation still also considers ECG, rhythm assessment and family history / genetics.",
     "fa": "دامنهٔ ارزیابی را گسترش می‌دهند: کدام بطن درگیر است، چگونه کار می‌کند و اسکار کجاست؟ معیارهای LV و اطلاعات بافتی LGE وارد ارزیابی می‌شوند. در تفسیر همچنان ECG، بررسی ریتم و سابقهٔ خانوادگی / ژنتیک نیز در نظر گرفته می‌شوند."
@@ -711,18 +648,6 @@ const COPY = {
     "en": "RV, LV or both?",
     "fa": "RV، LV یا هر دو؟"
   },
-  "Belegte Veränderungen nur rechts ergeben ein rechtsbetontes Muster; Veränderungen beider Kammern ein biventrikuläres Muster. Bei rein linksdominantem Muster verlangt Padua zusätzlich eine passende pathogene oder wahrscheinlich pathogene ACM-Genvariante. LV-LGE allein reicht nicht.": {
-    "en": "Demonstrated changes confined to the right ventricle produce a right-dominant pattern; changes in both ventricles produce a biventricular pattern. For a purely left-dominant pattern, Padua additionally requires a compatible pathogenic or likely pathogenic ACM gene variant. LV LGE alone is insufficient.",
-    "fa": "تغییرات اثبات‌شده فقط در راست، الگوی غالب در راست و تغییرات هر دو بطن، الگوی دو‌بطنی ایجاد می‌کنند. در الگوی صرفاً غالب در چپ، پادوآ علاوه بر آن یک واریانت ژنی ACM سازگار از نوع بیماری‌زا یا احتمالاً بیماری‌زا را لازم می‌داند. LGE بطن چپ به‌تنهایی کافی نیست."
-  },
-  "Padua erweitert die TFC, ist aber ein eigenes Kriterienwerk. Die festen RV-Grenzwerte der TFC 2010 und die Padua-Kriterien nicht zu einer selbst erfundenen Punkteliste vermischen. Andere Narbenursachen, insbesondere Myokarditis, bleiben wichtig.": {
-    "en": "Padua expands on the TFC but is a separate criteria framework. Do not mix the fixed 2010 TFC RV cut-offs and Padua criteria into an invented scoring list. Other causes of scarring, especially myocarditis, remain important.",
-    "fa": "پادوآ دامنهٔ TFC را گسترش می‌دهد، اما چارچوب معیارهای جداگانه‌ای است. آستانه‌های ثابت RV در TFC سال ۲۰۱۰ را با معیارهای پادوآ در فهرست امتیازدهی ابداعی مخلوط نکنید. سایر علل اسکار، به‌ویژه میوکاردیت، همچنان مهم‌اند."
-  },
-  "Vom Cine zum TFC-MRT-Baustein": {
-    "en": "From cine to the TFC MRI component",
-    "fa": "از Cine تا جزء MRI در TFC"
-  },
   "Das Cine aus dem MRT-Kapitel gehört zu einem": {
     "en": "The cine in the imaging chapter belongs to a",
     "fa": "Cine فصل تصاویر مربوط است به یک"
@@ -759,10 +684,6 @@ const COPY = {
     "en": "Why context matters",
     "fa": "چرا زمینه اهمیت دارد"
   },
-  "Bei denselben Zahlen ohne die geforderte regionale Störung wäre der MRT-Baustein der TFC 2010 nicht erfüllt. Und selbst ein erfüllter MRT-Baustein ersetzt nicht die übrige diagnostische Einordnung.": {
-    "en": "With the same numbers but without the required regional abnormality, the MRI component of the 2010 TFC would not be fulfilled. Even a fulfilled MRI component does not replace the remaining diagnostic assessment.",
-    "fa": "با همین اعداد اما بدون اختلال ناحیه‌ای لازم، جزء MRI در TFC سال ۲۰۱۰ برقرار نخواهد بود. حتی برقرار بودن جزء MRI نیز جایگزین سایر ارزیابی‌های تشخیصی نمی‌شود."
-  },
   "Zahlen und Bewegungsbefund aus dem Originalfall von Tim Luijkx:": {
     "en": "Measurements and motion findings from the original case by Tim Luijkx:",
     "fa": "اندازه‌گیری‌ها و یافتهٔ حرکتی از کیس اصلی Tim Luijkx:"
@@ -774,10 +695,6 @@ const COPY = {
   "Kein einzelnes MRT-Zeichen beweist eine ACM.": {
     "en": "No single MRI sign proves ACM.",
     "fa": "هیچ علامت منفرد MRI، ACM را ثابت نمی‌کند."
-  },
-  "TFC und Padua sind Regelwerke, die Befunde aus Bildgebung, EKG, Rhythmusdiagnostik und Familiengeschichte / Genetik zu einer Diagnose zusammenführen.": {
-    "en": "TFC and Padua are frameworks that combine imaging, ECG, rhythm assessment and family history / genetics to reach a diagnosis.",
-    "fa": "TFC و پادوآ چارچوب‌هایی هستند که یافته‌های تصویربرداری، ECG، بررسی ریتم و سابقهٔ خانوادگی / ژنتیک را برای رسیدن به تشخیص کنار هم می‌گذارند."
   },
   "ACM verstehen": {
     "en": "Understand ACM",
@@ -807,10 +724,6 @@ const COPY = {
     "en": "Typical findings on actual MRI",
     "fa": "یافته‌های معمول در MRI واقعی"
   },
-  "TFC und Padua verständlich anwenden": {
-    "en": "Apply TFC and Padua with understanding",
-    "fa": "کاربرد آگاهانهٔ TFC و پادوآ"
-  },
   "Wichtige Fallstricke": {
     "en": "Important pitfalls",
     "fa": "دام‌های مهم"
@@ -831,10 +744,6 @@ const COPY = {
     "en": "Original paper: revised Task Force Criteria",
     "fa": "مقالهٔ اصلی: معیارهای بازنگری‌شدهٔ Task Force"
   },
-  "Originalkonsens: Die Padua-Kriterien": {
-    "en": "Original consensus: the Padua criteria",
-    "fa": "اجماع اصلی: معیارهای پادوآ"
-  },
   "Entwicklung und Anwendung der Diagnosekriterien": {
     "en": "Development and application of diagnostic criteria",
     "fa": "تدوین و کاربرد معیارهای تشخیصی"
@@ -854,10 +763,6 @@ const COPY = {
   "Originalstudie zur prognostischen Bedeutung der LV-Beteiligung": {
     "en": "Original study on the prognostic importance of LV involvement",
     "fa": "مطالعهٔ اصلی دربارهٔ اهمیت پیش‌آگهی درگیری LV"
-  },
-  "Weiterentwicklung der Kriterien nach Padua": {
-    "en": "Further development of criteria after Padua",
-    "fa": "تکامل معیارها پس از پادوآ"
   },
   "Großer RV, auffällige Bewegung, kein LGE": {
     "en": "Enlarged RV, abnormal motion, no LGE",
@@ -914,10 +819,6 @@ const COPY = {
   "Zuerst Kammergrößen vergleichen, dann die freie RV-Wand im vollständigen Cine verfolgen. Der Originalfall beschreibt Dyskinesien / paradoxe Bewegung am Übergang RVOT–Apex und kein auffälliges LGE.": {
     "en": "Compare ventricular sizes first, then follow the free RV wall through the full cine. The original case describes dyskinesia / paradoxical motion at the RVOT–apex transition and no abnormal LGE.",
     "fa": "ابتدا اندازهٔ بطن‌ها را مقایسه کنید، سپس دیوارهٔ آزاد RV را در Cine کامل دنبال کنید. کیس اصلی، دیسکینزی / حرکت پارادوکس در محل گذار RVOT به اپکس و نبود LGE غیرطبیعی را توصیف می‌کند."
-  },
-  "Regionale Bewegungsstörung plus erhöhte RVEDVi / reduzierte RVEF ergibt einen bildgebenden TFC-Baustein. Volumen und EF zählen hier zusammen als ein Kriterium, nicht als zwei Major-Kriterien.": {
-    "en": "Regional motion abnormality plus increased RVEDVi / reduced RVEF provides an imaging TFC component. Volume and EF count together as one criterion here, not as two major criteria.",
-    "fa": "اختلال حرکت ناحیه‌ای همراه افزایش RVEDVi / کاهش RVEF یک جزء تصویربرداری TFC را تشکیل می‌دهد. حجم و EF در اینجا با هم یک معیار محسوب می‌شوند، نه دو معیار ماژور."
   },
   "Die vier lokalen Aufnahmen sind Standbilder. Die regionale Bewegung ist im Original-Cine zu prüfen; die 4-Kammer-Serie ist laut Quelle durch Arrhythmie beeinträchtigt.": {
     "en": "The four local images are still frames. Check regional motion in the original cine; the source reports arrhythmia-related degradation of the four-chamber series.",
@@ -1079,10 +980,6 @@ const COPY = {
     "en": "Consider severe dysfunction, regional changes and family history together. Prior surgery helps explain local artefacts.",
     "fa": "اختلال شدید عملکرد، تغییرات ناحیه‌ای و سابقهٔ خانوادگی را با هم در نظر بگیرید. جراحی قبلی به توضیح آرتیفکت‌های موضعی کمک می‌کند."
   },
-  "Pädiatrischer Fall: feste TFC-Grenzen für Erwachsene nicht ungeprüft anwenden. Der Originalfall beschreibt zusätzlich ein Suszeptibilitätsartefakt an der rekonstruierten Trikuspidalklappe.": {
-    "en": "Paediatric case: do not apply fixed adult TFC cut-offs without checking. The original case also describes a susceptibility artefact at the reconstructed tricuspid valve.",
-    "fa": "کیس کودکان: آستانه‌های ثابت TFC بزرگسالان را بدون بررسی به‌کار نبرید. کیس اصلی آرتیفکت حساسیت مغناطیسی در محل دریچهٔ تریکوسپید بازسازی‌شده را نیز توصیف می‌کند."
-  },
   "RV-Kontur im Kindesalter": {
     "en": "RV contour in childhood",
     "fa": "کانتور RV در کودکی"
@@ -1159,10 +1056,6 @@ const COPY = {
     "en": "CT can illustrate morphology. It cannot replace the MRI-specific functional and tissue criteria.",
     "fa": "CT می‌تواند مورفولوژی را نشان دهد، اما جایگزین معیارهای عملکردی و بافتی اختصاصی MRI نمی‌شود."
   },
-  "Bewusst ein CT-Vergleichsfall, kein MRT. Fett allein beweist keine ACM und ist kein eigenständiges TFC- / Padua-Kriterium.": {
-    "en": "Intentionally a CT comparison case, not MRI. Fat alone does not prove ACM and is not an independent TFC / Padua criterion.",
-    "fa": "این کیس عمداً برای مقایسهٔ CT انتخاب شده است، نه به‌عنوان MRI. چربی به‌تنهایی ACM را ثابت نمی‌کند و معیار مستقل TFC / پادوآ نیست."
-  },
   "ACM ist mehr als eine Erkrankung des RV.": {
     "en": "ACM is more than an RV disease.",
     "fa": "ACM فراتر از بیماری RV است."
@@ -1179,17 +1072,9 @@ const COPY = {
     "en": "Cine shows regional motion, the complete cine stack provides volumes and EF, and LGE shows the scar pattern. Always assess both ventricles.",
     "fa": "Cine حرکت ناحیه‌ای را نشان می‌دهد، مجموعهٔ کامل Cine حجم‌ها و EF را فراهم می‌کند و LGE الگوی اسکار را نشان می‌دهد. همیشه هر دو بطن را بررسی کنید."
   },
-  "TFC 2010: regional UND global.": {
-    "en": "TFC 2010: regional AND global.",
-    "fa": "TFC 2010: ناحیه‌ای و کلی با هم."
-  },
   "Die geforderte regionale RV-Bewegungsstörung muss zusammen mit dem passenden RVEDVi- oder RVEF-Grenzwert vorliegen. Volumen und EF zählen in dieser Kategorie nicht doppelt.": {
     "en": "The required regional RV motion abnormality must occur together with the appropriate RVEDVi or RVEF threshold. Volume and EF are not counted twice in this category.",
     "fa": "اختلال حرکت ناحیه‌ای لازم در RV باید همراه آستانهٔ مناسب RVEDVi یا RVEF باشد. حجم و EF در این دسته دوبار شمرده نمی‌شوند."
-  },
-  "Padua 2020 ergänzt LV und LGE.": {
-    "en": "Padua 2020 adds LV and LGE.",
-    "fa": "پادوآ ۲۰۲۰، LV و LGE را اضافه می‌کند."
   },
   "Die Kriterien erfassen auch biventrikuläre und linksdominante Formen. Bei rein linksdominantem Muster ist die passende Genetik ein wesentlicher Teil der Einordnung.": {
     "en": "The criteria also cover biventricular and left-dominant forms. For a purely left-dominant pattern, compatible genetics is an essential part of interpretation.",
@@ -1291,10 +1176,6 @@ const COPY = {
     "en": "Simply explained",
     "fa": "توضیح ساده"
   },
-  "Ein Wandabschnitt zieht sich schwächer zusammen. Allein reicht das nicht als regionale RV-Störung für den MRT-Baustein der TFC 2010.": {
-    "en": "A wall segment contracts less strongly. Alone, this is insufficient as the regional RV abnormality required for the MRI component of the 2010 TFC.",
-    "fa": "بخشی از دیواره ضعیف‌تر منقبض می‌شود. این یافته به‌تنهایی برای اختلال ناحیه‌ای RV در جزء MRI معیارهای TFC سال ۲۰۱۰ کافی نیست."
-  },
   "Ein Wandabschnitt kontrahiert nicht. Im vollständigen Cine und in einer weiteren Ebene überprüfen.": {
     "en": "A wall segment does not contract. Confirm it in the complete cine and another plane.",
     "fa": "بخشی از دیواره منقبض نمی‌شود. آن را در Cine کامل و صفحهٔ دیگری بررسی کنید."
@@ -1334,10 +1215,6 @@ const COPY = {
   "Nur an septalen RV-Insertionspunkten": {
     "en": "Confined to septal RV insertion points",
     "fa": "محدود به نقاط اتصال سپتالی RV"
-  },
-  "Dieses isolierte Muster zählt nach Padua nicht als LV-LGE-Kriterium.": {
-    "en": "This isolated pattern does not count as an LV LGE criterion under Padua.",
-    "fa": "این الگوی منفرد طبق پادوآ معیار LGE بطن چپ محسوب نمی‌شود."
   },
   "Was die Originalbilder zeigen": {
     "en": "What the original images show",
