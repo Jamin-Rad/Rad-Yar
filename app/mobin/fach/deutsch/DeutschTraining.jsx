@@ -176,12 +176,13 @@ function StationCards({ isTest }) {
       {cards.map((station, index) => {
         const draft = progress[station.id]
         const count = draft?.answers.length ?? 0
+        const total = (isTest ? station.test : station.practice).questions.length
         return (
         <Link className={styles.stationCard} key={station.id} href={base + mode + '/' + station.id}>
           <span className={styles.stationArt} style={{ backgroundPositionX: `${index * 25}%` }} aria-hidden="true" />
           <strong>{station.name}</strong>
           <small>{isTest ? 'Alle fünf Themen · anspruchsvoll' : station.note}</small>
-          <span>{count === 10 ? 'Ergebnis öffnen' : count || draft?.value ? `Fortsetzen · ${count}/10` : '10 Aufgaben'} <span aria-hidden="true">→</span></span>
+          <span>{count === total ? 'Ergebnis öffnen' : count || draft?.value ? `Fortsetzen · ${count}/${total}` : `${total} Aufgaben`} <span aria-hidden="true">→</span></span>
         </Link>
         )
       })}

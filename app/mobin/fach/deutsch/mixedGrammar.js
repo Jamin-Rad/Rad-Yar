@@ -1,3 +1,4 @@
+import { examMixedTests } from './examMixedGrammar'
 const caseOptions = 'Nominativ|Genitiv|Dativ|Akkusativ'
 const pronounOptions = 'Relativpronomen|Demonstrativpronomen|Possessivpronomen'
 const tenseOptions = 'Präsens|Präteritum|Perfekt|Plusquamperfekt'
@@ -121,7 +122,7 @@ const topics = [
   ],
 ]
 
-export const mixedTests = Array.from({ length: 5 }, (_, index) => ({
+const earlierMixedTests = Array.from({ length: 5 }, (_, index) => ({
   id: `mix-${index + 1}`,
   name: `Mischtest ${index + 1}`,
   test: {
@@ -133,3 +134,5 @@ export const mixedTests = Array.from({ length: 5 }, (_, index) => ({
     })),
   },
 }))
+
+export const mixedTests = [...examMixedTests, ...earlierMixedTests]

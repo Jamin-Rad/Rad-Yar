@@ -1,0 +1,82 @@
+// Original exam-style items aligned with the supplied November 20 topic sheet.
+// Separate IDs protect earlier saved ten-question tests.
+const groups = [
+ [
+ ['Bestimme den Kasus der markierten Wortgruppe.','Die Klasse gedachte [der verstorbenen Autorin].','Genitiv','Nominativ','Dativ','Akkusativ','Gedenken verlangt den Genitiv: Wessen gedachte die Klasse?'],
+ ['Wähle die richtige Form.','Die Lehrerin hilft dem neuen ___. (Schüler)','Schüler','Schülers','Schülern','Schülere','Dativ Singular: dem Schüler; das Nomen erhält hier keine zusätzliche Endung.'],
+ ['Welche Schreibweise passt?','Beim ___ vergaß sie die Zeit.','Lesen','lesen','Lesens','lesend','Beim = bei dem. Der Infinitiv wird als Nomen gebraucht.'],
+ ['Bestimme den Numerus.','Die [Ergebnisse] überraschten uns.','Plural','Singular','Genitiv','Neutrum','Die Verbform überraschten und die Form Ergebnisse zeigen die Mehrzahl.'],
+ ['Ergänze den Genitiv.','Das Ende des ___ war unerwartet. (Roman)','Romans','Roman','Romanen','Romane','Der Genitiv Singular lautet des Romans.'],
+ ['Bestimme den Kasus.','Die Trainerin lobte [den Einsatz der Mannschaft].','Akkusativ','Genitiv','Dativ','Nominativ','Was lobte sie? Die ganze Wortgruppe ist Akkusativobjekt; der Mannschaft ist darin ein Genitivattribut.'],
+ ['Welches Genus hat das zusammengesetzte Nomen?','das Fahrradschloss','Neutrum','Maskulinum','Femininum','Plural','Das letzte Glied bestimmt das Genus: das Schloss.'],
+ ['Ergänze die passende Form.','Wir begegneten zwei ___. (Freund)','Freunden','Freunde','Freundes','Freund','Begegnen verlangt Dativ; im Dativ Plural steht Freunden.'],
+ ['Welche Schreibweise passt?','Sie berichtete etwas ___.','Erstaunliches','erstaunliches','Erstaunliche','erstaunlich','Nach etwas wird das Adjektiv hier nominalisiert und großgeschrieben.'],
+ ['Bestimme den Kasus.','[Der neu gewählte Klassensprecher] stellte den Plan vor.','Nominativ','Akkusativ','Dativ','Genitiv','Wer stellte den Plan vor? Der Klassensprecher ist das Subjekt.'],
+ ['Wähle die richtige Form.','Wir beobachteten einen jungen ___. (Löwe)','Löwen','Löwe','Löwes','Löwer','Löwe wird schwach dekliniert: einen Löwen.'],
+ ['Welcher Plural ist richtig?','ein Erlebnis – viele ___','Erlebnisse','Erlebnise','Erlebnissen','Erlebnisses','Im Nominativ Plural heißt es Erlebnisse mit ss.'],
+ ],
+ [
+ ['Ergänze die Adjektivendung.','Mit frisch___ Brot schmeckt die Suppe besser.','em','en','es','er','Mit verlangt Dativ; ohne Artikel: mit frischem Brot.'],
+ ['Wähle die passende Form.','Dieser Weg ist ___ als der andere. (kurz)','kürzer','kurzer','am kürzesten','kürzeste','Beim Vergleich mit als steht der Komparativ: kürzer.'],
+ ['Ergänze das Adjektiv.','Sie trägt einen ___ Mantel. (warm)','warmen','warmer','warmes','warme','Einen zeigt maskulinen Akkusativ; das Adjektiv endet auf -en.'],
+ ['Wähle den richtigen Superlativ.','Von allen Vorschlägen ist dieser am ___. (gut)','besten','besseren','gutesten','bester','Gut – besser – am besten.'],
+ ['Welche Wortart hat das markierte Wort?','Der Fuchs bewegte sich [vorsichtig].','Adjektiv','Nomen','Präposition','Pronomen','Vorsichtig ist ein Adjektiv, das hier adverbial verwendet wird.'],
+ ['Ergänze die passende Form.','Sie suchten nach einer ___ Lösung. (einfach, Komparativ)','einfacheren','einfacherer','einfachere','einfachsten','Nach steht mit Dativ: nach einer einfacheren Lösung.'],
+ ['Ergänze die Adjektivendung.','Trotz heftig___ Windes fand das Spiel statt.','en','em','er','es','Trotz steht hier mit Genitiv: trotz heftigen Windes.'],
+ ['Wähle die richtige Steigerung.','Heute haben wir ___ Zeit als gestern. (viel)','mehr','vieler','am meisten','meisten','Viel – mehr – am meisten; hier Vergleich mit als.'],
+ ['Wähle die passende Form.','Das ist die ___ Stelle des Textes. (spannend, Superlativ)','spannendste','spannendere','am spannendsten','spannendsten','Nach die im Nominativ feminin: die spannendste Stelle.'],
+ ['Ergänze die Adjektivendung.','Ein klein___ Missverständnis löste den Streit aus.','es','er','en','em','Missverständnis ist neutral; ein kleines Missverständnis ist Nominativ.'],
+ ['Welche Form ist richtig?','Die neue Brücke ist ___ als die alte. (hoch)','höher','hocher','höchster','am höchsten','Hoch bildet den Komparativ höher.'],
+ ['Ergänze die passende Form.','Sie half den ___ Kindern. (müde)','müden','müde','müdem','müder','Dativ Plural mit bestimmtem Artikel: den müden Kindern.'],
+ ],
+ [
+ ['Ergänze den Artikel.','Die Kinder laufen in ___ Halle im Kreis.','der','die','den','das','Die Bewegung findet innerhalb der Halle statt: Wo? Dativ.'],
+ ['Ergänze den Artikel.','Sie legt das Buch auf ___ Tisch.','den','dem','des','der','Das Buch bekommt einen neuen Ort: Wohin? Akkusativ.'],
+ ['Bestimme den Kasus nach der Präposition.','Ohne [deinen Rat] hätte ich aufgegeben.','Akkusativ','Dativ','Genitiv','Nominativ','Ohne verlangt Akkusativ.'],
+ ['Wähle die passende Form.','Seit ___ Woche übt er täglich.','einer','eine','einen','eines','Seit verlangt Dativ: seit einer Woche.'],
+ ['Bestimme den Kasus.','Während [des Vortrags] blieb es ruhig.','Genitiv','Dativ','Akkusativ','Nominativ','Während steht hier mit Genitiv.'],
+ ['Ergänze die passende Wortgruppe.','Der Ball liegt zwischen ___.','den beiden Stühlen','die beiden Stühle','der beiden Stühle','die beiden Stühlen','Wo liegt der Ball? Dativ Plural: zwischen den beiden Stühlen.'],
+ ['Ergänze den Artikel.','Die Katze springt auf ___ Fensterbrett.','das','dem','des','den','Das Ziel der Bewegung wird angegeben: Wohin? Akkusativ.'],
+ ['Ergänze den Artikel.','Das Bild hängt an ___ Wand.','der','die','den','das','Wo hängt das Bild? Dativ: an der Wand.'],
+ ['Bestimme den Kasus.','Für [meinen kleinen Bruder] kaufte ich ein Buch.','Akkusativ','Dativ','Genitiv','Nominativ','Für verlangt Akkusativ.'],
+ ['Wähle die passende Form.','Nach ___ Essen gingen wir los.','dem','das','den','des','Nach verlangt Dativ: nach dem Essen.'],
+ ['Bestimme den Kasus.','Wegen [des starken Regens] blieben wir drinnen.','Genitiv','Dativ','Akkusativ','Nominativ','In dieser standardsprachlichen Form verlangt wegen den Genitiv.'],
+ ['Wähle den richtigen Satz.','Achte auf die Präposition und den Kasus.','Er kommt mit seinem Freund.','Er kommt mit seinen Freund.','Er kommt mit sein Freund.','Er kommt mit seines Freundes.','Mit verlangt Dativ: mit seinem Freund.'],
+ ],
+ [
+ ['Ergänze das Relativpronomen.','Das ist die Schülerin, ___ ich das Buch gegeben habe.','der','die','deren','den','Das Pronomen ist Dativ feminin: Wem habe ich das Buch gegeben?'],
+ ['Ergänze das Relativpronomen.','Der Junge, ___ Fahrrad gestohlen wurde, rief an.','dessen','deren','dem','den','Das Fahrrad gehört dem Jungen: Genitiv maskulin, dessen.'],
+ ['Bestimme die Art des markierten Pronomens.','[Dieser] hat mir am besten gefallen.','Demonstrativpronomen','Possessivpronomen','Relativpronomen','Personalpronomen','Dieser weist auf eine bestimmte Person oder Sache hin.'],
+ ['Ergänze die richtige Form.','Lea sucht ___ Schlüssel. (Besitzerin: Lea)','ihren','seinen','ihrem','ihrer','Lea ist die Besitzerin; Schlüssel ist Akkusativ maskulin: ihren Schlüssel.'],
+ ['Ergänze das Relativpronomen.','Die Bücher, ___ wir gelesen haben, liegen hier.','die','denen','deren','der','Was haben wir gelesen? Die Bücher: Akkusativ Plural, die.'],
+ ['Bestimme die Art des markierten Pronomens.','Der Rucksack gehört mir; [meiner] liegt daneben.','Possessivpronomen','Relativpronomen','Demonstrativpronomen','Personalpronomen','Meiner drückt Besitz aus und ersetzt hier mein Rucksack.'],
+ ['Ergänze das Relativpronomen.','Die Freunde, mit ___ ich reise, sind schon da.','denen','deren','die','den','Mit verlangt Dativ; Relativpronomen im Plural: denen.'],
+ ['Ergänze das Relativpronomen.','Ich kenne die Frau, ___ Hund entlaufen ist.','deren','dessen','der','die','Der Hund gehört der Frau: Genitiv feminin, deren.'],
+ ['Bestimme die Art des markierten Pronomens.','[Das] ist genau der Fehler, den ich meinte.','Demonstrativpronomen','Relativpronomen','Possessivpronomen','Personalpronomen','Das weist hier auf etwas hin und leitet keinen Relativsatz ein.'],
+ ['Ergänze die passende Form.','Paul erzählt von ___ Reise. (Besitzer: Paul)','seiner','seine','seinen','ihrem','Von verlangt Dativ: von seiner Reise.'],
+ ['Ergänze das Relativpronomen.','Der Film, ___ wir gestern sahen, war spannend.','den','der','dem','dessen','Was sahen wir? Den Film: Akkusativ maskulin.'],
+ ['Ergänze die passende Form.','Ihr habt eure Hefte; wir brauchen noch ___. (Besitzer: wir)','unsere','eure','ihre','seine','Für wir lautet das Possessivpronomen unsere; es ersetzt unsere Hefte.'],
+ ],
+ [
+ ['Bestimme die Zeitform.','Sie [hatte] den Schlüssel schon [gefunden], bevor wir ankamen.','Plusquamperfekt','Perfekt','Präteritum','Präsens','Hatte + Partizip II beschreibt die Vorvergangenheit.'],
+ ['Wähle die passende Verbform.','Gestern ___ er den schweren Koffer. (tragen, Präteritum)','trug','tragte','trägt','getragen','Das starke Verb tragen bildet das Präteritum trug.'],
+ ['Ergänze das Hilfsverb.','Wir ___ gestern spät nach Hause gekommen.','sind','haben','werden','waren','Das Perfekt von kommen wird mit sein gebildet: sind gekommen.'],
+ ['Welche Form steht im Präsens?','Wähle den richtigen Satz.','Du liest den Brief.','Du lasest den Brief.','Du hast den Brief gelesen.','Du hattest den Brief gelesen.','Liest ist Präsens; lasest Präteritum, hast gelesen Perfekt.'],
+ ['Ergänze die Vorvergangenheit.','Als wir ankamen, ___ der Zug bereits ___.','war / abgefahren','ist / abgefahren','hat / abgefahren','wird / abfahren','Die Abfahrt liegt vor der Ankunft: war abgefahren, Plusquamperfekt.'],
+ ['Wähle das richtige Partizip II.','Sie hat den Sachverhalt genau ___. (beschreiben)','beschrieben','gebeschrieben','beschreibt','beschreibte','Untrennbares be- erhält kein ge-; Partizip II: beschrieben.'],
+ ['Bestimme die Zeitform.','Jeden Morgen [fährt] sie mit dem Bus.','Präsens','Präteritum','Perfekt','Plusquamperfekt','Fährt ist eine finite Präsensform von fahren.'],
+ ['Wähle die passende Verbform.','Gestern ___ wir uns vor der Schule. (treffen, Präteritum)','trafen','trefften','treffen','getroffen','Das starke Verb treffen bildet das Präteritum wir trafen.'],
+ ['Ergänze die Vorvergangenheit.','Nachdem sie den Text ___, beantwortete sie die Fragen.','gelesen hatte','gelesen hat','lesen wird','liest','Das Lesen liegt vor dem Beantworten: gelesen hatte.'],
+ ['Welche Form steht im Perfekt?','Wähle den richtigen Satz.','Er hat die Aufgabe verstanden.','Er hatte die Aufgabe verstanden.','Er verstand die Aufgabe.','Er versteht die Aufgabe.','Hat + Partizip II bildet das Perfekt.'],
+ ['Ergänze die Präsensform.','Du ___ das Fenster. (schließen)','schließt','schließst','schloss','geschlossen','Bei einem Stamm auf ß entfällt das zusätzliche s der Endung -st: du schließt.'],
+ ['Welche Umformung ins Präteritum ist richtig?','Sie hat den Weg gewusst.','Sie wusste den Weg.','Sie weiß den Weg.','Sie hatte den Weg gewusst.','Sie wisste den Weg.','Das Präteritum von wissen lautet wusste.'],
+ ],
+]
+export const examMixedTests = [0,1].map(t=>({
+ id:`exam30-${t+1}`,name:`Prüfungstraining ${t+1} · 30 Fragen`,
+ test:{id:`exam30-${t+1}-test`,name:`Prüfungstraining ${t+1} · Grammatik`,questions:Array.from({length:6},(_,i)=>groups.map((rows,g)=>{
+ const [prompt,example,answer,...rest]=rows[t*6+i]
+ const explanation=rest.pop(), options=[answer,...rest],shift=(i+g+t)%4
+ return {prompt,example,answer,explanation,options:[...options.slice(shift),...options.slice(0,shift)]}
+ })).flat()},
+}))
