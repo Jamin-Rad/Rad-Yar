@@ -81,7 +81,7 @@ export default function AssetProfile({focusId,account, position, state, marketDa
         entry:currency==='EUR' && averageEur>0 ? averageEur : null, entries, quantity,
         quantityLabel:position.historyOnly?'در فهرست دارایی‌های فعلی نیست':balance.quantityKnown ? position.quantity : 'نیازمند تطبیق',
         events:(ledger?.transactions||[]).filter(tx=>position.isin&&tx.accountId===account.id&&tx.isin===position.isin&&['BUY','SELL'].includes(tx.type))
-          .slice().sort((a,b)=>Date.parse(a.datetime||a.date)-Date.parse(b.datetime||b.date)||String(a.id).localeCompare(String(b.id))).map(tx=>({id:tx.id,date:tx.date,kind:tx.type==='BUY'?'entry':'exit',quantity:Math.abs(Number(tx.quantity)),price:Number(tx.price)||Math.abs(tx.amountCents/100/Number(tx.quantity)),currency:tx.currency}))
+          .slice().sort((a,b)=>Date.parse(a.datetime||a.date)-Date.parse(b.datetime||b.date)||String(a.id).localeCompare(String(b.id))).map(tx=>({id:tx.id,date:tx.date,kind:tx.type==='BUY'?'entry':'exit',quantity:Math.abs(Number(tx.quantity)),price:Number.isSafeInteger(tx.amountCents)&&tx.amountCents!==0&&Number(tx.quantity)!==0?Math.abs(tx.amountCents/100/Number(tx.quantity)):null,currency:tx.currency}))
           .filter(tx=>/^\d{4}-\d{2}-\d{2}$/.test(tx.date)).sort((a,b)=>a.date.localeCompare(b.date)),
         entryLabel:averageEur==null ? '—' : price(averageEur)+' €',
         gainCents:balance.marketGainCents, gainLabel:balance.marketGainCents==null?'—':signedMoney(balance.marketGainCents),
