@@ -1092,11 +1092,12 @@ function FlashcardMode({ topic, leitner, onProgress, onLeitnerUpdate }) {
 
       <div
         className={stageClass}
+        data-mobin-enter={!flipped && !exiting ? true : undefined}
         role="button"
         tabIndex={0}
         aria-label={flipped ? 'Karte umdrehen' : 'Antwort zeigen'}
         onClick={() => { if (!exiting) setFlipped((v) => !v) }}
-        onKeyDown={(e) => { if (e.key === 'Enter') { e.preventDefault(); if (!exiting) setFlipped((v) => !v) } }}
+        onKeyDown={(e) => { if (e.key === 'Enter' && !e.defaultPrevented && !e.repeat) { e.preventDefault(); if (!exiting) setFlipped((v) => !v) } }}
       >
         <div className={`${styles.flipInner} ${flipped ? styles.flipInnerFlipped : ''}`}>
           <div className={styles.flipFront}>
@@ -1117,11 +1118,11 @@ function FlashcardMode({ topic, leitner, onProgress, onLeitnerUpdate }) {
       </div>
 
       <div className={`${styles.flipAnswerRow} ${flipped ? styles.flipAnswerVisible : ''}`}>
-        <button className={styles.flipMissBtn} type="button" onClick={() => answer(false)}>
-          Noch einmal ✗
+        <button data-mobin-option="1" disabled={!flipped || exiting} aria-keyshortcuts="1 ArrowLeft" className={styles.flipMissBtn} type="button" onClick={() => answer(false)}>
+          1 · Noch einmal ✗
         </button>
-        <button className={styles.flipKnowBtn} type="button" onClick={() => answer(true)}>
-          Gewusst ✓
+        <button data-mobin-option="2" disabled={!flipped || exiting} aria-keyshortcuts="2 ArrowRight" className={styles.flipKnowBtn} type="button" onClick={() => answer(true)}>
+          2 · Gewusst ✓
         </button>
       </div>
     </div>
@@ -1206,11 +1207,12 @@ function AllFlashcardsMode({ cards, leitner, onLeitnerUpdate }) {
 
       <div
         className={stageClass}
+        data-mobin-enter={!flipped && !exiting ? true : undefined}
         role="button"
         tabIndex={0}
         aria-label="Karte umdrehen"
         onClick={() => { if (!exiting) setFlipped((v) => !v) }}
-        onKeyDown={(e) => { if (e.key === 'Enter') { e.preventDefault(); if (!exiting) setFlipped((v) => !v) } }}
+        onKeyDown={(e) => { if (e.key === 'Enter' && !e.defaultPrevented && !e.repeat) { e.preventDefault(); if (!exiting) setFlipped((v) => !v) } }}
       >
         <div className={`${styles.flipInner} ${flipped ? styles.flipInnerFlipped : ''}`}>
           <div className={styles.flipFront}>
@@ -1228,8 +1230,8 @@ function AllFlashcardsMode({ cards, leitner, onLeitnerUpdate }) {
       </div>
 
       <div className={`${styles.flipAnswerRow} ${flipped ? styles.flipAnswerVisible : ''}`}>
-        <button className={styles.flipMissBtn} type="button" onClick={() => answer(false)}>Noch einmal ✗</button>
-        <button className={styles.flipKnowBtn} type="button" onClick={() => answer(true)}>Gewusst ✓</button>
+        <button data-mobin-option="1" disabled={!flipped || exiting} aria-keyshortcuts="1 ArrowLeft" className={styles.flipMissBtn} type="button" onClick={() => answer(false)}>1 · Noch einmal ✗</button>
+        <button data-mobin-option="2" disabled={!flipped || exiting} aria-keyshortcuts="2 ArrowRight" className={styles.flipKnowBtn} type="button" onClick={() => answer(true)}>2 · Gewusst ✓</button>
       </div>
     </div>
   )

@@ -66,7 +66,7 @@ export default function NovemberClient() {
   useEffect(() => {
     if (mode && !finished && !feedback) input.current?.focus()
     else heading.current?.focus()
-  }, [view, index, finished, Boolean(feedback)]) // eslint-disable-line react-hooks/exhaustive-deps
+  }, [view, index, question?.id, Boolean(run), finished, Boolean(feedback)]) // eslint-disable-line react-hooks/exhaustive-deps
 
   function persist(id, value, flush = false) {
     const next = stampEnglishHistory(latest.current, { ...latest.current, [id]: value })

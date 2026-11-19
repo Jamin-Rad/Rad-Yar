@@ -623,7 +623,7 @@ function QuizView({ session, attempts, onRecord, onToggleReview, onExit }) {
             </div>
 
             {!checked ? (
-              <button className={styles.checkButton} type="button" disabled={!selected} onClick={checkAnswer} aria-keyshortcuts="Enter">Antwort prüfen</button>
+              <button data-mobin-enter className={styles.checkButton} type="button" disabled={!selected} onClick={checkAnswer} aria-keyshortcuts="Enter">Antwort prüfen</button>
             ) : null}
           </section>
         </div>
@@ -641,7 +641,7 @@ function QuizView({ session, attempts, onRecord, onToggleReview, onExit }) {
             <div className={styles.solutionSteps}>
               <h2>So geht&apos;s</h2>
               {Array.isArray(question.solutionSteps) ? <ol>{question.solutionSteps.map((step, stepIndex) => <li key={stepIndex}>{step}</li>)}</ol> : <p>{question.solution}</p>}
-              <button className={styles.nextButton} type="button" onClick={next} aria-keyshortcuts="Enter">{index === questions.length - 1 ? 'Ergebnis anzeigen' : 'Nächste Aufgabe'} <ArrowIcon /></button>
+              <button data-mobin-enter className={styles.nextButton} type="button" onClick={next} aria-keyshortcuts="Enter">{index === questions.length - 1 ? 'Ergebnis anzeigen' : 'Nächste Aufgabe'} <ArrowIcon /></button>
             </div>
           </section>
         ) : null}

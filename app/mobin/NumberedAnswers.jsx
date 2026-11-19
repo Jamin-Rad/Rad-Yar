@@ -5,6 +5,7 @@ import { useEffect } from 'react'
 export default function NumberedAnswers() {
   useEffect(() => {
     function selectAnswer(event) {
+      if (event.repeat && event.key === 'Enter' && event.target instanceof Element && event.target.closest('[data-mobin-enter], [data-mobin-option]')) event.preventDefault()
       if (event.defaultPrevented || event.repeat || event.isComposing || event.ctrlKey || event.metaKey || event.altKey || event.shiftKey) return
       const target = event.target
       if (event.key === 'Enter') {
@@ -13,6 +14,8 @@ export default function NumberedAnswers() {
         const actions = (dialog || document).querySelectorAll('[data-mobin-enter]:not([data-mobin-enter="false"])')
         const action = Array.from(actions).find(el => el.getClientRects().length && !el.matches(':disabled') && el.getAttribute('aria-disabled') !== 'true')
         if (!action) return
+        const inputForm = target instanceof Element ? target.closest('form') : null
+        if (inputForm && action.form !== inputForm) return
         // Let unrelated focused controls retain their normal Enter behavior.
         if (target instanceof Element && target.closest('button, a, summary') && target !== action && !target.closest('[data-mobin-option]')) return
         event.preventDefault()
