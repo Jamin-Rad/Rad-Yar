@@ -63,6 +63,7 @@ function MobinHome() {
         <section className={`${styles.main} ${styles.homeMain}`}>
           <div className={`${styles.hero} ${styles.homeHero}`}>
             <h1 className={styles.title}>Mobin</h1>
+            <a href="/mobin/install.html" style={{ color: "#dbeaff" }}>Mobin installieren</a>
           </div>
 
           <MobinStudyDashboard />

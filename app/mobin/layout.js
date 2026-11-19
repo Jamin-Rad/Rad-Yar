@@ -3,7 +3,9 @@ import StudyTimeTracker from './StudyTimeTracker'
 
 export const metadata = {
   applicationName: 'Mobin',
-  manifest: '/mobin/manifest.webmanifest?v=1',
+  manifest: '/mobin/manifest.webmanifest?v=2',
+  openGraph: { title: 'Mobin', siteName: 'Mobin', images: ['/mobin/icons/mobin-512.png'] },
+  twitter: { card: 'summary', title: 'Mobin', images: ['/mobin/icons/mobin-512.png'] },
   appleWebApp: { capable: true, title: 'Mobin', statusBarStyle: 'black-translucent' },
   icons: {
     icon: [

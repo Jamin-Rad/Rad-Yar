@@ -61,6 +61,7 @@ export default function MobinLogin() {
         >
           {loading ? 'Prüfen…' : 'Einloggen'}
         </button>
+        <a href="/mobin/install.html">Mobin installieren</a>
       </form>
     </main>
   )
