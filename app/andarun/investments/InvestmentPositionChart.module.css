@@ -127,9 +127,9 @@
  .scenarios .quoteStrip { grid-template-columns:repeat(2,minmax(0,1fr)); }
  .card>.scenarios>button { min-height:32px; }
  .chart { padding:7px; }
- .chartBody { padding-left:39px; }
- .chartBody .drawingTools { width:34px; }
- .chartBody .drawingTools button { min-height:34px; width:34px; height:34px; }
+ .chartBody { padding-left:44px; }
+ .chartBody .drawingTools { width:40px; }
+ .chartBody .drawingTools button { min-height:40px; width:40px; height:40px; }
  .plot { height:clamp(340px,53dvh,460px); }
  .chartLegend { max-width:calc(100% - 40px); left:5px; font-size:10px; }
 }
@@ -140,3 +140,4 @@
 .chartLegend { justify-content:flex-start; text-align:left; }
 .resizePlot { cursor:ns-resize; touch-action:none; }
 .chartBody .drawingTools { max-height:100%; }
+.chartBody .rsi { margin-inline:1px; }

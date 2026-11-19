@@ -3,7 +3,7 @@
 import { useEffect, useId, useMemo, useRef, useState } from 'react'
 import { browserChartStorage, readChartDrawings, readChartHistory, saveChartHistory } from '@/lib/investments/local-asset-chart.mjs'
 import { technicalHistory } from '@/lib/investments/indicators.mjs'
-import { XTB_DRAWING_COLORS, XTB_INTERVALS, xtbBars } from '@/lib/investments/xtb-chart.mjs'
+import { anchoredOffset, candleDirection, chartTimes, chartViewport, priceStepDigits, priceValueDigits, timeIndex, XTB_DRAWING_COLORS, XTB_INTERVALS, xtbBars } from '@/lib/investments/xtb-chart.mjs'
 import { estimateXtbStopOut, xtbExposure, xtbScenario } from '@/lib/investments/xtb-risk.mjs'
 import { aggregateDaily, rsiDivergences, atr, vwap, pricePatterns, tradeSpans } from '@/lib/investments/chart-analysis.mjs'
 import Icon from './InvestmentIcon'
@@ -12,20 +12,21 @@ import openingRange from '@/lib/investments/xtb-opening-range-results.json'
 import IndicatorGuide from './IndicatorGuide'
 import styles from './InvestmentPositionChart.module.css'
 
+const berlinDate = new Intl.DateTimeFormat('de-DE', {timeZone:'Europe/Berlin', day:'2-digit', month:'2-digit', year:'numeric'})
+const berlinMinute = new Intl.DateTimeFormat('de-DE', {timeZone:'Europe/Berlin', day:'2-digit', month:'2-digit',hour:'2-digit',minute:'2-digit'})
 const berlinTime = value => {
   const date = new Date(value)
   if (!Number.isFinite(date.getTime())) return '—'
-  return new Intl.DateTimeFormat('de-DE', { timeZone:'Europe/Berlin', day:'2-digit', month:'2-digit', ...(value.includes('T')?{hour:'2-digit',minute:'2-digit'}:{}) }).format(date)
+  return (value.includes('T') ? berlinMinute : berlinDate).format(date)
 }
 const stopOutSource = 'https://www.xtb.com/de/hilfe-center/handelskonto/was-ist-der-stop-out'
-const priceFormat = new Intl.NumberFormat('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
 const signedFormat = new Intl.NumberFormat('en-US', { signDisplay: 'exceptZero', minimumFractionDigits: 2, maximumFractionDigits: 2 })
 const positive = value => Number(value) > 0 && Number.isFinite(Number(value)) ? Number(value) : null
 const currencyReference=plan=>plan.currency==='USD'?xtbMarkets.find(market=>market.symbol===plan.symbol?.trim().toUpperCase())?.reference:null
-const formatPrice = value => value == null ? '—' : priceFormat.format(value)
+const formatPrice = value => value == null ? '—' : new Intl.NumberFormat('en-US', { minimumFractionDigits:2, maximumFractionDigits:priceValueDigits(value) }).format(value)
 const limitLabels = { stop: 'حد ضرر', target: 'حد سود' }
 const fields = [['price', 'قیمت خروج فعلی در XTB (دلار)'], ['equity', 'ارزش فعلی حساب (یورو)'], ['margin', 'مارجین مصرف‌شده (یورو)'], ['fx', 'ارزش یک دلار به یورو']]
-const frames = [...XTB_INTERVALS,'1d','1w','1mo']
+const FUTURE_SLOTS = 30
 const LEFT = 12, AXIS = 82, TOP = 42
 const averages = [['ema20','EMA 20','#f1c975'],['sma50','SMA 50','#91c5ff'],['sma200','SMA 200','#d5a7fa']]
 
@@ -46,7 +47,8 @@ export default function InvestmentPositionChart({ trade, openCount, drawings = [
   const [offset, setOffset] = useState(0)
   const [intraday, setIntraday] = useState({})
   const [loaded, setLoaded] = useState(false)
-  const [cursor, setCursor] = useState(null)
+  const [pointer, setPointer] = useState(null)
+  const frameAnchor = useRef(null)
   const [drawing, setDrawing] = useState(null)
   const [draft, setDraft] = useState([])
   const [selected, select] = useState(null)
@@ -134,12 +136,27 @@ export default function InvestmentPositionChart({ trade, openCount, drawings = [
   const atrValues = useMemo(()=>atr(fullHistory),[fullHistory])
   const vwapValues = useMemo(()=>vwap(fullHistory,!daily),[fullHistory,!!daily])
   const visibleCount=range ?? Math.max(24,Math.min(150,Math.floor(width/9)))
-  const futureSlots=30
-  const viewportOffset=Math.min(offset,Math.max(0,fullHistory.length-visibleCount))
-  const historyStart=Math.max(0,fullHistory.length-visibleCount-viewportOffset)
-  const viewportSlots=Math.min(visibleCount,fullHistory.length)+futureSlots
-  const historyEnd=Math.min(fullHistory.length,historyStart+viewportSlots)
+  const times = useMemo(() => chartTimes(fullHistory, interval, FUTURE_SLOTS), [fullHistory, interval])
+  const viewport=chartViewport(fullHistory.length,visibleCount,offset,FUTURE_SLOTS)
+  const viewportOffset=viewport.viewportOffset
+  const historyStart=viewport.start
+  const historyEnd=viewport.end
+  const viewportSlots=viewport.slots
   const history=fullHistory.slice(historyStart,historyEnd)
+  const cursor = pointer && pointer.index >= historyStart && pointer.index < historyStart + viewportSlots
+    ? pointer.index - historyStart : null
+  const dateAt = index => {
+    const stamp = times[historyStart + index]
+    if (!Number.isFinite(stamp)) return ''
+    const iso = new Date(stamp).toISOString()
+    return typeof interval === 'number' ? iso : iso.slice(0,10)
+  }
+  useEffect(() => {
+    const anchor = frameAnchor.current
+    if (!anchor || anchor.frame !== interval) return
+    frameAnchor.current = null
+    setOffset(anchoredOffset(fullHistory.length, visibleCount, timeIndex(times, anchor.stamp), anchor.fraction))
+  }, [interval, times, fullHistory.length, visibleCount])
   const canShowOpeningRange=typeof interval==='number'&&['NQ=F','GC=F','BZ=F'].includes(reference)
   const selectedMarketTrades=showOpeningRange&&canShowOpeningRange
     ? openingRange.trades.filter(item=>item.symbol===reference)
@@ -177,19 +194,14 @@ export default function InvestmentPositionChart({ trade, openCount, drawings = [
     : [exposure.entry,stop,target,displayedPrice]).filter(value=>value!=null)
   const low = marketLevels.length?Math.min(...marketLevels):1, high = marketLevels.length?Math.max(...marketLevels):2
   const pad = Math.max((high - low) * .13, low * .025)
-  const [min, max] = drag?.domain || priceDomain || [Math.max(.01, low - pad), high + pad]
+  const [min, max] = drag?.domain || priceDomain || [Math.max(0, low - pad), high + pad]
   const y = price => bottom - (price - min) / (max - min) * (bottom - top)
   const slots=viewportSlots-1
   const x = i => LEFT + 6 + plotSpan * i / slots
   const anchorX = date => {
     const stamp=Date.parse(date)
     if (!fullHistory.length) return 16
-    const index = fullHistory.findIndex(row => Date.parse(row.date) >= stamp)
-    if (index===0&&stamp<Date.parse(fullHistory[0].date)) return x(-historyStart-1)
-    if(index<0) return x(fullHistory.length-historyStart)
-    if(index===0) return x(-historyStart)
-    const before=Date.parse(fullHistory[index-1].date),after=Date.parse(fullHistory[index].date)
-    return x(index-1+(stamp-before)/(after-before)-historyStart)
+    return x(timeIndex(times, stamp) - historyStart)
   }
   const seriesPath = (key, scale) => {
     let started = false
@@ -257,15 +269,20 @@ export default function InvestmentPositionChart({ trade, openCount, drawings = [
       },
       onPointerMove(event) {
         if (panelDrag.current) setHeight(clamp(panelDrag.current.height+event.clientY-panelDrag.current.y))
+        else {
+          const box = event.currentTarget.getBoundingClientRect()
+          trackPointer((event.clientX-box.left)*width/box.width, null)
+        }
       },
       onLostPointerCapture() { panelDrag.current=null },
+      onPointerLeave() { setPointer(null) },
     }
   }
-  function openContext(event,price) {
+  function openContext(event,price,date=fullHistory.at(-1)?.date) {
     const box=event.currentTarget.getBoundingClientRect()
     const x=event.clientX||box.left
     const y=event.clientY||box.bottom
-    setContext({price,x,y})
+    setContext({price,date,x,y})
   }
 
   function coordinates(event) {
@@ -273,23 +290,25 @@ export default function InvestmentPositionChart({ trade, openCount, drawings = [
     return { x:(event.clientX-box.left)*width/box.width, y:(event.clientY-box.top)*height/box.height }
   }
   function priceAt(yCoordinate) {
-    return Math.max(.01,min+(bottom-Math.min(bottom,Math.max(top,yCoordinate)))/(bottom-top)*(max-min))
+    return min+(bottom-Math.min(bottom,Math.max(top,yCoordinate)))/(bottom-top)*(max-min)
   }
   function indexAt(xCoordinate) {
-    return Math.max(0,Math.min(history.length-1,Math.round((xCoordinate-LEFT-6)/plotSpan*slots)))
+    return Math.max(0,Math.min(slots,Math.round((xCoordinate-LEFT-6)/plotSpan*slots)))
+  }
+  function trackPointer(px, py) {
+    if (!history.length || px < LEFT || px > plotRight || (py != null && (py < top || py > bottom))) {
+      setPointer(null)
+      return
+    }
+    setPointer({index:historyStart+indexAt(px), price:py == null ? null : priceAt(py)})
   }
   function pointAt(event) {
-    const location=coordinates(event), index=indexAt(location.x)
-    let price=priceAt(location.y)
-    const bar=history[index]
-    let date=bar?.date || new Date().toISOString()
-    if(history.length>=2) {
-      const position=Math.max(0,Math.min(history.length-1,(location.x-LEFT-6)/plotSpan*slots))
-      const left=Math.floor(position),right=Math.min(left+1,history.length-1)
-      const start=Date.parse(history[left].date),end=Date.parse(history[right].date)
-      date=new Date(start+(end-start)*(position-left)).toISOString()
-    }
-    return {date,price}
+    const location=coordinates(event)
+    const position=historyStart+Math.max(0,Math.min(slots,(location.x-LEFT-6)/plotSpan*slots))
+    const left=Math.floor(position)
+    const start=times[left] ?? Date.now()
+    const end=times[left+1] ?? start
+    return {date:new Date(start+(end-start)*(position-left)).toISOString(), price:Math.max(.00000001,priceAt(location.y))}
   }
   function saveLines(next) {
     if (!onDrawings) return
@@ -313,8 +332,10 @@ export default function InvestmentPositionChart({ trade, openCount, drawings = [
     setDraft([])
     select(null)
   }
-  function setFrame(value) {
-    setIntervalMinutes(value);setCursor(null);setOffset(0);setDraft([]);setPriceDomain(null);setSelectedDivergence(null)
+  function setFrame(value, fraction = .5) {
+    const stamp = times[historyStart + Math.round(fraction * slots)]
+    frameAnchor.current = viewportOffset > 0 && Number.isFinite(stamp) ? {frame:value, stamp, fraction} : null
+    setIntervalMinutes(value);setPointer(null);setOffset(0);setDraft([]);setPriceDomain(null);setSelectedDivergence(null)
   }
   useEffect(()=>{
     const element=plot.current
@@ -322,19 +343,28 @@ export default function InvestmentPositionChart({ trade, openCount, drawings = [
       event.preventDefault()
       const state=gestures.current
       const now=Date.now()
-      if(now-state.wheel<150)return
+      if (!event.deltaY || now-state.wheel < (event.shiftKey ? 150 : 24)) return
       state.wheel=now
       const shift=event.deltaY>0?1:-1
-      if(!event.shiftKey||daily)setRange(Math.max(16,Math.min(190,visibleCount+shift*8)))
-      else {
+      const local = coordinates(event)
+      const fraction = Math.max(0, Math.min(1,(local.x-LEFT-6)/plotSpan))
+      if (!event.shiftKey) {
+        const count = Math.max(16,Math.min(190,Math.min(visibleCount,fullHistory.length || visibleCount)+shift*8))
+        const index = historyStart + fraction * slots
+        const nextOffset = anchoredOffset(fullHistory.length,count,index,fraction)
+        setRange(count)
+        setOffset(nextOffset)
+        const next = chartViewport(fullHistory.length,count,nextOffset)
+        if (history.length) setPointer({index:next.start+Math.round(fraction*(next.slots-1)),price:priceAt(local.y)})
+      } else {
         const current=frames.indexOf(interval)
         const next=frames[Math.max(0,Math.min(frames.length-1,current+shift))]
-        if(next!==interval)setFrame(next)
+        if(next!==interval)setFrame(next,fraction)
       }
     }
     element.addEventListener('wheel',wheel,{passive:false})
     return ()=>element.removeEventListener('wheel',wheel)
-  },[interval,visibleCount,!!daily])
+  },[interval,visibleCount,historyStart,slots,times,width,height,min,max,!!daily])
 
   const [editPreview,setEditPreview]=useState(null)
   function begin(event, line, handleIndex) {
@@ -362,8 +392,7 @@ export default function InvestmentPositionChart({ trade, openCount, drawings = [
         domain:[min,max], pricePerPixel:(max-min)/(bottom-top),
       }
       if(event.pointerType==='touch'){
-        const index=indexAt(local.x)
-        g.timer=setTimeout(()=>{g.action={type:'cursor'};setCursor(index)},430)
+        g.timer=setTimeout(()=>{g.action={type:'cursor'};trackPointer(local.x,local.y)},430)
       }
       return
     }
@@ -380,8 +409,8 @@ export default function InvestmentPositionChart({ trade, openCount, drawings = [
     const local=coordinates(event)
     if(g.points.has(event.pointerId))g.points.set(event.pointerId,local)
     if(drag){
-      const price=priceAt(local.y)
-      setLimits(previous=>({...previous,[drag.key]:price.toFixed(2)}))
+      const price=Math.max(.00000001,priceAt(local.y))
+      setLimits(previous=>({...previous,[drag.key]:price.toFixed(priceStepDigits(tickStep))}))
       return
     }
     const action=g.action
@@ -399,7 +428,7 @@ export default function InvestmentPositionChart({ trade, openCount, drawings = [
       action.movedY ||= action.vertical&&Math.abs(dy)>=4
       if(!action.movedX&&!action.movedY)return
       clearTimeout(g.timer)
-      setCursor(null)
+      setPointer(null)
       if(action.movedX)setOffset(Math.min(Math.max(0,fullHistory.length-visibleCount),Math.max(0,action.offset+Math.round(dx*slots/plotSpan))))
       if(action.movedY){
         const shift=dy*action.pricePerPixel
@@ -422,7 +451,7 @@ export default function InvestmentPositionChart({ trade, openCount, drawings = [
       }
       setDraft(action.points)
     } else if(history.length && (event.pointerType!=='touch'||action?.type==='cursor')){
-      setCursor(local.x>x(history.length-1)+candleWidth/2?null:indexAt(local.x))
+      trackPointer(local.x,local.y)
     }
   }
   function finish(event, cancel=false) {
@@ -474,6 +503,9 @@ export default function InvestmentPositionChart({ trade, openCount, drawings = [
   const levelDistance=selectedLevel?.value!=null&&displayedPrice!=null?selectedLevel.value-displayedPrice:null
   const closingResult=!daily&&selectedLevel&&xtbScenario(exposure,selectedLevel.value)
   const showDetails=selectedLevel?.value!=null
+  const timeGuide = (y1,y2) => cursor == null ? null : <line data-time-guide={dateAt(cursor)} x1={x(cursor)} x2={x(cursor)} y1={y1} y2={y2} stroke="#afbece" strokeDasharray="3 4" pointerEvents="none"/>
+  const timeLabelWidth = typeof interval === 'number' ? 119 : 85
+  const labelX = cursor == null ? 0 : Math.min(plotRight-timeLabelWidth, Math.max(0, x(cursor)-timeLabelWidth/2))
   const last=history.length-1
   const tickCount=width>=740?6:width>=460?4:3
   const rawStep=(max-min)/Math.max(2,Math.floor((bottom-top)/60))
@@ -481,7 +513,7 @@ export default function InvestmentPositionChart({ trade, openCount, drawings = [
   const tickStep=([1,2,2.5,5,10].find(value=>value>=rawStep/magnitude)??10)*magnitude
   const firstTick=Math.ceil(min/tickStep)*tickStep
   const priceTicks=Array.from({length:Math.max(0,Math.floor((max-firstTick)/tickStep)+1)},(_,index)=>firstTick+index*tickStep)
-  const axisPrice=new Intl.NumberFormat('en-US',{minimumFractionDigits:2,maximumFractionDigits:Math.min(10,Math.max(2,1-Math.floor(Math.log10(tickStep))))})
+  const axisPrice=new Intl.NumberFormat('en-US',{minimumFractionDigits:2,maximumFractionDigits:priceStepDigits(tickStep)})
   const displayedLevel=displayedPrice??fullHistory.at(-1)?.close
   const positionMark=(historyEnd===fullHistory.length?displayedPrice:null)??history.at(-1)?.close
   const displayedY=inPlot(displayedLevel)?y(displayedLevel):null
@@ -511,7 +543,7 @@ export default function InvestmentPositionChart({ trade, openCount, drawings = [
       const invalid=key==='stop'?invalidStop:invalidTarget
       const result=!invalid&&xtbScenario(exposure,positive(limits[key]))
       return <div className={styles.limit} data-limit={key} key={key}>
-        <label>{label}<bdi>{currency}</bdi><input dir="ltr" type="number" min=".01" step=".01" value={limits[key]} aria-invalid={invalid} onChange={event=>setLimits(previous=>({...previous,[key]:event.target.value}))}/></label>
+        <label>{label}<bdi>{currency}</bdi><input dir="ltr" type="number" min=".00000001" step="any" value={limits[key]} aria-invalid={invalid} onChange={event=>setLimits(previous=>({...previous,[key]:event.target.value}))}/></label>
         {invalid?<small role="status">حد در سمت درست قیمت ورود نیست.</small>:<strong dir="ltr">{eurAmount(result)||'—'}</strong>}
       </div>
     })}
@@ -585,9 +617,9 @@ export default function InvestmentPositionChart({ trade, openCount, drawings = [
           {indicators.atr&&<span title="میانگین دامنهٔ واقعی نوسان"><bdi>ATR 14 {formatPrice(atrValues[historyStart+(cursor??history.length-1) ])} {currency}</bdi></span>}
           {visibleAverages.map(([key,label,color])=><span key={key} style={{color}}><bdi>{label} {formatPrice(activeBar?.[key])}</bdi></span>)}
         </div>
-        <svg ref={plot} className={styles.plot} data-drawing={!!drawing} viewBox={`0 0 ${width} ${height}`} role="group" aria-label="نمودار کندلی و سطح‌های موقعیت"
-          onPointerDown={beginChart} onPointerMove={move} onPointerLeave={event=>{if(event.pointerType!=='touch'&&!gestures.current.action)setCursor(null)}} onPointerUp={event=>finish(event)} onPointerCancel={event=>finish(event,true)}
-          onContextMenu={event=>{event.preventDefault();openContext(event,priceAt(coordinates(event).y))}} onDoubleClick={addArrowPoint}>
+        <svg ref={plot} className={styles.plot} data-drawing={!!drawing} viewBox={`0 0 ${width} ${height}`} role="group" aria-label={history.length?`نمودار قیمت ${trade.plan.name} با ${history.length} کندل، از ${berlinTime(history[0].date)} تا ${berlinTime(history.at(-1).date)}`:`نمودار قیمت ${trade.plan.name}؛ هنوز داده‌ای دریافت نشده است`}
+          onPointerDown={beginChart} onPointerMove={move} onPointerLeave={event=>{if(event.pointerType!=='touch'&&!gestures.current.action)setPointer(null)}} onPointerUp={event=>finish(event)} onPointerCancel={event=>finish(event,true)}
+          onContextMenu={event=>{event.preventDefault();const local=coordinates(event);openContext(event,priceAt(local.y),dateAt(indexAt(local.x)))}} onDoubleClick={addArrowPoint}>
           <defs>
             {[['up','#17735c','#b1edce'],['down','#812b39','#f19aaa']].map(([key,dark,light])=><linearGradient key={key} id={gradient+'-'+key}><stop offset="0" stopColor={dark}/><stop offset=".45" stopColor={light}/><stop offset="1" stopColor={dark}/></linearGradient>)}
             <clipPath id={gradient+'-plot'}><rect x={LEFT} y={top} width={plotRight-LEFT} height={bottom-top}/></clipPath>
@@ -644,14 +676,15 @@ export default function InvestmentPositionChart({ trade, openCount, drawings = [
               </g>
             })}
             {history.map((bar,i)=>{
-              const color=bar.close>=bar.open?'#53d6ae':'#fb8092'
+              const direction=candleDirection(bar)
+              const color=direction==='up'?'#53d6ae':direction==='down'?'#fb8092':'#9db1c6'
               const volume=(bar.volume||0)/maxVolume*32
               return <g key={bar.date}><rect x={x(i)-candleWidth/2} y={bottom-volume} width={candleWidth} height={volume} fill={color} opacity=".22"/>
-                {['open','high','low'].every(key=>Number.isFinite(bar[key])) ? <>
+                {direction!=='unknown' ? <>
                   <line x1={x(i)} x2={x(i)} y1={y(bar.high)} y2={y(bar.low)} stroke={color}/><rect x={x(i)-candleWidth/2} y={Math.min(y(bar.open),y(bar.close))} width={candleWidth} height={Math.max(1,Math.abs(y(bar.close)-y(bar.open)))} fill={`url(#${gradient}-${bar.close>=bar.open?'up':'down'})`}/>
                 </> : <circle cx={x(i)} cy={y(bar.close)} r="2" fill="#aebdd4"/>}</g>
             })}
-            {divergences.filter(item=>item.to.date>=history[0]?.date&&item.confirmedAt<=history.at(-1)?.date).map(item=><g key={item.id} role="button" tabIndex={0} aria-label={item.bullish?'واگرایی صعودی RSI':'واگرایی نزولی RSI'} onPointerDown={event=>event.stopPropagation()} onClick={()=>setSelectedDivergence(item.id===selectedDivergence?null:item.id)} onKeyDown={event=>{if(event.key==='Enter')setSelectedDivergence(item.id)}}>
+            {divergences.filter(item=>item.to.date>=history[0]?.date&&item.confirmedAt<=history.at(-1)?.date).map(item=><g key={item.id} role="button" tabIndex={0} aria-pressed={item.id===selectedDivergence} aria-label={item.bullish?'واگرایی صعودی RSI':'واگرایی نزولی RSI'} onPointerDown={event=>event.stopPropagation()} onClick={()=>setSelectedDivergence(item.id===selectedDivergence?null:item.id)} onKeyDown={event=>{if(event.key==='Enter'||event.key===' '){event.preventDefault();setSelectedDivergence(item.id===selectedDivergence?null:item.id)}}}>
               <g transform={`translate(${anchorX(item.to.date)},${y(item.to[item.side])+(item.bullish?16:-14)})`} style={{cursor:'pointer'}}>
                 <circle r="9" fill="#152431" stroke={item.bullish?'#73d9c2':'#f2ae7f'}/>
                 <path d={item.bullish?'M-4 3L4 -4M0 -4H4V0':'M-4 -3L4 4M0 4H4V0'} fill="none" stroke={item.bullish?'#73d9c2':'#f2ae7f'} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
@@ -662,12 +695,12 @@ export default function InvestmentPositionChart({ trade, openCount, drawings = [
             {indicators.bands&&['bbUpper','bbLower'].map(key=><path key={key} d={seriesPath(key,y)} fill="none" stroke="#8198cc" strokeDasharray="3 3"/>)}
             {visibleAverages.map(([key,,color])=><path key={key} d={seriesPath(key,y)} fill="none" stroke={color} vectorEffect="non-scaling-stroke"/>)}
             {showTrades&&entryX!=null&&entryX>=LEFT&&entryX<=x(last)&&<text x={Math.min(plotRight-90,entryX+5)} y={bottom-24} style={{fill:levelColors.entry}}>{knownEntry?.observedOpen?'ثبت موقعیت':'ورود'} {berlinTime(entryTime)}</text>}
-            {showTrades&&daily?.entries.map(entry=>{
+            {showTrades&&daily?.entries?.map(entry=>{
               const i=history.findIndex(row=>row.date>=entry.date)
               if(i<0||entry.date<history[0].date)return null
               const matchingPrice=entry.currency===currency&&inPlot(entry.price)
               return <circle key={entry.id} cx={x(i)} cy={matchingPrice?y(entry.price):bottom-8} r="4" fill={levelColors.entry}
-                tabIndex={0} aria-label={`خرید ${entry.date} · ${formatPrice(entry.price)} ${entry.currency||''}`}>
+                role="img" aria-label={`خرید ${entry.date} · ${formatPrice(entry.price)} ${entry.currency||''}`}>
                 <title>{`خرید ${entry.date} · ${formatPrice(entry.price)} ${entry.currency||''}`}</title>
               </circle>
             })}
@@ -687,10 +720,9 @@ export default function InvestmentPositionChart({ trade, openCount, drawings = [
             })}
             {draft.length>0&&<><path d={drawingPath(drawing,draft)} fill="none" stroke="#b3d8ff" strokeWidth="2"/>
               {drawing==='arrow'&&draft.map((point,index)=><circle key={index} cx={anchorX(point.date)} cy={y(point.price)} r="3" fill="#b3d8ff"/>)}</>}
-            {cursor!=null&&activeBar&&<g pointerEvents="none">
-              <line x1={x(cursor)} x2={x(cursor)} y1={top} y2={bottom} stroke="#8192a7" strokeDasharray="3 4"/>
-              <line x1={LEFT} x2={plotRight} y1={y(activeBar.close)} y2={y(activeBar.close)} stroke="#8192a7" strokeDasharray="3 4"/>
-              <circle cx={x(cursor)} cy={y(activeBar.close)} r="3" fill="#cbe3fa"/>
+            {cursor!=null&&<g pointerEvents="none">
+              {timeGuide(top,bottom)}
+              {pointer.price!=null&&<line x1={LEFT} x2={plotRight} y1={y(pointer.price)} y2={y(pointer.price)} stroke="#afbece" strokeDasharray="3 4"/>}
             </g>}
           </g>
           {displayedY!=null&&!axisPositions.some(position=>Math.abs(position-displayedY)<18)&&<g pointerEvents="none"><rect x={plotRight+3} y={displayedY-9} width={AXIS-7} height="18" rx="4" fill="#29454d"/><text x={width-8} y={displayedY+4} textAnchor="end">{axisPrice.format(displayedLevel)}</text></g>}
@@ -701,13 +733,21 @@ export default function InvestmentPositionChart({ trade, openCount, drawings = [
             <rect x={plotRight+2} y={axisPositions[i]-9} width={AXIS-4} height="18" rx="3" fill={levelColors[level.key]}/>
             <text className={styles.axisLabel} x={plotRight+AXIS/2} y={axisPositions[i]+4} textAnchor="middle">{level.label} {formatPrice(level.value)}</text>
           </g>)}
-          {history.length>1&&[...new Set(Array.from({length:tickCount},(_,index)=>Math.round(last*index/(tickCount-1))))].map((i,index)=><text key={i} x={x(i)} y={height-8} textAnchor={index===0?'start':i===last?'end':'middle'}>{berlinTime(history[i].date)}</text>)}
+          {history.length>0&&[...new Set(Array.from({length:tickCount},(_,index)=>Math.round(slots*index/(tickCount-1))))].map((i,index)=><text key={i} x={x(i)} y={height-8} opacity={i > last ? .6 : 1} textAnchor={index===0?'start':i===slots?'end':'middle'}>{berlinTime(dateAt(i))}</text>)}
+          {cursor!=null&&<g pointerEvents="none">
+            <rect x={labelX} y={bottom+1} width={timeLabelWidth} height="22" rx="4" fill="#33495e"/>
+            <text x={labelX+timeLabelWidth/2} y={bottom+16} textAnchor="middle">{cursor>last?'≈ ':''}{berlinTime(dateAt(cursor))}</text>
+            {pointer.price!=null&&<g data-cursor-price={pointer.price}>
+              <rect x={plotRight} y={y(pointer.price)-10} width={AXIS} height="20" rx="3" fill="#33495e"/>
+              <text x={width-8} y={y(pointer.price)+4} textAnchor="end">{axisPrice.format(pointer.price)}</text>
+            </g>}
+          </g>}
         </svg>
         {drawing==='measure'&&draft.length===2&&<div className={styles.tooltip}><bdi>{signedFormat.format(draft[1].price-draft[0].price)} {currency} · {signedFormat.format((draft[1].price/draft[0].price-1)*100)}٪</bdi></div>}
         {context&&<div className={styles.context} style={{left:`clamp(4px, ${context.x}px, calc(100vw - 224px))`,top:`clamp(4px, ${context.y}px, calc(100dvh - 300px))`}} role="menu" aria-label="عملیات نمودار" onKeyDown={event=>{if(event.key==='Escape')setContext(null)}}>
-          <bdi>{formatPrice(context.price)} {currency}</bdi>
-          <button type="button" role="menuitem" onClick={()=>{addDrawing('horizontal',[{date:history.at(-1)?.date||new Date().toISOString(),price:context.price}]);setContext(null)}}>خط افقی در این قیمت</button>
-          {!daily&&Object.entries(limitLabels).map(([key,label])=><button type="button" role="menuitem" key={key} onClick={()=>{setLimits(previous=>({...previous,[key]:context.price.toFixed(2)}));setContext(null)}}>{label} در این قیمت</button>)}
+          <bdi>{formatPrice(context.price)} {currency}{context.date && ' · '+berlinTime(context.date)}</bdi>
+          <button type="button" role="menuitem" disabled={!context.date||context.price<=0} onClick={()=>{addDrawing('horizontal',[{date:context.date,price:context.price}]);setContext(null)}}>خط افقی در این قیمت</button>
+          {!daily&&Object.entries(limitLabels).map(([key,label])=><button type="button" role="menuitem" key={key} onClick={()=>{setLimits(previous=>({...previous,[key]:context.price.toFixed(priceStepDigits(tickStep))}));setContext(null)}}>{label} در این قیمت</button>)}
           <button type="button" role="menuitem" onClick={()=>{setPriceDomain(null);setRange(null);setOffset(0);setContext(null)}}>بازنشانی نما</button>
           {onTransaction&&[['entry','ثبت خرید / ورود'],['exit','ثبت فروش / خروج']].map(([kind,label])=><button key={kind} type="button" role="menuitem" onClick={()=>{setContext(null);setFullscreen(false);onTransaction(kind)}}>{label}</button>)}
           <button type="button" role="menuitem" onClick={()=>setContext(null)}>بستن</button>
@@ -716,22 +756,22 @@ export default function InvestmentPositionChart({ trade, openCount, drawings = [
           <strong>{selectedLevel.label} <bdi>{formatPrice(selectedLevel.value)} {currency}</bdi></strong>
           <strong>فاصله <bdi>{levelDistance==null?'—':`${signedFormat.format(levelDistance)} ${currency} · ${signedFormat.format(levelDistance/displayedPrice*100)}٪`}</bdi></strong>
           {!daily&&<small>سود و زیان برآوردی <bdi>{eurAmount(closingResult)||'—'}</bdi></small>}
-        </div> : cursor!=null&&activeBar&&<div className={styles.candleTip} style={{left:`clamp(4px, ${x(cursor)/width*100}%, calc(100% - 162px))`}}>
-          <bdi>{berlinTime(activeBar.date)}{activeBar.date.includes('T')&&' برلین'}</bdi>
-        </div>}
+        </div> : null}
         </div>
         {indicators.rsi&&history.length>0&&<div className={styles.rsi}>
           <div className={styles.rsiTitle}><bdi>RSI 14 · {formatPrice(activeBar?.rsi)}</bdi></div>
           <svg {...panelResize(rsiHeight,setRsiHeight)} className={styles.resizePlot} style={{height:rsiHeight}} viewBox={`0 0 ${width} ${rsiHeight}`} role="img" aria-label="نمودار RSI، برای تغییر ارتفاع بکشید">
+            {timeGuide(0,rsiHeight)}
             {[30,70].map(level=><line key={level} x1={LEFT} x2={plotRight} y1={(rsiHeight-8)-level*(rsiHeight-16)/100} y2={(rsiHeight-8)-level*(rsiHeight-16)/100} stroke="#65778a" strokeDasharray="4 4"/>)}
             {divergence&&<line x1={anchorX(divergence.from.date)} x2={anchorX(divergence.to.date)} y1={(rsiHeight-8)-divergence.from.rsi*(rsiHeight-16)/100} y2={(rsiHeight-8)-divergence.to.rsi*(rsiHeight-16)/100} stroke="#e8c37a" strokeWidth="2"/>}
             <path d={seriesPath('rsi',value=>(rsiHeight-8)-value*(rsiHeight-16)/100)} fill="none" stroke="#a9d5cf" strokeWidth="2" vectorEffect="non-scaling-stroke"/>
           </svg>
         </div>}
         {indicators.macd&&history.length>0&&<div className={styles.rsi}>
-          <bdi>MACD 12, 26, 9</bdi>
+          <div className={styles.rsiTitle}><bdi>MACD {formatPrice(activeBar?.macd)} · Signal {formatPrice(activeBar?.signal)} · Hist {formatPrice(activeBar?.histogram)}</bdi></div>
           <svg {...panelResize(macdHeight,setMacdHeight)} className={styles.resizePlot} style={{height:macdHeight}} viewBox={`0 0 ${width} 100`} preserveAspectRatio="none" role="img" aria-label="MACD، برای تغییر ارتفاع بکشید">
             {(()=>{const extent=Math.max(.001,...history.flatMap(row=>[row.macd,row.signal,row.histogram]).filter(Number.isFinite).map(Math.abs));const scale=value=>50-value/extent*42;return <>
+              {timeGuide(0,100)}
               <line x1={LEFT} x2={plotRight} y1="50" y2="50" stroke="#58606a"/>
               {history.map((row,i)=>row.histogram!=null&&<rect key={row.date} x={x(i)-candleWidth/2} y={Math.min(50,scale(row.histogram))} width={candleWidth} height={Math.max(1,Math.abs(scale(row.histogram)-50))} fill={row.histogram>=0?'#65bfa0':'#c77785'}/>)}
               <path d={seriesPath('macd',scale)} fill="none" stroke="#83baff"/><path d={seriesPath('signal',scale)} fill="none" stroke="#eac67b"/>
@@ -744,7 +784,7 @@ export default function InvestmentPositionChart({ trade, openCount, drawings = [
         {!daily&&!watchMarket&&<details className={styles.exitPanel}><summary>سناریوی خروج · حد سود، حد ضرر و Stop Out</summary><div className={styles.exitControls}>{exitPanel}</div></details>}
         {entryTime&&!entryTime.includes('T')&&!knownEntry?.observedOpen&&<p>برچسب ورود تاریخ ثبت‌شده را نشان می‌دهد.</p>}
         {!daily&&knownEntry?.observedOpen&&<p>ناحیه‌ها از تاریخ ثبت موقعیت باز شروع می‌شوند. زمان اجرای معامله در سابقه موجود نیست.</p>}
-        {candles&&<p>{daily?.market?.quote?.source || (reference?'Yahoo Finance · قرارداد آتی مرجع '+reference:'منبع تاریخچه تعیین نشده')} · آخرین داده <bdi>{berlinTime(history.at(-1).date)}{history.at(-1).date.includes('T')&&' برلین'}</bdi></p>}
+        {candles&&<p>{daily?.market?.quote?.source || (reference?'Yahoo Finance · قرارداد آتی مرجع '+reference:'منبع تاریخچه تعیین نشده')} · آخرین داده <bdi>{berlinTime(fullHistory.at(-1).date)}{fullHistory.at(-1).date.includes('T')&&' برلین'}</bdi></p>}
         {daily?.notice&&<p role="status">{daily.notice}</p>}
         {daily?.error&&<p role="alert">{daily.error}</p>}
         {error&&<p role="alert">{error}</p>}
