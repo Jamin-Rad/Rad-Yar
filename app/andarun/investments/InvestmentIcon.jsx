@@ -1,5 +1,10 @@
 export default function InvestmentIcon({ name, size = 20, ...props }) {
   const paths = {
+    pointer: <path d="M5 3l13 10-6 1-3 6Z"/>,
+    ellipse: <ellipse cx="12" cy="12" rx="9" ry="6"/>,
+    fib: <path d="M3 4h18M3 9h15M3 12h12M3 16h9M3 20h6"/>,
+    indicators: <path d="M3 16c3 0 3-11 6-11s3 14 6 14 3-9 6-9"/>,
+    patterns: <path d="m3 17 4-11 5 8 4-7 5 10M3 20h18"/>,
     expand: <path d="M8 3H3v5M16 3h5v5M3 16v5h5M21 16v5h-5"/>,
     trend: <path d="M4 19 20 5M3 17v4h4M17 3h4v4"/>,
     freehand: <path d="M3 17C6 3 9 3 8 12S14 22 15 12s6-10 6-2"/>,
