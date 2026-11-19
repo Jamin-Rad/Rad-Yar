@@ -182,3 +182,14 @@
 .context button { background:transparent; color:inherit; text-align:start; padding:7px 10px; min-height:30px; border:0; border-radius:4px; font:inherit; cursor:pointer; }
 .context button:is(:hover,:focus-visible) { background:#2b4257; outline:0; }
 .context button:disabled { opacity:.5; }
+
+.plot,.plot *,.resizePlot,.resizePlot * { user-select:none; -webkit-user-select:none; }
+.tradePanel { background:#141e29; border:1px solid #354556; border-radius:8px; padding:8px 12px; margin-bottom:8px; }
+.tradePanel header { display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+.tradePanel header span { margin-inline-end:auto; }
+.tradeRows { display:grid; max-height:185px; overflow:auto; margin-top:5px; }
+.tradeRows button { display:grid; grid-template-columns:1fr 1fr 1.4fr 1.4fr; align-items:center; text-align:start; padding:6px; background:transparent; border:0; border-top:1px solid #354556; }
+.tradeRows small { display:block; }
+.tradePanel button[aria-pressed=true] { background:#23414a; color:#b4ece1; }
+
+.tradeActions { display:flex; gap:6px; margin-block:5px; }
