@@ -7,7 +7,7 @@ import { overviewAllocation } from '@/lib/investments/overview-allocation.mjs'
 import AllocationRing, { AllocationMetric } from './AllocationRing'
 import { XTB_OWNERS, xtbBalance } from '@/lib/investments/xtb.mjs'
 import Icon from './InvestmentIcon'
-import { DigitalWalletWorkspace } from './XtbAccountWorkspace'
+import DigitalWalletWorkspace from './DigitalWalletWorkspace'
 import { ProfitPeriodControl, ProfitPeriodDetails, RealizedProfitDetails } from './ProfitPeriod'
 import styles from './Overview.module.css'
 
@@ -22,6 +22,7 @@ const displayMoney = value => value == null ? '—' : money(value)
 
 function Allocation({ allocation, onHolding, onOpenHolding, metric }) {
   return <div className={styles.allocation}>
+    <div className={styles.breakdown}>
     <ul className={styles.sectors}>
       {allocation.groups.map(group => <li key={group.key} style={{'--sector':group.color}}>
         <span className={styles.sectorName}><i aria-hidden="true"/>{group.label}</span>
@@ -32,17 +33,19 @@ function Allocation({ allocation, onHolding, onOpenHolding, metric }) {
     <AllocationRing className={styles.ring} groups={allocation.groups} metric={metric} onOpenHolding={onOpenHolding}>
       {metric === 'profit' ? <span><bdi>{money(allocation.total)}</bdi></span> : <span lang="en">Trade<br/>Republic</span>}
     </AllocationRing>
+    </div>
     <div className={styles.topHoldings}>
       <h3>{metric === 'profit' ? 'بیشترین سود فعلی' : 'بیشترین وزن سبد'}</h3>
+      <div className={styles.columnLabels}><span>دارایی</span><span>{metric === 'profit' ? 'سود' : 'ارزش'}</span><span>سهم</span></div>
       {allocation.top.map(holding => <button type="button" key={holding.key} onClick={() => onHolding(holding)}>
         <strong dir="auto">{holding.name}</strong>
-        <span><bdi>{money(holding.valueCents)}</bdi><bdi className={styles.weight}>{percent(holding.share * 100)}</bdi></span>
+        <bdi>{money(holding.valueCents)}</bdi><bdi className={styles.weight}>{percent(holding.share * 100)}</bdi>
       </button>)}
     </div>
   </div>
 }
 
-export default function FamilyOverview({ state, ledger, onLedger, onOpenAsset, marketData, onEnablePrices, profitSelection={mode:'current'}, onProfitSelection, profitPeriod, dark, onTheme, onEntry, onSave, saving }) {
+export default function FamilyOverview({ onXtbAccount, state, ledger, onLedger, onOpenAsset, marketData, onEnablePrices, profitSelection={mode:'current'}, onProfitSelection, profitPeriod, dark, onTheme, onEntry, onSave, saving }) {
   const [selected, setSelected] = useState('tr')
   const [metric, setMetric] = useState('value')
   const id = useId()
@@ -83,12 +86,8 @@ export default function FamilyOverview({ state, ledger, onLedger, onOpenAsset, m
 
   return <div className={styles.home} data-theme={dark ? 'dark' : 'light'}>
     <header className={styles.topbar}>
-      <h1>سرمایه</h1>
+      <h1>نمای کلی سرمایه</h1>
       <div className={styles.toolbar}>
-        {balance.oldestPrice && <span className={styles.timestamp}>زمان قیمت‌های مرجع <bdi>{quoteDate.format(new Date(balance.oldestPrice))}</bdi></span>}
-        <button type="button" className={styles.controlButton} onClick={refreshPrices} disabled={refreshing}>
-          <Icon name="refresh" size={17}/>{refreshing ? 'دریافت قیمت‌ها… ' + number(marketData.batch.done) + ' از ' + number(marketData.batch.total) : 'به‌روزرسانی قیمت‌ها'}
-        </button>
         <button type="button" className={styles.controlButton} onClick={onTheme}>{dark ? 'حالت روشن' : 'حالت تاریک'}</button>
       </div>
     </header>
@@ -109,6 +108,24 @@ export default function FamilyOverview({ state, ledger, onLedger, onOpenAsset, m
 
     <div role="tabpanel" id={id + '-panel'} aria-labelledby={id + '-' + selected} className={styles.contentPanel} tabIndex={0}>
       {selected === 'tr' && <>
+        <section className={styles.block}>
+          <div className={styles.headingRow}><h2>بازده و سود و زیان</h2><button type="button" className={styles.controlButton} onClick={onEntry}><Icon name="plus" size={16}/>ثبت تراکنش</button></div>
+          <div className={styles.filters}><ProfitPeriodControl selection={profitSelection} onChange={onProfitSelection} period={profitPeriod} dark={dark}/><div className={styles.toolbar}>
+        {balance.oldestPrice && <span className={styles.timestamp}>زمان قیمت‌های مرجع <bdi>{quoteDate.format(new Date(balance.oldestPrice))}</bdi></span>}
+        <button type="button" className={styles.controlButton} onClick={refreshPrices} disabled={refreshing}>
+          <Icon name="refresh" size={17}/>{refreshing ? 'دریافت قیمت‌ها… ' + number(marketData.batch.done) + ' از ' + number(marketData.batch.total) : 'به‌روزرسانی قیمت‌ها'}
+        </button>
+          </div></div>
+          <dl className={styles.portfolioMetrics}>
+            <div><dt>ارزش کل سبد</dt><dd><bdi>{displayMoney(balance.equityCents)}</bdi></dd>{balance.equityCents != null && balance.estimated && <small>برآوردی</small>}</div>
+            <div><dt>{resultTitle}</dt><dd className={resultClass(gain)}><bdi>{gain == null ? '—' : signedMoney(gain)}</bdi></dd>
+              {result && !result.complete && <small>{number(result.knownCount)} از {number(result.count)} {isRealized ? 'فروش' : 'دارایی'} · نتیجهٔ ناقص</small>}
+            </div>
+            <div><dt>موجودی نقد</dt><dd><bdi>{displayMoney(balance.cashCents)}</bdi></dd>{balance.cashEstimated && balance.cashCents != null && <small>برآوردی</small>}</div>
+          </dl>
+          <ProfitPeriodDetails period={isPeriod && !isRealized ? profitPeriod : null} dark={dark}/>
+          {isRealized && <RealizedProfitDetails result={result} dark={dark}/>}
+        </section>
         <section className={styles.block} aria-labelledby={id + '-allocation'}>
           <h2 id={id + '-allocation'}>ترکیب بخشی دارایی‌های <bdi>Trade Republic</bdi></h2>
           <AllocationMetric value={metric} onChange={setMetric}/>
@@ -119,18 +136,6 @@ export default function FamilyOverview({ state, ledger, onLedger, onOpenAsset, m
           {allocation.excluded > 0 && <p className={styles.muted}>{number(allocation.excluded)} موقعیت به‌دلیل {metric === 'profit' ? 'نبود سود قابل محاسبه' : 'نبود قیمت معتبر یا تعداد تأییدشده'} در نمودار لحاظ نشده است.</p>}
           {priceErrors && <p className={styles.muted} role="status">دریافت برخی قیمت‌ها انجام نشد. قیمت قبلی در صورت وجود حفظ شده است.</p>}
         </section>
-        <section className={styles.block}>
-          <div className={styles.headingRow}><h2>بازده و سود و زیان</h2><button type="button" className={styles.controlButton} onClick={onEntry}><Icon name="plus" size={16}/>ثبت تراکنش</button></div>
-          <ProfitPeriodControl selection={profitSelection} onChange={onProfitSelection} period={profitPeriod} dark={dark}/>
-          <dl className={styles.metrics}>
-            <div><dt>{resultTitle}</dt><dd className={resultClass(gain)}><bdi>{gain == null ? '—' : signedMoney(gain)}</bdi></dd>
-              {result && !result.complete && <small>{number(result.knownCount)} از {number(result.count)} {isRealized ? 'فروش' : 'دارایی'} · نتیجهٔ ناقص</small>}
-            </div>
-            <div><dt>موجودی نقد</dt><dd><bdi>{displayMoney(balance.cashCents)}</bdi></dd>{balance.cashEstimated && balance.cashCents != null && <small>برآوردی</small>}</div>
-          </dl>
-          <ProfitPeriodDetails period={isPeriod && !isRealized ? profitPeriod : null} dark={dark}/>
-          {isRealized && <RealizedProfitDetails result={result} dark={dark}/>}
-        </section>
       </>}
       {selected === 'xtb' && <section className={styles.block}>
         <h2>خلاصهٔ <bdi>XTB</bdi></h2>
@@ -138,6 +143,7 @@ export default function FamilyOverview({ state, ledger, onLedger, onOpenAsset, m
           <div><dt>مجموع موجودی ثبت‌شده</dt><dd><bdi>{displayMoney(xtb.total)}</bdi></dd></div>
           <div><dt>سود و زیان معاملات بسته‌شده از ابتدا</dt><dd className={resultClass(xtb.profit)}><bdi>{signedMoney(xtb.profit)}</bdi></dd></div>
         </dl> : <p className={styles.empty}>موجودی XTB هنوز ثبت نشده است.</p>}
+        <div className={styles.accountLinks}>{XTB_OWNERS.map(owner => <button key={owner} type="button" className={styles.controlButton} onClick={()=>onXtbAccount(owner)}>حساب {owner === 'self' ? 'من' : 'فاطمه'} <Icon name="trading" size={16}/></button>)}</div>
         {xtb.count === 1 && <p className={styles.muted}>جمع فقط بر اساس حساب ثبت‌شده محاسبه شده است.</p>}
       </section>}
       {selected === 'wallet' && <section className={styles.block}>

@@ -5,7 +5,8 @@ import {marketImpact,marketKey,marketForPosition,marketTrusted} from '@/lib/inve
 import {browserChartStorage,chartDrawingKey,chartEntries,readChartHistory,saveChartHistory} from '@/lib/investments/local-asset-chart.mjs'
 import Icon from './InvestmentIcon'
 import TradingViewChart from './TradingViewChart'
-import InvestmentPositionChart from './InvestmentPositionChart'
+import dynamic from 'next/dynamic'
+const InvestmentPositionChart = dynamic(() => import('./InvestmentPositionChart'), { loading: () => <p role="status">در حال آماده‌سازی نمودار…</p> })
 import {positionBalance} from '@/lib/investments/balances.mjs'
 import styles from './investments.module.css'
 const price=value=>new Intl.NumberFormat('de-DE',{maximumSignificantDigits:10}).format(value)

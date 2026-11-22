@@ -49,7 +49,7 @@
   --nav-bg:#151b22;
   --nav-line:#2b3642;
   --nav-hover:#212b35;
-  --nav-active:#2b3b2c;
+  --nav-active:#233d36;
   background:var(--nav-bg);
   border-color:var(--nav-line);
   color:var(--nav-ink);

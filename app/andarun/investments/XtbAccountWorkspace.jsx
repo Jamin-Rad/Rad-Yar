@@ -7,7 +7,8 @@ import {xtbBalance} from '@/lib/investments/xtb.mjs'
 import {money,signedMoney,percent,parseMoney} from '@/lib/investments/portfolio.mjs'
 import TradeWorkspace from './TradeWorkspace'
 import { xtbMarkets } from '@/lib/investments/xtb-markets.mjs'
-import InvestmentPositionChart from './InvestmentPositionChart'
+import dynamic from 'next/dynamic'
+const InvestmentPositionChart = dynamic(() => import('./InvestmentPositionChart'), { loading: () => <p role="status">در حال آماده‌سازی نمودار…</p> })
 import Icon from './InvestmentIcon'
 import styles from './investments.module.css'
 import view from './AccountView.module.css'
@@ -123,5 +124,3 @@ export default function XtbAccountWorkspace({account,owner,trades,tradeProps,dra
     </>}
   </>
 }
-
-export function DigitalWalletWorkspace({className = view.wallet}){return <section className={className}><Icon name="wallet" size={44}/><h2>کیف پول دیجیتال</h2><p>موجودی رمزارزها هنوز وارد نشده است.</p></section>}

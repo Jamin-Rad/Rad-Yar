@@ -24,7 +24,7 @@ export default function useMarketData(state) {
     setMarkets({ ...data.current })
     return () => { mounted.current = false }
   }, [])
-  const load = useCallback(async (symbol, name, force = false, withHistory = false, requestedDates = null) => {
+  const load = useCallback(async (symbol, name, force = false, withHistory = false, requestedDates = null, batchQuote = null) => {
     if (!symbol || !mounted.current) return null
     if (!force) return data.current[symbol] || null
     const day = todayBerlin(new Date())
@@ -44,9 +44,14 @@ export default function useMarketData(state) {
         const params = new URLSearchParams(symbol.startsWith('ISIN:') ? {isin:symbol.slice(5)} : { symbol, name: name || symbol })
         if (force) params.set('refresh', '1')
         if (withHistory) {params.set('history', '1');dates.forEach(date=>params.append('historyDate',date))}
-        const response = await fetch(`/api/andarun/investments/market?${params}`, { cache: 'no-store' })
-        let result = await response.json()
-        if (!response.ok) throw Error(result.error || 'دریافت قیمت انجام نشد.')
+        let result
+        if (batchQuote) {
+          result = await batchQuote(symbol.slice(5))
+        } else {
+          const response = await fetch(`/api/andarun/investments/market?${params}`, { cache: 'no-store' })
+          result = await response.json()
+          if (!response.ok) throw Error(result.error || 'دریافت قیمت انجام نشد.')
+        }
         const previous=data.current[symbol]
         const sameListing = previous && result.quote.currency === previous.quote.currency &&
           (result.identity?.isin
@@ -77,15 +82,35 @@ export default function useMarketData(state) {
     batchLock.current = true
     let index = 0, done = 0, failed = 0
     if (mounted.current) setBatch({ running: true, done, total: rows.length, failed, completedAt: null })
-    async function worker() {
+    try {
       while (mounted.current && index < rows.length) {
-        const row = rows[index++]
-        if (!await load(row.symbol, row.name, true)) failed++
-        done++
-        if (mounted.current) setBatch({ running: true, done, total: rows.length, failed, completedAt: null })
+        const group = rows.slice(index, index + 3)
+        index += group.length
+        const isins = group.filter(row => row.symbol.startsWith('ISIN:')).map(row => row.symbol.slice(5))
+        let quotes
+        async function batchQuote(isin) {
+          if (!quotes) {
+            const params = new URLSearchParams({ refresh: '1' })
+            isins.forEach(id => params.append('isin', id))
+            quotes = fetch('/api/andarun/investments/market?' + params, { cache: 'no-store' })
+              .then(async response => {
+                const body = await response.json()
+                if (!response.ok) throw Error(body.error || 'دریافت قیمت‌ها انجام نشد.')
+                return body.quotes
+              })
+          }
+          const result = (await quotes)[isin]
+          if (!result) throw Error('دریافت قیمت این دارایی انجام نشد.')
+          return result
+        }
+        await Promise.all(group.map(async row => {
+          const bundled = isins.length > 1 && row.symbol.startsWith('ISIN:')
+          if (!await load(row.symbol, row.name, true, false, null, bundled ? batchQuote : null)) failed++
+          done++
+          if (mounted.current) setBatch({ running: true, done, total: rows.length, failed, completedAt: null })
+        }))
       }
     }
-    try { await Promise.all(Array.from({ length: Math.min(3, rows.length) }, worker)) }
     finally {
       batchLock.current = false
       if (mounted.current) setBatch({ running: false, done, total: rows.length, failed, completedAt: new Date().toISOString() })

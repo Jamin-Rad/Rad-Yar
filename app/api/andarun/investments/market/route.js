@@ -20,6 +20,18 @@ export async function GET(request) {
       if (!xtbReferences.includes(symbol) || isin) return NextResponse.json({error:'تایم‌فریم برای این نماد در دسترس نیست.'},{status:400,headers})
       return NextResponse.json({history:await loadXtbIntraday(symbol,parseInt(interval,10))},{headers})
     }
+    const isins = params.getAll('isin')
+    if (isins.length > 1) {
+      if (params.get('refresh') !== '1') return manualRefreshRequired()
+      if (isins.length > 3 || isins.some(id => !validIsin(id)) || params.has('history') || params.has('historyDate')) {
+        return NextResponse.json({error:'درخواست گروهی قیمت معتبر نیست.'},{status:400,headers})
+      }
+      const quotes = await Promise.all([...new Set(isins)].map(async id => {
+        try { return [id, await loadIsinMarket(id, true, false)] }
+        catch { return [id, null] }
+      }))
+      return NextResponse.json({quotes:Object.fromEntries(quotes)},{headers})
+    }
     if (isin) {
       if (!validIsin(isin)) return NextResponse.json({error:'شناسه ابزار معتبر نیست.'},{status:400,headers})
       const historyDates=params.getAll('historyDate')

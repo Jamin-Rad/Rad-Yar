@@ -211,3 +211,22 @@ test('server rejects old automatic price requests before calling providers and s
   assert.deepEqual(await silver.json(),{history:[{symbol:'SI=F',minutes:5}]})
   assert.equal(calls,4)
 })
+
+test('bulk ISIN quotes share one request and preserve a saved price on a partial failure', async () => {
+  const ids = ['US0378331005', 'US5949181045', 'US67066G1040']
+  let fail = false
+  const h = marketHarness(portfolio(ids.map(isin => ({isin,name:isin}))), async url => {
+    assert.deepEqual(new URL(url, 'https://example.test').searchParams.getAll('isin'), ids)
+    const quotes = Object.fromEntries(ids.map(isin => [isin, fail && isin === ids[1] ? null :
+      {quote:{price:fail ? 102 : 100,currency:'EUR'},fetchedAt:new Date().toISOString()}]))
+    return {ok:true,json:async () => ({quotes})}
+  })
+  await h.render().refreshAll()
+  fail = true
+  await h.render().refreshAll()
+  const api = h.render()
+  assert.equal(h.requests.length, 2)
+  assert.equal(api.batch.failed, 1)
+  assert.deepEqual(ids.map(id => api.markets['ISIN:'+id].quote.price), [102,100,102])
+  h.stop()
+})
