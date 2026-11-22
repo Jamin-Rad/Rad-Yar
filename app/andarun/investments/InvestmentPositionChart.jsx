@@ -38,7 +38,8 @@ const averages = [['ema20','EMA 20','#f1c975'],['sma50','SMA 50','#91c5ff'],['sm
 export default function InvestmentPositionChart({ trade, openCount, drawings = [], onDrawings, daily, onTransaction, symbolTrades, watchMarket }) {
   const exposure = daily ? { direction:1, entry:daily.entry, volume:daily.quantity } : xtbExposure(trade)
   const reference=watchMarket?.reference??(exposure.isBrent?'BZ=F':!daily&&currencyReference(trade.plan))
-  const [limits, setLimits] = useState({ stop: trade.plan.stopPrice || '', target: trade.plan.targetPrice || '' })
+  const recordedLimits=trade.brokerSnapshot??trade.plan
+  const [limits, setLimits] = useState({ stop: recordedLimits.stopPrice || '', target: recordedLimits.targetPrice || '' })
   const [referenceMarket, setReferenceMarket] = useState(null)
   const [busy, setBusy] = useState(false)
   const [error, setError] = useState('')
@@ -591,8 +592,8 @@ export default function InvestmentPositionChart({ trade, openCount, drawings = [
   const levelColors={entry:'#72acff',stop:'#fb8092',target:'#53d6ae',liquidation:'#c5a3fd'}
   const levelRows=[
     {key:'entry',label:'ورود',value:exposure.entry},
-    {key:'stop',label:'حد ضرر',value:stop,original:positive(trade.plan.stopPrice)},
-    {key:'target',label:'حد سود',value:target,original:positive(trade.plan.targetPrice)},
+    {key:'stop',label:'حد ضرر',value:stop,original:positive(recordedLimits.stopPrice)},
+    {key:'target',label:'حد سود',value:target,original:positive(recordedLimits.targetPrice)},
     {key:'liquidation',label:'Stop Out',value:estimate?.price},
   ].filter(level=>!daily||level.key==='entry')
   const inPlot=price=>price!=null&&price>=min&&price<=max
@@ -651,7 +652,7 @@ export default function InvestmentPositionChart({ trade, openCount, drawings = [
         {invalid?<small role="status">حد در سمت درست قیمت ورود نیست.</small>:<strong dir="ltr">{eurAmount(result)||'—'}</strong>}
       </div>
     })}
-    <button type="button" onClick={()=>setLimits({stop:trade.plan.stopPrice||'',target:trade.plan.targetPrice||''})}>بازگردانی حدهای ثبت‌شده</button>
+    <button type="button" onClick={()=>setLimits({stop:recordedLimits.stopPrice||'',target:recordedLimits.targetPrice||''})}>بازگردانی حدهای ثبت‌شده</button>
     <details className={styles.stopOut}>
       <summary>Stop Out <bdi>{estimate?.price!=null?formatPrice(estimate.price)+' '+currency:'—'}</bdi></summary>
       <p>برآورد با داده‌های هم‌زمان حساب و فرض ثبات نرخ ارز و مارجین. <a href={stopOutSource} target="_blank" rel="noreferrer">قاعدهٔ XTB</a></p>
