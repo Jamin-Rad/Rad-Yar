@@ -1,6 +1,7 @@
 'use client'
 import {useEffect,useRef,useState} from 'react'
 import {todayBerlin,tradeStatus} from '@/lib/investments/family.mjs'
+import {readChartHistory} from '@/lib/investments/local-asset-chart.mjs'
 import {valueXtbAccount} from '@/lib/investments/xtb-risk.mjs'
 import {xtbBalance} from '@/lib/investments/xtb.mjs'
 import {money,signedMoney,percent,parseMoney} from '@/lib/investments/portfolio.mjs'
@@ -45,9 +46,21 @@ export default function XtbAccountWorkspace({account,owner,trades,tradeProps,dra
   const [refreshing,setRefreshing]=useState(false)
   const [quoteError,setQuoteError]=useState('')
   useEffect(()=>{
-    try { setQuotes(JSON.parse(localStorage.getItem(cacheKey)) || {}) } catch {}
+    try {
+      const saved = JSON.parse(localStorage.getItem(cacheKey)) || {}
+      const chart = readChartHistory(localStorage, 'BZ=F')
+      const quote = chart?.quote
+      if (quote?.symbol === 'BZ=F' && quote.currency === 'USD' && quote.price > 0 &&
+        (!saved['BZ=F'] || Date.parse(quote.asOf) > Date.parse(saved['BZ=F'].asOf))) {
+        saved['BZ=F'] = {...quote, eurRate:chart.fx?.latest?.rate}
+      }
+      setQuotes(saved)
+    } catch {}
   },[cacheKey])
   const valuation=valueXtbAccount(balance?.balanceCents,openTrades,quotes)
+  const marketQuote=quotes['BZ=F']
+  const lastBrokerPrice=openTrades.filter(t=>t.plan.symbol==='OIL'&&t.brokerSnapshot?.price)
+    .map(t=>t.brokerSnapshot).sort((a,b)=>b.observedDate.localeCompare(a.observedDate))[0]
   const hasBrent=openTrades.some(t=>t.plan.product==='cfd'&&t.plan.symbol?.trim().toUpperCase()==='OIL'&&t.plan.currency==='USD')
   async function refreshEquity(){
     setRefreshing(true)
@@ -71,8 +84,12 @@ export default function XtbAccountWorkspace({account,owner,trades,tradeProps,dra
         <div><span>سود و زیان باز برآوردی</span><strong><bdi>{valuation.openCents==null?'—':signedMoney(valuation.openCents)}</bdi></strong></div>
       </div>
       {hasBrent&&<button type="button" className={styles.secondaryButton} disabled={refreshing} onClick={refreshEquity}>{refreshing?'در حال دریافت…':'به‌روزرسانی قیمت حساب'}</button>}
-      {openTrades.length>valuation.priced&&<p>برای {openTrades.length-valuation.priced} موقعیت باز، قیمت یا مشخصات کافی برای ارزش‌گذاری موجود نیست.</p>}
-      {quotes['BZ=F']?.asOf&&<p>Yahoo Finance · <bdi>BZ=F · {quotes['BZ=F'].price} USD · {new Date(quotes['BZ=F'].asOf).toLocaleString('de-DE',{timeZone:'Europe/Berlin'})}</bdi> · تعدیلات ثبت‌شدهٔ XTB</p>}
+      {hasBrent&&(marketQuote?.price||lastBrokerPrice)&&<p>
+        آخرین قیمت بازار <bdi>OIL · {marketQuote?.price ?? lastBrokerPrice.price} USD</bdi>
+        {marketQuote?.price ? <> · Yahoo Finance{marketQuote.asOf && <> · <bdi>{new Date(marketQuote.asOf).toLocaleString('de-DE',{timeZone:'Europe/Berlin'})}</bdi></>}</> :
+          <> · آخرین ثبت XTB در <bdi>{lastBrokerPrice.observedDate}</bdi></>}
+      </p>}
+      {openTrades.length>valuation.priced&&<p>ارزش کل حساب پس از تکمیل قیمت و سود و زیان موقعیت‌های باز نمایش داده می‌شود.</p>}
       {openTrades.some(t=>t.brokerSnapshot)&&<ul>{openTrades.filter(t=>t.brokerSnapshot).map(t=><li key={t.id}>
         <bdi>{t.plan.symbol} · {t.brokerSnapshot.positionId}</bdi> · خالص گزارش‌شدهٔ XTB <bdi>{signedMoney(t.brokerSnapshot.netCents)}</bdi> در قیمت <bdi>{t.brokerSnapshot.price} {t.plan.currency}</bdi>
       </li>)}</ul>}
