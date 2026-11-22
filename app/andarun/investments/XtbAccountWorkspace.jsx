@@ -1,6 +1,7 @@
 'use client'
 import {useEffect,useRef,useState} from 'react'
 import {todayBerlin,tradeStatus} from '@/lib/investments/family.mjs'
+import {valueXtbAccount} from '@/lib/investments/xtb-risk.mjs'
 import {xtbBalance} from '@/lib/investments/xtb.mjs'
 import {money,signedMoney,percent,parseMoney} from '@/lib/investments/portfolio.mjs'
 import TradeWorkspace from './TradeWorkspace'
@@ -39,7 +40,44 @@ export default function XtbAccountWorkspace({account,owner,trades,tradeProps,dra
   const [tab,setTab]=useState(tradeProps.createOpen||tradeProps.selectedId||openTrades.length?'plans':'transactions')
   useEffect(()=>{if(tradeProps.createOpen||tradeProps.selectedId)setTab('plans')},[tradeProps.createOpen,tradeProps.selectedId])
   const balance=xtbBalance(account,trades)
+  const cacheKey = 'andarun-xtb-equity-v1:' + account?.id
+  const [quotes,setQuotes]=useState({})
+  const [refreshing,setRefreshing]=useState(false)
+  const [quoteError,setQuoteError]=useState('')
+  useEffect(()=>{
+    try { setQuotes(JSON.parse(localStorage.getItem(cacheKey)) || {}) } catch {}
+  },[cacheKey])
+  const valuation=valueXtbAccount(balance?.balanceCents,openTrades,quotes)
+  const hasBrent=openTrades.some(t=>t.plan.product==='cfd'&&t.plan.symbol?.trim().toUpperCase()==='OIL'&&t.plan.currency==='USD')
+  async function refreshEquity(){
+    setRefreshing(true)
+    setQuoteError('')
+    try {
+      const response=await fetch('/api/andarun/investments/market?symbol=BZ%3DF&refresh=1',{cache:'no-store'})
+      if(!response.ok) throw Error('quote')
+      const {quote,fx}=await response.json()
+      if(quote?.symbol!=='BZ=F'||quote.currency!=='USD'||!(quote.price>0)||!(fx?.latest?.rate>0))throw Error('quote')
+      const next={'BZ=F':{price:quote.price,currency:quote.currency,asOf:quote.asOf,eurRate:fx.latest.rate}}
+      setQuotes(next)
+      try { localStorage.setItem(cacheKey,JSON.stringify(next)) } catch {}
+    } catch { setQuoteError('قیمت تازه یا نرخ تبدیل دریافت نشد. آخرین قیمت ذخیره‌شده در صورت وجود نمایش داده می‌شود.') }
+    finally {setRefreshing(false)}
+  }
   return <>
+    {balance&&<section className={view.summary} aria-label={`ارزش XTB ${owner}`}>
+      <div className={view.metrics}>
+        <div><span>ارزش برآوردی حساب</span><strong><bdi>{valuation.equityCents==null?'—':money(valuation.equityCents)}</bdi></strong></div>
+        <div><span>ماندهٔ حساب</span><strong><bdi>{money(balance.balanceCents)}</bdi></strong></div>
+        <div><span>سود و زیان باز برآوردی</span><strong><bdi>{valuation.openCents==null?'—':signedMoney(valuation.openCents)}</bdi></strong></div>
+      </div>
+      {hasBrent&&<button type="button" className={styles.secondaryButton} disabled={refreshing} onClick={refreshEquity}>{refreshing?'در حال دریافت…':'به‌روزرسانی قیمت حساب'}</button>}
+      {openTrades.length>valuation.priced&&<p>برای {openTrades.length-valuation.priced} موقعیت باز، قیمت یا مشخصات کافی برای ارزش‌گذاری موجود نیست.</p>}
+      {quotes['BZ=F']?.asOf&&<p>Yahoo Finance · <bdi>BZ=F · {quotes['BZ=F'].price} USD · {new Date(quotes['BZ=F'].asOf).toLocaleString('de-DE',{timeZone:'Europe/Berlin'})}</bdi> · تعدیلات ثبت‌شدهٔ XTB</p>}
+      {openTrades.some(t=>t.brokerSnapshot)&&<ul>{openTrades.filter(t=>t.brokerSnapshot).map(t=><li key={t.id}>
+        <bdi>{t.plan.symbol} · {t.brokerSnapshot.positionId}</bdi> · خالص گزارش‌شدهٔ XTB <bdi>{signedMoney(t.brokerSnapshot.netCents)}</bdi> در قیمت <bdi>{t.brokerSnapshot.price} {t.plan.currency}</bdi>
+      </li>)}</ul>}
+      {quoteError&&<p role="status">{quoteError}</p>}
+    </section>}
     <nav aria-label="بازارهای XTB" className={styles.buttonRow}>
       {chartTrade&&<button type="button" className={styles.secondaryButton} aria-pressed={!watchMarket} onClick={()=>setMarketSymbol(null)}>موقعیت‌های حساب</button>}
       {xtbMarkets.map(market=><button key={market.symbol} type="button" className={styles.secondaryButton} aria-pressed={(watchMarket?.symbol??(!chartTrade?'US100':null))===market.symbol} onClick={()=>setMarketSymbol(market.symbol)}>{market.name} · <bdi>{market.symbol}</bdi></button>)}
@@ -59,7 +97,7 @@ export default function XtbAccountWorkspace({account,owner,trades,tradeProps,dra
     </>}
     {!balance?<section className={view.wallet}><Icon name="trading" size={40}/><h2>موجودی XTB ثبت نشده است</h2></section>:<>
     <section className={view.summary} aria-label={`موجودی XTB ${owner}`}><div className={view.metrics}>
-      <div><span>موجودی حساب</span><strong><bdi>{money(balance.balanceCents)}</bdi></strong><small>موجودی پس از معاملات بسته‌شده</small></div>
+
       <div><span>سرمایهٔ اولیه</span><strong><bdi>{money(balance.openingCents)}</bdi></strong></div>
       <div><span>سود و زیان بسته‌شده</span><strong className={balance.profitCents<0?view.negative:view.positive}><bdi>{signedMoney(balance.profitCents)}</bdi></strong><small><bdi>{percent(balance.returnPercent)}</bdi> نسبت به سرمایهٔ اولیه</small></div>
     </div></section>
