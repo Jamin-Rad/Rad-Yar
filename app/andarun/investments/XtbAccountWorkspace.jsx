@@ -2,7 +2,7 @@
 import {useEffect,useRef,useState} from 'react'
 import {todayBerlin,tradeStatus} from '@/lib/investments/family.mjs'
 import {readChartHistory} from '@/lib/investments/local-asset-chart.mjs'
-import {valueXtbAccount} from '@/lib/investments/xtb-risk.mjs'
+import {valueXtbAccount,xtbExposure} from '@/lib/investments/xtb-risk.mjs'
 import {xtbBalance} from '@/lib/investments/xtb.mjs'
 import {money,signedMoney,percent,parseMoney} from '@/lib/investments/portfolio.mjs'
 import TradeWorkspace from './TradeWorkspace'
@@ -11,7 +11,7 @@ import dynamic from 'next/dynamic'
 const InvestmentPositionChart = dynamic(() => import('./InvestmentPositionChart'), { loading: () => <p role="status">در حال آماده‌سازی نمودار…</p> })
 import Icon from './InvestmentIcon'
 import styles from './investments.module.css'
-import view from './AccountView.module.css'
+import desk from './XtbDesk.module.css'
 
 const LABELS={deposit:'واریز',withdrawal:'برداشت',realized:'سود و زیان بسته‌شده'}
 export function XtbEntryDialog({account,onClose,onSave}) {
@@ -31,7 +31,7 @@ export function XtbEntryDialog({account,onClose,onSave}) {
   </form></dialog>
 }
 
-export default function XtbAccountWorkspace({account,owner,trades,tradeProps,drawings,onDrawings}) {
+export default function XtbAccountWorkspace({dark=true,account,owner,trades,tradeProps,drawings,onDrawings}) {
   const ownTrades=trades.filter(t=>t.ownerId===account?.id)
   const openTrades=ownTrades.filter(t=>tradeStatus(t)==='open')
   const [chartId,setChartId]=useState(null)
@@ -39,7 +39,7 @@ export default function XtbAccountWorkspace({account,owner,trades,tradeProps,dra
   const executedTrades=ownTrades.filter(t=>t.executions.some(event=>event.kind==='entry'))
   const chartTrade=executedTrades.find(t=>t.id===chartId)||openTrades[0]||executedTrades[0]
   const watchMarket=xtbMarkets.find(market=>market.symbol===marketSymbol)??(!chartTrade?xtbMarkets[0]:null)
-  const [tab,setTab]=useState(tradeProps.createOpen||tradeProps.selectedId||openTrades.length?'plans':'transactions')
+  const [tab,setTab]=useState(tradeProps.createOpen||tradeProps.selectedId?'plans':account?'positions':'chart')
   useEffect(()=>{if(tradeProps.createOpen||tradeProps.selectedId)setTab('plans')},[tradeProps.createOpen,tradeProps.selectedId])
   const balance=xtbBalance(account,trades)
   const cacheKey = 'andarun-xtb-equity-v1:' + account?.id
@@ -77,26 +77,72 @@ export default function XtbAccountWorkspace({account,owner,trades,tradeProps,dra
     } catch { setQuoteError('قیمت تازه یا نرخ تبدیل دریافت نشد. آخرین قیمت ذخیره‌شده در صورت وجود نمایش داده می‌شود.') }
     finally {setRefreshing(false)}
   }
-  return <>
-    {balance&&<section className={view.summary} aria-label={`ارزش XTB ${owner}`}>
-      <div className={view.metrics}>
+  function showTrade(trade) {
+    tradeProps.onCreateOpen(false)
+    tradeProps.onSelect(trade.id)
+    setTab('plans')
+  }
+  function showChart(trade) {
+    setChartId(trade.id)
+    setMarketSymbol(null)
+    setTab('chart')
+  }
+  const tabs = [
+    ['positions','موقعیت‌های باز',openTrades.length],
+    ['chart','نمودار و بازارها'],
+    ['plans','سفارش‌ها و سابقهٔ معاملات'],
+    ['transactions','گردش حساب'],
+  ]
+  function moveTab(event,index) {
+    const steps = { ArrowLeft:1, ArrowRight:-1, Home:-index, End:tabs.length-1-index }
+    if (!(event.key in steps)) return
+    event.preventDefault()
+    const next = tabs[(index + steps[event.key] + tabs.length) % tabs.length][0]
+    setTab(next)
+    document.getElementById('xtb-tab-'+next)?.focus()
+  }
+  return <div className={desk.workspace} data-theme={dark?'dark':'light'}>
+    {balance && <section className={desk.summary} aria-label={`ارزش XTB ${owner}`}>
+      <div className={desk.metrics}>
         <div><span>ارزش برآوردی حساب</span><strong><bdi>{valuation.equityCents==null?'—':money(valuation.equityCents)}</bdi></strong></div>
         <div><span>ماندهٔ حساب</span><strong><bdi>{money(balance.balanceCents)}</bdi></strong></div>
-        <div><span>سود و زیان باز برآوردی</span><strong><bdi>{valuation.openCents==null?'—':signedMoney(valuation.openCents)}</bdi></strong></div>
+        <div><span>سود و زیان باز برآوردی</span><strong data-sign={Math.sign(valuation.openCents)}><bdi>{valuation.openCents==null?'—':signedMoney(valuation.openCents)}</bdi></strong></div>
+        <div><span>سود و زیان بسته‌شده</span><strong data-sign={Math.sign(balance.profitCents)}><bdi>{signedMoney(balance.profitCents)}</bdi></strong></div>
       </div>
-      {hasBrent&&<button type="button" className={styles.secondaryButton} disabled={refreshing} onClick={refreshEquity}>{refreshing?'در حال دریافت…':'به‌روزرسانی قیمت حساب'}</button>}
-      {hasBrent&&(marketQuote?.price||lastBrokerPrice)&&<p>
-        آخرین قیمت بازار <bdi>OIL · {marketQuote?.price ?? lastBrokerPrice.price} USD</bdi>
-        {marketQuote?.price ? <> · Yahoo Finance{marketQuote.asOf && <> · <bdi>{new Date(marketQuote.asOf).toLocaleString('de-DE',{timeZone:'Europe/Berlin'})}</bdi></>}</> :
-          <> · آخرین ثبت XTB در <bdi>{lastBrokerPrice.observedDate}</bdi></>}
-      </p>}
-      {openTrades.length>valuation.priced&&<p>ارزش کل حساب پس از تکمیل قیمت و سود و زیان موقعیت‌های باز نمایش داده می‌شود.</p>}
-      {openTrades.some(t=>t.brokerSnapshot)&&<ul>{openTrades.filter(t=>t.brokerSnapshot).map(t=><li key={t.id}>
-        <bdi>{t.plan.symbol} · {t.brokerSnapshot.positionId}</bdi> · خالص گزارش‌شدهٔ XTB <bdi>{signedMoney(t.brokerSnapshot.netCents)}</bdi> در قیمت <bdi>{t.brokerSnapshot.price} {t.plan.currency}</bdi>
-      </li>)}</ul>}
+      {hasBrent && <div className={desk.quote}>
+        <span>آخرین قیمت بازار <bdi>OIL · {marketQuote?.price ?? lastBrokerPrice?.price ?? '—'} USD</bdi>
+          {marketQuote?.asOf ? <> · Yahoo Finance · <bdi>{new Date(marketQuote.asOf).toLocaleString('de-DE',{timeZone:'Europe/Berlin'})}</bdi></> :
+            lastBrokerPrice && <> · ثبت XTB در <bdi>{lastBrokerPrice.observedDate}</bdi></>}
+        </span>
+        <button type="button" className={desk.action} disabled={refreshing} onClick={refreshEquity}><Icon name="refresh" size={16}/>{refreshing?'در حال دریافت…':'به‌روزرسانی قیمت حساب'}</button>
+      </div>}
+      {openTrades.length>valuation.priced&&<p>ارزش کل حساب پس از تکمیل قیمت موقعیت‌های باز نمایش داده می‌شود.</p>}
       {quoteError&&<p role="status">{quoteError}</p>}
     </section>}
-    <nav aria-label="بازارهای XTB" className={styles.buttonRow}>
+    <div className={desk.tabs} role="tablist" aria-label="بخش‌های حساب XTB">{tabs.map(([key,label,count],index)=>
+      <button key={key} type="button" role="tab" id={'xtb-tab-'+key} aria-controls="xtb-panel" aria-selected={tab===key} tabIndex={tab===key?0:-1}
+        onKeyDown={event=>moveTab(event,index)} onClick={()=>setTab(key)}>{label}{count!=null&&<b>{count.toLocaleString('fa-IR')}</b>}</button>)}</div>
+    <div id="xtb-panel" role="tabpanel" aria-labelledby={'xtb-tab-'+tab}>
+    {tab==='positions' && <section className={desk.panel}>
+      <div className={desk.heading}><h2>موقعیت‌های باز</h2><button type="button" className={desk.action} onClick={()=>{tradeProps.onSelect(null);tradeProps.onCreateOpen(true);setTab('plans')}}><Icon name="plus" size={16}/>برنامهٔ جدید</button></div>
+      {openTrades.length ? <div className={desk.scroll}><table className={desk.table}>
+        <thead><tr>{['نماد و موقعیت','حجم باز','میانگین ورود','حد ضرر / حد سود','سود و زیان باز',''].map((label,i)=><th key={i} scope="col">{label}</th>)}</tr></thead>
+        <tbody>{openTrades.map(trade=>{
+          const exposure=xtbExposure(trade)
+          const result=valueXtbAccount(null,[trade],quotes).openCents
+          return <tr key={trade.id}><td><strong><bdi>{trade.plan.symbol}</bdi> · {trade.plan.direction==='short'?'فروش':'خرید'}</strong><small><bdi>{trade.brokerSnapshot?.positionId || trade.plan.name}</bdi></small></td>
+            <td><bdi>{Number(exposure.volume.toFixed(8))}</bdi></td><td><bdi>{exposure.entry?.toLocaleString('en-US',{maximumFractionDigits:6}) ?? '—'} {trade.plan.currency}</bdi></td>
+            <td><bdi>{trade.plan.stopPrice ?? '—'} / {trade.plan.targetPrice ?? '—'}</bdi></td>
+            <td><bdi data-sign={Math.sign(result)}>{result==null?'—':signedMoney(result)}</bdi>
+              {trade.brokerSnapshot && <details className={desk.snapshot}><summary>آخرین ثبت XTB</summary>
+                <small><bdi>{signedMoney(trade.brokerSnapshot.netCents)}</bdi> در <bdi>{trade.brokerSnapshot.price} {trade.plan.currency}</bdi></small>
+                <small><bdi>{trade.brokerSnapshot.observedDate}</bdi></small>
+              </details>}</td>
+            <td><div className={desk.actions}><button className={desk.action} onClick={()=>showChart(trade)}>نمودار</button><button className={desk.action} onClick={()=>showTrade(trade)}>جزئیات</button></div></td></tr>
+        })}</tbody></table></div> : <p>موقعیت بازی برای این حساب ثبت نشده است.</p>}
+    </section>}
+    {tab==='chart' && <>
+    <nav aria-label="بازارهای XTB" className={desk.markets}>
       {chartTrade&&<button type="button" className={styles.secondaryButton} aria-pressed={!watchMarket} onClick={()=>setMarketSymbol(null)}>موقعیت‌های حساب</button>}
       {xtbMarkets.map(market=><button key={market.symbol} type="button" className={styles.secondaryButton} aria-pressed={(watchMarket?.symbol??(!chartTrade?'US100':null))===market.symbol} onClick={()=>setMarketSymbol(market.symbol)}>{market.name} · <bdi>{market.symbol}</bdi></button>)}
     </nav>
@@ -108,19 +154,16 @@ export default function XtbAccountWorkspace({account,owner,trades,tradeProps,dra
     {chartTrade && !watchMarket && <>
       {executedTrades.length > 1 && <label className={styles.field}>موقعیت روی نمودار
         <select value={chartTrade.id} onChange={event=>setChartId(event.target.value)}>
-          {executedTrades.map(trade=><option key={trade.id} value={trade.id}>{trade.plan.name} · {trade.plan.planDate}</option>)}
+          {executedTrades.map(trade=><option key={trade.id} value={trade.id}>{trade.plan.symbol} · {trade.brokerSnapshot?.positionId || trade.plan.name} · {trade.plan.planDate}</option>)}
         </select>
       </label>}
       <InvestmentPositionChart key={chartTrade.id} trade={chartTrade} symbolTrades={executedTrades.filter(item=>item.plan.symbol===chartTrade.plan.symbol&&item.plan.currency===chartTrade.plan.currency)} onTransaction={tradeStatus(chartTrade)==='open'?kind=>{setTab('plans');tradeProps.onSelect(chartTrade.id);tradeProps.onCreateOpen(false);tradeProps.onExecution(kind)}:undefined} openCount={openTrades.length} drawings={drawings} onDrawings={onDrawings}/>
     </>}
-    {!balance?<section className={view.wallet}><Icon name="trading" size={40}/><h2>موجودی XTB ثبت نشده است</h2></section>:<>
-    <section className={view.summary} aria-label={`موجودی XTB ${owner}`}><div className={view.metrics}>
-
-      <div><span>سرمایهٔ اولیه</span><strong><bdi>{money(balance.openingCents)}</bdi></strong></div>
-      <div><span>سود و زیان بسته‌شده</span><strong className={balance.profitCents<0?view.negative:view.positive}><bdi>{signedMoney(balance.profitCents)}</bdi></strong><small><bdi>{percent(balance.returnPercent)}</bdi> نسبت به سرمایهٔ اولیه</small></div>
-    </div></section>
-    <div className={view.tabs} role="tablist" aria-label="بخش‌های حساب XTB">{[['transactions','تراکنش‌ها'],['plans','برنامه‌های معامله']].map(([key,label])=><button type="button" role="tab" id={`xtb-tab-${key}`} aria-controls="xtb-tab-panel" tabIndex={tab===key?0:-1} key={key} aria-selected={tab===key} onKeyDown={e=>{if(['ArrowLeft','ArrowRight','Home','End'].includes(e.key)){e.preventDefault();const next=e.key==='Home'?'transactions':e.key==='End'?'plans':tab==='transactions'?'plans':'transactions';setTab(next);document.getElementById(`xtb-tab-${next}`)?.focus()}}} onClick={()=>setTab(key)}>{label}</button>)}</div>
-    <div id="xtb-tab-panel" role="tabpanel" aria-labelledby={`xtb-tab-${tab}`}>{tab==='transactions'?<section className={view.xtbRows}><div className={view.xtbRow}><div><strong>وضعیت مبنا</strong><small><bdi>{account.asOf}</bdi> · سرمایهٔ اولیه <bdi>{money(account.openingCents)}</bdi> · سود بسته‌شده <bdi>{signedMoney(account.balanceCents-account.openingCents)}</bdi></small></div><strong><bdi>{money(account.balanceCents)}</bdi></strong></div>{balance.rows.map(row=><div key={row.id} className={view.xtbRow}><div><strong>{LABELS[row.kind]}</strong><small><bdi>{row.date}</bdi>{row.note&&<> · {row.note}</>}</small></div><strong className={row.deltaCents<0?view.negative:view.positive}><bdi>{signedMoney(row.deltaCents)}</bdi></strong></div>)}{!balance.rows.length&&<p className={view.empty}>تراکنش جدیدی پس از این وضعیت ثبت نشده است.</p>}</section>:<TradeWorkspace {...tradeProps} compact trades={ownTrades} settings={{xtbEquityCents:balance.balanceCents}}/>}</div>
     </>}
-  </>
+    {tab==='plans' && <TradeWorkspace {...tradeProps} compact trades={ownTrades} settings={{xtbEquityCents:balance?.balanceCents}} onChart={showChart}/>}
+    {tab==='transactions' && (balance ? <section className={desk.panel}><h2>گردش حساب</h2>
+    <p>سرمایهٔ اولیه <bdi>{money(balance.openingCents)}</bdi> · بازده بسته‌شده <bdi>{balance.returnPercent==null?'—':percent(balance.returnPercent)}</bdi></p>
+    <div className={desk.cashRow}><div><strong>وضعیت مبنا</strong><small><bdi>{account.asOf}</bdi> · سرمایهٔ اولیه <bdi>{money(account.openingCents)}</bdi> · سود بسته‌شده <bdi>{signedMoney(account.balanceCents-account.openingCents)}</bdi></small></div><strong><bdi>{money(account.balanceCents)}</bdi></strong></div>{balance.rows.map(row=><div key={row.id} className={desk.cashRow}><div><strong>{LABELS[row.kind]}</strong><small><bdi>{row.date}</bdi>{row.note&&<> · {row.note}</>}</small></div><strong data-sign={Math.sign(row.deltaCents)}><bdi>{signedMoney(row.deltaCents)}</bdi></strong></div>)}{!balance.rows.length&&<p>تراکنش جدیدی پس از این وضعیت ثبت نشده است.</p>}</section> : <p>موجودی مبنای این حساب ثبت نشده است.</p>)}
+    </div>
+  </div>
 }
