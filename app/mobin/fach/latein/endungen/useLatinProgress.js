@@ -148,7 +148,10 @@ export default function useLatinProgress() {
   }
 
   function saveResult(mode, mistakes, unanswered, answers) {
-    const result = { id: crypto.randomUUID(), date: Date.now(), mode, mistakes, unanswered, answers }
+    // One immutable database result per Probe-KA round, including its single review.
+    const probe = /^probe24-([1-7])(-review)?$/.exec(mode)
+    const id = probe ? `00000000-0024-4000-8000-${String(Number(probe[1]) * 2 + Number(Boolean(probe[2]))).padStart(12, '0')}` : crypto.randomUUID()
+    const result = { id, date: Date.now(), mode, mistakes, unanswered, answers }
     const previous = current.current
     pending.current.set(result.id, { result })
     store({ ...previous, results: [result, ...previous.results] })

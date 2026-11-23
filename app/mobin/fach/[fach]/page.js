@@ -34,6 +34,7 @@ export default async function FachPage({ params }) {
       <main className={latin.home} lang="de">
         <Link className={latin.back} href="/mobin?bereich=1">← Mobin</Link>
         <h1>{title}</h1>
+          <Link className={latin.topic} href="/mobin/fach/latein/probe-ka"><span><strong>Probe-KA · 24. November</strong><small>Endungen & Römisches Reich · 5 Übungen und 2 Prüfungen</small></span><span aria-hidden="true">→</span></Link>
         <Link className={latin.topic} href="/mobin/fach/latein/endungen">
           <span><strong>Endungen</strong><small>Präsens, esse und Akkusativ</small></span>
           <span className={latin.arrow} aria-hidden="true">→</span>

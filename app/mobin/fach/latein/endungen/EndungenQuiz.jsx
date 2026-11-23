@@ -335,7 +335,7 @@ export default function EndungenQuiz() {
       <section className={styles.roundGroup} key={kind} aria-labelledby={`latein-${kind}`}>
         <h2 id={`latein-${kind}`}>{label}</h2>
         <div className={styles.rounds}>
-        {Object.entries(rounds).filter(([, round]) => (round.kind ?? 'test') === kind).map(([key, round]) => (
+        {Object.entries(rounds).filter(([key]) => !key.startsWith('probe24-')).filter(([, round]) => (round.kind ?? 'test') === kind).map(([key, round]) => (
           <button className={styles.roundCard} data-mode={key} key={key} disabled={status === 'loading' || opening} onClick={() => openRound(key)}>
             <span className={styles.badge} aria-hidden="true">{marks[key]}</span>
             <span className={styles.detail}>{round.detail}</span>
@@ -353,7 +353,7 @@ export default function EndungenQuiz() {
         <section className={styles.panel} aria-labelledby="latin-results">
           <h2 id="latin-results">Deine Ergebnisse</h2>
           <ul className={styles.review}>
-            {results.map(({ id, mode, date, mistakes, unanswered = 0 }) => {
+            {results.filter(r => !r.mode.startsWith('probe24-')).map(({ id, mode, date, mistakes, unanswered = 0 }) => {
               const total = rounds[mode].questions.length
               return <li className={styles.resultRow} key={id}>
                 <div><button className={styles.textButton} onClick={() => go(base + '/auswertung/' + id)}>{rounds[mode].title} · {total - mistakes.length - unanswered}/{total}</button>

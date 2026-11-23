@@ -1,5 +1,6 @@
 import { expandGermanLetters } from '@/lib/mobinAnswerText'
 
+import { probeRounds } from './probeQuestions'
 const present = 'Personalendungen'
 const esse = 'esse'
 const cases = 'Nominativ & Akkusativ'
@@ -89,6 +90,7 @@ const quick = [
 ]
 
 export const rounds = {
+  ...probeRounds,
   training: { kind: 'training', title: 'Endungen trainieren', questions: training, detail: '20 Aufgaben · 10 mittel, 10 schwer', description: 'Übe mit Merkhilfe und einer Erklärung nach jeder Antwort.' },
   extra: { kind: 'training', title: 'Endungen vertiefen', questions: extraTraining, detail: '20 neue Aufgaben · 10 mittel, 10 schwer', description: 'Wechsle die Person und bestimme die Rolle eines Worts im Satz.' },
   quick: { title: 'Kurztest · Endungen', questions: quick, detail: '5 Aufgaben', description: 'Prüfe in einer kurzen Runde, welche Endungen du schon sicher kannst.' },

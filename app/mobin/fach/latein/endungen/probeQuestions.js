@@ -1,0 +1,25 @@
+const q=(topic,prompt,example,answer,explanation,options)=>({topic,prompt,example,answer,explanation,options})
+const people=['ich','du','er/sie/es','wir','ihr','sie (Plural)']
+const verbs=[['salutare','begrüßen',['saluto','salutas','salutat','salutamus','salutatis','salutant']],['exspectare','warten',['exspecto','exspectas','exspectat','exspectamus','exspectatis','exspectant']],['timere','fürchten',['timeo','times','timet','timemus','timetis','timent']],['venire','kommen',['venio','venis','venit','venimus','venitis','veniunt']],['clamare','rufen',['clamo','clamas','clamat','clamamus','clamatis','clamant']],['parare','vorbereiten',['paro','paras','parat','paramus','paratis','parant']],['esse','sein',['sum','es','est','sumus','estis','sunt']],['audire','hören',['audio','audis','audit','audimus','auditis','audiunt']]]
+const verbQuestions=verbs.flatMap(([inf,meaning,forms],v)=>forms.map((answer,i)=>q('Personalendungen',`Bilde die Form für „${people[i]}“. Schreibe nur die Verbform.`,`${inf} · ${meaning}`,answer,`${people[i]}: ${answer}. ${inf==='esse'?'Esse bildet unregelmäßige Formen.':`Personalendung: ${['-o','-s','-t','-mus','-tis','-nt'][i]}.`}`, (v+i)%2 ? undefined : [answer,forms[(i+1)%6],forms[(i+2)%6],forms[(i+3)%6]])))
+const nouns=[['amica',['amica','amicam','amicae','amicas']],['serva',['serva','servam','servae','servas']],['villa',['villa','villam','villae','villas']],['provincia',['provincia','provinciam','provinciae','provincias']],['amicus',['amicus','amicum','amici','amicos']],['servus',['servus','servum','servi','servos']],['equus',['equus','equum','equi','equos']],['donum',['donum','donum','dona','dona']],['periculum',['periculum','periculum','pericula','pericula']]]
+const cases=['Nominativ Singular','Akkusativ Singular','Nominativ Plural','Akkusativ Plural']
+const nounQuestions=nouns.flatMap(([word,forms],n)=>forms.map((answer,i)=>q('Nominativ & Akkusativ',`Bilde den ${cases[i]}.`,word,answer,`${word}: ${cases[i]} lautet ${answer}.${n>6?' Beim Neutrum sind Nominativ und Akkusativ jeweils gleich.':''}`,n%2===0&&n<7?[...forms]:undefined)))
+const facts=[
+ ['Welche Stadt war das Zentrum des Reiches zur Zeit Hadrians?','Rom','Athen','Karthago','Alexandria','Rom war die Hauptstadt des Römischen Reiches.'],
+ ['Wie heißen die Verwaltungsgebiete außerhalb Italiens?','Provinzen','Legionen','Familien','Tempel','Die Gebiete wurden in Provinzen (provinciae) eingeteilt.'],
+ ['Was ist ein procurator im Lesetext?','Ein Verwalter oder Statthalter','Ein Reiter','Ein Diener','Ein Händler','Der Statthalter übernimmt Verwaltungsaufgaben; der Text nennt auch Steuern.'],
+ ['Wer erwartet Flavius Lepidus?','Kaiser Hadrian','Quintus','Aulus','Galla','Der Bote sagt: Imperator Hadrianus te exspectat.'],
+ ['Wohin soll Flavius Lepidus reisen?','Nach Kreta','Nach Spanien','Nach Ägypten','Nach Syrien','Er soll als procurator nach Kreta segeln.'],
+ ['Warum freut sich Flavius Lepidus?','Er verwaltet gern eine Provinz.','Er bleibt in Rom.','Er fürchtet das Meer.','Er bekommt ein Pferd.','Er sagt, dass ihm die Verwaltung einer Provinz gefällt.'],
+ ['Wie reagiert Caecilia auf den Reiseplan?','Sie fürchtet Gefahr.','Sie lacht.','Sie ruft den Kaiser.','Sie schläft.','Periculum timeo bedeutet: Ich fürchte die Gefahr.'],
+ ['Was tun die Diener am Ende?','Sie gehorchen, kommen und bereiten den Wagen vor.','Sie fliehen.','Sie kaufen Seide.','Sie begrüßen Hadrian.','Paremus, venimus und paramus bezeichnen die Tätigkeiten der Diener.'],
+ ['Was bedeutet „Servos exspecto“?','Ich erwarte die Diener.','Die Diener erwarten mich.','Du erwartest den Diener.','Wir erwarten die Diener.','Exspecto ist 1. Person Singular; servos ist Akkusativ Plural.'],
+ ['Welches Wort ist das Subjekt: „Dona amici apportant“?','amici','dona','apportant','Keines','Amici ist Nominativ Plural: Die Freunde bringen Geschenke. Dona ist das Objekt.'],
+ ['Warum ist „dona“ ohne Kontext mehrdeutig?','Nominativ und Akkusativ Plural sind beim Neutrum gleich.','Es ist eine Verbform.','Es kann Singular sein.','Es ist immer Genitiv.','Donum hat im Nominativ und Akkusativ Plural die Form dona.'],
+].map(([prompt,answer,...rest],i)=>{const explanation=rest.pop();const opts=[answer,...rest];const k=i%4;return q('Römisches Reich & Textverständnis',prompt,'Nach deinen Buchseiten 22–24 und „Ein Befehl des Kaisers“.',answer,explanation,[...opts.slice(k),...opts.slice(0,k)])})
+export const probeRounds=Object.fromEntries([15,15,15,15,15,10,10].flatMap((count,i)=>{
+ const id=`probe24-${i+1}`, questions=[...verbQuestions.splice(0,i<5?8:4),...nounQuestions.splice(0,i<5?6:3),...facts.splice(0,i<5?1:3)].map((q,n)=>({q,n})).sort((a,b)=>(a.n*7%count)-(b.n*7%count)).map((x,n)=>({...x.q,options:x.q.options?[...x.q.options.slice(n%4),...x.q.options.slice(0,n%4)]:undefined})), title=i<5?`Übung ${i+1}`:`Prüfung ${i-4}`
+ const entry={title,kind:i<5?'training':'test',questions,detail:`${count} Aufgaben`,description:'Ein Versuch und einmalige Fehlerwiederholung.'}
+ return [[id,entry],[`${id}-review`,{...entry,title:`${title} · Fehlerwiederholung`}]]
+}))
