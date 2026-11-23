@@ -30,7 +30,15 @@ export default function Probe(){
   window.addEventListener('keydown',keydown)
   return()=>window.removeEventListener('keydown',keydown)
  })
- useEffect(()=>{form.current?.querySelector('input:not([type=radio])')?.focus();form.current?.scrollIntoView({block:'start',behavior:'instant'})},[mode,draft.index])
+ useEffect(()=>{
+  if(p.status==='loading'||result||!question)return
+  const frame=requestAnimationFrame(()=>{
+   const input=form.current?.querySelector('input[type=text]')
+   if(input&&!input.disabled)input.focus({preventScroll:true})
+   form.current?.scrollIntoView({block:'start',behavior:'instant'})
+  })
+  return()=>cancelAnimationFrame(frame)
+ },[mode,draft.index,p.status==='loading',Boolean(result),Boolean(question?.options),Boolean(draft.checked[draft.index])])
  if(p.status==='loading')return <main className={ui.root}><p role="status">Lernstand wird geladen …</p></main>
  function save(value){p.saveDraft(mode,{...draft,answers:{...draft.answers,[draft.index]:value}})}
  function submit(e){e.preventDefault();if(!answer.trim())return
@@ -44,15 +52,15 @@ export default function Probe(){
  ['Schritt 1 · Üben','Fünf Runden mit direkter Erklärung nach jeder Antwort.',ids.slice(0,5)],
  ['Schritt 2 · Prüfungen','Nach den fünf Übungen freigeschaltet. Auswertung am Ende.',ids.slice(5,7)],
  ['Extra · Im Satz anwenden','Freiwillige Vertiefung mit bekannten Wörtern.',ids.slice(7)],
- ].map(([title,detail,list])=><section key={title}><h2>{title}</h2><p>{detail}</p><div className={ui.cards}>{list.map(id=>{
+ ].map(([title,detail,list])=><section key={title} data-section={title.startsWith('Schritt 2')?'tests':title.startsWith('Extra')?'extra':'practice'}><h2>{title}</h2><p>{detail}</p><div className={ui.cards}>{list.map(id=>{
  const r=probeRounds[id],done=p.results.find(x=>x.mode===id),again=p.results.find(x=>x.mode===id+'-review'),d=p.drafts[id]?.draft
  const locked=r.kind==='test'&&ids.slice(0,5).some(key=>!p.results.some(x=>x.mode===key))
  return <button className={ui.roundCard} disabled={locked} key={id} onClick={()=>open(id)}><span className={ui.cardMeta}>{r.questions.length} Aufgaben · {locked?'Noch gesperrt':done?'Abgeschlossen':d?'In Bearbeitung':'Bereit'}</span><strong>{r.title}</strong><span>{done?'Ergebnis 1: '+(r.questions.length-done.mistakes.length)+'/'+r.questions.length:r.kind==='training'?'Mit Erklärungen nach jeder Antwort':'Ohne Hinweise während der Prüfung'}</span>{again&&<span>Ergebnis 2: {done.mistakes.length-again.mistakes.length}/{done.mistakes.length}</span>}<b>{done?'Ergebnisse ansehen':d?'Fortsetzen':'Starten'} →</b></button>
  })}</div></section>)}</div>:<section className={s.panel}><button onClick={()=>{void p.flush();open(null)}}>← Übersicht</button><h2>{round.title}</h2>
  {result?<><h3>Ergebnis 1: {round.questions.length-first.mistakes.length}/{round.questions.length}</h3>{second&&<h3>Ergebnis 2 · Fehlerwiederholung: {first.mistakes.length-second.mistakes.length}/{first.mistakes.length}</h3>}
  {!second&&first.mistakes.length>0&&<button onClick={()=>open(`${original}-review`)}>Fehler einmal wiederholen</button>}<p>Der erste Versuch ist abgeschlossen und gesperrt.{second?' Auch die Fehlerwiederholung ist abgeschlossen.':''}</p>
- {(review?second:first).mistakes.map(i=><article key={i}><h3>{round.questions[i].prompt}</h3><p>{round.questions[i].example}</p><p>Deine Antwort: {result.answers?.[i]}</p><strong>Richtig: {round.questions[i].answer}</strong><p>{round.questions[i].explanation}</p></article>)}</>:question&&<form ref={form} onSubmit={submit} className={ui.quiz}><div className={ui.quizTop}><span>{question.topic}</span><strong>Aufgabe {at+1} / {indices.length}</strong></div><progress max={indices.length} value={at} aria-label="Fortschritt"/><h3>{question.prompt}</h3><p>{question.example}</p>{question.options?<fieldset disabled={feedback||draft.checked[draft.index]}><legend>Deine Antwort · Taste 1–4 zum Auswählen</legend>{question.options.map((o,i)=><label key={o} className={answer===o?ui.selected:undefined}><kbd>{i+1}</kbd><input type="radio" name="answer" checked={answer===o} onChange={()=>save(o)}/>{o}</label>)}</fieldset>:<label>Deine Antwort<input value={answer} disabled={feedback||draft.checked[draft.index]} onChange={e=>save(e.target.value)} maxLength={240} autoComplete="off" autoCorrect="off" spellCheck={false}/></label>}
+ {(review?second:first).mistakes.map(i=><article key={i}><h3>{round.questions[i].prompt}</h3><p>{round.questions[i].example}</p><p>Deine Antwort: {result.answers?.[i]}</p><strong>Richtig: {round.questions[i].answer}</strong><p>{round.questions[i].explanation}</p></article>)}</>:question&&<form ref={form} onSubmit={submit} className={ui.quiz}><div className={ui.quizTop}><span>{question.topic}</span><strong>Aufgabe {at+1} / {indices.length}</strong></div><progress max={indices.length} value={at} aria-label="Fortschritt"/><div className={ui.questionIntro}><span>Deine Aufgabe</span><h3>{question.prompt}</h3><p>{question.example}</p><small>{review?'Fehlerwiederholung · ein Versuch':round.kind==='training'?'Prüfe deine Antwort und lies die Erklärung.':'Die Lösungen erscheinen nach der Abgabe.'}</small></div><div className={ui.answerArea}>{question.options?<fieldset disabled={feedback||draft.checked[draft.index]}><legend>Deine Antwort · Taste 1–4 zum Auswählen</legend>{question.options.map((o,i)=><label key={o} className={answer===o?ui.selected:undefined}><kbd>{i+1}</kbd><input type="radio" name="answer" checked={answer===o} onChange={()=>save(o)}/>{o}</label>)}</fieldset>:<label>Deine Antwort<input key={`${mode}-${draft.index}`} type="text" autoFocus value={answer} disabled={feedback||draft.checked[draft.index]} onChange={e=>save(e.target.value)} maxLength={240} autoComplete="off" autoCorrect="off" spellCheck={false}/></label>}
  {(feedback||draft.checked[draft.index])&&<div className={isCorrect(question,answer)?ui.correct:ui.incorrect} role="status"><strong>{isCorrect(question,answer)?'Richtig!':'Noch nicht richtig.'}</strong><p>{question.explanation}</p></div>}
- <p className={ui.keyboardHint}>1–4: Option wählen · Enter: prüfen / weiter</p><button className={ui.primary} disabled={!answer.trim()} onClick={()=>{if(draft.checked[draft.index])setFeedback(true)}}>{round.kind==='training'&&!review&&!feedback&&!draft.checked[draft.index]?'Antwort prüfen':at===indices.length-1?'Ergebnis anzeigen':'Weiter'}</button></form>}
+ <p className={ui.keyboardHint}>1–4: Option wählen · Enter: prüfen / weiter</p><button className={ui.primary} disabled={!answer.trim()} onClick={()=>{if(draft.checked[draft.index])setFeedback(true)}}>{round.kind==='training'&&!review&&!feedback&&!draft.checked[draft.index]?'Antwort prüfen':at===indices.length-1?'Ergebnis anzeigen':'Weiter'}</button></div></form>}
  </section>}</div></main>
 }

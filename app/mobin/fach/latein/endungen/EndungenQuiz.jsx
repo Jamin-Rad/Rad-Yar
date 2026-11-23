@@ -161,7 +161,7 @@ function Round({ mode, subset, initialDraft, onDraft, onExit, onResult, syncStat
           ) : (
             <label className={styles.inputLabel}>
               Deine Antwort
-              <input ref={answerInput} key={index} className={styles.input} value={answer}
+              <input ref={answerInput} key={`${mode}-${index}`} type="text" autoFocus={!marked} className={styles.input} value={answer}
                 onChange={(event) => updateDraft({ answers: { ...answers, [index]: event.target.value } })}
                 readOnly={marked} maxLength={240} autoComplete="off" autoCapitalize="none" spellCheck={false} />
             </label>
