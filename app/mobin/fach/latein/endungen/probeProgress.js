@@ -1,6 +1,6 @@
 import { isCorrect, rounds } from './questions'
 export const probeId = mode => {
- const m=/^probe24-([1-8])(-review)?$/.exec(mode)
+ const m=/^probe24-([1-9]|1[0-7])(-review)?$/.exec(mode)
  return m ? `00000000-0024-4000-8000-${String(Number(m[1])*2+Number(Boolean(m[2]))).padStart(12,'0')}` : null
 }
 // Earlier confirmed answers and the furthest reached question cannot be rewound by a stale device.

@@ -44,3 +44,72 @@ const transferRows=[
 const transfer={title:'Zusatzübung · Endungen im Satz',kind:'training',questions:transferRows.map(([prompt,example,answer,explanation,options])=>q('Anwendung im Satz',prompt,example,answer,explanation,options)),detail:'15 zusätzliche Aufgaben',description:'Freiwillig · bekannte Wörter in neuen Aufgaben.'}
 probeRounds['probe24-8']=transfer
 probeRounds['probe24-8-review']={...transfer,title:'Zusatzübung · Fehlerwiederholung'}
+
+// Published attempts retain their original question order for grading and review.
+function addRound(number, title, kind, questions) {
+ const round = {title, kind, questions, detail: questions.length + ' Aufgaben'}
+ probeRounds['probe24-' + number] = round
+ probeRounds['probe24-' + number + '-review'] = {...round, title: title + ' · Fehlerwiederholung'}
+}
+
+const wordGroups = [
+ [
+  ['eques','der Reiter'], ['statim','sofort'], ['rogare','fragen'], ['unde','woher'],
+  ['respondere','antworten'], ['nuntius','der Bote'], ['debere','müssen'], ['ego','ich'],
+  ['me','mich'], ['audire','hören'], ['imperator','der Kaiser'], ['tu','du'],
+  ['te','dich'], ['iubere','befehlen'], ['hic','hier'],
+ ],
+ [
+  ['in','nach'], ['insula','die Insel'], ['navigare','segeln'], ['valde','sehr'],
+  ['provincia','die Provinz'], ['administrare','verwalten'], ['periculum','die Gefahr'],
+  ['vocare','rufen'], ['parere','gehorchen'], ['parare','vorbereiten'], ['lacrima','die Träne'],
+  ['tenere','halten'], ['apportare','bringen'], ['equus','das Pferd'], ['nunc','jetzt'],
+ ],
+]
+for (const [group, words] of wordGroups.entries()) {
+ const questions = words.map(([latin, german], i) => {
+  const clue = latin === 'in' ? 'nach (Richtung, mit Akkusativ)' : german
+  const explanation = '„' + latin + '“ bedeutet hier „' + german + '“.'
+  if (i % 2) return q('Wortschatz · Lektion 3','Schreibe das lateinische Wort.',clue,latin,explanation)
+  const choices = [0, 3, 7, 10].map(offset => words[(i + offset) % words.length][1])
+  return q('Wortschatz · Lektion 3','Welche Bedeutung passt?',latin,german,explanation,[...choices.slice(i%4), ...choices.slice(0,i%4)])
+ })
+ addRound(9+group, ['Boten und Befehle','Reise und Verwaltung'][group], 'training', questions)
+}
+
+const examVocabulary = [
+ [
+  ['Unde venis?','Welches deutsche Fragewort passt?','Woher','Wohin','Warum','Wann','Unde fragt nach der Herkunft.'],
+  ['Statim responde!','Welches Wort bedeutet „sofort“?','statim'],
+  ['Imperator me vocat.','Wen ruft der Kaiser?','mich','dich','uns','euch','Me bezeichnet die sprechende Person als Objekt.'],
+  ['Nuntius respondet.','Schreibe den Infinitiv für „antworten“.','respondere'],
+  ['Flavius provinciam administrat.','Was tut Flavius mit der Provinz?','Er verwaltet sie.','Er verlässt sie.','Er gründet sie.','Er teilt sie.','Administrare heißt verwalten.'],
+  ['Periculum timeo.','Schreibe das lateinische Nomen für „Gefahr“.','periculum'],
+ ],
+ [
+  ['Eques equum videt.','Was bedeutet das erste Wort?','der Reiter','das Pferd','der Wagen','der Kaiser','Eques ist der Reiter, equus das Pferd.'],
+  ['Der Kaiser befiehlt.','Schreibe den Infinitiv für „befehlen“.','iubere'],
+  ['In insulam navigamus.','Wie reisen wir zur Insel?','mit dem Schiff','zu Pferd','im Wagen','zu Fuß','Navigare heißt segeln oder mit dem Schiff fahren.'],
+  ['Die Diener gehorchen.','Schreibe den Infinitiv für „gehorchen“.','parere'],
+  ['Valde gaudeo.','Welches Wort gibt valde wieder?','sehr','schon','hier','sofort','Valde verstärkt gaudeo: Ich freue mich sehr.'],
+  ['Flavia hält eine Träne zurück.','Schreibe das lateinische Nomen für „Träne“ im Nominativ Singular.','lacrima'],
+ ],
+]
+for (const [i, rows] of examVocabulary.entries()) {
+ const vocab = rows.map(([example,prompt,answer,...rest],n) => {
+  const explanation = rest.pop() || ('Die gesuchte Form ist „' + answer + '“.')
+  const choices = [answer,...rest], shift = (n+i)%4
+  return q('Wortschatz · Lektion 3',prompt,example,answer,explanation,rest.length ? [...choices.slice(shift),...choices.slice(0,shift)] : undefined)
+ })
+ const pool = probeRounds['probe24-'+(6+i)].questions
+ const other = ['Personalendungen','Nominativ & Akkusativ','Römisches Reich & Textverständnis'].flatMap(topic=>pool.filter(item=>item.topic===topic).slice(0,2))
+ addRound(11+i,'Prüfung '+(i+1),'test',other.flatMap((item,n)=>[item,vocab[n]]))
+}
+const practicePool = [1,2,3,4,5].flatMap(n=>probeRounds['probe24-'+n].questions)
+const verbItems = practicePool.filter(item=>item.topic==='Personalendungen')
+const nounItems = practicePool.filter(item=>item.topic==='Nominativ & Akkusativ')
+addRound(13,'Personalformen bilden','training',verbItems.slice(0,15))
+addRound(14,'Verben und Personen zuordnen','training',verbItems.slice(15,30))
+addRound(15,'Kasus und Numerus bestimmen','training',nounItems.slice(0,15))
+addRound(16,'Nomen richtig beugen','training',nounItems.slice(15))
+addRound(17,'Verbformen und das Römische Reich','training',[...verbItems.slice(30),...practicePool.filter(item=>item.topic.startsWith('Römisches'))])

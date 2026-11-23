@@ -4,12 +4,13 @@ import {probeRounds} from '../app/mobin/fach/latein/endungen/probeQuestions.js'
 import {probeId,mergeProbeDraft,gradeProbeResult} from '../app/mobin/fach/latein/endungen/probeProgress.js'
 const mode='probe24-1',q=probeRounds[mode].questions
 const entry=(index,answers,checked={},modifiedAt=1)=>({modifiedAt,draft:{index,answers,checked}})
-test('all 110 tasks have explanations and valid options; prior bank IDs stay fixed',()=>{
+test('current and archived tasks have explanations and valid options; prior bank IDs stay fixed',()=>{
  const originals=Object.entries(probeRounds).filter(([id])=>!id.endsWith('-review'))
- assert.equal(originals.length,8)
- assert.equal(originals.reduce((sum,[,r])=>sum+r.questions.length,0),110)
- for(const [id,r]of originals){assert.equal(r.questions.length,/probe24-[67]$/.test(id)?10:15);for(const x of r.questions){assert.ok(x.explanation);if(x.options){assert.equal(new Set(x.options).size,x.options.length);assert.ok(x.options.includes(x.answer))}}}
- assert.equal(new Set(Object.keys(probeRounds).map(probeId)).size,16)
+ assert.equal(originals.length,17)
+ assert.equal(originals.reduce((sum,[,r])=>sum+r.questions.length,0),239)
+ for(const [id,r]of originals){assert.equal(r.questions.length,/probe24-[67]$/.test(id)?10:/probe24-1[12]$/.test(id)?12:15);for(const x of r.questions){assert.ok(x.explanation);if(x.options){assert.equal(new Set(x.options).size,x.options.length);assert.ok(x.options.includes(x.answer))}}}
+ for(const id of ['probe24-11','probe24-12'])assert.equal(probeRounds[id].questions.filter(q=>q.topic.startsWith('Wortschatz')).length,6)
+ assert.equal(new Set(Object.keys(probeRounds).map(probeId)).size,34)
 })
 test('stale device cannot rewind answers or checked feedback',()=>{
  const a=entry(3,{0:'first',1:'second',2:'third',3:'current'},{0:true,1:true,2:true})
