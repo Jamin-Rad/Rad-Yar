@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server'
 import { hasMobinSession } from '@/lib/mobinAuth'
 import { supabaseAdmin } from '@/lib/supabase/server'
 import { validDraft, validResult } from '@/app/mobin/fach/latein/endungen/progress'
+import { probeId, mergeProbeDraft, gradeProbeResult } from '@/app/mobin/fach/latein/endungen/probeProgress'
 
 const prefix = 'mobin-latin-v1:'
 const draftPrefix = prefix + 'draft:'
@@ -67,12 +68,50 @@ export function POST(request) {
     }
     if (results.length) {
       const updated_at = new Date().toISOString()
-      const rows = results.map((result) => ({ id: resultPrefix + result.id, data: result, updated_at }))
+      const rows = []
+      for (let result of results) {
+        if (probeId(result.mode)) {
+          let first
+          if (result.mode.endsWith('-review')) {
+            first = results.find(r => r.mode === result.mode.replace('-review', ''))
+            // The stored first attempt is authoritative, even when another device submits both.
+            const { data, error } = await table.select('data').eq('id', resultPrefix + probeId(result.mode.replace('-review', ''))).maybeSingle()
+            if (error) throw error
+            first = data?.data || (first ? gradeProbeResult(first) : null)
+            if (!first) return reply({ error: 'Zuerst den ersten Versuch speichern.' }, 409)
+          }
+          result = gradeProbeResult(result, first)
+          if (!result) return reply({ error: 'Der Versuch ist nicht vollständig.' }, 400)
+        }
+        rows.push({ id: resultPrefix + result.id, data: result, updated_at })
+      }
       const { error } = await table.upsert(rows, { onConflict: 'id', ignoreDuplicates: true })
       if (error) throw error
     }
     for (const [mode, entry] of drafts) {
       const id = draftPrefix + mode
+      if (probeId(mode)) {
+        for (let attempt = 0; attempt < 4; attempt++) {
+          const { data: previous, error: readError } = await table.select('data,updated_at').eq('id', id).maybeSingle()
+          if (readError) throw readError
+          const merged = mergeProbeDraft(previous?.data, entry)
+          const stamp = new Date(Math.max(Date.now(), (Date.parse(previous?.updated_at) || 0) + 1)).toISOString()
+          if (!previous) {
+            const { error } = await table.insert({ id, data: merged, updated_at: stamp })
+            if (error?.code === '23505') {
+              if (attempt === 3) return reply({ error: 'Bitte erneut synchronisieren.' }, 409)
+              continue
+            }
+            if (error) throw error
+            break
+          }
+          const { data, error } = await table.update({ data: merged, updated_at: stamp }).eq('id', id).eq('updated_at', previous.updated_at).select('id')
+          if (error) throw error
+          if (data?.length) break
+          if (attempt === 3) return reply({ error: 'Bitte erneut synchronisieren.' }, 409)
+        }
+        continue
+      }
       const updated_at = new Date(entry.modifiedAt).toISOString()
       const { error: insertError } = await table.upsert({ id, data: entry, updated_at }, { onConflict: 'id', ignoreDuplicates: true })
       if (insertError) throw insertError

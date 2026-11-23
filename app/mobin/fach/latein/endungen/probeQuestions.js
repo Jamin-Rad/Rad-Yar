@@ -23,3 +23,24 @@ export const probeRounds=Object.fromEntries([15,15,15,15,15,10,10].flatMap((coun
  const entry={title,kind:i<5?'training':'test',questions,detail:`${count} Aufgaben`,description:'Ein Versuch und einmalige Fehlerwiederholung.'}
  return [[id,entry],[`${id}-review`,{...entry,title:`${title} · Fehlerwiederholung`}]]
 }))
+
+const transferRows=[
+ ['Welche Person spricht?','Servos exspecto.','ich','Exspecto endet auf -o: ich erwarte die Diener.',['ich','du','wir','sie (Plural)']],
+ ['Ergänze nur das Verb für „ihr“.','Cur non ___? (venire)','venitis','Ihr kommt heißt venitis; veniunt bedeutet sie kommen.'],
+ ['Wer ruft wen?','Servas vocat matrona.','Die Herrin ruft die Dienerinnen.','Matrona ist Nominativ Singular, servas Akkusativ Plural.',['Die Herrin ruft die Dienerinnen.','Die Dienerinnen rufen die Herrin.','Die Herrinnen rufen die Dienerin.','Die Dienerin ruft die Herrinnen.']],
+ ['Setze nur das Objekt in den Plural.','Amicus donum apportat.','dona','Donum ist Neutrum. Im Akkusativ Plural lautet es dona.'],
+ ['Schreibe die Form im Nominativ Singular.','provinciae','provincia','Die Grundform der a-Deklination ist provincia.'],
+ ['Welche beiden Kasus kommen ohne Satzkontext infrage?','pericula','Nominativ und Akkusativ Plural','Periculum ist neutral: beide Fälle enden im Plural auf -a.',['Nominativ und Akkusativ Plural','Nominativ und Akkusativ Singular','Nur Akkusativ Singular','Nur Nominativ Plural']],
+ ['Ergänze esse.','Servi, ubi ___? · Diener, wo seid ihr?','estis','Die Diener werden mit ihr angesprochen: estis.'],
+ ['Schreibe nur das Subjekt.','Servum salutant amicae.','amicae','Amicae sind die handelnden Freundinnen; servum ist das Objekt.'],
+ ['Ergänze die passende Objektform.','Serva ___ timet. · Die Dienerin fürchtet die Gefahren.','pericula','Gefahren ist Plural und Objekt: pericula.'],
+ ['Ergänze das Verb im Singular.','Amicus ___. · Der Freund hört. (audire)','audit','Amicus ist Singular, deshalb audit; audiunt ist Plural.'],
+ ['Welche Übersetzung passt?','Iam paremus.','Wir gehorchen schon.','Paremus kommt von parere und hat die Endung -mus.',['Wir gehorchen schon.','Wir bereiten schon vor.','Ihr gehorcht schon.','Sie gehorchen schon.']],
+ ['Welche Übersetzung passt?','Iam paramus.','Wir bereiten schon vor.','Paramus kommt von parare, nicht von parere.',['Wir bereiten schon vor.','Wir gehorchen schon.','Ihr bereitet schon vor.','Du bereitest schon vor.']],
+ ['Bestimme den Kasus im Satz.','Dona [amici] apportant.','Nominativ Plural','Wer bringt die Geschenke? Die Freunde.',['Nominativ Plural','Akkusativ Plural','Nominativ Singular','Akkusativ Singular']],
+ ['Bestimme den Kasus im Satz.','[Dona] amici apportant.','Akkusativ Plural','Was bringen die Freunde? Geschenke. Dona ist das Objekt.',['Akkusativ Plural','Nominativ Plural','Akkusativ Singular','Nominativ Singular']],
+ ['Ergänze nur die Verbform.','Ego pericula non ___. · Ich fürchte Gefahren nicht. (timere)','timeo','Ego bedeutet ich, dazu passt timeo.'],
+]
+const transfer={title:'Zusatzübung · Endungen im Satz',kind:'training',questions:transferRows.map(([prompt,example,answer,explanation,options])=>q('Anwendung im Satz',prompt,example,answer,explanation,options)),detail:'15 zusätzliche Aufgaben',description:'Freiwillig · bekannte Wörter in neuen Aufgaben.'}
+probeRounds['probe24-8']=transfer
+probeRounds['probe24-8-review']={...transfer,title:'Zusatzübung · Fehlerwiederholung'}
