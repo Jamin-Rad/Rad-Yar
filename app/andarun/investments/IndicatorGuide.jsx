@@ -1,7 +1,8 @@
 'use client'
 
-import { useId, useRef, useState } from 'react'
+import { memo, useId, useRef, useState } from 'react'
 import styles from './IndicatorGuide.module.css'
+import Icon from './InvestmentIcon'
 
 const lessons = [
   { id:'average', name:'میانگین‌ها', question:'روند به کدام سمت حرکت می‌کند؟', intro:'میانگین متحرک نوسان‌های کوچک را هموار می‌کند تا جهت کلی حرکت را آسان‌تر ببینی. عدد کنار نام آن تعداد کندل‌های محاسبه است.', look:'شیب خط، جای قیمت نسبت به خط و ترتیب میانگین کوتاه و بلند را کنار هم بخوان.', meaning:'قیمت بالای میانگین صعودی با روند رو به بالا سازگار است. عبورهای پیاپی از میانگین تقریباً افقی معمولاً نشان‌دهندهٔ بازار کم‌جهت است.', example:'SMA 50 میانگین قیمت پایانی ۵۰ کندل است. EMA 20 به کندل‌های جدید وزن بیشتری می‌دهد و سریع‌تر واکنش نشان می‌دهد. در تایم‌فریم روزانه، هر کندل یک روز معاملاتی است.', limit:'میانگین از قیمت‌های گذشته ساخته می‌شود و تغییر روند را با تأخیر نشان می‌دهد. تقاطع دو میانگین به‌تنهایی تأیید کافی برای ورود نیست.', formula:'SMA(n) = مجموع قیمت پایانی n کندل ÷ n', color:'#eac477' },
@@ -32,13 +33,13 @@ function TeachingChart({ lesson }) {
   </figure>
 }
 
-export default function IndicatorGuide() {
+function IndicatorGuide() {
   const titleId = useId()
   const dialog = useRef(null)
   const [selected, setSelected] = useState('average')
   const lesson = lessons.find(item=>item.id===selected)
   return <>
-    <button type="button" onClick={()=>dialog.current.showModal()}>راهنمای اندیکاتورها</button>
+    <button type="button" title="راهنمای اندیکاتورها" aria-label="راهنمای اندیکاتورها" onClick={()=>dialog.current.showModal()}><Icon name="help" size={17}/></button>
     <dialog ref={dialog} className={styles.dialog} dir="rtl" aria-labelledby={titleId} onClick={event=>{if(event.target===event.currentTarget)event.currentTarget.close()}}>
       <header><h2 id={titleId}>خواندن نمودار، قدم‌به‌قدم</h2><button type="button" onClick={()=>dialog.current.close()} aria-label="بستن راهنمای اندیکاتورها">×</button></header>
       <nav aria-label="موضوع آموزش">{lessons.map(item=><button key={item.id} type="button" aria-pressed={selected===item.id} onClick={()=>setSelected(item.id)}>{item.name}</button>)}</nav>
@@ -53,3 +54,4 @@ export default function IndicatorGuide() {
     </dialog>
   </>
 }
+export default memo(IndicatorGuide)

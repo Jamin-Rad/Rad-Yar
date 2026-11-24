@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { memo, useEffect, useRef, useState } from 'react'
 import Icon from './InvestmentIcon'
 import styles from './InvestmentPositionChart.module.css'
 
@@ -16,7 +16,7 @@ const toolGroups = [
   {label:'اندازه‌گیری',icon:'measure',tools:[['measure','خط‌کش','تغییر قیمت و درصد بین دو نقطه'],['fib','فیبوناچی اصلاحی','از ابتدای موج تا انتهای آن بکش']]},
 ]
 
-export function DrawingPalette({drawing,choose,available}) {
+export const DrawingPalette=memo(function DrawingPalette({drawing,choose,available}) {
   const [open,setOpen]=useState(null)
   const box=useRef(null)
   useEffect(()=>{
@@ -40,7 +40,7 @@ export function DrawingPalette({drawing,choose,available}) {
       </div>
     })}
   </div>
-}
+})
 
 const indicatorGroups=[
   ['روند و قیمت',[['ema20','EMA 20','میانگین نمایی'],['sma50','SMA 50','میانگین ۵۰ کندل'],['sma200','SMA 200','میانگین ۲۰۰ کندل'],['vwap','VWAP','میانگین وزنی حجم']]],

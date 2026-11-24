@@ -1,7 +1,7 @@
 'use client'
 import {useEffect,useRef,useState} from 'react'
 import {todayBerlin,tradeStatus} from '@/lib/investments/family.mjs'
-import {readChartHistory} from '@/lib/investments/local-asset-chart.mjs'
+import {latestReferenceMark,readChartHistory,readChartMark} from '@/lib/investments/local-asset-chart.mjs'
 import {valueXtbAccount,xtbExposure} from '@/lib/investments/xtb-risk.mjs'
 import {xtbBalance} from '@/lib/investments/xtb.mjs'
 import {money,signedMoney,percent,parseMoney} from '@/lib/investments/portfolio.mjs'
@@ -44,17 +44,20 @@ export default function XtbAccountWorkspace({dark=true,account,owner,trades,trad
   const balance=xtbBalance(account,trades)
   const cacheKey = 'andarun-xtb-equity-v1:' + account?.id
   const [quotes,setQuotes]=useState({})
+  const latestQuotes=useRef({})
   const [refreshing,setRefreshing]=useState(false)
   const [quoteError,setQuoteError]=useState('')
   useEffect(()=>{
     try {
       const saved = JSON.parse(localStorage.getItem(cacheKey)) || {}
-      const chart = readChartHistory(localStorage, 'BZ=F')
+      const compact = readChartMark(localStorage, 'BZ=F')
+      const chart = compact?.fx?.latest?.rate>0 ? compact : readChartHistory(localStorage, 'BZ=F')
       const quote = chart?.quote
-      if (quote?.symbol === 'BZ=F' && quote.currency === 'USD' && quote.price > 0 &&
+      if (latestReferenceMark('BZ=F',chart) && chart.fx?.latest?.rate>0 &&
         (!saved['BZ=F'] || Date.parse(quote.asOf) > Date.parse(saved['BZ=F'].asOf))) {
         saved['BZ=F'] = {...quote, eurRate:chart.fx?.latest?.rate}
       }
+      latestQuotes.current=saved
       setQuotes(saved)
     } catch {}
   },[cacheKey])
@@ -63,6 +66,16 @@ export default function XtbAccountWorkspace({dark=true,account,owner,trades,trad
   const lastBrokerPrice=openTrades.filter(t=>t.plan.symbol==='OIL'&&t.brokerSnapshot?.price)
     .map(t=>t.brokerSnapshot).sort((a,b)=>b.observedDate.localeCompare(a.observedDate))[0]
   const hasBrent=openTrades.some(t=>t.plan.product==='cfd'&&t.plan.symbol?.trim().toUpperCase()==='OIL'&&t.plan.currency==='USD')
+  function updateAccountMark(reference, market) {
+    if (reference!=='BZ=F' || !account || !market.quote || !(market.fx?.latest?.rate>0)) return
+    const {price,currency,asOf} = market.quote
+    if (market.quote.symbol!==reference || currency!=='USD' || !(price>0) || !Number.isFinite(Date.parse(asOf))) return
+    if (Date.parse(latestQuotes.current[reference]?.asOf)>Date.parse(asOf)) return
+    const next={...latestQuotes.current,[reference]:{price,currency,asOf,eurRate:market.fx.latest.rate}}
+    latestQuotes.current=next
+    setQuotes(next)
+    try { localStorage.setItem(cacheKey,JSON.stringify(next)) } catch {}
+  }
   async function refreshEquity(){
     setRefreshing(true)
     setQuoteError('')
@@ -71,9 +84,7 @@ export default function XtbAccountWorkspace({dark=true,account,owner,trades,trad
       if(!response.ok) throw Error('quote')
       const {quote,fx}=await response.json()
       if(quote?.symbol!=='BZ=F'||quote.currency!=='USD'||!(quote.price>0)||!(fx?.latest?.rate>0))throw Error('quote')
-      const next={'BZ=F':{price:quote.price,currency:quote.currency,asOf:quote.asOf,eurRate:fx.latest.rate}}
-      setQuotes(next)
-      try { localStorage.setItem(cacheKey,JSON.stringify(next)) } catch {}
+      updateAccountMark('BZ=F',{quote,fx})
     } catch { setQuoteError('قیمت تازه یا نرخ تبدیل دریافت نشد. آخرین قیمت ذخیره‌شده در صورت وجود نمایش داده می‌شود.') }
     finally {setRefreshing(false)}
   }
@@ -150,7 +161,7 @@ export default function XtbAccountWorkspace({dark=true,account,owner,trades,trad
     {watchMarket&&(()=>{
       const market=watchMarket
       const preview={id:market.symbol,ownerId:account?.id,plan:{symbol:market.symbol,name:market.name,currency:'USD',direction:'long'},executions:[]}
-      return <InvestmentPositionChart key={'market:'+market.symbol} trade={preview} watchMarket={market} drawings={drawings} onDrawings={onDrawings}/>
+      return <InvestmentPositionChart key={'market:'+market.symbol} trade={preview} watchMarket={market} symbolTrades={executedTrades.filter(item=>item.plan.symbol===market.symbol&&item.plan.currency===preview.plan.currency)} accountQuote={quotes[market.reference]} onReferenceQuote={updateAccountMark} drawings={drawings} onDrawings={onDrawings}/>
     })()}
     {chartTrade && !watchMarket && <>
       {executedTrades.length > 1 && <label className={styles.field}>موقعیت روی نمودار
@@ -158,7 +169,7 @@ export default function XtbAccountWorkspace({dark=true,account,owner,trades,trad
           {executedTrades.map(trade=><option key={trade.id} value={trade.id}>{trade.plan.symbol} · {trade.brokerSnapshot?.positionId || trade.plan.name} · {trade.plan.planDate}</option>)}
         </select>
       </label>}
-      <InvestmentPositionChart key={chartTrade.id} trade={chartTrade} symbolTrades={executedTrades.filter(item=>item.plan.symbol===chartTrade.plan.symbol&&item.plan.currency===chartTrade.plan.currency)} onTransaction={tradeStatus(chartTrade)==='open'?kind=>{setTab('plans');tradeProps.onSelect(chartTrade.id);tradeProps.onCreateOpen(false);tradeProps.onExecution(kind)}:undefined} openCount={openTrades.length} drawings={drawings} onDrawings={onDrawings}/>
+      <InvestmentPositionChart key={chartTrade.id} trade={chartTrade} accountQuote={chartTrade.plan.symbol?.toUpperCase()==='OIL'?marketQuote:null} onReferenceQuote={updateAccountMark} symbolTrades={executedTrades.filter(item=>item.plan.symbol===chartTrade.plan.symbol&&item.plan.currency===chartTrade.plan.currency)} onTransaction={tradeStatus(chartTrade)==='open'?kind=>{setTab('plans');tradeProps.onSelect(chartTrade.id);tradeProps.onCreateOpen(false);tradeProps.onExecution(kind)}:undefined} openCount={openTrades.length} drawings={drawings} onDrawings={onDrawings}/>
     </>}
     </>}
     {tab==='plans' && <TradeWorkspace {...tradeProps} compact trades={ownTrades} settings={{xtbEquityCents:balance?.balanceCents}} onChart={showChart}/>}

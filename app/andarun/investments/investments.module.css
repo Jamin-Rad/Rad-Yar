@@ -1,5 +1,5 @@
 .workspace { --bg: #101419; --panel: #191f26; --line: #2c343e; --text: #edf1f5; --muted: #a6b0bd; --accent: #c7e99a; min-height: 100dvh; color: var(--text); background: var(--bg); color-scheme: dark; font-family: 'Vazirmatn', Tahoma, sans-serif; font-size: 14px; line-height: 1.65; -webkit-user-select: text; user-select: text; }
-.workspace:global(#investment-workspace) *, .dialog:global(#investment-dialog) * { word-spacing: normal !important; line-height: inherit !important; }
+.workspace:global(#investment-workspace) :not(:where([data-investment-chart], [data-investment-chart] *)), .dialog:global(#investment-dialog) * { word-spacing: normal !important; line-height: inherit !important; }
 .workspace *, .dialog * { box-sizing: border-box; }
 .workspace button, .dialog button { cursor: pointer; font: inherit; }
 .workspace button:disabled, .dialog button:disabled { cursor: not-allowed; opacity: .45; }

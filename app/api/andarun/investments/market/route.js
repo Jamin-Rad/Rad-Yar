@@ -15,10 +15,12 @@ export async function GET(request) {
   const isin=params.get('isin')?.trim().toUpperCase()
   try {
     const interval = params.get('interval')
+    const chartOnly = params.get('chart') === '1'
     if (interval === '15m' || interval === '5m') {
       if (params.get('refresh') !== '1') return manualRefreshRequired()
       if (!xtbReferences.includes(symbol) || isin) return NextResponse.json({error:'تایم‌فریم برای این نماد در دسترس نیست.'},{status:400,headers})
-      return NextResponse.json({history:await loadXtbIntraday(symbol,parseInt(interval,10))},{headers})
+      const result = await loadXtbIntraday(symbol,parseInt(interval,10),chartOnly)
+      return NextResponse.json(chartOnly ? result : {history:result},{headers})
     }
     const isins = params.getAll('isin')
     if (isins.length > 1) {
@@ -43,6 +45,6 @@ export async function GET(request) {
     if(query && query.length<=160) return NextResponse.json({results:await searchInstruments(query)},{headers})
     if(!symbol || !/^[A-Z0-9^][A-Z0-9.^=\-]{0,34}$/.test(symbol)) return NextResponse.json({error:'نماد بازار معتبر نیست.'},{status:400,headers})
     if (params.get('refresh') !== '1') return manualRefreshRequired()
-    return NextResponse.json(await loadMarket(symbol,(params.get('name') || symbol).slice(0,160),true,params.get('history') === '1'),{headers})
+    return NextResponse.json(await loadMarket(symbol,(params.get('name') || symbol).slice(0,160),true,params.get('history') === '1',chartOnly),{headers})
   } catch { return NextResponse.json({error:'داده بازار در دسترس نیست. نماد و بورس را بررسی کن و دوباره تلاش کن.'},{status:502,headers}) }
 }

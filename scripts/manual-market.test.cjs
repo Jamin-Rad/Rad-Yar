@@ -191,7 +191,11 @@ test('a manual period retry does not enable network requests for future range ch
 test('server rejects old automatic price requests before calling providers and still requires login', async () => {
   let allowed = true, calls = 0
   const providers = { searchInstruments: async () => { calls++; return [] }, loadMarket: async () => { calls++; return { quote: { price: 100 } } },
-    loadXtbIntraday: async (symbol,minutes) => { calls++; return [{symbol,minutes}] } }
+    loadXtbIntraday: async (symbol,minutes,chart) => {
+      calls++
+      const history=[{symbol,minutes}]
+      return chart ? {history,quote:{symbol,currency:'USD',price:30},fx:{latest:{rate:.9}}} : history
+    } }
   const route = load('app/api/andarun/investments/market/route.js', {
     'next/server': { NextResponse: { json: (value, options) => Response.json(value, options) } }, '@/lib/andarunPasswordAuth': { requireAndarunSession: async () => allowed ? {} : { error: 'denied' } },
     '@/lib/investments/market.server': providers, '@/lib/investments/isin-market.server': { loadIsinMarket: async () => { calls++; return { quote: { price: 100 } } } },
@@ -210,6 +214,41 @@ test('server rejects old automatic price requests before calling providers and s
   const silver=await get('symbol=SI%3DF&interval=5m&refresh=1')
   assert.deepEqual(await silver.json(),{history:[{symbol:'SI=F',minutes:5}]})
   assert.equal(calls,4)
+  assert.equal((await get('symbol=SI%3DF&interval=15m&chart=1')).status,409)
+  const chart=await get('symbol=SI%3DF&interval=15m&chart=1&refresh=1')
+  assert.deepEqual(await chart.json(),{history:[{symbol:'SI=F',minutes:15}],quote:{symbol:'SI=F',currency:'USD',price:30},fx:{latest:{rate:.9}}})
+  assert.equal(calls,5)
+})
+
+test('a reference chart shares cached prices with other readers and only requests the feeds it uses', async () => {
+  const requests=[]
+  const last=Date.UTC(2025,1,20,15)/1000
+  const provider=load('lib/investments/market.server.js', {
+    'server-only':{}, './market-cache.mjs':await import('../lib/investments/market-cache.mjs'), './market.mjs':await import('../lib/investments/market.mjs'),
+  },{AbortSignal,fetch:async url=>{
+    requests.push(url)
+    if (url.includes('frankfurter')) return Response.json({date:'2025-02-20',rates:{EUR:.9}})
+    if (url.includes('news.google')) return new Response('<rss></rss>')
+    const timestamp=Array.from({length:45},(_,i)=>last-(44-i)*86400)
+    const values=timestamp.map(()=>90)
+    return Response.json({chart:{result:[{timestamp,meta:{symbol:'BZ=F',currency:'USD',regularMarketTime:last,regularMarketPrice:91},
+      indicators:{quote:[{open:values,high:values,low:values,close:values,volume:values}]}}]}})
+  }})
+  const intra=await provider.loadXtbIntraday('BZ=F',15,true)
+  assert.equal(intra.history.length,45)
+  assert.equal(intra.quote.symbol,'BZ=F')
+  assert.equal(intra.fx.latest.rate,.9)
+  assert.equal(requests.length,2)
+  assert.equal((await provider.loadXtbIntraday('BZ=F',15)).length,45)
+  assert.equal(requests.length,2)
+  const daily=await provider.loadMarket('BZ=F','Brent',true,true,true)
+  assert.equal(daily.history.length,45)
+  assert.deepEqual(Object.keys(daily.fx),['latest'])
+  assert.equal(requests.length,3)
+  const full=await provider.loadMarket('BZ=F','Brent',true,true)
+  assert.equal(Object.keys(full.fx).length,3)
+  assert.equal(requests.filter(url=>url.includes('news.google')).length,1)
+  assert.equal(requests.filter(url=>url.includes('/finance/chart/')).length,2)
 })
 
 test('bulk ISIN quotes share one request and preserve a saved price on a partial failure', async () => {
