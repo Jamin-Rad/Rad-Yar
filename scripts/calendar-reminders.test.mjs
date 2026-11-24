@@ -3,6 +3,7 @@ import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
 import { berlinEventInstant, dueReminders, eventFromRow, validPushSubscription } from '../utils/calendarReminders.js'
 import { todayEvents } from '../utils/andarunToday.js'
+import { parseCalendarNote, timestamp } from '../lib/calendarSync.mjs'
 
 const row = { id: 'event-1', item_type: 'event', title: 'Test', deadline: '2026-10-14', event_time: '15:00:00', done: false, created_at: '2026-10-01T00:00:00Z' }
 const event = eventFromRow(row)
@@ -48,8 +49,7 @@ test('cancellation persists through old-schema PATCH and uses owner + concurrent
   assert.match(source,/\.eq\('updated_at', existing\.data\.updated_at\)/)
   const dispatcher = readFileSync(new URL('../app/api/andarun/reminders/dispatch/route.js',import.meta.url),'utf8')
   assert.match(dispatcher,/calendarSchedulerAuthorization/)
-  assert.match(dispatcher,/claim_calendar_push/)
-  assert.match(dispatcher,/dueReminders\(eventFromRow\(fresh\.data\)/)
+  assert.match(dispatcher,/claim_due_calendar_push/)
   const sql = readFileSync(new URL('../supabase/migrations/0024_calendar_push.sql',import.meta.url),'utf8')
   assert.equal((sql.match(/enable row level security/g)||[]).length,3)
   assert.match(sql,/revoke all on function/)
@@ -78,8 +78,8 @@ function calendarApiFixture({ legacy = false, authorized = true, concurrent = fa
     return query
   }}
   const source = readFileSync(new URL('../app/api/andarun/todos/route.js', import.meta.url),'utf8').replace(/^import .*\r?\n/gm,'').replaceAll('export async function','async function')
-  const handlers = new Function('NextResponse','requireAndarunSession','requireFatimaSession','SHARED_ANDARUN_LOOKUP_OWNER_IDS','SHARED_ANDARUN_OWNER_ID','isSupabaseAdminConfigured','supabaseAdmin', source + '\nreturn { PATCH };')(
-    {json:(body,options)=>Response.json(body,options)}, async()=>({ownerId:'private:test'}), async()=>({error:'denied'}), [], 'shared', true, db)
+  const handlers = new Function('NextResponse','requireAndarunSession','requireFatimaSession','SHARED_ANDARUN_LOOKUP_OWNER_IDS','SHARED_ANDARUN_OWNER_ID','isSupabaseAdminConfigured','supabaseAdmin','parseCalendarNote','timestamp', source + '\nreturn { PATCH };')(
+    {json:(body,options)=>Response.json(body,options)}, async()=>({ownerId:'private:test'}), async()=>({error:'denied'}), [], 'shared', true, db, parseCalendarNote, timestamp)
   const patch = body => handlers.PATCH(new Request('https://www.rad-yar.com/api/andarun/todos',{method:'PATCH',headers:{'Content-Type':'application/json'},body:JSON.stringify({id:row.id,...body})}))
   return { patch, stored:()=>stored }
 }
