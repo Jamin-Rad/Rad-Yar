@@ -1,0 +1,3078 @@
+[
+  {
+    "fachId": "abdomen",
+    "kapitelId": "abdomen-niere",
+    "topics": [
+      {
+        "id": "fornixruptur",
+        "title": {
+          "de": "Nierenfornixruptur",
+          "en": "Renal fornix rupture",
+          "fa": "پارگی فورنیکس کلیه"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "abdomen",
+    "kapitelId": "abdomen-gi-trakt",
+    "topics": [
+      {
+        "id": "pylorusstenose",
+        "title": {
+          "de": "Hypertrophe Pylorusstenose",
+          "en": "Hypertrophic pyloric stenosis",
+          "fa": "تنگی هیپرتروفیک پیلور"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "abdomen",
+    "kapitelId": "abdomen-gi-trakt",
+    "topics": [
+      {
+        "id": "pmc-kolitis",
+        "title": {
+          "de": "Pseudomembranöse Kolitis",
+          "en": "Pseudomembranous colitis",
+          "fa": "کولیت سودوممبران"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "abdomen",
+    "kapitelId": "abdomen-gi-trakt",
+    "topics": [
+      {
+        "id": "colitis-ulcerosa",
+        "title": {
+          "de": "Colitis ulcerosa",
+          "en": "Ulcerative colitis",
+          "fa": "کولیت اولسروز"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "abdomen",
+    "kapitelId": "abdomen-niere",
+    "topics": [
+      {
+        "id": "pyelonephritis",
+        "title": {
+          "de": "Pyelonephritis",
+          "en": "Pyelonephritis",
+          "fa": "پیلونفریت"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "abdomen",
+    "kapitelId": "abdomen-niere",
+    "topics": [
+      {
+        "id": "nierenabszess",
+        "title": {
+          "de": "Nierenabszess",
+          "en": "Renal abscess",
+          "fa": "آبسهٔ کلیه"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "abdomen",
+    "kapitelId": "abdomen-leber",
+    "topics": [
+      {
+        "id": "li-rads",
+        "title": {
+          "de": "LI-RADS",
+          "en": "LI-RADS",
+          "fa": "LI-RADS"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "abdomen",
+    "kapitelId": "abdomen-leber",
+    "topics": [
+      {
+        "id": "fibrolamellaeres-karzinom",
+        "title": {
+          "de": "Fibrolamelläres Karzinom",
+          "en": "Fibrolamellar carcinoma",
+          "fa": "کارسینوم فیبرولاملار"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "abdomen",
+    "kapitelId": "abdomen-gi-trakt",
+    "topics": [
+      {
+        "id": "ulkuserkrankung",
+        "title": {
+          "de": "Ulkuserkrankung",
+          "en": "Peptic ulcer disease",
+          "fa": "بیماری زخم پپتیک"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "abdomen",
+    "kapitelId": "abdomen-gi-trakt",
+    "topics": [
+      {
+        "id": "duodenaldivertikel",
+        "title": {
+          "de": "Duodenaldivertikel",
+          "en": "Duodenal diverticulum",
+          "fa": "دیورتیکول دوازدهه"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "abdomen",
+    "kapitelId": "abdomen-leber",
+    "topics": [
+      {
+        "id": "leberzirrhose",
+        "title": {
+          "de": "Leberzirrhose",
+          "en": "Liver cirrhosis",
+          "fa": "سیروز کبدی"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "msk",
+    "kapitelId": "msk-trauma",
+    "topics": [
+      {
+        "id": "sternum-rippen-trauma",
+        "title": {
+          "de": "Sternum- und Rippenfrakturen",
+          "en": "Sternal and rib fractures",
+          "fa": "شکستگی‌های جناغ و دنده‌ها"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "msk",
+    "kapitelId": "msk-schulter",
+    "topics": [
+      {
+        "id": "glenohumerale-arthrose",
+        "title": {
+          "de": "Glenohumerale Arthrose",
+          "en": "Glenohumeral osteoarthritis",
+          "fa": "آرتروز گلنوهومرال"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "gefaesse-ir",
+    "kapitelId": "gefaesse-grundlagen",
+    "topics": [
+      {
+        "id": "arterien-obere-extremitaet",
+        "title": {
+          "de": "Arterien der oberen Extremität",
+          "en": "Arteries of the upper limb",
+          "fa": "شریان‌های اندام فوقانی"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "gehirn",
+    "kapitelId": "kopf-tumoren",
+    "topics": [
+      {
+        "id": "astrozytom-idh-mutiert",
+        "title": {
+          "de": "Astrozytom, IDH-mutiert",
+          "en": "Astrocytoma, IDH-mutant",
+          "fa": "آستروسیتوما، IDH-mutant"
+        }
+      },
+      {
+        "id": "oligodendrogliom-idh-mutiert",
+        "title": {
+          "de": "Oligodendrogliom",
+          "en": "Oligodendroglioma",
+          "fa": "الیگودندروگلیوما"
+        }
+      },
+      {
+        "id": "glioblastom",
+        "title": {
+          "de": "Glioblastom, IDH-Wildtyp",
+          "en": "Glioblastoma, IDH-wildtype",
+          "fa": "گلیوبلاستوما، IDH-wildtype"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "gehirn",
+    "kapitelId": "kopf-tumoren",
+    "topics": [
+      {
+        "id": "atrt",
+        "title": {
+          "de": "ATRT: MRT-Muster und diagnostische Grenzen",
+          "en": "ATRT: MRI pattern and diagnostic limits",
+          "fa": "ATRT: الگوی MRI و محدودیت‌های تشخیصی"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "thorax",
+    "kapitelId": "thorax-lunge",
+    "topics": [
+      {
+        "id": "copd",
+        "title": {
+          "de": "COPD",
+          "en": "COPD",
+          "fa": "COPD"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "wirbelsaeule",
+    "kapitelId": "ws-degenerativ",
+    "topics": [
+      {
+        "id": "neuroforamenstenose",
+        "title": {
+          "de": "Neuroforamenstenose",
+          "en": "Neural foraminal stenosis",
+          "fa": "تنگی نوروفورامن"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "msk",
+    "kapitelId": "msk-schulter",
+    "topics": [
+      {
+        "id": "schulterinstabilitaet",
+        "title": {
+          "de": "Schulterinstabilität",
+          "en": "Shoulder instability",
+          "fa": "ناپایداری شانه"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "abdomen",
+    "kapitelId": "abdomen-niere",
+    "topics": [
+      {
+        "id": "adpkd-bildgebung",
+        "title": {
+          "de": "ADPKD-Bildgebung",
+          "en": "ADPKD imaging",
+          "fa": "تصویربرداری ADPKD"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "msk",
+    "kapitelId": "msk-osteochondrosen",
+    "topics": [
+      {
+        "id": "morbus-scheuermann",
+        "title": {
+          "de": "Morbus Scheuermann",
+          "en": "Scheuermann's disease",
+          "fa": "بیماری شویرمان"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "msk",
+    "kapitelId": "msk-knochentumoren",
+    "topics": [
+      {
+        "id": "riesenzelltumor",
+        "title": {
+          "de": "Riesenzelltumor · Quellenbeispiel",
+          "en": "Giant cell tumour · source example",
+          "fa": "تومور سلول غول‌آسا · نمونهٔ منبع"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "wirbelsaeule",
+    "kapitelId": "ws-degenerativ",
+    "topics": [
+      {
+        "id": "spinalkanalstenose",
+        "title": {
+          "de": "Spinalkanalstenose",
+          "en": "Spinal canal stenosis",
+          "fa": "تنگی کانال نخاعی"
+        }
+      },
+      {
+        "id": "osteochondrosis-intervertebralis",
+        "title": {
+          "de": "Modic-Veränderungen",
+          "en": "Modic changes",
+          "fa": "تغییرات مودیک"
+        }
+      },
+      {
+        "id": "spondylarthrose",
+        "title": {
+          "de": "Spondylarthrose",
+          "en": "Facet arthropathy",
+          "fa": "آرتروز فاست"
+        }
+      },
+      {
+        "id": "synovialzyste-facettengelenke",
+        "title": {
+          "de": "Juxtafacettäre Synovialzyste",
+          "en": "Juxtafacet synovial cyst",
+          "fa": "کیست سینوویال کنار فاست"
+        }
+      },
+      {
+        "id": "bandscheibenpathologien",
+        "title": {
+          "de": "Bandscheibenpathologien",
+          "en": "Intervertebral disc pathologies",
+          "fa": "بیماری‌های دیسک بین‌مهره‌ای"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "msk",
+    "kapitelId": "msk-knee-lower-leg",
+    "topics": [
+      {
+        "id": "patella-streckapparat",
+        "title": {
+          "de": "Patella & Streckapparat",
+          "en": "Patella & extensor mechanism",
+          "fa": "کشکک و مکانیسم اکستانسور"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "msk",
+    "kapitelId": "msk-knee-lower-leg",
+    "topics": [
+      {
+        "id": "patellafraktur-trauma",
+        "title": {
+          "de": "Patellafraktur",
+          "en": "Patellar fracture",
+          "fa": "شکستگی کشکک"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "msk",
+    "kapitelId": "msk-schulter",
+    "topics": [
+      {
+        "id": "impingement-kalkschulter",
+        "title": {
+          "de": "Schulter-Impingement",
+          "en": "Shoulder impingement",
+          "fa": "ایمپینجمنت شانه"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "msk",
+    "kapitelId": "msk-fuss",
+    "topics": [
+      {
+        "id": "osg-fraktur",
+        "title": {
+          "de": "Sprunggelenktrauma",
+          "en": "Ankle trauma",
+          "fa": "ترومای مچ پا"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "msk",
+    "kapitelId": "msk-knee-lower-leg",
+    "topics": [
+      {
+        "id": "tibiakopffraktur",
+        "title": {
+          "de": "Tibiakopffraktur",
+          "en": "Tibial plateau fracture",
+          "fa": "شکستگی پلاتوی تیبیا"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "msk",
+    "kapitelId": "msk-femoral-shaft",
+    "topics": [
+      {
+        "id": "femurschaftfraktur",
+        "title": {
+          "de": "Femurschaftfraktur · AO 32",
+          "en": "Femoral shaft fracture · AO 32",
+          "fa": "شکستگی تنهٔ فمور · AO 32"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "msk",
+    "kapitelId": "msk-knee-lower-leg",
+    "topics": [
+      {
+        "id": "distale-femurfraktur",
+        "title": {
+          "de": "Distale Femurfraktur",
+          "en": "Distal femur fracture",
+          "fa": "شکستگی دیستال فمور"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "msk",
+    "kapitelId": "msk-hip-pelvis",
+    "topics": [
+      {
+        "id": "proximale-femurfraktur",
+        "title": {
+          "de": "Proximale Femurfraktur",
+          "en": "Proximal femoral fracture",
+          "fa": "شکستگی پروگزیمال فمور"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "msk",
+    "kapitelId": "msk-hip-pelvis",
+    "topics": [
+      {
+        "id": "periprothetische-femurfraktur",
+        "title": {
+          "de": "Periprothetische Femurfraktur",
+          "en": "Periprosthetic femoral fracture",
+          "fa": "شکستگی اطراف پروتز فمور"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "msk",
+    "kapitelId": "msk-hip-pelvis",
+    "topics": [
+      {
+        "id": "beckenringfraktur",
+        "title": {
+          "de": "Beckenringfraktur",
+          "en": "Pelvic ring fracture",
+          "fa": "شکستگی حلقهٔ لگنی"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "msk",
+    "kapitelId": "msk-hand",
+    "topics": [
+      {
+        "id": "skaphoidfraktur",
+        "title": {
+          "de": "Skaphoidfraktur",
+          "en": "Scaphoid fracture",
+          "fa": "شکستگی اسکافوئید"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "abdomen",
+    "kapitelId": "abdomen-leber",
+    "topics": [
+      {
+        "id": "hepatisches-angiomyolipom",
+        "title": {
+          "de": "Hepatisches Angiomyolipom",
+          "en": "Hepatic angiomyolipoma",
+          "fa": "آنژیومیولیپوم کبدی"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "abdomen",
+    "kapitelId": "abdomen-niere",
+    "topics": [
+      {
+        "id": "nierentrauma",
+        "title": {
+          "de": "Nierentrauma",
+          "en": "Renal trauma",
+          "fa": "تروما کلیه"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "abdomen",
+    "kapitelId": "abdomen-gallenwege",
+    "topics": [
+      {
+        "id": "psc-pbc",
+        "title": {
+          "de": "PSC im MRCP",
+          "en": "PSC on MRCP",
+          "fa": "PSC در MRCP"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "abdomen",
+    "kapitelId": "abdomen-gefaesse",
+    "topics": [
+      {
+        "id": "fibromuskulaere-dysplasie",
+        "title": {
+          "de": "Fibromuskuläre Dysplasie",
+          "en": "Fibromuscular dysplasia",
+          "fa": "دیسپلازی فیبروماسکولار"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "abdomen",
+    "kapitelId": "abdomen-pankreas",
+    "topics": [
+      {
+        "id": "pnet",
+        "title": {
+          "de": "Neuroendokrine Tumoren (pNET)",
+          "en": "Neuroendocrine tumours (pNET)",
+          "fa": "تومورهای نورواندوکرین پانکراس (pNET)"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "technik",
+    "kapitelId": "technik-roentgen",
+    "topics": [
+      {
+        "id": "roentgenanlage-roehre",
+        "title": {
+          "de": "Röntgenröhre",
+          "en": "X-ray tube",
+          "fa": "تیوب پرتو ایکس"
+        }
+      },
+      {
+        "id": "roentgenstrahlung-spektrum",
+        "title": {
+          "de": "Röntgenspektrum",
+          "en": "X-ray spectrum",
+          "fa": "طیف پرتو ایکس"
+        }
+      },
+      {
+        "id": "roentgen-wechselwirkung-materie",
+        "title": {
+          "de": "Wechselwirkung mit Materie",
+          "en": "Interactions with matter",
+          "fa": "برهم‌کنش با ماده"
+        }
+      },
+      {
+        "id": "roentgen-bildentstehung-detektor",
+        "title": {
+          "de": "Detektortechnik",
+          "en": "Detector technology",
+          "fa": "فناوری آشکارساز"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "technik",
+    "kapitelId": "technik-mrt",
+    "topics": [
+      {
+        "id": "mrt-cine",
+        "title": {
+          "de": "CINE-MRT",
+          "en": "Cine MRI",
+          "fa": "MRI سینمایی (CINE)"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "technik",
+    "kapitelId": "technik-roentgen",
+    "topics": [
+      {
+        "id": "fluoroskopie-durchleuchtung",
+        "title": {
+          "de": "Fluoroskopie und Vergrößerung",
+          "en": "Fluoroscopy and magnification",
+          "fa": "فلوروسکوپی و بزرگ‌نمایی"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "technik",
+    "kapitelId": "technik-roentgen",
+    "topics": [
+      {
+        "id": "dosisgroessen-dosimetrie",
+        "title": {
+          "de": "Dosisgrößen & Dosimetrie",
+          "en": "Dose quantities & dosimetry",
+          "fa": "کمیت‌های دوز و دوزیمتری"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "msk",
+    "kapitelId": "ws-tumoren",
+    "topics": [
+      {
+        "id": "wirbelmetastasen",
+        "title": {
+          "de": "Wirbelmetastasen",
+          "en": "Vertebral metastases",
+          "fa": "متاستاز مهره‌ای"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "msk",
+    "kapitelId": "ws-tumoren",
+    "topics": [
+      {
+        "id": "astrozytom-spinal",
+        "title": {
+          "de": "Spinales Astrozytom",
+          "en": "Spinal astrocytoma",
+          "fa": "آستروسیتوم نخاعی"
+        }
+      },
+      {
+        "id": "ependymom-spinal",
+        "title": {
+          "de": "Spinales Ependymom",
+          "en": "Spinal ependymoma",
+          "fa": "اپاندیموم نخاعی"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "msk",
+    "kapitelId": "ws-tumoren",
+    "topics": [
+      {
+        "id": "meningeom-spinal",
+        "title": {
+          "de": "Spinales Meningeom",
+          "en": "Spinal meningioma",
+          "fa": "مننژیوم نخاعی"
+        }
+      },
+      {
+        "id": "schwannom-neurofibrom-spinal",
+        "title": {
+          "de": "Schwannom (Neurofibrom in der PDF nicht behandelt)",
+          "en": "Schwannoma (neurofibroma not covered in the PDF)",
+          "fa": "شوانوما (نوروفیبروم در PDF پوشش داده نشده)"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "technik",
+    "kapitelId": "technik-mrt",
+    "topics": [
+      {
+        "id": "fmri-bold",
+        "title": {
+          "de": "Funktionelle MRT · BOLD",
+          "en": "Functional MRI · BOLD",
+          "fa": "MRI عملکردی · BOLD"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "technik",
+    "kapitelId": "technik-ct",
+    "topics": [
+      {
+        "id": "ct-grundprinzip-aufbau",
+        "title": {
+          "de": "Wie werden aus Messungen CT-Schichtbilder?",
+          "en": "How do measurements become CT slices?",
+          "fa": "اندازه‌گیری‌ها چگونه به برش‌های CT تبدیل می‌شوند؟"
+        }
+      },
+      {
+        "id": "ct-aufnahmetechniken",
+        "title": {
+          "de": "Wie bewegen sich Tisch und Detektoren bei der Aufnahme?",
+          "en": "How do the table and detectors move during acquisition?",
+          "fa": "تخت و آشکارسازها هنگام تصویربرداری چگونه حرکت می‌کنند؟"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "technik",
+    "kapitelId": "technik-mrt",
+    "topics": [
+      {
+        "id": "mr-myelographie",
+        "title": {
+          "de": "MR-Myelographie",
+          "en": "MR myelography",
+          "fa": "میلوگرافی MR"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "thorax",
+    "kapitelId": "thorax-lunge",
+    "topics": [
+      {
+        "id": "atelektase",
+        "title": {
+          "de": "Atelektase",
+          "en": "Atelectasis",
+          "fa": "آتلکتازی"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "thorax",
+    "kapitelId": "thorax-lunge",
+    "topics": [
+      {
+        "id": "lch-lunge",
+        "title": {
+          "de": "Pulmonale Langerhans-Zell-Histiozytose",
+          "en": "Pulmonary Langerhans cell histiocytosis",
+          "fa": "هیستیوسیتوز سلول لانگرهانس ریوی"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "thorax",
+    "kapitelId": "thorax-atemwege",
+    "topics": [
+      {
+        "id": "mukoviszidose",
+        "title": {
+          "de": "Mukoviszidose: Thoraxbildgebung",
+          "en": "Cystic fibrosis: chest imaging",
+          "fa": "فیبروز کیستیک: تصویربرداری قفسهٔ سینه"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "thorax",
+    "kapitelId": "thorax-atemwege",
+    "topics": [
+      {
+        "id": "bronchiolitis",
+        "title": {
+          "de": "Bronchiolitis",
+          "en": "Bronchiolitis",
+          "fa": "برونشیولیت"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "thorax",
+    "kapitelId": "thorax-lunge",
+    "topics": [
+      {
+        "id": "hypersensitivitaetspneumonitis",
+        "title": {
+          "de": "Hypersensitivitätspneumonitis (EAA)",
+          "en": "Hypersensitivity pneumonitis",
+          "fa": "پنومونیت حساسیتی"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "thorax",
+    "kapitelId": "thorax-pleura",
+    "topics": [
+      {
+        "id": "pleuraempyem",
+        "title": {
+          "de": "Pleuraempyem",
+          "en": "Pleural empyema",
+          "fa": "آمپیم پلور"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "thorax",
+    "kapitelId": "thorax-lunge",
+    "topics": [
+      {
+        "id": "lungenzysten-differentialdiagnose",
+        "title": {
+          "de": "Lungenzysten differenzieren",
+          "en": "Differentiating lung cysts",
+          "fa": "افتراق کیست‌های ریه"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "thorax",
+    "kapitelId": "thorax-thoraxwand",
+    "topics": [
+      {
+        "id": "pectus-excavatum",
+        "title": {
+          "de": "Trichterbrust im Röntgen",
+          "en": "Pectus excavatum on radiographs",
+          "fa": "سینهٔ قیفی در رادیوگرافی"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "wirbelsaeule",
+    "kapitelId": "ws-degenerativ",
+    "topics": [
+      {
+        "id": "spondylolisthesis",
+        "title": {
+          "de": "Spondylolisthesis: Versatz und Ursache",
+          "en": "Spondylolisthesis: displacement and cause",
+          "fa": "اسپوندیلولیستزیس: جابه‌جایی و علت"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "wirbelsaeule",
+    "kapitelId": "ws-degenerativ",
+    "topics": [
+      {
+        "id": "dish-ossifikation-ligamente",
+        "title": {
+          "de": "Spinale Bandossifikation: den Ort erkennen",
+          "en": "Spinal ligament ossification: identify the site",
+          "fa": "استخوانی‌شدن رباط‌های ستون فقرات: تشخیص محل"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "wirbelsaeule",
+    "kapitelId": "ws-entzuendlich",
+    "topics": [
+      {
+        "id": "spinale-leptomeningitis",
+        "title": {
+          "de": "Spinale Leptomeningitis",
+          "en": "Spinal leptomeningitis",
+          "fa": "لپتومننژیت نخاعی"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "wirbelsaeule",
+    "kapitelId": "ws-entzuendlich",
+    "topics": [
+      {
+        "id": "neuroborreliose-spinal",
+        "title": {
+          "de": "Spinale Neuroborreliose",
+          "en": "Spinal neuroborreliosis",
+          "fa": "نوروبورلیوز نخاعی"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "wirbelsaeule",
+    "kapitelId": "ws-entzuendlich",
+    "topics": [
+      {
+        "id": "wirbelsaeulentuberkulose",
+        "title": {
+          "de": "Wirbelsäulentuberkulose",
+          "en": "Spinal tuberculosis",
+          "fa": "سل ستون فقرات"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "wirbelsaeule",
+    "kapitelId": "ws-entzuendlich",
+    "topics": [
+      {
+        "id": "paravertebraler-abszess",
+        "title": {
+          "de": "Paravertebraler Abszess",
+          "en": "Paravertebral abscess",
+          "fa": "آبسه پاراورتیبرال"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "wirbelsaeule",
+    "kapitelId": "ws-entzuendlich",
+    "topics": [
+      {
+        "id": "epiduraler-abszess",
+        "title": {
+          "de": "Epiduraler Abszess",
+          "en": "Epidural abscess",
+          "fa": "آبسه اپیدورال"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "wirbelsaeule",
+    "kapitelId": "ws-metabolisch",
+    "topics": [
+      {
+        "id": "osteoporose-fraktur-ws",
+        "title": {
+          "de": "Osteoporotische Wirbelfraktur",
+          "en": "Osteoporotic vertebral fracture",
+          "fa": "شکستگی مهره ناشی از پوکی استخوان"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "wirbelsaeule",
+    "kapitelId": "ws-metabolisch",
+    "topics": [
+      {
+        "id": "renale-osteodystrophie-ws",
+        "title": {
+          "de": "Renale Osteodystrophie",
+          "en": "Renal osteodystrophy",
+          "fa": "استئودیستروفی کلیوی"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "wirbelsaeule",
+    "kapitelId": "ws-tumoren",
+    "topics": [
+      {
+        "id": "spinale-tumoren-grundlagen",
+        "title": {
+          "de": "Tumoren der Wirbelsäule: Orientierung nach Kompartiment",
+          "en": "Spinal tumours: orientation by compartment",
+          "fa": "تومورهای ستون فقرات: جهت‌یابی بر اساس کمپارتمان"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "wirbelsaeule",
+    "kapitelId": "ws-entzuendlich",
+    "topics": [
+      {
+        "id": "spinale-arachnoiditis",
+        "title": {
+          "de": "Spinale Arachnoiditis: Wurzelmuster und ihre Grenzen",
+          "en": "Spinal arachnoiditis: nerve-root patterns and their limits",
+          "fa": "آراکنوئیدیت نخاعی: الگوهای ریشه عصبی و محدودیت‌های آن‌ها"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "wirbelsaeule",
+    "kapitelId": "ws-entzuendlich",
+    "topics": [
+      {
+        "id": "guillain-barre-syndrom",
+        "title": {
+          "de": "Guillain-Barré-Syndrom: MRT der Nervenwurzeln",
+          "en": "Guillain–Barré syndrome: MRI of the nerve roots",
+          "fa": "سندرم گیلن‌باره: MRI ریشه‌های عصبی"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "wirbelsaeule",
+    "kapitelId": "ws-metabolisch",
+    "topics": [
+      {
+        "id": "funikulaere-myelose",
+        "title": {
+          "de": "Funikuläre Myelose",
+          "en": "Subacute combined degeneration",
+          "fa": "دژنراسیون ترکیبی تحت‌حاد نخاع"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "wirbelsaeule",
+    "kapitelId": "ws-tumoren",
+    "topics": [
+      {
+        "id": "epidermoid-spinal",
+        "title": {
+          "de": "Spinale Epidermoidzyste",
+          "en": "Spinal epidermoid cyst",
+          "fa": "کیست اپیدرموئید نخاعی"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "wirbelsaeule",
+    "kapitelId": "ws-entzuendlich",
+    "topics": [
+      {
+        "id": "multiple-sklerose-spinal",
+        "title": {
+          "de": "MS: spinales Läsionsmuster",
+          "en": "MS: spinal lesion pattern",
+          "fa": "MS: الگوی ضایعهٔ نخاعی"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "thorax",
+    "kapitelId": "thorax-thoraxwand",
+    "topics": [
+      {
+        "id": "rippenpathologien",
+        "title": {
+          "de": "Pseudoartikulation der 1. Rippe: ein apikaler Pseudoknoten",
+          "en": "First-rib pseudoarticulation: an apical pseudonodule",
+          "fa": "شبه‌مفصل دندهٔ اول: شبه‌ندول اپیکال"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "thorax",
+    "kapitelId": "thorax-gefaesse-pulmonal",
+    "topics": [
+      {
+        "id": "akute-le",
+        "title": {
+          "de": "Akute LE: Pulmonalinfarkt",
+          "en": "Acute PE: pulmonary infarction",
+          "fa": "آمبولی حاد ریه: انفارکت ریوی"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "technik",
+    "kapitelId": "technik-roentgen",
+    "topics": [
+      {
+        "id": "roentgen-streustrahlenraster",
+        "title": {
+          "de": "Streustrahlenraster",
+          "en": "Anti-scatter grids",
+          "fa": "گرید ضدپراکندگی"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "technik",
+    "kapitelId": "technik-fluoroskopie",
+    "topics": [
+      {
+        "id": "c-arm-ct",
+        "title": {
+          "de": "C-Bogen-CT",
+          "en": "C-arm CT",
+          "fa": "CT با C-arm"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "technik",
+    "kapitelId": "technik-strahlenschutz",
+    "topics": [
+      {
+        "id": "strahlenschutz-gesetzliche-grundlagen",
+        "title": {
+          "de": "Rechtfertigende Indikation",
+          "en": "Justifying indication",
+          "fa": "اندیکاسیون توجیه‌کننده"
+        }
+      },
+      {
+        "id": "strahlenschutzbereiche-verantwortliche",
+        "title": {
+          "de": "Verantwortung im Strahlenschutz",
+          "en": "Radiation-protection responsibility",
+          "fa": "مسئولیت در حفاظت پرتویی"
+        }
+      },
+      {
+        "id": "fachkunde-strahlenschutz",
+        "title": {
+          "de": "Aufgabenbezogene Fachkunde",
+          "en": "Task-specific expertise",
+          "fa": "صلاحیت متناسب با وظیفه"
+        }
+      },
+      {
+        "id": "teleradiologie",
+        "title": {
+          "de": "Rollen in der Teleradiologie",
+          "en": "Teleradiology roles",
+          "fa": "نقش‌ها در تلرادیولوژی"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "technik",
+    "kapitelId": "technik-ct",
+    "topics": [
+      {
+        "id": "photon-counting-ct",
+        "title": {
+          "de": "Photon-Counting-CT",
+          "en": "Photon-counting CT",
+          "fa": "CT شمارش فوتون"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "technik",
+    "kapitelId": "technik-ct",
+    "topics": [
+      {
+        "id": "ct-perfusion-technik",
+        "title": {
+          "de": "CT-Perfusion",
+          "en": "CT perfusion",
+          "fa": "پرفیوژن CT"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "technik",
+    "kapitelId": "technik-ct",
+    "topics": [
+      {
+        "id": "ct-rekonstruktion-nachverarbeitung",
+        "title": {
+          "de": "CT-Rekonstruktion und Nachverarbeitung",
+          "en": "CT reconstruction and post-processing",
+          "fa": "بازسازی و پس‌پردازش CT"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "technik",
+    "kapitelId": "technik-ct",
+    "topics": [
+      {
+        "id": "hrct-technik",
+        "title": {
+          "de": "HRCT: Technik und Zusatzaufnahmen",
+          "en": "HRCT: technique and supplementary acquisitions",
+          "fa": "HRCT: تکنیک و تصویربرداری‌های تکمیلی"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "technik",
+    "kapitelId": "technik-ct",
+    "topics": [
+      {
+        "id": "ct-methodik-km-phasen",
+        "title": {
+          "de": "CT-Methodik und Kontrastmittelphasen",
+          "en": "CT technique and contrast phases",
+          "fa": "تکنیک CT و فازهای کنتراست"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "technik",
+    "kapitelId": "technik-mrt",
+    "topics": [
+      {
+        "id": "mrt-grundprinzip-signalbildung",
+        "title": {
+          "de": "Grundprinzip & Signalbildung",
+          "en": "Basic principle & signal formation",
+          "fa": "اصل پایه و تشکیل سیگنال"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "technik",
+    "kapitelId": "technik-ct",
+    "topics": [
+      {
+        "id": "dual-energy-ct",
+        "title": {
+          "de": "Dual-Energy-CT",
+          "en": "Dual-energy CT",
+          "fa": "CT دو‌انرژی"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "technik",
+    "kapitelId": "technik-mrt",
+    "topics": [
+      {
+        "id": "mrt-perfusion",
+        "title": {
+          "de": "MR-Perfusion",
+          "en": "MR perfusion",
+          "fa": "پرفیوژن MR"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "technik",
+    "kapitelId": "technik-mrt-sicherheit",
+    "topics": [
+      {
+        "id": "mrt-bildqualitaet-artefakte-snr",
+        "title": {
+          "de": "MRT-Artefakte",
+          "en": "MRI artefacts",
+          "fa": "آرتیفکت‌های MRI"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "technik",
+    "kapitelId": "technik-mrt-sicherheit",
+    "topics": [
+      {
+        "id": "mrt-sicherheit-risiken",
+        "title": {
+          "de": "Gefahrenquellen und Mechanismen",
+          "en": "Hazard sources and mechanisms",
+          "fa": "منابع و سازوکارهای خطر"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "technik",
+    "kapitelId": "technik-mrt",
+    "topics": [
+      {
+        "id": "mrt-spin-echo",
+        "title": {
+          "de": "Spin-Echo, TR/TE und TSE",
+          "en": "Spin echo, TR/TE and TSE",
+          "fa": "اسپین‌اکو، TR/TE و TSE"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "technik",
+    "kapitelId": "technik-mrt",
+    "topics": [
+      {
+        "id": "mrt-gradient-echo",
+        "title": {
+          "de": "Gradient-Echo, T2* und SWI",
+          "en": "Gradient echo, T2* and SWI",
+          "fa": "گرادیان‌اکو، T2* و SWI"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "technik",
+    "kapitelId": "technik-mrt",
+    "topics": [
+      {
+        "id": "mrt-inversion-recovery",
+        "title": {
+          "de": "Inversion Recovery",
+          "en": "Inversion recovery",
+          "fa": "Inversion Recovery"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "technik",
+    "kapitelId": "technik-mrt",
+    "topics": [
+      {
+        "id": "mrt-fettsuppression",
+        "title": {
+          "de": "Fettsuppression",
+          "en": "Fat suppression",
+          "fa": "سرکوب چربی"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "technik",
+    "kapitelId": "technik-mrt",
+    "topics": [
+      {
+        "id": "mrt-gefaessdarstellung",
+        "title": {
+          "de": "MR-Angiographie und Gefäßwand",
+          "en": "MR angiography and vessel wall",
+          "fa": "آنژیوگرافی MR و دیوارهٔ رگ"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "technik",
+    "kapitelId": "technik-ct",
+    "topics": [
+      {
+        "id": "ct-bildqualitaet-artefakte",
+        "title": {
+          "de": "CT-Bildqualität und Artefakte",
+          "en": "CT image quality and artefacts",
+          "fa": "کیفیت تصویر و آرتیفکت‌های CT"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "technik",
+    "kapitelId": "technik-mrt",
+    "topics": [
+      {
+        "id": "leber-mrt-protokoll",
+        "title": {
+          "de": "Leber-MRT",
+          "en": "Liver MRI",
+          "fa": "MRI کبد"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "msk",
+    "kapitelId": "msk-osteochondrosen",
+    "topics": [
+      {
+        "id": "osteochondrosis-dissecans",
+        "title": {
+          "de": "Osteochondrosis dissecans",
+          "en": "Osteochondritis dissecans",
+          "fa": "استئوکندروز دیسکانس"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "msk",
+    "kapitelId": "msk-hand",
+    "topics": [
+      {
+        "id": "metakarpale-frakturen",
+        "title": {
+          "de": "Metakarpalbasisfrakturen",
+          "en": "Metacarpal base fractures",
+          "fa": "شکستگی‌های قاعدهٔ متاکارپ"
+        }
+      },
+      {
+        "id": "bandverletzungen-daumen",
+        "title": {
+          "de": "UCL-Verletzung am Daumen",
+          "en": "Thumb UCL injury",
+          "fa": "آسیب UCL شست"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "msk",
+    "kapitelId": "msk-shoulder-upper-arm",
+    "topics": [
+      {
+        "id": "proximale-humerusfraktur",
+        "title": {
+          "de": "Proximale Humerusfraktur",
+          "en": "Proximal humerus fracture",
+          "fa": "شکستگی پروگزیمال هومروس"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "abdomen",
+    "kapitelId": "abdomen-peritoneum",
+    "topics": [
+      {
+        "id": "appendicitis-epiploica",
+        "title": {
+          "de": "Epiploische Appendagitis",
+          "en": "Epiploic appendagitis",
+          "fa": "التهاب زائدهٔ چربی کولون"
+        }
+      },
+      {
+        "id": "mesenteriale-panniculitis",
+        "title": {
+          "de": "Mesenteriale Panniculitis",
+          "en": "Mesenteric panniculitis",
+          "fa": "پانیکولیت مزانتریک"
+        }
+      },
+      {
+        "id": "peritonealkarzinose",
+        "title": {
+          "de": "Peritonealkarzinose",
+          "en": "Peritoneal carcinomatosis",
+          "fa": "کارسینوماتوز پریتوئن"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "technik",
+    "kapitelId": "technik-onkologie",
+    "topics": [
+      {
+        "id": "recist-1-1",
+        "title": {
+          "de": "RECIST 1.1",
+          "en": "RECIST 1.1",
+          "fa": "RECIST 1.1"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "abdomen",
+    "kapitelId": "abdomen-retroperitoneum",
+    "topics": [
+      {
+        "id": "morbus-ormond",
+        "title": {
+          "de": "Morbus Ormond",
+          "en": "Ormond disease",
+          "fa": "بیماری اورموند"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "gehirn",
+    "kapitelId": "kopf-tumoren",
+    "topics": [
+      {
+        "id": "meningeom",
+        "title": {
+          "de": "Meningeom",
+          "en": "Meningioma",
+          "fa": "مننژیوم"
+        }
+      },
+      {
+        "id": "medulloblastom",
+        "title": {
+          "de": "Medulloblastom",
+          "en": "Medulloblastoma",
+          "fa": "مدولوبلاستوم"
+        }
+      },
+      {
+        "id": "lymphom-zns",
+        "title": {
+          "de": "Primäres ZNS-Lymphom",
+          "en": "Primary CNS lymphoma",
+          "fa": "لنفوم اولیه سیستم عصبی مرکزی"
+        }
+      },
+      {
+        "id": "metastasen-meningeosis",
+        "title": {
+          "de": "Hirnmetastasen · parenchymal",
+          "en": "Brain metastases · parenchymal",
+          "fa": "متاستاز مغزی پارانشیمی"
+        }
+      },
+      {
+        "id": "kolloidzyste",
+        "title": {
+          "de": "Kolloidzyste",
+          "en": "Colloid cyst",
+          "fa": "کیست کلوئید"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "thorax",
+    "kapitelId": "thorax-lunge",
+    "topics": [
+      {
+        "id": "uip-ipf",
+        "title": {
+          "de": "UIP / IPF",
+          "en": "UIP / IPF",
+          "fa": "UIP / IPF"
+        }
+      },
+      {
+        "id": "lungenoedem",
+        "title": {
+          "de": "Lungenödem · HRCT",
+          "en": "Pulmonary oedema · HRCT",
+          "fa": "ادم ریه · HRCT"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "thorax",
+    "kapitelId": "thorax-atemwege",
+    "topics": [
+      {
+        "id": "bronchiektasen",
+        "title": {
+          "de": "Bronchiektasen",
+          "en": "Bronchiectasis",
+          "fa": "برونشکتازی"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "msk",
+    "kapitelId": "msk-knochennekrosen",
+    "topics": [
+      {
+        "id": "knocheninfarkt",
+        "title": {
+          "de": "Knocheninfarkt",
+          "en": "Bone infarct",
+          "fa": "انفارکت استخوان"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "msk",
+    "kapitelId": "msk-knochentumoren",
+    "topics": [
+      {
+        "id": "eosinophiles-granulom",
+        "title": {
+          "de": "Langerhans-Zell-Histiozytose des Knochens",
+          "en": "Osseous Langerhans cell histiocytosis",
+          "fa": "هیستیوسیتوز سلول لانگرهانس در استخوان"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "abdomen",
+    "kapitelId": "abdomen-pankreas",
+    "topics": [
+      {
+        "id": "pdac",
+        "title": {
+          "de": "Duktales Adenokarzinom (PDAC)",
+          "en": "Ductal adenocarcinoma (PDAC)",
+          "fa": "آدنوکارسینوم داکتال پانکراس (PDAC)"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "abdomen",
+    "kapitelId": "abdomen-gi-trakt",
+    "topics": [
+      {
+        "id": "ileus-duenndarm",
+        "title": {
+          "de": "Dünndarmileus",
+          "en": "Small-bowel obstruction",
+          "fa": "انسداد رودهٔ باریک"
+        }
+      },
+      {
+        "id": "intussusception",
+        "title": {
+          "de": "Intussuszeption",
+          "en": "Intussusception",
+          "fa": "اینتوساسپشن"
+        }
+      },
+      {
+        "id": "volvulus",
+        "title": {
+          "de": "Volvulus",
+          "en": "Volvulus",
+          "fa": "ولوولوس"
+        }
+      },
+      {
+        "id": "mesenteriale-ischaemie",
+        "title": {
+          "de": "Mesenteriale Ischämie",
+          "en": "Mesenteric ischaemia",
+          "fa": "ایسکمی مزانتریک"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "abdomen",
+    "kapitelId": "abdomen-leber",
+    "topics": [
+      {
+        "id": "leberadenom",
+        "title": {
+          "de": "Leberadenom",
+          "en": "Hepatic adenoma",
+          "fa": "آدنوم کبدی"
+        }
+      },
+      {
+        "id": "lebermetastasen",
+        "title": {
+          "de": "Lebermetastasen",
+          "en": "Liver metastases",
+          "fa": "متاستازهای کبدی"
+        }
+      },
+      {
+        "id": "leberzyste",
+        "title": {
+          "de": "Zystische Leberläsionen",
+          "en": "Cystic Liver Lesions",
+          "fa": "ضایعات کیستیک کبد"
+        }
+      },
+      {
+        "id": "hepatische-steatose",
+        "title": {
+          "de": "Hepatische Steatose",
+          "en": "Hepatic steatosis",
+          "fa": "استئاتوز کبدی"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "abdomen",
+    "kapitelId": "abdomen-pankreas",
+    "topics": [
+      {
+        "id": "ipmn",
+        "title": {
+          "de": "Zystische Pankreasläsionen (inkl. IPMN)",
+          "en": "Cystic pancreatic lesions (including IPMN)",
+          "fa": "ضایعات کیستیک پانکراس (از جمله IPMN)"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "abdomen",
+    "kapitelId": "abdomen-niere",
+    "topics": [
+      {
+        "id": "niere-anatomie",
+        "title": {
+          "de": "Nieren & Harnwege",
+          "en": "Kidneys & urinary tract",
+          "fa": "کلیه‌ها و مجاری ادراری"
+        }
+      },
+      {
+        "id": "nierenzysten",
+        "title": {
+          "de": "Nierenzysten",
+          "en": "Renal cysts",
+          "fa": "کیست‌های کلیوی"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "abdomen",
+    "kapitelId": "abdomen-nebenniere",
+    "topics": [
+      {
+        "id": "nebennieren-inzidentalom",
+        "title": {
+          "de": "Nebenniereninzidentalom",
+          "en": "Adrenal incidentaloma",
+          "fa": "اینسیدنتالوم آدرنال"
+        }
+      },
+      {
+        "id": "nebennierenadenom",
+        "title": {
+          "de": "Nebennierenadenom",
+          "en": "Adrenal adenoma",
+          "fa": "آدنوم آدرنال"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "abdomen",
+    "kapitelId": "abdomen-gi-trakt",
+    "topics": [
+      {
+        "id": "appendizitis",
+        "title": {
+          "de": "Appendizitis",
+          "en": "Appendicitis",
+          "fa": "آپاندیسیت"
+        }
+      },
+      {
+        "id": "untere-gi-blutung",
+        "title": {
+          "de": "Untere GI-Blutung",
+          "en": "Lower GI bleeding",
+          "fa": "خون‌ریزی گوارشی تحتانی"
+        }
+      },
+      {
+        "id": "kolorektales-karzinom",
+        "title": {
+          "de": "Kolorektales Karzinom",
+          "en": "Colorectal carcinoma",
+          "fa": "کارسینوم کولورکتال"
+        }
+      },
+      {
+        "id": "gist",
+        "title": {
+          "de": "GIST",
+          "en": "GIST",
+          "fa": "GIST"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "thorax",
+    "kapitelId": "thorax-grundlagen",
+    "topics": [
+      {
+        "id": "roentgen-thorax-systematik",
+        "title": {
+          "de": "Systematische Röntgenanalyse",
+          "en": "Systematic chest radiograph review",
+          "fa": "مرور نظام‌مند رادیوگرافی قفسهٔ سینه"
+        }
+      },
+      {
+        "id": "herzgroesse-roentgen",
+        "title": {
+          "de": "Herzgröße im Röntgen",
+          "en": "Cardiac size on chest radiography",
+          "fa": "اندازه قلب در رادیوگرافی قفسه سینه"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "thorax",
+    "kapitelId": "thorax-anatomie",
+    "topics": [
+      {
+        "id": "lungenanatomie",
+        "title": {
+          "de": "Lungenanatomie und Segmente",
+          "en": "Lung anatomy and segments",
+          "fa": "آناتومی و سگمان‌های ریه"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "thorax",
+    "kapitelId": "thorax-atemwege",
+    "topics": [
+      {
+        "id": "fremdkoerper-atemwege",
+        "title": {
+          "de": "Fremdkörperaspiration",
+          "en": "Airway foreign body aspiration",
+          "fa": "آسپیراسیون جسم خارجی"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "thorax",
+    "kapitelId": "thorax-infektionen",
+    "topics": [
+      {
+        "id": "pneumonie-muster",
+        "title": {
+          "de": "Pneumoniemuster",
+          "en": "Pneumonia patterns",
+          "fa": "الگوهای پنومونی"
+        }
+      },
+      {
+        "id": "bakterielle-pneumonie",
+        "title": {
+          "de": "Bakterielle Pneumonie",
+          "en": "Bacterial pneumonia",
+          "fa": "پنومونی باکتریایی"
+        }
+      },
+      {
+        "id": "virale-pneumonie-covid",
+        "title": {
+          "de": "Virale Pneumonie / COVID-19",
+          "en": "Viral pneumonia / COVID-19",
+          "fa": "پنومونی ویروسی / کووید-۱۹"
+        }
+      },
+      {
+        "id": "atypische-pneumonie",
+        "title": {
+          "de": "Atypische Pneumonie",
+          "en": "Atypical pneumonia",
+          "fa": "پنومونی آتیپیک"
+        }
+      },
+      {
+        "id": "pcp",
+        "title": {
+          "de": "Pneumocystis-Pneumonie",
+          "en": "Pneumocystis pneumonia",
+          "fa": "پنومونی پنوموسیستیس"
+        }
+      },
+      {
+        "id": "aspergillus-lunge",
+        "title": {
+          "de": "Aspergillose der Lunge",
+          "en": "Pulmonary aspergillosis",
+          "fa": "آسپرژیلوز ریوی"
+        }
+      },
+      {
+        "id": "tuberkulose",
+        "title": {
+          "de": "Tuberkulose",
+          "en": "Tuberculosis",
+          "fa": "سل"
+        }
+      },
+      {
+        "id": "lungenabszess",
+        "title": {
+          "de": "Lungenabszess · Kavitäten",
+          "en": "Lung abscess · cavities",
+          "fa": "آبسهٔ ریه · کاویتی‌ها"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "thorax",
+    "kapitelId": "thorax-gefaesse-pulmonal",
+    "topics": [
+      {
+        "id": "pulmonale-hypertonie",
+        "title": {
+          "de": "Pulmonale Hypertonie",
+          "en": "Pulmonary hypertension",
+          "fa": "پرفشاری ریوی"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "abdomen",
+    "kapitelId": "abdomen-anatomie",
+    "topics": [
+      {
+        "id": "leber-anatomie",
+        "title": {
+          "de": "Leber · Zu- und Abfluss",
+          "en": "Liver · inflow and outflow",
+          "fa": "کبد · ورودی و خروجی"
+        }
+      },
+      {
+        "id": "gefaesse-anatomie-abdomen",
+        "title": {
+          "de": "Gefäßanatomie Abdomen",
+          "en": "Abdominal vascular anatomy",
+          "fa": "آناتومی عروق شکم"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "wirbelsaeule",
+    "kapitelId": "ws-entzuendlich",
+    "topics": [
+      {
+        "id": "spondylodiszitis",
+        "title": {
+          "de": "Spondylodiszitis",
+          "en": "Spondylodiscitis",
+          "fa": "اسپوندیلودی‌سکیت"
+        }
+      },
+      {
+        "id": "morbus-bechterew-ws",
+        "title": {
+          "de": "Morbus Bechterew",
+          "en": "Ankylosing spondylitis",
+          "fa": "اسپوندیلیت آنکیلوزان"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "msk",
+    "kapitelId": "msk-knochentumoren",
+    "topics": [
+      {
+        "id": "knochentumor-grundlagen",
+        "title": {
+          "de": "Grundlagen & Klassifikation",
+          "en": "Fundamentals & classification",
+          "fa": "مبانی و طبقه‌بندی"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "gehirn",
+    "kapitelId": "kopf-kopfschmerz",
+    "topics": [
+      {
+        "id": "migraene",
+        "title": {
+          "de": "Migräne",
+          "en": "Migraine",
+          "fa": "میگرن"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "thorax",
+    "kapitelId": "thorax-tumoren",
+    "topics": [
+      {
+        "id": "fleischner-kriterien",
+        "title": {
+          "de": "Fleischner-Kriterien",
+          "en": "Fleischner criteria",
+          "fa": "معیارهای Fleischner"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "thorax",
+    "kapitelId": "thorax-tumoren",
+    "topics": [
+      {
+        "id": "nsclc",
+        "title": {
+          "de": "NSCLC · Bildgebung",
+          "en": "NSCLC · imaging",
+          "fa": "NSCLC · تصویربرداری"
+        }
+      },
+      {
+        "id": "sclc",
+        "title": {
+          "de": "SCLC · Bildgebung",
+          "en": "SCLC · imaging",
+          "fa": "SCLC · تصویربرداری"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "thorax",
+    "kapitelId": "thorax-kardio",
+    "topics": [
+      {
+        "id": "myokardinfarkt-differentialdiagnosen",
+        "title": {
+          "de": "Kardio-MRT bei Troponinanstieg",
+          "en": "Cardiac MRI in troponin elevation",
+          "fa": "MRI قلب در افزایش تروپونین"
+        }
+      },
+      {
+        "id": "kardiomyopathien",
+        "title": {
+          "de": "Kardiomyopathien: Kardio-MRT",
+          "en": "Cardiomyopathies: cardiac MRI",
+          "fa": "کاردیومیوپاتی‌ها: MRI قلب"
+        }
+      },
+      {
+        "id": "arvc",
+        "title": {
+          "de": "Arrhythmogene Kardiomyopathie",
+          "en": "Arrhythmogenic cardiomyopathy",
+          "fa": "کاردیومیوپاتی آریتموژنیک"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "becken-m",
+    "kapitelId": "becken-m-prostata",
+    "topics": [
+      {
+        "id": "prostatakarzinom",
+        "title": {
+          "de": "Prostatakarzinom",
+          "en": "Prostate carcinoma",
+          "fa": "کارسینوم پروستات"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "mamma",
+    "kapitelId": "mamma-bildgebung",
+    "topics": [
+      {
+        "id": "mamma-mrt-basics",
+        "title": {
+          "de": "Mamma-MRT: Basics",
+          "en": "Breast MRI: Basics",
+          "fa": "MRI پستان: مبانی"
+        }
+      },
+      {
+        "id": "mamma-mrt-laesionscharakterisierung",
+        "title": {
+          "de": "Mamma-MRT: Läsionscharakterisierung",
+          "en": "Breast MRI: Lesion Characterisation",
+          "fa": "MRI پستان: ارزیابی ضایعه"
+        }
+      },
+      {
+        "id": "mamma-mrt-kaiser-score",
+        "title": {
+          "de": "Mamma-MRT: Kaiser Score",
+          "en": "Breast MRI: Kaiser Score",
+          "fa": "MRI پستان: امتیاز کایزر"
+        }
+      },
+      {
+        "id": "mamma-mrt-besondere-mammakarzinome",
+        "title": {
+          "de": "Mamma-MRT: besondere Mammakarzinome",
+          "en": "Breast MRI: special carcinoma subtypes",
+          "fa": "MRI پستان: انواع خاص کارسینوم پستان"
+        }
+      },
+      {
+        "id": "mammographie-grundlagen",
+        "title": {
+          "de": "Mammographie: Grundlagen der Befundung",
+          "en": "Mammography: Reporting Fundamentals",
+          "fa": "ماموگرافی: مبانی گزارش‌نویسی"
+        }
+      },
+      {
+        "id": "mammographie-mikrokalk",
+        "title": {
+          "de": "Mammographie: Verkalkungen",
+          "en": "Mammography: Calcifications",
+          "fa": "ماموگرافی: کلسیفیکاسیون‌ها"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "thorax",
+    "kapitelId": "thorax-grundlagen",
+    "topics": [
+      {
+        "id": "hrct-dichteanhebung",
+        "title": {
+          "de": "HRCT: Dichteanhebung",
+          "en": "HRCT: Increased Density",
+          "fa": "HRCT: افزایش دانسیته"
+        }
+      },
+      {
+        "id": "hrct-retikulaer-nodulaer",
+        "title": {
+          "de": "HRCT: Retikulär & Nodulär",
+          "en": "HRCT: Reticular & Nodular",
+          "fa": "HRCT: رتیکولار و ندولار"
+        }
+      },
+      {
+        "id": "hrct-architekturmuster",
+        "title": {
+          "de": "HRCT: Architekturmuster",
+          "en": "HRCT: Architectural Patterns",
+          "fa": "HRCT: الگوهای معماری"
+        }
+      },
+      {
+        "id": "hrct-dichteminderung",
+        "title": {
+          "de": "HRCT: Dichteminderung",
+          "en": "HRCT: Decreased Density",
+          "fa": "HRCT: کاهش دانسیته"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "gehirn",
+    "kapitelId": "kopf-anatomie",
+    "topics": [
+      {
+        "id": "liquorraeume-ventrikelsystem",
+        "title": {
+          "de": "Liquorräume / Ventrikelsystem",
+          "en": "CSF spaces / ventricular system",
+          "fa": "فضاهای مایع مغزی‌نخاعی / سیستم بطنی"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "gehirn",
+    "kapitelId": "kopf-vaskulaer",
+    "topics": [
+      {
+        "id": "ischaemischer-schlaganfall",
+        "title": {
+          "de": "Ischämischer Schlaganfall",
+          "en": "Ischaemic Stroke",
+          "fa": "سکته مغزی ایسکمیک"
+        }
+      },
+      {
+        "id": "intrazerebrale-blutung",
+        "title": {
+          "de": "Intrazerebrale Blutung",
+          "en": "Intracerebral Haemorrhage",
+          "fa": "خونریزی داخل مغزی"
+        }
+      },
+      {
+        "id": "subarachnoidalblutung",
+        "title": {
+          "de": "Subarachnoidalblutung",
+          "en": "Subarachnoid haemorrhage",
+          "fa": "خونریزی ساب‌آراکنوئید"
+        }
+      },
+      {
+        "id": "subdurale-blutung",
+        "title": {
+          "de": "Subduralhämatom",
+          "en": "Subdural haematoma",
+          "fa": "هماتوم ساب‌دورال"
+        }
+      },
+      {
+        "id": "gefaessdissektion-hirn",
+        "title": {
+          "de": "Dissektion hirnversorgender Gefäße",
+          "en": "Cervicocephalic arterial dissection",
+          "fa": "دیسکشن عروق مغزی و گردنی"
+        }
+      },
+      {
+        "id": "hypertensive-mikroangiopathie",
+        "title": {
+          "de": "Hypertensive Mikroangiopathie",
+          "en": "Hypertensive microangiopathy",
+          "fa": "میکروآنژیوپاتی هیپرتانسیو"
+        }
+      },
+      {
+        "id": "caa",
+        "title": {
+          "de": "Zerebrale Amyloidangiopathie",
+          "en": "Cerebral amyloid angiopathy",
+          "fa": "آنژیوپاتی آمیلوئید مغزی"
+        }
+      },
+      {
+        "id": "moya-moya",
+        "title": {
+          "de": "Moyamoya-Erkrankung",
+          "en": "Moyamoya disease",
+          "fa": "بیماری مویامویا"
+        }
+      },
+      {
+        "id": "hypoxisch-ischaemische-hirnschaedigung",
+        "title": {
+          "de": "Hypoxisch-ischämische Hirnschädigung",
+          "en": "Hypoxic-ischaemic brain injury",
+          "fa": "آسیب مغزی هیپوکسیک-ایسکمیک"
+        }
+      },
+      {
+        "id": "cadasil",
+        "title": {
+          "de": "CADASIL",
+          "en": "CADASIL",
+          "fa": "CADASIL"
+        }
+      },
+      {
+        "id": "dva",
+        "title": {
+          "de": "Developmental Venous Anomaly",
+          "en": "Developmental Venous Anomaly",
+          "fa": "آنومالی وریدی تکاملی"
+        }
+      },
+      {
+        "id": "kavernom",
+        "title": {
+          "de": "Kavernom",
+          "en": "Cavernoma",
+          "fa": "کاورنوم"
+        }
+      },
+      {
+        "id": "kapillaere-teleangiektasie",
+        "title": {
+          "de": "Kapilläre Teleangiektasie",
+          "en": "Capillary telangiectasia",
+          "fa": "تلانژکتازی مویرگی"
+        }
+      },
+      {
+        "id": "sinusvenenthrombose",
+        "title": {
+          "de": "Sinus- und Hirnvenenthrombose",
+          "en": "Cerebral venous thrombosis",
+          "fa": "ترومبوز سینوس و وریدهای مغزی"
+        }
+      },
+      {
+        "id": "davf",
+        "title": {
+          "de": "Durale AV-Fistel (dAVF)",
+          "en": "Dural Arteriovenous Fistula (dAVF)",
+          "fa": "فیستول دورال AV (dAVF)"
+        }
+      },
+      {
+        "id": "avm-zns",
+        "title": {
+          "de": "Arteriovenöse Malformation (AVM)",
+          "en": "Arteriovenous Malformation (AVM)",
+          "fa": "مالفورماسیون شریانی-وریدی (AVM)"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "gehirn",
+    "kapitelId": "kopf-liquor",
+    "topics": [
+      {
+        "id": "normaldruckhydrozephalus",
+        "title": {
+          "de": "Normaldruckhydrozephalus",
+          "en": "Normal pressure hydrocephalus",
+          "fa": "هیدروسفالی فشار طبیعی"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "gehirn",
+    "kapitelId": "kopf-trauma",
+    "topics": [
+      {
+        "id": "epidurale-blutung",
+        "title": {
+          "de": "Epiduralhämatom",
+          "en": "Epidural haematoma",
+          "fa": "هماتوم اپیدورال"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "technik",
+    "kapitelId": "technik-kontrastmittel",
+    "topics": [
+      {
+        "id": "km-ultraschall",
+        "title": {
+          "de": "Mikrobläschen & CEUS",
+          "en": "Microbubbles & CEUS",
+          "fa": "میکروحباب‌ها و CEUS"
+        }
+      },
+      {
+        "id": "km-jod-typen",
+        "title": {
+          "de": "Typen & Eigenschaften",
+          "en": "Types & properties",
+          "fa": "انواع و ویژگی‌ها"
+        }
+      },
+      {
+        "id": "km-jod-reaktionen",
+        "title": {
+          "de": "Nebenwirkungen & Notfallmanagement",
+          "en": "Adverse reactions & emergency management",
+          "fa": "عوارض و مدیریت اورژانسی"
+        }
+      },
+      {
+        "id": "km-gastrointestinal",
+        "title": {
+          "de": "Gastrointestinale KM",
+          "en": "Gastrointestinal contrast media",
+          "fa": "مواد حاجب گوارشی"
+        }
+      },
+      {
+        "id": "km-gadolinium",
+        "title": {
+          "de": "Gadolinium-Grundlagen",
+          "en": "Gadolinium fundamentals",
+          "fa": "مبانی گادولینیوم"
+        }
+      },
+      {
+        "id": "km-gadolinium-retention-nsf",
+        "title": {
+          "de": "Gadolinium-Retention & NSF",
+          "en": "Gadolinium retention & NSF",
+          "fa": "احتباس گادولینیوم و NSF"
+        }
+      },
+      {
+        "id": "km-buscopan",
+        "title": {
+          "de": "Buscopan®",
+          "en": "Buscopan®",
+          "fa": "Buscopan®"
+        }
+      },
+      {
+        "id": "km-niereninsuffizienz",
+        "title": {
+          "de": "Nierenfunktion und KM",
+          "en": "Renal function and contrast media",
+          "fa": "عملکرد کلیه و مواد حاجب"
+        }
+      },
+      {
+        "id": "km-schilddruese",
+        "title": {
+          "de": "Schilddrüsenerkrankungen",
+          "en": "Thyroid disease",
+          "fa": "بیماری‌های تیروئید"
+        }
+      },
+      {
+        "id": "km-schwangerschaft-stillzeit",
+        "title": {
+          "de": "Schwangere und Stillende",
+          "en": "Pregnancy and breastfeeding",
+          "fa": "بارداری و شیردهی"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "msk",
+    "kapitelId": "msk-trauma",
+    "topics": [
+      {
+        "id": "frakturbeschreibung",
+        "title": {
+          "de": "Frakturbeschreibung",
+          "en": "Fracture description",
+          "fa": "توصیف شکستگی"
+        }
+      },
+      {
+        "id": "stressfrakturen",
+        "title": {
+          "de": "Stressfrakturen",
+          "en": "Stress fractures",
+          "fa": "شکستگی‌های استرسی"
+        }
+      },
+      {
+        "id": "frakturen-kindesalter",
+        "title": {
+          "de": "Frakturen im Kindesalter",
+          "en": "Paediatric Fractures",
+          "fa": "شکستگی‌های دوران کودکی"
+        }
+      },
+      {
+        "id": "ak-luxation",
+        "title": {
+          "de": "Akromioklavikuläre Luxation",
+          "en": "AC Joint Dislocation",
+          "fa": "لوکساسیون مفصل AC"
+        }
+      },
+      {
+        "id": "radiuskoepfchenfraktur",
+        "title": {
+          "de": "Radiusköpfchenfraktur",
+          "en": "Radial Head Fracture",
+          "fa": "شکستگی سر رادیوس"
+        }
+      },
+      {
+        "id": "unterarmschaftfrakturen",
+        "title": {
+          "de": "Unterarmschaftfrakturen",
+          "en": "Forearm Shaft Fractures",
+          "fa": "شکستگی‌های تنه ساعد"
+        }
+      },
+      {
+        "id": "distale-radiusfraktur",
+        "title": {
+          "de": "Distale Radiusfraktur",
+          "en": "Distal Radius Fracture",
+          "fa": "شکستگی دیستال رادیوس"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "wirbelsaeule",
+    "kapitelId": "wirbelsaeule-trauma",
+    "topics": [
+      {
+        "id": "kraniozervikaler-uebergang-trauma",
+        "title": {
+          "de": "Kraniozervikaler Übergang",
+          "en": "Craniocervical Junction",
+          "fa": "محل اتصال کرانیوسرویکال"
+        }
+      },
+      {
+        "id": "hws-verletzungen",
+        "title": {
+          "de": "HWS-Verletzungen",
+          "en": "Cervical Spine Injuries",
+          "fa": "آسیب‌های ستون فقرات گردنی"
+        }
+      },
+      {
+        "id": "bws-lws-frakturen",
+        "title": {
+          "de": "BWS / LWS-Frakturen",
+          "en": "Thoracic / Lumbar Spine Fractures",
+          "fa": "شکستگی ستون فقرات توراسیک / کمری"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "msk",
+    "kapitelId": "msk-knie",
+    "topics": [
+      {
+        "id": "meniskus",
+        "title": {
+          "de": "Meniskus",
+          "en": "Meniscus",
+          "fa": "منیسک"
+        }
+      },
+      {
+        "id": "kreuzbaender",
+        "title": {
+          "de": "Knie-Ligamente",
+          "en": "Knee ligaments",
+          "fa": "رباط‌های زانو"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "msk",
+    "kapitelId": "msk-schulter",
+    "topics": [
+      {
+        "id": "rotatorenmanschette",
+        "title": {
+          "de": "Rotatorenmanschette",
+          "en": "Rotator Cuff",
+          "fa": "روتاتور کاف"
+        }
+      },
+      {
+        "id": "schulter-mrt-planung-anatomie",
+        "title": {
+          "de": "Schichtplanung und Anatomie",
+          "en": "Plane prescription and anatomy",
+          "fa": "طراحی برش‌ها و آناتومی"
+        }
+      },
+      {
+        "id": "schulter-mrt-impingement",
+        "title": {
+          "de": "Impingement",
+          "en": "Impingement",
+          "fa": "ایمپینجمنت"
+        }
+      },
+      {
+        "id": "schulter-mrt-luxation",
+        "title": {
+          "de": "Luxation",
+          "en": "Dislocation",
+          "fa": "دررفتگی"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "abdomen",
+    "kapitelId": "abdomen-leber",
+    "topics": [
+      {
+        "id": "haemangiom",
+        "title": {
+          "de": "Leberhämangiom",
+          "en": "Liver haemangioma",
+          "fa": "همانژیوم کبد"
+        }
+      },
+      {
+        "id": "fnh",
+        "title": {
+          "de": "FNH",
+          "en": "FNH",
+          "fa": "FNH"
+        }
+      },
+      {
+        "id": "hcc",
+        "title": {
+          "de": "HCC",
+          "en": "HCC",
+          "fa": "HCC"
+        }
+      },
+      {
+        "id": "avm",
+        "title": {
+          "de": "AVM der Leber",
+          "en": "Hepatic AVM",
+          "fa": "AVM کبد"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "abdomen",
+    "kapitelId": "abdomen-pankreas",
+    "topics": [
+      {
+        "id": "pankreatitis",
+        "title": {
+          "de": "Pankreatitis",
+          "en": "Pancreatitis",
+          "fa": "پانکراتیت"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "abdomen",
+    "kapitelId": "abdomen-gi-trakt",
+    "topics": [
+      {
+        "id": "divertikulitis",
+        "title": {
+          "de": "Divertikulitis",
+          "en": "Diverticulitis",
+          "fa": "دیورتیکولیت"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "thorax",
+    "kapitelId": "thorax-lunge",
+    "topics": [
+      {
+        "id": "sarkoidose",
+        "title": {
+          "de": "Sarkoidose",
+          "en": "Sarcoidosis",
+          "fa": "سارکوئیدوز"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "gehirn",
+    "kapitelId": "gehirn-clinical-review",
+    "topics": [
+      {
+        "id": "aq-balkenagenesie",
+        "title": {
+          "de": "Balkenagenesie",
+          "en": "Callosal agenesis",
+          "fa": "آژنزی جسم پینه‌ای"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "gehirn",
+    "kapitelId": "gehirn-clinical-review",
+    "topics": [
+      {
+        "id": "pres",
+        "title": {
+          "de": "PRES",
+          "en": "PRES",
+          "fa": "PRES"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "gehirn",
+    "kapitelId": "gehirn-clinical-review",
+    "topics": [
+      {
+        "id": "aq-pvl",
+        "title": {
+          "de": "Periventrikuläre Leukomalazie",
+          "en": "Periventricular leukomalacia",
+          "fa": "لوکومالاسی پیرابطنی"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "gehirn",
+    "kapitelId": "gehirn-clinical-review",
+    "topics": [
+      {
+        "id": "chiari-malformation",
+        "title": {
+          "de": "Chiari-Malformation",
+          "en": "Chiari malformation",
+          "fa": "مالفورماسیون کیاری"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "gehirn",
+    "kapitelId": "gehirn-clinical-review",
+    "topics": [
+      {
+        "id": "aq-hsv-enzephalitis",
+        "title": {
+          "de": "HSV-Enzephalitis",
+          "en": "HSV encephalitis",
+          "fa": "آنسفالیت HSV"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "gehirn",
+    "kapitelId": "gehirn-clinical-review",
+    "topics": [
+      {
+        "id": "aq-hirnabszess",
+        "title": {
+          "de": "Hirnabszess",
+          "en": "Brain abscess",
+          "fa": "آبسهٔ مغزی"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "gehirn",
+    "kapitelId": "gehirn-clinical-review",
+    "topics": [
+      {
+        "id": "aq-hiv-enzephalopathie",
+        "title": {
+          "de": "HIV-assoziierte Hirnveränderungen",
+          "en": "HIV-associated brain changes",
+          "fa": "تغییرات مغزی مرتبط با HIV"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "gehirn",
+    "kapitelId": "gehirn-clinical-review",
+    "topics": [
+      {
+        "id": "aq-meningitis-enzephalitis",
+        "title": {
+          "de": "Meningitis und Enzephalitis",
+          "en": "Meningitis and encephalitis",
+          "fa": "مننژیت و آنسفالیت"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "gehirn",
+    "kapitelId": "gehirn-clinical-review",
+    "topics": [
+      {
+        "id": "aq-cjd",
+        "title": {
+          "de": "CJK: Diffusionsmuster",
+          "en": "CJD diffusion patterns",
+          "fa": "الگوهای انتشار در CJD"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "gehirn",
+    "kapitelId": "gehirn-clinical-review",
+    "topics": [
+      {
+        "id": "aq-parkinson",
+        "title": {
+          "de": "Parkinson-Bildgebung",
+          "en": "Imaging in parkinsonism",
+          "fa": "تصویربرداری سندرم پارکینسونی"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "gehirn",
+    "kapitelId": "gehirn-clinical-review",
+    "topics": [
+      {
+        "id": "aq-demenzmuster",
+        "title": {
+          "de": "Demenzmuster im MRT",
+          "en": "Dementia patterns on MRI",
+          "fa": "الگوهای دمانس در MRI"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "gehirn",
+    "kapitelId": "gehirn-clinical-review",
+    "topics": [
+      {
+        "id": "neurofibromatose-typ1",
+        "title": {
+          "de": "NF1: Bildmuster und klinische Warnzeichen",
+          "en": "NF1: imaging patterns and clinical warning signs",
+          "fa": "NF1: الگوهای تصویری و علائم هشدار بالینی"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "msk",
+    "kapitelId": "msk-clinical-review",
+    "topics": [
+      {
+        "id": "morbus-perthes",
+        "title": {
+          "de": "Morbus Perthes",
+          "en": "Perthes disease",
+          "fa": "بیماری پرتس"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "msk",
+    "kapitelId": "msk-clinical-review",
+    "topics": [
+      {
+        "id": "chondrokalzinose",
+        "title": {
+          "de": "Chondrokalzinose am Knie",
+          "en": "Knee chondrocalcinosis",
+          "fa": "کندروکلسی‌نوز زانو"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "msk",
+    "kapitelId": "msk-clinical-review",
+    "topics": [
+      {
+        "id": "osgood-schlatter",
+        "title": {
+          "de": "Morbus Osgood-Schlatter",
+          "en": "Osgood–Schlatter disease",
+          "fa": "بیماری آزگود–اشلاتر"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "msk",
+    "kapitelId": "msk-clinical-review",
+    "topics": [
+      {
+        "id": "weitere-osteochondrosen",
+        "title": {
+          "de": "Osteochondrose: Begriff und Abgrenzung",
+          "en": "Osteochondrosis: meaning and terminology",
+          "fa": "استئوکندروز: مفهوم و تمایز اصطلاحی"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "msk",
+    "kapitelId": "msk-clinical-review",
+    "topics": [
+      {
+        "id": "avn-huefte",
+        "title": {
+          "de": "Avaskuläre Femurkopfnekrose",
+          "en": "Femoral-head osteonecrosis",
+          "fa": "استئونکروز سر فمور"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "msk",
+    "kapitelId": "msk-clinical-review",
+    "topics": [
+      {
+        "id": "melorheostose",
+        "title": {
+          "de": "Melorheostose",
+          "en": "Melorheostosis",
+          "fa": "ملوره‌اوستوز"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "msk",
+    "kapitelId": "msk-clinical-review",
+    "topics": [
+      {
+        "id": "osteomyelitis",
+        "title": {
+          "de": "Osteomyelitis: Differentialhinweise",
+          "en": "Osteomyelitis: differential clues",
+          "fa": "استئومیلیت: سرنخ‌های افتراقی"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "technik",
+    "kapitelId": "technik-clinical-review",
+    "topics": [
+      {
+        "id": "aq-atv-intervention",
+        "title": {
+          "de": "Interventionelle Radiologie",
+          "en": "Interventional radiology",
+          "fa": "رادیولوژی مداخله‌ای"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "thorax",
+    "kapitelId": "thorax-clinical-review",
+    "topics": [
+      {
+        "id": "lung-rads",
+        "title": {
+          "de": "Lung-RADS v2022",
+          "en": "Lung-RADS v2022",
+          "fa": "Lung-RADS نسخهٔ ۲۰۲۲"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "thorax",
+    "kapitelId": "thorax-clinical-review",
+    "topics": [
+      {
+        "id": "kardio-mrt-basics",
+        "title": {
+          "de": "Kardio-MRT: Grundlagen",
+          "en": "Cardiac MRI: basics",
+          "fa": "MRI قلب: مبانی"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "thorax",
+    "kapitelId": "thorax-clinical-review",
+    "topics": [
+      {
+        "id": "kardio-mrt-indikationen",
+        "title": {
+          "de": "Kardio-MRT: Indikationen",
+          "en": "Cardiac MRI: indications",
+          "fa": "MRI قلب: اندیکاسیون‌ها"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "thorax",
+    "kapitelId": "thorax-clinical-review",
+    "topics": [
+      {
+        "id": "myokardinfarkt-mrt",
+        "title": {
+          "de": "Myokardinfarkt im MRT",
+          "en": "Myocardial infarction on MRI",
+          "fa": "انفارکت میوکارد در MRI"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "thorax",
+    "kapitelId": "thorax-clinical-review",
+    "topics": [
+      {
+        "id": "aortenbogen",
+        "title": {
+          "de": "Aortenbogen",
+          "en": "Aortic arch",
+          "fa": "قوس آئورت"
+        }
+      }
+    ]
+  },
+  {
+    "fachId": "abdomen",
+    "kapitelId": "abdomen-clinical-review",
+    "topics": [
+      {
+        "id": "inguinal-femoral-hernia",
+        "title": {
+          "de": "Leisten- und Schenkelhernie",
+          "en": "Inguinal and femoral hernias",
+          "fa": "فتق اینگوینال و فمورال"
+        }
+      }
+    ]
+  }
+]

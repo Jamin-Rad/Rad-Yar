@@ -1,14 +1,16 @@
 'use client'
 import Link from 'next/link'
+import dynamic from 'next/dynamic'
 import RadYarIcon from './RadYarIcon'
 import { useEffect, useState } from 'react'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { useTheme } from '@/providers/ThemeProvider'
-import SearchBar from './SearchBar'
 import ClerkNavActions from './ClerkNavActions'
 import AdminHeaderLinks from './AdminHeaderLinks'
 import styles from './Navbar.module.css'
 import { translations } from '@/data/translations'
+
+const SearchBar = dynamic(() => import('./SearchBar'))
 
 function HexLogo({ size = 32 }) {
   return <RadYarIcon size={size} />

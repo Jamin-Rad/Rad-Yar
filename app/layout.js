@@ -3,7 +3,7 @@ import { ClerkProvider } from '@clerk/nextjs'
 import './globals.css'
 import { ThemeProvider } from '@/providers/ThemeProvider'
 import { LanguageProvider } from '@/providers/LanguageProvider'
-import RobotAssistant from '@/components/RobotAssistant'
+import RobotAssistantGate from '@/components/RobotAssistantGate'
 import ActivityTracker from '@/components/ActivityTracker'
 import AdminCopyMode from '@/components/AdminCopyMode'
 import LehrMode from '@/components/LehrMode'
@@ -133,7 +133,7 @@ export default function RootLayout({ children }) {
               <HomeScene />
               {children}
               <ImageLightbox />
-              <RobotAssistant />
+              <RobotAssistantGate />
               <LegalNotice />
             </LanguageProvider>
           </ThemeProvider>

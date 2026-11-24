@@ -3,8 +3,32 @@ const assert = require('node:assert/strict')
 const fs = require('node:fs')
 const path = require('node:path')
 const vm = require('node:vm')
-const { transformSync } = require('esbuild')
+const { buildSync, transformSync } = require('esbuild')
 const root = path.resolve(__dirname, '..')
+
+test('global UI and profile do not depend on exercise content', () => {
+  const result = buildSync({
+    absWorkingDir: root,
+    entryPoints: ['components/RobotAssistantGate.jsx', 'components/Navbar.jsx', 'app/profil/page.js'],
+    bundle: true, write: false, metafile: true, outdir: 'out', packages: 'external',
+    alias: { '@': root }, loader: { '.js': 'jsx', '.css': 'empty' },
+  })
+  for (const bank of ['data/questions.js', 'data/flashcards.js', 'data/contrastMedia.js', 'data/assessmentQuality/publishedBank.json']) {
+    assert.ok(!Object.hasOwn(result.metafile.inputs, bank), bank)
+  }
+})
+
+test('recommendation and progress indexes match the current exercise catalog', () => {
+  const tsx = require('tsx/cjs/api')
+  const { FLASHCARDS } = tsx.require('../data/flashcards.js', __filename)
+  const { MCQ_TOPIC_GROUPS } = tsx.require('../data/questions.js', __filename)
+  assert.deepEqual(require('../data/flashcardIds.json'), FLASHCARDS.map(card => card.id))
+  assert.deepEqual(require('../data/mcqTopicIndex.json'), MCQ_TOPIC_GROUPS.map(group => ({
+    fachId: group.fachId, kapitelId: group.kapitelId,
+    topics: group.topics.map(topic => ({ id: topic.id, title: topic.title })),
+  })))
+})
+
 function storage() {
   const values = new Map()
   return { get length() { return values.size }, key: index => [...values.keys()][index] ?? null, getItem: key => values.get(key) ?? null, setItem: (key, value) => values.set(key, value), removeItem: key => values.delete(key) }

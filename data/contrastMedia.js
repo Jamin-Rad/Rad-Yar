@@ -1,4 +1,7 @@
+import { CONTRAST_GROUPS } from './contrastGroups'
 import { getContrastRevision, contrastRevisionForSeed } from './assessmentQuality/contrastRevisions'
+export { CONTRAST_GROUPS }
+
 export const CONTRAST_TOPICS = [
   {
     id: 'km-ultraschall',
@@ -59,71 +62,6 @@ export const CONTRAST_TOPICS = [
     group: { de: 'Schwangere und Stillende', en: 'Pregnancy and breastfeeding', fa: 'بارداری و شیردهی' },
     title: { de: 'Schwangere und Stillende', en: 'Pregnancy and breastfeeding', fa: 'بارداری و شیردهی' },
     icon: '🤰',
-  },
-]
-
-export const CONTRAST_GROUPS = [
-  {
-    id: 'ultraschall',
-    readId: 'kontrastmittel-ultraschall',
-    flashcardId: 'kontrastmittel-ultraschall',
-    icon: '🫧',
-    tags: ['Sono'],
-    title: { de: 'Ultraschall-Kontrastmittel', en: 'Ultrasound contrast media', fa: 'مواد حاجب سونوگرافی' },
-    subtitle: { de: 'Mikrobläschen, CEUS-Mechanismus, Indikationen und Sicherheit', en: 'Microbubbles, CEUS mechanism, indications and safety', fa: 'میکروحباب‌ها، سازوکار CEUS، اندیکاسیون‌ها و ایمنی' },
-    topicIds: ['km-ultraschall'],
-  },
-  {
-    id: 'roentgen',
-    readId: 'kontrastmittel-roentgen',
-    flashcardId: 'kontrastmittel-roentgen',
-    icon: '🧪',
-    title: { de: 'Röntgen-Kontrastmittel', en: 'X-ray contrast media', fa: 'مواد حاجب اشعهٔ ایکس' },
-    subtitle: {
-      de: 'Arten, Applikation, Ausscheidung, Reaktionen und gastrointestinale Anwendung',
-      en: 'Types, administration, elimination, reactions and gastrointestinal use',
-      fa: 'انواع، تجویز، دفع، واکنش‌ها و کاربرد گوارشی',
-    },
-    topicIds: ['km-jod-typen', 'km-jod-reaktionen', 'km-gastrointestinal', 'km-schilddruese'],
-  },
-  {
-    id: 'mrt',
-    readId: 'kontrastmittel-mrt',
-    flashcardId: 'kontrastmittel-mrt',
-    icon: '🧲',
-    title: { de: 'MRT-Kontrastmittel', en: 'MRI contrast media', fa: 'مواد حاجب MRI' },
-    subtitle: {
-      de: 'Gadolinium-Grundlagen, Retention und nephrogene systemische Fibrose',
-      en: 'Gadolinium fundamentals, retention and nephrogenic systemic fibrosis',
-      fa: 'مبانی گادولینیوم، احتباس و فیبروز سیستمیک نفروژنیک',
-    },
-    topicIds: ['km-gadolinium', 'km-gadolinium-retention-nsf', 'km-buscopan'],
-  },
-  {
-    id: 'schwangerschaft',
-    readId: 'kontrastmittel-schwangerschaft',
-    flashcardId: 'kontrastmittel-schwangerschaft',
-    icon: '🤰',
-    title: { de: 'Schwangere und Stillende', en: 'Pregnancy and breastfeeding', fa: 'بارداری و شیردهی' },
-    subtitle: {
-      de: 'Jodhaltige und gadoliniumhaltige Kontrastmittel sicher abwägen',
-      en: 'Balancing iodinated and gadolinium contrast safely',
-      fa: 'ارزیابی ایمن مواد یددار و گادولینیومی',
-    },
-    topicIds: ['km-schwangerschaft-stillzeit'],
-  },
-  {
-    id: 'nierenfunktion',
-    readId: 'kontrastmittel-nierenfunktion',
-    flashcardId: 'kontrastmittel-nierenfunktion',
-    icon: '🫘',
-    title: { de: 'Nierenfunktion und KM', en: 'Renal function and contrast media', fa: 'عملکرد کلیه و مواد حاجب' },
-    subtitle: {
-      de: 'Jodhaltige und gadoliniumhaltige Kontrastmittel gemeinsam beurteilen',
-      en: 'Assessing iodinated and gadolinium agents together',
-      fa: 'ارزیابی هم‌زمان مواد یددار و گادولینیومی',
-    },
-    topicIds: ['km-niereninsuffizienz'],
   },
 ]
 

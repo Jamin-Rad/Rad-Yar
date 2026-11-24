@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "generate:study-metadata": "tsx scripts/generate-study-metadata.mjs",
+    "predev": "npm run generate:study-metadata",
+    "prebuild": "npm run generate:study-metadata",
     "dev": "next dev",
     "build": "next build",
     "test:progress": "node --experimental-vm-modules --import tsx scripts/test-progress-account-isolation.mjs && node --experimental-vm-modules --import tsx scripts/test-learning-progress-integrity.mjs && node --experimental-vm-modules --import tsx scripts/test-practice-progress-integrity.mjs",

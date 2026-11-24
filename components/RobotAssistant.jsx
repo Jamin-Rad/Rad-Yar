@@ -2,8 +2,6 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { usePathname } from 'next/navigation'
-import { useUser } from '@clerk/nextjs'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { getThemaTitle } from '@/data/curriculum'
 import { getDueFlashcardCount, hasMcqToday, getRandomRecentTopic } from '@/utils/recommendations'
@@ -67,44 +65,20 @@ function AssistantImage({ className, size }) {
   return <Image className={className} src="/roboter.png" alt="" width={size} height={size} aria-hidden="true" />
 }
 
-export default function RobotAssistant() {
-  const pathname = usePathname()
+export default function RobotAssistant({ user }) {
   const { lang } = useLanguage()
-  const { user, isLoaded, isSignedIn } = useUser()
   const t = T[lang] || T.de
   const isRTL = lang === 'fa'
-  const hiddenRoute = (
-    pathname?.startsWith('/admin')
-    || pathname?.startsWith('/exam')
-    || pathname?.startsWith('/andarun')
-    || pathname === '/fatima'
-    || pathname?.startsWith('/fatima/')
-    || pathname?.startsWith('/mobin')
-    || pathname?.startsWith('/rechner')
-    || pathname?.startsWith('/prostata-psa')
-    || pathname?.startsWith('/pi-rads')
-    || pathname?.startsWith('/node-rads')
-    || pathname?.startsWith('/kaiser-score')
-    || pathname?.startsWith('/fleischner')
-    || pathname?.startsWith('/khk-vortestwahrscheinlichkeit')
-  )
 
-  const [mounted, setMounted] = useState(false)
   const [open, setOpen] = useState(false)
-  const [info, setInfo] = useState(null)
+  const [info] = useState(() => ({
+    due: getDueFlashcardCount(user.id),
+    mcqDone: hasMcqToday(),
+    newTopic: getRandomRecentTopic(30),
+  }))
   const [reaction, setReaction] = useState('')
 
   useEffect(() => {
-    if (hiddenRoute) return
-    if (!isLoaded || !isSignedIn || !user?.id) return
-
-    setMounted(true)
-    setInfo({
-      due: getDueFlashcardCount(user.id),
-      mcqDone: hasMcqToday(),
-      newTopic: getRandomRecentTopic(30),
-    })
-
     const seenKey = `radyar_assistant_seen:${user.id}`
     if (!sessionStorage.getItem(seenKey)) {
       const timer = setTimeout(() => {
@@ -113,22 +87,16 @@ export default function RobotAssistant() {
       }, 1000)
       return () => clearTimeout(timer)
     }
-  }, [hiddenRoute, isLoaded, isSignedIn, user?.id])
+  }, [user.id])
 
   useEffect(() => {
-    if (hiddenRoute) return
-    if (!isSignedIn) return
-
     const showLessonReaction = () => {
       setReaction(t.lessonRead)
       setOpen(true)
     }
     window.addEventListener('radyar:lesson-read', showLessonReaction)
     return () => window.removeEventListener('radyar:lesson-read', showLessonReaction)
-  }, [hiddenRoute, isSignedIn, t.lessonRead])
-
-  if (hiddenRoute) return null
-  if (!mounted || !isLoaded || !isSignedIn) return null
+  }, [t.lessonRead])
 
   const greeting = `${t[greetingKey()]}${user?.firstName ? `, ${user.firstName}` : ''}!`
   let recommendation = null
@@ -171,7 +139,7 @@ export default function RobotAssistant() {
                 <div className={styles.recommendation}>
                   <span className={styles.recoIcon}>{recommendation.icon}</span>
                   <p>{recommendation.text}</p>
-                  <Link href={recommendation.href} className={styles.recoLink}>{recommendation.cta}</Link>
+                  <Link href={recommendation.href} prefetch={false} className={styles.recoLink}>{recommendation.cta}</Link>
                 </div>
               ) : (
                 <p className={styles.allDone}>{t.allDone}</p>

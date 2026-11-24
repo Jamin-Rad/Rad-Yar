@@ -5,6 +5,7 @@ import React from 'react'
 import { renderToStaticMarkup } from 'react-dom/server'
 import { transformSync } from 'esbuild'
 import * as lessonData from '../data/gehirnPvlLesson.js'
+import { CURRICULUM as curriculum } from '../data/curriculum.js'
 
 const require = createRequire(import.meta.url)
 const styles = new Proxy({}, { get: (_, key) => key === '__esModule' ? false : String(key) })
@@ -14,7 +15,6 @@ function compile(path, replacements) {
   new Function('require', 'module', 'exports', source)(name => Object.hasOwn(replacements, name) ? replacements[name] : require(name), module, module.exports)
   return module.exports
 }
-const curriculum = compile('data/curriculum.js', { './contrastMedia': { CONTRAST_GROUPS: [] } }).CURRICULUM
 const Link = props => React.createElement('a', props)
 const Image = ({ fill, priority, ...props }) => React.createElement('img', props)
 const Hero = compile('components/LessonHero.jsx', { 'next/image': Image, './LessonHero.module.css': styles }).default

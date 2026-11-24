@@ -12,8 +12,8 @@ import { persistProgressWrite } from '@/utils/progressSync'
 import { loadReadState, projectReadState, resetReadProgress } from '@/utils/readProgressStore'
 import { loadSettings, saveSettings } from '@/utils/settingsStorage'
 import { CURRICULUM, getFachTitle, getKapitelTitle, getThemaTitle } from '@/data/curriculum'
-import { MCQ_TOPIC_GROUPS } from '@/data/questions'
-import { FLASHCARDS } from '@/data/flashcards'
+import mcqTopicIndex from '@/data/mcqTopicIndex.json'
+import flashcardIds from '@/data/flashcardIds.json'
 import { getActivitySummary } from '@/utils/activityStorage'
 import {
   PROMO_MONTHS,
@@ -396,7 +396,7 @@ function getAreaLearningData(progress, leitner, mcqScores) {
         .map(([, record]) => record)
       const startedCards = cardRecords.filter(record => Number(record.seenCount || 0) > 0)
       const thirtyDayCards = startedCards.filter(record => record.status === 'mastered' || Number(record.box || 0) >= 5)
-      const mcqTopicIds = MCQ_TOPIC_GROUPS
+      const mcqTopicIds = mcqTopicIndex
         .filter(group => group.fachId === area.fach.id && group.kapitelId === chapter.kapitel.id)
         .flatMap(group => group.topics.map(topic => topic.id))
       const mcqResults = mcqTopicIds.map(topicId => mcqScores[topicId]).filter(Boolean)
@@ -593,7 +593,7 @@ export default function ProfilPage() {
   }, [user])
 
   const progress = useMemo(() => getProgressData(readArticles), [readArticles])
-  const currentLeitner = useMemo(() => filterLeitnerState(leitner, FLASHCARDS), [leitner])
+  const currentLeitner = useMemo(() => filterLeitnerState(leitner, flashcardIds), [leitner])
   const areaLearningData = useMemo(
     () => getAreaLearningData(progress, currentLeitner, mcqScores),
     [progress, currentLeitner, mcqScores]
@@ -648,7 +648,7 @@ export default function ProfilPage() {
   const dailyGoalPct = Math.min(100, Math.round((todayAttempted / dailyGoal) * 100))
   const wrongQuestionIds = [...new Set(Object.values(mcqScores).flatMap(score => score.wrongQuestionIds || []))]
   const startedCards = records.filter(record => Number(record.seenCount || 0) > 0).length
-  const unpractisedMcq = MCQ_TOPIC_GROUPS.flatMap(group =>
+  const unpractisedMcq = mcqTopicIndex.flatMap(group =>
     group.topics.map(topic => ({ ...topic, fachId: group.fachId }))
   ).filter(topic => !mcqScores[topic.id]).slice(0, 4)
   const topicLookup = new Map(progress.topics.map(item => [item.thema.id, item]))
@@ -813,7 +813,7 @@ export default function ProfilPage() {
                       {progress.nextTopic
                         ? <Link href={progress.nextTopic.thema.link} className={styles.primaryBtn}>{t.continueLearning}</Link>
                         : <Link href="/lernen" className={styles.primaryBtn}>{t.browseTopics}</Link>}
-                      {dueToday > 0 && <Link href="/flashcards" className={styles.heroSecondary}>{t.reviewCards} ({dueToday})</Link>}
+                      {dueToday > 0 && <Link prefetch={false} href="/flashcards" className={styles.heroSecondary}>{t.reviewCards} ({dueToday})</Link>}
                     </div>
                   </div>
                   <div className={styles.todaySnapshot}>
@@ -839,25 +839,25 @@ export default function ProfilPage() {
                     <Link href={progress.nextTopic?.thema.link || '/lernen'} className={styles.recommendationItem}>
                       <span className={styles.recommendationIcon}><ProfileIcon name="book" /></span><div><small>01 · {t.nextLesson}</small><strong>{progress.nextTopic ? getThemaTitle(progress.nextTopic.thema, lang) : t.browseTopics}</strong><p>{progress.nextTopic ? `${getFachTitle(progress.nextTopic.fach, lang)} · ${getKapitelTitle(progress.nextTopic.kapitel, lang)}` : t.recentTopicsEmpty}</p></div><b>→</b>
                     </Link>
-                    <Link href="/flashcards" className={styles.recommendationItem}>
+                    <Link prefetch={false} href="/flashcards" className={styles.recommendationItem}>
                       <span className={styles.recommendationIcon}><ProfileIcon name="cards" /></span><div><small>02 · {t.dueReview}</small><strong>{dueToday} {t.flashDue}</strong><p>{dueToday ? t.reviewCards : t.flashThirtyDaysHint}</p></div><b>→</b>
                     </Link>
-                    <Link href={wrongQuestionIds.length ? `/ueben/quiz?fragen=${wrongQuestionIds.join(',')}&n=${wrongQuestionIds.length}&from=${encodeURIComponent('/profil')}` : '/ueben'} className={styles.recommendationItem}>
+                    <Link prefetch={false} href={wrongQuestionIds.length ? `/ueben/quiz?fragen=${wrongQuestionIds.join(',')}&n=${wrongQuestionIds.length}&from=${encodeURIComponent('/profil')}` : '/ueben'} className={styles.recommendationItem}>
                       <span className={styles.recommendationIcon}><ProfileIcon name="target" /></span><div><small>03 · {t.focusTraining}</small><strong>{wrongQuestionIds.length ? `${wrongQuestionIds.length} ${t.wrongQuestions}` : t.noWeakness}</strong><p>{wrongQuestionIds.length ? t.wrongQuestionsHint : t.noWeaknessHint}</p></div><b>→</b>
                     </Link>
                   </div>
                 </section>
 
                 <section className={`${styles.card} ${styles.focusCard}`}>
-                  <div className={styles.sectionHeading}><div><span className={styles.sectionKicker}>{t.learningBalance}</span><h2>{t.weakAreas}</h2><p>{t.weakAreasSub}</p></div><Link href="/ueben">{t.learnMcq} →</Link></div>
+                  <div className={styles.sectionHeading}><div><span className={styles.sectionKicker}>{t.learningBalance}</span><h2>{t.weakAreas}</h2><p>{t.weakAreasSub}</p></div><Link prefetch={false} href="/ueben">{t.learnMcq} →</Link></div>
                   {focusAreas.length ? <div className={styles.focusList}>{focusAreas.map((area, index) => (
                     <div className={styles.focusRow} key={area.fach.id}>
                       <span className={styles.focusRank}>{String(index + 1).padStart(2, '0')}</span>
                       <div className={styles.focusIdentity}><Image src={`/fach/${area.fach.imageId || area.fach.id}.png`} alt="" width={34} height={34} /><div><strong>{getFachTitle(area.fach, lang)}</strong><small>{area.mcqCorrect}/{area.mcqAttempted} {t.mcqCorrect}</small></div></div>
                       <div className={styles.focusMeter}><span><i style={{ width: `${area.mcqPct}%` }} /></span><strong>{area.mcqPct}%</strong></div>
-                      <Link href={`/ueben/quiz?fach=${area.fach.id}&n=10&from=${encodeURIComponent('/profil')}`}>{t.practiceNow} →</Link>
+                      <Link prefetch={false} href={`/ueben/quiz?fach=${area.fach.id}&n=10&from=${encodeURIComponent('/profil')}`}>{t.practiceNow} →</Link>
                     </div>
-                  ))}</div> : <div className={styles.focusEmpty}><ProfileIcon name="trend" size={25} /><div><strong>{t.noWeakness}</strong><p>{t.noWeaknessHint}</p></div><Link href="/ueben">{t.startGoal} →</Link></div>}
+                  ))}</div> : <div className={styles.focusEmpty}><ProfileIcon name="trend" size={25} /><div><strong>{t.noWeakness}</strong><p>{t.noWeaknessHint}</p></div><Link prefetch={false} href="/ueben">{t.startGoal} →</Link></div>}
                 </section>
 
                 <section className={`${styles.card} ${styles.activityCard}`}>
@@ -957,7 +957,7 @@ export default function ProfilPage() {
 
                 <section className={styles.dashboardTwoCol}>
                   <div className={styles.card}>
-                    <div className={styles.sectionHeading}><div><h2>{t.flashReport}</h2><p>{t.flashThirtyDaysHint}</p></div><Link href="/flashcards">{t.toFlashcards} →</Link></div>
+                    <div className={styles.sectionHeading}><div><h2>{t.flashReport}</h2><p>{t.flashThirtyDaysHint}</p></div><Link prefetch={false} href="/flashcards">{t.toFlashcards} →</Link></div>
                     <div className={styles.flashReportGrid}>
                       <div><strong>{startedCards}</strong><span>{t.flashSeen}</span></div>
                       <div><strong>{dueToday}</strong><span>{t.flashDue}</span></div>
@@ -970,19 +970,19 @@ export default function ProfilPage() {
                     <div className={styles.goalBar}><span style={{ width: `${dailyGoalPct}%` }} /></div>
                     <div className={styles.goalActions}>
                       <strong>{todayAttempted >= dailyGoal ? `✓ ${t.goalReached}` : `${dailyGoal - todayAttempted} MCQs`}</strong>
-                      <Link href="/ueben">{t.startGoal} →</Link>
+                      <Link prefetch={false} href="/ueben">{t.startGoal} →</Link>
                     </div>
                     {wrongQuestionIds.length > 0 && (
                       <div className={styles.practiceCallout}>
                         <div><strong>{t.wrongQuestions}</strong><small>{wrongQuestionIds.length} · {t.wrongQuestionsHint}</small></div>
-                        <Link href={`/ueben/quiz?fragen=${wrongQuestionIds.join(',')}&n=${wrongQuestionIds.length}&from=${encodeURIComponent('/profil')}`}>{t.repeatWrong} →</Link>
+                        <Link prefetch={false} href={`/ueben/quiz?fragen=${wrongQuestionIds.join(',')}&n=${wrongQuestionIds.length}&from=${encodeURIComponent('/profil')}`}>{t.repeatWrong} →</Link>
                       </div>
                     )}
                     {unpractisedMcq.length > 0 && (
                       <div className={styles.unpractisedList}>
                         <strong>{t.unlearnedMcq}</strong>
                         {unpractisedMcq.map(topic => (
-                          <Link key={topic.id} href={`/ueben/quiz?fach=${topic.fachId}&n=10&themen=${topic.id}&from=${encodeURIComponent('/profil')}`}>
+                          <Link prefetch={false} key={topic.id} href={`/ueben/quiz?fach=${topic.fachId}&n=10&themen=${topic.id}&from=${encodeURIComponent('/profil')}`}>
                             <span>{topic.title[lang] || topic.title.de}</span><b>{t.practiceNow} →</b>
                           </Link>
                         ))}

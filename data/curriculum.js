@@ -7,7 +7,7 @@
 // thema.sub: echte Varianten/Unterformen eines Themas.
 // "ready"-Themen haben link/mcqLink/flashcardLink/fallLink + updatedAt.
 
-import { CONTRAST_GROUPS } from './contrastMedia'
+import { CONTRAST_GROUPS } from './contrastGroups'
 import assessmentLinks from './assessmentQuality/routeLinks.json'
 import { shoulderMriTopics } from './shoulderMriChapter.mjs'
 
