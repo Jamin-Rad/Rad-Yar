@@ -4,6 +4,7 @@ import { SHOULDER_MRI_PATH, shoulderMriTopics } from './data/shoulderMriChapter.
 const nextConfig = {
   async redirects() {
     return [
+      { source: '/body-anatomy-clean.png', destination: '/body-anatomy-clean.webp', permanent: true },
       { source: '/', has: [{ type: 'query', key: 'ref', value: 'rechner' }, { type: 'query', key: 'calc', value: '(?<calculator>[^/]+)' }], destination: '/rechner/:calculator', permanent: false },
       { source: '/', has: [{ type: 'query', key: 'ref', value: 'rechner' }], destination: '/rechner', permanent: false },
       ...shoulderMriTopics.flatMap(topic => topic.modules.filter(module => module.slug !== topic.slug).flatMap(module => [
