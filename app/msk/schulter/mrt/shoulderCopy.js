@@ -8,6 +8,7 @@ export const copy = {
     sources: 'Quellen und Bildnachweise', overview: 'Kapitelübersicht', next: 'Nächste Lektion',
     nav: 'Kapitelwechsel', schema: 'Lehrschema',
     heroAlt: 'Anatomische Lehrillustration der Schulter mit eingeblendeten Schnittebenen',
+    impingementHeroAlt: 'Lehrillustration einer subakromialen Einengung durch einen Akromionsporn mit vergrößertem Ausschnitt',
     mcq: 'MCQ starten', flashcards: 'Karteikarten',
   },
   en: {
@@ -19,6 +20,7 @@ export const copy = {
     sources: 'References and image credits', overview: 'Chapter overview', next: 'Next lesson',
     nav: 'Chapter navigation', schema: 'Teaching diagram',
     heroAlt: 'Anatomical illustration of the shoulder with imaging planes',
+    impingementHeroAlt: 'Teaching illustration of subacromial narrowing from an acromial spur, with a magnified detail',
     mcq: 'Start MCQ quiz', flashcards: 'Flashcards',
   },
   fa: {
@@ -30,6 +32,7 @@ export const copy = {
     sources: 'منابع و اعتبار تصاویر', overview: 'مرور فصل', next: 'درس بعدی',
     nav: 'جابه‌جایی بین درس‌ها', schema: 'شماتیک آموزشی',
     heroAlt: 'تصویر آموزشی آناتومی شانه با نمایش صفحات تصویربرداری',
+    impingementHeroAlt: 'تصویر آموزشی تنگی فضای زیر آکرومیون به‌علت خار استخوانی، با نمای بزرگ‌نمایی‌شده',
     mcq: 'شروع آزمون چندگزینه‌ای', flashcards: 'فلش‌کارت‌ها',
   },
 }

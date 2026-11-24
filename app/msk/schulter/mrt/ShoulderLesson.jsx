@@ -29,6 +29,12 @@ const theme = {
   heroImageOpacity: 0.85,
 }
 
+const impingementTheme = {
+  ...theme,
+  backgroundImage: '/andarun-galaxy-v3.png',
+  heroImage: '/educational/lesson-design/msk--schulter--mrt--impingement.webp',
+}
+
 function renderIcon(name) {
   return <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
     <path d={icons[name] ?? icons.book} />
@@ -92,6 +98,7 @@ export default function ShoulderLesson({ index, content }) {
   const localized = content[lang] ?? content.de
   const text = copy[lang] ?? copy.de
   const topic = shoulderMriTopics[index]
+  const impingement = topic.slug === 'impingement'
   const title = topic.title[lang] ?? topic.title.de
   const next = shoulderMriTopics[index + 1]
   const anatomy = topic.modules.length === 1
@@ -130,9 +137,8 @@ export default function ShoulderLesson({ index, content }) {
       ...(next ? [{ label: text.next, href: localPath(next.link), icon: 'book' }] : []),
     ]}
     renderIcon={renderIcon}
-    theme={theme}
-    heroImageSrc={heroImage}
-    heroImageAlt={text.heroAlt}
+    theme={impingement ? impingementTheme : theme}
+    heroImageAlt={impingement ? text.impingementHeroAlt : text.heroAlt}
     syncHashNavigation
     sources={<LessonSources lang={lang} title={text.sources} items={sources} />}
   >
