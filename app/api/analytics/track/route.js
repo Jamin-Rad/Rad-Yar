@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server'
 import { isSupabaseAdminConfigured, supabaseAdmin } from '@/lib/supabase/server'
 import { getSignedInUserIdentity } from '@/lib/userIdentity'
+import { ACK_PREFIX, EXIT_BODY_LIMIT, EXIT_ENTRY_LIMIT, UUID } from '@/utils/exitAnalytics'
 
 const VISITOR_PATTERN = /^[a-zA-Z0-9_-]{12,80}$/
 
@@ -40,17 +41,51 @@ async function recordWithoutRpc({ visitorId, userId, path, visits, pageViews, ac
   return dailyError || pageError
 }
 
+async function recordExit(payload, request) {
+  if (!isSupabaseAdminConfigured || !supabaseAdmin) return new Response(null, { status:503 })
+  const origin = request.headers.get('origin')
+  if (origin && origin !== new URL(request.url).origin) return new Response(null, { status:403 })
+  if (!UUID.test(payload.batchId) || !Array.isArray(payload.entries) ||
+      !payload.entries.length || payload.entries.length > EXIT_ENTRY_LIMIT) return new Response(null, { status:400 })
+  const entries = []
+  for (const row of payload.entries) {
+    if (!row || !UUID.test(row.id) || typeof row.path !== 'string' || !row.path.startsWith('/') ||
+        row.path.length > 240 || ![0,1].includes(row.visits) || ![0,1].includes(row.views) || row.visits > row.views ||
+        !Number.isInteger(row.seconds) || row.seconds < 0 || row.seconds > 86400 ||
+        typeof row.seen !== 'string' || !Number.isFinite(Date.parse(row.seen)) ||
+        new Date(row.seen).toISOString().slice(0,10) !== row.day ||
+        (row.actor != null && (typeof row.actor !== 'string' || row.actor.length > 128))) {
+      return new Response(null, { status:400 })
+    }
+    entries.push({ id:row.id, day:row.day, path:cleanPath(row.path), seconds:row.seconds,
+      views:row.views, visits:row.visits, seen:row.seen, actor:row.actor })
+  }
+  const identity = entries.some(row => row.actor) ? await getSignedInUserIdentity() : null
+  const { error } = await supabaseAdmin.rpc('record_exit_analytics', {
+    p_visitor:payload.visitorId, p_owner:identity?.ownerId || null,
+    p_entries:entries.map(({ actor, ...row }) => ({ ...row, owned:Boolean(identity && actor === identity.userId) })),
+  })
+  if (error) return new Response(null, { status:503 })
+  const secure = new URL(request.url).protocol === 'https:' ? '; Secure' : ''
+  return new Response(null, { status:204, headers:{
+    'Cache-Control':'private, no-store',
+    'X-Radyar-Analytics-Ack':payload.batchId,
+    'Set-Cookie':ACK_PREFIX + payload.batchId + '=1; Max-Age=604800; Path=/; SameSite=Lax' + secure,
+  } })
+}
+
 export async function POST(request) {
   try {
-    if (!isSupabaseAdminConfigured || !supabaseAdmin) {
-      return new NextResponse(null, { status: 204 })
-    }
-
-    const payload = await request.json()
+    if (Number(request.headers.get('content-length')) > EXIT_BODY_LIMIT) return new Response(null, { status:413 })
+    const raw = await request.text()
+    if (new TextEncoder().encode(raw).length > EXIT_BODY_LIMIT) return new Response(null, { status:413 })
+    const payload = JSON.parse(raw)
     const visitorId = typeof payload.visitorId === 'string' ? payload.visitorId : ''
     if (!VISITOR_PATTERN.test(visitorId)) {
       return NextResponse.json({ error: 'Ungültige Besucher-ID' }, { status: 400 })
     }
+    if ('entries' in payload || 'batchId' in payload) return await recordExit(payload, request)
+    if (!isSupabaseAdminConfigured || !supabaseAdmin) return new NextResponse(null, { status:204 })
 
     const identity = await getSignedInUserIdentity()
     const path = cleanPath(payload.path)

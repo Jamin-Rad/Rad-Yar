@@ -35,7 +35,7 @@ function storage() {
 }
 function emitter(extra = {}) {
   const handlers = new Map()
-  return { ...extra, addEventListener(name, handler) { if (!handlers.has(name)) handlers.set(name, new Set()); handlers.get(name).add(handler) }, removeEventListener(name, handler) { handlers.get(name)?.delete(handler) }, emit(name) { for (const handler of handlers.get(name) || []) handler() } }
+  return { ...extra, addEventListener(name, handler) { if (!handlers.has(name)) handlers.set(name, new Set()); handlers.get(name).add(handler) }, removeEventListener(name, handler) { handlers.get(name)?.delete(handler) }, emit(name, event) { for (const handler of handlers.get(name) || []) handler(event) } }
 }
 function load(source, mocks, globals = {}) {
   const module = { exports: {} }
@@ -130,6 +130,7 @@ test('pauses hidden-tab polling and resumes immediately on visibility', () => {
     '@/utils/syncProgressToServer': { activateUserCache() {}, syncLocalProgressToServer: () => { syncs++ } },
     '@/utils/progressCache': { isUserCacheCurrent: () => true, getUserCacheToken: () => 'token' },
     '@/utils/progressSync': { pendingProgressEntries: () => [], flushPendingProgress: async () => true },
+    '@/utils/trackExitPage': {},
     '@/components/LegalNotice': { readPrivacyChoice: () => ({ analytics: false }), PRIVACY_CHOICE_EVENT: 'privacy' },
     '@/utils/calculatorAnalytics': {},
   }, { window: win, document: doc, navigator: { onLine: true }, clearInterval() {} }).default
@@ -166,54 +167,70 @@ test('private health handlers keep authentication and return the same settings i
     assert.equal(reads, 2)
   }
 })
-function analyticsHarness({ consent = true } = {}) {
-  const effects = [], callbacks = new Set(), posts = []
-  let clock = new Date('2026-11-05T12:00:00Z').getTime()
-  const Clock = class extends Date { static now() { return clock } }
-  const doc = emitter({ visibilityState: 'visible', hasFocus: () => true })
-  const win = emitter({ setInterval: fn => { callbacks.add(fn); return fn }, clearInterval: fn => callbacks.delete(fn) })
-  const { createStudyTimer } = load(read('utils/studyTimer.js'), {}, { Date: Clock })
+function analyticsHarness({ consent = true, local = storage(), start = '2026-11-05T12:00:00Z' } = {}) {
+  const callbacks = new Set(), posts = [], session = storage()
+  let clock = Date.parse(start), allowed = consent
+  const Clock = class extends Date {
+    constructor(...args) { super(...(args.length ? args : [clock])) }
+    static now() { return clock }
+  }
+  const doc = emitter({ visibilityState:'visible', hasFocus:()=>true, cookie:'' })
+  const win = emitter({ setInterval:fn=>{ callbacks.add(fn); return fn } })
+  const globals = { Date:Clock, crypto, TextEncoder, location:{origin:'https://rad.test'}, document:doc, window:win, localStorage:local, sessionStorage:session,
+    clearInterval:fn=>callbacks.delete(fn), fetch:async (_,options)=>{
+      posts.push(JSON.parse(options.body)); return new Response(null,{status:503})
+    } }
+  const exit = load(read('utils/exitAnalytics.js'),{},globals)
+  const tracker = load(read('utils/trackExitPage.js'),{
+    './studyTimer.js':load(read('utils/studyTimer.js'),{},{Date:Clock}), './exitAnalytics.js':exit,
+  },globals)
+  const effects = []
+  let pathname = '/first'
   const component = load(read('components/ActivityTracker.jsx'), {
-    react: { useEffect: e => effects.push(e), useState: () => [consent, () => {}] },
-    '@clerk/nextjs': { useUser: () => ({ isLoaded: true, user: null }) },
-    'next/navigation': { usePathname: () => '/andarun/todo' },
-    '@/utils/activityStorage': { IDLE_MS: 120000 }, '@/utils/activityCategory': {},
-    '@/utils/studyTimer': { createStudyTimer },
-    '@/utils/syncProgressToServer': {}, '@/utils/progressCache': {}, '@/utils/progressSync': {},
-    '@/components/LegalNotice': { readPrivacyChoice: () => ({ analytics: consent }), PRIVACY_CHOICE_EVENT: 'privacy' },
-    '@/utils/calculatorAnalytics': { getAnalyticsVisitorId: () => 'test-visitor', getAnalyticsSessionId() {} },
-  }, { window: win, document: doc, sessionStorage: storage(), clearInterval: win.clearInterval,
-    fetch: async (_, opts) => { posts.push(JSON.parse(opts.body)); return {} } }).default
-  component(); const cleanup = effects[3]()
-  return { posts, doc, win, stop: () => cleanup?.(),
-    advance(seconds, interact = true) { for (let i = 1; i <= seconds; i++) { clock += 1000; if (interact) win.emit('pointerdown'); if (i % 15 === 0) for (const tick of callbacks) tick() } },
+    react:{useEffect:e=>effects.push(e),useState:()=>[allowed,()=>{}]},
+    '@clerk/nextjs':{useUser:()=>({isLoaded:true,user:null})}, 'next/navigation':{usePathname:()=>pathname},
+    '@/utils/activityStorage':{IDLE_MS:120000}, '@/utils/activityCategory':{}, '@/utils/studyTimer':{},
+    '@/utils/syncProgressToServer':{}, '@/utils/progressCache':{}, '@/utils/progressSync':{},
+    '@/components/LegalNotice':{readPrivacyChoice:()=>({analytics:allowed})},
+    '@/utils/calculatorAnalytics':{getAnalyticsVisitorId:()=>{local.setItem('radyar_visitor_id','test-visitor-000');return 'test-visitor-000'},
+      getAnalyticsSessionId:()=>session.setItem('radyar_analytics_session','session')},
+    '@/utils/trackExitPage':tracker,
+  },globals).default
+  const mount = () => { effects.length=0; component(); return effects[3]() }
+  let stop = mount()
+  const leave = () => {
+    win.emit('click',{button:0,target:{closest:()=>({origin:'https://outside.test',hasAttribute:()=>false})}})
+    win.emit('pagehide')
+  }
+  return { posts, doc, win, local, leave, stop:()=>stop?.(), revoke(){allowed=false;exit.cleanExitAnalytics(true)},
+    route(path){stop?.();pathname=path;stop=mount()},
+    advance(seconds, interact=true){for(let i=0;i<seconds;i++){clock+=1000;if(interact)win.emit('pointerdown');if(i%15===14)for(const tick of callbacks)tick()}},
   }
 }
-test('one hour of activity uses 60 heartbeats and preserves all 3600 seconds', () => {
-  const h = analyticsHarness(); h.advance(3600); h.stop()
-  assert.equal(h.posts.length, 61) // One page view plus 60 time batches.
-  assert.equal(h.posts.reduce((sum, p) => sum + p.activeSeconds, 0), 3600)
-  assert.ok(h.posts.every(p => p.activeSeconds <= 60))
+test('one hour across routes, tab switches and idle time sends only on exit', () => {
+  const h=analyticsHarness();h.advance(1200);h.win.emit('blur');h.route('/second')
+  h.advance(2400);h.doc.visibilityState='hidden';h.doc.emit('visibilitychange');h.advance(600,false)
+  assert.equal(h.posts.length,0)
+  h.leave();h.leave();h.stop()
+  assert.equal(h.posts.length,1)
+  const entries=h.posts[0].entries
+  assert.deepEqual(entries.map(r=>[r.path,r.seconds,r.views,r.visits]),[['/first',1200,1,1],['/second',2400,1,0]])
 })
-test('analytics flush partial seconds on hide, blur, pagehide and cleanup without duplicates', () => {
-  for (const event of ['hidden', 'blur', 'pagehide', 'cleanup']) {
-    const h = analyticsHarness(); h.advance(37)
-    if (event === 'hidden') { h.doc.visibilityState = 'hidden'; h.doc.emit('visibilitychange') }
-    if (event === 'blur' || event === 'pagehide') h.win.emit(event)
-    h.stop()
-    assert.equal(h.posts.reduce((sum, p) => sum + p.activeSeconds, 0), 37, event)
-  }
+test('restored page continues cumulative time and midnight retains the historical UTC day',()=>{
+  const h=analyticsHarness({start:'2026-11-05T23:59:58Z'})
+  h.advance(4);h.leave();h.advance(100,false);h.win.emit('pageshow');h.advance(600,false);h.leave()
+  assert.equal(h.posts.length,2)
+  const entries=h.posts[1].entries
+  assert.deepEqual(entries.map(e=>[e.day,e.seconds,e.views]),[['2026-11-05',2,1],['2026-11-06',122,0]])
+  assert.equal(entries[1].id,h.posts[0].entries[1].id)
 })
-test('hidden and idle time never become active time after batching', () => {
-  const h = analyticsHarness(); h.advance(30)
-  h.doc.visibilityState = 'hidden'; h.doc.emit('visibilitychange')
-  h.advance(3600, false)
-  h.doc.visibilityState = 'visible'; h.doc.emit('visibilitychange')
-  h.advance(600, false); h.stop()
-  assert.equal(h.posts.reduce((sum, p) => sum + p.activeSeconds, 0), 150)
-})
-test('declining analytics does not start analytics requests', () => {
-  const h = analyticsHarness({ consent: false }); h.advance(3600); h.stop(); assert.equal(h.posts.length, 0)
+test('sudden closure persists a local checkpoint until a later exit, and refusal clears pending rows',()=>{
+  const first=analyticsHarness();first.advance(30)
+  assert.equal(first.posts.length,0)
+  const next=analyticsHarness({local:first.local});assert.equal(next.posts.length,0)
+  next.win.emit('pagehide');assert.equal(next.posts.length,0);next.win.emit('pageshow');next.leave();assert.ok(next.posts[0].entries.some(row=>row.seconds===30))
+  next.revoke();assert.equal(Array.from({length:next.local.length},(_,i)=>next.local.key(i)).some(k=>k.startsWith('radyar_exit_')),false)
+  const denied=analyticsHarness({consent:false});denied.advance(60);denied.win.emit('pagehide');assert.equal(denied.posts.length,0)
 })
 
 function mobinStudyHarness({ localStorage = storage(), online = true, start = '2026-11-10T22:30:00Z', pathname = '/mobin/mathepruefung' } = {}) {

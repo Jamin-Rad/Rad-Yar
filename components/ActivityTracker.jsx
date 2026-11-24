@@ -9,16 +9,10 @@ import { createStudyTimer } from '@/utils/studyTimer'
 import { syncLocalProgressToServer, activateUserCache } from '@/utils/syncProgressToServer'
 import { isUserCacheCurrent, getUserCacheToken } from '@/utils/progressCache'
 import { flushPendingProgress, pendingProgressEntries } from '@/utils/progressSync'
-import { PRIVACY_CHOICE_EVENT, readPrivacyChoice } from '@/components/LegalNotice'
+import { PRIVACY_CHOICE_EVENT, PRIVACY_CHOICE_KEY, readPrivacyChoice } from '@/components/LegalNotice'
 import { getAnalyticsSessionId, getAnalyticsVisitorId } from '@/utils/calculatorAnalytics'
 
-function sendAnalytics(payload, userId) {
-  if (readPrivacyChoice()?.analytics !== true) return
-  fetch('/api/analytics/track', {
-    method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Radyar-User-Id': userId || 'anonymous' },
-    body: JSON.stringify(payload), keepalive: true,
-  }).catch(() => {})
-}
+import { trackExitPage } from '@/utils/trackExitPage'
 
 export default function ActivityTracker() {
   const { user, isLoaded } = useUser()
@@ -27,10 +21,15 @@ export default function ActivityTracker() {
   const userId = user?.id || null
 
   useEffect(() => {
-    const update = event => setAnalyticsEnabled(event.detail?.analytics === true)
+    const update = () => setAnalyticsEnabled(readPrivacyChoice()?.analytics === true)
+    const storage = event => { if (event.key === PRIVACY_CHOICE_KEY || event.key === null) update() }
     setAnalyticsEnabled(readPrivacyChoice()?.analytics === true)
     window.addEventListener(PRIVACY_CHOICE_EVENT, update)
-    return () => window.removeEventListener(PRIVACY_CHOICE_EVENT, update)
+    window.addEventListener('storage', storage)
+    return () => {
+      window.removeEventListener('storage', storage)
+      window.removeEventListener(PRIVACY_CHOICE_EVENT, update)
+    }
   }, [])
 
   useEffect(() => {
@@ -97,48 +96,18 @@ export default function ActivityTracker() {
 
   useEffect(() => {
     if (!isLoaded || !analyticsEnabled) return
-    const visitorId = getAnalyticsVisitorId()
-    const first = !sessionStorage.getItem('radyar_analytics_session')
-    getAnalyticsSessionId()
-    sendAnalytics({ visitorId, path: pathname, visits: first ? 1 : 0, pageViews: 1, activeSeconds: 0 }, userId)
-    let analyticsSeconds = 0
-    let pendingServerSeconds = 0
-    const timer = createStudyTimer({
-      foreground: () => document.visibilityState === 'visible' && document.hasFocus(), idleMs: IDLE_MS,
-      onInterval: seconds => { analyticsSeconds += seconds },
-    })
-    const flush = (sendNow = true) => {
-      timer.tick()
-      const seconds = Math.floor(analyticsSeconds)
-      analyticsSeconds -= seconds
-      pendingServerSeconds += seconds
-      if (!sendNow && pendingServerSeconds < 60) return
-      while (pendingServerSeconds >= 1) {
-        const batchSeconds = Math.min(pendingServerSeconds, 60)
-        sendAnalytics({ visitorId, path: pathname, visits: 0, pageViews: 0, activeSeconds: batchSeconds }, userId)
-        pendingServerSeconds -= batchSeconds
+    const choice = readPrivacyChoice()
+    if (!choice?.analytics) return
+    try {
+      const visitor = getAnalyticsVisitorId()
+      const first = !sessionStorage.getItem('radyar_analytics_session')
+      getAnalyticsSessionId()
+      const canTrack = () => {
+        const current = readPrivacyChoice()
+        return current?.analytics === true && localStorage.getItem('radyar_visitor_id') === visitor
       }
-    }
-    const interval = window.setInterval(() => flush(false), 15000)
-    const touch = () => timer.interact()
-    const visibility = () => {
-      timer.visibilityChanged()
-      if (document.visibilityState !== 'visible') flush()
-    }
-    const save = () => flush()
-    window.addEventListener('pagehide', save)
-    window.addEventListener('blur', save)
-    for (const name of ['pointerdown','keydown','scroll','touchstart']) window.addEventListener(name,touch,{passive:true})
-    document.addEventListener('visibilitychange',visibility)
-    window.addEventListener('focus',visibility);window.addEventListener('blur',visibility)
-    return () => {
-      clearInterval(interval);flush()
-      window.removeEventListener('pagehide', save)
-      window.removeEventListener('blur', save)
-      for (const name of ['pointerdown','keydown','scroll','touchstart']) window.removeEventListener(name,touch)
-      document.removeEventListener('visibilitychange',visibility)
-      window.removeEventListener('focus',visibility);window.removeEventListener('blur',visibility)
-    }
+      return trackExitPage({ visitor, userId, pathname, first, idleMs: IDLE_MS, canTrack })
+    } catch { /* Analytics needs browser storage. */ }
   }, [isLoaded, analyticsEnabled, userId, pathname])
   return null
 }

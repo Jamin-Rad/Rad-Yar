@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { usePathname } from 'next/navigation'
 import styles from './LegalNotice.module.css'
+import { cleanExitAnalytics } from '@/utils/exitAnalytics'
 
 export const PRIVACY_CHOICE_KEY = 'radyar_privacy_choice_v1'
 export const PRIVACY_CHOICE_VERSION = '2026-09-05'
@@ -87,6 +88,7 @@ export default function LegalNotice() {
     const choice = { version: PRIVACY_CHOICE_VERSION, analytics, decidedAt: new Date().toISOString() }
     window.localStorage.setItem(PRIVACY_CHOICE_KEY, JSON.stringify(choice))
     if (!analytics) {
+      cleanExitAnalytics(true)
       window.localStorage.removeItem('radyar_visitor_id')
       window.sessionStorage.removeItem('radyar_analytics_session')
     }

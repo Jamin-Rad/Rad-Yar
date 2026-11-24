@@ -100,6 +100,19 @@ export default function RootLayout({ children }) {
     >
       <html lang="de" data-theme="dark" data-scroll-behavior="smooth" suppressHydrationWarning>
         <head>
+          <script dangerouslySetInnerHTML={{ __html: `
+            try {
+              const key = 'radyar_exit_continuation';
+              const batchId = sessionStorage.getItem(key);
+              if (batchId) {
+                sessionStorage.removeItem(key);
+                if (navigator.serviceWorker) {
+                  navigator.serviceWorker.getRegistration('/radyar-telemetry/').then(r =>
+                    r?.active?.postMessage({type:'continued',batchId})).catch(() => {});
+                }
+              }
+            } catch {}
+          ` }} />
           {/*
             Blocking Script: läuft synchron VOR dem ersten Paint.
             - Liest ein gespeichertes Theme aus localStorage
