@@ -7,6 +7,8 @@ import { AsyncLocalStorage } from 'node:async_hooks'
 import vm from 'node:vm'
 import { PGlite } from '@electric-sql/pglite'
 import * as emailHelpers from '../lib/emailIdentity.js'
+import * as studyScores from '../lib/studyProgressScores.mjs'
+import { loadQuestionProgress } from '../lib/iosStudyProgressStore.js'
 
 const root = resolve(import.meta.dirname, '..')
 const db = new PGlite()
@@ -27,6 +29,7 @@ await db.exec(`
   insert into mcq_results(user_id,thema_id,attempted,correct,last_date) values('email:a@example.test','legacy-topic',5,4,'2026-01-01'),('email:b@example.test','b-only',3,2,'2026-01-01'),('email:u@example.test','verified-only',2,1,'2026-01-01');
 `)
 
+await db.exec(await readFile(resolve(root,'supabase/migrations/20261124120146_web_leitner_review.sql'),'utf8'))
 function query(table) {
   const where = [], values = [], order = []
   let columns = '*', offset = 0, limit = 1000, exact = false, operation = 'select', rows, conflict
@@ -37,19 +40,19 @@ function query(table) {
     order(key) { order.push(`"${key}"`); return builder },
     range(start, end) { offset = start; limit = end - start + 1; return builder },
     delete() { operation = 'delete'; return builder },
-    upsert(input, options) { operation = 'upsert'; rows = input; conflict = options.onConflict; return builder },
+    upsert(input, options) { operation = options.ignoreDuplicates ? 'insert' : 'upsert'; rows = Array.isArray(input) ? input : [input]; conflict = options.onConflict; return builder },
     then(yes, no) {
       const run = async () => {
         databaseCalls++
         if (failure === 'all' || (failure === 'owners' && table === 'learning_legacy_owners') || (failure === 'page' && offset > 0)) return { data: null, error: { message: 'Injected outage' } }
         const filter = where.length ? 'where ' + where.join(' and ') : ''
         if (operation === 'delete') { await db.query(`delete from "${table}" ${filter}`, values); return { error: null } }
-        if (operation === 'upsert') {
+        if (operation === 'upsert' || operation === 'insert') {
           for (const row of rows) {
             const keys = Object.keys(row)
             const params = Object.values(row).map(value => value && typeof value === 'object' ? JSON.stringify(value) : value)
             const updates = keys.filter(key => !conflict.split(',').includes(key)).map(key => `"${key}"=excluded."${key}"`).join(',')
-            await db.query(`insert into "${table}" (${keys.map(key => `"${key}"`).join(',')}) values (${keys.map((_,i) => '$' + (i+1)).join(',')}) on conflict(${conflict}) do update set ${updates}`, params)
+            await db.query(`insert into "${table}" (${keys.map(key => `"${key}"`).join(',')}) values (${keys.map((_,i) => '$' + (i+1)).join(',')}) on conflict(${conflict}) do ${operation === 'insert' ? 'nothing' : 'update set ' + updates}`, params)
           }
           return { error: null }
         }
@@ -67,6 +70,10 @@ const supabase = {
   async rpc(name, args) {
     databaseCalls++
     if (failure === 'all') return { data: null, error: { message: 'Injected outage' } }
+    if (name === 'record_learning_card_review') {
+      await db.query('select record_learning_card_review($1,$2,$3,$4,$5,$6,$7)', [args.p_owner,args.p_card,args.p_id,args.p_known,args.p_at,args.p_zone,args.p_added])
+      return {error:null}
+    }
     assert.equal(name, 'claim_learning_legacy_ids')
     const result = await db.query('select claim_learning_legacy_ids($1,array(select jsonb_array_elements_text($2::jsonb))) ids', [args.p_user_id,JSON.stringify(args.p_legacy_ids)])
     return { data: plain(result.rows[0].ids), error: null }
@@ -80,6 +87,8 @@ function mock(name, exports) {
 mock('next/server', { NextResponse: { json: (body, options) => ({ body: plain(body), status: options?.status || 200, headers: options?.headers || {} }) } })
 mock('@clerk/nextjs/server', { auth: async () => ({ userId: session.getStore()?.id || null }), currentUser: async () => session.getStore() })
 mock('@/lib/emailIdentity', emailHelpers)
+mock('@/lib/studyProgressScores.mjs', studyScores)
+mock('@/lib/iosStudyProgressStore', { loadQuestionProgress })
 mock('@/lib/supabase/server', { isSupabaseAdminConfigured: true, supabaseAdmin: supabase })
 async function load(name, file) {
   const module = new vm.SourceTextModule(await readFile(resolve(root,file),'utf8'), { context })
@@ -169,5 +178,32 @@ await check('ownership and pagination outages return 503 instead of exposing ali
 await check('null and array writes return 400', async () => {
   for (const name of Object.keys(routes)) for (const payload of [null,[]]) assert.equal((await api(name,'POST',user('A'),payload)).status,400)
 })
-await db.close()
+await check('two devices contribute independent answers, acknowledgement loss and offline replay count once', async () => {
+  const who = user('multi')
+  const answer = { id: crypto.randomUUID(), topicId:'topic', questionId:'question', correct:false,
+    day:'2026-06-01', at:'2026-06-01T10:00:00Z', fach:'thorax' }
+  const next = {...answer,id:crypto.randomUUID(),correct:true,at:'2026-06-01T11:00:00Z'}
+  for (const event of [next,answer,answer,next]) assert.equal((await api('mcq','POST',who,{answer:event})).status,200)
+  const scores = (await api('mcq','GET',who)).body.scores
+  const topic = scores[studyScores.nativeScorePrefix+'topic']
+  assert.deepEqual([topic.attempted,topic.correct,topic.daily['2026-06-01'].attempted],[2,1,2])
+  assert.deepEqual(topic.wrongQuestionIds,[])
+  assert.deepEqual((await api('mcq','GET',user('other'))).body.scores,{})
+})
+await check('independent card reviews retain both counts, latest schedule and a claimed legacy baseline', async () => {
+  const who = user('A','a@example.test')
+  await api('leitner','GET',who)
+  await db.query("insert into leitner_cards(user_id,card_id,box,added_at,correct_count,seen_count) values('email:a@example.test','cross-review',3,'2026-01-01',2,2)")
+  const review = {id:crypto.randomUUID(),known:true,at:'2026-10-24T10:00:00Z',addedAt:'2026-01-01',zone:'Europe/Berlin'}
+  const older = {...review,id:crypto.randomUUID(),known:false,at:'2026-10-23T10:00:00Z'}
+  for (const event of [review,older,review,older]) assert.equal((await api('leitner','POST',who,{cardId:'cross-review',review:event})).status,200)
+  const card = (await api('leitner','GET',who)).body.cards['cross-review']
+  assert.deepEqual([card.box,card.correctCount,card.wrongCount,card.seenCount],[4,3,1,4])
+  assert.equal(new Date(card.dueAt).toISOString(),'2026-11-06T23:00:00.000Z')
+  assert.equal(new Date(card.lastReviewedAt).toISOString(),'2026-10-24T10:00:00.000Z')
+  const role = await db.query("select has_function_privilege('anon','public.record_learning_card_review(text,text,uuid,boolean,timestamptz,text,timestamptz)','EXECUTE') as allowed")
+  assert.equal(role.rows[0].allowed,false)
+})
+if (!process.env.RADYAR_KEEP_TEST_DB) await db.close()
+export { db, api, user }
 console.log(`${cases} practice-integrity scenarios passed against isolated PostgreSQL and real identity/API code.`)

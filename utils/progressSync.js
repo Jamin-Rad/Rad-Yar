@@ -3,6 +3,8 @@ import { getUserCacheToken, isUserCacheActive, isUserCacheCurrent } from './prog
 const legacyKey = id => `radyar_pending_progress_${id || 'anon'}`
 const prefix = id => `radyar_pending_v2:${encodeURIComponent(id || 'anon')}:`
 const inFlight = new Map()
+const versionKey = id => 'radyar_progress_write_version:' + encodeURIComponent(id)
+export const progressWriteVersion = userId => localStorage.getItem(versionKey(userId))
 function json(key, fallback) { try { return JSON.parse(localStorage.getItem(key) || JSON.stringify(fallback)) } catch { return fallback } }
 
 export function pendingProgressEntries(userId) {
@@ -25,6 +27,7 @@ export function queueProgressWrite(key, endpoint, payload, userId) {
   // One immutable key per write: simultaneous tabs cannot overwrite another
   // tab's queue via read/modify/write of a shared JSON object.
   localStorage.setItem(`${prefix(userId)}${id}`, JSON.stringify({ key, endpoint, payload, id, queuedAt: new Date().toISOString() }))
+  localStorage.setItem(versionKey(userId), id)
   window.dispatchEvent(new CustomEvent('radyar:progress-pending', { detail: { userId } }))
 }
 
@@ -43,13 +46,27 @@ export function discardPendingProgress(userId, key) {
 
 export async function persistProgressWrite(key, endpoint, payload, userId) {
   try { queueProgressWrite(key, endpoint, payload, userId) } catch { return false }
-  return flushPendingProgress(userId)
+  const token = getUserCacheToken(userId)
+  const saved = await flushPendingProgress(userId)
+  // A just-finished drain may still be registered while this write is queued.
+  if (saved && isUserCacheCurrent(userId, token) && pendingProgressEntries(userId).length) return flushPendingProgress(userId)
+  return saved
 }
 
 export async function flushPendingProgress(userId) {
   if (!userId || !isUserCacheActive(userId)) return false
   const flightKey = `${userId}:${getUserCacheToken(userId)}`
-  if (!inFlight.has(flightKey)) inFlight.set(flightKey, drain(userId).finally(() => inFlight.delete(flightKey)))
+  if (!inFlight.has(flightKey)) {
+    const token = getUserCacheToken(userId)
+    const pending = pendingProgressEntries(userId).length > 0
+    const request = drain(userId).then(saved => {
+      if (pending && isUserCacheCurrent(userId, token)) {
+        window.dispatchEvent(new CustomEvent('radyar:write-settled', { detail: { userId, saved } }))
+      }
+      return saved
+    }).finally(() => inFlight.delete(flightKey))
+    inFlight.set(flightKey, request)
+  }
   return inFlight.get(flightKey)
 }
 

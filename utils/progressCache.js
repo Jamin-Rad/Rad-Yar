@@ -2,6 +2,7 @@
 const OWNER_KEY = 'radyar_progress_cache_owner'
 const GENERATION_KEY = 'radyar_progress_cache_generation'
 const ANONYMOUS = '__anonymous__'
+const LEGACY_DRAFT_OWNER = 'radyar_mcq_legacy_draft_owner'
 const CACHE_KEYS = [
   ['radyar_read_articles', {}],
   ['radyar_learning_history', []],
@@ -21,6 +22,7 @@ function saveCache(owner) {
 export function activateUserCache(userId) {
   const nextOwner = userId || ANONYMOUS
   const owner = localStorage.getItem(OWNER_KEY)
+  if (!localStorage.getItem(LEGACY_DRAFT_OWNER)) localStorage.setItem(LEGACY_DRAFT_OWNER, owner || ANONYMOUS)
   if (owner === nextOwner) return
   if (owner) saveCache(owner)
   else {
@@ -41,6 +43,11 @@ export function activateUserCache(userId) {
 
 export function isUserCacheActive(userId) {
   return localStorage.getItem(OWNER_KEY) === (userId || ANONYMOUS)
+}
+
+export function ownsLegacyQuizDraft(userId) {
+  const previous = localStorage.getItem(LEGACY_DRAFT_OWNER) || localStorage.getItem(OWNER_KEY) || ANONYMOUS
+  return previous === (userId || ANONYMOUS)
 }
 
 export function getUserCacheToken(userId) {

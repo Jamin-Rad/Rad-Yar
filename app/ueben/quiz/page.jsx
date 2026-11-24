@@ -11,6 +11,8 @@ import { shuffleQuestionIds, getQuestionsForIds, getQuestionSetRevision } from '
 import { hasFullAccess, FREE_ITEM_LIMIT } from '@/utils/subscription'
 import { getCorrectAnswerExplanation, getWrongAnswerExplanation } from '@/utils/answerFeedback'
 import { persistProgressWrite } from '@/utils/progressSync'
+import { isUserCacheActive, ownsLegacyQuizDraft } from '@/utils/progressCache'
+import { nativeScorePrefix } from '@/lib/studyProgressScores.mjs'
 import styles from './page.module.css'
 
 const localDateKey = () => {
@@ -273,7 +275,15 @@ function QuizContent() {
     return `radyar_mcq_session_v2:${parts.join('|')}`
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [fachParam, themenParam, fragenParam, effectiveN, timed])
-  const storedSession = useMemo(() => readStoredSession(sessionKey), [sessionKey])
+  const draftKey = sessionKey + ':' + (user?.id || 'guest')
+  const storedSession = useMemo(() => {
+    const owned = readStoredSession(draftKey)
+    if (owned) return owned
+    return ownsLegacyQuizDraft(user?.id) ? readStoredSession(sessionKey) : null
+  }, [draftKey, sessionKey, user?.id])
+  const recorded = useRef(new Map((storedSession?.answers || [])
+    .filter(answer => answer.progressId).map(answer => [canonicalQuestionId(answer.qId), answer.progressId])))
+  const answerIds = useRef({ ...storedSession?.answerIds })
 
   // Stable question order — fixed on mount, does NOT change when lang changes
   const orderedIds = useMemo(
@@ -333,8 +343,9 @@ function QuizContent() {
 
   useEffect(() => {
     if (typeof window === 'undefined' || total === 0) return
-    localStorage.setItem(sessionKey, JSON.stringify({
+    localStorage.setItem(draftKey, JSON.stringify({
       orderedIds,
+      answerIds: answerIds.current,
       current,
       selected,
       checked,
@@ -343,7 +354,7 @@ function QuizContent() {
       timeLeft,
       updatedAt: new Date().toISOString(),
     }))
-  }, [answers, checked, current, orderedIds, phase, selected, sessionKey, timeLeft, total])
+  }, [answers, checked, current, orderedIds, phase, selected, draftKey, timeLeft, total])
 
   useEffect(() => {
     if (!timed || phase !== 'quiz' || total === 0) return
@@ -359,13 +370,42 @@ function QuizContent() {
 
   const fachLabel = fachIds.map(id => names[id] || id).join(', ')
 
+  function recordAnswer(answer) {
+    if (recorded.current.has(answer.qId)) return recorded.current.get(answer.qId)
+    const id = answerIds.current[answer.qId] || crypto.randomUUID()
+    answerIds.current[answer.qId] = id
+    // Persist the id before starting the upload, including a reload between POST and render.
+    const draft = readStoredSession(draftKey) || {}
+    localStorage.setItem(draftKey, JSON.stringify({ ...draft, answerIds: answerIds.current, orderedIds }))
+    const topicId = themenIds.length === 1 ? themenIds[0] : (fachIds[0] || 'mixed')
+    const at = new Date().toISOString(), day = localDateKey()
+    const event = { id, topicId, questionId: answer.qId, day, at, fach: fachIds[0] || '', correct: answer.correct }
+    if (user?.id) void persistProgressWrite('mcq:' + id, '/api/progress/mcq-results', { answer: event }, user.id)
+    recorded.current.set(answer.qId, id)
+    if (isUserCacheActive(user?.id)) {
+      const scores = JSON.parse(localStorage.getItem('radyar_mcq_scores') || '{}')
+      const key = nativeScorePrefix + topicId
+      const score = scores[key] || { studyTopicId: topicId, attempted: 0, correct: 0, daily: {}, wrongQuestionIds: [] }
+      const counts = score.daily?.[day] || { attempted: 0, correct: 0 }
+      if (answer.correct) {
+        for (const prior of Object.values(scores)) prior.wrongQuestionIds = (prior.wrongQuestionIds || []).filter(q => q !== answer.qId)
+      }
+      const wrong = new Set(score.wrongQuestionIds)
+      if (!answer.correct) wrong.add(answer.qId)
+      scores[key] = { ...score, attempted: score.attempted + 1, correct: score.correct + Number(answer.correct),
+        lastDate: at, fach: event.fach, wrongQuestionIds: [...wrong],
+        daily: { ...score.daily, [day]: { attempted: counts.attempted + 1, correct: counts.correct + Number(answer.correct) } } }
+      localStorage.setItem('radyar_mcq_scores', JSON.stringify(scores))
+    }
+    return id
+  }
+
   const handleCheck = () => {
-    if (!selected || !q) return
+    if (!selected || !q || checked || answerMap.has(q.sessionId)) return
+    const answer = { qId: q.sessionId, selected, correct: selected === q.correct }
+    answer.progressId = recordAnswer(answer)
     setChecked(true)
-    setAnswers(prev => [
-      ...prev.filter(a => a.qId !== q.sessionId),
-      { qId: q.sessionId, selected, correct: selected === q.correct },
-    ])
+    setAnswers(prev => [...prev.filter(a => a.qId !== q.sessionId), answer])
   }
 
   const goToQuestion = (index) => {
@@ -377,46 +417,15 @@ function QuizContent() {
     setChecked(Boolean(existingAnswer))
   }
 
-  const saveMcqResult = (finalAnswers) => {
-    try {
-      const scores = JSON.parse(localStorage.getItem('radyar_mcq_scores') || '{}')
-      const key = themenIds.length === 1 ? themenIds[0] : (fachIds[0] || 'mixed')
-      const correct = finalAnswers.filter(a => a.correct).length
-      for (const storedScore of Object.values(scores)) {
-        const storedWrong = new Set(storedScore.wrongQuestionIds || [])
-        finalAnswers.forEach(answer => {
-          if (answer.correct) storedWrong.delete(answer.qId)
-        })
-        storedScore.wrongQuestionIds = [...storedWrong]
-      }
-      const previousWrong = new Set(scores[key]?.wrongQuestionIds || [])
-      const todayKey = localDateKey()
-      const daily = { ...(scores[key]?.daily || {}) }
-      daily[todayKey] = {
-        attempted: Number(daily[todayKey]?.attempted || 0) + finalAnswers.length,
-        correct: Number(daily[todayKey]?.correct || 0) + correct,
-      }
-      finalAnswers.forEach(answer => answer.correct ? previousWrong.delete(answer.qId) : previousWrong.add(answer.qId))
-      scores[key] = {
-        attempted: (scores[key]?.attempted || 0) + finalAnswers.length,
-        correct:   (scores[key]?.correct   || 0) + correct,
-        lastDate:  new Date().toISOString(),
-        fach:      fachIds[0] || '',
-        wrongQuestionIds: [...previousWrong],
-        daily,
-        lastSessionAttempted: finalAnswers.length,
-      }
-      localStorage.setItem('radyar_mcq_scores', JSON.stringify(scores))
-      if (user?.id) {
-        persistProgressWrite('mcq:scores', '/api/progress/mcq-results', { bulk: scores }, user.id)
-      }
-    } catch {}
+  const finishQuiz = () => {
+    // Credit answers from unfinished pre-upgrade drafts on explicit completion.
+    setAnswers(answers.map(answer => ({ ...answer, progressId: answer.progressId || recordAnswer(answer) })))
+    setPhase('result')
   }
 
   const handleNext = () => {
     if (answeredCount >= total) {
-      saveMcqResult(answers)
-      setPhase('result')
+      finishQuiz()
       return
     }
 
@@ -433,12 +442,7 @@ function QuizContent() {
   useEffect(() => {
     if (!timed || phase !== 'quiz' || timeUpRef.current || timeLeft > 0 || total === 0) return
     timeUpRef.current = true
-    const finalAnswers = checked && q
-      ? [...answers.filter(a => a.qId !== q.sessionId), { qId: q.sessionId, selected, correct: selected === q.correct }]
-      : answers
-    saveMcqResult(finalAnswers)
-    setAnswers(finalAnswers)
-    setPhase('result')
+    finishQuiz()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [timeLeft, timed, phase])
 
@@ -446,7 +450,9 @@ function QuizContent() {
     setCurrent(0); setSelected(null); setChecked(false)
     setAnswers([]); setPhase('quiz'); setFilter('all')
     setTimeLeft(totalSeconds); timeUpRef.current = false
-    if (typeof window !== 'undefined') localStorage.removeItem(sessionKey)
+    recorded.current.clear()
+    answerIds.current = {}
+    if (typeof window !== 'undefined') localStorage.removeItem(draftKey)
   }
 
   useEffect(() => {
@@ -747,10 +753,12 @@ const QUIZ_LOADING = <div style={{display:'flex',alignItems:'center',justifyCont
 
 function ClientQuiz() {
   const [mounted, setMounted] = useState(false)
+  const { user, isLoaded } = useUser()
+  const params = useSearchParams()
 
   useEffect(() => setMounted(true), [])
 
-  return mounted ? <QuizContent /> : QUIZ_LOADING
+  return mounted && isLoaded ? <QuizContent key={(user?.id || 'guest') + ':' + params.toString()} /> : QUIZ_LOADING
 }
 
 function ArrowIcon({ direction = 'forward' }) {

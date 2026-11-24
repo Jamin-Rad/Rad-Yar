@@ -157,6 +157,9 @@ await check('all progress APIs reject requests made for a different Clerk accoun
   })
   synthetic('@/lib/emailIdentity', { canonicalUserEmail: () => '', primaryEmailFromUser: () => '' })
   synthetic('@/utils/readProgressStore', { readVersion })
+  synthetic('@/lib/learningReadSnapshot', { loadLearningReadSnapshot() { throw new Error('Unexpected read') } })
+  synthetic('@/lib/iosStudyProgressStore', { loadQuestionProgress() { throw new Error('Unexpected read') } })
+  synthetic('@/lib/studyProgressScores.mjs', { nativeScorePrefix: 'ios-study:' })
   synthetic('next/server', { NextResponse: { json: (body, options) => ({ body, status: options?.status || 200 }) } })
   synthetic('@/lib/supabase/server', {
     isSupabaseAdminConfigured: true,

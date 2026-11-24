@@ -54,6 +54,23 @@ export async function POST(request) {
   if (!payload || typeof payload !== 'object' || Array.isArray(payload)) {
     return NextResponse.json({ error: 'Ungültige Anfrage' }, { status: 400 })
   }
+  if ('answer' in payload) {
+    const a = payload.answer
+    const validId = value => typeof value === 'string' && value.length > 0 && value.length <= 512
+    if (!a || !/^[0-9a-f]{8}(?:-[0-9a-f]{4}){3}-[0-9a-f]{12}$/i.test(a.id) ||
+        !validId(a.topicId) || !validId(a.questionId) || typeof a.correct !== 'boolean' ||
+        !/^\d{4}-\d{2}-\d{2}$/.test(a.day) || !Number.isFinite(Date.parse(a.at)) ||
+        Date.parse(a.at) > Date.now() + 300000) {
+      return NextResponse.json({ error: 'Ungültige Antwort' }, { status: 400 })
+    }
+    // Web and iOS use the same immutable answer format and topic projection.
+    const { error } = await supabaseAdmin.from('mcq_results').upsert({
+      user_id: identity.ownerId, thema_id: nativeScorePrefix + a.id.toLowerCase(), attempted: 1,
+      correct: Number(a.correct), last_date: a.at, fach_id: typeof a.fach === 'string' ? a.fach : null,
+      details: { nativeAnswer: { topicId: a.topicId, questionId: a.questionId, day: a.day } },
+    }, { onConflict: 'user_id,thema_id', ignoreDuplicates: true })
+    return NextResponse.json(error ? { error: 'Speichern fehlgeschlagen' } : { ok: true }, { status: error ? 503 : 200 })
+  }
   let rows = []
   if (payload.bulk && typeof payload.bulk === 'object') {
     rows = Object.entries(payload.bulk)

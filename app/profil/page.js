@@ -15,6 +15,7 @@ import { CURRICULUM, getFachTitle, getKapitelTitle, getThemaTitle } from '@/data
 import mcqTopicIndex from '@/data/mcqTopicIndex.json'
 import flashcardIds from '@/data/flashcardIds.json'
 import { getActivitySummary } from '@/utils/activityStorage'
+import { scoresByStudyTopic } from '@/lib/studyProgressScores.mjs'
 import {
   PROMO_MONTHS,
   RENEWAL_MONTHS,
@@ -439,7 +440,9 @@ export default function ProfilPage() {
   const { user, isLoaded } = useUser()
   const { openUserProfile, signOut } = useClerk()
   const [view, setView] = useState('overview')
-  const [syncState, setSyncState] = useState('loading')
+  const [pullState, setSyncState] = useState('loading')
+  const [writeState, setWriteState] = useState(null)
+  const syncState = pullState === 'synced' && writeState ? writeState : pullState
   const [syncAttempt, setSyncAttempt] = useState(0)
   const [progressReady, setProgressReady] = useState(false)
   const [progressOwner, setProgressOwner] = useState(null)
@@ -499,6 +502,7 @@ export default function ProfilPage() {
       setActivitySummary(getActivitySummary(userId))
     }
     setProgressReady(false)
+    setWriteState(null)
     setSyncState(navigator.onLine ? 'loading' : 'offline')
     async function sync() {
       try {
@@ -574,10 +578,14 @@ export default function ProfilPage() {
       if (event.detail?.userId === user.id) setSyncState(event.detail.state)
     }
     const handlePending = event => {
-      if (event.detail?.userId === user.id) setSyncState(navigator.onLine ? 'loading' : 'offline')
+      if (event.detail?.userId === user.id) setWriteState(navigator.onLine ? 'loading' : 'offline')
     }
     window.addEventListener('radyar:progress-sync-state', handleSyncState)
     window.addEventListener('radyar:progress-pending', handlePending)
+    const handleWrite = event => {
+      if (event.detail?.userId === user.id) setWriteState(event.detail.saved ? null : navigator.onLine ? 'error' : 'offline')
+    }
+    window.addEventListener('radyar:write-settled', handleWrite)
     const handleRead = event => {
       if (event.detail?.userId !== user.id) return
       setReadArticles(event.detail.articles)
@@ -588,15 +596,17 @@ export default function ProfilPage() {
       window.removeEventListener('radyar:progress-synced', handleSynced)
       window.removeEventListener('radyar:progress-sync-state', handleSyncState)
       window.removeEventListener('radyar:progress-pending', handlePending)
+      window.removeEventListener('radyar:write-settled', handleWrite)
       window.removeEventListener('radyar:read-updated', handleRead)
     }
   }, [user])
 
   const progress = useMemo(() => getProgressData(readArticles), [readArticles])
   const currentLeitner = useMemo(() => filterLeitnerState(leitner, flashcardIds), [leitner])
+  const topicScores = useMemo(() => scoresByStudyTopic(mcqScores), [mcqScores])
   const areaLearningData = useMemo(
-    () => getAreaLearningData(progress, currentLeitner, mcqScores),
-    [progress, currentLeitner, mcqScores]
+    () => getAreaLearningData(progress, currentLeitner, topicScores),
+    [progress, currentLeitner, topicScores]
   )
   const activity = useMemo(() => getActivity(activitySummary.days || {}, lang), [activitySummary.days, lang])
   const activityTotals = useMemo(() => activity.reduce((totals, day) => ({
@@ -650,7 +660,7 @@ export default function ProfilPage() {
   const startedCards = records.filter(record => Number(record.seenCount || 0) > 0).length
   const unpractisedMcq = mcqTopicIndex.flatMap(group =>
     group.topics.map(topic => ({ ...topic, fachId: group.fachId }))
-  ).filter(topic => !mcqScores[topic.id]).slice(0, 4)
+  ).filter(topic => !topicScores[topic.id]).slice(0, 4)
   const topicLookup = new Map(progress.topics.map(item => [item.thema.id, item]))
   const recentTopics = learningHistory
     .slice()

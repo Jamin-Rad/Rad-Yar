@@ -87,6 +87,22 @@ export async function POST(request) {
   if (!payload || typeof payload !== 'object' || Array.isArray(payload)) {
     return NextResponse.json({ error: 'Ungültige Anfrage' }, { status: 400 })
   }
+  if ('review' in payload) {
+    const r = payload.review
+    const valid = r && typeof payload.cardId === 'string' && payload.cardId.length > 0 && payload.cardId.length <= 512 &&
+      /^[0-9a-f]{8}(?:-[0-9a-f]{4}){3}-[0-9a-f]{12}$/i.test(r.id) && typeof r.known === 'boolean' &&
+      Number.isFinite(Date.parse(r.at)) && Date.parse(r.at) <= Date.now() + 300000 &&
+      typeof r.zone === 'string' && r.zone.length > 0 && r.zone.length <= 100
+    if (!valid) return NextResponse.json({ error: 'Ungültige Wiederholung' }, { status: 400 })
+    let zone
+    try { zone = new Intl.DateTimeFormat('en', { timeZone: r.zone }).resolvedOptions().timeZone }
+    catch { return NextResponse.json({ error: 'Ungültige Zeitzone' }, { status: 400 }) }
+    const { error } = await supabaseAdmin.rpc('record_learning_card_review', {
+      p_owner: identity.ownerId, p_card: payload.cardId, p_id: r.id, p_known: r.known, p_at: r.at,
+      p_zone: zone, p_added: Number.isFinite(Date.parse(r.addedAt)) ? r.addedAt : r.at,
+    })
+    return NextResponse.json(error ? { error: 'Speichern fehlgeschlagen' } : { ok: true }, { status: error ? 503 : 200 })
+  }
   let rows = []
   if (payload.bulk && typeof payload.bulk === 'object') {
     rows = Object.entries(payload.bulk)

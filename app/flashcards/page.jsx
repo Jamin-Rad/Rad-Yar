@@ -187,13 +187,20 @@ export default function FlashcardsPage() {
   }
 
   useEffect(() => {
+    let active = true
     refresh()
     if (userId) {
-      pullLeitnerStateFromServer(userId).then(state => setState(state))
+      pullLeitnerStateFromServer(userId).then(state => { if (active) setState(state) })
     }
     const onFocus = () => refresh()
     window.addEventListener('focus', onFocus)
-    return () => window.removeEventListener('focus', onFocus)
+    const onSynced = event => { if (event.detail?.userId === userId) refresh() }
+    window.addEventListener('radyar:progress-synced', onSynced)
+    return () => {
+      active = false
+      window.removeEventListener('focus', onFocus)
+      window.removeEventListener('radyar:progress-synced', onSynced)
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userId])
 

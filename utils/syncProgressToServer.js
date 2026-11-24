@@ -3,7 +3,7 @@
 
 import { activateUserCache, getUserCacheToken, isUserCacheCurrent, persistCurrentUserCache } from './progressCache.js'
 import { mergeReadState, readVersion } from './readProgressStore.js'
-import { flushPendingProgress } from './progressSync.js'
+import { flushPendingProgress, progressWriteVersion } from './progressSync.js'
 import { syncActivityToServer } from './activityStorage.js'
 export { activateUserCache } from './progressCache.js'
 
@@ -40,8 +40,14 @@ async function requestJson(url, options) {
   return response.json()
 }
 
-function mergeMcqProgress(serverData) {
+function mergeMcqProgress(serverData, currentSnapshot) {
   const scores = readJson('radyar_mcq_scores', {})
+  if (currentSnapshot) {
+    // Per-answer totals come from immutable server events, including late offline answers.
+    for (const [id, score] of Object.entries(scores)) {
+      if (score.studyTopicId) delete scores[id]
+    }
+  }
   for (const [topicId, serverResult] of Object.entries(serverData.scores || {})) {
     const localResult = scores[topicId]
     if (!localResult || timeOf(serverResult.lastDate) >= timeOf(localResult.lastDate)) {
@@ -76,6 +82,7 @@ function postJson(url, body, userId) {
 async function reconcileProgress(userId, activityMaxAgeMs) {
   activateUserCache(userId)
   const token = getUserCacheToken(userId)
+  const version = progressWriteVersion(userId)
   if (!await flushPendingProgress(userId)) throw new Error('Pending progress upload failed')
   if (!isUserCacheCurrent(userId, token)) return null
   const options = { cache: 'no-store', headers: { 'X-Radyar-User-Id': userId } }
@@ -95,7 +102,7 @@ async function reconcileProgress(userId, activityMaxAgeMs) {
         history: readJson('radyar_learning_history', []),
       }
   const mcqScores = mcqResult.status === 'fulfilled'
-    ? mergeMcqProgress(mcqResult.value)
+    ? mergeMcqProgress(mcqResult.value, version === progressWriteVersion(userId))
     : readJson('radyar_mcq_scores', {})
   const leitnerState = leitnerResult.status === 'fulfilled'
     ? mergeLeitnerProgress(userId, leitnerResult.value)
@@ -115,11 +122,11 @@ async function reconcileProgress(userId, activityMaxAgeMs) {
   // least as recent. Only local records that differ need to be written back.
   const changedMcq = mcqResult.status === 'fulfilled'
     ? Object.fromEntries(Object.entries(mcqScores).filter(([id, value]) =>
-        JSON.stringify(value) !== JSON.stringify(mcqResult.value.scores?.[id])))
+        !value.studyTopicId && JSON.stringify(value) !== JSON.stringify(mcqResult.value.scores?.[id])))
     : {}
   const changedCards = leitnerResult.status === 'fulfilled'
     ? Object.fromEntries(Object.entries(leitnerState).filter(([id, value]) =>
-        JSON.stringify(value) !== JSON.stringify(leitnerResult.value.cards?.[id])))
+        !value.reviewId && JSON.stringify(value) !== JSON.stringify(leitnerResult.value.cards?.[id])))
     : {}
   if (Object.keys(changedMcq).length) uploads.push(postJson('/api/progress/mcq-results', { bulk: changedMcq }, userId))
   if (Object.keys(changedCards).length) uploads.push(postJson('/api/progress/leitner', { bulk: changedCards }, userId))

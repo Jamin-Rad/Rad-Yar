@@ -8,6 +8,7 @@ import { getActivityCategory } from '@/utils/activityCategory'
 import { createStudyTimer } from '@/utils/studyTimer'
 import { syncLocalProgressToServer, activateUserCache } from '@/utils/syncProgressToServer'
 import { isUserCacheCurrent, getUserCacheToken } from '@/utils/progressCache'
+import { flushPendingProgress, pendingProgressEntries } from '@/utils/progressSync'
 import { PRIVACY_CHOICE_EVENT, readPrivacyChoice } from '@/components/LegalNotice'
 import { getAnalyticsSessionId, getAnalyticsVisitorId } from '@/utils/calculatorAnalytics'
 
@@ -37,24 +38,26 @@ export default function ActivityTracker() {
     activateUserCache(userId)
     if (!userId) return
     const token = getUserCacheToken(userId)
-    const run = activityMaxAgeMs => {
-      if (document.visibilityState === 'visible' && isUserCacheCurrent(userId, token) && navigator.onLine) void syncLocalProgressToServer(userId, { activityMaxAgeMs })
+    const foreground = () => document.visibilityState === 'visible' && isUserCacheCurrent(userId, token) && navigator.onLine
+    const sync = () => {
+      if (foreground()) void syncLocalProgressToServer(userId)
     }
-    const sync = () => run(60000)
-    const reconnect = () => run(0)
     sync()
-    const interval = window.setInterval(sync, 30000)
-    window.addEventListener('online', reconnect)
+    const interval = window.setInterval(sync, 5 * 60_000)
+    const retry = window.setInterval(() => {
+      if (!foreground()) return
+      if (pendingProgressEntries(userId).length) void flushPendingProgress(userId)
+      void syncActivityToServer(userId, { keepalive: true }).catch(() => {})
+    }, 60_000)
+    window.addEventListener('online', sync)
     window.addEventListener('focus', sync)
     document.addEventListener('visibilitychange', sync)
-    const pending = event => { if (event.detail?.userId === userId) sync() }
-    window.addEventListener('radyar:progress-pending', pending)
     return () => {
       clearInterval(interval)
-      window.removeEventListener('online', reconnect)
+      clearInterval(retry)
+      window.removeEventListener('online', sync)
       window.removeEventListener('focus', sync)
       document.removeEventListener('visibilitychange', sync)
-      window.removeEventListener('radyar:progress-pending', pending)
     }
   }, [isLoaded, userId])
 

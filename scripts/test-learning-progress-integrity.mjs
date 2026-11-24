@@ -93,6 +93,9 @@ const identity = new vm.SourceTextModule(await readFile(resolve(root, 'lib/userI
 serverModules.set('@/lib/userIdentity', identity)
 await identity.link(name => serverModules.get(name)); await identity.evaluate()
 const routes = {}
+const snapshot = new vm.SourceTextModule(await readFile(resolve(root,'lib/learningReadSnapshot.js'),'utf8'), { context: serverContext })
+await snapshot.link(name => serverModules.get(name)); await snapshot.evaluate()
+serverModules.set('@/lib/learningReadSnapshot', snapshot)
 for (const name of ['read-status', 'activity']) {
   const mod = new vm.SourceTextModule(await readFile(resolve(root, `app/api/progress/${name}/route.js`), 'utf8'), { context: serverContext })
   await mod.link(name => serverModules.get(name)); await mod.evaluate(); routes[name] = mod.namespace

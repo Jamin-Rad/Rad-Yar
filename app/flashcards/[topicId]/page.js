@@ -14,7 +14,7 @@ import { CONTRAST_GROUPS } from '@/data/contrastMedia'
 import {
   loadLeitnerState, answerCard,
   isDue, getBoxLabel,
-  pullLeitnerStateFromServer, syncLeitnerCardToServer,
+  pullLeitnerStateFromServer,
 } from '@/utils/leitnerStorage'
 import AuthBanner from '@/components/AuthBanner'
 import styles from './page.module.css'
@@ -298,6 +298,14 @@ export default function FlashcardReviewPage() {
     }
   }, [allCards, userId, practiceMode, reviewMode, boxFilter, isDueMode, fullAccess])
 
+  useEffect(() => {
+    const refresh = event => {
+      if (userId && event.detail?.userId === userId) setLeitnerState(loadLeitnerState(userId))
+    }
+    window.addEventListener('radyar:progress-synced', refresh)
+    return () => window.removeEventListener('radyar:progress-synced', refresh)
+  }, [userId])
+
   const startedTopicIds = useMemo(() => {
     const set = new Set()
     Object.keys(leitnerState).forEach(cardId => {
@@ -346,7 +354,6 @@ export default function FlashcardReviewPage() {
     if (!practiceMode) {
       const newState = answerCard(current.id, knew, userId)
       setLeitnerState(newState)
-      if (userId) syncLeitnerCardToServer(current.id, newState[current.id], userId)
     }
 
     setStats(s => ({ correct: s.correct + (knew ? 1 : 0), wrong: s.wrong + (knew ? 0 : 1) }))

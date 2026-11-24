@@ -3,6 +3,8 @@
 // - Mit Login:  Fortschritt in localStorage pro User-ID (Clerk userId)
 //   → Damit mehrere User auf demselben Gerät getrennte Fortschritte haben
 
+import { persistProgressWrite } from './progressSync.js'
+
 const ANON_KEY = 'radyar_leitner_anon'
 
 function getKey(userId) {
@@ -107,6 +109,14 @@ export function answerCard(cardId, knew, userId = null) {
     seenCount:      (cur.seenCount    || 0) + 1,
     dueAt:          nextBox > 8 ? null : addDays(LEITNER_STEPS[nextBox - 1].days),
   }
+  if (userId) {
+    const record = state[cardId]
+    record.reviewId = crypto.randomUUID()
+    void persistProgressWrite('leitner:' + cardId, '/api/progress/leitner', {
+      cardId, review: { id: record.reviewId, known: knew, at: record.lastReviewedAt,
+        addedAt: record.addedAt, zone: Intl.DateTimeFormat().resolvedOptions().timeZone || 'UTC' },
+    }, userId)
+  }
   saveLeitnerState(state, userId)
   return state
 }
@@ -130,27 +140,6 @@ export function formatDueDate(record, lang = 'de') {
 // ─── Server-Sync (nur für eingeloggte Nutzer) ──────────────────────
 // localStorage bleibt die sofort verfügbare Quelle für die UI;
 // der Server (Supabase `leitner_cards`) ermöglicht geräteübergreifenden Sync.
-
-const syncQueues = new Map()
-
-export function syncLeitnerCardToServer(cardId, record, userId = null) {
-  const queueKey = `${userId || 'anon'}:${cardId}`
-  const previous = syncQueues.get(queueKey) || Promise.resolve()
-  const next = previous.then(async () => {
-    const { persistProgressWrite } = await import('@/utils/progressSync')
-    await persistProgressWrite(
-      `leitner:${cardId}`,
-      '/api/progress/leitner',
-      { cardId, record },
-      userId
-    )
-  })
-  syncQueues.set(queueKey, next)
-  next.then(() => {
-    if (syncQueues.get(queueKey) === next) syncQueues.delete(queueKey)
-  })
-  return next
-}
 
 /**
  * Holt den Server-Stand und merged ihn in den lokalen Zustand.

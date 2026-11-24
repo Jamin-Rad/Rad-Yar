@@ -86,7 +86,7 @@ function progressSync(localScores, remoteScores, localCards, remoteCards) {
   const sync = load(read('utils/syncProgressToServer.js'), {
     './progressCache.js': { activateUserCache() {}, getUserCacheToken: () => 'token', isUserCacheCurrent: () => true, persistCurrentUserCache() {} },
     './readProgressStore.js': { mergeReadState: () => ({ state: { records: {} }, server: { records: {} } }), readVersion: () => 0 },
-    './progressSync.js': { flushPendingProgress: async () => true },
+    './progressSync.js': { flushPendingProgress: async () => true, progressWriteVersion: () => null },
     './activityStorage.js': { syncActivityToServer: async () => ({}) },
   }, { window: { dispatchEvent() {} }, navigator: { onLine: true }, CustomEvent: class {}, localStorage: local, sessionStorage: storage(),
     fetch: async (url, options = {}) => { requests.push({ url, options }); return { ok: true, json: async () => url.includes('mcq-results') ? { scores: remoteScores } : url.includes('leitner') ? { cards: remoteCards } : {} } },
@@ -118,7 +118,8 @@ test('uploads only changed records and keeps newer server progress', async () =>
 test('pauses hidden-tab polling and resumes immediately on visibility', () => {
   const effects = [], callbacks = [], doc = emitter({ visibilityState: 'visible' })
   let syncs = 0
-  const win = emitter({ setInterval: fn => { callbacks.push(fn); return fn }, clearInterval() {} })
+  const periods = []
+  const win = emitter({ setInterval: (fn, ms) => { callbacks.push(fn); periods.push(ms); return fn }, clearInterval() {} })
   const component = load(read('components/ActivityTracker.jsx'), {
     react: { useEffect: e => effects.push(e), useState: () => [false, () => {}] },
     '@clerk/nextjs': { useUser: () => ({ isLoaded: true, user: { id: 'test-user' } }) },
@@ -128,16 +129,22 @@ test('pauses hidden-tab polling and resumes immediately on visibility', () => {
     '@/utils/studyTimer': { createStudyTimer: () => ({ tick() {}, stop() {} }) },
     '@/utils/syncProgressToServer': { activateUserCache() {}, syncLocalProgressToServer: () => { syncs++ } },
     '@/utils/progressCache': { isUserCacheCurrent: () => true, getUserCacheToken: () => 'token' },
+    '@/utils/progressSync': { pendingProgressEntries: () => [], flushPendingProgress: async () => true },
     '@/components/LegalNotice': { readPrivacyChoice: () => ({ analytics: false }), PRIVACY_CHOICE_EVENT: 'privacy' },
     '@/utils/calculatorAnalytics': {},
   }, { window: win, document: doc, navigator: { onLine: true }, clearInterval() {} }).default
   component(); const cleanup = effects[1]()
+  assert.equal(syncs, 1)
+  assert.deepEqual(periods, [300000, 60000])
+  callbacks[1](); win.emit('radyar:progress-pending')
   assert.equal(syncs, 1)
   doc.visibilityState = 'hidden'
   for (let i = 0; i < 120; i++) callbacks[0]()
   assert.equal(syncs, 1)
   doc.visibilityState = 'visible'; doc.emit('visibilitychange')
   assert.equal(syncs, 2)
+  win.emit('online'); win.emit('focus')
+  assert.equal(syncs, 4)
   cleanup()
 })
 test('private health handlers keep authentication and return the same settings in the main response', async () => {
@@ -172,7 +179,7 @@ function analyticsHarness({ consent = true } = {}) {
     'next/navigation': { usePathname: () => '/andarun/todo' },
     '@/utils/activityStorage': { IDLE_MS: 120000 }, '@/utils/activityCategory': {},
     '@/utils/studyTimer': { createStudyTimer },
-    '@/utils/syncProgressToServer': {}, '@/utils/progressCache': {},
+    '@/utils/syncProgressToServer': {}, '@/utils/progressCache': {}, '@/utils/progressSync': {},
     '@/components/LegalNotice': { readPrivacyChoice: () => ({ analytics: consent }), PRIVACY_CHOICE_EVENT: 'privacy' },
     '@/utils/calculatorAnalytics': { getAnalyticsVisitorId: () => 'test-visitor', getAnalyticsSessionId() {} },
   }, { window: win, document: doc, sessionStorage: storage(), clearInterval: win.clearInterval,
