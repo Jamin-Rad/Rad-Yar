@@ -1,12 +1,10 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
+import { useMobinStudyTime } from './useMobinStudyTime'
 import {
-  berlinStudyDay,
   mergeLegacyMathSessions,
   mergeStudySessions,
-  readLocalLegacyMathSessions,
-  readLocalStudySessions,
   STUDY_SECTIONS,
   studySummary,
 } from '@/lib/mobinStudyTime'
@@ -128,44 +126,7 @@ export function MobinEntry({ children, initiallyEntered = false }) {
 }
 
 function MobinStudyGoal({ onEnter }) {
-  const [local, setLocal] = useState({ sessions: [], mathSessions: [] })
-  const [remote, setRemote] = useState(null)
-  const [status, setStatus] = useState('loading')
-  const [today, setToday] = useState('')
-
-  useEffect(() => {
-    let request
-    function readLocal() {
-      setToday(berlinStudyDay())
-      setLocal({ sessions: readLocalStudySessions(), mathSessions: readLocalLegacyMathSessions() })
-    }
-    async function refresh() {
-      readLocal()
-      request?.abort()
-      const controller = new AbortController()
-      request = controller
-      try {
-        const response = await fetch('/api/mobin/study-time', { cache: 'no-store', signal: controller.signal })
-        if (!response.ok) throw new Error('Lernzeit konnte nicht geladen werden')
-        const data = await response.json()
-        if (controller.signal.aborted) return
-        setRemote(data)
-        setStatus(data.localOnly ? 'local' : 'ready')
-      } catch {
-        if (!controller.signal.aborted) setStatus('local')
-      }
-    }
-    refresh()
-    window.addEventListener('focus', refresh)
-    window.addEventListener('storage', readLocal)
-    window.addEventListener('mobin-study-time', readLocal)
-    return () => {
-      request?.abort()
-      window.removeEventListener('focus', refresh)
-      window.removeEventListener('storage', readLocal)
-      window.removeEventListener('mobin-study-time', readLocal)
-    }
-  }, [])
+  const { local, remote, status, today } = useMobinStudyTime()
 
   const sessions = mergeStudySessions(remote?.sessions, local.sessions)
   const mathSessions = mergeLegacyMathSessions(remote?.mathSessions, local.mathSessions)

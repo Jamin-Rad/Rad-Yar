@@ -323,6 +323,110 @@ test('Mobin study API retains newer time after legacy or batched requests arrive
   assert.equal(rows.get(session.id).data.seconds, 90)
 })
 
+test('Mobin goal and calendar sync only changed timers and agree with an independent full history', async t => {
+  const { PGlite } = await import('@electric-sql/pglite')
+  const pg = new PGlite()
+  t.after(() => pg.close())
+  await pg.exec(`
+    create role anon; create role authenticated; create role service_role bypassrls;
+    create table public.mobin_progress (id text primary key, data jsonb, updated_at timestamptz);
+    insert into public.mobin_progress select 'study-time:2026-11-23:' || md5(i::text)::uuid,
+      '{"day":"2026-11-23","section":"english","seconds":60}', now() from generate_series(1,510) i;
+    insert into public.mobin_progress values ('mobin-math-exam-v1',
+      '{"sessions":{"one":{"studyDays":{"2026-11-21":70}},"two":{"studyDays":{"2026-11-22":80}}}}', now());
+  `)
+  await pg.exec(read('supabase/migrations/20261124130135_mobin_study_time_changes.sql'))
+  await pg.exec('grant select, insert, update, delete on public.mobin_progress to service_role; set role service_role')
+  const study = load(read('lib/mobinStudyTime.js'), {})
+  let authorized = true
+  const rpc = async (name, { p_since }) => {
+    assert.equal(name, 'read_mobin_study_time')
+    const result = await pg.query('select public.read_mobin_study_time($1) as data', [p_since])
+    return result.rows[0]
+  }
+  const api = load(read('app/api/mobin/study-time/route.js'), {
+    'next/server': { NextResponse: Response }, '@/lib/mobinAuth': { hasMobinSession: () => authorized },
+    '@/lib/supabase/server': { supabaseAdmin: { rpc } }, '@/lib/mobinStudyTime': study,
+  })
+  const requests = []
+  let offline = false
+  function device(sessionStorage = storage()) {
+    return load(read('lib/mobinStudyTimeSync.js'), { './mobinStudyTime': study }, {
+      sessionStorage, AbortSignal, fetch: async url => {
+        if (offline) throw Error('offline')
+        const r = await api.GET(new Request('https://example.test' + url))
+        requests.push({ url, status: r.status, body: r.status === 204 ? null : await r.clone().json() })
+        return r
+      },
+    }).refreshMobinStudyTime
+  }
+  const clean = value => JSON.parse(JSON.stringify(value))
+  async function compare(snapshot) {
+    const rows = (await pg.query('select id,data from public.mobin_progress')).rows
+    const sessions = rows.map(r => ({ ...r.data, id: r.id })).filter(study.validStudySession)
+    const math = study.normalizeLegacyMathSessions(rows.find(r => r.id === 'mobin-math-exam-v1')?.data)
+    const byId = rows => clean([...rows].sort((a,b) => a.id.localeCompare(b.id)))
+    assert.deepEqual(byId(snapshot.sessions), byId(sessions))
+    assert.deepEqual(byId(snapshot.mathSessions), byId(math))
+    const days = ['2026-11-21','2026-11-22','2026-11-23','2026-11-24']
+    assert.deepEqual(clean(study.studySummary(snapshot.sessions, days, snapshot.mathSessions)), clean(study.studySummary(sessions, days, math)))
+  }
+  const tab = storage()
+  const refresh = device(tab)
+  const [goal, calendar] = await Promise.all([refresh(), refresh()])
+  assert.equal(goal, calendar)
+  assert.equal(requests.length, 1)
+  assert.equal(goal.sessions.length, 510)
+  await compare(calendar)
+  const reload = device(tab)
+  await compare(await reload())
+  assert.equal(requests.at(-1).status, 204)
+  const other = device()
+  await compare(await other())
+  assert.ok(requests.at(-1).body.full)
+
+  const id = 'study-time:2026-11-22:00000000-0000-0000-0000-000000000001'
+  await pg.query("insert into public.mobin_progress values ($1, $2, now())", [id, {day:'2026-11-22', section:'math', seconds:90}])
+  await pg.exec(`
+    update public.mobin_progress set data = jsonb_set(data, '{sessions,one,studyDays,2026-11-21}', '95') where id='mobin-math-exam-v1';
+    update public.mobin_progress set data = data || '{"bookmarks":{"test":true}}' where id='mobin-math-exam-v1';
+    insert into public.mobin_progress values ('main', '{}', now());
+  `)
+  offline = true
+  await assert.rejects(reload(), /offline/)
+  offline = false
+  await compare(await reload())
+  const delta = requests.at(-1).body
+  assert.equal(delta.full, false)
+  assert.deepEqual(delta.sessions.map(s => s.id), [id])
+  assert.deepEqual(delta.mathSessions.map(s => s.id), ['one'])
+  await pg.exec("update public.mobin_progress set data = data - 'bookmarks' where id='mobin-math-exam-v1'")
+  await reload()
+  assert.equal(requests.at(-1).status, 204)
+
+  await pg.query("update public.mobin_progress set data = jsonb_set(data, '{seconds}', '120') where id=$1", [id])
+  await compare(await other())
+  assert.equal(requests.at(-1).body.sessions[0].seconds, 120)
+  await pg.query('delete from public.mobin_progress where id=$1', [id])
+  await pg.exec("delete from public.mobin_progress where id='mobin-math-exam-v1'")
+  await compare(await reload())
+  assert.deepEqual(requests.at(-1).body.deleted, [id])
+  assert.deepEqual(requests.at(-1).body.deletedMath.sort(), ['one','two'])
+  await compare(await other())
+  const saved = JSON.parse(tab.getItem(tab.key(0)))
+  tab.setItem(tab.key(0), JSON.stringify({ ...saved, cursor:'v1:999999' }))
+  await compare(await device(tab)())
+  assert.ok(requests.at(-1).body.full)
+  authorized = false
+  assert.equal((await reload()).localOnly, true)
+  assert.equal(tab.length, 0)
+  authorized = true
+  await compare(await reload())
+  assert.ok(requests.at(-1).body.full)
+  await pg.exec('reset role; set role anon')
+  await assert.rejects(pg.query('select public.read_mobin_study_time(null)'), /permission denied/)
+})
+
 test('math clock ticks batch for two minutes, answers for 15 seconds, and exit flushes promptly', async () => {
   let time = 0, cursor = 0
   const effects = [], hooks = [], timers = new Map(), writes = []

@@ -1,11 +1,11 @@
 'use client'
 
-import { useEffect, useMemo, useState } from 'react'
+import { useMemo, useState } from 'react'
 import Link from 'next/link'
 import {
-  berlinStudyDay, mergeLegacyMathSessions, mergeStudySessions,
-  readLocalLegacyMathSessions, readLocalStudySessions, studySummary,
+  mergeLegacyMathSessions, mergeStudySessions, studySummary,
 } from '@/lib/mobinStudyTime'
+import { useMobinStudyTime } from '../useMobinStudyTime'
 import styles from './calendar.module.css'
 import UntisConnect, { useUntis } from '../UntisConnect'
 
@@ -42,37 +42,10 @@ export default function MobinCalendar({ initialView = 'month', embedded = false 
   const untis = useUntis('calendar')
   const [selectedDay, setSelectedDay] = useState('')
   const [view, setView] = useState(initialView)
-  const [today, setToday] = useState('')
-  const [cursor, setCursor] = useState('')
-  const [local, setLocal] = useState({ sessions: [], mathSessions: [] })
-  const [remote, setRemote] = useState(null)
-  const [failed, setFailed] = useState(false)
-
-  useEffect(() => {
-    const controller = new AbortController()
-    const current = berlinStudyDay()
-    setToday(current)
-    setCursor(current)
-    function readLocal() {
-      setLocal({ sessions: readLocalStudySessions(), mathSessions: readLocalLegacyMathSessions() })
-    }
-    readLocal()
-    window.addEventListener('mobin-study-time', readLocal)
-    fetch('/api/mobin/study-time', { cache: 'no-store', signal: controller.signal })
-      .then(response => {
-        if (!response.ok) throw new Error()
-        return response.json()
-      })
-      .then(data => {
-        setRemote(data)
-        setFailed(Boolean(data.localOnly))
-      })
-      .catch(error => { if (error.name !== 'AbortError') setFailed(true) })
-    return () => {
-      controller.abort()
-      window.removeEventListener('mobin-study-time', readLocal)
-    }
-  }, [])
+  const [selectedDate, setCursor] = useState('')
+  const { local, remote, status, today } = useMobinStudyTime()
+  const cursor = selectedDate || today
+  const failed = status === 'local'
 
   const eventsByDay = useMemo(() => {
     const events = new Map()
@@ -146,7 +119,7 @@ export default function MobinCalendar({ initialView = 'month', embedded = false 
         <button className={styles.todayButton} onClick={() => { setCursor(today); setSelectedDay('') }}>Heute</button>
       </div>
       {!remote && !failed && <p className={styles.status} role="status">Lernzeiten werden geladen …</p>}
-      {failed && <p className={styles.status} role="status">Online-Lernzeiten sind gerade nicht verfügbar. Du siehst die Zeiten von diesem Gerät.</p>}
+      {failed && <p className={styles.status} role="status">Online-Lernzeiten sind gerade nicht verfügbar. Der angezeigte Stand kann unvollständig sein.</p>}
       {view !== 'year' ? <div className={styles.calendar}>
         <div className={styles.dayGrid}>{weekdays.map(label => <span className={styles.weekday} key={label}>{label}</span>)}</div>
         {view === 'week' ? <div className={styles.weekBox}><div className={styles.dayGrid}>{week.map(item => dayCell(item))}</div></div>

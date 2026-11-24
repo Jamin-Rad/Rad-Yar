@@ -26,39 +26,31 @@ async function saveSession(session) {
   throw new Error('Concurrent study time update')
 }
 
-async function readStudySessions() {
-  const sessions = []
-  let lastId
-  while (true) {
-    let query = supabaseAdmin.from('mobin_progress').select('id,data')
-      .like('id', 'study-time:%').order('id', { ascending: true }).limit(500)
-    if (lastId) query = query.gt('id', lastId)
-    const { data, error } = await query
-    if (error) throw error
-    if (!data.length) return sessions
-    for (const row of data) {
-      const session = { ...row.data, id: row.id }
-      if (validStudySession(session)) sessions.push(session)
-    }
-    lastId = data[data.length - 1].id
-  }
-}
-
-export async function GET() {
-  if (!(await hasMobinSession())) return NextResponse.json({ error: 'Nicht eingeloggt' }, { status: 401 })
-  const headers = { 'Cache-Control': 'no-store' }
+export async function GET(request) {
+  const headers = { 'Cache-Control': 'private, no-store' }
+  if (!(await hasMobinSession())) return NextResponse.json({ error: 'Nicht eingeloggt' }, { status: 401, headers })
   if (!supabaseAdmin) return NextResponse.json({ sessions: [], mathSessions: [], localOnly: true }, { headers })
 
   try {
-    const [sessions, mathResult] = await Promise.all([
-      readStudySessions(),
-      supabaseAdmin.from('mobin_progress').select('data').eq('id', 'mobin-math-exam-v1').maybeSingle(),
-    ])
-    if (mathResult.error) throw mathResult.error
-    return NextResponse.json({
-      sessions,
-      mathSessions: normalizeLegacyMathSessions(mathResult.data?.data),
-    }, { headers })
+    const cursor = new URL(request.url).searchParams.get('since') || ''
+    const since = /^v1:([1-9]\d{0,17})$/.exec(cursor)?.[1] ?? null
+    const { data, error } = await supabaseAdmin.rpc('read_mobin_study_time', { p_since: since })
+    if (error) throw error
+    if (!data.full && data.revision === since) return new Response(null, { status: 204, headers })
+
+    const result = { cursor: `v1:${data.revision}`, full: data.full, sessions: [], mathSessions: [], deleted: [], deletedMath: [] }
+    for (const [kind, id, payload] of data.rows) {
+      if (kind === 'math') {
+        const [session] = normalizeLegacyMathSessions({ sessions: { [id]: { studyDays: payload } } })
+        if (session) result.mathSessions.push(session)
+        else if (!data.full) result.deletedMath.push(id)
+      } else {
+        const session = { ...payload, id }
+        if (validStudySession(session)) result.sessions.push(session)
+        else if (!data.full) result.deleted.push(id)
+      }
+    }
+    return NextResponse.json(result, { headers })
   } catch {
     return NextResponse.json({ error: 'Lernzeit konnte nicht geladen werden' }, { status: 500, headers })
   }
