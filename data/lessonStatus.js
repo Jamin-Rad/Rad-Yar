@@ -1,5 +1,5 @@
 import { CURRICULUM } from './curriculum'
-import { SHOULDER_MRI_PATH, shoulderMriTopics } from './shoulderMriChapter'
+import { SHOULDER_MRI_PATH } from './shoulderMriChapter'
 
 const NON_LESSON_PATH_PREFIXES = [
   '/mamma/rechner',
@@ -8,7 +8,6 @@ const NON_LESSON_PATH_PREFIXES = [
 
 const COMPLETED_LESSON_PATHS = new Set([
   SHOULDER_MRI_PATH,
-  ...shoulderMriTopics.map(topic => topic.link),
   '/becken-m/prostata/prostatakarzinom',
   '/thorax/kardio/arvc',
   '/gehirn/vaskulaer/caa',

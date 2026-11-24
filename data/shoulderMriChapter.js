@@ -28,6 +28,7 @@ export const shoulderMriTopics = topics.map(([slug, de, en, fa, diff]) => {
     tags: slug === 'posteriore-luxation' ? ['Rö', 'CT', 'MRT'] : ['MRT'],
     diff,
     ready: true,
+    inProgress: true,
     updatedAt: '2026-11-24',
   }
 })
