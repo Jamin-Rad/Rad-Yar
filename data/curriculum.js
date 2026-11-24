@@ -9,7 +9,7 @@
 
 import { CONTRAST_GROUPS } from './contrastMedia'
 import assessmentLinks from './assessmentQuality/routeLinks.json'
-import { shoulderMriTopics } from './shoulderMriChapter'
+import { shoulderMriTopics } from './shoulderMriChapter.mjs'
 
 export const CURRICULUM = [
   {

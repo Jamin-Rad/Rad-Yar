@@ -1,9 +1,15 @@
+import { SHOULDER_MRI_PATH, shoulderMriTopics } from './data/shoulderMriChapter.mjs';
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   async redirects() {
     return [
       { source: '/', has: [{ type: 'query', key: 'ref', value: 'rechner' }, { type: 'query', key: 'calc', value: '(?<calculator>[^/]+)' }], destination: '/rechner/:calculator', permanent: false },
       { source: '/', has: [{ type: 'query', key: 'ref', value: 'rechner' }], destination: '/rechner', permanent: false },
+      ...shoulderMriTopics.flatMap(topic => topic.modules.filter(module => module.slug !== topic.slug).flatMap(module => [
+        { source: `${SHOULDER_MRI_PATH}/${module.slug}`, destination: `${topic.link}#${module.slug}`, permanent: true },
+        { source: `/flashcards/${module.id}`, destination: topic.flashcardLink, permanent: true },
+      ])),
     ];
   },
   // Browser-local Hamrah preview is a static document, independent of Clerk and the RadYar layout.

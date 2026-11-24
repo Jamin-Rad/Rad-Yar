@@ -1,4 +1,4 @@
-import { shoulderMriTopics } from './shoulderMriChapter'
+import { shoulderMriTopics } from './shoulderMriChapter.mjs'
 
 const l = (de, en, fa) => ({ de, en, fa })
 
@@ -172,13 +172,15 @@ const questionsByLesson = {
 
 export const SHOULDER_MRI_QUESTIONS = Object.fromEntries(['de', 'en', 'fa'].map(lang => [
   lang,
-  shoulderMriTopics.flatMap(({ id, slug }) => questionsByLesson[slug].map(([key, prompt, options, correct, explanation]) => ({
-    id: `${id}-${lang}-${key}`,
-    fach: 'msk',
-    tags: [id],
-    question: prompt[lang],
-    options: options.map((option, index) => ({ id: 'ABCD'[index], text: option[lang] })),
-    correct,
-    explanation: explanation[lang],
-  }))),
+  shoulderMriTopics.flatMap(topic => topic.modules.flatMap(({ id, slug }) =>
+    questionsByLesson[slug].map(([key, prompt, options, correct, explanation]) => ({
+      id: `${id}-${lang}-${key}`,
+      fach: 'msk',
+      tags: topic.id === id ? [id] : [topic.id, id],
+      question: prompt[lang],
+      options: options.map((option, index) => ({ id: 'ABCD'[index], text: option[lang] })),
+      correct,
+      explanation: explanation[lang],
+    }))
+  )),
 ]))

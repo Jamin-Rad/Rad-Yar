@@ -1,4 +1,4 @@
-import { SHOULDER_MRI_TITLE, shoulderMriTopics } from './shoulderMriChapter'
+import { SHOULDER_MRI_TITLE, shoulderMriTopics } from './shoulderMriChapter.mjs'
 
 const l = (de, en, fa) => ({ de, en, fa })
 
@@ -50,14 +50,16 @@ const cardsByLesson = {
   ],
 }
 
-export const SHOULDER_MRI_FLASHCARDS = shoulderMriTopics.flatMap(({ id, slug, title }) =>
-  cardsByLesson[slug].map(([key, front, answer]) => ({
-    id: `${id}-${key}`,
-    topicId: id,
-    category: title,
-    front,
-    answer,
-  }))
+export const SHOULDER_MRI_FLASHCARDS = shoulderMriTopics.flatMap(topic =>
+  topic.modules.flatMap(({ id, slug, title }) =>
+    cardsByLesson[slug].map(([key, front, answer]) => ({
+      id: `${id}-${key}`,
+      topicId: topic.id,
+      category: title,
+      front,
+      answer,
+    }))
+  )
 )
 
 export const SHOULDER_MRI_FLASHCARD_TOPICS = shoulderMriTopics.map(({ id, title, flashcardLink }) => ({

@@ -143,7 +143,7 @@ import { MAMMOGRAPHY_CALCIFICATIONS_QUESTIONS } from './mammaMammographyCalcific
 import { CARDIOMYOPATHY_QUESTIONS } from './cardiomyopathy'
 import { ARVC_QUESTIONS } from './arvcTraining'
 import { SHOULDER_MRI_QUESTIONS } from './shoulderMriQuestions'
-import { shoulderMriTopics } from './shoulderMriChapter'
+import { shoulderMriTopics } from './shoulderMriChapter.mjs'
 import { MYOCARDIAL_INJURY_QUESTIONS } from './myocardialInjury'
 import { ABDOMEN_THORAX_REGISTERED_QUESTIONS, ABDOMEN_THORAX_REGISTERED_TOPIC_GROUPS } from './abdomenThoraxRegisteredQuestions'
 import { ORMOND_QUESTIONS } from './ormondLesson'

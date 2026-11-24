@@ -1,10 +1,10 @@
-import { SHOULDER_MRI_TITLE } from '@/data/shoulderMriChapter'
+import { SHOULDER_MRI_TITLE } from '@/data/shoulderMriChapter.mjs'
 import ShoulderOverview from './ShoulderOverview'
 
 const descriptions = {
-  de: 'Neun Lektionen zur MRT-Planung, Rotatorenmanschette, zum Impingement und zur Schulterinstabilität.',
-  en: 'Nine lessons on MRI plane prescription, the rotator cuff, impingement and shoulder instability.',
-  fa: '۹ درس دربارهٔ طراحی برش‌های ام‌آر‌آی، روتاتور کاف، ایمپینجمنت و ناپایداری شانه.',
+  de: 'Drei Lektionen zur Schulter-MRT: Schichtplanung und Anatomie, Impingement und Luxation.',
+  en: 'Three shoulder MRI lessons on plane prescription and anatomy, impingement and dislocation.',
+  fa: 'سه درس ام‌آر‌آی شانه دربارهٔ طراحی برش‌ها و آناتومی، ایمپینجمنت و دررفتگی.',
 }
 
 export async function generateMetadata({ searchParams }) {

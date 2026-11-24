@@ -42,13 +42,8 @@
   margin: 0.45rem 0;
 }
 
-.cover p:last-child { color: #c9d8e5; font-size: 0.9rem; }
-
-.chapterGroup { margin-block: 1.75rem; }
-.chapterGroup h2 { font: 600 1.55rem/1.2 var(--font-newsreader, Georgia), Georgia, serif; margin-block: 0 0.65rem; }
-.chapterGroup:lang(fa) h2 { font-family: inherit; font-size: 1.3rem; }
-.chapterGroup ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.5rem; }
-.chapterGroup a {
+.chapterList { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.5rem; }
+.chapterList a {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr) auto;
   align-items: center;
@@ -60,7 +55,7 @@
   color: inherit;
   text-decoration: none;
 }
-.chapterGroup a:hover { border-color: #398576; }
+.chapterList a:hover { border-color: #398576; }
 .number {
   display: grid;
   place-items: center;
@@ -137,8 +132,7 @@
 }
 .disclosure summary { cursor: pointer; font-weight: 620; }
 .disclosure p { margin-top: 0.45rem; }
-.check { margin: 0 0 1rem; padding-inline-start: 1.4rem; }
-.check li + li { margin-top: 0.35rem; }
+.caseHeading { margin-block: 1.4rem 0.55rem; font-size: 1.08rem; }
 .tableWrap { overflow-x: auto; margin: 1rem 0; }
 .tableWrap table { width: 100%; border-collapse: collapse; text-align: start; }
 .tableWrap th, .tableWrap td { padding: 0.52rem; border-bottom: 1px solid #7890a870; vertical-align: top; }

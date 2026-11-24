@@ -1,5 +1,5 @@
 import { CURRICULUM } from './curriculum'
-import { SHOULDER_MRI_PATH } from './shoulderMriChapter'
+import { SHOULDER_MRI_PATH } from './shoulderMriChapter.mjs'
 
 const NON_LESSON_PATH_PREFIXES = [
   '/mamma/rechner',
