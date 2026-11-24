@@ -103,6 +103,7 @@ export default function XtbAccountWorkspace({dark=true,account,owner,trades,trad
   }
   return <div className={desk.workspace} data-theme={dark?'dark':'light'}>
     {balance && <section className={desk.summary} aria-label={`ارزش XTB ${owner}`}>
+      <div aria-hidden="true" className={desk.relief}/>
       <div className={desk.metrics}>
         <div><span>ارزش برآوردی حساب</span><strong><bdi>{valuation.equityCents==null?'—':money(valuation.equityCents)}</bdi></strong></div>
         <div><span>ماندهٔ حساب</span><strong><bdi>{money(balance.balanceCents)}</bdi></strong></div>
@@ -121,7 +122,7 @@ export default function XtbAccountWorkspace({dark=true,account,owner,trades,trad
     </section>}
     <div className={desk.tabs} role="tablist" aria-label="بخش‌های حساب XTB">{tabs.map(([key,label,count],index)=>
       <button key={key} type="button" role="tab" id={'xtb-tab-'+key} aria-controls="xtb-panel" aria-selected={tab===key} tabIndex={tab===key?0:-1}
-        onKeyDown={event=>moveTab(event,index)} onClick={()=>setTab(key)}>{label}{count!=null&&<b>{count.toLocaleString('fa-IR')}</b>}</button>)}</div>
+        onKeyDown={event=>moveTab(event,index)} onClick={()=>setTab(key)}><Icon name={{positions:'wallet',chart:'trading',plans:'journal',transactions:'transfer'}[key]} size={16}/>{label}{count!=null&&<b>{count.toLocaleString('fa-IR')}</b>}</button>)}</div>
     <div id="xtb-panel" role="tabpanel" aria-labelledby={'xtb-tab-'+tab}>
     {tab==='positions' && <section className={desk.panel}>
       <div className={desk.heading}><h2>موقعیت‌های باز</h2><button type="button" className={desk.action} onClick={()=>{tradeProps.onSelect(null);tradeProps.onCreateOpen(true);setTab('plans')}}><Icon name="plus" size={16}/>برنامهٔ جدید</button></div>
