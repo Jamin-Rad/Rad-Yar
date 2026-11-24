@@ -427,6 +427,127 @@ test('Mobin goal and calendar sync only changed timers and agree with an indepen
   await assert.rejects(pg.query('select public.read_mobin_study_time(null)'), /permission denied/)
 })
 
+test('Mobina opens read-only and synchronizes individual checkbox edits, offline retries and old pages', async t => {
+  const { PGlite } = await import('@electric-sql/pglite')
+  const pg = new PGlite()
+  t.after(() => pg.close())
+  await pg.exec(`
+    create role anon; create role authenticated; create role service_role bypassrls;
+    create table public.mobin_progress (id text primary key, data jsonb, updated_at timestamptz default now());
+    insert into public.mobin_progress values ('mobina-routine', '{"logs":{"2026-11-23":{"lesen":[true,false]}}}', now());
+    grant select, insert, update on public.mobin_progress to service_role;
+  `)
+  await pg.exec(read('supabase/migrations/20261124163637_mobina_routine_steps.sql'))
+  await pg.exec('set role service_role')
+  const day = '2026-11-24', endpoint = 'https://example.test/api/mobina/progress'
+  const readRow = async () => (await pg.query("select data,updated_at::text from public.mobin_progress where id='mobina-routine'")).rows[0]
+  const calls = []
+  const db = {
+    from: () => ({ select: () => ({ eq: () => ({ maybeSingle: async () => ({data:await readRow()}) }) }) }),
+    async rpc(name, { p_steps }) {
+      assert.equal(name, 'apply_mobina_routine_steps')
+      calls.push(structuredClone(p_steps))
+      return (await pg.query('select public.apply_mobina_routine_steps($1) as data', [JSON.stringify(p_steps)])).rows[0]
+    },
+  }
+  const domain = load(read('lib/mobinaRoutine.js'), {})
+  const api = load(read('app/api/mobina/progress/route.js'), {
+    'next/server': {NextResponse:Response}, '@/lib/supabase/server': {supabaseAdmin:db}, '@/lib/mobinaRoutine':domain,
+  }, { crypto })
+  const client = load(read('app/mobina/routineSync.js'), { '../../lib/mobinaRoutine':domain })
+  const send = (method, body) => api[method](new Request(endpoint, {method, body:JSON.stringify(body)}))
+  function device(store = storage()) {
+    const control = {online:true, loseReply:false, status:'', afterWrite:null}
+    const sync = client.createRoutineSync({
+      storage:store, uuid:()=>crypto.randomUUID(), online:()=>control.online,
+      publish:(_logs,status)=>{control.status=status},
+      request:async steps=>{
+        const res = steps ? await send('PATCH',{steps}) : await api.GET(new Request(endpoint+'?v=2'))
+        assert.equal(res.status,200)
+        if (steps && control.afterWrite) await control.afterWrite()
+        if (steps && control.loseReply) {control.loseReply=false;throw Error('Lost acknowledgement')}
+        return res.json()
+      },
+    })
+    t.after(()=>sync.stop())
+    return {sync, control}
+  }
+
+  const initial = await readRow()
+  const store = storage()
+  const a = device(store), b = device()
+  await Promise.all([a.sync.start(), b.sync.start()])
+  await a.sync.refresh()
+  await new Promise(done => setTimeout(done, 510))
+  assert.equal(calls.length,0)
+  assert.deepEqual(await readRow(),initial)
+  assert.equal(a.sync.logs()['2026-11-23'].lesen[0],true)
+  a.sync.set(day,'malen',0,true)
+  b.sync.set(day,'malen',1,true)
+  await Promise.all([a.sync.flush(), b.sync.flush()])
+  assert.equal(calls.length,2)
+  assert.ok(calls.every(batch=>batch.length===1 && !('logs' in batch[0])))
+  await a.sync.refresh()
+  assert.deepEqual(Array.from(a.sync.logs()[day].malen),[true,true])
+
+  a.control.loseReply=true
+  a.sync.set(day,'malen',0,false)
+  await a.sync.flush()
+  assert.equal(a.control.status,'offline')
+  a.control.online=false
+  a.sync.stop()
+  await b.sync.refresh()
+  b.sync.set(day,'malen',0,true)
+  await b.sync.flush()
+  const beforeRetry = await readRow()
+  const reopened=device(store)
+  await reopened.sync.start()
+  assert.equal(reopened.sync.logs()[day].malen[0],true)
+  assert.deepEqual(await readRow(), beforeRetry)
+  assert.equal(reopened.control.status,'conflict')
+
+  let resume, written
+  const gate=new Promise(done=>{resume=done})
+  const first=new Promise(done=>{written=done})
+  reopened.control.afterWrite=async()=>{written();await gate}
+  reopened.sync.set(day,'tablet',2,true)
+  const saving=reopened.sync.flush()
+  await first
+  reopened.sync.set(day,'tablet',2,false)
+  reopened.control.afterWrite=null
+  resume()
+  await saving
+  assert.equal((await readRow()).data.logs[day].tablet[2],false)
+  assert.equal(reopened.sync.logs()[day].tablet[2],false)
+
+  reopened.control.online=false
+  reopened.sync.set(day,'schach',0,true)
+  reopened.sync.stop()
+  const restored=device(store)
+  await restored.sync.start()
+  assert.equal((await readRow()).data.logs[day].schach[0],true)
+  const old = (await (await api.GET(new Request(endpoint))).json()).logs
+  const beforeOld = await readRow()
+  assert.equal((await send('POST',{logs:old})).status,200)
+  assert.deepEqual(await readRow(),beforeOld)
+  restored.sync.set(day,'lesen',1,true)
+  await restored.sync.flush()
+  old[day].anton[0]=true
+  await send('POST',{logs:old})
+  assert.equal((await readRow()).data.logs[day].lesen[1],true)
+  assert.equal((await readRow()).data.logs[day].anton[0],true)
+  old[day].anton[0]=false
+  await send('POST',{logs:old})
+  assert.equal((await readRow()).data.logs[day].anton[0],false)
+  const beforeStale=await readRow()
+  delete old.__view
+  assert.equal((await send('POST',{logs:old})).status,409)
+  assert.deepEqual(await readRow(),beforeStale)
+  assert.equal((await send('PATCH',{steps:[{day,routine:'tablet',index:9,checked:true,base:null,id:crypto.randomUUID()}]})).status,400)
+  await pg.exec('reset role; set role anon')
+  await assert.rejects(pg.query("select public.apply_mobina_routine_steps('[]')"),/permission denied/)
+})
+
 test('math clock ticks batch for two minutes, answers for 15 seconds, and exit flushes promptly', async () => {
   let time = 0, cursor = 0
   const effects = [], hooks = [], timers = new Map(), writes = []

@@ -1,9 +1,9 @@
 'use client'
 
 import { useEffect, useMemo, useRef, useState } from 'react'
+import { createRoutineSync } from './routineSync'
 import styles from './page.module.css'
 
-const STORAGE_KEY = 'mobina_daily_routine_v1'
 const MONTHS = ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember']
 const WEEKDAYS = ['Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So']
 const WEEKDAY_ICONS = ['🌙', '🌷', '🌈', '🦄', '⭐', '🎈', '☀️']
@@ -97,70 +97,46 @@ export default function MobinaRoutine() {
   const today = dateKey()
   const [logs, setLogs] = useState({})
   const [shownMonth, setShownMonth] = useState(monthKey(today))
-  const [loaded, setLoaded] = useState(false)
   const [syncStatus, setSyncStatus] = useState('loading')
   const [timer, setTimer] = useState(null)
   const [timerRoutineId, setTimerRoutineId] = useState('malen')
   const audioContextRef = useRef(null)
 
+  const syncRef = useRef(null)
   useEffect(() => {
-    let cancelled = false
-
-    async function loadLogs() {
-      let localLogs = {}
-      try {
-        const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}')
-        localLogs = saved && typeof saved === 'object' && !Array.isArray(saved) ? saved : {}
-      } catch {}
-
-      try {
-        const response = await fetch('/api/mobina/progress', { cache: 'no-store' })
-        const payload = await response.json()
-        if (!response.ok || !payload.online || !payload.logs || typeof payload.logs !== 'object') throw new Error('offline')
-        if (!cancelled) {
-          setLogs(payload.logs)
-          setSyncStatus('online')
-        }
-      } catch {
-        if (!cancelled) {
-          setLogs(localLogs)
-          setSyncStatus('offline')
-        }
-      } finally {
-        if (!cancelled) setLoaded(true)
-      }
+    let storage
+    try { storage = window.localStorage } catch {}
+    async function request(steps) {
+      const response = await fetch('/api/mobina/progress?v=2', {
+        cache: 'no-store', signal: AbortSignal.timeout(12000),
+        ...(steps ? { method: 'PATCH', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ steps }), keepalive: true } : {}),
+      })
+      if (!response.ok) throw Error('Offline')
+      const data = await response.json()
+      if (!data.online || (!steps && (!data.logs || !data.versions))) throw Error('Offline')
+      return data
     }
-
-    loadLogs()
-    return () => { cancelled = true }
-  }, [])
-
-  useEffect(() => {
-    if (!loaded) return undefined
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(logs))
-    setSyncStatus('saving')
-
-    const controller = new AbortController()
-    const timeout = window.setTimeout(async () => {
-      try {
-        const response = await fetch('/api/mobina/progress', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ logs }),
-          signal: controller.signal,
-        })
-        if (!response.ok) throw new Error('offline')
-        setSyncStatus('online')
-      } catch (error) {
-        if (error.name !== 'AbortError') setSyncStatus('offline')
-      }
-    }, 450)
-
+    const sync = createRoutineSync({ storage, request,
+      online: () => navigator.onLine, uuid: () => crypto.randomUUID(),
+      publish: (next, status) => { setLogs(next); setSyncStatus(status) },
+    })
+    syncRef.current = sync
+    sync.start()
+    const visible = () => { if (document.visibilityState === 'visible') sync.refresh(); else sync.flush() }
+    window.addEventListener('focus', sync.refresh)
+    window.addEventListener('online', sync.refresh)
+    window.addEventListener('pagehide', sync.flush)
+    document.addEventListener('visibilitychange', visible)
     return () => {
-      window.clearTimeout(timeout)
-      controller.abort()
+      window.removeEventListener('focus', sync.refresh)
+      window.removeEventListener('online', sync.refresh)
+      window.removeEventListener('pagehide', sync.flush)
+      document.removeEventListener('visibilitychange', visible)
+      sync.stop()
+      syncRef.current = null
     }
-  }, [loaded, logs])
+  }, [])
 
   useEffect(() => {
     if (!timer?.running) return undefined
@@ -200,27 +176,21 @@ export default function MobinaRoutine() {
   const timerProgress = timer ? (timer.remaining / timer.total) * 360 : 360
 
   function toggleStep(routine, index) {
-    setLogs(previous => {
-      const currentDay = previous[today] || {}
-      const currentSteps = Array.from({ length: routine.count }, (_, step) => Boolean(currentDay[routine.id]?.[step]))
-      currentSteps[index] = !currentSteps[index]
-      return {
-        ...previous,
-        [today]: { ...currentDay, [routine.id]: currentSteps },
-      }
-    })
+    const sync = syncRef.current
+    if (sync) sync.set(today, routine.id, index, !sync.logs()[today]?.[routine.id]?.[index])
   }
 
   function markNextStepDone(routineId, day) {
-    const routine = ROUTINES.find(item => item.id === routineId)
-    if (!routine) return
-    setLogs(previous => {
-      const currentDay = previous[day] || {}
-      const currentSteps = Array.from({ length: routine.count }, (_, step) => Boolean(currentDay[routine.id]?.[step]))
-      const nextOpenIndex = currentSteps.findIndex(checked => !checked)
-      if (nextOpenIndex >= 0) currentSteps[nextOpenIndex] = true
-      return { ...previous, [day]: { ...currentDay, [routine.id]: currentSteps } }
-    })
+    const sync = syncRef.current
+    const routine = ROUTINE_BY_ID[routineId]
+    if (!routine || !sync) return
+    const bits = sync.logs()[day]?.[routineId]
+    for (let index = 0; index < routine.count; index++) {
+      if (!bits?.[index]) {
+        sync.set(day, routineId, index, true)
+        return
+      }
+    }
   }
 
   function prepareAudio() {
@@ -306,7 +276,9 @@ export default function MobinaRoutine() {
           </div>
           <span className={`${styles.syncBadge} ${styles[syncStatus]}`}>
             <i aria-hidden="true" />
-            {syncStatus === 'online' ? 'Online gespeichert' : syncStatus === 'saving' ? 'Wird gespeichert …' : syncStatus === 'loading' ? 'Wird geladen …' : 'Lokal gespeichert'}
+            {{ online: 'Online gespeichert', saving: 'Wird gespeichert …', loading: 'Wird geladen …',
+              offline: 'Offline · Stand auf diesem Gerät', storageError: 'Lokales Speichern nicht möglich',
+              conflict: 'Auf einem anderen Gerät geändert · Stand aktualisiert' }[syncStatus]}
           </span>
         </header>
 

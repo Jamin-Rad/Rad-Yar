@@ -1,73 +1,78 @@
 import { NextResponse } from 'next/server'
 import { supabaseAdmin } from '@/lib/supabase/server'
-
-const ROW_ID = 'mobina-routine'
-const ROUTINE_LIMITS = {
-  malen: 2,
-  anton: 2,
-  sport: 1,
-  fernsehen: 6,
-  lesen: 2,
-  schach: 2,
-  tablet: 3,
-  basteln: 2,
-  vorschulbuch: 2,
-  spielzeuge: 2,
-}
+import { ROUTINE_LIMITS, sanitizeLogs, validDay, validId, validStep } from '@/lib/mobinaRoutine'
 
 export const dynamic = 'force-dynamic'
+const reply = (body, status = 200) => NextResponse.json(body, { status, headers: { 'Cache-Control': 'private, no-store' } })
+const unavailable = () => reply({ online: false, error: 'Online-Speicher nicht erreichbar.' }, 503)
+const reload = () => reply({ online: false, error: 'Bitte die Seite neu laden.' }, 409)
 
-function sanitizeLogs(value) {
-  if (!value || typeof value !== 'object' || Array.isArray(value)) return {}
-
-  const dates = Object.keys(value)
-    .filter(date => /^\d{4}-\d{2}-\d{2}$/.test(date))
-    .sort()
-    .slice(-730)
-
-  return Object.fromEntries(dates.map(date => {
-    const daily = value[date] && typeof value[date] === 'object' ? value[date] : {}
-    const routines = Object.entries(ROUTINE_LIMITS).map(([id, limit]) => [
-      id,
-      Array.from({ length: limit }, (_, index) => Boolean(daily[id]?.[index])),
-    ])
-    return [date, Object.fromEntries(routines)]
-  }))
+async function read() {
+  const { data, error } = await supabaseAdmin.from('mobin_progress').select('data,updated_at').eq('id', 'mobina-routine').maybeSingle()
+  if (error) throw error
+  return { logs: sanitizeLogs(data?.data?.logs), versions: data?.data?.stepVersions || {}, updatedAt: data?.updated_at ?? null }
 }
 
-export async function GET() {
-  if (!supabaseAdmin) {
-    return NextResponse.json({ logs: null, online: false }, { headers: { 'Cache-Control': 'no-store' } })
-  }
-
-  const { data, error } = await supabaseAdmin
-    .from('mobin_progress')
-    .select('data, updated_at')
-    .eq('id', ROW_ID)
-    .maybeSingle()
-
-  if (error) {
-    return NextResponse.json({ logs: null, online: false, error: error.message }, { status: 503 })
-  }
-
-  return NextResponse.json(
-    { logs: sanitizeLogs(data?.data?.logs), online: true, updatedAt: data?.updated_at || null },
-    { headers: { 'Cache-Control': 'no-store' } },
-  )
+export async function GET(request) {
+  if (!supabaseAdmin) return reply({ logs: null, online: false })
+  try {
+    const state = await read()
+    if (new URL(request.url).searchParams.get('v') === '2') return reply({ ...state, online: true })
+    // Older pages echo unknown log keys. A view can update a slot it saw or last edited.
+    const view = { id: crypto.randomUUID(), versions: state.versions }
+    return reply({ logs: { ...state.logs, __view: view }, updatedAt: state.updatedAt, online: true })
+  } catch { return unavailable() }
 }
 
+async function apply(steps) {
+  const { data, error } = await supabaseAdmin.rpc('apply_mobina_routine_steps', { p_steps: steps })
+  if (error) throw error
+  return data
+}
+
+export async function PATCH(request) {
+  const body = await request.json().catch(() => null)
+  const steps = body?.steps
+  if (!Array.isArray(steps) || !steps.length || steps.length > 64 || !steps.every(validStep)) {
+    return reply({ error: 'Ungültige Schritte.' }, 400)
+  }
+  if (!supabaseAdmin) return unavailable()
+  try { return reply({ results: await apply(steps), online: true }) } catch { return unavailable() }
+}
+
+// Compatibility for pages already open during deployment. Never replace the shared history.
 export async function POST(request) {
-  if (!supabaseAdmin) {
-    return NextResponse.json({ error: 'Online-Speicherung ist nicht konfiguriert.' }, { status: 503 })
-  }
-
-  const body = await request.json()
-  const logs = sanitizeLogs(body?.logs)
-
-  const { error } = await supabaseAdmin
-    .from('mobin_progress')
-    .upsert({ id: ROW_ID, data: { logs }, updated_at: new Date().toISOString() }, { onConflict: 'id' })
-
-  if (error) return NextResponse.json({ error: error.message }, { status: 500 })
-  return NextResponse.json({ ok: true, online: true })
+  const body = await request.json().catch(() => null)
+  if (!body?.logs || typeof body.logs !== 'object' || Array.isArray(body.logs)) return reply({ error: 'Ungültige Daten.' }, 400)
+  if (!supabaseAdmin) return unavailable()
+  try {
+    const { logs, versions } = await read()
+    const view = body.logs.__view
+    const steps = []
+    let conflict = false
+    for (const day of Object.keys(body.logs).filter(validDay).sort().slice(-730)) {
+      for (const [routine, count] of Object.entries(ROUTINE_LIMITS)) {
+        const bits = body.logs[day]?.[routine]
+        if (!Array.isArray(bits)) continue
+        for (let index = 0; index < count; index++) {
+          const checked = bits[index]
+          if (typeof checked !== 'boolean' || checked === Boolean(logs[day]?.[routine]?.[index])) continue
+          if (!validId.test(view?.id)) return reload()
+          const key = routine + ':' + index
+          const base = versions[day]?.[key] ?? null
+          if (base !== (view.versions?.[day]?.[key] ?? null) && !base?.startsWith(view.id + '/')) {
+            conflict = true
+            continue
+          }
+          steps.push({ id: view.id + '/' + crypto.randomUUID(), day, routine, index, checked, base })
+        }
+      }
+    }
+    if (steps.length > 64) return reload()
+    if (steps.length) {
+      const results = await apply(steps)
+      conflict ||= results.some((result, i) => result.checked !== steps[i].checked)
+    }
+    return conflict ? reload() : reply({ ok: true, online: true })
+  } catch { return unavailable() }
 }
