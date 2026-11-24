@@ -1,4 +1,5 @@
 import { CURRICULUM } from './curriculum'
+import { SHOULDER_MRI_PATH, shoulderMriTopics } from './shoulderMriChapter'
 
 const NON_LESSON_PATH_PREFIXES = [
   '/mamma/rechner',
@@ -6,6 +7,8 @@ const NON_LESSON_PATH_PREFIXES = [
 ]
 
 const COMPLETED_LESSON_PATHS = new Set([
+  SHOULDER_MRI_PATH,
+  ...shoulderMriTopics.map(topic => topic.link),
   '/becken-m/prostata/prostatakarzinom',
   '/thorax/kardio/arvc',
   '/gehirn/vaskulaer/caa',
@@ -66,7 +69,7 @@ export function getLessonStatus(pathname) {
   if (isNonLesson) return 'public'
   // Topic-local quizzes are Pro training surfaces, not unfinished lesson pages.
   if (normalizedPathname.endsWith('/mcq')) return 'complete'
-  return lessonStatusByPath.get(normalizedPathname) || 'in_progress'
+  return lessonStatusByPath.get(normalizedPathname) || (COMPLETED_LESSON_PATHS.has(normalizedPathname) ? 'complete' : 'in_progress')
 }
 
 export function normalizeLessonPath(pathname) {

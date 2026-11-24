@@ -142,6 +142,8 @@ import { MAMMOGRAPHY_BASICS_QUESTIONS } from './mammaMammographyBasics'
 import { MAMMOGRAPHY_CALCIFICATIONS_QUESTIONS } from './mammaMammographyCalcifications'
 import { CARDIOMYOPATHY_QUESTIONS } from './cardiomyopathy'
 import { ARVC_QUESTIONS } from './arvcTraining'
+import { SHOULDER_MRI_QUESTIONS } from './shoulderMriQuestions'
+import { shoulderMriTopics } from './shoulderMriChapter'
 import { MYOCARDIAL_INJURY_QUESTIONS } from './myocardialInjury'
 import { ABDOMEN_THORAX_REGISTERED_QUESTIONS, ABDOMEN_THORAX_REGISTERED_TOPIC_GROUPS } from './abdomenThoraxRegisteredQuestions'
 import { ORMOND_QUESTIONS } from './ormondLesson'
@@ -8077,6 +8079,7 @@ export const QUESTION_BANK = Object.fromEntries(
 
 for (const lang of Object.keys(QUESTION_BANK)) {
   QUESTION_BANK[lang].push(...LIVER_VESSELS_QUESTIONS.filter(question => question.id.startsWith(`liver-vessels-${lang}-`)))
+  QUESTION_BANK[lang].push(...SHOULDER_MRI_QUESTIONS[lang])
 }
 
 for (const lang of Object.keys(QUESTION_BANK)) {
@@ -8359,6 +8362,7 @@ export const MCQ_TOPIC_GROUPS = [
     title: { de: '11. Schulter', en: '11. Shoulder', fa: '۱۱. شانه' },
     topics: [
       { id: 'rotatorenmanschette', title: { de: 'Rotatorenmanschette', en: 'Rotator Cuff', fa: 'روتاتور کاف' } },
+      ...shoulderMriTopics.map(({ id, title }) => ({ id, title })),
     ],
   },
   {

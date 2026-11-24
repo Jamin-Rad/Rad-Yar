@@ -21,6 +21,9 @@ const T = {
   fa: { contentStatus:'وضعیت محتوا', learningStatus:'وضعیت یادگیری', planned:'برنامه‌ریزی‌شده', in_progress:'دسترسی زودهنگام', emptyFiltered:'موضوعی با این ترکیب پیدا نشد. وضعیت محتوا یا یادگیری را تغییر بده.', back:'ناحیه‌های بدن →', search:'جستجوی موضوع…', readNow:'مطالعه کنید', noResult:'نتیجه‌ای برای', themen:'موضوع', available:'موجود', complete:'کامل', inProgress:'دسترسی زودهنگام', unread:'هنوز یاد نگرفته‌ام', read:'یاد گرفته‌ام', all:'همه', mcq:'MCQ', flash:'فلش‌کارت', fall:'کیس', building:'برنامه‌ریزی‌شده', emptyAvailable:'هنوز هیچ درسی از این سرفصل در دسترس نیست.', emptyUnread:'همه درس‌های موجود در این تخصص مطالعه شده‌اند.', emptyRead:'هنوز چیزی را در این تخصص خوانده‌شده علامت نزده‌ای.', emptyAllFach:'این تخصص هنوز در حال آماده‌سازی است – بزودی برمی‌گردیم.', showAll:'نمایش همه موضوعات', lessonsTitle:'موضوعات اصلی', lessonsLead:'موضوع را انتخاب کنید و درس‌ها را ببینید', close:'بستن', backToModalities:'بازگشت به روش‌ها', chooseModality:'انتخاب روش تصویربرداری', subtopics:'زیرعنوان' },
 }
 
+const MSK_JOINT_CHAPTERS = ['msk-schulter', 'msk-knie', 'msk-hand', 'msk-fuss', 'msk-ellenbogen', 'msk-huefte']
+const MSK_JOINT_TITLE = { de: 'Wichtige Gelenke', en: 'Major joints', fa: 'مفاصل مهم' }
+
 // Gruppiert Themen anhand thema.group (Reihenfolge wie in den Daten):
 // aufeinanderfolgende Themen mit derselben group-Breadcrumb bilden einen
 // Abschnitt mit neutraler Sub-Überschrift; Themen ohne group laufen ohne
@@ -31,7 +34,7 @@ function groupThemen(themen) {
   for (const th of themen) {
     const key = th.group ? th.group.join(' / ') : ''
     if (!current || current.key !== key) {
-      current = { key, items: [] }
+      current = { key, overview: th.groupOverview, items: [] }
       sections.push(current)
     }
     current.items.push(th)
@@ -59,6 +62,30 @@ function getKapitelThemen(kapitel) {
     link: `/technik/kontrastmittel/${group.id}`,
     updatedAt: '2026-09-01',
   }))
+}
+
+function JointChapters({ entries, color, lang, topicLabel, onSelect }) {
+  return (
+    <section className={styles.jointSection} style={{ '--topic-color': color }} aria-labelledby="msk-joint-title">
+      <h2 id="msk-joint-title">{MSK_JOINT_TITLE[lang] ?? MSK_JOINT_TITLE.de}</h2>
+      <ul className={styles.jointGrid}>
+        {entries.map(({ kapitel, themen }) => (
+          <li key={kapitel.id}>
+            <button type="button" className={styles.jointCard} aria-haspopup="dialog" onClick={() => onSelect(kapitel.id)}>
+              <span className={styles.jointIcon}>
+                <ChapterIcon fachId="msk" kapitel={kapitel} className={styles.jointIconSvg} />
+              </span>
+              <span className={styles.jointText}>
+                <strong>{withoutLeadingNumber(getKapitelTitle(kapitel, lang))}</strong>
+                <small>{themen.length} {topicLabel}</small>
+              </span>
+              <span className={styles.jointArrow} dir="ltr" aria-hidden="true">{lang === 'fa' ? '‹' : '›'}</span>
+            </button>
+          </li>
+        ))}
+      </ul>
+    </section>
+  )
 }
 
 function MammaModalityIcon({ id, className }) {
@@ -175,11 +202,12 @@ export default function LernenFachPage() {
   const t = T[lang] || T.de
   const isRTL = lang === 'fa'
   const fach = getFach(params?.fach)
+  const isMsk = fach?.id === 'msk'
 
   const [selectedKapitel, setSelectedKapitel] = useState(null)
   const [selectedThema, setSelectedThema] = useState(null)
   const [mounted, setMounted] = useState(false)
-  const [contentFilter, setContentFilter] = useState('complete')
+  const [contentFilter, setContentFilter] = useState(isMsk ? 'all' : 'complete')
   const [learningFilter, setLearningFilter] = useState('all')
   const [readArticles, setReadArticles] = useState({})
 
@@ -196,13 +224,13 @@ export default function LernenFachPage() {
       setSelectedKapitel(null)
       setSelectedThema(null)
       const topics = fach.kapitel.flatMap(getKapitelThemen)
-      const defaultStatus = ['complete', 'in_progress'].find(status => (
+      const defaultStatus = isMsk ? 'all' : ['complete', 'in_progress'].find(status => (
         filterLessonTopics(topics, status, 'all', {}).length > 0
       ))
       setContentFilter(defaultStatus || 'all')
       setLearningFilter('all')
     }
-  }, [fach])
+  }, [fach, isMsk])
 
   // Lesefortschritt vom Server holen (geräteübergreifend) und mergen
   useEffect(() => {
@@ -255,9 +283,14 @@ export default function LernenFachPage() {
   )
 
   const fachName = getFachTitle(fach, lang)
-  const fachIcon = fach.icon
   const selectedEntry = visibleKapitel.find(({ kapitel }) => kapitel.id === selectedKapitel)
   const selectedTopic = selectedEntry?.themen.find(thema => thema.id === selectedThema)
+  const jointEntries = isMsk
+    ? MSK_JOINT_CHAPTERS.map(id => visibleKapitel.find(({ kapitel }) => kapitel.id === id)).filter(Boolean)
+    : []
+  const mainEntries = isMsk
+    ? visibleKapitel.filter(({ kapitel }) => !MSK_JOINT_CHAPTERS.includes(kapitel.id))
+    : visibleKapitel
 
   const withPageLang = (href) => {
     if (!href || lang === 'de') return href
@@ -319,7 +352,10 @@ export default function LernenFachPage() {
         ) : (
           <>
             <div className={styles.mainTopicGrid}>
-              {visibleKapitel.map(({ kapitel: k, themen }) => {
+              {jointEntries.length > 0 && (
+                <JointChapters entries={jointEntries} color={fach.color} lang={lang} topicLabel={t.themen} onSelect={setSelectedKapitel} />
+              )}
+              {mainEntries.map(({ kapitel: k, themen }) => {
                 const active = selectedKapitel === k.id
                 const isFeatured = fach.id === 'msk' && k.id === 'msk-trauma'
                 const isMammaImaging = fach.id === 'mamma' && k.id === 'mamma-bildgebung'
@@ -438,7 +474,11 @@ export default function LernenFachPage() {
                   <div key={groupIndex} className={styles.topicGroup}>
                     {section.key && (
                       <div className={styles.topicGroupHeader}>
-                        <h4>{section.key}</h4>
+                        <h4>{section.overview ? (
+                          <Link className={styles.topicGroupOverview} href={withPageLang(section.overview.link)}>
+                            {section.overview.title[lang] ?? section.key}
+                          </Link>
+                        ) : section.key}</h4>
                         <span>{section.items.length}</span>
                       </div>
                     )}

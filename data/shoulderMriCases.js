@@ -1,0 +1,106 @@
+const caseUrl = slug => 'https://radiopaedia.org/cases/' + slug
+const atlas = 'https://prod-images-static.radiopaedia.org/page_images/5125/R24-188_Off_the_cuff_An_MRI_guide_to_rotator_cuff_tears.pdf'
+const frame = (asset, label, source) => ({ label, source, src: `/educational/shoulder-mri/${asset}.webp` })
+const imageSource = page => ({
+  imageSource: `${atlas}#page=${page}`,
+})
+
+export const shoulderCases = [
+  {
+    label: 'Normales Schulter-MRT',
+    history: 'Referenzfall zur Orientierung in drei Ebenen.',
+    findings: 'Den Verlauf der Rotatorenmanschette vom Muskel zum Ansatz und die Lage der langen Bizepssehne im Sulcus vergleichen.',
+    diagnosis: 'Normale MRT-Anatomie der Schulter.',
+    url: caseUrl('normal-shoulder-mri'),
+    credit: 'Andrew Dixon · Radiopaedia.org · rID 43115',
+    frames: [frame('normal-axial', 'Axial'), frame('normal-coronal', 'Parakoronal'), frame('normal-sagittal', 'Parasagittal')],
+    ...imageSource(4),
+  },
+  {
+    label: 'Supraspinatus-Partialruptur mit subakromialem Impingement',
+    history: 'Schulterbeschwerden mit subakromialem Läsionsmuster.',
+    findings: 'Am Supraspinatusansatz reicht ein flüssigkeitssignalreicher Defekt von der bursalen Oberfläche in die verdickte Sehne. Die artikularseitigen Fasern bleiben erhalten. Akromion und Bursa im Zusammenhang beurteilen.',
+    diagnosis: 'Supraspinatus-Partialruptur im Kontext eines subakromialen Impingements.',
+    url: caseUrl('42429'),
+    credit: 'Andrew Dixon · Radiopaedia.org · rID 42429',
+    frames: [frame('impingement-bursal', 'PD FS · parakoronal')],
+    ...imageSource(10),
+  },
+  {
+    label: 'Interstitielle Supraspinatus-Partialruptur',
+    history: 'MRT-Lehrfall zur Abgrenzung eines gedeckten Faserdefekts.',
+    findings: 'Lineares Flüssigkeitssignal innerhalb der Sehne bei durchgängiger artikularer und bursaler Oberfläche. Begleitende subakromial-subdeltoidale Bursitis.',
+    diagnosis: 'Interstitielle Partialruptur des Supraspinatus.',
+    url: caseUrl('160216'),
+    credit: 'Yahya Baba · Radiopaedia.org · rID 160216',
+    frames: [frame('interstitial-tear', 'PD FS · parakoronal')],
+    ...imageSource(11),
+  },
+  {
+    label: 'Transmurale Ruptur bei erhaltener Restbreite',
+    history: 'MRT bei Schulterschmerzen. In diesem Fall liegt der transmurale Anteil am vorderen Footprint.',
+    findings: 'Transmuraler Anteil 19 × 16 mm mit posterior anschließender artikularseitiger Fortleitung. Im Originalfall sind keine Muskelatrophie oder fettigen Streifen beschrieben.',
+    diagnosis: 'Transmurale Supraspinatusruptur mit partiell erhaltener Sehnenbreite.',
+    url: caseUrl('full-thickness-partial-width-supraspinatus-tear'),
+    credit: 'Dai Roberts · Radiopaedia.org · rID 76759',
+    frames: [frame('partial-width-sagittal', 'Parasagittal · Breite'), {
+      ...frame('partial-width-coronal', 'T2 FS · parakoronal · Tiefe'),
+      source: `${atlas}#page=13`,
+    }],
+    ...imageSource(9),
+  },
+  {
+    label: 'Subscapularisruptur mit medialer Bizepsluxation',
+    history: 'MRT-Lehrfall zum Zusammenspiel von Subscapularis und Bizepsstabilität.',
+    findings: 'Transmuraler Faserdefekt am Subscapularis. Die lange Bizepssehne liegt medial des Sulcus.',
+    diagnosis: 'Subscapularisruptur mit medialer Luxation der langen Bizepssehne.',
+    url: caseUrl('154349'),
+    credit: 'Bahman Rasuli · Radiopaedia.org · rID 154349',
+    frames: [frame('subscapularis-biceps', 'PD FS · axial')],
+    ...imageSource(18),
+  },
+  {
+    label: 'Infraspinatusläsion · Differenzialdiagnose zum internen Impingement',
+    history: 'MRT-Lehrfall zur Beurteilung des posterioren Cuffs.',
+    findings: 'Schlitzförmiges intratendinöses Flüssigkeitssignal im Infraspinatus. Bei Überkopfbeschwerden zusätzlich die artikuläre Cuff-Oberfläche und das posterosuperiore Labrum prüfen.',
+    diagnosis: 'Interstitielle Infraspinatusruptur. Für die Diagnose eines symptomatischen internen Impingements sind das Kontaktmuster und die Klinik entscheidend.',
+    url: caseUrl('157891'),
+    credit: 'Yahya Baba · Radiopaedia.org · rID 157891',
+    frames: [frame('infraspinatus-cleavage', 'T2 FS · axial')],
+    ...imageSource(17),
+  },
+  {
+    label: 'Knöcherne Bankart-Läsion und Hill-Sachs',
+    history: 'CT-Lehrfall mit knöchernem Verletzungsmuster nach anteriorer Schulterluxation.',
+    findings: 'Kleine knöcherne Absprengung am vorderen Glenoidrand und Impressionsdefekt am Humeruskopf. Eine Track-Zuordnung erfordert die Messung von D, d und HSI über die geeigneten Rekonstruktionen.',
+    diagnosis: 'Bipolares knöchernes Verletzungsmuster mit knöcherner Bankart- und Hill-Sachs-Läsion.',
+    url: caseUrl('hill-sachs-lesion-with-bony-bankart-lesion'),
+    credit: 'Mahmoud Yacout Alabd · Radiopaedia.org · rID 39873',
+    frames: [frame('bankart-hill-sachs', 'CT · axial', 'https://nccommons.org/wiki/File:Hill-Sachs_lesion_with_bony_Bankart_lesion_(Radiopaedia_39873-42338_Axial_12).jpg')],
+  },
+  {
+    label: 'Labrum im Verlauf · natives MRT und MR-Arthrographie',
+    history: 'Zwei Untersuchungen derselben Schulter zur Beurteilung des anteroinferioren Labrums.',
+    findings: 'Im nativen MRT verläuft ein Flüssigkeitsspalt an der Unterfläche des weitgehend ortsständigen Labrums. In der MR-Arthrographie ist der abgelöste Labrum-Kapsel-Komplex nach medial an den Glenoidhals verlagert. Das Periost ist abgehoben.',
+    diagnosis: 'Im nativen MRT bestand der Verdacht auf Perthes. Die MR-Arthrographie zeigt eine ALPSA-Läsion. Im Originalfall sind außerdem SLAP II und eine glenoidale IGHL-Avulsion beschrieben.',
+    url: caseUrl('alpsa-slap2-tear-and-gagl-lesion-of-shoulder'),
+    credit: 'Nafisa Shakir Batta · Radiopaedia.org · rID 34195',
+    frames: [
+      frame('perthes-native', 'MRT · T2 FS axial', 'https://nccommons.org/wiki/File:ALPSA%2C_SLAP2_tear%2C_and_GAGL_lesion_of_shoulder_(Radiopaedia_34195-35451_Axial_T2_fat_sat_9).jpg'),
+      frame('alpsa-arthrogram', 'MR-Arthrographie · T1 FS axial', 'https://nccommons.org/wiki/File:ALPSA%2C_SLAP2_tear%2C_and_GAGL_lesion_of_shoulder_(Radiopaedia_34195-35454_Axial_T1_fat_sat_8).jpg'),
+    ],
+  },
+  {
+    label: 'Posteriore Schulterluxation',
+    history: 'Lehrfall zur Bestimmung der Luxationsrichtung mit Röntgen und CT.',
+    findings: 'In der Y-Aufnahme und im axialen CT die Stellung des Humeruskopfs zum Glenoid prüfen. Anteromedial am Kopf liegt ein Impressionsdefekt. Den posterioren Glenoidrand in der Originalserie verfolgen.',
+    diagnosis: 'Posteriore glenohumerale Luxation mit Reverse-Hill-Sachs- und Reverse-Bankart-Läsion.',
+    url: caseUrl('posterior-shoulder-dislocation-with-reverse-hill-sachs-and-reverse-bankart-lesions'),
+    credit: 'Andrew Dixon · Radiopaedia.org · rID 12478',
+    frames: [
+      frame('posterior-ap', 'Röntgen · frontal', 'https://nccommons.org/wiki/File:Posterior_shoulder_dislocation_with_reverse_Hill-Sachs_and_reverse_Bankart_lesions_(Radiopaedia_12478-12714_Frontal_1).jpg'),
+      frame('posterior-y', 'Röntgen · Skapula-Y', 'https://nccommons.org/wiki/File:Posterior_shoulder_dislocation_with_reverse_Hill-Sachs_and_reverse_Bankart_lesions_(Radiopaedia_12478-12714_Y_-_view_1).jpg'),
+      frame('posterior-ct', 'CT · axial', 'https://nccommons.org/wiki/File:Posterior_shoulder_dislocation_with_reverse_Hill-Sachs_and_reverse_Bankart_lesions_(Radiopaedia_12478-12715_Axial_7).jpg'),
+    ],
+  },
+]

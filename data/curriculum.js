@@ -9,6 +9,7 @@
 
 import { CONTRAST_GROUPS } from './contrastMedia'
 import assessmentLinks from './assessmentQuality/routeLinks.json'
+import { shoulderMriTopics } from './shoulderMriChapter'
 
 export const CURRICULUM = [
   {
@@ -1327,6 +1328,7 @@ export const CURRICULUM = [
         title: { de: '11. Schulter', en: '11. Shoulder', fa: '۱۱. شانه' },
         icon: '💪',
         themen: [
+          ...shoulderMriTopics,
           { id: 'schulter-anatomie', title: { de: 'Schulteranatomie: Knochen und Landmarken', en: 'Shoulder Anatomy: Bones and Landmarks', fa: 'آناتومی شانه؛ استخوان‌ها و نشانه‌های مهم' }, tags: ['Rö','MRT'], diff: 1, link: '/msk/schulter/anatomie', inProgress: true, updatedAt: '2026-10-25' },
           {"id": "glenohumerale-arthrose", "title": {"de": "Glenohumerale Arthrose", "en": "Glenohumeral osteoarthritis", "fa": "آرتروز گلنوهومرال"}, "tags": ["Rö", "CT"], "diff": 1, "link": "/msk/schulter/arthrose", "mcqLink": "/ueben/quiz?fach=msk&n=2&themen=glenohumerale-arthrose", "flashcardLink": "/flashcards/glenohumerale-arthrose", "ready": true, "inProgress": true, "updatedAt": "2026-10-24"},
           { id: 'rotatorenmanschette', title: { de: 'Rotatorenmanschette', en: 'Rotator Cuff', fa: 'روتاتور کاف' }, tags: ['MRT'], diff: 2, link: '/msk/schulter/rotatorenmanschette', mcqLink: '/ueben/quiz?fach=msk&n=10&themen=rotatorenmanschette&from=%2Fmsk%2Fschulter%2Frotatorenmanschette', flashcardLink: '/flashcards/rotatorenmanschette', ready: true, updatedAt: '2026-10-23' },
